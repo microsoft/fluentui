@@ -1438,24 +1438,15 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       _refArray.push({ index: legendTitle, refElement: element });
     }
 
-    const _onFocusLargeDataset = (
+    // Helper function to update highlight circle, vertical line, and callout for large datasets
+    const _updateLargeDatasetHighlightAndCallout = (
       linenumber: number,
       lineHeight: number,
-      focusEvent: React.FocusEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
+      pointToHighlight: LineChartDataPoint,
+      xAxisCalloutData: string | undefined,
+      formattedDate: string | number,
       yScale: ScaleLinear<number, number>,
-      pointIndex: number,
     ) => {
-      focusEvent.persist();
-      const { data } = props;
-      const { lineChartData } = data;
-
-      // For focus events, we use the provided point index directly
-      const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[pointIndex] as LineChartDataPoint;
-
-      if (!pointToHighlight) {
-        return;
-      }
-
       // Check if this point is plottable. If not, close the popover and return.
       const xPoint = _xAxisScale(pointToHighlight.x);
       const yPoint = yScale(pointToHighlight.y);
@@ -1463,11 +1454,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         return;
       }
 
-      const { xAxisCalloutData } = pointToHighlight;
-      const formattedDate =
-        pointToHighlight.x instanceof Date
-          ? formatDateToLocaleString(pointToHighlight.x, props.culture, props.useUTC as boolean)
-          : pointToHighlight.x;
       const found = findCalloutPoints(calloutPointsRef.current, pointToHighlight.x) as
         | CustomizedCalloutData
         | undefined;
@@ -1508,6 +1494,33 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         setNearestCircleToHighlight(pointToHighlight);
         setActivePoint('');
       }
+    };
+
+    const _onFocusLargeDataset = (
+      linenumber: number,
+      lineHeight: number,
+      focusEvent: React.FocusEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
+      yScale: ScaleLinear<number, number>,
+      pointIndex: number,
+    ) => {
+      focusEvent.persist();
+      const { data } = props;
+      const { lineChartData } = data;
+
+      // For focus events, we use the provided point index directly
+      const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[pointIndex] as LineChartDataPoint;
+
+      if (!pointToHighlight) {
+        return;
+      }
+
+      const { xAxisCalloutData } = pointToHighlight;
+      const formattedDate: string | number =
+        pointToHighlight.x instanceof Date
+          ? formatDateToLocaleString(pointToHighlight.x, props.culture, props.useUTC as boolean)
+          : pointToHighlight.x;
+
+      _updateLargeDatasetHighlightAndCallout(linenumber, lineHeight, pointToHighlight, xAxisCalloutData, formattedDate, yScale);
     };
 
     const _onMouseOverLargeDataset = (
@@ -1560,55 +1573,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
 
       const { xAxisCalloutData } = lineChartData![linenumber].data[index as number];
-      const formattedDate =
+      const formattedDate: string | number =
         xPointToHighlight instanceof Date
           ? formatDateToLocaleString(xPointToHighlight, props.culture, props.useUTC as boolean)
           : xPointToHighlight;
-      const found = findCalloutPoints(calloutPointsRef.current, xPointToHighlight) as CustomizedCalloutData | undefined;
       const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
 
-      // Check if this point is plottable. If not, close the popover and return.
-      const xPoint = _xAxisScale(pointToHighlight.x);
-      const yPoint = yScale(pointToHighlight.y);
-      if (!isPlottable(xPoint, yPoint)) {
-        return;
-      }
-
-      const pointToHighlightUpdated =
-        nearestCircleToHighlight === null ||
-        (nearestCircleToHighlight !== null &&
-          pointToHighlight !== null &&
-          (nearestCircleToHighlight.x !== pointToHighlight.x || nearestCircleToHighlight.y !== pointToHighlight.y));
-      // if no points need to be called out then don't show vertical line and callout card
-      if (found && pointToHighlightUpdated) {
-        _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
-
-        d3Select(`#${_staticHighlightCircle}_${linenumber}`)
-          .attr('cx', `${xPoint}`)
-          .attr('cy', `${yPoint}`)
-          .attr('visibility', 'visibility');
-
-        d3Select(`#${_verticalLine}`)
-          .attr('transform', () => `translate(${xPoint}, ${yPoint})`)
-          .attr('visibility', 'visibility')
-          .attr('y2', `${lineHeight - 5 - yPoint}`);
-
-        const targetElement = document.getElementById(`${_staticHighlightCircle}_${linenumber}`);
-        const rect = targetElement!.getBoundingClientRect();
-        setNearestCircleToHighlight(pointToHighlight);
-        updatePosition(rect.x, rect.y);
-        setStackCalloutProps(found!);
-        setYValueHover(found.values);
-        setDataPointCalloutProps(found!);
-        xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue(formattedDate);
-        setActivePoint('');
-      }
-
-      if (!found) {
-        setPopoverOpen(false);
-        setNearestCircleToHighlight(pointToHighlight);
-        setActivePoint('');
-      }
+      _updateLargeDatasetHighlightAndCallout(linenumber, lineHeight, pointToHighlight, xAxisCalloutData, formattedDate, yScale);
     };
 
     function _handleFocus(
