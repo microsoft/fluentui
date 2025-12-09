@@ -377,10 +377,17 @@ export const resolveXAxisPoint = (
 
 /**
  * Formats text values according to the texttemplate specification
+ * Supports D3 format specifiers within %{text:format} patterns
  * @param textValue The raw text value to format
- * @param textTemplate The template string (e.g., "%{text:.1f}%")
+ * @param textTemplate The template string (e.g., "%{text:.1f}%", "%{text:.2%}", "%{text:,.0f}")
  * @param index Optional index for array-based templates
  * @returns Formatted text string
+ *
+ * Examples:
+ * - "%{text:.1f}%" → Formats number with 1 decimal place and adds % suffix
+ * - "%{text:.2%}" → Formats as percentage with 2 decimal places
+ * - "%{text:,.0f}" → Formats with thousands separator and no decimals
+ * - "%{text:$,.2f}" → Formats as currency with thousands separator and 2 decimals
  */
 const formatTextWithTemplate = (
   textValue: string | number,
@@ -395,11 +402,45 @@ const formatTextWithTemplate = (
     return String(textValue);
   }
   const template = typeof textTemplate === 'string' ? textTemplate : textTemplate[index || 0] || '';
-  if (template.includes('%{text') && template.includes('}%')) {
-    const precisionMatch = template.match(/\.(\d+)f/);
-    const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 1;
-    return `${numVal.toFixed(precision)}%`;
+
+  // Match Plotly's texttemplate pattern: %{text:format} or %{text}
+  // Can be followed by any literal text like %, $, etc.
+  const plotlyPattern = /%\{text(?::([^}]+))?\}(.*)$/;
+  const match = template.match(plotlyPattern);
+
+  if (match) {
+    const formatSpec = match[1]; // The format specifier (e.g., ".1f", ".2%", ",.0f") or undefined
+    const suffix = match[2]; // Any text after the closing brace (e.g., "%", " units")
+
+    // If no format specifier is provided (e.g., %{text}%), try to infer from suffix
+    if (!formatSpec) {
+      // Check if suffix starts with % - assume simple percentage with 1 decimal
+      if (suffix.startsWith('%')) {
+        return `${numVal.toFixed(1)}${suffix}`;
+      }
+      // No format specifier, just return the number with the suffix
+      return `${numVal}${suffix}`;
+    }
+
+    try {
+      // Use D3 format function to apply the format specifier
+      const formatter = d3Format(formatSpec);
+      const formattedValue = formatter(numVal);
+      return `${formattedValue}${suffix}`;
+    } catch (error) {
+      // Try to extract precision for basic fallback
+      const precisionMatch = formatSpec.match(/\.(\d+)[f%]/);
+      const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 2;
+
+      // Check if it's a percentage format
+      if (formatSpec.includes('%')) {
+        return `${(numVal * 100).toFixed(precision)}%${suffix}`;
+      }
+
+      return `${numVal.toFixed(precision)}${suffix}`;
+    }
   }
+
   return String(textValue);
 };
 
@@ -1642,12 +1683,20 @@ export const transformPlotlyJsonToGVBCProps = (
                 );
             const opacity = getOpacity(series, xIndex);
             const yVal = series.y![xIndex] as number;
+            // Extract text value for barLabel
+            let barLabel = Array.isArray(series.text) ? series.text[xIndex] : series.text;
+
+            // Apply texttemplate formatting if specified
+            if (barLabel && series.texttemplate) {
+              barLabel = formatTextWithTemplate(barLabel, series.texttemplate, xIndex);
+            }
 
             return {
               x: x!.toString(),
               y: yVal,
               yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
               color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+              ...(barLabel ? { barLabel: String(barLabel) } : {}),
             };
           })
           .filter(item => typeof item !== 'undefined'),

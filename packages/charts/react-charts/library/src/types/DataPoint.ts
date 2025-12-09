@@ -753,6 +753,11 @@ export interface GVBarChartSeriesPoint {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 }
 
 /**

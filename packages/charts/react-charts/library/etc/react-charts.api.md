@@ -984,6 +984,7 @@ export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
 
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
