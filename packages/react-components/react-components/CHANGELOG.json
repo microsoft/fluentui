@@ -2,6 +2,619 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 05 Dec 2025 22:38:18 GMT",
+      "tag": "@fluentui/react-components_v9.72.8",
+      "version": "9.72.8",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-rating",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "45e4dba95029a017f0820e2fb6826b8e3d4979a0",
+            "comment": "feat: add small variant to the Switch component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "a9c009ef9e91f11a45346ab77a95ed6d931d48dc",
+            "comment": "feat: implement headless style hook for Divider component"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8b3d6792e100031c08199accd54e73a8d20ed88a",
+            "comment": "feat: add support to keep Drawer mounted on clos"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "a9c009ef9e91f11a45346ab77a95ed6d931d48dc",
+            "comment": "feat: introduce headless style hooks for button components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "7254163+mindlessroman@users.noreply.github.com",
+            "package": "@fluentui/react-tree",
+            "commit": "9add8b4263c5e044b145ffddf14101a51e9fef70",
+            "comment": "fix: Making TreeItemLayout and TreeItemPersonaLayout render a tree's appearance the same way"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "292e35c7b8d4b55788e94ca0ade72eff9044cfcc",
+            "comment": "fix: use transition animation instead of margin"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "5c7b918a823c3f8fe5b4ae015287454feff4889a",
+            "comment": "Use proper property name for MenuGridGroup context"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "87082df68335c86eb1dbdcd5d1dfb48f038f9174",
+            "comment": "Fix id for MenuGridGroupHeader"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ab2d8662d8c0f8bb95a943c15fa3673f8f74f7dd",
+            "comment": "Fix MenuGridItem class names and MenuGridGroup class names object name"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "197919507ca78192feebe4eba5e731da97725c62",
+            "comment": "fix: update active state styles to include keyboard press events"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "03d35996a507b5b4ef28c2c8448b19eaafd677ab",
+            "comment": "fix: handle frequent uncaught exceptions"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b990bb438d7d4ccb8dce0c5c6fa03791d4c5f18f",
+            "comment": "remove redundant styles"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "00a98ea7a5f50384cb4aabc0d19e916915450ca8",
+            "comment": "fix incomplete donut and VSBC bug"
+          },
+          {
+            "author": "120502241+jepagan_microsoft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a82a2d210b1a7b96c53a12dd819d896752439563",
+            "comment": "fix width and height props not being applied to SVG path dimensions"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6d57e5794b973704e165c47de2c5e569127622ae",
+            "comment": "add support for x rounded tick values "
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9e7bcb7703285ebe33f032d7be9dd09e45787dfb",
+            "comment": "fix popover issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "97cf7d522555d3363ec4751af38a78b7bea76af0",
+            "comment": "set reference line legends after the main chart legends"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "62f5bba281512af4310791986a4750303c830168",
+            "comment": "fix duplicate points issue in scatter polar chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b49426b717fb2801d15f22c5d53b5ee5d585b58e",
+            "comment": "feat: enable multiplot image export"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e539a6a8b68da35f25e570e70635bf25b87a2068",
+            "comment": "fix(react-charts): Ensuring annotation keeps tied with chart always"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 19:18:06 GMT",
       "tag": "@fluentui/react-components_v9.72.7",
       "version": "9.72.7",

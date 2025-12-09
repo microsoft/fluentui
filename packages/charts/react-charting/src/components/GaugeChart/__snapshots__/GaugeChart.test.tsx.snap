@@ -1,7 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and
-  hide it when the mouse leaves the chart 1`] = `
+exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and\\n  hide it when the mouse leaves the chart 1`] = `
 <div>
   <div
     class=
@@ -3581,8 +3580,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
 </div>
 `;
 
-exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
-  the difference between maxValue and minValue props 1`] = `
+exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than\\n  the difference between maxValue and minValue props 1`] = `
 <div>
   <div
     class=

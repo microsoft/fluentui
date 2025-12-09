@@ -12,6 +12,8 @@ import { GanttChartDataPoint } from '../../types/index';
 expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -19,15 +21,30 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 350,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 600,
-    } as DOMRect);
+  window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 350,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 600,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
 
 beforeEach(() => {
@@ -38,6 +55,8 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   window.requestAnimationFrame = originalRAF;
+  window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
   jest.useRealTimers();
 });
 

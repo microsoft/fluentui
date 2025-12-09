@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DetailsColumn renders a sortable icon on an unsorted column when showSortIconWhenUnsorted is set to true 1`] = `
 <div

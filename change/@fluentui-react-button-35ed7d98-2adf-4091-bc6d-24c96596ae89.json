@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update active state styles to include keyboard press events",
-  "packageName": "@fluentui/react-button",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
