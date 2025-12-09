@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Grouped bar chart with tableau10 color scheme",
+  "mark": "bar",
+  "data": {
+    "values": [
+      { "category": "Q1", "value": 28, "product": "Product A" },
+      { "category": "Q1", "value": 35, "product": "Product B" },
+      { "category": "Q1", "value": 42, "product": "Product C" },
+      { "category": "Q2", "value": 55, "product": "Product A" },
+      { "category": "Q2", "value": 60, "product": "Product B" },
+      { "category": "Q2", "value": 48, "product": "Product C" },
+      { "category": "Q3", "value": 43, "product": "Product A" },
+      { "category": "Q3", "value": 50, "product": "Product B" },
+      { "category": "Q3", "value": 65, "product": "Product C" },
+      { "category": "Q4", "value": 91, "product": "Product A" },
+      { "category": "Q4", "value": 75, "product": "Product B" },
+      { "category": "Q4", "value": 82, "product": "Product C" }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "category",
+      "type": "nominal",
+      "axis": { "title": "Quarter" }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": { "title": "Revenue ($K)" }
+    },
+    "color": {
+      "field": "product",
+      "type": "nominal",
+      "scale": { "scheme": "tableau10" },
+      "legend": { "title": "Product" }
+    },
+    "xOffset": { "field": "product" }
+  },
+  "title": "Quarterly Revenue by Product (Tableau10 Scheme)",
+  "width": 600,
+  "height": 400
+}

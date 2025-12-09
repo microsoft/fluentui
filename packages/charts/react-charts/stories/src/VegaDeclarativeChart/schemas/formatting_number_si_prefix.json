@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Large numbers with SI prefix formatting (K, M, B)",
+  "width": 500,
+  "height": 350,
+  "data": {
+    "values": [
+      { "company": "Alpha Corp", "valuation": 1200000000 },
+      { "company": "Beta Inc", "valuation": 850000000 },
+      { "company": "Gamma LLC", "valuation": 2500000000 },
+      { "company": "Delta Co", "valuation": 450000000 },
+      { "company": "Epsilon Ltd", "valuation": 3800000000 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#8764B8" },
+  "encoding": {
+    "x": {
+      "field": "company",
+      "type": "nominal",
+      "sort": { "field": "valuation", "op": "sum", "order": "descending" },
+      "axis": { "title": "Company", "labelAngle": -30 }
+    },
+    "y": {
+      "field": "valuation",
+      "type": "quantitative",
+      "axis": {
+        "title": "Company Valuation",
+        "format": "$,.2s"
+      }
+    }
+  },
+  "title": "Company Valuations (SI Prefix: Billions)"
+}

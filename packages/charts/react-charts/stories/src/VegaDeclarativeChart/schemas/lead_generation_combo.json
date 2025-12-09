@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Lead generation funnel",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "month", "type": "temporal", "axis": { "title": "Month", "format": "%b" } },
+        "y": { "field": "leads", "type": "quantitative", "axis": { "title": "Total Leads" } },
+        "color": { "value": "#9467bd" }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "orange" },
+      "encoding": {
+        "x": { "field": "month", "type": "temporal" },
+        "y": { "field": "qualified", "type": "quantitative", "axis": { "title": "Qualified Leads" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "month": "2024-01", "leads": 850, "qualified": 425 },
+      { "month": "2024-02", "leads": 920, "qualified": 478 },
+      { "month": "2024-03", "leads": 1050, "qualified": 556 },
+      { "month": "2024-04", "leads": 1180, "qualified": 625 },
+      { "month": "2024-05", "leads": 1320, "qualified": 712 },
+      { "month": "2024-06", "leads": 1450, "qualified": 798 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Lead Generation & Qualification"
+}

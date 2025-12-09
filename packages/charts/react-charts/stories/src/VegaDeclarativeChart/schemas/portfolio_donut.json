@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Investment portfolio allocation",
+  "data": {
+    "values": [
+      { "asset": "Stocks", "value": 450000 },
+      { "asset": "Bonds", "value": 280000 },
+      { "asset": "Real Estate", "value": 350000 },
+      { "asset": "Commodities", "value": 120000 },
+      { "asset": "Cash", "value": 100000 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 50 },
+  "encoding": {
+    "theta": { "field": "value", "type": "quantitative" },
+    "color": { "field": "asset", "type": "nominal", "scale": { "scheme": "category10" } },
+    "tooltip": [
+      { "field": "asset", "type": "nominal", "title": "Asset Class" },
+      { "field": "value", "type": "quantitative", "title": "Value ($)", "format": "$,.0f" }
+    ]
+  },
+  "title": "Portfolio Allocation"
+}

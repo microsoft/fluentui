@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sea level rise projection",
+  "data": {
+    "values": [
+      { "year": "1900", "level": 0 },
+      { "year": "1920", "level": 2 },
+      { "year": "1940", "level": 5 },
+      { "year": "1960", "level": 12 },
+      { "year": "1980", "level": 28 },
+      { "year": "2000", "level": 65 },
+      { "year": "2020", "level": 145 },
+      { "year": "2040", "level": 280 }
+    ]
+  },
+  "mark": { "type": "area", "line": true, "point": true, "color": "teal" },
+  "encoding": {
+    "x": { "field": "year", "type": "ordinal", "axis": { "title": "Year" } },
+    "y": {
+      "field": "level",
+      "type": "quantitative",
+      "scale": { "type": "log" },
+      "axis": { "title": "Sea Level Rise (mm, log scale)" }
+    },
+    "tooltip": [
+      { "field": "year", "type": "ordinal" },
+      { "field": "level", "type": "quantitative", "title": "Rise (mm)", "format": ".0f" }
+    ]
+  },
+  "title": "Sea Level Rise (Logarithmic Scale)"
+}

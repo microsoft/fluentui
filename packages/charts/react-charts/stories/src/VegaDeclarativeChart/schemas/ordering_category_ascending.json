@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Product sales ordered alphabetically (ascending)",
+  "width": 500,
+  "height": 350,
+  "data": {
+    "values": [
+      { "product": "Tablet", "sales": 15000 },
+      { "product": "Laptop", "sales": 28000 },
+      { "product": "Phone", "sales": 42000 },
+      { "product": "Desktop", "sales": 19000 },
+      { "product": "Monitor", "sales": 12000 },
+      { "product": "Keyboard", "sales": 8000 },
+      { "product": "Mouse", "sales": 6500 },
+      { "product": "Headphones", "sales": 11000 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#107C10" },
+  "encoding": {
+    "x": {
+      "field": "product",
+      "type": "nominal",
+      "sort": "ascending",
+      "axis": { "title": "Product Category" }
+    },
+    "y": {
+      "field": "sales",
+      "type": "quantitative",
+      "axis": {
+        "title": "Sales Revenue",
+        "format": "$,.0f"
+      }
+    }
+  },
+  "title": "Product Sales (Alphabetically Ascending)"
+}

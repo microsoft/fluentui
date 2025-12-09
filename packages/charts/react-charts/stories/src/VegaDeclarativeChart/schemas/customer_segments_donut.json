@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Customer segmentation by value",
+  "data": {
+    "values": [
+      { "segment": "VIP", "customers": 850 },
+      { "segment": "High Value", "customers": 2340 },
+      { "segment": "Medium Value", "customers": 5670 },
+      { "segment": "Low Value", "customers": 8920 },
+      { "segment": "New", "customers": 3450 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 70, "padAngle": 0.02 },
+  "encoding": {
+    "theta": { "field": "customers", "type": "quantitative" },
+    "color": {
+      "field": "segment",
+      "type": "nominal",
+      "scale": { "scheme": "tableau10" },
+      "legend": { "title": "Customer Segment" }
+    },
+    "tooltip": [
+      { "field": "segment", "type": "nominal", "title": "Segment" },
+      { "field": "customers", "type": "quantitative", "title": "Customers", "format": ",.0f" }
+    ]
+  },
+  "title": "Customer Segmentation"
+}

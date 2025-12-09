@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Viral content growth pattern",
+  "data": {
+    "values": [
+      { "hour": 0, "views": 100 },
+      { "hour": 1, "views": 250 },
+      { "hour": 2, "views": 625 },
+      { "hour": 3, "views": 1562 },
+      { "hour": 4, "views": 3906 },
+      { "hour": 5, "views": 9765 },
+      { "hour": 6, "views": 24413 },
+      { "hour": 7, "views": 61032 },
+      { "hour": 8, "views": 152580 },
+      { "hour": 9, "views": 381450 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "color": "red" },
+  "encoding": {
+    "x": { "field": "hour", "type": "quantitative", "axis": { "title": "Hours Since Posted" } },
+    "y": {
+      "field": "views",
+      "type": "quantitative",
+      "scale": { "type": "log" },
+      "axis": { "title": "Views (log scale)", "format": ",.0f" }
+    },
+    "tooltip": [
+      { "field": "hour", "type": "quantitative", "title": "Hour" },
+      { "field": "views", "type": "quantitative", "format": ",.0f", "title": "Views" }
+    ]
+  },
+  "title": "Viral Content Growth (Logarithmic Scale)"
+}

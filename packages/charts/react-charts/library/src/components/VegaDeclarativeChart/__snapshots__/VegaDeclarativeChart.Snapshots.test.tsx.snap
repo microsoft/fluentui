@@ -1,0 +1,5634 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render heatmapchart correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Heatmap Chart. Heat map chart with 9 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_3_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_2_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,215.31456953642385)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Monday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Tuesday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,59.68543046357616)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Wednesday
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="A, Wednesday. , 18."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(82, 102, 173)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                18
+              </text>
+            </g>
+            <g
+              aria-label="B, Wednesday. , 28."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(183, 42, 72)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                28
+              </text>
+            </g>
+            <g
+              aria-label="C, Wednesday. , 35."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                35
+              </text>
+            </g>
+            <g
+              aria-label="A, Tuesday. , 25."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                25
+              </text>
+            </g>
+            <g
+              aria-label="B, Tuesday. , 30."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(204, 30, 51)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                30
+              </text>
+            </g>
+            <g
+              aria-label="C, Tuesday. , 22."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(123, 78, 133)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                22
+              </text>
+            </g>
+            <g
+              aria-label="A, Monday. , 10."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                10
+              </text>
+            </g>
+            <g
+              aria-label="B, Monday. , 20."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(102, 90, 153)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                20
+              </text>
+            </g>
+            <g
+              aria-label="C, Monday. , 15."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(51, 120, 204)"
+                height="76.25827814569537"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 38.129139072847686)"
+              >
+                15
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_5_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_4_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Day
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 209, 255); --rect-borderColor: rgb(0, 209, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 209, 255); border-color: rgb(0, 209, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 209, 255), rgb(0, 209, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render attendance_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Weekly Attendance Patterns. Heat map chart with 20 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_16_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_15_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,225.18656716417908)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Period 1
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,166.72885572139305)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Period 2
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,108.27114427860695)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Period 3
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,49.813432835820876)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Period 4
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Monday, Period 4. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(102, 90, 153)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                85
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, Period 4. , 86."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(119, 80, 136)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                86
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, Period 4. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, Period 4. , 84."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(85, 100, 170)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                84
+              </text>
+            </g>
+            <g
+              aria-label="Friday, Period 4. , 79."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                79
+              </text>
+            </g>
+            <g
+              aria-label="Monday, Period 3. , 87."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(136, 70, 119)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                87
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, Period 3. , 91."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(204, 30, 51)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                91
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, Period 3. , 90."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(187, 40, 68)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                90
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, Period 3. , 87."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(136, 70, 119)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                87
+              </text>
+            </g>
+            <g
+              aria-label="Friday, Period 3. , 83."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(68, 110, 187)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                83
+              </text>
+            </g>
+            <g
+              aria-label="Monday, Period 2. , 89."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(170, 50, 85)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                89
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, Period 2. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, Period 2. , 92."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(221, 20, 34)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                92
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, Period 2. , 89."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(170, 50, 85)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                89
+              </text>
+            </g>
+            <g
+              aria-label="Friday, Period 2. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(102, 90, 153)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                85
+              </text>
+            </g>
+            <g
+              aria-label="Monday, Period 1. , 92."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(221, 20, 34)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                92
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, Period 1. , 90."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(187, 40, 68)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                90
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, Period 1. , 94."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                94
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, Period 1. , 91."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(204, 30, 51)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                91
+              </text>
+            </g>
+            <g
+              aria-label="Friday, Period 1. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="57.28855721393035"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 28.644278606965177)"
+              >
+                88
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_18_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_17_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Class Period
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 255, 255); --rect-borderColor: rgb(0, 255, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 255, 255); border-color: rgb(0, 255, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 255, 255), rgb(0, 255, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render financial_ratios_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Financial Ratios Heatmap. Heat map chart with 12 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_a_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_9_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,225.18656716417908)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Current Ratio
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,166.72885572139305)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Quick Ratio
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,108.27114427860695)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Debt-to-Equity
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,49.813432835820876)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  ROE
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Company A, ROE. , 15.2."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(208, 28, 47)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                15.2
+              </text>
+            </g>
+            <g
+              aria-label="Company B, ROE. , 12.7."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(173, 49, 82)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                12.7
+              </text>
+            </g>
+            <g
+              aria-label="Company C, ROE. , 18.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                18.5
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Debt-to-Equity. , 0.8."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(4, 148, 251)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                0.8
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Debt-to-Equity. , 1.3."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(11, 143, 244)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.3
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Debt-to-Equity. , 0.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                0.5
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Quick Ratio. , 1.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(14, 142, 241)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.5
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Quick Ratio. , 1.2."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(10, 144, 245)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.2
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Quick Ratio. , 1.9."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(20, 138, 235)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.9
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Current Ratio. , 2.1."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(23, 137, 232)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                2.1
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Current Ratio. , 1.8."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(18, 139, 237)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.8
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Current Ratio. , 2.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(28, 134, 227)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                2.5
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_c_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_b_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Financial Ratio
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 154, 255); --rect-borderColor: rgb(0, 154, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 154, 255); border-color: rgb(0, 154, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 154, 255), rgb(0, 154, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render hospital_capacity_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Hospital Capacity Heatmap. Heat map chart with 15 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_v_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_u_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,215.31456953642385)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  ICU
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  General Ward
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,59.68543046357616)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Surgery
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Monday, Surgery. , 65."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(48, 122, 207)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                65
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, Surgery. , 70."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(83, 102, 172)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                70
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, Surgery. , 68."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(69, 110, 186)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                68
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, Surgery. , 72."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(97, 93, 159)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                72
+              </text>
+            </g>
+            <g
+              aria-label="Friday, Surgery. , 58."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                58
+              </text>
+            </g>
+            <g
+              aria-label="Monday, General Ward. , 78."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(138, 69, 118)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                78
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, General Ward. , 82."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(165, 53, 90)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                82
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, General Ward. , 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(118, 81, 138)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, General Ward. , 80."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(152, 61, 104)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                80
+              </text>
+            </g>
+            <g
+              aria-label="Friday, General Ward. , 73."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(104, 89, 152)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                73
+              </text>
+            </g>
+            <g
+              aria-label="Monday, ICU. , 92."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(42.48605577689242, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(234, 12, 21)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                92
+              </text>
+            </g>
+            <g
+              aria-label="Tuesday, ICU. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(20.97211155378485, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(207, 29, 48)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="Wednesday, ICU. , 95."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-0.5418326693227158, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                95
+              </text>
+            </g>
+            <g
+              aria-label="Thursday, ICU. , 90."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-22.055776892430284, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(220, 21, 35)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                90
+              </text>
+            </g>
+            <g
+              aria-label="Friday, ICU. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.56972111553785, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(186, 41, 69)"
+                height="76.25827814569537"
+                width="21.083665338645417"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(10.541832669322709, 38.129139072847686)"
+              >
+                85
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_11_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_10_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Hospital Floor
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 255, 255); --rect-borderColor: rgb(0, 255, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 255, 255); border-color: rgb(0, 255, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 255, 255), rgb(0, 255, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Manufacturing Charts should render air_quality_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_1d_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1c_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,225.18656716417908)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  New York
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,166.72885572139305)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Los Angeles
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,108.27114427860695)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Chicago
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,49.813432835820876)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Houston
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Morning, Houston. , 72."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(138, 69, 118)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                72
+              </text>
+            </g>
+            <g
+              aria-label="Afternoon, Houston. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(219, 21, 36)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="Evening, Houston. , 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="Morning, Chicago. , 52."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(36, 129, 219)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                52
+              </text>
+            </g>
+            <g
+              aria-label="Afternoon, Chicago. , 68."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(118, 81, 138)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                68
+              </text>
+            </g>
+            <g
+              aria-label="Evening, Chicago. , 61."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(82, 102, 173)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                61
+              </text>
+            </g>
+            <g
+              aria-label="Morning, Los Angeles. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(204, 30, 51)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                85
+              </text>
+            </g>
+            <g
+              aria-label="Afternoon, Los Angeles. , 95."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                95
+              </text>
+            </g>
+            <g
+              aria-label="Evening, Los Angeles. , 78."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(168, 51, 87)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                78
+              </text>
+            </g>
+            <g
+              aria-label="Morning, New York. , 45."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                45
+              </text>
+            </g>
+            <g
+              aria-label="Afternoon, New York. , 62."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(87, 99, 168)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                62
+              </text>
+            </g>
+            <g
+              aria-label="Evening, New York. , 58."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(67, 111, 188)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                58
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_1f_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1e_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              City
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 255, 255); --rect-borderColor: rgb(0, 255, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 255, 255); border-color: rgb(0, 255, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 255, 255), rgb(0, 255, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Manufacturing Charts should render machine_utilization_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Machine Utilization by Shift. Heat map chart with 10 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_1k_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1j_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,231.1254980079681)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Machine 1
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,184.31274900398407)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Machine 2
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Machine 3
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,90.68725099601592)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Machine 4
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,43.87450199203187)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Machine 5
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Day Shift, Machine 5. , 90."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.534653465346537, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(191, 38, 64)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                90
+              </text>
+            </g>
+            <g
+              aria-label="Night Shift, Machine 5. , 80."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-42.930693069306926, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(64, 113, 191)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                80
+              </text>
+            </g>
+            <g
+              aria-label="Day Shift, Machine 4. , 87."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.534653465346537, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(153, 60, 102)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                87
+              </text>
+            </g>
+            <g
+              aria-label="Night Shift, Machine 4. , 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-42.930693069306926, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="Day Shift, Machine 3. , 95."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.534653465346537, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                95
+              </text>
+            </g>
+            <g
+              aria-label="Night Shift, Machine 3. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-42.930693069306926, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(128, 75, 128)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                85
+              </text>
+            </g>
+            <g
+              aria-label="Day Shift, Machine 2. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.534653465346537, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(166, 53, 90)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="Night Shift, Machine 2. , 82."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-42.930693069306926, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(90, 98, 166)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                82
+              </text>
+            </g>
+            <g
+              aria-label="Day Shift, Machine 1. , 92."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.534653465346537, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(217, 23, 38)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                92
+              </text>
+            </g>
+            <g
+              aria-label="Night Shift, Machine 1. , 78."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-42.930693069306926, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(38, 128, 217)"
+                height="45.87649402390438"
+                width="52.396039603960396"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(26.198019801980198, 22.93824701195219)"
+              >
+                78
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_1m_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1l_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Machine
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 255, 255); --rect-borderColor: rgb(0, 255, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 255, 255); border-color: rgb(0, 255, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 255, 255), rgb(0, 255, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render engagement_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Social Media Engagement Heatmap. Heat map chart with 20 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_h_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_g_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,231.1254980079681)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Monday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,184.31274900398407)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Tuesday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Wednesday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,90.68725099601592)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Thursday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,43.87450199203187)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Friday
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="6 AM, Friday. , 155."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(21, 138, 234)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                155
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Friday. , 480."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(121, 79, 135)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                480
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Friday. , 920."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                920
+              </text>
+            </g>
+            <g
+              aria-label="12 AM, Friday. , 220."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 20.93625498007968)"
+            >
+              <rect
+                fill="rgb(41, 126, 214)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                220
+              </text>
+            </g>
+            <g
+              aria-label="6 AM, Thursday. , 138."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(16, 141, 239)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                138
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Thursday. , 615."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(162, 55, 94)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                615
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Thursday. , 820."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(224, 18, 31)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                820
+              </text>
+            </g>
+            <g
+              aria-label="12 AM, Thursday. , 105."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 67.74900398406373)"
+            >
+              <rect
+                fill="rgb(6, 146, 249)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                105
+              </text>
+            </g>
+            <g
+              aria-label="6 AM, Wednesday. , 142."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(17, 140, 238)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                142
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Wednesday. , 580."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(151, 61, 104)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                580
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Wednesday. , 750."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(203, 31, 52)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                750
+              </text>
+            </g>
+            <g
+              aria-label="12 AM, Wednesday. , 98."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 114.5617529880478)"
+            >
+              <rect
+                fill="rgb(4, 148, 251)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                98
+              </text>
+            </g>
+            <g
+              aria-label="6 AM, Tuesday. , 135."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(15, 141, 240)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                135
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Tuesday. , 520."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(133, 72, 123)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                520
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Tuesday. , 720."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(194, 36, 61)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                720
+              </text>
+            </g>
+            <g
+              aria-label="12 AM, Tuesday. , 92."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 161.37450199203187)"
+            >
+              <rect
+                fill="rgb(2, 149, 253)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                92
+              </text>
+            </g>
+            <g
+              aria-label="6 AM, Monday. , 120."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(11, 144, 244)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                120
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Monday. , 450."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(112, 85, 144)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                450
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Monday. , 680."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(182, 44, 74)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                680
+              </text>
+            </g>
+            <g
+              aria-label="12 AM, Monday. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 208.1872509960159)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="45.87649402390438"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 22.93824701195219)"
+              >
+                85
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_j_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_i_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Day of Week
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 165, 255); --rect-borderColor: rgb(0, 165, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 165, 255); border-color: rgb(0, 165, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 165, 255), rgb(0, 165, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render server_load_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Server Load Heatmap. Heat map chart with 12 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_o_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_n_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,215.31456953642385)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Server 1
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Server 2
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,59.68543046357616)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Server 3
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="00:00, Server 3. , 32."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                32
+              </text>
+            </g>
+            <g
+              aria-label="06:00, Server 3. , 40."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(37, 129, 218)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                40
+              </text>
+            </g>
+            <g
+              aria-label="12:00, Server 3. , 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(196, 35, 59)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="18:00, Server 3. , 80."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(218, 22, 37)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                80
+              </text>
+            </g>
+            <g
+              aria-label="00:00, Server 2. , 38."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(27, 134, 228)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                38
+              </text>
+            </g>
+            <g
+              aria-label="06:00, Server 2. , 45."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(59, 116, 196)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                45
+              </text>
+            </g>
+            <g
+              aria-label="12:00, Server 2. , 82."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(228, 16, 27)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                82
+              </text>
+            </g>
+            <g
+              aria-label="18:00, Server 2. , 88."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                88
+              </text>
+            </g>
+            <g
+              aria-label="00:00, Server 1. , 35."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(14, 142, 241)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                35
+              </text>
+            </g>
+            <g
+              aria-label="06:00, Server 1. , 42."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(46, 124, 209)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                42
+              </text>
+            </g>
+            <g
+              aria-label="12:00, Server 1. , 78."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(209, 27, 46)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                78
+              </text>
+            </g>
+            <g
+              aria-label="18:00, Server 1. , 85."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(241, 8, 14)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                85
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_q_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_p_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Server
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 235, 255); --rect-borderColor: rgb(0, 235, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 235, 255); border-color: rgb(0, 235, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 235, 255), rgb(0, 235, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render website_traffic_heatmap correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Website Traffic Heatmap. Heat map chart with 12 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_1r_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1q_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,215.31456953642385)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Monday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,137.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Tuesday
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,59.68543046357616)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Wednesday
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="9 AM, Wednesday. , 1400."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(67, 111, 188)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1400
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Wednesday. , 2800."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                2800
+              </text>
+            </g>
+            <g
+              aria-label="3 PM, Wednesday. , 2100."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(161, 56, 94)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                2100
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Wednesday. , 1100."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 21.556291390728475)"
+            >
+              <rect
+                fill="rgb(27, 134, 228)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1100
+              </text>
+            </g>
+            <g
+              aria-label="9 AM, Tuesday. , 1350."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(61, 115, 194)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1350
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Tuesday. , 2700."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(242, 8, 13)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                2700
+              </text>
+            </g>
+            <g
+              aria-label="3 PM, Tuesday. , 1950."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(141, 67, 115)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1950
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Tuesday. , 1000."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 99.37086092715232)"
+            >
+              <rect
+                fill="rgb(13, 142, 242)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1000
+              </text>
+            </g>
+            <g
+              aria-label="9 AM, Monday. , 1200."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(37.13432835820896, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(40, 127, 215)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1200
+              </text>
+            </g>
+            <g
+              aria-label="12 PM, Monday. , 2500."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(10.268656716417908, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(215, 24, 40)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                2500
+              </text>
+            </g>
+            <g
+              aria-label="3 PM, Monday. , 1800."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-16.597014925373138, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(121, 79, 135)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                1800
+              </text>
+            </g>
+            <g
+              aria-label="6 PM, Monday. , 900."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.462686567164184, 177.18543046357615)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="76.25827814569537"
+                width="26.328358208955226"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(13.164179104477613, 38.129139072847686)"
+              >
+                900
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_1t_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_1s_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Day
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 220, 255); --rect-borderColor: rgb(0, 220, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 220, 255); border-color: rgb(0, 220, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 220, 255), rgb(0, 220, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformation should transform air_quality_heatmap to Fluent chart props 1`] = `
+<div>
+  <div
+    style="width: 100%; height: 100%;"
+  >
+    <div
+      class="fui-cart__root fui-charts-resp-child__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. "
+          class="fui-cart__chart fui-charts-resp-child__chart"
+          height="310"
+          style="display: block;"
+          width="0"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 255)"
+          >
+            <path
+              class="domain"
+              d="M64.5,0.5H-43.5"
+              stroke="currentColor"
+            />
+          </g>
+          <rect
+            class="fui-cart_svgTooltip"
+            height="3"
+            width="6"
+            x="7"
+            y="296"
+          />
+          <text
+            aria-describedby="tooltip-_r_29_"
+            class="fui-cart__axisTitle"
+            id="tooltip-host_r_28_"
+            text-anchor="middle"
+            x="10"
+            y="302"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(64, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,255.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,225.18656716417908)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                New York
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,166.72885572139305)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Los Angeles
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,108.27114427860695)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Chicago
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,49.813432835820876)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Houston
+              </text>
+            </g>
+          </g>
+          <g
+            aria-label="Morning, Houston. , 72."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(28.23841059602649, 21.169154228855703)"
+          >
+            <rect
+              fill="rgb(138, 69, 118)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              72
+            </text>
+          </g>
+          <g
+            aria-label="Afternoon, Houston. , 88."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-7.523178807947019, 21.169154228855703)"
+          >
+            <rect
+              fill="rgb(219, 21, 36)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              88
+            </text>
+          </g>
+          <g
+            aria-label="Evening, Houston. , 75."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.28476821192053, 21.169154228855703)"
+          >
+            <rect
+              fill="rgb(153, 60, 102)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              75
+            </text>
+          </g>
+          <g
+            aria-label="Morning, Chicago. , 52."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(28.23841059602649, 79.62686567164178)"
+          >
+            <rect
+              fill="rgb(36, 129, 219)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              52
+            </text>
+          </g>
+          <g
+            aria-label="Afternoon, Chicago. , 68."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-7.523178807947019, 79.62686567164178)"
+          >
+            <rect
+              fill="rgb(118, 81, 138)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              68
+            </text>
+          </g>
+          <g
+            aria-label="Evening, Chicago. , 61."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.28476821192053, 79.62686567164178)"
+          >
+            <rect
+              fill="rgb(82, 102, 173)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              61
+            </text>
+          </g>
+          <g
+            aria-label="Morning, Los Angeles. , 85."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(28.23841059602649, 138.08457711442787)"
+          >
+            <rect
+              fill="rgb(204, 30, 51)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              85
+            </text>
+          </g>
+          <g
+            aria-label="Afternoon, Los Angeles. , 95."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-7.523178807947019, 138.08457711442787)"
+          >
+            <rect
+              fill="rgb(255, 0, 0)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              95
+            </text>
+          </g>
+          <g
+            aria-label="Evening, Los Angeles. , 78."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.28476821192053, 138.08457711442787)"
+          >
+            <rect
+              fill="rgb(168, 51, 87)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              78
+            </text>
+          </g>
+          <g
+            aria-label="Morning, New York. , 45."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(28.23841059602649, 196.5422885572139)"
+          >
+            <rect
+              fill="rgb(0, 150, 255)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              45
+            </text>
+          </g>
+          <g
+            aria-label="Afternoon, New York. , 62."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-7.523178807947019, 196.5422885572139)"
+          >
+            <rect
+              fill="rgb(87, 99, 168)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              62
+            </text>
+          </g>
+          <g
+            aria-label="Evening, New York. , 58."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.28476821192053, 196.5422885572139)"
+          >
+            <rect
+              fill="rgb(67, 111, 188)"
+              height="57.28855721393035"
+              width="35.04635761589404"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(17.52317880794702, 28.644278606965177)"
+            >
+              58
+            </text>
+          </g>
+          <rect
+            class="fui-cart_svgTooltip"
+            height="3"
+            transform="translate(0,
+                 227)rotate(-90)"
+            width="6"
+            x="83"
+            y="18"
+          />
+          <text
+            aria-describedby="tooltip-_r_2b_"
+            class="fui-cart__axisTitle"
+            id="tooltip-host_r_2a_"
+            text-anchor="middle"
+            transform="translate(0,
+                 227)rotate(-90)"
+            x="86"
+            y="24"
+          >
+            City
+          </text>
+          <span
+            hidden=""
+          />
+        </svg>
+      </div>
+      <div
+        class="fui-cart__legendContainer"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
+          >
+            <button
+              aria-label=""
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 255, 255); --rect-borderColor: rgb(0, 255, 255);"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 255, 255); border-color: rgb(0, 255, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 255, 255), rgb(0, 255, 255));"
+              />
+              <div
+                class="fui-legend__text"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformation should transform engagement_heatmap to Fluent chart props 1`] = `
+<div>
+  <div
+    style="width: 100%; height: 100%;"
+  >
+    <div
+      class="fui-cart__root fui-charts-resp-child__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Social Media Engagement Heatmap. Heat map chart with 20 data points. "
+          class="fui-cart__chart fui-charts-resp-child__chart"
+          height="310"
+          style="display: block;"
+          width="0"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 255)"
+          >
+            <path
+              class="domain"
+              d="M64.5,0.5H-43.5"
+              stroke="currentColor"
+            />
+          </g>
+          <rect
+            class="fui-cart_svgTooltip"
+            height="3"
+            width="6"
+            x="7"
+            y="296"
+          />
+          <text
+            aria-describedby="tooltip-_r_22_"
+            class="fui-cart__axisTitle"
+            id="tooltip-host_r_21_"
+            text-anchor="middle"
+            x="10"
+            y="302"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(64, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,255.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,231.1254980079681)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Monday
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,184.31274900398407)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Tuesday
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,137.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Wednesday
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,90.68725099601592)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Thursday
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,43.87450199203187)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                Friday
+              </text>
+            </g>
+          </g>
+          <g
+            aria-label="6 AM, Friday. , 155."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(37.13432835820896, 20.93625498007968)"
+          >
+            <rect
+              fill="rgb(21, 138, 234)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              155
+            </text>
+          </g>
+          <g
+            aria-label="12 PM, Friday. , 480."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(10.268656716417908, 20.93625498007968)"
+          >
+            <rect
+              fill="rgb(121, 79, 135)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              480
+            </text>
+          </g>
+          <g
+            aria-label="6 PM, Friday. , 920."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-16.597014925373138, 20.93625498007968)"
+          >
+            <rect
+              fill="rgb(255, 0, 0)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              920
+            </text>
+          </g>
+          <g
+            aria-label="12 AM, Friday. , 220."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.462686567164184, 20.93625498007968)"
+          >
+            <rect
+              fill="rgb(41, 126, 214)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              220
+            </text>
+          </g>
+          <g
+            aria-label="6 AM, Thursday. , 138."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(37.13432835820896, 67.74900398406373)"
+          >
+            <rect
+              fill="rgb(16, 141, 239)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              138
+            </text>
+          </g>
+          <g
+            aria-label="12 PM, Thursday. , 615."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(10.268656716417908, 67.74900398406373)"
+          >
+            <rect
+              fill="rgb(162, 55, 94)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              615
+            </text>
+          </g>
+          <g
+            aria-label="6 PM, Thursday. , 820."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-16.597014925373138, 67.74900398406373)"
+          >
+            <rect
+              fill="rgb(224, 18, 31)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              820
+            </text>
+          </g>
+          <g
+            aria-label="12 AM, Thursday. , 105."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.462686567164184, 67.74900398406373)"
+          >
+            <rect
+              fill="rgb(6, 146, 249)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              105
+            </text>
+          </g>
+          <g
+            aria-label="6 AM, Wednesday. , 142."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(37.13432835820896, 114.5617529880478)"
+          >
+            <rect
+              fill="rgb(17, 140, 238)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              142
+            </text>
+          </g>
+          <g
+            aria-label="12 PM, Wednesday. , 580."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(10.268656716417908, 114.5617529880478)"
+          >
+            <rect
+              fill="rgb(151, 61, 104)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              580
+            </text>
+          </g>
+          <g
+            aria-label="6 PM, Wednesday. , 750."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-16.597014925373138, 114.5617529880478)"
+          >
+            <rect
+              fill="rgb(203, 31, 52)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              750
+            </text>
+          </g>
+          <g
+            aria-label="12 AM, Wednesday. , 98."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.462686567164184, 114.5617529880478)"
+          >
+            <rect
+              fill="rgb(4, 148, 251)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              98
+            </text>
+          </g>
+          <g
+            aria-label="6 AM, Tuesday. , 135."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(37.13432835820896, 161.37450199203187)"
+          >
+            <rect
+              fill="rgb(15, 141, 240)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              135
+            </text>
+          </g>
+          <g
+            aria-label="12 PM, Tuesday. , 520."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(10.268656716417908, 161.37450199203187)"
+          >
+            <rect
+              fill="rgb(133, 72, 123)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              520
+            </text>
+          </g>
+          <g
+            aria-label="6 PM, Tuesday. , 720."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-16.597014925373138, 161.37450199203187)"
+          >
+            <rect
+              fill="rgb(194, 36, 61)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              720
+            </text>
+          </g>
+          <g
+            aria-label="12 AM, Tuesday. , 92."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.462686567164184, 161.37450199203187)"
+          >
+            <rect
+              fill="rgb(2, 149, 253)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              92
+            </text>
+          </g>
+          <g
+            aria-label="6 AM, Monday. , 120."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(37.13432835820896, 208.1872509960159)"
+          >
+            <rect
+              fill="rgb(11, 144, 244)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              120
+            </text>
+          </g>
+          <g
+            aria-label="12 PM, Monday. , 450."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(10.268656716417908, 208.1872509960159)"
+          >
+            <rect
+              fill="rgb(112, 85, 144)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              450
+            </text>
+          </g>
+          <g
+            aria-label="6 PM, Monday. , 680."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-16.597014925373138, 208.1872509960159)"
+          >
+            <rect
+              fill="rgb(182, 44, 74)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              680
+            </text>
+          </g>
+          <g
+            aria-label="12 AM, Monday. , 85."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(-43.462686567164184, 208.1872509960159)"
+          >
+            <rect
+              fill="rgb(0, 150, 255)"
+              height="45.87649402390438"
+              width="26.328358208955226"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(13.164179104477613, 22.93824701195219)"
+            >
+              85
+            </text>
+          </g>
+          <rect
+            class="fui-cart_svgTooltip"
+            height="3"
+            transform="translate(0,
+                 227)rotate(-90)"
+            width="6"
+            x="83"
+            y="18"
+          />
+          <text
+            aria-describedby="tooltip-_r_24_"
+            class="fui-cart__axisTitle"
+            id="tooltip-host_r_23_"
+            text-anchor="middle"
+            transform="translate(0,
+                 227)rotate(-90)"
+            x="86"
+            y="24"
+          >
+            Day of Week
+          </text>
+          <span
+            hidden=""
+          />
+        </svg>
+      </div>
+      <div
+        class="fui-cart__legendContainer"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
+          >
+            <button
+              aria-label=""
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 165, 255); --rect-borderColor: rgb(0, 165, 255);"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 165, 255); border-color: rgb(0, 165, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 165, 255), rgb(0, 165, 255));"
+              />
+              <div
+                class="fui-legend__text"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

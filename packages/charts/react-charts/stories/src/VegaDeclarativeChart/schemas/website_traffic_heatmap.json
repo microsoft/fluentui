@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Website traffic by day and hour",
+  "data": {
+    "values": [
+      { "day": "Monday", "hour": "9 AM", "visits": 1200 },
+      { "day": "Monday", "hour": "12 PM", "visits": 2500 },
+      { "day": "Monday", "hour": "3 PM", "visits": 1800 },
+      { "day": "Monday", "hour": "6 PM", "visits": 900 },
+      { "day": "Tuesday", "hour": "9 AM", "visits": 1350 },
+      { "day": "Tuesday", "hour": "12 PM", "visits": 2700 },
+      { "day": "Tuesday", "hour": "3 PM", "visits": 1950 },
+      { "day": "Tuesday", "hour": "6 PM", "visits": 1000 },
+      { "day": "Wednesday", "hour": "9 AM", "visits": 1400 },
+      { "day": "Wednesday", "hour": "12 PM", "visits": 2800 },
+      { "day": "Wednesday", "hour": "3 PM", "visits": 2100 },
+      { "day": "Wednesday", "hour": "6 PM", "visits": 1100 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "hour", "type": "ordinal", "axis": { "title": "Hour" } },
+    "y": { "field": "day", "type": "ordinal", "axis": { "title": "Day" } },
+    "color": {
+      "field": "visits",
+      "type": "quantitative",
+      "scale": { "scheme": "blues" },
+      "legend": { "title": "Visits" }
+    }
+  },
+  "title": "Website Traffic Heatmap"
+}

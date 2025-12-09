@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Production output tracking",
+  "data": {
+    "values": [
+      { "date": "2024-11-01", "units": 1250 },
+      { "date": "2024-11-02", "units": 1320 },
+      { "date": "2024-11-03", "units": 1180 },
+      { "date": "2024-11-04", "units": 1450 },
+      { "date": "2024-11-05", "units": 1520 },
+      { "date": "2024-11-06", "units": 1380 },
+      { "date": "2024-11-07", "units": 1420 },
+      { "date": "2024-11-08", "units": 1550 },
+      { "date": "2024-11-09", "units": 1480 },
+      { "date": "2024-11-10", "units": 1620 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2 },
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Date", "format": "%b %d" } },
+    "y": { "field": "units", "type": "quantitative", "axis": { "title": "Units Produced", "format": ",.0f" } },
+    "tooltip": [
+      { "field": "date", "type": "temporal", "format": "%B %d, %Y" },
+      { "field": "units", "type": "quantitative", "title": "Units", "format": ",.0f" }
+    ]
+  },
+  "title": "Daily Production Output"
+}

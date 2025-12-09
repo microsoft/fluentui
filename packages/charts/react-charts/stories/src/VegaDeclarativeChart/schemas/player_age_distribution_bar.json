@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Player age distribution",
+  "data": {
+    "values": [
+      { "ageRange": "18-22", "count": 15 },
+      { "ageRange": "23-27", "count": 32 },
+      { "ageRange": "28-32", "count": 28 },
+      { "ageRange": "33-37", "count": 12 },
+      { "ageRange": "38+", "count": 5 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "ageRange", "type": "ordinal", "axis": { "title": "Age Range" } },
+    "y": { "field": "count", "type": "quantitative", "axis": { "title": "Number of Players" } },
+    "color": { "field": "count", "type": "quantitative", "scale": { "scheme": "tableau10" }, "legend": null }
+  },
+  "title": "Player Age Distribution"
+}

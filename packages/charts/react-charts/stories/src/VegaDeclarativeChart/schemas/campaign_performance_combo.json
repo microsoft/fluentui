@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marketing campaign performance",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "week", "type": "temporal", "axis": { "title": "Week", "format": "%b %d" } },
+        "y": { "field": "spend", "type": "quantitative", "axis": { "title": "Spend ($)", "format": "$,.0f" } },
+        "color": { "value": "lightblue" }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "darkgreen" },
+      "encoding": {
+        "x": { "field": "week", "type": "temporal" },
+        "y": { "field": "conversions", "type": "quantitative", "axis": { "title": "Conversions" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "week": "2024-10-01", "spend": 12000, "conversions": 240 },
+      { "week": "2024-10-08", "spend": 15000, "conversions": 315 },
+      { "week": "2024-10-15", "spend": 18000, "conversions": 378 },
+      { "week": "2024-10-22", "spend": 14000, "conversions": 294 },
+      { "week": "2024-10-29", "spend": 16000, "conversions": 336 },
+      { "week": "2024-11-05", "spend": 20000, "conversions": 440 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Campaign Spend vs Conversions"
+}

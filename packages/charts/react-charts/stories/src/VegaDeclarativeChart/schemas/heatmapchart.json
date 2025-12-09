@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A heatmap chart.",
+  "data": {
+    "values": [
+      { "x": "A", "y": "Monday", "value": 10 },
+      { "x": "B", "y": "Monday", "value": 20 },
+      { "x": "C", "y": "Monday", "value": 15 },
+      { "x": "A", "y": "Tuesday", "value": 25 },
+      { "x": "B", "y": "Tuesday", "value": 30 },
+      { "x": "C", "y": "Tuesday", "value": 22 },
+      { "x": "A", "y": "Wednesday", "value": 18 },
+      { "x": "B", "y": "Wednesday", "value": 28 },
+      { "x": "C", "y": "Wednesday", "value": 35 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "x", "type": "nominal", "axis": { "title": "X Category" } },
+    "y": { "field": "y", "type": "nominal", "axis": { "title": "Day" } },
+    "color": { "field": "value", "type": "quantitative", "scale": { "scheme": "blues" } }
+  },
+  "title": "Heatmap Chart"
+}

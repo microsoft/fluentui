@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked area chart with multiple series (tonexty mode)",
+  "title": "Product Sales by Category - Stacked Areas",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "values": [
+      { "month": "2024-01", "category": "Electronics", "sales": 5000 },
+      { "month": "2024-01", "category": "Clothing", "sales": 3000 },
+      { "month": "2024-01", "category": "Home", "sales": 2000 },
+      { "month": "2024-02", "category": "Electronics", "sales": 5500 },
+      { "month": "2024-02", "category": "Clothing", "sales": 3500 },
+      { "month": "2024-02", "category": "Home", "sales": 2200 },
+      { "month": "2024-03", "category": "Electronics", "sales": 6000 },
+      { "month": "2024-03", "category": "Clothing", "sales": 4000 },
+      { "month": "2024-03", "category": "Home", "sales": 2500 },
+      { "month": "2024-04", "category": "Electronics", "sales": 5800 },
+      { "month": "2024-04", "category": "Clothing", "sales": 3800 },
+      { "month": "2024-04", "category": "Home", "sales": 2300 },
+      { "month": "2024-05", "category": "Electronics", "sales": 6500 },
+      { "month": "2024-05", "category": "Clothing", "sales": 4200 },
+      { "month": "2024-05", "category": "Home", "sales": 2700 },
+      { "month": "2024-06", "category": "Electronics", "sales": 7000 },
+      { "month": "2024-06", "category": "Clothing", "sales": 4500 },
+      { "month": "2024-06", "category": "Home", "sales": 3000 },
+      { "month": "2024-07", "category": "Electronics", "sales": 7500 },
+      { "month": "2024-07", "category": "Clothing", "sales": 5000 },
+      { "month": "2024-07", "category": "Home", "sales": 3200 },
+      { "month": "2024-08", "category": "Electronics", "sales": 7200 },
+      { "month": "2024-08", "category": "Clothing", "sales": 4800 },
+      { "month": "2024-08", "category": "Home", "sales": 3000 },
+      { "month": "2024-09", "category": "Electronics", "sales": 8000 },
+      { "month": "2024-09", "category": "Clothing", "sales": 5500 },
+      { "month": "2024-09", "category": "Home", "sales": 3500 },
+      { "month": "2024-10", "category": "Electronics", "sales": 8500 },
+      { "month": "2024-10", "category": "Clothing", "sales": 6000 },
+      { "month": "2024-10", "category": "Home", "sales": 3800 },
+      { "month": "2024-11", "category": "Electronics", "sales": 9000 },
+      { "month": "2024-11", "category": "Clothing", "sales": 6500 },
+      { "month": "2024-11", "category": "Home", "sales": 4000 },
+      { "month": "2024-12", "category": "Electronics", "sales": 9500 },
+      { "month": "2024-12", "category": "Clothing", "sales": 7000 },
+      { "month": "2024-12", "category": "Home", "sales": 4500 }
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "temporal",
+      "axis": {
+        "title": "Month",
+        "format": "%b"
+      }
+    },
+    "y": {
+      "field": "sales",
+      "type": "quantitative",
+      "stack": "zero",
+      "axis": {
+        "title": "Sales ($)",
+        "format": "$,.0f"
+      }
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "legend": {
+        "title": "Product Category"
+      }
+    }
+  }
+}

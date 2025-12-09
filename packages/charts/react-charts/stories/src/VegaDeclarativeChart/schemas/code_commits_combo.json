@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Code commit activity",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "commits", "type": "quantitative", "axis": { "title": "Commits" } },
+        "color": { "value": "lightcoral" }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "navy" },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal" },
+        "y": { "field": "contributors", "type": "quantitative", "axis": { "title": "Active Contributors" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "week": "Week 1", "commits": 142, "contributors": 12 },
+      { "week": "Week 2", "commits": 158, "contributors": 14 },
+      { "week": "Week 3", "commits": 135, "contributors": 11 },
+      { "week": "Week 4", "commits": 178, "contributors": 15 },
+      { "week": "Week 5", "commits": 165, "contributors": 13 },
+      { "week": "Week 6", "commits": 192, "contributors": 16 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Code Commits & Contributors"
+}

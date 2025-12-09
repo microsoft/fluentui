@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly cash flow analysis",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "month", "type": "temporal", "axis": { "title": "Month", "format": "%b" } },
+        "y": { "field": "cashflow", "type": "quantitative", "axis": { "title": "Cash Flow ($)", "format": "$,.0f" } },
+        "color": {
+          "condition": {
+            "test": "datum.cashflow > 0",
+            "value": "#2ca02c"
+          },
+          "value": "#d62728"
+        }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "orange" },
+      "encoding": {
+        "x": { "field": "month", "type": "temporal" },
+        "y": { "field": "balance", "type": "quantitative", "axis": { "title": "Running Balance" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "month": "2024-01", "cashflow": 85000, "balance": 285000 },
+      { "month": "2024-02", "cashflow": -42000, "balance": 243000 },
+      { "month": "2024-03", "cashflow": 95000, "balance": 338000 },
+      { "month": "2024-04", "cashflow": 112000, "balance": 450000 },
+      { "month": "2024-05", "cashflow": -28000, "balance": 422000 },
+      { "month": "2024-06", "cashflow": 138000, "balance": 560000 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Cash Flow Analysis"
+}

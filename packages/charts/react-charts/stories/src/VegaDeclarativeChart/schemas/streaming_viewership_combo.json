@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Streaming platform viewership",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "date", "type": "temporal", "axis": { "title": "Date", "format": "%b %d" } },
+        "y": { "field": "viewers", "type": "quantitative", "axis": { "title": "Live Viewers (thousands)" } },
+        "color": { "value": "lightblue" }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "red", "strokeWidth": 2 },
+      "encoding": {
+        "x": { "field": "date", "type": "temporal" },
+        "y": { "field": "subscriptions", "type": "quantitative", "axis": { "title": "New Subscriptions" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "date": "2024-11-01", "viewers": 125, "subscriptions": 450 },
+      { "date": "2024-11-02", "viewers": 142, "subscriptions": 520 },
+      { "date": "2024-11-03", "viewers": 118, "subscriptions": 385 },
+      { "date": "2024-11-04", "viewers": 165, "subscriptions": 610 },
+      { "date": "2024-11-05", "viewers": 178, "subscriptions": 685 },
+      { "date": "2024-11-06", "viewers": 152, "subscriptions": 550 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Streaming Viewership & Subscriptions"
+}

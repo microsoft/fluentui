@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Daily temperature with month/day formatting",
+  "width": 600,
+  "height": 350,
+  "data": {
+    "values": [
+      { "date": "2024-06-01", "temperature": 72 },
+      { "date": "2024-06-02", "temperature": 75 },
+      { "date": "2024-06-03", "temperature": 73 },
+      { "date": "2024-06-04", "temperature": 78 },
+      { "date": "2024-06-05", "temperature": 80 },
+      { "date": "2024-06-06", "temperature": 82 },
+      { "date": "2024-06-07", "temperature": 79 },
+      { "date": "2024-06-08", "temperature": 77 },
+      { "date": "2024-06-09", "temperature": 81 },
+      { "date": "2024-06-10", "temperature": 84 },
+      { "date": "2024-06-11", "temperature": 86 },
+      { "date": "2024-06-12", "temperature": 85 },
+      { "date": "2024-06-13", "temperature": 83 },
+      { "date": "2024-06-14", "temperature": 81 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2, "color": "#E74856" },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {
+        "title": "Date",
+        "format": "%m/%d"
+      }
+    },
+    "y": {
+      "field": "temperature",
+      "type": "quantitative",
+      "axis": {
+        "title": "Temperature (°F)",
+        "format": ".0f"
+      }
+    }
+  },
+  "title": "Daily Temperature (MM/DD Format)"
+}

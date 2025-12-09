@@ -14,6 +14,7 @@ export * from './utilities/colors';
 export * from './Popover';
 export * from './ResponsiveContainer';
 export * from './DeclarativeChart';
+export * from './VegaDeclarativeChart';
 export * from './AreaChart';
 export * from './HorizontalBarChartWithAxis';
 export * from './HeatMapChart';
