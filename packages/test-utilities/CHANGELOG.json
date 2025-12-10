@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:03 GMT",
+      "tag": "@fluentui/test-utilities_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:26 GMT",
       "tag": "@fluentui/test-utilities_v8.5.1",
       "version": "8.5.1",
