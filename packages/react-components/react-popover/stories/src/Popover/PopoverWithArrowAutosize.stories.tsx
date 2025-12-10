@@ -81,7 +81,7 @@ export const WithArrowAutosize = (): JSXElement => (
     </PopoverTrigger>
 
     {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
-    <PopoverSurface tabIndex={-1} style={{ overflowY: 'unset', padding: 0 }}>
+    <PopoverSurface tabIndex={-1} style={{ overflow: 'visible', padding: 0 }}>
       {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
       <ExampleContent />
     </PopoverSurface>
