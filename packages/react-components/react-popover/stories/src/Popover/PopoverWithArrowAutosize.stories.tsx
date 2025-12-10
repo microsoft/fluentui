@@ -4,6 +4,8 @@ import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fl
 
 const useContentStyles = makeStyles({
   root: {
+    boxSizing: 'border-box',
+    padding: '16px',
     overflowY: 'auto',
     height: '100%',
   },
@@ -79,7 +81,7 @@ export const WithArrowAutosize = (): JSXElement => (
     </PopoverTrigger>
 
     {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
-    <PopoverSurface tabIndex={-1} style={{ overflowY: 'unset' }}>
+    <PopoverSurface tabIndex={-1} style={{ overflowY: 'unset', padding: 0 }}>
       {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
       <ExampleContent />
     </PopoverSurface>
