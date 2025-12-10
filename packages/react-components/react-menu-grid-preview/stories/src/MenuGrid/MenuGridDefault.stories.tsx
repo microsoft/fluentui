@@ -26,7 +26,7 @@ export const Default = (): JSXElement => {
                   aria-label={`Profile card for ${name}`}
                 />
               }
-              secondSubAction={
+              firstSubAction={
                 <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
               }
             >
