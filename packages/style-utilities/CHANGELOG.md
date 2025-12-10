@@ -1,8 +1,18 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 26 Nov 2025 09:34:50 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:28:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.6)
+
+Wed, 10 Dec 2025 06:28:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.5..@fluentui/style-utilities_v8.13.6)
+
+### Patches
+
+- Bump @fluentui/theme to v2.7.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/utilities to v8.17.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [8.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.5)
 
