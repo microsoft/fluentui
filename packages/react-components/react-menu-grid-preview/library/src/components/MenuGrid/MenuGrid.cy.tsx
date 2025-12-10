@@ -90,7 +90,7 @@ const Submenu = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <MenuItem>Show profile </MenuItem>
+          <MenuItem>Show profile</MenuItem>
           <MenuItem>Audio call</MenuItem>
           <MenuItem>Video call</MenuItem>
           <MenuItem>Remove</MenuItem>
@@ -172,6 +172,7 @@ describe('With MenuList submenus', () => {
     mount(<WithSubmenuExample />);
     cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('ArrowDown');
     cy.get(menuSelector).should('have.length', 0);
+    cy.focused().should('have.attr', 'role', 'row');
   });
 
   it('should focus next grid row from a submenu trigger with ArrowDown', () => {
@@ -184,5 +185,6 @@ describe('With MenuList submenus', () => {
     mount(<WithSubmenuExample />);
     cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('Enter');
     cy.get(menuSelector).should('have.length', 1);
+    cy.focused().should('have.attr', 'role', 'menuitem');
   });
 });
