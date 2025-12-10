@@ -1526,7 +1526,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           ? formatDateToLocaleString(pointToHighlight.x, props.culture, props.useUTC as boolean)
           : pointToHighlight.x;
 
-      _updateLargeDatasetHighlightAndCallout(linenumber, lineHeight, pointToHighlight, xAxisCalloutData, formattedDate, yScale);
+      _updateLargeDatasetHighlightAndCallout(
+        linenumber,
+        lineHeight,
+        pointToHighlight,
+        xAxisCalloutData,
+        formattedDate,
+        yScale,
+      );
     };
 
     const _onMouseOverLargeDataset = (
@@ -1585,7 +1592,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           : xPointToHighlight;
       const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
 
-      _updateLargeDatasetHighlightAndCallout(linenumber, lineHeight, pointToHighlight, xAxisCalloutData, formattedDate, yScale);
+      _updateLargeDatasetHighlightAndCallout(
+        linenumber,
+        lineHeight,
+        pointToHighlight,
+        xAxisCalloutData,
+        formattedDate,
+        yScale,
+      );
     };
 
     function _handleFocus(
