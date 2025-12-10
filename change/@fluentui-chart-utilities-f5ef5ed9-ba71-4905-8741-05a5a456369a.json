@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve minor gantt chart bugs",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

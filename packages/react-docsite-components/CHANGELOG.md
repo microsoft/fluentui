@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Wed, 26 Nov 2025 09:34:51 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:27:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.16.0)
+
+Wed, 10 Dec 2025 06:27:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.15.1..@fluentui/react-docsite-components_v8.16.0)
+
+### Minor changes
+
+- feat: use react-dom/client, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support ([PR #35431](https://github.com/microsoft/fluentui/pull/35431) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.125.3 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/theme to v2.7.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/react-hooks to v8.10.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.8.4 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.15.1)
 
