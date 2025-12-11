@@ -12,9 +12,10 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -256,7 +257,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
@@ -268,7 +269,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -280,7 +281,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -292,7 +293,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -304,7 +305,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="-19.333333333333336"
           />
           <rect
-            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -316,7 +317,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -328,7 +329,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -481,9 +482,10 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -516,7 +518,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              May 01
+              01 May
             </text>
           </g>
           <g
@@ -534,7 +536,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              Jun 01
+              01 Jun
             </text>
           </g>
           <g
@@ -552,7 +554,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              Jul 01
+              01 Jul
             </text>
           </g>
         </g>
@@ -709,7 +711,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
         </g>
         <g>
           <rect
-            aria-label="Site Preparation. No, May 01 - May 07."
+            aria-label="Site Preparation. No, 01 May - 07 May."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -721,7 +723,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="19.647058823529413"
           />
           <rect
-            aria-label="Foundation Work. No, May 08 - May 21."
+            aria-label="Foundation Work. No, 08 May - 21 May."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -733,7 +735,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="11.294117647058826"
           />
           <rect
-            aria-label="Framing. No, May 22 - Jun 02."
+            aria-label="Framing. No, 22 May - 02 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -745,7 +747,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="2.941176470588232"
           />
           <rect
-            aria-label="Roof Installation. No, Jun 03 - Jun 09."
+            aria-label="Roof Installation. No, 03 Jun - 09 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -757,7 +759,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="-5.411764705882355"
           />
           <rect
-            aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
+            aria-label="Plumbing/Electrical. No, 10 Jun - 23 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -769,7 +771,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="-13.764705882352942"
           />
           <rect
-            aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
+            aria-label="Exterior Finishing. No, 08 Jul - 17 Jul."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -781,7 +783,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="-22.117647058823533"
           />
           <rect
-            aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
+            aria-label="Interior Finishing. Yes (Phase 1), 24 Jun - 07 Jul."
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
@@ -793,7 +795,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             y="-30.470588235294123"
           />
           <rect
-            aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
+            aria-label="Final Inspections. Yes (Phase 2), 18 Jul - 24 Jul."
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"
@@ -897,9 +899,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -1141,7 +1144,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
@@ -1153,7 +1156,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -1165,7 +1168,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -1177,7 +1180,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -1189,7 +1192,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-19.333333333333336"
           />
           <rect
-            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -1201,7 +1204,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -1213,7 +1216,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -1321,9 +1324,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Gantt chart with 8 data points. "
+          aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
           class="fui-cart__chart"
           height="0"
+          role="region"
           style="display: block;"
           width="600"
         >
@@ -1565,7 +1569,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="12.222222222222221"
             />
             <rect
-              aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+              aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
               fill="#f7630c"
               height="7.888888888888889"
               opacity="1"
@@ -1577,7 +1581,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="12.222222222222221"
             />
             <rect
-              aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+              aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
@@ -1589,7 +1593,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="-3.555555555555557"
             />
             <rect
-              aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+              aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
@@ -1601,7 +1605,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="-3.555555555555557"
             />
             <rect
-              aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+              aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
@@ -1613,7 +1617,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="-19.333333333333336"
             />
             <rect
-              aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+              aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
@@ -1625,7 +1629,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="-35.111111111111114"
             />
             <rect
-              aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+              aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
@@ -1637,7 +1641,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="-35.111111111111114"
             />
             <rect
-              aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+              aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
@@ -1748,9 +1752,10 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Gantt chart with 8 data points. "
+              aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
               class="fui-cart__chart"
               height="0"
+              role="region"
               style="display: block;"
               width="600"
             >
@@ -1992,7 +1997,7 @@ Object {
                   y="12.222222222222221"
                 />
                 <rect
-                  aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+                  aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
                   fill="#f7630c"
                   height="7.888888888888889"
                   opacity="1"
@@ -2004,7 +2009,7 @@ Object {
                   y="12.222222222222221"
                 />
                 <rect
-                  aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+                  aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
@@ -2016,7 +2021,7 @@ Object {
                   y="-3.555555555555557"
                 />
                 <rect
-                  aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+                  aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
@@ -2028,7 +2033,7 @@ Object {
                   y="-3.555555555555557"
                 />
                 <rect
-                  aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+                  aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
@@ -2040,7 +2045,7 @@ Object {
                   y="-19.333333333333336"
                 />
                 <rect
-                  aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+                  aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
@@ -2052,7 +2057,7 @@ Object {
                   y="-35.111111111111114"
                 />
                 <rect
-                  aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+                  aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
@@ -2064,7 +2069,7 @@ Object {
                   y="-35.111111111111114"
                 />
                 <rect
-                  aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+                  aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
@@ -2170,9 +2175,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Gantt chart with 8 data points. "
+            aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
             class="fui-cart__chart"
             height="0"
+            role="region"
             style="display: block;"
             width="600"
           >
@@ -2414,7 +2420,7 @@ Object {
                 y="12.222222222222221"
               />
               <rect
-                aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+                aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
                 fill="#f7630c"
                 height="7.888888888888889"
                 opacity="1"
@@ -2426,7 +2432,7 @@ Object {
                 y="12.222222222222221"
               />
               <rect
-                aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+                aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
@@ -2438,7 +2444,7 @@ Object {
                 y="-3.555555555555557"
               />
               <rect
-                aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+                aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
@@ -2450,7 +2456,7 @@ Object {
                 y="-3.555555555555557"
               />
               <rect
-                aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+                aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
@@ -2462,7 +2468,7 @@ Object {
                 y="-19.333333333333336"
               />
               <rect
-                aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+                aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
@@ -2474,7 +2480,7 @@ Object {
                 y="-35.111111111111114"
               />
               <rect
-                aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+                aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
@@ -2486,7 +2492,7 @@ Object {
                 y="-35.111111111111114"
               />
               <rect
-                aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+                aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
@@ -2643,9 +2649,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 6 data points. "
+        aria-label="Gantt chart with 6 data points. The X axis displays time. The Y axis displays values. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -2861,7 +2868,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         </g>
         <g>
           <rect
-            aria-label="6. Legal, 03/05/2022 - 03/15/2022."
+            aria-label="6. Legal, 05/03/2022 - 15/03/2022."
             fill="#3a96ddff"
             height="1"
             opacity="1"
@@ -2873,7 +2880,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="28"
           />
           <rect
-            aria-label="5. Customer Support, 03/01/2022 - 03/10/2022."
+            aria-label="5. Customer Support, 01/03/2022 - 10/03/2022."
             fill="#ca5010ff"
             height="1"
             opacity="1"
@@ -2885,7 +2892,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="16"
           />
           <rect
-            aria-label="4. Operations, 02/10/2022 - 02/20/2022."
+            aria-label="4. Operations, 10/02/2022 - 20/02/2022."
             fill="#9373c0ff"
             height="1"
             opacity="1"
@@ -2897,7 +2904,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="3.9999999999999982"
           />
           <rect
-            aria-label="3. IT, 02/01/2022 - 02/08/2022."
+            aria-label="3. IT, 01/02/2022 - 08/02/2022."
             fill="#57811bff"
             height="1"
             opacity="1"
@@ -2909,7 +2916,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-8"
           />
           <rect
-            aria-label="2. Finance, 01/15/2022 - 01/20/2022."
+            aria-label="2. Finance, 15/01/2022 - 20/01/2022."
             fill="#f7630cff"
             height="1"
             opacity="1"
@@ -2921,7 +2928,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="-20.000000000000004"
           />
           <rect
-            aria-label="1. HR, 01/01/2021 - 01/10/2022."
+            aria-label="1. HR, 01/01/2021 - 10/01/2022."
             fill="#637cefff"
             height="1"
             opacity="1"
@@ -3082,9 +3089,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3364,7 +3372,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
             fill="url(#gantt_legend_r_m__1_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3376,7 +3384,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
             fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3388,7 +3396,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3400,7 +3408,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
             fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3412,7 +3420,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="-19.333333333333336"
           />
           <rect
-            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3424,7 +3432,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3436,7 +3444,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
@@ -3540,9 +3548,10 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3784,7 +3793,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
@@ -3796,7 +3805,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -3808,7 +3817,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -3820,7 +3829,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -3832,7 +3841,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="-19.333333333333336"
           />
           <rect
-            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -3844,7 +3853,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -3856,7 +3865,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -3960,9 +3969,10 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -4204,7 +4214,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 15/02/2017 - 15/03/2017."
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
@@ -4216,7 +4226,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="12.222222222222221"
           />
           <rect
-            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 17/01/2017 - 17/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -4228,7 +4238,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Not Started, 17/01/2017 - 17/02/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -4240,7 +4250,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="-3.555555555555557"
           />
           <rect
-            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            aria-label="Job-4. Complete, 14/01/2017 - 14/03/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
@@ -4252,7 +4262,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="-19.333333333333336"
           />
           <rect
-            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            aria-label="Job-3. Not Started, 10/03/2017 - 20/03/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -4264,7 +4274,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 01/04/2017 - 20/04/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -4276,7 +4286,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="-35.111111111111114"
           />
           <rect
-            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 18/05/2017 - 18/06/2017."
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
@@ -4429,9 +4439,10 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -4464,7 +4475,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              May 01
+              01 May
             </text>
           </g>
           <g
@@ -4482,7 +4493,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              Jun 01
+              01 Jun
             </text>
           </g>
           <g
@@ -4500,7 +4511,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              Jul 01
+              01 Jul
             </text>
           </g>
         </g>
@@ -4761,7 +4772,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
         </g>
         <g>
           <rect
-            aria-label="Site Preparation. No, May 01 - May 07."
+            aria-label="Site Preparation. No, 01 May - 07 May."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4773,7 +4784,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="19.647058823529413"
           />
           <rect
-            aria-label="Foundation Work. No, May 08 - May 21."
+            aria-label="Foundation Work. No, 08 May - 21 May."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4785,7 +4796,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="11.294117647058826"
           />
           <rect
-            aria-label="Framing. No, May 22 - Jun 02."
+            aria-label="Framing. No, 22 May - 02 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4797,7 +4808,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="2.941176470588232"
           />
           <rect
-            aria-label="Roof Installation. No, Jun 03 - Jun 09."
+            aria-label="Roof Installation. No, 03 Jun - 09 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4809,7 +4820,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="-5.411764705882355"
           />
           <rect
-            aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
+            aria-label="Plumbing/Electrical. No, 10 Jun - 23 Jun."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4821,7 +4832,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="-13.764705882352942"
           />
           <rect
-            aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
+            aria-label="Exterior Finishing. No, 08 Jul - 17 Jul."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
@@ -4833,7 +4844,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="-22.117647058823533"
           />
           <rect
-            aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
+            aria-label="Interior Finishing. Yes (Phase 1), 24 Jun - 07 Jul."
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
@@ -4845,7 +4856,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             y="-30.470588235294123"
           />
           <rect
-            aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
+            aria-label="Final Inspections. Yes (Phase 2), 18 Jul - 24 Jul."
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"

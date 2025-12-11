@@ -12,9 +12,10 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Sales Performance by Category"
+        aria-label="Sales Performance by CategoryThe X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >

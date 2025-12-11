@@ -17,9 +17,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -286,9 +287,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -614,9 +616,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -881,9 +884,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1207,9 +1211,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1421,9 +1426,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1694,9 +1700,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1963,9 +1970,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2291,9 +2299,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2560,9 +2569,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2892,9 +2902,10 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3166,9 +3177,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3498,9 +3510,10 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3771,9 +3784,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4095,9 +4109,10 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4356,9 +4371,10 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
