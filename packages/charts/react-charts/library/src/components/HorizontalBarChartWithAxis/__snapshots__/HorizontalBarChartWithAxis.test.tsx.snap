@@ -12,9 +12,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -496,9 +497,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -935,9 +937,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1417,9 +1420,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1963,9 +1967,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2445,9 +2450,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2986,9 +2992,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3468,9 +3475,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -4009,9 +4017,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 9 bars. "
+            aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4608,9 +4617,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 9 bars. "
+          aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -5266,9 +5276,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -5655,9 +5666,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -6103,9 +6115,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -6587,9 +6600,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -7130,9 +7144,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -7557,9 +7572,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
