@@ -41,8 +41,8 @@ const useRootStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   base: {
-    width: 'max-content',
-    height: 'max-content',
+    maxWidth: 'max-content',
+    maxHeight: 'max-content',
   },
 
   vertical: {
