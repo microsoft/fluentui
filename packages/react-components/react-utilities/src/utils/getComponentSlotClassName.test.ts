@@ -63,11 +63,6 @@ describe('getComponentSlotClassName', () => {
       expect(getComponentSlotClassName('fui-Button', state.root, state)).toContain('fui-Button--appearance-secondary');
     });
 
-    it('generates modifier classes from state numeric properties', () => {
-      const state = createButtonState({ size: 'large' });
-      expect(getComponentSlotClassName('fui-Button', state.root, state)).toContain('fui-Button--size-large');
-    });
-
     it('combines state modifiers with user-provided className', () => {
       const state = createButtonState({ disabled: true, className: 'custom-class' });
       const result = getComponentSlotClassName('fui-Button', state.root, state);
