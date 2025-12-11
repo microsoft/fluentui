@@ -8,7 +8,6 @@ module.exports = [
     rules: {
       'no-restricted-globals': 'off',
       'no-unsafe-optional-chaining': 'off',
-      'react-compiler/react-compiler': 'off',
     },
   },
 ];
