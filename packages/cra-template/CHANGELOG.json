@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:47 GMT",
+      "tag": "@fluentui/cra-template_v8.4.223",
+      "version": "8.4.223",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Oct 2025 07:21:57 GMT",
       "tag": "@fluentui/cra-template_v8.4.219",
       "version": "8.4.219",

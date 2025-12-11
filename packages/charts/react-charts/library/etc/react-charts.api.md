@@ -349,7 +349,22 @@ export interface ChartAnnotationContext {
 
 // @public (undocumented)
 export type ChartAnnotationCoordinate = {
-    type: 'data' | 'relative' | 'pixel';
+    type: 'data';
+    x: number | string | Date;
+    y: number | string | Date;
+    yAxis?: 'primary' | 'secondary';
+} | {
+    type: 'relative';
+    x: number;
+    y: number;
+} | {
+    type: 'pixel';
+    x: number;
+    y: number;
+} | {
+    type: 'mixed';
+    xCoordinateType: 'data' | 'relative' | 'pixel';
+    yCoordinateType: 'data' | 'relative' | 'pixel';
     x: number | string | Date;
     y: number | string | Date;
     yAxis?: 'primary' | 'secondary';
