@@ -12,7 +12,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -627,7 +627,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -1271,7 +1271,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -1946,7 +1946,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -2599,7 +2599,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -3212,7 +3212,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -3884,7 +3884,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -4497,7 +4497,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -5169,7 +5169,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -5792,7 +5792,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -6474,7 +6474,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
             role="region"
@@ -7013,7 +7013,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
           role="region"
@@ -7611,7 +7611,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -8224,7 +8224,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -8896,7 +8896,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -9668,7 +9668,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -10499,7 +10499,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
             role="region"
@@ -11112,7 +11112,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"
@@ -11779,7 +11779,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -12299,7 +12299,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
         role="region"
@@ -12823,7 +12823,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
           role="region"

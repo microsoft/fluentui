@@ -1133,6 +1133,16 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     };
   }
 
+  function _getChartTitle(): string {
+    const { chartTitle, data } = props;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${data?.length || 0} bars` +
+      (_isHavingLine ? ' and 1 line' : '') +
+      '. '
+    );
+  }
+
   function _isChartEmpty(): boolean {
     return _points.length === 0 || (_points.every(point => point.y === 0) && !_isHavingLine);
   }
@@ -1209,6 +1219,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     <CartesianChart
       {...props}
       points={_points}
+      chartTitle={_getChartTitle()}
       chartType={ChartTypes.VerticalBarChart}
       xAxisType={_xAxisType!}
       createYAxis={createNumericYAxis}
