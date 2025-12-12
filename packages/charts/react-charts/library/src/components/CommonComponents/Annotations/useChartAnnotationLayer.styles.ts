@@ -30,7 +30,13 @@ export const DEFAULT_CONNECTOR_END_PADDING = 0;
 export const DEFAULT_CONNECTOR_STROKE_WIDTH = 2;
 export const DEFAULT_CONNECTOR_ARROW: ChartAnnotationArrowHead = 'end';
 
-export const applyOpacityToColor = (color: string | undefined, opacity: number): string | undefined => {
+export const applyOpacityToColor = (
+  color: string | undefined,
+  opacity: number,
+  options?: {
+    preserveOriginalOpacity?: boolean;
+  },
+): string | undefined => {
   if (!color) {
     return undefined;
   }
@@ -38,6 +44,13 @@ export const applyOpacityToColor = (color: string | undefined, opacity: number):
   const parsed = d3Color(color);
   if (!parsed) {
     return color;
+  }
+
+  const originalOpacity = typeof parsed.opacity === 'number' ? parsed.opacity : 1;
+  const preserveOriginalOpacity = options?.preserveOriginalOpacity ?? true;
+
+  if (preserveOriginalOpacity && originalOpacity < 1) {
+    return parsed.toString();
   }
 
   parsed.opacity = Math.max(0, Math.min(1, opacity));
