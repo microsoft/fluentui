@@ -2299,7 +2299,7 @@ const generateNumericTicks = (
         refTick,
         tickStep,
         scaleDomain.map(d => Math.log10(d)),
-      ).map(t => Math.pow(10, t));
+      ).map(t => 10 ** t);
     }
 
     if (typeof tickStep === 'string') {

@@ -98,6 +98,22 @@ describe('slot', () => {
     });
   });
 
+  it('saves the original className from defaultProps', () => {
+    const props: TestProps = { slotA: {} };
+    const resolvedProps = slot.optional(props.slotA, {
+      elementType: 'div',
+      defaultProps: { className: 'defaultClass' },
+    });
+    if (resolvedProps) {
+      resolvedProps.className = [resolvedProps.className, 'addedClass'].join(' ');
+    }
+    expect(resolvedProps).toEqual({
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
+      [SLOT_CLASS_NAME_PROP_SYMBOL]: 'defaultClass',
+      className: 'defaultClass addedClass',
+    });
+  });
+
   describe('.resolveShorthand', () => {
     it('resolves a string', () => {
       expect(slot.resolveShorthand('hello')).toEqual({ children: 'hello' });

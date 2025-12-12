@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
@@ -2879,7 +2879,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider_r_1h_"
+        class="fui-FluentProvider fui-FluentProvider_r_1e_"
         dir="ltr"
       >
         <div
@@ -3153,7 +3153,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider_r_1h_"
+      class="fui-FluentProvider fui-FluentProvider_r_1e_"
       dir="ltr"
     >
       <div
