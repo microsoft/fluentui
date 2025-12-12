@@ -2397,10 +2397,52 @@ export const transformPlotlyJsonToHeatmapProps = (
   let zMax = Number.NEGATIVE_INFINITY;
   const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
-  // Helper function to find matching annotation for cell coordinates
-  const findAnnotationForCell = (x: number, y: number): string | undefined => {
-    return annotations?.find(annotation => annotation.coordinates.x === x && annotation.coordinates.y === y)?.text;
-  };
+  // Build a 2D array of annotations based on their grid position
+  const annotationGrid: (string | undefined)[][] = [];
+  const rawAnnotations = input.layout?.annotations;
+
+  if (rawAnnotations) {
+    const annotationsArray = Array.isArray(rawAnnotations) ? rawAnnotations : [rawAnnotations];
+
+    // Collect all unique x and y values from valid annotations
+    const xSet = new Set<number>();
+    const ySet = new Set<number>();
+    const validAnnotations: Array<{ x: number; y: number; text: string }> = [];
+
+    annotationsArray.forEach((a: PlotlyAnnotation) => {
+      if (
+        a &&
+        typeof a.x === 'number' &&
+        typeof a.y === 'number' &&
+        typeof a.text === 'string' &&
+        (a.xref === 'x' || a.xref === undefined) &&
+        (a.yref === 'y' || a.yref === undefined)
+      ) {
+        xSet.add(a.x);
+        ySet.add(a.y);
+        validAnnotations.push({ x: a.x, y: a.y, text: cleanText(a.text) });
+      }
+    });
+
+    if (validAnnotations.length > 0) {
+      // Get sorted unique x and y values
+      const xValues = Array.from(xSet).sort((a, b) => a - b);
+      const yValues = Array.from(ySet).sort((a, b) => a - b);
+
+      // Initialize 2D grid and populate
+      validAnnotations.forEach(annotation => {
+        const xIdx = xValues.indexOf(annotation.x);
+        const yIdx = yValues.indexOf(annotation.y);
+        if (!annotationGrid[yIdx]) {
+          annotationGrid[yIdx] = [];
+        }
+        annotationGrid[yIdx][xIdx] = annotation.text;
+      });
+    }
+  }
+
+  // Helper function to get annotation from 2D grid by index
+  const getAnnotationByIndex = (xIdx: number, yIdx: number): string | undefined => annotationGrid[yIdx]?.[xIdx];
 
   if (firstData.type === 'histogram2d') {
     const xValues: (string | number)[] = [];
@@ -2451,7 +2493,7 @@ export const transformPlotlyJsonToHeatmapProps = (
           isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
         );
 
-        const annotationText = findAnnotationForCell(xIdx, yIdx);
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
           x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
@@ -2467,12 +2509,25 @@ export const transformPlotlyJsonToHeatmapProps = (
       });
     });
   } else {
-    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      firstData.y?.forEach((yVal: any, yIdx: number) => {
-        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+    // If x and y are not provided, generate indices based on z dimensions
+    const zArray = firstData.z as number[][];
+    const xValues = firstData.x as Datum[] | undefined;
+    const yValues = firstData.y as Datum[] | undefined;
 
-        const annotationText = findAnnotationForCell(xIdx, yIdx);
+    // Determine the dimensions from z array
+    const yLength = zArray?.length ?? 0;
+    const xLength = zArray?.[0]?.length ?? 0;
+
+    // Use provided x/y values or generate indices
+    const xData = xValues ?? Array.from({ length: xLength }, (_, i) => i);
+    const yData = yValues ?? Array.from({ length: yLength }, (_, i) => yLength - 1 - i);
+
+    xData.forEach((xVal, xIdx: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      yData.forEach((yVal: any, yIdx: number) => {
+        const zVal = zArray?.[yIdx]?.[xIdx];
+
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
           x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
