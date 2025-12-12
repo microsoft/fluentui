@@ -66,6 +66,11 @@ export type FluentTriggerComponent = {
 export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
+export function getComponentSlotClassName<Slots extends SlotPropsRecord, SlotProps extends {
+    className?: string;
+}>(baseClassName: string, slotProps: SlotProps, componentState?: ComponentState<Slots> & Record<string, any>): string;
+
+// @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
     clientX: number;
     clientY: number;

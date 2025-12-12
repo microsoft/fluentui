@@ -70,6 +70,7 @@ export {
   getReactElementRef,
   getRTLSafeKey,
   mergeCallbacks,
+  getComponentSlotClassName,
   isHTMLElement,
   isInteractiveHTMLElement,
   omit,
