@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add headless mode support",
+  "packageName": "@fluentui/react-popover",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
