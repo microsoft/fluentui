@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 /**
  * Applies styles and class names to the Portal mount node
  */
-export const usePortalMountNodeClassName = (themeClassName: string, className?: string) => {
+export const usePortalMountNodeClassName = (themeClassName: string, className?: string): string => {
   const classes = useStyles();
 
   return mergeClasses(themeClassName, classes.root, className);
