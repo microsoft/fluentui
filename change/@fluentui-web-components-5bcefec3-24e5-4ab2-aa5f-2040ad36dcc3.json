@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update web-component storybook to match react version",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "none"
-}
