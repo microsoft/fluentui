@@ -6,10 +6,9 @@ import {
   useFluent_unstable as useFluent,
   usePortalMountNode as usePortalMountNodeContext,
 } from '@fluentui/react-shared-contexts';
-import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 
-import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
+import { usePortalMountNodeClassName } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -243,7 +242,6 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const factoryOptions: UseElementFactoryOptions = {
@@ -251,7 +249,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     disabled: options.disabled,
     focusVisibleRef,
 
-    className: mergeClasses(themeClassName, classes.root, options.className),
+    className: usePortalMountNodeClassName(themeClassName, options.className),
     targetNode: mountNode ?? targetDocument?.body,
   };
 
