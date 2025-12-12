@@ -441,7 +441,9 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       maxWidth: layout?.maxWidth,
       ...(hasCustomBackground
         ? {
-            backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity),
+            backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity, {
+              preserveOriginalOpacity: annotation.style?.opacity === undefined,
+            }),
           }
         : {
             backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
