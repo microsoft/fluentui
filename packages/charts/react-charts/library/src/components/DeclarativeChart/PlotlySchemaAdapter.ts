@@ -2314,7 +2314,7 @@ export const transformPlotlyJsonToHeatmapProps = (
   const heatmapDataPoints: HeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
 
   // Build a 2D array of annotations based on their grid position
   const annotationGrid: (string | undefined)[][] = [];
