@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { getComponentSlotClassName, type SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
 
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
@@ -15,43 +15,17 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
 export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, shape, size } = state;
-
-  state.root.className = [
-    splitButtonClassNames.root,
-
-    // Appearance
-    appearance && `${splitButtonClassNames.root}--${appearance}`,
-
-    // Size
-    size && `${splitButtonClassNames.root}--${size}`,
-
-    // Shape
-    shape && `${splitButtonClassNames.root}--${shape}`,
-
-    // Disabled styles
-    disabled && `${splitButtonClassNames.root}--disabled`,
-    disabledFocusable && !disabled && `${splitButtonClassNames.root}--disabledFocusable`,
-
-    // User provided class name
-    state.root.className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  state.root.className = getComponentSlotClassName(splitButtonClassNames.root, state.root, state);
 
   if (state.primaryActionButton) {
-    state.primaryActionButton.className = [
+    state.primaryActionButton.className = getComponentSlotClassName(
       splitButtonClassNames.primaryActionButton,
-      state.primaryActionButton.className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      state.primaryActionButton,
+    );
   }
 
   if (state.menuButton) {
-    state.menuButton.className = [splitButtonClassNames.menuButton, state.menuButton.className]
-      .filter(Boolean)
-      .join(' ');
+    state.menuButton.className = getComponentSlotClassName(splitButtonClassNames.menuButton, state.menuButton);
   }
 
   return state;

@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { getComponentSlotClassName, type SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
@@ -14,37 +14,10 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
-
-  state.root.className = [
-    buttonClassNames.root,
-
-    // Appearance
-    appearance && `${buttonClassNames.root}--${appearance}`,
-
-    // Size
-    `${buttonClassNames.root}--${size}`,
-
-    // Shape
-    `${buttonClassNames.root}--${shape}`,
-
-    // Disabled styles
-    disabled && `${buttonClassNames.root}--disabled`,
-    disabledFocusable && `${buttonClassNames.root}--disabledFocusable`,
-
-    // Icon styles
-    icon && iconPosition === 'before' && `${buttonClassNames.root}--iconBefore`,
-    icon && iconPosition === 'after' && `${buttonClassNames.root}--iconAfter`,
-    iconOnly && `${buttonClassNames.root}--iconOnly`,
-
-    // User provided class name
-    state.root.className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  state.root.className = getComponentSlotClassName(buttonClassNames.root, state.root, state);
 
   if (state.icon) {
-    state.icon.className = [buttonClassNames.icon, state.icon.className].filter(Boolean).join(' ');
+    state.icon.className = getComponentSlotClassName(buttonClassNames.icon, state.icon);
   }
 
   return state;
