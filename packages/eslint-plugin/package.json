@@ -12,6 +12,7 @@
   "dependencies": {
     "@eslint/compat": "1.3.0",
     "@griffel/eslint-plugin": "^2.0.0",
+    "@fluentui/eslint-plugin-react-components": "^0.1.4",
     "@rnx-kit/eslint-plugin": "^0.8.4",
     "@typescript-eslint/type-utils": "^8.46.2",
     "@typescript-eslint/utils": "^8.46.2",

@@ -42,6 +42,7 @@ module.exports = defineConfig(
         },
       ],
       '@fluentui/ban-instanceof-html-element': ['error'],
+      '@fluentui/react-components/enforce-use-client': ['error'],
       '@fluentui/no-context-default-value': [
         'error',
         {
@@ -78,6 +79,7 @@ module.exports = defineConfig(
         },
       ],
       'react-compiler/react-compiler': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
   {
@@ -98,6 +100,7 @@ module.exports = defineConfig(
           ],
         },
       ],
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 
@@ -105,6 +108,7 @@ module.exports = defineConfig(
     files: ['**/*.test.{ts,tsx}'],
     rules: {
       'react-compiler/react-compiler': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
   __internal.overrides.react,
