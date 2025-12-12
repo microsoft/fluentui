@@ -1650,6 +1650,7 @@ export interface ScatterChartProps extends CartesianChartProps {
     data: ChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
     styles?: ScatterChartStyles;
 }
 
