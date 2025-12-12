@@ -1,4 +1,5 @@
 export { Label } from './label.js';
+export { BaseLabel } from './label.base.js';
 export { LabelSize, LabelWeight } from './label.options.js';
 export { definition as LabelDefinition } from './label.definition.js';
 export { styles as LabelStyles } from './label.styles.js';
