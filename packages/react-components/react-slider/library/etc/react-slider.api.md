@@ -13,6 +13,21 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const RangeSlider: ForwardRefComponent<RangeSliderProps>;
+
+// @public (undocumented)
+export const rangeSliderClassNames: SlotClassNames<RangeSliderSlots>;
+
+// @public
+export type RangeSliderProps = ComponentProps<RangeSliderSlots> & {};
+
+// @public
+export type RangeSliderState = ComponentState<RangeSliderSlots>;
+
+// @public
+export const renderRangeSlider_unstable: (state: RangeSliderState) => JSXElement;
+
+// @public
 export const renderSlider_unstable: (state: SliderState) => JSXElement;
 
 // @public
@@ -64,6 +79,12 @@ export type SliderSlots = {
 
 // @public (undocumented)
 export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;
+
+// @public
+export const useRangeSlider_unstable: (props: RangeSliderProps, ref: React_2.Ref<HTMLDivElement>) => RangeSliderState;
+
+// @public
+export const useRangeSliderStyles_unstable: (state: RangeSliderState) => RangeSliderState;
 
 // @public (undocumented)
 export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
