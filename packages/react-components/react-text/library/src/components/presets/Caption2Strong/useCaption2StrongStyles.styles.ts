@@ -1,6 +1,6 @@
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import type { TextSlots } from '../../Text/Text.types';
+import type { TextSlots, TextState } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 export const caption2StrongClassNames: SlotClassNames<TextSlots> = {
@@ -10,6 +10,14 @@ export const caption2StrongClassNames: SlotClassNames<TextSlots> = {
 /**
  * Styles for the root slot
  */
-export const useCaption2StrongStyles = makeStyles({
+const useStyles = makeStyles({
   root: typographyStyles.caption2Strong,
 });
+
+export const useCaption2StrongStyles = (state: TextState): TextState => {
+  const styles = useStyles();
+
+  state.root.className = mergeClasses(caption2StrongClassNames.root, styles.root, state.root.className);
+
+  return state;
+};
