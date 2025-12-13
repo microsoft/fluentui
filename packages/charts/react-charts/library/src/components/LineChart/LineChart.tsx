@@ -1837,6 +1837,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
     }
 
+    function _getChartTitle(): string {
+      const { chartTitle, lineChartData } = props.data;
+      return (chartTitle ? `${chartTitle}. ` : '') + `Line chart with ${lineChartData?.length || 0} lines. `;
+    }
+
     function _isChartEmpty(): boolean {
       return !(
         props.data &&
@@ -1900,7 +1905,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     return !_isChartEmpty() ? (
       <CartesianChart
         {...props}
-        chartTitle={props.data.chartTitle}
+        chartTitle={_getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
         calloutProps={calloutProps}

@@ -531,6 +531,30 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     return minChartWidth;
   }
 
+  function _getChartDescription(): string {
+    return (
+      (props.chartTitle || 'Chart. ') +
+      _getAxisTitle('X', props.xAxisTitle, props.xAxisType) +
+      _getAxisTitle('Y', props.yAxisTitle, props.yAxisType || YAxisType.NumericAxis) +
+      (props.secondaryYScaleOptions
+        ? _getAxisTitle('secondary Y', props.secondaryYAxistitle, YAxisType.NumericAxis)
+        : '')
+    );
+  }
+
+  function _getAxisTitle(axisLabel: string, axisTitle: string | undefined, axisType: XAxisTypes | YAxisType): string {
+    return (
+      `The ${axisLabel} axis displays ` +
+      (axisTitle ||
+        (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
+          ? 'categories'
+          : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
+          ? 'time'
+          : 'values')) +
+      '. '
+    );
+  }
+
   function _calcMaxLabelWidthWithTransform(x: (string | number)[]) {
     // Case: rotated labels
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
@@ -710,7 +734,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         <svg
           width={svgDimensions.width}
           height={svgDimensions.height}
-          aria-label={props.chartTitle}
+          role="region"
+          aria-label={_getChartDescription()}
           style={{ display: 'block' }}
           className={classes.chart}
           {...getSecureProps(svgProps)}
