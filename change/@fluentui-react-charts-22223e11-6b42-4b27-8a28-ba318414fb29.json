@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix label percentage issue in donut, VBC, VSBC and heatmap chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

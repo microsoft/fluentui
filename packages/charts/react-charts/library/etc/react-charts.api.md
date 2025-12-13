@@ -999,6 +999,7 @@ export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
 
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
@@ -1726,6 +1727,7 @@ export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 
 // @public (undocumented)
 export interface VerticalBarChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
@@ -1827,6 +1829,7 @@ export interface VerticalStackedChartProps {
 
 // @public (undocumented)
 export interface VSChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     culture?: string;

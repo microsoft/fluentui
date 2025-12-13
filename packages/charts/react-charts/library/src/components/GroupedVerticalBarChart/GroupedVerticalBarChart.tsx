@@ -602,6 +602,23 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             />,
           );
 
+          // Render individual bar label if provided
+          if (pointData.barLabel && isLegendActive) {
+            barLabelsForGroup.push(
+              <text
+                key={`${singleSet.indexNum}-${legendIndex}-${pointIndex}-label`}
+                x={xPoint + _barWidth / 2}
+                y={pointData.data >= Y_ORIGIN ? yPoint - 6 : yPoint + height + 12}
+                textAnchor="middle"
+                className={classes.barLabel}
+                aria-hidden={true}
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
+                {pointData.barLabel}
+              </text>,
+            );
+          }
+
           barTotalValue += pointData.data;
         });
         if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
