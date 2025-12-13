@@ -10,7 +10,6 @@ export const getTooltipStyle = (): GriffelStyle => {
     padding: tokens.spacingHorizontalS,
     position: 'absolute',
     textAlign: 'center',
-    top: tokens.spacingVerticalNone,
     backgroundColor: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',

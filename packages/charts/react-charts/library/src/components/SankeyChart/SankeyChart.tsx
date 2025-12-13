@@ -987,7 +987,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
-        .html(text);
+        .text(text);
     }
   };
 
