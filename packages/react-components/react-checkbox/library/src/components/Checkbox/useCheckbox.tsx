@@ -12,13 +12,7 @@ import {
   slot,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
-import {
-  Checkmark12Filled,
-  Checkmark16Filled,
-  Square12Filled,
-  Square16Filled,
-  CircleFilled,
-} from '@fluentui/react-icons';
+import { Checkmark12Filled, Checkmark16Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
 
@@ -54,15 +48,10 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   const mixed = checked === 'mixed';
   const id = useId('checkbox-', nativeProps.primary.id);
 
-  let checkmarkIcon;
-  if (mixed) {
-    if (shape === 'circular') {
-      checkmarkIcon = <CircleFilled />;
-    } else {
-      checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
-    }
-  } else if (checked) {
-    checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
+  let checkmarkIcon: React.ElementType = 'span';
+
+  if (!mixed) {
+    checkmarkIcon = size === 'large' ? Checkmark16Filled : Checkmark12Filled;
   }
 
   const state: CheckboxState = {
@@ -75,6 +64,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       root: 'span',
       input: 'input',
       indicator: 'div',
+      checkmarkIcon,
       label: Label,
     },
     root: slot.always(props.root, {
@@ -107,9 +97,12 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
-        children: checkmarkIcon,
       },
       elementType: 'div',
+    }),
+    checkmarkIcon: slot.optional(props.checkmarkIcon, {
+      renderByDefault: true,
+      elementType: 'svg',
     }),
   };
 

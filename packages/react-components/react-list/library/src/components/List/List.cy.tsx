@@ -173,9 +173,17 @@ const validateSetOfListItems = (expectedStates: Array<boolean>) =>
     listItem.should('have.attr', 'aria-selected', checked.toString());
 
     cy.log('Validate checkbox state on item', index + 1);
-    cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg`).should(
-      checked ? 'exist' : 'not.exist',
-    );
+    // Checkbox now keeps the checkmark SVG in the DOM for motion/animation.
+    // Validate visual state by checking computed opacity (0 -> unchecked, 1 -> checked)
+    cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg`).should($svg => {
+      // Read computed opacity and coerce to number for robust comparison
+      const opacity = Number(window.getComputedStyle($svg[0]).opacity);
+      if (checked) {
+        expect(opacity).to.be.greaterThan(0.5);
+      } else {
+        expect(opacity).to.be.lessThan(0.5);
+      }
+    });
 
     cy.log('Validate that the item is present/not present in the parent state (or stringified state)');
     cy.get(`[data-test="selected-items"]`).should(checked ? 'contain' : 'not.contain', `list-item-${index + 1}`);
