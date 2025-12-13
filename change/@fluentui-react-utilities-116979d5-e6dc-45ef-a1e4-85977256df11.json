@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add toggleSomeItems utility",
+  "packageName": "@fluentui/react-utilities",
+  "email": "simon_persson@outlook.com",
+  "dependentChangeType": "patch"
+}

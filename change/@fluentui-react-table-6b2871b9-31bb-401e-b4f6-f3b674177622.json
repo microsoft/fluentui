@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add toggleSomeRows selection state to enable partial row selection",
+  "packageName": "@fluentui/react-table",
+  "email": "simon_persson@outlook.com",
+  "dependentChangeType": "patch"
+}
