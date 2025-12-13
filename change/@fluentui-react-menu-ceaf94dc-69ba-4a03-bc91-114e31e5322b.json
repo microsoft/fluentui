@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add headless mode styles for Menu components",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
