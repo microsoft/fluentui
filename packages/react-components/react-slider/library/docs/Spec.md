@@ -143,16 +143,6 @@ See [MIGRATION.md](./MIGRATION.md).
 
 Slider follows the [W3C slider pattern](https://www.w3.org/TR/wai-aria-1.1/#slider). Focus remains on the thumb, and all labeling comes from either `aria-label`, `aria-labelledby`, or surrounding `Label`/`Field` components.
 
-### Slider Open UI Research
-
-- <https://open-ui.org/components/slider.research.parts>
-- <https://open-ui.org/components/slider.research>
-
-### Slider Out of scope
-
-- Built-in marks or tick rendering.
-- Alternate origins such as center-out progress.
-
 ---
 
 ## RangeSlider Component
@@ -162,8 +152,6 @@ Slider follows the [W3C slider pattern](https://www.w3.org/TR/wai-aria-1.1/#slid
 RangeSlider enables users to select both a minimum and maximum value along the same rail. Two thumbs share the rail, and the currently selected span is highlighted between them. The component outputs `{ start, end }` objects for both uncontrolled (`defaultValue`) and controlled (`value`) usage.
 
 ### RangeSlider Variants
-
-RangeSlider supports the same appearance as Slider, plus:
 
 - **Size** (`size?: 'medium' | 'small'`): Medium is default, small tightens thumb and rail dimensions.
 - **Orientation** (`vertical?: boolean`): Vertical sliders place the minimum at the bottom and maximum at the top.
@@ -187,14 +175,14 @@ RangeSlider supports the same appearance as Slider, plus:
 
 #### RangeSlider Slots
 
-| Slot         | Type    | Description                                                                                                  |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------------ |
-| `root`       | `div`   | Receives `className`/`style` props from `<RangeSlider>`.                                                     |
-| `rail`       | `div`   | Visual rail showing both the full span and the active selection.                                             |
-| `startThumb` | `div`   | Lower-value thumb. Contains `role="slider"`.                                                                 |
-| `endThumb`   | `div`   | Upper-value thumb. Contains `role="slider"`.                                                                 |
-| `startInput` | `input` | Hidden `<input type="range">` mirroring the start value for form submissions and pointer/touch selection.    |
-| `endInput`   | `input` | Hidden `<input type="range">` mirroring the end value. Receives most native props passed to `<RangeSlider>`. |
+| Slot         | Type    | Description                                                                                               |
+| ------------ | ------- | --------------------------------------------------------------------------------------------------------- |
+| `root`       | `div`   | Receives `className`/`style` props from `<RangeSlider>`.                                                  |
+| `rail`       | `div`   | Visual rail showing both the full span and the active selection.                                          |
+| `startThumb` | `div`   | Visual-only thumb for the lower value. Wraps the native input.                                            |
+| `endThumb`   | `div`   | Visual-only thumb for the upper value.                                                                    |
+| `startInput` | `input` | Focusable `<input type="range">` that owns the lower value. Styled with screen-reader-only CSS utilities. |
+| `endInput`   | `input` | Focusable `<input type="range">` that owns the upper value. Styled with screen-reader-only CSS utilities. |
 
 #### Types
 
@@ -216,11 +204,13 @@ type RangeSliderOnChangeData = {
 
   ```tsx
   <slots.root {...slotProps.root}>
-    <slots.startInput {...slotProps.startInput} />
-    <slots.endInput {...slotProps.endInput} />
     <slots.rail {...slotProps.rail} />
-    <slots.startThumb {...slotProps.startThumb} />
-    <slots.endThumb {...slotProps.endThumb} />
+    <slots.startThumb {...slotProps.startThumb}>
+      <slots.startInput {...slotProps.startInput} />
+    </slots.startThumb>
+    <slots.endThumb {...slotProps.endThumb}>
+      <slots.endInput {...slotProps.endInput} />
+    </slots.endThumb>
   </slots.root>
   ```
 
@@ -228,29 +218,15 @@ type RangeSliderOnChangeData = {
 
   ```html
   <div class="fui-RangeSlider">
-    <input type="range" aria-hidden="true" tabindex="-1" value="20" />
-    <input type="range" aria-hidden="true" tabindex="-1" value="80" />
-    <div class="fui-RangeSlider__rail"></div>
-    <div
-      class="fui-RangeSlider__startThumb"
-      role="slider"
-      tabindex="0"
-      aria-labelledby="label-123"
-      aria-valuemin="0"
-      aria-valuemax="80"
-      aria-valuenow="20"
-      aria-valuetext="20"
-    ></div>
-    <div
-      class="fui-RangeSlider__endThumb"
-      role="slider"
-      tabindex="0"
-      aria-labelledby="label-123"
-      aria-valuemin="20"
-      aria-valuemax="100"
-      aria-valuenow="80"
-      aria-valuetext="80"
-    ></div>
+    <div className="fui-RangeSlider__rail" />
+    <div class="fui-RangeSlider__startThumb">
+      <!-- thumb will implemented using pseudo elements -->
+      <input class="fui-RangeSlider__srOnlyInput" type="range" min="0" max="100" step="1" value="20" />
+    </div>
+    <div class="fui-RangeSlider__endThumb">
+      <!-- thumb will implemented using pseudo elements -->
+      <input class="fui-RangeSlider__srOnlyInput" type="range" min="0" max="100" step="1" value="80" />
+    </div>
   </div>
   ```
 
@@ -285,28 +261,19 @@ Additional logic:
 
 #### Screen readers
 
-- Hidden inputs mirror values for form submissions and remain `aria-hidden`.
-- Each thumb exposes `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and optional `aria-valuetext`.
-- Developers should connect external labels through `aria-labelledby` or provide `aria-label` per thumb when needed (`startThumb={{ 'aria-label': 'Minimum' }}` / `endThumb={{ 'aria-label': 'Maximum' }}`).
+- The native inputs stay in the DOM, retain their default `role="slider"`, and respond to keyboard/assistive tech directly.
+- When `vertical` is true, both native inputs expose `aria-orientation="vertical"` (per [ARIA slider](https://w3c.github.io/aria/#aria-orientation) and [APG multi-thumb guidance](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/)).
 
 ### RangeSlider Accessibility
 
-| Slot         | Role     | ARIA Properties                                                                    |
-| ------------ | -------- | ---------------------------------------------------------------------------------- |
-| `root`       | `div`    | Container that can style `:focus-within`.                                          |
-| `startInput` | none     | Hidden (`aria-hidden="true"`, `tabindex="-1"`). Mirrors the start value for forms. |
-| `endInput`   | none     | Hidden (`aria-hidden="true"`, `tabindex="-1"`). Mirrors the end value.             |
-| `rail`       | none     | Visual only.                                                                       |
-| `startThumb` | `slider` | Announces the lower value range.                                                   |
-| `endThumb`   | `slider` | Announces the upper value range.                                                   |
+RangeSlider follows the [W3C slider pattern](https://www.w3.org/TR/wai-aria-1.1/#slider). Focus remains on the either thumb, and all labeling comes from either `aria-label`, `aria-labelledby`, or surrounding `Label`/`Field` components.
 
-Focus order: start thumb → end thumb → next focusable element. Each thumb supports high-contrast focus visuals and voice/keyboard control.
-
-### RangeSlider Open UI Research
-
-Range sliders share the same Open UI research references as Slider.
-
-### RangeSlider Out of scope
+### Out of scope
 
 - Built-in tick marks or labeled segments.
 - Non-linear ranges (logarithmic scales, custom easing).
+
+### Open UI Research
+
+- <https://open-ui.org/components/slider.research.parts>
+- <https://open-ui.org/components/slider.research>
