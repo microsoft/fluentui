@@ -1197,4 +1197,20 @@ describe('Combobox', () => {
       expect(container.querySelector(`.${comboboxClassNames.expandIcon}`)).not.toBeInTheDocument();
     });
   });
+
+  it('does not auto-highlight active option when disableAutoFocus is true', () => {
+    const { getByTestId } = render(
+      <Combobox open disableAutoFocus data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox') as HTMLInputElement;
+    userEvent.type(combobox, 'g');
+
+    // The active descendant should not be set to the matching option
+    expect(combobox.getAttribute('aria-activedescendant')).toBeNull();
+  });
 });
