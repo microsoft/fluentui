@@ -1,6 +1,6 @@
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import type { TextSlots } from '../../Text/Text.types';
+import type { TextSlots, TextState } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 export const displayClassNames: SlotClassNames<TextSlots> = {
@@ -10,6 +10,14 @@ export const displayClassNames: SlotClassNames<TextSlots> = {
 /**
  * Styles for the root slot
  */
-export const useDisplayStyles = makeStyles({
+const useStyles = makeStyles({
   root: typographyStyles.display,
 });
+
+export const useDisplayStyles = (state: TextState): TextState => {
+  const styles = useStyles();
+
+  state.root.className = mergeClasses(displayClassNames.root, styles.root, state.root.className);
+
+  return state;
+};
