@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GanttChart interaction and accessibility tests should render custom callout content using onRenderCalloutPerDataPoint when a bar is hovered 1`] = `
 <div>
@@ -12,9 +12,10 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -367,7 +368,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -386,7 +387,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -405,7 +406,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -423,11 +424,11 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       <div
         class="fui-PopoverSurface"
         data-popper-escaped=""
-        data-popper-placement="bottom"
+        data-popper-placement="top"
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; width: -10px; overflow-x: auto; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -456,7 +457,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -481,9 +482,10 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -832,7 +834,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -851,7 +853,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -870,7 +872,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"
@@ -897,9 +899,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -1252,7 +1255,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -1271,7 +1274,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -1290,7 +1293,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -1321,9 +1324,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Gantt chart with 8 data points. "
+          aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
           class="fui-cart__chart"
           height="0"
+          role="region"
           style="display: block;"
           width="600"
         >
@@ -1676,7 +1680,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
               />
               <div
                 class="fui-legend__text"
@@ -1695,7 +1699,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
               />
               <div
                 class="fui-legend__text"
@@ -1714,7 +1718,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
               />
               <div
                 class="fui-legend__text"
@@ -1748,9 +1752,10 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Gantt chart with 8 data points. "
+              aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
               class="fui-cart__chart"
               height="0"
+              role="region"
               style="display: block;"
               width="600"
             >
@@ -2103,7 +2108,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2122,7 +2127,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2141,7 +2146,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2170,9 +2175,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Gantt chart with 8 data points. "
+            aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
             class="fui-cart__chart"
             height="0"
+            role="region"
             style="display: block;"
             width="600"
           >
@@ -2525,7 +2531,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2544,7 +2550,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2563,7 +2569,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2643,9 +2649,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 6 data points. "
+        aria-label="Gantt chart with 6 data points. The X axis displays time. The Y axis displays values. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -2960,7 +2967,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -2979,7 +2986,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -2998,7 +3005,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"
@@ -3017,7 +3024,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(147, 115, 192, 1); border-color: #9373c0ff; --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
+              style="height: 12px; background-color: rgb(147, 115, 192); border-color: rgb(147, 115, 192); --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
             />
             <div
               class="fui-legend__text"
@@ -3036,7 +3043,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(202, 80, 16, 1); border-color: #ca5010ff; --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
+              style="height: 12px; background-color: rgb(202, 80, 16); border-color: rgb(202, 80, 16); --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
             />
             <div
               class="fui-legend__text"
@@ -3055,7 +3062,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(58, 150, 221, 1); border-color: #3a96ddff; --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
+              style="height: 12px; background-color: rgb(58, 150, 221); border-color: rgb(58, 150, 221); --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
             />
             <div
               class="fui-legend__text"
@@ -3082,9 +3089,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3475,7 +3483,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(12, 94, 12); border-color: #0c5e0c; --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
+              style="height: 12px; background-color: rgb(12, 94, 12); border-color: rgb(12, 94, 12); --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
             />
             <div
               class="fui-legend__text"
@@ -3494,7 +3502,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(222, 89, 11); border-color: #de590b; --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
+              style="height: 12px; background-color: rgb(222, 89, 11); border-color: rgb(222, 89, 11); --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
             />
             <div
               class="fui-legend__text"
@@ -3513,7 +3521,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(177, 14, 28); border-color: #b10e1c; --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
+              style="height: 12px; background-color: rgb(177, 14, 28); border-color: rgb(177, 14, 28); --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
             />
             <div
               class="fui-legend__text"
@@ -3540,9 +3548,10 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3895,7 +3904,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -3914,7 +3923,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -3933,7 +3942,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -3960,9 +3969,10 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -4315,7 +4325,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -4334,7 +4344,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -4353,7 +4363,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -4371,11 +4381,11 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       <div
         class="fui-PopoverSurface"
         data-popper-escaped=""
-        data-popper-placement="bottom"
+        data-popper-placement="top"
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; width: -10px; overflow-x: auto; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -4404,7 +4414,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -4429,9 +4439,10 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -4884,7 +4895,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -4903,7 +4914,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -4922,7 +4933,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"

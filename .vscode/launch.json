@@ -25,7 +25,7 @@
       "program": "${workspaceRoot}/scripts/executors/src/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
+      "args": ["-i", "--testPathPatterns=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
@@ -42,7 +42,7 @@
       "program": "${workspaceRoot}/scripts/executors/src/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
+      "args": ["-i", "--testPathPatterns=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {

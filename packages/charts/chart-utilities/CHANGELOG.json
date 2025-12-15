@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:46 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.38",
+      "version": "1.1.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Nov 2025 09:34:50 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.37",
       "version": "1.1.37",

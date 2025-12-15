@@ -69,6 +69,8 @@ describe(`workspace-plugin`, () => {
           "{projectRoot}/.eslintrc.json",
           "{projectRoot}/.eslintrc.js",
           "{projectRoot}/eslint.config.js",
+          "{projectRoot}/eslint.config.cjs",
+          "{projectRoot}/eslint.config.mjs",
           "{workspaceRoot}/.eslintrc.json",
           "{workspaceRoot}/.eslintignore",
           "{workspaceRoot}/eslint.config.js",

@@ -94,6 +94,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
   const [isCalloutVisible, setCalloutVisible] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
@@ -408,6 +409,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           setRefSelected(`#${circleId}`);
           setYValueHover(found.values);
           setStackCalloutProps(found!);
+          setDataPointCalloutProps(found!);
           setActivePoint(circleId);
         }
       } else {
@@ -720,6 +722,14 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setCalloutVisible(false);
   }
 
+  function _getCustomizedCallout() {
+    return props.onRenderCalloutPerStack
+      ? props.onRenderCalloutPerStack(stackCalloutProps)
+      : props.onRenderCalloutPerDataPoint
+      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+      : null;
+  }
+
   const _getNumericMinMaxOfY = React.useCallback(
     (points: IScatterChartPoints[], yAxisType?: YAxisType): { startValue: number; endValue: number } => {
       const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
@@ -809,6 +819,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
       {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
+      customizedCallout={_getCustomizedCallout()}
       /* eslint-disable react/jsx-no-bind */
 
       children={(childProps: IChildProps) => {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ensure slot className is saved from defaultProps",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

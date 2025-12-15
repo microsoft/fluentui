@@ -349,7 +349,22 @@ export interface ChartAnnotationContext {
 
 // @public (undocumented)
 export type ChartAnnotationCoordinate = {
-    type: 'data' | 'relative' | 'pixel';
+    type: 'data';
+    x: number | string | Date;
+    y: number | string | Date;
+    yAxis?: 'primary' | 'secondary';
+} | {
+    type: 'relative';
+    x: number;
+    y: number;
+} | {
+    type: 'pixel';
+    x: number;
+    y: number;
+} | {
+    type: 'mixed';
+    xCoordinateType: 'data' | 'relative' | 'pixel';
+    yCoordinateType: 'data' | 'relative' | 'pixel';
     x: number | string | Date;
     y: number | string | Date;
     yAxis?: 'primary' | 'secondary';
@@ -984,6 +999,7 @@ export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
 
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
@@ -1635,6 +1651,7 @@ export interface ScatterChartProps extends CartesianChartProps {
     data: ChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
     styles?: ScatterChartStyles;
 }
 
@@ -1710,6 +1727,7 @@ export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 
 // @public (undocumented)
 export interface VerticalBarChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
@@ -1811,6 +1829,7 @@ export interface VerticalStackedChartProps {
 
 // @public (undocumented)
 export interface VSChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     culture?: string;

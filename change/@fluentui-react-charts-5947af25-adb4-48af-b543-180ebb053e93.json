@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix width and height props not being applied to SVG path dimensions",
-  "packageName": "@fluentui/react-charts",
-  "email": "120502241+jepagan_microsoft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -16,15 +16,62 @@ const themes = {
   'teams-dark': teamsDarkTheme,
 };
 
-function changeTheme(/** @type {Event} */ e) {
-  setTheme(themes[/** @type {keyof themes} */ (/** @type {HTMLInputElement}*/ (e.target).value)]);
-}
-
 // This is needed in Playwright.
 Object.defineProperty(window, 'setTheme', { value: setTheme });
 
-document.getElementById('theme-switch')?.addEventListener('change', changeTheme, false);
 setTheme(themes['web-light']);
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'web-light',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'web-light', title: 'Web Light' },
+        { value: 'web-dark', title: 'Web Dark' },
+        { value: 'teams-light', title: 'Teams Light' },
+        { value: 'teams-dark', title: 'Teams Dark' },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
+  dir: {
+    name: 'Direction',
+    description: 'Text direction',
+    defaultValue: 'ltr',
+    toolbar: {
+      icon: 'transfer',
+      items: [
+        { value: 'ltr', title: 'LTR' },
+        { value: 'rtl', title: 'RTL' },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
+};
+
+/**
+ * @type {import('@storybook/html').Decorator[]}
+ */
+export const decorators = [
+  (Story, context) => {
+    /**
+     * @type {keyof typeof themes}
+     */
+    const theme = context.globals.theme || 'web-light';
+    setTheme(themes[theme]);
+
+    // Set direction on the document body
+    const dir = context.globals.dir || 'ltr';
+    document.querySelectorAll('.docs-story').forEach(el => el.setAttribute('dir', dir));
+
+    return Story();
+  },
+];
 
 export const parameters = {
   layout: 'fullscreen',
