@@ -85,6 +85,8 @@ import {
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
 export const DEFAULT_DATE_STRING = '2000-01-01';
+export const CARTESIAN_XAXIS_CLASSNAME = 'fui-cart__xAxis';
+const CARTESIAN_XAXIS_TEXT_SELECTOR = `.${CARTESIAN_XAXIS_CLASSNAME} text`;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -287,7 +289,7 @@ export function createNumericXAxis(
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
   };
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+  if (hideTickOverlap) {
     const longestLabelWidth =
       calcMaxLabelWidth(xAxisScale.ticks().map((v: NumberValue, i: number) => tickFormat(v, i))) + 20;
     const [start, end] = xAxisScale.range();
@@ -509,7 +511,7 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC ? true : false, false, formatOptions);
   };
 
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+  if (hideTickOverlap) {
     const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
     const [start, end] = xAxisScale.range();
     tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
@@ -1155,7 +1157,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
         line.push(word);
         const label = line.join(' ');
         tspan.text(label);
-        const labelWidth = getTextSize(label, `.fui-cart__xAxis text`, container).width;
+        const labelWidth = getTextSize(label, CARTESIAN_XAXIS_TEXT_SELECTOR, container).width;
         if (labelWidth > maxWidth && line.length > 1) {
           line.pop();
           tspan.text(line.join(' '));
@@ -1174,7 +1176,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
   if (!showXAxisLablesTooltip) {
     let maxHeight: number = 12; // intial value to render corretly first time
     const boxHeight =
-      (container ?? document).querySelector(`.fui-cart__xAxis tspan`)?.getBoundingClientRect().height ?? 0;
+      (container ?? document).querySelector(`.${CARTESIAN_XAXIS_CLASSNAME} tspan`)?.getBoundingClientRect().height ?? 0;
     if (boxHeight > maxHeight) {
       maxHeight = boxHeight;
     }
@@ -2512,7 +2514,7 @@ export const autoLayoutXAxisLabels = (
     return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelWidth = (text: string) => {
-    return getTextSize(text, `.fui-cart__xAxis text`, container).width;
+    return getTextSize(text, CARTESIAN_XAXIS_TEXT_SELECTOR, container).width;
   };
 
   for (let i = 0; i < tickValues.length; i++) {
@@ -2580,7 +2582,7 @@ const truncateAndStaggerXAxisLabels = (
     return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelSize = (text: string) => {
-    return getTextSize(text, `.fui-cart__xAxis text`, container);
+    return getTextSize(text, CARTESIAN_XAXIS_TEXT_SELECTOR, container);
   };
 
   d3Select(axisNode)
