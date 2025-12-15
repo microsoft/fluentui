@@ -91,9 +91,6 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground7Selected: '#00000000', // #00000000 undefined
   colorNeutralBackground8: grey[16], // #292929 Global.Color.Grey.16
   colorNeutralBackgroundInverted: white, // #ffffff Global.Color.White
-  colorNeutralBackgroundInvertedHover: whiteAlpha[96], // <ERROR: token "Global.Color.WhiteAlpha.96" missing> Global.Color.WhiteAlpha.96
-  colorNeutralBackgroundInvertedPressed: whiteAlpha[88], // <ERROR: token "Global.Color.WhiteAlpha.88" missing> Global.Color.WhiteAlpha.88
-  colorNeutralBackgroundInvertedSelected: whiteAlpha[92], // <ERROR: token "Global.Color.WhiteAlpha.92" missing> Global.Color.WhiteAlpha.92
   colorNeutralBackgroundStatic: grey[24], // #3d3d3d Global.Color.Grey.24
   colorNeutralBackgroundAlpha: grey10Alpha[50], // rgba(26, 26, 26, 0.5) Global.Color.Grey10Alpha.50
   colorNeutralBackgroundAlpha2: grey12Alpha[70], // rgba(31, 31, 31, 0.7) Global.Color.Grey12Alpha.70
