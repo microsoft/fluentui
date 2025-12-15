@@ -696,7 +696,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -782,7 +782,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -866,7 +866,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -1022,10 +1022,25 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     );
   }
 
-  function _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
+  function _renderBarLabel(
+    xPoint: number,
+    yPoint: number,
+    barValue: number,
+    legend: string,
+    isNegativeBar: boolean,
+    customBarLabel?: string,
+  ) {
     if (props.hideLabels || _barWidth < 16 || !(_legendHighlighted(legend) || _noLegendHighlighted())) {
       return null;
     }
+
+    // Use custom barLabel if provided, otherwise use the formatted barValue
+    const displayLabel =
+      customBarLabel !== undefined
+        ? customBarLabel
+        : typeof props.yAxisTickFormat === 'function'
+        ? props.yAxisTickFormat(barValue)
+        : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1036,9 +1051,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         aria-hidden={true}
         style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
       >
-        {typeof props.yAxisTickFormat === 'function'
-          ? props.yAxisTickFormat(barValue)
-          : formatScientificLimitWidth(barValue)}
+        {displayLabel}
       </text>
     );
   }
