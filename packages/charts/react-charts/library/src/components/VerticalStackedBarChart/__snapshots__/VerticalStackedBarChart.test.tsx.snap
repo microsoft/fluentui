@@ -12,9 +12,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -526,9 +527,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1040,9 +1042,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1552,9 +1555,10 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2117,9 +2121,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2659,9 +2664,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -3269,9 +3275,10 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -3755,9 +3762,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -4265,9 +4273,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -4775,9 +4784,10 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -5285,9 +5295,10 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -5802,9 +5813,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="50"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -6257,9 +6269,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -6763,9 +6776,10 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -7267,9 +7281,10 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -7931,9 +7946,10 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -8529,9 +8545,10 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
