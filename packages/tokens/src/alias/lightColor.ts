@@ -24,6 +24,10 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground3BrandPressed: brand[70], // #106ebe Global.Color.Brand.70
   colorNeutralForeground3BrandSelected: brand[80], // #0078d4 Global.Color.Brand.80
   colorNeutralForeground4: grey[44], // #707070 Global.Color.Grey.44
+  colorNeutralForeground5: grey[38], // #616161 Global.Color.Grey.38
+  colorNeutralForeground5Hover: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground5Pressed: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForeground5Selected: grey[14], // #242424 Global.Color.Grey.14
   colorNeutralForegroundDisabled: grey[74], // #bdbdbd Global.Color.Grey.74
   colorNeutralForegroundInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
   colorBrandForegroundLink: brand[70], // #106ebe Global.Color.Brand.70
@@ -81,7 +85,15 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground5Pressed: grey[94], // #f0f0f0 Global.Color.Grey.94
   colorNeutralBackground5Selected: grey[98], // #fafafa Global.Color.Grey.98
   colorNeutralBackground6: grey[90], // #e6e6e6 Global.Color.Grey.90
+  colorNeutralBackground7: '#00000000', // #00000000 undefined
+  colorNeutralBackground7Hover: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralBackground7Pressed: grey[84], // #d6d6d6 Global.Color.Grey.84
+  colorNeutralBackground7Selected: '#00000000', // #00000000 undefined
+  colorNeutralBackground8: grey[99], // #fcfcfc Global.Color.Grey.99
   colorNeutralBackgroundInverted: grey[16], // #292929 Global.Color.Grey.16
+  colorNeutralBackgroundInvertedHover: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralBackgroundInvertedPressed: grey[12], // #1f1f1f Global.Color.Grey.12
+  colorNeutralBackgroundInvertedSelected: grey[22], // #383838 Global.Color.Grey.22
   colorNeutralBackgroundStatic: grey[20], // #333333 Global.Color.Grey.20
   colorNeutralBackgroundAlpha: whiteAlpha[50], // rgba(255, 255, 255, 0.5) Global.Color.WhiteAlpha.50
   colorNeutralBackgroundAlpha2: whiteAlpha[80], // rgba(255, 255, 255, 0.8) Global.Color.WhiteAlpha.80
@@ -101,6 +113,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorTransparentBackgroundPressed: 'transparent', // transparent undefined
   colorTransparentBackgroundSelected: 'transparent', // transparent undefined
   colorNeutralBackgroundDisabled: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralBackgroundDisabled2: white, // #ffffff Global.Color.White
   colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
   colorNeutralStencil1: grey[90], // #e6e6e6 Global.Color.Grey.90
   colorNeutralStencil2: grey[98], // #fafafa Global.Color.Grey.98
@@ -140,6 +153,10 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralStroke1Selected: grey[74], // #bdbdbd Global.Color.Grey.74
   colorNeutralStroke2: grey[88], // #e0e0e0 Global.Color.Grey.88
   colorNeutralStroke3: grey[94], // #f0f0f0 Global.Color.Grey.94
+  colorNeutralStroke4: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralStroke4Hover: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralStroke4Pressed: grey[84], // #d6d6d6 Global.Color.Grey.84
+  colorNeutralStroke4Selected: grey[92], // #ebebeb Global.Color.Grey.92
   colorNeutralStrokeSubtle: grey[88], // #e0e0e0 Global.Color.Grey.88
   colorNeutralStrokeOnBrand: white, // #ffffff Global.Color.White
   colorNeutralStrokeOnBrand2: white, // #ffffff Global.Color.White
@@ -155,6 +172,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorCompoundBrandStrokeHover: brand[70], // #106ebe Global.Color.Brand.70
   colorCompoundBrandStrokePressed: brand[60], // #005a9e Global.Color.Brand.60
   colorNeutralStrokeDisabled: grey[88], // #e0e0e0 Global.Color.Grey.88
+  colorNeutralStrokeDisabled2: grey[92], // #ebebeb Global.Color.Grey.92
   colorNeutralStrokeInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
   colorTransparentStroke: 'transparent', // transparent undefined
   colorTransparentStrokeInteractive: 'transparent', // transparent undefined
