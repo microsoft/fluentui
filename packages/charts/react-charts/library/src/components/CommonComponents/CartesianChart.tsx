@@ -82,7 +82,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
   const classes = useCartesianChartStyles(props);
   const focusAttributes = useFocusableGroup();
-  const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
+  const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
   // ComponentdidMount and Componentwillunmount logic
   React.useEffect(() => {
     _fitParentContainer();

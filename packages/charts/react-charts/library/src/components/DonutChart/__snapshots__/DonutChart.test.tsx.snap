@@ -7,7 +7,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
   >
     <div
       class="fui-donut__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Donut chart example"
@@ -150,7 +150,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -295,7 +295,7 @@ Object {
       >
         <div
           class="fui-donut__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
@@ -473,7 +473,7 @@ Object {
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -710,7 +710,7 @@ Object {
       >
         <div
           class="fui-donut__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
@@ -888,7 +888,7 @@ Object {
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -1119,7 +1119,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1256,7 +1256,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1423,7 +1423,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1590,7 +1590,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1727,7 +1727,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1864,7 +1864,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2011,7 +2011,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2074,7 +2074,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2211,7 +2211,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true,\\"tabbable\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"

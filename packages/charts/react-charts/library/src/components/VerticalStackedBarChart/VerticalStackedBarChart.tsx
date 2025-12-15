@@ -256,16 +256,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _onStackHoverFocus(
     stack: VerticalStackedChartProps,
-    mouseEvent: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement> | SVGGElement,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement> | SVGGElement,
   ): void {
     let clientX = 0;
     let clientY = 0;
-    if ('clientX' in mouseEvent) {
-      clientX = mouseEvent.clientX;
-      clientY = mouseEvent.clientY;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
     } else {
       // Handle React FocusEvent or SVGGElement
-      const element = 'target' in mouseEvent ? (mouseEvent.target as SVGElement) : mouseEvent;
+      const element = 'target' in event ? (event.target as SVGElement) : event;
       const boundingRect = element.getBoundingClientRect();
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;

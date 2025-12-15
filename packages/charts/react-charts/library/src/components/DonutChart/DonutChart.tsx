@@ -308,7 +308,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
-    const focusAttributes = useArrowNavigationGroup({ circular: true, axis: 'both', tabbable: true });
+    const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
@@ -322,7 +322,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             {props.xAxisAnnotation}
           </text>
         )}
-        <div className={classes.chartWrapper} {...focusAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
             <Pie
               width={_width!}
