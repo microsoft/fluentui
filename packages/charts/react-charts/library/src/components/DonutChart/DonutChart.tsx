@@ -11,7 +11,7 @@ import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS } fro
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -308,7 +308,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
-    const focusAttributes = useFocusableGroup();
+    const focusAttributes = useArrowNavigationGroup({ circular: true, axis: 'both', tabbable: true });
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
