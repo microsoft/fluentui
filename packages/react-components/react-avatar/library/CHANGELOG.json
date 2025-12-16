@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Fri, 05 Dec 2025 22:38:43 GMT",
+      "tag": "@fluentui/react-avatar_v9.9.12",
+      "version": "9.9.12",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 19:18:16 GMT",
       "tag": "@fluentui/react-avatar_v9.9.12",
       "version": "9.9.12",

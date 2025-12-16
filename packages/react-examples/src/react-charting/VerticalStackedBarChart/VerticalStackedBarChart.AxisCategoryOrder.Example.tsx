@@ -199,7 +199,7 @@ export class VSBCAxisCategoryOrderExample extends React.Component<{}, IExampleSt
         };
       }
       mapXToDataPoints[xAxisPoint].chartData.push({
-        data: data,
+        data,
         legend: `Legend ${legendIdx + 1}`,
         color: getNextColor(legendIdx),
       });

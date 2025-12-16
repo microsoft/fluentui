@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Tue, 11 Nov 2025 19:18:26 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.6)
+
+Fri, 05 Dec 2025 22:38:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.5..@fluentui/react-menu-grid-preview_v0.2.6)
+
+### Patches
+
+- Use proper property name for MenuGridGroup context ([PR #35521](https://github.com/microsoft/fluentui/pull/35521) by adam.samec@gmail.com)
+- Fix id for MenuGridGroupHeader ([PR #35529](https://github.com/microsoft/fluentui/pull/35529) by adam.samec@gmail.com)
+- Fix MenuGridItem class names and MenuGridGroup class names object name ([PR #35525](https://github.com/microsoft/fluentui/pull/35525) by adam.samec@gmail.com)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.5)
 

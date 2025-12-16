@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 11 Nov 2025 19:18:14 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.7)
+
+Fri, 05 Dec 2025 22:38:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.15.6..@fluentui/react-tree_v9.15.7)
+
+### Patches
+
+- fix: Making TreeItemLayout and TreeItemPersonaLayout render a tree's appearance the same way ([PR #35373](https://github.com/microsoft/fluentui/pull/35373) by 7254163+mindlessroman@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.6)
 

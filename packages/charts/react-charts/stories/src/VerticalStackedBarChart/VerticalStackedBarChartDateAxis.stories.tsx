@@ -164,11 +164,9 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           yAxisTickCount={10}
           tickValues={tickValues}
           tickFormat={timeFormat}
-          // eslint-disable-next-line react/jsx-no-bind
           onBarClick={(event, clickData) => console.log('clicked', event, clickData)}
           yMaxValue={120}
           isCalloutForStack={selectedCallout === 'MultiCallout'}
-          // eslint-disable-next-line react/jsx-no-bind
           yAxisTickFormat={(x: number | string) => `${x} h`}
           margins={{
             bottom: 35,

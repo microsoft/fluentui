@@ -36,7 +36,7 @@ const onRenderPlainCard = (item: IExampleItem): JSXElement => {
 };
 const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
     renderData: item,
   };
   if (column.key === 'color') {

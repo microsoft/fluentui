@@ -340,11 +340,13 @@ describe('transform Plotly Json To chart Props', () => {
     });
 
     expect(domain).toBeDefined();
-    expect(domain?.coordinates?.type).toBe('relative');
-    if (domain?.coordinates?.type === 'relative') {
-      expect(domain.coordinates.x).toBeCloseTo(0.25);
-      expect(domain.coordinates.y).toBeCloseTo(0.2, 5);
-    }
+    expect(domain?.coordinates).toEqual({
+      type: 'mixed',
+      xCoordinateType: 'relative',
+      yCoordinateType: 'data',
+      x: 0.25,
+      y: 18,
+    });
     expect(domain?.style).toEqual({
       textColor: '#222222',
       fontSize: '12px',

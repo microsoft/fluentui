@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by formatting large numbers 1`] = `
 <div

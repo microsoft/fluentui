@@ -2,6 +2,29 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Fri, 05 Dec 2025 22:38:22 GMT",
+      "tag": "@fluentui/react-switch_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "45e4dba95029a017f0820e2fb6826b8e3d4979a0",
+            "comment": "feat: add small variant to the Switch component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 19:18:10 GMT",
       "tag": "@fluentui/react-switch_v9.4.11",
       "version": "9.4.11",

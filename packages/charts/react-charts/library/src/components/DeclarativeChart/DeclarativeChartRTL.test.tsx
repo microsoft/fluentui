@@ -16,6 +16,7 @@ describe.skip('DeclarativeChart', () => {
   );
 
   const originalRAF = window.requestAnimationFrame;
+  const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
   beforeEach(() => {
     resetIdsForTests();
@@ -25,12 +26,22 @@ describe.skip('DeclarativeChart', () => {
       writable: true,
       value: (callback: FrameRequestCallback) => callback(0),
     });
-    window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ width: 600, height: 350 });
+    window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+      bottom: 350,
+      height: 350,
+      left: 0,
+      right: 600,
+      top: 0,
+      width: 600,
+      x: 0,
+      y: 0,
+    } as DOMRect);
   });
 
   afterEach(() => {
     jest.useRealTimers();
     window.requestAnimationFrame = originalRAF;
+    window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   });
 
   test('Should render areachart in DeclarativeChart', () => {

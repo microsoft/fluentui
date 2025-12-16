@@ -1649,6 +1649,7 @@ export interface IScatterChartProps extends ICartesianChartProps {
     data: IChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     styles?: IScatterChartStyles;
 }
 
