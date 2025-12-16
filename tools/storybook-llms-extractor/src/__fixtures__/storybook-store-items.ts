@@ -541,4 +541,122 @@ export const storybookStoreItems: StorybookStoreItem[] = [
       },
     },
   },
+
+  // Component story with react-docgen-typescript format (tsType)
+  // Based on real @fluentui/react-badge component
+  {
+    meta: {
+      id: 'components-badge',
+      title: 'Components/Badge',
+      parameters: {
+        fileName: 'components-badge.tsx',
+        docs: {
+          description: {
+            component: 'A badge is a visual indicator for UI elements.\n',
+          },
+        },
+      },
+      component: {
+        displayName: 'Badge',
+        __docgenInfo: {
+          description: 'A badge is a visual indicator for UI elements.',
+          displayName: 'Badge',
+          props: {
+            appearance: {
+              defaultValue: { value: 'filled' },
+              description: 'A Badge can be filled, outline, ghost, inverted',
+              name: 'appearance',
+              required: false,
+              // react-docgen-typescript format uses tsType instead of type
+              tsType: {
+                name: 'union',
+                raw: '"filled" | "ghost" | "outline" | "tint"',
+                elements: [
+                  { name: 'literal', value: '"filled"' },
+                  { name: 'literal', value: '"ghost"' },
+                  { name: 'literal', value: '"outline"' },
+                  { name: 'literal', value: '"tint"' },
+                ],
+              },
+            },
+            color: {
+              defaultValue: { value: 'brand' },
+              description: 'A Badge can be one of preset colors',
+              name: 'color',
+              required: false,
+              tsType: {
+                name: 'union',
+                raw: '"brand" | "danger" | "important" | "informative" | "severe" | "subtle" | "success" | "warning"',
+                elements: [
+                  { name: 'literal', value: '"brand"' },
+                  { name: 'literal', value: '"danger"' },
+                  { name: 'literal', value: '"important"' },
+                  { name: 'literal', value: '"informative"' },
+                  { name: 'literal', value: '"severe"' },
+                  { name: 'literal', value: '"subtle"' },
+                  { name: 'literal', value: '"success"' },
+                  { name: 'literal', value: '"warning"' },
+                ],
+              },
+            },
+            iconPosition: {
+              defaultValue: { value: 'before' },
+              description: 'A Badge can position the icon before or after the content.',
+              name: 'iconPosition',
+              required: false,
+              tsType: {
+                name: 'union',
+                raw: '"before" | "after"',
+                elements: [{ name: 'literal', value: '"before"' }, { name: 'literal', value: '"after"' }],
+              },
+            },
+            shape: {
+              defaultValue: { value: 'circular' },
+              description: 'A Badge can be square, circular or rounded.',
+              name: 'shape',
+              required: false,
+              tsType: {
+                name: 'union',
+                raw: '"circular" | "rounded" | "square"',
+                elements: [
+                  { name: 'literal', value: '"circular"' },
+                  { name: 'literal', value: '"rounded"' },
+                  { name: 'literal', value: '"square"' },
+                ],
+              },
+            },
+            size: {
+              defaultValue: { value: 'medium' },
+              description: 'A Badge can be on of several preset sizes.',
+              name: 'size',
+              required: false,
+              tsType: {
+                name: 'union',
+                raw: '"tiny" | "extra-small" | "small" | "medium" | "large" | "extra-large"',
+                elements: [
+                  { name: 'literal', value: '"tiny"' },
+                  { name: 'literal', value: '"extra-small"' },
+                  { name: 'literal', value: '"small"' },
+                  { name: 'literal', value: '"medium"' },
+                  { name: 'literal', value: '"large"' },
+                  { name: 'literal', value: '"extra-large"' },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+    stories: {
+      'components-badge--default': {
+        id: 'components-badge--default',
+        name: 'Default',
+        parameters: {
+          docs: {},
+          fullSource:
+            'import * as React from "react";\nimport { Badge } from "@fluentui/react-components";\n\nexport const Default = () => <Badge>999+</Badge>;\n',
+        },
+      },
+    },
+  },
 ];

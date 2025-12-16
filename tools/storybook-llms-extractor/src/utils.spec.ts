@@ -170,6 +170,40 @@ describe('generate-llms-docs', () => {
       `);
     });
 
+    it('should generate full file content from component story with react-docgen-typescript (tsType)', () => {
+      const content = generateFullFileContentFromStory(storybookStoreItems[3]);
+      expect(content.join('\n')).toMatchInlineSnapshot(`
+        "# Components/Badge
+
+        A badge is a visual indicator for UI elements.
+
+
+        ## Props
+
+
+        | Name | Type | Required | Default | Description |
+        |------|------|----------|---------|-------------|
+        | \`appearance\` | \`\\"filled\\" \\\\| \\"ghost\\" \\\\| \\"outline\\" \\\\| \\"tint\\"\` | No | filled | A Badge can be filled, outline, ghost, inverted |
+        | \`color\` | \`\\"brand\\" \\\\| \\"danger\\" \\\\| \\"important\\" \\\\| \\"informative\\" \\\\| \\"severe\\" \\\\| \\"subtle\\" \\\\| \\"success\\" \\\\| \\"warning\\"\` | No | brand | A Badge can be one of preset colors |
+        | \`iconPosition\` | \`\\"before\\" \\\\| \\"after\\"\` | No | before | A Badge can position the icon before or after the content. |
+        | \`shape\` | \`\\"circular\\" \\\\| \\"rounded\\" \\\\| \\"square\\"\` | No | circular | A Badge can be square, circular or rounded. |
+        | \`size\` | \`\\"tiny\\" \\\\| \\"extra-small\\" \\\\| \\"small\\" \\\\| \\"medium\\" \\\\| \\"large\\" \\\\| \\"extra-large\\"\` | No | medium | A Badge can be on of several preset sizes. |
+
+
+        ## Examples
+
+
+        ### Default
+
+        \`\`\`tsx
+        import * as React from \\"react\\";
+        import { Badge } from \\"@fluentui/react-components\\";
+
+        export const Default = () => <Badge>999+</Badge>;
+        \`\`\`"
+      `);
+    });
+
     it('should generate full file content from component story', () => {
       const content = generateFullFileContentFromStory(storybookStoreItems[2]);
       expect(content.join('\n')).toMatchInlineSnapshot(`
@@ -222,9 +256,9 @@ describe('generate-llms-docs', () => {
 
         | Name | Type | Required | Default | Description |
         |------|------|----------|---------|-------------|
-        | \`button\` | \`NonNullable<WithSlotShorthandValue<ARIAButtonSlotProps<\\"a\\">> | null>\` | No |  | The component to be used as button in heading |
-        | \`expandIcon\` | \`WithSlotShorthandValue<{ as?: \\"span\\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \\"ref\\"> & { ...; }, \\"children\\"> & { ...; }> | null\` | No |  | Expand icon slot rendered before (or after) children content in heading. |
-        | \`icon\` | \`WithSlotShorthandValue<{ as?: \\"div\\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \\"ref\\"> & { ...; }, \\"children\\"> & { ...; }> | null\` | No |  | Expand icon slot rendered before (or after) children content in heading. |
+        | \`button\` | \`NonNullable<WithSlotShorthandValue<ARIAButtonSlotProps<\\"a\\">> \\\\| null>\` | No |  | The component to be used as button in heading |
+        | \`expandIcon\` | \`WithSlotShorthandValue<{ as?: \\"span\\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \\"ref\\"> & { ...; }, \\"children\\"> & { ...; }> \\\\| null\` | No |  | Expand icon slot rendered before (or after) children content in heading. |
+        | \`icon\` | \`WithSlotShorthandValue<{ as?: \\"div\\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \\"ref\\"> & { ...; }, \\"children\\"> & { ...; }> \\\\| null\` | No |  | Expand icon slot rendered before (or after) children content in heading. |
         | \`as\` | \`\\"div\\" \\"h1\\" \\"h2\\" \\"h3\\" \\"h4\\" \\"h5\\" \\"h6\\"\` | No |  |  |
         | \`expandIconPosition\` | \`\\"start\\" \\"end\\"\` | No |  | The position of the expand  icon slot in heading. |
         | \`inline\` | \`boolean\` | No |  | Indicates if the AccordionHeader should be rendered inline. |
@@ -242,7 +276,7 @@ describe('generate-llms-docs', () => {
 
         | Name | Type | Required | Default | Description |
         |------|------|----------|---------|-------------|
-        | \`collapseMotion\` | \`PresenceMotionSlotProps | null\` | No |  |  |
+        | \`collapseMotion\` | \`PresenceMotionSlotProps \\\\| null\` | No |  |  |
         | \`as\` | \`\\"div\\"\` | No |  |  |
         | \`ref\` | \`Ref<HTMLDivElement>\` | No |  |  |
 
@@ -780,6 +814,7 @@ describe('generate-llms-docs', () => {
         - [Concepts/Introduction](https://react.fluentui.dev/llms/concepts-introduction.txt)
         - [Concepts/Developer/Quick Start](https://react.fluentui.dev/llms/concepts-developer-quick-start.txt)
         - [Components/Accordion](https://react.fluentui.dev/llms/components-accordion.txt): An accordion allows users to toggle the display of content by expanding or collapsing sections.
+        - [Components/Badge](https://react.fluentui.dev/llms/components-badge.txt): A badge is a visual indicator for UI elements.
 
         ## Optional
 

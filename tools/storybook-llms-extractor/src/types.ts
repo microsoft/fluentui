@@ -94,6 +94,24 @@ export type StorybookComponent = {
 };
 
 /**
+ * Prop type information from react-docgen
+ */
+export type DocgenPropType = {
+  name?: string;
+  value?: { value: string }[];
+};
+
+/**
+ * Prop type information from react-docgen-typescript
+ * @see https://github.com/styleguidist/react-docgen-typescript
+ */
+export type DocgenTypescriptPropType = {
+  name?: string;
+  raw?: string;
+  elements?: DocgenTypescriptPropType[];
+};
+
+/**
  * Storybook component prop metadata, contains prop name, description, type, etc.
  */
 export type StorybookComponentProp = {
@@ -101,10 +119,14 @@ export type StorybookComponentProp = {
   description?: string;
   name: string;
   required?: boolean;
-  type?: {
-    name?: string;
-    value?: { value: string }[];
-  };
+  /**
+   * Type information from react-docgen
+   */
+  type?: DocgenPropType;
+  /**
+   * Type information from react-docgen-typescript
+   */
+  tsType?: DocgenTypescriptPropType;
 };
 
 /**

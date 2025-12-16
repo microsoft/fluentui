@@ -462,9 +462,9 @@ export function generateFullFileContentFromStory(item: StorybookStoreItem) {
 }
 
 /**
- * Converts a docgen type object to a readable string for markdown tables.
+ * Converts a react-docgen type object to a readable string for markdown tables.
  */
-function stringifyPropType(type: StorybookComponentProp['type']): string {
+function stringifyDocgenType(type: StorybookComponentProp['type']): string {
   if (!type) {
     return '';
   }
@@ -480,7 +480,7 @@ function stringifyPropType(type: StorybookComponentProp['type']): string {
       return type.value.map(v => (typeof v.value === 'string' ? v.value : JSON.stringify(v.value))).join(' ');
     }
     if (type.name === 'array' && type.value) {
-      return `${stringifyPropType(type.value as StorybookComponentProp['type'])}[]`;
+      return `${stringifyDocgenType(type.value as StorybookComponentProp['type'])}[]`;
     }
     if (type.name === 'signature' && type.value?.[0]?.value === 'function') {
       // Function signature
@@ -492,6 +492,53 @@ function stringifyPropType(type: StorybookComponentProp['type']): string {
 }
 
 /**
+ * Converts a react-docgen-typescript tsType object to a readable string for markdown tables.
+ */
+function stringifyDocgenTypescriptType(tsType: StorybookComponentProp['tsType']): string {
+  if (!tsType) {
+    return '';
+  }
+
+  if (typeof tsType === 'string') {
+    return tsType;
+  }
+
+  if (typeof tsType === 'object' && tsType !== null && 'name' in tsType) {
+    // For union types, prefer the raw string representation if available
+    if (tsType.name === 'union' && tsType.raw) {
+      return tsType.raw;
+    }
+
+    // For other complex types with raw, use raw
+    if (tsType.raw && tsType.name !== tsType.raw) {
+      return tsType.raw;
+    }
+
+    if (typeof tsType.name === 'string') {
+      return tsType.name;
+    }
+  }
+
+  return JSON.stringify(tsType);
+}
+
+/**
+ * Converts a docgen type object to a readable string for markdown tables.
+ * Supports both react-docgen (type) and react-docgen-typescript (tsType) formats.
+ */
+function stringifyPropType(prop: StorybookComponentProp): string {
+  if (prop.type) {
+    return stringifyDocgenType(prop.type);
+  }
+
+  if (prop.tsType) {
+    return stringifyDocgenTypescriptType(prop.tsType);
+  }
+
+  return '';
+}
+
+/**
  * Extracts the description from a storybook story.
  */
 function extractStoryDescription(story: StorybookStoreItem) {
@@ -500,6 +547,7 @@ function extractStoryDescription(story: StorybookStoreItem) {
 
 /**
  * Extracts the props from a storybook story.
+ * Supports both react-docgen (type) and react-docgen-typescript (tsType) formats.
  */
 function extractComponentProps(component?: StorybookComponent) {
   const docgen = component?.__docgenInfo;
@@ -514,12 +562,21 @@ function extractComponentProps(component?: StorybookComponent) {
     props.push({
       name,
       description: arg.description || '',
+      // Support both react-docgen (type) and react-docgen-typescript (tsType)
       type: arg.type,
+      tsType: arg.tsType,
       defaultValue: typeof arg.defaultValue === 'string' ? arg.defaultValue : arg.defaultValue?.value || '',
       required: arg.required,
     });
   }
   return props;
+}
+
+/**
+ * Escapes pipe characters in markdown table cells to prevent breaking the table structure.
+ */
+function escapeMarkdownTableCell(value: string): string {
+  return value.replace(/\|/g, '\\|');
 }
 
 function generateComponentPropsTable(props: StorybookComponentProp[]): string[] {
@@ -536,10 +593,10 @@ function generateComponentPropsTable(props: StorybookComponentProp[]): string[] 
     content.push(
       `| ${[
         `\`${prop.name}\``,
-        `\`${stringifyPropType(prop.type)}\``,
+        `\`${escapeMarkdownTableCell(stringifyPropType(prop))}\``,
         prop.required ? 'Yes' : 'No',
-        prop.defaultValue ?? '',
-        prop.description?.replace(/\n/g, ' ') ?? '',
+        escapeMarkdownTableCell(prop.defaultValue ?? ''),
+        escapeMarkdownTableCell(prop.description?.replace(/\n/g, ' ') ?? ''),
       ].join(' | ')} |`,
     );
   }
