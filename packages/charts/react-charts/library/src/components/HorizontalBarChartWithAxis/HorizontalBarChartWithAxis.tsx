@@ -17,6 +17,7 @@ import {
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 import { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
+import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import {
   ChartTypes,
@@ -41,6 +42,7 @@ import {
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
+  formatScientificLimitWidth,
 } from '../../utilities/index';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 import { useImageExport } from '../../utilities/hooks';
@@ -76,6 +78,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _yAxisPadding: number = props.yAxisPadding ?? 0.5;
   const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
+  const styles = useHorizontalBarChartWithAxisStyles(props);
   const X_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
@@ -415,6 +418,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       }
       prevPoint = point.x;
 
+      const barEndX = xStart + (currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR));
+      const isPositiveBar = point.x >= X_ORIGIN;
+
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           <rect
@@ -440,6 +446,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             opacity={shouldHighlight ? 1 : 0.1}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
+          {_renderBarLabel(barEndX, yBarScale(point.y) - _barHeight / 2, point, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -579,6 +586,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       } else {
         xStart = point.x > X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
+
+      const barEndX = xStart + (currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR));
+      const isPositiveBar = point.x >= X_ORIGIN;
+      const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - _barHeight);
+
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           <rect
@@ -605,6 +617,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             fill={startColor}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
+          {_renderBarLabel(barEndX, yPosition, point, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -684,6 +697,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return selectedLegends.length > 0 ? selectedLegends : selectedLegendTitle ? [selectedLegendTitle] : [];
   }
 
+  function _noLegendHighlighted() {
+    return selectedLegends.length === 0 && selectedLegendTitle === '';
+  }
+
   function _onLegendSelectionChange(
     // eslint-disable-next-line @typescript-eslint/no-shadow
     selectedLegends: string[],
@@ -714,6 +731,33 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const xValue = point.xAxisCalloutData || point.x;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
+  }
+
+  function _renderBarLabel(
+    xEnd: number,
+    yPosition: number,
+    point: HorizontalBarChartWithAxisDataPoint,
+    isRightAligned: boolean,
+  ): JSXElement | null {
+    if (props.hideLabels || _barHeight < 16 || !(_isLegendHighlighted(point.legend) || _noLegendHighlighted())) {
+      return null;
+    }
+
+    const labelX = isRightAligned ? xEnd + 6 : xEnd - 6;
+    // Use barLabel if available, otherwise fall back to x value
+    const displayValue = point.barLabel ? parseFloat(point.barLabel) : point.x;
+    return (
+      <text
+        x={labelX}
+        y={yPosition + _barHeight / 2}
+        textAnchor={isRightAligned ? 'start' : 'end'}
+        dominantBaseline="central"
+        className={styles.barLabel}
+        aria-hidden={true}
+      >
+        {formatScientificLimitWidth(displayValue)}
+      </text>
+    );
   }
 
   function _getChartTitle(): string {
