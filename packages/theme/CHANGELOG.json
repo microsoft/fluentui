@@ -2,6 +2,35 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:03 GMT",
+      "tag": "@fluentui/theme_v2.7.2",
+      "version": "2.7.2",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/theme",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/theme",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.17.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:28 GMT",
       "tag": "@fluentui/theme_v2.7.1",
       "version": "2.7.1",

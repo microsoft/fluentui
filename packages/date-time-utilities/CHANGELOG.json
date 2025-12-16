@@ -2,6 +2,27 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:47 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.6.11",
+      "version": "8.6.11",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Oct 2025 07:21:57 GMT",
       "tag": "@fluentui/date-time-utilities_v8.6.11",
       "version": "8.6.11",

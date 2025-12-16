@@ -5,6 +5,7 @@ import type { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
   activeIndex: 0,
+  appearance: 'flat',
   selectPageByElement: () => {
     return 0;
   },

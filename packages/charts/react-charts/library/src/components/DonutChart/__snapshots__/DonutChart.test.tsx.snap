@@ -11,22 +11,22 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     >
       <div
         class="fui-donut__plotContainer"
-        style="width: 200px; height: 160px;"
+        style="width: 200px; height: 200px;"
       >
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="200"
           width="200"
         >
           <g
-            transform="translate(100, 80)"
+            transform="translate(100, 100)"
           >
             <g>
               <path
                 aria-label="2020/04/30, 20000."
                 class="fui-donut-arc__root"
-                d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
+                d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                 id="_Pie__r_0_first20000"
                 opacity="1"
                 role="img"
@@ -38,7 +38,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               <path
                 aria-label="2020/04/20, 39000."
                 class="fui-donut-arc__root"
-                d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
+                d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                 id="_Pie__r_0_second39000"
                 opacity="1"
                 role="img"
@@ -50,7 +50,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               <path
                 aria-label="2020/04/25, 45000."
                 class="fui-donut-arc__root"
-                d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
+                d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                 id="_Pie__r_0_third45000"
                 opacity="1"
                 role="img"
@@ -64,7 +64,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_1_"
+      id="callout_r_2_"
     />
     <div
       class="fui-donut__legendContainer"
@@ -147,7 +147,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_19_"
+    class="fui-FluentProvider fui-FluentProvider_r_1o_"
     dir="ltr"
   >
     <div
@@ -159,23 +159,23 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       >
         <div
           class="fui-donut__plotContainer"
-          style="width: 200px; height: 160px;"
+          style="width: 200px; height: 200px;"
         >
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="200"
             width="200"
           >
             <g
-              transform="translate(100, 80)"
+              transform="translate(100, 100)"
             >
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-                  id="_Pie__r_1a_first20000"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+                  id="_Pie__r_1p_first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -186,8 +186,8 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-                  id="_Pie__r_1a_second39000"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+                  id="_Pie__r_1p_second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -198,8 +198,8 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-                  id="_Pie__r_1a_third45000"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+                  id="_Pie__r_1p_third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -212,7 +212,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_1b_"
+        id="callout_r_1r_"
       />
       <div
         class="fui-donut__legendContainer"
@@ -309,23 +309,23 @@ Object {
         >
           <div
             class="fui-donut__plotContainer"
-            style="width: 200px; height: 160px;"
+            style="width: 200px; height: 200px;"
           >
             <svg
               aria-label="Donut chart example"
               class="fui-donut__chart"
-              height="160"
+              height="200"
               width="200"
             >
               <g
-                transform="translate(100, 80)"
+                transform="translate(100, 100)"
               >
                 <g>
                   <path
                     aria-label="2020/04/30, 20000."
                     class="fui-donut-arc__root"
-                    d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-                    id="_Pie__r_2o_first20000"
+                    d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+                    id="_Pie__r_3n_first20000"
                     opacity="1"
                     role="img"
                     style="fill: #E5E5E5; cursor: default;"
@@ -336,8 +336,8 @@ Object {
                   <path
                     aria-label="2020/04/20, 39000."
                     class="fui-donut-arc__root"
-                    d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-                    id="_Pie__r_2o_second39000"
+                    d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+                    id="_Pie__r_3n_second39000"
                     opacity="1"
                     role="img"
                     style="fill: #0078D4; cursor: default;"
@@ -348,8 +348,8 @@ Object {
                   <path
                     aria-label="2020/04/25, 45000."
                     class="fui-donut-arc__root"
-                    d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-                    id="_Pie__r_2o_third45000"
+                    d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+                    id="_Pie__r_3n_third45000"
                     opacity="1"
                     role="img"
                     style="fill: #DADADA; cursor: default;"
@@ -362,7 +362,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_2p_"
+          id="callout_r_3p_"
         >
           <div
             class="fui-PopoverSurface"
@@ -492,23 +492,23 @@ Object {
       >
         <div
           class="fui-donut__plotContainer"
-          style="width: 200px; height: 160px;"
+          style="width: 200px; height: 200px;"
         >
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="200"
             width="200"
           >
             <g
-              transform="translate(100, 80)"
+              transform="translate(100, 100)"
             >
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-                  id="_Pie__r_2o_first20000"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+                  id="_Pie__r_3n_first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -519,8 +519,8 @@ Object {
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-                  id="_Pie__r_2o_second39000"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+                  id="_Pie__r_3n_second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -531,8 +531,8 @@ Object {
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-                  id="_Pie__r_2o_third45000"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+                  id="_Pie__r_3n_third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -545,7 +545,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_2p_"
+        id="callout_r_3p_"
       >
         <div
           class="fui-PopoverSurface"
@@ -734,23 +734,23 @@ Object {
         >
           <div
             class="fui-donut__plotContainer"
-            style="width: 200px; height: 160px;"
+            style="width: 200px; height: 200px;"
           >
             <svg
               aria-label="Donut chart example"
               class="fui-donut__chart"
-              height="160"
+              height="200"
               width="200"
             >
               <g
-                transform="translate(100, 80)"
+                transform="translate(100, 100)"
               >
                 <g>
                   <path
                     aria-label="2020/04/30, 20000."
                     class="fui-donut-arc__root"
-                    d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-                    id="_Pie__r_31_first20000"
+                    d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+                    id="_Pie__r_42_first20000"
                     opacity="1"
                     role="img"
                     style="fill: #E5E5E5; cursor: default;"
@@ -761,8 +761,8 @@ Object {
                   <path
                     aria-label="2020/04/20, 39000."
                     class="fui-donut-arc__root"
-                    d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-                    id="_Pie__r_31_second39000"
+                    d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+                    id="_Pie__r_42_second39000"
                     opacity="1"
                     role="img"
                     style="fill: #0078D4; cursor: default;"
@@ -773,8 +773,8 @@ Object {
                   <path
                     aria-label="2020/04/25, 45000."
                     class="fui-donut-arc__root"
-                    d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-                    id="_Pie__r_31_third45000"
+                    d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+                    id="_Pie__r_42_third45000"
                     opacity="1"
                     role="img"
                     style="fill: #DADADA; cursor: default;"
@@ -787,7 +787,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_32_"
+          id="callout_r_44_"
         >
           <div
             class="fui-PopoverSurface"
@@ -917,23 +917,23 @@ Object {
       >
         <div
           class="fui-donut__plotContainer"
-          style="width: 200px; height: 160px;"
+          style="width: 200px; height: 200px;"
         >
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="200"
             width="200"
           >
             <g
-              transform="translate(100, 80)"
+              transform="translate(100, 100)"
             >
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-                  id="_Pie__r_31_first20000"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+                  id="_Pie__r_42_first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -944,8 +944,8 @@ Object {
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-                  id="_Pie__r_31_second39000"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+                  id="_Pie__r_42_second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -956,8 +956,8 @@ Object {
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-                  id="_Pie__r_31_third45000"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+                  id="_Pie__r_42_third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -970,7 +970,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_32_"
+        id="callout_r_44_"
       >
         <div
           class="fui-PopoverSurface"
@@ -1153,23 +1153,23 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.8,-79.996A80,80,0,0,1,74.758,-28.483L0,0Z"
-              id="_Pie__r_26_first20000"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              id="_Pie__r_2v_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -1180,8 +1180,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.312,-26.983A80,80,0,0,1,-32.538,73.084L0,0Z"
-              id="_Pie__r_26_second39000"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              id="_Pie__r_2v_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -1192,8 +1192,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-33.993,72.419A80,80,0,0,1,-0.8,-79.996L0,0Z"
-              id="_Pie__r_26_third45000"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              id="_Pie__r_2v_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -1206,7 +1206,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_27_"
+    id="callout_r_31_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1295,23 +1295,23 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
-              id="_Pie__r_20_first20000"
+              id="_Pie__r_2n_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -1333,7 +1333,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
-              id="_Pie__r_20_second39000"
+              id="_Pie__r_2n_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -1355,7 +1355,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
-              id="_Pie__r_20_third45000"
+              id="_Pie__r_2n_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -1378,7 +1378,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_21_"
+    id="callout_r_2p_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1467,23 +1467,23 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
-              id="_Pie__r_23_first20000"
+              id="_Pie__r_2r_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -1505,7 +1505,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
-              id="_Pie__r_23_second39000"
+              id="_Pie__r_2r_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -1527,7 +1527,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
-              id="_Pie__r_23_third45000"
+              id="_Pie__r_2r_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -1550,7 +1550,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_24_"
+    id="callout_r_2t_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1639,23 +1639,23 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.971,-79.994A80,80,0,0,1,74.697,-28.643L51.244,-19.975A55,55,0,0,0,0.971,-54.991Z"
-              id="_Pie__r_1g_first20000"
+              d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+              id="_Pie__r_21_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -1666,8 +1666,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.37,-26.822A80,80,0,0,1,-32.382,73.153L-21.985,50.415A55,55,0,0,0,51.918,-18.154Z"
-              id="_Pie__r_1g_second39000"
+              d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+              id="_Pie__r_21_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -1678,8 +1678,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.148,72.346A80,80,0,0,1,-0.971,-79.994L-0.971,-54.991A55,55,0,0,0,-23.751,49.608Z"
-              id="_Pie__r_1g_third45000"
+              d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+              id="_Pie__r_21_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -1692,7 +1692,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1h_"
+    id="callout_r_23_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1781,23 +1781,23 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.8,-79.996A80,80,0,0,1,74.758,-28.483L0,0Z"
-              id="_Pie__r_1j_first20000"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              id="_Pie__r_25_first20000"
               opacity="1"
               role="img"
               style="fill: #637cef; cursor: default;"
@@ -1808,8 +1808,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.312,-26.983A80,80,0,0,1,-32.538,73.084L0,0Z"
-              id="_Pie__r_1j_second39000"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              id="_Pie__r_25_second39000"
               opacity="1"
               role="img"
               style="fill: #e3008c; cursor: default;"
@@ -1820,8 +1820,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-33.993,72.419A80,80,0,0,1,-0.8,-79.996L0,0Z"
-              id="_Pie__r_1j_third45000"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              id="_Pie__r_25_third45000"
               opacity="1"
               role="img"
               style="fill: #2aa0a4; cursor: default;"
@@ -1834,7 +1834,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1k_"
+    id="callout_r_27_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1923,23 +1923,23 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.8,-79.996A80,80,0,0,1,74.758,-28.483L0,0Z"
-              id="_Pie__r_1r_first20000"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              id="_Pie__r_2g_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -1950,8 +1950,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.312,-26.983A80,80,0,0,1,-32.538,73.084L0,0Z"
-              id="_Pie__r_1r_second39000"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              id="_Pie__r_2g_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -1962,8 +1962,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-33.993,72.419A80,80,0,0,1,-0.8,-79.996L0,0Z"
-              id="_Pie__r_1r_third45000"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              id="_Pie__r_2g_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -1976,7 +1976,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1s_"
+    id="callout_r_2i_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2091,7 +2091,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              id="_Pie__r_1m_first20000"
+              id="_Pie__r_29_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -2103,7 +2103,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              id="_Pie__r_1m_second39000"
+              id="_Pie__r_29_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -2115,7 +2115,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              id="_Pie__r_1m_third45000"
+              id="_Pie__r_29_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -2128,7 +2128,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1n_"
+    id="callout_r_2b_"
   />
 </div>
 `;
@@ -2143,23 +2143,23 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.8,-79.996A80,80,0,0,1,74.758,-28.483L0,0Z"
-              id="_Pie__r_1o_first20000"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              id="_Pie__r_2c_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -2170,8 +2170,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.312,-26.983A80,80,0,0,1,-32.538,73.084L0,0Z"
-              id="_Pie__r_1o_second39000"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              id="_Pie__r_2c_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -2182,8 +2182,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-33.993,72.419A80,80,0,0,1,-0.8,-79.996L0,0Z"
-              id="_Pie__r_1o_third45000"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              id="_Pie__r_2c_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -2196,7 +2196,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1p_"
+    id="callout_r_2e_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2285,23 +2285,23 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   >
     <div
       class="fui-donut__plotContainer"
-      style="width: 200px; height: 160px;"
+      style="width: 200px; height: 200px;"
     >
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="200"
         width="200"
       >
         <g
-          transform="translate(100, 80)"
+          transform="translate(100, 100)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.8,-79.996A80,80,0,0,1,74.758,-28.483L0,0Z"
-              id="_Pie__r_1t_first20000"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              id="_Pie__r_2j_first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
@@ -2312,8 +2312,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M75.312,-26.983A80,80,0,0,1,-32.538,73.084L0,0Z"
-              id="_Pie__r_1t_second39000"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              id="_Pie__r_2j_second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
@@ -2324,8 +2324,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-33.993,72.419A80,80,0,0,1,-0.8,-79.996L0,0Z"
-              id="_Pie__r_1t_third45000"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              id="_Pie__r_2j_third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
@@ -2338,7 +2338,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_1u_"
+    id="callout_r_2l_"
   />
   <div
     class="fui-donut__legendContainer"

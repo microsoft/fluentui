@@ -35,11 +35,6 @@ const CONNECTOR_START_RATIO = 0.4;
 const MAX_SIMPLE_MARKUP_DEPTH = 5;
 const CHAR_CODE_LESS_THAN = '<'.codePointAt(0)!;
 const CHAR_CODE_GREATER_THAN = '>'.codePointAt(0)!;
-const getAnnotationKey = (annotation: ChartAnnotation, index: number) =>
-  annotation.id ??
-  (typeof annotation.text === 'string' || typeof annotation.text === 'number' ? String(annotation.text) : undefined) ??
-  `annotation-${index}`;
-
 type SimpleMarkupNode =
   | { type: 'text'; content: string }
   | { type: 'br' }
@@ -263,6 +258,58 @@ const normalizeBandOffset = (
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
+type AxisCoordinateType = 'data' | 'relative' | 'pixel';
+
+const resolveDataCoordinate = (
+  axis: 'x' | 'y',
+  value: number | string | Date,
+  context: ChartAnnotationContext,
+  yAxis: 'primary' | 'secondary' = 'primary',
+): number | undefined => {
+  if (axis === 'x') {
+    const xScale = context.xScale;
+    if (!xScale) {
+      return undefined;
+    }
+    const parsedValue = value instanceof Date ? value.getTime() : value;
+    return normalizeBandOffset(xScale, parsedValue);
+  }
+
+  const yScale = yAxis === 'secondary' ? context.yScaleSecondary : context.yScalePrimary;
+  if (!yScale) {
+    return undefined;
+  }
+  const parsedValue = value instanceof Date ? value.getTime() : value;
+  return normalizeBandOffset(yScale, parsedValue);
+};
+
+const resolveAxisCoordinate = (
+  axis: 'x' | 'y',
+  coordinateType: AxisCoordinateType,
+  value: number | string | Date,
+  context: ChartAnnotationContext,
+  options: { yAxis?: 'primary' | 'secondary' } = {},
+): number | undefined => {
+  switch (coordinateType) {
+    case 'data':
+      return resolveDataCoordinate(axis, value, context, options.yAxis);
+    case 'relative':
+      if (typeof value !== 'number' || Number.isNaN(value)) {
+        return undefined;
+      }
+      return axis === 'x'
+        ? context.plotRect.x + context.plotRect.width * value
+        : context.plotRect.y + context.plotRect.height * value;
+    case 'pixel':
+      if (typeof value !== 'number' || Number.isNaN(value)) {
+        return undefined;
+      }
+      return axis === 'x' ? context.plotRect.x + value : context.plotRect.y + value;
+    default:
+      return undefined;
+  }
+};
+
 const createMeasurementSignature = (
   annotationContentSignature: string,
   containerStyle: React.CSSProperties,
@@ -280,6 +327,31 @@ const createMeasurementSignature = (
 
 type MeasurementEntry = { width: number; height: number; signature: string };
 
+type CoordinateDescriptor = {
+  xType: AxisCoordinateType;
+  yType: AxisCoordinateType;
+  yAxis?: 'primary' | 'secondary';
+};
+
+const getCoordinateDescriptor = (coordinates: ChartAnnotation['coordinates']): CoordinateDescriptor | undefined => {
+  switch (coordinates.type) {
+    case 'data':
+      return { xType: 'data', yType: 'data', yAxis: coordinates.yAxis };
+    case 'relative':
+      return { xType: 'relative', yType: 'relative' };
+    case 'pixel':
+      return { xType: 'pixel', yType: 'pixel' };
+    case 'mixed':
+      return {
+        xType: coordinates.xCoordinateType,
+        yType: coordinates.yCoordinateType,
+        yAxis: coordinates.yAxis,
+      };
+    default:
+      return undefined;
+  }
+};
+
 const resolveCoordinates = (
   annotation: ChartAnnotation,
   context: ChartAnnotationContext,
@@ -290,76 +362,24 @@ const resolveCoordinates = (
     return undefined;
   }
 
+  const descriptor = getCoordinateDescriptor(coordinates);
+  if (!descriptor) {
+    return undefined;
+  }
+
   const offsetX = layout?.offsetX ?? 0;
   const offsetY = layout?.offsetY ?? 0;
 
-  const anchor: AnnotationPoint = { x: 0, y: 0 };
+  const anchorX = resolveAxisCoordinate('x', descriptor.xType, coordinates.x, context);
+  const anchorY = resolveAxisCoordinate('y', descriptor.yType, coordinates.y, context, {
+    yAxis: descriptor.yAxis,
+  });
 
-  switch (coordinates.type) {
-    case 'data': {
-      const { x, y, yAxis = 'primary' } = coordinates;
-      const xScale = context.xScale;
-      const yScale = yAxis === 'secondary' ? context.yScaleSecondary : context.yScalePrimary;
-      if (!xScale || !yScale) {
-        return undefined;
-      }
-      const xValue = normalizeBandOffset(xScale, x instanceof Date ? x.getTime() : x);
-      const yValue = normalizeBandOffset(yScale, y instanceof Date ? y.getTime() : y);
-      if (typeof xValue !== 'number' || typeof yValue !== 'number') {
-        return undefined;
-      }
-      anchor.x = xValue;
-      anchor.y = yValue;
-      break;
-    }
-    case 'relative': {
-      if (typeof coordinates.x !== 'number' || typeof coordinates.y !== 'number') {
-        return undefined;
-      }
-      const useViewportSpace = layout?.clipToBounds === false;
-      if (useViewportSpace) {
-        const svgWidth = context.svgRect.width;
-        const svgHeight = context.svgRect.height;
-        if (!Number.isFinite(svgWidth) || !Number.isFinite(svgHeight)) {
-          return undefined;
-        }
-        const padding = context.viewportPadding;
-        const paddingLeft =
-          typeof padding?.left === 'number' && Number.isFinite(padding.left) && padding.left > 0 ? padding.left : 0;
-        const paddingRight =
-          typeof padding?.right === 'number' && Number.isFinite(padding.right) && padding.right > 0 ? padding.right : 0;
-        const paddingTop =
-          typeof padding?.top === 'number' && Number.isFinite(padding.top) && padding.top > 0 ? padding.top : 0;
-        const paddingBottom =
-          typeof padding?.bottom === 'number' && Number.isFinite(padding.bottom) && padding.bottom > 0
-            ? padding.bottom
-            : 0;
-
-        const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
-        const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
-
-        const resolvedX = paddingLeft + coordinates.x * (effectiveWidth > 0 ? effectiveWidth : 0);
-        const resolvedY = paddingTop + coordinates.y * (effectiveHeight > 0 ? effectiveHeight : 0);
-
-        anchor.x = Number.isFinite(resolvedX) ? resolvedX : paddingLeft + effectiveWidth / 2;
-        anchor.y = Number.isFinite(resolvedY) ? resolvedY : paddingTop + effectiveHeight / 2;
-      } else {
-        anchor.x = context.plotRect.x + context.plotRect.width * coordinates.x;
-        anchor.y = context.plotRect.y + context.plotRect.height * coordinates.y;
-      }
-      break;
-    }
-    case 'pixel': {
-      if (typeof coordinates.x !== 'number' || typeof coordinates.y !== 'number') {
-        return undefined;
-      }
-      anchor.x = context.plotRect.x + coordinates.x;
-      anchor.y = context.plotRect.y + coordinates.y;
-      break;
-    }
-    default:
-      return undefined;
+  if (anchorX === undefined || anchorY === undefined) {
+    return undefined;
   }
+
+  const anchor: AnnotationPoint = { x: anchorX, y: anchorY };
 
   let left = anchor.x + offsetX;
   let top = anchor.y + offsetY;
@@ -380,14 +400,17 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
 
   const classes = useChartAnnotationLayerStyles(props);
   const idPrefix = useId('chart-annotation');
+  const autoKeyPrefix = useId('chart-annotation-item');
 
   const [measurements, setMeasurements] = React.useState<Record<string, MeasurementEntry>>({});
 
-  const resolvedAnnotations = React.useMemo(
-    () =>
-      (annotationsProp ?? []).map((annotation, index) => ({ annotation, key: getAnnotationKey(annotation, index) })),
-    [annotationsProp],
-  );
+  const resolvedAnnotations = React.useMemo(() => {
+    let fallbackIndex = 0;
+    return (annotationsProp ?? []).map(annotation => ({
+      annotation,
+      key: annotation.id ?? `${autoKeyPrefix}-${fallbackIndex++}`,
+    }));
+  }, [annotationsProp, autoKeyPrefix]);
 
   React.useEffect(() => {
     setMeasurements(prev => {

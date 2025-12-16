@@ -28,7 +28,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
@@ -44,7 +44,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'Highlight',
         },
@@ -67,7 +67,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
@@ -93,7 +93,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
@@ -105,7 +105,7 @@ const useRootStyles = makeStyles({
           color: 'Canvas',
         },
       },
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'Canvas',
         },
@@ -123,7 +123,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -162,7 +162,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
@@ -182,7 +182,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'GrayText',
         },

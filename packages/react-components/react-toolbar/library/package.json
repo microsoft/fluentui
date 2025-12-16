@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.6.12",
+  "version": "9.6.13",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,8 +20,8 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.6.12",
-    "@fluentui/react-divider": "^9.4.11",
+    "@fluentui/react-button": "^9.7.0",
+    "@fluentui/react-divider": "^9.5.0",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.25.4",
     "@fluentui/react-jsx-runtime": "^9.3.3",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 11 Nov 2025 19:18:17 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.7.0)
+
+Fri, 05 Dec 2025 22:38:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.6.12..@fluentui/react-button_v9.7.0)
+
+### Minor changes
+
+- feat: introduce headless style hooks for button components ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: update active state styles to include keyboard press events ([PR #35514](https://github.com/microsoft/fluentui/pull/35514) by dmytrokirpa@microsoft.com)
 
 ## [9.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.6.12)
 

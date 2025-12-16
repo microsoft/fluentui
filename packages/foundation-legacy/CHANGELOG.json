@@ -2,6 +2,41 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:49 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.6.3",
+      "version": "8.6.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.13.6",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/utilities to v8.17.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Nov 2025 09:34:51 GMT",
       "tag": "@fluentui/foundation-legacy_v8.6.2",
       "version": "8.6.2",

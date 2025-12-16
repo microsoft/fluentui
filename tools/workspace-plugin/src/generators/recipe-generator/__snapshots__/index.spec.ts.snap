@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`recipe-generator generator should generate implementation boilerplate 3`] = `
 "import LinkTo from '@storybook/addon-links/react';

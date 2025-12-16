@@ -1,18 +1,42 @@
 import * as React from 'react';
 
-export type ChartAnnotationCoordinate = {
-  /** Cartesian data coordinates mapped through the chart scales or
-   * Normalised coordinates within the plot area or viewport (0-1) or
-   * Absolute pixel position relative to the chart's SVG origin
-   */
-  type: 'data' | 'relative' | 'pixel';
-  /** x-axis value in the data domain */
-  x: number | string | Date;
-  /** y-axis value in the data domain */
-  y: number | string | Date;
-  /** Use the secondary y scale when available */
-  yAxis?: 'primary' | 'secondary';
-};
+export type ChartAnnotationCoordinate =
+  | {
+      /** Cartesian data coordinates mapped through the chart scales */
+      type: 'data';
+      /** x-axis value in the data domain */
+      x: number | string | Date;
+      /** y-axis value in the data domain */
+      y: number | string | Date;
+      /** Use the secondary y scale when available */
+      yAxis?: 'primary' | 'secondary';
+    }
+  | {
+      /** Normalised coordinates within the plot area (0-1) */
+      type: 'relative';
+      /** Fractional x-position inside the plot area */
+      x: number;
+      /** Fractional y-position inside the plot area */
+      y: number;
+    }
+  | {
+      /** Absolute pixel position relative to the chart's plot origin */
+      type: 'pixel';
+      /** Horizontal pixel offset from the plot origin */
+      x: number;
+      /** Vertical pixel offset from the plot origin */
+      y: number;
+    }
+  | {
+      /** Mixed coordinate systems per axis (e.g., data X + relative Y) */
+      type: 'mixed';
+      xCoordinateType: 'data' | 'relative' | 'pixel';
+      yCoordinateType: 'data' | 'relative' | 'pixel';
+      x: number | string | Date;
+      y: number | string | Date;
+      /** Use the secondary y scale when the Y coordinate maps to data */
+      yAxis?: 'primary' | 'secondary';
+    };
 
 export type ChartAnnotationHorizontalAlign = 'start' | 'center' | 'end';
 export type ChartAnnotationVerticalAlign = 'top' | 'middle' | 'bottom';

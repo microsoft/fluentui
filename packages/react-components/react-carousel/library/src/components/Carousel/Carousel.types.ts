@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
+import type { CarouselAppearance, CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
@@ -33,6 +33,19 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * The value of the currently active page.
    */
   activeIndex?: number;
+
+  /**
+   * Sets visual treatment for the Carousel container.
+   *
+   * `flat`
+   * Retains the minimal styling used by default prior to introducing appearance-based styles.
+   *
+   * `elevated`
+   * Applies rounded corners, background, and shadow tokens so the Carousel is presented as a surfaced container.
+   *
+   * @default 'flat'
+   */
+  appearance?: CarouselAppearance;
 
   /**
    * Callback to notify a page change.

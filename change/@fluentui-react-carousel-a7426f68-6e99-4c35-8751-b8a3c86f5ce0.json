@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add appearance prop ('flat' | 'elevated')",
+  "packageName": "@fluentui/react-carousel",
+  "email": "oleksandr.katrukhin@microsoft.com",
+  "dependentChangeType": "patch"
+}

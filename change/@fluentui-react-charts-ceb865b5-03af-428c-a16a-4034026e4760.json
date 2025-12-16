@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "enable custom callout in scatter chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

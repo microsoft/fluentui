@@ -9,7 +9,7 @@ export function useMenuGridGroup_unstable(
   props: MenuGridGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): MenuGridGroupState {
-  const headerId = useId('menu-grid-row-group-header');
+  const headerId = useId('menu-grid-group-header');
 
   return {
     components: {
