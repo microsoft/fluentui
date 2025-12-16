@@ -779,7 +779,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     yPosition: number,
     value: number,
     isPositiveBar: boolean,
-  ): React.JSX.Element | null {
+  ): JSXElement | null {
     if (props.hideLabels || _barHeight < 16 || value === 0) {
       return null;
     }
