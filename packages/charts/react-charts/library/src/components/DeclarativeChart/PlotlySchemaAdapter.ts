@@ -2065,7 +2065,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             y: yValue,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
-            barLabel: series.text?.[i]?.toString(),
+            ...(series.text?.[i] ? { barLabel: series.text[i].toString() } : {}),
           } as HorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as HorizontalBarChartWithAxisDataPoint[];

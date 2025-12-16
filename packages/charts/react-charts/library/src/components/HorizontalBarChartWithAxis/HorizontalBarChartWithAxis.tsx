@@ -335,6 +335,32 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
   }
 
+  function _calculateBarTotals(singleBarData: HorizontalBarChartWithAxisDataPoint[]) {
+    const totalPositiveValue = singleBarData
+      .filter(point => point.x >= X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalNegativeValue = singleBarData
+      .filter(point => point.x < X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalBarValue = totalPositiveValue + totalNegativeValue;
+    const showLabelOnPositiveSide = totalBarValue >= 0;
+
+    const totalPositiveBars = singleBarData.filter(point => point.x >= X_ORIGIN).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+
+    const shouldShowLabel = (
+      isPositiveBar: boolean,
+      currPositiveCounter: number,
+      currNegativeCounter: number,
+    ): boolean => {
+      const isLastPositiveBar = isPositiveBar && currPositiveCounter === totalPositiveBars;
+      const isLastNegativeBar = !isPositiveBar && currNegativeCounter === totalNegativeBars;
+      return showLabelOnPositiveSide ? isLastPositiveBar : isLastNegativeBar;
+    };
+
+    return { totalPositiveValue, totalNegativeValue, totalBarValue, showLabelOnPositiveSide, shouldShowLabel };
+  }
+
   function _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -362,6 +388,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
     ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
+
+    const { totalBarValue, shouldShowLabel } = _calculateBarTotals(singleBarData);
+
     let currPositiveCounter = 0;
     let currNegativeCounter = 0;
 
@@ -418,8 +447,16 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       }
       prevPoint = point.x;
 
-      const barEndX = xStart + (currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR));
+      const barWidth = currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = _isRtl
+        ? point.x >= X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
       const isPositiveBar = point.x >= X_ORIGIN;
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -428,7 +465,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             x={xStart}
             y={yBarScale(point.y) - _barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={_barHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -446,7 +483,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             opacity={shouldHighlight ? 1 : 0.1}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
-          {_renderBarLabel(barEndX, yBarScale(point.y) - _barHeight / 2, point, isPositiveBar)}
+          {showLabel && _renderBarLabel(barEndX, yBarScale(point.y) - _barHeight / 2, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -533,6 +570,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
     ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
+    const { totalBarValue, shouldShowLabel } = _calculateBarTotals(singleBarData);
     let currPositiveCounter = 0;
     let currNegativeCounter = 0;
     const bars = singleBarData.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -587,9 +625,17 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         xStart = point.x > X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
 
-      const barEndX = xStart + (currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR));
+      const barWidth = currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = _isRtl
+        ? point.x >= X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
       const isPositiveBar = point.x >= X_ORIGIN;
       const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - _barHeight);
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -599,7 +645,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             x={xStart}
             y={yBarScale(point.y)}
             rx={props.roundCorners ? 3 : 0}
-            width={currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
@@ -617,7 +663,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             fill={startColor}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
-          {_renderBarLabel(barEndX, yPosition, point, isPositiveBar)}
+          {showLabel && _renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -696,11 +742,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _getHighlightedLegend() {
     return selectedLegends.length > 0 ? selectedLegends : selectedLegendTitle ? [selectedLegendTitle] : [];
   }
-
-  function _noLegendHighlighted() {
-    return selectedLegends.length === 0 && selectedLegendTitle === '';
-  }
-
   function _onLegendSelectionChange(
     // eslint-disable-next-line @typescript-eslint/no-shadow
     selectedLegends: string[],
@@ -734,28 +775,29 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   function _renderBarLabel(
-    xEnd: number,
+    xPosition: number,
     yPosition: number,
-    point: HorizontalBarChartWithAxisDataPoint,
-    isRightAligned: boolean,
-  ): JSXElement | null {
-    if (props.hideLabels || _barHeight < 16 || !(_isLegendHighlighted(point.legend) || _noLegendHighlighted())) {
+    value: number,
+    isPositiveBar: boolean,
+  ): React.JSX.Element | null {
+    if (props.hideLabels || _barHeight < 16 || value === 0) {
       return null;
     }
 
-    const labelX = isRightAligned ? xEnd + 6 : xEnd - 6;
-    // Use barLabel if available, otherwise fall back to x value
-    const displayValue = point.barLabel ? parseFloat(point.barLabel) : point.x;
+    const formattedValue = formatScientificLimitWidth(value);
+    const displayValue = _isRtl && value < 0 ? `\u202D${formattedValue}\u202C` : formattedValue;
+
     return (
       <text
-        x={labelX}
+        x={xPosition}
         y={yPosition + _barHeight / 2}
-        textAnchor={isRightAligned ? 'start' : 'end'}
+        textAnchor={isPositiveBar ? 'start' : 'end'}
+        transform={`translate(${isPositiveBar ? (_isRtl ? -4 : 4) : _isRtl ? 4 : -4})`}
         dominantBaseline="central"
         className={styles.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(displayValue)}
+        {displayValue}
       </text>
     );
   }

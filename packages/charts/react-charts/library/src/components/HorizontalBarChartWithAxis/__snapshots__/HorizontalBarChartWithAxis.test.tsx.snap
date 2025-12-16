@@ -343,6 +343,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="219.7"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="187.5"
+            y="227.7"
+          >
+            10k
+          </text>
           <rect
             aria-label="88%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
@@ -357,6 +368,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="185.62"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="630"
+            y="193.62"
+          >
+            40k
+          </text>
           <rect
             aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
@@ -371,6 +393,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="113.2"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="408.75"
+            y="121.2"
+          >
+            25k
+          </text>
           <rect
             aria-label="20%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
@@ -385,6 +418,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="28"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="335"
+            y="36"
+          >
+            20k
+          </text>
         </g>
       </svg>
     </div>
@@ -827,6 +871,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="206.11111111111111"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="158"
+            y="218.83333333333334"
+          >
+            1k
+          </text>
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout_r_4_"
@@ -842,6 +897,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="155.22222222222223"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="630"
+            y="167.94444444444446"
+          >
+            5k
+          </text>
           <rect
             aria-label="3000. String Three."
             aria-labelledby="toolTipcallout_r_4_"
@@ -857,6 +923,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="104.33333333333334"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="394"
+            y="117.05555555555557"
+          >
+            3k
+          </text>
           <rect
             aria-label="2000. String Four."
             aria-labelledby="toolTipcallout_r_4_"
@@ -872,6 +949,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="53.44444444444446"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            text-anchor="start"
+            transform="translate(4)"
+            x="276"
+            y="66.16666666666669"
+          >
+            2k
+          </text>
         </g>
       </svg>
     </div>
@@ -1268,6 +1356,17 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
@@ -1282,6 +1381,17 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
@@ -1296,6 +1406,17 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
@@ -1310,6 +1431,17 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -1751,6 +1883,17 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
@@ -1765,6 +1908,17 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
@@ -1779,6 +1933,17 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
@@ -1793,6 +1958,17 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -2298,6 +2474,17 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
@@ -2312,6 +2499,17 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
@@ -2326,6 +2524,17 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
@@ -2340,6 +2549,17 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -2781,6 +3001,17 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
@@ -2795,6 +3026,17 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
@@ -2809,6 +3051,17 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
@@ -2823,6 +3076,17 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -3323,6 +3587,17 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
@@ -3337,6 +3612,17 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
@@ -3351,6 +3637,17 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
@@ -3365,6 +3662,17 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -3806,6 +4114,17 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
@@ -3820,6 +4139,17 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
@@ -3834,6 +4164,17 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
@@ -3848,6 +4189,17 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -4436,6 +4788,17 @@ Object {
                 x="419.28571428571433"
                 y="191.57142857142856"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="587.8571428571429"
+                y="207.92857142857142"
+              >
+                13k
+              </text>
               <rect
                 aria-label="-7K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
@@ -4481,6 +4844,17 @@ Object {
                 x="461.42857142857144"
                 y="126.14285714285714"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="524.6428571428571"
+                y="142.5"
+              >
+                8k
+              </text>
               <rect
                 aria-label="15K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
@@ -4526,6 +4900,17 @@ Object {
                 x="524.6428571428571"
                 y="60.71428571428571"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="77.07142857142856"
+              >
+                16k
+              </text>
             </g>
           </svg>
         </div>
@@ -5036,6 +5421,17 @@ Object {
               x="419.28571428571433"
               y="191.57142857142856"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="587.8571428571429"
+              y="207.92857142857142"
+            >
+              13k
+            </text>
             <rect
               aria-label="-7K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
@@ -5081,6 +5477,17 @@ Object {
               x="461.42857142857144"
               y="126.14285714285714"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="524.6428571428571"
+              y="142.5"
+            >
+              8k
+            </text>
             <rect
               aria-label="15K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
@@ -5126,6 +5533,17 @@ Object {
               x="524.6428571428571"
               y="60.71428571428571"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="77.07142857142856"
+            >
+              16k
+            </text>
           </g>
         </svg>
       </div>
@@ -6497,6 +6915,17 @@ Object {
                 x="40"
                 y="206.11111111111111"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="158"
+                y="218.83333333333334"
+              >
+                1k
+              </text>
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_26_"
@@ -6512,6 +6941,17 @@ Object {
                 x="40"
                 y="155.22222222222223"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="167.94444444444446"
+              >
+                5k
+              </text>
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_26_"
@@ -6527,6 +6967,17 @@ Object {
                 x="40"
                 y="104.33333333333334"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="394"
+                y="117.05555555555557"
+              >
+                3k
+              </text>
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_26_"
@@ -6542,6 +6993,17 @@ Object {
                 x="40"
                 y="53.44444444444446"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="276"
+                y="66.16666666666669"
+              >
+                2k
+              </text>
             </g>
           </svg>
         </div>
@@ -6982,6 +7444,17 @@ Object {
               x="40"
               y="206.11111111111111"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="158"
+              y="218.83333333333334"
+            >
+              1k
+            </text>
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_26_"
@@ -6997,6 +7470,17 @@ Object {
               x="40"
               y="155.22222222222223"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="167.94444444444446"
+            >
+              5k
+            </text>
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_26_"
@@ -7012,6 +7496,17 @@ Object {
               x="40"
               y="104.33333333333334"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="394"
+              y="117.05555555555557"
+            >
+              3k
+            </text>
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_26_"
@@ -7027,6 +7522,17 @@ Object {
               x="40"
               y="53.44444444444446"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="276"
+              y="66.16666666666669"
+            >
+              2k
+            </text>
           </g>
         </svg>
       </div>
@@ -7474,6 +7980,17 @@ Object {
                 x="40"
                 y="206.11111111111111"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="158"
+                y="218.83333333333334"
+              >
+                1k
+              </text>
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_2a_"
@@ -7489,6 +8006,17 @@ Object {
                 x="40"
                 y="155.22222222222223"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="167.94444444444446"
+              >
+                5k
+              </text>
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_2a_"
@@ -7504,6 +8032,17 @@ Object {
                 x="40"
                 y="104.33333333333334"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="394"
+                y="117.05555555555557"
+              >
+                3k
+              </text>
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_2a_"
@@ -7519,6 +8058,17 @@ Object {
                 x="40"
                 y="53.44444444444446"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                text-anchor="start"
+                transform="translate(4)"
+                x="276"
+                y="66.16666666666669"
+              >
+                2k
+              </text>
             </g>
           </svg>
         </div>
@@ -7902,6 +8452,17 @@ Object {
               x="40"
               y="206.11111111111111"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="158"
+              y="218.83333333333334"
+            >
+              1k
+            </text>
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_2a_"
@@ -7917,6 +8478,17 @@ Object {
               x="40"
               y="155.22222222222223"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="167.94444444444446"
+            >
+              5k
+            </text>
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_2a_"
@@ -7932,6 +8504,17 @@ Object {
               x="40"
               y="104.33333333333334"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="394"
+              y="117.05555555555557"
+            >
+              3k
+            </text>
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_2a_"
@@ -7947,6 +8530,17 @@ Object {
               x="40"
               y="53.44444444444446"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              text-anchor="start"
+              transform="translate(4)"
+              x="276"
+              y="66.16666666666669"
+            >
+              2k
+            </text>
           </g>
         </svg>
       </div>
