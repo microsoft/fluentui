@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: support react-docgen-typescript",
+  "packageName": "@fluentui/storybook-llms-extractor",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
