@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
-import { select as d3Select, pointer as d3Pointer } from 'd3-selection';
+import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleBand, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
@@ -11,7 +11,6 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
@@ -83,7 +82,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     maxBarWidth: 24,
     ..._props,
   };
-  const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -640,20 +638,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    // Used to display tooltip at x axis labels.
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xScale0);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return (
       <g
         key={singleSet.indexNum}

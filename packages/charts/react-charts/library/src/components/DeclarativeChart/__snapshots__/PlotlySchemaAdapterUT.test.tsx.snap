@@ -338,7 +338,6 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
-  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -2842,7 +2841,9 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -4633,7 +4634,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -5052,7 +5052,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -5201,7 +5200,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5491,7 +5489,6 @@ Object {
   "roundedTicks": true,
   "showYAxisLables": true,
   "width": undefined,
-  "wrapXAxisLables": false,
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5607,7 +5604,9 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",

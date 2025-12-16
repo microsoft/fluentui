@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
 import {
   scaleLinear as d3ScaleLinear,
@@ -37,7 +36,6 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -99,7 +97,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   const _createLegendsForLine: (data: VerticalStackedChartProps[]) => LineLegends[] = (
     data: VerticalStackedChartProps[],
   ) => _getLineLegends(data);
-  const _tooltipId: string = useId('VSBCTooltipId_');
   const _emptyChartId: string = useId('_VSBC_empty');
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
@@ -1235,25 +1232,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         </g>
       );
     });
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars.filter((bar): bar is JSXElement => !!bar);
   }
 
