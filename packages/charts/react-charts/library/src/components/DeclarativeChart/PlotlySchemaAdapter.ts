@@ -470,30 +470,44 @@ const toFiniteNumber = (value: unknown): number | undefined => {
   return Number.isFinite(numeric) ? numeric : undefined;
 };
 
+type AxisRefType = 'axis' | 'relative' | 'pixel' | undefined;
+
+type ParsedAxisRef = {
+  refType: AxisRefType;
+  axisId: number;
+};
+
 /**
- * Normalizes Plotly axis reference strings so equivalent aliases (e.g. `xaxis1`, `x1`) collapse to the base axis id.
+ * Parses Plotly axis references (e.g. `x`, `x2`, `xaxis2`, `paper`, `pixel`, `x domain`) into a ref type + axis id.
  */
-const normalizeAxisRef = (ref: string | undefined, axis: 'x' | 'y'): string => {
+const parseAxisRef = (ref: string | undefined, axis: 'x' | 'y'): ParsedAxisRef => {
   if (!ref) {
-    return axis;
+    return { refType: 'axis', axisId: 1 };
   }
 
-  const normalized = ref.toLowerCase();
-  if (
-    normalized === axis ||
-    normalized === `${axis}axis` ||
-    normalized === `${axis}axis1` ||
-    normalized === `${axis}1`
-  ) {
-    return axis;
+  const normalized = ref.toLowerCase().trim();
+  if (normalized === 'pixel') {
+    return { refType: 'pixel', axisId: 1 };
+  }
+  if (normalized === 'paper') {
+    return { refType: 'relative', axisId: 1 };
+  }
+  if (normalized.endsWith(' domain')) {
+    return normalized.startsWith(axis) ? { refType: 'relative', axisId: 1 } : { refType: undefined, axisId: 1 };
   }
 
-  const match = normalized.match(/^([xy])(axis)?(\d+)$/);
-  if (match && match[1] === axis && match[3]) {
-    return match[3] === '1' ? axis : `${axis}${match[3]}`;
+  const match = normalized.match(/^([xy])(axis)?(\d*)$/);
+  if (!match || match[1] !== axis) {
+    return { refType: undefined, axisId: 1 };
   }
 
-  return normalized;
+  const suffix = match[3];
+  if (!suffix || suffix === '1') {
+    return { refType: 'axis', axisId: 1 };
+  }
+
+  const parsed = Number(suffix);
+  return { refType: 'axis', axisId: Number.isFinite(parsed) && parsed >= 1 ? parsed : 1 };
 };
 
 /**
@@ -510,7 +524,7 @@ const getAxisNumericRangeFromData = (
   }
 
   const axisLayout = getAxisLayoutByRef(layout, ref, axis);
-  const targetRef = normalizeAxisRef(ref, axis);
+  const targetAxisId = getAxisIdFromRef(ref, axis);
   const traceAxisKey = axis === 'x' ? 'xaxis' : 'yaxis';
 
   let minValue: number | undefined;
@@ -518,8 +532,8 @@ const getAxisNumericRangeFromData = (
 
   data.forEach(trace => {
     const plotTrace = trace as Partial<PlotData>;
-    const traceAxisRef = normalizeAxisRef(plotTrace[traceAxisKey as 'xaxis' | 'yaxis'] as string | undefined, axis);
-    if (traceAxisRef !== targetRef) {
+    const traceAxisId = getAxisIdFromRef(plotTrace[traceAxisKey as 'xaxis' | 'yaxis'] as string | undefined, axis);
+    if (traceAxisId !== targetAxisId) {
       return;
     }
 
@@ -602,25 +616,17 @@ const appendPx = (value: unknown): string | undefined => {
 /**
  * Maps Plotly's axis reference string to one of our coordinate interpretation modes (axis, relative, or pixel).
  */
-const resolveRefType = (ref: string | undefined, axis: 'x' | 'y'): 'axis' | 'relative' | 'pixel' | undefined => {
+const resolveRefType = (ref: string | undefined, axis: 'x' | 'y'): AxisRefType => {
   if (!ref) {
     return 'axis';
   }
-  const normalized = ref.toLowerCase();
-  if (normalized === 'pixel') {
-    return 'pixel';
+  const parsed = parseAxisRef(ref, axis);
+  if (parsed.refType !== 'axis') {
+    return parsed.refType;
   }
-  if (normalized === 'paper') {
-    return 'relative';
-  }
-  if (normalized.endsWith(' domain')) {
-    return normalized.startsWith(axis) ? 'relative' : undefined;
-  }
+  const normalized = (ref ?? '').toLowerCase().trim();
   const match = normalized.match(/^([xy])(\d*)$/);
-  if (match && match[1] === axis) {
-    return 'axis';
-  }
-  return undefined;
+  return match && match[1] === axis ? 'axis' : undefined;
 };
 
 /**
@@ -635,23 +641,50 @@ const getAxisLayoutByRef = (
     return undefined;
   }
   const defaultAxisKey = `${axis}axis` as 'xaxis' | 'yaxis';
-  if (!ref) {
+  const { refType, axisId } = parseAxisRef(ref, axis);
+
+  if (refType !== 'axis' || axisId === 1) {
     return layout[defaultAxisKey];
   }
-  const normalized = ref.toLowerCase();
-  if (normalized === 'paper' || normalized === 'pixel' || normalized.endsWith(' domain')) {
-    return layout[defaultAxisKey];
+
+  const axisKey = `${axis}axis${axisId}` as keyof Layout;
+  return layout[axisKey] as Partial<LayoutAxis> | undefined;
+};
+
+const getAxisIdFromRef = (ref: unknown, axis: 'x' | 'y'): number => {
+  if (typeof ref !== 'string') {
+    return 1;
   }
-  const match = normalized.match(/^([xy])(\d*)$/);
-  if (match && match[1] === axis) {
-    const index = match[2];
-    if (index && index !== '' && index !== '1') {
-      const axisKey = `${axis}axis${index}` as keyof Layout;
-      return layout[axisKey] as Partial<LayoutAxis> | undefined;
+
+  return parseAxisRef(ref, axis).axisId;
+};
+
+const convertAnnotationDataValue = (value: unknown, axisType: AxisType): string | number | Date | undefined => {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+
+  if (axisType === 'date') {
+    const dateValue = value instanceof Date ? value : new Date(value as string | number);
+    return Number.isNaN(dateValue.getTime()) ? undefined : dateValue;
+  }
+
+  if (axisType === 'linear' || axisType === 'log') {
+    if (typeof value === 'number') {
+      return Number.isFinite(value) ? value : undefined;
     }
-    return layout[defaultAxisKey];
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : undefined;
   }
-  return layout[defaultAxisKey];
+
+  // For category-like axes, preserve raw strings (and avoid date parsing heuristics).
+  if (value instanceof Date) {
+    return value;
+  }
+  if (typeof value === 'number' || typeof value === 'string') {
+    return value;
+  }
+  return undefined;
 };
 
 /**
@@ -664,7 +697,8 @@ const convertDataValue = (
   if (value === undefined || value === null) {
     return undefined;
   }
-  if (axisLayout?.type === 'date' || isDate(value)) {
+  // Respect explicit categorical axes: do not coerce date-like strings.
+  if (axisLayout?.type === 'date' || (axisLayout?.type !== 'category' && isDate(value))) {
     const dateValue = value instanceof Date ? value : new Date(value as string | number);
     return Number.isNaN(dateValue.getTime()) ? undefined : dateValue;
   }
@@ -823,8 +857,11 @@ const convertPlotlyAnnotation = (
   if (xRefType === 'axis' && yRefType === 'axis') {
     const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
     const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
-    const xValue = convertDataValue(annotation.x, xAxisLayout);
-    const yValue = convertDataValue(annotation.y, yAxisLayout);
+    const xAxisType = (xAxisLayout?.type as AxisType | undefined) ?? 'category';
+    const yAxisType = (yAxisLayout?.type as AxisType | undefined) ?? 'category';
+
+    const xValue = convertAnnotationDataValue(annotation.x, xAxisType);
+    const yValue = convertAnnotationDataValue(annotation.y, yAxisType);
     if (xValue === undefined || yValue === undefined) {
       return undefined;
     }

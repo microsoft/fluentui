@@ -541,6 +541,105 @@ describe('transformPlotlyJsonToAnnotationChartProps', () => {
       expect(result.annotations).toHaveLength(1);
       expect(result.annotations?.[0].style?.rotation).toBe(45);
     });
+
+    test('does not coerce date-like category strings when xaxis.type is category', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          xaxis: { type: 'category' },
+          yaxis: { type: 'linear' },
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('does not infer date from date-like strings when axis type is omitted', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('treats annotations without explicit xref/yref as axis-bound data annotations', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
   });
 
   describe('Dimension Extraction', () => {
