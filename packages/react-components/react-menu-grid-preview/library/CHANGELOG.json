@@ -2,6 +2,53 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Wed, 17 Dec 2025 18:10:10 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "none": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "9eca6a10706556ef7714297775aa0a829c915d1e",
+            "comment": "Add cypress e2e tests for MenuGrid"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.20.6",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.6",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.26.11",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.4",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.26.0",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:36 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.2.6",
       "version": "0.2.6",
