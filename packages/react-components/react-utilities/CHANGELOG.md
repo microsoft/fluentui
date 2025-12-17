@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 11 Nov 2025 19:18:29 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.0)
+
+Wed, 17 Dec 2025 18:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.4..@fluentui/react-utilities_v9.26.0)
+
+### Minor changes
+
+- add HTML Popover API attributes ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by seanmonahan@microsoft.com)
+
+### Patches
+
+- fix: ensure slot className is saved from defaultProps ([PR #35555](https://github.com/microsoft/fluentui/pull/35555) by dmytrokirpa@microsoft.com)
 
 ## [9.25.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.4)
 
