@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix toolbar toggle button",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "charles.assuncao@microsoft.com",
-  "dependentChangeType": "patch"
-}

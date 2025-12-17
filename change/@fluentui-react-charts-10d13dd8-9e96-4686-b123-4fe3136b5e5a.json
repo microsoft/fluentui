@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add missing aria-labels in v9 cartesian charts",
-  "packageName": "@fluentui/react-charts",
-  "email": "74965306+Anush2303@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
