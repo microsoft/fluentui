@@ -1250,3 +1250,33 @@ export interface LineSeries<X extends string | number | Date, Y extends string |
    */
   onLineClick?: () => void;
 }
+
+/**
+ * Represents a scatter series.
+ */
+export interface ScatterSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+  /**
+   * Type discriminator: always 'scatter' for this series.
+   */
+  type: 'scatter';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: DataPointV2<X, Y>[];
+}
+
+/**
+ * Represents a area series.
+ */
+export interface AreaSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+  /**
+   * Type discriminator: always 'area' for this series.
+   */
+  type: 'area';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: DataPointV2<X, Y>[];
+}
