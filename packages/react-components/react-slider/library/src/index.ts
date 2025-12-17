@@ -16,3 +16,11 @@ export type {
   SliderBaseProps,
   SliderBaseState,
 } from './Slider';
+export {
+  rangeSliderClassNames,
+  RangeSlider,
+  renderRangeSlider_unstable,
+  useRangeSlider_unstable,
+  useRangeSliderStyles_unstable,
+} from './RangeSlider';
+export type { RangeSliderProps, RangeSliderState } from './RangeSlider';

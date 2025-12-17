@@ -696,8 +696,20 @@ export {
   useSliderStyles_unstable,
   useSlider_unstable,
   renderSlider_unstable,
+  RangeSlider,
+  rangeSliderClassNames,
+  useRangeSlider_unstable,
+  useRangeSliderStyles_unstable,
+  renderRangeSlider_unstable,
 } from '@fluentui/react-slider';
-export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+export type {
+  SliderProps,
+  SliderSlots,
+  SliderOnChangeData,
+  SliderState,
+  RangeSliderProps,
+  RangeSliderState,
+} from '@fluentui/react-slider';
 export {
   SpinButton,
   renderSpinButton_unstable,
