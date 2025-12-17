@@ -225,7 +225,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHoverFocus(
     lineData: LinePoint,
-    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGCircleElement, Element>,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement, Element>,
   ): void {
     let clientX = 0;
     let clientY = 0;
@@ -247,22 +247,23 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         setColor(lineData.color);
       }
     } else {
-      _onStackHoverFocus(lineData.xItem, event as React.MouseEvent<SVGElement>);
+      _onStackHoverFocus(lineData.xItem, event);
     }
   }
 
   function _onStackHoverFocus(
     stack: VerticalStackedChartProps,
-    mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement> | SVGGElement,
   ): void {
     let clientX = 0;
     let clientY = 0;
-    if ('clientX' in mouseEvent) {
-      clientX = mouseEvent.clientX;
-      clientY = mouseEvent.clientY;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
     } else {
-      // Handle case where mouseEvent is an SVGGElement
-      const boundingRect = mouseEvent.getBoundingClientRect();
+      // Handle React FocusEvent or SVGGElement
+      const element = 'target' in event ? (event.target as SVGElement) : event;
+      const boundingRect = element.getBoundingClientRect();
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;
     }
@@ -787,9 +788,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _lineFocus(
-    event: React.FocusEvent<SVGCircleElement, Element>,
+    event: React.FocusEvent<SVGElement, Element>,
     lineData: LinePoint,
-    ref: { refElement: SVGCircleElement | null },
+    ref: { refElement: SVGElement | null },
   ) {
     if (ref.refElement) {
       _lineHoverFocus(lineData, event);

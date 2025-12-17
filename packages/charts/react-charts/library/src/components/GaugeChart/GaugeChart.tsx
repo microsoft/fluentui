@@ -19,7 +19,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -577,7 +577,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${_segments.length} segments. `;
     }
     const { arcs } = _processProps();
-    const focusAttributes = useFocusableGroup();
+    const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return (
       <div
         className={classes.root}
@@ -585,7 +585,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           _rootElem.current = el;
         }}
       >
-        <div className={classes.chartWrapper} {...focusAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg
             className={classes.chart}
             width={_width}
