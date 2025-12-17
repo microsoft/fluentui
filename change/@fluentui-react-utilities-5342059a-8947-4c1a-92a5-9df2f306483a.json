@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add HTML Popover API attributes",
+  "packageName": "@fluentui/react-utilities",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
 import {
   scaleLinear as d3ScaleLinear,
@@ -37,7 +36,6 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -99,7 +97,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   const _createLegendsForLine: (data: VerticalStackedChartProps[]) => LineLegends[] = (
     data: VerticalStackedChartProps[],
   ) => _getLineLegends(data);
-  const _tooltipId: string = useId('VSBCTooltipId_');
   const _emptyChartId: string = useId('_VSBC_empty');
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
@@ -228,7 +225,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHoverFocus(
     lineData: LinePoint,
-    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGCircleElement, Element>,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement, Element>,
   ): void {
     let clientX = 0;
     let clientY = 0;
@@ -250,22 +247,23 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         setColor(lineData.color);
       }
     } else {
-      _onStackHoverFocus(lineData.xItem, event as React.MouseEvent<SVGElement>);
+      _onStackHoverFocus(lineData.xItem, event);
     }
   }
 
   function _onStackHoverFocus(
     stack: VerticalStackedChartProps,
-    mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement> | SVGGElement,
   ): void {
     let clientX = 0;
     let clientY = 0;
-    if ('clientX' in mouseEvent) {
-      clientX = mouseEvent.clientX;
-      clientY = mouseEvent.clientY;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
     } else {
-      // Handle case where mouseEvent is an SVGGElement
-      const boundingRect = mouseEvent.getBoundingClientRect();
+      // Handle React FocusEvent or SVGGElement
+      const element = 'target' in event ? (event.target as SVGElement) : event;
+      const boundingRect = element.getBoundingClientRect();
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;
     }
@@ -790,9 +788,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _lineFocus(
-    event: React.FocusEvent<SVGCircleElement, Element>,
+    event: React.FocusEvent<SVGElement, Element>,
     lineData: LinePoint,
-    ref: { refElement: SVGCircleElement | null },
+    ref: { refElement: SVGElement | null },
   ) {
     if (ref.refElement) {
       _lineHoverFocus(lineData, event);
@@ -1235,25 +1233,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         </g>
       );
     });
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars.filter((bar): bar is JSXElement => !!bar);
   }
 

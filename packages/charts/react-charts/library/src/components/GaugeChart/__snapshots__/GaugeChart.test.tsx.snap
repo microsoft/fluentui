@@ -11,7 +11,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -298,7 +298,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -491,7 +491,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -684,7 +684,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -984,7 +984,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -1177,7 +1177,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -1370,7 +1370,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -1670,7 +1670,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -1970,7 +1970,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge Chart with title. Gauge chart with 3 segments. "
@@ -2172,7 +2172,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -2365,7 +2365,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -2558,7 +2558,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -2756,7 +2756,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
@@ -2946,7 +2946,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -3176,7 +3176,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
@@ -3312,7 +3312,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -3488,7 +3488,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
@@ -3698,7 +3698,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -3948,7 +3948,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 2 segments. "
@@ -4127,7 +4127,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 2 segments. "
@@ -4346,7 +4346,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Riskometer. Gauge chart with 3 segments. "
@@ -4565,7 +4565,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Riskometer. Gauge chart with 3 segments. "
@@ -4824,7 +4824,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
@@ -5034,7 +5034,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -5284,7 +5284,7 @@ Object {
       >
         <div
           class="fui-gc__chartWrapper"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
@@ -5527,7 +5527,7 @@ Object {
     >
       <div
         class="fui-gc__chartWrapper"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
@@ -5786,7 +5786,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
@@ -5979,7 +5979,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
   >
     <div
       class="fui-gc__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
