@@ -17,6 +17,12 @@ const config = {
       dependencies: ['@fluentui/**'],
       isIgnored: true,
     },
+    {
+      // Allow both v8 and v9 versions of @fluentui/react-file-type-icons to coexist
+      // v8 publishes as 8.x.x, v9 publishes as 9.x.x to the same npm package name
+      dependencies: ['@fluentui/react-file-type-icons'],
+      isIgnored: true,
+    },
   ],
   versionGroups: [
     // completely ignore all devDeps that specify inner workspace deps - as we enforce usage of `*` or `>9.0.0-alpha`
