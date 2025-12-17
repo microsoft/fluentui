@@ -5,7 +5,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 ## Migration from v8
 
 - `ariaLabel` => use `aria-label` instead
-- `ariaValueText` => explicitely set `aria-valuetext`
+- `ariaValueText` => explicitly set `aria-valuetext`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
 - `componentRef` => use `ref` instead.
 - `inline` => use css, or wrap in flex parent
@@ -51,3 +51,19 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 | `styles`            |                  | `className`      |
 | `theme`             |                  |                  |
 | `valueFormat`       |                  |                  |
+
+## RangeSlider Migration
+
+The v8 `Slider` exposed a `ranged` mode to control two thumbs. In v9, ranged behavior is implemented as a dedicated `RangeSlider` component with explicit `{ start, end }` values and per-thumb slots.
+
+### RangeSlider migration from v8
+
+- TBD
+
+## RangeSlider migration from v0
+
+- TBD
+
+### RangeSlider property mapping
+
+- TBD
