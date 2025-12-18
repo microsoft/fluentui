@@ -1,9 +1,11 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   createMotionComponent,
   createPresenceComponent,
   Image,
   makeStyles,
   motionTokens,
+  Switch,
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
@@ -11,8 +13,8 @@ import * as React from 'react';
 import {
   createSequenceComponent,
   Hold,
+  Rotate,
   Scale,
-  Scene,
   Sequence,
   Slide,
   slideAtom,
@@ -38,8 +40,7 @@ const useClasses = makeStyles({
     padding: '20px',
   },
   controls: {
-    display: 'none',
-    visibility: 'hidden',
+    display: 'flex',
     flexDirection: 'column',
     gridArea: 'controls',
 
@@ -200,9 +201,9 @@ const TitleSequence = createSequenceComponent({
 
 const TitlePresence = createPresenceComponent(({}) => {
   return {
-    enter: slideAtom({direction: 'enter', fromY: '-100px', duration: 400, easing: motionTokens.curveDecelerateMin  }),
-    exit: slideAtom({direction: 'exit', fromY: '100px', duration: 400, easing: motionTokens.curveAccelerateMin  }),
-  }
+    enter: slideAtom({ direction: 'enter', fromY: '-100px', duration: 400, easing: motionTokens.curveDecelerateMin }),
+    exit: slideAtom({ direction: 'exit', fromY: '100px', duration: 400, easing: motionTokens.curveAccelerateMin }),
+  };
 });
 
 const PhotoSequence = createSequenceComponent({
@@ -213,30 +214,96 @@ const PhotoSequence = createSequenceComponent({
   ],
 });
 
+// const PhotoIn = createMotionComponentVariant(Slide.In, {});
+
+const Presence_Functions: React.FC<{
+  visible: boolean;
+  Enter: React.FC<{ children?: JSXElement }>;
+  Exit: React.FC<{ children?: JSXElement }>;
+  children: JSXElement;
+}> = ({ visible, Enter, Exit, children }) => {
+  return visible ? <Enter>{children}</Enter> : <Exit>{children}</Exit>;
+};
+
+const Presence: React.FC<{
+  visible?: boolean;
+  enter: JSXElement;
+  exit: JSXElement;
+  children: JSXElement;
+}> = ({ visible, enter, exit, children }) => {
+  return visible ? React.cloneElement(enter, { children }) : React.cloneElement(exit, { children });
+};
+
+/*
+<Presence visible={true} Enter={Slide.In} Exit={Scale.Out}>
+  Content
+</Presence>;
+*/
+
+const PhotoPresence2: React.FC<{
+  visible?: boolean;
+  children: JSXElement;
+  delay?: number;
+}> = ({ visible, children, delay = 0 }) => {
+  return (
+    <Presence
+      visible={visible}
+      enter={<Scale.In fromScale={0.5} duration={200} easing={motionTokens.curveDecelerateMin} delay={delay} />}
+      exit={<Scale.Out fromScale={0.5} duration={200} easing={motionTokens.curveAccelerateMin} delay={delay} />}
+    >
+      {children}
+    </Presence>
+  );
+};
+
+const PhotoPresence = Scale;
+
 export const CarouselStep4 = () => {
   const classes = useClasses();
+  const [itemVisible, setItemVisible] = React.useState(true);
 
   const titleA = <div className={classes.albumTitle}>Album A</div>;
   const sceneA = (
     <Hold duration={3000}>
-      <TitleSequence>{titleA}</TitleSequence>
+      {/* <TitleSequence>{titleA}</TitleSequence> */}
+      <Presence
+        visible={itemVisible}
+        enter={<Slide.In fromY="-100px" duration={400} easing={motionTokens.curveDecelerateMin} />}
+        exit={<Slide.Out fromY="100px" duration={400} easing={motionTokens.curveAccelerateMin} />}
+      >
+        {titleA}
+      </Presence>
+
+      {/* <Presence
+        visible={titleVisible}
+        enter={<Scale.In fromScale={0.1} duration={1200} easing={motionTokens.curveDecelerateMin} />}
+        exit={<Scale.Out fromScale={0.1} duration={1200} easing={motionTokens.curveAccelerateMin} />}
+      >
+        {TODO: image}
+      </Presence> */}
 
       <div className={classes.photo3Up}>
         {/* NOTE: I forgot to use Stagger.In and was wondering why Stagger didn't work
         which was because visible defaulted to false */}
-        <Stagger.In itemDelay={100} delayMode="timing" hideMode="visibilityStyle">
-          <PhotoMotion key="imageUrls[0]">
+        <Stagger visible={itemVisible} itemDelay={100} delayMode="delayProp" hideMode="visibleProp">
+          {/* <PhotoMotion key="imageUrls[0]"> */}
+          <PhotoPresence>
             <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
-          </PhotoMotion>
+          </PhotoPresence>
+          {/* </PhotoMotion> */}
 
-          <PhotoMotion key="imageUrls[1]">
+          {/* <PhotoMotion key="imageUrls[1]"> */}
+          <PhotoPresence>
             <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
-          </PhotoMotion>
+          </PhotoPresence>
+          {/* </PhotoMotion> */}
 
-          <PhotoMotion key="imageUrls[2]">
+          {/* <PhotoMotion key="imageUrls[2]"> */}
+          <PhotoPresence>
             <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
-          </PhotoMotion>
-        </Stagger.In>
+          </PhotoPresence>
+          {/* </PhotoMotion> */}
+        </Stagger>
       </div>
     </Hold>
   );
@@ -247,7 +314,7 @@ export const CarouselStep4 = () => {
       <TitleSequence>{titleB}</TitleSequence>
 
       <div className={classes.photo4Up}>
-        <Stagger.In itemDelay={100} delayMode="timing" hideMode="visibilityStyle">
+        <Stagger.In itemDelay={100} delayMode="delayProp" hideMode="visibleProp">
           <PhotoMotion key="imageUrls[3]">
             <Image fit="cover" src={imageUrls[3]} className={`${classes.photo}`} />
           </PhotoMotion>
@@ -271,12 +338,15 @@ export const CarouselStep4 = () => {
   const sceneSeries = (
     <Sequence iterations={Infinity}>
       {sceneA}
-      {sceneB}
+      {/* {sceneB} */}
     </Sequence>
   );
 
   return (
     <div className={classes.container}>
+      <div className={classes.controls}>
+        <Switch label="Show Title" checked={itemVisible} onChange={() => setItemVisible(!itemVisible)} />
+      </div>
       <div className={classes.carouselContainer}>{sceneSeries}</div>
     </div>
   );
