@@ -19,7 +19,7 @@ describe(`beachball configs`, () => {
         '**/*.{shot,snap}',
         '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
-        '**/.eslintrc.*',
+        '**/eslint.config.(js|cjs|mjs)',
         '**/rit.config.js',
         '**/__fixtures__/**',
         '**/__mocks__/**',
