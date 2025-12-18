@@ -68,14 +68,9 @@
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ],
+      "inputs": ["default"],
       "options": {
-        "command": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint src"
+        "command": "eslint src"
       }
     },
     "format": {

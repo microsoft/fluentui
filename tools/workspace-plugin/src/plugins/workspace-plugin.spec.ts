@@ -53,7 +53,7 @@ describe(`workspace-plugin`, () => {
     await tempFs.createFiles({
       'proj/project.json': serializeJson({}),
       'proj/package.json': serializeJson({}),
-      'proj/.eslintrc.json': '{}',
+      'proj/eslint.config.js': 'module.exports = {}',
       'proj/jest.config.js': 'module.exports = {}',
       'proj/monosize.config.mjs': 'export default {}',
     });
@@ -66,14 +66,12 @@ describe(`workspace-plugin`, () => {
         "executor": "nx:run-commands",
         "inputs": Array [
           "default",
-          "{projectRoot}/.eslintrc.json",
-          "{projectRoot}/.eslintrc.js",
           "{projectRoot}/eslint.config.js",
           "{projectRoot}/eslint.config.cjs",
           "{projectRoot}/eslint.config.mjs",
-          "{workspaceRoot}/.eslintrc.json",
-          "{workspaceRoot}/.eslintignore",
           "{workspaceRoot}/eslint.config.js",
+          "{workspaceRoot}/eslint.config.cjs",
+          "{workspaceRoot}/eslint.config.mjs",
           Object {
             "externalDependencies": Array [
               "eslint",
@@ -95,7 +93,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
-          "command": "yarn cross-env ESLINT_USE_FLAT_CONFIG=false eslint src",
+          "command": "yarn eslint src",
           "cwd": "proj",
         },
         "outputs": Array [

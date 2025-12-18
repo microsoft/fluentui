@@ -20,7 +20,6 @@ function main() {
   const rootConfigFiles = [
     'just.config.[jt]s',
     'jest.config.[jt]s',
-    '.eslintrc.(js|json)',
     'project.json',
     '.babelrc.json',
     '.swcrc',
