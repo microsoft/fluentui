@@ -7,27 +7,25 @@ const data: PolarChartProps['data'] = [
   {
     type: 'scatter',
     legend: 'Mike',
-    color: 'red',
     data: [
-      { x: 120, y: 'Math' },
-      { x: 98, y: 'Chinese' },
-      { x: 86, y: 'English' },
-      { x: 99, y: 'Geography' },
-      { x: 85, y: 'Physics' },
-      { x: 65, y: 'History' },
+      { x: 120, y: 'Math', markerSize: 6 },
+      { x: 98, y: 'Chinese', markerSize: 8 },
+      { x: 86, y: 'English', markerSize: 10 },
+      { x: 99, y: 'Geography', markerSize: 12 },
+      { x: 85, y: 'Physics', markerSize: 14 },
+      { x: 65, y: 'History', markerSize: 16 },
     ],
   },
   {
     type: 'scatter',
     legend: 'Lily',
-    color: 'blue',
     data: [
-      { x: 110, y: 'Math' },
-      { x: 130, y: 'Chinese' },
-      { x: 130, y: 'English' },
-      { x: 100, y: 'Geography' },
-      { x: 90, y: 'Physics' },
-      { x: 85, y: 'History' },
+      { x: 110, y: 'Math', markerSize: 6 },
+      { x: 130, y: 'Chinese', markerSize: 8 },
+      { x: 130, y: 'English', markerSize: 10 },
+      { x: 100, y: 'Geography', markerSize: 12 },
+      { x: 90, y: 'Physics', markerSize: 14 },
+      { x: 85, y: 'History', markerSize: 16 },
     ],
   },
 ];
@@ -111,7 +109,7 @@ export const PolarChartBasic = (): JSXElement => {
           // showYAxisLables
           width={width}
           height={height}
-          shape="polygon"
+          // shape="polygon"
           // enableGradient={enableGradient}
           // roundCorners={roundedCorners}
         />
