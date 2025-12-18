@@ -784,20 +784,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       return null;
     }
 
-    const formattedValue = formatScientificLimitWidth(value);
-    const displayValue = _isRtl && value < 0 ? `\u202D${formattedValue}\u202C` : formattedValue;
-
     return (
       <text
         x={xPosition}
         y={yPosition + _barHeight / 2}
-        textAnchor={isPositiveBar ? 'start' : 'end'}
+        textAnchor={_isRtl ? (isPositiveBar ? 'end' : 'start') : isPositiveBar ? 'start' : 'end'}
         transform={`translate(${isPositiveBar ? (_isRtl ? -4 : 4) : _isRtl ? 4 : -4})`}
         dominantBaseline="central"
         className={styles.barLabel}
         aria-hidden={true}
+        style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
       >
-        {displayValue}
+        {formatScientificLimitWidth(value)}
       </text>
     );
   }
