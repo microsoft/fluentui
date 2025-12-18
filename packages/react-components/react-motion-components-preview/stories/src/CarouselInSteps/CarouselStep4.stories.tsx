@@ -234,6 +234,14 @@ const Presence: React.FC<{
   return visible ? React.cloneElement(enter, { children }) : React.cloneElement(exit, { children });
 };
 
+// const TransitionAB: React.FC<{
+//   exitA: JSXElement;
+//   enterB: JSXElement;
+//   children: JSXElement;
+// }> = ({ visible, enter, exit, children }) => {
+//   return visible ? React.cloneElement(enter, { children }) : React.cloneElement(exit, { children });
+// };
+
 /*
 <Presence visible={true} Enter={Slide.In} Exit={Scale.Out}>
   Content
@@ -263,6 +271,33 @@ export const CarouselStep4 = () => {
   const [itemVisible, setItemVisible] = React.useState(true);
 
   const titleA = <div className={classes.albumTitle}>Album A</div>;
+  const titleB = <div className={classes.albumTitle}>Album B</div>;
+
+  const titleABTransition = (
+    <Sequence>
+      <Slide.Out fromY="100px" duration={400} easing={motionTokens.curveAccelerateMin}>
+        {titleA}
+      </Slide.Out>
+      <Slide.In fromY="-100px" duration={400} easing={motionTokens.curveDecelerateMin}>
+        {titleB}
+      </Slide.In>
+    </Sequence>
+  );
+
+  const SlideABTransition: React.FC<{ contentA: JSXElement; contentB: JSXElement }> = ({
+    contentA,
+    contentB,
+  }) => (
+<Sequence>
+  <Slide.Out fromY="100px" duration={400} easing={motionTokens.curveAccelerateMin}>
+    {contentA}
+  </Slide.Out>
+  <Slide.In fromY="-100px" duration={400} easing={motionTokens.curveDecelerateMin}>
+    {contentB}
+  </Slide.In>
+</Sequence>
+  );
+
   const sceneA = (
     <Hold duration={3000}>
       {/* <TitleSequence>{titleA}</TitleSequence> */}
@@ -308,7 +343,6 @@ export const CarouselStep4 = () => {
     </Hold>
   );
 
-  const titleB = <div className={classes.albumTitle}>Album B</div>;
   const sceneB = (
     <Hold duration={3000}>
       <TitleSequence>{titleB}</TitleSequence>
