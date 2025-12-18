@@ -386,14 +386,17 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const hoverXValue: string =
         'Current value is ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat, true);
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      const hoverYValues: YValue[] = _segments.map(segment => {
-        const yValue: YValue = {
-          legend: segment.legend,
-          y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
-          color: segment.color,
-        };
-        return yValue;
-      });
+      const highlightedLegends = _getHighlightedLegend();
+      const hoverYValues: YValue[] = _segments
+        .filter(segment => highlightedLegends.length === 0 || highlightedLegends.includes(segment.legend))
+        .map(segment => {
+          const yValue: YValue = {
+            legend: segment.legend,
+            y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
+            color: segment.color,
+          };
+          return yValue;
+        });
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );

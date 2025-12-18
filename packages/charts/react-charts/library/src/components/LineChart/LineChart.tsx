@@ -760,7 +760,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               cy={0}
               fill={tokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
-              tabIndex={isLegendSelected ? 0 : undefined}
               stroke={lineColor}
               visibility={'hidden'}
               onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
@@ -768,46 +767,67 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               onMouseOut={_handleMouseOut}
             />,
           );
-
-          // Add individual markers if mode includes 'markers'
           const showMarkers = !!lineMode?.includes('markers');
-          if (showMarkers) {
-            for (let k = 0; k < _points[i].data.length; k++) {
-              const { x, y } = _points[i].data[k];
-              const xPoint = _xAxisScale(x instanceof Date ? x.getTime() : x);
-              const yPoint = yScale(y);
+          for (let k = 0; k < _points[i].data.length; k++) {
+            const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points[i].data[k];
+            const xPoint = _xAxisScale(x instanceof Date ? x.getTime() : x);
+            const yPoint = yScale(y);
 
-              if (isPlottable(xPoint, yPoint)) {
-                const markerSize = _points[i].data[k].markerSize;
-                const perPointColor = _points[i].data[k]?.markerColor;
-                pointsForLine.push(
-                  <circle
-                    key={`${_circleId}_${i}_${k}_marker`}
-                    r={
-                      markerSize
-                        ? (markerSize! * extraMaxPixels * 0.3) / maxMarkerSize
-                        : activePoint === _circleId
+            if (isPlottable(xPoint, yPoint)) {
+              const circleId = `${_circleId}_${i}_${k}_LD`;
+              const markerSize = _points[i].data[k].markerSize;
+              const perPointColor = _points[i].data[k]?.markerColor;
+              const targetElement = document.getElementById(circleId);
+              const xValue = x as number | Date;
+              const handleFocusEvent = (event: React.FocusEvent<SVGCircleElement>) => {
+                _handleFocus(
+                  event,
+                  `${_lineId}_${i}`,
+                  xValue,
+                  xAxisCalloutData,
+                  circleId,
+                  targetElement,
+                  xAxisCalloutAccessibilityData,
+                );
+                _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k);
+              };
+
+              pointsForLine.push(
+                <circle
+                  id={circleId}
+                  key={circleId}
+                  r={
+                    showMarkers
+                      ? markerSize
+                        ? (markerSize * extraMaxPixels * 0.3) / maxMarkerSize
+                        : activePoint === circleId
                         ? 5.5
                         : 3.5
-                    }
-                    cx={xPoint}
-                    cy={yPoint}
-                    fill={
-                      activePoint === _circleId
+                      : 8
+                  }
+                  cx={xPoint}
+                  cy={yPoint}
+                  fill={
+                    showMarkers
+                      ? activePoint === circleId
                         ? tokens.colorNeutralBackground1
                         : perPointColor || _points[i]?.color || lineColor
-                    }
-                    tabIndex={isLegendSelected ? 0 : undefined}
-                    stroke={perPointColor || lineColor}
-                    strokeWidth={1}
-                    opacity={isLegendSelected ? 1 : 0.1}
-                    onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
-                    onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
-                    onFocus={event => _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k)}
-                    onMouseOut={_handleMouseOut}
-                  />,
-                );
-              }
+                      : 'transparent'
+                  }
+                  tabIndex={isLegendSelected ? 0 : undefined}
+                  stroke={showMarkers ? perPointColor || lineColor : 'transparent'}
+                  strokeWidth={showMarkers ? (activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 1) : 0}
+                  opacity={showMarkers ? (isLegendSelected ? 1 : 0.1) : 0}
+                  onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+                  onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+                  onFocus={handleFocusEvent}
+                  onMouseOut={_handleMouseOut}
+                  onBlur={_handleMouseOut}
+                  role="img"
+                  aria-label={_points[i].data[k].text ?? _getAriaLabel(i, k)}
+                  {..._getClickHandler(_points[i].data[k].onDataPointClick)}
+                />,
+              );
             }
           }
         } else if (!props.optimizeLargeData) {
