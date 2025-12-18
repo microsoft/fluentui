@@ -774,7 +774,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             const yPoint = yScale(y);
 
             if (isPlottable(xPoint, yPoint)) {
-              const circleId = `${_circleId}_${i}_${k}_LD`;
+              const circleId = `${_circleId}_${i}_${k}`;
               const markerSize = _points[i].data[k].markerSize;
               const perPointColor = _points[i].data[k]?.markerColor;
               const targetElement = document.getElementById(circleId);
