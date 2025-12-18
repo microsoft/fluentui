@@ -364,7 +364,7 @@ Object {
         ],
         "legend": "default",
         "lineOptions": Object {
-          "curve": "monotoneX",
+          "curve": "linear",
         },
       },
     ],
