@@ -27,7 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -106,7 +106,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -151,7 +151,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -903,7 +903,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this.chartContainer, undefined, this._isRtl, opts);
+    return exportChartsAsImage([{ container: this.chartContainer }], undefined, this._isRtl, opts);
   };
 
   private _computeNodeAttributes(

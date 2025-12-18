@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
@@ -14,12 +14,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -283,12 +284,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -611,12 +613,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -878,12 +881,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1204,12 +1208,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1418,12 +1423,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1691,12 +1697,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1960,12 +1967,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2288,12 +2296,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2557,12 +2566,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2879,7 +2889,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider_r_1h_"
+        class="fui-FluentProvider fui-FluentProvider_r_1e_"
         dir="ltr"
       >
         <div
@@ -2889,12 +2899,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3153,7 +3164,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider_r_1h_"
+      class="fui-FluentProvider fui-FluentProvider_r_1e_"
       dir="ltr"
     >
       <div
@@ -3163,12 +3174,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3495,12 +3507,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3768,12 +3781,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4092,12 +4106,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4353,12 +4368,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >

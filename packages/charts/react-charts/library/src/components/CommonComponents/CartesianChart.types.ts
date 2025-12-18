@@ -273,6 +273,11 @@ export interface CartesianChartProps {
   yMaxValue?: number;
 
   /**
+   * minimum data value point in x-axis (for numeric x-axis)
+   */
+  xMinValue?: number;
+
+  /**
    * maximum data value point in x-axis
    */
   xMaxValue?: number;
@@ -451,7 +456,7 @@ export interface CartesianChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart | null>;
+  componentRef?: React.Ref<Chart>;
 
   /**
    * Prop to set the x axis annotation. Used to display additional information on the x-axis.
@@ -507,13 +512,34 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
 
   /**
    * Configuration for the y-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
   yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 export interface YValueHover {
@@ -736,7 +762,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**
@@ -746,6 +771,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;

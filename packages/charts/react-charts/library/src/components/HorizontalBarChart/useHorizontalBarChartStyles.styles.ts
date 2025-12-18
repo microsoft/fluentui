@@ -1,6 +1,6 @@
 'use client';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -83,9 +83,9 @@ const useStyles = makeStyles({
   triangle: {
     width: '0',
     height: '0',
-    ...shorthands.borderLeft('4px', 'solid', 'transparent'),
-    ...shorthands.borderRight('4px', 'solid', 'transparent'),
-    ...shorthands.borderTop('7px', 'solid'),
+    borderLeft: `4px solid transparent`,
+    borderRight: `4px solid transparent`,
+    borderTop: `7px solid`,
     borderTopColor: tokens.colorPaletteBlueBorderActive,
     marginBottom: tokens.spacingVerticalXS,
     position: 'absolute',

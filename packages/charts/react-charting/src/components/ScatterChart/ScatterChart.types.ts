@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import {
   IChartProps,
@@ -39,6 +38,11 @@ export interface IScatterChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
 
   /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
    * Callback for getting callout description message
    */
   getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
@@ -47,11 +51,6 @@ export interface IScatterChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
-
-  /**
-   * The prop used to define the y axis labels tooltip visibility
-   */
-  showYAxisLablesTooltip?: boolean;
 }
 
 /**

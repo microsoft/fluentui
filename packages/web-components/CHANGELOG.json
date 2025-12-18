@@ -2,6 +2,66 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 15 Dec 2025 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Dec 2025 04:07:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1a9b6c27939b5dfc39dee090e9ae27461215f0c6",
+            "comment": "chore: update web-component storybook to match react version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 04:06:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "0c388e45a89a459efa4d8dc023fcebeadccc4f40",
+            "comment": "move web components package from beta to release candidate"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Nov 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.133",
+      "version": "3.0.0-beta.133",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f0d9d1c1237eac8c1891c0fbc25d5a0af02ad8c4",
+            "comment": "fix: ensure required radio error message is announced by assistive technology"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Nov 2025 04:12:08 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.132",
       "version": "3.0.0-beta.132",

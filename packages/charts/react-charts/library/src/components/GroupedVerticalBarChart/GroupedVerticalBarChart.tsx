@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
-import { select as d3Select, pointer as d3Pointer } from 'd3-selection';
+import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleBand, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
@@ -11,7 +11,6 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
@@ -45,16 +44,14 @@ import {
   Legends,
   YValueHover,
   ChartPopoverProps,
-  Chart,
-  ImageExportOptions,
-  LegendContainer,
   LineSeries,
   getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
-import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
+import { useImageExport } from '../../utilities/hooks';
+import { isInvalidValue } from '@fluentui/chart-utilities';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -85,7 +82,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     maxBarWidth: 24,
     ..._props,
   };
-  const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -102,9 +98,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _barLegends: string[] = [];
   let _lineLegends: string[] = [];
   let _legendColorMap: Record<string, [string, string]> = {};
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
-  const _legendsRef = React.useRef<LegendContainer>(null);
   const _rectRef = React.useRef<SVGRectElement>(null);
   const _uniqDotId = useId('gvbc_dot_');
 
@@ -130,17 +125,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
   }, [props.legendProps?.selectedLegends]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
-      },
-    }),
-    [],
-  );
 
   const _adjustProps = () => {
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
@@ -247,7 +231,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const _getLegendData = (): JSXElement => {
     const actions: Legend[] = [];
 
@@ -400,7 +383,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const { barData, lineData } = _prepareChartData();
-  const _xAxisType: XAxisTypes = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+  const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+  const _xAxisType: XAxisTypes = isInvalidValue(firstXValue)
+    ? XAxisTypes.StringAxis
+    : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
   const { barLegends, lineLegends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(barData, lineData);
   _barLegends = barLegends;
   _lineLegends = lineLegends;
@@ -433,7 +419,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
@@ -546,11 +531,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const singleGroup: JSXElement[] = [];
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
@@ -618,6 +600,23 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             />,
           );
 
+          // Render individual bar label if provided
+          if (pointData.barLabel && isLegendActive) {
+            barLabelsForGroup.push(
+              <text
+                key={`${singleSet.indexNum}-${legendIndex}-${pointIndex}-label`}
+                x={xPoint + _barWidth / 2}
+                y={pointData.data >= Y_ORIGIN ? yPoint - 6 : yPoint + height + 12}
+                textAnchor="middle"
+                className={classes.barLabel}
+                aria-hidden={true}
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
+                {pointData.barLabel}
+              </text>,
+            );
+          }
+
           barTotalValue += pointData.data;
         });
         if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
@@ -639,20 +638,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    // Used to display tooltip at x axis labels.
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xScale0);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return (
       <g
         key={singleSet.indexNum}

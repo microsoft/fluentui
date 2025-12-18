@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Thu, 06 Nov 2025 15:01:16 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.108)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.107..@fluentui/react-virtualizer_v9.0.0-alpha.108)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.3.4 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+
+## [9.0.0-alpha.107](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.107)
+
+Tue, 11 Nov 2025 19:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.106..@fluentui/react-virtualizer_v9.0.0-alpha.107)
+
+### Changes
+
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.3.3 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-utilities to v9.25.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.0 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
 
 ## [9.0.0-alpha.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.106)
 

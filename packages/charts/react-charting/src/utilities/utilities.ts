@@ -131,6 +131,7 @@ export interface IRotateLabelProps {
 
 export interface IAxisData {
   yAxisDomainValues: number[];
+  yAxisTickText: string[];
 }
 
 export interface IMargins {
@@ -681,6 +682,7 @@ export function prepareDatapoints(
 export function createYAxisForHorizontalBarChartWithAxis(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
+  axisData: IAxisData,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -734,6 +736,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
   }
 
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale;
 }
 
@@ -805,14 +811,8 @@ export function createNumericYAxis(
   }
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
-    axisData.yAxisDomainValues = customTickValues;
-  } else {
-    if (scaleType === 'log') {
-      axisData.yAxisDomainValues = yAxisScale.ticks();
-    } else {
-      yAxis.tickValues(domainValues);
-      axisData.yAxisDomainValues = domainValues;
-    }
+  } else if (scaleType !== 'log') {
+    yAxis.tickValues(domainValues);
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
@@ -830,6 +830,10 @@ export function createNumericYAxis(
   };
   yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale as ScaleLinear<number, number, never>;
 }
 
@@ -843,6 +847,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth: number,
 ): ScaleBand<string> => {
   const {
@@ -875,6 +880,9 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   };
   const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -888,6 +896,7 @@ export const createStringYAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth?: number,
   chartType?: ChartTypes,
 ): ScaleBand<string> => {
@@ -925,6 +934,9 @@ export const createStringYAxis = (
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   }
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -934,7 +946,7 @@ export const createStringYAxis = (
  * @param values
  */
 // changing the type to any as it is used by multiple charts with different data types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]): {
   [key: number]: {
     legend: string;
@@ -1149,7 +1161,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
 /**
  * This method used for wrapping of y axis labels (tick values).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function createYAxisLabels(
   node: SVGElement | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1410,14 +1422,13 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
-  shiftX: number,
   X_ORIGIN: number,
 ): IDomainNRange {
   const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
   const xMax = longestBars.longestPositiveBar;
   const xMin = longestBars.longestNegativeBar;
-  const rMin = isRTL ? margins.left! : margins.left! + shiftX;
-  const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN), rStartValue: rMin, rEndValue: rMax }
@@ -2288,7 +2299,7 @@ const generateNumericTicks = (
         refTick,
         tickStep,
         scaleDomain.map(d => Math.log10(d)),
-      ).map(t => Math.pow(10, t));
+      ).map(t => 10 ** t);
     }
 
     if (typeof tickStep === 'string') {

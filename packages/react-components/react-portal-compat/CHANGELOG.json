@@ -2,6 +2,71 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Wed, 17 Dec 2025 18:10:11 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.2.27",
+      "version": "9.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.26.11",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.72.9",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Dec 2025 22:38:41 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.2.26",
+      "version": "9.2.26",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.72.8",
+            "commit": "a9c009ef9e91f11a45346ab77a95ed6d931d48dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 19:18:29 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.2.25",
+      "version": "9.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.26.10",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.72.7",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Nov 2025 17:24:17 GMT",
       "tag": "@fluentui/react-portal-compat_v9.2.24",
       "version": "9.2.24",

@@ -6,6 +6,7 @@ import { deprecateReactComponentsPreviewPackages } from './deprecate-react-compo
 
 // Mock the `execSync` function, as we don't want to actually run the `npm deprecate` command
 jest.mock('node:child_process', () => ({
+  ...jest.requireActual('node:child_process'),
   execSync: jest.fn(),
 }));
 

@@ -2,6 +2,51 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Mon, 15 Dec 2025 04:07:54 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.59",
+      "version": "0.0.59",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 04:06:59 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.59",
+      "version": "0.0.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.1",
+            "commit": "0c388e45a89a459efa4d8dc023fcebeadccc4f40"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Nov 2025 04:07:28 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.58",
+      "version": "0.0.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.133",
+            "commit": "b990bb438d7d4ccb8dce0c5c6fa03791d4c5f18f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Nov 2025 04:12:08 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.57",
       "version": "0.0.57",

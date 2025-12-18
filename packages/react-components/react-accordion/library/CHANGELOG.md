@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 06 Nov 2025 17:24:17 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.8.15)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.8.14..@fluentui/react-accordion_v9.8.15)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.7 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.13 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.4 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-motion to v9.11.5 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.14.2 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-tabster to v9.26.11 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+
+## [9.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.8.14)
+
+Tue, 11 Nov 2025 19:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.8.13..@fluentui/react-accordion_v9.8.14)
+
+### Patches
+
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.6 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.12 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.3 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.0 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-motion to v9.11.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.14.1 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-tabster to v9.26.10 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-utilities to v9.25.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
 
 ## [9.8.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.8.13)
 

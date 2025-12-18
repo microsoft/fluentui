@@ -83,7 +83,12 @@ export {
   useCarouselNavContainer_unstable,
 } from './CarouselNavContainer';
 export { carouselContextDefaultValue, CarouselProvider, useCarouselContext_unstable } from './CarouselContext';
-export type { CarouselIndexChangeData, CarouselContextValue, CarouselContextValues } from './CarouselContext';
+export type {
+  CarouselAppearance,
+  CarouselIndexChangeData,
+  CarouselContextValue,
+  CarouselContextValues,
+} from './CarouselContext';
 export type { CarouselViewportProps, CarouselViewportSlots, CarouselViewportState } from './CarouselViewport';
 export {
   CarouselViewport,

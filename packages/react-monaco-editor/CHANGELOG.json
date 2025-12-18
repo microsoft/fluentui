@@ -2,6 +2,109 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:00 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.8.4",
+      "version": "1.8.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.125.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.10.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.25.4",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 09:34:51 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.8.3",
+      "version": "1.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.125.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.25.3",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:25 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.8.2",
+      "version": "1.8.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "chore: use r18+ createRoot"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.125.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.10.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.25.2",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Oct 2025 12:37:13 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.8.1",
       "version": "1.8.1",

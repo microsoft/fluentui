@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import { HeatMapChartProps } from './HeatMapChart.types';
-import {
-  AccessibilityProps,
-  Chart,
-  HeatMapChartData,
-  HeatMapChartDataPoint,
-  Margins,
-  ImageExportOptions,
-} from '../../types/index';
+import { AccessibilityProps, HeatMapChartData, HeatMapChartDataPoint, Margins } from '../../types/index';
 import {
   ChartTypes,
   getAccessibleDataObject,
@@ -23,7 +16,6 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  useRtl,
   sortAxisCategories,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -32,11 +24,11 @@ import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useHeatMapChartStyles } from './useHeatMapChartStyles.styles';
-import { Legend, Legends, LegendContainer } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -77,9 +69,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const _calloutAnchorPoint = React.useRef<FlattenData | null>(null);
     const _emptyChartId = useId('_HeatMap_empty');
     const _margins = React.useRef<Margins>({});
-    const cartesianChartRef = React.useRef<Chart>(null);
-    const _legendsRef = React.useRef<LegendContainer>(null);
-    const _isRtl = useRtl();
+    const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
 
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -91,17 +81,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const [descriptionMessage, setDescriptionMessage] = React.useState<string>('');
     const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
-        },
-      }),
-      [],
-    );
 
     function _getMinMaxOfYAxis() {
       return { startValue: 0, endValue: 0 };
@@ -116,7 +95,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       xAxisType: XAxisTypes,
       barWidth: number,
       tickValues: Date[] | number[] | undefined,
-      shiftX: number,
     ) {
       let domainNRangeValue: IDomainNRange;
       if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {

@@ -2,6 +2,77 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:02 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.6",
+      "version": "8.13.6",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.7.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.17.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 09:34:50 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.5",
+      "version": "8.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "696579c0feb8927350471487b133478f181352cd",
+            "comment": "cdn url change to support latest vault/list filetype icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:28 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.7.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.17.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Oct 2025 10:23:23 GMT",
       "tag": "@fluentui/style-utilities_v8.13.3",
       "version": "8.13.3",

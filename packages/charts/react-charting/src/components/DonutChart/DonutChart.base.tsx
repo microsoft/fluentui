@@ -17,7 +17,7 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -117,7 +117,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
@@ -201,7 +200,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           hidden={!(!this.props.hideTooltip && this.state.showHover)}
           id={this._calloutId}
           onDismiss={this._closeCallout}
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           preventDismissOnLostFocus={true}
           /** Keep the callout updated with details of focused/hovered arc */
           shouldUpdateWhenHidden={true}
@@ -236,7 +234,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _closeCallout = () => {
@@ -281,7 +284,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSXElement {
     if (this.props.order === 'sorted') {
       chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {

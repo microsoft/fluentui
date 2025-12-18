@@ -1,4 +1,4 @@
-import { screen, fireEvent, render } from '@testing-library/react';
+import { screen, fireEvent, render, act } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { GroupedVerticalBarChartData } from '../../index';
@@ -23,6 +23,8 @@ beforeAll(() => {
 });
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -30,19 +32,36 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
+  window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const accessibilityDataPoints: GroupedVerticalBarChartData[] = [
@@ -371,6 +390,9 @@ describe('Grouped Vertical bar chart rendering', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render the bar with the given width',
     GroupedVerticalBarChart,
@@ -428,6 +450,9 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     GroupedVerticalBarChart,
@@ -576,6 +601,9 @@ export const emptyChartPoints = [
 ];
 
 describe('GroupedVerticalBarChart snapShot testing', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('renders GroupedVerticalBarChart correctly', async () => {
     let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     expect(wrapper).toMatchSnapshot();
@@ -623,6 +651,9 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
 });
 
 describe('GroupedVerticalBarChart - basic props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('Should not mount legend when hideLegend true ', () => {
     let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
@@ -655,6 +686,9 @@ describe('GroupedVerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No prop changes', () => {
     const props = {
       data: chartPoints,
@@ -690,12 +724,17 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('GroupedVerticalBarChart - mouse events', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('Should render callout correctly on mouseover', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{}} />);
     const bars = container.querySelectorAll('rect[role="img"]');
     fireEvent.mouseOver(bars[0]);
     // Wait for any async updates (if needed)
-    await new Promise(resolve => setTimeout(resolve, 0));
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(container).toMatchSnapshot();
   });
 
@@ -711,6 +750,9 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');

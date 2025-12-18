@@ -233,25 +233,25 @@ describe('split-library-in-two generator', () => {
         ],
       }
     `);
-    expect(readJson(tree, `${storiesConfig.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
-      Object {
-        "extends": Array [
-          "plugin:@fluentui/eslint-plugin/react",
-        ],
-        "root": true,
-        "rules": Object {
-          "import/no-extraneous-dependencies": Array [
-            "error",
-            Object {
-              "packageDir": Array [
-                ".",
-                "../../../../",
-              ],
-            },
-          ],
+    expect(tree.read(`${storiesConfig.root}/eslint.config.js`, 'utf-8')).toMatchInlineSnapshot(`
+      "// @ts-check
+
+      const fluentPlugin = require('@fluentui/eslint-plugin');
+
+      module.exports = [
+        ...fluentPlugin.configs['flat/react'],
+        {
+          rules: {
+            'import/no-extraneous-dependencies': [
+              'error',
+              { packageDir: ['.', '../../../../'] },
+            ],
+          },
         },
-      }
+      ];
+      "
     `);
+
     expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`
       "# @proj/react-hello-stories
 

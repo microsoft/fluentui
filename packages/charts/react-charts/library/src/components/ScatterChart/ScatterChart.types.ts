@@ -38,6 +38,11 @@ export interface ScatterChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+
+  /**
    * Callback for getting callout description message
    */
   getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
@@ -46,11 +51,6 @@ export interface ScatterChartProps extends CartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
-
-  /**
-   * The prop used to define the y axis labels tooltip visibility
-   */
-  showYAxisLablesTooltip?: boolean;
 }
 
 /**

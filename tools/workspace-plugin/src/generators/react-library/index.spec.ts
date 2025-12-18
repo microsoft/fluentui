@@ -54,12 +54,12 @@ describe('react-library generator', () => {
       Array [
         "project.json",
         ".babelrc.json",
-        ".eslintrc.json",
         ".swcrc",
         "LICENSE",
         "README.md",
         "config",
         "docs",
+        "eslint.config.js",
         "etc",
         "jest.config.js",
         "package.json",
@@ -172,7 +172,7 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        ".eslintrc.json",
+        "eslint.config.js",
         "tsconfig.json",
         "tsconfig.lib.json",
         "package.json",
@@ -213,24 +213,24 @@ describe('react-library generator', () => {
       "
     `);
 
-    expect(readJson(tree, `${stories.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
-      Object {
-        "extends": Array [
-          "plugin:@fluentui/eslint-plugin/react",
-        ],
-        "root": true,
-        "rules": Object {
-          "import/no-extraneous-dependencies": Array [
-            "error",
-            Object {
-              "packageDir": Array [
-                ".",
-                "../../../../",
-              ],
-            },
-          ],
+    const eslintConfig = tree.read(`${stories.root}/eslint.config.js`, 'utf-8');
+    expect(eslintConfig).toMatchInlineSnapshot(`
+      "// @ts-check
+
+      const fluentPlugin = require('@fluentui/eslint-plugin');
+
+      module.exports = [
+        ...fluentPlugin.configs['flat/react'],
+        {
+          rules: {
+            'import/no-extraneous-dependencies': [
+              'error',
+              { packageDir: ['.', '../../../../'] },
+            ],
+          },
         },
-      }
+      ];
+      "
     `);
 
     // global updates
@@ -264,12 +264,12 @@ describe('react-library generator', () => {
       Array [
         "project.json",
         ".babelrc.json",
-        ".eslintrc.json",
         ".swcrc",
         "LICENSE",
         "README.md",
         "config",
         "docs",
+        "eslint.config.js",
         "etc",
         "jest.config.js",
         "package.json",
@@ -294,7 +294,7 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        ".eslintrc.json",
+        "eslint.config.js",
         "tsconfig.json",
         "tsconfig.lib.json",
         "package.json",

@@ -65,6 +65,7 @@
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
+      "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
       "inputs": [
@@ -137,6 +138,9 @@
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "master",
+  "tui": {
+    "enabled": false
+  },
   "plugins": [
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",

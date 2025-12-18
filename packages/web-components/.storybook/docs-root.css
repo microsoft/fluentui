@@ -1,68 +1,70 @@
-/*
- * Heads Up!
- * This file should be kept in sync with the `docs-root.css` file for the React v9 Storybook.
- */
-
-/* remove the docs wrapper bg to let page bg show through */
-#storybook-docs .sbdocs-wrapper {
-  background: transparent !important;
-}
-
-/* sb-show-main is missing during page transitions causing a page shift */
-/* todo: cleanup once we no longer inherit docs-root */
-.sb-show-main.sb-main-fullscreen,
-.sb-main-fullscreen {
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
 #storybook-docs .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   max-width: 1200px;
+
+  container: sbdocs-content / inline-size;
 }
 
 #storybook-docs h1.sbdocs-title {
+  font-family: inherit;
   font-size: 44px;
   line-height: 60px;
   /* identical to box height, or 143% */
   font-weight: 900;
   letter-spacing: -0.04em;
   color: #000000;
+  margin-top: 49px;
 }
 
-#storybook-docs details {
+#storybook-docs details:not(.sbdocs-preview details) {
   position: relative;
   z-index: 99;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) p {
+#storybook-docs .sbdocs p:not(.sbdocs-preview p) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.01em;
+  color: #000000;
   margin-top: 24px;
 }
 
+#storybook-docs .sbdocs-wrapper {
+  background: white;
+  min-height: auto;
+}
+
 #storybook-docs .sbdocs-img.featured-image {
-  max-width: 100%;
   margin: 48px 0;
   display: block;
+  border-radius: 24px;
+
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+@container sbdocs-content (max-width: 728px) {
+  #storybook-docs .sbdocs-img.featured-image {
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+  }
 }
 
 #storybook-docs .sbdocs-img {
-  border-radius: 24px;
+  max-width: 100%;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) hr {
+#storybook-docs .sbdocs hr:not(.sbdocs-preview hr) {
   margin: 48px 0;
   height: 0;
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2:not([slot]) {
+#storybook-docs .sbdocs h2:not(.sbdocs-preview h2) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -75,7 +77,7 @@
   padding: 48px 0 0 0;
 }
 
-#storybook-docs .sbdocs h2 code {
+#storybook-docs .sbdocs h2 code:not(.sbdocs-preview h2 code) {
   border-radius: 4px;
   font-size: 20px;
 }
@@ -103,7 +105,7 @@
   margin: -40px 0 0;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) li {
+#storybook-docs .sbdocs li:not(.sbdocs-preview li) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 16px;
@@ -115,11 +117,11 @@
   margin-top: 8px;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) ul {
+#storybook-docs .sbdocs ul:not(.sbdocs-preview ul) {
   margin: 12px 0;
 }
 
-#storybook-docs .sbdocs-ul .sbdocs:not(.sbdocs-preview) li {
+#storybook-docs .sbdocs-ul li:not(.sbdocs-preview .sbdocs-ul li) {
   list-style: none;
   position: relative;
 }
@@ -138,26 +140,26 @@
 
 #storybook-docs .sbdocs-preview {
   border-radius: 16px;
-  background: #fff;
-  /* --colorBrandBackgroundInverted */
+  background: var(--colorNeutralBackground1, #fff);
   padding: 0;
+}
+
+#storybook-docs .sbdocs .sb-bar {
+  position: relative;
   box-shadow: none;
-  border: 1px solid #d1d1d1;
-  /* --colorNeutralStroke1 */
+  border-bottom: 1px solid var(--colorNeutralStroke1, #e1dfdd);
 }
 
-/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
-#storybook-docs .innerZoomElementWrapper > div {
-  box-sizing: border-box;
+#storybook-docs .sbdocs .docs-story div[scale='1'] {
+  height: auto !important;
 }
 
-/* fix mouse interactions for toolbar on first story */
+#storybook-docs .innerZoomElementWrapper {
+  padding: 30px;
+}
+
 #storybook-docs .sbdocs-preview > .os-host {
-  /* The toolbar sits within the story content area and is position: absolute by default. */
-  /* The story content overlays the toolbar making it non-interactive */
-  /* We don't use z-index because the toolbar can still sometimes overlay story content (flyout menu) */
-  /* The best solution is to use a static toolbar that is always outside the story content and interactive */
-  position: static;
+  display: none;
 }
 
 #storybook-docs span + .sbdocs .docblock-argstable tbody tr td button {
@@ -205,6 +207,31 @@
   text-decoration: underline;
 }
 
+/* Styles for Github-flavored Markdown tables */
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) {
+  margin: 16px 0px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) tr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) th {
+  font-weight: bold;
+  color: rgb(51, 51, 51);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 13px;
+}
+
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 13px;
+}
+
 /*  */
 /* Args Table */
 /*  */
@@ -227,6 +254,14 @@
 
 #storybook-docs thead.docblock-argstable-head {
   border-bottom: 1px solid #edebe9;
+}
+
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(4) {
+  display: none;
+}
+
+#storybook-docs .docblock-argstable-head > tr > th:nth-child(4) {
+  display: none;
 }
 
 #storybook-docs .docblock-argstable tbody tr {
@@ -259,7 +294,7 @@
   line-height: 21px;
 }
 
-#storybook-docs code,
+#storybook-docs code:not(.sbdocs-preview code),
 #storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
@@ -296,13 +331,11 @@
   white-space: normal;
 }
 
-#storybook-docs code {
+#storybook-docs code:not(.sbdocs-preview code) {
   padding: 0.1em 0.2em;
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
-  width: fit-content;
-  /* prevent wrapping kebab-case words when they'll fit on one line */
 }
 
 .os-content-glue {
@@ -338,11 +371,11 @@
 }
 
 #storybook-docs .docblock-argstable tr > :nth-child(1) {
-  width: 10%;
+  width: 4%;
 }
 
 #storybook-docs .docblock-argstable tr > :nth-child(2) {
-  width: 60%;
+  width: 100%;
 }
 
 #storybook-docs .os-padding {
@@ -395,6 +428,8 @@
 }
 
 body,
+body h1,
+body h2,
 body p,
 body ul,
 body ul li {
@@ -405,17 +440,16 @@ h1.fluent {
   font-weight: 700;
   font-size: 40px;
   font-family: 'Segoe UI';
-  line-height: 60px;
+  line-height: 48px;
   letter-spacing: -0.16px;
 }
 
-h1 .fluent-version {
+h1.fluent .fluent-version {
   display: block;
   font-size: 24px;
-  /* --font-size-base-600 */
   line-height: 32px;
   color: #707070;
-  /* --color-neutral-foreground-3 */
+  margin-top: 0.5rem;
 }
 
 h2.fluent {
@@ -426,53 +460,31 @@ h2.fluent {
   letter-spacing: -0.16px;
 }
 
-/* Mimic React v9 Provider styles:
- *   - apply font, background, and foreground colors
- *   - apply padding for story content
- */
-#storybook-docs .innerZoomElementWrapper > div > div {
-  padding: 48px 24px;
-  font-family: var(--fontFamilyBase);
-  background: var(--colorNeutralBackground2);
-  color: var(--colorNeutralForeground2);
+.whats-new-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  container: whats-new / inline-size;
 }
 
-/*
- * Theme Switcher
- */
-#switches-container {
-  position: sticky;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  padding: 12px;
-  width: 100%;
-  top: 0;
-  box-sizing: border-box;
-  /* keep from overflowing body making x scroll bar*/
-  background: #fff;
-  box-shadow: 0 0 3px rgb(0 0 0 / 22%);
-  z-index: 10;
+.whats-new-cards p {
+  margin-top: 0.25rem !important;
+  font-size: 0.925rem !important;
 }
 
-#switches-container select {
-  padding: 5px var(--spacingHorizontalM);
-  border: var(--strokeWidthThin) solid #d1d1d1 /* --colorNeutralStroke1, without theme switching */;
-  border-radius: var(--borderRadiusMedium);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightBase300);
-  width: 140px;
+.whats-new-cards img {
+  border-radius: 24px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: bottom;
 }
 
-.custom-fullscreen #switches-container {
-  display: none;
+@container whats-new (max-width: 548px) {
+  .whats-new-cards img {
+    max-width: 50%;
+  }
 }
 
-.custom-fullscreen .sbdocs-wrapper {
-  padding: 20px;
-}
-
-.custom-fullscreen .sbdocs-content {
-  max-width: unset;
+.small p {
+  font-size: 0.925rem !important;
 }

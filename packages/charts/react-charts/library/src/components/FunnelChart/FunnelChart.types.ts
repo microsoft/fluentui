@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
+import { Chart } from '../../types/index';
 
 /**
  * Data point for funnel chart
@@ -78,8 +79,7 @@ export interface FunnelChartProps {
   /**
    * Reference to the chart component
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  componentRef?: React.RefObject<any>;
+  componentRef?: React.Ref<Chart>;
 
   /**
    * Additional CSS class(es) to apply to the chart

@@ -55,7 +55,7 @@ export type MenuGridContextValues = {
 export const MenuGridGroup: ForwardRefComponent<MenuGridGroupProps>;
 
 // @public (undocumented)
-export const MenuGridGroupClassNames: SlotClassNames<MenuGridGroupSlots>;
+export const menuGridGroupClassNames: SlotClassNames<MenuGridGroupSlots>;
 
 // @public (undocumented)
 export const MenuGridGroupContextProvider: React_2.Provider<MenuGridGroupContextValue>;
@@ -67,7 +67,7 @@ export type MenuGridGroupContextValue = {
 
 // @public (undocumented)
 export type MenuGridGroupContextValues = {
-    MenuGridGroup: MenuGridGroupContextValue;
+    menuGridGroup: MenuGridGroupContextValue;
 };
 
 // @public

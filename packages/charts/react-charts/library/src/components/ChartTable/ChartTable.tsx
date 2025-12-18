@@ -3,13 +3,12 @@
 import * as React from 'react';
 import { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';
-import { useRtl } from '../../utilities/utilities';
-import { ImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
 import { color as d3Color, rgb as d3Rgb } from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';
+import { useImageExport } from '../../utilities/hooks';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 function invertHexColor(hex: string): string {
   const parsedColor = d3Color(hex);
@@ -49,20 +48,9 @@ function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
     const { headers, rows, width, height } = props;
-    const _isRTL: boolean = useRtl();
-    const _rootElem = React.useRef<HTMLDivElement | null>(null);
+    const { chartContainerRef: _rootElem } = useImageExport(props.componentRef, true, false);
     const classes = useChartTableStyles(props);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: _rootElem.current,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(_rootElem.current, undefined, _isRTL, opts);
-        },
-      }),
-      [],
-    );
+    const arrowAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
@@ -123,6 +111,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                 style={{
                   width: width ? `${width}px` : '100%',
                 }}
+                {...arrowAttributes}
               >
                 <thead>
                   <tr>

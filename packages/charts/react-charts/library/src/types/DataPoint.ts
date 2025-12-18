@@ -210,6 +210,12 @@ export interface VerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -631,6 +637,12 @@ export interface VSChartDataPoint {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -741,6 +753,11 @@ export interface GVBarChartSeriesPoint {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 }
 
 /**
@@ -905,6 +922,7 @@ interface SLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;

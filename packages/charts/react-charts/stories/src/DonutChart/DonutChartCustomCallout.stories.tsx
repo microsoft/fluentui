@@ -51,10 +51,7 @@ export const DonutChartCustomCallout = (): JSXElement => {
     };
   };
 
-  const customPopover = (
-    props: ChartDataPoint,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement | undefined => {
+  const customPopover = (props: ChartDataPoint): JSXElement | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
