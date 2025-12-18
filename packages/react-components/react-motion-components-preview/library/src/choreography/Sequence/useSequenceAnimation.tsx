@@ -52,21 +52,21 @@ export function useSequenceAnimation({
   }, [childKeys.length]);
 
   const handleChildFinish = React.useCallback(() => {
-    setCurrentIndex(prevIndex => {
-      const nextIndex = prevIndex + 1;
+    setCurrentIndex(oldIndex => {
+      const nextIndex = oldIndex + 1;
 
       if (nextIndex >= totalChildren) {
         // All children in current iteration finished
         const nextIteration = currentIteration + 1;
 
-        if (iterations === 'infinite' || nextIteration < iterations) {
+        if (nextIteration < iterations) {
           // Start next iteration
           setCurrentIteration(nextIteration);
-          return 0; // Reset to first child
+          return 0; // Loop back to first child
         } else {
           // All iterations complete
           handleMotionFinish();
-          return prevIndex; // Stay on last child
+          return oldIndex; // Stay on last child
         }
       }
 

@@ -31,6 +31,35 @@ export const Sequence: React.FC<SequenceProps> = ({ children, iterations = 1, co
   } as Partial<Record<string, unknown>>);
 };
 
+type MotionEntry = React.ComponentType<any> | React.ReactElement | null | undefined;
+
+export const createSequenceComponent = ({
+  motions,
+}: {
+  motions: MotionEntry[];
+}): React.FC<React.PropsWithChildren<{}>> => {
+  return ({ children }) => {
+    const sequenceChildren = motions.map((TheMotion, index) => {
+      if (!TheMotion) return null;
+
+      if (React.isValidElement(TheMotion)) {
+        const key = TheMotion.key ?? index;
+        return React.cloneElement(TheMotion, { key }, children);
+      }
+
+      const MotionComp = TheMotion as React.ComponentType<any>;
+      return <MotionComp key={index}>{children}</MotionComp>;
+    });
+
+    return <Sequence>{sequenceChildren}</Sequence>;
+  };
+};
+
+/**
+ * Holds the animation for a specified duration
+ * @param param0
+ * @returns
+ */
 export const Hold: React.FC<HoldProps> = ({ duration, children, onMotionFinish }) => {
   const [setTimeout, clearTimeout] = useTimeout();
 

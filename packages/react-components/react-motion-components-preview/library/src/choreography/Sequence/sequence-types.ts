@@ -9,11 +9,11 @@ export interface SequenceProps {
 
   /**
    * Number of times to repeat the series sequence.
-   * - A positive number (e.g., 1, 2, 3) runs the series that many times
-   * - 'infinite' loops the series indefinitely
+   * - A positive integer (e.g., 1, 2, 3) runs the series that many times
+   * - Infinity loops the series indefinitely
    * Defaults to 1 (play once).
    */
-  iterations?: number | 'infinite';
+  iterations?: EffectTiming['iterations'];
 
   /**
    * Props to be passed to all child components in the sequence.
