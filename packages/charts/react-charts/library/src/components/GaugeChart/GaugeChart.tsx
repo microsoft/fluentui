@@ -386,9 +386,8 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const hoverXValue: string =
         'Current value is ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat, true);
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      const highlightedLegends = _getHighlightedLegend();
       const hoverYValues: YValue[] = _segments
-        .filter(segment => highlightedLegends.length === 0 || highlightedLegends.includes(segment.legend))
+        .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
         .map(segment => {
           const yValue: YValue = {
             legend: segment.legend,
