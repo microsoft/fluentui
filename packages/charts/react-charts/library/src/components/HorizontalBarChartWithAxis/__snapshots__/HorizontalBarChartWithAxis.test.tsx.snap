@@ -9,7 +9,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -332,7 +332,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
-            data-is-focusable="true"
             fill="#0078d4"
             height="16"
             opacity="1"
@@ -358,7 +357,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="88%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
-            data-is-focusable="true"
             fill="#002050"
             height="16"
             opacity="1"
@@ -384,7 +382,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
-            data-is-focusable="true"
             fill="#00188f"
             height="16"
             opacity="1"
@@ -410,7 +407,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="20%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
-            data-is-focusable="true"
             fill="#00bcf2"
             height="16"
             opacity="1"
@@ -542,7 +538,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -863,7 +859,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="1000. String One."
             aria-labelledby="toolTipcallout_r_4_"
-            data-is-focusable="true"
             fill="#0078d4"
             height="32.714285714285715"
             opacity="1"
@@ -890,7 +885,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout_r_4_"
-            data-is-focusable="true"
             fill="#00bcf2"
             height="32.714285714285715"
             opacity="1"
@@ -917,7 +911,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="3000. String Three."
             aria-labelledby="toolTipcallout_r_4_"
-            data-is-focusable="true"
             fill="#00188f"
             height="32.714285714285715"
             opacity="1"
@@ -944,7 +937,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="2000. String Four."
             aria-labelledby="toolTipcallout_r_4_"
-            data-is-focusable="true"
             fill="#002050"
             height="32.714285714285715"
             opacity="1"
@@ -1017,11 +1009,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -1030,7 +1017,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -1353,7 +1340,6 @@ Object {
               <rect
                 aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -1379,7 +1365,6 @@ Object {
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -1405,7 +1390,6 @@ Object {
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -1431,7 +1415,6 @@ Object {
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -1561,7 +1544,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -1884,7 +1867,6 @@ Object {
             <rect
               aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -1910,7 +1892,6 @@ Object {
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
-              data-is-focusable="true"
               fill="#002050"
               height="16"
               opacity="1"
@@ -1936,7 +1917,6 @@ Object {
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
-              data-is-focusable="true"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -1962,7 +1942,6 @@ Object {
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -2143,11 +2122,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -2156,7 +2130,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -2479,7 +2453,6 @@ Object {
               <rect
                 aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -2505,7 +2478,6 @@ Object {
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -2531,7 +2503,6 @@ Object {
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -2557,7 +2528,6 @@ Object {
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -2687,7 +2657,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -3010,7 +2980,6 @@ Object {
             <rect
               aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -3036,7 +3005,6 @@ Object {
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
-              data-is-focusable="true"
               fill="#002050"
               height="16"
               opacity="1"
@@ -3062,7 +3030,6 @@ Object {
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
-              data-is-focusable="true"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -3088,7 +3055,6 @@ Object {
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -3277,7 +3243,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -3600,7 +3566,6 @@ Object {
               <rect
                 aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -3626,7 +3591,6 @@ Object {
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -3652,7 +3616,6 @@ Object {
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -3678,7 +3641,6 @@ Object {
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -3808,7 +3770,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -4131,7 +4093,6 @@ Object {
             <rect
               aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -4157,7 +4118,6 @@ Object {
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
-              data-is-focusable="true"
               fill="#002050"
               height="16"
               opacity="1"
@@ -4183,7 +4143,6 @@ Object {
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
-              data-is-focusable="true"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -4209,7 +4168,6 @@ Object {
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -4398,7 +4356,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
@@ -4778,7 +4736,6 @@ Object {
               <rect
                 aria-label="10K. Q1."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4793,7 +4750,6 @@ Object {
               <rect
                 aria-label="-5K. Q1."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4808,7 +4764,6 @@ Object {
               <rect
                 aria-label="8K. Q1."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -4835,7 +4790,6 @@ Object {
               <rect
                 aria-label="-7K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4850,7 +4804,6 @@ Object {
               <rect
                 aria-label="12K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4865,7 +4818,6 @@ Object {
               <rect
                 aria-label="3K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -4892,7 +4844,6 @@ Object {
               <rect
                 aria-label="15K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4907,7 +4858,6 @@ Object {
               <rect
                 aria-label="-4K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4922,7 +4872,6 @@ Object {
               <rect
                 aria-label="5K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
-                data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -5034,7 +4983,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
@@ -5414,7 +5363,6 @@ Object {
             <rect
               aria-label="10K. Q1."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5429,7 +5377,6 @@ Object {
             <rect
               aria-label="-5K. Q1."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5444,7 +5391,6 @@ Object {
             <rect
               aria-label="8K. Q1."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5471,7 +5417,6 @@ Object {
             <rect
               aria-label="-7K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5486,7 +5431,6 @@ Object {
             <rect
               aria-label="12K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5501,7 +5445,6 @@ Object {
             <rect
               aria-label="3K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5528,7 +5471,6 @@ Object {
             <rect
               aria-label="15K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5543,7 +5485,6 @@ Object {
             <rect
               aria-label="-4K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5558,7 +5499,6 @@ Object {
             <rect
               aria-label="5K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
-              data-is-focusable="true"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5729,7 +5669,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -6052,7 +5992,6 @@ Object {
               <rect
                 aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_23_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="1"
                 opacity="1"
@@ -6066,7 +6005,6 @@ Object {
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_23_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="1"
                 opacity="1"
@@ -6080,7 +6018,6 @@ Object {
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_23_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="1"
                 opacity="1"
@@ -6094,7 +6031,6 @@ Object {
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_23_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="1"
                 opacity="1"
@@ -6119,7 +6055,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -6442,7 +6378,6 @@ Object {
             <rect
               aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_23_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="1"
               opacity="1"
@@ -6456,7 +6391,6 @@ Object {
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_23_"
-              data-is-focusable="true"
               fill="#002050"
               height="1"
               opacity="1"
@@ -6470,7 +6404,6 @@ Object {
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_23_"
-              data-is-focusable="true"
               fill="#00188f"
               height="1"
               opacity="1"
@@ -6484,7 +6417,6 @@ Object {
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_23_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="1"
               opacity="1"
@@ -6568,7 +6500,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -6826,20 +6758,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String One"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String One"
                     dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-0"
                     x="-16"
                   >
                     Stri...
@@ -6856,20 +6781,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Two"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Two"
                     dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-1"
                     x="-16"
                   >
                     Stri...
@@ -6886,20 +6804,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Three"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Three"
                     dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-2"
                     x="-16"
                   >
                     Stri...
@@ -6916,20 +6827,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Four"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Four"
                     dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-3"
                     x="-16"
                   >
                     Stri...
@@ -6941,7 +6845,6 @@ Object {
               <rect
                 aria-label="1000. String One."
                 aria-labelledby="toolTipcallout_r_26_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -6968,7 +6871,6 @@ Object {
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_26_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -6995,7 +6897,6 @@ Object {
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_26_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -7022,7 +6923,6 @@ Object {
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_26_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -7085,13 +6985,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_28_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -7101,7 +7001,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -7359,20 +7259,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String One"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String One"
                   dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-0"
                   x="-16"
                 >
                   Stri...
@@ -7389,20 +7282,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Two"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Two"
                   dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-1"
                   x="-16"
                 >
                   Stri...
@@ -7419,20 +7305,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Three"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Three"
                   dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-2"
                   x="-16"
                 >
                   Stri...
@@ -7449,20 +7328,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Four"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Four"
                   dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-3"
                   x="-16"
                 >
                   Stri...
@@ -7474,7 +7346,6 @@ Object {
             <rect
               aria-label="1000. String One."
               aria-labelledby="toolTipcallout_r_26_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -7501,7 +7372,6 @@ Object {
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_26_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -7528,7 +7398,6 @@ Object {
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_26_"
-              data-is-focusable="true"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -7555,7 +7424,6 @@ Object {
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_26_"
-              data-is-focusable="true"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
@@ -7618,6 +7486,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-cart__tooltip"
+        id="tooltip__r_28_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -7680,11 +7553,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -7693,7 +7561,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -8014,7 +7882,6 @@ Object {
               <rect
                 aria-label="1000. String One."
                 aria-labelledby="toolTipcallout_r_2a_"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -8041,7 +7908,6 @@ Object {
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_2a_"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -8068,7 +7934,6 @@ Object {
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_2a_"
-                data-is-focusable="true"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -8095,7 +7960,6 @@ Object {
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_2a_"
-                data-is-focusable="true"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -8169,7 +8033,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -8490,7 +8354,6 @@ Object {
             <rect
               aria-label="1000. String One."
               aria-labelledby="toolTipcallout_r_2a_"
-              data-is-focusable="true"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -8517,7 +8380,6 @@ Object {
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_2a_"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -8544,7 +8406,6 @@ Object {
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_2a_"
-              data-is-focusable="true"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -8571,7 +8432,6 @@ Object {
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_2a_"
-              data-is-focusable="true"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"

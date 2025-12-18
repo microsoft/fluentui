@@ -4,7 +4,7 @@ import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { HighContrastSelector, useRtl } from '../../utilities/utilities';
+import { CARTESIAN_XAXIS_CLASSNAME, HighContrastSelector, useRtl } from '../../utilities/utilities';
 import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 /**
@@ -15,7 +15,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   chartWrapper: 'fui-cart__chartWrapper',
   plotContainer: 'fui-cart__plotContainer',
   axisTitle: 'fui-cart__axisTitle',
-  xAxis: 'fui-cart__xAxis',
+  xAxis: CARTESIAN_XAXIS_CLASSNAME,
   yAxis: 'fui-cart__yAxis',
   opacityChangeOnHover: 'fui-cart__opacityChangeOnHover',
   legendContainer: 'fui-cart__legendContainer',
@@ -42,6 +42,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     overflow: 'hidden',
     textAlign: 'left',
+    position: 'relative',
   },
   chartWrapper: {
     position: 'relative',

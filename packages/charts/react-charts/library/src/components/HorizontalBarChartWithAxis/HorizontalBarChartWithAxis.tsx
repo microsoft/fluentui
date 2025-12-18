@@ -464,7 +464,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             key={point.y}
             x={xStart}
             y={yBarScale(point.y) - _barHeight / 2}
-            data-is-focusable={shouldHighlight}
             width={barWidth}
             height={_barHeight}
             ref={(e: SVGRectElement) => {
@@ -481,7 +480,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onBlur={_onBarLeave}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={shouldHighlight ? 0 : undefined}
           />
           {showLabel && _renderBarLabel(barEndX, yBarScale(point.y) - _barHeight / 2, totalBarValue, isPositiveBar)}
         </React.Fragment>
@@ -657,11 +656,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            data-is-focusable={shouldHighlight}
             opacity={shouldHighlight ? 1 : 0.1}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
             fill={startColor}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={shouldHighlight ? 0 : undefined}
           />
           {showLabel && _renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}
         </React.Fragment>

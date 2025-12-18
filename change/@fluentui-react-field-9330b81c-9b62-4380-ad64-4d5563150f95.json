@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: constrain Field label size to prevent empty space click activation",
-  "packageName": "@fluentui/react-field",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
