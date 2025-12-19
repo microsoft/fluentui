@@ -430,9 +430,9 @@ describe('Line chart - Subcomponent line', () => {
     container => {
       const lines = getById(container, /lineID/i);
       // Assert
-      expect(lines[0].getAttribute('stroke')).toEqual('red');
+      expect(lines[0].getAttribute('stroke')).toEqual('yellow');
       expect(lines[1].getAttribute('stroke')).toEqual('green');
-      expect(lines[2].getAttribute('stroke')).toEqual('yellow');
+      expect(lines[2].getAttribute('stroke')).toEqual('red');
     },
   );
 
@@ -462,9 +462,9 @@ describe('Line chart - Subcomponent legend', () => {
       fireEvent.mouseOver(legend!);
       // Assert
       const lines = getById(container, /lineID/i);
-      expect(lines[0].getAttribute('opacity')).toEqual('1');
+      expect(lines[0].getAttribute('opacity')).toEqual('0.1');
       expect(lines[1].getAttribute('opacity')).toEqual('0.1');
-      expect(lines[2].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[2].getAttribute('opacity')).toEqual('1');
       expect(screen.queryByText('metaData2')).toHaveStyle('opacity: 0.67');
     },
   );
@@ -479,9 +479,9 @@ describe('Line chart - Subcomponent legend', () => {
       fireEvent.mouseOver(legend!);
       // Assert
       const lines = getById(container, /lineID/i);
-      expect(lines[0].getAttribute('opacity')).toEqual('1');
+      expect(lines[0].getAttribute('opacity')).toEqual('0.1');
       expect(lines[1].getAttribute('opacity')).toEqual('0.1');
-      expect(lines[2].getAttribute('opacity')).toEqual('0.1');
+      expect(lines[2].getAttribute('opacity')).toEqual('1');
 
       fireEvent.mouseLeave(legend!);
       expect(lines[0].getAttribute('opacity')).toEqual('1');
@@ -500,9 +500,7 @@ describe('Line chart - Subcomponent legend', () => {
       expect(legend).toBeDefined();
       fireEvent.click(legend!);
       // Assert
-      const lines = getById(container, /lineID/i);
-      expect(lines[0]).toHaveAttribute('opacity', '1');
-      expect(lines[1]).toHaveAttribute('opacity', '0.1');
+      expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
       const firstLegend = screen.queryByText('metaData1')?.closest('button');
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
     },
@@ -517,10 +515,7 @@ describe('Line chart - Subcomponent legend', () => {
       expect(legend).toBeDefined();
       //single click on first legend
       fireEvent.click(legend!);
-      // Assert
-      const lines = getById(container, /lineID/i);
-      expect(lines[0]).toHaveAttribute('opacity', '1');
-      expect(lines[1]).toHaveAttribute('opacity', '0.1');
+      expect(getById(container, /line/i)[1]).toHaveAttribute('opacity', '0.1');
       const firstLegend = screen.queryByText('metaData1')?.closest('button');
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
       // double click on same first legend

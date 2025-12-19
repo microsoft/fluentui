@@ -1340,10 +1340,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           </g>,
         );
       }
-      // Reverse the lines array to fix tab order while maintaining visual z-order
-      // The loop above iterates backwards (last to first) for z-order rendering
-      // but we need the DOM order to match the data order for proper tab navigation
-      return lines.reverse();
+      return lines;
     }
 
     function _createColorFillBars(containerHeight: number) {
