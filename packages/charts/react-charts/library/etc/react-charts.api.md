@@ -1139,6 +1139,7 @@ export const HorizontalBarChartWithAxis: React_2.FunctionComponent<HorizontalBar
 
 // @public (undocumented)
 export interface HorizontalBarChartWithAxisDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
@@ -1157,6 +1158,7 @@ export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
     culture?: string;
     data?: HorizontalBarChartWithAxisDataPoint[];
     enableGradient?: boolean;
+    hideLabels?: boolean;
     onRenderCalloutPerDataPoint?: RenderFunction<HorizontalBarChartWithAxisDataPoint>;
     roundCorners?: boolean;
     styles?: HorizontalBarChartWithAxisStyles;
@@ -1171,6 +1173,7 @@ export interface HorizontalBarChartWithAxisStyleProps extends CartesianChartStyl
 
 // @public
 export interface HorizontalBarChartWithAxisStyles extends CartesianChartStyles {
+    barLabel?: string;
     chartLabel?: string;
     opacityChangeOnHover: string;
     xAxisDomain?: string;
