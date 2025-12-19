@@ -64,10 +64,7 @@ const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level })
       fadeAtom({ direction: 'enter', duration, easing }),
       slideAtom({ direction: 'enter', duration, easing, outX }),
     ],
-    exit: [
-      fadeAtom({ direction: 'exit', duration, easing }),
-      slideAtom({ direction: 'exit', duration, easing, outX }),
-    ],
+    exit: [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outX })],
   };
 });
 
