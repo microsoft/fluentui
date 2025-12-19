@@ -27,7 +27,7 @@ import { fadeAtom } from '../../atoms/fade-atom';
  * @param exitOpacityDuration - Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
  * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
- * @param fromSize - The starting size for the expand animation. Defaults to `'0px'`
+ * @param outSize - Size in the out state (collapsed). Defaults to `'0px'`
  */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
@@ -52,14 +52,14 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   // Animation controls
   animateOpacity = true,
   orientation = 'vertical',
-  fromSize = '0px',
+  outSize = '0px',
 }) => {
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   // For enter: size expands first, then opacity fades in after staggerDelay
   const enterAtoms: AtomMotion[] = [
     // Apply global delay to size atom - size expansion starts first
-    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize, delay }),
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, outSize, delay }),
     whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing, delay }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
@@ -85,7 +85,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
       easing: exitEasing,
       element,
       delay: exitDelay + exitStaggerDelay,
-      fromSize,
+      outSize,
     }),
     whitespaceAtom({
       direction: 'exit',
