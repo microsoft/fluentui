@@ -1,9 +1,9 @@
 import type { BasePresenceParams } from '../../types';
 
 export type FadeParams = BasePresenceParams & {
-  /** The starting opacity value. Defaults to 0. */
+  /** Opacity in the out state (exited). Defaults to 0. */
   outOpacity?: number;
 
-  /** The ending opacity value. Defaults to 1. */
+  /** Opacity in the in state (entered). Defaults to 1. */
   inOpacity?: number;
 };

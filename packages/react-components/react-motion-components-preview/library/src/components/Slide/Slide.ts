@@ -17,10 +17,10 @@ import { SlideParams } from './slide-types';
  * @param exitDuration - Time (ms) for the exit transition (slide-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (slide-out). Defaults to the `curveAccelerateMid` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outX - The X translate value with units to animate from. Defaults to `'0px'`.
- * @param outY - The Y translate value with units to animate from. Defaults to `'0px'`.
- * @param inX - The X translate value with units to animate to. Defaults to `'0px'`.
- * @param inY - The Y translate value with units to animate to. Defaults to `'0px'`.
+ * @param outX - X translate in the out state (exited). Defaults to `'0px'`.
+ * @param outY - Y translate in the out state (exited). Defaults to `'0px'`.
+ * @param inX - X translate in the in state (entered). Defaults to `'0px'`.
+ * @param inY - Y translate in the in state (entered). Defaults to `'0px'`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({

@@ -16,8 +16,8 @@ import { FadeParams } from './fade-types';
  * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outOpacity - The starting opacity value. Defaults to 0.
- * @param inOpacity - The ending opacity value. Defaults to 1.
+ * @param outOpacity - Opacity in the out state (exited). Defaults to 0.
+ * @param inOpacity - Opacity in the in state (entered). Defaults to 1.
  */
 export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,

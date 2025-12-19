@@ -17,8 +17,8 @@ import { ScaleParams } from './scale-types';
  * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
  * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outScale - The scale value to animate from. Defaults to `0.9`.
- * @param inScale - The scale value to animate to. Defaults to `1`.
+ * @param outScale - Scale in the out state (exited). Defaults to `0.9`.
+ * @param inScale - Scale in the in state (entered). Defaults to `1`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
