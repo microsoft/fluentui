@@ -16,7 +16,7 @@ interface SizeEnterAtomParams {
   duration: number;
   easing: string;
   element: HTMLElement;
-  /** Size in the out state (collapsed). Defaults to '0'. */
+  /** Size for the out state (collapsed). Defaults to '0'. */
   outSize?: string;
   delay?: number;
 }

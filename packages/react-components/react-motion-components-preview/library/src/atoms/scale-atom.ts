@@ -2,9 +2,9 @@ import { AtomMotion, motionTokens } from '@fluentui/react-motion';
 import { BaseAtomParams } from '../types';
 
 interface ScaleAtomParams extends BaseAtomParams {
-  /** Scale in the out state (exited). Defaults to 0.9. */
+  /** Scale for the out state (exited). Defaults to 0.9. */
   outScale?: number;
-  /** Scale in the in state (entered). Defaults to 1. */
+  /** Scale for the in state (entered). Defaults to 1. */
   inScale?: number;
 }
 
@@ -13,8 +13,8 @@ interface ScaleAtomParams extends BaseAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param outScale - Scale in the out state (exited). Defaults to 0.9.
- * @param inScale - Scale in the in state (entered). Defaults to 1.
+ * @param outScale - Scale for the out state (exited). Defaults to 0.9.
+ * @param inScale - Scale for the in state (entered). Defaults to 1.
  * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with scale keyframes and the supplied duration and easing.
  */

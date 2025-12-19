@@ -11,13 +11,13 @@ export type RotateParams = BasePresenceParams &
     axis?: Axis3D;
 
     /**
-     * Rotation angle in the out state (exited) in degrees.
+     * Rotation angle for the out state (exited) in degrees.
      * Defaults to -90.
      */
     outAngle?: number;
 
     /**
-     * Rotation angle in the in state (entered) in degrees.
+     * Rotation angle for the in state (entered) in degrees.
      * Defaults to 0.
      */
     inAngle?: number;

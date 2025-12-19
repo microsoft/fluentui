@@ -2,13 +2,13 @@ import { AtomMotion, motionTokens } from '@fluentui/react-motion';
 import { BaseAtomParams } from '../types';
 
 interface SlideAtomParams extends BaseAtomParams {
-  /** X translate in the out state (exited). Defaults to '0px'. */
+  /** X translate for the out state (exited). Defaults to '0px'. */
   outX?: string;
-  /** Y translate in the out state (exited). Defaults to '0px'. */
+  /** Y translate for the out state (exited). Defaults to '0px'. */
   outY?: string;
-  /** X translate in the in state (entered). Defaults to '0px'. */
+  /** X translate for the in state (entered). Defaults to '0px'. */
   inX?: string;
-  /** Y translate in the in state (entered). Defaults to '0px'. */
+  /** Y translate for the in state (entered). Defaults to '0px'. */
   inY?: string;
 }
 
@@ -17,10 +17,10 @@ interface SlideAtomParams extends BaseAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param outX - X translate in the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
- * @param outY - Y translate in the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
- * @param inX - X translate in the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
- * @param inY - Y translate in the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
+ * @param outX - X translate for the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
+ * @param outY - Y translate for the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
+ * @param inX - X translate for the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
+ * @param inY - Y translate for the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
  * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with translate keyframes and the supplied duration and easing.
  */

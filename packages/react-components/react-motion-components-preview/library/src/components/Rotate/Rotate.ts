@@ -13,8 +13,8 @@ import { RotateParams } from './rotate-types';
  * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'z'.
- * @param outAngle - Rotation angle in the out state (exited) in degrees. Defaults to -90.
- * @param inAngle - Rotation angle in the in state (entered) in degrees. Defaults to 0.
+ * @param outAngle - Rotation angle for the out state (exited) in degrees. Defaults to -90.
+ * @param inAngle - Rotation angle for the in state (entered) in degrees. Defaults to 0.
  * @param animateOpacity - Whether to animate the opacity during the rotation. Defaults to `true`.
  */
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({

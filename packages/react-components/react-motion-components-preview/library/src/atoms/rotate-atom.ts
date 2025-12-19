@@ -6,9 +6,9 @@ type Axis3D = NonNullable<RotateParams['axis']>;
 
 interface RotateAtomParams extends BaseAtomParams {
   axis?: Axis3D;
-  /** Rotation angle in the out state (exited) in degrees. Defaults to -90. */
+  /** Rotation angle for the out state (exited) in degrees. Defaults to -90. */
   outAngle?: number;
-  /** Rotation angle in the in state (entered) in degrees. Defaults to 0. */
+  /** Rotation angle for the in state (entered) in degrees. Defaults to 0. */
   inAngle?: number;
 }
 
@@ -22,8 +22,8 @@ const createRotateValue = (axis: Axis3D, angle: number): string => {
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
- * @param outAngle - Rotation angle in the out state (exited) in degrees. Defaults to -90.
- * @param inAngle - Rotation angle in the in state (entered) in degrees. Defaults to 0.
+ * @param outAngle - Rotation angle for the out state (exited) in degrees. Defaults to -90.
+ * @param inAngle - Rotation angle for the in state (entered) in degrees. Defaults to 0.
  * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with rotate keyframes and the supplied duration and easing.
  */

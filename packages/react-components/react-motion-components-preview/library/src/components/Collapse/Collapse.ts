@@ -27,7 +27,7 @@ import { fadeAtom } from '../../atoms/fade-atom';
  * @param exitOpacityDuration - Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
  * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
- * @param outSize - Size in the out state (collapsed). Defaults to `'0px'`
+ * @param outSize - Size for the out state (collapsed). Defaults to `'0px'`
  */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,

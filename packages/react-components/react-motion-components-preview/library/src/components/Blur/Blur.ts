@@ -12,8 +12,8 @@ import { BlurParams } from './blur-types';
  * @param exitDuration - Time (ms) for the exit transition (blur-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (blur-out). Defaults to the `curveAccelerateMin` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outRadius - Blur radius in the out state (exited). Defaults to `'10px'`.
- * @param inRadius - Blur radius in the in state (entered). Defaults to `'0px'`.
+ * @param outRadius - Blur radius for the out state (exited). Defaults to `'10px'`.
+ * @param inRadius - Blur radius for the in state (entered). Defaults to `'0px'`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
