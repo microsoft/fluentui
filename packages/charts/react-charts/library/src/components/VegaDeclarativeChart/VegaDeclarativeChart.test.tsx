@@ -235,11 +235,6 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   // Polar chart tests removed - polar coordinates (theta/radius) not yet supported
-
-
-
-
-
 });
 
 // ===================================================================================================
