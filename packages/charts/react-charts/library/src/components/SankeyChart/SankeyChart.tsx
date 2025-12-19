@@ -554,7 +554,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
