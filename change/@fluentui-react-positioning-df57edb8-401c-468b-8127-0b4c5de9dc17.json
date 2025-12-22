@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add anchor positioning helpers.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "owcampbe@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -100,6 +100,8 @@ export const baseElementEvents = toObjectMap([
   'onPointerUp',
   'onGotPointerCapture',
   'onLostPointerCapture',
+  'onToggle',
+  'onBeforeToggle',
 ]);
 
 /**
@@ -127,6 +129,7 @@ export const baseElementProperties = toObjectMap([
   'translate', // global
   'spellCheck', // global
   'name', // global
+  'popover', // global
 ]);
 
 /**
@@ -242,6 +245,10 @@ export const buttonProperties = toObjectMap(htmlElementProperties, [
   'popoverTargetAction', // input, button
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param,
+  'popovertarget', // React complains about camel case
+  'popovertargetaction',
+  'popoverTarget',
+  'popoverTargetAction',
 ]);
 
 /**
