@@ -440,8 +440,15 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classes.root} {...arrowAttributes} style={{ width, height }}>
-      <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
+    <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
+      <svg
+        width={width}
+        height={height}
+        className={classes.chart}
+        {...arrowAttributes}
+        role={'img'}
+        aria-label={props.chartTitle}
+      >
         <g
           transform={
             isRTL
