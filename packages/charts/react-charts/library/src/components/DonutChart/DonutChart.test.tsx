@@ -242,8 +242,11 @@ describe('Donut chart interactions', () => {
 
       expect(layout.padding.left).toBeGreaterThan(12);
       expect(layout.padding.top).toBeGreaterThan(12);
-      expect(layout.svgWidth).toBeLessThan(baseWidth);
-      expect(layout.svgHeight).toBeLessThan(baseHeight);
+      expect(layout.svgWidth).toBe(baseWidth);
+      expect(layout.svgHeight).toBe(baseHeight);
+
+      const defaultLayout = resolveDonutViewportLayout(undefined, baseWidth, baseHeight, true);
+      expect(layout.outerRadius).toBeLessThan(defaultLayout.outerRadius);
     });
 
     it('keeps original layout when viewport annotations remain inside bounds', () => {

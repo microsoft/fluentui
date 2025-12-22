@@ -516,14 +516,14 @@ const resolveDonutViewportLayout = (
   }
 
   const finalPadding = computeAnnotationViewportPadding(annotations, safeWidth, safeHeight, outerRadius);
-  const finalSvgWidth = Math.max(safeWidth - finalPadding.left - finalPadding.right, 0);
-  const finalSvgHeight = Math.max(safeHeight - finalPadding.top - finalPadding.bottom, 0);
-  const finalOuterRadius = resolveOuterRadius(finalSvgWidth, finalSvgHeight, hideLabels);
+  const innerWidth = Math.max(safeWidth - finalPadding.left - finalPadding.right, 0);
+  const innerHeight = Math.max(safeHeight - finalPadding.top - finalPadding.bottom, 0);
+  const finalOuterRadius = resolveOuterRadius(innerWidth, innerHeight, hideLabels);
 
   return {
     padding: finalPadding,
-    svgWidth: finalSvgWidth,
-    svgHeight: finalSvgHeight,
+    svgWidth: safeWidth,
+    svgHeight: safeHeight,
     outerRadius: finalOuterRadius,
   };
 };
@@ -586,19 +586,20 @@ const createPlotContainerStyle = (
   const totalHorizontalPadding = normalizeViewportPadding(padding.left) + normalizeViewportPadding(padding.right);
   const totalVerticalPadding = normalizeViewportPadding(padding.top) + normalizeViewportPadding(padding.bottom);
 
-  const desiredWidth = Math.max(resolvedSvgWidth + totalHorizontalPadding, 0);
-  const desiredHeight = Math.max(resolvedSvgHeight + totalVerticalPadding, 0);
+  const baseWidth = typeof width === 'number' && Number.isFinite(width) ? Math.max(width, 0) : undefined;
+  const baseHeight = typeof height === 'number' && Number.isFinite(height) ? Math.max(height, 0) : undefined;
+  const innerWidth = Math.max(resolvedSvgWidth, 0);
+  const innerHeight = Math.max(resolvedSvgHeight, 0);
 
-  if (typeof width === 'number' && Number.isFinite(width)) {
-    style.width = Math.max(width, desiredWidth);
-  } else if (desiredWidth > 0) {
-    style.width = desiredWidth;
+  const finalWidth = Math.max(baseWidth ?? innerWidth, innerWidth) + totalHorizontalPadding;
+  const finalHeight = Math.max(baseHeight ?? innerHeight, innerHeight) + totalVerticalPadding;
+
+  if (finalWidth > 0) {
+    style.width = finalWidth;
   }
 
-  if (typeof height === 'number' && Number.isFinite(height)) {
-    style.height = Math.max(height, desiredHeight);
-  } else if (desiredHeight > 0) {
-    style.height = desiredHeight;
+  if (finalHeight > 0) {
+    style.height = finalHeight;
   }
 
   return style;
