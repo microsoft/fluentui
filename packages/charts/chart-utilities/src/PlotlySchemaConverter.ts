@@ -493,68 +493,6 @@ export const mapFluentChart = (input: any): OutputChartType => {
     const hasAnnotations = hasAnnotationContent(validSchema?.layout?.annotations);
     const hasTraces = isArrayOrTypedArray(validSchema.data) && validSchema.data.length > 0;
 
-    if (hasAnnotations && hasTraces) {
-      const layout: Partial<Layout> = (validSchema.layout ??= {});
-      const valuesByAxisKey = new Map<keyof Layout, Datum[]>();
-      const axesExpectingCategories = new Set<keyof Layout>();
-
-      validSchema.data.forEach(series => {
-        const axisIds = getAxisIds(series as Partial<PlotData>);
-        const trace = series as Partial<PlotData>;
-
-        if (trace.type === 'bar') {
-          const categoryAxisLetter = trace.orientation === 'h' ? 'y' : 'x';
-          axesExpectingCategories.add(getAxisKey(categoryAxisLetter, axisIds[categoryAxisLetter]));
-        }
-
-        (['x', 'y'] as const).forEach(axLetter => {
-          const axisKey = getAxisKey(axLetter, axisIds[axLetter]);
-          const coords = trace[axLetter];
-          if (!coords || !isArrayOrTypedArray(coords)) {
-            return;
-          }
-
-          const existing = valuesByAxisKey.get(axisKey) ?? [];
-          (coords as Datum[] | TypedArray).forEach(val => {
-            if (!isInvalidValue(val)) {
-              existing.push(val as Datum);
-            }
-          });
-          valuesByAxisKey.set(axisKey, existing);
-        });
-      });
-
-      valuesByAxisKey.forEach((values, axisKey) => {
-        const currentType = layout?.[axisKey]?.type;
-        if (['linear', 'log', 'date', 'category'].includes(currentType ?? '')) {
-          return;
-        }
-
-        if (axesExpectingCategories.has(axisKey)) {
-          layout[axisKey] = {
-            ...(layout[axisKey] ?? {}),
-            type: 'category',
-          };
-          return;
-        }
-
-        if (isYearArray(values)) {
-          layout[axisKey] = {
-            ...(layout[axisKey] ?? {}),
-            type: 'category',
-          };
-          return;
-        }
-
-        if (isDateArray(values)) {
-          layout[axisKey] = {
-            ...(layout[axisKey] ?? {}),
-            type: 'date',
-          };
-        }
-      });
-    }
-
     const validTraces = hasTraces ? getValidTraces(validSchema.data, validSchema.layout) : [];
 
     if (!hasTraces && hasAnnotations) {

@@ -1058,15 +1058,87 @@ const convertPlotlyAnnotation = (
 };
 
 const getChartAnnotationsFromLayout = (
+  data: Data[] | undefined,
   layout: Partial<Layout> | undefined,
   isMultiPlot: boolean,
 ): ChartAnnotation[] | undefined => {
   if (isMultiPlot || !layout?.annotations) {
     return undefined;
   }
+
+  // Infer axis types when they are not explicitly set.
+  // This is needed so annotation coordinate parsing can correctly treat values as 'date' vs 'category'
+  // (for example, bar chart category axes with date-like strings).
+  const inferredLayout = (() => {
+    if (!data || !isArrayOrTypedArray(data) || data.length === 0) {
+      return layout;
+    }
+
+    const valuesByAxisKey = new Map<keyof Layout, Datum[]>();
+    const axesExpectingCategories = new Set<keyof Layout>();
+
+    data.forEach(series => {
+      const trace = series as Partial<PlotData>;
+      const axisIds = getAxisIds(trace);
+
+      if (trace.type === 'bar') {
+        const categoryAxisLetter = trace.orientation === 'h' ? 'y' : 'x';
+        axesExpectingCategories.add(getAxisKey(categoryAxisLetter, axisIds[categoryAxisLetter]));
+      }
+
+      (['x', 'y'] as const).forEach(axLetter => {
+        const coords = trace[axLetter];
+        if (!coords || !isArrayOrTypedArray(coords)) {
+          return;
+        }
+
+        const axisKey = getAxisKey(axLetter, axisIds[axLetter]);
+        const existing = valuesByAxisKey.get(axisKey) ?? [];
+        (coords as Datum[] | TypedArray).forEach(val => {
+          if (!isInvalidValue(val)) {
+            existing.push(val as Datum);
+          }
+        });
+        valuesByAxisKey.set(axisKey, existing);
+      });
+    });
+
+    let nextLayout: Partial<Layout> | undefined;
+
+    valuesByAxisKey.forEach((values, axisKey) => {
+      const currentAxis = layout?.[axisKey];
+      const currentType = currentAxis?.type;
+      if (['linear', 'log', 'date', 'category'].includes(currentType ?? '')) {
+        return;
+      }
+
+      let inferredType: AxisType | undefined;
+      if (axesExpectingCategories.has(axisKey) || isYearArray(values)) {
+        inferredType = 'category';
+      } else if (isDateArray(values)) {
+        inferredType = 'date';
+      }
+
+      if (!inferredType) {
+        return;
+      }
+
+      if (!nextLayout) {
+        nextLayout = { ...layout };
+      }
+
+      nextLayout[axisKey] = {
+        ...(currentAxis ?? {}),
+        type: inferredType,
+      };
+    });
+
+    return nextLayout ?? layout;
+  })();
+
   const annotationsArray = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
   const converted = annotationsArray
-    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, layout, index))
+    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, inferredLayout, index))
     .filter((annotation): annotation is ChartAnnotation => annotation !== undefined);
 
   return converted.length > 0 ? converted : undefined;
@@ -1161,7 +1233,7 @@ export const transformPlotlyJsonToAnnotationChartProps = (
   _colorwayType: ColorwayType,
   _isDarkTheme?: boolean,
 ): AnnotationOnlyChartProps => {
-  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot) ?? [];
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot) ?? [];
   const titles = getTitles(input.layout);
   const layoutTitle = titles.chartTitle || undefined;
 
@@ -1487,7 +1559,7 @@ export const transformPlotlyJsonToVSBCProps = (
     });
 
   const vsbcData = Object.values(mapXToDataPoints);
-  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
     data: vsbcData,
@@ -1675,7 +1747,7 @@ export const transformPlotlyJsonToGVBCProps = (
     }
   });
 
-  const annotations = getChartAnnotationsFromLayout(processedInput.layout, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(processedInput.data, processedInput.layout, isMultiPlot);
 
   return {
     dataV2: gvbcDataV2,
@@ -1796,7 +1868,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
   return {
     data: vbcData,
     width: input.layout?.width,
@@ -2074,7 +2146,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     scatterChartData: [...chartData, ...(lineShape as ScatterChartPoints[])],
   };
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   const commonProps = {
     supportNegativeData: true,
