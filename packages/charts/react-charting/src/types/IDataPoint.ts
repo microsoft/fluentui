@@ -597,6 +597,7 @@ interface ISLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;

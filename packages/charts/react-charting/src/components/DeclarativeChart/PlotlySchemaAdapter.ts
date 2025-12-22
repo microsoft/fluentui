@@ -212,6 +212,18 @@ const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => 
   return {};
 };
 
+const getXMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getXAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      xMinValue: range[0],
+      xMaxValue: range[1],
+      showRoundOffXTickValues: false,
+    };
+  }
+  return {};
+};
+
 const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
   return layout?.yaxis;
 };
@@ -1408,6 +1420,14 @@ export const transformPlotlyJsonToVSBCProps = (
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
+        if (shape.xref === 'x domain') {
+          if (val === 0) {
+            return xCategories[0];
+          }
+          if (val === 1) {
+            return xCategories[xCategories.length - 1];
+          }
+        }
         if (typeof val === 'number' && Array.isArray(xCategories)) {
           if (xCategories[val] !== undefined) {
             return xCategories[val];
@@ -1480,7 +1500,9 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -1654,8 +1676,10 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
     wrapXAxisLables: true,
     showYAxisLables: true,
+    ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1769,8 +1793,10 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     showYAxisLables: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -2057,6 +2083,8 @@ const transformPlotlyJsonToScatterTraceProps = (
     optimizeLargeData: numDataPoints > 1000,
     wrapXAxisLables: shouldWrapLabels,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2074,7 +2102,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
       enableReflow: false,
       ...commonProps,
       ...yMinMax,
@@ -2166,6 +2193,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
@@ -2468,6 +2497,14 @@ export const transformPlotlyJsonToSankeyProps = (
     colorMap,
     isDarkTheme,
   );
+  const extractedLinkColors = extractColor(
+    input.layout?.template?.layout?.colorway,
+    colorwayType,
+    link?.color,
+    colorMap,
+    isDarkTheme,
+  );
+
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
       const color = resolveColor(
@@ -2487,8 +2524,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     links: validLinks.map((validLink: any, index: number) => {
+      const color = resolveColor(
+        extractedLinkColors,
+        index,
+        validLink.target,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       return {
         ...validLink,
+        color,
       };
     }),
   } as ISankeyChartData;
