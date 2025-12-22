@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix funnel chart navigation issue",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
