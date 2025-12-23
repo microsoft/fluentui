@@ -2151,10 +2151,11 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  /* if user explicitly sets userMinVal or userMaxVal, we will check that to avoid excessive padding on either side.
-     If the difference between minVal and userMinVal is more than 10% of the data range, we set padding to 0 on that side.
-     this is to avoid cases where userMinVal is significantly smaller than minVal or userMaxVal is significantly larger than
-     maxVal, which would lead to excessive padding. In other cases, we apply the default 10% padding on both sides.
+  /* if user explicitly sets userMinVal or userMaxVal, we will check that to avoid excessive padding on either
+     side.If the difference between minVal and userMinVal is more than 10% of the data range, we set padding
+     to 0 on that side. this is to avoid cases where userMinVal is significantly smaller than minVal or
+     userMaxVal is significantly larger than maxVal, which would lead to excessive padding. In other cases,
+     we apply the default 10% padding on both sides.
   */
   const rangePadding = (maxVal - minVal) * 0.1;
 

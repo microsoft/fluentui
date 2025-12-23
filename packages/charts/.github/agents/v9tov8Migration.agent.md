@@ -116,4 +116,4 @@ tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
   3. Use the above differences and points to convert the functional component code to class component code.
   4. Ensure all changes of that particular commit are addressed in the migration.
   5. **_IMPORTANT:_** After migration, run `yarn build` to build the `react-charting` package and ensure there are no build errors.
-  6. **_IMPORTANT:_** Then run `npx cross-env TZ=UTC jest -u` to ensure all tests are passing.
+  6. **_IMPORTANT:_** Then run `npx cross-env TZ=UTC jest` to ensure all tests are passing. If there are snapshots failures, update the snapshots by running `npx cross-env TZ=UTC jest -u`.
