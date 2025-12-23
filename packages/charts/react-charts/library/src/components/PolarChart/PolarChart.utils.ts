@@ -18,6 +18,11 @@ export const createScale = (
     useUTC?: boolean;
     niceBounds?: boolean;
     innerPadding?: number;
+    tickCount?: number;
+    hideTickOverlap?: boolean;
+    tickValues?: (string | number | Date)[];
+    tickText?: string[];
+    tickFormat?: () => string;
   } = {},
 ) => {
   if (scaleType === 'category') {
@@ -68,14 +73,27 @@ export const getScaleType = (
   return scaleType;
 };
 
-export const getDomain = (scaleType: string, values: (string | number | Date)[], opts: {} = {}) => {
+export const getDomain = (
+  scaleType: string,
+  values: (string | number | Date)[],
+  opts: {
+    start?: number | Date;
+    end?: number | Date;
+  } = {},
+) => {
   if (scaleType === 'category') {
     return Array.from(new Set(values));
   }
 
-  const extent = d3Extent(values as (number | Date)[]);
-  if (typeof extent[0] !== 'undefined' && typeof extent[1] !== 'undefined') {
-    return extent;
+  let [min, max] = d3Extent(values as (number | Date)[]);
+  if (typeof opts.start !== 'undefined') {
+    min = opts.start;
+  }
+  if (typeof opts.end !== 'undefined') {
+    max = opts.end;
+  }
+  if (typeof min !== 'undefined' && typeof max !== 'undefined') {
+    return [min, max];
   }
   return [];
 };

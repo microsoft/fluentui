@@ -94,6 +94,7 @@ import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
 import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
+import { PolarChartProps } from '../PolarChart/PolarChart.types';
 import {
   ChartAnnotation,
   ChartAnnotationArrowHead,
@@ -2993,155 +2994,167 @@ export const transformPlotlyJsonToFunnelChartProps = (
   };
 };
 
-export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
-  const projection: PlotlySchema = { ...input };
-
-  // Find the global min and max radius across all series
-  let minRadius = 0;
-  let maxRadius = 0;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const rVals = (input.data[sindex] as Partial<PlotData>).r;
-    if (rVals && isArrayOrTypedArray(rVals)) {
-      for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-        if (!isInvalidValue(rVals[ptindex])) {
-          minRadius = Math.min(minRadius, rVals[ptindex] as number);
-          maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
-        }
-      }
-    }
-  }
-
-  // If there are negative radii, compute the shift
-  const radiusShift = minRadius < 0 ? -minRadius : 0;
-
-  // Collect all unique theta values from all scatterpolar series for equal spacing
-  const allThetaValues: Set<string> = new Set();
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    if (series.theta && isArrayOrTypedArray(series.theta)) {
-      series.theta.forEach(theta => allThetaValues.add(String(theta)));
-    }
-  }
-
-  // Project all points and create a perfect square domain
-  const allX: number[] = [];
-  const allY: number[] = [];
-  let originX: number | null = null;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
-    if (isArrayOrTypedArray(series.theta)) {
-      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
-    }
-    series.x = [] as Datum[];
-    series.y = [] as Datum[];
-    const thetas = series.theta!;
-    const rVals = series.r!;
-
-    // Skip if rVals or thetas are not arrays
-    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
-      projection.data[sindex] = series;
-      continue;
-    }
-
-    // retrieve polar axis settings
-    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
-    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
-
-    // Compute tick positions if categorical
-    let uniqueTheta: Datum[] = [];
-    let categorical = false;
-    if (!isNumberArray(thetas)) {
-      uniqueTheta = Array.from(new Set(thetas));
-      categorical = true;
-    }
-
-    for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-      if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
-        continue;
-      }
-
-      // Map theta to angle in radians
-      let thetaRad: number;
-      if (categorical) {
-        const idx = uniqueTheta.indexOf(thetas[ptindex]);
-        const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = startAngleInRad + dirMultiplier * idx * step;
-      } else {
-        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
-      }
-      // Shift only the polar origin (not the cartesian)
-      const rawRadius = rVals[ptindex] as number;
-      const polarRadius = rawRadius + radiusShift; // Only for projection
-      // Calculate cartesian coordinates (with shifted polar origin)
-      const x = polarRadius * Math.cos(thetaRad);
-      const y = polarRadius * Math.sin(thetaRad);
-
-      // Calculate the cartesian coordinates of the original polar origin (0,0)
-      // This is the point that should be mapped to (0,0) in cartesian coordinates
-      if (sindex === 0 && ptindex === 0) {
-        // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
-        // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
-        originX = radiusShift;
-      }
-
-      series.x.push(x);
-      series.y.push(y);
-      allX.push(x);
-      allY.push(y);
-    }
-
-    // Map text to each data point for downstream chart rendering
-    if (series.x && series.y) {
-      (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
-        x: xVal,
-        y: (series.y as number[])[idx],
-        ...(series.text ? { text: (series.text as string[])[idx] } : {}),
-      }));
-    }
-
-    projection.data[sindex] = series;
-  }
-
-  // 7. Recenter all cartesian coordinates
-  if (originX !== null) {
-    for (let sindex = 0; sindex < projection.data.length; sindex++) {
-      const series = projection.data[sindex] as Partial<PlotData>;
-      if (series.x && series.y) {
-        series.x = (series.x as number[]).map((v: number) => v - originX!);
-      }
-    }
-    // Also recenter allX for normalization
-    for (let i = 0; i < allX.length; i++) {
-      allX[i] = allX[i] - originX!;
-    }
-  }
-
-  // 8. Find the maximum absolute value among all x and y
-  let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
-  maxAbs = maxAbs === 0 ? 1 : maxAbs;
-
-  // 9. Rescale all points so that the largest |x| or |y| is 0.5
-  for (let sindex = 0; sindex < projection.data.length; sindex++) {
-    const series = projection.data[sindex] as Partial<PlotData>;
-    if (series.x && series.y) {
-      series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
-      series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
-    }
-  }
-
-  // 10. Customize layout for perfect square with absolute positioning
-  const size = input.layout?.width || input.layout?.height || 500;
-  projection.layout = {
-    ...projection.layout,
-    width: size,
-    height: size,
+export const transformPlotlyJsonToPolarChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.RefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): PolarChartProps => {
+  return {
+    data: [],
   };
-  // Attach originX as custom properties
-  (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
-
-  return projection;
 };
+
+// export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
+//   const projection: PlotlySchema = { ...input };
+
+//   // Find the global min and max radius across all series
+//   let minRadius = 0;
+//   let maxRadius = 0;
+//   for (let sindex = 0; sindex < input.data.length; sindex++) {
+//     const rVals = (input.data[sindex] as Partial<PlotData>).r;
+//     if (rVals && isArrayOrTypedArray(rVals)) {
+//       for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+//         if (!isInvalidValue(rVals[ptindex])) {
+//           minRadius = Math.min(minRadius, rVals[ptindex] as number);
+//           maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
+//         }
+//       }
+//     }
+//   }
+
+//   // If there are negative radii, compute the shift
+//   const radiusShift = minRadius < 0 ? -minRadius : 0;
+
+//   // Collect all unique theta values from all scatterpolar series for equal spacing
+//   const allThetaValues: Set<string> = new Set();
+//   for (let sindex = 0; sindex < input.data.length; sindex++) {
+//     const series = input.data[sindex] as Partial<PlotData>;
+//     if (series.theta && isArrayOrTypedArray(series.theta)) {
+//       series.theta.forEach(theta => allThetaValues.add(String(theta)));
+//     }
+//   }
+
+//   // Project all points and create a perfect square domain
+//   const allX: number[] = [];
+//   const allY: number[] = [];
+//   let originX: number | null = null;
+//   for (let sindex = 0; sindex < input.data.length; sindex++) {
+//     const series = input.data[sindex] as Partial<PlotData>;
+//     // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
+//     if (isArrayOrTypedArray(series.theta)) {
+//       (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
+//     }
+//     series.x = [] as Datum[];
+//     series.y = [] as Datum[];
+//     const thetas = series.theta!;
+//     const rVals = series.r!;
+
+//     // Skip if rVals or thetas are not arrays
+//     if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
+//       projection.data[sindex] = series;
+//       continue;
+//     }
+
+//     // retrieve polar axis settings
+//     const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
+//     const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
+
+//     // Compute tick positions if categorical
+//     let uniqueTheta: Datum[] = [];
+//     let categorical = false;
+//     if (!isNumberArray(thetas)) {
+//       uniqueTheta = Array.from(new Set(thetas));
+//       categorical = true;
+//     }
+
+//     for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+//       if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
+//         continue;
+//       }
+
+//       // Map theta to angle in radians
+//       let thetaRad: number;
+//       if (categorical) {
+//         const idx = uniqueTheta.indexOf(thetas[ptindex]);
+//         const step = (2 * Math.PI) / uniqueTheta.length;
+//         thetaRad = startAngleInRad + dirMultiplier * idx * step;
+//       } else {
+//         thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
+//       }
+//       // Shift only the polar origin (not the cartesian)
+//       const rawRadius = rVals[ptindex] as number;
+//       const polarRadius = rawRadius + radiusShift; // Only for projection
+//       // Calculate cartesian coordinates (with shifted polar origin)
+//       const x = polarRadius * Math.cos(thetaRad);
+//       const y = polarRadius * Math.sin(thetaRad);
+
+//       // Calculate the cartesian coordinates of the original polar origin (0,0)
+//       // This is the point that should be mapped to (0,0) in cartesian coordinates
+//       if (sindex === 0 && ptindex === 0) {
+//         // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
+//         // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
+//         originX = radiusShift;
+//       }
+
+//       series.x.push(x);
+//       series.y.push(y);
+//       allX.push(x);
+//       allY.push(y);
+//     }
+
+//     // Map text to each data point for downstream chart rendering
+//     if (series.x && series.y) {
+//       (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
+//         x: xVal,
+//         y: (series.y as number[])[idx],
+//         ...(series.text ? { text: (series.text as string[])[idx] } : {}),
+//       }));
+//     }
+
+//     projection.data[sindex] = series;
+//   }
+
+//   // 7. Recenter all cartesian coordinates
+//   if (originX !== null) {
+//     for (let sindex = 0; sindex < projection.data.length; sindex++) {
+//       const series = projection.data[sindex] as Partial<PlotData>;
+//       if (series.x && series.y) {
+//         series.x = (series.x as number[]).map((v: number) => v - originX!);
+//       }
+//     }
+//     // Also recenter allX for normalization
+//     for (let i = 0; i < allX.length; i++) {
+//       allX[i] = allX[i] - originX!;
+//     }
+//   }
+
+//   // 8. Find the maximum absolute value among all x and y
+//   let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
+//   maxAbs = maxAbs === 0 ? 1 : maxAbs;
+
+//   // 9. Rescale all points so that the largest |x| or |y| is 0.5
+//   for (let sindex = 0; sindex < projection.data.length; sindex++) {
+//     const series = projection.data[sindex] as Partial<PlotData>;
+//     if (series.x && series.y) {
+//       series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
+//       series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
+//     }
+//   }
+
+//   // 10. Customize layout for perfect square with absolute positioning
+//   const size = input.layout?.width || input.layout?.height || 500;
+//   projection.layout = {
+//     ...projection.layout,
+//     width: size,
+//     height: size,
+//   };
+//   // Attach originX as custom properties
+//   (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
+
+//   return projection;
+// };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isPlainObject(obj: any) {

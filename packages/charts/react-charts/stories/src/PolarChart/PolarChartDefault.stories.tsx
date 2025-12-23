@@ -5,27 +5,29 @@ import { Switch } from '@fluentui/react-components';
 
 const data: PolarChartProps['data'] = [
   {
-    type: 'scatter',
+    type: 'areapolar',
     legend: 'Mike',
+    color: 'rgb(255, 0, 0)',
     data: [
-      { x: 120, y: 'Math', markerSize: 6 },
-      { x: 98, y: 'Chinese', markerSize: 8 },
-      { x: 86, y: 'English', markerSize: 10 },
-      { x: 99, y: 'Geography', markerSize: 12 },
-      { x: 85, y: 'Physics', markerSize: 14 },
-      { x: 65, y: 'History', markerSize: 16 },
+      { r: 120, theta: 'Math', markerSize: 6 },
+      { r: 98, theta: 'Chinese', markerSize: 8 },
+      { r: 86, theta: 'English', markerSize: 10 },
+      { r: 99, theta: 'Geography', markerSize: 12 },
+      { r: 85, theta: 'Physics', markerSize: 14 },
+      { r: 65, theta: 'History', markerSize: 16 },
     ],
   },
   {
-    type: 'scatter',
+    type: 'areapolar',
     legend: 'Lily',
+    color: 'rgb(0, 0, 255)',
     data: [
-      { x: 110, y: 'Math', markerSize: 6 },
-      { x: 130, y: 'Chinese', markerSize: 8 },
-      { x: 130, y: 'English', markerSize: 10 },
-      { x: 100, y: 'Geography', markerSize: 12 },
-      { x: 90, y: 'Physics', markerSize: 14 },
-      { x: 85, y: 'History', markerSize: 16 },
+      { r: 110, theta: 'Math', markerSize: 6 },
+      { r: 130, theta: 'Chinese', markerSize: 8 },
+      { r: 130, theta: 'English', markerSize: 10 },
+      { r: 100, theta: 'Geography', markerSize: 12 },
+      { r: 90, theta: 'Physics', markerSize: 14 },
+      { r: 85, theta: 'History', markerSize: 16 },
     ],
   },
 ];

@@ -3,7 +3,7 @@ import {
   CartesianChartStyleProps,
   CartesianChartStyles,
 } from '../CommonComponents/CartesianChart.types';
-import { AreaSeries, LineSeries, ScatterSeries } from '../../types/DataPoint';
+import { AreaPolarSeries, LinePolarSeries, ScatterPolarSeries } from '../../types/DataPoint';
 
 /**
  * Polar Chart properties
@@ -13,10 +13,7 @@ export interface PolarChartProps extends CartesianChartProps {
   /**
    *
    */
-  data:
-    | AreaSeries<string | number | Date, string | number | Date>[]
-    | LineSeries<string | number | Date, string | number | Date>[]
-    | ScatterSeries<string | number | Date, string | number | Date>[];
+  data: AreaPolarSeries[] | LinePolarSeries[] | ScatterPolarSeries[];
 
   /**
    *
@@ -44,4 +41,19 @@ export interface PolarChartStyleProps extends CartesianChartStyleProps {}
  * Polar Chart styles
  * {@docCategory PolarChart}
  */
-export interface PolarChartStyles extends CartesianChartStyles {}
+export interface PolarChartStyles extends CartesianChartStyles {
+  /**
+   *
+   */
+  gridLineInner?: string;
+
+  /**
+   *
+   */
+  gridLineOuter?: string;
+
+  /**
+   *
+   */
+  tickLabel?: string;
+}

@@ -1252,31 +1252,106 @@ export interface LineSeries<X extends string | number | Date, Y extends string |
 }
 
 /**
- * Represents a scatter series.
+ *
  */
-export interface ScatterSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+export interface PolarDataPoint {
   /**
-   * Type discriminator: always 'scatter' for this series.
+   *
    */
-  type: 'scatter';
+  r: number;
 
   /**
-   * Array of data points for the series.
+   *
    */
-  data: DataPointV2<X, Y>[];
+  theta: string | number;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the radial axis value.
+   */
+  radialAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the angular axis value.
+   */
+  angularAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
 }
 
 /**
- * Represents a area series.
+ * Represents a scatterpolar series.
  */
-export interface AreaSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+export interface ScatterPolarSeries extends DataSeries {
   /**
-   * Type discriminator: always 'area' for this series.
+   * Type discriminator: always 'scatterpolar' for this series.
    */
-  type: 'area';
+  type: 'scatterpolar';
 
   /**
    * Array of data points for the series.
    */
-  data: DataPointV2<X, Y>[];
+  data: PolarDataPoint[];
+}
+
+/**
+ * Represents a linepolar series.
+ */
+export interface LinePolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'linepolar' for this series.
+   */
+  type: 'linepolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
+}
+
+/**
+ * Represents a areapolar series.
+ */
+export interface AreaPolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'areapolar' for this series.
+   */
+  type: 'areapolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
 }
