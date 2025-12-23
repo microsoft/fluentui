@@ -114,6 +114,7 @@ tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
   1. Take the commit id from the user which needs to be migrated from v9 to v8.
   2. use git commands to fetch the file content from that commit.
   3. Use the above differences and points to convert the functional component code to class component code.
-  4. Ensure all changes of that particular commit are addressed in the migration.
+  4. Ensure all changes of that particular commit are addressed in the migration. **_ONLY MAKE CODE CHANGES FROM THAT COMMIT. DO NOT MAKE ANY OTHER CHANGES._**
   5. **_IMPORTANT:_** After migration, run `yarn build` to build the `react-charting` package and ensure there are no build errors.
   6. **_IMPORTANT:_** Then run `npx cross-env TZ=UTC jest` to ensure all tests are passing. If there are snapshots failures, update the snapshots by running `npx cross-env TZ=UTC jest -u`.
+  7. Finally run `yarn change` to create a change file for the migration.
