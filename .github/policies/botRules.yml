@@ -317,6 +317,9 @@ configuration:
         triggerOnOwnActions: false
       - if:
           - payloadType: Pull_Request
+          - not:
+              isActivitySender:
+                user: github-copilot[bot]
         then:
           - if:
               - includesModifiedFiles:
@@ -550,6 +553,9 @@ configuration:
         triggerOnOwnActions: false
       - if:
           - payloadType: Pull_Request
+          - not:
+              isActivitySender:
+                user: github-copilot[bot]
           - or:
               - includesModifiedFiles:
                   files:
