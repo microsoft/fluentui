@@ -222,6 +222,12 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -663,6 +669,12 @@ export interface IVSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -773,6 +785,11 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * Whether to use the secondary y scale or not

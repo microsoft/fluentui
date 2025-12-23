@@ -1151,18 +1151,29 @@ export class VerticalStackedBarChartBase
           role: 'img',
         };
       let showLabel = false;
-      let barLabel = 0;
+      let barLabel: string | number = 0;
+      let selectedBarTotalValue: number = 0;
+      let customBarLabel: string | undefined = undefined;
       if (!this.props.hideLabels && this._yAxisType !== YAxisType.StringAxis) {
+        // Collect all bars with barLabel that match the legend filter
+        const barLabelsToDisplay = barsToDisplay.filter(
+          point => point.barLabel && (this._noLegendHighlighted() || this._isLegendHighlighted(point.legend)),
+        );
+        if (barLabelsToDisplay.length > 0) {
+          customBarLabel = barLabelsToDisplay[barLabelsToDisplay.length - 1].barLabel!;
+        }
         if (this._noLegendHighlighted()) {
           showLabel = true;
-          barLabel = barTotalValue;
+          barLabel = customBarLabel ?? barTotalValue;
+          selectedBarTotalValue = barTotalValue;
         } else {
           barsToDisplay.forEach(point => {
             if (this._isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data as number;
+              selectedBarTotalValue += point.data as number;
             }
           });
+          barLabel = customBarLabel ?? selectedBarTotalValue;
         }
       }
       return (
@@ -1184,14 +1195,16 @@ export class VerticalStackedBarChartBase
             <text
               x={xPoint + this._barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={selectedBarTotalValue >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {typeof this.props.yAxisTickFormat === 'function'
+              {typeof barLabel === 'string'
+                ? barLabel
+                : typeof this.props.yAxisTickFormat === 'function'
                 ? this.props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>
