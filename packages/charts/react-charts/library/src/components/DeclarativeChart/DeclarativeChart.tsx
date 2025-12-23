@@ -468,23 +468,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  // if (chart.type === 'scatterpolar') {
-  //   const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
-  //   plotlyInputWithValidData.data = cartesianProjection.data;
-  //   plotlyInputWithValidData.layout = cartesianProjection.layout;
-  //   validTracesFilteredIndex.forEach((trace, index) => {
-  //     if (trace.type === 'scatterpolar') {
-  //       const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
-  //       if (mode.includes('line')) {
-  //         validTracesFilteredIndex[index].type = 'line';
-  //       } else if (mode.includes('markers') || mode === 'text') {
-  //         validTracesFilteredIndex[index].type = 'scatter';
-  //       } else {
-  //         validTracesFilteredIndex[index].type = 'line';
-  //       }
-  //     }
-  //   });
-  // }
   const groupedTraces: Record<string, number[]> = {};
   let nonCartesianTraceCount = 0;
 

@@ -13,7 +13,7 @@ export interface PolarChartProps extends CartesianChartProps {
   /**
    *
    */
-  data: AreaPolarSeries[] | LinePolarSeries[] | ScatterPolarSeries[];
+  data: (AreaPolarSeries | LinePolarSeries | ScatterPolarSeries)[];
 
   /**
    *

@@ -195,7 +195,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         </g>
       );
-    }, []);
+    }, [innerRadius, outerRadius, xDomain, xTickValues, yTickValues, xScale, yScale, props.shape, classes]);
 
     const renderPolarTicks = React.useCallback(() => {
       return (
@@ -245,7 +245,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         </g>
       );
-    }, []);
+    }, [xTickValues, yTickValues, xScale, yScale, outerRadius, xTickFormat, yTickFormat, classes]);
 
     const getActiveLegends = React.useCallback(() => {
       return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
@@ -288,12 +288,13 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               strokeDasharray={series.lineOptions?.strokeDasharray}
               strokeDashoffset={series.lineOptions?.strokeDashoffset}
               strokeLinecap={series.lineOptions?.strokeLinecap}
+              pointerEvents="none"
             />
             <g>{renderRadialPoints([series])}</g>
           </g>
         );
       });
-    }, [legendHighlighted]);
+    }, [chartData, innerRadius, xScale, yScale, legendHighlighted]);
 
     const renderRadialLines = React.useCallback(() => {
       const lineData = chartData.filter(series => series.type === 'linepolar');
@@ -321,17 +322,41 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               strokeDasharray={series.lineOptions?.strokeDasharray}
               strokeDashoffset={series.lineOptions?.strokeDashoffset}
               strokeLinecap={series.lineOptions?.strokeLinecap}
+              pointerEvents="none"
             />
             <g>{renderRadialPoints([series])}</g>
           </g>
         );
       });
-    }, [legendHighlighted]);
+    }, [chartData, xScale, yScale, legendHighlighted]);
 
     const [minMarkerSize, maxMarkerSize] = React.useMemo(
       () => d3Extent<number>(chartData.flatMap(series => series.data.map(point => point.markerSize as number))),
       [chartData],
     );
+
+    const showPopover = React.useCallback(
+      (
+        event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement>,
+        point: PolarDataPoint,
+        pointId: string,
+        legend: string,
+      ) => {
+        setPopoverTarget(event.currentTarget);
+        setPopoverOpen(legendHighlighted(legend));
+        setPopoverXValue(point.radialAxisCalloutData ?? xTickFormat(point.r));
+        setPopoverLegend(legend);
+        setPopoverColor(point.color!);
+        setPopoverYValue(point.angularAxisCalloutData ?? yTickFormat(point.theta));
+        setActivePoint(pointId);
+      },
+      [],
+    );
+
+    const hidePopover = React.useCallback(() => {
+      setPopoverOpen(false);
+      setActivePoint('');
+    }, []);
 
     const renderRadialPoints = React.useCallback(
       (scatterData: typeof chartData) => {
@@ -383,7 +408,31 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           );
         });
       },
-      [legendHighlighted],
+      [
+        legendHighlighted,
+        xScale,
+        yScale,
+        activePoint,
+        showPopover,
+        xTickFormat,
+        yTickFormat,
+        minMarkerSize,
+        maxMarkerSize,
+      ],
+    );
+
+    const onLegendSelectionChange = React.useCallback(
+      (_selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => {
+        if (props.legendProps?.canSelectMultipleLegends) {
+          setSelectedLegends(_selectedLegends);
+        } else {
+          setSelectedLegends(_selectedLegends.slice(-1));
+        }
+        if (props.legendProps?.onChange) {
+          props.legendProps.onChange(_selectedLegends, event, currentLegend);
+        }
+      },
+      [props.legendProps],
     );
 
     const renderLegends = React.useCallback(() => {
@@ -415,44 +464,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           />
         </div>
       );
-    }, []);
-
-    const showPopover = React.useCallback(
-      (
-        event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement>,
-        point: PolarDataPoint,
-        pointId: string,
-        legend: string,
-      ) => {
-        setPopoverTarget(event.currentTarget);
-        setPopoverOpen(legendHighlighted(legend));
-        setPopoverXValue(point.radialAxisCalloutData ?? xTickFormat(point.r));
-        setPopoverLegend(legend);
-        setPopoverColor(point.color!);
-        setPopoverYValue(point.angularAxisCalloutData ?? yTickFormat(point.theta));
-        setActivePoint(pointId);
-      },
-      [],
-    );
-
-    const hidePopover = React.useCallback(() => {
-      setPopoverOpen(false);
-      setActivePoint('');
-    }, []);
-
-    const onLegendSelectionChange = React.useCallback(
-      (_selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => {
-        if (props.legendProps?.canSelectMultipleLegends) {
-          setSelectedLegends(_selectedLegends);
-        } else {
-          setSelectedLegends(_selectedLegends.slice(-1));
-        }
-        if (props.legendProps?.onChange) {
-          props.legendProps.onChange(_selectedLegends, event, currentLegend);
-        }
-      },
-      [],
-    );
+    }, [props.hideLegend, props.legendProps, legendsRef, onLegendSelectionChange]);
 
     return (
       <div className={classes.root} ref={chartContainerRef} onMouseLeave={hidePopover} onBlur={hidePopover}>
