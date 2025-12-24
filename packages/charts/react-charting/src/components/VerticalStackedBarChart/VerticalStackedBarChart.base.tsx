@@ -1159,8 +1159,10 @@ export class VerticalStackedBarChartBase
         const barLabelsToDisplay = barsToDisplay.filter(
           point => point.barLabel && (this._noLegendHighlighted() || this._isLegendHighlighted(point.legend)),
         );
-        if (barLabelsToDisplay.length > 0) {
-          customBarLabel = barLabelsToDisplay[barLabelsToDisplay.length - 1].barLabel!;
+        // For stacked bars, we want to show the total of the stack, not individual bar labels
+        // Only use customBarLabel if there's exactly one bar with a label in the stack
+        if (barLabelsToDisplay.length === 1) {
+          customBarLabel = barLabelsToDisplay[0].barLabel!;
         }
         if (this._noLegendHighlighted()) {
           showLabel = true;
