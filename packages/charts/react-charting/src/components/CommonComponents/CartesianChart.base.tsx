@@ -32,6 +32,7 @@ import {
   truncateString,
   tooltipOfAxislabels,
   DEFAULT_WRAP_WIDTH,
+  autoLayoutXAxisLabels,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
@@ -1036,8 +1037,19 @@ export class CartesianChartBase
         showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
         width: maxXAxisLabelWidth,
+        container: this.chartContainer,
       };
       this._removalValueForTextTuncate = createWrapOfXLabels(wrapLabelProps) ?? 0;
+    } else if (this.xAxisElement && this.props.xAxis?.tickLayout === 'auto') {
+      this._removalValueForTextTuncate =
+        autoLayoutXAxisLabels(
+          this.props.datasetForXAxisDomain || [],
+          this._tickValues as string[],
+          this._xScale,
+          this.xAxisElement,
+          this.state.containerWidth,
+          this.chartContainer,
+        ) ?? 0;
     }
 
     if (

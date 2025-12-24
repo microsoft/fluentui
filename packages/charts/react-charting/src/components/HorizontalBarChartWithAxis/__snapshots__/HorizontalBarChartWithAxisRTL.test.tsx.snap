@@ -15,6 +15,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"
@@ -943,6 +944,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"
@@ -1884,6 +1886,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
       id="chart_4"
@@ -2813,6 +2816,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"
@@ -3741,6 +3745,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"

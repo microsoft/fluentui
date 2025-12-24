@@ -15,6 +15,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_4"
@@ -592,6 +593,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_4"

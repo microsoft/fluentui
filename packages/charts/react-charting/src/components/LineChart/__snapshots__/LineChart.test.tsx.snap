@@ -555,6 +555,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_9"
@@ -1262,6 +1263,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_9"
