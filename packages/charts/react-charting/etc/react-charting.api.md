@@ -1106,6 +1106,7 @@ export interface IHorizontalBarChartStyles {
 
 // @public (undocumented)
 export interface IHorizontalBarChartWithAxisDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     gradient?: [string, string];
@@ -1125,6 +1126,7 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
     enableGradient?: boolean;
+    hideLabels?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>;
@@ -1139,6 +1141,7 @@ export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartSt
 
 // @public
 export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
+    barLabel?: IStyle;
     chartLabel?: IStyle;
     opacityChangeOnHover: IStyle;
     xAxisDomain?: IStyle;

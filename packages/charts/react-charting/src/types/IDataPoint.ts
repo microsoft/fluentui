@@ -269,6 +269,11 @@ export interface IHorizontalBarChartWithAxisDataPoint {
   yAxisCalloutData?: string;
 
   /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
+
+  /**
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
