@@ -501,10 +501,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
             yScalePrimary: _yAxisScale.current,
             xScaleType: props.xScaleType,
             yScaleType: props.yScaleType,
-            xMinValue: props.xMinValue,
-            xMaxValue: props.xMaxValue,
-            yMinValue: props.yMinValue,
-            yMaxValue: props.yMaxValue,
           })
         : 0;
 
