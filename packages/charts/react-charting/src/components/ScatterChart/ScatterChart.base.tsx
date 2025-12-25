@@ -675,10 +675,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       classNames,
       props.xScaleType,
       props.yScaleType,
-      props.xMinValue,
-      props.xMaxValue,
-      props.yMinValue,
-      props.yMaxValue,
     ],
   );
 
