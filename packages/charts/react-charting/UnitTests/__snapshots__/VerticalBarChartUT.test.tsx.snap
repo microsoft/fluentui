@@ -15,6 +15,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"

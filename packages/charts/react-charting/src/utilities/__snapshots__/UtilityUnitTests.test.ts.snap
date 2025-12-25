@@ -1579,20 +1579,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 1"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 1"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -1611,20 +1604,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 2"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 2"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -1643,20 +1629,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 3"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 3"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -1690,20 +1669,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 1"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 1"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -1722,20 +1694,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 2"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 2"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -1754,20 +1719,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 3"
       dy="0.71em"
       fill="currentColor"
       y="16"
     >
       <tspan
-        data-="X-axis label 3"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="0.71em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -3405,23 +3363,15 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan"
         x="-18"
       />
-      <tspan
-        dx="0em"
-        id="LessLength"
-        x="-18"
-      >
-        Y-axis label 1
-      </tspan>
     </text>
   </g>
   <g
@@ -3434,23 +3384,15 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan"
         x="-18"
       />
-      <tspan
-        dx="0em"
-        id="LessLength"
-        x="-18"
-      >
-        Y-axis label 2
-      </tspan>
     </text>
   </g>
   <g
@@ -3463,23 +3405,15 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan"
         x="-18"
       />
-      <tspan
-        dx="0em"
-        id="LessLength"
-        x="-18"
-      >
-        Y-axis label 3
-      </tspan>
     </text>
   </g>
 </g>
@@ -3507,20 +3441,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan"
-        x="-18"
-      />
-      <tspan
-        dx="0em"
-        dy="0.32em"
-        id="showDots"
         x="-18"
       >
         Y-axis lab...
@@ -3537,20 +3464,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan"
-        x="-18"
-      />
-      <tspan
-        dx="0em"
-        dy="0.32em"
-        id="showDots"
         x="-18"
       >
         Y-axis lab...
@@ -3567,20 +3487,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan"
-        x="-18"
-      />
-      <tspan
-        dx="0em"
-        dy="0.32em"
-        id="showDots"
         x="-18"
       >
         Y-axis lab...
@@ -4012,6 +3925,102 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
 
 exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
 <body>
+  <svg>
+    <g
+      fill="none"
+      font-family="sans-serif"
+      font-size="10"
+      text-anchor="middle"
+    >
+      <path
+        class="domain"
+        d="M0.5,6V0.5H100.5V6"
+        stroke="currentColor"
+      />
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(17.741935483870968,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 1"
+          dy="0.71em"
+          fill="currentColor"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis label 1
+          </tspan>
+        </text>
+      </g>
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(50,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 2"
+          dy="0.71em"
+          fill="currentColor"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis label 2
+          </tspan>
+        </text>
+      </g>
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(82.25806451612904,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 3"
+          dy="0.71em"
+          fill="currentColor"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis label 3
+          </tspan>
+        </text>
+      </g>
+    </g>
+  </svg>
+  <span
+    aria-hidden="true"
+    id="fui_measurement_span"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
+  >
+    X-axis label 3
+  </span>
   <div
     class="tooltip-1"
     id="VBCTooltipId_1"

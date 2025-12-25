@@ -1355,7 +1355,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       //Fixing tooltip position by attaching it to the element rather than page
       div.style('opacity', 0.9).style('color', this.props.theme!.palette.neutralPrimary);
       div
-        .html(text)
+        .text(text)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px');
     }

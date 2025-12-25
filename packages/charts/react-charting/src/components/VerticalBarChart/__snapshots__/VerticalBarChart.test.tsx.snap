@@ -14,6 +14,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -481,6 +482,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -948,6 +950,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -1415,6 +1418,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -1882,6 +1886,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2338,6 +2343,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2446,6 +2452,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2913,6 +2920,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -3380,6 +3388,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -3847,6 +3856,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"

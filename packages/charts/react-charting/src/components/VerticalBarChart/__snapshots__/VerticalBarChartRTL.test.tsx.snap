@@ -15,6 +15,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -813,6 +814,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -1624,6 +1626,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
       id="chart_6"
@@ -2434,6 +2437,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -10057,6 +10061,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -12337,6 +12342,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -13135,6 +13141,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -14063,6 +14070,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -14671,6 +14679,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"

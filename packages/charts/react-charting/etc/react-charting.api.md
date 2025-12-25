@@ -450,7 +450,9 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
-    xAxis?: AxisProps;
+    xAxis?: AxisProps & {
+        tickLayout?: 'default' | 'auto';
+    };
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;

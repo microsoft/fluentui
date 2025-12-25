@@ -14,6 +14,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -467,6 +468,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -992,6 +994,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -1445,6 +1448,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -1898,6 +1902,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2340,6 +2345,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2534,6 +2540,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -2987,6 +2994,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -3432,6 +3440,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -3885,6 +3894,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
@@ -4338,6 +4348,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_3"
