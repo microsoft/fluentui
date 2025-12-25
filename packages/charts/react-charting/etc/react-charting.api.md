@@ -970,6 +970,7 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
 
 // @public (undocumented)
 export interface IGVBarChartSeriesPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number;
@@ -1831,6 +1832,7 @@ export interface ITreeStyles {
 
 // @public (undocumented)
 export interface IVerticalBarChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     gradient?: [string, string];
@@ -1961,6 +1963,7 @@ export interface IVerticalStackedChartProps {
 
 // @public (undocumented)
 export interface IVSChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number | string;
