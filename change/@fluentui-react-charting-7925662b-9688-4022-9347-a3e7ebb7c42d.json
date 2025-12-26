@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "port changes from v9 to v8 using custom github agent",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
