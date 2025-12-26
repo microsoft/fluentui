@@ -240,6 +240,7 @@ export interface CartesianChartProps {
         tickLayout?: 'default' | 'auto';
     };
     xAxisAnnotation?: string;
+    xAxisAnnotationStyles?: React_2.CSSProperties;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
@@ -711,6 +712,7 @@ export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 export interface DonutChartProps extends CartesianChartProps {
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
+    chartTitleStyles?: React_2.CSSProperties;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
@@ -803,6 +805,7 @@ export interface FunnelChartDataPoint {
 export interface FunnelChartProps {
     calloutProps?: ChartPopoverProps;
     chartTitle?: string;
+    chartTitleStyles?: React_2.CSSProperties;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
@@ -1590,6 +1593,7 @@ export interface SankeyChartProps {
     accessibility?: SankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
     calloutProps?: ChartPopoverProps;
+    chartTitleStyles?: React.CSSProperties;
     className?: string;
     colorsForNodes?: string[];
     componentRef?: Ref<Chart>;
@@ -1599,6 +1603,7 @@ export interface SankeyChartProps {
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
+    hideLegend?: boolean;
     parentRef?: HTMLElement | null;
     pathColor?: string;
     reflowProps?: {

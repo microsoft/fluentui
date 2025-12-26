@@ -441,6 +441,17 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
+      {!props.hideLegend && props.chartTitle && (
+        <div
+          style={{
+            textAlign: 'center',
+            marginBottom: '8px',
+            ...props.chartTitleStyles,
+          }}
+        >
+          {props.chartTitle}
+        </div>
+      )}
       <svg
         width={width}
         height={height}

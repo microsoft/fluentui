@@ -97,6 +97,17 @@ export interface SankeyChartProps {
   culture?: string;
 
   /**
+   * Inline styles for the chart title
+   */
+  chartTitleStyles?: React.CSSProperties;
+
+  /**
+   * Whether to hide the legend
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {

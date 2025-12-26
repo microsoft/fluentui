@@ -38,6 +38,7 @@ import {
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
+  getTitleFontStyles,
   transformPlotlyJsonToAnnotationChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
@@ -537,9 +538,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 
   type ChartType = keyof ChartTypeMap;
+
+  const titleObj = plotlyInputWithValidData.layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+
+  const titleStyle: React.CSSProperties = {
+    textAlign: 'center',
+    marginBottom: '8px',
+    ...getTitleFontStyles(titleFont),
+  };
+
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
           display: 'grid',
@@ -581,8 +594,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ? {}
                   : {
                       ...interactiveCommonProps,
-                      xAxisAnnotation: cellProperties?.xAnnotation,
-                      yAxisAnnotation: cellProperties?.yAnnotation,
                     }
               ) as Partial<ReturnType<typeof transformer>>;
 
@@ -592,8 +603,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
                   ...resolvedCommonProps,
-                  xAxisAnnotation: cellProperties?.xAnnotation,
-                  yAxisAnnotation: cellProperties?.yAnnotation,
+                  ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
+                  ...(cellProperties?.yAnnotation && { yAxisAnnotation: cellProperties.yAnnotation }),
                   componentRef: (ref: Chart | null) => {
                     chartRefs.current[chartIdx] = {
                       compRef: ref,

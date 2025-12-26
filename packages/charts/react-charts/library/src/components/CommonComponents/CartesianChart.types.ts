@@ -466,6 +466,12 @@ export interface CartesianChartProps {
   xAxisAnnotation?: string;
 
   /**
+   * Optional inline styles to apply to the x axis annotation.
+   * @default undefined
+   */
+  xAxisAnnotationStyles?: React.CSSProperties;
+
+  /**
    * Prop to set the y axis annotation. Used to display additional information on the y-axis.
    * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
    * @default undefined

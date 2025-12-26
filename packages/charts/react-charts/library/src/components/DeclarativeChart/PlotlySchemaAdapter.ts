@@ -70,6 +70,7 @@ import type {
   AxisType,
   Shape,
   Annotations,
+  Font,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -90,6 +91,7 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
+import { tokens } from '@fluentui/react-theme';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
@@ -172,11 +174,28 @@ const dashOptions = {
   },
 } as const;
 
+export function getTitleFontStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
+  return {
+    fontFamily: titleFont?.family ?? 'Arial, sans-serif',
+    fontSize: titleFont?.size ? `${titleFont.size}px` : '13px',
+    fontWeight: titleFont?.weight ?? 400,
+    color: (titleFont?.color as string) ?? tokens.colorNeutralForeground1,
+    ...(titleFont?.shadow && titleFont.shadow !== 'none' && { textShadow: titleFont.shadow }),
+  };
+}
+
 function getTitles(layout: Partial<Layout> | undefined) {
+  const titleObj = layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+  const titleStyles: React.CSSProperties = getTitleFontStyles(titleFont);
+
   const titles = {
-    chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
+    chartTitle,
     xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
     yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
+    xAxisAnnotation: chartTitle,
+    xAxisAnnotationStyles: titleStyles,
   };
   return titles;
 }
@@ -1357,6 +1376,9 @@ export const transformPlotlyJsonToDonutProps = (
       chartTitle,
       chartData: reorderedEntries.map(([, v]) => v as ChartDataPoint),
     },
+    chartTitleStyles: getTitleFontStyles(
+      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
+    ),
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
@@ -2688,8 +2710,12 @@ export const transformPlotlyJsonToSankeyProps = (
       chartTitle,
       SankeyChartData: sankeyChartData,
     },
+    chartTitleStyles: getTitleFontStyles(
+      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
+    ),
     width: input.layout?.width,
     height: input.layout?.height ?? 468,
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
     // TODO
     // styles,
   };
@@ -3137,9 +3163,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
       });
     });
   }
+  const { chartTitle } = getTitles(input.layout);
 
   return {
     data: funnelData,
+    chartTitle,
+    chartTitleStyles: getTitleFontStyles(
+      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
+    ),
     width: input.layout?.width,
     height: input.layout?.height,
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',

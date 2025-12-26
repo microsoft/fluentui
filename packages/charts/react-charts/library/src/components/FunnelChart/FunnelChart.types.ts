@@ -40,6 +40,12 @@ export interface FunnelChartProps {
    * Title for the chart
    */
   chartTitle?: string;
+
+  /**
+   * Inline styles for the chart title
+   */
+  chartTitleStyles?: React.CSSProperties;
+
   /**
    * Width of the chart
    */

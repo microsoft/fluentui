@@ -11,6 +11,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -659,6 +664,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -1368,6 +1378,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -1898,6 +1913,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -2488,6 +2508,11 @@ Object {
       <div
         class="fui-sc__root"
       >
+        <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
         <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -3535,6 +3560,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -4642,6 +4672,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -5685,6 +5720,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -6789,6 +6829,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -6963,6 +7008,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -7192,6 +7242,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
   <div
     class="fui-sc__root"
   >
+    <div
+      style="text-align: center; margin-bottom: 8px;"
+    >
+      Sankey Chart
+    </div>
     <div
       class="fui-sc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -7524,6 +7579,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -7866,6 +7926,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
     style=""
   >
     <div
+      style="text-align: center; margin-bottom: 8px;"
+    >
+      Sankey Chart
+    </div>
+    <div
       class="fui-sc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
@@ -8198,6 +8263,11 @@ Object {
       <div
         class="fui-sc__root"
       >
+        <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
         <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -8725,6 +8795,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -9312,6 +9387,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -9641,6 +9721,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -10025,6 +10110,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
   <div
     class="fui-sc__root"
   >
+    <div
+      style="text-align: center; margin-bottom: 8px;"
+    >
+      Sankey Chart
+    </div>
     <div
       class="fui-sc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -11115,6 +11205,11 @@ Object {
         class="fui-sc__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Sankey Chart
+        </div>
+        <div
           class="fui-sc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
@@ -12155,6 +12250,11 @@ Object {
     <div
       class="fui-sc__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Sankey Chart
+      </div>
       <div
         class="fui-sc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
@@ -13250,6 +13350,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
   <div
     class="fui-sc__root"
   >
+    <div
+      style="text-align: center; margin-bottom: 8px;"
+    >
+      Sankey Chart
+    </div>
     <div
       class="fui-sc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"

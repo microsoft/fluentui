@@ -83,6 +83,12 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return donut chart props 1`] = `
 Object {
+  "chartTitleStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "data": Object {
     "chartData": Array [
       Object {
@@ -211,6 +217,12 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return pie chart props 1`] = `
 Object {
+  "chartTitleStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "data": Object {
     "chartData": Array [
       Object {
@@ -338,6 +350,13 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -2844,6 +2863,13 @@ Object {
   "xAxis": Object {
     "tickLayout": "auto",
   },
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3048,6 +3074,13 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "xMaxValue": 1830.6731869091736,
@@ -4634,6 +4667,13 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -4643,6 +4683,12 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToSankeyProps - Should return sankey chart props 1`] = `
 Object {
+  "chartTitleStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "data": Object {
     "SankeyChartData": Object {
       "links": Array [
@@ -4783,6 +4829,7 @@ Object {
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
   "height": 772,
+  "hideLegend": false,
   "width": undefined,
 }
 `;
@@ -5052,6 +5099,13 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -5200,6 +5254,13 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5489,6 +5550,13 @@ Object {
   "roundedTicks": true,
   "showYAxisLables": true,
   "width": undefined,
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "#4D5663",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
+  },
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5606,6 +5674,13 @@ Object {
   "width": undefined,
   "xAxis": Object {
     "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "",
+  "xAxisAnnotationStyles": Object {
+    "color": "var(--colorNeutralForeground1)",
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "13px",
+    "fontWeight": 400,
   },
   "xAxisCategoryOrder": Array [
     "Jan",

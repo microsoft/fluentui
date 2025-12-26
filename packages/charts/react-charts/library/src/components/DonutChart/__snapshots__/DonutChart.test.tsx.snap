@@ -6,6 +6,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     class="fui-donut__root"
   >
     <div
+      style="text-align: center; margin-bottom: 8px;"
+    >
+      Donut chart example
+    </div>
+    <div
       class="fui-donut__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
@@ -148,6 +153,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
     <div
       class="fui-donut__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Donut chart example
+      </div>
       <div
         class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -293,6 +303,11 @@ Object {
       <div
         class="fui-donut__root"
       >
+        <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Donut chart example
+        </div>
         <div
           class="fui-donut__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -471,6 +486,11 @@ Object {
     <div
       class="fui-donut__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Donut chart example
+      </div>
       <div
         class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -709,6 +729,11 @@ Object {
         class="fui-donut__root"
       >
         <div
+          style="text-align: center; margin-bottom: 8px;"
+        >
+          Donut chart example
+        </div>
+        <div
           class="fui-donut__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
@@ -886,6 +911,11 @@ Object {
     <div
       class="fui-donut__root"
     >
+      <div
+        style="text-align: center; margin-bottom: 8px;"
+      >
+        Donut chart example
+      </div>
       <div
         class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -1118,6 +1148,11 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   class="fui-donut__root"
 >
   <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
+  <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
@@ -1254,6 +1289,11 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 <div
   class="fui-donut__root"
 >
+  <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
   <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -1422,6 +1462,11 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   class="fui-donut__root"
 >
   <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
+  <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
@@ -1589,6 +1634,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   class="fui-donut__root"
 >
   <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
+  <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
@@ -1726,6 +1776,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   class="fui-donut__root"
 >
   <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
+  <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
@@ -1862,6 +1917,11 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 <div
   class="fui-donut__root"
 >
+  <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
   <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -2073,6 +2133,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   class="fui-donut__root"
 >
   <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
+  <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
@@ -2209,6 +2274,11 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 <div
   class="fui-donut__root"
 >
+  <div
+    style="text-align: center; margin-bottom: 8px;"
+  >
+    Donut chart example
+  </div>
   <div
     class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
