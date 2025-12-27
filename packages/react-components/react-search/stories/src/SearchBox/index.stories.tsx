@@ -14,6 +14,7 @@ export { Controlled } from './SearchBoxControlled.stories';
 export default {
   title: 'Components/SearchBox',
   component: SearchBox,
+  subcomponents: {},
   parameters: {
     docs: {
       description: {
