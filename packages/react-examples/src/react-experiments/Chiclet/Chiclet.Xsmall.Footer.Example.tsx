@@ -4,6 +4,7 @@ import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Icon, IIconProps } from '@fluentui/react/lib/Icon';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -59,7 +60,7 @@ export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
 };
 
 class FooterComponent extends React.Component<IFooterComponent, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { buttonProps, attachProps } = this.props;
     return _renderFooter(buttonProps, attachProps);
   }
@@ -67,10 +68,9 @@ class FooterComponent extends React.Component<IFooterComponent, {}> {
 
 type ReactProps<T> = {
   children?: React.ReactNode;
-  ref?: React.LegacyRef<T>;
+  ref?: React.Ref<T>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 interface IFooterComponent extends ReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;

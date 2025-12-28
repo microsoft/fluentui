@@ -6,6 +6,7 @@ import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField, ITextField } from '@fluentui/react/lib/TextField';
 import { createArray } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 
@@ -15,8 +16,8 @@ interface IExampleItem {
 }
 
 export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
-  const detailsList = React.useRef<IDetailsList>(null);
-  const textField = React.useRef<ITextField>(null);
+  const detailsList = React.useRef<IDetailsList | null>(null);
+  const textField = React.useRef<ITextField | null>(null);
   const selection = useConst(() => new Selection());
   const [items, setItems] = React.useState<IExampleItem[]>(() =>
     createArray(20, i => ({
@@ -25,8 +26,8 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     })),
   );
 
-  const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
-  const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
+  const [dialogContent, setDialogContent] = React.useState<JSXElement | undefined>(undefined);
+  const [announced, setAnnounced] = React.useState<JSXElement | undefined>(undefined);
 
   const deleteItem = React.useCallback((index: number): void => {
     setItems(prevItems => prevItems.filter((item, i) => i !== index));

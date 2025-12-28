@@ -9,6 +9,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -39,7 +40,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string;
-  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _isRTL = getRTL();
 
   public constructor(props: IStackedBarChartProps) {
@@ -74,8 +75,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     if (!this._isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
@@ -173,7 +173,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   directionalHint={DirectionalHint.topAutoEdge}
                   id={this._calloutId}
                   onDismiss={this._closeCallout}
-                  // eslint-disable-next-line @typescript-eslint/no-deprecated
                   preventDismissOnLostFocus={true}
                   /** Keep the callout updated with details of focused/hovered bar */
                   shouldUpdateWhenHidden={true}
@@ -234,8 +233,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     palette: IPalette,
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): [JSX.Element[], JSX.Element] {
+  ): [JSXElement[], JSXElement] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -438,8 +436,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
+  private _generateEmptyBar(barHeight: number, color: string): JSXElement {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>
         <rect key={0} id={getId('_SBC_empty_bar_')} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />

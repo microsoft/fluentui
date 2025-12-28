@@ -12,7 +12,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
 > {
   private _classNames: { [key in keyof IPlatformBarStyles]: string };
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { styles, theme, platforms, innerWidth } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -32,7 +32,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
     );
   }
 
-  private _renderPlatformGrid = (platforms: { [key: string]: IPlatform | undefined }): JSX.Element[] => {
+  private _renderPlatformGrid = (platforms: { [key: string]: IPlatform | undefined }): React.ReactElement[] => {
     return Object.keys(platforms)
       .filter(platform => !!platforms[platform as TPlatforms])
       .map((platformKey: TPlatforms) => {
@@ -41,7 +41,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
       });
   };
 
-  private _renderPlatformSquare = (platform: IPlatform, platformKey: TPlatforms): JSX.Element => {
+  private _renderPlatformSquare = (platform: IPlatform, platformKey: TPlatforms): React.ReactElement => {
     const { styles, theme, pagePlatforms } = this.props;
     const { name, icon, color } = platform;
     const classNames = getClassNames(styles, { theme: theme!, platformColor: color });

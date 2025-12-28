@@ -25,13 +25,37 @@ export interface FluentParameters extends Parameters {
   dir?: 'ltr' | 'rtl';
   fluentTheme?: ThemeIds;
   mode?: 'default' | 'vr-test';
-  reactStorybookAddon?: { disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'] };
+  reactStorybookAddon?: {
+    disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+    docs?: FluentDocsConfig;
+  };
 }
 
-export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
+/**
+ * Configuration for docs components
+ */
+type FluentDocsConfig =
+  | boolean
+  | {
+      tableOfContents?: boolean;
+      dirSwitcher?: boolean;
+      themePicker?: boolean;
+      copyAsMarkdown?: boolean;
+      argTable?:
+        | boolean
+        | {
+            slotsApi?: boolean;
+            nativePropsApi?: boolean;
+          };
+    };
+
+export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();
 }
 
-export function parameters(options?: FluentParameters) {
+export function parameters(options?: FluentParameters): FluentParameters {
   return { dir: 'ltr', fluentTheme: 'web-light', mode: 'default', ...options };
+}
+export function getParametersConfig(context: FluentStoryContext): FluentParameters['reactStorybookAddon'] {
+  return context?.parameters?.reactStorybookAddon;
 }

@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 
-export function createUseIdMock() {
+export function createUseIdMock(): { useId: (prefix: string) => string; resetIdsForTests: () => void } {
   let idCounter = 0;
 
   return {

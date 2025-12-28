@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToolbarDividerStyles_unstable } from './useToolbarDividerStyles.styles';
 import type { ToolbarDividerProps } from './ToolbarDivider.types';

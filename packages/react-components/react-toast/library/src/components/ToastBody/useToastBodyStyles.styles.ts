@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ToastBodySlots, ToastBodyState } from './ToastBody.types';
@@ -13,7 +15,7 @@ const useRootBaseClassName = makeResetStyles({
   gridColumnEnd: 3,
   paddingTop: '6px',
   fontSize: tokens.fontSizeBase300,
-  lineHeight: tokens.fontSizeBase300,
+  lineHeight: tokens.lineHeightBase300,
   fontWeight: tokens.fontWeightRegular,
   color: tokens.colorNeutralForeground1,
   wordBreak: 'break-word',

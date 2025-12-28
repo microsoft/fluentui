@@ -9,6 +9,8 @@ import { type SlottableInput, ValidationFlags } from './field.options.js';
  * @public
  */
 export class BaseField extends FASTElement {
+  private slottedInputObserver!: MutationObserver;
+
   /**
    * The slotted label elements.
    *
@@ -67,9 +69,10 @@ export class BaseField extends FASTElement {
    * @internal
    */
   public slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined) {
-    if (next?.length) {
-      this.input = next?.[0] as SlottableInput;
-      this.setStates();
+    const filtered = next?.filter(node => node.nodeType === Node.ELEMENT_NODE) ?? [];
+
+    if (filtered?.length) {
+      this.input = filtered?.[0] as SlottableInput;
     }
   }
 
@@ -98,6 +101,11 @@ export class BaseField extends FASTElement {
     if (next) {
       this.setStates();
       this.setLabelProperties();
+      this.slottedInputObserver.observe(this.input, {
+        attributes: true,
+        attributeFilter: ['disabled', 'required', 'readonly'],
+        subtree: true,
+      });
     }
   }
 
@@ -136,9 +144,13 @@ export class BaseField extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('invalid', this.invalidHandler, { capture: true });
+    this.slottedInputObserver = new MutationObserver(() => {
+      this.setStates();
+    });
   }
 
   disconnectedCallback(): void {
+    this.slottedInputObserver.disconnect();
     this.removeEventListener('invalid', this.invalidHandler, { capture: true });
     super.disconnectedCallback();
   }
@@ -195,7 +207,6 @@ export class BaseField extends FASTElement {
         if (label instanceof HTMLLabelElement) {
           label.htmlFor = label.htmlFor || this.input.id;
           label.id = label.id || `${this.input.id}--label`;
-          label.setAttribute('aria-hidden', 'true');
           this.input.setAttribute('aria-labelledby', label.id);
         }
       });
@@ -217,7 +228,7 @@ export class BaseField extends FASTElement {
   }
 
   public setValidationStates() {
-    if (!this.input.validity) {
+    if (!this.input?.validity) {
       return;
     }
 

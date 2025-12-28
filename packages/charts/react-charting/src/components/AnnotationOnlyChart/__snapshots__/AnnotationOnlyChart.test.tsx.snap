@@ -1,0 +1,704 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      aria-label="A complete chart with all props"
+      height="400"
+      role="img"
+      style="width: 600px; height: 400px; display: block;"
+      viewBox="0 0 600 400"
+      width="600"
+    >
+      <foreignobject
+        height="400"
+        width="600"
+        x="0"
+        y="0"
+      >
+        <div
+          aria-label="A complete chart with all props"
+          class=
+
+              {
+                background-color: #f5f5f5;
+                color: #333333;
+                display: flex;
+                flex-direction: column;
+                font-family: Arial, sans-serif;
+                min-height: 400px;
+                padding-bottom: 20px;
+                padding-left: 25px;
+                padding-right: 15px;
+                padding-top: 10px;
+                position: relative;
+                row-gap: 8px;
+                width: 600px;
+              }
+          data-chart-annotation-only="true"
+        >
+          <span
+            aria-hidden="true"
+            class=
+
+                {
+                  text-align: center;
+                }
+          >
+            Complete Chart
+          </span>
+          <div
+            class=
+
+                {
+                  background-color: #ffffff;
+                  border-radius: 2px;
+                  box-sizing: border-box;
+                  flex-grow: 1;
+                  position: relative;
+                }
+            role="presentation"
+          >
+            <div
+              class=
+
+                  {
+                    bottom: 0px;
+                    height: 100%;
+                    left: 0px;
+                    overflow: visible;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                    z-index: 1;
+                  }
+              data-chart-annotation-layer="true"
+              role="presentation"
+            >
+              <svg
+                class=
+
+                    {
+                      height: 100%;
+                      left: 0px;
+                      overflow: visible;
+                      pointer-events: none;
+                      position: absolute;
+                      top: 0px;
+                      width: 100%;
+                    }
+                data-chart-annotation-svg="true"
+                height="100%"
+                preserveAspectRatio="none"
+                viewBox="0 0 600 400"
+                width="100%"
+              >
+                <foreignobject
+                  class=
+
+                      {
+                        overflow: visible;
+                        pointer-events: none;
+                      }
+                  data-annotation-key="annotation-1"
+                  height="60"
+                  width="180"
+                  x="210"
+                  y="170"
+                >
+                  <div
+                    class=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          align-items: center;
+                          background-color: rgba(255, 255, 255, 0.8);
+                          border-radius: 4px;
+                          border: 1px solid #edebe9;
+                          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                          color: #323130;
+                          display: flex;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          justify-content: center;
+                          padding-bottom: 4px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 4px;
+                          pointer-events: none;
+                          position: absolute;
+                          text-align: center;
+                          white-space: pre-wrap;
+                          z-index: 2;
+                        }
+                    data-annotation-key="annotation-1"
+                  >
+                    <div
+                      aria-label="Test Annotation 1"
+                      class=
+
+                          {
+                            height: 100%;
+                            pointer-events: none;
+                            width: 100%;
+                          }
+                      data-annotation-key="annotation-1"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="opacity: 1;"
+                    >
+                      Test Annotation 1
+                    </div>
+                  </div>
+                </foreignobject>
+                <foreignobject
+                  class=
+
+                      {
+                        overflow: visible;
+                        pointer-events: none;
+                      }
+                  data-annotation-key="annotation-2"
+                  height="60"
+                  width="180"
+                  x="90"
+                  y="250"
+                >
+                  <div
+                    class=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          align-items: center;
+                          background-color: rgba(255, 255, 255, 0.8);
+                          border-radius: 4px;
+                          border: 1px solid #edebe9;
+                          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                          color: #323130;
+                          display: flex;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          justify-content: center;
+                          padding-bottom: 4px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 4px;
+                          pointer-events: none;
+                          position: absolute;
+                          text-align: center;
+                          white-space: pre-wrap;
+                          z-index: 2;
+                        }
+                    data-annotation-key="annotation-2"
+                    style="background-color: rgba(255, 255, 255, 0.8);"
+                  >
+                    <div
+                      aria-label="Test Annotation 2"
+                      class=
+
+                          {
+                            height: 100%;
+                            pointer-events: none;
+                            width: 100%;
+                          }
+                      data-annotation-key="annotation-2"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="color: rgb(0, 0, 0); opacity: 1;"
+                    >
+                      Test Annotation 2
+                    </div>
+                  </div>
+                </foreignobject>
+              </svg>
+              <div
+                aria-hidden="true"
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      background-color: rgba(255, 255, 255, 0.8);
+                      border-radius: 4px;
+                      border: 1px solid #edebe9;
+                      box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                      color: #323130;
+                      display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      justify-content: center;
+                      padding-bottom: 4px;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 4px;
+                      pointer-events: none;
+                      position: absolute;
+                      text-align: center;
+                      white-space: pre-wrap;
+                      z-index: 2;
+                    }
+                    {
+                      pointer-events: none;
+                      position: absolute;
+                      visibility: hidden;
+                    }
+                data-annotation-key="annotation-1"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+              >
+                <div
+                  class=
+
+                      {
+                        height: 100%;
+                        pointer-events: none;
+                        width: 100%;
+                      }
+                  style="opacity: 1;"
+                >
+                  Test Annotation 1
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      background-color: rgba(255, 255, 255, 0.8);
+                      border-radius: 4px;
+                      border: 1px solid #edebe9;
+                      box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                      color: #323130;
+                      display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      justify-content: center;
+                      padding-bottom: 4px;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 4px;
+                      pointer-events: none;
+                      position: absolute;
+                      text-align: center;
+                      white-space: pre-wrap;
+                      z-index: 2;
+                    }
+                    {
+                      pointer-events: none;
+                      position: absolute;
+                      visibility: hidden;
+                    }
+                data-annotation-key="annotation-2"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
+              >
+                <div
+                  class=
+
+                      {
+                        height: 100%;
+                        pointer-events: none;
+                        width: 100%;
+                      }
+                  style="color: rgb(0, 0, 0); opacity: 1;"
+                >
+                  Test Annotation 2
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      height="400"
+      style="width: 600px; height: 400px; display: block;"
+      viewBox="0 0 600 400"
+      width="600"
+    >
+      <foreignobject
+        height="400"
+        width="600"
+        x="0"
+        y="0"
+      >
+        <div
+          class=
+
+              {
+                background-color: #ffffff;
+                color: #323130;
+                display: flex;
+                flex-direction: column;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                min-height: 400px;
+                position: relative;
+                row-gap: 8px;
+                width: 600px;
+              }
+          data-chart-annotation-only="true"
+        >
+          <div
+            class=
+
+                {
+                  background-color: transparent;
+                  border-radius: 2px;
+                  box-sizing: border-box;
+                  flex-grow: 1;
+                  position: relative;
+                }
+            role="presentation"
+          >
+            <div
+              class=
+
+                  {
+                    bottom: 0px;
+                    height: 100%;
+                    left: 0px;
+                    overflow: visible;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                    z-index: 1;
+                  }
+              data-chart-annotation-layer="true"
+              role="presentation"
+            >
+              <svg
+                class=
+
+                    {
+                      height: 100%;
+                      left: 0px;
+                      overflow: visible;
+                      pointer-events: none;
+                      position: absolute;
+                      top: 0px;
+                      width: 100%;
+                    }
+                data-chart-annotation-svg="true"
+                height="100%"
+                preserveAspectRatio="none"
+                viewBox="0 0 600 400"
+                width="100%"
+              >
+                <foreignobject
+                  class=
+
+                      {
+                        overflow: visible;
+                        pointer-events: none;
+                      }
+                  data-annotation-key="annotation-1"
+                  height="60"
+                  width="180"
+                  x="210"
+                  y="170"
+                >
+                  <div
+                    class=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          align-items: center;
+                          background-color: rgba(255, 255, 255, 0.8);
+                          border-radius: 4px;
+                          border: 1px solid #edebe9;
+                          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                          color: #323130;
+                          display: flex;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          justify-content: center;
+                          padding-bottom: 4px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 4px;
+                          pointer-events: none;
+                          position: absolute;
+                          text-align: center;
+                          white-space: pre-wrap;
+                          z-index: 2;
+                        }
+                    data-annotation-key="annotation-1"
+                  >
+                    <div
+                      aria-label="Test Annotation 1"
+                      class=
+
+                          {
+                            height: 100%;
+                            pointer-events: none;
+                            width: 100%;
+                          }
+                      data-annotation-key="annotation-1"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="opacity: 1;"
+                    >
+                      Test Annotation 1
+                    </div>
+                  </div>
+                </foreignobject>
+                <foreignobject
+                  class=
+
+                      {
+                        overflow: visible;
+                        pointer-events: none;
+                      }
+                  data-annotation-key="annotation-2"
+                  height="60"
+                  width="180"
+                  x="90"
+                  y="250"
+                >
+                  <div
+                    class=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          align-items: center;
+                          background-color: rgba(255, 255, 255, 0.8);
+                          border-radius: 4px;
+                          border: 1px solid #edebe9;
+                          box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                          color: #323130;
+                          display: flex;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          justify-content: center;
+                          padding-bottom: 4px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 4px;
+                          pointer-events: none;
+                          position: absolute;
+                          text-align: center;
+                          white-space: pre-wrap;
+                          z-index: 2;
+                        }
+                    data-annotation-key="annotation-2"
+                    style="background-color: rgba(255, 255, 255, 0.8);"
+                  >
+                    <div
+                      aria-label="Test Annotation 2"
+                      class=
+
+                          {
+                            height: 100%;
+                            pointer-events: none;
+                            width: 100%;
+                          }
+                      data-annotation-key="annotation-2"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="color: rgb(0, 0, 0); opacity: 1;"
+                    >
+                      Test Annotation 2
+                    </div>
+                  </div>
+                </foreignobject>
+              </svg>
+              <div
+                aria-hidden="true"
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      background-color: rgba(255, 255, 255, 0.8);
+                      border-radius: 4px;
+                      border: 1px solid #edebe9;
+                      box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                      color: #323130;
+                      display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      justify-content: center;
+                      padding-bottom: 4px;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 4px;
+                      pointer-events: none;
+                      position: absolute;
+                      text-align: center;
+                      white-space: pre-wrap;
+                      z-index: 2;
+                    }
+                    {
+                      pointer-events: none;
+                      position: absolute;
+                      visibility: hidden;
+                    }
+                data-annotation-key="annotation-1"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+              >
+                <div
+                  class=
+
+                      {
+                        height: 100%;
+                        pointer-events: none;
+                        width: 100%;
+                      }
+                  style="opacity: 1;"
+                >
+                  Test Annotation 1
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      background-color: rgba(255, 255, 255, 0.8);
+                      border-radius: 4px;
+                      border: 1px solid #edebe9;
+                      box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+                      color: #323130;
+                      display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      justify-content: center;
+                      padding-bottom: 4px;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 4px;
+                      pointer-events: none;
+                      position: absolute;
+                      text-align: center;
+                      white-space: pre-wrap;
+                      z-index: 2;
+                    }
+                    {
+                      pointer-events: none;
+                      position: absolute;
+                      visibility: hidden;
+                    }
+                data-annotation-key="annotation-2"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
+              >
+                <div
+                  class=
+
+                      {
+                        height: 100%;
+                        pointer-events: none;
+                        width: 100%;
+                      }
+                  style="color: rgb(0, 0, 0); opacity: 1;"
+                >
+                  Test Annotation 2
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with empty annotations 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      height="650"
+      style="width: 100%; height: 650px; display: block;"
+      viewBox="0 0 400 650"
+      width="400"
+    >
+      <foreignobject
+        height="650"
+        width="400"
+        x="0"
+        y="0"
+      >
+        <div
+          class=
+
+              {
+                background-color: #ffffff;
+                color: #323130;
+                display: flex;
+                flex-direction: column;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                min-height: 650px;
+                position: relative;
+                row-gap: 8px;
+                width: 100%;
+              }
+          data-chart-annotation-only="true"
+        >
+          <span
+            aria-hidden="true"
+            class=
+
+                {
+                  text-align: center;
+                }
+          >
+            Empty Chart
+          </span>
+          <div
+            class=
+
+                {
+                  background-color: transparent;
+                  border-radius: 2px;
+                  box-sizing: border-box;
+                  flex-grow: 1;
+                  position: relative;
+                }
+            role="presentation"
+          />
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;

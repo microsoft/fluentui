@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { Calendar, compareDatePart, DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';
@@ -141,7 +143,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const initialPickerDate = React.useMemo(() => initialPickerDateProp ?? new Date(), [initialPickerDateProp]);
 
-  const calendar = React.useRef<ICalendar>(null);
+  const calendar = React.useRef<ICalendar | null>(null);
   const [focus, rootRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
     formatDate,
@@ -346,6 +348,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   ]);
 
   const onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    ev.preventDefault();
     ev.stopPropagation();
     if (!open && !props.disabled) {
       showDatePickerPopup();

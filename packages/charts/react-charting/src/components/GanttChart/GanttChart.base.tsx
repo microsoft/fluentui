@@ -26,8 +26,9 @@ import {
   getScalePadding,
   getDateFormatLevel,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -72,10 +73,15 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     () => ({
       chartContainer: _cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: _cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : _legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _points = React.useMemo(() => {
@@ -182,7 +188,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       xAxisType: XAxisTypes,
       barWidth: number,
       tickValues: Date[] | number[] | undefined,
-      shiftX: number,
     ): IDomainNRange => {
       const xValues: (Date | number)[] = [];
       points.forEach(point => {
@@ -195,8 +200,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       return {
         dStartValue: isRTL ? xMax : xMin,
         dEndValue: isRTL ? xMin : xMax,
-        rStartValue: margins.left! + (isRTL ? 0 : shiftX),
-        rEndValue: containerWidth - margins.right! - (isRTL ? shiftX : 0),
+        rStartValue: margins.left!,
+        rEndValue: containerWidth - margins.right!,
       };
     },
     [],
@@ -231,7 +236,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _getCustomizedCallout = React.useCallback(() => {
-    const defaultRender = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
+    const defaultRender = (point?: IGanttChartDataPoint): JSXElement | null => {
       return point ? (
         <ChartHoverCard
           XValue={point.yAxisCalloutData || point.y.toString()}
@@ -381,13 +386,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     }: {
       xScale: DateScale | NumberScale;
       yScalePrimary: NumberScale | StringScale;
-    }): React.JSX.Element => {
+    }): JSXElement => {
       const getGradientId = (legend: string | undefined) => {
         const legendId = _legendMap.current[`${legend}`].id;
         return `${legendId}_gradient`;
       };
 
-      const gradientDefs: React.JSX.Element[] = [];
+      const gradientDefs: JSXElement[] = [];
       if (props.enableGradient) {
         Object.keys(_legendMap.current).forEach((legend: string, index: number) => {
           const { startColor, endColor } = _legendMap.current[legend];
@@ -420,7 +425,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
             key={index}
             x={Math.min(rectStartX, rectEndX)}
             y={rectY}
-            width={Math.abs(rectEndX - rectStartX)}
+            width={Math.max(Math.abs(rectEndX - rectStartX), 2)}
             height={_barHeight.current}
             rx={props.roundCorners ? 3 : 0}
             fill={props.enableGradient ? `url(#${getGradientId(point.legend)})` : point.color}
@@ -480,7 +485,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [props.legendProps],
   );
 
-  const _getLegendData = React.useCallback((): React.JSX.Element => {
+  const _getLegendData = React.useCallback((): JSXElement => {
     const actions: ILegend[] = [];
 
     Object.keys(_legendMap.current).forEach((legendTitle: string) => {

@@ -9,6 +9,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentFunctions.stories.md';
 
@@ -74,10 +75,10 @@ const Grow = createMotionComponent(({ element }) => ({
   },
 }));
 
-export const CreateMotionComponentFunctions = () => {
+export const CreateMotionComponentFunctions = (): JSXElement => {
   const classes = useClasses();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const [playbackRate, setPlaybackRate] = React.useState<number>(20);
 
   // Heads up!

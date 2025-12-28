@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';

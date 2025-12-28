@@ -4,6 +4,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
 } from './getNativeElementProps';
+export { getReactElementRef } from './getReactElementRef';
 export { getRTLSafeKey } from './getRTLSafeKey';
 export { mergeCallbacks } from './mergeCallbacks';
 export { omit } from './omit';
@@ -42,3 +43,4 @@ export { isHTMLElement } from './isHTMLElement';
 export { isInteractiveHTMLElement } from './isInteractiveHTMLElement';
 export type { PriorityQueue, PriorityQueueCompareFn } from './priorityQueue';
 export { createPriorityQueue } from './priorityQueue';
+export { measureScrollbarWidth } from './measureScrollBarWidth';

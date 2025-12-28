@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
@@ -321,7 +324,8 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const iconStyles = useIconStyles();
   if (state.icon) {
     let iconPositionClass;
-    if (state.root.children) {
+    // Handle the edge case where children is 0 (a falsy value that should still render text and have margin)
+    if (React.Children.toArray(state.root.children).length > 0) {
       if (state.size === 'extra-large') {
         iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextXL : iconStyles.beforeTextXL;
       } else {

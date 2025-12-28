@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ToastIntent } from '../state/types';
 
@@ -18,5 +20,5 @@ const toastContainerContextDefaultValue: ToastContainerContextValue = {
 const ToastContainerContext = React.createContext<ToastContainerContextValue | undefined>(undefined);
 
 export const ToastContainerContextProvider = ToastContainerContext.Provider;
-export const useToastContainerContext = () =>
+export const useToastContainerContext = (): ToastContainerContextValue =>
   React.useContext(ToastContainerContext) ?? toastContainerContextDefaultValue;

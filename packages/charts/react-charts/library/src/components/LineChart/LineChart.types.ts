@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { RenderFunction } from '../../utilities/index';
 import {
   ChartProps,
@@ -88,6 +87,13 @@ export interface LineChartProps extends CartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
+
+  /**
+   * To enable callout for individual line or complete stack.
+   * @default true
+   * @type \{boolean \}
+   */
+  isCalloutForStack?: boolean;
 }
 
 /**
@@ -111,6 +117,11 @@ export interface LineChartStyles extends CartesianChartStyles {
    * styles for line border
    */
   lineBorder?: string;
+
+  /**
+   * styles for marker label
+   */
+  markerLabel?: string;
 }
 
 /**

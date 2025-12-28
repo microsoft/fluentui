@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { useId, Label, Slider, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const MinMax = () => {
+export const MinMax = (): JSXElement => {
   const styles = useStyles();
   const id = useId();
   const min = 10;

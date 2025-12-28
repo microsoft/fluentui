@@ -2,7 +2,6 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
-import * as reactTestRenderer from 'react-test-renderer';
 
 import { FluentProvider } from './FluentProvider';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
@@ -16,7 +15,7 @@ jest.mock('@fluentui/react-utilities', () => ({
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  let logErrorSpy: jest.SpyInstance;
+  let logErrorSpy: jest.Spied<typeof console.error>;
 
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
@@ -37,12 +36,10 @@ describe('FluentProvider', () => {
    * Note: see more visual regression tests for FluentProvider in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated -- FIXME
-    const component = reactTestRenderer.create(
+    const { container } = render(
       <FluentProvider theme={{ colorBrandBackground2: '#fff' }}>Default FluentProvider</FluentProvider>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it(`should emit an error on duplicated IDs`, () => {

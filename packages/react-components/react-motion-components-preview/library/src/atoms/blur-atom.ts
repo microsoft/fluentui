@@ -1,10 +1,9 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import { BaseAtomParams } from '../types';
 
-interface BlurAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface BlurAtomParams extends BaseAtomParams {
   fromRadius?: string;
+  toRadius?: string;
 }
 
 /**
@@ -12,16 +11,20 @@ interface BlurAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param fromRadius - The blur radius value with units (e.g., '20px', '1rem'). Defaults to '20px'.
+ * @param fromRadius - The blur radius value with units (e.g., '20px', '1rem'). Defaults to '10px'.
+ * @param toRadius - The ending blur radius value with units (e.g., '0px', '5px'). Defaults to '0px'.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with filter blur keyframes and the supplied duration and easing.
  */
 export const blurAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromRadius = '10px',
+  toRadius = '0px',
 }: BlurAtomParams): AtomMotion => {
-  const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: 'blur(0px)' }];
+  const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: `blur(${toRadius})` }];
   if (direction === 'exit') {
     keyframes.reverse();
   }
@@ -29,5 +32,6 @@ export const blurAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

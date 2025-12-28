@@ -1,5 +1,12 @@
+'use client';
+
 import * as React from 'react';
-import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  getReactElementRef,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';
@@ -36,7 +43,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const triggerChildProps = {
     ...child?.props,
-    ref: child?.ref,
+    ref: getReactElementRef<HTMLAnchorElement>(child),
     onClick: handleClick,
     ...triggerAttributes,
   } as const;

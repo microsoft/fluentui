@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AppItem,
   Hamburger,
@@ -130,7 +131,7 @@ const getRandomPage = (): SelectedPage => {
   }
 };
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const styles = useStyles();
 
   const multipleLabelId = useId('multiple-label');

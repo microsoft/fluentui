@@ -1,3 +1,5 @@
+'use client';
+
 import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
@@ -26,7 +28,7 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
-export function setTabsterDefault(element: Element, isDefault: boolean) {
+export function setTabsterDefault(element: Element, isDefault: boolean): void {
   const tabsterAttr = element.getAttribute('data-tabster');
 
   if (tabsterAttr) {
@@ -48,7 +50,19 @@ export function useEmblaCarousel(
     onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
     autoplayInterval?: number;
   },
-) {
+): {
+  activeIndex: number;
+  carouselApi: {
+    scrollToElement: (element: HTMLElement, jump?: boolean) => number;
+    scrollToIndex: (index: number, jump?: boolean) => void;
+    scrollInDirection: (dir: 'prev' | 'next') => number;
+  };
+  viewportRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
+  enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
+  resetAutoplay: () => void;
+} {
   const {
     align,
     autoplayInterval,
@@ -198,8 +212,8 @@ export function useEmblaCarousel(
     }
   });
 
-  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
+  const viewportRef: React.RefObject<HTMLDivElement | null> = React.useRef(null);
+  const containerRef: React.RefObject<HTMLDivElement | null> = React.useMemo(() => {
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];

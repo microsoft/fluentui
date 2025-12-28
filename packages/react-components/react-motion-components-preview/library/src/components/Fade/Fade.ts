@@ -12,18 +12,33 @@ import { FadeParams } from './fade-types';
  *
  * @param duration - Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms).
  * @param easing - Easing curve for the enter transition (fade-in). Defaults to the `curveEasyEase` value.
+ * @param delay - Time (ms) to delay the enter transition. Defaults to 0.
  * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
+ * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
+ * @param fromOpacity - The starting opacity value. Defaults to 0.
+ * @param toOpacity - The ending opacity value. Defaults to 1.
  */
 export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,
+  delay = 0,
   exitDuration = duration,
   exitEasing = easing,
+  exitDelay = delay,
+  fromOpacity = 0,
+  toOpacity = 1,
 }) => {
   return {
-    enter: fadeAtom({ direction: 'enter', duration, easing }),
-    exit: fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }),
+    enter: fadeAtom({ direction: 'enter', duration, easing, delay, fromOpacity, toOpacity }),
+    exit: fadeAtom({
+      direction: 'exit',
+      duration: exitDuration,
+      easing: exitEasing,
+      delay: exitDelay,
+      fromOpacity,
+      toOpacity,
+    }),
   };
 };
 

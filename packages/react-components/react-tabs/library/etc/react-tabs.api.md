@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -19,10 +20,10 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
-export const renderTab_unstable: (state: TabState) => JSX.Element;
+export const renderTab_unstable: (state: TabState) => JSXElement;
 
 // @public
-export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSXElement;
 
 // @public (undocumented)
 export type SelectTabData = {
@@ -97,7 +98,12 @@ export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'valu
 // @public (undocumented)
 export type TabRegisterData = {
     value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement | null>;
+};
+
+// @public (undocumented)
+export const tabReservedSpaceClassNames: {
+    content: string;
 };
 
 // @public (undocumented)
@@ -124,7 +130,10 @@ export type TabValue = unknown;
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public
-export const useTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useTabButtonStyles_unstable: (state: TabState, slot: TabState["root"]) => TabState;
 
 // @public
 export const useTabContentStyles_unstable: (state: TabState) => TabState;

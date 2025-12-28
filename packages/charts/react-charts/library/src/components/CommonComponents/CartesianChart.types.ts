@@ -1,17 +1,23 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
 import {
   AccessibilityProps,
   Chart,
   Margins,
   DataPoint,
+  ChartAnnotation,
   HorizontalBarChartWithAxisDataPoint,
   GroupedVerticalBarChartData,
   HeatMapChartDataPoint,
   LineChartPoints,
   VerticalBarChartDataPoint,
   VerticalStackedBarDataPoint,
-  ScatterChartDataPoint,
+  ScatterChartPoints,
+  GanttChartDataPoint,
+  AxisCategoryOrder,
+  AxisProps,
+  AxisScaleType,
 } from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
@@ -115,9 +121,14 @@ export interface CartesianChartStyles {
   tooltip?: string;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
 
   /**
    * Style for the chart Title.
@@ -140,9 +151,19 @@ export interface CartesianChartStyles {
   chartWrapper?: string;
 
   /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: string;
+
+  /**
    * Styles for the svg tooltip
    */
   svgTooltip?: string;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: string;
 
   /**
    * Styles for the chart svg element
@@ -252,6 +273,11 @@ export interface CartesianChartProps {
   yMaxValue?: number;
 
   /**
+   * minimum data value point in x-axis (for numeric x-axis)
+   */
+  xMinValue?: number;
+
+  /**
    * maximum data value point in x-axis
    */
   xMaxValue?: number;
@@ -275,6 +301,11 @@ export interface CartesianChartProps {
    * @default 10
    */
   xAxistickSize?: number;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: ChartAnnotation[];
 
   /**
    * defines the space between the tick line and the data label
@@ -425,12 +456,95 @@ export interface CartesianChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
+
+  /**
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
+
+  /**
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 export interface YValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -484,7 +598,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props
@@ -608,7 +722,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
       | HorizontalBarChartWithAxisDataPoint[]
       | VerticalBarChartDataPoint[]
       | DataPoint[]
-      | ScatterChartDataPoint[],
+      | ScatterChartPoints[]
+      | GanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -624,6 +739,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartType: ChartTypes,
     useSecondaryYScale?: boolean,
     roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
+    _useRtl?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -636,7 +753,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
       | VerticalStackedBarDataPoint[]
       | HorizontalBarChartWithAxisDataPoint[]
       | GroupedVerticalBarChartData[]
-      | HeatMapChartDataPoint[],
+      | HeatMapChartDataPoint[]
+      | GanttChartDataPoint[],
     margins: Margins,
     width: number,
     chartType: ChartTypes,
@@ -644,7 +762,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**
@@ -654,7 +771,14 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

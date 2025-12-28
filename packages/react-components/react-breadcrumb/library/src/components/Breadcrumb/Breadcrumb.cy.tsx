@@ -1,17 +1,14 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
-import type {} from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbItem } from '../BreadcrumbItem';
 import { BreadcrumbButton } from '../BreadcrumbButton';
 import type { BreadcrumbProps } from '../Breadcrumb';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

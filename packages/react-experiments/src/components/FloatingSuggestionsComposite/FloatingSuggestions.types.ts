@@ -6,7 +6,7 @@ import type {
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import type { IRenderFunction, IRefObject } from '@fluentui/utilities';
+import type { IRenderFunction, IRefObject, JSXElement } from '@fluentui/utilities';
 import type { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 import type { Target } from '@fluentui/react-hooks';
 
@@ -31,8 +31,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * Custom component to render suggestion
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
+  onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSXElement;
   /**
    * Callback function on remove of suggestion from list
    */
@@ -45,14 +44,12 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Custom header renderer which takes suggestions and headertext if passed
    * Going forward, this should accept the user defined type as parameter
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSX.Element;
+  onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSXElement;
   /**
    * Custom footer renderer which takes suggestions as param
    * Going forward, this should accept the user defined type as param
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
+  onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSXElement;
   /**
    * Callback when the callout dismiss is called
    * When this callback is called parent comoponent must handle suggestion visibility

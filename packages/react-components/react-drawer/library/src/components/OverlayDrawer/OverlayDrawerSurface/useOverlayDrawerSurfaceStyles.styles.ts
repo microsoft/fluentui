@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -15,6 +17,10 @@ const useBackdropStyles = makeStyles({
   nested: {
     backgroundColor: tokens.colorTransparentBackground,
   },
+
+  drawerHidden: {
+    pointerEvents: 'none',
+  },
 });
 
 /**
@@ -23,14 +29,19 @@ const useBackdropStyles = makeStyles({
 export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
+  const { isNestedDialog, backdrop, open, unmountOnClose } = state;
+
   const backdropResetStyles = useBackdropResetStyles();
   const backdropStyles = useBackdropStyles();
 
-  if (state.backdrop) {
-    state.backdrop.className = mergeClasses(
+  const mountedAndClosed = !unmountOnClose && !open;
+
+  if (backdrop) {
+    backdrop.className = mergeClasses(
       backdropResetStyles,
-      state.isNestedDialog && backdropStyles.nested,
-      state.backdrop.className,
+      isNestedDialog && backdropStyles.nested,
+      mountedAndClosed && backdropStyles.drawerHidden,
+      backdrop.className,
     );
   }
 

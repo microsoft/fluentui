@@ -10,11 +10,11 @@ import {
   CarouselSlider,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {
     alignContent: 'center',
-    borderRadius: tokens.borderRadiusLarge,
     height: '450px',
     textAlign: 'left',
     position: 'relative',
@@ -23,7 +23,6 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-
     position: 'absolute',
     left: '10%',
     top: '25%',
@@ -77,7 +76,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <Carousel groupSize={1} circular announcement={getAnnouncement}>
     <CarouselViewport>
       <CarouselSlider>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { MenuList, MenuItem, MenuPopover, MenuTrigger, Menu, Button } from '@fluentui/react-components';
 import {
   EditRegular,
@@ -17,7 +18,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const DeleteIcon = bundleIcon(DeleteFilled, DeleteRegular);
 
-export const MultilineItems = () => {
+export const MultilineItems = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger>

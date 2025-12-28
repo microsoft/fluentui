@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): Fixing date related annotation issue",
+  "packageName": "@fluentui/react-charts",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

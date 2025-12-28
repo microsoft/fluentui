@@ -4,8 +4,8 @@ import { useKeytipData } from './useKeytipData';
 import type { KeytipDataOptions } from './KeytipData.types';
 
 describe('useKeytipData', () => {
-  let registerSpy: jest.SpyInstance;
-  let updateSpy: jest.SpyInstance;
+  let registerSpy: jest.Spied<typeof ktpMgr.register>;
+  let updateSpy: jest.Spied<typeof ktpMgr.update>;
   const ktpMgr = KeytipManager.getInstance();
 
   beforeEach(() => {

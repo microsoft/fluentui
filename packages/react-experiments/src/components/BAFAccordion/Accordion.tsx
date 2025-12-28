@@ -7,6 +7,7 @@ import { initializeComponentRef, css, composeRenderFunction } from '@fluentui/re
 import * as React from 'react';
 import './Accordion.scss';
 import type { IAccordion, IAccordionProps } from './Accordion.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IAccordionState {
   // represents whether the accordion is currently expanded or closed.
@@ -32,8 +33,7 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onRenderMenu, className, buttonAs, onClick, ...other } = this.props;
     let { menuIconProps } = this.props;
@@ -65,7 +65,7 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
     );
   }
 
-  public toggleState = () => {
+  public toggleState = (): void => {
     this.setState((prevState: IAccordionState) => {
       return { isContentVisible: !prevState.isContentVisible };
     });

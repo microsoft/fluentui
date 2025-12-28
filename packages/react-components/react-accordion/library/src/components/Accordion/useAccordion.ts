@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState } from './Accordion.types';
@@ -22,6 +24,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     onToggle,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     navigation,
+    ...rest
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
@@ -52,7 +55,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ...props,
+        ...rest,
 
         ...(navigation ? arrowNavigationProps : undefined),
         // FIXME:

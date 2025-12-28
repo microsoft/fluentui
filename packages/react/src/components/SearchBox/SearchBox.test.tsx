@@ -1,14 +1,12 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SearchBox } from './SearchBox';
 import { resetIds } from '../../Utilities';
 import { isConformant } from '../../common/isConformant';
-import type { ReactTestRenderer } from 'react-test-renderer';
 
 describe('SearchBox', () => {
-  let component: ReactTestRenderer | undefined;
+  let component: ReturnType<typeof render> | undefined;
 
   beforeEach(() => {
     resetIds();
@@ -27,9 +25,8 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox correctly', () => {
-    component = create(<SearchBox />);
-    const tree = component?.toJSON();
-    expect(tree).toMatchSnapshot();
+    component = render(<SearchBox />);
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders SearchBox role on the container div', () => {
@@ -61,9 +58,8 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox without animation correctly', () => {
-    component = create(<SearchBox disableAnimation={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    component = render(<SearchBox disableAnimation={true} />);
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('can execute search when SearchBox is empty', () => {
@@ -181,12 +177,7 @@ describe('SearchBox', () => {
   it('handles onChanged', () => {
     const onChanged = jest.fn();
 
-    render(
-      <SearchBox
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        onChanged={onChanged}
-      />,
-    );
+    render(<SearchBox onChanged={onChanged} />);
     expect(onChanged).toHaveBeenCalledTimes(0);
 
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'New value' } });

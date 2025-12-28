@@ -3,12 +3,9 @@ import * as React from 'react';
 
 import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-export const withAriaLive = (
-  Story: () => // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-  context: FluentStoryContext,
-) => {
+export const withAriaLive = (Story: () => JSXElement, context: FluentStoryContext): JSXElement => {
   if (isDecoratorDisabled(context, 'AriaLive')) {
     return Story();
   }

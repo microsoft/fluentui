@@ -2,6 +2,137 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:04 GMT",
+      "tag": "@fluentui/utilities_v8.17.2",
+      "version": "8.17.2",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/react-window-provider to v2.3.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:26 GMT",
+      "tag": "@fluentui/utilities_v8.17.1",
+      "version": "8.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/react-window-provider to v2.3.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Oct 2025 10:23:23 GMT",
+      "tag": "@fluentui/utilities_v8.17.0",
+      "version": "8.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "6b3885cb0c984861ea8342fea64e95a2c9668125",
+            "comment": "feat: bump react range to support React 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/react-window-provider to v2.3.0",
+            "commit": "c16125427e4d796ae4a1143f482baa0da962bac1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 07:22:01 GMT",
+      "tag": "@fluentui/utilities_v8.16.1",
+      "version": "8.16.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Oct 2025 07:21:28 GMT",
+      "tag": "@fluentui/utilities_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fe5dac9e01fcbc7f246f49b1ff2be35a0c1d3b2e",
+            "comment": "refactor: migrate tests to use @testing-library/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/utilities_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "2898be4be6f8c01fcdd2ade8951bfd547ba156fa",
+            "comment": "fix: resolve react 19 type issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:46 GMT",
+      "tag": "@fluentui/utilities_v8.15.23",
+      "version": "8.15.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Jul 2025 07:19:40 GMT",
       "tag": "@fluentui/utilities_v8.15.22",
       "version": "8.15.22",

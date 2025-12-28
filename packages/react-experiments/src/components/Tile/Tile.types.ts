@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import type { ISelection } from '@fluentui/react/lib/Selection';
 import { IRenderFunction } from '../../Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ITileLayout {
   foregroundSize?: ISize | undefined;
@@ -18,15 +19,13 @@ export interface ITileStateProps extends ITileLayout {
 }
 
 export interface ITileForegroundProps extends ITileStateProps {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  foreground: JSX.Element | null;
+  foreground: JSXElement | null;
   hideForeground: boolean;
   className?: string;
 }
 
 export interface ITileBackgroundProps extends ITileStateProps {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  background: JSX.Element | null;
+  background: JSXElement | null;
   hideBackground: boolean;
   className?: string;
 }
@@ -79,8 +78,8 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * Content to render as the full-size background of the tile.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  background?: React.ReactNode | ((backgroundProps: ITileLayout) => JSX.Element | null);
+
+  background?: React.ReactNode | ((backgroundProps: ITileLayout) => JSXElement | null);
   /**
    * Full override for rendering the background.
    */
@@ -97,8 +96,8 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * Content to render as the foreground of the tile, bounded by padding and the nameplate.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  foreground?: React.ReactNode | ((foregroundProps: ITileLayout) => JSX.Element | null);
+
+  foreground?: React.ReactNode | ((foregroundProps: ITileLayout) => JSXElement | null);
   /**
    * Full override for rendering the foreground.
    */

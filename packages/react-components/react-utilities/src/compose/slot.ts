@@ -7,14 +7,10 @@ import type {
 } from './types';
 import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import type { JSXIntrinsicElementKeys } from '../utils/types';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
-  elementType:
-    | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As>
-        ? As
-        : // eslint-disable-next-line @typescript-eslint/no-deprecated
-          keyof JSX.IntrinsicElements);
+  elementType: React.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
   defaultProps?: Partial<Props>;
 };
 
@@ -44,7 +40,7 @@ export function always<Props extends UnknownSlotProps>(
     ...defaultProps,
     ...props,
     [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
-    [SLOT_CLASS_NAME_PROP_SYMBOL]: props?.className,
+    [SLOT_CLASS_NAME_PROP_SYMBOL]: props?.className || defaultProps?.className,
   } as SlotComponentType<Props>;
 
   if (props && typeof props.children === 'function') {

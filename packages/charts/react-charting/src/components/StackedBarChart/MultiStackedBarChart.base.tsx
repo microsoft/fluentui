@@ -21,6 +21,7 @@ import {
   getNextGradient,
 } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -58,7 +59,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
-  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _emptyChartId: string;
   private _barId: string;
   private _barIdPlaceholderPartToWhole: string;
@@ -98,8 +99,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     if (!this._isChartEmpty()) {
       const { data, theme, culture } = this.props;
       this._adjustProps();
@@ -119,8 +119,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._longestBarTotalValue = this._computeLongestBarTotalValue();
 
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
+      const bars: JSXElement[] = data!.map((singleChartData: IChartProps, index: number) => {
         const singleChartBars = this._createBarsAndLegends(
           singleChartData!,
           this.props.barHeight!,
@@ -150,7 +149,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             directionalHint={DirectionalHint.topAutoEdge}
             id={this._calloutId}
             onDismiss={this._closeCallout}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             preventDismissOnLostFocus={true}
             /** Keep the callout updated with details of focused/hovered bar */
             shouldUpdateWhenHidden={true}
@@ -194,8 +192,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
     barNo?: number,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element {
+  ): JSXElement {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -498,8 +495,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSXElement => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
     data.forEach((singleChartData: IChartProps, index: number) => {

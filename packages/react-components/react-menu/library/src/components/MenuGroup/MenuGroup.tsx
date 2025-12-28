@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGroup_unstable } from './useMenuGroup';
 import { renderMenuGroup_unstable } from './renderMenuGroup';

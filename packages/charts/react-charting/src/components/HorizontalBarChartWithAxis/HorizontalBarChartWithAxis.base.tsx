@@ -45,9 +45,11 @@ import {
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
+  formatScientificLimitWidth,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -83,15 +85,15 @@ export class HorizontalBarChartWithAxisBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _bars: JSX.Element[];
+
+  private _bars: JSXElement[];
   private _yAxisLabels: string[];
   private _xMax: number;
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
@@ -144,16 +146,15 @@ export class HorizontalBarChartWithAxisBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this._adjustProps();
     this._yAxisLabels = this._getOrderedYAxisLabels();
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
     );
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+
+    const legendBars: JSXElement = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -221,7 +222,12 @@ export class HorizontalBarChartWithAxisBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -233,7 +239,6 @@ export class HorizontalBarChartWithAxisBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -242,7 +247,6 @@ export class HorizontalBarChartWithAxisBase
         margins,
         width,
         isRTL,
-        shiftX,
         this.X_ORIGIN,
       );
     } else {
@@ -262,8 +266,7 @@ export class HorizontalBarChartWithAxisBase
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
+  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSXElement => {
     const { useSingleColor = false, enableGradient = false } = this.props;
     let selectedPointIndex = 0;
     this.props.data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -299,8 +302,7 @@ export class HorizontalBarChartWithAxisBase
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSX.Element | null => {
+  private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSXElement | null => {
     return props ? this._renderContentForOnlyBars(props) : null;
   };
 
@@ -327,8 +329,8 @@ export class HorizontalBarChartWithAxisBase
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
     const xRange = xBarScale.range();
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let allBars: JSX.Element[] = [];
+
+    let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
       allBars = stackedChartData
@@ -537,6 +539,66 @@ export class HorizontalBarChartWithAxisBase
     }
   };
 
+  private _calculateBarTotals = (
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+  ): {
+    totalPositiveValue: number;
+    totalNegativeValue: number;
+    totalBarValue: number;
+    showLabelOnPositiveSide: boolean;
+    shouldShowLabel: (isPositiveBar: boolean, currPositiveCounter: number, currNegativeCounter: number) => boolean;
+  } => {
+    const totalPositiveValue = singleBarData
+      .filter(point => point.x >= this.X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalNegativeValue = singleBarData
+      .filter(point => point.x < this.X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalBarValue = totalPositiveValue + totalNegativeValue;
+    const showLabelOnPositiveSide = totalBarValue >= 0;
+
+    const totalPositiveBars = singleBarData.filter(point => point.x >= this.X_ORIGIN).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+
+    const shouldShowLabel = (
+      isPositiveBar: boolean,
+      currPositiveCounter: number,
+      currNegativeCounter: number,
+    ): boolean => {
+      const isLastPositiveBar = isPositiveBar && currPositiveCounter === totalPositiveBars;
+      const isLastNegativeBar = !isPositiveBar && currNegativeCounter === totalNegativeBars;
+      return showLabelOnPositiveSide ? isLastPositiveBar : isLastNegativeBar;
+    };
+
+    return { totalPositiveValue, totalNegativeValue, totalBarValue, showLabelOnPositiveSide, shouldShowLabel };
+  };
+
+  private _renderBarLabel = (
+    xPosition: number,
+    yPosition: number,
+    value: number,
+    isPositiveBar: boolean,
+  ): JSXElement | null => {
+    if (this.props.hideLabels || this._barHeight < 16) {
+      return null;
+    }
+
+    return (
+      <text
+        x={xPosition}
+        y={yPosition + this._barHeight / 2}
+        textAnchor={this._isRtl ? (isPositiveBar ? 'end' : 'start') : isPositiveBar ? 'start' : 'end'}
+        transform={`translate(${isPositiveBar ? (this._isRtl ? -4 : 4) : this._isRtl ? 4 : -4})`}
+        dominantBaseline="central"
+        className={this._classNames.barLabel}
+        aria-hidden={true}
+        style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+      >
+        {formatScientificLimitWidth(value)}
+      </text>
+    );
+  };
+
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -547,8 +609,7 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
@@ -556,6 +617,8 @@ export class HorizontalBarChartWithAxisBase
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
+
+    const { totalBarValue, shouldShowLabel } = this._calculateBarTotals(singleBarData);
 
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
@@ -642,6 +705,16 @@ export class HorizontalBarChartWithAxisBase
       } else {
         xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
+      const barWidth = currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = this._isRtl
+        ? point.x >= this.X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= this.X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
+      const isPositiveBar = point.x >= this.X_ORIGIN;
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
       prevPoint = point.x;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -659,7 +732,7 @@ export class HorizontalBarChartWithAxisBase
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -675,6 +748,8 @@ export class HorizontalBarChartWithAxisBase
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
+          {showLabel &&
+            this._renderBarLabel(barEndX, yBarScale(point.y) - this._barHeight / 2, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -754,9 +829,11 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = this.props;
+
+    const { totalBarValue, shouldShowLabel } = this._calculateBarTotals(singleBarData);
+
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
@@ -840,6 +917,17 @@ export class HorizontalBarChartWithAxisBase
       } else {
         xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
+      const barWidth = currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = this._isRtl
+        ? point.x >= this.X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= this.X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
+      const isPositiveBar = point.x >= this.X_ORIGIN;
+      const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - this._barHeight);
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -857,7 +945,7 @@ export class HorizontalBarChartWithAxisBase
             x={xStart}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
-            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
@@ -873,6 +961,7 @@ export class HorizontalBarChartWithAxisBase
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
+          {showLabel && this._renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -905,8 +994,7 @@ export class HorizontalBarChartWithAxisBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSXElement => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
     const mapLegendToColor: Record<string, string> = {};

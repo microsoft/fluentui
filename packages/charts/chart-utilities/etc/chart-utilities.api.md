@@ -387,7 +387,7 @@ export interface ErrorOptions {
 }
 
 // @public (undocumented)
-export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar' | 'gantt';
+export type FluentChart = 'annotation' | 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar' | 'gantt';
 
 // @public (undocumented)
 export interface Font {
@@ -445,6 +445,15 @@ export interface GaugeLine {
     // (undocumented)
     width: number;
 }
+
+// @public (undocumented)
+export const getAxisIds: (data: Partial<PlotData>) => {
+    x: number;
+    y: number;
+};
+
+// @public (undocumented)
+export const getAxisKey: (axLetter: "x" | "y", axId: number) => keyof Layout;
 
 // @public
 export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
@@ -507,6 +516,12 @@ export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
 export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
+export const isObjectArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
+export const isScatterAreaChart: (data: Partial<PlotData>) => boolean;
 
 // @public (undocumented)
 export const isStringArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
@@ -1960,9 +1975,9 @@ export interface TableData {
             color?: Color | Color[];
         };
         values: (string | number | boolean | null)[][];
-        format: string | string[];
-        prefix: string | string[];
-        suffix: string | string[];
+        format?: string | string[];
+        prefix?: string | string[];
+        suffix?: string | string[];
     };
     // (undocumented)
     header?: {

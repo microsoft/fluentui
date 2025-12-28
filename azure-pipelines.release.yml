@@ -5,6 +5,12 @@ trigger: none
 # Example: v8_20201022.1
 name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
@@ -13,15 +19,16 @@ variables:
   - name: tags
     value: production,externalfacing
 
-schedules:
-  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 7 * * 1-5'
-    # will be 12am during daylight savings time unless trigger is updated
-    displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
-    branches:
-      include:
-        - master
+# Disabling automatic scheduled releases for more control
+# schedules:
+#   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
+#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+#   - cron: '0 7 * * 1-5'
+#     # will be 12am during daylight savings time unless trigger is updated
+#     displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
+#     branches:
+#       include:
+#         - master
 
 resources:
   repositories:
@@ -120,7 +127,7 @@ extends:
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                   git reset --hard origin/master
-                condition: and(succeeded(), eq(variables.dryRun, false))
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
@@ -151,15 +158,16 @@ extends:
                   node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
                 displayName: 'Generate homepage.htm'
 
-              - template: .devops/templates/publish-website.yml@self
-                parameters:
-                  version: 8
+              - ${{ if eq(parameters.dryRun, false) }}:
+                  - template: .devops/templates/publish-website.yml@self
+                    parameters:
+                      version: 8
 
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self

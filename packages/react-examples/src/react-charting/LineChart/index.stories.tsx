@@ -11,6 +11,8 @@ import { LineChartStyledExample } from './LineChart.Styled.Example';
 import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
+import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import { LineChartAnnotationsExample } from './LineChart.Annotations.Example';
 
 export const Basic = () => <LineChartBasicExample />;
 
@@ -28,11 +30,15 @@ export const Multiple = () => <LineChartMultipleExample />;
 
 export const Styled = () => <LineChartStyledExample />;
 
+export const Annotations = () => <LineChartAnnotationsExample />;
+
 export const Negative = () => <LineChartNegativeExample />;
 
 export const AllNegative = () => <LineChartAllNegativeExample />;
 
 export const SecondaryYAxis = () => <LineChartSecondaryYAxisExample />;
+
+export const LogAxis = () => <LineChartLogAxisExample />;
 
 export default {
   title: 'Components/LineChart',

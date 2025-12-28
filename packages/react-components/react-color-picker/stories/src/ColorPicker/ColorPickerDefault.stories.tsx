@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   Input,
@@ -60,7 +61,7 @@ const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
 type RgbKey = 'r' | 'g' | 'b';
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const hexId = useId('hex-input');
   const alphaId = useId('alpha-input');
 

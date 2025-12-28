@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { RadioDefinition, RadioGroupDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
@@ -12,22 +12,23 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright
-          steps={new Steps()
-            .snapshot('normal', { cropTo: '.testWrapper' })
-            .click('[role="radio"]:first-child')
-            .snapshot('1st selected', { cropTo: '.testWrapper' })
-            .click('[role="radio"]:nth-child(2)')
-            .snapshot('2nd selected', { cropTo: '.testWrapper' })
-            .end()}
-        >
-          <div className="testWrapper" style={{ width: '300px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '300px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .click('fluent-radio:first-child')
+        .snapshot('1st selected', { cropTo: '.testWrapper' })
+        .click('fluent-radio:nth-child(2)')
+        .snapshot('2nd selected', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  },
 };
 
 export const Default = () =>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -24,9 +25,11 @@ import {
   DataGridProps,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -36,7 +39,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -150,7 +153,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SingleSelectControlled = () => {
+export const SingleSelectControlled = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<TableRowId>([1]));
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);

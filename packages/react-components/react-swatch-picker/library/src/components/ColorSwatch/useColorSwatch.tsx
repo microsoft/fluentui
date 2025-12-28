@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { slot, useEventCallback, getIntrinsicElementProps, mergeCallbacks } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';

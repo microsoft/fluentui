@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 1`] = `
 <div>
@@ -622,7 +622,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1194,7 +1196,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

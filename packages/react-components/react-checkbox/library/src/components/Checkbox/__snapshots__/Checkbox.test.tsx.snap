@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Checkbox renders a custom indicator 1`] = `
 <div>
@@ -7,7 +7,7 @@ exports[`Checkbox renders a custom indicator 1`] = `
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-rc"
+      id="checkbox-_r_c_"
       type="checkbox"
     />
     <div
@@ -20,7 +20,7 @@ exports[`Checkbox renders a custom indicator 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-rc"
+      for="checkbox-_r_c_"
     >
       Custom indicator
     </label>
@@ -35,7 +35,7 @@ exports[`Checkbox renders a default state 1`] = `
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-r8"
+      id="checkbox-_r_8_"
       type="checkbox"
     />
     <div
@@ -54,7 +54,7 @@ exports[`Checkbox renders checked 1`] = `
     <input
       checked=""
       class="fui-Checkbox__input"
-      id="checkbox-ra"
+      id="checkbox-_r_a_"
       type="checkbox"
     />
     <div
@@ -78,7 +78,7 @@ exports[`Checkbox renders checked 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-ra"
+      for="checkbox-_r_a_"
     >
       Checked Checkbox
     </label>
@@ -93,7 +93,7 @@ exports[`Checkbox renders mixed 1`] = `
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-rb"
+      id="checkbox-_r_b_"
       type="checkbox"
     />
     <div
@@ -117,7 +117,7 @@ exports[`Checkbox renders mixed 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-rb"
+      for="checkbox-_r_b_"
     >
       Mixed Checkbox
     </label>
@@ -132,7 +132,7 @@ exports[`Checkbox renders with a label 1`] = `
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-r9"
+      id="checkbox-_r_9_"
       type="checkbox"
     />
     <div
@@ -141,7 +141,7 @@ exports[`Checkbox renders with a label 1`] = `
     />
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-r9"
+      for="checkbox-_r_9_"
     >
       Unchecked Checkbox
     </label>

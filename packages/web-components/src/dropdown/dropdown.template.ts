@@ -4,7 +4,7 @@ import type { BaseDropdown } from './dropdown.base.js';
 import type { DropdownOptions } from './dropdown.options.js';
 
 const dropdownIndicatorTemplate = html<BaseDropdown>`
-  <svg class="chevron-down-20-regular" role="button" slot="indicator" viewBox="0 0 20 20" ${ref('indicator')}>
+  <svg class="chevron-down-20-regular" aria-hidden="true" slot="indicator" viewBox="0 0 20 20" ${ref('indicator')}>
     <path
       d="M15.85 7.65a.5.5 0 0 1 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16a.5.5 0 0 1 .7 0"
       fill="currentColor"
@@ -35,6 +35,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
     ?disabled="${x => x.disabled}"
     type="${x => x.type}"
     value="${x => x.valueAttribute}"
+    slot="control"
     ${ref('control')}
   />
 `;
@@ -57,6 +58,7 @@ export const dropdownButtonTemplate = html<BaseDropdown>`
     role="combobox"
     ?disabled="${x => x.disabled}"
     type="button"
+    slot="control"
     ${ref('control')}
   >
     ${x => x.displayValue}
@@ -83,7 +85,7 @@ export function dropdownTemplate<T extends BaseDropdown>(options: DropdownOption
         <slot name="control" ${ref('controlSlot')}></slot>
         <slot name="indicator" ${ref('indicatorSlot')}>${staticallyCompose(options.indicator)}</slot>
       </div>
-      <slot ${ref('listboxSlot')}></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event)}"></slot>
     </template>
   `;
 }

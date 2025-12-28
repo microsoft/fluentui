@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
 import { DialogSurfaceElement } from '../DialogSurface';
@@ -10,7 +12,8 @@ export type DialogContextValue = {
   inertTrapFocus: boolean;
   dialogTitleId?: string;
   isNestedDialog: boolean;
-  dialogRef: React.Ref<DialogSurfaceElement>;
+  dialogRef: React.Ref<DialogSurfaceElement | null>;
+  unmountOnClose?: boolean;
   modalType: DialogModalType;
   /**
    * Requests dialog main component to update it's internal open state
@@ -23,6 +26,7 @@ const defaultContextValue: DialogContextValue = {
   inertTrapFocus: false,
   modalType: 'modal',
   isNestedDialog: false,
+  unmountOnClose: true,
   dialogRef: { current: null },
   requestOpenChange() {
     /* noop */

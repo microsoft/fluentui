@@ -1,3 +1,5 @@
+'use client';
+
 import { usePopover_unstable } from '@fluentui/react-popover';
 import type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover.types';
 

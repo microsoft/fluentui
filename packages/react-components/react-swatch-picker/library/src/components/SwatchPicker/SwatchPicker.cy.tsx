@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { SwatchPicker } from './SwatchPicker';
@@ -8,11 +8,9 @@ import { ImageSwatch } from '../ImageSwatch';
 import { SwatchPickerRow } from '../SwatchPickerRow';
 import type { SwatchPickerProps, SwatchPickerOnSelectEventHandler } from '../SwatchPicker';
 import { renderSwatchPickerGrid } from '../../utils/renderUtils';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  element: JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

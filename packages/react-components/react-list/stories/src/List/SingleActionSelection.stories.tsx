@@ -2,6 +2,7 @@ import { Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -23,13 +24,19 @@ const items: Item[] = [
     'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
 }));
 
-export const SingleActionSelection = () => {
+export const SingleActionSelection = (): JSXElement => {
   const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
   return (
     <List selectionMode="multiselect" defaultSelectedItems={defaultSelectedItems} aria-label="People example">
-      {items.map(({ name, avatar }) => (
-        <ListItem key={name} value={name} aria-label={name} checkmark={{ 'aria-label': name }}>
+      {items.map(({ name, avatar }, i) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          checkmark={{ 'aria-label': name }}
+          disabledSelection={i > 3} // Example of disabling selection for last 2 items
+        >
           <Persona
             name={name}
             secondaryText="Available"

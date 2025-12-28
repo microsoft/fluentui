@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { fireEvent, render, act } from '@testing-library/react';
 
 import { BaseExtendedPicker } from './BaseExtendedPicker';
@@ -84,7 +83,7 @@ describe('Pickers', () => {
     //
     // see https://github.com/facebook/react/pull/12895
     let hostNode: HTMLDivElement | null = null;
-    const create = (elem: React.ReactElement) => {
+    const create = (elem: React.ReactElement<any>) => {
       hostNode = document.createElement('div');
       document.body.appendChild(hostNode);
       render(elem, { container: hostNode });
@@ -98,7 +97,7 @@ describe('Pickers', () => {
     });
 
     it('renders BaseExtendedPicker correctly with no items', () => {
-      const component = renderer.create(
+      const { container } = render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -106,12 +105,11 @@ describe('Pickers', () => {
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders BaseExtendedPicker correctly with selected and suggested items', () => {
-      const component = renderer.create(
+      const { container } = render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -135,13 +133,12 @@ describe('Pickers', () => {
           ]}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('force resolves to the first suggestion', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
@@ -204,7 +201,7 @@ describe('Pickers', () => {
 
     it('Can hide and show picker', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
@@ -244,7 +241,7 @@ describe('Pickers', () => {
 
     it('Completes the suggestion', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}

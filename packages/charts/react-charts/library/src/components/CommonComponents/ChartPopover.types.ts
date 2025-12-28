@@ -1,4 +1,6 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import { YValueHover } from '../../index';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 
 export interface ChartPopoverProps {
   clickPosition?: { x: number; y: number };
@@ -11,7 +13,7 @@ export interface ChartPopoverProps {
   color?: string;
   culture?: string;
   customCallout?: {
-    customizedCallout?: JSX.Element;
+    customizedCallout?: JSXElement;
     customCalloutProps?: ChartPopoverProps;
   };
   isCalloutForStack?: boolean;
@@ -22,6 +24,7 @@ export interface ChartPopoverProps {
   ratio?: [number, number];
   isCartesian?: boolean;
   styles?: Partial<PopoverComponentStyles>;
+  positioning?: PositioningShorthand;
 }
 
 export interface PopoverComponentStyles {

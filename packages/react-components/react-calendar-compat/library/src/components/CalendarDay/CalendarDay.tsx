@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { mergeClasses } from '@griffel/react';
@@ -6,6 +8,7 @@ import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarDayProps, CalendarDayStyles } from './CalendarDay.types';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 /**
  * @internal
@@ -95,10 +98,7 @@ interface CalendarDayNavigationButtonsProps extends CalendarDayProps {
   classNames: Record<keyof CalendarDayStyles, string>;
 }
 
-const CalendarDayNavigationButtons = (
-  props: CalendarDayNavigationButtonsProps,
-): // eslint-disable-next-line @typescript-eslint/no-deprecated
-JSX.Element => {
+const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps): JSXElement => {
   const {
     minDate,
     maxDate,

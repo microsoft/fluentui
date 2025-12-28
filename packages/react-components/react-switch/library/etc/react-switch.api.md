@@ -4,18 +4,17 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
+export const renderSwitch_unstable: (state: SwitchState) => JSXElement;
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
@@ -32,10 +31,11 @@ export type SwitchOnChangeData = {
 };
 
 // @public
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange'> & {
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
     checked?: boolean;
     defaultChecked?: boolean;
     labelPosition?: 'above' | 'after' | 'before';
+    size?: 'small' | 'medium';
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 
@@ -48,7 +48,7 @@ export type SwitchSlots = {
 };
 
 // @public
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;
 
 // @public
 export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;

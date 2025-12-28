@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CartesianChartStyleProps } from '../CommonComponents/index';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
 import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
@@ -8,7 +9,7 @@ import { LegendsProps } from '../Legends/index';
  * Donut Chart properties.
  * {@docCategory DonutChart}
  */
-export interface DonutChartProps {
+export interface DonutChartProps extends CartesianChartProps {
   /**
    * Data to render in the chart.
    */
@@ -32,7 +33,7 @@ export interface DonutChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
 
   /**
    * Define a custom callout props override
@@ -113,7 +114,21 @@ export interface DonutChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
+
+  /**
+   * Rendering order of the legend
+   * @default 'default'
+   * 'default' - as per data provided
+   * 'sorted' - in descending order of value
+   */
+  order?: 'default' | 'sorted';
 }
 
 /**
@@ -140,6 +155,11 @@ export interface DonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
 
   /**
    * Styles for the chart wrapper div

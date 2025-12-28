@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   getIntrinsicElementProps,
@@ -35,6 +37,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     announcement,
     motion = 'slide',
     autoplayInterval = 4000,
+    appearance = 'flat',
   } = props;
 
   const { dir } = useFluent();
@@ -129,6 +132,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     ),
 
     activeIndex,
+    appearance,
     circular,
     containerRef: mergedContainerRef,
     viewportRef,

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -25,8 +26,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
    * Alternatively can only contain `PopoverSurface` if using a custom `target`.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  children: [JSXElement, JSXElement] | JSXElement;
 
   /**
    * Close when scroll outside of it
@@ -97,7 +97,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   closeOnIframeFocus?: boolean;
 
   /**
-   * Configures the position of the Popover
+   * Configures the position of the Popover.
+   * Explore [Positioning docs](?path=/docs/concepts-developer-positioning-components--docs) for more options.
    */
   positioning?: PositioningShorthand;
 
@@ -163,11 +164,13 @@ export type PopoverState = Pick<
     /**
      * Ref of the pointing arrow
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement | null>;
 
     /**
      * Ref of the PopoverSurface
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     contentRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
@@ -199,6 +202,7 @@ export type PopoverState = Pick<
     /**
      * Ref of the PopoverTrigger
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 

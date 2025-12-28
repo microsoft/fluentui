@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 
 const items: IContextualMenuItem[] = [
@@ -237,20 +239,20 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
 export default {
   title: 'ContextualMenu',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
-        .snapshot('default', { cropTo: '.ms-Layer' })
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default')
         .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('hover', { cropTo: '.ms-Layer' })
+        .snapshot('hover')
         .click('.ms-ContextualMenu-linkContent')
         .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ContextualMenu>;
 
 export const Root = () => <ContextualMenu items={items} />;
 export const WithIcons = () => <ContextualMenu items={itemsWithIcons} />;

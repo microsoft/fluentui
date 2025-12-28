@@ -6,6 +6,22 @@ test.describe('Accordion', () => {
     tagName: 'fluent-accordion',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-accordion');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set an expand mode of `multi` when passed to the `expand-mode` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -413,17 +429,16 @@ test.describe('Accordion', () => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({
+      attributes: { 'expand-mode': 'single' },
       innerHTML: /* html */ `
-        <fluent-accordion expand-mode="single">
-          <fluent-accordion-item>
-            <div slot="heading">Accordion Item 1 Heading</div>
-            Accordion Item 1 Content
-          </fluent-accordion-item>
-          <fluent-accordion-item>
-            <div slot="heading">Accordion Item 2 Heading</div>
-            <fluent-checkbox>A checkbox as content</fluent-checkbox>
-          </fluent-accordion-item>
-        </fluent-accordion>
+        <fluent-accordion-item>
+          <div slot="heading">Accordion Item 1 Heading</div>
+          Accordion Item 1 Content
+        </fluent-accordion-item>
+        <fluent-accordion-item>
+          <div slot="heading">Accordion Item 2 Heading</div>
+          <fluent-checkbox>A checkbox as content</fluent-checkbox>
+        </fluent-accordion-item>
       `,
     });
 

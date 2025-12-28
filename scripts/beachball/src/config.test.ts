@@ -20,6 +20,7 @@ describe(`beachball configs`, () => {
         '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
+        '**/rit.config.js',
         '**/__fixtures__/**',
         '**/__mocks__/**',
         '**/docs/**',
@@ -80,13 +81,7 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/perf-test-react-components',
-        'apps/vr-tests-react-components',
-      ]),
-    );
+    expect(vNextConfig.scope).toEqual(expect.arrayContaining(excludedPackagesFromReleaseProcess));
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
@@ -100,6 +95,9 @@ describe(`beachball configs`, () => {
         include: includeScopes,
       },
     ]);
+
+    // Ensure that vNext config does not include "tools" packages
+    expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
@@ -117,7 +115,6 @@ describe(`beachball configs`, () => {
   it(`should generate tools release config`, () => {
     expect(toolsConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
         'packages/react-components/babel-preset-storybook-full-source',
         'packages/react-components/eslint-plugin-react-components',
         'packages/react-components/react-conformance-griffel',

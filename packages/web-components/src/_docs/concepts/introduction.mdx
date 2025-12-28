@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/addon-docs';
+import pkg from '../../../package.json';
+import fluentImg from '../../../.storybook/fluent.webp';
+
+<Meta title="Concepts/Introduction" />
+
+<h1 class="fluent">
+  Fluent UI Web Components <span class="fluent-version">v{pkg.version}</span>
+</h1>
+
+<img
+  className="sbdocs-img featured-image"
+  src={fluentImg}
+  width="1200"
+  height="430"
+  alt="An image of many user interface component designs."
+/>
+
+<div className="whats-new">
+
+    <h2>What's new</h2>
+
+    <div className="whats-new-cards">
+
+      <div>
+        <img src="https://fluent2.microsoft.design/_image?href=https%3A%2F%2Ffluent2websitecdn.azureedge.net%2Fcdn%2Fwhatisnew3.Qgu7X3SO.webp&w=481&h=601&f=webp" alt=""/>
+        <p>Lightweight components built with performance in mind.</p>
+      </div>
+
+      <div>
+        <img src="https://fluent2.microsoft.design/_image?href=https%3A%2F%2Ffluent2websitecdn.azureedge.net%2Fcdn%2Fwhatisnew2.D86JMylW.webp&w=481&h=600&f=webp" alt=""/>
+        <p>Themeable tokens system for cohesion across products.</p>
+      </div>
+
+      <div>
+        <img src="https://fluent2.microsoft.design/_image?href=https%3A%2F%2Ffluent2websitecdn.azureedge.net%2Fcdn%2Fwhatisnew4.D2ljnonA.webp&w=481&h=601&f=webp" alt=""/>
+        <p>Built with web standards and zero external dependencies.</p>
+      </div>
+    </div>
+
+</div>
+
+## Overview
+
+Microsoft's [Fluent UI Web Components](https://github.com/microsoft/fluentui/tree/master/packages/web-components) is designed to help you build web apps using Web Components styled with the [Fluent design language](https://github.com/microsoft/fluentui).
+
+Each component is designed to adhere to the following standards:
+
+- **Customizable**: Fluent-styled components by default, but easy to integrate your own brand and theme
+- **Performance**: Optimized for performance
+- **Bundle size**: Refactored and slimmed down components that allow you to include the packages and dependencies you need
+- **Interoperability**: Works with any modern JavaScript framework
+- **Accessibility**: WCAG 2.2 compliant and tested by trusted testers
+- **Design to Code**: Stay up to date with Fluent Design Language changes via Design Tokens
+
+---
+
+### What are Web Components?
+
+"Web Components" is an umbrella term that refers to a collection of web standards focused on enabling the creation of custom HTML elements. Some of the standards that are under the umbrella include the ability to define new HTML tags, plug into a standard component lifecycle, encapsulate HTML rendering and CSS, parameterize CSS, skin components, and more. Each of these platform features is defined by the W3C and has shipped in every major browser today.
+
+### How does Fluent UI Web Components leverage Web Components?
+
+Fluent UI Web Components is built directly on the W3C Web Component standards, and does not create its own component model. This allows our components to function the same as built-in, native HTML elements. You do not need a framework to use Fluent UI components but you can use them in combination with any framework or library of your choice.
+
+### When is the official release planned?
+
+While we don't expect any major (breaking) changes in our Release Candidate, we're actively listening to user feedback and responding accordingly. Once partners and the rest of the Fluent project give required approvals, we'll publish the official V3 release.
+
+### Questions
+
+Reach out to the Fluent UI Web Components team on [Github](https://github.com/microsoft/fluentui)

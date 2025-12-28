@@ -11,7 +11,7 @@ const TestComponent: React.FC<{ children: React.ReactElement }> = ({ children })
 };
 
 describe('useChildElement', () => {
-  let consoleErrorSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.Spied<typeof console.error>;
 
   beforeAll(() => {
     // Silence React errors, we capture errors in the tests

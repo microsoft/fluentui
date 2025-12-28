@@ -1,11 +1,14 @@
 import * as React from 'react';
 
 import { FluentProvider } from '@fluentui/react-provider';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   Theme,
   teamsDarkTheme,
+  teamsDarkV21Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  teamsLightV21Theme,
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
@@ -20,17 +23,15 @@ const themes: Record<ThemeIds, Theme> = {
   'teams-light': teamsLightTheme,
   'teams-dark': teamsDarkTheme,
   'teams-high-contrast': teamsHighContrastTheme,
+  'teams-light-v21': teamsLightV21Theme,
+  'teams-dark-v21': teamsDarkV21Theme,
 } as const;
 
 const findTheme = (themeId?: ThemeIds) => {
   return themeId ? themes[themeId] : null;
 };
 
-export const withFluentProvider = (
-  StoryFn: () => // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-  context: FluentStoryContext,
-) => {
+export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentStoryContext): JSXElement => {
   const { globals, parameters } = context;
   const { mode } = parameters;
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
   Dialog,
@@ -25,10 +26,7 @@ import {
   dialogTriggerOpenSelector,
 } from '../../testing/selectors';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
 describe('Dialog', () => {
   it('should be closed by default', () => {
@@ -169,6 +167,42 @@ describe('Dialog', () => {
     cy.get(dialogTriggerCloseSelector).realClick();
     cy.get(dialogTriggerOpenSelector).should('be.focused');
   });
+
+  it('should remain mounted after close when unmountOnClose is false', () => {
+    mount(
+      <Dialog unmountOnClose={false}>
+        <DialogTrigger disableButtonEnhancement>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get(dialogTriggerOpenSelector).realClick();
+    cy.get(dialogSurfaceSelector).should('exist');
+
+    cy.get(dialogTriggerCloseSelector).realClick();
+    // dialog surface should remain mounted when unmountOnClose is false
+    cy.get(dialogSurfaceSelector).should('exist');
+  });
+
   it('should allow change of focus on open', () => {
     const CustomFocusedElementOnOpen = () => {
       const buttonRef = React.useRef<HTMLButtonElement>(null);

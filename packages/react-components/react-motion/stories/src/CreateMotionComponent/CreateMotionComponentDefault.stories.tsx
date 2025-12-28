@@ -7,6 +7,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -47,9 +48,9 @@ const FadeEnter = createMotionComponent({
   },
 });
 
-export const CreateMotionComponentDefault = (props: MotionComponentProps) => {
+export const CreateMotionComponentDefault = (props: MotionComponentProps): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.

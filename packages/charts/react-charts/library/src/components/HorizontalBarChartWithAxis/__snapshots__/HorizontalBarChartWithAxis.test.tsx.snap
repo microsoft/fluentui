@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Horizontal bar chart with axis rendering Should render the Horizontal bar chart with axis with numaric yaxis data 1`] = `
 <div>
@@ -9,12 +9,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -45,6 +46,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               0
@@ -63,6 +65,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               5000
@@ -81,6 +84,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               10,000
@@ -99,6 +103,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               15,000
@@ -117,6 +122,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               20,000
@@ -135,6 +141,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               25,000
@@ -153,6 +160,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               30,000
@@ -171,6 +179,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               35,000
@@ -189,6 +198,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               40,000
@@ -222,22 +232,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="0"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                0
-              </tspan>
+              0
             </text>
           </g>
           <g
@@ -253,22 +250,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                10k
-              </tspan>
+              10k
             </text>
           </g>
           <g
@@ -284,22 +268,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="20k"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                20k
-              </tspan>
+              20k
             </text>
           </g>
           <g
@@ -315,22 +286,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                30k
-              </tspan>
+              30k
             </text>
           </g>
           <g
@@ -346,22 +304,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan-4"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-4"
-                x="-16"
-              >
-                40k
-              </tspan>
+              40k
             </text>
           </g>
           <g
@@ -377,30 +322,16 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan-5"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-5"
-                x="-16"
-              >
-                50k
-              </tspan>
+              50k
             </text>
           </g>
         </g>
         <g>
           <rect
             aria-label="10%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_0_"
             fill="#0078d4"
             height="16"
             opacity="1"
@@ -411,10 +342,21 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="219.7"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="187.5"
+            y="227.7"
+          >
+            10k
+          </text>
           <rect
             aria-label="88%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_0_"
             fill="#002050"
             height="16"
             opacity="1"
@@ -425,10 +367,21 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="185.62"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="630"
+            y="193.62"
+          >
+            40k
+          </text>
           <rect
             aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_0_"
             fill="#00188f"
             height="16"
             opacity="1"
@@ -439,10 +392,21 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="113.2"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="408.75"
+            y="121.2"
+          >
+            25k
+          </text>
           <rect
             aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_0_"
             fill="#00bcf2"
             height="16"
             opacity="1"
@@ -453,6 +417,18 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             x="40"
             y="28"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="335"
+            y="36"
+          >
+            20k
+          </text>
         </g>
       </svg>
     </div>
@@ -481,7 +457,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -500,7 +476,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
             />
             <div
               class="fui-legend__text"
@@ -519,7 +495,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -538,7 +514,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -562,12 +538,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -598,6 +575,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               0
@@ -616,6 +594,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               500
@@ -634,6 +613,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               1000
@@ -652,6 +632,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               1500
@@ -670,6 +651,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               2000
@@ -688,6 +670,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               2500
@@ -706,6 +689,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               3000
@@ -724,6 +708,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               3500
@@ -742,6 +727,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               4000
@@ -760,6 +746,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               4500
@@ -778,6 +765,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               5000
@@ -810,22 +798,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Four"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                String Four
-              </tspan>
+              String One
             </text>
           </g>
           <g
@@ -840,22 +815,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Three"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                String Three
-              </tspan>
+              String Two
             </text>
           </g>
           <g
@@ -870,22 +832,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Two"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                String Two
-              </tspan>
+              String Three
             </text>
           </g>
           <g
@@ -900,30 +849,16 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String One"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                String One
-              </tspan>
+              String Four
             </text>
           </g>
         </g>
         <g>
           <rect
             aria-label="1000. String One."
-            aria-labelledby="toolTipcalloutr4"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_4_"
             fill="#0078d4"
             height="32.714285714285715"
             opacity="1"
@@ -933,12 +868,23 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="118"
             x="40"
-            y="53.44444444444446"
+            y="206.11111111111111"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="158"
+            y="218.83333333333334"
+          >
+            1k
+          </text>
           <rect
             aria-label="5000. String Two."
-            aria-labelledby="toolTipcalloutr4"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_4_"
             fill="#00bcf2"
             height="32.714285714285715"
             opacity="1"
@@ -948,12 +894,23 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="590"
             x="40"
-            y="104.33333333333334"
+            y="155.22222222222223"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="630"
+            y="167.94444444444446"
+          >
+            5k
+          </text>
           <rect
             aria-label="3000. String Three."
-            aria-labelledby="toolTipcalloutr4"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_4_"
             fill="#00188f"
             height="32.714285714285715"
             opacity="1"
@@ -963,12 +920,23 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="354"
             x="40"
-            y="155.22222222222223"
+            y="104.33333333333334"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="394"
+            y="117.05555555555557"
+          >
+            3k
+          </text>
           <rect
             aria-label="2000. String Four."
-            aria-labelledby="toolTipcalloutr4"
-            data-is-focusable="true"
+            aria-labelledby="toolTipcallout_r_4_"
             fill="#002050"
             height="32.714285714285715"
             opacity="1"
@@ -978,8 +946,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="236"
             x="40"
-            y="206.11111111111111"
+            y="53.44444444444446"
           />
+          <text
+            aria-hidden="true"
+            class="fui-hbcwa__barLabel"
+            dominant-baseline="central"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="start"
+            transform="translate(4)"
+            x="276"
+            y="66.16666666666669"
+          >
+            2k
+          </text>
         </g>
       </svg>
     </div>
@@ -1008,7 +988,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -1029,11 +1009,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_r28"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -1042,12 +1017,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1078,6 +1054,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -1096,6 +1073,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -1114,6 +1092,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -1132,6 +1111,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -1150,6 +1130,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -1168,6 +1149,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -1186,6 +1168,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -1204,6 +1187,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -1222,6 +1206,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -1255,22 +1240,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -1286,22 +1258,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -1317,22 +1276,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -1348,22 +1294,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -1379,22 +1312,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -1410,30 +1330,16 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2e_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -1444,10 +1350,21 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2e_"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -1458,10 +1375,21 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2e_"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -1472,10 +1400,21 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2e_"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -1486,6 +1425,18 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -1514,7 +1465,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1533,7 +1484,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1552,7 +1503,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1571,7 +1522,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1593,12 +1544,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1629,6 +1581,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -1647,6 +1600,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -1665,6 +1619,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -1683,6 +1638,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -1701,6 +1657,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -1719,6 +1676,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -1737,6 +1695,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -1755,6 +1714,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -1773,6 +1733,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -1806,22 +1767,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -1837,22 +1785,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -1868,22 +1803,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -1899,22 +1821,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -1930,22 +1839,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -1961,30 +1857,16 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2e_"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -1995,10 +1877,21 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2e_"
               fill="#002050"
               height="16"
               opacity="1"
@@ -2009,10 +1902,21 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2e_"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -2023,10 +1927,21 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2e_"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -2037,6 +1952,18 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -2065,7 +1992,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -2084,7 +2011,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -2103,7 +2030,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -2122,7 +2049,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -2195,11 +2122,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_r28"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -2208,12 +2130,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2244,6 +2167,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -2262,6 +2186,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -2280,6 +2205,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -2298,6 +2224,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -2316,6 +2243,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -2334,6 +2262,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -2352,6 +2281,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -2370,6 +2300,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -2388,6 +2319,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -2421,22 +2353,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -2452,22 +2371,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -2483,22 +2389,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -2514,22 +2407,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -2545,22 +2425,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -2576,30 +2443,16 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2i_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -2610,10 +2463,21 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2i_"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -2624,10 +2488,21 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2i_"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -2638,10 +2513,21 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2i_"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -2652,6 +2538,18 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -2680,7 +2578,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2699,7 +2597,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2718,7 +2616,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2737,7 +2635,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2759,12 +2657,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2795,6 +2694,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -2813,6 +2713,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -2831,6 +2732,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -2849,6 +2751,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -2867,6 +2770,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -2885,6 +2789,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -2903,6 +2808,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -2921,6 +2827,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -2939,6 +2846,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -2972,22 +2880,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -3003,22 +2898,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -3034,22 +2916,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -3065,22 +2934,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -3096,22 +2952,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -3127,30 +2970,16 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2i_"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -3161,10 +2990,21 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2i_"
               fill="#002050"
               height="16"
               opacity="1"
@@ -3175,10 +3015,21 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2i_"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -3189,10 +3040,21 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2i_"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -3203,6 +3065,18 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -3231,7 +3105,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -3250,7 +3124,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -3269,7 +3143,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -3288,7 +3162,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -3369,12 +3243,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3405,6 +3280,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -3423,6 +3299,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -3441,6 +3318,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -3459,6 +3337,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -3477,6 +3356,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -3495,6 +3375,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -3513,6 +3394,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -3531,6 +3413,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -3549,6 +3432,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -3582,22 +3466,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -3613,22 +3484,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -3644,22 +3502,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -3675,22 +3520,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -3706,22 +3538,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -3737,30 +3556,16 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1r_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -3771,10 +3576,21 @@ Object {
                 x="40"
                 y="219.7"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="187.5"
+                y="227.7"
+              >
+                10k
+              </text>
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1r_"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -3785,10 +3601,21 @@ Object {
                 x="40"
                 y="185.62"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="193.62"
+              >
+                40k
+              </text>
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1r_"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -3799,10 +3626,21 @@ Object {
                 x="40"
                 y="113.2"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="408.75"
+                y="121.2"
+              >
+                25k
+              </text>
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1r_"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -3813,6 +3651,18 @@ Object {
                 x="40"
                 y="28"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="335"
+                y="36"
+              >
+                20k
+              </text>
             </g>
           </svg>
         </div>
@@ -3841,7 +3691,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3860,7 +3710,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3879,7 +3729,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3898,7 +3748,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3920,12 +3770,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3956,6 +3807,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -3974,6 +3826,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -3992,6 +3845,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -4010,6 +3864,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -4028,6 +3883,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -4046,6 +3902,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -4064,6 +3921,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -4082,6 +3940,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -4100,6 +3959,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -4133,22 +3993,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -4164,22 +4011,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -4195,22 +4029,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -4226,22 +4047,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -4257,22 +4065,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -4288,30 +4083,16 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1r_"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -4322,10 +4103,21 @@ Object {
               x="40"
               y="219.7"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="187.5"
+              y="227.7"
+            >
+              10k
+            </text>
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1r_"
               fill="#002050"
               height="16"
               opacity="1"
@@ -4336,10 +4128,21 @@ Object {
               x="40"
               y="185.62"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="193.62"
+            >
+              40k
+            </text>
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1r_"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -4350,10 +4153,21 @@ Object {
               x="40"
               y="113.2"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="408.75"
+              y="121.2"
+            >
+              25k
+            </text>
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1r_"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -4364,6 +4178,18 @@ Object {
               x="40"
               y="28"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="335"
+              y="36"
+            >
+              20k
+            </text>
           </g>
         </svg>
       </div>
@@ -4392,7 +4218,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -4411,7 +4237,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -4430,7 +4256,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -4449,7 +4275,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -4530,12 +4356,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 9 bars. "
+            aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4566,6 +4393,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -8000
@@ -4584,6 +4412,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -6000
@@ -4602,6 +4431,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -4000
@@ -4620,6 +4450,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -2000
@@ -4638,6 +4469,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -4656,6 +4488,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -4674,6 +4507,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -4692,6 +4526,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   6000
@@ -4710,6 +4545,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   8000
@@ -4728,6 +4564,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -4746,6 +4583,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   12,000
@@ -4764,6 +4602,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   14,000
@@ -4782,6 +4621,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   16,000
@@ -4800,6 +4640,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   18,000
@@ -4818,6 +4659,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -4850,22 +4692,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q3"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    Q3
-                  </tspan>
+                  Q1
                 </text>
               </g>
               <g
@@ -4880,22 +4709,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    Q2
-                  </tspan>
+                  Q2
                 </text>
               </g>
               <g
@@ -4910,30 +4726,16 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q1"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    Q1
-                  </tspan>
+                  Q3
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="10K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4943,12 +4745,11 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="208.71428571428575"
                 x="208.57142857142858"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="-5K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4958,12 +4759,11 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="103.35714285714286"
                 x="103.21428571428572"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="8K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -4973,12 +4773,23 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="168.57142857142858"
                 x="419.28571428571433"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="587.8571428571429"
+                y="207.92857142857142"
+              >
+                13k
+              </text>
               <rect
                 aria-label="-7K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4992,8 +4803,7 @@ Object {
               />
               <rect
                 aria-label="12K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -5007,8 +4817,7 @@ Object {
               />
               <rect
                 aria-label="3K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -5020,10 +4829,21 @@ Object {
                 x="461.42857142857144"
                 y="126.14285714285714"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="524.6428571428571"
+                y="142.5"
+              >
+                8k
+              </text>
               <rect
                 aria-label="15K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -5033,12 +4853,11 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="314.07142857142856"
                 x="208.57142857142858"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="-4K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -5048,12 +4867,11 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="82.28571428571429"
                 x="124.28571428571429"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="5K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -5063,8 +4881,20 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="105.35714285714286"
                 x="524.6428571428571"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="77.07142857142856"
+              >
+                16k
+              </text>
             </g>
           </svg>
         </div>
@@ -5093,7 +4923,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -5112,7 +4942,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
                 />
                 <div
                   class="fui-legend__text"
@@ -5131,7 +4961,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                 />
                 <div
                   class="fui-legend__text"
@@ -5153,12 +4983,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 9 bars. "
+          aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -5189,6 +5020,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -8000
@@ -5207,6 +5039,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -6000
@@ -5225,6 +5058,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -4000
@@ -5243,6 +5077,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -2000
@@ -5261,6 +5096,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -5279,6 +5115,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -5297,6 +5134,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -5315,6 +5153,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 6000
@@ -5333,6 +5172,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 8000
@@ -5351,6 +5191,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -5369,6 +5210,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 12,000
@@ -5387,6 +5229,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 14,000
@@ -5405,6 +5248,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 16,000
@@ -5423,6 +5267,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 18,000
@@ -5441,6 +5286,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -5473,22 +5319,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q3"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  Q3
-                </tspan>
+                Q1
               </text>
             </g>
             <g
@@ -5503,22 +5336,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  Q2
-                </tspan>
+                Q2
               </text>
             </g>
             <g
@@ -5533,30 +5353,16 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q1"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  Q1
-                </tspan>
+                Q3
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="10K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5566,12 +5372,11 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="208.71428571428575"
               x="208.57142857142858"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="-5K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5581,12 +5386,11 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="103.35714285714286"
               x="103.21428571428572"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="8K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5596,12 +5400,23 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="168.57142857142858"
               x="419.28571428571433"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="587.8571428571429"
+              y="207.92857142857142"
+            >
+              13k
+            </text>
             <rect
               aria-label="-7K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5615,8 +5430,7 @@ Object {
             />
             <rect
               aria-label="12K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5630,8 +5444,7 @@ Object {
             />
             <rect
               aria-label="3K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5643,10 +5456,21 @@ Object {
               x="461.42857142857144"
               y="126.14285714285714"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="524.6428571428571"
+              y="142.5"
+            >
+              8k
+            </text>
             <rect
               aria-label="15K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5656,12 +5480,11 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="314.07142857142856"
               x="208.57142857142858"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="-4K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5671,12 +5494,11 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="82.28571428571429"
               x="124.28571428571429"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="5K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5686,8 +5508,20 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="105.35714285714286"
               x="524.6428571428571"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="77.07142857142856"
+            >
+              16k
+            </text>
           </g>
         </svg>
       </div>
@@ -5716,7 +5550,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -5735,7 +5569,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
               />
               <div
                 class="fui-legend__text"
@@ -5754,7 +5588,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
               />
               <div
                 class="fui-legend__text"
@@ -5835,12 +5669,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -5871,6 +5706,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -5889,6 +5725,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -5907,6 +5744,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -5925,6 +5763,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -5943,6 +5782,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -5961,6 +5801,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -5979,6 +5820,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -5997,6 +5839,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -6015,6 +5858,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -6048,22 +5892,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -6079,22 +5910,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -6110,22 +5928,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -6141,22 +5946,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -6172,22 +5964,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -6203,30 +5982,16 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_23_"
                 fill="#0078d4"
                 height="1"
                 opacity="1"
@@ -6239,8 +6004,7 @@ Object {
               />
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_23_"
                 fill="#002050"
                 height="1"
                 opacity="1"
@@ -6253,8 +6017,7 @@ Object {
               />
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_23_"
                 fill="#00188f"
                 height="1"
                 opacity="1"
@@ -6267,8 +6030,7 @@ Object {
               />
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_23_"
                 fill="#00bcf2"
                 height="1"
                 opacity="1"
@@ -6293,12 +6055,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -6329,6 +6092,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -6347,6 +6111,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -6365,6 +6130,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -6383,6 +6149,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -6401,6 +6168,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -6419,6 +6187,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -6437,6 +6206,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -6455,6 +6225,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -6473,6 +6244,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -6506,22 +6278,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -6537,22 +6296,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -6568,22 +6314,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -6599,22 +6332,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -6630,22 +6350,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -6661,30 +6368,16 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_23_"
               fill="#0078d4"
               height="1"
               opacity="1"
@@ -6697,8 +6390,7 @@ Object {
             />
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_23_"
               fill="#002050"
               height="1"
               opacity="1"
@@ -6711,8 +6403,7 @@ Object {
             />
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_23_"
               fill="#00188f"
               height="1"
               opacity="1"
@@ -6725,8 +6416,7 @@ Object {
             />
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_23_"
               fill="#00bcf2"
               height="1"
               opacity="1"
@@ -6810,12 +6500,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -6846,6 +6537,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -6864,6 +6556,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   500
@@ -6882,6 +6575,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1000
@@ -6900,6 +6594,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1500
@@ -6918,6 +6613,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -6936,6 +6632,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2500
@@ -6954,6 +6651,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3000
@@ -6972,6 +6670,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3500
@@ -6990,6 +6689,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -7008,6 +6708,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4500
@@ -7026,6 +6727,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -7056,21 +6758,14 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String One"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Four"
                     dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-21"
-                  />
-                  <tspan
-                    dx="1.5em"
-                    dy="0.32"
-                    id="showDots-0"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7086,21 +6781,14 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Two"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Three"
                     dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-21"
-                  />
-                  <tspan
-                    dx="1.5em"
-                    dy="0.32"
-                    id="showDots-1"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7116,21 +6804,14 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Three"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Two"
                     dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-21"
-                  />
-                  <tspan
-                    dx="1.5em"
-                    dy="0.32"
-                    id="showDots-2"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7146,21 +6827,14 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Four"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String One"
                     dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-21"
-                  />
-                  <tspan
-                    dx="1.5em"
-                    dy="0.32"
-                    id="showDots-3"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7170,8 +6844,7 @@ Object {
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcalloutr26"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_26_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -7181,12 +6854,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="158"
+                y="218.83333333333334"
+              >
+                1k
+              </text>
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcalloutr26"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_26_"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -7196,12 +6880,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="167.94444444444446"
+              >
+                5k
+              </text>
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcalloutr26"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_26_"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -7211,12 +6906,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="394"
+                y="117.05555555555557"
+              >
+                3k
+              </text>
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcalloutr26"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_26_"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -7226,8 +6932,20 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="276"
+                y="66.16666666666669"
+              >
+                2k
+              </text>
             </g>
           </svg>
         </div>
@@ -7256,7 +6974,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -7267,13 +6985,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_28_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_r28"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -7283,12 +7001,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -7319,6 +7038,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -7337,6 +7057,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 500
@@ -7355,6 +7076,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1000
@@ -7373,6 +7095,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1500
@@ -7391,6 +7114,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -7409,6 +7133,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2500
@@ -7427,6 +7152,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3000
@@ -7445,6 +7171,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3500
@@ -7463,6 +7190,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -7481,6 +7209,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4500
@@ -7499,6 +7228,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -7529,21 +7259,14 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String One"
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Four"
                   dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-21"
-                />
-                <tspan
-                  dx="1.5em"
-                  dy="0.32"
-                  id="showDots-0"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7559,21 +7282,14 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Two"
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Three"
                   dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-21"
-                />
-                <tspan
-                  dx="1.5em"
-                  dy="0.32"
-                  id="showDots-1"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7589,21 +7305,14 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Three"
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Two"
                   dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-21"
-                />
-                <tspan
-                  dx="1.5em"
-                  dy="0.32"
-                  id="showDots-2"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7619,21 +7328,14 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Four"
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String One"
                   dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-21"
-                />
-                <tspan
-                  dx="1.5em"
-                  dy="0.32"
-                  id="showDots-3"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7643,8 +7345,7 @@ Object {
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcalloutr26"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_26_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -7654,12 +7355,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="158"
+              y="218.83333333333334"
+            >
+              1k
+            </text>
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcalloutr26"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_26_"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -7669,12 +7381,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="167.94444444444446"
+            >
+              5k
+            </text>
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcalloutr26"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_26_"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -7684,12 +7407,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="394"
+              y="117.05555555555557"
+            >
+              3k
+            </text>
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcalloutr26"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_26_"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
@@ -7699,8 +7433,20 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="276"
+              y="66.16666666666669"
+            >
+              2k
+            </text>
           </g>
         </svg>
       </div>
@@ -7729,7 +7475,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -7740,6 +7486,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-cart__tooltip"
+        id="tooltip__r_28_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -7802,11 +7553,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_r28"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -7815,12 +7561,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Horizontal bar chart with 4 bars. "
+            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -7851,6 +7598,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -7869,6 +7617,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   500
@@ -7887,6 +7636,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1000
@@ -7905,6 +7655,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1500
@@ -7923,6 +7674,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -7941,6 +7693,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2500
@@ -7959,6 +7712,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3000
@@ -7977,6 +7731,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3500
@@ -7995,6 +7750,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -8013,6 +7769,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4500
@@ -8031,6 +7788,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -8063,22 +7821,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Four"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    String Four
-                  </tspan>
+                  String One
                 </text>
               </g>
               <g
@@ -8093,22 +7838,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Three"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    String Three
-                  </tspan>
+                  String Two
                 </text>
               </g>
               <g
@@ -8123,22 +7855,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Two"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    String Two
-                  </tspan>
+                  String Three
                 </text>
               </g>
               <g
@@ -8153,30 +7872,16 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String One"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    String One
-                  </tspan>
+                  String Four
                 </text>
               </g>
             </g>
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcalloutr2a"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2a_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -8186,12 +7891,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="158"
+                y="218.83333333333334"
+              >
+                1k
+              </text>
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcalloutr2a"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2a_"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -8201,12 +7917,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="630"
+                y="167.94444444444446"
+              >
+                5k
+              </text>
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcalloutr2a"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2a_"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -8216,12 +7943,23 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="394"
+                y="117.05555555555557"
+              >
+                3k
+              </text>
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcalloutr2a"
-                data-is-focusable="true"
+                aria-labelledby="toolTipcallout_r_2a_"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -8231,8 +7969,20 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
+              <text
+                aria-hidden="true"
+                class="fui-hbcwa__barLabel"
+                dominant-baseline="central"
+                style="direction: ltr; unicode-bidi: isolate;"
+                text-anchor="start"
+                transform="translate(4)"
+                x="276"
+                y="66.16666666666669"
+              >
+                2k
+              </text>
             </g>
           </svg>
         </div>
@@ -8261,7 +8011,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -8283,12 +8033,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -8319,6 +8070,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -8337,6 +8089,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 500
@@ -8355,6 +8108,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1000
@@ -8373,6 +8127,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1500
@@ -8391,6 +8146,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -8409,6 +8165,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2500
@@ -8427,6 +8184,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3000
@@ -8445,6 +8203,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3500
@@ -8463,6 +8222,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -8481,6 +8241,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4500
@@ -8499,6 +8260,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -8531,22 +8293,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Four"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  String Four
-                </tspan>
+                String One
               </text>
             </g>
             <g
@@ -8561,22 +8310,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Three"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  String Three
-                </tspan>
+                String Two
               </text>
             </g>
             <g
@@ -8591,22 +8327,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Two"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  String Two
-                </tspan>
+                String Three
               </text>
             </g>
             <g
@@ -8621,30 +8344,16 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String One"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  String One
-                </tspan>
+                String Four
               </text>
             </g>
           </g>
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcalloutr2a"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2a_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -8654,12 +8363,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="158"
+              y="218.83333333333334"
+            >
+              1k
+            </text>
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcalloutr2a"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2a_"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -8669,12 +8389,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="630"
+              y="167.94444444444446"
+            >
+              5k
+            </text>
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcalloutr2a"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2a_"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -8684,12 +8415,23 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="394"
+              y="117.05555555555557"
+            >
+              3k
+            </text>
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcalloutr2a"
-              data-is-focusable="true"
+              aria-labelledby="toolTipcallout_r_2a_"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
@@ -8699,8 +8441,20 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
+            <text
+              aria-hidden="true"
+              class="fui-hbcwa__barLabel"
+              dominant-baseline="central"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="start"
+              transform="translate(4)"
+              x="276"
+              y="66.16666666666669"
+            >
+              2k
+            </text>
           </g>
         </svg>
       </div>
@@ -8729,7 +8483,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"

@@ -1,7 +1,9 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { GroupedVerticalBarChartProps, GroupedVerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const groupedVerticalBarChartClassNames: SlotClassNames<GroupedVerticalBarChartStyles> = {
   opacityChangeOnHover: 'fui-gvbc**opacityChangeOnHover',
@@ -19,31 +21,17 @@ export const groupedVerticalBarChartClassNames: SlotClassNames<GroupedVerticalBa
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({
   opacityChangeOnHover: {
     cursor: 'default',
   },
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    fill: tokens.colorNeutralBackground1, //Check this
-    background: tokens.colorNeutralBackground1, //Fill or background
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-    color: tokens.colorNeutralForeground1, //Confirm this
-  },
-  barLabel: {
-    ...typographyStyles.caption1Strong, // Confirm styles
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
+  barLabel: getBarLabelStyle() as GriffelStyle,
 });
 
 /**

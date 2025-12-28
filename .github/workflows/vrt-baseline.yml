@@ -21,14 +21,14 @@ jobs:
     name: Upload VRT Baseline
     runs-on: macos-14-xlarge
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: yarn install --frozen-lockfile
       - run: yarn playwright install --with-deps
@@ -37,7 +37,7 @@ jobs:
         run: yarn nx run-many -t test-vr --nxBail
 
       - name: Prepare VR screenshots for upload
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         id: screenshots_root
         with:
           script: |

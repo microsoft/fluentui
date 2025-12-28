@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 
 import { TagPicker } from './TagPicker';
 import { resetIds } from '@fluentui/utilities';
@@ -41,19 +40,17 @@ describe('TagPicker', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders picker with selected item correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

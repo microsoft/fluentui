@@ -1,3 +1,5 @@
+'use client';
+
 import type { KeyborgCallback } from 'keyborg';
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -10,7 +12,7 @@ import { useKeyborgRef } from './useKeyborgRef';
  *
  * @param callback - called every time the keyboard navigation state changes
  */
-export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void) {
+export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void {
   const keyborgRef = useKeyborgRef();
   const eventCallback = useEventCallback(callback);
 

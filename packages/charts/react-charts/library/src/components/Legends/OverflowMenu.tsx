@@ -1,13 +1,16 @@
+'use client';
+
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 
-export const OverflowMenu: React.FC<{ itemIds: string[]; title: string; items: JSX.Element[] }> = ({
-  itemIds,
-  title,
-  items,
-}) => {
+export const OverflowMenu: React.FC<{
+  itemIds: string[];
+  title: string;
+  items: JSXElement[];
+}> = ({ itemIds, title, items }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
   let displayLabel = title;
   displayLabel = title === '' ? `+${overflowCount} items` : `+${overflowCount} ${title}`;
@@ -18,9 +21,19 @@ export const OverflowMenu: React.FC<{ itemIds: string[]; title: string; items: J
   const remainingItemsCount = itemIds.length - overflowCount;
   const menuList = [];
   for (let i = remainingItemsCount; i < itemIds.length; i++) {
+    const buttonElement = items[i];
     menuList.push(
-      <MenuItem tabIndex={-1} key={i}>
-        {items[i]}
+      <MenuItem
+        tabIndex={-1}
+        key={i}
+        onClick={e => {
+          const button = buttonElement.props;
+          if (button.onClick) {
+            button.onClick(e);
+          }
+        }}
+      >
+        {buttonElement}
       </MenuItem>,
     );
   }

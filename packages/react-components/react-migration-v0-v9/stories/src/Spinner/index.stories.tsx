@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Loader, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, Spinner } from '@fluentui/react-components';
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Inline = () => {
+export const Inline = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -40,7 +41,7 @@ export const Inline = () => {
   );
 };
 
-export const Label = () => {
+export const Label = (): JSXElement => {
   const styles = useStyles();
 
   return (

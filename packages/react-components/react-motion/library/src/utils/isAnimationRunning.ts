@@ -1,7 +1,7 @@
 /**
  * Checks if the animation is running at the moment.
  */
-export function isAnimationRunning(animation: Animation & { readonly overallProgress?: number | null }) {
+export function isAnimationRunning(animation: Animation & { readonly overallProgress?: number | null }): boolean {
   if (animation.playState === 'running') {
     // Heads up!
     //

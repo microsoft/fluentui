@@ -66,8 +66,7 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   ) as React.ElementType<R[K]>;
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotProps: UnknownSlotProps = shouldOmitAsProp ? propsWithoutAs : props;
 
-  return [slot, slotProps as R[K]];
+  return [slot as React.ElementType<R[K]>, slotProps as R[K]];
 }

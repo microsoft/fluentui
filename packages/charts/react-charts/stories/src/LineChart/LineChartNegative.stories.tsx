@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
 import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const LineChartNegative = () => {
+export const LineChartNegative = (): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);

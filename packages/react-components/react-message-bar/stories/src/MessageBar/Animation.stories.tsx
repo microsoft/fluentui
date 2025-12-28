@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -51,7 +52,7 @@ interface ExampleMessage {
   id: number;
 }
 
-export const Animation = () => {
+export const Animation = (): JSXElement => {
   const styles = useStyles();
   const counterRef = React.useRef(0);
 

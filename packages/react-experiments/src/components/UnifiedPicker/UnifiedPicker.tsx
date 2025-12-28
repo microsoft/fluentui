@@ -13,9 +13,9 @@ import type { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPi
 import type { IInputProps, IDragDropEvents } from '@fluentui/react';
 import type { IUnifiedPickerProps } from './UnifiedPicker.types';
 import type { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
+import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
+export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSXElement => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
   const classNames = getClassNames(getStyles);
 
@@ -556,8 +556,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     },
     [onPaste, selectedItems, selection, setSelectedItems],
   );
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const _renderSelectedItemsList = (): JSX.Element => {
+
+  const _renderSelectedItemsList = (): JSXElement => {
     return onRenderSelectedItems({
       ...selectedItemsListProps,
       selectedItems,

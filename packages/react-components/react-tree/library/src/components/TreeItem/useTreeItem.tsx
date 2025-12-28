@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
@@ -122,7 +124,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     } else if (!isEventFromExpandIcon) {
       onClick?.(event);
     }
-    if (event.isDefaultPrevented() || itemType === 'leaf') {
+    if (event.isDefaultPrevented()) {
       return;
     }
 
@@ -134,12 +136,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         target: event.currentTarget,
         type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
       } as const;
-      props.onOpenChange?.(event, data);
-      requestTreeResponse({
-        ...data,
-        itemType,
-        requestType: 'open',
-      });
+      if (itemType !== 'leaf') {
+        props.onOpenChange?.(event, data);
+        requestTreeResponse({
+          ...data,
+          itemType,
+          requestType: 'open',
+        });
+      }
       requestTreeResponse({
         ...data,
         itemType,

@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Wed, 16 Jul 2025 13:52:47 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 17:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.14.0)
+
+Thu, 06 Nov 2025 17:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.13.0..@fluentui/react-motion-components-preview_v0.14.0)
+
+### Minor changes
+
+- feat(motion): Add Stagger choreography component ([PR #34705](https://github.com/microsoft/fluentui/pull/34705) by robertpenner@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.13.0)
+
+Thu, 06 Nov 2025 15:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.12.0..@fluentui/react-motion-components-preview_v0.13.0)
+
+### Minor changes
+
+- feat(motion): export standard motion atoms ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.12.0)
+
+Fri, 31 Oct 2025 16:22:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.11.0..@fluentui/react-motion-components-preview_v0.12.0)
+
+### Minor changes
+
+- feat(motion): standardize from/to parameters ([PR #35419](https://github.com/microsoft/fluentui/pull/35419) by robertpenner@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.11.0)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.10.0..@fluentui/react-motion-components-preview_v0.11.0)
+
+### Minor changes
+
+- refactor(Collapse): simplify parameter types ([PR #35262](https://github.com/microsoft/fluentui/pull/35262) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix(Collapse): make size animation work with delay ([PR #35269](https://github.com/microsoft/fluentui/pull/35269) by robertpenner@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.10.0)
+
+Mon, 08 Sep 2025 12:51:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.9.0..@fluentui/react-motion-components-preview_v0.10.0)
+
+### Minor changes
+
+- feat(motion): add delay parameter to motion components ([PR #35077](https://github.com/microsoft/fluentui/pull/35077) by robertpenner@microsoft.com)
+
+### Patches
+
+- refactor(motion): normalize motion atom parameters & types ([PR #35076](https://github.com/microsoft/fluentui/pull/35076) by robertpenner@microsoft.com)
+- fix(motion): apply opacity in animations using fill mode ([PR #35078](https://github.com/microsoft/fluentui/pull/35078) by robertpenner@microsoft.com)
+- test(motion): expand motion atom testing ([PR #35079](https://github.com/microsoft/fluentui/pull/35079) by robertpenner@microsoft.com)
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.9.0)
+
+Thu, 21 Aug 2025 12:25:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.8.1..@fluentui/react-motion-components-preview_v0.9.0)
+
+### Minor changes
+
+- feat(motion): add Rotate presence motion component ([PR #34928](https://github.com/microsoft/fluentui/pull/34928) by robertpenner@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.8.0)
+
+Mon, 28 Jul 2025 18:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.7.0..@fluentui/react-motion-components-preview_v0.8.0)
+
+### Minor changes
+
+- feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.7.0)
 

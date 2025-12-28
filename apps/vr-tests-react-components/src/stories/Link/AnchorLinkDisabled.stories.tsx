@@ -2,14 +2,14 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 import { disabledUnfocusableSteps } from './utils';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link as="a" {...props} href="https://www.bing.com" />;
 
 export default {
   title: 'Link Converged - Rendered as anchor',
-  decorators: [story => withStoryWrightSteps({ story, steps: disabledUnfocusableSteps })],
+  parameters: { storyWright: { steps: disabledUnfocusableSteps } } satisfies StoryParameters,
 } satisfies Meta<typeof Link>;
 
 export const StandAloneDisabled = () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>;

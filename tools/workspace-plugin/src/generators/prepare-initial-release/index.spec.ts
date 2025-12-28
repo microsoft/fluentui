@@ -42,8 +42,8 @@ jest.mock('@nx/devkit', () => {
 });
 
 describe('prepare-initial-release generator', () => {
-  const installPackagesTaskSpy = installPackagesTask as unknown as jest.SpyInstance;
-  let execSyncSpy: jest.SpyInstance;
+  const installPackagesTaskSpy = installPackagesTask as unknown as jest.Spied<typeof installPackagesTask>;
+  let execSyncSpy: jest.Spied<typeof childProcess.execSync>;
   let tree: Tree;
 
   beforeEach(() => {
@@ -818,7 +818,7 @@ describe('prepare-initial-release generator', () => {
 
           \\\\\`\\\\\`\\\\\`js
           module.exports = {
-          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
+          stories: ['../packages/react-components/react-one/stories/src/**/*.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
           }
           \\\\\`\\\\\`\\\\\`
           "
@@ -920,7 +920,7 @@ function createSplitProject(
 
         \`\`\`js
         module.exports = {
-        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
         }
         \`\`\`
     `,
@@ -1115,7 +1115,7 @@ These are not production-ready components and **should never be used in product*
   };
 }
 
-function getExecSpyCalls(spy: jest.SpyInstance) {
+function getExecSpyCalls(spy: jest.Spied<typeof childProcess.execSync>) {
   const execSyncCalls = spy.mock.calls;
 
   const normalized = execSyncCalls.map(call => {

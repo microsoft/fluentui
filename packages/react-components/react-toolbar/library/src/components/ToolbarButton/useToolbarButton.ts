@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';

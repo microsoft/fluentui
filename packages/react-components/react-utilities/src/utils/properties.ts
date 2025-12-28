@@ -118,6 +118,7 @@ export const baseElementProperties = toObjectMap([
   'htmlFor', // global
   'id', // global
   'lang', // global
+  'popover', // global
   'ref', // global
   'role', // global
   'style', // global
@@ -208,6 +209,7 @@ export const anchorProperties = toObjectMap(htmlElementProperties, [
   'href', // a, area, base, link
   'hrefLang', // a, area, link
   'media', // a, area, link, source, style
+  'referrerPolicy', // a, area
   'rel', // a, area, link
   'target', // a, area, base, form
   'type', // a, button, input, link, menu, object, script, source, style
@@ -236,6 +238,8 @@ export const buttonProperties = toObjectMap(htmlElementProperties, [
   'formMethod', // input, button
   'formNoValidate', // input, button
   'formTarget', // input, button
+  'popoverTarget', // input, button
+  'popoverTargetAction', // input, button
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param,
 ]);

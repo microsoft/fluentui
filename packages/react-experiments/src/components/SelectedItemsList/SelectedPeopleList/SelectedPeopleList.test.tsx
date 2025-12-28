@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
-
 import { people } from '@fluentui/example-data';
 import { fireEvent, render } from '@testing-library/react';
 import { SelectedPeopleList, SelectedPersona, ItemWithContextMenu, TriggerOnContextMenu } from '../index';
@@ -8,37 +6,33 @@ import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(<SelectedPeopleList ref={pickerRef} />);
-    expect(rendered.toJSON()).toMatchSnapshot();
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container } = render(<SelectedPeopleList ref={pickerRef} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders personas that are passed in', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container, getAllByText } = render(
       <SelectedPeopleList selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personANodes.length).toEqual(2);
-    expect(personBNodes.length).toEqual(2);
+    expect(getAllByText('Person A')).toHaveLength(2);
+    expect(getAllByText('Person B')).toHaveLength(2);
 
-    expect(rendered.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders personas that are passed in as default', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container, getAllByText } = render(
       <SelectedPeopleList defaultSelectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personBNodes.length).toEqual(2);
-    expect(personANodes.length).toEqual(2);
+    expect(getAllByText('Person A')).toHaveLength(2);
+    expect(getAllByText('Person B')).toHaveLength(2);
 
-    expect(rendered.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('remove personas', () => {

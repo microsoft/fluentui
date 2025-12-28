@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurOpacityDescription from './BlurOpacity.stories.md';
@@ -43,7 +44,7 @@ const useClasses = makeStyles({
   },
 });
 
-export const Opacity = () => {
+export const Opacity = (): JSXElement => {
   const classes = useClasses();
   const [withOpacityVisible, setWithOpacityVisible] = React.useState<boolean>(true);
   const [withoutOpacityVisible, setWithoutOpacityVisible] = React.useState<boolean>(true);

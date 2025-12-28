@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
@@ -15,7 +15,7 @@ describe('ContextualMenuSplitButton', () => {
     });
 
     it('renders the contextual menu split button correctly', () => {
-      const component = renderer.create(
+      const { container } = render(
         <ContextualMenuSplitButton
           item={menuItem}
           classNames={menuClassNames}
@@ -24,8 +24,7 @@ describe('ContextualMenuSplitButton', () => {
           totalItemCount={1}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 });

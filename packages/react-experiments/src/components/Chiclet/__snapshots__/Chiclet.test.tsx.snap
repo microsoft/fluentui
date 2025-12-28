@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] = `
 <div
-  className=
+  class=
       ms-ChicletCard
       {
         -moz-osx-font-smoothing: grayscale;
@@ -33,12 +33,11 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
       &:hover {
         cursor: pointer;
       }
-  onClick={[Function]}
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <div
-    className=
+    class=
         ms-ChicletCard-preview
         {
           align-items: center;
@@ -50,7 +49,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         }
   >
     <img
-      className=
+      class=
 
           {
             height: 100%;
@@ -61,7 +60,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
     />
   </div>
   <div
-    className=
+    class=
 
         {
           display: block;
@@ -73,7 +72,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         }
   >
     <div
-      className=
+      class=
 
           {
             color: #323130;
@@ -96,7 +95,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
       My Daily Notes
     </div>
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -123,7 +122,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
 
 exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extension 1`] = `
 <div
-  className=
+  class=
       ms-ChicletXsmall
       {
         -moz-osx-font-smoothing: grayscale;
@@ -152,12 +151,11 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       &:hover {
         cursor: pointer;
       }
-  onClick={[Function]}
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <div
-    className=
+    class=
         ms-ChicletXsmall-preview
         {
           align-items: center;
@@ -169,7 +167,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
         }
   >
     <img
-      className=
+      class=
 
           {
             height: 100%;
@@ -180,7 +178,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
     />
   </div>
   <div
-    className=
+    class=
         ms-ChicletXsmall-info
         {
           display: flex;
@@ -191,7 +189,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
         }
   >
     <div
-      className=
+      class=
           ms-ChicletXsmall-title
           {
             color: #323130;
@@ -209,7 +207,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       My Daily Notes.xlsx
     </div>
     <div
-      className=
+      class=
 
           {
             color: #605e5c;
@@ -231,7 +229,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
 
 exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`] = `
 <div
-  className=
+  class=
       ms-ChicletXsmall
       {
         -moz-osx-font-smoothing: grayscale;
@@ -260,12 +258,11 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       &:hover {
         cursor: pointer;
       }
-  onClick={[Function]}
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <div
-    className=
+    class=
         ms-ChicletXsmall-preview
         {
           align-items: center;
@@ -277,7 +274,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
         }
   >
     <img
-      className=
+      class=
 
           {
             height: 100%;
@@ -288,7 +285,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
     />
   </div>
   <div
-    className=
+    class=
         ms-ChicletXsmall-info
         {
           display: flex;
@@ -299,7 +296,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
         }
   >
     <div
-      className=
+      class=
           ms-ChicletXsmall-title
           {
             color: #323130;
@@ -317,7 +314,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       My Daily Notes
     </div>
     <div
-      className=
+      class=
 
           {
             color: #605e5c;
@@ -339,7 +336,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
 
 exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`] = `
 <div
-  className=
+  class=
       ms-ChicletXsmall
       {
         -moz-osx-font-smoothing: grayscale;
@@ -368,12 +365,11 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       &:hover {
         cursor: pointer;
       }
-  onClick={[Function]}
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <div
-    className=
+    class=
         ms-ChicletXsmall-preview
         {
           align-items: center;
@@ -385,7 +381,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
         }
   >
     <img
-      className=
+      class=
 
           {
             height: 100%;
@@ -397,7 +393,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
     />
   </div>
   <div
-    className=
+    class=
         ms-ChicletXsmall-info
         {
           display: flex;
@@ -408,7 +404,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
         }
   >
     <div
-      className=
+      class=
           ms-ChicletXsmall-title
           {
             color: #323130;
@@ -426,7 +422,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       My Daily Notes
     </div>
     <div
-      className=
+      class=
 
           {
             color: #605e5c;
@@ -448,7 +444,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
 
 exports[`Chiclet should set className on preview 1`] = `
 <div
-  className=
+  class=
       ms-ChicletCard
       {
         -moz-osx-font-smoothing: grayscale;
@@ -479,12 +475,11 @@ exports[`Chiclet should set className on preview 1`] = `
       &:hover {
         cursor: pointer;
       }
-  onClick={[Function]}
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <div
-    className=
+    class=
         ms-ChicletCard-preview
         {
           align-items: center;
@@ -496,7 +491,7 @@ exports[`Chiclet should set className on preview 1`] = `
         }
   >
     <img
-      className=
+      class=
           ms-ChicletCard-preview-custom
           {
             height: 112px;
@@ -507,7 +502,7 @@ exports[`Chiclet should set className on preview 1`] = `
     />
   </div>
   <div
-    className=
+    class=
 
         {
           display: block;
@@ -519,7 +514,7 @@ exports[`Chiclet should set className on preview 1`] = `
         }
   >
     <div
-      className=
+      class=
 
           {
             color: #323130;
@@ -542,7 +537,7 @@ exports[`Chiclet should set className on preview 1`] = `
       My Daily Notes
     </div>
     <div
-      className=
+      class=
 
           {
             align-items: center;

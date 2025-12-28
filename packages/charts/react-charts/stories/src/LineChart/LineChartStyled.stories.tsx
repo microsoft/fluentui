@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { LineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
 
-export const LineChartStyled = (props: LineChartProps) => {
+export const LineChartStyled = (props: LineChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
 

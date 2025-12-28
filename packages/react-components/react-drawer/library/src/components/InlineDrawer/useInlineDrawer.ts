@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PresenceDirection, presenceMotionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -24,11 +26,12 @@ const STATIC_MOTION = {
  * @param ref - reference to root HTMLElement of InlineDrawer
  */
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
-  const { size, position, open } = useDrawerDefaultProps(props);
+  const { size, position, open, unmountOnClose } = useDrawerDefaultProps(props);
   const { separator = false, surfaceMotion } = props;
   const { dir } = useFluent();
+  const [animationDirection, setAnimationDirection] = React.useState<PresenceDirection>(open ? 'enter' : 'exit');
 
-  const state: InlineDrawerState = {
+  return {
     components: {
       root: 'div',
       // casting from internal type that has required properties
@@ -41,6 +44,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
       getIntrinsicElementProps('div', {
         ...props,
         ref,
+        'aria-hidden': !unmountOnClose && !open ? true : undefined,
       }),
       { elementType: 'div' },
     ),
@@ -49,6 +53,8 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     position,
     size,
     separator,
+    unmountOnClose,
+    animationDirection,
     surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
       elementType: InlineDrawerMotion,
       defaultProps: {
@@ -56,13 +62,18 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
         size,
         dir,
         visible: open,
-        unmountOnExit: true,
+        appear: unmountOnClose,
+        unmountOnExit: unmountOnClose,
+        onMotionFinish: (_, { direction }) => setAnimationDirection(direction),
+        onMotionStart: (_, { direction }) => {
+          if (direction === 'enter') {
+            setAnimationDirection('enter');
+          }
+        },
       },
     }),
 
     // Deprecated props
     motion: STATIC_MOTION,
-  };
-
-  return state;
+  } satisfies InlineDrawerState;
 };

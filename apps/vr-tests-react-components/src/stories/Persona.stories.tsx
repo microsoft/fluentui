@@ -3,7 +3,8 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Persona } from '@fluentui/react-persona';
 import type { PersonaProps } from '@fluentui/react-persona';
-import { getStoryVariant, withStoryWrightSteps, RTL, HIGH_CONTRAST, DARK_MODE } from '../utilities';
+import { getStoryVariant, RTL, HIGH_CONTRAST, DARK_MODE } from '../utilities';
+import type { StoryParameters } from 'storywright';
 
 const sizes: PersonaProps['size'][] = ['extra-small', 'small', 'medium', 'large', 'extra-large', 'huge'];
 const textPositions: PersonaProps['textPosition'][] = ['before', 'below', 'after'];
@@ -18,8 +19,10 @@ export default {
         {story()}
       </div>
     ),
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() }),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Persona>;
 
 export const Basic = () => (

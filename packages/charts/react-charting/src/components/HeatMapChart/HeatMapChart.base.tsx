@@ -38,7 +38,8 @@ import {
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -135,8 +136,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
   private margins: IMargins;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
@@ -217,6 +218,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       onDismiss: this._closeCallout,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
       preventDismissOnLostFocus: true,
+      calloutMaxWidth: 238,
     };
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {
@@ -258,7 +260,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         ref={this._cartesianChartRef}
         tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
+
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale;
           this._yAxisScale = props.yScalePrimary;
@@ -280,7 +282,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _getMinMaxOfYAxis = () => {
@@ -296,7 +303,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
@@ -388,8 +394,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * attaching dom events to that rectangles
    */
   private _createRectangles = (): React.ReactNode => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const rectangles: JSX.Element[] = [];
+    const rectangles: JSXElement[] = [];
     const yAxisDataPoints = this._stringYAxisDataPoints.slice().reverse();
     /**
      * yAxisDataPoint is noting but the DataPoint
@@ -398,8 +403,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     yAxisDataPoints.forEach((yAxisDataPoint: string) => {
       let index = 0;
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        let rectElement: JSX.Element;
+        let rectElement: JSXElement;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
         if (
           this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint &&
@@ -526,8 +530,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegendBars = (): JSX.Element => {
+
+  private _createLegendBars = (): JSXElement => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
     data.forEach((item: IHeatMapChartData) => {

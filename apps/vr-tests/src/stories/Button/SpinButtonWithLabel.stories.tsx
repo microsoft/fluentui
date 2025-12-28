@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  TestWrapperDecoratorFixedWidth,
-  StoryWrightDecorator,
-  getStoryVariant,
-  RTL,
-} from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecoratorFixedWidth, getStoryVariant, RTL } from '../../utilities';
 import { Fabric, SpinButton, ISpinButtonProps, ISpinButtonStyles } from '@fluentui/react';
 import { Position } from '@fluentui/react/lib/Positioning';
 
@@ -23,11 +20,13 @@ const iconProps = { iconName: 'IncreaseIndentLegacy' };
 export default {
   title: 'SpinButton',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof SpinButton>;
 
 export const LabelAtEnd = () => (
   <Fabric>

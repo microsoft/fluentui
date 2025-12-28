@@ -1,6 +1,8 @@
+'use client';
+
 import { devtools } from '@floating-ui/devtools';
 import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware } from '@floating-ui/dom';
+import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
@@ -103,7 +105,16 @@ function usePositioningConfigFn(
 /**
  * @internal
  */
-export function usePositioningOptions(options: PositioningOptions) {
+export function usePositioningOptions(options: PositioningOptions): (
+  container: HTMLElement,
+  arrow: HTMLElement | null,
+) => {
+  placement: Placement | undefined;
+  middleware: Middleware[];
+  strategy: Strategy;
+  disableUpdateOnResize?: boolean;
+  useTransform?: boolean;
+} {
   const { dir, targetDocument } = useFluent();
   const isRtl = dir === 'rtl';
 

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -9,23 +7,11 @@ import { TooltipHost } from './TooltipHost';
 import { TooltipDelay } from './Tooltip.types';
 import type { ICalloutProps } from '../../Callout';
 import type { ITooltipProps } from './Tooltip.types';
-import { TooltipHostBase } from './TooltipHost.base';
 
 describe('TooltipHost', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<TooltipHost />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('uses default documented properties', () => {
-    const component = renderer.create(<TooltipHost />);
-
-    const tooltipHostBase = component.root.findByType(TooltipHostBase);
-
-    expect(tooltipHostBase.props.delay).toEqual(TooltipDelay.medium);
-    // TODO: should be tested or doc updated. https://github.com/microsoft/fluentui/issues/4708
-    // expect(component.root.props.directionalHint).toEqual(DirectionalHint.topCenter);
+    const { container } = render(<TooltipHost />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('uses specified properties', () => {
@@ -136,7 +122,7 @@ describe('TooltipHost', () => {
         props,
         // eslint-disable-next-line @typescript-eslint/no-shadow
         render,
-      ) => render?.({ ...props, content: props?.content + ' suffix' }) || null,
+      ) => render?.({ ...props, content: (props?.content ?? '') + ' suffix' }) || null,
     };
 
     render(<TooltipHost content={'prefix'} id="tooltipId" tooltipProps={tooltipProps} />);

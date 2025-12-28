@@ -8,6 +8,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import type { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
 import type { IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
 import type { IProcessedStyleSet } from '../../Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
 
@@ -36,8 +37,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       comboBoxAriaLabel,
       firstPageAriaLabel,
@@ -208,8 +208,8 @@ export class PaginationBase extends React.Component<IPaginationProps> {
   private _handleNextPage = () => {
     this._handleSelectedPage(this.props.selectedPageIndex! + 1);
   };
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _pageElement(index: number): JSX.Element {
+
+  private _pageElement(index: number): JSXElement {
     const { pageAriaLabel, pageCount, selectedPageIndex, selectedAriaLabel, strings } = this.props;
     const isSelected = index === selectedPageIndex;
     let ariaLabel = pageAriaLabel && `${pageAriaLabel} ${index + 1} ${strings!.of} ${pageCount}`;
@@ -230,8 +230,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _pageList(): JSX.Element[] {
+  private _pageList(): JSXElement[] {
     const { numberOfPageButton, pageCount, selectedPageIndex } = this.props;
     const pageList = [];
     if (pageCount <= numberOfPageButton!) {
@@ -258,8 +257,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     return pageList;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderVisibleItemLabel = (props: IPaginationProps): JSX.Element | null => {
+  private _renderVisibleItemLabel = (props: IPaginationProps): JSXElement | null => {
     if (props.onRenderVisibleItemLabel) {
       return <div className={this._classNames.visibleItemLabel}>{props.onRenderVisibleItemLabel(props)}</div>;
     }

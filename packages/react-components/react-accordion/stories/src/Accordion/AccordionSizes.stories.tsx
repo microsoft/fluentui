@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
-export const Sizes = () => (
+export const Sizes = (): JSXElement => (
   <>
     <Accordion collapsible>
       <AccordionItem value="1">

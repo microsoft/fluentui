@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Slider renders disabled Slider correctly 1`] = `
 <div>
@@ -9,7 +9,7 @@ exports[`Slider renders disabled Slider correctly 1`] = `
     <input
       class="fui-Slider__input"
       disabled=""
-      id="slider-ra"
+      id="slider-_r_a_"
       max="10"
       min="0"
       type="range"
@@ -33,7 +33,7 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
   >
     <input
       class="fui-Slider__input"
-      id="slider-r8"
+      id="slider-_r_8_"
       max="10"
       min="0"
       type="range"
@@ -57,7 +57,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
   >
     <input
       class="fui-Slider__input"
-      id="slider-r9"
+      id="slider-_r_9_"
       max="10"
       min="0"
       orient="vertical"

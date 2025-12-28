@@ -46,7 +46,7 @@ const dropdownOptions: IDropdownOption[] = [
 ];
 
 export const CoachmarkBasicExample: React.FunctionComponent = () => {
-  const targetButton = React.useRef<HTMLDivElement>(null);
+  const targetButton = React.useRef<HTMLDivElement | null>(null);
   const [isCoachmarkVisible, { setFalse: hideCoachmark, setTrue: showCoachmark }] = useBoolean(false);
   const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);
   const onDropdownChange = React.useCallback(

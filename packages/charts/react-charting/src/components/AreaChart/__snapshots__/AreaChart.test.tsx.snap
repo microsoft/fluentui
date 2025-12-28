@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AreaChart - mouse events Should render callout correctly on mouseover 1`] = `
 <body>
@@ -1924,7 +1924,9 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2226,7 +2228,9 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2557,7 +2561,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2888,7 +2894,9 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -3210,7 +3218,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -3530,7 +3540,9 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -3702,7 +3714,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4033,7 +4047,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4364,7 +4380,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4695,7 +4713,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

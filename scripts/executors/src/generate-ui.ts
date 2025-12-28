@@ -7,11 +7,12 @@ import {
   ProjectsConfigurations,
   createProjectGraphAsync,
   output,
-  readNxJson,
   readProjectsConfigurationFromProjectGraph,
+  readNxJson,
   serializeJson,
   workspaceRoot,
 } from '@nx/devkit';
+import { FsTree } from 'nx/src/generators/tree';
 import { AutoComplete, AutoCompleteOptions, type Choice, Confirm, Input, NumberPrompt, Select } from 'enquirer';
 import { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
 import { getInstalledPluginsAndCapabilities, getLocalWorkspacePlugins } from 'nx/src/utils/plugins';
@@ -29,8 +30,8 @@ main()
 async function main() {
   const graph = await createProjectGraphAsync();
   const projects = readProjectsConfigurationFromProjectGraph(graph);
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const nxJson = readNxJson();
+  const tree = new FsTree(workspaceRoot, false);
+  const nxJson = readNxJson(tree);
   if (!nxJson) {
     throw new Error('nx.json not found');
   }

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   resolvePositioningShorthand,
@@ -288,7 +290,8 @@ const useMenuOpenState = (
     element: targetDocument,
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ) as React.MutableRefObject<HTMLElement | null>[],
     callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
   });
 
@@ -300,7 +303,8 @@ const useMenuOpenState = (
     callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ) as React.MutableRefObject<HTMLElement | null>[],
     disabled: !open || !closeOnScroll,
   });
 

@@ -21,6 +21,7 @@ import type {
   ITileProps,
   TileSize,
 } from './Tile.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
@@ -78,8 +79,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _descriptionId: string;
   private _events: EventGroup;
 
-  constructor(props: ITileProps, context: any) {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+  constructor(props: ITileProps, context?: any) {
     super(props, context);
 
     initializeComponentRef(this);
@@ -147,8 +147,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     this._events.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       children,
       selectionIndex = -1,
@@ -214,13 +213,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           </span>
         ) : null}
         {onRenderBackground({
-          background,
+          background: background as JSXElement | null,
           hideBackground,
           ...tileLayout,
           isSelected,
         })}
         {onRenderForeground({
-          foreground,
+          foreground: foreground as JSXElement | null,
           hideForeground,
           ...tileLayout,
           isSelected,
@@ -298,8 +297,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </div>
     );
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderBackground = (backgroundProps?: ITileBackgroundProps): JSX.Element | null => {
+
+  private _onRenderBackground = (backgroundProps?: ITileBackgroundProps): JSXElement | null => {
     if (!backgroundProps) {
       return null;
     }
@@ -323,8 +322,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderForeground = (foregroundProps?: ITileForegroundProps): JSX.Element | null => {
+  private _onRenderForeground = (foregroundProps?: ITileForegroundProps): JSXElement | null => {
     if (!foregroundProps) {
       return null;
     }
@@ -351,8 +349,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </span>
     ) : null;
   };
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderNameplate = (nameplateProps?: ITileNameplateProps): JSX.Element | null => {
+
+  private _onRenderNameplate = (nameplateProps?: ITileNameplateProps): JSXElement | null => {
     if (!nameplateProps) {
       return null;
     }
@@ -383,8 +381,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSX.Element {
+  private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSXElement {
     const { toggleSelectionAriaLabel } = this.props;
 
     return (
@@ -418,8 +415,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
 export type { ITileLayout };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export function getTileLayout(tileElement: JSX.Element): ITileLayout {
+export function getTileLayout(tileElement: JSXElement): ITileLayout {
   const tileProps: ITileProps = tileElement.props;
 
   return getTileLayoutFromProps(tileProps);
@@ -458,8 +454,7 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
+export function renderTileWithLayout(tileElement: JSXElement, props: Partial<ITileProps>): JSXElement {
   const Tag = tileElement.type;
 
   return <Tag {...tileElement.props} {...props} />;

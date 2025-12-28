@@ -1,11 +1,16 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { HorizontalBarChartWithAxisProps, HorizontalBarChartWithAxisStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { HighContrastSelector } from '../../utilities/index';
 
 export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisStyles> = {
   opacityChangeOnHover: 'fui-hbcwa__opacityChangeOnHover',
   xAxisTicks: 'fui-hbcwa__xAxisTicks',
   tooltip: 'fui-hbcwa__tooltip',
+  barLabel: 'fui-hbcwa__barLabel',
   chartLabel: '',
   xAxisDomain: '',
   xAxisText: '',
@@ -24,6 +29,9 @@ export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisSty
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({
@@ -32,6 +40,14 @@ const useStyles = makeStyles({
   },
 
   xAxisTicks: {},
+
+  barLabel: {
+    ...typographyStyles.caption1Strong,
+    fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
+  },
 });
 
 /**
@@ -45,5 +61,6 @@ export const useHorizontalBarChartWithAxisStyles = (
   return {
     opacityChangeOnHover: mergeClasses(hbcWithAxisClassNames.opacityChangeOnHover, baseStyles.opacityChangeOnHover),
     xAxisTicks: mergeClasses(hbcWithAxisClassNames.xAxisTicks, baseStyles.xAxisTicks),
+    barLabel: mergeClasses(hbcWithAxisClassNames.barLabel, baseStyles.barLabel),
   };
 };

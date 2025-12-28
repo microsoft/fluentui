@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 const SkeletonContext = React.createContext<SkeletonContextValue | undefined>(undefined);
@@ -11,4 +13,5 @@ const skeletonContextDefaultValue: SkeletonContextValue = {};
 
 export const SkeletonContextProvider = SkeletonContext.Provider;
 
-export const useSkeletonContext = () => React.useContext(SkeletonContext) ?? skeletonContextDefaultValue;
+export const useSkeletonContext = (): SkeletonContextValue =>
+  React.useContext(SkeletonContext) ?? skeletonContextDefaultValue;

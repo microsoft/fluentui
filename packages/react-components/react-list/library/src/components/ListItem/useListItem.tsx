@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   GroupperMoveFocusEvent,
@@ -44,21 +46,21 @@ export const useListItem_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick, tabIndex, role, onAction } = props;
+  const { value = id, onKeyDown, onClick, tabIndex, role, onAction, disabledSelection } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
 
   const { navigationMode, listItemRole } = useListSynchronousContext();
 
-  const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
-  const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+  const isSelectionModeEnabled = useListContext_unstable(ctx => !!ctx.selection);
+  const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value)) ?? false;
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
 
   const finalListItemRole = role || listItemRole;
 
-  const focusableItems = Boolean(isSelectionEnabled || navigationMode || tabIndex === 0);
+  const focusableItems = Boolean(isSelectionModeEnabled || navigationMode || tabIndex === 0);
 
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
   const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
@@ -70,7 +72,7 @@ export const useListItem_unstable = (
       return;
     }
 
-    if (isSelectionEnabled) {
+    if (isSelectionModeEnabled && !disabledSelection) {
       toggleItem?.(event.detail.originalEvent, value);
     }
   });
@@ -145,8 +147,10 @@ export const useListItem_unstable = (
         e.preventDefault();
 
         // Space always toggles selection (if enabled)
-        if (isSelectionEnabled) {
-          toggleItem?.(e, value);
+        if (isSelectionModeEnabled) {
+          if (!disabledSelection) {
+            toggleItem?.(e, value);
+          }
         } else {
           triggerAction(e);
         }
@@ -167,7 +171,7 @@ export const useListItem_unstable = (
   });
 
   const onCheckboxChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
-    if (!isSelectionEnabled || e.defaultPrevented) {
+    if (!isSelectionModeEnabled || e.defaultPrevented) {
       return;
     }
 
@@ -190,13 +194,14 @@ export const useListItem_unstable = (
       tabIndex: focusableItems ? 0 : undefined,
       role: finalListItemRole,
       id: String(value),
-      ...(isSelectionEnabled && {
+      ...(isSelectionModeEnabled && {
         'aria-selected': isSelected,
+        'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
       ...props,
       ...tabsterAttributes,
       onKeyDown: handleKeyDown,
-      onClick: isSelectionEnabled || onClick || onAction ? handleClick : undefined,
+      onClick: isSelectionModeEnabled || onClick || onAction ? handleClick : undefined,
     }),
     { elementType: as },
   );
@@ -205,8 +210,9 @@ export const useListItem_unstable = (
     defaultProps: {
       checked: isSelected,
       tabIndex: -1,
+      disabled: disabledSelection,
     },
-    renderByDefault: isSelectionEnabled,
+    renderByDefault: isSelectionModeEnabled,
     elementType: Checkbox,
   });
 
@@ -223,7 +229,8 @@ export const useListItem_unstable = (
     },
     root,
     checkmark,
-    selectable: isSelectionEnabled,
+    disabled: disabledSelection && !onAction,
+    selectable: isSelectionModeEnabled,
     navigable: focusableItems,
   };
 

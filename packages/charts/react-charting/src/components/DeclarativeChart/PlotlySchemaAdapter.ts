@@ -22,11 +22,11 @@ import {
   IVerticalStackedChartProps,
   IHeatMapChartData,
   IHeatMapChartDataPoint,
-  IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
   IGanttChartDataPoint,
+  IScatterChartPoints,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -39,8 +39,15 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
+import type { IAnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
+import {
+  DEFAULT_DATE_STRING,
+  findNumericMinMaxOfY,
+  formatScientificLimitWidth,
+  MIN_DONUT_RADIUS,
+} from '../../utilities/utilities';
 import type {
+  Annotations,
   Datum,
   Layout,
   PlotlySchema,
@@ -55,6 +62,9 @@ import type {
   LayoutAxis,
   XAxisName,
   TraceInfo,
+  DTickValue,
+  AxisType,
+  Shape,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -65,6 +75,11 @@ import {
   isYearArray,
   isInvalidValue,
   formatToLocaleString,
+  isNumber,
+  isObjectArray,
+  getAxisIds,
+  getAxisKey,
+  isScatterAreaChart,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -75,6 +90,15 @@ import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
+import {
+  IChartAnnotation,
+  ChartAnnotationArrowHead,
+  IChartAnnotationLayoutProps,
+  IChartAnnotationStyleProps,
+  ChartAnnotationHorizontalAlign,
+  ChartAnnotationVerticalAlign,
+} from '../../types/IChartAnnotation';
+import { calculatePrecision, precisionRound } from '@fluentui/react';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -188,6 +212,18 @@ const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => 
   return {};
 };
 
+const getXMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getXAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      xMinValue: range[0],
+      xMaxValue: range[1],
+      showRoundOffXTickValues: false,
+    };
+  }
+  return {};
+};
+
 const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
   return layout?.yaxis;
 };
@@ -248,15 +284,11 @@ const usesSecondaryYScale = (series: Partial<PlotData>, layout: Partial<Layout> 
   return series.yaxis === 'y2' && (layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right');
 };
 
-const getSecondaryYAxisValues = (
-  data: Data[],
-  layout: Partial<Layout> | undefined,
-  maxAllowedMinY?: number,
-  minAllowedMaxY?: number,
-): ISecondaryYAxisValues => {
+const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefined): ISecondaryYAxisValues => {
   let containsSecondaryYAxis = false;
   let yMinValue: number | undefined;
   let yMaxValue: number | undefined;
+  let allLineSeries = true;
 
   data.forEach((series: Partial<PlotData>) => {
     if (usesSecondaryYScale(series, layout)) {
@@ -267,6 +299,10 @@ const getSecondaryYAxisValues = (
         yMinValue = Math.min(...yValues);
         yMaxValue = Math.max(...yValues);
       }
+
+      if (series.type !== 'scatter' || isScatterAreaChart(series)) {
+        allLineSeries = false;
+      }
     }
   });
 
@@ -274,11 +310,13 @@ const getSecondaryYAxisValues = (
     return {};
   }
 
-  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
-    yMinValue = Math.min(yMinValue, maxAllowedMinY);
-  }
-  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
-    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  if (!allLineSeries) {
+    if (typeof yMinValue === 'number') {
+      yMinValue = Math.min(yMinValue, 0);
+    }
+    if (typeof yMaxValue === 'number') {
+      yMaxValue = Math.max(yMaxValue, 0);
+    }
   }
   if (layout?.yaxis2?.range) {
     yMinValue = layout.yaxis2.range[0];
@@ -303,11 +341,12 @@ export const _getGaugeAxisColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   color: Color | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): string => {
   const extractedColors = extractColor(colorway, colorwayType, color, colorMap, isDarkTheme);
-  return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
+  return resolveColor(extractedColors, 0, '', colorMap, colorway, isDarkTheme);
 };
 
 export const resolveXAxisPoint = (
@@ -336,9 +375,902 @@ export const resolveXAxisPoint = (
   return x;
 };
 
+/**
+ * Formats text values according to the texttemplate specification
+ * Supports D3 format specifiers within %{text:format} patterns
+ * @param textValue The raw text value to format
+ * @param textTemplate The template string (e.g., "%{text:.1f}%", "%{text:.2%}", "%{text:,.0f}")
+ * @param index Optional index for array-based templates
+ * @returns Formatted text string
+ *
+ * Examples:
+ * - "%{text:.1f}%" → Formats number with 1 decimal place and adds % suffix
+ * - "%{text:.2%}" → Formats as percentage with 2 decimal places
+ * - "%{text:,.0f}" → Formats with thousands separator and no decimals
+ * - "%{text:$,.2f}" → Formats as currency with thousands separator and 2 decimals
+ */
+const formatTextWithTemplate = (
+  textValue: string | number,
+  textTemplate?: string | string[],
+  index?: number,
+): string => {
+  if (!textTemplate) {
+    return String(textValue);
+  }
+  const numVal = typeof textValue === 'number' ? textValue : parseFloat(String(textValue));
+  if (isNaN(numVal)) {
+    return String(textValue);
+  }
+  const template = typeof textTemplate === 'string' ? textTemplate : textTemplate[index || 0] || '';
+
+  // Match Plotly's texttemplate pattern: %{text:format} or %{text}
+  // Can be followed by any literal text like %, $, etc.
+  const plotlyPattern = /%\{text(?::([^}]+))?\}(.*)$/;
+  const match = template.match(plotlyPattern);
+
+  if (match) {
+    const formatSpec = match[1]; // The format specifier (e.g., ".1f", ".2%", ",.0f") or undefined
+    const suffix = match[2]; // Any text after the closing brace (e.g., "%", " units")
+
+    // If no format specifier is provided (e.g., %{text}%), try to infer from suffix
+    if (!formatSpec) {
+      // Check if suffix starts with % - assume simple percentage with 1 decimal
+      if (suffix.startsWith('%')) {
+        return `${numVal.toFixed(1)}${suffix}`;
+      }
+      // No format specifier, just return the number with the suffix
+      return `${numVal}${suffix}`;
+    }
+
+    try {
+      // Use D3 format function to apply the format specifier
+      const formatter = d3Format(formatSpec);
+      const formattedValue = formatter(numVal);
+      return `${formattedValue}${suffix}`;
+    } catch (error) {
+      // Try to extract precision for basic fallback
+      const precisionMatch = formatSpec.match(/\.(\d+)[f%]/);
+      const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 2;
+
+      // Check if it's a percentage format
+      if (formatSpec.includes('%')) {
+        return `${(numVal * 100).toFixed(precision)}%${suffix}`;
+      }
+
+      return `${numVal.toFixed(precision)}${suffix}`;
+    }
+  }
+
+  return String(textValue);
+};
+
+/**
+ * Extracts unique X-axis categories from Plotly data traces
+ * @param data Array of Plotly data traces
+ * @returns Array of unique x values
+ */
+const extractXCategories = (data: Data[] | undefined): Datum[] => {
+  return Array.from(
+    new Set(
+      (data ?? [])
+        .flatMap(trace => {
+          const xData = (trace as Partial<PlotData>).x;
+          if (!xData) {
+            return [];
+          }
+          if (Array.isArray(xData)) {
+            return xData.flat().map(x => {
+              return x;
+            });
+          }
+          return [];
+        })
+        .filter(x => x !== undefined && x !== null),
+    ),
+  );
+};
+
+/**
+ * Checks if a key should be ignored during normalization
+ * @param key The key to check
+ * @returns true if the key should be ignored
+ */
+const shouldIgnoreKey = (key: string): boolean => {
+  const lowerKey = key.toLowerCase();
+  if (lowerKey.includes('style') || lowerKey === 'style') {
+    return true;
+  }
+  // Use regex to match common CSS property patterns
+  // (color, fill, stroke, border, background, font, shadow, outline, etc.)
+  const cssKeyRegex = new RegExp(
+    '^(color|fill|stroke|border|background|font|shadow|outline|margin|padding|gap|align|justify|display|flex|grid|' +
+      'text|line|letter|word|vertical|horizontal|overflow|position|top|right|bottom|left|zindex|z-index|opacity|' +
+      'filter|clip|cursor|resize|transition|animation|transform|box|column|row|direction|visibility|' +
+      'content|width|height|aspect|image|user|pointer|caret|scroll|%)|(-webkit-|-moz-|-ms-|-o-)',
+    'i',
+  );
+  if (cssKeyRegex.test(lowerKey)) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * Flattens a nested object into a single level object with dot notation keys
+ * @param obj Object to flatten
+ * @param prefix Optional prefix for keys
+ * @returns Flattened object
+ */
+const flattenObject = (obj: Record<string, unknown>, prefix: string = ''): Record<string, unknown> => {
+  const flattened: Record<string, unknown> = {};
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const newKey = prefix ? `${prefix}.${key}` : key;
+      const value = obj[key];
+
+      if (typeof value === 'object' && value !== null && !Array.isArray(value) && !(value instanceof Date)) {
+        // Recursively flatten nested objects
+        Object.assign(flattened, flattenObject(value as Record<string, unknown>, newKey));
+      } else {
+        flattened[newKey] = value;
+      }
+    }
+  }
+
+  return flattened;
+};
+
+type PlotlyAnnotation = Partial<Annotations> | null | undefined;
+
+const encodeHtmlEntities = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+const toFiniteNumber = (value: unknown): number | undefined => {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+  const numeric = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(numeric) ? numeric : undefined;
+};
+
+/**
+ * Normalizes Plotly axis reference strings so equivalent aliases (e.g. `xaxis1`, `x1`) collapse to the base axis id.
+ */
+const normalizeAxisRef = (ref: string | undefined, axis: 'x' | 'y'): string => {
+  if (!ref) {
+    return axis;
+  }
+
+  const normalized = ref.toLowerCase();
+  if (
+    normalized === axis ||
+    normalized === `${axis}axis` ||
+    normalized === `${axis}axis1` ||
+    normalized === `${axis}1`
+  ) {
+    return axis;
+  }
+
+  const match = normalized.match(/^([xy])(axis)?(\d+)$/);
+  if (match && match[1] === axis && match[3]) {
+    return match[3] === '1' ? axis : `${axis}${match[3]}`;
+  }
+
+  return normalized;
+};
+
+/**
+ * Scans the data traces bound to a given axis and returns the numeric min/max values plotted on that axis.
+ */
+const getAxisNumericRangeFromData = (
+  axis: 'x' | 'y',
+  ref: string | undefined,
+  layout: Partial<Layout> | undefined,
+  data: Data[] | undefined,
+): [number, number] | undefined => {
+  if (!data || data.length === 0) {
+    return undefined;
+  }
+
+  const axisLayout = getAxisLayoutByRef(layout, ref, axis);
+  const targetRef = normalizeAxisRef(ref, axis);
+  const traceAxisKey = axis === 'x' ? 'xaxis' : 'yaxis';
+
+  let minValue: number | undefined;
+  let maxValue: number | undefined;
+
+  data.forEach(trace => {
+    const plotTrace = trace as Partial<PlotData>;
+    const traceAxisRef = normalizeAxisRef(plotTrace[traceAxisKey as 'xaxis' | 'yaxis'] as string | undefined, axis);
+    if (traceAxisRef !== targetRef) {
+      return;
+    }
+
+    const values = (axis === 'x' ? plotTrace.x : plotTrace.y) as unknown;
+    if (!isArrayOrTypedArray(values)) {
+      return;
+    }
+
+    const arrayLike = values as ArrayLike<unknown>;
+    for (let index = 0; index < arrayLike.length; index++) {
+      const value = arrayLike[index];
+      const numeric = toNumericValue(convertDataValue(value, axisLayout));
+      if (numeric === undefined || Number.isNaN(numeric)) {
+        continue;
+      }
+      minValue = minValue === undefined ? numeric : Math.min(minValue, numeric);
+      maxValue = maxValue === undefined ? numeric : Math.max(maxValue, numeric);
+    }
+  });
+
+  if (minValue === undefined || maxValue === undefined || minValue === maxValue) {
+    return undefined;
+  }
+
+  return [minValue, maxValue];
+};
+
+/**
+ * Converts Plotly's bottom-origin relative Y coordinate into the SVG top-origin space used by our overlay.
+ */
+const transformRelativeYForChart = (value: number | undefined): number | undefined => {
+  if (value === undefined) {
+    return undefined;
+  }
+  if (!Number.isFinite(value)) {
+    return undefined;
+  }
+  return 1 - value;
+};
+
+const mapHorizontalAlign = (anchor?: string): ChartAnnotationHorizontalAlign | undefined => {
+  switch ((anchor ?? '').toLowerCase()) {
+    case 'left':
+      return 'start';
+    case 'center':
+      return 'center';
+    case 'right':
+      return 'end';
+    default:
+      return undefined;
+  }
+};
+
+const mapVerticalAlign = (anchor?: string): ChartAnnotationVerticalAlign | undefined => {
+  switch ((anchor ?? '').toLowerCase()) {
+    case 'top':
+      return 'top';
+    case 'middle':
+      return 'middle';
+    case 'bottom':
+      return 'bottom';
+    default:
+      return undefined;
+  }
+};
+
+const appendPx = (value: unknown): string | undefined => {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+  if (typeof value === 'string') {
+    return value;
+  }
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return `${value}px`;
+  }
+  return undefined;
+};
+
+/**
+ * Maps Plotly's axis reference string to one of our coordinate interpretation modes (axis, relative, or pixel).
+ */
+const resolveRefType = (ref: string | undefined, axis: 'x' | 'y'): 'axis' | 'relative' | 'pixel' | undefined => {
+  if (!ref) {
+    return 'axis';
+  }
+  const normalized = ref.toLowerCase();
+  if (normalized === 'pixel') {
+    return 'pixel';
+  }
+  if (normalized === 'paper') {
+    return 'relative';
+  }
+  if (normalized.endsWith(' domain')) {
+    return normalized.startsWith(axis) ? 'relative' : undefined;
+  }
+  const match = normalized.match(/^([xy])(\d*)$/);
+  if (match && match[1] === axis) {
+    return 'axis';
+  }
+  return undefined;
+};
+
+/**
+ * Retrieves the appropriate axis layout section from Plotly's layout given an axis reference alias.
+ */
+const getAxisLayoutByRef = (
+  layout: Partial<Layout> | undefined,
+  ref: string | undefined,
+  axis: 'x' | 'y',
+): Partial<LayoutAxis> | undefined => {
+  if (!layout) {
+    return undefined;
+  }
+  const defaultAxisKey = `${axis}axis` as 'xaxis' | 'yaxis';
+  if (!ref) {
+    return layout[defaultAxisKey];
+  }
+  const normalized = ref.toLowerCase();
+  if (normalized === 'paper' || normalized === 'pixel' || normalized.endsWith(' domain')) {
+    return layout[defaultAxisKey];
+  }
+  const match = normalized.match(/^([xy])(\d*)$/);
+  if (match && match[1] === axis) {
+    const index = match[2];
+    if (index && index !== '' && index !== '1') {
+      const axisKey = `${axis}axis${index}` as keyof Layout;
+      return layout[axisKey] as Partial<LayoutAxis> | undefined;
+    }
+    return layout[defaultAxisKey];
+  }
+  return layout[defaultAxisKey];
+};
+
+/**
+ * Normalizes raw Plotly data values into canonical number/date/string types based on axis configuration.
+ */
+const convertDataValue = (
+  value: unknown,
+  axisLayout: Partial<LayoutAxis> | undefined,
+): string | number | Date | undefined => {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+  if (axisLayout?.type === 'date' || isDate(value)) {
+    const dateValue = value instanceof Date ? value : new Date(value as string | number);
+    return Number.isNaN(dateValue.getTime()) ? undefined : dateValue;
+  }
+  if (typeof value === 'number') {
+    return value;
+  }
+  if (axisLayout?.type === 'linear' || axisLayout?.type === 'log') {
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : undefined;
+  }
+  if (value instanceof Date) {
+    return value;
+  }
+  return value as string | number;
+};
+
+const toNumericValue = (value: string | number | Date | undefined): number | undefined => {
+  if (value instanceof Date) {
+    const timestamp = value.getTime();
+    return Number.isFinite(timestamp) ? timestamp : undefined;
+  }
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : undefined;
+  }
+  if (typeof value === 'string') {
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : undefined;
+  }
+  return undefined;
+};
+
+const toRelativeCoordinate = (
+  value: unknown,
+  axisLayout: Partial<LayoutAxis> | undefined,
+  fallbackRange?: [number, number],
+): number | undefined => {
+  const range = Array.isArray(axisLayout?.range) ? axisLayout!.range : undefined;
+
+  let start = range && range.length >= 2 ? toNumericValue(convertDataValue(range[0], axisLayout)) : undefined;
+  let end = range && range.length >= 2 ? toNumericValue(convertDataValue(range[1], axisLayout)) : undefined;
+
+  if ((start === undefined || end === undefined || start === end) && fallbackRange) {
+    [start, end] = fallbackRange;
+  }
+
+  const current = toNumericValue(convertDataValue(value, axisLayout));
+
+  if (start === undefined || end === undefined || current === undefined || start === end) {
+    return undefined;
+  }
+
+  const relative = (current - start) / (end - start);
+  return Number.isFinite(relative) ? relative : undefined;
+};
+
+const createAnnotationId = (text: string, index: number): string => {
+  const normalized = text.replace(/\s+/g, ' ').trim();
+  if (normalized) {
+    const slug = normalized
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 32);
+    if (slug) {
+      return `annotation-${index}-${slug}`;
+    }
+  }
+  return `annotation-${index}`;
+};
+
+const DEFAULT_ARROW_OFFSET = -40;
+
+const mapArrowsideToArrow = (annotation: PlotlyAnnotation): ChartAnnotationArrowHead => {
+  let includeStart = false;
+  let includeEnd = false;
+
+  const arrowSide = typeof annotation?.arrowside === 'string' ? annotation?.arrowside.toLowerCase() : undefined;
+  if (arrowSide) {
+    includeStart = arrowSide.includes('start');
+    includeEnd = arrowSide.includes('end');
+  }
+
+  const endHead = toFiniteNumber(annotation?.arrowhead);
+  const startHead = toFiniteNumber((annotation as { startarrowhead?: number }).startarrowhead);
+
+  if (endHead !== undefined && endHead > 0) {
+    includeEnd = true;
+  }
+  if (startHead !== undefined && startHead > 0) {
+    includeStart = true;
+  }
+
+  if (includeStart && includeEnd) {
+    return 'both';
+  }
+  if (includeStart) {
+    return 'start';
+  }
+  if (includeEnd) {
+    return 'end';
+  }
+  return 'none';
+};
+
+const mapArrowDashToPattern = (value: string | undefined): string | undefined => {
+  if (!value) {
+    return undefined;
+  }
+
+  const normalized = value.trim().toLowerCase();
+
+  switch (normalized) {
+    case 'solid':
+      return undefined;
+    case 'dot':
+      return '1, 5';
+    case 'dash':
+      return '5, 5';
+    case 'longdash':
+      return '10, 5';
+    case 'dashdot':
+      return '5, 5, 1, 5';
+    case 'longdashdot':
+      return '10, 5, 1, 5';
+    default:
+      if (/^\d+(\s|,)*\d*$/.test(normalized.replace(/\s+/g, ' '))) {
+        return normalized.replace(/\s+/g, ' ');
+      }
+      return value;
+  }
+};
+
+/**
+ * Converts a Plotly annotation definition into the internal `ChartAnnotation` format, translating coordinates,
+ * layout alignment, styling, and connector metadata while skipping unsupported configurations.
+ */
+const convertPlotlyAnnotation = (
+  annotation: PlotlyAnnotation,
+  layout: Partial<Layout> | undefined,
+  data: Data[] | undefined,
+  index: number,
+): IChartAnnotation | undefined => {
+  if (!annotation || (annotation as { visible?: boolean }).visible === false) {
+    return undefined;
+  }
+
+  const xRefType = resolveRefType(annotation.xref as string | undefined, 'x');
+  const yRefType = resolveRefType(annotation.yref as string | undefined, 'y');
+
+  if (!xRefType || !yRefType) {
+    return undefined;
+  }
+
+  let coordinates: IChartAnnotation['coordinates'] | undefined;
+
+  if (xRefType === 'axis' && yRefType === 'axis') {
+    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
+    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
+    const xValue = convertDataValue(annotation.x, xAxisLayout);
+    const yValue = convertDataValue(annotation.y, yAxisLayout);
+    if (xValue === undefined || yValue === undefined) {
+      return undefined;
+    }
+    const yRefNormalized = typeof annotation.yref === 'string' ? annotation.yref.toLowerCase() : undefined;
+    coordinates = {
+      type: 'data',
+      x: xValue,
+      y: yValue,
+      ...(yRefNormalized === 'y2' ? { yAxis: 'secondary' as const } : {}),
+    };
+  } else if (xRefType === 'relative' && yRefType === 'relative') {
+    const xValue = toFiniteNumber(annotation.x);
+    const yValue = toFiniteNumber(annotation.y);
+    const chartRelativeY = transformRelativeYForChart(yValue);
+    if (xValue === undefined || chartRelativeY === undefined) {
+      return undefined;
+    }
+    coordinates = {
+      type: 'relative',
+      x: xValue,
+      y: chartRelativeY,
+    };
+  } else if (xRefType === 'relative' && yRefType === 'axis') {
+    const xValue = toFiniteNumber(annotation.x);
+    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
+    const yFallbackRange = getAxisNumericRangeFromData('y', annotation.yref as string | undefined, layout, data);
+    const yRelative = toRelativeCoordinate(annotation.y, yAxisLayout, yFallbackRange);
+    const chartRelativeY = transformRelativeYForChart(yRelative);
+    if (xValue === undefined || chartRelativeY === undefined) {
+      return undefined;
+    }
+    coordinates = {
+      type: 'relative',
+      x: xValue,
+      y: chartRelativeY,
+    };
+  } else if (xRefType === 'axis' && yRefType === 'relative') {
+    const yValue = toFiniteNumber(annotation.y);
+    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
+    const xFallbackRange = getAxisNumericRangeFromData('x', annotation.xref as string | undefined, layout, data);
+    const xRelative = toRelativeCoordinate(annotation.x, xAxisLayout, xFallbackRange);
+    const chartRelativeY = transformRelativeYForChart(yValue);
+    if (xRelative === undefined || chartRelativeY === undefined) {
+      return undefined;
+    }
+    coordinates = {
+      type: 'relative',
+      x: xRelative,
+      y: chartRelativeY,
+    };
+  } else if (xRefType === 'pixel' && yRefType === 'pixel') {
+    const xValue = toFiniteNumber(annotation.x);
+    const yValue = toFiniteNumber(annotation.y);
+    if (xValue === undefined || yValue === undefined) {
+      return undefined;
+    }
+    coordinates = {
+      type: 'pixel',
+      x: xValue,
+      y: yValue,
+    };
+  } else {
+    return undefined;
+  }
+
+  const textValue = annotation.text;
+  const rawText = textValue === undefined || textValue === null ? '' : String(textValue);
+  const encodedText = encodeHtmlEntities(rawText);
+
+  const chartAnnotation: IChartAnnotation = {
+    id: createAnnotationId(encodedText, index),
+    text: encodedText,
+    coordinates,
+  };
+
+  const layoutProps: Partial<IChartAnnotationLayoutProps> = {};
+  const styleProps: Partial<IChartAnnotationStyleProps> = {};
+  const showArrow = annotation.showarrow === undefined ? false : !!annotation.showarrow;
+
+  const clipOnAxis = (annotation as { cliponaxis?: boolean }).cliponaxis;
+  if (clipOnAxis !== undefined) {
+    layoutProps.clipToBounds = !!clipOnAxis;
+  } else if (coordinates.type === 'data') {
+    layoutProps.clipToBounds = true;
+  }
+
+  const horizontalAlign = mapHorizontalAlign(annotation.xanchor as string | undefined);
+  if (horizontalAlign) {
+    layoutProps.align = horizontalAlign;
+  }
+
+  if (!layoutProps.align) {
+    const alignProp = mapHorizontalAlign((annotation as { align?: string }).align);
+    if (alignProp) {
+      layoutProps.align = alignProp;
+    }
+  }
+
+  const verticalAlign = mapVerticalAlign(annotation.yanchor as string | undefined);
+  if (verticalAlign) {
+    layoutProps.verticalAlign = verticalAlign;
+  }
+
+  if (!layoutProps.verticalAlign) {
+    const valignProp = mapVerticalAlign((annotation as { valign?: string }).valign);
+    if (valignProp) {
+      layoutProps.verticalAlign = valignProp;
+    }
+  }
+
+  const offsetXComponents: number[] = [];
+  let hasExplicitOffset = false;
+  const ax = toFiniteNumber(annotation.ax);
+  const axRef = typeof annotation.axref === 'string' ? annotation.axref.toLowerCase() : undefined;
+  if (ax !== undefined && (axRef === undefined || axRef === 'pixel')) {
+    offsetXComponents.push(ax);
+    hasExplicitOffset = true;
+  }
+  const xShift = toFiniteNumber(annotation.xshift);
+  if (xShift !== undefined) {
+    offsetXComponents.push(xShift);
+    hasExplicitOffset = true;
+  }
+  if (offsetXComponents.length > 0) {
+    const offsetX = offsetXComponents.reduce((sum, value) => sum + value, 0);
+    if (offsetX !== 0) {
+      layoutProps.offsetX = offsetX;
+    }
+  }
+
+  const offsetYComponents: number[] = [];
+  const ay = toFiniteNumber(annotation.ay);
+  const ayRef = typeof annotation.ayref === 'string' ? annotation.ayref.toLowerCase() : undefined;
+  if (ay !== undefined && (ayRef === undefined || ayRef === 'pixel')) {
+    offsetYComponents.push(ay);
+    hasExplicitOffset = true;
+  }
+  const yShift = toFiniteNumber(annotation.yshift);
+  if (yShift !== undefined) {
+    offsetYComponents.push(yShift);
+    hasExplicitOffset = true;
+  }
+  if (offsetYComponents.length > 0) {
+    const offsetY = offsetYComponents.reduce((sum, value) => sum + value, 0);
+    if (offsetY !== 0) {
+      layoutProps.offsetY = offsetY;
+    }
+  }
+
+  if (showArrow && !hasExplicitOffset && layoutProps.offsetY === undefined) {
+    layoutProps.offsetY = DEFAULT_ARROW_OFFSET;
+  }
+
+  const maxWidth = toFiniteNumber(annotation.width);
+  if (maxWidth !== undefined) {
+    layoutProps.maxWidth = maxWidth;
+  }
+
+  if (annotation.bgcolor) {
+    styleProps.backgroundColor = annotation.bgcolor as string;
+  }
+
+  if (annotation.bordercolor) {
+    styleProps.borderColor = annotation.bordercolor as string;
+  }
+
+  const borderWidth = toFiniteNumber(annotation.borderwidth);
+  if (borderWidth !== undefined) {
+    styleProps.borderWidth = borderWidth;
+  }
+
+  const borderPad = appendPx(annotation.borderpad);
+  if (borderPad) {
+    styleProps.padding = borderPad;
+  }
+
+  const opacity = toFiniteNumber(annotation.opacity);
+  if (opacity !== undefined) {
+    styleProps.opacity = opacity;
+  }
+
+  if (annotation.font) {
+    const font = annotation.font as {
+      color?: string;
+      size?: string | number;
+      weight?: React.CSSProperties['fontWeight'];
+    };
+    if (font?.color) {
+      styleProps.textColor = font.color;
+    }
+    const fontSize = appendPx(font?.size);
+    if (fontSize) {
+      styleProps.fontSize = fontSize;
+    }
+    if (font?.weight) {
+      styleProps.fontWeight = font.weight;
+    }
+  }
+
+  const textAngle = (annotation as { textangle?: number | string })?.textangle;
+  if (typeof textAngle === 'number' && !Number.isNaN(textAngle)) {
+    styleProps.rotation = textAngle;
+  } else if (typeof textAngle === 'string' && textAngle.toLowerCase() !== 'auto') {
+    const parsedAngle = Number(textAngle);
+    if (!Number.isNaN(parsedAngle)) {
+      styleProps.rotation = parsedAngle;
+    }
+  }
+
+  if (Object.keys(layoutProps).length > 0) {
+    chartAnnotation.layout = layoutProps;
+  }
+
+  if (Object.keys(styleProps).length > 0) {
+    chartAnnotation.style = styleProps;
+  }
+
+  if (showArrow) {
+    const arrowColor = (annotation.arrowcolor as string) ?? styleProps.textColor;
+    const arrowWidth = toFiniteNumber(annotation.arrowwidth);
+    const endPadding = toFiniteNumber(annotation.standoff);
+    const startPadding = toFiniteNumber((annotation as { startstandoff?: number }).startstandoff);
+    const dashPattern = mapArrowDashToPattern((annotation as { arrowdash?: string }).arrowdash);
+
+    chartAnnotation.connector = {
+      ...(arrowColor ? { strokeColor: arrowColor } : {}),
+      ...(arrowWidth !== undefined ? { strokeWidth: arrowWidth } : {}),
+      ...(endPadding !== undefined ? { endPadding: Math.max(endPadding, 0) } : {}),
+      ...(startPadding !== undefined ? { startPadding: Math.max(startPadding, 0) } : {}),
+      ...(dashPattern ? { dashArray: dashPattern } : {}),
+      arrow: mapArrowsideToArrow(annotation),
+    };
+  }
+
+  return chartAnnotation;
+};
+
+const getChartAnnotationsFromLayout = (
+  layout: Partial<Layout> | undefined,
+  data: Data[] | undefined,
+  isMultiPlot: boolean,
+): IChartAnnotation[] | undefined => {
+  if (isMultiPlot || !layout?.annotations) {
+    return undefined;
+  }
+  const annotationsArray = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
+  const converted = annotationsArray
+    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, layout, data, index))
+    .filter((annotation): annotation is IChartAnnotation => annotation !== undefined);
+
+  return converted.length > 0 ? converted : undefined;
+};
+
+/**
+ * Normalizes an array of objects by flattening nested structures and creating grouped data
+ * Uses json_normalize approach with D3 color detection and filtering
+ * @param data Array of objects to normalize
+ * @returns Object containing traces for grouped vertical bar chart
+ */
+export const normalizeObjectArrayForGVBC = (
+  data: Array<Record<string, unknown>>,
+  xLabels?: string[],
+): { traces: Array<Record<string, unknown>>; x: string[] } => {
+  if (!data || data.length === 0) {
+    return { traces: [], x: [] };
+  }
+
+  // Use provided xLabels if available, otherwise default to Item 1, Item 2, ...
+  const x = xLabels && xLabels.length === data.length ? xLabels : data.map((_, index) => `Item ${index + 1}`);
+
+  // First, flatten all objects and collect all unique keys, excluding style keys
+  const flattenedObjects = data.map((item, index) => {
+    if (typeof item === 'object' && item !== null) {
+      const flattened = flattenObject(item);
+      // Only keep keys where the value is numeric (number or numeric string) and not a style key
+      const filtered: Record<string, unknown> = {};
+      Object.keys(flattened).forEach(key => {
+        const value = flattened[key];
+        if (!shouldIgnoreKey(key) && (typeof value === 'number' || (typeof value === 'string' && isNumber(value)))) {
+          filtered[key] = value;
+        }
+      });
+      return filtered;
+    } else if (typeof item === 'number' || (typeof item === 'string' && isNumber(item))) {
+      // Only keep primitive numeric values
+      return { [x[index] || `item_${index}`]: item };
+    } else {
+      // Non-numeric primitive, ignore by returning empty object
+      return {};
+    }
+  });
+
+  // Collect all unique keys across all objects
+  const allKeys = new Set<string>();
+  flattenedObjects.forEach(obj => {
+    Object.keys(obj).forEach(key => allKeys.add(key));
+  });
+
+  // Create traces for each key (property)
+  const traces: Array<Record<string, unknown>> = [];
+
+  allKeys.forEach(key => {
+    const yValues: number[] = [];
+    let hasValidData = false;
+    let isNumericData = false;
+
+    flattenedObjects.forEach((obj, index) => {
+      const value = obj[key];
+      if (typeof value === 'number') {
+        yValues.push(value);
+        hasValidData = true;
+        isNumericData = true;
+      } else if (typeof value === 'string' && isNumber(value)) {
+        yValues.push(parseFloat(value));
+        hasValidData = true;
+        isNumericData = true;
+      }
+    });
+
+    // Only create trace if we have valid numeric data
+    if (hasValidData && isNumericData) {
+      const trace: Record<string, unknown> = {
+        type: 'bar',
+        name: key,
+        x,
+        y: yValues,
+      };
+
+      traces.push(trace);
+    }
+  });
+
+  return { traces, x };
+};
+
+export const transformPlotlyJsonToAnnotationChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  _colorMap: React.MutableRefObject<Map<string, string>>,
+  _colorwayType: ColorwayType,
+  _isDarkTheme?: boolean,
+): IAnnotationOnlyChartProps => {
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const titles = getTitles(input.layout);
+  const layoutTitle = titles.chartTitle || undefined;
+
+  const layoutWithMeta = input.layout as Partial<Layout> & { meta?: { description?: string } };
+  const description =
+    typeof layoutWithMeta?.meta?.description === 'string' ? layoutWithMeta.meta.description : undefined;
+
+  const width = typeof input.layout?.width === 'number' ? input.layout.width : undefined;
+  const height = typeof input.layout?.height === 'number' ? input.layout.height : undefined;
+  const paperBackgroundColor = typeof input.layout?.paper_bgcolor === 'string' ? input.layout.paper_bgcolor : undefined;
+  const plotBackgroundColor = typeof input.layout?.plot_bgcolor === 'string' ? input.layout.plot_bgcolor : undefined;
+  const fontColor = typeof input.layout?.font?.color === 'string' ? input.layout.font.color : undefined;
+  const fontFamily = typeof input.layout?.font?.family === 'string' ? input.layout.font.family : undefined;
+  const margin = input.layout?.margin;
+
+  return {
+    annotations,
+    chartTitle: layoutTitle,
+    description,
+    width,
+    height,
+    paperBackgroundColor,
+    plotBackgroundColor,
+    fontColor,
+    fontFamily,
+    margin,
+  };
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -353,29 +1285,52 @@ export const transformPlotlyJsonToDonutProps = (
     input.layout?.piecolorway ?? firstData?.marker?.colors,
     colorMap,
     isDarkTheme,
+    true,
   );
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
-  firstData.labels?.forEach((label, index: number) => {
-    const value = getNumberAtIndexOrDefault(firstData.values, index);
-    if (isInvalidValue(value) || (value as number) < 0) {
-      return;
-    }
+  // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
+  // getAllupLegendsProps function without sorting labels by value
+  colorMap.current.clear();
 
-    const legend = `${label}`;
-    // resolve color for each legend from the extracted colors
-    const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
-
-    if (!mapLegendToDataPoint[legend]) {
-      mapLegendToDataPoint[legend] = {
-        legend,
-        data: value,
-        color,
-      };
-    } else {
-      mapLegendToDataPoint[legend].data! += value as number;
-    }
-  });
+  // Sort labels by value descending before mapping
+  if (firstData.labels && firstData.values) {
+    const markerColors = (firstData.marker?.colors as unknown as string[]) || undefined;
+    const hasMarkerColors = Array.isArray(markerColors) && markerColors.length >= firstData.labels.length;
+    const labelValuePairs = firstData.labels.map((label, index) => ({
+      label,
+      value: getNumberAtIndexOrDefault(firstData.values, index),
+      index,
+      color: hasMarkerColors ? markerColors[index] : undefined,
+    }));
+    // Filter out invalid values
+    const validPairs = labelValuePairs.filter(pair => !isInvalidValue(pair.value));
+    // Sort descending by value; when marker colors are present, keep color attached to the label
+    validPairs.sort((a, b) => (b.value as number) - (a.value as number));
+    validPairs.forEach((pair, sortedIdx) => {
+      const legend = `${pair.label}`;
+      const color: string =
+        pair.color ??
+        resolveColor(
+          colors,
+          sortedIdx,
+          legend,
+          colorMap,
+          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+          true,
+        );
+      if (!mapLegendToDataPoint[legend]) {
+        mapLegendToDataPoint[legend] = {
+          legend,
+          data: pair.value,
+          color,
+        };
+      } else {
+        mapLegendToDataPoint[legend].data! += pair.value as number;
+      }
+    });
+  }
 
   const width: number = input.layout?.width ?? 440;
   const height: number = input.layout?.height ?? 220;
@@ -388,25 +1343,40 @@ export const transformPlotlyJsonToDonutProps = (
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
   const { chartTitle } = getTitles(input.layout);
-
+  // Build anticlockwise order by keeping the first item, reversing the rest
+  const legends = Object.keys(mapLegendToDataPoint);
+  const reorderedEntries =
+    legends.length > 1
+      ? ([
+          [legends[0], mapLegendToDataPoint[legends[0]]],
+          ...legends
+            .slice(1)
+            .reverse()
+            .map(key => [key, mapLegendToDataPoint[key]] as const),
+        ] as ReadonlyArray<readonly [string, IChartDataPoint]>)
+      : legends.map(key => [key, mapLegendToDataPoint[key]] as const);
   return {
     data: {
       chartTitle,
-      chartData: Object.values(mapLegendToDataPoint),
+      chartData: reorderedEntries.map(([, v]) => v as IChartDataPoint),
     },
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+    showLabelsInPercent: firstData.textinfo
+      ? ['percent', 'label+percent', 'percent+label'].includes(firstData.textinfo)
+      : true,
     roundCorners: true,
+    order: 'sorted',
   };
 };
 
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -419,10 +1389,10 @@ export const transformPlotlyJsonToVSBCProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
+  const resolveXValue = getAxisValueResolver(getAxisType(input.data, getAxisObjects(input.data, input.layout).x));
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(input.layout, series, colorScale);
 
-    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
     const extractedBarColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -440,19 +1410,20 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
-    const xValues = series.x as Datum[];
-    const isXDate = isDateArray(xValues);
-    const isXString = isStringArray(xValues);
-    const isXNumber = isNumberArray(xValues);
-    const validXYRanges = getValidXYRanges(series);
+    const validXYRanges = getValidXYRanges(series, resolveXValue);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
+      const textValues = Array.isArray(series.text)
+        ? series.text.slice(rangeStart, rangeEnd)
+        : typeof series.text === 'string'
+        ? series.text
+        : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            xAxisPoint: resolveXValue(x)!,
             chartData: [],
             lineData: [],
           };
@@ -465,22 +1436,43 @@ export const transformPlotlyJsonToVSBCProps = (
                 ? ((series.marker?.color as Color[])?.[index2 % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
+          : resolveColor(
+              extractedBarColors,
+              index2,
+              legend,
+              colorMap,
+              input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+            );
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
         const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
+        let barLabel = Array.isArray(textValues) ? textValues[index2] : textValues;
+
+        // Apply texttemplate formatting if specified
+        if (barLabel && series.texttemplate) {
+          barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index2);
+        }
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
             yAxisCalloutData,
+            ...(barLabel ? { barLabel: String(barLabel) } : {}),
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
           }
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
-          const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
+          const lineColor = resolveColor(
+            extractedLineColors,
+            index1,
+            legend,
+            colorMap,
+            input.layout?.template?.layout?.colorway,
+            isDarkTheme,
+          );
           const lineOptions = getLineOptions(series.line);
           const legendShape = getLegendShape(series);
 
@@ -504,8 +1496,75 @@ export const transformPlotlyJsonToVSBCProps = (
       });
     });
   });
+  const xCategories = extractXCategories(input.data);
+
+  (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .forEach((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+      const resolveX = (val: Datum) => {
+        if (shape.xref === 'x domain') {
+          if (val === 0) {
+            return xCategories[0];
+          }
+          if (val === 1) {
+            return xCategories[xCategories.length - 1];
+          }
+        }
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            return xCategories[shapeIdx];
+          }
+        }
+        return val;
+      };
+
+      const x0Key = resolveX(shape.x0!);
+      const x1Key = resolveX(shape.x1!);
+      const resolveY = (val: Datum) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          if (typeof val === 'number') {
+            return yMinValue + val * (yMaxValue - yMinValue);
+          }
+          return val;
+        }
+        return val;
+      };
+
+      const y0Val = resolveY(shape.y0!);
+      const y1Val = resolveY(shape.y1!);
+
+      if (mapXToDataPoints[x0Key as string]) {
+        mapXToDataPoints[x0Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y0Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
+
+      if (mapXToDataPoints[x1Key as string]) {
+        mapXToDataPoints[x1Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y1Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
+    });
 
   const vsbcData = Object.values(mapXToDataPoints);
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
   return {
     data: vsbcData,
@@ -524,100 +1583,209 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getBarProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
-  const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  // Handle object arrays in y values by normalizing the data first
+  let processedInput = { ...input };
+
+  // Check if any bar traces have object arrays as y values
+  const hasObjectArrayData = input.data.some(
+    (series: Partial<PlotData>) => series.type === 'bar' && isObjectArray(series.y),
+  );
+
+  if (hasObjectArrayData) {
+    // Process each trace that has object array y values
+    const processedData = input.data
+      .map((series: Partial<PlotData>, index: number) => {
+        if (series.type === 'bar' && isObjectArray(series.y)) {
+          // Normalize the object array to create multiple traces for GVBC
+          const { traces } = normalizeObjectArrayForGVBC(
+            series.y as unknown as Array<Record<string, unknown>>,
+            Array.isArray(series.x) ? (series.x as string[]) : undefined,
+          );
+
+          // Return all the new traces, each representing a property from the objects
+          return traces.map((trace: Record<string, unknown>) => ({
+            ...trace,
+            // Copy other properties from the original series if needed
+            marker: series.marker,
+          }));
+        }
+        return [series];
+      })
+      .flat();
+
+    processedInput = {
+      ...input,
+      data: processedData,
+    };
+  }
+
+  const gvbcDataV2: IGroupedVerticalBarChartProps['dataV2'] = [];
+  const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout);
+  const { legends, hideLegend } = getLegendProps(processedInput.data, processedInput.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
-  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    colorScale = createColorScale(input.layout, series, colorScale);
+  const yAxisTickFormat = getYAxisTickFormat(processedInput.data[0], processedInput.layout);
+  processedInput.data.forEach((series: Partial<PlotData>, index1: number) => {
+    colorScale = createColorScale(processedInput.layout, series, colorScale);
+    const legend: string = legends[index1];
+    const legendShape = getLegendShape(series);
 
-    // extract colors for each series only once
-    const extractedColors = extractColor(
-      input.layout?.template?.layout?.colorway,
-      colorwayType,
-      series.marker?.color,
-      colorMap,
-      isDarkTheme,
-    ) as string[] | string | undefined;
-    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
-      if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
-        return;
-      }
+    if (series.type === 'bar') {
+      // extract bar colors for each series only once
+      const extractedBarColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
 
-      if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { name: x.toString(), series: [] };
-      }
+      gvbcDataV2.push({
+        type: 'bar',
+        legend,
+        key: legend,
+        data: (series.x as Datum[])
+          .map((x, xIndex) => {
+            if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
+              return;
+            }
 
-      if (series.type === 'bar') {
-        const legend: string = legends[index1];
-        // resolve color for each legend's bars from the colorscale or extracted colors
-        const color = colorScale
-          ? colorScale(
-              isArrayOrTypedArray(series.marker?.color)
-                ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
-                : 0,
-            )
-          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
-        const opacity = getOpacity(series, xIndex);
+            // resolve color for each legend's bars from the colorscale or extracted colors
+            const color = colorScale
+              ? colorScale(
+                  isArrayOrTypedArray(series.marker?.color)
+                    ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
+                    : 0,
+                )
+              : resolveColor(
+                  extractedBarColors,
+                  xIndex,
+                  legend,
+                  colorMap,
+                  processedInput.layout?.template?.layout?.colorway,
+                  isDarkTheme,
+                );
+            const opacity = getOpacity(series, xIndex);
+            const yVal = series.y![xIndex] as number;
+            // Extract text value for barLabel
+            let barLabel = Array.isArray(series.text) ? series.text[xIndex] : series.text;
 
-        const yVal: number = series.y![xIndex] as number;
+            // Apply texttemplate formatting if specified
+            if (barLabel && series.texttemplate) {
+              barLabel = formatTextWithTemplate(barLabel, series.texttemplate, xIndex);
+            }
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: yVal,
-          xAxisCalloutData: x as string,
-          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+              color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+              ...(barLabel ? { barLabel: String(barLabel) } : {}),
+            };
+          })
+          .filter(item => typeof item !== 'undefined'),
+        useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
+      });
+    } else if (series.type === 'scatter') {
+      // extract line colors for each series only once
+      const extractedLineColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.line?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const lineColor = resolveColor(
+        extractedLineColors,
+        index1,
+        legend,
+        colorMap,
+        processedInput.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
+      const lineOptions = getLineOptions(series.line);
+      const opacity = getOpacity(series, index1);
+      const validXYRanges = getValidXYRanges(series);
+
+      validXYRanges.forEach(([rangeStart, rangeEnd]) => {
+        const rangeXValues = series.x!.slice(rangeStart, rangeEnd) as Datum[];
+        const rangeYValues = series.y!.slice(rangeStart, rangeEnd) as Datum[];
+
+        gvbcDataV2.push({
+          type: 'line',
           legend,
-          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
-          yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+          legendShape,
+          data: rangeXValues.map((x, i: number) => {
+            const yVal = rangeYValues[i] as number;
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+            };
+          }),
+          color: rgb(lineColor).copy({ opacity }).formatHex8() ?? lineColor,
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
+          useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
         });
-      }
-    });
+      });
+    }
   });
 
-  const gvbcData = Object.values(mapXToDataPoints);
+  const annotations = getChartAnnotationsFromLayout(processedInput.layout, processedInput.data, isMultiPlot);
 
   return {
-    data: gvbcData,
-    width: input.layout?.width,
-    height: input.layout?.height ?? 350,
+    dataV2: gvbcDataV2,
+    width: processedInput.layout?.width,
+    height: processedInput.layout?.height ?? 350,
     barwidth: 'auto',
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
-    ...getTitles(input.layout),
-    ...getAxisCategoryOrderProps(input.data, input.layout),
-    ...getYMinMaxValues(input.data[0], input.layout),
-    ...getXAxisTickFormat(input.data[0], input.layout),
+    roundedTicks: true,
+    wrapXAxisLables: true,
+    showYAxisLables: true,
+    ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
+    ...getTitles(processedInput.layout),
+    ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
+    ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
+    ...getXAxisTickFormat(processedInput.data[0], processedInput.layout),
     ...yAxisTickFormat,
-    ...getBarProps(input.data, input.layout),
+    ...getBarProps(processedInput.data, processedInput.layout),
+    ...getAxisTickProps(processedInput.data, processedInput.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -645,8 +1813,8 @@ export const transformPlotlyJsonToVBCProps = (
     const xValues: (string | number)[] = [];
     const yValues: number[] = [];
     series.x.forEach((xVal, index) => {
-      const yVal = getNumberAtIndexOrDefault(series.y, index);
-      if (isInvalidValue(xVal) || isInvalidValue(yVal)) {
+      const yVal = getNumberAtIndexOrDefault(series.y, index) ?? 0;
+      if (isInvalidValue(xVal)) {
         return;
       }
 
@@ -683,7 +1851,7 @@ export const transformPlotlyJsonToVBCProps = (
               ? ((series.marker?.color as Color[])?.[index % (series.marker?.color as Color[]).length] as number)
               : 0,
           )
-        : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+        : resolveColor(extractedColors, index, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
       const opacity = getOpacity(series, index);
       const yVal = calculateHistNorm(
         series.histnorm,
@@ -691,6 +1859,12 @@ export const transformPlotlyJsonToVBCProps = (
         total,
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
+
+      // Handle text values and texttemplate formatting for histogram bins
+      let barLabel = Array.isArray(series.text) ? series.text[index] : series.text;
+      if (barLabel && series.texttemplate) {
+        barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index);
+      }
 
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
@@ -700,9 +1874,12 @@ export const transformPlotlyJsonToVBCProps = (
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
+        ...(barLabel ? { barLabel: String(barLabel) } : {}),
       });
     });
   });
+
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
   return {
     data: vbcData,
@@ -714,16 +1891,21 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vbcData[0]?.x === 'string',
+    showYAxisLables: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
 export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -741,6 +1923,7 @@ export const transformPlotlyJsonToAreaChartProps = (
 export const transformPlotlyJsonToLineChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -758,6 +1941,7 @@ export const transformPlotlyJsonToLineChartProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -772,10 +1956,31 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as IScatterChartProps;
 };
 
+const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
+  if (!Array.isArray(layout?.shapes)) {
+    return [];
+  }
+
+  return layout.shapes
+    .filter((shape: Partial<Shape>) => shape.type === 'rect')
+    .map((shape: { x0?: Datum; x1?: Datum; fillcolor?: string }) => {
+      //colorFillbars doesn't support string dates or categories
+      if (typeof shape.x0 === 'string' || typeof shape.x1 === 'string') {
+        return null;
+      }
+      return {
+        color: shape.fillcolor!,
+        data: [{ startX: shape.x0, endX: shape.x1 }],
+        applyPattern: false,
+      };
+    });
+};
+
 const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
   chartType: ScatterChartTypes,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -792,15 +1997,13 @@ const transformPlotlyJsonToScatterTraceProps = (
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
-  const secondaryYAxisValues = getSecondaryYAxisValues(
-    input.data,
-    input.layout,
-    isAreaChart ? 0 : undefined,
-    isAreaChart ? 0 : undefined,
-  );
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
+  const xAxisType = getAxisType(input.data, getAxisObjects(input.data, input.layout).x);
+  const resolveXValue = getAxisValueResolver(xAxisType);
+  const shouldWrapLabels = xAxisType === 'category';
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -817,13 +2020,16 @@ const transformPlotlyJsonToScatterTraceProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      const isXString = isStringArray(xValues);
-      const isXDate = isDateArray(xValues);
-      const isXNumber = isNumberArray(xValues);
-      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
-      const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const seriesColor = resolveColor(
+        extractedColors,
+        index,
+        legend,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       // if mode contains 'text', we prioritize showing the text over curving the line
@@ -831,26 +2037,32 @@ const transformPlotlyJsonToScatterTraceProps = (
         !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
-      const validXYRanges = getValidXYRanges(series);
+      const validXYRanges = getValidXYRanges(series, resolveXValue);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
         const rangeXValues = xValues.slice(rangeStart, rangeEnd);
         const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
         const markerSizes = isArrayOrTypedArray(series.marker?.size)
           ? (series.marker!.size as number[]).slice(rangeStart, rangeEnd)
           : [];
+        const markerColors = isArrayOrTypedArray(series.marker?.color)
+          ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
+          : Array.isArray(series.marker?.color)
+          ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
+          : undefined;
         const textValues = Array.isArray(series.text) ? series.text.slice(rangeStart, rangeEnd) : undefined;
 
         return {
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            x: resolveXValue(x),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
               : typeof series.marker?.size === 'number'
               ? { markerSize: series.marker.size }
               : {}),
+            ...(markerColors ? { markerColor: markerColors[i] } : {}),
             ...(textValues ? { text: textValues[i] } : {}),
             yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
           })),
@@ -866,6 +2078,10 @@ const transformPlotlyJsonToScatterTraceProps = (
                   originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
                   direction: input.layout?.polar?.angularaxis?.direction,
                   rotation: input.layout?.polar?.angularaxis?.rotation,
+                  axisLabel: (series as { __axisLabel: string[] }).__axisLabel
+                    ? (series as { __axisLabel: string[] }).__axisLabel
+                    : {},
+                  fill: series.fill,
                 }
               : {}),
           },
@@ -874,6 +2090,66 @@ const transformPlotlyJsonToScatterTraceProps = (
       });
     })
     .flat();
+
+  const xMinValue = chartData[0]?.data[0]?.x;
+  const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.x;
+  const yMinValue = chartData[0]?.data[0]?.y;
+  const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.y;
+  const xCategories = extractXCategories(input.data);
+  const lineShape: ILineChartPoints[] | IScatterChartPoints[] = (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .map((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+
+      const resolveX = (val: Datum) => {
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            return xCategories[shapeIdx];
+          }
+        }
+        if (shape.xref === 'paper') {
+          if (val === 0) {
+            return xMinValue;
+          }
+          if (val === 1) {
+            return xMaxValue;
+          }
+          return typeof xMinValue === 'number' && typeof xMaxValue === 'number' && typeof val === 'number'
+            ? xMinValue + val * (xMaxValue - xMinValue)
+            : val;
+        }
+        return val;
+      };
+
+      const resolveY = (val: Datum) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          if (typeof val === 'number') {
+            return yMinValue + val * (yMaxValue - yMinValue);
+          }
+          return val;
+        }
+        return val;
+      };
+
+      return {
+        legend: `Reference_${shapeIdx}`,
+        data: [
+          { x: resolveXValue(resolveX(shape.x0!)), y: resolveY(shape.y0!) },
+          { x: resolveXValue(resolveX(shape.x1!)), y: resolveY(shape.y1!) },
+        ],
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      } as ILineChartPoints | IScatterChartPoints;
+    });
 
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
   if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
@@ -885,12 +2161,14 @@ const transformPlotlyJsonToScatterTraceProps = (
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    lineChartData: chartData,
+    lineChartData: [...chartData, ...(lineShape as ILineChartPoints[])],
   };
 
   const scatterChartProps: IChartProps = {
-    scatterChartData: chartData,
+    scatterChartData: [...chartData, ...(lineShape as IScatterChartPoints[])],
   };
+
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
   const commonProps = {
     supportNegativeData: true,
@@ -901,9 +2179,16 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
+    wrapXAxisLables: shouldWrapLabels,
+    showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getAxisScaleTypeProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 
   if (isAreaChart) {
@@ -915,10 +2200,20 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
       enableReflow: false,
       ...commonProps,
       ...yMinMax,
+      ...(isScatterChart
+        ? {
+            showYAxisLablesTooltip: true,
+            ...getAxisCategoryOrderProps(input.data, input.layout),
+          }
+        : {}),
+      ...(!isScatterChart &&
+        (() => {
+          const bars = mapColorFillBars(input.layout);
+          return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
+        })()),
     } as ILineChartProps | IScatterChartProps;
   }
 };
@@ -926,6 +2221,7 @@ const transformPlotlyJsonToScatterTraceProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -947,7 +2243,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
       const legend = legends[index];
       return (series.y as Datum[])
         .map((yValue, i: number) => {
-          if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
+          if (isInvalidValue(yValue)) {
             return null;
           }
           // resolve color for each legend's bars from the colorscale or extracted colors
@@ -957,14 +2253,15 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
                   ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
                   : 0,
               )
-            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+            : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
           const opacity = getOpacity(series, i);
 
           return {
-            x: series.x![i],
+            x: isInvalidValue(series.x?.[i]) ? 0 : series.x![i],
             y: yValue,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            ...(series.text?.[i] ? { barLabel: series.text[i].toString() } : {}),
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
@@ -995,23 +2292,38 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
 export const transformPlotlyJsonToGanttChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IGanttChartProps => {
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const data = input.data.filter((series: Partial<PlotData>) => series.type !== 'scatter' || series.mode !== 'markers');
+  const { legends, hideLegend } = getLegendProps(data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
-  const chartData: IGanttChartDataPoint[] = input.data
-    .map((series: Partial<PlotData>, index: number) => {
+  const xAxisType = getAxisType(data, getAxisObjects(data, input.layout).x);
+  const resolveXValue = getAxisValueResolver(xAxisType, parseLocalDate);
+  const resolveGanttXValue = (value: Datum) => {
+    const resolvedValue = resolveXValue(value);
+    return typeof resolvedValue === 'string' ? 0 : resolvedValue ?? 0;
+  };
+  const isXDate = xAxisType === 'date';
+  const ganttData: IGanttChartDataPoint[] = [];
+  data.forEach((series: Partial<PlotData>, index: number) => {
+    const legend = legends[index];
+
+    if (series.type === 'bar') {
       colorScale = createColorScale(input.layout, series, colorScale);
 
       // extract colors for each series only once
@@ -1022,46 +2334,59 @@ export const transformPlotlyJsonToGanttChartProps = (
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
-      const legend = legends[index];
-      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
-      };
 
-      return (series.y as Datum[])
-        .map((yVal, i: number) => {
-          if (isInvalidValue(yVal)) {
-            return null;
-          }
-          // resolve color for each legend's bars from the colorscale or extracted colors
-          const color = colorScale
-            ? colorScale(
-                isArrayOrTypedArray(series.marker?.color)
-                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
-                  : 0,
-              )
-            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
-          const opacity = getOpacity(series, i);
-          const base = convertXValueToNumber(series.base?.[i]);
-          const xVal = convertXValueToNumber(series.x?.[i]);
+      (series.y as Datum[]).forEach((yVal, i: number) => {
+        if (isInvalidValue(yVal)) {
+          return;
+        }
+        // resolve color for each legend's bars from the colorscale or extracted colors
+        const color = colorScale
+          ? colorScale(
+              isArrayOrTypedArray(series.marker?.color)
+                ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                : 0,
+            )
+          : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
+        const opacity = getOpacity(series, i);
+        const base = +resolveGanttXValue((isArrayOrTypedArray(series.base) ? series.base![i] : series.base) as Datum);
+        const xVal = +resolveGanttXValue(series.x?.[i] as Datum);
 
-          return {
-            x: {
-              start: isXDate ? new Date(base) : base,
-              end: isXDate ? new Date(base + xVal) : base + xVal,
-            },
-            y: yVal,
-            legend,
-            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
-          } as IGanttChartDataPoint;
-        })
-        .filter(point => point !== null) as IGanttChartDataPoint[];
-    })
-    .flat();
+        ganttData.push({
+          x: {
+            start: isXDate ? new Date(base) : base,
+            end: isXDate ? new Date(base + xVal) : base + xVal,
+          },
+          y: yVal as string | number,
+          legend,
+          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+        });
+      });
+    } else if (series.type === 'scatter' && series.mode === 'none' && series.fill === 'toself') {
+      for (let i = 0; i < series.y!.length; i += 5) {
+        if (isInvalidValue(series.y![i]) || isInvalidValue(series.y![i + 3])) {
+          continue;
+        }
+
+        const x0 = resolveGanttXValue(series.x![i] as Datum);
+        const x1 = resolveGanttXValue(series.x![i + 1] as Datum);
+        const y0 = series.y![i] as number;
+        const y1 = series.y![i + 3] as number;
+
+        ganttData.push({
+          x: {
+            start: x0,
+            end: x1,
+          },
+          y: Math.round((y0 + y1) / 2),
+          legend,
+          color: series.fillcolor,
+        });
+      }
+    }
+  });
 
   return {
-    data: chartData,
+    data: ganttData,
     showYAxisLables: true,
     height: input.layout?.height ?? 350,
     width: input.layout?.width,
@@ -1072,14 +2397,16 @@ export const transformPlotlyJsonToGanttChartProps = (
     roundCorners: true,
     useUTC: false,
     ...getTitles(input.layout),
-    ...getAxisCategoryOrderProps(input.data, input.layout),
-    ...getBarProps(input.data, input.layout, true),
+    ...getAxisCategoryOrderProps(data, input.layout),
+    ...getBarProps(data, input.layout, true),
+    ...getAxisTickProps(data, input.layout),
   };
 };
 
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1089,13 +2416,60 @@ export const transformPlotlyJsonToHeatmapProps = (
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
+  // Build a 2D array of annotations based on their grid position
+  const annotationGrid: (string | undefined)[][] = [];
+  const rawAnnotations = input.layout?.annotations;
+
+  if (rawAnnotations) {
+    const annotationsArray = Array.isArray(rawAnnotations) ? rawAnnotations : [rawAnnotations];
+
+    // Collect all unique x and y values from valid annotations
+    const xSet = new Set<number>();
+    const ySet = new Set<number>();
+    const validAnnotations: Array<{ x: number; y: number; text: string }> = [];
+
+    annotationsArray.forEach((a: PlotlyAnnotation) => {
+      if (
+        a &&
+        typeof a.x === 'number' &&
+        typeof a.y === 'number' &&
+        typeof a.text === 'string' &&
+        (a.xref === 'x' || a.xref === undefined) &&
+        (a.yref === 'y' || a.yref === undefined)
+      ) {
+        xSet.add(a.x);
+        ySet.add(a.y);
+        validAnnotations.push({ x: a.x, y: a.y, text: cleanText(a.text) });
+      }
+    });
+
+    if (validAnnotations.length > 0) {
+      // Get sorted unique x and y values
+      const xValues = Array.from(xSet).sort((a, b) => a - b);
+      const yValues = Array.from(ySet).sort((a, b) => a - b);
+
+      // Initialize 2D grid and populate
+      validAnnotations.forEach(annotation => {
+        const xIdx = xValues.indexOf(annotation.x);
+        const yIdx = yValues.indexOf(annotation.y);
+        if (!annotationGrid[yIdx]) {
+          annotationGrid[yIdx] = [];
+        }
+        annotationGrid[yIdx][xIdx] = annotation.text;
+      });
+    }
+  }
+
+  // Helper function to get annotation from 2D grid by index
+  const getAnnotationByIndex = (xIdx: number, yIdx: number): string | undefined => annotationGrid[yIdx]?.[xIdx];
+
   if (firstData.type === 'histogram2d') {
     const xValues: (string | number)[] = [];
     const yValues: (string | number)[] = [];
     const zValues: number[] = [];
     firstData.x?.forEach((xVal, index) => {
-      const zVal = getNumberAtIndexOrDefault(firstData.z, index);
-      if (isInvalidValue(xVal) || isInvalidValue(firstData.y?.[index]) || isInvalidValue(zVal)) {
+      const zVal = getNumberAtIndexOrDefault(firstData.z, index) ?? 0;
+      if (isInvalidValue(xVal) || isInvalidValue(firstData.y?.[index])) {
         return;
       }
 
@@ -1137,11 +2511,13 @@ export const transformPlotlyJsonToHeatmapProps = (
           isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
         );
 
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
+
         heatmapDataPoints.push({
           x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
           y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -1151,16 +2527,31 @@ export const transformPlotlyJsonToHeatmapProps = (
       });
     });
   } else {
-    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+    // If x and y are not provided, generate indices based on z dimensions
+    const zArray = firstData.z as number[][];
+    const xValues = firstData.x as Datum[] | undefined;
+    const yValues = firstData.y as Datum[] | undefined;
+
+    // Determine the dimensions from z array
+    const yLength = zArray?.length ?? 0;
+    const xLength = zArray?.[0]?.length ?? 0;
+
+    // Use provided x/y values or generate indices
+    const xData = xValues ?? Array.from({ length: xLength }, (_, i) => i);
+    const yData = yValues ?? Array.from({ length: yLength }, (_, i) => yLength - 1 - i);
+
+    xData.forEach((xVal, xIdx: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      firstData.y?.forEach((yVal: any, yIdx: number) => {
-        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+      yData.forEach((yVal: any, yIdx: number) => {
+        const zVal = zArray?.[yIdx]?.[xIdx];
+
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
           x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
           y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -1235,12 +2626,14 @@ export const transformPlotlyJsonToHeatmapProps = (
     wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1267,9 +2660,24 @@ export const transformPlotlyJsonToSankeyProps = (
     colorMap,
     isDarkTheme,
   );
+  const extractedLinkColors = extractColor(
+    input.layout?.template?.layout?.colorway,
+    colorwayType,
+    link?.color,
+    colorMap,
+    isDarkTheme,
+  );
+
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
-      const color = resolveColor(extractedNodeColors, index, label, colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedNodeColors,
+        index,
+        label,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
 
       return {
         nodeId: index,
@@ -1279,8 +2687,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     links: validLinks.map((validLink: any, index: number) => {
+      const color = resolveColor(
+        extractedLinkColors,
+        index,
+        validLink.target,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       return {
         ...validLink,
+        color,
       };
     }),
   } as ISankeyChartData;
@@ -1308,6 +2725,7 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1325,7 +2743,14 @@ export const transformPlotlyJsonToGaugeProps = (
     ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
       firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
         const legend = step.name || `Segment ${index + 1}`;
-        const color = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+        const color = resolveColor(
+          extractedColors,
+          index,
+          legend,
+          colorMap,
+          input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+        );
         return {
           legend,
           size: step.range?.[1] - step.range?.[0],
@@ -1364,7 +2789,14 @@ export const transformPlotlyJsonToGaugeProps = (
         colorMap,
         isDarkTheme,
       );
-      const color = resolveColor(extractedIncreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedIncreasingDeltaColors,
+        0,
+        '',
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
@@ -1375,7 +2807,14 @@ export const transformPlotlyJsonToGaugeProps = (
         colorMap,
         isDarkTheme,
       );
-      const color = resolveColor(extractedDecreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedDecreasingDeltaColors,
+        0,
+        '',
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       sublabelColor = color;
     }
   }
@@ -1440,9 +2879,42 @@ const formatValue = (
   return `${prefix ?? ''}${formatted}${suffix ?? ''}`;
 };
 
+function resolveCellStyle<T>(raw: T | T[] | T[][] | undefined, rowIndex: number, colIndex: number): T | undefined {
+  if (Array.isArray(raw)) {
+    const rowEntry = raw[colIndex] ?? raw[0];
+    if (Array.isArray(rowEntry)) {
+      return rowEntry[rowIndex] ?? rowEntry[0];
+    }
+    return rowEntry;
+  }
+  return raw;
+}
+
+function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['cells']): TableData['cells'] {
+  return {
+    values: tableCells?.values ?? templateCells?.values ?? [],
+    align: tableCells?.align ?? templateCells?.align,
+
+    fill: {
+      ...(templateCells?.fill ?? {}),
+      ...(tableCells?.fill ?? {}),
+    },
+
+    font: {
+      ...(templateCells?.font ?? {}),
+      ...(tableCells?.font ?? {}),
+    },
+
+    format: tableCells?.format ?? templateCells?.format,
+    prefix: tableCells?.prefix ?? templateCells?.prefix,
+    suffix: tableCells?.suffix ?? templateCells?.suffix,
+  };
+}
+
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1463,42 +2935,14 @@ export const transformPlotlyJsonToChartTableProps = (
       : (values as string[]).map(cell => cleanText(cell));
 
     return cleanedValues.map((value, colIndex) => {
-      const fontColorRaw = header?.font?.color;
-      let fontColor: React.CSSProperties['color'] | undefined;
-
-      if (Array.isArray(fontColorRaw)) {
-        const colorEntry = fontColorRaw[colIndex] ?? fontColorRaw[0];
-        if (Array.isArray(colorEntry)) {
-          fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
-        } else if (typeof colorEntry === 'string') {
-          fontColor = colorEntry;
-        }
-      } else if (typeof fontColorRaw === 'string') {
-        fontColor = fontColorRaw;
-      }
-
-      const fontSizeRaw = header?.font?.size;
-      let fontSize: React.CSSProperties['fontSize'] | undefined;
-
-      if (Array.isArray(fontSizeRaw)) {
-        const fontSizeEntry = fontSizeRaw[colIndex] ?? fontSizeRaw[0];
-        fontSize = Array.isArray(fontSizeRaw[0])
-          ? fontSizeRaw[0][colIndex] ?? fontSizeRaw[0][0]
-          : typeof fontSizeEntry === 'number'
-          ? fontSizeEntry
-          : undefined;
-      } else if (typeof fontSizeRaw === 'number') {
-        fontSize = fontSizeRaw;
-      }
-
-      const updatedColIndex = colIndex >= 1 ? 1 : 0;
-      const fillColorRaw = header?.fill?.color;
-      const backgroundColor = Array.isArray(fillColorRaw)
-        ? fillColorRaw[updatedColIndex] ?? fillColorRaw[0]
-        : fillColorRaw;
-
-      const textAlignRaw = header?.align;
-      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] ?? textAlignRaw[0] : textAlignRaw;
+      //headers are at first row only
+      const rowIndex = 0;
+      const fontColor = resolveCellStyle(header?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontSize = resolveCellStyle(header?.font?.size, rowIndex, colIndex) as number | undefined;
+      const backgroundColor = resolveCellStyle(header?.fill?.color, rowIndex, colIndex) as string | undefined;
+      const textAlign = resolveCellStyle(header?.align, rowIndex, colIndex) as
+        | React.CSSProperties['textAlign']
+        | undefined;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -1511,10 +2955,7 @@ export const transformPlotlyJsonToChartTableProps = (
     });
   };
   const columns = tableData.cells?.values ?? [];
-  const cells =
-    tableData.cells && Object.keys(tableData.cells).length > 0
-      ? tableData.cells
-      : input.layout?.template?.data?.table?.[0]?.cells;
+  const cells = mergeCells(tableData.cells, input.layout?.template?.data?.table?.[0]?.cells);
   const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
@@ -1525,39 +2966,12 @@ export const transformPlotlyJsonToChartTableProps = (
           ? formatValue(cleanValue, colIndex, cells)
           : cleanValue;
 
-      const rawFontColor = cells?.font?.color;
-      let fontColor: React.CSSProperties['color'] | undefined;
-      if (Array.isArray(rawFontColor)) {
-        const entry = rawFontColor[colIndex] ?? rawFontColor[0];
-        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        fontColor = typeof colorValue === 'string' ? colorValue : undefined;
-      } else if (typeof rawFontColor === 'string') {
-        fontColor = rawFontColor;
-      }
-
-      const rawFontSize = cells?.font?.size;
-      let fontSize: React.CSSProperties['fontSize'] | undefined;
-      if (Array.isArray(rawFontSize)) {
-        const entry = rawFontSize[colIndex] ?? rawFontSize[0];
-        const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
-      } else if (typeof rawFontSize === 'number') {
-        fontSize = rawFontSize;
-      }
-
-      const updatedColIndex = colIndex >= 1 ? 1 : 0;
-      const rawBackgroundColor = cells?.fill?.color;
-      let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
-      if (Array.isArray(rawBackgroundColor)) {
-        const entry = rawBackgroundColor[updatedColIndex] ?? rawBackgroundColor[0];
-        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
-      } else if (typeof rawBackgroundColor === 'string') {
-        backgroundColor = rawBackgroundColor;
-      }
-
-      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] ?? cells.align[0] : cells?.align;
-      const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
+      const fontColor = resolveCellStyle(cells?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
+      const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
+      const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as
+        | React.CSSProperties['textAlign']
+        | undefined;
 
       const style: React.CSSProperties = {
         ...(fontColor ? { color: fontColor } : {}),
@@ -1579,13 +2993,24 @@ export const transformPlotlyJsonToChartTableProps = (
     },
   };
 
+  const templateHeader = input.layout?.template?.data?.table?.[0]?.header;
+  const tableHeader = tableData.header;
+
+  const header = {
+    align: tableHeader?.align ?? templateHeader?.align,
+    fill: {
+      ...(templateHeader?.fill ?? {}),
+      ...(tableHeader?.fill ?? {}),
+    },
+    font: {
+      ...(templateHeader?.font ?? {}),
+      ...(tableHeader?.font ?? {}),
+    },
+    values: tableHeader?.values ?? templateHeader?.values ?? [],
+  };
+
   return {
-    headers: normalizeHeaders(
-      tableData.header?.values ?? [],
-      tableData.header && Object.keys(tableData.header).length > 0
-        ? tableData.header
-        : input.layout?.template?.data?.table![0].header,
-    ),
+    headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,
@@ -1638,6 +3063,7 @@ function getCategoriesAndValues(series: Partial<PlotData>): {
 export const transformPlotlyJsonToFunnelChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1667,7 +3093,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
         isDarkTheme,
       );
       // Always use the first color for the series/category
-      const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedColors,
+        0,
+        category,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       seriesColors[category] = color;
 
       const labels = series.labels ?? series.y ?? series.stage;
@@ -1712,7 +3145,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
       );
 
       categories.forEach((label: string, i: number) => {
-        const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        const color = resolveColor(
+          extractedColors,
+          i,
+          label,
+          colorMap,
+          input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+        );
         const valueNum = Number(values[i]);
         if (isNaN(valueNum)) {
           return;
@@ -1730,7 +3170,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     data: funnelData,
     width: input.layout?.width,
     height: input.layout?.height,
-    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
@@ -1738,7 +3178,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
 
-  // 1. Find the global min and max radius across all series
+  // Find the global min and max radius across all series
   let minRadius = 0;
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
@@ -1753,18 +3193,27 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // 2. If there are negative radii, compute the shift
+  // If there are negative radii, compute the shift
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
-  // 3. Project all points and create a perfect square domain
+  // Collect all unique theta values from all scatterpolar series for equal spacing
+  const allThetaValues: Set<string> = new Set();
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series = input.data[sindex] as Partial<PlotData>;
+    if (series.theta && isArrayOrTypedArray(series.theta)) {
+      series.theta.forEach(theta => allThetaValues.add(String(theta)));
+    }
+  }
+
+  // Project all points and create a perfect square domain
   const allX: number[] = [];
   const allY: number[] = [];
   let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set text to theta values as strings
-    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
-      series.text = series.theta.map(v => String(v));
+    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
+    if (isArrayOrTypedArray(series.theta)) {
+      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
@@ -1794,7 +3243,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
         continue;
       }
 
-      // 4. Map theta to angle in radians
+      // Map theta to angle in radians
       let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
@@ -1803,10 +3252,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       } else {
         thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
-      // 5. Shift only the polar origin (not the cartesian)
+      // Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
       const polarRadius = rawRadius + radiusShift; // Only for projection
-      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      // Calculate cartesian coordinates (with shifted polar origin)
       const x = polarRadius * Math.cos(thetaRad);
       const y = polarRadius * Math.sin(thetaRad);
 
@@ -1902,7 +3351,7 @@ var baseContainer: any, baseAttrName: any;
  * @param trace
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function findArrayAttributes(trace: any) {
+export function findArrayAttributes(trace: any): void {
   // Init basecontainer and baseAttrName
   crawlIntoTrace(baseContainer, 0, '');
 }
@@ -2020,7 +3469,7 @@ const createBins = (
 
   if (typeof binSize === 'number' && binSize > 0) {
     const thresholds: number[] = [];
-    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    const precision = Math.max(calculatePrecision(minVal), calculatePrecision(binSize));
     let th = precisionRound(minVal, precision);
 
     while (th < precisionRound(maxVal + binSize, precision)) {
@@ -2078,15 +3527,6 @@ const calculateHistNorm = (
   }
 };
 
-const getPrecision = (value: number) => {
-  return value.toString().split('.')[1]?.length ?? 0;
-};
-
-const precisionRound = (value: number, precision: number) => {
-  const factor = Math.pow(10, precision);
-  return Math.round(value * factor) / factor;
-};
-
 const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
   const dashType = series.line?.dash || 'solid';
   if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
@@ -2099,6 +3539,7 @@ const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
 
 export const getAllupLegendsProps = (
   input: PlotlySchema,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   traceInfo: TraceInfo[],
@@ -2122,19 +3563,30 @@ export const getAllupLegendsProps = (
           input.layout?.piecolorway ?? pieSeries?.marker?.colors,
           colorMap,
           isDarkTheme,
+          true,
         );
 
-        pieSeries.labels?.forEach((label, labelIndex: number) => {
-          const legend = `${label}`;
-          // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme);
-          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
-            allupLegends.push({
-              title: legend,
-              color,
-            });
-          }
-        });
+        if (isArrayOrTypedArray(pieSeries.labels)) {
+          pieSeries.labels!.forEach((label, labelIndex: number) => {
+            const legend = `${label}`;
+            // resolve color for each legend from the extracted colors
+            const color: string = resolveColor(
+              colors,
+              labelIndex,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
+            if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+              allupLegends.push({
+                title: legend,
+                color,
+              });
+            }
+          });
+        }
       } else if (isNonPlotType(traceInfo[index].type) === false) {
         const plotSeries = series as Partial<PlotData>;
         const name = plotSeries.legendgroup;
@@ -2185,7 +3637,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined, isMul
   };
 };
 
-export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
+export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number): number | undefined => {
   if (isArrayOrTypedArray(data)) {
     if (typeof data![index] !== 'number' || !isFinite(data![index] as number)) {
       return;
@@ -2197,7 +3649,11 @@ export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index
   return 1;
 };
 
-export const getValidXYRanges = (series: Partial<PlotData>) => {
+export const getValidXYRanges = (
+  series: Partial<PlotData>,
+  resolveX?: (v: Datum) => Datum,
+  resolveY?: (v: Datum) => Datum,
+): [number, number][] => {
   if (!isArrayOrTypedArray(series.x) || !isArrayOrTypedArray(series.y)) {
     return [];
   }
@@ -2206,7 +3662,12 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   let start = 0;
   let end = 0;
   for (; end < series.x!.length; end++) {
-    if (isInvalidValue(series.x![end]) || isInvalidValue(series.y![end])) {
+    if (
+      isInvalidValue(series.x![end]) ||
+      (typeof resolveX === 'function' && isInvalidValue(resolveX(series.x![end] as Datum))) ||
+      isInvalidValue(series.y![end]) ||
+      (typeof resolveY === 'function' && isInvalidValue(resolveY(series.y![end] as Datum)))
+    ) {
       if (end - start > 0) {
         ranges.push([start, end]);
       }
@@ -2226,7 +3687,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation', 'table', 'gauge', 'funnel'].includes(chartType);
 };
 
 export const getGridProperties = (
@@ -2446,7 +3907,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
     if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
-      result[propName] = ax!.categoryarray;
+      result[propName] = ax?.autorange === 'reversed' ? ax!.categoryarray!.slice().reverse() : ax!.categoryarray;
       return;
     }
 
@@ -2503,7 +3964,14 @@ const getBarProps = (
   let padding: number | undefined;
 
   if (typeof layout?.bargap === 'number') {
-    padding = layout.bargap;
+    if (layout.bargap >= 0 && layout.bargap <= 1) {
+      padding = layout.bargap;
+    } else {
+      // Plotly uses a default bargap of 0.2, as noted here: https://github.com/plotly/plotly.js/blob/1d5a249e43dd31ae50acf02117a19e5ac97387e9/src/traces/bar/layout_defaults.js#L58.
+      // However, we don't use this value as our default padding because it causes the bars to
+      // appear disproportionately wide in large containers.
+      padding = 0.2;
+    }
   }
 
   const plotlyBarWidths = data
@@ -2536,5 +4004,264 @@ const getBarProps = (
     maxBarWidth: 1000,
     xAxisInnerPadding: padding,
     xAxisOuterPadding: padding / 2,
+  };
+};
+
+type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
+
+const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
+  const result: GetAxisScaleTypePropsResult = {};
+  const axisObjects = getAxisObjects(data, layout);
+
+  if (axisObjects.x?.type === 'log') {
+    result.xScaleType = 'log';
+  }
+  if (axisObjects.y?.type === 'log') {
+    result.yScaleType = 'log';
+  }
+  if (axisObjects.y2?.type === 'log') {
+    result.secondaryYScaleType = 'log';
+  }
+
+  return result;
+};
+
+type GetAxisTickPropsResult = Pick<
+  ICartesianChartProps,
+  'tickValues' | 'xAxisTickCount' | 'xAxis' | 'yAxisTickValues' | 'yAxisTickCount' | 'yAxis'
+>;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/tick_value_defaults.js#L8}
+ */
+const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
+  const props: GetAxisTickPropsResult = {};
+  const axisObjects = getAxisObjects(data, layout);
+
+  Object.keys(axisObjects).forEach(axId => {
+    const ax = axisObjects[axId];
+    if (!ax) {
+      return;
+    }
+
+    const axType = getAxisType(data, ax);
+
+    if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+      const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
+
+      if (axId === 'x') {
+        props.tickValues = tickValues;
+        props.xAxis = {
+          tickText: ax.ticktext,
+        };
+      } else if (axId === 'y') {
+        props.yAxisTickValues = tickValues;
+        props.yAxis = {
+          tickText: ax.ticktext,
+        };
+      }
+      return;
+    }
+
+    if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+      const dtick = plotlyDtick(ax.dtick, axType);
+      const tick0 = plotlyTick0(ax.tick0, axType, dtick);
+
+      if (axId === 'x') {
+        props.xAxis = {
+          tickStep: dtick,
+          tick0,
+        };
+      } else if (axId === 'y') {
+        props.yAxis = {
+          tickStep: dtick,
+          tick0,
+        };
+      }
+      return;
+    }
+
+    if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
+      if (axId === 'x') {
+        props.xAxisTickCount = ax.nticks;
+      } else if (axId === 'y') {
+        props.yAxisTickCount = ax.nticks;
+      }
+    }
+  });
+
+  return props;
+};
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L16}
+ */
+const plotlyDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
+  const isLogAx = axType === 'log';
+  const isDateAx = axType === 'date';
+  const isCatAx = axType === 'category';
+  const dtickDflt = isDateAx ? 86400000 : 1;
+
+  if (!dtick) {
+    return dtickDflt;
+  }
+
+  if (isNumber(dtick)) {
+    dtick = Number(dtick);
+    if (dtick <= 0) {
+      return dtickDflt;
+    }
+    if (isCatAx) {
+      // category dtick must be positive integers
+      return Math.max(1, Math.round(dtick));
+    }
+    if (isDateAx) {
+      // date dtick must be at least 0.1ms (our current precision)
+      return Math.max(0.1, dtick);
+    }
+    return dtick;
+  }
+
+  if (typeof dtick !== 'string' || !(isDateAx || isLogAx)) {
+    return dtickDflt;
+  }
+
+  const prefix = dtick.charAt(0);
+  const dtickNum = isNumber(dtick.slice(1)) ? Number(dtick.slice(1)) : 0;
+
+  if (
+    dtickNum <= 0 ||
+    !(
+      // "M<n>" gives ticks every (integer) n months
+      (
+        (isDateAx && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
+        // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
+        (isLogAx && prefix === 'L') ||
+        // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
+        (isLogAx && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
+      )
+    )
+  ) {
+    return dtickDflt;
+  }
+
+  return dtick;
+};
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L70}
+ */
+const plotlyTick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
+  if (axType === 'date') {
+    return isDate(tick0) ? new Date(tick0!) : new Date(DEFAULT_DATE_STRING);
+  }
+  if (dtick === 'D1' || dtick === 'D2') {
+    // D1 and D2 modes ignore tick0 entirely
+    return undefined;
+  }
+  // Aside from date axes, tick0 must be numeric
+  return isNumber(tick0) ? Number(tick0) : 0;
+};
+
+interface IAxisObject extends Partial<LayoutAxis> {
+  _id: string;
+}
+
+const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
+  // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
+  // are called with the corresponding filtered data. As a result, all traces passed to an adapter
+  // function share the same xaxis.
+  let xAxisId: number | undefined;
+  const yAxisIds = new Set<number>();
+  data.forEach((series: Partial<PlotData>) => {
+    const axisIds = getAxisIds(series);
+    xAxisId = axisIds.x;
+    yAxisIds.add(axisIds.y);
+  });
+
+  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): IAxisObject => ({
+    ...layout?.[getAxisKey(axLetter, axId)],
+    _id: `${axLetter}${axId > 1 ? axId : ''}`,
+  });
+
+  const axisObjects: Record<string, IAxisObject> = {};
+
+  if (typeof xAxisId === 'number') {
+    axisObjects.x = makeAxisObject('x', xAxisId);
+  }
+
+  const sortedYAxisIds = Array.from(yAxisIds).sort();
+  if (sortedYAxisIds.length > 0) {
+    axisObjects.y = makeAxisObject('y', sortedYAxisIds[0]);
+  }
+  if (sortedYAxisIds.length > 1) {
+    axisObjects.y2 = makeAxisObject('y', sortedYAxisIds[1]);
+  }
+
+  return axisObjects;
+};
+
+const getAxisType = (data: Data[], ax: IAxisObject): AxisType => {
+  if (!ax) {
+    return 'category';
+  }
+
+  if (['linear', 'log', 'date', 'category'].includes(ax.type ?? '')) {
+    return ax.type!;
+  }
+
+  const axLetter = ax._id[0] as 'x' | 'y';
+  const values: Datum[] = [];
+  data.forEach((series: Partial<PlotData>) => {
+    const axId = series[`${axLetter}axis`];
+    if ((axId === ax._id || (!axId && ax._id === axLetter)) && isArrayOrTypedArray(series[axLetter])) {
+      series[axLetter]!.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    }
+  });
+
+  if (isNumberArray(values) && !isYearArray(values)) {
+    return 'linear';
+  }
+  if (isDateArray(values)) {
+    return 'date';
+  }
+  return 'category';
+};
+
+const getAxisValueResolver = (axType: AxisType, dateParser?: (v: string | number) => Date) => {
+  const toDate = (value: string | number): Date | null => {
+    const date = dateParser ? dateParser(value) : new Date(value);
+    return isNaN(date.getTime()) ? null : date;
+  };
+
+  return (value: Datum): Datum => {
+    if (isInvalidValue(value)) {
+      return null;
+    }
+
+    switch (axType) {
+      case 'linear':
+      case 'log':
+        return isNumber(value) ? +value! : null;
+
+      case 'date':
+        if (isNumber(value)) {
+          return toDate(+value!);
+        }
+        if (typeof value === 'string') {
+          return toDate(value);
+        }
+        return null;
+
+      case 'category':
+        return `${value}`;
+
+      default:
+        return null;
+    }
   };
 };

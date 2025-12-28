@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalStackedBarChart,
   VSChartDataPoint,
@@ -8,7 +9,7 @@ import {
 } from '@fluentui/react-charts';
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const VerticalStackedBarDateAxis = () => {
+export const VerticalStackedBarDateAxis = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [barGapMax, setBarGapMax] = React.useState<number>(2);
@@ -155,14 +156,17 @@ export const VerticalStackedBarDateAxis = () => {
         <VerticalStackedBarChart
           chartTitle="Vertical stacked bar chart styled example"
           data={data}
+          width={width}
+          height={height}
+          barGapMax={barGapMax}
+          barCornerRadius={barCornerRadius}
+          barMinimumHeight={barMinimumHeight}
           yAxisTickCount={10}
           tickValues={tickValues}
           tickFormat={timeFormat}
-          // eslint-disable-next-line react/jsx-no-bind
           onBarClick={(event, clickData) => console.log('clicked', event, clickData)}
           yMaxValue={120}
           isCalloutForStack={selectedCallout === 'MultiCallout'}
-          // eslint-disable-next-line react/jsx-no-bind
           yAxisTickFormat={(x: number | string) => `${x} h`}
           margins={{
             bottom: 35,

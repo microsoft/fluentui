@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -22,7 +24,7 @@ const MONTHS_PER_ROW = 4;
 function useAnimateBackwards({ navigatedDate }: { navigatedDate: CalendarMonthProps['navigatedDate'] }) {
   const currentYear = navigatedDate.getFullYear();
 
-  const previousYearRef = React.useRef<number | undefined>();
+  const previousYearRef = React.useRef<number | undefined>(undefined);
   React.useEffect(() => {
     previousYearRef.current = currentYear;
   });

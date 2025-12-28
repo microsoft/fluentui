@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Tooltip } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
 
   return (

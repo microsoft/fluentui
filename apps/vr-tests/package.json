@@ -11,7 +11,7 @@
     "lint": "just-scripts lint",
     "start": "storybook dev -p 3000",
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -28,8 +28,8 @@
     "@fluentui/storybook": "*",
     "@fluentui/react-charting": "*",
     "@fluentui/theme-samples": "*",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0"
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 
 import { names } from './utils';
@@ -11,15 +12,16 @@ export default {
   component: AvatarGroup,
   decorators: [
     story => (
-      <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
-        <div style={{ display: 'flex' }}>
-          <div className="testWrapper" style={{ width: '100%', overflow: 'hidden' }}>
-            {story()}
-          </div>
+      <div style={{ display: 'flex' }}>
+        <div className="testWrapper" style={{ width: '100%', overflow: 'hidden' }}>
+          {story()}
         </div>
-      </StoryWright>
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().click('#show-overflow').snapshot('popoverContentOpen').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof AvatarGroup>;
 
 export const OverflowContent = () => {

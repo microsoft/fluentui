@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DonutChart, ChartProps, ChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 import { Button, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
@@ -15,7 +16,7 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   border: 0,
 };
 
-export const DonutChartDynamic = () => {
+export const DonutChartDynamic = (): JSXElement => {
   const _colors = [
     [DataVizPalette.color3, DataVizPalette.color4, DataVizPalette.color5, DataVizPalette.color6, DataVizPalette.color7],
     [DataVizPalette.color8, DataVizPalette.color9, DataVizPalette.color10, DataVizPalette.color11],

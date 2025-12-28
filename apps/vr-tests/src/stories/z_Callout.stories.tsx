@@ -2,8 +2,9 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
-import { getStoryVariant, RTL, StoryWrightDecorator } from '../utilities';
+import { getStoryVariant, RTL } from '../utilities';
 
 const calloutContent = (
   <p className="ms-CalloutExample-subText" id="callout-description-1">
@@ -44,8 +45,13 @@ export default {
         {story()}
       </div>
     ),
-    StoryWrightDecorator(new Steps().snapshot('default').end()),
   ],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default').end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Callout>;
 
 export const Root = () => <Callout {...defaultProps}>{calloutContent}</Callout>;

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Tooltip } from '@fluentui/react-components';
 import { ArrowRoutingRegular } from '@fluentui/react-icons';
 
-export const Target = () => {
+export const Target = (): JSXElement => {
   const [iconRef, setIconRef] = React.useState<HTMLSpanElement | null>(null);
   return (
     <Tooltip

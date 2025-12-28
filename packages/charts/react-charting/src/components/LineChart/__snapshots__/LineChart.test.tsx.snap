@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`LineChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
@@ -570,6 +570,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -1276,6 +1277,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"

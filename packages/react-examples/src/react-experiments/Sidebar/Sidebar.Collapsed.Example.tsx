@@ -5,9 +5,10 @@
 import { getTheme } from '@fluentui/react';
 import * as React from 'react';
 import { Sidebar } from '@fluentui/react-experiments/lib/Sidebar';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class SidebarCollapsibleExample extends React.Component {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this.state = {
       active: true,
     };

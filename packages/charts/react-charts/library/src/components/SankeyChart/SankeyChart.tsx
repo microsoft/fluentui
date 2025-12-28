@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens } from '@fluentui/react-theme';
@@ -12,6 +14,7 @@ import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
+import { useImageExport } from '../../utilities/hooks';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -154,7 +157,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: SankeyChartData) {
+export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
@@ -538,8 +541,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   SankeyChartProps
 >((props, forwardedRef) => {
   const classes = useSankeyChartStyles(props);
-  const chartContainer = React.useRef<HTMLDivElement>(null);
-  const _reqID = React.useRef<number>();
+  const { chartContainerRef: chartContainer } = useImageExport(props.componentRef, true, false);
+  const _reqID = React.useRef<number | undefined>(undefined);
   const _linkId = useId('link');
   const _chartId = useId('sankeyChart');
   const _emptyChartId = useId('_SankeyChart_empty');
@@ -551,7 +554,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
@@ -566,14 +569,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const [yCalloutValue, setYCalloutValue] = React.useState<string>();
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: chartContainer.current,
-    }),
-    [],
-  );
 
   const _fitParentContainer = React.useCallback((): void => {
     _reqID.current = _window?.requestAnimationFrame(() => {
@@ -938,7 +933,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 
   const _fillStreamColors = (singleLink: SLink, gradientUrl: string): string | undefined => {
     if (selectedState && selectedLinks.has(singleLink.index!)) {
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   };
 
@@ -992,7 +987,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
-        .html(text);
+        .text(text);
     }
   };
 

@@ -1,10 +1,4 @@
-import {
-  createCustomFocusIndicatorStyle,
-  makeResetStyles,
-  makeStyles,
-  shorthands,
-  tokens,
-} from '@fluentui/react-components';
+import { createCustomFocusIndicatorStyle, makeResetStyles, makeStyles, tokens } from '@fluentui/react-components';
 import { attachmentActionClassName } from './AttachmentAction';
 import { attachmentIconClassName } from './AttachmentIcon';
 
@@ -31,13 +25,13 @@ export const useAttachmentBaseStyles = makeResetStyles({
   width: '100%',
   maxWidth: '424px',
   minHeight: '32px',
-  ...shorthands.padding('7px', '3px', '7px', '11px'),
+  padding: '7px 3px 7px 11px',
   marginBottom: '2px',
   marginRight: '2px',
   backgroundColor: tokens.colorNeutralBackground6,
   color: tokens.colorNeutralForeground1,
   boxShadow: `0 .2rem .4rem -.075rem ${tokens.colorNeutralShadowAmbient}`,
-  ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke3),
+  border: `1px solid ${tokens.colorNeutralStroke3}`,
   borderRadius: '4px',
 });
 

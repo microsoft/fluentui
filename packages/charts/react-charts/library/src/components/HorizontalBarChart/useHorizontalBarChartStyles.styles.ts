@@ -1,7 +1,10 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -30,6 +33,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     width: '100%', // Support custom width
+    textAlign: 'left',
   },
   items10pMargin: {
     marginBottom: tokens.spacingVerticalMNudge,
@@ -79,9 +83,9 @@ const useStyles = makeStyles({
   triangle: {
     width: '0',
     height: '0',
-    ...shorthands.borderLeft('4px', 'solid', 'transparent'),
-    ...shorthands.borderRight('4px', 'solid', 'transparent'),
-    ...shorthands.borderTop('7px', 'solid'),
+    borderLeft: `4px solid transparent`,
+    borderRight: `4px solid transparent`,
+    borderTop: `7px solid`,
     borderTopColor: tokens.colorPaletteBlueBorderActive,
     marginBottom: tokens.spacingVerticalXS,
     position: 'absolute',
@@ -89,7 +93,9 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'none',
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
   },
   chartWrapper40ppadding: {
     paddingRight: '40p',

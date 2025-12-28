@@ -1,9 +1,12 @@
+'use client';
+
 import * as React from 'react';
 
 import { classNamesFunction, ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
 import { Checkbox, mergeClasses } from '@fluentui/react-components';
 import { useCheckboxProps } from './shimCheckboxProps';
 import { useCheckboxStyles } from './Checkbox.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
   useStaticStyles: false,
@@ -24,10 +27,7 @@ export const CheckboxShim = React.forwardRef((props, _ref) => {
     focus: () => checkboxRef.current?.focus(),
   }));
 
-  const defaultLabelRenderer = (
-    checkboxProps?: ICheckboxProps,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element | null => {
+  const defaultLabelRenderer = (checkboxProps?: ICheckboxProps): JSXElement | null => {
     if (!checkboxProps) {
       return null;
     }

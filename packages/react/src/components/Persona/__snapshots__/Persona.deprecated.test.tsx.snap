@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Persona renders Persona correctly with image 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -33,7 +33,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -46,7 +46,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -58,7 +58,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Image
             ms-Persona-image
             {
@@ -78,16 +78,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
               top: 0px;
               width: 48px;
             }
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
+        style="width: 48px; height: 48px;"
       >
         <img
           alt=""
-          className=
+          class=
               ms-Image-image
               ms-Image-image--cover
               ms-Image-image--portrait
@@ -100,15 +95,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
                 opacity: 0;
                 width: 100%;
               }
-          onError={[Function]}
-          onLoad={[Function]}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
         />
       </div>
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -124,7 +117,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -140,34 +133,18 @@ exports[`Persona renders Persona correctly with image 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip1"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -179,7 +156,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
 
 exports[`Persona renders Persona correctly with initials 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -210,7 +187,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -223,7 +200,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -236,7 +213,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #498205;
@@ -266,7 +243,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -282,7 +259,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -298,34 +275,18 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip0"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -337,7 +298,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
 
 exports[`Persona renders Persona correctly with no props 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -368,7 +329,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -381,7 +342,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -394,7 +355,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #0078D4;
@@ -418,8 +379,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -439,7 +400,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;

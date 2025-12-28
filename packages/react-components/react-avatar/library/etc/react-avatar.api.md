@@ -4,13 +4,12 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
@@ -158,7 +157,7 @@ export type AvatarSlots = {
 // @public
 export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
-    activeAriaLabelElement?: JSX.Element;
+    activeAriaLabelElement?: JSXElement;
 };
 
 // @internal
@@ -184,16 +183,16 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 };
 
 // @public (undocumented)
-export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
+export const renderAvatar_unstable: (state: AvatarState) => JSXElement;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public
-export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
+export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSXElement;
 
 // @public
-export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;

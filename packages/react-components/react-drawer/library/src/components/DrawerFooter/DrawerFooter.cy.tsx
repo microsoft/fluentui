@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -7,11 +7,9 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { Drawer } from '../Drawer/Drawer';
 import { DrawerBody } from '../DrawerBody/DrawerBody';
 import { DrawerFooter } from './DrawerFooter';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
@@ -45,7 +43,7 @@ describe('DrawerFooter', () => {
 
     cy.get('#drawer-body').scrollTo('center');
     cy.get('#drawer-footer').within($el => {
-      cy.window().then(win => {
+      cy.window().should(win => {
         const before = win.getComputedStyle($el[0], '::before');
         const opacity = before.getPropertyValue('opacity');
 

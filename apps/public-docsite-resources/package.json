@@ -20,7 +20,7 @@
     "build": "just-scripts build",
     "prebundle": "yarn build",
     "bundle": "just-scripts bundle",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
+    "lint": "eslint --ext .js,.ts,.tsx ./src",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -46,8 +46,8 @@
     "@fluentui/theme-samples": "*",
     "@fluentui/react-monaco-editor": "*",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0"
   }
 }

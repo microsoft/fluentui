@@ -2,6 +2,51 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:04 GMT",
+      "tag": "@fluentui/api-docs_v8.2.28",
+      "version": "8.2.28",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:27 GMT",
+      "tag": "@fluentui/api-docs_v8.2.28",
+      "version": "8.2.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "9dd14c69601fc5018bfd53f14567a69f5fb762e1",
+            "comment": "chore: bump tsdoc\" "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:46 GMT",
+      "tag": "@fluentui/api-docs_v8.2.27",
+      "version": "8.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update microsoft/api-doc to 15.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2025 07:20:51 GMT",
       "tag": "@fluentui/api-docs_v8.2.26",
       "version": "8.2.26",

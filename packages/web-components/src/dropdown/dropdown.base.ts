@@ -8,6 +8,7 @@ import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -105,7 +106,6 @@ export class BaseDropdown extends FASTElement {
   public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
     if (next) {
       next.id = next.id || uniqueId('input-');
-      this.controlSlot?.assign(next);
     }
   }
 
@@ -224,7 +224,7 @@ export class BaseDropdown extends FASTElement {
       next.dropdown = this;
       next.popover = 'manual';
       next.tabIndex = -1;
-      this.listboxSlot.assign(next);
+
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
 
@@ -251,14 +251,6 @@ export class BaseDropdown extends FASTElement {
       }
     }
   }
-
-  /**
-   * Reference to the listbox slot element.
-   *
-   * @internal
-   */
-  @observable
-  public listboxSlot!: HTMLSlotElement;
 
   /**
    * Indicates whether the dropdown allows multiple options to be selected.
@@ -658,7 +650,7 @@ export class BaseDropdown extends FASTElement {
 
     this.focus();
 
-    if (target === this.control && !this.isCombobox) {
+    if ((target === this.control || e.composedPath().includes(this.indicator)) && !this.isCombobox) {
       this.listbox.togglePopover();
       return true;
     }
@@ -692,8 +684,6 @@ export class BaseDropdown extends FASTElement {
     super();
 
     this.elementInternals.role = 'presentation';
-
-    this.addEventListener('connected', this.listboxConnectedHandler);
 
     Updates.enqueue(() => {
       this.insertControl();
@@ -975,6 +965,24 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Handles the `slotchange` event for the dropdown.
+   * Sets the `listbox` property when a valid listbox is assigned to the default slot.
+   *
+   * @param e - the slot change event
+   * @internal
+   */
+  public slotchangeHandler(e: Event): boolean | void {
+    const target = e.target as HTMLSlotElement;
+
+    waitForConnectedDescendants(this, () => {
+      const listbox = target.assignedElements().find((el): el is Listbox => isListbox(el));
+      if (listbox) {
+        this.listbox = listbox;
+      }
+    });
+  }
+
+  /**
    * Updates the freeform option with the provided value.
    *
    * @param value - the value to update the freeform option with
@@ -1007,20 +1015,6 @@ export class BaseDropdown extends FASTElement {
     this.debounceController?.abort();
 
     super.disconnectedCallback();
-  }
-
-  /**
-   * Handles the connected event for the listbox.
-   *
-   * @param e - the event object
-   * @internal
-   */
-  private listboxConnectedHandler(e: Event): void {
-    const target = e.target as HTMLElement;
-
-    if (isListbox(target)) {
-      this.listbox = target;
-    }
   }
 
   /**

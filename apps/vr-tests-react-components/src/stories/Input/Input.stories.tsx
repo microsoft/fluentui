@@ -1,18 +1,19 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Input } from '@fluentui/react-input';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { FluentProvider } from '@fluentui/react-provider';
 
-import { getStoryVariant, withStoryWrightSteps, TestWrapperDecoratorFixedWidth, RTL } from '../../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL } from '../../utilities';
 
 export default {
   title: 'Input Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Input>;
 
 export const SizeSmall = () => <Input size="small" placeholder="Placeholder" />;

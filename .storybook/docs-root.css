@@ -36,13 +36,13 @@
 }
 
 #storybook-docs .sbdocs-img.featured-image {
-  max-width: 100%;
   margin: 48px 0;
   display: block;
+  border-radius: 24px;
 }
 
 #storybook-docs .sbdocs-img {
-  border-radius: 24px;
+  max-width: 100%;
 }
 
 #storybook-docs .sbdocs hr:not(.sbdocs-preview hr) {

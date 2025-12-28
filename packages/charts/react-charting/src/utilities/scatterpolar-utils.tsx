@@ -1,43 +1,32 @@
 import * as React from 'react';
 import { ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series
  * Now places labels at equal angles for all unique texts, regardless of data positions.
  */
 export function renderScatterPolarCategoryLabels({
-  allSeriesData,
   xAxisScale,
   yAxisScale,
   className,
   lineOptions,
   minPixelGap = 40,
 }: {
-  allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
   xAxisScale: ScaleLinear<number, number>;
   yAxisScale: ScaleLinear<number, number>;
   className: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   lineOptions?: any;
   minPixelGap?: number;
-}): React.JSX.Element[] {
+}): JSXElement[] {
   const maybeLineOptions = extractMaybeLineOptions(lineOptions);
 
-  // 1. Aggregate all data points from all series
-  const allLabels: { x: number; y: number; text: string }[] = [];
-  allSeriesData.forEach(series => {
-    series.data.forEach(pt => {
-      if (pt.text) {
-        allLabels.push({ x: pt.x, y: pt.y, text: pt.text });
-      }
-    });
-  });
+  // Always use axisLabel from lineOptions to display the labels
+  const uniqueTexts: string[] = maybeLineOptions?.axisLabel ?? [];
 
-  // 2. Deduplicate by text (angle label)
-  const uniqueTexts = Array.from(new Set(allLabels.map(l => l.text)));
-
-  // 3. Place labels at equal angles
-  const renderedLabels: React.JSX.Element[] = [];
+  // Place labels at equal angles
+  const renderedLabels: JSXElement[] = [];
   const placedPositions: { x: number; y: number }[] = [];
   const labelRadius = 0.7; // You can adjust this value for more/less offset
   const numLabels = uniqueTexts.length;
@@ -81,6 +70,7 @@ export function extractMaybeLineOptions(lineOptions: any):
       originXOffset?: number;
       direction?: 'clockwise' | 'counterclockwise';
       rotation?: number;
+      axisLabel?: string[];
     }
   | undefined {
   return lineOptions
@@ -91,6 +81,7 @@ export function extractMaybeLineOptions(lineOptions: any):
             ? lineOptions.direction
             : undefined,
         rotation: lineOptions.rotation,
+        axisLabel: Array.isArray(lineOptions.axisLabel) ? lineOptions.axisLabel : undefined,
       }
     : undefined;
 }

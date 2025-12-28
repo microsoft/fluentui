@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AppItem,
   Hamburger,
@@ -184,7 +185,7 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const CustomMotion = () => {
+export const CustomMotion = (): JSXElement => {
   const styles = useStyles();
 
   const typeLableId = useId('type-label');

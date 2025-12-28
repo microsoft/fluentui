@@ -1,115 +1,97 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`calloutData should return an array of data points grouped by their date-based x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609459200000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609545600000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609632000000,
-  },
-]
+Object {
+  "1609459200000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609545600000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609632000000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`calloutData should return an array of data points grouped by their numeric x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 10,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 20,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 30,
-  },
-]
+Object {
+  "10": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "20": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "30": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
@@ -511,19 +493,19 @@ exports[`createNumericXAxis should create rounded x-axis labels when showRoundOf
 Array [
   Array [
     5.000000000000004,
-    "0.25",
+    0.25,
   ],
   Array [
     30,
-    "0.3",
+    0.3,
   ],
   Array [
     54.99999999999999,
-    "0.35",
+    0.35,
   ],
   Array [
     80.00000000000001,
-    "0.4",
+    0.4,
   ],
 ]
 `;
@@ -532,15 +514,15 @@ exports[`createNumericXAxis should create the x-axis labels correctly for a spec
 Array [
   Array [
     0,
-    "0",
+    0,
   ],
   Array [
     50,
-    "50",
+    50,
   ],
   Array [
     100,
-    "100",
+    100,
   ],
 ]
 `;
@@ -570,6 +552,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       0
@@ -588,6 +571,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       20
@@ -606,6 +590,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       40
@@ -624,6 +609,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       60
@@ -642,6 +628,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       80
@@ -660,6 +647,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       100
@@ -693,6 +681,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       0
@@ -711,6 +700,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       20
@@ -729,6 +719,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       40
@@ -747,6 +738,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       60
@@ -765,6 +757,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       80
@@ -783,6 +776,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       100
@@ -816,6 +810,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       0
@@ -834,6 +829,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       20
@@ -852,6 +848,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       40
@@ -870,6 +867,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       60
@@ -888,6 +886,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       80
@@ -906,6 +905,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       100
@@ -939,6 +939,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       0
@@ -957,6 +958,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       25
@@ -975,6 +977,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       50
@@ -993,6 +996,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       75
@@ -1011,6 +1015,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       100
@@ -1044,6 +1049,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       0
@@ -1062,6 +1068,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       25
@@ -1080,6 +1087,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       50
@@ -1098,6 +1106,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       75
@@ -1116,6 +1125,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       100
@@ -1149,6 +1159,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       0
@@ -1167,6 +1178,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       25
@@ -1185,6 +1197,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       50
@@ -1203,6 +1216,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       75
@@ -1221,6 +1235,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       100
@@ -1254,6 +1269,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="12"
     >
       0
@@ -1272,6 +1288,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="12"
     >
       25
@@ -1290,6 +1307,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="12"
     >
       50
@@ -1308,6 +1326,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="12"
     >
       75
@@ -1326,6 +1345,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="12"
     >
       100
@@ -1359,6 +1379,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       $0
@@ -1377,6 +1398,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       $25
@@ -1395,6 +1417,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       $50
@@ -1413,6 +1436,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       $75
@@ -1431,6 +1455,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       $100
@@ -1464,6 +1489,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       0
@@ -1482,6 +1508,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       34
@@ -1500,6 +1527,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       68
@@ -1518,6 +1546,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       102
@@ -1551,6 +1580,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       0
@@ -1569,6 +1599,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       3
@@ -1587,6 +1618,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       6
@@ -1605,6 +1637,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       9
@@ -1623,6 +1656,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-12"
     >
       12
@@ -1656,6 +1690,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-5"
     >
       0
@@ -1674,6 +1709,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-5"
     >
       25
@@ -1692,6 +1728,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-5"
     >
       50
@@ -1710,6 +1747,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-5"
     >
       75
@@ -1728,6 +1766,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
       x="-5"
     >
       100
@@ -1795,6 +1834,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 1
@@ -1813,6 +1853,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 2
@@ -1831,6 +1872,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 3
@@ -1864,6 +1906,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 1
@@ -1882,6 +1925,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 2
@@ -1900,6 +1944,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 3
@@ -2502,8 +2547,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
 </g>
 `;
 
-exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate
-  and showXAxisLablesTooltip is true 1`] = `
+exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate\\n  and showXAxisLablesTooltip is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -2526,20 +2570,14 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 1"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 1"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -2558,20 +2596,14 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 2"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 2"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -2590,20 +2622,14 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 3"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 3"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="LessLength"
         x="0"
         y="16"
       >
@@ -2614,8 +2640,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
 </g>
 `;
 
-exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate
-  and showXAxisLablesTooltip is true 1`] = `
+exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate\\n  and showXAxisLablesTooltip is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -2638,20 +2663,14 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 1"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 1"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -2670,20 +2689,14 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 2"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 2"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -2702,20 +2715,14 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     />
     <text
       aria-hidden="true"
+      data-full="X-axis label 3"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
-        data-="X-axis label 3"
         dy="0.71em"
-        id="BaseSpan"
-        x="0"
-        y="16"
-      />
-      <tspan
-        dy="1.81em"
-        id="showDots"
         x="0"
         y="16"
       >
@@ -2751,6 +2758,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2785,6 +2793,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2819,6 +2828,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -3531,24 +3541,15 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan-0"
         x="-18"
       />
-      <tspan
-        dx="1em"
-        id="LessLength-0"
-        x="-18"
-      >
-        Y-axis label 1
-      </tspan>
     </text>
   </g>
   <g
@@ -3561,24 +3562,15 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan-1"
         x="-18"
       />
-      <tspan
-        dx="1em"
-        id="LessLength-1"
-        x="-18"
-      >
-        Y-axis label 2
-      </tspan>
     </text>
   </g>
   <g
@@ -3591,31 +3583,21 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       x2="-6"
     />
     <text
+      data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan-2"
         x="-18"
       />
-      <tspan
-        dx="1em"
-        id="LessLength-2"
-        x="-18"
-      >
-        Y-axis label 3
-      </tspan>
     </text>
   </g>
 </g>
 `;
 
-exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate
-  and truncateLabel is true 1`] = `
+exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate\\n  and truncateLabel is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -3637,20 +3619,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 1"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan-0"
-        x="-18"
-      />
-      <tspan
-        dx="1.5em"
-        dy="0.32"
-        id="showDots-0"
         x="-18"
       >
         Y-axis lab...
@@ -3667,20 +3642,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 2"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan-1"
-        x="-18"
-      />
-      <tspan
-        dx="1.5em"
-        dy="0.32"
-        id="showDots-1"
         x="-18"
       >
         Y-axis lab...
@@ -3697,20 +3665,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       x2="-6"
     />
     <text
+      data-full="Y-axis label 3"
       dy="0.32em"
       fill="currentColor"
       x="-18"
     >
       <tspan
-        data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan-2"
-        x="-18"
-      />
-      <tspan
-        dx="1.5em"
-        dy="0.32"
-        id="showDots-2"
         x="-18"
       >
         Y-axis lab...
@@ -3788,7 +3749,7 @@ Object {
   "dEndValue": 30,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3796,7 +3757,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain 
 Object {
   "dEndValue": 0,
   "dStartValue": 30,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3806,7 +3767,7 @@ Object {
   "dEndValue": 60,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3814,7 +3775,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return 
 Object {
   "dEndValue": 0,
   "dStartValue": 60,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3908,10 +3869,10 @@ Object {
 
 exports[`getDomainNRangeValues should return domain and range values correctly for horizontal bar chart with numeric x-axis 1`] = `
 Object {
-  "dEndValue": NaN,
-  "dStartValue": NaN,
+  "dEndValue": 46,
+  "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 21,
+  "rStartValue": 5,
 }
 `;
 
@@ -3988,8 +3949,7 @@ Object {
 }
 `;
 
-exports[`getUnique should return an array of data points with unique values
-determined by the provided comparison key 1`] = `
+exports[`getUnique should return an array of data points with unique values\\ndetermined by the provided comparison key 1`] = `
 Array [
   Object {
     "values": Array [
@@ -4188,6 +4148,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 1
@@ -4206,6 +4167,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 2
@@ -4224,6 +4186,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 3
@@ -4234,11 +4197,105 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
 
 exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
 <body>
+  <svg>
+    <g
+      fill="none"
+      font-family="sans-serif"
+      font-size="10"
+      text-anchor="middle"
+    >
+      <path
+        class="domain"
+        d="M0.5,6V0.5H100.5V6"
+        stroke="currentColor"
+      />
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(17.741935483870968,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 1"
+          dy="0.71em"
+          fill="currentColor"
+          style="direction: ltr; unicode-bidi: isolate;"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis lab...
+          </tspan>
+        </text>
+      </g>
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(50,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 2"
+          dy="0.71em"
+          fill="currentColor"
+          style="direction: ltr; unicode-bidi: isolate;"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis lab...
+          </tspan>
+        </text>
+      </g>
+      <g
+        class="tick"
+        opacity="1"
+        transform="translate(82.25806451612904,0)"
+      >
+        <line
+          stroke="currentColor"
+          y2="6"
+        />
+        <text
+          aria-hidden="true"
+          data-full="X-axis label 3"
+          dy="0.71em"
+          fill="currentColor"
+          style="direction: ltr; unicode-bidi: isolate;"
+          y="16"
+        >
+          <tspan
+            dy="0.71em"
+            x="0"
+            y="16"
+          >
+            X-axis lab...
+          </tspan>
+        </text>
+      </g>
+    </g>
+  </svg>
   <div
     class="tooltip-1"
     id="VBCTooltipId_1"
-    style="opacity: 0;"
-  />
+    style="opacity: 0.9; bottom: -4px; left: 0px; transform: translateX(-50%);"
+  >
+    X-axis label 1
+  </div>
 </body>
 `;
 

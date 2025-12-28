@@ -4,8 +4,10 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build-storybook": "cross-env NODE_OPTIONS=--max_old_space_size=3072 storybook build -o ./dist/storybook --docs",
-    "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
+    "build-storybook": "cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs",
+    "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
+    "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/react",
+    "generate-llms-docs": "yarn storybook-llms-extractor --config storybook-llms.config.js",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -19,7 +21,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/storybook-llms-extractor": "*"
   },
   "dependencies": {
     "@fluentui/react-calendar-compat": "*",
@@ -35,14 +38,15 @@
     "@fluentui/theme-designer": "*",
     "@fluentui/recipes": "*",
     "@fluentui/react-timepicker-compat": "*",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@microsoft/applicationinsights-web": "^3",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-window": "^1.8.6",
     "tslib": "^2.1.0",
     "react-hook-form": "^5.7.2",
     "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-icons-compat": "*"
+    "@fluentui/react-icons-compat": "*",
+    "@fluentui/react-menu-grid-preview": "*"
   }
 }

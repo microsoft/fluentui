@@ -284,6 +284,7 @@ import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
+import { createMotionComponentVariant } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
@@ -525,6 +526,9 @@ import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
+import { JSXElement } from '@fluentui/react-utilities';
+import { JSXIntrinsicElement } from '@fluentui/react-utilities';
+import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
@@ -822,6 +826,7 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponent } from '@fluentui/react-motion';
 import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
@@ -1379,8 +1384,10 @@ import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popov
 import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
 import { teamsDarkTheme } from '@fluentui/react-theme';
+import { teamsDarkV21Theme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightV21Theme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
@@ -1501,6 +1508,7 @@ import { TreeItemSlots } from '@fluentui/react-tree';
 import { TreeItemState } from '@fluentui/react-tree';
 import { TreeItemValue } from '@fluentui/react-tree';
 import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationDataParam } from '@fluentui/react-tree';
 import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
 import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
@@ -1537,6 +1545,7 @@ import { useAppItem_unstable } from '@fluentui/react-nav';
 import { useAppItemStatic_unstable } from '@fluentui/react-nav';
 import { useAppItemStaticStyles_unstable } from '@fluentui/react-nav';
 import { useAppItemStyles_unstable } from '@fluentui/react-nav';
+import { useApplyScrollbarWidth } from '@fluentui/react-utilities';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -2008,7 +2017,9 @@ import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeNavigation } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useTypingAnnounce } from '@fluentui/react-aria';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -2574,6 +2585,8 @@ export { createLightTheme }
 
 export { createMotionComponent }
 
+export { createMotionComponentVariant }
+
 export { createPresenceComponent }
 
 export { createPresenceComponentVariant }
@@ -3055,6 +3068,12 @@ export { InteractionTagState }
 export { isHTMLElement }
 
 export { isTruncatableBreadcrumbContent }
+
+export { JSXElement }
+
+export { JSXIntrinsicElement }
+
+export { JSXIntrinsicElementKeys }
 
 export { Label }
 
@@ -3649,6 +3668,8 @@ export { PresenceBadgeStatus }
 export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
+
+export { PresenceComponent }
 
 export { PresenceComponentProps }
 
@@ -4764,9 +4785,13 @@ export { TeachingPopoverTriggerState }
 
 export { teamsDarkTheme }
 
+export { teamsDarkV21Theme }
+
 export { teamsHighContrastTheme }
 
 export { teamsLightTheme }
+
+export { teamsLightV21Theme }
 
 export { Text_2 as Text }
 
@@ -5008,6 +5033,8 @@ export { TreeItemValue }
 
 export { TreeNavigationData_unstable }
 
+export { TreeNavigationDataParam }
+
 export { TreeNavigationEvent_unstable }
 
 export { TreeOpenChangeData }
@@ -5079,6 +5106,8 @@ export { useAppItemStatic_unstable }
 export { useAppItemStaticStyles_unstable }
 
 export { useAppItemStyles_unstable }
+
+export { useApplyScrollbarWidth }
 
 export { useAriaLiveAnnouncer_unstable }
 
@@ -6022,7 +6051,11 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 
 export { useTreeItemStyles_unstable }
 
+export { useTreeNavigation }
+
 export { useTreeStyles_unstable }
+
+export { useTypingAnnounce }
 
 export { useUncontrolledFocus }
 

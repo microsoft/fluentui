@@ -8,9 +8,9 @@ import type {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
 } from './FloatingSuggestionsItem.types';
+import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSX.Element => {
+export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSXElement => {
   const {
     id,
     onClick,

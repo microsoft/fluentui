@@ -4,6 +4,7 @@ import { createComponent } from '@fluentui/foundation-legacy';
 import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';
 import type { IPersonaCoinImageProps } from './PersonaCoinImage.types';
 import type { IPersonaCoinComponent } from '../PersonaCoin.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
   root: {
@@ -12,8 +13,7 @@ const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null => {
+const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSXElement | null => {
   if (!props.src) {
     return null;
   }

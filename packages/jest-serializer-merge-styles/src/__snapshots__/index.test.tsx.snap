@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`print can be used in snapshots 1`] = `
 <div
-  className=
+  class=
 
       {
         animation-delay: 500ms;

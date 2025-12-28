@@ -10,6 +10,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentArrays.stories.md';
 
@@ -95,10 +96,10 @@ const FastFadeSlowScale = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentArrays = () => {
+export const CreatePresenceComponentArrays = (): JSXElement => {
   const classes = useClasses();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const ref = React.useRef<HTMLDivElement>(null);
 
   const [visible, setVisible] = React.useState<boolean>(true);

@@ -10,6 +10,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentFunctions.stories.md';
 
@@ -87,11 +88,11 @@ const collapseMotion: PresenceMotionFn = ({ element }) => {
 };
 const Collapse = createPresenceComponent(collapseMotion);
 
-export const CreatePresenceComponentFunctions = () => {
+export const CreatePresenceComponentFunctions = (): JSXElement => {
   const classes = useClasses();
 
-  const motionInRef = React.useRef<MotionImperativeRef>();
-  const motionOutRef = React.useRef<MotionImperativeRef>();
+  const motionInRef = React.useRef<MotionImperativeRef>(null);
+  const motionOutRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

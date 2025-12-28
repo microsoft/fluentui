@@ -1,23 +1,25 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { SearchBox, Fabric } from '@fluentui/react';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'SearchBox',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-SearchBox-field')
         .hover('.ms-SearchBox-field')
         .snapshot('default', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof SearchBox>;
 
 export const Root = () => (
   <Fabric style={{ display: 'flex' }}>

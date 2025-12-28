@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`CarouselCard renders a default state 1`] = `
 <div>
   <div
     class="fui-CarouselCard"
-    id="fui-CarouselCardr7"
+    id="fui-CarouselCard_r_7_"
     role="tabpanel"
   >
     Default CarouselCard

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -11,7 +13,7 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const reservedSpaceClassNames = {
+export const tabReservedSpaceClassNames = {
   content: 'fui-Tab__content--reserved-space',
 };
 
@@ -755,7 +757,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      reservedSpaceClassNames.content,
+      tabReservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

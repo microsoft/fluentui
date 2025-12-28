@@ -4,11 +4,10 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -49,7 +48,7 @@ export type CheckboxSlots = {
 export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
-export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;
+export const renderCheckbox_unstable: (state: CheckboxState) => JSXElement;
 
 // @public
 export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;

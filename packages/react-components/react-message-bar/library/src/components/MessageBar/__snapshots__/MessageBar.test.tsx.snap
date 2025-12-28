@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MessageBar renders a default state 1`] = `
 <div>
   <div
-    aria-labelledby="fui-r7"
+    aria-labelledby="fui-_r_7_"
     class="fui-MessageBar"
     role="group"
   >

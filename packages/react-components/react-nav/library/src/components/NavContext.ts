@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { NavContextValue } from './NavContext.types';
 
@@ -35,10 +37,15 @@ const navContextDefaultValue: NavContextValue = {
    * Indicates the vertical density and density of the Nav.
    */
   density: 'medium',
+
+  /**
+   * By default, the Nav is a single tab stop with only arrow key navigation
+   */
+  tabbable: false,
 };
 
 const NavContext = React.createContext<NavContextValue | undefined>(undefined);
 
 export const NavProvider = NavContext.Provider;
 
-export const useNavContext_unstable = () => React.useContext(NavContext) || navContextDefaultValue;
+export const useNavContext_unstable = (): NavContextValue => React.useContext(NavContext) || navContextDefaultValue;

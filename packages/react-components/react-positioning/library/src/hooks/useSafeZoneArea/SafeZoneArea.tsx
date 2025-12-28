@@ -1,5 +1,8 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
@@ -57,7 +60,7 @@ const EMPTY_RECT: DOMRect = {
   },
 };
 
-export function isSameRect(a: DOMRect, b: DOMRect) {
+export function isSameRect(a: DOMRect, b: DOMRect): boolean {
   return (
     a.top === b.top &&
     a.right === b.right &&
@@ -68,7 +71,7 @@ export function isSameRect(a: DOMRect, b: DOMRect) {
   );
 }
 
-export function isSameCoordinates(a: Point, b: Point) {
+export function isSameCoordinates(a: Point, b: Point): boolean {
   return a[0] === b[0] && a[1] === b[1];
 }
 
@@ -84,7 +87,7 @@ export function isSameCoordinates(a: Point, b: Point) {
  *
  * @internal
  */
-export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
+export const SafeZoneArea = React.memo((props: SafeZoneAreaProps): JSXElement => {
   const { debug, onMouseEnter, onMouseMove, onMouseLeave, stateStore } = props;
 
   const clipPathId = useId();

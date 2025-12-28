@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VSChartDataPoint,
   VerticalStackedChartProps,
@@ -19,7 +20,7 @@ import {
   InputOnChangeData,
 } from '@fluentui/react-components';
 
-export const VerticalStackedBarAxisTooltip = () => {
+export const VerticalStackedBarAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps['checked']>(true);
   const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);

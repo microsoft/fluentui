@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
@@ -22,9 +24,6 @@ const useExpandIconStyles = makeStyles({
   base: {
     marginInlineStart: 'auto',
     height: '20px',
-  },
-  open: {
-    transform: 'rotate(90deg)',
   },
   selected: typographyStyles.body1Strong,
 });
@@ -67,7 +66,6 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
     expandIconStyles.base,
-    state.open && expandIconStyles.open,
     state.expandIcon.className,
   );
 
