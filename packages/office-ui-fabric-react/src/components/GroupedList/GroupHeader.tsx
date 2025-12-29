@@ -85,6 +85,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
               className={ css('ms-GroupHeader-check', styles.check) }
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroupClick }
+              aria-label={ currentlySelected ? 'Deselect All Rows' : 'Select All Rows' }
             >
               <Check checked={ currentlySelected } />
             </button>
@@ -100,6 +101,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             type='button'
             className={ css('ms-GroupHeader-expand', styles.expand) }
             onClick={ this._onToggleCollapse }
+            aria-label={ isCollapsed ? 'Expand All Rows' : 'Collapse All Rows' }
           >
             <Icon
               className={ css(
