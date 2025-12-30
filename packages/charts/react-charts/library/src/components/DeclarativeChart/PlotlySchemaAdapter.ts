@@ -1173,7 +1173,9 @@ const getChartAnnotationsFromLayout = (
     return nextLayout ?? layout;
   })();
 
-  const defaultRefType: Exclude<AxisRefType, undefined> = shouldDefaultToRelativeCoordinates(data) ? 'relative' : 'axis';
+  const defaultRefType: Exclude<AxisRefType, undefined> = shouldDefaultToRelativeCoordinates(data)
+    ? 'relative'
+    : 'axis';
 
   const annotationsArray = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
   const converted = annotationsArray
