@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(react-charts): Donut annotations for v9",
+  "packageName": "@fluentui/react-charts",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
