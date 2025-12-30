@@ -6,7 +6,7 @@ export type {
 } from './components/MenuGridGroup/index';
 export {
   MenuGridGroup,
-  MenuGridGroupClassNames,
+  menuGridGroupClassNames,
   renderMenuGridGroup_unstable,
   useMenuGridGroupContextValues_unstable,
   useMenuGridGroupStyles_unstable,

@@ -10,6 +10,8 @@ export interface IFolderCoverChildrenProps {
   contentSize: ISize;
 }
 
+// @ts-expect-error - TS2430: Interface incorrectly extends HTMLAttributes
+// due to children prop incompatibility with Jest v30 type resolution
 export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The breakpoint size of the folder cover.

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
@@ -9,12 +9,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -442,7 +443,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -461,7 +462,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -480,7 +481,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -499,7 +500,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -523,12 +524,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -956,7 +958,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -975,7 +977,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -994,7 +996,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -1013,7 +1015,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -1037,12 +1039,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1549,12 +1552,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2057,7 +2061,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_2k_"
+      id="callout_r_1s_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2092,7 +2096,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: aqua;"
+                style="color: aqua; font-size: var(--fontSizeHero700);"
               >
                 40%
               </div>
@@ -2114,12 +2118,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2622,7 +2627,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_2u_"
+      id="callout_r_24_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2656,12 +2661,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. "
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -3212,7 +3218,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_33_"
+      id="callout_r_28_"
     >
       <div
         class="fui-PopoverSurface"
@@ -3266,12 +3272,13 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -3752,12 +3759,13 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -4262,12 +4270,13 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -4772,12 +4781,13 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -5282,12 +5292,13 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -5799,12 +5810,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="50"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -6254,12 +6266,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -6760,12 +6773,13 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -7264,12 +7278,13 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -7298,21 +7313,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="0"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="0"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7331,21 +7339,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="2"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="2"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7364,21 +7365,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="4"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="4"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7397,21 +7391,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="6"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="6"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7430,21 +7417,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="8"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="8"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7463,21 +7443,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="10"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="10"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7496,21 +7469,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="12"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="12"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7529,21 +7495,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="14"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="14"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7562,21 +7521,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="16"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="16"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7595,21 +7547,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="18"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="18"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7628,21 +7573,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="20"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="20"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7917,6 +7855,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
+  <div
+    class="fui-cart__tooltip"
+    id="tooltip__r_2l_"
+    style="opacity: 0;"
+  />
 </div>
 `;
 
@@ -7928,12 +7871,13 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >
@@ -7962,15 +7906,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="0"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="0"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -7989,15 +7932,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="2"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="2"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8016,15 +7958,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="4"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="4"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8043,15 +7984,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="6"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="6"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8070,15 +8010,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="8"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="8"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8097,15 +8036,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="10"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="10"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8124,15 +8062,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="12"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="12"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8151,15 +8088,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="14"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="14"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8178,15 +8114,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="16"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="16"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8205,15 +8140,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="18"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="18"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8232,15 +8166,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="20"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="20"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8515,6 +8448,13 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    id="fui_measurement_span"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+  >
+    20
+  </span>
 </div>
 `;
 
@@ -8526,12 +8466,13 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
-      aria-label="Vertical bar chart with 2 stacked bars. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       class="fui-cart__chart"
       height="300"
+      role="region"
       style="display: block;"
       width="650"
     >

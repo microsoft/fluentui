@@ -43,7 +43,6 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -69,7 +68,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const _circleId: string = useId('circle');
   const _seriesId: string = useId('seriesID');
   const _verticalLine: string = useId('verticalLine');
-  const _tooltipId: string = useId('ScatterChartTooltipId_');
   const _firstRenderOptimization = true;
   const _emptyChartId: string = useId('_ScatterChart_empty');
   let _points: ScatterChartDataWithIndex[] = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
@@ -95,6 +93,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -208,6 +207,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         isRTL,
         props.xScaleType,
         true,
+        props.xMinValue,
+        props.xMaxValue,
       );
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
@@ -513,27 +514,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         </g>,
       );
     }
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(_xAxisScale);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return series;
   }
 
@@ -567,6 +547,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
           setStackCalloutProps(found!);
+          setDataPointCalloutProps(found!);
           setActivePoint(circleId);
         }
       });
@@ -601,6 +582,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
         setYValueHover(found.values);
         setStackCalloutProps(found!);
+        setDataPointCalloutProps(found!);
         setActivePoint(circleId);
       }
     } else {
@@ -632,6 +614,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     if (isPopoverOpen) {
       setPopoverOpen(false);
     }
+  }
+
+  function _getCustomizedCallout() {
+    return props.onRenderCalloutPerStack
+      ? props.onRenderCalloutPerStack(stackCalloutProps)
+      : props.onRenderCalloutPerDataPoint
+      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+      : null;
   }
 
   /**
@@ -706,6 +696,12 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     isCalloutForStack: true,
     culture: props.culture,
     isCartesian: true,
+    customCallout: {
+      customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+      customCalloutProps: props.calloutPropsPerDataPoint
+        ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+        : undefined,
+    },
   };
   const tickParams = {
     tickValues,

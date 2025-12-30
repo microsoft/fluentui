@@ -41,7 +41,7 @@ function renderHTML(element: React.ReactElement) {
 describe('FluentProvider (hydration)', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  let logErrorSpy: jest.SpyInstance;
+  let logErrorSpy: jest.Spied<typeof console.error>;
 
   beforeEach(() => {
     logErrorSpy = jest.spyOn(console, 'error').mockImplementation(noop);

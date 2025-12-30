@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
 import {
   scaleLinear as d3ScaleLinear,
@@ -37,7 +36,6 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -99,7 +97,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   const _createLegendsForLine: (data: VerticalStackedChartProps[]) => LineLegends[] = (
     data: VerticalStackedChartProps[],
   ) => _getLineLegends(data);
-  const _tooltipId: string = useId('VSBCTooltipId_');
   const _emptyChartId: string = useId('_VSBC_empty');
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
@@ -228,7 +225,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHoverFocus(
     lineData: LinePoint,
-    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGCircleElement, Element>,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement, Element>,
   ): void {
     let clientX = 0;
     let clientY = 0;
@@ -250,22 +247,23 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         setColor(lineData.color);
       }
     } else {
-      _onStackHoverFocus(lineData.xItem, event as React.MouseEvent<SVGElement>);
+      _onStackHoverFocus(lineData.xItem, event);
     }
   }
 
   function _onStackHoverFocus(
     stack: VerticalStackedChartProps,
-    mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement> | SVGGElement,
   ): void {
     let clientX = 0;
     let clientY = 0;
-    if ('clientX' in mouseEvent) {
-      clientX = mouseEvent.clientX;
-      clientY = mouseEvent.clientY;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
     } else {
-      // Handle case where mouseEvent is an SVGGElement
-      const boundingRect = mouseEvent.getBoundingClientRect();
+      // Handle React FocusEvent or SVGGElement
+      const element = 'target' in event ? (event.target as SVGElement) : event;
+      const boundingRect = element.getBoundingClientRect();
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;
     }
@@ -790,9 +788,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _lineFocus(
-    event: React.FocusEvent<SVGCircleElement, Element>,
+    event: React.FocusEvent<SVGElement, Element>,
     lineData: LinePoint,
-    ref: { refElement: SVGCircleElement | null },
+    ref: { refElement: SVGElement | null },
   ) {
     if (ref.refElement) {
       _lineHoverFocus(lineData, event);
@@ -1173,18 +1171,31 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
-      let barLabel = 0;
+      let barLabel: string | number = 0;
+      let selectedBarTotalValue: number = 0;
+      let customBarLabel: string | undefined = undefined;
       if (!props.hideLabels && _yAxisType !== YAxisType.StringAxis) {
+        // Collect all bars with barLabel that match the legend filter
+        const barLabelsToDisplay = barsToDisplay.filter(
+          point => point.barLabel && (_noLegendHighlighted() || _isLegendHighlighted(point.legend)),
+        );
+        // For stacked bars, we want to show the total of the stack, not individual bar labels
+        // Only use customBarLabel if there's exactly one bar with a label in the stack
+        if (barLabelsToDisplay.length === 1) {
+          customBarLabel = barLabelsToDisplay[0].barLabel!;
+        }
         if (_noLegendHighlighted()) {
           showLabel = true;
-          barLabel = barTotalValue;
+          barLabel = customBarLabel ?? barTotalValue;
+          selectedBarTotalValue = barTotalValue;
         } else {
           barsToDisplay.forEach(point => {
             if (_isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data as number;
+              selectedBarTotalValue += point.data as number;
             }
           });
+          barLabel = customBarLabel ?? selectedBarTotalValue;
         }
       }
       return (
@@ -1206,7 +1217,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             <text
               x={xPoint + _barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={selectedBarTotalValue >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
@@ -1214,7 +1225,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
-              {typeof props.yAxisTickFormat === 'function'
+              {typeof barLabel === 'string'
+                ? barLabel
+                : typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>
@@ -1222,25 +1235,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         </g>
       );
     });
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars.filter((bar): bar is JSXElement => !!bar);
   }
 

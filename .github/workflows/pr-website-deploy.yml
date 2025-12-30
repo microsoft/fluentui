@@ -23,7 +23,7 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -32,7 +32,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
           node-version: '22'
@@ -54,7 +54,7 @@ jobs:
 
       - name: Generate PR Deploy Site
         run: yarn nx run pr-deploy-site:generate:site
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: pr-website-artifacts
           retention-days: 1
@@ -64,7 +64,7 @@ jobs:
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: pr-number
           retention-days: 1

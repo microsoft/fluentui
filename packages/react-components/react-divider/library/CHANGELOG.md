@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Tue, 11 Nov 2025 19:18:22 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.5.1)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.5.0..@fluentui/react-divider_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.3.4 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.5.0)
+
+Fri, 05 Dec 2025 22:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.4.11..@fluentui/react-divider_v9.5.0)
+
+### Minor changes
+
+- feat: implement headless style hook for Divider component ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by dmytrokirpa@microsoft.com)
 
 ## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.4.11)
 

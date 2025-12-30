@@ -19,7 +19,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -386,14 +386,16 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const hoverXValue: string =
         'Current value is ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat, true);
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      const hoverYValues: YValue[] = _segments.map(segment => {
-        const yValue: YValue = {
-          legend: segment.legend,
-          y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
-          color: segment.color,
-        };
-        return yValue;
-      });
+      const hoverYValues: YValue[] = _segments
+        .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
+        .map(segment => {
+          const yValue: YValue = {
+            legend: segment.legend,
+            y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
+            color: segment.color,
+          };
+          return yValue;
+        });
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
@@ -577,7 +579,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${_segments.length} segments. `;
     }
     const { arcs } = _processProps();
-    const focusAttributes = useFocusableGroup();
+    const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return (
       <div
         className={classes.root}
@@ -585,7 +587,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           _rootElem.current = el;
         }}
       >
-        <div className={classes.chartWrapper} {...focusAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg
             className={classes.chart}
             width={_width}

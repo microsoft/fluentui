@@ -9,10 +9,11 @@ import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
+import type { LegendContainer } from '../../index';
 import { useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useFocusableGroup } from '@fluentui/react-tabster';
-import { ChartPopover, ChartAnnotationLayer } from '../CommonComponents';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ChartAnnotationLayer, ChartPopover } from '../CommonComponents';
 import { useImageExport } from '../../utilities/hooks';
 import {
   useDonutAnnotationLayout,
@@ -115,7 +116,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           {...props.legendProps}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={_onLegendSelectionChange}
-          legendRef={_legendsRef}
+          legendRef={_legendsRef as React.RefObject<LegendContainer>}
         />
       );
     }
@@ -349,7 +350,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
-    const focusAttributes = useFocusableGroup();
+    const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return !_isChartEmpty() ? (
       <div className={classes.root} ref={rootRef} onMouseLeave={_handleChartMouseLeave}>
         {props.xAxisAnnotation && (
@@ -357,7 +358,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             {props.xAxisAnnotation}
           </text>
         )}
-        <div className={classes.chartWrapper} {...focusAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes}>
           <div className={classes.plotContainer} style={plotContainerStyle}>
             <svg
               className={classes.chart}

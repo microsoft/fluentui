@@ -6,7 +6,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends } from '../Legends/index';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { getContrastTextColor } from '../../utilities/colors';
@@ -437,11 +437,18 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const funnelMarginTop = 40;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
-  const focusAttributes = useFocusableGroup();
+  const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classes.root} {...focusAttributes} style={{ width, height }}>
-      <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
+    <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
+      <svg
+        width={width}
+        height={height}
+        className={classes.chart}
+        {...arrowAttributes}
+        role={'img'}
+        aria-label={props.chartTitle}
+      >
         <g
           transform={
             isRTL

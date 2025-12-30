@@ -212,6 +212,18 @@ const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => 
   return {};
 };
 
+const getXMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getXAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      xMinValue: range[0],
+      xMaxValue: range[1],
+      showRoundOffXTickValues: false,
+    };
+  }
+  return {};
+};
+
 const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
   return layout?.yaxis;
 };
@@ -361,6 +373,75 @@ export const resolveXAxisPoint = (
     return x;
   }
   return x;
+};
+
+/**
+ * Formats text values according to the texttemplate specification
+ * Supports D3 format specifiers within %{text:format} patterns
+ * @param textValue The raw text value to format
+ * @param textTemplate The template string (e.g., "%{text:.1f}%", "%{text:.2%}", "%{text:,.0f}")
+ * @param index Optional index for array-based templates
+ * @returns Formatted text string
+ *
+ * Examples:
+ * - "%{text:.1f}%" → Formats number with 1 decimal place and adds % suffix
+ * - "%{text:.2%}" → Formats as percentage with 2 decimal places
+ * - "%{text:,.0f}" → Formats with thousands separator and no decimals
+ * - "%{text:$,.2f}" → Formats as currency with thousands separator and 2 decimals
+ */
+const formatTextWithTemplate = (
+  textValue: string | number,
+  textTemplate?: string | string[],
+  index?: number,
+): string => {
+  if (!textTemplate) {
+    return String(textValue);
+  }
+  const numVal = typeof textValue === 'number' ? textValue : parseFloat(String(textValue));
+  if (isNaN(numVal)) {
+    return String(textValue);
+  }
+  const template = typeof textTemplate === 'string' ? textTemplate : textTemplate[index || 0] || '';
+
+  // Match Plotly's texttemplate pattern: %{text:format} or %{text}
+  // Can be followed by any literal text like %, $, etc.
+  const plotlyPattern = /%\{text(?::([^}]+))?\}(.*)$/;
+  const match = template.match(plotlyPattern);
+
+  if (match) {
+    const formatSpec = match[1]; // The format specifier (e.g., ".1f", ".2%", ",.0f") or undefined
+    const suffix = match[2]; // Any text after the closing brace (e.g., "%", " units")
+
+    // If no format specifier is provided (e.g., %{text}%), try to infer from suffix
+    if (!formatSpec) {
+      // Check if suffix starts with % - assume simple percentage with 1 decimal
+      if (suffix.startsWith('%')) {
+        return `${numVal.toFixed(1)}${suffix}`;
+      }
+      // No format specifier, just return the number with the suffix
+      return `${numVal}${suffix}`;
+    }
+
+    try {
+      // Use D3 format function to apply the format specifier
+      const formatter = d3Format(formatSpec);
+      const formattedValue = formatter(numVal);
+      return `${formattedValue}${suffix}`;
+    } catch (error) {
+      // Try to extract precision for basic fallback
+      const precisionMatch = formatSpec.match(/\.(\d+)[f%]/);
+      const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 2;
+
+      // Check if it's a percentage format
+      if (formatSpec.includes('%')) {
+        return `${(numVal * 100).toFixed(precision)}%${suffix}`;
+      }
+
+      return `${numVal.toFixed(precision)}${suffix}`;
+    }
+  }
+
+  return String(textValue);
 };
 
 /**
@@ -1284,7 +1365,9 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+    showLabelsInPercent: firstData.textinfo
+      ? ['percent', 'label+percent', 'percent+label'].includes(firstData.textinfo)
+      : true,
     roundCorners: true,
     order: 'sorted',
   };
@@ -1331,6 +1414,11 @@ export const transformPlotlyJsonToVSBCProps = (
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
+      const textValues = Array.isArray(series.text)
+        ? series.text.slice(rangeStart, rangeEnd)
+        : typeof series.text === 'string'
+        ? series.text
+        : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
@@ -1359,12 +1447,19 @@ export const transformPlotlyJsonToVSBCProps = (
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
         const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
+        let barLabel = Array.isArray(textValues) ? textValues[index2] : textValues;
+
+        // Apply texttemplate formatting if specified
+        if (barLabel && series.texttemplate) {
+          barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index2);
+        }
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
             yAxisCalloutData,
+            ...(barLabel ? { barLabel: String(barLabel) } : {}),
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -1408,6 +1503,14 @@ export const transformPlotlyJsonToVSBCProps = (
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
+        if (shape.xref === 'x domain') {
+          if (val === 0) {
+            return xCategories[0];
+          }
+          if (val === 1) {
+            return xCategories[xCategories.length - 1];
+          }
+        }
         if (typeof val === 'number' && Array.isArray(xCategories)) {
           if (xCategories[val] !== undefined) {
             return xCategories[val];
@@ -1480,7 +1583,9 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -1583,12 +1688,20 @@ export const transformPlotlyJsonToGVBCProps = (
                 );
             const opacity = getOpacity(series, xIndex);
             const yVal = series.y![xIndex] as number;
+            // Extract text value for barLabel
+            let barLabel = Array.isArray(series.text) ? series.text[xIndex] : series.text;
+
+            // Apply texttemplate formatting if specified
+            if (barLabel && series.texttemplate) {
+              barLabel = formatTextWithTemplate(barLabel, series.texttemplate, xIndex);
+            }
 
             return {
               x: x!.toString(),
               y: yVal,
               yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
               color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+              ...(barLabel ? { barLabel: String(barLabel) } : {}),
             };
           })
           .filter(item => typeof item !== 'undefined'),
@@ -1654,8 +1767,10 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
     wrapXAxisLables: true,
     showYAxisLables: true,
+    ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1745,6 +1860,12 @@ export const transformPlotlyJsonToVBCProps = (
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
 
+      // Handle text values and texttemplate formatting for histogram bins
+      let barLabel = Array.isArray(series.text) ? series.text[index] : series.text;
+      if (barLabel && series.texttemplate) {
+        barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index);
+      }
+
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
@@ -1753,6 +1874,7 @@ export const transformPlotlyJsonToVBCProps = (
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
+        ...(barLabel ? { barLabel: String(barLabel) } : {}),
       });
     });
   });
@@ -1769,8 +1891,10 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
     wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     showYAxisLables: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -2057,6 +2181,8 @@ const transformPlotlyJsonToScatterTraceProps = (
     optimizeLargeData: numDataPoints > 1000,
     wrapXAxisLables: shouldWrapLabels,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2074,7 +2200,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
       enableReflow: false,
       ...commonProps,
       ...yMinMax,
@@ -2136,6 +2261,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             y: yValue,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            ...(series.text?.[i] ? { barLabel: series.text[i].toString() } : {}),
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
@@ -2166,6 +2292,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
@@ -2220,7 +2348,7 @@ export const transformPlotlyJsonToGanttChartProps = (
             )
           : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
         const opacity = getOpacity(series, i);
-        const base = +resolveGanttXValue(series.base?.[i] as Datum);
+        const base = +resolveGanttXValue((isArrayOrTypedArray(series.base) ? series.base![i] : series.base) as Datum);
         const xVal = +resolveGanttXValue(series.x?.[i] as Datum);
 
         ganttData.push({
@@ -2288,6 +2416,53 @@ export const transformPlotlyJsonToHeatmapProps = (
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
+  // Build a 2D array of annotations based on their grid position
+  const annotationGrid: (string | undefined)[][] = [];
+  const rawAnnotations = input.layout?.annotations;
+
+  if (rawAnnotations) {
+    const annotationsArray = Array.isArray(rawAnnotations) ? rawAnnotations : [rawAnnotations];
+
+    // Collect all unique x and y values from valid annotations
+    const xSet = new Set<number>();
+    const ySet = new Set<number>();
+    const validAnnotations: Array<{ x: number; y: number; text: string }> = [];
+
+    annotationsArray.forEach((a: PlotlyAnnotation) => {
+      if (
+        a &&
+        typeof a.x === 'number' &&
+        typeof a.y === 'number' &&
+        typeof a.text === 'string' &&
+        (a.xref === 'x' || a.xref === undefined) &&
+        (a.yref === 'y' || a.yref === undefined)
+      ) {
+        xSet.add(a.x);
+        ySet.add(a.y);
+        validAnnotations.push({ x: a.x, y: a.y, text: cleanText(a.text) });
+      }
+    });
+
+    if (validAnnotations.length > 0) {
+      // Get sorted unique x and y values
+      const xValues = Array.from(xSet).sort((a, b) => a - b);
+      const yValues = Array.from(ySet).sort((a, b) => a - b);
+
+      // Initialize 2D grid and populate
+      validAnnotations.forEach(annotation => {
+        const xIdx = xValues.indexOf(annotation.x);
+        const yIdx = yValues.indexOf(annotation.y);
+        if (!annotationGrid[yIdx]) {
+          annotationGrid[yIdx] = [];
+        }
+        annotationGrid[yIdx][xIdx] = annotation.text;
+      });
+    }
+  }
+
+  // Helper function to get annotation from 2D grid by index
+  const getAnnotationByIndex = (xIdx: number, yIdx: number): string | undefined => annotationGrid[yIdx]?.[xIdx];
+
   if (firstData.type === 'histogram2d') {
     const xValues: (string | number)[] = [];
     const yValues: (string | number)[] = [];
@@ -2336,11 +2511,13 @@ export const transformPlotlyJsonToHeatmapProps = (
           isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
         );
 
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
+
         heatmapDataPoints.push({
           x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
           y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2350,16 +2527,31 @@ export const transformPlotlyJsonToHeatmapProps = (
       });
     });
   } else {
-    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+    // If x and y are not provided, generate indices based on z dimensions
+    const zArray = firstData.z as number[][];
+    const xValues = firstData.x as Datum[] | undefined;
+    const yValues = firstData.y as Datum[] | undefined;
+
+    // Determine the dimensions from z array
+    const yLength = zArray?.length ?? 0;
+    const xLength = zArray?.[0]?.length ?? 0;
+
+    // Use provided x/y values or generate indices
+    const xData = xValues ?? Array.from({ length: xLength }, (_, i) => i);
+    const yData = yValues ?? Array.from({ length: yLength }, (_, i) => yLength - 1 - i);
+
+    xData.forEach((xVal, xIdx: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      firstData.y?.forEach((yVal: any, yIdx: number) => {
-        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+      yData.forEach((yVal: any, yIdx: number) => {
+        const zVal = zArray?.[yIdx]?.[xIdx];
+
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
           x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
           y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2468,6 +2660,14 @@ export const transformPlotlyJsonToSankeyProps = (
     colorMap,
     isDarkTheme,
   );
+  const extractedLinkColors = extractColor(
+    input.layout?.template?.layout?.colorway,
+    colorwayType,
+    link?.color,
+    colorMap,
+    isDarkTheme,
+  );
+
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
       const color = resolveColor(
@@ -2487,8 +2687,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     links: validLinks.map((validLink: any, index: number) => {
+      const color = resolveColor(
+        extractedLinkColors,
+        index,
+        validLink.target,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       return {
         ...validLink,
+        color,
       };
     }),
   } as ISankeyChartData;
@@ -3478,7 +3687,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie', 'annotation'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation', 'table', 'gauge', 'funnel'].includes(chartType);
 };
 
 export const getGridProperties = (
@@ -3698,7 +3907,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
     if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
-      result[propName] = ax!.categoryarray;
+      result[propName] = ax?.autorange === 'reversed' ? ax!.categoryarray!.slice().reverse() : ax!.categoryarray;
       return;
     }
 
