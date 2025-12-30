@@ -599,12 +599,27 @@ const appendPx = (value: unknown): string | undefined => {
   return undefined;
 };
 
+const shouldDefaultToRelativeCoordinates = (data: Data[] | undefined): boolean => {
+  if (!data || data.length === 0) {
+    return false;
+  }
+
+  return data.every(trace => {
+    const traceType = typeof trace?.type === 'string' ? trace.type.toLowerCase() : undefined;
+    return traceType !== undefined && isNonPlotType(traceType);
+  });
+};
+
 /**
  * Maps Plotly's axis reference string to one of our coordinate interpretation modes (axis, relative, or pixel).
  */
-const resolveRefType = (ref: string | undefined, axis: 'x' | 'y'): 'axis' | 'relative' | 'pixel' | undefined => {
+const resolveRefType = (
+  ref: string | undefined,
+  axis: 'x' | 'y',
+  defaultRef: 'axis' | 'relative' | 'pixel' = 'axis',
+): 'axis' | 'relative' | 'pixel' | undefined => {
   if (!ref) {
-    return 'axis';
+    return defaultRef;
   }
   const normalized = ref.toLowerCase();
   if (normalized === 'pixel') {
@@ -747,14 +762,26 @@ const mapArrowsideToArrow = (annotation: PlotlyAnnotation): ChartAnnotationArrow
     includeEnd = arrowSide.includes('end');
   }
 
-  const endHead = toFiniteNumber(annotation?.arrowhead);
-  const startHead = toFiniteNumber((annotation as { startarrowhead?: number }).startarrowhead);
+  const rawEndHead = (annotation as { arrowhead?: number }).arrowhead;
+  const rawStartHead = (annotation as { startarrowhead?: number }).startarrowhead;
+  const endHead = toFiniteNumber(rawEndHead);
+  const startHead = toFiniteNumber(rawStartHead);
 
   if (endHead !== undefined && endHead > 0) {
     includeEnd = true;
   }
   if (startHead !== undefined && startHead > 0) {
     includeStart = true;
+  }
+
+  if (!includeStart && !includeEnd) {
+    const hasExplicitArrowSide = arrowSide !== undefined;
+    const hasExplicitEndHead = rawEndHead !== undefined;
+    const hasExplicitStartHead = rawStartHead !== undefined;
+
+    if (!hasExplicitArrowSide && !hasExplicitEndHead && !hasExplicitStartHead) {
+      includeEnd = true;
+    }
   }
 
   if (includeStart && includeEnd) {
@@ -811,15 +838,16 @@ const convertPlotlyAnnotation = (
     return undefined;
   }
 
-  const xRefType = resolveRefType(annotation.xref as string | undefined, 'x');
-  const yRefType = resolveRefType(annotation.yref as string | undefined, 'y');
+  const defaultRefType = shouldDefaultToRelativeCoordinates(data) ? 'relative' : 'axis';
+
+  const xRefType = resolveRefType(annotation.xref as string | undefined, 'x', defaultRefType);
+  const yRefType = resolveRefType(annotation.yref as string | undefined, 'y', defaultRefType);
 
   if (!xRefType || !yRefType) {
     return undefined;
   }
 
   let coordinates: ChartAnnotation['coordinates'] | undefined;
-
   if (xRefType === 'axis' && yRefType === 'axis') {
     const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
     const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
@@ -903,12 +931,13 @@ const convertPlotlyAnnotation = (
   const layoutProps: Partial<ChartAnnotationLayoutProps> = {};
   const styleProps: Partial<ChartAnnotationStyleProps> = {};
   const showArrow = annotation.showarrow === undefined ? false : !!annotation.showarrow;
-
   const clipOnAxis = (annotation as { cliponaxis?: boolean }).cliponaxis;
   if (clipOnAxis !== undefined) {
     layoutProps.clipToBounds = !!clipOnAxis;
   } else if (coordinates.type === 'data') {
     layoutProps.clipToBounds = true;
+  } else {
+    layoutProps.clipToBounds = false;
   }
 
   const horizontalAlign = mapHorizontalAlign(annotation.xanchor as string | undefined);
@@ -976,6 +1005,14 @@ const convertPlotlyAnnotation = (
 
   if (showArrow && !hasExplicitOffset && layoutProps.offsetY === undefined) {
     layoutProps.offsetY = DEFAULT_ARROW_OFFSET;
+  }
+
+  if (!layoutProps.verticalAlign && showArrow && ay !== undefined && (ayRef === undefined || ayRef === 'pixel')) {
+    if (ay < 0) {
+      layoutProps.verticalAlign = 'bottom';
+    } else if (ay > 0) {
+      layoutProps.verticalAlign = 'top';
+    }
   }
 
   const maxWidth = toFiniteNumber(annotation.width);
@@ -1205,6 +1242,7 @@ export const transformPlotlyJsonToDonutProps = (
 ): DonutChartProps => {
   const firstData = input.data[0] as Partial<PieData>;
 
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
   // extract colors for each series only once
   // use piecolorway if available
   // otherwise, default to colorway from template
@@ -1290,6 +1328,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartTitle,
       chartData: reorderedEntries.map(([, v]) => v as ChartDataPoint),
     },
+    annotations,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
