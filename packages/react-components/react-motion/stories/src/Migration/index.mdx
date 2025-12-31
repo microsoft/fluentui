@@ -1,0 +1,643 @@
+import { Meta } from '@storybook/addon-docs';
+import { tokens } from '@fluentui/react-components';
+
+<Meta title="Motion/Migration" />
+
+<style>
+  {`
+  .migration-hero {
+    text-align: center;
+    padding: 32px 20px;
+    background: linear-gradient(135deg, ${tokens.colorPaletteRedBackground2} 0%, ${tokens.colorNeutralBackground1} 100%);
+    border-radius: 12px;
+    margin-bottom: 32px;
+  }
+  .migration-hero h1 {
+    margin: 0 0 12px 0;
+    font-size: 1.8rem;
+  }
+  .migration-hero p {
+    font-size: 1rem;
+    color: ${tokens.colorNeutralForeground2};
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9em;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid ${tokens.colorNeutralStroke1};
+  }
+  .comparison-table th {
+    background: ${tokens.colorNeutralBackground3};
+    font-weight: 600;
+  }
+  .comparison-table code {
+    background: ${tokens.colorNeutralBackground4};
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .section-card {
+    padding: 24px;
+    border: 1px solid ${tokens.colorNeutralStroke1};
+    border-radius: 8px;
+    margin: 24px 0;
+  }
+  .section-card h2 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pro-con-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .pro-box, .con-box {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .pro-box {
+    background: ${tokens.colorPaletteGreenBackground1};
+    border: 1px solid ${tokens.colorPaletteGreenBorder1};
+  }
+  .con-box {
+    background: ${tokens.colorPaletteRedBackground1};
+    border: 1px solid ${tokens.colorPaletteRedBorder1};
+  }
+  .pro-box h4, .con-box h4 {
+    margin: 0 0 8px 0;
+  }
+  .migration-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .migration-example > div {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .before {
+    background: ${tokens.colorPaletteRedBackground1};
+    border: 1px solid ${tokens.colorPaletteRedBorder1};
+  }
+  .after {
+    background: ${tokens.colorPaletteGreenBackground1};
+    border: 1px solid ${tokens.colorPaletteGreenBorder1};
+  }
+  .before h4, .after h4 {
+    margin: 0 0 12px 0;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  @media (max-width: 768px) {
+    .migration-example, .pro-con-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>
+
+<div className="migration-hero">
+  <h1>Migration & Comparison</h1>
+  <p>
+    Coming from another animation library? This guide helps you understand how Fluent Motion compares and how to
+    migrate.
+  </p>
+</div>
+
+## Why Fluent Motion?
+
+Fluent Motion is purpose-built for Microsoft's design system with specific goals:
+
+<div className="pro-con-grid">
+  <div className="pro-box">
+    <h4>✅ Strengths</h4>
+    <ul>
+      <li>
+        <strong>Tiny bundle size</strong> — ~3KB gzipped
+      </li>
+      <li>
+        <strong>Native performance</strong> — Uses browser's WAAPI
+      </li>
+      <li>
+        <strong>Design token integration</strong> — Fluent durations & curves
+      </li>
+      <li>
+        <strong>Simple API</strong> — Declarative React components
+      </li>
+      <li>
+        <strong>Reduced motion support</strong> — Built-in accessibility
+      </li>
+      <li>
+        <strong>No runtime physics</strong> — Predictable, testable animations
+      </li>
+    </ul>
+  </div>
+  <div className="con-box">
+    <h4>⚠️ Limitations</h4>
+    <ul>
+      <li>No spring physics (use CSS/keyframes instead)</li>
+      <li>No scroll-driven animations (yet)</li>
+      <li>No gesture-based animations</li>
+      <li>No complex orchestration (use Stagger for basic needs)</li>
+      <li>No shared element transitions</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Library Comparison
+
+<table className="comparison-table">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Fluent Motion</th>
+      <th>Framer Motion</th>
+      <th>React Spring</th>
+      <th>GSAP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Bundle Size</strong>
+      </td>
+      <td>~3KB</td>
+      <td>~50KB</td>
+      <td>~25KB</td>
+      <td>~60KB</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Animation Engine</strong>
+      </td>
+      <td>WAAPI (native)</td>
+      <td>JS runtime</td>
+      <td>JS runtime (springs)</td>
+      <td>JS runtime</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Spring Physics</strong>
+      </td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+      <td>✅ Yes (primary)</td>
+      <td>✅ Yes (plugin)</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Keyframe Animations</strong>
+      </td>
+      <td>✅ Yes (primary)</td>
+      <td>✅ Yes</td>
+      <td>⚠️ Limited</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Enter/Exit (Presence)</strong>
+      </td>
+      <td>✅ Yes</td>
+      <td>✅ Yes (AnimatePresence)</td>
+      <td>✅ Yes (useTransition)</td>
+      <td>⚠️ Manual</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Layout Animations</strong>
+      </td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+      <td>❌ No</td>
+      <td>⚠️ Plugin</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Gesture Support</strong>
+      </td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+      <td>⚠️ Limited</td>
+      <td>⚠️ Plugin</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Scroll Animations</strong>
+      </td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SSR Support</strong>
+      </td>
+      <td>✅ Yes</td>
+      <td>✅ Yes</td>
+      <td>✅ Yes</td>
+      <td>⚠️ Requires setup</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Design Tokens</strong>
+      </td>
+      <td>✅ Fluent integrated</td>
+      <td>❌ Manual</td>
+      <td>❌ Manual</td>
+      <td>❌ Manual</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<div className="section-card">
+
+## Migrating from Framer Motion
+
+Framer Motion is a popular choice for React animations. Here's how common patterns translate to Fluent Motion.
+
+### Basic Animation
+
+<div className="migration-example">
+  <div className="before">
+    <h4>Framer Motion</h4>
+
+```tsx
+import { motion } from 'framer-motion';
+
+<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+  Content
+</motion.div>;
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+<Fade.In>
+  <div>Content</div>
+</Fade.In>;
+```
+
+  </div>
+</div>
+
+### Enter/Exit Presence
+
+<div className="migration-example">
+  <div className="before">
+    <h4>Framer Motion</h4>
+
+```tsx
+import { AnimatePresence, motion } from 'framer-motion';
+
+<AnimatePresence>
+  {isVisible && (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      Content
+    </motion.div>
+  )}
+</AnimatePresence>;
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+<Fade visible={isVisible}>
+  <div>Content</div>
+</Fade>;
+```
+
+  </div>
+</div>
+
+### Scale + Fade Combo
+
+<div className="migration-example">
+  <div className="before">
+    <h4>Framer Motion</h4>
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.9 }}
+  transition={{ duration: 0.2 }}
+>
+  Content
+</motion.div>
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
+
+const FadeScale = createPresenceComponent({
+  enter: [
+    fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
+    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromScale: 0.9 }),
+  ],
+  exit: [
+    fadeAtom({ direction: 'exit', duration: motionTokens.durationNormal }),
+    scaleAtom({ direction: 'exit', duration: motionTokens.durationNormal, fromScale: 0.9 }),
+  ],
+});
+
+<FadeScale visible={isVisible}>
+  <div>Content</div>
+</FadeScale>;
+```
+
+  </div>
+</div>
+
+### List Stagger
+
+<div className="migration-example">
+  <div className="before">
+    <h4>Framer Motion</h4>
+
+```tsx
+<motion.ul
+  initial="hidden"
+  animate="visible"
+  variants={{
+    visible: { transition: { staggerChildren: 0.05 } },
+  }}
+>
+  {items.map(item => (
+    <motion.li
+      key={item.id}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+    >
+      {item.name}
+    </motion.li>
+  ))}
+</motion.ul>
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Stagger, Fade } from '@fluentui/react-motion-components-preview';
+
+<Stagger itemDelay={50}>
+  {items.map(item => (
+    <Fade key={item.id} visible={true}>
+      <li>{item.name}</li>
+    </Fade>
+  ))}
+</Stagger>;
+```
+
+  </div>
+</div>
+
+### What Doesn't Migrate Directly
+
+| Framer Motion Feature | Fluent Motion Alternative                            |
+| --------------------- | ---------------------------------------------------- |
+| `spring` physics      | Use CSS easing curves (`curveDecelerateMid`, etc.)   |
+| `layout` animations   | Not supported; consider CSS transitions              |
+| `drag` gestures       | Use native drag APIs or a gesture library            |
+| `useScroll`           | Not supported; use Intersection Observer             |
+| `useMotionValue`      | Not supported; use CSS custom properties             |
+| Variants system       | Use component variants (`FadeSnappy`, `FadeRelaxed`) |
+
+</div>
+
+---
+
+<div className="section-card">
+
+## Migrating from React Spring
+
+React Spring focuses on spring physics. Fluent Motion uses keyframe-based animations instead.
+
+### Basic Spring → Keyframe
+
+<div className="migration-example">
+  <div className="before">
+    <h4>React Spring</h4>
+
+```tsx
+import { useSpring, animated } from '@react-spring/web';
+
+const props = useSpring({
+  opacity: isVisible ? 1 : 0,
+  config: { tension: 300, friction: 20 },
+});
+
+<animated.div style={props}>Content</animated.div>;
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+// Note: Spring physics are replaced with easing curves
+<Fade visible={isVisible}>
+  <div>Content</div>
+</Fade>;
+```
+
+  </div>
+</div>
+
+### useTransition → Presence
+
+<div className="migration-example">
+  <div className="before">
+    <h4>React Spring</h4>
+
+```tsx
+import { useTransition, animated } from '@react-spring/web';
+
+const transitions = useTransition(isVisible, {
+  from: { opacity: 0 },
+  enter: { opacity: 1 },
+  leave: { opacity: 0 },
+});
+
+{
+  transitions((style, item) => item && <animated.div style={style}>Content</animated.div>);
+}
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+<Fade visible={isVisible} unmountOnExit>
+  <div>Content</div>
+</Fade>;
+```
+
+  </div>
+</div>
+
+### Key Differences
+
+- **No spring physics**: Fluent Motion uses CSS easing curves. For a spring-like feel, use `curveDecelerateMid` or `curveDecelerateMax`.
+- **Simpler API**: No hooks required for basic animations—just components with props.
+- **Predictable timing**: Keyframe animations have fixed durations, making them easier to coordinate.
+
+</div>
+
+---
+
+<div className="section-card">
+
+## Migrating from GSAP
+
+GSAP is a powerful timeline-based animation library. Fluent Motion is simpler but covers most UI animation needs.
+
+### Basic Tween → Presence
+
+<div className="migration-example">
+  <div className="before">
+    <h4>GSAP</h4>
+
+```tsx
+import { gsap } from 'gsap';
+import { useRef, useEffect } from 'react';
+
+const ref = useRef();
+
+useEffect(() => {
+  if (isVisible) {
+    gsap.to(ref.current, { opacity: 1, duration: 0.2 });
+  } else {
+    gsap.to(ref.current, { opacity: 0, duration: 0.2 });
+  }
+}, [isVisible]);
+
+<div ref={ref} style={{ opacity: 0 }}>
+  Content
+</div>;
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+<Fade visible={isVisible}>
+  <div>Content</div>
+</Fade>;
+```
+
+  </div>
+</div>
+
+### Timeline → Stagger
+
+<div className="migration-example">
+  <div className="before">
+    <h4>GSAP</h4>
+
+```tsx
+const tl = gsap.timeline();
+tl.to('.item', {
+  opacity: 1,
+  stagger: 0.1,
+  duration: 0.3,
+});
+```
+
+  </div>
+  <div className="after">
+    <h4>Fluent Motion</h4>
+
+```tsx
+import { Stagger, Fade } from '@fluentui/react-motion-components-preview';
+
+<Stagger itemDelay={100}>
+  {items.map(item => (
+    <Fade key={item.id} visible duration={300}>
+      <div className="item">{item}</div>
+    </Fade>
+  ))}
+</Stagger>;
+```
+
+  </div>
+</div>
+
+### What GSAP Does That Fluent Motion Doesn't
+
+- Complex timelines with labels and control
+- ScrollTrigger for scroll-based animations
+- MorphSVG for shape morphing
+- Physics-based motion
+- Draggable plugin
+
+For these advanced use cases, GSAP may still be the right choice. Fluent Motion is optimized for common UI transitions.
+
+</div>
+
+---
+
+## Concept Mapping
+
+| Concept            | Framer Motion               | React Spring      | GSAP             | Fluent Motion                                    |
+| ------------------ | --------------------------- | ----------------- | ---------------- | ------------------------------------------------ |
+| One-shot animation | `motion.div` with `animate` | `useSpring`       | `gsap.to()`      | `createMotionComponent` or `.In`/`.Out`          |
+| Enter/exit         | `AnimatePresence`           | `useTransition`   | Manual           | `createPresenceComponent` or built-in components |
+| Staggered list     | `staggerChildren` variant   | `useTrail`        | `stagger` option | `<Stagger>` component                            |
+| Duration           | `transition.duration`       | `config.duration` | `duration`       | `duration` prop or tokens                        |
+| Easing             | `transition.ease`           | `config.easing`   | `ease`           | `easing` prop or tokens                          |
+
+---
+
+## When to Use What
+
+| Use Case                              | Recommendation    |
+| ------------------------------------- | ----------------- |
+| Fluent UI app, simple transitions     | **Fluent Motion** |
+| Complex gesture interactions          | Framer Motion     |
+| Spring physics feel                   | React Spring      |
+| Complex timelines, scroll-driven      | GSAP              |
+| Performance-critical, minimal bundle  | **Fluent Motion** |
+| Design system consistency (Microsoft) | **Fluent Motion** |
