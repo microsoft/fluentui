@@ -1,0 +1,339 @@
+import { Meta } from '@storybook/addon-docs';
+import { Fade, Scale, Collapse, Slide } from '@fluentui/react-motion-components-preview';
+import { tokens, makeStyles } from '@fluentui/react-components';
+import { MotionIntroDemo } from './MotionIntroDemo';
+import { MotionVsPresenceDemo } from './MotionVsPresenceDemo';
+
+<Meta title="Motion/Introduction" />
+
+<style>
+  {`
+  .motion-hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, ${tokens.colorBrandBackground2} 0%, ${tokens.colorNeutralBackground1} 100%);
+    border-radius: 12px;
+    margin-bottom: 32px;
+  }
+  .motion-hero h1 {
+    margin: 0 0 16px 0;
+    font-size: 2.5rem;
+  }
+  .motion-hero p {
+    font-size: 1.1rem;
+    color: ${tokens.colorNeutralForeground2};
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .principle-card {
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid ${tokens.colorNeutralStroke1};
+    background: ${tokens.colorNeutralBackground1};
+  }
+  .principle-card h3 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid ${tokens.colorNeutralStroke1};
+    padding-bottom: 8px;
+  }
+  .audience-section {
+    margin: 32px 0;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid ${tokens.colorNeutralStroke1};
+  }
+  .audience-section h2 {
+    margin-top: 0;
+  }
+  .designer-section {
+    border-left: 4px solid ${tokens.colorPalettePurpleBorder2};
+  }
+  .developer-section {
+    border-left: 4px solid ${tokens.colorPaletteBlueBorder2};
+  }
+`}
+</style>
+
+<div className="motion-hero">
+  <h1>Fluent Motion System</h1>
+  <p>
+    A lightweight, performant animation library for React that brings Fluent UI experiences to life using the Web
+    Animations API.
+  </p>
+</div>
+
+## What is Fluent Motion?
+
+Fluent Motion provides declarative React components for creating smooth, GPU-optimized animations. Built on the [Web Animations API (WAAPI)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API), it offers the performance benefits of native browser animations with the developer experience of React.
+
+<MotionIntroDemo />
+
+## Key Principles
+
+<div className="principles-grid">
+  <div className="principle-card">
+    <h3>⚡ Performance</h3>
+    <p>
+      Animations run on the compositor thread where possible, ensuring smooth 60fps motion even on lower-powered devices.
+      We prioritize GPU-optimized properties like <code>transform</code> and <code>opacity</code>.
+    </p>
+  </div>
+
+{' '}
+
+<div className="principle-card">
+  <h3>📦 Lightweight</h3>
+  <p>
+    Small bundle size by leveraging WAAPI's native browser capabilities instead of shipping a JavaScript animation
+    engine. No runtime physics calculations—just declarative keyframes.
+  </p>
+</div>
+
+{' '}
+
+<div className="principle-card">
+  <h3>🎯 Simple by Default</h3>
+  <p>
+    Common UI animations are achievable with minimal code using intelligent defaults. Pre-built components like{' '}
+    <code>Fade</code>, <code>Scale</code>, and <code>Slide</code> work out of the box.
+  </p>
+</div>
+
+  <div className="principle-card">
+    <h3>🔧 Powerful on Demand</h3>
+    <p>
+      Full customization available when needed. Create custom motion components with your own keyframes,
+      timing, easing curves, and lifecycle callbacks.
+    </p>
+  </div>
+</div>
+
+---
+
+<div className="audience-section designer-section">
+
+## For Motion Designers
+
+The Fluent Motion System is built around **design tokens** that ensure consistency across Microsoft products. These tokens define:
+
+### Duration Tokens
+
+Durations range from ultra-fast (50ms) to ultra-slow (500ms), with semantic names that communicate intent:
+
+| Token               | Duration | Use Case                          |
+| ------------------- | -------- | --------------------------------- |
+| `durationUltraFast` | 50ms     | Micro-interactions, state changes |
+| `durationFaster`    | 100ms    | Button presses, toggles           |
+| `durationFast`      | 150ms    | Snappy feedback, small elements   |
+| `durationNormal`    | 200ms    | Default for most UI animations    |
+| `durationGentle`    | 250ms    | Relaxed feel, medium elements     |
+| `durationSlow`      | 300ms    | Large elements, emphasis          |
+| `durationSlower`    | 400ms    | Full-screen transitions           |
+| `durationUltraSlow` | 500ms    | Dramatic reveals, onboarding      |
+
+### Easing Curves
+
+Curves follow Fluent design language principles:
+
+- **Accelerate curves** — Elements leaving the screen (exit motions)
+- **Decelerate curves** — Elements entering the screen (enter motions)
+- **Easy-ease curves** — Elements moving within the screen
+
+### Pre-built Components
+
+Six presence components handle the most common UI motion patterns:
+
+| Component    | Effect                 | Common Uses                       |
+| ------------ | ---------------------- | --------------------------------- |
+| **Fade**     | Opacity transition     | Tooltips, notifications, overlays |
+| **Scale**    | Size transformation    | Popovers, menus, emphasis         |
+| **Collapse** | Height/width expansion | Accordions, expandable sections   |
+| **Slide**    | Directional movement   | Drawers, panels, carousels        |
+| **Blur**     | Focus/defocus effect   | Background dimming, depth         |
+| **Rotate**   | 3D rotation            | Card flips, reveals               |
+
+Each component comes in **Snappy** and **Relaxed** variants for quick timing adjustments.
+
+</div>
+
+---
+
+<div className="audience-section developer-section">
+
+## For Developers
+
+### Two Types of Motion
+
+The Fluent Motion System distinguishes between two fundamental patterns:
+
+<MotionVsPresenceDemo />
+
+#### 1. One-Way Motion (Motion Components)
+
+Created with `createMotionComponent()`, these play a single animation when mounted:
+
+```tsx
+import { createMotionComponent } from '@fluentui/react-motion';
+
+const FadeIn = createMotionComponent({
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: 200,
+});
+
+// Usage: animation plays immediately on mount
+<FadeIn>
+  <div>I fade in once!</div>
+</FadeIn>;
+```
+
+#### 2. Two-Way Presence (Presence Components)
+
+Created with `createPresenceComponent()`, these manage visibility state with enter/exit animations:
+
+```tsx
+import { createPresenceComponent } from '@fluentui/react-motion';
+
+const Fade = createPresenceComponent({
+  enter: {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    duration: 200,
+  },
+  exit: {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    duration: 150,
+  },
+});
+
+// Usage: controlled by `visible` prop
+<Fade visible={isVisible}>
+  <div>I fade in and out!</div>
+</Fade>;
+```
+
+### Quick Start with Pre-built Components
+
+For most use cases, use the pre-built components from `@fluentui/react-motion-components-preview`:
+
+```tsx
+import { Fade, Scale, Slide, Collapse } from '@fluentui/react-motion-components-preview';
+
+// Simple fade
+<Fade visible={showTooltip}>
+  <Tooltip>Hello!</Tooltip>
+</Fade>
+
+// Scale with snappy timing
+<ScaleSnappy visible={showMenu}>
+  <Menu />
+</ScaleSnappy>
+
+// Slide from a direction
+<Slide visible={showDrawer} direction="right">
+  <Drawer />
+</Slide>
+```
+
+### The `.In` and `.Out` Pattern
+
+Every presence component includes one-way motion sub-components for playing enter or exit animations in isolation:
+
+```tsx
+import { Fade } from '@fluentui/react-motion-components-preview';
+
+// Play only the enter animation (one-way)
+<Fade.In>
+  <div>Fades in on mount</div>
+</Fade.In>
+
+// Play only the exit animation (one-way)
+<Fade.Out>
+  <div>Fades out on mount</div>
+</Fade.Out>
+
+// Full presence control (two-way)
+<Fade visible={isVisible}>
+  <div>Fades in/out based on visible prop</div>
+</Fade>
+```
+
+This is useful for:
+
+- Choreographing sequences of animations
+- Mixing enter/exit from different components
+- One-off entrance animations (e.g., page load)
+
+### Package Structure
+
+```
+@fluentui/react-motion (stable)
+├── createMotionComponent()      — Factory for one-way motion
+├── createPresenceComponent()    — Factory for two-way presence
+├── PresenceGroup                — Animate lists of items
+├── motionTokens                 — Duration and curve values
+└── presenceMotionSlot           — Integration with Fluent components
+
+@fluentui/react-motion-components-preview (beta)
+├── Fade, FadeSnappy, FadeRelaxed
+├── Scale, ScaleSnappy, ScaleRelaxed
+├── Collapse, CollapseSnappy, CollapseRelaxed, CollapseDelayed
+├── Slide, SlideSnappy, SlideRelaxed
+├── Blur
+├── Rotate
+└── Stagger                      — Choreography for sequential animations
+```
+
+</div>
+
+---
+
+## Next Steps
+
+<div className="principles-grid">
+  <div className="principle-card">
+    <h3>📚 Learn the APIs</h3>
+    <p>
+      Dive into <a href="?path=/docs/motion-apis-createpresencecomponent--docs">createPresenceComponent</a> and
+      <a href="?path=/docs/motion-apis-createmotioncomponent--docs">createMotionComponent</a> for full API documentation.
+    </p>
+  </div>
+
+{' '}
+
+<div className="principle-card">
+  <h3>🧩 Use Pre-built Components</h3>
+  <p>
+    Explore the <a href="?path=/docs/motion-components-preview-introduction--docs">Motion Components</a> for
+    ready-to-use animations.
+  </p>
+</div>
+
+{' '}
+
+<div className="principle-card">
+  <h3>🎨 Explore Tokens</h3>
+  <p>
+    See all available <a href="?path=/docs/motion-tokens--docs">Motion Tokens</a> for durations and easing curves.
+  </p>
+</div>
+
+  <div className="principle-card">
+    <h3>🔄 Migrate from Other Libraries</h3>
+    <p>
+      Coming from Framer Motion or GSAP? Check our <a href="?path=/docs/motion-migration--docs">Migration Guide</a>.
+    </p>
+  </div>
+</div>
