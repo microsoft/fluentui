@@ -1,0 +1,351 @@
+import { Meta } from '@storybook/addon-docs';
+import { tokens } from '@fluentui/react-components';
+import { ComponentsGrid } from './ComponentsGrid';
+import { InOutDemo } from './InOutDemo';
+import { VariantsDemo } from './VariantsDemo';
+
+<Meta title="Motion/Components (preview)/Introduction" />
+
+<style>
+  {`
+  .components-hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, ${tokens.colorPalettePurpleBackground2} 0%, ${tokens.colorNeutralBackground1} 100%);
+    border-radius: 12px;
+    margin-bottom: 32px;
+  }
+  .components-hero h1 {
+    margin: 0 0 16px 0;
+    font-size: 2rem;
+  }
+  .components-hero p {
+    font-size: 1.1rem;
+    color: ${tokens.colorNeutralForeground2};
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .warning-banner {
+    padding: 16px 20px;
+    background: ${tokens.colorPaletteYellowBackground1};
+    border: 1px solid ${tokens.colorPaletteYellowBorder1};
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .warning-banner strong {
+    color: ${tokens.colorPaletteYellowForeground2};
+  }
+  .audience-section {
+    margin: 32px 0;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid ${tokens.colorNeutralStroke1};
+  }
+  .audience-section h2 {
+    margin-top: 0;
+  }
+  .designer-section {
+    border-left: 4px solid ${tokens.colorPalettePurpleBorder2};
+  }
+  .developer-section {
+    border-left: 4px solid ${tokens.colorPaletteBlueBorder2};
+  }
+  .component-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  .component-table th,
+  .component-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid ${tokens.colorNeutralStroke1};
+  }
+  .component-table th {
+    background: ${tokens.colorNeutralBackground3};
+    font-weight: 600;
+  }
+  .component-table code {
+    background: ${tokens.colorNeutralBackground4};
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+`}
+</style>
+
+<div className="components-hero">
+  <h1>Motion Components</h1>
+  <p>Pre-built presence components for common UI animation patterns. Ready to use with intelligent defaults.</p>
+</div>
+
+<div className="warning-banner">
+  <strong>⚠️ Preview Package:</strong> These components are in beta and APIs may change before stable release. Import
+  from <code>@fluentui/react-motion-components-preview</code>.
+</div>
+
+## Overview
+
+The Motion Components package provides six **presence components** that handle the most common UI animation needs. Each component manages visibility state and plays appropriate enter/exit animations.
+
+<ComponentsGrid />
+
+---
+
+<div className="audience-section designer-section">
+
+## For Motion Designers
+
+### Available Components
+
+<table className="component-table">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Animation</th>
+      <th>Best For</th>
+      <th>GPU Optimized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Fade</strong>
+      </td>
+      <td>Opacity transition</td>
+      <td>Tooltips, notifications, overlays, modals</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Scale</strong>
+      </td>
+      <td>Size grow/shrink</td>
+      <td>Popovers, menus, buttons, emphasis</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Collapse</strong>
+      </td>
+      <td>Height/width expansion</td>
+      <td>Accordions, expandable sections, details</td>
+      <td>⚠️ Partial (uses height)</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Slide</strong>
+      </td>
+      <td>Directional movement</td>
+      <td>Drawers, panels, carousels, page transitions</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Blur</strong>
+      </td>
+      <td>Focus/defocus effect</td>
+      <td>Background dimming, depth, focus states</td>
+      <td>⚠️ Partial (uses filter)</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Rotate</strong>
+      </td>
+      <td>3D rotation</td>
+      <td>Card flips, reveals, playful interactions</td>
+      <td>✅ Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+### Timing Variants
+
+Each component (except Blur and Rotate) comes with pre-configured timing variants:
+
+| Variant     | Duration                 | Feel              | Use Case                           |
+| ----------- | ------------------------ | ----------------- | ---------------------------------- |
+| **Default** | 200ms (`durationNormal`) | Balanced          | General purpose                    |
+| **Snappy**  | 150ms (`durationFast`)   | Quick, responsive | Small elements, micro-interactions |
+| **Relaxed** | 250ms (`durationGentle`) | Smooth, calm      | Large elements, important content  |
+
+**Collapse** also has a **Delayed** variant that adds a delay before the collapse begins, useful for accordions where you want the content to be readable briefly before collapsing.
+
+### Direction Support
+
+**Slide** supports four directions for enter/exit:
+
+- `from="left"` — Slides in from left, out to left
+- `from="right"` — Slides in from right, out to right
+- `from="top"` — Slides in from top, out to top
+- `from="bottom"` — Slides in from bottom, out to bottom
+
+### Choreography with Stagger
+
+**Stagger** coordinates multiple animations in sequence, creating a ripple effect. It's ideal for lists, grids, and any collection of items that should animate one after another.
+
+</div>
+
+---
+
+<div className="audience-section developer-section">
+
+## For Developers
+
+### Installation
+
+```bash
+npm install @fluentui/react-motion-components-preview
+# or
+yarn add @fluentui/react-motion-components-preview
+```
+
+### Basic Usage
+
+```tsx
+import { Fade, Scale, Slide, Collapse } from '@fluentui/react-motion-components-preview';
+
+function MyComponent() {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <Fade visible={showTooltip}>
+      <div className="tooltip">Hello!</div>
+    </Fade>
+  );
+}
+```
+
+### The `.In` and `.Out` Pattern
+
+Every presence component includes **one-way motion sub-components** that play just the enter or exit animation:
+
+<InOutDemo />
+
+```tsx
+import { Fade, Scale, Slide } from '@fluentui/react-motion-components-preview';
+
+// Full presence (two-way, controlled by visible prop)
+<Fade visible={isVisible}>
+  <Content />
+</Fade>
+
+// Just the enter animation (one-way, plays on mount)
+<Fade.In>
+  <Content />
+</Fade.In>
+
+// Just the exit animation (one-way, plays on mount)
+<Fade.Out>
+  <Content />
+</Fade.Out>
+```
+
+**Use cases for `.In` and `.Out`:**
+
+- Page load animations (use `.In` for entrance-only)
+- Exit transitions before navigation (use `.Out`)
+- Choreographing different enter/exit from different components
+- Looping or staggered animations
+
+### Using Variants
+
+Variants are separate exports with pre-configured timing:
+
+```tsx
+import {
+  Fade, FadeSnappy, FadeRelaxed,
+  Scale, ScaleSnappy, ScaleRelaxed,
+  Collapse, CollapseSnappy, CollapseRelaxed, CollapseDelayed,
+  Slide, SlideSnappy, SlideRelaxed
+} from '@fluentui/react-motion-components-preview';
+
+// Quick feedback for small UI
+<ScaleSnappy visible={showMenu}>
+  <Menu />
+</ScaleSnappy>
+
+// Relaxed feel for important content
+<FadeRelaxed visible={showModal}>
+  <Modal />
+</FadeRelaxed>
+```
+
+<VariantsDemo />
+
+### Customization with Parameters
+
+All components accept parameters to customize their behavior:
+
+```tsx
+// Custom opacity range
+<Fade visible={isVisible} fromOpacity={0.5} toOpacity={1}>
+  <Content />
+</Fade>
+
+// Custom scale values
+<Scale visible={isVisible} fromScale={0.8} toScale={1}>
+  <Content />
+</Scale>
+
+// Custom slide direction and distance
+<Slide visible={isVisible} from="right" distance="100px">
+  <Content />
+</Slide>
+
+// Horizontal collapse
+<Collapse visible={isVisible} orientation="horizontal">
+  <Content />
+</Collapse>
+
+// Custom timing (overrides variant defaults)
+<Fade visible={isVisible} duration={300} easing="ease-out">
+  <Content />
+</Fade>
+```
+
+### Choreography with Stagger
+
+Animate lists of items in sequence:
+
+```tsx
+import { Stagger, Fade } from '@fluentui/react-motion-components-preview';
+
+function List({ items, visible }) {
+  return (
+    <Stagger>
+      {items.map(item => (
+        <Fade key={item.id} visible={visible}>
+          <ListItem>{item.name}</ListItem>
+        </Fade>
+      ))}
+    </Stagger>
+  );
+}
+```
+
+### Component Reference
+
+| Component  | Variants                                               | Key Parameters                                     |
+| ---------- | ------------------------------------------------------ | -------------------------------------------------- |
+| `Fade`     | `FadeSnappy`, `FadeRelaxed`                            | `fromOpacity`, `toOpacity`, `duration`, `easing`   |
+| `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `fromScale`, `toScale`, `duration`, `easing`       |
+| `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `duration`, `easing`                |
+| `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `from`, `distance`, `duration`, `easing`           |
+| `Blur`     | —                                                      | `radius`, `duration`, `easing`                     |
+| `Rotate`   | —                                                      | `axis`, `angle`, `duration`, `easing`              |
+| `Stagger`  | —                                                      | `itemDelay`, `reversed`, `staggerIn`, `staggerOut` |
+
+</div>
+
+---
+
+## Next Steps
+
+- **[Fade](?path=/docs/motion-components-preview-fade--docs)** — Simple opacity transitions
+- **[Scale](?path=/docs/motion-components-preview-scale--docs)** — Grow and shrink animations
+- **[Collapse](?path=/docs/motion-components-preview-collapse--docs)** — Expandable height/width
+- **[Slide](?path=/docs/motion-components-preview-slide--docs)** — Directional slide animations
+- **[Blur](?path=/docs/motion-components-preview-blur--docs)** — Focus/blur effects
+- **[Rotate](?path=/docs/motion-components-preview-rotate--docs)** — 3D rotation effects
+- **[Stagger](?path=/docs/motion-choreography-preview-stagger--docs)** — Sequential animation choreography
+- **[Motion Atoms](?path=/docs/motion-components-preview-atoms--docs)** — Building blocks for custom components
