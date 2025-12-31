@@ -10,6 +10,7 @@ export { Shapes } from './CounterBadgeShapes.stories';
 export { Sizes } from './CounterBadgeSizes.stories';
 export { Color } from './CounterBadgeColor.stories';
 export { Dot } from './CounterBadgeDot.stories';
+export { AnimatedBadge } from './CounterBadgeAnimated.stories';
 
 export default {
   title: 'Components/Badge/Counter Badge',

@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { BadgeState } from '../Badge/index';
 import { useBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+import { AnimatedNumber } from './AnimatedNumber';
 
 /**
  * Returns the props and state required to render the component
@@ -16,6 +17,7 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     overflowCount = 99,
     count = 0,
     dot = false,
+    isAnimated = false,
   } = props;
 
   const state: CounterBadgeState = {
@@ -25,10 +27,20 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     showZero,
     count,
     dot,
+    isAnimated,
   };
 
   if ((count !== 0 || showZero) && !dot && !state.root.children) {
-    state.root.children = count > overflowCount ? `${overflowCount}+` : `${count}`;
+    const displayValue = count > overflowCount ? overflowCount : count;
+    const displayString = count > overflowCount ? `${overflowCount}+` : `${count}`;
+
+    if (isAnimated && count <= overflowCount) {
+      // Use animated number for numeric values within overflow limit
+      state.root.children = <AnimatedNumber value={displayValue} />;
+    } else {
+      // Use static string for overflow or non-animated cases
+      state.root.children = displayString;
+    }
   }
 
   return state;
