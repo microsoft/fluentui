@@ -2,4 +2,5 @@ export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuBu
 export { MenuButton } from './MenuButton';
 export { renderMenuButton_unstable } from './renderMenuButton';
 export { useMenuButton_unstable } from './useMenuButton';
+export { useMenuButtonBase_unstable } from './useMenuButtonBase';
 export { menuButtonClassNames, useMenuButtonStyles_unstable } from './useMenuButtonStyles.styles';

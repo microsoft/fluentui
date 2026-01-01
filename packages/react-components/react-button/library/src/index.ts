@@ -1,11 +1,13 @@
 export {
   Button,
+  ButtonUnstyled,
   buttonClassNames,
   renderButton_unstable,
   useButtonStyles_unstable,
   useButton_unstable,
+  useButtonBase_unstable,
 } from './Button';
-export type { ButtonProps, ButtonSlots, ButtonState } from './Button';
+export type { ButtonProps, ButtonDesignProps, ButtonSlots, ButtonState } from './Button';
 export {
   CompoundButton,
   compoundButtonClassNames,
@@ -20,6 +22,7 @@ export {
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,
   useMenuButton_unstable,
+  useMenuButtonBase_unstable,
 } from './MenuButton';
 export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuButton';
 export {

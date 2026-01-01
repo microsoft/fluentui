@@ -9,5 +9,6 @@ export type {
 } from './AccordionHeader.types';
 export { renderAccordionHeader_unstable } from './renderAccordionHeader';
 export { useAccordionHeader_unstable } from './useAccordionHeader';
+export { useAccordionHeaderBase_unstable } from './useAccordionHeaderBase';
 export { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 export { accordionHeaderClassNames, useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles.styles';

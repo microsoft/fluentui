@@ -7,6 +7,7 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DistributiveOmit } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -29,14 +30,18 @@ export interface ButtonContextValue {
 }
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & {
+export type ButtonDesignProps = {
     appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
-    disabledFocusable?: boolean;
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
     shape?: 'rounded' | 'circular' | 'square';
     size?: ButtonSize;
 };
+
+// @public (undocumented)
+export type ButtonProps = ComponentProps<ButtonSlots> & {
+    disabledFocusable?: boolean;
+    disabled?: boolean;
+    iconPosition?: 'before' | 'after';
+} & ButtonDesignProps;
 
 // @public (undocumented)
 export type ButtonSlots = {
@@ -45,9 +50,12 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'disabledFocusable' | 'disabled' | 'iconPosition'>> & Required<ButtonDesignProps> & {
     iconOnly: boolean;
 };
+
+// @public
+export const ButtonUnstyled: React_2.ForwardRefExoticComponent<ButtonBaseProps & React_2.RefAttributes<HTMLAnchorElement | HTMLButtonElement>>;
 
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
@@ -135,6 +143,9 @@ export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, '
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
+// @public
+export const useButtonBase_unstable: (props: ButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonBaseState;
+
 // @internal
 export const useButtonContext: () => ButtonContextValue;
 
@@ -149,6 +160,9 @@ export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => C
 
 // @public
 export const useMenuButton_unstable: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
+
+// @public
+export const useMenuButtonBase_unstable: ({ menuIcon, ...props }: MenuButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonBaseState;
 
 // @public (undocumented)
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;

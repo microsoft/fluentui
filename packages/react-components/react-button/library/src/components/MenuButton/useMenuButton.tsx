@@ -3,8 +3,9 @@
 import * as React from 'react';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { slot } from '@fluentui/react-utilities';
-import { useButton_unstable } from '../Button/index';
 import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
+import { useMenuButtonBase_unstable } from './useMenuButtonBase';
+import { useButtonContext } from '../../contexts';
 
 /**
  * Given user props, returns the final state for a MenuButton.
@@ -15,26 +16,16 @@ export const useMenuButton_unstable = (
 ): MenuButtonState => {
   'use no memo';
 
-  const buttonState = useButton_unstable(props, ref);
-  // force aria-expanded to be a boolean, not a string
-  buttonState.root['aria-expanded'] = props['aria-expanded']
-    ? props['aria-expanded'] === 'true' || props['aria-expanded'] === true
-    : false;
+  const { size: contextSize } = useButtonContext();
+  const { appearance = 'secondary', shape = 'rounded', size = contextSize ?? 'medium' } = props;
+
+  const state = useMenuButtonBase_unstable(props, ref);
 
   return {
-    // Button state
-    ...buttonState,
-
-    // State calculated from a set of props
-    iconOnly: Boolean(!props.children),
-
-    // Slots definition
-    components: {
-      root: 'button',
-      icon: 'span',
-      menuIcon: 'span',
-    },
-
+    ...state,
+    appearance,
+    shape,
+    size,
     menuIcon: slot.optional(menuIcon, {
       defaultProps: {
         children: <ChevronDownRegular />,

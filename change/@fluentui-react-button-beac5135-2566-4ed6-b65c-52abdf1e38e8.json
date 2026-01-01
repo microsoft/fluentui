@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add headless hook and unstyled component",
+  "packageName": "@fluentui/react-button",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
