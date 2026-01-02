@@ -4,10 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/utilities/src",
   "tags": ["v8"],
-  "implicitDependencies": [],
+  "implicitDependencies": ["jest-serializer-merge-styles"],
   "targets": {
     "test": {
-      "dependsOn": ["^build", { "projects": ["jest-serializer-merge-styles"], "target": "build" }]
+      "dependsOn": ["^build"]
     }
   }
 }

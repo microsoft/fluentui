@@ -3,10 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "tags": ["v8", "ships-bundle"],
-  "implicitDependencies": [],
+  "implicitDependencies": ["jest-serializer-merge-styles"],
   "targets": {
     "test": {
-      "dependsOn": ["^build", { "projects": ["jest-serializer-merge-styles"], "target": "build" }]
+      "dependsOn": ["^build"]
     }
   }
 }
