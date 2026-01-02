@@ -209,8 +209,8 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/tsconfig.json',
         '{projectRoot}/tsconfig.lib.json',
         '{projectRoot}/src/**/*.tsx?',
-        // Reference the 'production' files of the project
-        { input: 'production', projects: ['scripts-api-extractor'] },
+        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
         { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
       ],
       outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
