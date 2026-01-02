@@ -15,7 +15,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "inputs": ["production", "^production", { "projects": ["scripts-api-extractor"], "input": "production" }],
       "cache": true
     },
     "build-storybook": {

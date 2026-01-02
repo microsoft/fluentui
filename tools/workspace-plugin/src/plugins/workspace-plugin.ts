@@ -209,6 +209,8 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/tsconfig.json',
         '{projectRoot}/tsconfig.lib.json',
         '{projectRoot}/src/**/*.tsx?',
+        // Reference the 'production' files of the project
+        { input: 'production', projects: ['scripts-api-extractor'] },
         { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
       ],
       outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
