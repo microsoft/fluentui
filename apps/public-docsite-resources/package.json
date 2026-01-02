@@ -27,13 +27,6 @@
     "start": "just-scripts dev",
     "update-snapshots": "just-scripts jest -u"
   },
-  "devDependencies": {
-    "@fluentui/api-docs": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@fluentui/react": "*",
     "@fluentui/react-charting": "*",

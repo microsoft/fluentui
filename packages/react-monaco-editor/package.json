@@ -16,11 +16,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@types/react-syntax-highlighter": "^10.2.1",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@types/react-syntax-highlighter": "^10.2.1"
   },
   "dependencies": {
     "@fluentui/react": "^8.125.3",

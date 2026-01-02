@@ -6,7 +6,7 @@
   "implicitDependencies": [],
   "targets": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", { "projects": ["jest-serializer-merge-styles"], "target": "build" }]
     }
   }
 }

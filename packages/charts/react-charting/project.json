@@ -6,7 +6,7 @@
   "implicitDependencies": [],
   "targets": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", { "projects": ["jest-serializer-merge-styles"], "target": "build" }]
     },
     "type-check": { "command": "echo 'type-check is noop for v8 project which uses tsc for build'" }
   }

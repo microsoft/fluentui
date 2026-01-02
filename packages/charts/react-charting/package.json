@@ -25,14 +25,6 @@
     "test:tz": "node ./scripts/run-tests-in-timezone.js"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react": "*",
-    "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*",
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
