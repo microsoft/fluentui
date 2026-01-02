@@ -114,6 +114,7 @@ describe('react-library generator', () => {
         },
       }),
     );
+    expect(libPackageJson.devDependencies).toEqual(undefined);
     expect(readJson(tree, `${library.root}/tsconfig.json`)).toEqual(
       expect.objectContaining({ extends: '../../../../tsconfig.base.json' }),
     );
@@ -184,12 +185,7 @@ describe('react-library generator', () => {
       name: '@proj/react-one-preview-stories',
       version: '0.0.0',
       private: true,
-      devDependencies: {
-        '@proj/eslint-plugin': '*',
-        '@proj/react-storybook-addon': '*',
-        '@proj/react-storybook-addon-export-to-sandbox': '*',
-        '@proj/scripts-storybook': '*',
-      },
+      devDependencies: {},
     });
 
     expect(stories).toMatchInlineSnapshot(`
