@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Dialog Component: can't scroll with keyboard in 'Long Content' ",
+  "packageName": "@fluentui/react-dialog",
+  "email": "krasnoff.kobi@gmail.com",
+  "dependentChangeType": "patch"
+}
