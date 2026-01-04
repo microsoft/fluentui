@@ -4,6 +4,7 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
+import { getChartTitleFontStyles } from '../DeclarativeChart/PlotlySchemaAdapter';
 import { select as d3Select } from 'd3-selection';
 import {
   createNumericXAxis,
@@ -787,15 +788,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               textProps={{
                 x: margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
                 y: Math.max(
-                  (typeof props.xAxisAnnotationStyles?.fontSize === 'number'
-                    ? props.xAxisAnnotationStyles.fontSize
-                    : 13) + AXIS_TITLE_PADDING,
+                  (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
                   VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
                 ),
                 className: classes.axisAnnotation!,
                 textAnchor: 'middle',
                 'aria-hidden': true,
-                style: props.xAxisAnnotationStyles,
+                style: getChartTitleFontStyles(props.titleFont),
               }}
               maxWidth={xAxisTitleMaxWidth}
             />

@@ -317,24 +317,13 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         }}
         onMouseLeave={_handleChartMouseLeave}
       >
-        {!hideLegend && data?.chartTitle && (
-          <div
-            style={{
-              textAlign: 'center',
-              marginBottom: '8px',
-              ...props.chartTitleStyles,
-            }}
-          >
-            {data?.chartTitle}
-          </div>
-        )}
-        {props.xAxisAnnotation && (
-          <text className={classes.axisAnnotation} x={_width! / 2} y={_height! - 10} textAnchor="middle">
-            {props.xAxisAnnotation}
-          </text>
-        )}
         <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
+            {!hideLegend && data?.chartTitle && (
+              <text x={_width! / 2} y={20} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
+                {data?.chartTitle}
+              </text>
+            )}
             <Pie
               width={_width!}
               height={_height!}

@@ -38,7 +38,7 @@ import {
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
-  getTitleFontStyles,
+  getChartTitleFontStyles,
   transformPlotlyJsonToAnnotationChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
@@ -545,8 +545,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const titleStyle: React.CSSProperties = {
     textAlign: 'center',
-    marginBottom: '8px',
-    ...getTitleFontStyles(titleFont),
+    marginBottom: tokens.spacingVerticalS,
+    ...getChartTitleFontStyles(titleFont),
   };
 
   // map through the grouped traces and render the appropriate chart

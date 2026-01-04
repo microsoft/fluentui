@@ -15,6 +15,7 @@ export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   legendContainer: 'fui-donut__legendContainer',
   chartWrapper: 'fui-donut__chartWrapper',
   axisAnnotation: 'fui-donut__axisAnnotation',
+  chartTitle: 'fui-donut__chartTitle',
 };
 
 /**
@@ -41,6 +42,13 @@ const useStyles = makeStyles({
     width: '100%',
   },
   axisAnnotation: getAxisTitleStyle() as GriffelStyle,
+  chartTitle: {
+    ...typographyStyles.caption1,
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+  },
 });
 
 /**
@@ -64,5 +72,6 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       baseStyles.axisAnnotation,
       props.styles?.axisAnnotation,
     ),
+    chartTitle: mergeClasses(donutClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
   };
 };

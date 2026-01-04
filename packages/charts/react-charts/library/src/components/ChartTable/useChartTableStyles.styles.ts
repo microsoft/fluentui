@@ -14,6 +14,7 @@ export const chartTableClassNames: SlotClassNames<ChartTableStyles> = {
   headerCell: 'fui-ChartTable__headerCell',
   bodyCell: 'fui-ChartTable__bodyCell',
   chart: 'fui-ChartTable__chart',
+  chartTitle: 'fui-ChartTable__chartTitle',
 };
 
 const useStyles = makeStyles({
@@ -47,6 +48,13 @@ const useStyles = makeStyles({
       color: 'WindowText',
     },
   },
+  chartTitle: {
+    ...typographyStyles.caption1,
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+  },
 });
 
 /**
@@ -61,5 +69,6 @@ export const useChartTableStyles = (props: ChartTableProps): ChartTableStyles =>
     headerCell: mergeClasses(chartTableClassNames.headerCell, baseStyles.headerCell /*props.styles?.headerCell*/),
     bodyCell: mergeClasses(chartTableClassNames.bodyCell, baseStyles.bodyCell /*props.styles?.bodyCell*/),
     chart: mergeClasses(chartTableClassNames.chart /*props.styles?.chart*/),
+    chartTitle: mergeClasses(chartTableClassNames.chartTitle, baseStyles.chartTitle /*props.styles?.chartTitle*/),
   };
 };

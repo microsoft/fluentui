@@ -16,6 +16,7 @@ import {
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format } from 'd3-format';
 import { DonutChartProps } from '../DonutChart/index';
+import type { DonutChartStyles } from '../DonutChart/DonutChart.types';
 import {
   ChartDataPoint,
   ChartProps,
@@ -31,6 +32,7 @@ import {
   ScatterChartPoints,
 } from '../../types/DataPoint';
 import { SankeyChartProps } from '../SankeyChart/index';
+import type { SankeyChartStyles } from '../SankeyChart/SankeyChart.types';
 import { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { HorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { LineChartProps } from '../LineChart/index';
@@ -38,9 +40,11 @@ import { AreaChartProps } from '../AreaChart/index';
 import { HeatMapChartProps } from '../HeatMapChart/index';
 import { DataVizPalette, getColorFromToken } from '../../utilities/colors';
 import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
+import type { GaugeChartStyles } from '../GaugeChart/GaugeChart.types';
 import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
+import type { ChartTableStyles } from '../ChartTable/ChartTable.types';
 import { GanttChartProps } from '../GanttChart/index';
 import type { AnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
@@ -91,11 +95,11 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
-import { tokens } from '@fluentui/react-theme';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
 import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
+import type { FunnelChartStyles } from '../FunnelChart/FunnelChart.types';
 import {
   ChartAnnotation,
   ChartAnnotationArrowHead,
@@ -174,13 +178,22 @@ const dashOptions = {
   },
 } as const;
 
-export function getTitleFontStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
+/**
+ * Creates dynamic chart title styles using CSS properties.
+ * @param titleFont - Optional font configuration from Plotly layout
+ * @returns Style object with CSS properties for dynamic styling
+ */
+export function getChartTitleFontStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
+  if (!titleFont) {
+    return {};
+  }
+
   return {
-    fontFamily: titleFont?.family ?? 'Arial, sans-serif',
-    fontSize: titleFont?.size ? `${titleFont.size}px` : '13px',
-    fontWeight: titleFont?.weight ?? 400,
-    color: (titleFont?.color as string) ?? tokens.colorNeutralForeground1,
-    ...(titleFont?.shadow && titleFont.shadow !== 'none' && { textShadow: titleFont.shadow }),
+    ...(titleFont.family && { fontFamily: titleFont.family }),
+    ...(titleFont.size && { fontSize: `${titleFont.size}px` }),
+    ...(titleFont.weight && { fontWeight: titleFont.weight }),
+    ...(titleFont.color && { fill: titleFont.color as string }),
+    ...(titleFont.shadow && titleFont.shadow !== 'none' && { filter: `drop-shadow(${titleFont.shadow})` }),
   };
 }
 
@@ -188,14 +201,13 @@ function getTitles(layout: Partial<Layout> | undefined) {
   const titleObj = layout?.title;
   const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
   const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
-  const titleStyles: React.CSSProperties = getTitleFontStyles(titleFont);
 
   const titles = {
     chartTitle,
+    ...(titleFont ? { titleFont } : {}),
     xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
     yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
     xAxisAnnotation: chartTitle,
-    xAxisAnnotationStyles: titleStyles,
   };
   return titles;
 }
@@ -1357,7 +1369,7 @@ export const transformPlotlyJsonToDonutProps = (
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleFont } = getTitles(input.layout);
   // Build anticlockwise order by keeping the first item, reversing the rest
   const legends = Object.keys(mapLegendToDataPoint);
   const reorderedEntries =
@@ -1376,9 +1388,6 @@ export const transformPlotlyJsonToDonutProps = (
       chartTitle,
       chartData: reorderedEntries.map(([, v]) => v as ChartDataPoint),
     },
-    chartTitleStyles: getTitleFontStyles(
-      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
-    ),
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
@@ -1389,7 +1398,14 @@ export const transformPlotlyJsonToDonutProps = (
       : true,
     roundCorners: true,
     order: 'sorted',
-  };
+    ...(titleFont
+      ? {
+          styles: {
+            chartTitle: getChartTitleFontStyles(titleFont),
+          } as DonutChartStyles,
+        }
+      : {}),
+  } as DonutChartProps;
 };
 
 export const transformPlotlyJsonToVSBCProps = (
@@ -2697,28 +2713,24 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   } as SankeyChartData;
 
-  // const styles: SankeyChartProps['styles'] = {
-  //   root: {
-  //     ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
-  //   },
-  // };
-
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleFont } = getTitles(input.layout);
 
   return {
     data: {
       chartTitle,
       SankeyChartData: sankeyChartData,
     },
-    chartTitleStyles: getTitleFontStyles(
-      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
-    ),
     width: input.layout?.width,
     height: input.layout?.height ?? 468,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    // TODO
-    // styles,
-  };
+    ...(titleFont
+      ? {
+          styles: {
+            chartTitle: getChartTitleFontStyles(titleFont),
+          } as SankeyChartStyles,
+        }
+      : {}),
+  } as SankeyChartProps;
 };
 
 export const transformPlotlyJsonToGaugeProps = (
@@ -2818,11 +2830,7 @@ export const transformPlotlyJsonToGaugeProps = (
     }
   }
 
-  const styles = {
-    sublabel: sublabelColor,
-  };
-
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleFont } = getTitles(input.layout);
 
   return {
     segments,
@@ -2835,12 +2843,13 @@ export const transformPlotlyJsonToGaugeProps = (
     chartValueFormat: () => firstData.value?.toString() ?? '',
     width: input.layout?.width,
     height: input.layout?.height ?? 220,
-    // TODO
-    // styles,
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',
-    styles,
+    styles: {
+      sublabel: sublabelColor,
+      ...(titleFont ? { chartTitle: getChartTitleFontStyles(titleFont) } : {}),
+    } as GaugeChartStyles,
     roundCorners: true,
-  };
+  } as GaugeChartProps;
 };
 
 const cleanText = (text: string): string => {
@@ -2986,12 +2995,6 @@ export const transformPlotlyJsonToChartTableProps = (
     }),
   );
 
-  const styles: ChartTableProps['styles'] = {
-    root: {
-      ...(input.layout?.font?.size ? { fontSize: input.layout.font.size } : {}),
-    },
-  };
-
   const templateHeader = input.layout?.template?.data?.table?.[0]?.header;
   const tableHeader = tableData.header;
 
@@ -3008,13 +3011,21 @@ export const transformPlotlyJsonToChartTableProps = (
     values: tableHeader?.values ?? templateHeader?.values ?? [],
   };
 
+  const { chartTitle, titleFont } = getTitles(input.layout);
+
   return {
     headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,
-    styles,
-  };
+    chartTitle,
+    styles: {
+      root: {
+        ...(input.layout?.font?.size ? { fontSize: input.layout.font.size } : {}),
+      },
+      ...(titleFont ? { chartTitle: getChartTitleFontStyles(titleFont) } : {}),
+    } as ChartTableStyles,
+  } as ChartTableProps;
 };
 
 function getCategoriesAndValues(series: Partial<PlotData>): {
@@ -3163,19 +3174,23 @@ export const transformPlotlyJsonToFunnelChartProps = (
       });
     });
   }
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleFont } = getTitles(input.layout);
 
   return {
     data: funnelData,
     chartTitle,
-    chartTitleStyles: getTitleFontStyles(
-      typeof input.layout?.title === 'object' ? input.layout.title?.font : undefined,
-    ),
     width: input.layout?.width,
     height: input.layout?.height,
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-  };
+    ...(titleFont
+      ? {
+          styles: {
+            chartTitle: getChartTitleFontStyles(titleFont),
+          } as FunnelChartStyles,
+        }
+      : {}),
+  } as FunnelChartProps;
 };
 
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {

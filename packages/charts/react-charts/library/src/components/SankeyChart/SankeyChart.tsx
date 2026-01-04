@@ -1129,17 +1129,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     };
     return (
       <div className={classes.root} ref={chartContainer} onMouseLeave={_onCloseCallout}>
-        {!props.hideLegend && props.data.chartTitle && (
-          <div
-            style={{
-              textAlign: 'center',
-              marginBottom: '8px',
-              ...props.chartTitleStyles,
-            }}
-          >
-            {props.data.chartTitle}
-          </div>
-        )}
         {/*
         - Horizontal navigation has been disabled because the nodes and links are rendered vertically,
         causing the left/right arrow keys to move focus up or down to the previous or next sibling element.
@@ -1148,6 +1137,11 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId} className={classes.chart}>
+            {!props.hideLegend && props.data.chartTitle && (
+              <text x={width / 2} y={20} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
+                {props.data.chartTitle}
+              </text>
+            )}
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (

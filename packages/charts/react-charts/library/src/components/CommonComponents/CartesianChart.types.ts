@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
+import type { Font } from '@fluentui/chart-utilities';
 import {
   AccessibilityProps,
   Chart,
@@ -466,12 +467,6 @@ export interface CartesianChartProps {
   xAxisAnnotation?: string;
 
   /**
-   * Optional inline styles to apply to the x axis annotation.
-   * @default undefined
-   */
-  xAxisAnnotationStyles?: React.CSSProperties;
-
-  /**
    * Prop to set the y axis annotation. Used to display additional information on the y-axis.
    * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
    * @default undefined
@@ -577,6 +572,11 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Define the chart title
    */
   chartTitle?: string;
+
+  /**
+   * Font properties for the chart title from Plotly schema
+   */
+  titleFont?: Partial<Font>;
 
   /**
    * Only used for Area chart

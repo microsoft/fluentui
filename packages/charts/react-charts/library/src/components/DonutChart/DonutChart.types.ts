@@ -86,11 +86,6 @@ export interface DonutChartProps extends CartesianChartProps {
    */
   className?: string;
 
-  /**
-   * Inline styles for the chart title
-   */
-  chartTitleStyles?: React.CSSProperties;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
 
@@ -160,6 +155,11 @@ export interface DonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 
   /**
    * styles for axis annotation

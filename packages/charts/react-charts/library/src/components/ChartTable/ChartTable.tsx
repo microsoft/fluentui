@@ -47,7 +47,7 @@ function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string
 
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
-    const { headers, rows, width, height } = props;
+    const { headers, rows, width, height, chartTitle } = props;
     const { chartContainerRef: _rootElem } = useImageExport(props.componentRef, true, false);
     const classes = useChartTableStyles(props);
     const arrowAttributes = useArrowNavigationGroup({ axis: 'grid' });
@@ -89,16 +89,26 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
       }
     }
 
+    const titleHeight = chartTitle ? 30 : 0;
+    const heightValue = typeof height === 'number' ? height : 650;
+    const tableHeight = `${heightValue}px`;
+    const totalHeight = heightValue + titleHeight;
+
     return (
       <div
         ref={el => {
           _rootElem.current = el;
         }}
         className={classes.root as string}
-        style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
+        style={{ height: `${totalHeight}px`, overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={height ?? '650px'}>
-          <foreignObject x="0" y="0" width="100%" height="100%">
+        <svg width={width ?? '100%'} height={`${totalHeight}px`}>
+          {chartTitle && (
+            <text x="50%" y={15} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
+              {chartTitle}
+            </text>
+          )}
+          <foreignObject x="0" y={titleHeight} width="100%" height={tableHeight}>
             <div
               style={{
                 maxHeight: height ? `${height}px` : '650px',

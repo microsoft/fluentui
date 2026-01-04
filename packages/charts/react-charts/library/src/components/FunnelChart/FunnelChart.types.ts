@@ -42,11 +42,6 @@ export interface FunnelChartProps {
   chartTitle?: string;
 
   /**
-   * Inline styles for the chart title
-   */
-  chartTitleStyles?: React.CSSProperties;
-
-  /**
    * Width of the chart
    */
   width?: number;
@@ -132,6 +127,11 @@ export interface FunnelChartStyles {
    * Styles for the chart
    */
   chart?: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 
   /**
    * Styles for text elements

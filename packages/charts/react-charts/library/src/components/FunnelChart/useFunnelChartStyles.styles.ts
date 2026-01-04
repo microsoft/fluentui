@@ -13,6 +13,7 @@ export const funnelClassNames: SlotClassNames<FunnelChartStyles> = {
   chart: 'fui-funnel__chart',
   text: 'fui-funnel__text',
   calloutContentRoot: 'fui-funnel__callout-content-root',
+  chartTitle: 'fui-funnel__chartTitle',
 };
 
 /**
@@ -44,6 +45,15 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     maxWidth: '238px',
   },
+  chartTitle: {
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightRegular,
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+  },
 });
 
 /**
@@ -58,5 +68,6 @@ export const useFunnelChartStyles = (props: FunnelChartProps): FunnelChartStyles
     chart: mergeClasses(funnelClassNames.chart, baseStyles.chart, props.styles?.chart),
     text: mergeClasses(funnelClassNames.text, baseStyles.text, props.styles?.text),
     calloutContentRoot: mergeClasses(baseStyles.calloutContentRoot, props.styles?.calloutContentRoot),
+    chartTitle: mergeClasses(funnelClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
   };
 };

@@ -29,6 +29,11 @@ export interface ChartTableProps {
   height?: string | number;
 
   /**
+   * Chart title to display above the table
+   */
+  chartTitle?: string;
+
+  /**
    * Additional class name(s) to apply to the table chart
    */
   className?: string;
@@ -55,4 +60,5 @@ export interface ChartTableStyles {
   headerCell?: string;
   bodyCell?: string;
   chart?: string;
+  chartTitle?: string;
 }

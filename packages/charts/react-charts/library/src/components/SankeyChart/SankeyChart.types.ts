@@ -97,11 +97,6 @@ export interface SankeyChartProps {
   culture?: string;
 
   /**
-   * Inline styles for the chart title
-   */
-  chartTitleStyles?: React.CSSProperties;
-
-  /**
    * Whether to hide the legend
    * @default false
    */
@@ -159,6 +154,11 @@ export interface SankeyChartStyles {
    * Styles for the chart svg element
    */
   chart?: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 }
 
 /**

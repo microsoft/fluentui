@@ -5,6 +5,7 @@
 ```ts
 
 import { CurveFactory } from 'd3-shape';
+import type { Font } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -240,7 +241,6 @@ export interface CartesianChartProps {
         tickLayout?: 'default' | 'auto';
     };
     xAxisAnnotation?: string;
-    xAxisAnnotationStyles?: React_2.CSSProperties;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
@@ -508,6 +508,7 @@ export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
 
 // @public
 export interface ChartTableProps {
+    chartTitle?: string;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     headers: {
@@ -529,6 +530,8 @@ export interface ChartTableStyles {
     bodyCell?: string;
     // (undocumented)
     chart?: string;
+    // (undocumented)
+    chartTitle?: string;
     // (undocumented)
     headerCell?: string;
     // (undocumented)
@@ -712,7 +715,6 @@ export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 export interface DonutChartProps extends CartesianChartProps {
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
-    chartTitleStyles?: React_2.CSSProperties;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
@@ -745,6 +747,7 @@ export interface DonutChartStyleProps extends CartesianChartStyleProps {
 export interface DonutChartStyles {
     axisAnnotation?: string;
     chart?: string;
+    chartTitle?: string;
     chartWrapper?: string;
     legendContainer: string;
     root?: string;
@@ -805,7 +808,6 @@ export interface FunnelChartDataPoint {
 export interface FunnelChartProps {
     calloutProps?: ChartPopoverProps;
     chartTitle?: string;
-    chartTitleStyles?: React_2.CSSProperties;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
@@ -829,6 +831,7 @@ export interface FunnelChartStyleProps {
 export interface FunnelChartStyles {
     calloutContentRoot?: string;
     chart?: string;
+    chartTitle?: string;
     root?: string;
     text?: string;
 }
@@ -1470,6 +1473,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
         tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
+    titleFont?: Partial<Font>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
@@ -1593,7 +1597,6 @@ export interface SankeyChartProps {
     accessibility?: SankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
     calloutProps?: ChartPopoverProps;
-    chartTitleStyles?: React.CSSProperties;
     className?: string;
     colorsForNodes?: string[];
     componentRef?: Ref<Chart>;
@@ -1623,6 +1626,7 @@ export interface SankeyChartStrings {
 // @public
 export interface SankeyChartStyles {
     chart?: string;
+    chartTitle?: string;
     chartWrapper?: string;
     links?: string;
     nodes?: string;
