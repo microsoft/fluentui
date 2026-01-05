@@ -7,7 +7,8 @@ import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@fluentui/public-docsite-resources/dist/api/', true, /^(?!references).*/);
+const apiRequireContext = require.context('@fluentui/public-docsite-resources/dist/api', true, /^(?!references).*/);
+
 
 const webPlatformBanner = {
   banner: {
