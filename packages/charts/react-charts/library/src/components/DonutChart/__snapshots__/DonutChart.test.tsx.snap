@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 <div>
@@ -91,7 +91,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
             />
             <div
               class="fui-legend__text"
@@ -110,7 +110,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
             />
             <div
               class="fui-legend__text"
@@ -129,7 +129,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
             />
             <div
               class="fui-legend__text"
@@ -239,7 +239,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
                 class="fui-legend__text"
@@ -258,7 +258,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
                 class="fui-legend__text"
@@ -277,7 +277,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
                 class="fui-legend__text"
@@ -396,7 +396,7 @@ Object {
                   </div>
                   <div
                     class="fui-cart__calloutContentY"
-                    style="color: rgb(229, 229, 229);"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                   >
                     20,000
                   </div>
@@ -430,7 +430,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
                 />
                 <div
                   class="fui-legend__text"
@@ -449,7 +449,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -468,7 +468,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
                 />
                 <div
                   class="fui-legend__text"
@@ -579,7 +579,7 @@ Object {
                 </div>
                 <div
                   class="fui-cart__calloutContentY"
-                  style="color: rgb(229, 229, 229);"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                 >
                   20,000
                 </div>
@@ -613,7 +613,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
                 class="fui-legend__text"
@@ -632,7 +632,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
                 class="fui-legend__text"
@@ -651,7 +651,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
                 class="fui-legend__text"
@@ -821,7 +821,7 @@ Object {
                   </div>
                   <div
                     class="fui-cart__calloutContentY"
-                    style="color: rgb(229, 229, 229);"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                   >
                     20,000
                   </div>
@@ -855,7 +855,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
                 />
                 <div
                   class="fui-legend__text"
@@ -874,7 +874,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -893,7 +893,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1004,7 +1004,7 @@ Object {
                 </div>
                 <div
                   class="fui-cart__calloutContentY"
-                  style="color: rgb(229, 229, 229);"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                 >
                   20,000
                 </div>
@@ -1038,7 +1038,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
                 class="fui-legend__text"
@@ -1057,7 +1057,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
                 class="fui-legend__text"
@@ -1076,7 +1076,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
                 class="fui-legend__text"
@@ -1233,7 +1233,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -1252,7 +1252,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -1271,7 +1271,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
@@ -1405,7 +1405,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -1424,7 +1424,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -1443,7 +1443,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
@@ -1577,7 +1577,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -1596,7 +1596,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -1615,7 +1615,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
@@ -1719,7 +1719,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -1738,7 +1738,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -1757,7 +1757,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
@@ -1861,7 +1861,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(99, 124, 239); border-color: #637cef; --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+            style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
           />
           <div
             class="fui-legend__text"
@@ -1880,7 +1880,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+            style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
           />
           <div
             class="fui-legend__text"
@@ -1899,7 +1899,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(42, 160, 164); border-color: #2aa0a4; --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
+            style="height: 12px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
           />
           <div
             class="fui-legend__text"
@@ -2006,7 +2006,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
             />
             <div
               class="fui-legend__text"
@@ -2028,7 +2028,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
             />
             <div
               class="fui-legend__text"
@@ -2050,7 +2050,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
             />
             <div
               class="fui-legend__text"
@@ -2223,7 +2223,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -2242,7 +2242,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -2261,7 +2261,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
@@ -2365,7 +2365,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5; --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
             class="fui-legend__text"
@@ -2384,7 +2384,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
             class="fui-legend__text"
@@ -2403,7 +2403,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada; --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
             class="fui-legend__text"
