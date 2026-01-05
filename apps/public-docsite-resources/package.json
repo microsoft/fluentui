@@ -5,6 +5,13 @@
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
+  "exports": {
+    "./lib/AppDefinition": {
+      "types": "./lib/AppDefinition.d.ts",
+      "import": "./lib/AppDefinition.js",
+      "require": "./lib-commonjs/AppDefinition.js"
+    }
+  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
