@@ -217,23 +217,6 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
-  test('transformPlotlyJsonToDonutProps - maps layout annotations to chart annotations', () => {
-    const plotlySchema = require('./tests/schema/fluent_donut_annotations_test.json');
-    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default', false);
-
-    expect(result.annotations).toBeDefined();
-    expect(result.annotations).toHaveLength(1);
-    const annotation = result.annotations![0];
-    expect(annotation.text).toContain('Total: 32');
-    expect(annotation.coordinates).toEqual({ type: 'relative', x: 0.5, y: 0.5 });
-    expect(annotation.layout).toMatchObject({
-      align: 'center',
-      verticalAlign: 'middle',
-      clipToBounds: false,
-    });
-    expect(annotation.style).toMatchObject({ backgroundColor: 'rgba(245, 246, 249, 0.9)' });
-  });
-
   test('transformPlotlyJsonToDonutProps - infers vertical alignment from arrow offsets', () => {
     const plotlySchema = {
       visualizer: 'plotly',

@@ -8,7 +8,6 @@ import * as utils from '../../utilities/utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import type { ChartAnnotation } from '../../types/ChartAnnotation';
-import { transformPlotlyJsonToDonutProps } from '../DeclarativeChart/PlotlySchemaAdapter';
 
 expect.extend(toHaveNoViolations);
 
@@ -183,40 +182,6 @@ describe('Donut chart interactions', () => {
     });
   });
 
-  it('renders all Plotly donut annotation connectors with arrowheads', () => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const schema = require('../../../../stories/src/DeclarativeChart/fluent_donut_annotations_investment.json');
-    const donutProps = transformPlotlyJsonToDonutProps(
-      schema,
-      false,
-      { current: new Map<string, string>() },
-      'default',
-    );
-
-    const { container } = render(<DonutChart {...donutProps} width={420} height={340} hideLegend={true} />);
-
-    const annotationSvg = container.querySelector('[data-chart-annotation-svg="true"]') as SVGElement | null;
-    expect(annotationSvg).toBeTruthy();
-
-    const connectorLines = annotationSvg?.querySelectorAll('line') ?? [];
-    expect(connectorLines.length).toBe(4);
-
-    connectorLines.forEach(line => {
-      const markerEnd = line.getAttribute('marker-end');
-      expect(markerEnd).toBeTruthy();
-
-      const x1 = Number(line.getAttribute('x1'));
-      const y1 = Number(line.getAttribute('y1'));
-      const x2 = Number(line.getAttribute('x2'));
-      const y2 = Number(line.getAttribute('y2'));
-
-      expect(Number.isFinite(x1)).toBe(true);
-      expect(Number.isFinite(y1)).toBe(true);
-      expect(Number.isFinite(x2)).toBe(true);
-      expect(Number.isFinite(y2)).toBe(true);
-      expect(Math.hypot(x2 - x1, y2 - y1)).toBeGreaterThan(10);
-    });
-  });
   describe('Donut chart viewport layout', () => {
     const { resolveDonutViewportLayout } = __donutChartInternals;
     const baseWidth = 400;

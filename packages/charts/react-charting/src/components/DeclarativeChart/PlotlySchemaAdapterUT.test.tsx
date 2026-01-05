@@ -154,6 +154,17 @@ describe('isMonthArray', () => {
 });
 
 describe('correctYearMonth', () => {
+  beforeAll(() => {
+    // `correctYearMonth` uses the current year internally. Freeze time so expectations
+    // don't change as the real calendar year changes.
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2025-06-15T00:00:00.000Z'));
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   test('Should return dates array when input array contains months data', () => {
     expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
   });
