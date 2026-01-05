@@ -522,22 +522,6 @@ export class GroupedVerticalBarChartBase
             />,
           );
 
-          // Render individual bar label if provided
-          if (pointData.barLabel && isLegendActive) {
-            barLabelsForGroup.push(
-              <text
-                key={`${singleSet.indexNum}-${legendIndex}-${pointIndex}-label`}
-                x={xPoint + this._barWidth / 2}
-                y={pointData.data >= this.Y_ORIGIN ? yPoint - 6 : yPoint + height + 12}
-                textAnchor="middle"
-                className={this._classNames.barLabel}
-                aria-hidden={true}
-              >
-                {pointData.barLabel}
-              </text>,
-            );
-          }
-
           barTotalValue += pointData.data;
         });
         if (barTotalValue !== null && !this.props.hideLabels && this._barWidth >= 16 && isLegendActive) {

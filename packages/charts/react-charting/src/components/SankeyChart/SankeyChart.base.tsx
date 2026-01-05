@@ -1277,7 +1277,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
       const selectedNode = state.selectedNode;
-      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
+      return selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 

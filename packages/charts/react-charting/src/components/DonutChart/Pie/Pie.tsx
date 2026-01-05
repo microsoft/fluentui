@@ -74,12 +74,8 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public render(): JSXElement {
     const { pie, data } = this.props;
-
-    // Filter out data points with value 0 to avoid gaps in the donut chart
-    const filteredData = data.filter((d: IChartDataPoint) => d.data !== 0);
-
-    const focusData = this._pieForFocusRing(filteredData.map(d => d.data!));
-    const piechart = pie(filteredData);
+    const focusData = this._pieForFocusRing(data);
+    const piechart = pie(data);
     const translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
     const classNames = getClassNames(getStyles, {
       theme: this.props.theme!,

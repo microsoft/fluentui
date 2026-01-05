@@ -323,11 +323,6 @@ export interface ICartesianChartProps {
   yMaxValue?: number;
 
   /**
-   * minimum data value point in x-axis (for numeric x-axis)
-   */
-  xMinValue?: number;
-
-  /**
    * maximum data value point in x-axis
    */
   xMaxValue?: number;

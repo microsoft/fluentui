@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adjust annotation connector geometry to keep donut callout arrows visible when spacing is tight.",
-  "packageName": "@fluentui/react-charting",
-  "email": "chartingdev@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -867,7 +867,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -981,7 +981,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -1093,7 +1093,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -1269,14 +1269,7 @@ export class VerticalBarChartBase
     );
   };
 
-  private _renderBarLabel(
-    xPoint: number,
-    yPoint: number,
-    barValue: number,
-    legend: string,
-    isNegativeBar: boolean,
-    customBarLabel?: string,
-  ) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
     if (
       this.props.hideLabels ||
       this._barWidth < 16 ||
@@ -1284,14 +1277,6 @@ export class VerticalBarChartBase
     ) {
       return null;
     }
-
-    // Use custom barLabel if provided, otherwise use the formatted barValue
-    const displayLabel =
-      customBarLabel !== undefined
-        ? customBarLabel
-        : typeof this.props.yAxisTickFormat === 'function'
-        ? this.props.yAxisTickFormat(barValue)
-        : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1301,7 +1286,9 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {displayLabel}
+        {typeof this.props.yAxisTickFormat === 'function'
+          ? this.props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }

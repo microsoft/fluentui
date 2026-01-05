@@ -1,639 +1,76 @@
 {
+  "visualizer": "plotly",
   "data": [
     {
-      "hovertemplate": "Compliance Status=Within Threshold\u003cbr\u003eFacility=%{x}\u003cbr\u003eCO$_2$ Emissions (tons)=%{y}\u003cextra\u003e\u003c\u002fextra\u003e",
-      "legendgroup": "Within Threshold",
+      "hole": 0.6,
+      "type": "pie",
+      "frame": null,
       "marker": {
-        "color": "green",
-        "pattern": {
-          "shape": ""
-        }
+        "line": {
+          "color": "transparent"
+        },
+        "colors": [
+          "rgba(31,119,180,1)",
+          "rgba(255,127,14,1)",
+          "rgba(44,160,44,1)",
+          "rgba(214,39,40,1)",
+          "rgba(148,103,189,1)",
+          "rgba(140,86,75,1)",
+          "rgba(227,119,194,1)",
+          "rgba(127,127,127,1)",
+          "rgba(188,189,34,1)",
+          "rgba(23,190,207,1)"
+        ],
+        "fillcolor": "rgba(31,119,180,1)"
       },
-      "name": "Within Threshold",
-      "orientation": "v",
-      "showlegend": true,
-      "textposition": "auto",
-      "x": ["Facility A", "Facility B", "Facility E", "Facility F", "Facility I", "Facility J"],
-      "xaxis": "x",
-      "y": {
-        "dtype": "f8",
-        "bdata": "AAAAAACgfkAAAAAAAHB7QAAAAAAA8HpAAAAAAADwekAAAAAAAMB5QAAAAAAA0H5A"
-      },
-      "yaxis": "y",
-      "type": "bar"
-    },
-    {
-      "hovertemplate": "Compliance Status=Above Threshold\u003cbr\u003eFacility=%{x}\u003cbr\u003eCO$_2$ Emissions (tons)=%{y}\u003cextra\u003e\u003c\u002fextra\u003e",
-      "legendgroup": "Above Threshold",
-      "marker": {
-        "color": "red",
-        "pattern": {
-          "shape": ""
-        }
-      },
-      "name": "Above Threshold",
-      "orientation": "v",
-      "showlegend": true,
-      "textposition": "auto",
-      "x": ["Facility C", "Facility D", "Facility G", "Facility H"],
-      "xaxis": "x",
-      "y": {
-        "dtype": "f8",
-        "bdata": "AAAAAABgf0AAAAAAAOCBQAAAAAAAAIJAAAAAAADwf0A="
-      },
-      "yaxis": "y",
-      "type": "bar"
+      "labels": [
+        "AMC",
+        "Cadillac",
+        "Camaro",
+        "Chrysler",
+        "Datsun",
+        "Dodge",
+        "Duster",
+        "Ferrari",
+        "Fiat",
+        "Ford",
+        "Honda",
+        "Hornet",
+        "Lincoln",
+        "Lotus",
+        "Maserati",
+        "Mazda",
+        "Merc",
+        "Pontiac",
+        "Porsche",
+        "Toyota",
+        "Valiant",
+        "Volvo"
+      ],
+      "values": [1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 7, 1, 1, 2, 1, 1]
     }
   ],
   "layout": {
-    "template": {
-      "data": {
-        "barpolar": [
-          {
-            "marker": {
-              "line": {
-                "color": "white",
-                "width": 0.5
-              },
-              "pattern": {
-                "fillmode": "overlay",
-                "size": 10,
-                "solidity": 0.2
-              }
-            },
-            "type": "barpolar"
-          }
-        ],
-        "bar": [
-          {
-            "error_x": {
-              "color": "#2a3f5f"
-            },
-            "error_y": {
-              "color": "#2a3f5f"
-            },
-            "marker": {
-              "line": {
-                "color": "white",
-                "width": 0.5
-              },
-              "pattern": {
-                "fillmode": "overlay",
-                "size": 10,
-                "solidity": 0.2
-              }
-            },
-            "type": "bar"
-          }
-        ],
-        "carpet": [
-          {
-            "aaxis": {
-              "endlinecolor": "#2a3f5f",
-              "gridcolor": "#C8D4E3",
-              "linecolor": "#C8D4E3",
-              "minorgridcolor": "#C8D4E3",
-              "startlinecolor": "#2a3f5f"
-            },
-            "baxis": {
-              "endlinecolor": "#2a3f5f",
-              "gridcolor": "#C8D4E3",
-              "linecolor": "#C8D4E3",
-              "minorgridcolor": "#C8D4E3",
-              "startlinecolor": "#2a3f5f"
-            },
-            "type": "carpet"
-          }
-        ],
-        "choropleth": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "type": "choropleth"
-          }
-        ],
-        "contourcarpet": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "type": "contourcarpet"
-          }
-        ],
-        "contour": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "colorscale": [
-              [0.0, "#0d0887"],
-              [0.1111111111111111, "#46039f"],
-              [0.2222222222222222, "#7201a8"],
-              [0.3333333333333333, "#9c179e"],
-              [0.4444444444444444, "#bd3786"],
-              [0.5555555555555556, "#d8576b"],
-              [0.6666666666666666, "#ed7953"],
-              [0.7777777777777778, "#fb9f3a"],
-              [0.8888888888888888, "#fdca26"],
-              [1.0, "#f0f921"]
-            ],
-            "type": "contour"
-          }
-        ],
-        "heatmap": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "colorscale": [
-              [0.0, "#0d0887"],
-              [0.1111111111111111, "#46039f"],
-              [0.2222222222222222, "#7201a8"],
-              [0.3333333333333333, "#9c179e"],
-              [0.4444444444444444, "#bd3786"],
-              [0.5555555555555556, "#d8576b"],
-              [0.6666666666666666, "#ed7953"],
-              [0.7777777777777778, "#fb9f3a"],
-              [0.8888888888888888, "#fdca26"],
-              [1.0, "#f0f921"]
-            ],
-            "type": "heatmap"
-          }
-        ],
-        "histogram2dcontour": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "colorscale": [
-              [0.0, "#0d0887"],
-              [0.1111111111111111, "#46039f"],
-              [0.2222222222222222, "#7201a8"],
-              [0.3333333333333333, "#9c179e"],
-              [0.4444444444444444, "#bd3786"],
-              [0.5555555555555556, "#d8576b"],
-              [0.6666666666666666, "#ed7953"],
-              [0.7777777777777778, "#fb9f3a"],
-              [0.8888888888888888, "#fdca26"],
-              [1.0, "#f0f921"]
-            ],
-            "type": "histogram2dcontour"
-          }
-        ],
-        "histogram2d": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "colorscale": [
-              [0.0, "#0d0887"],
-              [0.1111111111111111, "#46039f"],
-              [0.2222222222222222, "#7201a8"],
-              [0.3333333333333333, "#9c179e"],
-              [0.4444444444444444, "#bd3786"],
-              [0.5555555555555556, "#d8576b"],
-              [0.6666666666666666, "#ed7953"],
-              [0.7777777777777778, "#fb9f3a"],
-              [0.8888888888888888, "#fdca26"],
-              [1.0, "#f0f921"]
-            ],
-            "type": "histogram2d"
-          }
-        ],
-        "histogram": [
-          {
-            "marker": {
-              "pattern": {
-                "fillmode": "overlay",
-                "size": 10,
-                "solidity": 0.2
-              }
-            },
-            "type": "histogram"
-          }
-        ],
-        "mesh3d": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "type": "mesh3d"
-          }
-        ],
-        "parcoords": [
-          {
-            "line": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "parcoords"
-          }
-        ],
-        "pie": [
-          {
-            "automargin": true,
-            "type": "pie"
-          }
-        ],
-        "scatter3d": [
-          {
-            "line": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scatter3d"
-          }
-        ],
-        "scattercarpet": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scattercarpet"
-          }
-        ],
-        "scattergeo": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scattergeo"
-          }
-        ],
-        "scattergl": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scattergl"
-          }
-        ],
-        "scattermapbox": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scattermapbox"
-          }
-        ],
-        "scattermap": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scattermap"
-          }
-        ],
-        "scatterpolargl": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scatterpolargl"
-          }
-        ],
-        "scatterpolar": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scatterpolar"
-          }
-        ],
-        "scatter": [
-          {
-            "fillpattern": {
-              "fillmode": "overlay",
-              "size": 10,
-              "solidity": 0.2
-            },
-            "type": "scatter"
-          }
-        ],
-        "scatterternary": [
-          {
-            "marker": {
-              "colorbar": {
-                "outlinewidth": 0,
-                "ticks": ""
-              }
-            },
-            "type": "scatterternary"
-          }
-        ],
-        "surface": [
-          {
-            "colorbar": {
-              "outlinewidth": 0,
-              "ticks": ""
-            },
-            "colorscale": [
-              [0.0, "#0d0887"],
-              [0.1111111111111111, "#46039f"],
-              [0.2222222222222222, "#7201a8"],
-              [0.3333333333333333, "#9c179e"],
-              [0.4444444444444444, "#bd3786"],
-              [0.5555555555555556, "#d8576b"],
-              [0.6666666666666666, "#ed7953"],
-              [0.7777777777777778, "#fb9f3a"],
-              [0.8888888888888888, "#fdca26"],
-              [1.0, "#f0f921"]
-            ],
-            "type": "surface"
-          }
-        ],
-        "table": [
-          {
-            "cells": {
-              "fill": {
-                "color": "#EBF0F8"
-              },
-              "line": {
-                "color": "white"
-              }
-            },
-            "header": {
-              "fill": {
-                "color": "#C8D4E3"
-              },
-              "line": {
-                "color": "white"
-              }
-            },
-            "type": "table"
-          }
-        ]
-      },
-      "layout": {
-        "annotationdefaults": {
-          "arrowcolor": "#2a3f5f",
-          "arrowhead": 0,
-          "arrowwidth": 1
-        },
-        "autotypenumbers": "strict",
-        "coloraxis": {
-          "colorbar": {
-            "outlinewidth": 0,
-            "ticks": ""
-          }
-        },
-        "colorscale": {
-          "diverging": [
-            [0, "#8e0152"],
-            [0.1, "#c51b7d"],
-            [0.2, "#de77ae"],
-            [0.3, "#f1b6da"],
-            [0.4, "#fde0ef"],
-            [0.5, "#f7f7f7"],
-            [0.6, "#e6f5d0"],
-            [0.7, "#b8e186"],
-            [0.8, "#7fbc41"],
-            [0.9, "#4d9221"],
-            [1, "#276419"]
-          ],
-          "sequential": [
-            [0.0, "#0d0887"],
-            [0.1111111111111111, "#46039f"],
-            [0.2222222222222222, "#7201a8"],
-            [0.3333333333333333, "#9c179e"],
-            [0.4444444444444444, "#bd3786"],
-            [0.5555555555555556, "#d8576b"],
-            [0.6666666666666666, "#ed7953"],
-            [0.7777777777777778, "#fb9f3a"],
-            [0.8888888888888888, "#fdca26"],
-            [1.0, "#f0f921"]
-          ],
-          "sequentialminus": [
-            [0.0, "#0d0887"],
-            [0.1111111111111111, "#46039f"],
-            [0.2222222222222222, "#7201a8"],
-            [0.3333333333333333, "#9c179e"],
-            [0.4444444444444444, "#bd3786"],
-            [0.5555555555555556, "#d8576b"],
-            [0.6666666666666666, "#ed7953"],
-            [0.7777777777777778, "#fb9f3a"],
-            [0.8888888888888888, "#fdca26"],
-            [1.0, "#f0f921"]
-          ]
-        },
-        "colorway": [
-          "#636efa",
-          "#EF553B",
-          "#00cc96",
-          "#ab63fa",
-          "#FFA15A",
-          "#19d3f3",
-          "#FF6692",
-          "#B6E880",
-          "#FF97FF",
-          "#FECB52"
-        ],
-        "font": {
-          "color": "#2a3f5f"
-        },
-        "geo": {
-          "bgcolor": "white",
-          "lakecolor": "white",
-          "landcolor": "white",
-          "showlakes": true,
-          "showland": true,
-          "subunitcolor": "#C8D4E3"
-        },
-        "hoverlabel": {
-          "align": "left"
-        },
-        "hovermode": "closest",
-        "mapbox": {
-          "style": "light"
-        },
-        "paper_bgcolor": "white",
-        "plot_bgcolor": "white",
-        "polar": {
-          "angularaxis": {
-            "gridcolor": "#EBF0F8",
-            "linecolor": "#EBF0F8",
-            "ticks": ""
-          },
-          "bgcolor": "white",
-          "radialaxis": {
-            "gridcolor": "#EBF0F8",
-            "linecolor": "#EBF0F8",
-            "ticks": ""
-          }
-        },
-        "scene": {
-          "xaxis": {
-            "backgroundcolor": "white",
-            "gridcolor": "#DFE8F3",
-            "gridwidth": 2,
-            "linecolor": "#EBF0F8",
-            "showbackground": true,
-            "ticks": "",
-            "zerolinecolor": "#EBF0F8"
-          },
-          "yaxis": {
-            "backgroundcolor": "white",
-            "gridcolor": "#DFE8F3",
-            "gridwidth": 2,
-            "linecolor": "#EBF0F8",
-            "showbackground": true,
-            "ticks": "",
-            "zerolinecolor": "#EBF0F8"
-          },
-          "zaxis": {
-            "backgroundcolor": "white",
-            "gridcolor": "#DFE8F3",
-            "gridwidth": 2,
-            "linecolor": "#EBF0F8",
-            "showbackground": true,
-            "ticks": "",
-            "zerolinecolor": "#EBF0F8"
-          }
-        },
-        "shapedefaults": {
-          "line": {
-            "color": "#2a3f5f"
-          }
-        },
-        "ternary": {
-          "aaxis": {
-            "gridcolor": "#DFE8F3",
-            "linecolor": "#A2B1C6",
-            "ticks": ""
-          },
-          "baxis": {
-            "gridcolor": "#DFE8F3",
-            "linecolor": "#A2B1C6",
-            "ticks": ""
-          },
-          "bgcolor": "white",
-          "caxis": {
-            "gridcolor": "#DFE8F3",
-            "linecolor": "#A2B1C6",
-            "ticks": ""
-          }
-        },
-        "title": {
-          "x": 0.05
-        },
-        "xaxis": {
-          "automargin": true,
-          "gridcolor": "#EBF0F8",
-          "linecolor": "#EBF0F8",
-          "ticks": "",
-          "title": {
-            "standoff": 15
-          },
-          "zerolinecolor": "#EBF0F8",
-          "zerolinewidth": 2
-        },
-        "yaxis": {
-          "automargin": true,
-          "gridcolor": "#EBF0F8",
-          "linecolor": "#EBF0F8",
-          "ticks": "",
-          "title": {
-            "standoff": 15
-          },
-          "zerolinecolor": "#EBF0F8",
-          "zerolinewidth": 2
-        }
-      }
-    },
+    "title": "Donut charts using Plotly",
     "xaxis": {
-      "anchor": "y",
-      "domain": [0.0, 1.0],
-      "title": {
-        "text": "Facility"
-      }
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
     },
     "yaxis": {
-      "anchor": "x",
-      "domain": [0.0, 1.0],
-      "title": {
-        "text": "CO$_2$ Emissions (tons)"
-      },
-      "range": [0, 626.0]
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
     },
-    "legend": {
-      "title": {
-        "text": "Compliance Status"
-      },
-      "tracegroupgap": 0
+    "margin": {
+      "b": 40,
+      "l": 60,
+      "r": 10,
+      "t": 25
     },
-    "title": {
-      "text": "Annual CO$_2$ Emissions by Facility\u003cbr\u003e\u003csup\u003eRegulatory Threshold $E_{\\text{max}} = 500$ tons\u003c\u002fsup\u003e"
-    },
-    "barmode": "relative",
-    "shapes": [
-      {
-        "line": {
-          "color": "blue",
-          "dash": "dash"
-        },
-        "type": "line",
-        "x0": 0,
-        "x1": 1,
-        "xref": "x domain",
-        "y0": 500,
-        "y1": 500,
-        "yref": "y"
-      }
-    ],
-    "annotations": [
-      {
-        "font": {
-          "size": 12
-        },
-        "showarrow": false,
-        "text": "Regulatory Threshold $E_{\\text{max}}$",
-        "x": 0,
-        "xanchor": "left",
-        "xref": "x domain",
-        "y": 500,
-        "yanchor": "bottom",
-        "yref": "y"
-      }
-    ]
+    "hovermode": "closest",
+    "showlegend": true
   },
-  "id": 980
+  "frames": [],
+  "selectedLegends": ["Cadillac"]
 }

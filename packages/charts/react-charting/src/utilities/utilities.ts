@@ -179,8 +179,6 @@ export interface IXAxisParams extends AxisProps {
   containerWidth: number;
   hideTickOverlap?: boolean;
   calcMaxLabelWidth: (x: (string | number)[]) => number;
-  xMaxValue?: number;
-  xMinValue?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -264,12 +262,8 @@ export function createNumericXAxis(
     tick0,
     tickText,
   } = xAxisParams;
-  const dStartValue = domainNRangeValues.dStartValue as number;
-  const dEndValue = domainNRangeValues.dEndValue as number;
-  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
-  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
-    .domain([finalXmin, finalXmax])
+    .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
@@ -1340,14 +1334,12 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
   isRTL: boolean,
   scaleType?: AxisScaleType,
   hasMarkersMode?: boolean,
-  xMinVal?: number,
-  xMaxVal?: number,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
   if (hasMarkersMode) {
-    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType, xMinVal, xMaxVal);
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType);
     xMin = xMin - xPadding.start;
     xMax = xMax + xPadding.end;
   }
@@ -2141,8 +2133,6 @@ export const getDomainPaddingForMarkers = (
   minVal: number,
   maxVal: number,
   scaleType?: AxisScaleType,
-  userMinVal?: number,
-  userMaxVal?: number,
 ): { start: number; end: number } => {
   if (scaleType === 'log') {
     return {
@@ -2151,26 +2141,10 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  /* if user explicitly sets userMinVal or userMaxVal, we will check that to avoid excessive padding on either
-     side.If the difference between minVal and userMinVal is more than 10% of the data range, we set padding
-     to 0 on that side. this is to avoid cases where userMinVal is significantly smaller than minVal or
-     userMaxVal is significantly larger than maxVal, which would lead to excessive padding. In other cases,
-     we apply the default 10% padding on both sides.
-  */
-  const rangePadding = (maxVal - minVal) * 0.1;
-
-  // If explicit bounds are set and they're far from the data range, don't add extra padding
-  const paddingAlreadySatisfiedAtMin =
-    userMinVal !== undefined && rangePadding > Math.abs(minVal - Math.min(minVal, userMinVal));
-  const paddingAlreadySatisfiedAtMax =
-    userMaxVal !== undefined && rangePadding > Math.abs(maxVal - Math.max(maxVal, userMaxVal));
-
-  const startPadding = paddingAlreadySatisfiedAtMin ? 0 : rangePadding;
-  const endPadding = paddingAlreadySatisfiedAtMax ? 0 : rangePadding;
-
+  const defaultPadding = (maxVal - minVal) * 0.1;
   return {
-    start: startPadding,
-    end: endPadding,
+    start: defaultPadding,
+    end: defaultPadding,
   };
 };
 
