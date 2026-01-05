@@ -2,6 +2,4 @@
 
 const rootConfig = require('../../../../eslint.config.js');
 
-module.exports = [
-  ...rootConfig,
-];
+module.exports = [...rootConfig];
