@@ -218,12 +218,7 @@ describe('react-library generator', () => {
       module.exports = [
         ...fluentPlugin.configs['flat/react'],
         {
-          rules: {
-            'import/no-extraneous-dependencies': [
-              'error',
-              { packageDir: ['.', '../../../../'] },
-            ],
-          },
+          rules: {},
         },
       ];
       "

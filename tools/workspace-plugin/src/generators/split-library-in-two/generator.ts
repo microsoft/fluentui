@@ -329,12 +329,7 @@ const fluentPlugin = require('@fluentui/eslint-plugin');
 module.exports = [
   ...fluentPlugin.configs['flat/react'],
   {
-    rules: {
-      'import/no-extraneous-dependencies': [
-        'error',
-        { packageDir: ['.', '${options.projectOffsetFromRoot.updated}'] },
-      ],
-    },
+    rules: {},
   },
 ];
 `,

@@ -237,12 +237,7 @@ describe('split-library-in-two generator', () => {
       module.exports = [
         ...fluentPlugin.configs['flat/react'],
         {
-          rules: {
-            'import/no-extraneous-dependencies': [
-              'error',
-              { packageDir: ['.', '../../../../'] },
-            ],
-          },
+          rules: {},
         },
       ];
       "
