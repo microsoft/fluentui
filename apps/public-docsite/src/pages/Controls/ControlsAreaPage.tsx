@@ -9,7 +9,6 @@ export interface IControlsPageProps extends IPageProps<Platforms> {}
 
 const apiRequireContext = require.context('@fluentui/public-docsite-resources/dist/api', true, /^(?!references).*/);
 
-
 const webPlatformBanner = {
   banner: {
     title: 'Fluent UI v9',
