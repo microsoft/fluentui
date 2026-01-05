@@ -2,7 +2,6 @@
   "name": "react-date-time",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": ["jest-serializer-merge-styles"],
   "sourceRoot": "packages/react-date-time/src",
   "tags": ["v8", "ships-bundle"],
   "targets": {

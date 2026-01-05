@@ -4,7 +4,6 @@
   "projectType": "library",
   "sourceRoot": "packages/react/src",
   "tags": ["v8", "ships-bundle", "ships-umd"],
-  "implicitDependencies": ["jest-serializer-merge-styles"],
   "targets": {
     "test": {
       "dependsOn": ["^build"]
