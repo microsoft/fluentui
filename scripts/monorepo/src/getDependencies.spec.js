@@ -64,11 +64,6 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": true,
-          "name": "scripts-api-extractor",
-        },
-        Object {
-          "dependencyType": "devDependencies",
           "isTopLevel": false,
           "name": "scripts-cypress",
         },
