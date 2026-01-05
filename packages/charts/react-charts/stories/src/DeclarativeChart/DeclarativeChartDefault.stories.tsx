@@ -13,9 +13,6 @@ import {
   Switch,
   useFluent,
 } from '@fluentui/react-components';
-import gaugeSchema from './fluent_gauge.json';
-import donutAnnotationsSchema from './fluent_donut_annotations.json';
-import donutAnnotationsGrowthSchema from './fluent_donut_annotations_growth.json';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -51,7 +48,6 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 const DEFAULT_OPTIONS = [
   { key: 'areachart', text: 'Area Chart' },
   { key: 'donutchart', text: 'Donut Chart' },
-  { key: 'donutchart_growth', text: 'Donut Chart (Growth Mix)' },
   { key: 'gaugechart', text: 'Gauge Chart' },
   { key: 'heatmapchart', text: 'Heatmap Chart' },
   { key: 'horizontalbarchart', text: 'HorizontalBar Chart' },
@@ -75,15 +71,15 @@ const DEFAULT_COLOR_OPTIONS = [
 const DEFAULT_SCHEMAS = [
   {
     key: 'areachart',
-    schema: gaugeSchema,
+    schema: JSON.parse(
+      '{"visualizer":"plotly","data":[{"fill":"tonexty","line":{"color":"rgba(255, 153, 51, 1.0)","width":"1.3"},"mode":"lines","name":"a","type":"scatter","x":[0,1,2,3,4,5,6,7,8,9],"y":[0.17048910089864067,0.05390702725063046,0.7560889217240573,0.7393313216390578,0.7562979443674754,0.983908108492343,0.4552096139092071,0.751939393026647,0.42441695150031034,0.6119820237450841],"fillcolor":"rgba(255, 153, 51, 0.3)"},{"fill":"tonexty","line":{"color":"rgba(55, 128, 191, 1.0)","width":"1.3"},"mode":"lines","name":"b","type":"scatter","x":[0,1,2,3,4,5,6,7,8,9],"y":[1.0921498980687505,0.628379692444796,1.6804387333467445,1.1741874271317159,1.7098535938519392,1.0165440369832146,0.8201578488720772,1.019179653143562,0.5391840333768539,0.9023036941696878],"fillcolor":"rgba(55, 128, 191, 0.3)"},{"fill":"tonexty","line":{"color":"rgba(50, 171, 96, 1.0)","width":"1.3"},"mode":"lines","name":"c","type":"scatter","x":[0,1,2,3,4,5,6,7,8,9],"y":[1.5084498776097979,1.0993096327196032,2.5468884763826125,1.3139261978658,1.7288516603693358,1.3500413551768342,1.4111774146124456,1.1245312639069405,1.4068617318281056,0.9236499701488171],"fillcolor":"rgba(50, 171, 96, 0.3)"},{"fill":"tonexty","line":{"color":"rgba(128, 0, 128, 1.0)","width":"1.3"},"mode":"lines","name":"d","type":"scatter","x":[0,1,2,3,4,5,6,7,8,9],"y":[1.912915766078795,1.6450103381519354,3.523866933241722,1.656799203492564,2.666064160881149,2.2985767814076814,1.6491300653173326,1.2880873970749964,2.192375146193222,1.6271909616796654],"fillcolor":"rgba(128, 0, 128, 0.3)"}],"layout":{"legend":{"font":{"color":"#4D5663"},"bgcolor":"#F5F6F9"},"xaxis1":{"title":"","tickfont":{"color":"#4D5663"},"gridcolor":"#E1E5ED","titlefont":{"color":"#4D5663"},"zerolinecolor":"#E1E5ED"},"yaxis1":{"title":"","tickfont":{"color":"#4D5663"},"zeroline":false,"gridcolor":"#E1E5ED","titlefont":{"color":"#4D5663"},"zerolinecolor":"#E1E5ED"},"plot_bgcolor":"#F5F6F9","paper_bgcolor":"#F5F6F9"},"frames":[],"selectedLegends":["a"]}',
+    ),
   },
   {
     key: 'donutchart',
-    schema: donutAnnotationsSchema,
-  },
-  {
-    key: 'donutchart_growth',
-    schema: donutAnnotationsGrowthSchema,
+    schema: JSON.parse(
+      '{"visualizer":"plotly","data":[{"hole":0.6,"type":"pie","frame":null,"marker":{"line":{"color":"transparent"},"colors":["rgba(31,119,180,1)","rgba(255,127,14,1)","rgba(44,160,44,1)","rgba(214,39,40,1)","rgba(148,103,189,1)","rgba(140,86,75,1)","rgba(227,119,194,1)","rgba(127,127,127,1)","rgba(188,189,34,1)","rgba(23,190,207,1)"],"fillcolor":"rgba(31,119,180,1)"},"labels":["AMC","Cadillac","Camaro","Chrysler","Datsun","Dodge","Duster","Ferrari","Fiat","Ford","Honda","Hornet","Lincoln","Lotus","Maserati","Mazda","Merc","Pontiac","Porsche","Toyota","Valiant","Volvo"],"values":[1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,2,7,1,1,2,1,1]}],"layout":{"title":"Donut charts using Plotly","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"margin":{"b":40,"l":60,"r":10,"t":25},"hovermode":"closest","showlegend":true},"frames":[],"selectedLegends":["Cadillac"]}',
+    ),
   },
   {
     key: 'gaugechart',
@@ -190,6 +186,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
+
   React.useEffect(() => {
     doc?.addEventListener('contextmenu', e => {
       e.preventDefault();

@@ -22,7 +22,12 @@ import { TimeLocaleDefinition } from 'd3-time-format';
 // @internal
 export const __donutChartInternals: {
     computeAnnotationViewportPadding: (annotations: readonly ChartAnnotation[] | undefined, width: number | undefined, height: number | undefined, outerRadius: number) => AnnotationViewportPadding;
-    resolveDonutViewportLayout: (annotations: readonly ChartAnnotation[] | undefined, width: number | undefined, height: number | undefined, hideLabels: boolean | undefined) => DonutViewportLayout;
+    resolveDonutViewportLayout: (annotations: readonly ChartAnnotation[] | undefined, width: number | undefined, height: number | undefined, hideLabels: boolean | undefined) => {
+        padding: AnnotationViewportPadding;
+        svgWidth: number | undefined;
+        svgHeight: number | undefined;
+        outerRadius: number;
+    };
 };
 
 // @public (undocumented)
