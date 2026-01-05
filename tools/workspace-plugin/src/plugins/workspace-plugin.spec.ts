@@ -66,12 +66,8 @@ describe(`workspace-plugin`, () => {
         "executor": "nx:run-commands",
         "inputs": Array [
           "default",
-          "{projectRoot}/eslint.config.js",
-          "{projectRoot}/eslint.config.cjs",
-          "{projectRoot}/eslint.config.mjs",
-          "{workspaceRoot}/eslint.config.js",
-          "{workspaceRoot}/eslint.config.cjs",
-          "{workspaceRoot}/eslint.config.mjs",
+          "{projectRoot}/eslint.{js,cjs,mjs}",
+          "{workspaceRoot}/eslint.config.{js,cjs,mjs}",
           Object {
             "externalDependencies": Array [
               "eslint",
