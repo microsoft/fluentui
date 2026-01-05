@@ -6,8 +6,7 @@
   "scripts": {
     "type-check": "tsc -p . --noEmit --baseUrl .",
     "bundle": "just-scripts bundle",
-    "test-ssr": "just-scripts test",
-    "just": "just-scripts"
+    "test-ssr": "just-scripts test"
   },
   "license": "MIT",
   "devDependencies": {
