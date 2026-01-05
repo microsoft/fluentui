@@ -731,16 +731,6 @@ A: Unstyled components don't use Fluent's default styles, but you can still acce
 
 A: Use standard CSS media queries targeting the base class names (`.fui-Button`), or use responsive utilities from your CSS framework (Tailwind, etc.).
 
-**Q: Do unstyled components work with Server-Side Rendering (SSR)?**
-
-A: Yes! Unstyled components work with all React SSR frameworks (Next.js, Remix, etc.):
-
-- **No hydration mismatches:** Since unstyled components have no runtime style injection, there's no risk of style-related hydration issues.
-- **CSS Modules/Tailwind:** Work seamlessly with SSR, following the framework's standard CSS handling.
-- **Griffel with SSR:** If using Griffel with unstyled components via `className`, follow Griffel's SSR setup (CSS extraction).
-
-The main benefit: no Griffel runtime means simpler SSR setup and fewer potential hydration issues.
-
 **Q: How do I ensure I haven't broken accessibility with custom styles?**
 
 A: Follow these practices:
