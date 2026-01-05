@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 05 Dec 2025 22:38:18 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.9)
+
+Wed, 17 Dec 2025 18:10:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.8..@fluentui/react-components_v9.72.9)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: add appearance prop ('flat' | 'elevated') ([PR #34971](https://github.com/microsoft/fluentui/pull/34971) by oleksandr.katrukhin@microsoft.com)
+- `@fluentui/react-utilities`
+  - add HTML Popover API attributes ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by seanmonahan@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - fix(react-charts): Mixed coordinate annotations ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by 120183316+srmukher@users.noreply.github.com)
+  - add missing aria-labels in v9 cartesian charts ([PR #35560](https://github.com/microsoft/fluentui/pull/35560) by 74965306+Anush2303@users.noreply.github.com)
+  - fix label percentage issue in donut, VBC, VSBC and heatmap chart ([PR #35538](https://github.com/microsoft/fluentui/pull/35538) by anushgupta@microsoft.com)
+  - fix a11y bugs in line chart ([PR #35550](https://github.com/microsoft/fluentui/pull/35550) by anushgupta@microsoft.com)
+  - fix a11y issues ([PR #35573](https://github.com/microsoft/fluentui/pull/35573) by anushgupta@microsoft.com)
+  - feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space ([PR #35522](https://github.com/microsoft/fluentui/pull/35522) by kumarkshitij@microsoft.com)
+  - fix: resolve minor gantt chart bugs ([PR #35543](https://github.com/microsoft/fluentui/pull/35543) by kumarkshitij@microsoft.com)
+  - fix(react-charts):Fixing annotations opacity issue ([PR #35564](https://github.com/microsoft/fluentui/pull/35564) by 120183316+srmukher@users.noreply.github.com)
+  - enable custom callout in scatter chart ([PR #35565](https://github.com/microsoft/fluentui/pull/35565) by anushgupta@microsoft.com)
+  - fix double padding issue in scatter chart ([PR #35498](https://github.com/microsoft/fluentui/pull/35498) by anushgupta@microsoft.com)
+- `@fluentui/react-field`
+  - fix: constrain Field label size to prevent empty space click activation ([PR #35561](https://github.com/microsoft/fluentui/pull/35561) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toolbar`
+  - Fix toolbar toggle button ([PR #35563](https://github.com/microsoft/fluentui/pull/35563) by charles.assuncao@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: ensure slot className is saved from defaultProps ([PR #35555](https://github.com/microsoft/fluentui/pull/35555) by dmytrokirpa@microsoft.com)
 
 ## [9.72.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.8)
 

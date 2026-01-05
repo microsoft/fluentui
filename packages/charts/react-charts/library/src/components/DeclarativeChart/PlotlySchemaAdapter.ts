@@ -539,6 +539,46 @@ const toFiniteNumber = (value: unknown): number | undefined => {
   return Number.isFinite(numeric) ? numeric : undefined;
 };
 
+type AxisRefType = 'axis' | 'relative' | 'pixel' | undefined;
+
+type ParsedAxisRef = {
+  refType: AxisRefType;
+  axisId: number;
+};
+
+/**
+ * Parses Plotly axis references (e.g. `x`, `x2`, `xaxis2`, `paper`, `pixel`, `x domain`) into a ref type + axis id.
+ */
+const parseAxisRef = (ref: string | undefined, axis: 'x' | 'y'): ParsedAxisRef => {
+  if (!ref) {
+    return { refType: 'axis', axisId: 1 };
+  }
+
+  const normalized = ref.toLowerCase().trim();
+  if (normalized === 'pixel') {
+    return { refType: 'pixel', axisId: 1 };
+  }
+  if (normalized === 'paper') {
+    return { refType: 'relative', axisId: 1 };
+  }
+  if (normalized.endsWith(' domain')) {
+    return normalized.startsWith(axis) ? { refType: 'relative', axisId: 1 } : { refType: undefined, axisId: 1 };
+  }
+
+  const match = normalized.match(/^([xy])(axis)?(\d*)$/);
+  if (!match || match[1] !== axis) {
+    return { refType: undefined, axisId: 1 };
+  }
+
+  const suffix = match[3];
+  if (!suffix || suffix === '1') {
+    return { refType: 'axis', axisId: 1 };
+  }
+
+  const parsed = Number(suffix);
+  return { refType: 'axis', axisId: Number.isFinite(parsed) && parsed >= 1 ? parsed : 1 };
+};
+
 /**
  * Converts Plotly's bottom-origin relative Y coordinate into the SVG top-origin space used by our overlay.
  */
@@ -608,26 +648,18 @@ const shouldDefaultToRelativeCoordinates = (data: Data[] | undefined): boolean =
 const resolveRefType = (
   ref: string | undefined,
   axis: 'x' | 'y',
-  defaultRef: 'axis' | 'relative' | 'pixel' = 'axis',
-): 'axis' | 'relative' | 'pixel' | undefined => {
+  defaultRef: Exclude<AxisRefType, undefined> = 'axis',
+): AxisRefType => {
   if (!ref) {
     return defaultRef;
   }
-  const normalized = ref.toLowerCase();
-  if (normalized === 'pixel') {
-    return 'pixel';
+  const parsed = parseAxisRef(ref, axis);
+  if (parsed.refType !== 'axis') {
+    return parsed.refType;
   }
-  if (normalized === 'paper') {
-    return 'relative';
-  }
-  if (normalized.endsWith(' domain')) {
-    return normalized.startsWith(axis) ? 'relative' : undefined;
-  }
+  const normalized = (ref ?? '').toLowerCase().trim();
   const match = normalized.match(/^([xy])(\d*)$/);
-  if (match && match[1] === axis) {
-    return 'axis';
-  }
-  return undefined;
+  return match && match[1] === axis ? 'axis' : undefined;
 };
 
 /**
@@ -642,68 +674,42 @@ const getAxisLayoutByRef = (
     return undefined;
   }
   const defaultAxisKey = `${axis}axis` as 'xaxis' | 'yaxis';
-  if (!ref) {
+  const { refType, axisId } = parseAxisRef(ref, axis);
+
+  if (refType !== 'axis' || axisId === 1) {
     return layout[defaultAxisKey];
   }
-  const normalized = ref.toLowerCase();
-  if (normalized === 'paper' || normalized === 'pixel' || normalized.endsWith(' domain')) {
-    return layout[defaultAxisKey];
-  }
-  const match = normalized.match(/^([xy])(\d*)$/);
-  if (match && match[1] === axis) {
-    const index = match[2];
-    if (index && index !== '' && index !== '1') {
-      const axisKey = `${axis}axis${index}` as keyof Layout;
-      return layout[axisKey] as Partial<LayoutAxis> | undefined;
-    }
-    return layout[defaultAxisKey];
-  }
-  return layout[defaultAxisKey];
+
+  const axisKey = `${axis}axis${axisId}` as keyof Layout;
+  return layout[axisKey] as Partial<LayoutAxis> | undefined;
 };
 
-/**
- * Normalizes raw Plotly data values into canonical number/date/string types based on axis configuration.
- */
-const convertDataValue = (
-  value: unknown,
-  axisLayout: Partial<LayoutAxis> | undefined,
-): string | number | Date | undefined => {
+const convertAnnotationDataValue = (value: unknown, axisType: AxisType): string | number | Date | undefined => {
   if (value === undefined || value === null) {
     return undefined;
   }
-
-  const axisType = axisLayout?.type;
 
   if (axisType === 'date') {
     const dateValue = value instanceof Date ? value : new Date(value as string | number);
     return Number.isNaN(dateValue.getTime()) ? undefined : dateValue;
   }
 
-  if (value instanceof Date) {
-    return Number.isNaN(value.getTime()) ? undefined : value;
-  }
-
-  if (typeof value === 'number') {
-    return Number.isFinite(value) ? value : undefined;
-  }
-
   if (axisType === 'linear' || axisType === 'log') {
+    if (typeof value === 'number') {
+      return Number.isFinite(value) ? value : undefined;
+    }
     const numeric = Number(value);
     return Number.isFinite(numeric) ? numeric : undefined;
   }
 
-  if (typeof value === 'string') {
-    const shouldTryParseDate = axisType === undefined || axisType === '-' || axisType === null;
-    if (shouldTryParseDate && isDate(value)) {
-      const parsedDate = new Date(value);
-      if (!Number.isNaN(parsedDate.getTime()) && parsedDate.getFullYear() >= 1900) {
-        return parsedDate;
-      }
-    }
+  // For category-like axes, preserve raw strings (and avoid date parsing heuristics).
+  if (value instanceof Date) {
     return value;
   }
-
-  return value as string | number;
+  if (typeof value === 'number' || typeof value === 'string') {
+    return value;
+  }
+  return undefined;
 };
 
 const createAnnotationId = (text: string, index: number): string => {
@@ -821,7 +827,8 @@ const getAnnotationCoordinateValue = (
     const axisRef = (axis === 'x' ? annotation?.xref : annotation?.yref) as string | undefined;
     const axisLayout = getAxisLayoutByRef(layout, axisRef, axis);
     const rawValue = axis === 'x' ? annotation?.x : annotation?.y;
-    return convertDataValue(rawValue, axisLayout);
+    const axisType = (axisLayout?.type as AxisType | undefined) ?? 'category';
+    return convertAnnotationDataValue(rawValue, axisType);
   }
 
   const numericValue = toFiniteNumber(axis === 'x' ? annotation?.x : annotation?.y);
@@ -843,14 +850,12 @@ const getAnnotationCoordinateValue = (
 const convertPlotlyAnnotation = (
   annotation: PlotlyAnnotation,
   layout: Partial<Layout> | undefined,
-  data: Data[] | undefined,
+  defaultRefType: Exclude<AxisRefType, undefined>,
   index: number,
 ): ChartAnnotation | undefined => {
   if (!annotation || (annotation as { visible?: boolean }).visible === false) {
     return undefined;
   }
-
-  const defaultRefType = shouldDefaultToRelativeCoordinates(data) ? 'relative' : 'axis';
 
   const xRefType = resolveRefType(annotation.xref as string | undefined, 'x', defaultRefType);
   const yRefType = resolveRefType(annotation.yref as string | undefined, 'y', defaultRefType);
@@ -1090,16 +1095,92 @@ const convertPlotlyAnnotation = (
 };
 
 const getChartAnnotationsFromLayout = (
-  layout: Partial<Layout> | undefined,
   data: Data[] | undefined,
+  layout: Partial<Layout> | undefined,
   isMultiPlot: boolean,
 ): ChartAnnotation[] | undefined => {
   if (isMultiPlot || !layout?.annotations) {
     return undefined;
   }
+
+  // Infer axis types when they are not explicitly set.
+  // This is needed so annotation coordinate parsing can correctly treat values as 'date' vs 'category'
+  // (for example, bar chart category axes with date-like strings).
+  const inferredLayout = (() => {
+    if (!data || !isArrayOrTypedArray(data) || data.length === 0) {
+      return layout;
+    }
+
+    const valuesByAxisKey = new Map<keyof Layout, Datum[]>();
+    const axesExpectingCategories = new Set<keyof Layout>();
+
+    data.forEach(series => {
+      const trace = series as Partial<PlotData>;
+      const axisIds = getAxisIds(trace);
+
+      if (trace.type === 'bar') {
+        const categoryAxisLetter = trace.orientation === 'h' ? 'y' : 'x';
+        axesExpectingCategories.add(getAxisKey(categoryAxisLetter, axisIds[categoryAxisLetter]));
+      }
+
+      (['x', 'y'] as const).forEach(axLetter => {
+        const coords = trace[axLetter];
+        if (!coords || !isArrayOrTypedArray(coords)) {
+          return;
+        }
+
+        const axisKey = getAxisKey(axLetter, axisIds[axLetter]);
+        const existing = valuesByAxisKey.get(axisKey) ?? [];
+        (coords as Datum[] | TypedArray).forEach(val => {
+          if (!isInvalidValue(val)) {
+            existing.push(val as Datum);
+          }
+        });
+        valuesByAxisKey.set(axisKey, existing);
+      });
+    });
+
+    let nextLayout: Partial<Layout> = layout ? { ...layout } : {};
+    let didChange = false;
+
+    valuesByAxisKey.forEach((values, axisKey) => {
+      const currentAxis = layout?.[axisKey];
+      const currentType = currentAxis?.type;
+      if (['linear', 'log', 'date', 'category'].includes(currentType ?? '')) {
+        return;
+      }
+
+      let inferredType: AxisType | undefined;
+      if (axesExpectingCategories.has(axisKey) || isYearArray(values)) {
+        inferredType = 'category';
+      } else if (isDateArray(values)) {
+        inferredType = 'date';
+      }
+
+      if (!inferredType) {
+        return;
+      }
+
+      nextLayout[axisKey] = {
+        ...(currentAxis ?? {}),
+        type: inferredType,
+      };
+
+      didChange = true;
+    });
+
+    return didChange ? nextLayout : layout;
+  })();
+
+  const defaultRefType: Exclude<AxisRefType, undefined> = shouldDefaultToRelativeCoordinates(data)
+    ? 'relative'
+    : 'axis';
+
   const annotationsArray = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
   const converted = annotationsArray
-    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, layout, data, index))
+    .map((annotation, index) =>
+      convertPlotlyAnnotation(annotation as PlotlyAnnotation, inferredLayout, defaultRefType, index),
+    )
     .filter((annotation): annotation is ChartAnnotation => annotation !== undefined);
 
   return converted.length > 0 ? converted : undefined;
@@ -1194,7 +1275,7 @@ export const transformPlotlyJsonToAnnotationChartProps = (
   _colorwayType: ColorwayType,
   _isDarkTheme?: boolean,
 ): AnnotationOnlyChartProps => {
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot) ?? [];
   const titles = getTitles(input.layout);
   const layoutTitle = titles.chartTitle || undefined;
 
@@ -1233,7 +1314,7 @@ export const transformPlotlyJsonToDonutProps = (
 ): DonutChartProps => {
   const firstData = input.data[0] as Partial<PieData>;
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot) ?? [];
   // extract colors for each series only once
   // use piecolorway if available
   // otherwise, default to colorway from template
@@ -1522,7 +1603,7 @@ export const transformPlotlyJsonToVSBCProps = (
     });
 
   const vsbcData = Object.values(mapXToDataPoints);
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
     data: vsbcData,
@@ -1710,7 +1791,7 @@ export const transformPlotlyJsonToGVBCProps = (
     }
   });
 
-  const annotations = getChartAnnotationsFromLayout(processedInput.layout, processedInput.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(processedInput.data, processedInput.layout, isMultiPlot);
 
   return {
     dataV2: gvbcDataV2,
@@ -1831,7 +1912,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
   return {
     data: vbcData,
     width: input.layout?.width,
@@ -2109,7 +2190,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     scatterChartData: [...chartData, ...(lineShape as ScatterChartPoints[])],
   };
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   const commonProps = {
     supportNegativeData: true,
@@ -2199,6 +2280,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             y: yValue,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            ...(series.text?.[i] ? { barLabel: series.text[i].toString() } : {}),
           } as HorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as HorizontalBarChartWithAxisDataPoint[];

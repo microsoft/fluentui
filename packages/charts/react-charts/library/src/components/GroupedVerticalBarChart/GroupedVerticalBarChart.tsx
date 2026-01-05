@@ -870,7 +870,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             opacity={shouldHighlight ? 1 : 0.1}
             onMouseOver={e => _onLineHover(e, series, seriesIdx, pointIdx, scaleLineX)}
             onMouseLeave={_onBarLeave}
-            data-is-focusable={shouldHighlight}
+            tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
             role="img"

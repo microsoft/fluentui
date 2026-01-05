@@ -549,10 +549,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
-              xMinValue: props.xMinValue,
-              xMaxValue: props.xMaxValue,
-              yMinValue: props.yMinValue,
-              yMaxValue: props.yMaxValue,
             })
           : 0;
         if (_points[i].data.length === 1) {

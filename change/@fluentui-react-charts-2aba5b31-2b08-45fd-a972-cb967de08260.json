@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix a11y bugs in line chart",
+  "comment": "fix accessibility issues ",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

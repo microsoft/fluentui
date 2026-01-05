@@ -310,6 +310,43 @@ const resolveAxisCoordinate = (
   }
 };
 
+const resolveViewportRelative = (
+  axis: 'x' | 'y',
+  value: number,
+  context: ChartAnnotationContext,
+): number | undefined => {
+  if (!Number.isFinite(value)) {
+    return undefined;
+  }
+
+  const svgWidth = context.svgRect.width;
+  const svgHeight = context.svgRect.height;
+  if (!Number.isFinite(svgWidth) || !Number.isFinite(svgHeight)) {
+    return undefined;
+  }
+
+  const padding = context.viewportPadding;
+  const paddingLeft =
+    typeof padding?.left === 'number' && Number.isFinite(padding.left) && padding.left > 0 ? padding.left : 0;
+  const paddingRight =
+    typeof padding?.right === 'number' && Number.isFinite(padding.right) && padding.right > 0 ? padding.right : 0;
+  const paddingTop =
+    typeof padding?.top === 'number' && Number.isFinite(padding.top) && padding.top > 0 ? padding.top : 0;
+  const paddingBottom =
+    typeof padding?.bottom === 'number' && Number.isFinite(padding.bottom) && padding.bottom > 0 ? padding.bottom : 0;
+
+  const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
+  const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
+
+  if (axis === 'x') {
+    const resolvedX = paddingLeft + value * (effectiveWidth > 0 ? effectiveWidth : 0);
+    return Number.isFinite(resolvedX) ? resolvedX : paddingLeft + effectiveWidth / 2;
+  }
+
+  const resolvedY = paddingTop + value * (effectiveHeight > 0 ? effectiveHeight : 0);
+  return Number.isFinite(resolvedY) ? resolvedY : paddingTop + effectiveHeight / 2;
+};
+
 const createMeasurementSignature = (
   annotationContentSignature: string,
   containerStyle: React.CSSProperties,
@@ -370,10 +407,16 @@ const resolveCoordinates = (
   const offsetX = layout?.offsetX ?? 0;
   const offsetY = layout?.offsetY ?? 0;
 
-  const anchorX = resolveAxisCoordinate('x', descriptor.xType, coordinates.x, context);
-  const anchorY = resolveAxisCoordinate('y', descriptor.yType, coordinates.y, context, {
-    yAxis: descriptor.yAxis,
-  });
+  const useViewportSpace = layout?.clipToBounds === false;
+
+  const anchorX =
+    useViewportSpace && descriptor.xType === 'relative' && typeof coordinates.x === 'number'
+      ? resolveViewportRelative('x', coordinates.x, context)
+      : resolveAxisCoordinate('x', descriptor.xType, coordinates.x, context);
+  const anchorY =
+    useViewportSpace && descriptor.yType === 'relative' && typeof coordinates.y === 'number'
+      ? resolveViewportRelative('y', coordinates.y, context)
+      : resolveAxisCoordinate('y', descriptor.yType, coordinates.y, context, { yAxis: descriptor.yAxis });
 
   if (anchorX === undefined || anchorY === undefined) {
     return undefined;

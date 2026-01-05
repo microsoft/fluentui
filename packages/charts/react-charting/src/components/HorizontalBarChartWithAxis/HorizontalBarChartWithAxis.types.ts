@@ -71,6 +71,12 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    * The prop used to enable rounded corners for the bars.
    */
   roundCorners?: boolean;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 /**
@@ -135,4 +141,9 @@ export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the labels displayed on the bars.
+   */
+  barLabel?: IStyle;
 }

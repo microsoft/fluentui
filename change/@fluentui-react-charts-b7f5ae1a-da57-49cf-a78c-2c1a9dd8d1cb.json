@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "fix double padding issue in scatter chart",
+  "comment": "feat(react-charts): Donut annotations for v9",
   "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
+  "email": "email not defined",
   "dependentChangeType": "patch"
 }

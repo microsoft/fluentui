@@ -8,6 +8,7 @@ import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';
 import { useImageExport } from '../../utilities/hooks';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -49,6 +50,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     const { headers, rows, width, height } = props;
     const { chartContainerRef: _rootElem } = useImageExport(props.componentRef, true, false);
     const classes = useChartTableStyles(props);
+    const arrowAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
@@ -109,6 +111,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                 style={{
                   width: width ? `${width}px` : '100%',
                 }}
+                {...arrowAttributes}
               >
                 <thead>
                   <tr>

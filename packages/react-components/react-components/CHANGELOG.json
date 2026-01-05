@@ -2,6 +2,121 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 17 Dec 2025 18:10:05 GMT",
+      "tag": "@fluentui/react-components_v9.72.9",
+      "version": "9.72.9",
+      "comments": {
+        "minor": [
+          {
+            "author": "oleksandr.katrukhin@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c4199f9dad719b5037c259f9d1aa072088c37b41",
+            "comment": "feat: add appearance prop ('flat' | 'elevated')"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2",
+            "comment": "add HTML Popover API attributes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d",
+            "comment": "fix(react-charts): Mixed coordinate annotations"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "36132887d7fdf3a0649ba1fa8c517379c1b9246b",
+            "comment": "add missing aria-labels in v9 cartesian charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bf3a7316a9978f86576be660a3d4248b06a4b4fc",
+            "comment": "fix label percentage issue in donut, VBC, VSBC and heatmap chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e869d28b446ffb57a0e17a9d40c8960bdaf2b088",
+            "comment": "fix a11y bugs in line chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b46962181fa1c21e5ce467f8eacd3224e2941808",
+            "comment": "fix a11y issues"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c5be00c373a4f3ea0ee4be38b53d2b51ec295b7d",
+            "comment": "feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "abd28e66882be9e43821b6c83798304596cd2679",
+            "comment": "fix(react-charts):Fixing annotations opacity issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "569edee37b5abbc3c4816c9d8e6ad71a013252e4",
+            "comment": "enable custom callout in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5cfc307dba2ebe94e9a318f44ed223b8371705bd",
+            "comment": "fix double padding issue in scatter chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "91a2495ab3187a578971877c40c907afdb29e930",
+            "comment": "fix: constrain Field label size to prevent empty space click activation"
+          },
+          {
+            "author": "charles.assuncao@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "4a46ec4e34629134c85f9e75f374a88448c31aa8",
+            "comment": "Fix toolbar toggle button"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e409f75e58c26ea360d81e3d0ef1e63dcff29707",
+            "comment": "fix: ensure slot className is saved from defaultProps"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "9eca6a10706556ef7714297775aa0a829c915d1e",
+            "comment": "Add cypress e2e tests for MenuGrid"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:18 GMT",
       "tag": "@fluentui/react-components_v9.72.8",
       "version": "9.72.8",
