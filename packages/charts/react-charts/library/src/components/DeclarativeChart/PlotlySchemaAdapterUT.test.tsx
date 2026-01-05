@@ -145,6 +145,16 @@ describe('isMonthArray', () => {
 });
 
 describe('correctYearMonth', () => {
+  beforeEach(() => {
+    // Mock Date to always return 2025 as the current year
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2025-01-01'));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   test('Should return dates array when input array contains months data', () => {
     expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2025', '11 01, 2025', '1 01, 2026']);
   });
