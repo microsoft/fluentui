@@ -194,6 +194,7 @@ common/_themeOverrides.scss @microsoft/cxe-red @phkuo
 common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
+packages/react-components/eslint-plugin-react-components @microsoft/fluentui-react-build @microsoft/cxe-prg
 packages/react-components/keyboard-keys @microsoft/teams-prg
 packages/react-components/react-accordion/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-accordion/stories @microsoft/cxe-prg @marcosmoura
