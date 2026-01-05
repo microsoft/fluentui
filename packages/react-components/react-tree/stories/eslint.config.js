@@ -6,6 +6,6 @@ const fluentPlugin = require('@fluentui/eslint-plugin');
 module.exports = defineConfig([
   ...fluentPlugin.configs['flat/react'],
   {
-    rules: {},
+    rules: { 'import/no-extraneous-dependencies': 'off' },
   },
 ]);
