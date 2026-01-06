@@ -68,7 +68,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
-      "inputs": ["default"],
+      "inputs": ["default", "{workspaceRoot/eslint.config.js}"],
       "options": {
         "command": "eslint src"
       }
