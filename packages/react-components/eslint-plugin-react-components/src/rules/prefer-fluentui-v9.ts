@@ -28,7 +28,7 @@ export const rule = createRule<Options, MessageIds>({
     return {
       ImportDeclaration(node) {
         const source = node.source.value;
-        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/lib/');
+        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/');
 
         if (!isFluentV8Import) {
           return;
