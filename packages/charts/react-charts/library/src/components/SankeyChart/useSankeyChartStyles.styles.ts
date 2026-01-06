@@ -4,8 +4,7 @@ import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import type { SankeyChartProps, SankeyChartStyles } from './SankeyChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { HighContrastSelector } from '../../utilities/index';
-import { getTooltipStyle } from '../../utilities/index';
+import { HighContrastSelector, getTooltipStyle, getChartTitleStyles } from '../../utilities/index';
 
 export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   root: 'fui-sc__root',
@@ -59,13 +58,7 @@ const useStyles = makeStyles({
   chart: {
     display: 'block',
   },
-  chartTitle: {
-    ...typographyStyles.caption1,
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-    textAlign: 'center',
-    marginBottom: tokens.spacingVerticalS,
-  },
+  chartTitle: getChartTitleStyles() as GriffelStyle,
 });
 
 export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles => {

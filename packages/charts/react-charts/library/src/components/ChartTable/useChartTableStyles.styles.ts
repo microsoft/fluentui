@@ -1,9 +1,10 @@
 'use client';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ChartTableProps, ChartTableStyles } from './ChartTable.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { getChartTitleStyles } from '../../utilities/index';
 
 /**
  * @internal
@@ -48,13 +49,7 @@ const useStyles = makeStyles({
       color: 'WindowText',
     },
   },
-  chartTitle: {
-    ...typographyStyles.caption1,
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-    textAlign: 'center',
-    marginBottom: tokens.spacingVerticalS,
-  },
+  chartTitle: getChartTitleStyles() as GriffelStyle,
 });
 
 /**

@@ -1,9 +1,10 @@
 'use client';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { FunnelChartProps, FunnelChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { getChartTitleStyles } from '../../utilities/index';
 
 /**
  * @internal
@@ -45,15 +46,7 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     maxWidth: '238px',
   },
-  chartTitle: {
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
-    textAlign: 'center',
-    marginBottom: tokens.spacingVerticalS,
-  },
+  chartTitle: getChartTitleStyles() as GriffelStyle,
 });
 
 /**

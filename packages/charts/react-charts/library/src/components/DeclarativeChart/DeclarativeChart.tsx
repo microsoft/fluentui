@@ -38,9 +38,9 @@ import {
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
-  getChartTitleFontStyles,
   transformPlotlyJsonToAnnotationChartProps,
 } from './PlotlySchemaAdapter';
+import { getChartTitleInlineStyles } from '../../utilities/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
@@ -546,7 +546,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const titleStyle: React.CSSProperties = {
     textAlign: 'center',
     marginBottom: tokens.spacingVerticalS,
-    ...getChartTitleFontStyles(titleFont),
+    ...getChartTitleInlineStyles(titleFont),
   };
 
   // map through the grouped traces and render the appropriate chart

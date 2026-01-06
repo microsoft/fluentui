@@ -74,7 +74,6 @@ import type {
   AxisType,
   Shape,
   Annotations,
-  Font,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -108,6 +107,7 @@ import {
   ChartAnnotationHorizontalAlign,
   ChartAnnotationVerticalAlign,
 } from '../../types/ChartAnnotation';
+import { getChartTitleInlineStyles } from '../../utilities/index';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -177,25 +177,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-
-/**
- * Creates dynamic chart title styles using CSS properties.
- * @param titleFont - Optional font configuration from Plotly layout
- * @returns Style object with CSS properties for dynamic styling
- */
-export function getChartTitleFontStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
-  if (!titleFont) {
-    return {};
-  }
-
-  return {
-    ...(titleFont.family && { fontFamily: titleFont.family }),
-    ...(titleFont.size && { fontSize: `${titleFont.size}px` }),
-    ...(titleFont.weight && { fontWeight: titleFont.weight }),
-    ...(titleFont.color && { fill: titleFont.color as string }),
-    ...(titleFont.shadow && titleFont.shadow !== 'none' && { filter: `drop-shadow(${titleFont.shadow})` }),
-  };
-}
 
 function getTitles(layout: Partial<Layout> | undefined) {
   const titleObj = layout?.title;
@@ -1401,7 +1382,7 @@ export const transformPlotlyJsonToDonutProps = (
     ...(titleFont
       ? {
           styles: {
-            chartTitle: getChartTitleFontStyles(titleFont),
+            chartTitle: getChartTitleInlineStyles(titleFont),
           } as DonutChartStyles,
         }
       : {}),
@@ -2726,7 +2707,7 @@ export const transformPlotlyJsonToSankeyProps = (
     ...(titleFont
       ? {
           styles: {
-            chartTitle: getChartTitleFontStyles(titleFont),
+            chartTitle: getChartTitleInlineStyles(titleFont),
           } as SankeyChartStyles,
         }
       : {}),
@@ -2846,7 +2827,7 @@ export const transformPlotlyJsonToGaugeProps = (
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',
     styles: {
       sublabel: sublabelColor,
-      ...(titleFont ? { chartTitle: getChartTitleFontStyles(titleFont) } : {}),
+      ...(titleFont ? { chartTitle: getChartTitleInlineStyles(titleFont) } : {}),
     } as GaugeChartStyles,
     roundCorners: true,
   } as GaugeChartProps;
@@ -3023,7 +3004,7 @@ export const transformPlotlyJsonToChartTableProps = (
       root: {
         ...(input.layout?.font?.size ? { fontSize: input.layout.font.size } : {}),
       },
-      ...(titleFont ? { chartTitle: getChartTitleFontStyles(titleFont) } : {}),
+      ...(titleFont ? { chartTitle: getChartTitleInlineStyles(titleFont) } : {}),
     } as ChartTableStyles,
   } as ChartTableProps;
 };
@@ -3186,7 +3167,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     ...(titleFont
       ? {
           styles: {
-            chartTitle: getChartTitleFontStyles(titleFont),
+            chartTitle: getChartTitleInlineStyles(titleFont),
           } as FunnelChartStyles,
         }
       : {}),

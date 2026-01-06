@@ -4,7 +4,6 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
-import { getChartTitleFontStyles } from '../DeclarativeChart/PlotlySchemaAdapter';
 import { select as d3Select } from 'd3-selection';
 import {
   createNumericXAxis,
@@ -26,6 +25,7 @@ import {
   getSecureProps,
   DEFAULT_WRAP_WIDTH,
   autoLayoutXAxisLabels,
+  getChartTitleInlineStyles,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -794,7 +794,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 className: classes.axisAnnotation!,
                 textAnchor: 'middle',
                 'aria-hidden': true,
-                style: getChartTitleFontStyles(props.titleFont),
+                style: getChartTitleInlineStyles(props.titleFont),
               }}
               maxWidth={xAxisTitleMaxWidth}
             />

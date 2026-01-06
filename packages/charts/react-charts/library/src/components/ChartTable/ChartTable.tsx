@@ -90,9 +90,8 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     }
 
     const titleHeight = chartTitle ? 30 : 0;
-    const heightValue = typeof height === 'number' ? height : 650;
-    const tableHeight = `${heightValue}px`;
-    const totalHeight = heightValue + titleHeight;
+    const totalHeight = typeof height === 'number' ? height : 650;
+    const tableHeight = `${totalHeight - titleHeight}px`;
 
     return (
       <div

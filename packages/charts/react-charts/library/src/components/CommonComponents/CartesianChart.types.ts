@@ -574,7 +574,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   chartTitle?: string;
 
   /**
-   * Font properties for the chart title from Plotly schema
+   * Font properties for the chart title
    */
   titleFont?: Partial<Font>;
 

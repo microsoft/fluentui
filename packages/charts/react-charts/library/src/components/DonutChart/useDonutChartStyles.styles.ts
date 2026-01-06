@@ -4,7 +4,7 @@ import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { getAxisTitleStyle } from '../../utilities/index';
+import { getAxisTitleStyle, getChartTitleStyles } from '../../utilities/index';
 
 /**
  * @internal
@@ -42,13 +42,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   axisAnnotation: getAxisTitleStyle() as GriffelStyle,
-  chartTitle: {
-    ...typographyStyles.caption1,
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-    textAlign: 'center',
-    marginBottom: tokens.spacingVerticalS,
-  },
+  chartTitle: getChartTitleStyles() as GriffelStyle,
 });
 
 /**

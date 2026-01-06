@@ -1,6 +1,7 @@
 import { HighContrastSelector } from '../utilities/utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { type GriffelStyle } from '@griffel/react';
+import type { Font } from '@fluentui/chart-utilities';
 
 export const getTooltipStyle = (): GriffelStyle => {
   return {
@@ -48,3 +49,32 @@ export const getMarkerLabelStyle = (): GriffelStyle => {
     },
   };
 };
+
+export const getChartTitleStyles = (): GriffelStyle => {
+  return {
+    ...typographyStyles.caption1,
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+  };
+};
+
+/**
+ * Creates dynamic chart title styles using CSS properties.
+ * @param titleFont - Optional font configuration from Plotly layout
+ * @returns Style object with CSS properties for dynamic styling
+ */
+export function getChartTitleInlineStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
+  if (!titleFont) {
+    return {};
+  }
+
+  return {
+    ...(titleFont.family && { fontFamily: titleFont.family }),
+    ...(titleFont.size && { fontSize: `${titleFont.size}px` }),
+    ...(titleFont.weight && { fontWeight: titleFont.weight }),
+    ...(titleFont.color && { fill: titleFont.color as string }),
+    ...(titleFont.shadow && titleFont.shadow !== 'none' && { filter: `drop-shadow(${titleFont.shadow})` }),
+  };
+}
