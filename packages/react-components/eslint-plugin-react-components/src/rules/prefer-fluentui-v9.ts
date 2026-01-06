@@ -205,8 +205,8 @@ function extractComponentsFromImport(importNode: TSESTree.ImportExpression): str
     parent.parent.id.type === AST_NODE_TYPES.Identifier
   ) {
     const varName = parent.parent.id.name;
-    const components = findComponentUsagesInScope(parent.parent, varName);
-    return components;
+    const foundComponents = findComponentUsagesInScope(parent.parent, varName);
+    return foundComponents;
   }
 
   // Handle: const { Button } = await import('@fluentui/react')
@@ -297,12 +297,12 @@ function findComponentUsagesInFunction(
       if (key === 'parent') {
         continue;
       }
-      const value = (node as any)[key];
+      const value = (node as unknown as Record<string, unknown>)[key];
       if (value && typeof value === 'object') {
         if (Array.isArray(value)) {
           value.forEach(traverse);
-        } else if (value.type) {
-          traverse(value);
+        } else if ('type' in value) {
+          traverse(value as TSESTree.Node);
         }
       }
     }
@@ -351,12 +351,12 @@ function findComponentUsagesInScope(declarator: TSESTree.VariableDeclarator, var
       if (key === 'parent') {
         continue;
       }
-      const value = (node as any)[key];
+      const value = (node as unknown as Record<string, unknown>)[key];
       if (value && typeof value === 'object') {
         if (Array.isArray(value)) {
           value.forEach(traverse);
-        } else if (value.type) {
-          traverse(value);
+        } else if ('type' in value) {
+          traverse(value as TSESTree.Node);
         }
       }
     }
