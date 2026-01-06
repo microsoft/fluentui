@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -161,11 +163,6 @@ const useTextareaStyles = makeStyles({
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
       opacity: 1,
-    },
-
-    '::selection': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted,
     },
 
     outlineStyle: 'none', // disable default browser outline

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalBarChart,
   VerticalBarChartDataPoint,
@@ -14,9 +15,18 @@ import {
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
+  makeStyles,
+  tokens,
 } from '@fluentui/react-components';
 
-export const VerticalBarNegative = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const VerticalBarNegative = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -46,13 +56,13 @@ export const VerticalBarNegative = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
-  const _onSwitchRoundCorners = React.useCallback(ev => {
+  const _onSwitchRoundCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
@@ -238,6 +248,7 @@ export const VerticalBarNegative = () => {
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -256,6 +267,7 @@ export const VerticalBarNegative = () => {
             hideLabels={hideLabels}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

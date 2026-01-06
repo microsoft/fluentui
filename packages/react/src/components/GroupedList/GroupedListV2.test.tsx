@@ -11,6 +11,8 @@ import { isConformant } from '../../common/isConformant';
 import type { IGroup, IGroupedList } from './GroupedList.types';
 import type { IColumn } from '../DetailsList/DetailsList.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 describe('GroupedListV2', () => {
   isConformant({
     Component: GroupedListV2,
@@ -47,7 +49,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -98,7 +100,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -144,7 +146,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -197,7 +199,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -243,7 +245,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -318,7 +320,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: { key: string }, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: { key: string }, itemIndex: number): JSXElement {
       const id = `rendered-item-${item.key}`;
       return <div id={id} />;
     }
@@ -364,7 +366,7 @@ describe('GroupedListV2', () => {
       },
     ];
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)
@@ -450,7 +452,7 @@ describe('GroupedListV2', () => {
     const ref = React.createRef<IGroupedList>();
     const measureItem = jest.fn();
 
-    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
       return (
         <DetailsRow
           columns={Object.keys(item)

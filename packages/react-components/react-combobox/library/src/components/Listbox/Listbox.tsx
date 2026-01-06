@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useListbox_unstable } from './useListbox';
 import { renderListbox_unstable } from './renderListbox';

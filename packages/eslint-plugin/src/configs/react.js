@@ -4,6 +4,8 @@ const path = require('path');
 const configHelpers = require('../utils/configHelpers');
 const { __internal } = require('../internal');
 
+const { createReactCrossVersionRules } = require('../shared/react-cross-version-rules');
+
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
   '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
@@ -15,7 +17,7 @@ const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 're
   pkg => !unstableV9Packages.has(pkg),
 );
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
   plugins: ['react-compiler'],
@@ -37,18 +39,16 @@ module.exports = {
       },
     ],
     'react-compiler/react-compiler': ['error'],
-    '@typescript-eslint/no-restricted-types': [
-      'error',
-      {
-        types: {
-          'React.RefAttributes': {
-            message:
-              '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
-            fixWith: 'RefAttributes',
-          },
+    ...createReactCrossVersionRules({
+      crossCompatTypePackage: '@fluentui/react-utilities',
+      extraTypeRestrictions: {
+        'React.RefAttributes': {
+          message:
+            '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
+          fixWith: 'RefAttributes',
         },
       },
-    ],
+    }),
   },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
@@ -76,6 +76,18 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'react/jsx-no-bind': 'off',
         'react-compiler/react-compiler': 'off',
+        '@typescript-eslint/no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['@cypress/react'],
+                importNames: ['mount'],
+                message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+              },
+            ],
+          },
+        ],
       },
     },
     {

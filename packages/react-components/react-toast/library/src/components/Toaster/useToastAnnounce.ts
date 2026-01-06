@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Announce } from '../AriaLive';
 import { isHTMLElement } from '@fluentui/react-utilities';
@@ -9,7 +11,10 @@ import { isHTMLElement } from '@fluentui/react-utilities';
  * @param announce
  * @returns A function to announce a toast and a ref to attach to the toaster element
  */
-export function useToastAnnounce(announce: Announce) {
+export function useToastAnnounce(announce: Announce): {
+  announceToast: Announce;
+  toasterRef: React.RefCallback<HTMLDivElement>;
+} {
   const activeRef = React.useRef(true);
   const cleanupRef = React.useRef<() => void>(() => undefined);
   const announceToast = React.useCallback<Announce>(

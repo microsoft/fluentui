@@ -25,6 +25,8 @@ import type {
 } from './Breadcrumb.types';
 import { composeRenderFunction } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /** @deprecated Use IBreadcrumbData */
 export type IBreadCrumbData = IBreadcrumbData;
 
@@ -77,7 +79,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this._validateProps(this.props);
 
     const {
@@ -185,7 +187,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     const lastItemIndex = renderedItems.length - 1;
     const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
-    const itemElements: JSX.Element[] = renderedItems.map((item, index) => {
+    const itemElements: JSXElement[] = renderedItems.map((item, index) => {
       let finalOnRenderItem = this._onRenderItem;
 
       if (item.onRender) {
@@ -326,6 +328,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   }
 }
 
-function defaultOnRenderCrumbContent(item?: IBreadcrumbItem): JSX.Element | null {
+function defaultOnRenderCrumbContent(item?: IBreadcrumbItem): JSXElement | null {
   return item ? <>{item.text}</> : null;
 }

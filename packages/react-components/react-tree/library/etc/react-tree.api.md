@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ArrowDown } from '@fluentui/keyboard-keys';
 import type { ArrowLeft } from '@fluentui/keyboard-keys';
 import type { ArrowRight } from '@fluentui/keyboard-keys';
@@ -26,6 +24,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
@@ -105,19 +104,19 @@ export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNa
 };
 
 // @public (undocumented)
-export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSX.Element;
+export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement;
 
 // @public (undocumented)
-export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSXElement;
 
 // @public
-export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
+export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSXElement;
 
 // @public
-export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSXElement;
 
 // @public
-export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
+export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSXElement;
 
 // @public (undocumented)
 export type SubtreeContextValue = {
@@ -184,11 +183,16 @@ export type TreeItemContextValue = {
     expandIconRef: React_2.Ref<HTMLDivElement>;
     layoutRef: React_2.Ref<HTMLDivElement>;
     subtreeRef: React_2.Ref<HTMLDivElement>;
-    treeItemRef?: React_2.RefObject<HTMLDivElement>;
+    treeItemRef?: React_2.RefObject<HTMLDivElement | null>;
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
     checked: TreeSelectionValue;
+};
+
+// @public (undocumented)
+export type TreeItemCSSProperties = React_2.CSSProperties & {
+    [treeItemLevelToken]?: string | number;
 };
 
 // @public
@@ -330,6 +334,12 @@ export type TreeNavigationData_unstable = {
     type: typeof End;
 });
 
+// @public
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
+    preventScroll(): void;
+    isScrollPrevented(): boolean;
+};
+
 // @public (undocumented)
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
@@ -385,12 +395,12 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 
 // @public (undocumented)
 export const TreeProvider: {
-    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSXElement;
     displayName: string;
 };
 
 // @public (undocumented)
-export const TreeRootReset: (props: TreeRootResetProps) => JSX.Element;
+export const TreeRootReset: (props: TreeRootResetProps) => JSXElement;
 
 // @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
@@ -453,6 +463,13 @@ export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLay
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
+
+// @public
+export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
+    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
+    treeRef: React_2.RefCallback<HTMLElement>;
+    forceUpdateRovingTabIndex: () => void;
+};
 
 // @public (undocumented)
 export const useTreeStyles_unstable: (state: TreeState) => TreeState;

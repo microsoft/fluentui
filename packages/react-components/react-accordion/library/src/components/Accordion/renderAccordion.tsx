@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import type { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
 import { AccordionProvider } from '../../contexts/accordion';
@@ -9,7 +10,7 @@ import { AccordionProvider } from '../../contexts/accordion';
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordion_unstable = (state: AccordionState, contextValues: AccordionContextValues) => {
+export const renderAccordion_unstable = (state: AccordionState, contextValues: AccordionContextValues): JSXElement => {
   assertSlots<AccordionSlots>(state);
 
   return (

@@ -26,6 +26,7 @@ import {
 import { createListItems, isGroupable, IExampleItem } from '@fluentui/example-data';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const theme = getTheme();
 const headerDividerClass = 'DetailsListAdvancedExample-divider';
@@ -137,7 +138,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       canResizeColumns,
       checkboxVisibility,
@@ -224,8 +225,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   private _onRenderDivider = (
     columnProps: IDetailsColumnProps,
-    defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
-  ): JSX.Element => {
+    defaultRenderer: (props?: IDetailsColumnProps) => JSXElement | null,
+  ): JSXElement => {
     const { columnIndex } = columnProps;
     return (
       <React.Fragment key={`divider-wrapper-${columnIndex}`}>

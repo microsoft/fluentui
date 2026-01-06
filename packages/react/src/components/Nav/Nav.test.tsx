@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
 import { isConformant } from '../../common/isConformant';
 import type { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
 import type { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 const linkOne: INavLink = {
   key: 'Bing',
@@ -23,7 +24,7 @@ const linkTwo: INavLink = {
 
 describe('Nav', () => {
   it('renders Nav correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Nav
         groups={[
           {
@@ -37,8 +38,7 @@ describe('Nav', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -50,7 +50,7 @@ describe('Nav', () => {
   });
 
   it('render Nav with overrides correctly', () => {
-    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
+    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSXElement | null => {
       const { defaultRender: DefaultRender, ...buttonProps } = props;
 
       if (!DefaultRender) {
@@ -64,7 +64,7 @@ describe('Nav', () => {
       );
     };
 
-    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
+    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }
@@ -75,7 +75,7 @@ describe('Nav', () => {
     function onRenderGroupHeader(
       props?: IRenderGroupHeaderProps,
       defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
-    ): JSX.Element | null {
+    ): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }
@@ -89,11 +89,11 @@ describe('Nav', () => {
       },
     ];
 
-    const component = renderer.create(
+    const { container } = render(
       <Nav groups={groups} onRenderGroupHeader={onRenderGroupHeader} onRenderLink={onRenderNavLink} linkAs={LinkAs} />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onClick() correctly', () => {

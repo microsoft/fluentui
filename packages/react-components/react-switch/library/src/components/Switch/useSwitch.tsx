@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
@@ -19,12 +21,12 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
+  const { checked, defaultChecked, disabled, labelPosition = 'after', size = 'medium', onChange, required } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
+    excludedPropNames: ['checked', 'defaultChecked', 'onChange', 'size'],
   });
 
   const id = useId('switch-', nativeProps.primary.id);
@@ -54,5 +56,6 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
     indicator,
     input,
     label,
+    size,
   };
 };

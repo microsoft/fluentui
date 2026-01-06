@@ -23,6 +23,8 @@ import type {
 } from './WeeklyDayPicker.types';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
 
 export interface IWeeklyDayPickerState {
@@ -107,7 +109,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       strings,
       dateTimeFormatter,
@@ -200,7 +202,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   private _renderPreviousWeekNavigationButton = (
     classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>,
-  ): JSX.Element => {
+  ): JSXElement => {
     const { minDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const leftNavigationIcon = getRTL() ? navigationIcons!.rightNavigation : navigationIcons!.leftNavigation;
@@ -227,7 +229,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     );
   };
 
-  private _renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
+  private _renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSXElement => {
     const { maxDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const rightNavigationIcon = getRTL() ? navigationIcons!.leftNavigation : navigationIcons!.rightNavigation;

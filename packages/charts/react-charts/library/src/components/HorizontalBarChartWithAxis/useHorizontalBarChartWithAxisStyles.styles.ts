@@ -1,12 +1,16 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { HorizontalBarChartWithAxisProps, HorizontalBarChartWithAxisStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { HighContrastSelector } from '../../utilities/index';
 
 export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisStyles> = {
   opacityChangeOnHover: 'fui-hbcwa__opacityChangeOnHover',
   xAxisTicks: 'fui-hbcwa__xAxisTicks',
   tooltip: 'fui-hbcwa__tooltip',
+  barLabel: 'fui-hbcwa__barLabel',
   chartLabel: '',
   xAxisDomain: '',
   xAxisText: '',
@@ -24,6 +28,10 @@ export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisSty
   shapeStyles: '',
   chartWrapper: '',
   svgTooltip: '',
+  chart: '',
+  axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({
@@ -33,17 +41,12 @@ const useStyles = makeStyles({
 
   xAxisTicks: {},
 
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
+  barLabel: {
+    ...typographyStyles.caption1Strong,
+    fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
   },
 });
 
@@ -58,6 +61,6 @@ export const useHorizontalBarChartWithAxisStyles = (
   return {
     opacityChangeOnHover: mergeClasses(hbcWithAxisClassNames.opacityChangeOnHover, baseStyles.opacityChangeOnHover),
     xAxisTicks: mergeClasses(hbcWithAxisClassNames.xAxisTicks, baseStyles.xAxisTicks),
-    tooltip: mergeClasses(hbcWithAxisClassNames.tooltip, baseStyles.tooltip),
+    barLabel: mergeClasses(hbcWithAxisClassNames.barLabel, baseStyles.barLabel),
   };
 };

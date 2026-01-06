@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -22,9 +23,11 @@ import {
   createTableColumn,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -34,7 +37,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -148,7 +151,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SubtleSelection = () => {
+export const SubtleSelection = (): JSXElement => {
   const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
 
   return (

@@ -61,6 +61,15 @@ export type DrawerBaseProps = {
    * @default false
    */
   open?: boolean;
+
+  /**
+   * Decides whether the drawer should be removed from the DOM tree when it is closed.
+   * This can be useful when dealing with components that may contain state that should not
+   * be reset when the drawer is closed.
+   *
+   * @default true
+   */
+  unmountOnClose?: boolean;
 };
 
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
@@ -70,6 +79,8 @@ export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'
   motion: MotionState<HTMLElement>;
 
   open?: boolean;
+
+  unmountOnClose?: boolean;
 };
 
 export type DrawerScrollState = 'none' | 'top' | 'middle' | 'bottom';

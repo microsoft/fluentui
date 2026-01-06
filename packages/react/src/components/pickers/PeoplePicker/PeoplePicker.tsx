@@ -15,6 +15,8 @@ import type {
 import type { IPersonaProps } from '../../../Persona';
 import type { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * PeoplePicker props interface which renders Personas as items.
  * {@docCategory PeoplePicker}
@@ -38,10 +40,11 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePickerBase extends BasePeoplePicker {
   /** Default props for NormalPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
-      <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
-    ),
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (
+      personaProps: IPersonaProps,
+      suggestionsProps?: IBasePickerSuggestionsProps,
+    ): JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };
 }
@@ -53,8 +56,11 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
 export class CompactPeoplePickerBase extends BasePeoplePicker {
   /** Default props for CompactPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (
+      personaProps: IPersonaProps,
+      suggestionsProps?: IBasePickerSuggestionsProps,
+    ): JSXElement => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
     createGenericItem,
@@ -68,10 +74,11 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
-      <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
-    ),
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (
+      personaProps: IPersonaProps,
+      suggestionsProps?: IBasePickerSuggestionsProps,
+    ): JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };
 }

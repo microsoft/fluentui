@@ -13,6 +13,8 @@ import type { IContextualMenuProps } from '../ContextualMenu/ContextualMenu.type
 import type { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import type { IPivotItemProps } from './PivotItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
 const COMPONENT_NAME = 'Pivot';
@@ -41,8 +43,11 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 
   React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isPivotItem(child)) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const { linkText, ...pivotItemProps } = child.props;
+      const {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        linkText,
+        ...pivotItemProps
+      } = child.props;
       const itemKey = child.props.itemKey || index.toString();
       result.links.push({
         headerText: linkText,
@@ -58,7 +63,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
   return result;
 };
 
-const isPivotItem = (item: React.ReactNode): item is PivotItem => {
+const isPivotItem = (item: unknown): item is PivotItem => {
   return React.isValidElement(item) && (item.type as React.ComponentType)?.name === PivotItem.name;
 };
 
@@ -81,6 +86,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       overflowButtonAs,
     } = props;
 
+    // eslint-disable-next-line prefer-const
     let classNames: { [key in keyof IPivotStyles]: string };
     const nameProps = {
       'aria-label': props['aria-label'],
@@ -99,7 +105,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       },
     }));
 
-    const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
+    const renderLinkContent = (link?: IPivotItemProps): JSXElement | null => {
       if (!link) {
         return null;
       }
@@ -123,10 +129,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
       className: string,
-    ): JSX.Element => {
+    ): JSXElement => {
       const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
-      let linkContent: JSX.Element | null;
+
+      let linkContent: JSXElement | null;
       const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
 
       if (onRenderItemLink) {
@@ -201,7 +208,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       overflowMenuButtonComponentRef.current?.dismissMenu();
     };
 
-    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
+    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSXElement | null => {
       if (props.headersOnly || !itemKey) {
         return null;
       }

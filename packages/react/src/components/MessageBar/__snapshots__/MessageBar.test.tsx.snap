@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar-multiline
       {
@@ -38,7 +38,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -56,8 +56,8 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -75,8 +75,8 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -101,7 +101,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -128,7 +128,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -148,7 +148,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
 
 exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--error
       ms-MessageBar-multiline
@@ -185,7 +185,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -203,8 +203,8 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -222,8 +222,8 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -248,7 +248,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="assertive"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -275,7 +275,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
       role="alert"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -295,7 +295,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
 
 exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar-multiline
       {
@@ -331,7 +331,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -349,8 +349,8 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -368,8 +368,8 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -394,7 +394,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -421,7 +421,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -441,7 +441,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
 
 exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar-multiline
       {
@@ -477,7 +477,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -495,8 +495,8 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -514,8 +514,8 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -540,7 +540,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -567,7 +567,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -587,7 +587,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
 
 exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--error
       ms-MessageBar-multiline
@@ -624,7 +624,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -642,8 +642,8 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -661,8 +661,8 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -687,7 +687,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
     </div>
     <div
       aria-live="assertive"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -714,7 +714,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
       role="alert"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -734,7 +734,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
 
 exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar-multiline
       {
@@ -770,7 +770,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -788,8 +788,8 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -807,8 +807,8 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -833,7 +833,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -860,7 +860,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -880,7 +880,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
 
 exports[`MessageBar snapshots renders a multiline severeWarning MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--severeWarning
       ms-MessageBar-multiline
@@ -917,7 +917,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -935,8 +935,8 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -954,8 +954,8 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -980,7 +980,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
     </div>
     <div
       aria-live="assertive"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1007,7 +1007,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
       role="alert"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -1027,7 +1027,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
 
 exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--success
       ms-MessageBar-multiline
@@ -1064,7 +1064,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -1082,8 +1082,8 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -1101,8 +1101,8 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1127,7 +1127,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1154,7 +1154,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -1174,7 +1174,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
 
 exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--warning
       ms-MessageBar-multiline
@@ -1211,7 +1211,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -1229,8 +1229,8 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -1248,8 +1248,8 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1274,7 +1274,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1301,7 +1301,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -1321,7 +1321,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
 
 exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--severeWarning
       ms-MessageBar-multiline
@@ -1358,7 +1358,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -1376,8 +1376,8 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -1395,8 +1395,8 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1421,7 +1421,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
     </div>
     <div
       aria-live="assertive"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1448,7 +1448,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
       role="alert"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -1468,7 +1468,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
 
 exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--success
       ms-MessageBar-multiline
@@ -1505,7 +1505,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -1523,8 +1523,8 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -1542,8 +1542,8 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1568,7 +1568,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1595,7 +1595,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;
@@ -1615,7 +1615,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
 
 exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
 <div
-  className=
+  class=
       ms-MessageBar
       ms-MessageBar--warning
       ms-MessageBar-multiline
@@ -1652,7 +1652,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-MessageBar-content
         {
           display: flex;
@@ -1670,8 +1670,8 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
         }
   >
     <div
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-MessageBar-icon
           {
             display: flex;
@@ -1689,8 +1689,8 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1715,7 +1715,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
     </div>
     <div
       aria-live="polite"
-      className=
+      class=
           ms-MessageBar-text
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1742,7 +1742,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
       role="status"
     >
       <span
-        className=
+        class=
             ms-MessageBar-innerText
             {
               line-height: 16px;

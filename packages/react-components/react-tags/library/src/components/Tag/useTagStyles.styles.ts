@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -62,10 +64,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -93,10 +92,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderLeft: `${tokens.strokeWidthThin} solid`,
       borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderRadius: tokens.borderRadiusCircular,
     },
   },
@@ -139,17 +135,20 @@ const useRootStyles = makeStyles({
 
     // Increase clickable area to meet WCAG 2.2 AA
     // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-    '&:before, &:after': {
-      content: '""',
-      position: 'absolute',
-      height: '2px',
-      width: '100%',
-    },
-    '&:before': {
-      bottom: '100%',
-    },
-    '&:after': {
-      top: '100%',
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
     },
   },
 });

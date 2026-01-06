@@ -12,13 +12,6 @@ export const getHeatMapChartStyles = (props: IHeatMapChartStyleProps): IHeatMapC
         fontWeight: FontWeights.semibold,
       },
     ],
-    subComponentStyles: {
-      cartesianStyles: {},
-      calloutStyles: {
-        root: {
-          maxWidth: '238px',
-        },
-      },
-    },
+    subComponentStyles: {},
   };
 };

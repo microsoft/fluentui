@@ -5,9 +5,11 @@ import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 import type { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
-export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
+export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSXElement = (
   peoplePickerItemProps: IPeoplePickerItemProps,
 ) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel } = peoplePickerItemProps;

@@ -8,6 +8,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import type { IRenderFunction } from '../../Utilities';
 import type { IPersonaProps, IPersonaStyleProps, IPersonaStyles, IPersonaCoinProps } from './Persona.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 const DEFAULT_PROPS = {
@@ -59,7 +61,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       elementClassNames: string,
       renderFunction: IRenderFunction<IPersonaProps> | undefined,
       defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
-    ): JSX.Element | undefined => {
+    ): JSXElement | undefined => {
       const content = renderFunction && renderFunction(props, defaultRenderFunction);
       return content ? (
         <div dir="auto" className={elementClassNames}>
@@ -77,7 +79,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       // return default render behavior for valid text or undefined
       return text
         ? tooltip
-          ? (): JSX.Element => {
+          ? (): JSXElement => {
               // default onRender behavior
               return (
                 <TooltipHost
@@ -93,7 +95,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
         : undefined;
     };
 
-    const onInternalRenderPersonaCoin = (providedCoinProps: IPersonaCoinProps): JSX.Element | null => {
+    const onInternalRenderPersonaCoin = (providedCoinProps: IPersonaCoinProps): JSXElement | null => {
       return <PersonaCoin {...providedCoinProps} />;
     };
 

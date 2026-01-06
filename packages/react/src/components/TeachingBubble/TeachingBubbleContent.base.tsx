@@ -13,11 +13,13 @@ import type {
   ITeachingBubble,
 } from './TeachingBubble.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
 const useComponentRef = (
-  componentRef: React.Ref<ITeachingBubble> | undefined,
-  rootElementRef: React.RefObject<HTMLDivElement>,
+  componentRef: React.Ref<ITeachingBubble | null> | undefined,
+  rootElementRef: React.RefObject<HTMLDivElement | null>,
 ) => {
   React.useImperativeHandle(
     componentRef,
@@ -85,11 +87,15 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
   useOnEvent(documentRef, 'keydown', onKeyDown as (ev: Event) => void);
 
-  let imageContent: JSX.Element | undefined;
-  let headerContent: JSX.Element | undefined;
-  let bodyContent: JSX.Element | undefined;
-  let footerContent: JSX.Element | undefined;
-  let closeButton: JSX.Element | undefined;
+  let imageContent: JSXElement | undefined;
+
+  let headerContent: JSXElement | undefined;
+
+  let bodyContent: JSXElement | undefined;
+
+  let footerContent: JSXElement | undefined;
+
+  let closeButton: JSXElement | undefined;
 
   if (illustrationImage && illustrationImage.src) {
     imageContent = (

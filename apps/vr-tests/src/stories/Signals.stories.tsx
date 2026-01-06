@@ -22,8 +22,9 @@ import {
   NotFollowedSignal,
 } from '@fluentui/react-experiments';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 
 interface ISignalExampleProps {
   name: string;
@@ -32,7 +33,7 @@ interface ISignalExampleProps {
 
 const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
   props: ISignalExampleProps,
-): JSX.Element => {
+): React.ReactElement => {
   return (
     <div>
       <Fabric>
@@ -45,10 +46,10 @@ const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
 export default {
   title: 'Signals',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const YouCheckedOut = () => (

@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Check renders Check (correctly) 1`] = `
 <div
-  className=
+  class=
       ms-Check
       is-checked
       test-className
@@ -47,8 +47,8 @@ exports[`Check renders Check (correctly) 1`] = `
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         ms-Icon
         ms-Check-circle
         {
@@ -81,17 +81,13 @@ exports[`Check renders Check (correctly) 1`] = `
           color: WindowText;
         }
     data-icon-name="CircleRing"
-    style={
-      Object {
-        "fontFamily": "\\"FabricMDL2Icons\\"",
-      }
-    }
+    style="font-family: \\"FabricMDL2Icons\\";"
   >
     
   </i>
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         ms-Icon
         ms-Check-check
         {
@@ -132,11 +128,7 @@ exports[`Check renders Check (correctly) 1`] = `
           forced-color-adjust: none;
         }
     data-icon-name="StatusCircleCheckmark"
-    style={
-      Object {
-        "fontFamily": "\\"FabricMDL2Icons\\"",
-      }
-    }
+    style="font-family: \\"FabricMDL2Icons\\";"
   >
     
   </i>

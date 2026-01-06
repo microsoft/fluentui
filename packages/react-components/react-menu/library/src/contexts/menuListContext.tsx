@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
@@ -38,5 +40,5 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
 
 export const MenuListProvider = MenuListContext.Provider;
 
-export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
+export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>): T =>
   useContextSelector(MenuListContext, (ctx = menuListContextDefaultValue) => selector(ctx));

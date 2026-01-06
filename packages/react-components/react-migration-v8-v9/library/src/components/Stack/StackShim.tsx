@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import { classNamesFunction } from '@fluentui/react';
 import type { IStackProps, IStackTokens, IStackItemProps } from '@fluentui/react';
@@ -5,6 +7,7 @@ import * as React from 'react';
 
 import { getChildrenGapStyles } from './stackUtils';
 import type { StackShimStyles } from './stackUtils';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   useFlexAlignItemsStyles,
   useFlexGrowStyles,
@@ -18,8 +21,7 @@ const stackClassNames = {
 };
 
 const getClassNames = classNamesFunction<IStackProps, StackShimStyles>();
-
-export const StackShim = (props: IStackProps) => {
+export const StackShim = (props: IStackProps): JSXElement => {
   const styles = useStackStyles();
   const alignItemsFlexStyles = useFlexAlignItemsStyles();
   const justifyContentFlexStyles = useFlexJustifyContentStyles();
@@ -76,36 +78,37 @@ export const StackShim = (props: IStackProps) => {
     (!tokens || !tokens.childrenGap) && styles.innerWidth,
   ];
 
-  let stackChildren = React.Children.toArray(props.children);
+  type StackChildren = Exclude<React.ReactNode, boolean | string | number | bigint | null | undefined>;
+
+  let stackChildren = React.Children.toArray(props.children) as StackChildren[];
   if (
     stackChildren.length === 1 &&
     React.isValidElement(stackChildren[0]) &&
     stackChildren[0].type === React.Fragment
   ) {
-    stackChildren = stackChildren[0].props.children;
+    stackChildren = (stackChildren[0].props as React.FragmentProps).children as StackChildren[];
   }
 
-  stackChildren = React.Children.map(
-    stackChildren as React.ReactElement[],
-    (child: React.ReactElement<IStackItemProps>) => {
-      if (!child) {
-        return null;
-      }
+  stackChildren = React.Children.map(stackChildren, child => {
+    if (!child) {
+      return null;
+    }
 
-      if (child.type && ((child as React.ReactElement).type as React.ComponentType).name === 'StackItemShim') {
-        const defaultItemProps: IStackItemProps = {
-          shrink: !disableShrink,
-        };
+    const _child = child as React.ReactElement<{}, React.ComponentType>;
 
-        return React.cloneElement(child, {
-          ...defaultItemProps,
-          ...child.props,
-        });
-      }
+    if (_child.type && _child.type.name === 'StackItemShim') {
+      const defaultItemProps: IStackItemProps = {
+        shrink: !disableShrink,
+      };
 
-      return child;
-    },
-  );
+      return React.cloneElement(_child, {
+        ...defaultItemProps,
+        ..._child.props,
+      });
+    }
+
+    return child;
+  });
 
   if (reversed) {
     if (horizontal) {

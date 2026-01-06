@@ -10,6 +10,8 @@ import type { IObjectWithKey } from '../../Utilities';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IBaseSelectedItemsListState<T> {
   items: T[];
 }
@@ -19,11 +21,14 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
   implements IBaseSelectedItemsList<T>
 {
   public static contextType = WindowContext;
+  public context: any;
 
   protected root: HTMLElement;
   private _defaultSelection: Selection;
 
-  public static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>) {
+  public static getDerivedStateFromProps(
+    newProps: IBaseSelectedItemsListProps<any>,
+  ): IBaseSelectedItemsListState<any> | null {
     if (newProps.selectedItems) {
       return { items: newProps.selectedItems };
     }
@@ -173,9 +178,10 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     return this.renderItems();
   }
 
-  protected renderItems = (): JSX.Element[] => {
+  protected renderItems = (): JSXElement[] => {
     const { removeButtonAriaLabel } = this.props;
-    const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
+
+    const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSXElement;
 
     const { items } = this.state;
     return items.map((item: any, index: number) =>

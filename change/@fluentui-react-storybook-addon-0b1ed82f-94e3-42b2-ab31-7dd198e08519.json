@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrate source to react 19",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

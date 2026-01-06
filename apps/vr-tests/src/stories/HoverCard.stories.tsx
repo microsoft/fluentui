@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { HoverCard } from '@fluentui/react';
 
 const onRenderCardContent = (item: any) => {
@@ -21,17 +23,17 @@ const expandingCardProps = {
 export default {
   title: 'HoverCard',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-HoverCard-host')
-        .snapshot('fully expanded with test content', { cropTo: '.ms-Layer' })
+        .snapshot('fully expanded with test content')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof HoverCard>;
 
 export const Root = () => (
   <HoverCard

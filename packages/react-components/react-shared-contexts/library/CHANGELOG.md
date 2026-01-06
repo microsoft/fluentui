@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 18 Jun 2025 17:33:58 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 19:18:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.0)
+
+Tue, 11 Nov 2025 19:18:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.2..@fluentui/react-shared-contexts_v9.26.0)
+
+### Minor changes
+
+- feat: add brand appearance variant for background context ([PR #35403](https://github.com/microsoft/fluentui/pull/35403) by vgenaev@gmail.com)
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.2)
+
+Thu, 02 Oct 2025 15:12:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.1..@fluentui/react-shared-contexts_v9.25.2)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.1)
+
+Mon, 08 Sep 2025 12:50:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.0..@fluentui/react-shared-contexts_v9.25.1)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.0)
+
+Thu, 21 Aug 2025 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.1..@fluentui/react-shared-contexts_v9.25.0)
+
+### Minor changes
+
+- feat: Add DrawerSurfaceStyle custom style hook ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by mifraser@microsoft.com)
+
+## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.1)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.0..@fluentui/react-shared-contexts_v9.24.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.0)
 

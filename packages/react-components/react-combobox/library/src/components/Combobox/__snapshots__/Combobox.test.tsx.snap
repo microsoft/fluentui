@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Combobox renders a default state 1`] = `
 <div>
@@ -62,8 +62,8 @@ exports[`Combobox renders an open listbox 1`] = `
     class="fui-Combobox"
   >
     <input
-      aria-activedescendant="fluent-option3"
-      aria-controls="fluent-listbox2"
+      aria-activedescendant="fluent-option_r_k_"
+      aria-controls="fluent-listbox_r_j_"
       aria-expanded="true"
       class="fui-Combobox__input"
       role="combobox"
@@ -112,7 +112,7 @@ exports[`Combobox renders an open listbox 1`] = `
     </span>
     <div
       class="fui-Listbox fui-Combobox__listbox"
-      id="fluent-listbox2"
+      id="fluent-listbox_r_j_"
       role="listbox"
       style="position: fixed; left: 0px; top: 0px; margin: 0px;"
     >
@@ -120,7 +120,7 @@ exports[`Combobox renders an open listbox 1`] = `
         aria-selected="false"
         class="fui-Option"
         data-activedescendant=""
-        id="fluent-option3"
+        id="fluent-option_r_k_"
         role="option"
       >
         <span
@@ -147,7 +147,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option4"
+        id="fluent-option_r_l_"
         role="option"
       >
         <span
@@ -174,7 +174,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option5"
+        id="fluent-option_r_m_"
         role="option"
       >
         <span

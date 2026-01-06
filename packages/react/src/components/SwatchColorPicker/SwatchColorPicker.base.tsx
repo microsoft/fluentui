@@ -12,6 +12,8 @@ import type { IColorCellProps } from './ColorPickerGridCell.types';
 import type { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
 import { useDocumentEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 interface ISwatchColorPickerInternalState {
   isNavigationIdle: boolean;
   cellFocused: boolean;
@@ -305,7 +307,8 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * @param item - The item to render
    * @returns - Element representing the item
    */
-  const renderOption = (item: IColorCellProps): JSX.Element => {
+
+  const renderOption = (item: IColorCellProps): JSXElement => {
     return (
       <ColorPickerGridCell
         item={item}
@@ -337,9 +340,10 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     return null;
   }
 
-  const onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
+  const onRenderItem = (item: IColorCellProps, index: number): JSXElement => {
     const { onRenderColorCell = renderOption } = props;
-    return onRenderColorCell(item, renderOption) as JSX.Element;
+
+    return onRenderColorCell(item, renderOption) as JSXElement;
   };
   return (
     <ButtonGrid

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useToggleButton_unstable } from '@fluentui/react-button';

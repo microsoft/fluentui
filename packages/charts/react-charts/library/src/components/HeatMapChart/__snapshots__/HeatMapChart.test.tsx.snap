@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
@@ -14,11 +14,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -49,6 +51,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/01
@@ -67,6 +70,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/02
@@ -99,22 +103,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -129,25 +120,289 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+          class="fui-cart__chart"
+          height="300"
+          role="region"
+          style="display: block;"
+          width="650"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 265)"
+          >
+            <path
+              class="domain"
+              d="M40.5,0.5H630.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(188.96039603960392,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/01
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(481.039603960396,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/02
+              </text>
+            </g>
+          </g>
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,265.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,203.14356435643566)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p1
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,81.85643564356437)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p2
+              </text>
+            </g>
+          </g>
+          <g
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
@@ -238,297 +493,6 @@ Object {
                 25
               </text>
             </g>
-          </svg>
-        </div>
-        <div
-          class="fui-cart__legendContainer"
-        >
-          <div
-            aria-label="Legends"
-            aria-multiselectable="false"
-            class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
-          >
-            <div
-              class="fui-Overflow fui-legend__resizableArea"
-              style="text-align: unset;"
-            >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Nasty
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      >
-        <svg
-          aria-label="Heat map chart with 4 data points. "
-          height="300"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_"
-            text-anchor="middle"
-            transform="translate(0, 265)"
-          >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/01
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/02
-              </text>
-            </g>
-          </g>
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M0.5,265.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,203.14356435643566)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,81.85643564356437)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
           </g>
         </svg>
       </div>
@@ -657,11 +621,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -692,9 +658,10 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  p3
+                  p4
                 </text>
               </g>
               <g
@@ -710,9 +677,10 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  p4
+                  p3
                 </text>
               </g>
             </g>
@@ -742,22 +710,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p2
                 </text>
               </g>
               <g
@@ -772,112 +727,103 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p1
                 </text>
               </g>
             </g>
             <g
-              aria-label="p3, p2. Nasty, 25."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(255, 195, 195)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="p4, p1. Nasty, 50."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="p4, p2. Excellent, 100."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(255, 203, 169)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 197, 186)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="p3, p1. Excellent, 75."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                100
-              </text>
-            </g>
-            <g
-              aria-label="p3, p1. Excellent, 75."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(255, 200, 178)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 200, 178)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  75
+                </text>
+              </g>
+              <g
+                aria-label="p4, p2. Excellent, 100."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                75
-              </text>
-            </g>
-            <g
-              aria-label="p4, p1. Nasty, 50."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(255, 197, 186)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 203, 169)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  100
+                </text>
+              </g>
+              <g
+                aria-label="p3, p2. Nasty, 25."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                50
-              </text>
+                <rect
+                  fill="rgb(255, 195, 195)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -947,11 +893,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+          class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -982,9 +930,10 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                p3
+                p4
               </text>
             </g>
             <g
@@ -1000,9 +949,10 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                p4
+                p3
               </text>
             </g>
           </g>
@@ -1032,22 +982,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p2
               </text>
             </g>
             <g
@@ -1062,112 +999,103 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p1
               </text>
             </g>
           </g>
           <g
-            aria-label="p3, p2. Nasty, 25."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(255, 195, 195)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+            <g
+              aria-label="p4, p1. Nasty, 50."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 22.42574257425744)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="p4, p2. Excellent, 100."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(255, 203, 169)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 197, 186)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="p3, p1. Excellent, 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
-              100
-            </text>
-          </g>
-          <g
-            aria-label="p3, p1. Excellent, 75."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(255, 200, 178)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 200, 178)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="p4, p2. Excellent, 100."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
-              75
-            </text>
-          </g>
-          <g
-            aria-label="p4, p1. Nasty, 50."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(255, 197, 186)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 203, 169)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                100
+              </text>
+            </g>
+            <g
+              aria-label="p3, p2. Nasty, 25."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
             >
-              50
-            </text>
+              <rect
+                fill="rgb(255, 195, 195)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -1296,11 +1224,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1331,6 +1261,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/01
@@ -1349,6 +1280,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/02
@@ -1381,22 +1313,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1411,25 +1330,234 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 17.524752475247524)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 17.524752475247524)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 15.049504950495049)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 15.049504950495049)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  25
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+          class="fui-cart__chart"
+          height="50"
+          role="region"
+          style="display: block;"
+          width="650"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 15)"
+          >
+            <path
+              class="domain"
+              d="M40.5,0.5H630.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(188.96039603960392,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/01
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(481.039603960396,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/02
+              </text>
+            </g>
+          </g>
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,15.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,16.262376237623762)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p1
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,18.737623762376238)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p2
+              </text>
+            </g>
+          </g>
+          <g
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
@@ -1520,242 +1648,6 @@ Object {
                 25
               </text>
             </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      >
-        <svg
-          aria-label="Heat map chart with 4 data points. "
-          height="50"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_"
-            text-anchor="middle"
-            transform="translate(0, 15)"
-          >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/01
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/02
-              </text>
-            </g>
-          </g>
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M0.5,15.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,16.262376237623762)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,18.737623762376238)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 17.524752475247524)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 17.524752475247524)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
-            >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 15.049504950495049)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 15.049504950495049)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
-            >
-              25
-            </text>
           </g>
         </svg>
       </div>
@@ -1829,11 +1721,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1864,6 +1758,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/01
@@ -1882,6 +1777,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/02
@@ -1914,22 +1810,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1944,25 +1827,289 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+          class="fui-cart__chart"
+          height="300"
+          role="region"
+          style="display: block;"
+          width="650"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 265)"
+          >
+            <path
+              class="domain"
+              d="M40.5,0.5H630.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(188.96039603960392,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/01
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(481.039603960396,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/02
+              </text>
+            </g>
+          </g>
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,265.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,203.14356435643566)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p1
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,81.85643564356437)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p2
+              </text>
+            </g>
+          </g>
+          <g
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
@@ -2053,297 +2200,6 @@ Object {
                 25
               </text>
             </g>
-          </svg>
-        </div>
-        <div
-          class="fui-cart__legendContainer"
-        >
-          <div
-            aria-label="Legends"
-            aria-multiselectable="false"
-            class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
-          >
-            <div
-              class="fui-Overflow fui-legend__resizableArea"
-              style="text-align: unset;"
-            >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Nasty
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      >
-        <svg
-          aria-label="Heat map chart with 4 data points. "
-          height="300"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_"
-            text-anchor="middle"
-            transform="translate(0, 265)"
-          >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/01
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/02
-              </text>
-            </g>
-          </g>
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M0.5,265.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,203.14356435643566)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,81.85643564356437)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
           </g>
         </svg>
       </div>
@@ -2472,11 +2328,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2507,6 +2365,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/01
@@ -2525,6 +2384,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   Mar/02
@@ -2557,22 +2417,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -2587,25 +2434,289 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
+              >
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+          class="fui-cart__chart"
+          height="300"
+          role="region"
+          style="display: block;"
+          width="650"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 265)"
+          >
+            <path
+              class="domain"
+              d="M40.5,0.5H630.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(188.96039603960392,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/01
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(481.039603960396,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="0"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
+                y="10"
+              >
+                Mar/02
+              </text>
+            </g>
+          </g>
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M0.5,265.5V20.5"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,203.14356435643566)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p1
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,81.85643564356437)"
+            >
+              <line
+                stroke="currentColor"
+                x2="0"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                p2
+              </text>
+            </g>
+          </g>
+          <g
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
@@ -2696,297 +2807,6 @@ Object {
                 25
               </text>
             </g>
-          </svg>
-        </div>
-        <div
-          class="fui-cart__legendContainer"
-        >
-          <div
-            aria-label="Legends"
-            aria-multiselectable="false"
-            class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
-          >
-            <div
-              class="fui-Overflow fui-legend__resizableArea"
-              style="text-align: unset;"
-            >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Nasty
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      >
-        <svg
-          aria-label="Heat map chart with 4 data points. "
-          height="300"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_"
-            text-anchor="middle"
-            transform="translate(0, 265)"
-          >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/01
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                Mar/02
-              </text>
-            </g>
-          </g>
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M0.5,265.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,203.14356435643566)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,81.85643564356437)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-10"
-              >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              25
-            </text>
           </g>
         </svg>
       </div>
@@ -3109,7 +2929,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider34"
+        class="fui-FluentProvider fui-FluentProvider_r_1e_"
         dir="ltr"
       >
         <div
@@ -3119,11 +2939,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+              class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3154,6 +2976,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
                     Mar/01
@@ -3172,6 +2995,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
                     Mar/02
@@ -3204,22 +3028,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3234,25 +3045,294 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
+              <g
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              >
+                <g
+                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 22.42574257425744)"
+                >
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 22.42574257425744)"
+                >
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 143.71287128712873)"
+                >
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 143.71287128712873)"
+                >
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div
+            class="fui-cart__legendContainer"
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              class="fui-legend__root"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+              role="listbox"
+            >
+              <div
+                class="fui-Overflow fui-legend__resizableArea"
+                style="text-align: unset;"
+              >
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-FluentProvider fui-FluentProvider_r_1e_"
+      dir="ltr"
+    >
+      <div
+        class="fui-cart__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
+            height="300"
+            role="region"
+            style="display: block;"
+            width="650"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 265)"
+            >
+              <path
+                class="domain"
+                d="M40.5,0.5H630.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(188.96039603960392,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="0"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="10"
+                >
+                  Mar/01
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(481.039603960396,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="0"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="10"
+                >
+                  Mar/02
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,265.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,203.14356435643566)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  p1
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,81.85643564356437)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  p2
+                </text>
+              </g>
+            </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
@@ -3343,302 +3423,6 @@ Object {
                   25
                 </text>
               </g>
-            </svg>
-          </div>
-          <div
-            class="fui-cart__legendContainer"
-          >
-            <div
-              aria-label="Legends"
-              aria-multiselectable="false"
-              class="fui-legend__root"
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-              role="listbox"
-            >
-              <div
-                class="fui-Overflow fui-legend__resizableArea"
-                style="text-align: unset;"
-              >
-                <button
-                  aria-label="Execllent (0-200)"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                  />
-                  <div
-                    class="fui-legend__text"
-                  >
-                    Execllent (0-200)
-                  </div>
-                </button>
-                <button
-                  aria-label="Nasty"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                  />
-                  <div
-                    class="fui-legend__text"
-                  >
-                    Nasty
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-FluentProvider fui-FluentProvider34"
-      dir="ltr"
-    >
-      <div
-        class="fui-cart__root"
-        id="chart_"
-        role="presentation"
-      >
-        <div
-          class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        >
-          <svg
-            aria-label="Heat map chart with 4 data points. "
-            height="300"
-            style="display: block;"
-            width="650"
-          >
-            <g
-              class="fui-cart__xAxis"
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="xAxisGElementchart_"
-              text-anchor="middle"
-              transform="translate(0, 265)"
-            >
-              <path
-                class="domain"
-                d="M40.5,0.5H630.5"
-                stroke="currentColor"
-              />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(188.96039603960392,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="0"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  Mar/01
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(481.039603960396,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="0"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  Mar/02
-                </text>
-              </g>
-            </g>
-            <g
-              class="fui-cart__yAxis"
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="yAxisGElementchart_"
-              text-anchor="end"
-              transform="translate(40, 0)"
-            >
-              <path
-                class="domain"
-                d="M0.5,265.5V20.5"
-                stroke="currentColor"
-              />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,203.14356435643566)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="0"
-                />
-                <text
-                  dy="0.32em"
-                  fill="currentColor"
-                  text-align="start"
-                  x="-10"
-                >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,81.85643564356437)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="0"
-                />
-                <text
-                  dy="0.32em"
-                  fill="currentColor"
-                  text-align="start"
-                  x="-10"
-                >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
-                </text>
-              </g>
-            </g>
-            <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                25
-              </text>
             </g>
           </svg>
         </div>
@@ -3771,11 +3555,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+              class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3806,6 +3592,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
                     Mar/01
@@ -3824,6 +3611,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
                     Mar/02
@@ -3856,22 +3644,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3886,25 +3661,293 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
+              <g
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              >
+                <g
+                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 22.42574257425744)"
+                >
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 22.42574257425744)"
+                >
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 143.71287128712873)"
+                >
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 143.71287128712873)"
+                >
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div
+            class="fui-cart__legendContainer"
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              class="fui-legend__root"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+              role="listbox"
+            >
+              <div
+                class="fui-Overflow fui-legend__resizableArea"
+                style="text-align: unset;"
+              >
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      dir="rtl"
+    >
+      <div
+        class="fui-cart__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart"
+            height="300"
+            role="region"
+            style="display: block;"
+            width="650"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 265)"
+            >
+              <path
+                class="domain"
+                d="M40.5,0.5H630.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(188.96039603960392,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="0"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="10"
+                >
+                  Mar/01
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(481.039603960396,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="0"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="10"
+                >
+                  Mar/02
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,265.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,203.14356435643566)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  p1
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,81.85643564356437)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  p2
+                </text>
+              </g>
+            </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
@@ -3995,301 +4038,6 @@ Object {
                   25
                 </text>
               </g>
-            </svg>
-          </div>
-          <div
-            class="fui-cart__legendContainer"
-          >
-            <div
-              aria-label="Legends"
-              aria-multiselectable="false"
-              class="fui-legend__root"
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-              role="listbox"
-            >
-              <div
-                class="fui-Overflow fui-legend__resizableArea"
-                style="text-align: unset;"
-              >
-                <button
-                  aria-label="Execllent (0-200)"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                  />
-                  <div
-                    class="fui-legend__text"
-                  >
-                    Execllent (0-200)
-                  </div>
-                </button>
-                <button
-                  aria-label="Nasty"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                  />
-                  <div
-                    class="fui-legend__text"
-                  >
-                    Nasty
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      dir="rtl"
-    >
-      <div
-        class="fui-cart__root"
-        id="chart_"
-        role="presentation"
-      >
-        <div
-          class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        >
-          <svg
-            aria-label="Heat map chart with 4 data points. "
-            height="300"
-            style="display: block;"
-            width="650"
-          >
-            <g
-              class="fui-cart__xAxis"
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="xAxisGElementchart_"
-              text-anchor="middle"
-              transform="translate(0, 265)"
-            >
-              <path
-                class="domain"
-                d="M40.5,0.5H630.5"
-                stroke="currentColor"
-              />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(188.96039603960392,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="0"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  Mar/01
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(481.039603960396,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="0"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  Mar/02
-                </text>
-              </g>
-            </g>
-            <g
-              class="fui-cart__yAxis"
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="yAxisGElementchart_"
-              text-anchor="end"
-              transform="translate(40, 0)"
-            >
-              <path
-                class="domain"
-                d="M0.5,265.5V20.5"
-                stroke="currentColor"
-              />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,203.14356435643566)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="0"
-                />
-                <text
-                  dy="0.32em"
-                  fill="currentColor"
-                  text-align="start"
-                  x="-10"
-                >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,81.85643564356437)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="0"
-                />
-                <text
-                  dy="0.32em"
-                  fill="currentColor"
-                  text-align="start"
-                  x="-10"
-                >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
-                </text>
-              </g>
-            </g>
-            <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
-      off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                25
-              </text>
             </g>
           </svg>
         </div>
@@ -4414,11 +4162,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+        class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4449,6 +4199,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               30
@@ -4467,6 +4218,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               40
@@ -4499,22 +4251,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="10"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                10
-              </tspan>
+              10
             </text>
           </g>
           <g
@@ -4529,104 +4268,95 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="20"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                20
-              </tspan>
+              20
             </text>
           </g>
         </g>
         <g
-          aria-label="Lorem ipsum dolor sit amet"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
-          <rect
-            fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="ut labore et dolore magna aliqua"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
-        >
-          <rect
-            fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="sed do eiusmod tempor incididunt"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="consectetur adipiscing elit"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
+          <g
+            aria-label="Lorem ipsum dolor sit amet"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 22.42574257425744)"
+          >
+            <rect
+              fill="rgb(151, 189, 219)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="ut labore et dolore magna aliqua"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 22.42574257425744)"
+          >
+            <rect
+              fill="rgb(166, 207, 226)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="sed do eiusmod tempor incididunt"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(159, 198, 222)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="consectetur adipiscing elit"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(144, 180, 215)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
         </g>
       </svg>
     </div>
@@ -4698,11 +4428,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+        class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4733,9 +4465,10 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
-              xPoint p3
+              xPoint p4
             </text>
           </g>
           <g
@@ -4751,9 +4484,10 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
-              xPoint p4
+              xPoint p3
             </text>
           </g>
         </g>
@@ -4783,22 +4517,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p1"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                yPoint p1
-              </tspan>
+              yPoint p2
             </text>
           </g>
           <g
@@ -4813,112 +4534,103 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p2"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                yPoint p2
-              </tspan>
+              yPoint p1
             </text>
           </g>
         </g>
         <g
-          aria-label="xPoint p3, yPoint p2. Nasty, 25."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
-          <rect
-            fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+          <g
+            aria-label="xPoint p4, yPoint p1. Nasty, 50."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 22.42574257425744)"
           >
-            25
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p4, yPoint p2. Excellent, 100."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
-        >
-          <rect
-            fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(159, 198, 222)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              50
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p3, yPoint p1. Excellent, 75."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 22.42574257425744)"
           >
-            100
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p3, yPoint p1. Excellent, 75."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(151, 189, 219)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              75
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p4, yPoint p2. Excellent, 100."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 143.71287128712873)"
           >
-            75
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p4, yPoint p1. Nasty, 50."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(144, 180, 215)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              100
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p3, yPoint p2. Nasty, 25."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
           >
-            50
-          </text>
+            <rect
+              fill="rgb(166, 207, 226)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              25
+            </text>
+          </g>
         </g>
       </svg>
     </div>

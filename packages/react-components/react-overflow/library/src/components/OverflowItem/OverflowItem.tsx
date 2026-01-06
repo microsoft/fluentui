@@ -1,6 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
+  getReactElementRef,
   type FluentTriggerComponent,
   getTriggerChild,
   useMergedRefs,
@@ -21,7 +24,7 @@ export const OverflowItem = React.forwardRef((props: OverflowItemProps, ref) => 
   const child = getTriggerChild(children);
 
   return applyTriggerPropsToChildren(children, {
-    ref: useMergedRefs(containerRef, ref, child?.ref),
+    ref: useMergedRefs(containerRef, ref, getReactElementRef(child)),
   });
 });
 

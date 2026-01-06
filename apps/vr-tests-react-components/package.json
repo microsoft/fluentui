@@ -11,7 +11,7 @@
     "start": "storybook dev",
     "test": "just-scripts test",
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -34,7 +34,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.301",
+    "@fluentui/react-icons": "^2.0.306",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
@@ -70,9 +70,9 @@
     "@fluentui/react-toolbar": "*",
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
-    "@griffel/react": "^1.5.22",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "@griffel/react": "^1.5.32",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
     "@fluentui/react-rating": "*",

@@ -71,8 +71,8 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
   // Next, obtain the suffix using the icon size, user's device pixel ration, and
   // preference for svg or png
-  let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
   return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
@@ -179,7 +179,7 @@ export function getFileTypeIconSuffix(
 ): string {
   // eslint-disable-next-line no-restricted-globals
   win ??= window;
-  let devicePixelRatio: number = win.devicePixelRatio;
+  const devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

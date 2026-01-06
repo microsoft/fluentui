@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
@@ -15,12 +16,10 @@ const Calendar = (props: CalendarProps) => {
 export default {
   title: 'Calendar Compat',
   component: CalendarBase,
-  decorators: [
-    TestWrapperDecorator,
-    story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof CalendarBase>;
 
 export const Default = () => <Calendar />;

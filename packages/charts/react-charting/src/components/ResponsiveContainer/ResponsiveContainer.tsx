@@ -8,7 +8,7 @@ import { IResponsiveChildProps, IResponsiveContainerProps } from './ResponsiveCo
  */
 export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const onResizeRef = React.useRef<IResponsiveContainerProps['onResize']>();
+  const onResizeRef = React.useRef<IResponsiveContainerProps['onResize'] | undefined>(undefined);
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
@@ -70,19 +70,40 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
     }
 
     return React.Children.map(props.children, child => {
+      const commonStyles = {
+        root: {
+          ...child.props.styles?.root,
+          width: '100%',
+          height: '100%',
+        },
+        chartWrapper: {
+          ...child.props.styles?.chartWrapper,
+          width: '100%',
+        },
+        chart: {
+          ...child.props.styles?.chart,
+          // This overrides the pixel width of svg allowing it to resize properly within a flexbox or grid layout.
+          // Note: height is not set to 100% because that causes the charts to resize vertically in an infinite loop.
+          width: '100%',
+        },
+      };
+
       return React.cloneElement<IResponsiveChildProps>(child, {
         width: calculatedWidth,
         height: calculatedHeight,
+        // For SankeyChart
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
         styles: {
           // Keep components styles
           ...child.props.styles,
-          root: {
-            ...child.props.styles?.root,
-            // Ensure the child element fills the parent container
-            // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
-            width: calculatedWidth,
-            height: calculatedHeight,
+          ...commonStyles,
+          // For HeatMapChart
+          subComponentStyles: {
+            ...child.props.styles?.subComponentStyles,
+            cartesianStyles: {
+              ...child.props.styles?.subComponentStyles?.cartesianStyles,
+              ...commonStyles,
+            },
           },
         },
       });

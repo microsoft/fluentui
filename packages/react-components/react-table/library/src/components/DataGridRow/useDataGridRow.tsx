@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';
@@ -79,11 +81,6 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     selectionCell: slot.optional(props.selectionCell, {
       renderByDefault: selectable,
       elementType: DataGridSelectionCell,
-      defaultProps: {
-        radioIndicator: {
-          disabled: isHeader,
-        },
-      },
     }),
     renderCell: props.children,
     columnDefs,

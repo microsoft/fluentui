@@ -1,3 +1,5 @@
+'use client';
+
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -50,7 +52,7 @@ const useRootBaseClassName = makeResetStyles({
     cursor: 'pointer',
   },
 
-  ':hover:active': {
+  ':hover:active,:active:focus-visible': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     borderColor: tokens.colorNeutralStroke1Pressed,
     color: tokens.colorNeutralForeground1Pressed,
@@ -90,7 +92,7 @@ const useRootBaseClassName = makeResetStyles({
       forcedColorAdjust: 'none',
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: 'HighlightText',
       borderColor: 'Highlight',
       color: 'Highlight',
@@ -142,7 +144,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
@@ -157,7 +159,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
@@ -175,7 +177,7 @@ const useRootStyles = makeStyles({
         color: 'Highlight',
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
@@ -205,7 +207,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
@@ -228,7 +230,7 @@ const useRootStyles = makeStyles({
           color: 'Highlight',
         },
       },
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         color: 'Highlight',
 
         [`& .${buttonClassNames.icon}`]: {
@@ -254,7 +256,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
@@ -271,7 +273,7 @@ const useRootStyles = makeStyles({
         backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
@@ -347,7 +349,7 @@ const useRootDisabledStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
@@ -391,7 +393,7 @@ const useRootDisabledStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
         color: 'GrayText',
@@ -411,7 +413,7 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackground,
     },
   },
@@ -422,7 +424,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -438,7 +440,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
@@ -452,7 +454,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },

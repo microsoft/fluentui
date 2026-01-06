@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Area chart rendering Should render the Area Chart with negative y values 1`] = `
 <div>
@@ -28,7 +28,9 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -820,7 +822,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1165,7 +1167,9 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1957,7 +1961,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -6159,7 +6163,9 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -7081,7 +7087,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -9767,7 +9773,9 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -10559,7 +10567,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -10917,7 +10925,9 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -11709,7 +11719,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -12055,7 +12065,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -12847,7 +12859,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -13192,7 +13204,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -13984,7 +13998,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

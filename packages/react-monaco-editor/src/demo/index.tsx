@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { App } from './App';
+import ReactDOMClient from 'react-dom/client';
 import { mergeStyles, initializeIcons, ThemeProvider } from '@fluentui/react';
+import { App } from './App';
 
 initializeIcons();
 
@@ -16,9 +16,8 @@ mergeStyles({
   },
 });
 
-ReactDOM.render(
+ReactDOMClient.createRoot(document.getElementById('content')!).render(
   <ThemeProvider>
     <App />
   </ThemeProvider>,
-  document.getElementById('content'),
 );

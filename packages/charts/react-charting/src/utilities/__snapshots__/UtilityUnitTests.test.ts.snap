@@ -1,115 +1,97 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`calloutData should return an array of data points grouped by their date-based x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609459200000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609545600000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609632000000,
-  },
-]
+Object {
+  "1609459200000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609545600000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609632000000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`calloutData should return an array of data points grouped by their numeric x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 10,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 20,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 30,
-  },
-]
+Object {
+  "10": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "20": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "30": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
@@ -1574,8 +1556,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
 </g>
 `;
 
-exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate
-  and showXAxisLablesTooltip is true 1`] = `
+exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate\\n  and showXAxisLablesTooltip is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -1686,8 +1667,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
 </g>
 `;
 
-exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate
-  and showXAxisLablesTooltip is true 1`] = `
+exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate\\n  and showXAxisLablesTooltip is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -3505,8 +3485,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
 </g>
 `;
 
-exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate
-  and truncateLabel is true 1`] = `
+exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate\\n  and truncateLabel is true 1`] = `
 <g
   fill="none"
   font-family="sans-serif"
@@ -3679,7 +3658,7 @@ Object {
   "dEndValue": 30,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3687,7 +3666,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain 
 Object {
   "dEndValue": 0,
   "dStartValue": 30,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3697,7 +3676,7 @@ Object {
   "dEndValue": 60,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3705,7 +3684,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return 
 Object {
   "dEndValue": 0,
   "dStartValue": 60,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3788,8 +3767,7 @@ Object {
 }
 `;
 
-exports[`getUnique should return an array of data points with unique values
-determined by the provided comparison key 1`] = `
+exports[`getUnique should return an array of data points with unique values\\ndetermined by the provided comparison key 1`] = `
 Array [
   Object {
     "values": Array [

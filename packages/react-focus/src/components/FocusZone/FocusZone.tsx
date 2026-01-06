@@ -117,8 +117,6 @@ interface IFocusZonePropsWithTabster extends IFocusZoneProps {
 }
 
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
-  public static contextType = MergeStylesShadowRootContext;
-
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
@@ -127,7 +125,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     'data-tabster': '{"uncontrolled": {}}',
   } as IFocusZonePropsWithTabster;
 
-  private _root: React.RefObject<HTMLElement> = React.createRef();
+  public static contextType = MergeStylesShadowRootContext;
+
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  public context: any;
+
+  private _root: React.RefObject<HTMLElement | null> = React.createRef();
   private _mergedRef = createMergedRef<HTMLElement>();
 
   private _id: string;
@@ -456,11 +459,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._focusAlignment = point;
   }
 
-  public get defaultFocusElement() {
+  public get defaultFocusElement(): HTMLElement | null {
     return this._defaultFocusElement;
   }
 
-  public get activeElement() {
+  public get activeElement(): HTMLElement | null {
     return this._activeElement;
   }
 

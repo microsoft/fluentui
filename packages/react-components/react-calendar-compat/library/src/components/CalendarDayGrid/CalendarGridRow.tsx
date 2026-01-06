@@ -17,7 +17,8 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
   ariaHidden?: boolean;
   rowClassName?: string;
   ariaRole?: string;
-  navigatedDayRef: React.MutableRefObject<HTMLTableCellElement>;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  navigatedDayRef: React.MutableRefObject<HTMLTableCellElement | null>;
   activeDescendantId: string;
   calculateRoundedStyles(above: boolean, below: boolean, left: boolean, right: boolean): string;
   getDayInfosInRangeOfDay(dayToCompare: DayInfo): DayInfo[];

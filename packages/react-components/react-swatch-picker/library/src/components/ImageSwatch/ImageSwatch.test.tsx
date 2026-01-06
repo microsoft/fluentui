@@ -18,7 +18,7 @@ describe('ImageSwatch', () => {
           aria-checked="false"
           class="fui-ImageSwatch"
           role="radio"
-          style="background-image: url(path/img.png);"
+          style="background-image: url(\\"path/img.png\\");"
         />
       </div>
     `);

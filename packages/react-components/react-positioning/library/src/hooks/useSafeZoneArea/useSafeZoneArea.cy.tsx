@@ -1,5 +1,5 @@
 import 'cypress-real-events';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import {
   usePositioning,
   useSafeZoneArea,
@@ -200,7 +200,69 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 
-  it('onSafeZoneTimeout is called after timeout', () => {
+  it('safe zone is stays open as long as mouse keeps moving inside it', () => {
+    const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
+
+    mount(
+      <Example
+        popoverHeight={300}
+        onSafeZoneTimeout={onSafeZoneTimeout}
+        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+        timeout={300}
+      />,
+    );
+
+    cy.get('.trigger').realHover({ position: 'right' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.clock(0).then(() => {
+      // Move the mouse inside the safe zone area, it should stay visible
+
+      for (let startX = 10, startY = 10; startX < 15; startX++, startY++) {
+        cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
+        cy.tick(299);
+
+        cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+      }
+
+      // After 300ms of no movement, the safe zone should be hidden
+      cy.tick(301);
+
+      cy.get('@onSafeZoneTimeout').should('be.called');
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+    });
+  });
+
+  it('safe zone is hidden after timeout if mouse is not moving', () => {
+    const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
+
+    mount(
+      <Example
+        popoverHeight={300}
+        onSafeZoneTimeout={onSafeZoneTimeout}
+        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+        timeout={200}
+      />,
+    );
+
+    cy.get('.trigger').realHover({ position: 'center' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    // Wait for the timeout to finish, safe zone should be hidden
+
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+
+    // Move again, safe zone should be shown again
+
+    cy.get('.trigger').realHover({ position: 'right' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    // "onSafeZoneTimeout" is not called again since the mouse is still over the target element
+
+    cy.get('@onSafeZoneTimeout').should('not.be.called');
+  });
+
+  it('onSafeZoneTimeout is called after timeout on safe zone enter', () => {
     const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
 

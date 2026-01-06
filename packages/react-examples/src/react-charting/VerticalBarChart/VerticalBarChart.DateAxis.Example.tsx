@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   VerticalBarChart,
   IVerticalBarChartProps,
@@ -13,11 +14,11 @@ export class VerticalBarChartDateAxisExample extends React.Component<{}, IVertic
   constructor(props: IVerticalBarChartProps) {
     super(props);
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._rotateLabelExample()}</div>;
   }
 
-  private _rotateLabelExample(): JSX.Element {
+  private _rotateLabelExample(): JSXElement {
     const points: IVerticalBarChartDataPoint[] = [
       {
         x: new Date('2018/01/01'),

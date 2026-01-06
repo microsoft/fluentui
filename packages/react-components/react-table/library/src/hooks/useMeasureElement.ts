@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -7,7 +9,10 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  * `width` - current element width (0 by default),
  * `measureElementRef` - a ref function to be passed as `ref` to the element you want to measure
  */
-export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() {
+export function useMeasureElement<TElement extends HTMLElement = HTMLElement>(): {
+  width: number;
+  measureElementRef: (el: TElement | null) => void;
+} {
   const [width, setWidth] = React.useState(0);
 
   const container = React.useRef<HTMLElement | undefined>(undefined);
@@ -71,7 +76,7 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
 export function createResizeObserverFromDocument(
   targetDocument: Document | null | undefined,
   callback: ResizeObserverCallback,
-) {
+): ResizeObserver | null {
   if (!targetDocument?.defaultView?.ResizeObserver) {
     return null;
   }

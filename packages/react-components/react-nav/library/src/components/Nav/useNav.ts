@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useControllableState,
@@ -165,5 +167,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onRequestNavCategoryItemToggle,
     multiple,
     density,
+    tabbable: false,
   };
 };

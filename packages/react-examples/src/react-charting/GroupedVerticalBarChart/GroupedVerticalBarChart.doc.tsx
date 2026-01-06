@@ -8,6 +8,7 @@ import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.
 import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVerticalBarChart.CustomAccessibility.Example';
 import { GroupedVerticalBarChartSecondaryYAxisExample } from './GroupedVerticalBarChart.SecondaryYAxis.Example';
 import { GroupedVerticalBarChartNegativeExample } from './GroupedVerticalBarChart.Negative.Example';
+import { GroupedVerticalBarChartLineExample } from './GroupedVerticalBarChart.Line.Example';
 
 const GroupedVerticalBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
@@ -21,6 +22,8 @@ const GroupedVerticalBarChartSecondaryYAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.SecondaryYAxis.Example.tsx') as string;
 const GroupedVerticalBarChartNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Negative.Example.tsx') as string;
+const GroupedVerticalBarChartLineExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Line.Example.tsx') as string;
 
 export const GroupedVerticalBarChartPageProps: IDocPageProps = {
   title: 'GroupedVerticalBarChart',
@@ -57,6 +60,11 @@ export const GroupedVerticalBarChartPageProps: IDocPageProps = {
       title: 'GroupedVerticalBarChart negative y-axis',
       code: GroupedVerticalBarChartNegativeExampleCode,
       view: <GroupedVerticalBarChartNegativeExample />,
+    },
+    {
+      title: 'GroupedVerticalBarChart with lines',
+      code: GroupedVerticalBarChartLineExampleCode,
+      view: <GroupedVerticalBarChartLineExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/docs/GroupedVerticalBarChartOverview.md'),

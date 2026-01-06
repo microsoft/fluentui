@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add motion to nav components",
-  "packageName": "@fluentui/react-nav",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

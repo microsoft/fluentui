@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 
@@ -8,6 +7,8 @@ import { BasePicker } from './BasePicker';
 import { isConformant } from '../../common/isConformant';
 import type { IBasePickerProps, IBasePicker } from './BasePicker.types';
 import type { IPickerItemProps } from './PickerItem.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -67,7 +68,8 @@ describe('BasePicker', () => {
     ISimple,
     IBasePickerProps<ISimple>
   >;
-  const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+
+  const onRenderItem = (props: IPickerItemProps<ISimple>): JSXElement => (
     <div key={props.item.name}>{basicRenderer(props)}</div>
   );
 
@@ -77,19 +79,18 @@ describe('BasePicker', () => {
     });
 
   it('renders correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <BasePickerWithType
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with inputProps supply classnames correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <BasePickerWithType
         inputProps={{
           placeholder: 'Bitte einen Benutzer angeben...',
@@ -101,8 +102,7 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -374,7 +374,6 @@ describe('BasePicker', () => {
       render(
         <BasePickerWithType
           onResolveSuggestions={onResolveSuggestions}
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           onEmptyInputFocus={resolveSuggestions}
           onRenderItem={onRenderItem}
           onRenderSuggestionsItem={basicSuggestionRenderer}
@@ -634,7 +633,7 @@ describe('BasePicker', () => {
   it('focuses the last selected item after removing input', () => {
     jest.useFakeTimers();
 
-    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => (
       <div key={props.item.name} data-selection-index={props.index}>
         <button>{basicRenderer(props)}</button>
       </div>
@@ -672,7 +671,7 @@ describe('BasePicker', () => {
   it('focuses the next selected item after removing a selection', () => {
     jest.useFakeTimers();
 
-    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => {
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => {
       return (
         <div key={props.item.name} data-selection-index={props.index}>
           <button onClick={props.onRemoveItem}>{basicRenderer(props)}</button>

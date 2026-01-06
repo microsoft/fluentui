@@ -27,7 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -106,7 +106,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -151,7 +151,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -192,7 +192,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: ISankeyChartData) {
+export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
@@ -363,18 +363,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -845,7 +843,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         <div
           className={classNames.root}
           role={'presentation'}
-          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+          ref={(rootElem: HTMLDivElement) => {
+            this.chartContainer = rootElem;
+          }}
           onMouseLeave={this._onCloseCallout}
         >
           {/*
@@ -855,7 +855,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           in a non-sequential and erratic manner within a 2D grid.
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
-            <svg width={width} height={height} id={this._chartId}>
+            <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (
@@ -903,7 +903,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this.chartContainer, undefined, this._isRtl, opts);
+    return exportChartsAsImage([{ container: this.chartContainer }], undefined, this._isRtl, opts);
   };
 
   private _computeNodeAttributes(
@@ -1005,7 +1005,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const nodeValues = valuesOfNodes(transformed.nodes);
     const linkValues = valuesOfLinks(transformed.links);
     adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-    adjustPadding(sankey, height - 6, nodesInColumn);
+    adjustPadding(sankey, containerHeight - this._margins.top! - this._margins.bottom!, nodesInColumn);
     // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
     // NOTE: The second call to `sankey` is required to allow links to be hoverable.
     // Without the second call, the links are not hoverable.
@@ -1277,7 +1277,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
       const selectedNode = state.selectedNode;
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 

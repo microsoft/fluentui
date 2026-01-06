@@ -1,12 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TimePicker renders correctly 1`] = `
 <div
-  className="ms-ComboBox-container "
-  onKeyPress={[Function]}
+  class="ms-ComboBox-container "
 >
   <label
-    className=
+    class=
         ms-Label
         {
           -moz-osx-font-smoothing: grayscale;
@@ -34,7 +33,7 @@ exports[`TimePicker renders correctly 1`] = `
     I am a TimePicker
   </label>
   <div
-    className=
+    class=
         ms-ComboBox
         {
           -moz-osx-font-smoothing: grayscale;
@@ -167,18 +166,18 @@ exports[`TimePicker renders correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    data-ktp-target={true}
+    data-ktp-target="true"
     id="ComboBox0wrapper"
   >
     <input
       aria-autocomplete="inline"
       aria-describedby="ComboBox0-error"
-      aria-expanded={false}
-      aria-invalid={false}
+      aria-expanded="false"
+      aria-invalid="false"
       aria-labelledby="ComboBox0-label"
-      autoCapitalize="off"
-      autoComplete="off"
-      className=
+      autocapitalize="off"
+      autocomplete="off"
+      class=
           ms-ComboBox-Input
           {
             background-color: #ffffff;
@@ -222,35 +221,20 @@ exports[`TimePicker renders correctly 1`] = `
             color: WindowText;
             forced-color-adjust: none;
           }
-      data-is-interactable={true}
-      data-ktp-execute-target={true}
-      data-lpignore={true}
+      data-is-interactable="true"
+      data-ktp-execute-target="true"
+      data-lpignore="true"
       id="ComboBox0-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onCompositionEnd={[Function]}
-      onCompositionStart={[Function]}
-      onCompositionUpdate={[Function]}
-      onFocus={[Function]}
-      onInput={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onTouchStart={[Function]}
       placeholder="Select a time"
       role="combobox"
-      spellCheck={false}
-      style={
-        Object {
-          "fontFamily": "inherit",
-        }
-      }
+      spellcheck="false"
+      style="font-family: inherit;"
       type="text"
       value=""
     />
     <button
       aria-labelledby="ComboBox0-label"
-      className=
+      class=
           ms-Button
           ms-Button--icon
           ms-ComboBox-CaretDown-button
@@ -357,19 +341,12 @@ exports[`TimePicker renders correctly 1`] = `
             color: HighlightText;
             forced-color-adjust: none;
           }
-      data-is-focusable={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      tabIndex={-1}
+      data-is-focusable="false"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -381,8 +358,8 @@ exports[`TimePicker renders correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Icon
               ms-Button-icon
               {
@@ -409,11 +386,7 @@ exports[`TimePicker renders correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons\\"",
-            }
-          }
+          style="font-family: \\"FabricMDL2Icons\\";"
         >
           
         </i>

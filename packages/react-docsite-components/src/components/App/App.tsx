@@ -22,7 +22,7 @@ export interface IAppState {
 const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 
 @withResponsiveMode
-export class AppBase extends React.Component<IAppProps, IAppState> {
+export class AppBase extends React.Component<React.PropsWithChildren<IAppProps>, IAppState> {
   public state: IAppState = { isMenuVisible: false, isMenuClosing: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
@@ -40,7 +40,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     this._appTitle = this.props.appDefinition.appTitle.replace(' - ', ' ') + ' Examples';
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._setDocumentTitle();
 
     this._disposables.push(
@@ -50,11 +50,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._disposables.forEach(dispose => dispose());
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
     const { themes } = appDefinition;
     const { isMenuVisible } = this.state;
@@ -150,7 +150,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     this.setState(prevState => (prevState.isMenuClosing ? null : { isMenuVisible }));
   };
 
-  private _onRenderLink = (link: INavLink): JSX.Element => {
+  private _onRenderLink = (link: INavLink): React.ReactElement => {
     const classNames = this._classNames;
 
     // Nav-linkText is a class name from the Fabric nav

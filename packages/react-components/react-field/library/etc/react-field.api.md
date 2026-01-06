@@ -4,11 +4,10 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -22,10 +21,10 @@ export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
 export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
+    labelFor?: string;
+    labelId?: string;
+    validationMessageId?: string;
+    hintId?: string;
 }> | undefined>;
 
 // @public (undocumented)
@@ -75,18 +74,13 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<Fi
 };
 
 // @public
-export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSXElement;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public (undocumented)
-export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
-}> | undefined;
+export const useFieldContext_unstable: () => FieldContextValue | undefined;
 
 // @public
 export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;

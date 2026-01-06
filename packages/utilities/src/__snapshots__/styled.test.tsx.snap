@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`styled allows for contextual overrides (background yellow) 1`] = `
 <div
-  className=
+  class=
 
       {
         background: yellow;
@@ -12,7 +12,7 @@ exports[`styled allows for contextual overrides (background yellow) 1`] = `
 
 exports[`styled allows for contextual overrides mixed under user overrides (background yellow, color red) 1`] = `
 <div
-  className=
+  class=
 
       {
         background: yellow;
@@ -23,7 +23,7 @@ exports[`styled allows for contextual overrides mixed under user overrides (back
 
 exports[`styled allows user overrides (background green) 1`] = `
 <div
-  className=
+  class=
 
       {
         background: green;
@@ -33,7 +33,7 @@ exports[`styled allows user overrides (background green) 1`] = `
 
 exports[`styled can process style props (background blue) 1`] = `
 <div
-  className=
+  class=
 
       {
         background: blue;
@@ -43,7 +43,7 @@ exports[`styled can process style props (background blue) 1`] = `
 
 exports[`styled can wrap components and merge styling functions for all 1`] = `
 <div
-  className=
+  class=
 
       {
         background: blue;
@@ -55,7 +55,7 @@ exports[`styled can wrap components and merge styling functions for all 1`] = `
 
 exports[`styled can wrap components and merge styling objects for all 1`] = `
 <div
-  className=
+  class=
 
       {
         background: blue;
@@ -67,7 +67,7 @@ exports[`styled can wrap components and merge styling objects for all 1`] = `
 
 exports[`styled gives styles function user prop priority 1`] = `
 <div
-  className=
+  class=
 
       {
         background: purple;
@@ -77,7 +77,7 @@ exports[`styled gives styles function user prop priority 1`] = `
 
 exports[`styled gives styles object user prop priority 1`] = `
 <div
-  className=
+  class=
 
       {
         background: purple;
@@ -87,7 +87,7 @@ exports[`styled gives styles object user prop priority 1`] = `
 
 exports[`styled gives wrapped styles function priority 1`] = `
 <div
-  className=
+  class=
 
       {
         background: grey;
@@ -97,7 +97,7 @@ exports[`styled gives wrapped styles function priority 1`] = `
 
 exports[`styled gives wrapped styles object priority 1`] = `
 <div
-  className=
+  class=
 
       {
         background: grey;
@@ -107,7 +107,7 @@ exports[`styled gives wrapped styles object priority 1`] = `
 
 exports[`styled renders base styles (background red) 1`] = `
 <div
-  className=
+  class=
 
       {
         background: red;
@@ -118,7 +118,7 @@ exports[`styled renders base styles (background red) 1`] = `
 exports[`styled respects styles arg 1`] = `
 <div>
   <div
-    className=
+    class=
 
         {
           background-color: red;
@@ -127,7 +127,7 @@ exports[`styled respects styles arg 1`] = `
     Panel1
   </div>
   <div
-    className=
+    class=
 
         {
           background-color: green;

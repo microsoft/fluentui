@@ -1,3 +1,5 @@
+'use client';
+
 import { getObservedElement, Types as TabsterTypes } from 'tabster';
 
 import { useTabster } from './useTabster';

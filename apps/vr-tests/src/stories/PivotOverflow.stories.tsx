@@ -1,8 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator } from '../utilities';
 
 export default {
   title: 'Pivot - Overflow',
@@ -18,24 +18,29 @@ export default {
         </div>
       </div>
     ),
-    StoryWrightDecorator(
-      new Steps()
-        .executeScript('document.getElementById("testWrapper").style.width = "500px"')
+  ],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .executeScript('document.querySelector(".testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "750px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "750px"')
         .snapshot('Wide', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "250px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "250px"')
+        .snapshot('Narrow', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
+        .snapshot('Narrow - Overflow menu open', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-linkInMenu[data-last-tab]')
         .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
         .hover('.ms-Pivot-overflowMenuButton')
         .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Pivot>;
 
 export const Root = () => (
@@ -93,8 +98,8 @@ TabsRTL.storyName = 'Tabs - RTL';
 
 function _customRenderer(
   link: IPivotItemProps,
-  defaultRenderer: (link: IPivotItemProps) => JSX.Element,
-): JSX.Element {
+  defaultRenderer: (link: IPivotItemProps) => React.ReactElement,
+): React.ReactElement {
   return (
     <span style={{ flex: '0 1 100%' }}>
       {defaultRenderer({ ...link, itemIcon: undefined })}

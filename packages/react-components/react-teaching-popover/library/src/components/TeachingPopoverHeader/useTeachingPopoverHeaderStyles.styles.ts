@@ -1,3 +1,5 @@
+'use client';
+
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -72,7 +74,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHeaderState) => {
+export const useTeachingPopoverHeaderStyles_unstable = (
+  state: TeachingPopoverHeaderState,
+): TeachingPopoverHeaderState => {
   'use no memo';
 
   const styles = useStyles();

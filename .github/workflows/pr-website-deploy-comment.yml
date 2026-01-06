@@ -25,19 +25,19 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           sparse-checkout: |
             .github
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: pr-website-artifacts
           path: ./website
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: pr-number
           path: ./results
@@ -45,7 +45,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Load PR number
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         id: pr_number
         with:
           script: |
@@ -88,10 +88,10 @@ jobs:
       pull-requests: write
       statuses: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: 'Comment on PR'
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
         with:
           header: deploy-pr-site
           number: ${{ needs.deploy.outputs.pr_number }}
@@ -99,7 +99,7 @@ jobs:
             Pull request demo site: [URL](${{needs.deploy.outputs.website_url}})
 
       - name: Update PR deploy site GitHub status
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const run = require('./.github/scripts/deploy-pr-site-status');

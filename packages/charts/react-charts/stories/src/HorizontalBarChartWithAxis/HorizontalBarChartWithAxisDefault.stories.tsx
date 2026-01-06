@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   HorizontalBarChartWithAxisDataPoint,
   HorizontalBarChartWithAxis,
@@ -15,7 +16,7 @@ import {
   RadioGroupOnChangeData,
 } from '@fluentui/react-components';
 
-export const HorizontalBarWithAxisBasic = () => {
+export const HorizontalBarWithAxisBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutselected] = React.useState<boolean>(false);
@@ -81,15 +82,15 @@ export const HorizontalBarWithAxisBasic = () => {
     setUseSingleColor(checked.checked as boolean);
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundCorners = React.useCallback(ev => {
+  const _onSwitchRoundCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundMultipleLegendSelection = React.useCallback(ev => {
+  const _onSwitchRoundMultipleLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 

@@ -1,17 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuItem renders a default state 1`] = `
 <div
-  className="fui-MenuItem"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseMove={[Function]}
+  class="fui-MenuItem"
   role="menuitem"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="fui-MenuItem__content"
+    class="fui-MenuItem__content"
   >
     Default MenuItem
   </span>

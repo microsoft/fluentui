@@ -1,24 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ResizeGroup renders the ResizeGroup correctly 1`] = `
 <div
-  className="TestClassName"
+  class="TestClassName"
 >
   <div
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
+    style="position: relative;"
   >
     <div
       data-automation-id="visibleContent"
-      style={
-        Object {
-          "position": "fixed",
-          "visibility": "hidden",
-        }
-      }
+      style="position: fixed; visibility: hidden;"
     >
       <div
         id="onRenderDataId"

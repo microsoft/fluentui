@@ -43,6 +43,7 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
   Pick<DialogContextValue, 'isNestedDialog'> &
   Pick<PortalProps, 'mountNode'> & {
     open?: boolean;
+    unmountOnClose?: boolean;
 
     /**
      * Transition status for animation.

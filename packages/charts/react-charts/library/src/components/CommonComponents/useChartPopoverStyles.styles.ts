@@ -1,4 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
@@ -29,9 +31,8 @@ export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
  */
 const useStyles = makeStyles({
   calloutContentRoot: {
-    display: 'contents',
+    display: 'grid',
     overflow: 'hidden',
-    ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
   },
@@ -47,10 +48,10 @@ const useStyles = makeStyles({
   },
   calloutBlockContainer: {
     color: tokens.colorNeutralForeground2,
+    textAlign: 'left',
   },
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,
-    marginTop: '13px',
     forcedColorAdjust: 'none',
   },
   calloutBlockContainerNonCartesian: {
@@ -70,6 +71,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     forcedColorAdjust: 'auto',
+    marginBottom: tokens.spacingVerticalXS,
   },
   calloutContentY: {
     forcedColorAdjust: 'auto',
@@ -85,7 +87,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
     marginTop: tokens.spacingVerticalMNudge,
     paddingTop: tokens.spacingVerticalMNudge,
-    ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
+    borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
   },
   ratio: {
     ...typographyStyles.caption2,
@@ -113,7 +115,8 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
   return {
     calloutContentRoot: mergeClasses(
       popoverClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot /*props.styles?. calloutContentRoot*/,
+      baseStyles.calloutContentRoot,
+      props.styles?.calloutContentRoot,
     ),
     calloutDateTimeContainer: mergeClasses(
       popoverClassNames.calloutDateTimeContainer,

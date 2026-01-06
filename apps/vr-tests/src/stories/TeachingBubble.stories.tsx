@@ -1,17 +1,21 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../utilities';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 export default {
   title: 'TeachingBubble',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof TeachingBubble>;
 
 export const WideIllustration = () => {
   return (

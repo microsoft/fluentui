@@ -118,6 +118,7 @@ export class DropdownOption extends FASTElement implements Start {
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
     toggleState(this.elementInternals, 'disabled', this.disabled);
+    this.setFormValue(!this.disabled && this.selected ? this.value : null);
   }
 
   /**

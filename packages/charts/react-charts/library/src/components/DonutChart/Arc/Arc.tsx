@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles } from './useArcStyles.styles';
@@ -22,13 +24,22 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: ChartDataPoint, id: string): void {
-      props.onFocusCallback!(data, id, currentRef.current);
+    function _onFocus(
+      data: ChartDataPoint,
+      id: string,
+      event: React.FocusEvent<SVGPathElement, Element>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.onFocusCallback!(data, id, event, currentRef.current, targetElement);
     }
 
-    function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    function _hoverOn(
+      data: ChartDataPoint,
+      mouseEvent: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
       mouseEvent.persist();
-      props.hoverOnCallback!(data, mouseEvent);
+      props.hoverOnCallback!(data, mouseEvent, targetElement);
     }
 
     function _hoverOff(): void {
@@ -46,13 +57,19 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
     }
 
+    function _shouldHighlightArc(legend?: string): boolean {
+      const { activeArc } = props;
+      // If no activeArc is provided, highlight all arcs. Otherwise, only highlight the arcs that are active.
+      return !activeArc || activeArc.length === 0 || legend === undefined || activeArc.includes(legend);
+    }
+
     function _renderArcLabel(className: string) {
-      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = props;
+      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels } = props;
 
       if (
         hideLabels ||
         Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-        (activeArc !== data!.data.legend && activeArc !== '')
+        !_shouldHighlightArc(data!.data.legend!)
       ) {
         return null;
       }
@@ -86,34 +103,49 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       }
     }
 
-    const { href, focusedArcId } = props;
+    const { href, focusedArcId, activeArc } = props;
     //TO DO 'replace' is throwing error
     const id =
       props.uniqText! +
       (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
       props.data!.data.data;
-    const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
+    const opacity: number =
+      activeArc && activeArc.length > 0 ? (activeArc.includes(props.data?.data.legend!) ? 1 : 0.1) : 1;
+    const cornerRadius = props.roundCorners ? 3 : 0;
+    const targetElement = document.getElementById(id);
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
             id={id + 'focusRing'}
-            d={arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
+            d={
+              arc.cornerRadius(cornerRadius)({
+                ...props.data!,
+                innerRadius: props.innerRadius,
+                outerRadius: props.outerRadius,
+              })!
+            }
             className={classes.focusRing}
           />
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-          d={arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
+          d={
+            arc.cornerRadius(cornerRadius)({
+              ...props.data!,
+              innerRadius: props.innerRadius,
+              outerRadius: props.outerRadius,
+            })!
+          }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={_onFocus.bind(this, props.data!.data, id)}
-          data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
-          onMouseOver={_hoverOn.bind(this, props.data!.data)}
-          onMouseMove={_hoverOn.bind(this, props.data!.data)}
+          onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
+          onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
+          onMouseMove={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseLeave={_hoverOff}
+          tabIndex={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0 ? 0 : undefined}
           onBlur={_onBlur}
           opacity={opacity}
           onClick={props.data?.data.onClick}

@@ -24,12 +24,12 @@ jobs:
       id-token: 'write'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: yarn install --frozen-lockfile
 

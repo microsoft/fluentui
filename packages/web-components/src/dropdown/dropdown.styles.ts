@@ -25,6 +25,8 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
@@ -71,7 +73,7 @@ export const styles = css`
     appearance: none;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: none;
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: inset 0 0 0 ${strokeWidthThin} var(--control-border-color);
     box-sizing: border-box;
     color: inherit;
@@ -149,6 +151,17 @@ export const styles = css`
     height: ${strokeWidthThick};
     scale: 0 1;
     transition: scale ${durationUltraFast} ${curveDecelerateMid};
+  }
+
+  /**
+  * focus-ring style uses lingering :focus-within selector due to platform limitations
+  * TODO: Convert selector to \`:host(:has(:focus-visible)) .control\` when browser support increases
+  * ISSUE: https://issues.chromium.org/issues/40062355
+  */
+  :host(:where(:focus-within)) .control {
+    border-radius: ${borderRadiusMedium};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus1};
+    outline: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
   :host(:where(${openState}, :focus-within)) .control::after {
@@ -238,4 +251,12 @@ export const styles = css`
       --margin-offset: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
   }
+
+  @media (forced-colors: active) {
+    :host(:disabled) .control {
+      border-color: GrayText;
+    }
+    :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+      color: GrayText;
+    }
 `;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar } from '@fluentui/react-calendar-compat';
 import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
 import type { SelectionEvents, OptionOnSelectData } from '@fluentui/react-components';
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
 
 const dayOptions = ['1', '2', '3', '4', '5', '6'];
 
-export const CalendarMultidayDayView = () => {
+export const CalendarMultidayDayView = (): JSXElement => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -55,6 +56,14 @@ export const CalendarMultidayDayView = () => {
           ))}
         </Dropdown>
       </Field>
+      <h3>Selection with negative date range</h3>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        calendarDayProps={{ daysToSelectInDayView: -daysToSelectInDayView }}
+      />
     </div>
   );
 };

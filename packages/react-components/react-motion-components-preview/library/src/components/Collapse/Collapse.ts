@@ -1,100 +1,131 @@
-import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
-import type { PresenceMotionFnCreator } from '../../types';
-import type { CollapseDelayedVariantParams, CollapseRuntimeParams, CollapseVariantParams } from './collapse-types';
+import {
+  motionTokens,
+  createPresenceComponent,
+  PresenceMotionFn,
+  createPresenceComponentVariant,
+  AtomMotion,
+} from '@fluentui/react-motion';
+import type { CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { fadeAtom } from '../../atoms/fade-atom';
 
-/** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay. */
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<
-  CollapseDelayedVariantParams,
-  CollapseRuntimeParams
-> =
-  ({
-    // enter
-    enterSizeDuration = motionTokens.durationNormal,
-    enterOpacityDuration = enterSizeDuration, // in sync with size duration by default
-    enterEasing = motionTokens.curveEasyEaseMax,
-    enterDelay = 0,
+/**
+ * Define a presence motion for collapse/expand
+ *
+ * @param element - The element to apply the collapse motion to
+ * @param duration - Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms)
+ * @param easing - Easing curve for the enter transition. Defaults to the `curveEasyEaseMax` value
+ * @param delay - Time (ms) to delay the entire enter transition. Defaults to 0
+ * @param exitDuration - Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry
+ * @param exitEasing - Easing curve for the exit transition. Defaults to the `easing` param for symmetry
+ * @param exitDelay - Time (ms) to delay the entire exit transition. Defaults to the `delay` param for symmetry
+ * @param staggerDelay - Time (ms) offset between the size and opacity animations. Defaults to 0
+ * @param exitStaggerDelay - Time (ms) offset between the size and opacity animations on exit. Defaults to the `staggerDelay` param for symmetry
+ * @param sizeDuration - Time (ms) for the size animation during enter. Defaults to `duration` for unified timing
+ * @param opacityDuration - Time (ms) for the opacity animation during enter. Defaults to `sizeDuration` for synchronized timing
+ * @param exitSizeDuration - Time (ms) for the size animation during exit. Defaults to `exitDuration` for unified timing
+ * @param exitOpacityDuration - Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
+ * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
+ * @param fromSize - The starting size for the expand animation. Defaults to `'0px'`
+ */
+const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
+  element,
+  // Primary duration controls (simple API)
+  duration = motionTokens.durationNormal,
+  exitDuration = duration,
 
-    // exit: durations and easing default to enter values for symmetry
-    exitSizeDuration = enterSizeDuration,
-    exitOpacityDuration = enterOpacityDuration,
-    exitEasing = enterEasing,
-    exitDelay = 0,
-  } = {}) =>
-  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
-    // ----- ENTER -----
-    // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
-    const enterAtoms: AtomMotion[] = [
-      sizeEnterAtom({ orientation, duration: enterSizeDuration, easing: enterEasing, element }),
-      whitespaceAtom({ direction: 'enter', orientation, duration: enterSizeDuration, easing: enterEasing }),
-    ];
-    // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
-    if (animateOpacity) {
-      enterAtoms.push({
-        ...fadeAtom({ direction: 'enter', duration: enterOpacityDuration, easing: enterEasing }),
-        delay: enterDelay,
-        fill: 'both',
-      });
-    }
+  // Granular duration controls with smart defaults (advanced API)
+  sizeDuration = duration,
+  opacityDuration = sizeDuration,
+  exitSizeDuration = exitDuration,
+  exitOpacityDuration = exitSizeDuration,
 
-    // ----- EXIT -----
-    // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
-    const exitAtoms: AtomMotion[] = [];
-    // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
-    if (animateOpacity) {
-      exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
-    }
+  // Other timing controls
+  easing = motionTokens.curveEasyEaseMax,
+  delay = 0,
+  exitEasing = easing,
+  exitDelay = delay,
+  staggerDelay = 0,
+  exitStaggerDelay = staggerDelay,
+
+  // Animation controls
+  animateOpacity = true,
+  orientation = 'vertical',
+  fromSize = '0px',
+}) => {
+  // ----- ENTER -----
+  // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
+  // For enter: size expands first, then opacity fades in after staggerDelay
+  const enterAtoms: AtomMotion[] = [
+    // Apply global delay to size atom - size expansion starts first
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize, delay }),
+    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing, delay }),
+  ];
+  // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration: opacityDuration, easing, delay: delay + staggerDelay }));
+  }
+
+  // ----- EXIT -----
+  // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
+  // For exit: opacity fades out first, then size collapses after exitStaggerDelay
+  const exitAtoms: AtomMotion[] = [];
+  // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
     exitAtoms.push(
-      sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
-      whitespaceAtom({
-        direction: 'exit',
-        orientation,
-        duration: exitSizeDuration,
-        easing: exitEasing,
-        delay: exitDelay,
-      }),
+      fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing, delay: exitDelay }),
     );
+  }
 
-    return {
-      enter: enterAtoms,
-      exit: exitAtoms,
-    };
+  exitAtoms.push(
+    sizeExitAtom({
+      orientation,
+      duration: exitSizeDuration,
+      easing: exitEasing,
+      element,
+      delay: exitDelay + exitStaggerDelay,
+      fromSize,
+    }),
+    whitespaceAtom({
+      direction: 'exit',
+      orientation,
+      duration: exitSizeDuration,
+      easing: exitEasing,
+      delay: exitDelay + exitStaggerDelay, // Size/whitespace collapse after opacity finishes fading out
+    }),
+  );
+
+  return {
+    enter: enterAtoms,
+    exit: exitAtoms,
   };
-
-/** Defines a presence motion for collapse/expand. */
-export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams> = ({
-  enterDuration = motionTokens.durationNormal,
-  enterEasing = motionTokens.curveEasyEaseMax,
-  exitDuration = enterDuration,
-  exitEasing = enterEasing,
-} = {}) =>
-  // Implement a regular collapse as a special case of the delayed collapse,
-  // where the delays are zero, and the size and opacity durations are equal.
-  createCollapseDelayedPresence({
-    enterSizeDuration: enterDuration,
-    enterEasing,
-    exitSizeDuration: exitDuration,
-    exitEasing,
-  });
+};
 
 /** A React component that applies collapse/expand transitions to its children. */
-export const Collapse = createPresenceComponent(createCollapsePresence());
+export const Collapse = createPresenceComponent(collapsePresenceFn);
 
-export const CollapseSnappy = createPresenceComponent(
-  createCollapsePresence({ enterDuration: motionTokens.durationFast }),
-);
+export const CollapseSnappy = createPresenceComponentVariant(Collapse, {
+  duration: motionTokens.durationFast,
+});
 
-export const CollapseRelaxed = createPresenceComponent(
-  createCollapsePresence({ enterDuration: motionTokens.durationSlower }),
-);
+export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
+  duration: motionTokens.durationSlower,
+});
 
-export const CollapseDelayed = createPresenceComponent(
-  createCollapseDelayedPresence({
-    enterSizeDuration: motionTokens.durationNormal,
-    enterOpacityDuration: motionTokens.durationSlower,
-    enterDelay: motionTokens.durationNormal,
-    exitDelay: motionTokens.durationSlower,
-    enterEasing: motionTokens.curveEasyEase,
-  }),
-);
+/** A React component that applies collapse/expand transitions with delayed fade to its children. */
+export const CollapseDelayed = createPresenceComponentVariant(Collapse, {
+  // Enter timing per motion design spec
+  sizeDuration: motionTokens.durationNormal, // 200ms
+  opacityDuration: motionTokens.durationSlower, // 400ms
+  staggerDelay: motionTokens.durationNormal, // 200ms
+
+  // Exit timing per motion design spec
+  exitSizeDuration: motionTokens.durationNormal, // 200ms
+  exitOpacityDuration: motionTokens.durationSlower, // 400ms
+  exitStaggerDelay: motionTokens.durationSlower, // 400ms
+
+  // Easing per motion design spec
+  easing: motionTokens.curveEasyEase,
+  exitEasing: motionTokens.curveEasyEase,
+});

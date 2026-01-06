@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
@@ -17,6 +15,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
@@ -49,7 +48,7 @@ export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<P
 export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>> & Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    ignoreNextBlur: React_2.MutableRefObject<boolean>;
+    ignoreNextBlur: React_2.MutableRefObject<boolean | null>;
     setActiveOption: React_2.Dispatch<React_2.SetStateAction<OptionValue | undefined>>;
     setFocusVisible(focusVisible: boolean): void;
     hasFocus: boolean;
@@ -239,19 +238,19 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
 };
 
 // @public
-export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSX.Element;
+export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSXElement;
 
 // @public
-export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSX.Element;
+export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSXElement;
 
 // @public
-export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSX.Element;
+export const renderListbox_unstable: (state: ListboxState, contextValues: ListboxContextValues) => JSXElement;
 
 // @public
-export const renderOption_unstable: (state: OptionState) => JSX.Element;
+export const renderOption_unstable: (state: OptionState) => JSXElement;
 
 // @public
-export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
+export const renderOptionGroup_unstable: (state: OptionGroupState) => JSXElement;
 
 // @public
 export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
@@ -278,7 +277,7 @@ export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freefor
 export function useComboboxFilter<T extends {
     children: React_2.ReactNode;
     value: string;
-} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSX.Element[];
+} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSXElement[];
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;

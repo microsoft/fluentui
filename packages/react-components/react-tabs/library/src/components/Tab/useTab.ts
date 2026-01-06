@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {
@@ -84,7 +86,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,
       }),
       { elementType: 'button' },
-    ),
+    ) as TabState['root'],
     icon: iconSlot,
     iconOnly,
     content: contentSlot,

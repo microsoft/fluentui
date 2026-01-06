@@ -9,7 +9,7 @@ import { IResponsiveContainerProps } from './ResponsiveContainer.types';
  */
 export function withResponsiveContainer<TProps extends Omit<IResponsiveContainerProps, 'children'>>(
   WrappedComponent: React.ComponentType<TProps>,
-) {
+): React.FC<TProps> {
   const ComponentWithResponsiveContainer: React.FC<TProps> = ({
     aspect,
     width,

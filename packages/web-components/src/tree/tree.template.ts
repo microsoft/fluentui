@@ -1,5 +1,4 @@
-import { children, elements, html } from '@microsoft/fast-element';
-import { isTreeItem } from '../tree-item/tree-item.options.js';
+import { html, ref } from '@microsoft/fast-element';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
@@ -10,11 +9,7 @@ export const template = html<Tree>`
     @focusout="${(x, c) => x.blurHandler(c.event as FocusEvent)}"
     @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     @change="${(x, c) => x.changeHandler(c.event)}"
-    ${children({
-      property: 'childTreeItems',
-      filter: node => isTreeItem(node),
-    })}
   >
-    <slot></slot>
+    <slot ${ref('defaultSlot')} @slotchange="${x => x.handleDefaultSlotChange()}"></slot>
   </template>
 `;

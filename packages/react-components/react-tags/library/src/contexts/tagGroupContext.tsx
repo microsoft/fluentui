@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TagGroupState } from '../components/TagGroup/index';
 
@@ -7,7 +9,7 @@ const tagGroupContextDefaultValue: TagGroupContextValue = {
   handleTagDismiss: () => ({}),
   size: 'medium',
   role: 'toolbar',
-  handleTagSelect: () => ({}),
+  handleTagSelect: undefined,
 };
 
 /**
@@ -20,4 +22,5 @@ export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismis
 
 export const TagGroupContextProvider = TagGroupContext.Provider;
 
-export const useTagGroupContext_unstable = () => React.useContext(TagGroupContext) ?? tagGroupContextDefaultValue;
+export const useTagGroupContext_unstable = (): TagGroupContextValue =>
+  React.useContext(TagGroupContext) ?? tagGroupContextDefaultValue;

@@ -2,6 +2,419 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Mon, 15 Dec 2025 04:07:54 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.59",
+      "version": "0.0.59",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 04:06:59 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.59",
+      "version": "0.0.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.1",
+            "commit": "0c388e45a89a459efa4d8dc023fcebeadccc4f40"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Nov 2025 04:07:28 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.58",
+      "version": "0.0.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.133",
+            "commit": "b990bb438d7d4ccb8dce0c5c6fa03791d4c5f18f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Nov 2025 04:12:08 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.57",
+      "version": "0.0.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.132",
+            "commit": "31b6352db1187a88de9c28e9b02ca917990ce8a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Nov 2025 04:07:02 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.56",
+      "version": "0.0.56",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "ab76553324dce1ae74096a21bf3215b1a2723f21",
+            "comment": "chore: upgrade storybook to v8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Nov 2025 04:07:38 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.56",
+      "version": "0.0.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.131",
+            "commit": "a645475a61559f20abcc826b25bbe9c22e181084"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Oct 2025 04:08:15 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.55",
+      "version": "0.0.55",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.130",
+            "commit": "002f3d9ca75a903654557218aedee7a198edc804"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 04:09:10 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.54",
+      "version": "0.0.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.129",
+            "commit": "9420f34801bf2cc184ecb9e0b32c9cacb37fa929"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Oct 2025 04:07:30 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.53",
+      "version": "0.0.53",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.128",
+            "commit": "f511e153749497a89f5dc5ae04a4965745f57ba4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 04:06:45 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.52",
+      "version": "0.0.52",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.127",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Oct 2025 04:08:57 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.51",
+      "version": "0.0.51",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.126",
+            "commit": "7c9406120303f4feea69f9879fd305f2f8b0cc33"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 04:08:36 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.50",
+      "version": "0.0.50",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.125",
+            "commit": "75362a5de1634738b43f1b3c475fba554125107b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Sep 2025 04:07:18 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.48",
+      "version": "0.0.48",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.124",
+            "commit": "fdb651c09b833a2cd9a7ae219000f33a4a906dd6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Sep 2025 04:09:54 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.47",
+      "version": "0.0.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.123",
+            "commit": "dd72a5e17c59eead887a1d40e6fc9db25de2b9d4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Sep 2025 04:07:08 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.46",
+      "version": "0.0.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.122",
+            "commit": "3ed039a93f54418671e90b9b4a0f9ee32632f86d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Sep 2025 04:08:39 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.45",
+      "version": "0.0.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.121",
+            "commit": "ea6531fc847c7c6e6659dafc8b500772cdb2c416"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Sep 2025 04:08:20 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.44",
+      "version": "0.0.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.120",
+            "commit": "bf7278ce6d686944acf345a7e121c0bc7375a9d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Aug 2025 04:06:43 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.43",
+      "version": "0.0.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.119",
+            "commit": "b53299ad068a9ea5d70feaa721781c3f4c085c54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 04:07:20 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.42",
+      "version": "0.0.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.118",
+            "commit": "59b99f828f5919fb27a38203b8a0f49410be1f9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.41",
+      "version": "0.0.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.117",
+            "commit": "78ed2ed56e904c6cbe404e78965de05ab66acf08"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Aug 2025 04:08:19 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.40",
+      "version": "0.0.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.116",
+            "commit": "e81e4694b47d90f3375db3873ccce8ca93ef0db5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.39",
+      "version": "0.0.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.115",
+            "commit": "22f5fcce544cbcde4b2a2b7ee68656c835a1333d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Jul 2025 04:07:07 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.38",
+      "version": "0.0.38",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jul 2025 04:07:23 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.38",
+      "version": "0.0.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.114",
+            "commit": "286ce2b6005c3d2580f6af9188ef7e73a7de91c9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jul 2025 04:07:40 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.37",
+      "version": "0.0.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.113",
+            "commit": "eddafeab690be93419049cdfcc1af124dc06e788"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 04:08:39 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.36",
+      "version": "0.0.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.112",
+            "commit": "32098df4c38328469012dec2fa3a684b1d2c6094"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jul 2025 04:08:28 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.35",
+      "version": "0.0.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.111",
+            "commit": "9afbdec18a05a1f8bd20ba560754e5c1aa4dd375"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Jun 2025 04:06:56 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.34",
       "version": "0.0.34",

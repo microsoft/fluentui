@@ -1,18 +1,17 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Divider } from '@fluentui/react-divider';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
 
 export default {
   title: 'Divider Converged - Horizontal',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Divider>;
 
 export const WithoutContent = () => <Divider />;
@@ -33,9 +32,33 @@ export const StartAligned = () => <Divider alignContent="start">Today</Divider>;
 
 export const StartAlignedRTL = getStoryVariant(StartAligned, RTL);
 
+export const StartAlignedMultiline = () => (
+  <Divider alignContent="start">
+    Yesterday
+    <br />
+    Today
+    <br />
+    Tomorrow
+  </Divider>
+);
+
+export const StartAlignedMultilineRTL = getStoryVariant(StartAlignedMultiline, RTL);
+
 export const EndAligned = () => <Divider alignContent="end">Today</Divider>;
 
 export const EndAlignedRTL = getStoryVariant(EndAligned, RTL);
+
+export const EndAlignedMultiline = () => (
+  <Divider alignContent="end">
+    Yesterday
+    <br />
+    Today
+    <br />
+    Tomorrow
+  </Divider>
+);
+
+export const EndAlignedMultilineRTL = getStoryVariant(EndAlignedMultiline, RTL);
 
 export const AppearanceSubtle = () => <Divider appearance="subtle">Today</Divider>;
 AppearanceSubtle.storyName = 'Appearance subtle';

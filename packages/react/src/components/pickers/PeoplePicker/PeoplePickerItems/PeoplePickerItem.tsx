@@ -18,9 +18,11 @@ import type {
   IPeoplePickerItemSelectedStyles,
 } from './PeoplePickerItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
-export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
+export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps): JSXElement => {
   const {
     item,
     onRemoveItem,

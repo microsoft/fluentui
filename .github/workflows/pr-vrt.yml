@@ -24,20 +24,21 @@ jobs:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     name: Generate screenshots
+    timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: yarn install --frozen-lockfile
       - run: yarn playwright install --with-deps
@@ -46,20 +47,20 @@ jobs:
         run: yarn nx affected -t test-vr --nxBail
 
       - name: Prepare VR screenshots for upload
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         id: screenshots_root
         with:
           script: |
             const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
             const config = {
-              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests', 'docs']
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
             };
             const result = await run({github,context,core,config});
             return result;
           result-encoding: string
 
       - name: Upload VR screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: vrscreenshot
           retention-days: 1
@@ -68,7 +69,7 @@ jobs:
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: pr-number
           retention-days: 1

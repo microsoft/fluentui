@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
-export const GaugeChartBasic = () => {
+export const GaugeChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(252);
   const [height, setHeight] = React.useState<number>(128);
   const [chartValue, setChartValue] = React.useState<number>(50);
@@ -24,15 +25,15 @@ export const GaugeChartBasic = () => {
     setHideMinMax(checked.checked as boolean);
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 

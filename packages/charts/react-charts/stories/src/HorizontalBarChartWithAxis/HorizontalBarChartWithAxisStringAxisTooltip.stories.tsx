@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   HorizontalBarChartWithAxis,
   HorizontalBarChartWithAxisDataPoint,
@@ -7,16 +8,16 @@ import {
 } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const HorizontalBarWithAxisStringAxisTooltip = () => {
+export const HorizontalBarWithAxisStringAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 

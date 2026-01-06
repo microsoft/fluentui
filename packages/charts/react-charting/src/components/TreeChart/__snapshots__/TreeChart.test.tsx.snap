@@ -1,20 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TreeChart snapshot testing renders treechart three layer compact composition correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <div
-    className=
+    class=
         ms-TreeChart
         {
           l1: 20px;
@@ -26,18 +23,19 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
         }
   >
     <svg
-      className="svgTree"
-      height={640}
-      width={1430}
+      class="svgTree"
+      focusable="false"
+      height="640"
+      width="1430"
     >
       <g
-        className="svgNode"
+        class="svgNode"
       >
         <rect
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -51,17 +49,17 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
-          width={225}
-          x={602.5}
-          y={10}
+          tabindex="0"
+          width="225"
+          x="602.5"
+          y="10"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -74,14 +72,14 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={true}
-          dy={42.608695652173914}
-          textAnchor="middle"
-          x={715}
+          data-is-focusable="true"
+          dy="42.608695652173914"
+          text-anchor="middle"
+          x="715"
         >
           Root Node 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -95,7 +93,7 @@ subText subtext Root Node"
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={715}
+            x="715"
           >
             subtext 
           </tspan>
@@ -106,7 +104,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -120,17 +118,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -143,14 +141,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="321.25"
         >
           Child 1 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -164,7 +162,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             100% 
           </tspan>
@@ -175,7 +173,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -189,17 +187,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={208.75}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="208.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -212,14 +210,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={260}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="260"
         >
-          leaf1 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -233,9 +231,9 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={260}
+            x="260"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -244,7 +242,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -258,17 +256,17 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={331.25}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="331.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -281,12 +279,12 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={300.7608695652174}
-          textAnchor="middle"
-          x={382.5}
+          data-is-focusable="false"
+          dy="300.7608695652174"
+          text-anchor="middle"
+          x="382.5"
         >
-          leaf2 
+          ... 
         </text>
         <rect
           aria-label="nodeId: 4 
@@ -294,7 +292,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -308,17 +306,17 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={208.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="208.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -331,14 +329,14 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={260}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="260"
         >
-          leaf3 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -352,9 +350,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={260}
+            x="260"
           >
-            The subtext is as follows: sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -363,7 +361,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -377,17 +375,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={331.25}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="331.25"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -400,14 +398,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={382.5}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="382.5"
         >
-          leaf4 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -421,9 +419,9 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={382.5}
+            x="382.5"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -432,7 +430,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -446,17 +444,17 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -469,10 +467,10 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={170.76086956521738}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="170.76086956521738"
+          text-anchor="middle"
+          x="583.75"
         >
           Child 2 is the child name 
         </text>
@@ -482,7 +480,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -496,17 +494,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={102.5}
-          x={471.25}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="471.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -519,14 +517,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={522.5}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="522.5"
         >
-          leaf5 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -540,9 +538,9 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={522.5}
+            x="522.5"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -551,7 +549,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -565,17 +563,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={102.5}
-          x={593.75}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="593.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -588,14 +586,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={645}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="645"
         >
-          leaf6 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -609,9 +607,9 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={645}
+            x="645"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -620,7 +618,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -634,17 +632,17 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -657,14 +655,14 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="846.25"
         >
           Child 3 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -678,7 +676,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -689,7 +687,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -703,17 +701,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={733.75}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="733.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -726,14 +724,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={785}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="785"
         >
-          leaf7 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -747,9 +745,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={785}
+            x="785"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -758,7 +756,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -772,17 +770,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={856.25}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="856.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -795,14 +793,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={907.5}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="907.5"
         >
-          leaf8 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -816,9 +814,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={907.5}
+            x="907.5"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -827,7 +825,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -841,17 +839,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={733.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="733.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -864,14 +862,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={785}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="785"
         >
-          leaf9 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -885,9 +883,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={785}
+            x="785"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -896,7 +894,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -910,17 +908,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -933,14 +931,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="1108.75"
         >
           Child 4 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -954,7 +952,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             90% 
           </tspan>
@@ -965,7 +963,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -979,17 +977,17 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1002,14 +1000,14 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="1108.75"
         >
           leaf10 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1023,17 +1021,17 @@ subText sub Parent info parentId: 13
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             sub 
           </tspan>
         </text>
       </g>
       <g
-        className="svgLink"
+        class="svgLink"
       >
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -1044,7 +1042,7 @@ subText sub Parent info parentId: 13
     V85.21739130434783"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -1055,7 +1053,7 @@ subText sub Parent info parentId: 13
     H208.75 H433.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -1066,7 +1064,7 @@ subText sub Parent info parentId: 13
     H471.25 H696.25"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -1077,7 +1075,7 @@ subText sub Parent info parentId: 13
     H733.75 H958.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -1095,19 +1093,16 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart three layer long composition correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <div
-    className=
+    class=
         ms-TreeChart
         {
           l1: 20px;
@@ -1119,18 +1114,19 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
         }
   >
     <svg
-      className="svgTree"
-      height={640}
-      width={1430}
+      class="svgTree"
+      focusable="false"
+      height="640"
+      width="1430"
     >
       <g
-        className="svgNode"
+        class="svgNode"
       >
         <rect
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1144,17 +1140,17 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
-          width={225}
-          x={602.5}
-          y={10}
+          tabindex="0"
+          width="225"
+          x="602.5"
+          y="10"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1167,14 +1163,14 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={true}
-          dy={42.608695652173914}
-          textAnchor="middle"
-          x={715}
+          data-is-focusable="true"
+          dy="42.608695652173914"
+          text-anchor="middle"
+          x="715"
         >
           Root Node 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1188,7 +1184,7 @@ subText subtext Root Node"
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={715}
+            x="715"
           >
             subtext 
           </tspan>
@@ -1199,7 +1195,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1213,17 +1209,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1236,14 +1232,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="321.25"
         >
           Child 1 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1257,7 +1253,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             100% 
           </tspan>
@@ -1268,7 +1264,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1282,17 +1278,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1305,14 +1301,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="321.25"
         >
           leaf1 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1326,7 +1322,7 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             sub 
           </tspan>
@@ -1337,7 +1333,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1351,17 +1347,17 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1374,10 +1370,10 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={385.9782608695652}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="385.9782608695652"
+          text-anchor="middle"
+          x="321.25"
         >
           leaf2 
         </text>
@@ -1387,7 +1383,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1401,17 +1397,17 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={430.4347826086956}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="430.4347826086956"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1424,14 +1420,14 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={463.04347826086956}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="463.04347826086956"
+          text-anchor="middle"
+          x="321.25"
         >
           leaf3 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1445,7 +1441,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             The subtext is as follows: sub 
           </tspan>
@@ -1456,7 +1452,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1470,17 +1466,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={515.6521739130435}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="515.6521739130435"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1493,14 +1489,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={548.2608695652174}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="548.2608695652174"
+          text-anchor="middle"
+          x="321.25"
         >
           leaf4 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1514,7 +1510,7 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             sub 
           </tspan>
@@ -1525,7 +1521,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1539,17 +1535,17 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1562,10 +1558,10 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={170.76086956521738}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="170.76086956521738"
+          text-anchor="middle"
+          x="583.75"
         >
           Child 2 is the child name 
         </text>
@@ -1575,7 +1571,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1589,17 +1585,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1612,14 +1608,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="583.75"
         >
           leaf5 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1633,7 +1629,7 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={583.75}
+            x="583.75"
           >
             sub 
           </tspan>
@@ -1644,7 +1640,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1658,17 +1654,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={345.2173913043478}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1681,14 +1677,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="583.75"
         >
           leaf6 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1702,7 +1698,7 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={583.75}
+            x="583.75"
           >
             sub 
           </tspan>
@@ -1713,7 +1709,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1727,17 +1723,17 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1750,14 +1746,14 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="846.25"
         >
           Child 3 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1771,7 +1767,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -1782,7 +1778,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1796,17 +1792,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1819,14 +1815,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="846.25"
         >
           leaf7 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1840,7 +1836,7 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             sub 
           </tspan>
@@ -1851,7 +1847,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1865,17 +1861,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1888,14 +1884,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="846.25"
         >
           leaf8 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1909,7 +1905,7 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             sub 
           </tspan>
@@ -1920,7 +1916,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -1934,17 +1930,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={430.4347826086956}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="430.4347826086956"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1957,14 +1953,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={463.04347826086956}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="463.04347826086956"
+          text-anchor="middle"
+          x="846.25"
         >
           leaf9 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1978,7 +1974,7 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             sub 
           </tspan>
@@ -1989,7 +1985,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2003,17 +1999,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2026,14 +2022,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="1108.75"
         >
           Child 4 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2047,7 +2043,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             90% 
           </tspan>
@@ -2058,7 +2054,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2072,17 +2068,17 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2095,14 +2091,14 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="1108.75"
         >
           leaf10 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2116,17 +2112,17 @@ subText sub Parent info parentId: 13
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             sub 
           </tspan>
         </text>
       </g>
       <g
-        className="svgLink"
+        class="svgLink"
       >
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -2137,7 +2133,7 @@ subText sub Parent info parentId: 13
     V85.21739130434783"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -2148,7 +2144,7 @@ subText sub Parent info parentId: 13
     H208.75 H433.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -2159,7 +2155,7 @@ subText sub Parent info parentId: 13
     H471.25 H696.25"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -2170,7 +2166,7 @@ subText sub Parent info parentId: 13
     H733.75 H958.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -2188,19 +2184,16 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart three layer without composition correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <div
-    className=
+    class=
         ms-TreeChart
         {
           l1: 20px;
@@ -2212,18 +2205,19 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
         }
   >
     <svg
-      className="svgTree"
-      height={640}
-      width={1430}
+      class="svgTree"
+      focusable="false"
+      height="640"
+      width="1430"
     >
       <g
-        className="svgNode"
+        class="svgNode"
       >
         <rect
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2237,17 +2231,17 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
-          width={225}
-          x={602.5}
-          y={10}
+          tabindex="0"
+          width="225"
+          x="602.5"
+          y="10"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2260,14 +2254,14 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={true}
-          dy={42.608695652173914}
-          textAnchor="middle"
-          x={715}
+          data-is-focusable="true"
+          dy="42.608695652173914"
+          text-anchor="middle"
+          x="715"
         >
           Root Node 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2281,7 +2275,7 @@ subText subtext Root Node"
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={715}
+            x="715"
           >
             subtext 
           </tspan>
@@ -2292,7 +2286,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2306,17 +2300,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2329,14 +2323,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="321.25"
         >
           Child 1 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2350,7 +2344,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             100% 
           </tspan>
@@ -2361,7 +2355,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2375,17 +2369,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={208.75}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="208.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2398,14 +2392,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={260}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="260"
         >
-          leaf1 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2419,9 +2413,9 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={260}
+            x="260"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -2430,7 +2424,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2444,17 +2438,17 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={331.25}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="331.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2467,12 +2461,12 @@ subText undefined Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={300.7608695652174}
-          textAnchor="middle"
-          x={382.5}
+          data-is-focusable="false"
+          dy="300.7608695652174"
+          text-anchor="middle"
+          x="382.5"
         >
-          leaf2 
+          ... 
         </text>
         <rect
           aria-label="nodeId: 4 
@@ -2480,7 +2474,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2494,17 +2488,17 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={208.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="208.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2517,14 +2511,14 @@ subText The subtext is as follows: sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={260}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="260"
         >
-          leaf3 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2538,9 +2532,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={260}
+            x="260"
           >
-            The subtext is as follows: sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -2549,7 +2543,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2563,17 +2557,17 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={102.5}
-          x={331.25}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="331.25"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2586,14 +2580,14 @@ subText sub Parent info parentId: 1
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={382.5}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="382.5"
         >
-          leaf4 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2607,9 +2601,9 @@ subText sub Parent info parentId: 1
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={382.5}
+            x="382.5"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -2618,7 +2612,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2632,17 +2626,17 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2655,10 +2649,10 @@ subText undefined Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={170.76086956521738}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="170.76086956521738"
+          text-anchor="middle"
+          x="583.75"
         >
           Child 2 is the child name 
         </text>
@@ -2668,7 +2662,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2682,17 +2676,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2705,14 +2699,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="583.75"
         >
           leaf5 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2726,7 +2720,7 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={583.75}
+            x="583.75"
           >
             sub 
           </tspan>
@@ -2737,7 +2731,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2751,17 +2745,17 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={345.2173913043478}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2774,14 +2768,14 @@ subText sub Parent info parentId: 6
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="583.75"
         >
           leaf6 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2795,7 +2789,7 @@ subText sub Parent info parentId: 6
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={583.75}
+            x="583.75"
           >
             sub 
           </tspan>
@@ -2806,7 +2800,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2820,17 +2814,17 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2843,14 +2837,14 @@ subText The subtext is as follows: subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="846.25"
         >
           Child 3 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2864,7 +2858,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -2875,7 +2869,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2889,17 +2883,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={733.75}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="733.75"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2912,14 +2906,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={785}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="785"
         >
-          leaf7 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2933,9 +2927,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={785}
+            x="785"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -2944,7 +2938,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -2958,17 +2952,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={856.25}
-          y={260}
+          tabindex="0"
+          width="102.5"
+          x="856.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2981,14 +2975,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={907.5}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="907.5"
         >
-          leaf8 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3002,9 +2996,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={907.5}
+            x="907.5"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -3013,7 +3007,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3027,17 +3021,17 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={102.5}
-          x={733.75}
-          y={345.2173913043478}
+          tabindex="0"
+          width="102.5"
+          x="733.75"
+          y="345.2173913043478"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3050,14 +3044,14 @@ subText sub Parent info parentId: 9
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={377.82608695652175}
-          textAnchor="middle"
-          x={785}
+          data-is-focusable="false"
+          dy="377.82608695652175"
+          text-anchor="middle"
+          x="785"
         >
-          leaf9 
+          ... 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3071,9 +3065,9 @@ subText sub Parent info parentId: 9
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={785}
+            x="785"
           >
-            sub 
+            ... 
           </tspan>
         </text>
         <rect
@@ -3082,7 +3076,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3096,17 +3090,17 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3119,14 +3113,14 @@ subText subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={156.08695652173913}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="156.08695652173913"
+          text-anchor="middle"
+          x="1108.75"
         >
           Child 4 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3140,7 +3134,7 @@ subText subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             90% 
           </tspan>
@@ -3151,7 +3145,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3165,17 +3159,17 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={260}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="260"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3188,14 +3182,14 @@ subText sub Parent info parentId: 13
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={292.60869565217394}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="292.60869565217394"
+          text-anchor="middle"
+          x="1108.75"
         >
           leaf10 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3209,17 +3203,17 @@ subText sub Parent info parentId: 13
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             sub 
           </tspan>
         </text>
       </g>
       <g
-        className="svgLink"
+        class="svgLink"
       >
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -3230,7 +3224,7 @@ subText sub Parent info parentId: 13
     V85.21739130434783"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -3241,7 +3235,7 @@ subText sub Parent info parentId: 13
     H208.75 H433.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -3252,7 +3246,7 @@ subText sub Parent info parentId: 13
     H471.25 H696.25"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -3263,7 +3257,7 @@ subText sub Parent info parentId: 13
     H733.75 H958.75"
         />
         <path
-          className=
+          class=
 
               {
                 fill: none;
@@ -3281,19 +3275,16 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <div
-    className=
+    class=
         ms-TreeChart
         {
           l1: 20px;
@@ -3305,18 +3296,19 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
         }
   >
     <svg
-      className="svgTree"
-      height={640}
-      width={1430}
+      class="svgTree"
+      focusable="false"
+      height="640"
+      width="1430"
     >
       <g
-        className="svgNode"
+        class="svgNode"
       >
         <rect
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3330,17 +3322,17 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#0099BC"
-          tabIndex={0}
-          width={225}
-          x={602.5}
-          y={10}
+          tabindex="0"
+          width="225"
+          x="602.5"
+          y="10"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3353,14 +3345,14 @@ subText subtext Root Node"
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={true}
-          dy={42.608695652173914}
-          textAnchor="middle"
-          x={715}
+          data-is-focusable="true"
+          dy="42.608695652173914"
+          text-anchor="middle"
+          x="715"
         >
           Root Node 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3374,7 +3366,7 @@ subText subtext Root Node"
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={715}
+            x="715"
           >
             subtext 
           </tspan>
@@ -3385,7 +3377,7 @@ nodeMainText: Child 1
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3399,17 +3391,17 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#4F6BED"
-          tabIndex={0}
-          width={225}
-          x={208.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="208.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3422,14 +3414,14 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={321.25}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="321.25"
         >
           Child 1 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3443,7 +3435,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={321.25}
+            x="321.25"
           >
             Subtext val is subtext 
           </tspan>
@@ -3454,7 +3446,7 @@ nodeMainText: Child 2
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3468,17 +3460,17 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#881798"
-          tabIndex={0}
-          width={225}
-          x={471.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="471.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3491,14 +3483,14 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={583.75}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="583.75"
         >
           Child 2 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3512,7 +3504,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={583.75}
+            x="583.75"
           >
             Subtext val is subtext 
           </tspan>
@@ -3523,7 +3515,7 @@ nodeMainText: Child 3
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3537,17 +3529,17 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#AE8C00"
-          tabIndex={0}
-          width={225}
-          x={733.75}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="733.75"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3560,14 +3552,14 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={846.25}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="846.25"
         >
           Child 3 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3581,7 +3573,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={846.25}
+            x="846.25"
           >
             Subtext val is subtext 
           </tspan>
@@ -3592,7 +3584,7 @@ nodeMainText: Child 4
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
+          class=
 
               {
                 fill: #ffffff;
@@ -3606,17 +3598,17 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: Canvas;
               }
-          data-is-focusable={true}
-          height={65.21739130434783}
+          data-is-focusable="true"
+          height="65.21739130434783"
           role="text"
           stroke="#FF00FF"
-          tabIndex={0}
-          width={225}
-          x={996.25}
-          y={130}
+          tabindex="0"
+          width="225"
+          x="996.25"
+          y="130"
         />
         <text
-          className=
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -3629,14 +3621,14 @@ subText Subtext val is subtext Parent info parentId: 0
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
-          data-is-focusable={false}
-          dy={162.6086956521739}
-          textAnchor="middle"
-          x={1108.75}
+          data-is-focusable="false"
+          dy="162.6086956521739"
+          text-anchor="middle"
+          x="1108.75"
         >
           Child 4 
           <tspan
-            className=
+            class=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -3650,17 +3642,17 @@ subText Subtext val is subtext Parent info parentId: 0
                   fill: CanvasText;
                 }
             dy="1.4em"
-            x={1108.75}
+            x="1108.75"
           >
             Subtext val is subtext 
           </tspan>
         </text>
       </g>
       <g
-        className="svgLink"
+        class="svgLink"
       >
         <path
-          className=
+          class=
 
               {
                 fill: none;

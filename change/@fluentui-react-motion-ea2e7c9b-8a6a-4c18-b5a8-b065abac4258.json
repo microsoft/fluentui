@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Presence enter & exit motions can be used separately with .In & .Out",
-  "packageName": "@fluentui/react-motion",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

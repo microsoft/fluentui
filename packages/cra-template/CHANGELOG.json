@@ -2,6 +2,51 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:47 GMT",
+      "tag": "@fluentui/cra-template_v8.4.223",
+      "version": "8.4.223",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/cra-template_v8.4.219",
+      "version": "8.4.219",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 07:21:44 GMT",
+      "tag": "@fluentui/cra-template_v8.4.218",
+      "version": "8.4.218",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/cra-template",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Apr 2025 07:20:23 GMT",
       "tag": "@fluentui/cra-template_v8.4.204",
       "version": "8.4.204",

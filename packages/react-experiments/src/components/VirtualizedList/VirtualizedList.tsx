@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
+import { ScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
 import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/react/lib/Utilities';
 import type { IVirtualizedListProps } from './VirtualizedList.types';
 import type { IScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
 import type { IObjectWithKey } from '@fluentui/react/lib/Selection';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IRange {
   /** Start of range */
@@ -27,7 +28,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   IVirtualizedListProps<TItem>,
   IVirtualizedListState
 > {
-  public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
+  public static contextType = ScrollContainerContext;
   public context: IScrollContainerContext;
 
   private _root = React.createRef<HTMLDivElement>();
@@ -39,7 +40,6 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   private _events: EventGroup;
 
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     this._events = new EventGroup(this);
@@ -85,7 +85,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className } = this.props;
     const { items } = this.state;
 
@@ -105,7 +105,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     }
   }
 
-  private _renderItems(scrollTop: number, viewportHeight: number): (JSX.Element | null)[] {
+  private _renderItems(scrollTop: number, viewportHeight: number): (JSXElement | null)[] {
     const { itemHeight, items, itemOverdraw = 2 } = this.props;
 
     const ranges: IRange[] = [];
@@ -138,9 +138,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     return this._renderRanges(ranges);
   }
 
-  private _renderRanges(ranges: IRange[]): (JSX.Element | null)[] {
+  private _renderRanges(ranges: IRange[]): (JSXElement | null)[] {
     const { items, onRenderItem } = this.props;
-    const result: (JSX.Element | null)[] = [];
+
+    const result: (JSXElement | null)[] = [];
 
     // Assume ranges are sorted.
 
@@ -175,7 +176,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     return result;
   }
 
-  private _renderSpacerItem(numberOfItems: number, index: number): JSX.Element {
+  private _renderSpacerItem(numberOfItems: number, index: number): JSXElement {
     const { itemHeight, items = [], spacerItemTagName: ItemTag = 'div' } = this.props;
 
     const spacerHeight = numberOfItems * itemHeight;

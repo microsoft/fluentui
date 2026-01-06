@@ -2,7 +2,8 @@ import * as React from 'react';
 import { usePositioning } from '@fluentui/react-positioning';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import * as ReactDOM from 'react-dom';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 import { Box } from './utils';
 
@@ -180,19 +181,19 @@ const Controller: React.FC<React.PropsWithChildren<{}>> = props => {
   );
 };
 
-const Target: React.FC = props => {
+const Target: React.FC<{ children?: React.ReactNode }> = props => {
   const open = useContextSelector(Context, v => v!.open);
   const setOpen = useContextSelector(Context, v => v!.setOpen);
   const targetRef = useContextSelector(Context, v => v!.targetRef);
 
-  return React.cloneElement(props.children as React.ReactElement, {
+  return React.cloneElement(props.children as React.ReactElement<any>, {
     'aria-expanded': `${open}`,
     onClick: () => setOpen(true),
     ref: targetRef,
   });
 };
 
-const Container: React.FC = props => {
+const Container: React.FC<{ children?: React.ReactNode }> = props => {
   const containerRef = useContextSelector(Context, v => v!.containerRef);
 
   return ReactDOM.createPortal(
@@ -290,30 +291,28 @@ export default {
   title: 'Positioning (no decorator)',
 };
 
-export const ScrollJumpUsage = () => (
-  <StoryWright
-    steps={new Steps()
-      .focus('#target')
-      .click('#target')
-      .wait('#test-completed')
-      .snapshot('positions without scroll jump')
-      .end()}
-  >
-    <ScrollJump />
-  </StoryWright>
-);
+export const ScrollJumpUsage = () => <ScrollJump />;
 ScrollJumpUsage.storyName = 'scroll jumps';
-
-export const ScrollJumpsWithContextUsage = () => (
-  <StoryWright
-    steps={new Steps()
+ScrollJumpUsage.parameters = {
+  storyWright: {
+    steps: new Steps()
       .focus('#target')
       .click('#target')
       .wait('#test-completed')
       .snapshot('positions without scroll jump')
-      .end()}
-  >
-    <ScrollJumpContext />
-  </StoryWright>
-);
+      .end(),
+  },
+} satisfies StoryParameters;
+
+export const ScrollJumpsWithContextUsage = () => <ScrollJumpContext />;
 ScrollJumpsWithContextUsage.storyName = 'scroll jumps (with context usage)';
+ScrollJumpsWithContextUsage.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .focus('#target')
+      .click('#target')
+      .wait('#test-completed')
+      .snapshot('positions without scroll jump')
+      .end(),
+  },
+} satisfies StoryParameters;

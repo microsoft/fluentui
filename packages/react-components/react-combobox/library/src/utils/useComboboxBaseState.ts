@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';

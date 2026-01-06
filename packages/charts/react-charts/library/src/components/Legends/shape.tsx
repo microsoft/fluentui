@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { LegendShape } from './Legends.types';
-import { CustomPoints, Points } from '../../utilities/utilities';
+import { CustomPoints, Points, getSecureProps } from '../../utilities/utilities';
 
 export interface ShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
@@ -37,7 +39,7 @@ export const Shape: React.FunctionComponent<ShapeProps> = React.forwardRef<HTMLD
         width={14}
         height={14}
         viewBox={'-1 -1 14 14'}
-        {...svgProps}
+        {...getSecureProps(svgProps)}
         transform={`rotate(${
           shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0
         }, 0, 0)`}
@@ -46,7 +48,7 @@ export const Shape: React.FunctionComponent<ShapeProps> = React.forwardRef<HTMLD
           height: '14px',
         }}
       >
-        <path d={pointPath[shape]} {...pathProps} />
+        <path d={pointPath[shape]} {...getSecureProps(pathProps)} />
       </svg>
     );
   },

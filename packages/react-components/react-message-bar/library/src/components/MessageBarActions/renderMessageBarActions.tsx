@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   MessageBarActionsState,
   MessageBarActionsSlots,
@@ -15,21 +16,14 @@ import { ButtonContextProvider } from '@fluentui/react-button';
 export const renderMessageBarActions_unstable = (
   state: MessageBarActionsState,
   contexts: MessageBarActionsContextValues,
-) => {
+): JSXElement => {
   assertSlots<MessageBarActionsSlots>(state);
-  if (state.layout === 'multiline') {
-    return (
-      <ButtonContextProvider value={contexts.button}>
-        {state.containerAction && <state.containerAction />}
-        <state.root />
-      </ButtonContextProvider>
-    );
-  }
 
   return (
     <ButtonContextProvider value={contexts.button}>
+      {state.layout === 'multiline' && state.containerAction && <state.containerAction key="containerAction" />}
       <state.root />
-      {state.containerAction && <state.containerAction />}
+      {state.layout !== 'multiline' && state.containerAction && <state.containerAction key="containerAction" />}
     </ButtonContextProvider>
   );
 };

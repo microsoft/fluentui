@@ -2,14 +2,22 @@ import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
   height: number;
   allowMultipleShapes: boolean;
   showAxisTitles: boolean;
+  selectedCallout: string;
   useUTC: boolean;
 }
+
+const options: IChoiceGroupOption[] = [
+  { key: 'singleCallout', text: 'Single callout' },
+  { key: 'MultiCallout', text: 'Stack callout' },
+];
 
 export class LineChartBasicExample extends React.Component<{}, ILineChartBasicState> {
   constructor(props: ILineChartProps) {
@@ -19,6 +27,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
       height: 300,
       allowMultipleShapes: false,
       showAxisTitles: true,
+      selectedCallout: 'MultiCallout',
       useUTC: true,
     };
   }
@@ -41,7 +50,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -62,7 +71,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     this.setState({ useUTC: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
@@ -216,6 +225,13 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <ChoiceGroup
+          options={options}
+          defaultSelectedKey="MultiCallout"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
+          label="Pick one"
+        />
         <div style={rootStyle}>
           <LineChart
             // Force rerender when any of the following states change
@@ -225,6 +241,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}
             yMaxValue={301}
+            isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             height={this.state.height}
             width={this.state.width}
             xAxisTickCount={10}

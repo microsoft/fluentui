@@ -8,6 +8,8 @@ import type { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } fr
 import type { IProcessedStyleSet } from '@fluentui/style-utilities';
 import type { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
 export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props => {
@@ -98,7 +100,7 @@ interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {
   classNames: IProcessedStyleSet<ICalendarDayStyles>;
 }
 
-const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps): JSX.Element => {
+const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps): JSXElement => {
   const {
     minDate,
     maxDate,

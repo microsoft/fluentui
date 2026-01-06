@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Ensure virtualizer recalcs on numItems change",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

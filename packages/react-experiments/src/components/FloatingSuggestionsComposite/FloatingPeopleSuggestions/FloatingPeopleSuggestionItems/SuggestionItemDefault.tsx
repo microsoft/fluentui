@@ -5,8 +5,9 @@ import { getStyles } from './SuggestionItemDefault.styles';
 import type { IPersonaProps } from '@fluentui/react/lib/Persona';
 import type { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
 import type { ISuggestionItemDefaultStylesProps, ISuggestionItemDefaultStyles } from './SuggestionItemDefault.styles';
+import type { JSXElement } from '@fluentui/utilities';
 
-export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (
+export const SuggestionItemNormal: (persona: IPersonaProps) => JSXElement = (
   personaProps: IPersonaProps,
   suggestionItemProps?: ISuggestionItemProps<IPersonaProps>,
 ) => {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover } from '@fluentui/react-avatar';
 
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../../utilities';
@@ -11,15 +12,16 @@ export default {
   component: AvatarGroup,
   decorators: [
     story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-        <div style={{ display: 'flex' }}>
-          <div className="testWrapper" style={{ overflow: 'hidden' }}>
-            {story()}
-          </div>
+      <div style={{ display: 'flex' }}>
+        <div className="testWrapper" style={{ overflow: 'hidden' }}>
+          {story()}
         </div>
-      </StoryWright>
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof AvatarGroup>;
 
 export const Basic = () => <AvatarGroupList />;

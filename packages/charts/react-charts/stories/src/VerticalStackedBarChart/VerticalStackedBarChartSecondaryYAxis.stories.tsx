@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VSChartDataPoint,
   VerticalStackedChartProps,
@@ -7,9 +8,16 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { useId } from '@fluentui/react-components';
+import { useId, makeStyles, tokens } from '@fluentui/react-components';
 
-export const VerticalStackedBarSecondaryYAxis = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const VerticalStackedBarSecondaryYAxis = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');
@@ -185,6 +193,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
+  const barGapMax = 2;
 
   return (
     <div className="containerDiv">
@@ -214,11 +223,13 @@ export const VerticalStackedBarSecondaryYAxis = () => {
           data={data}
           height={height}
           width={width}
+          barGapMax={barGapMax}
           lineOptions={lineOptions}
           hideTickOverlap={true}
           yAxisTitle="Variation of number of sales"
           xAxisTitle="Number of days"
           secondaryYScaleOptions={{}}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </div>

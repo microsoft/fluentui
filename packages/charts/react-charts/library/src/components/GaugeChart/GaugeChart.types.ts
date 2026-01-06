@@ -155,7 +155,7 @@ export interface GaugeChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
 }
 
 /**
@@ -257,4 +257,9 @@ export interface GaugeChartStyles {
    * Styles for the shape object in the callout
    */
   shapeStyles?: string;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: string;
 }

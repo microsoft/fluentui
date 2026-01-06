@@ -4,6 +4,7 @@
   "sourceRoot": "tools/workspace-plugin/src",
   "projectType": "library",
   "tags": ["platform:node", "tools"],
+  "implicitDependencies": ["!eslint-plugin"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",

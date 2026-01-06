@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
@@ -23,6 +25,18 @@ const indeterminateProgressBar = {
   },
   '100%': {
     left: '100%',
+  },
+};
+
+const indeterminateProgressBarReducedMotion = {
+  '0%': {
+    opacity: '.2',
+  },
+  '50%': {
+    opacity: '1',
+  },
+  '100%': {
+    opacity: '.2',
   },
 };
 
@@ -84,8 +98,10 @@ const useBarStyles = makeStyles({
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
-      animationDuration: '0.01ms',
-      animationIterationCount: '1',
+      maxWidth: '100%',
+      animationIterationCount: 'infinite',
+      animationDuration: '3s',
+      animationName: indeterminateProgressBarReducedMotion,
     },
   },
 

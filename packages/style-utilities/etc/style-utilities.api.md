@@ -40,6 +40,7 @@ import { IStyleSet } from '@fluentui/merge-styles';
 import { IStyleSetBase } from '@fluentui/merge-styles';
 import { IStyleSheetConfig } from '@fluentui/merge-styles';
 import { ITheme } from '@fluentui/theme';
+import type { JSXElement } from '@fluentui/utilities';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
@@ -84,7 +85,7 @@ export { DefaultPalette }
 export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)";
 
 // @public (undocumented)
-export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20250411.001";
+export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20251107.003";
 
 // @public
 export function focusClear(): IRawStyle;
@@ -130,7 +131,7 @@ export function getIcon(name?: string): IIconRecord | undefined;
 export function getIconClassName(name: string): string;
 
 // @public
-export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: 'border' | 'borderBottom', borderPosition?: number) => IRawStyle;
+export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: "border" | "borderBottom", borderPosition?: number) => IRawStyle;
 
 // @public
 export function getPlaceholderStyles(styles: IStyle): IStyle;
@@ -211,7 +212,7 @@ export interface IIconSubset {
     fontFace?: IFontFace;
     // (undocumented)
     icons: {
-        [key: string]: string | JSX.Element;
+        [key: string]: string | JSXElement;
     };
     mergeImageProps?: boolean;
     // (undocumented)

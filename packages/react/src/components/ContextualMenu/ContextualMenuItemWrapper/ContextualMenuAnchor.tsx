@@ -16,18 +16,22 @@ import type { IKeytipDataProps } from '../../../KeytipData';
 import type { IKeytipProps } from '../../../Keytip';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
   private _ariaDescriptionId: string;
 
-  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
-    return {
-      ...keytipProps,
-      hasMenu: true,
-    };
-  });
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction(
+    (keytipProps: IKeytipProps): IKeytipProps & { hasMenu: boolean } => {
+      return {
+        ...keytipProps,
+        hasMenu: true,
+      };
+    },
+  );
 
-  public render() {
+  public render(): JSXElement {
     const {
       item,
       classNames,
@@ -86,7 +90,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     return (
       <div>
         <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={ariaDescribedByIds} disabled={disabled}>
-          {(keytipAttributes: IKeytipDataProps): JSX.Element => (
+          {(keytipAttributes: IKeytipDataProps): JSXElement => (
             <a
               {...additionalItemProperties}
               {...nativeProps}
@@ -142,7 +146,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     }
   };
 
-  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string): JSXElement | null => {
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
     return ariaDescription ? (
       <span id={this._ariaDescriptionId} className={className}>

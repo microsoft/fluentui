@@ -4,6 +4,8 @@ import { classNamesFunction, initializeComponentRef, KeyCodes } from '../../../U
 import { CardCallout } from '../CardCallout/CardCallout';
 import type { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPlainCardStyleProps, IPlainCardStyles>();
 
 export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
@@ -15,7 +17,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -23,7 +25,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
       className,
     });
 
-    const content: JSX.Element = (
+    const content: JSXElement = (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown}>
         {this.props.onRenderPlainCard!(this.props.renderData)}
       </div>

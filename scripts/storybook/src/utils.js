@@ -7,6 +7,11 @@ const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
+/**
+ * @import { Configuration, RuleSetRule } from 'webpack';
+ * @import { TransformOptions } from '@babel/core';
+ * */
+
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
  * Registers workspace custom storybook addon to storybook with build-less setup during development.
@@ -251,7 +256,7 @@ function getPackageStoriesGlob(options) {
       return acc;
     }
 
-    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.mdx)';
 
     // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
     // @see https://github.com/microsoft/fluentui/issues/30516
@@ -309,7 +314,7 @@ function getPackageStoriesGlob(options) {
  * register TsconfigPathsPlugin to webpack config
  * @param {Object} options
  * @param {string} options.configFile - absolute path to tsconfig that contains path aliases
- * @param {import('webpack').Configuration} options.config - webpack config
+ * @param {Configuration} options.config - webpack config
  * @returns
  */
 function registerTsPaths(options) {
@@ -333,8 +338,8 @@ function registerTsPaths(options) {
  *
  * register custom Webpack Rules to webpack config
  * @param {Object} options
- * @param {import('webpack').RuleSetRule[]} options.rules - webpack rules
- * @param {import('webpack').Configuration} options.config - webpack config
+ * @param {RuleSetRule[]} options.rules - webpack rules
+ * @param {Configuration} options.config - webpack config
  * @returns
  */
 function registerRules(options) {
@@ -347,7 +352,7 @@ function registerRules(options) {
 }
 
 /**
- * @typedef {import('@babel/core').TransformOptions & Partial<{customize: string | null}>} BabelLoaderOptions
+ * @typedef {TransformOptions & Partial<{customize: string | null}>} BabelLoaderOptions
  */
 
 /**
@@ -385,24 +390,24 @@ function processBabelLoaderOptions(loaderConfig) {
  *  - `node_modules/babel-loader/lib/index.js` as `loader` within module.rules
  *
  * @param {Object} options
- * @param {import('webpack').Configuration} options.config - webpack config
+ * @param {Configuration} options.config - webpack config
  */
 function overrideDefaultBabelLoader(options) {
   const { config } = options;
   config.module = config.module ?? {};
   config.module.rules = config.module.rules ?? [];
 
-  const loader = getBabelLoader(/** @type {import('webpack').RuleSetRule[]}*/ (config.module.rules));
+  const loader = getBabelLoader(/** @type {RuleSetRule[]}*/ (config.module.rules));
 
   processBabelLoaderOptions(loader.options);
 
-  function getBabelLoader(/** @type {import('webpack').RuleSetRule[]} */ rules) {
+  function getBabelLoader(/** @type {RuleSetRule[]} */ rules) {
     // eslint-disable-next-line no-shadow
     const ruleIdx = rules.findIndex(rule => {
       return String(rule.test) === '/\\.(mjs|tsx?|jsx?)$/';
     });
 
-    const rule = /** @type {import("webpack").RuleSetRule}*/ (rules[ruleIdx]);
+    const rule = /** @type {RuleSetRule}*/ (rules[ruleIdx]);
 
     if (!Array.isArray(rule.use)) {
       throw new Error('storybook webpack rules changed');

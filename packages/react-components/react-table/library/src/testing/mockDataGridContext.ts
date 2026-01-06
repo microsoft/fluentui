@@ -31,7 +31,7 @@ const testItems: Item[] = [
 export function mockDataGridContext(
   options: Partial<DataGridContextValue> = {},
   substates: { sort?: Partial<TableSortState<unknown>>; selection?: Partial<TableSelectionState> } = {},
-) {
+): DataGridContextValue {
   const mockContext: DataGridContextValue = {
     columns: testColumns,
     items: testItems,

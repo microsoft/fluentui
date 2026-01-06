@@ -4,6 +4,8 @@ import type { ITheme, IStyle } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory MessageBar}
  */
@@ -28,7 +30,8 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
   /**
    * The actions you want to show on the other side.
    */
-  actions?: JSX.Element;
+
+  actions?: JSXElement;
 
   /**
    * A description of the message bar for the benefit of screen readers.

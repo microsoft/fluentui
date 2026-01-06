@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 const data: ChartProps = {
@@ -144,7 +145,7 @@ const data: ChartProps = {
   },
 };
 
-export const SankeyChartInbox: React.FunctionComponent<{}> = () => {
+export const SankeyChartInbox: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState(820);
   const [height, setHeight] = React.useState(400);
 
@@ -161,9 +162,9 @@ export const SankeyChartInbox: React.FunctionComponent<{}> = () => {
     <div>
       <div style={{ display: 'flex' }}>
         <label>change Width:</label>
-        <input type="range" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <input type="range" id="changeWidth_Inbox" value={width} min={400} max={1600} onChange={_onWidthChange} />
         <label>change Height:</label>
-        <input type="range" value={height} min={312} max={400} onChange={_onHeightChange} />
+        <input type="range" id="changeHeight_Inbox" value={height} min={312} max={400} onChange={_onHeightChange} />
       </div>
       <div style={rootStyle}>
         <SankeyChart
@@ -179,6 +180,7 @@ export const SankeyChartInbox: React.FunctionComponent<{}> = () => {
             nodeAriaLabel: 'Category {0} with email count {1}',
             linkAriaLabel: '{2} items moved from category {0} to {1}',
           }}
+          reflowProps={{ mode: 'min-width' }}
         />
       </div>
     </div>

@@ -53,6 +53,8 @@ import { IFocusTrapZoneProps } from '../FocusTrapZone/FocusTrapZone.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -60,7 +62,8 @@ const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>()
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
-    rootRef: React.RefObject<HTMLDivElement>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    rootRef: React.MutableRefObject<HTMLDivElement | null>;
     selectedIndices: number[];
     setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
   };
@@ -190,6 +193,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _host = React.createRef<HTMLDivElement>();
   private _focusZone = React.createRef<FocusZone>();
@@ -301,7 +305,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const id = this._id;
 
     const props = this.props;
@@ -322,6 +326,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderLabel = this._onRenderLabel,
       onRenderItem = this._onRenderItem,
       hoisted: { selectedIndices },
+      responsiveMode,
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -336,6 +341,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
+
+    const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
     const errorMessageId = id + '-errorMessage';
 
@@ -359,7 +366,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <div
         className={this._classNames.root}
         ref={this.props.hoisted.rootRef}
-        aria-owns={isOpen ? this._listId : undefined}
+        aria-owns={isOpen && !isSmall ? this._listId : undefined}
       >
         {onRenderLabel(this.props, this._onRenderLabel)}
         <div
@@ -377,7 +384,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-required={required}
           aria-disabled={disabled}
           aria-invalid={hasErrorMessage}
-          aria-controls={isOpen ? this._listId : undefined}
+          aria-controls={isOpen && !isSmall ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
           onBlur={this._onDropdownBlur}
@@ -584,12 +591,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
+
+  private _onRenderTitle = (items: IDropdownOption[]): JSXElement => {
     return <>{this._getTitle(items)}</>;
   };
 
   /** Render placeholder text in dropdown input */
-  private _onRenderPlaceholder = (props: IDropdownProps): JSX.Element | null => {
+
+  private _onRenderPlaceholder = (props: IDropdownProps): JSXElement | null => {
     if (!this._getPlaceholder()) {
       return null;
     }
@@ -597,7 +606,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render Callout or Panel container and pass in list */
-  private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
+
+  private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement => {
     const { calloutProps, panelProps } = props;
     const { responsiveMode, dropdownWidth } = this.props;
 
@@ -651,12 +661,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render Caret Down Icon */
-  private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
+
+  private _onRenderCaretDown = (props: IDropdownProps): JSXElement => {
     return <Icon className={this._classNames.caretDown} iconName="ChevronDown" aria-hidden={true} />;
   };
 
   /** Wrap item list in a FocusZone */
-  private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element {
+
+  private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement {
     const { onRenderList = this._onRenderList, label, ariaLabel, multiSelect } = props;
 
     return (
@@ -684,11 +696,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   }
 
   /** Render List of items */
-  private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
+
+  private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
-    let renderedList: JSX.Element[] = [];
+    let queue: { id?: string; items: JSXElement[] } = { items: [] };
+
+    let renderedList: JSXElement[] = [];
 
     const emptyQueue = (): void => {
       const newGroup = queue.id
@@ -745,7 +759,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return <>{renderedList}</>;
   };
 
-  private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
+  private _onRenderItem = (item: IDropdownOption): JSXElement | null => {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -756,7 +770,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }
   };
 
-  private _renderSeparator(item: IDropdownOption): JSX.Element | null {
+  private _renderSeparator(item: IDropdownOption): JSXElement | null {
     const { index, key } = item;
     const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
@@ -765,7 +779,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return null;
   }
 
-  private _renderHeader(item: IDropdownOption): JSX.Element {
+  private _renderHeader(item: IDropdownOption): JSXElement {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key, id } = item;
     const headerClassName = item.hidden
@@ -779,7 +793,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     );
   }
 
-  private _renderOption = (item: IDropdownOption): JSX.Element => {
+  private _renderOption = (item: IDropdownOption): JSXElement => {
     const {
       onRenderOption = this._onRenderOption,
       hoisted: { selectedIndices = [] },
@@ -868,7 +882,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render content of item (i.e. text/icon inside of button) */
-  private _onRenderOption = (item: IDropdownOption): JSX.Element => {
+
+  private _onRenderOption = (item: IDropdownOption): JSXElement => {
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
@@ -876,7 +891,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Render content of a multiselect item label.
    * Text within the label is aria-hidden, to prevent duplicate input/label exposure
    */
-  private _onRenderMultiselectOption = (item: IDropdownOption): JSX.Element => {
+
+  private _onRenderMultiselectOption = (item: IDropdownOption): JSXElement => {
     return (
       <span id={item.id} aria-hidden="true" className={this._classNames.dropdownOptionText}>
         {item.text}
@@ -885,7 +901,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render custom label for multiselect checkbox items */
-  private _onRenderItemLabel = (item: IDropdownOption): JSX.Element | null => {
+
+  private _onRenderItemLabel = (item: IDropdownOption): JSXElement | null => {
     const { onRenderOption = this._onRenderMultiselectOption } = this.props;
     return onRenderOption(item, this._onRenderMultiselectOption);
   };
@@ -1309,7 +1326,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return disabled;
   };
 
-  private _onRenderLabel = (props: IDropdownProps): JSX.Element | null => {
+  private _onRenderLabel = (props: IDropdownProps): JSXElement | null => {
     const { label, required, disabled } = props;
 
     const labelStyles = this._classNames.subComponentStyles

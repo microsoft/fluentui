@@ -14,6 +14,7 @@
  */
 
 import * as React from 'react';
+import type { JSXElement } from './jsx';
 
 export interface IAsAsyncOptions<TProps> {
   /**
@@ -49,7 +50,16 @@ const _syncModuleCache =
  *
  * This overload accepts a module with a default export for the component.
  */
-export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
+export function asAsync<TProps extends {}>(
+  options: IAsAsyncOptions<TProps>,
+): React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<
+    TProps & {
+      asyncPlaceholder?: React.ElementType | undefined;
+    }
+  > &
+    React.RefAttributes<React.ElementType<TProps>>
+> {
   class Async extends React.Component<
     TProps & {
       asyncPlaceholder?: React.ElementType;
@@ -61,7 +71,7 @@ export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
       Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined,
     };
 
-    public render(): JSX.Element | null {
+    public render(): JSXElement | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
@@ -99,6 +109,6 @@ export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
   }
 
   return React.forwardRef<React.ElementType<TProps>, TProps & { asyncPlaceholder?: React.ElementType }>(
-    (props, ref) => <Async {...props} forwardedRef={ref} />,
+    (props, ref) => <Async {...(props as TProps & { asyncPlaceholder?: React.ElementType })} forwardedRef={ref} />,
   );
 }

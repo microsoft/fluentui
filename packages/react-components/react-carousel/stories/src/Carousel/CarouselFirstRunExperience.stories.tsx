@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Carousel,
@@ -13,7 +14,6 @@ import {
   DialogTrigger,
   Image,
   makeStyles,
-  shorthands,
   tokens,
   typographyStyles,
 } from '@fluentui/react-components';
@@ -21,7 +21,7 @@ import {
 const useStyles = makeStyles({
   surface: {
     padding: 0,
-    ...shorthands.border('none'),
+    border: 'none',
     overflow: 'hidden',
   },
   carousel: { padding: 0 },
@@ -67,7 +67,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`;
 };
 
-export const FirstRunExperience = () => {
+export const FirstRunExperience = (): JSXElement => {
   const styles = useStyles();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [open, setModalOpen] = React.useState(false);

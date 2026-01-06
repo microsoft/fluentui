@@ -1,13 +1,18 @@
+'use client';
+
 import * as React from 'react';
 import { useTagPickerContext_unstable } from '../contexts/TagPickerContext';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { TagPickerControlState } from '../TagPickerControl';
 
-export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPickerControlState, 'expandIcon'> }) {
+export function useExpandLabel(options: {
+  tagPickerId: string;
+  state: Pick<TagPickerControlState, 'expandIcon'>;
+}): React.RefObject<HTMLSpanElement | null> {
   const { tagPickerId, state } = options;
   const { targetDocument } = useFluent();
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
-  const expandIconRef = React.useRef<HTMLSpanElement>(null);
+  const expandIconRef = React.useRef<HTMLSpanElement | null>(null);
 
   const hasExpandIcon = !!state.expandIcon;
   const {

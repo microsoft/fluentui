@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
@@ -197,10 +198,10 @@ export default {
         </div>
       </div>
     ),
-    story => (
-      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Avatar>;
 
 export const Basic = () => (

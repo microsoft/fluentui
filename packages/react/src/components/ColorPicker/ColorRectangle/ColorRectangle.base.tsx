@@ -15,6 +15,8 @@ import type {
 } from './ColorRectangle.types';
 import type { IColor } from '../../../utilities/color/interfaces';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
 export interface IColorRectangleState {
@@ -28,13 +30,14 @@ export class ColorRectangleBase
   extends React.Component<IColorRectangleProps, IColorRectangleState>
   implements IColorRectangle
 {
-  public static contextType = WindowContext;
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
     ariaValueFormat: 'Saturation {0} brightness {1}',
     ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
+  public static contextType = WindowContext;
+  public context: any;
 
   private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
@@ -59,7 +62,7 @@ export class ColorRectangleBase
   ): void {
     // if props changed (as opposed to a state update), set the value
     // TODO: switch to strict controlled pattern instead
-    if (prevProps !== this.props && this.props.color) {
+    if (prevProps.color !== this.props.color && this.props.color) {
       this.setState({ color: this.props.color });
     }
   }
@@ -72,7 +75,7 @@ export class ColorRectangleBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._root.current) {
       this._root.current.removeEventListener('touchstart', this._onTouchStart);
       this._root.current.removeEventListener('touchmove', this._onTouchMove);
@@ -80,7 +83,7 @@ export class ColorRectangleBase
     this._disposeListeners();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { minSize, theme, className, styles, ariaValueFormat, ariaLabel, ariaDescription } = this.props;
     const { color } = this.state;
 

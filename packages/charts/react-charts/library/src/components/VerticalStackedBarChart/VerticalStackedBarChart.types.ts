@@ -63,7 +63,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalStackedBarChartStyles;
+  styles?: Partial<VerticalStackedBarChartStyles>;
 
   /**
    * Define a custom callout renderer for a stack; default is to render per data point

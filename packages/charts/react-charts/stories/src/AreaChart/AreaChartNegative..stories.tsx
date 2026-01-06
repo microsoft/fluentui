@@ -1,13 +1,29 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
-import { Switch, Field, Radio, RadioGroup, RadioGroupOnChangeData } from '@fluentui/react-components';
+import {
+  Switch,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 
-export const AreaChartNegative = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const AreaChartNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
 
+  const classes = useStyles();
   React.useEffect(() => {
     const style = document.createElement('style');
     const focusStylingCSS = `
@@ -41,7 +57,7 @@ export const AreaChartNegative = () => {
     }
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 
@@ -199,6 +215,7 @@ export const AreaChartNegative = () => {
             enablePerfOptimization={true}
             yAxisTitle={showAxisTitles ? 'Variation of stock market prices' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -210,6 +227,7 @@ export const AreaChartNegative = () => {
             width={width}
             data={chartData}
             enablePerfOptimization={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

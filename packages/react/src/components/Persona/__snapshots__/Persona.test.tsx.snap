@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Persona renders Persona children correctly 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -33,7 +33,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -46,7 +46,7 @@ exports[`Persona renders Persona children correctly 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -59,7 +59,7 @@ exports[`Persona renders Persona children correctly 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #498205;
@@ -89,7 +89,7 @@ exports[`Persona renders Persona children correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -105,7 +105,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -121,34 +121,18 @@ exports[`Persona renders Persona children correctly 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip15"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -163,7 +147,7 @@ exports[`Persona renders Persona children correctly 1`] = `
 
 exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -194,7 +178,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -207,7 +191,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -220,7 +204,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: rgb(234, 234, 234);
@@ -244,8 +228,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -265,7 +249,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -281,7 +265,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -297,34 +281,18 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip2"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -336,7 +304,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
 
 exports[`Persona renders Persona correctly with image 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -367,7 +335,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -380,7 +348,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -392,7 +360,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Image
             ms-Persona-image
             {
@@ -412,16 +380,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
               top: 0px;
               width: 48px;
             }
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
+        style="width: 48px; height: 48px;"
       >
         <img
           alt=""
-          className=
+          class=
               ms-Image-image
               ms-Image-image--cover
               ms-Image-image--portrait
@@ -434,15 +397,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
                 opacity: 0;
                 width: 100%;
               }
-          onError={[Function]}
-          onLoad={[Function]}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
         />
       </div>
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -458,7 +419,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -474,34 +435,18 @@ exports[`Persona renders Persona correctly with image 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip1"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -513,7 +458,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
 
 exports[`Persona renders Persona correctly with initials 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -544,7 +489,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -557,7 +502,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -570,7 +515,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #498205;
@@ -600,7 +545,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -616,7 +561,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -632,34 +577,18 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Kat Larrson
         <div
-          hidden={true}
+          hidden=""
           id="tooltip0"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Kat Larrson
         </div>
@@ -671,7 +600,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
 
 exports[`Persona renders Persona correctly with no props 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size48
       {
@@ -702,7 +631,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size48
         {
@@ -715,7 +644,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -728,7 +657,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #0078D4;
@@ -752,8 +681,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
 
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -773,7 +702,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -793,7 +722,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
 
 exports[`Persona renders Persona which calls onRenderCoin callback without imageUrl 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size100
       ms-Persona--blocked
@@ -825,7 +754,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size100
         {
@@ -838,7 +767,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -851,7 +780,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
     >
       <div
         aria-hidden="true"
-        className=
+        class=
             ms-Persona-initials
             {
               background-color: #8E562E;
@@ -882,7 +811,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         id="persona-coin-container"
       />
       <div
-        className=
+        class=
             ms-Persona-presence
             {
               -ms-high-contrast-adjust: none;
@@ -940,8 +869,8 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         role="presentation"
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
               {
@@ -962,7 +891,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -978,7 +907,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -994,41 +923,25 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Swapnil Vaibhav
         <div
-          hidden={true}
+          hidden=""
           id="tooltip3"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Swapnil Vaibhav
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-secondaryText
           {
             color: #605e5c;
@@ -1041,41 +954,25 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Software Engineer
         <div
-          hidden={true}
+          hidden=""
           id="tooltip4"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Software Engineer
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-tertiaryText
           {
             color: #605e5c;
@@ -1089,41 +986,25 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         In a meeting
         <div
-          hidden={true}
+          hidden=""
           id="tooltip5"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           In a meeting
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-optionalText
           {
             color: #605e5c;
@@ -1137,34 +1018,18 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Available at 4:00pm
         <div
-          hidden={true}
+          hidden=""
           id="tooltip6"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Available at 4:00pm
         </div>
@@ -1176,7 +1041,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
 
 exports[`Persona renders Persona which calls onRenderPersonaCoin callback with custom render 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size100
       ms-Persona--blocked
@@ -1208,8 +1073,8 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
 
         {
           -moz-osx-font-smoothing: grayscale;
@@ -1226,7 +1091,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
     
   </i>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -1242,7 +1107,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -1258,41 +1123,25 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Swapnil Vaibhav
         <div
-          hidden={true}
+          hidden=""
           id="tooltip7"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Swapnil Vaibhav
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-secondaryText
           {
             color: #605e5c;
@@ -1305,41 +1154,25 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Software Engineer
         <div
-          hidden={true}
+          hidden=""
           id="tooltip8"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Software Engineer
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-tertiaryText
           {
             color: #605e5c;
@@ -1353,41 +1186,25 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         In a meeting
         <div
-          hidden={true}
+          hidden=""
           id="tooltip9"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           In a meeting
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-optionalText
           {
             color: #605e5c;
@@ -1401,34 +1218,18 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Available at 4:00pm
         <div
-          hidden={true}
+          hidden=""
           id="tooltip10"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Available at 4:00pm
         </div>
@@ -1440,7 +1241,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
 
 exports[`Persona renders correctly with onRender callback 1`] = `
 <div
-  className=
+  class=
       ms-Persona
       ms-Persona--size100
       ms-Persona--blocked
@@ -1472,7 +1273,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Persona-coin
         ms-Persona--size100
         {
@@ -1485,7 +1286,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Persona-imageArea
           {
             flex: 0 0 auto;
@@ -1497,7 +1298,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Image
             ms-Persona-image
             {
@@ -1517,16 +1318,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 0px;
               width: 100px;
             }
-        style={
-          Object {
-            "height": 100,
-            "width": 100,
-          }
-        }
+        style="width: 100px; height: 100px;"
       >
         <img
           alt=""
-          className=
+          class=
               ms-Image-image
               ms-Image-image--cover
               ms-Image-image--portrait
@@ -1539,13 +1335,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
                 opacity: 0;
                 width: 100%;
               }
-          onError={[Function]}
-          onLoad={[Function]}
           src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png"
         />
       </div>
       <div
-        className=
+        class=
             ms-Persona-presence
             {
               -ms-high-contrast-adjust: none;
@@ -1603,8 +1397,8 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         role="presentation"
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
               {
@@ -1625,7 +1419,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-Persona-details
         {
           display: flex;
@@ -1641,7 +1435,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-Persona-primaryText
           {
             color: #323130;
@@ -1657,41 +1451,25 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Swapnil Vaibhav
         <div
-          hidden={true}
+          hidden=""
           id="tooltip11"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Swapnil Vaibhav
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-secondaryText
           {
             color: #605e5c;
@@ -1704,41 +1482,25 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Software Engineer
         <div
-          hidden={true}
+          hidden=""
           id="tooltip12"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Software Engineer
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-tertiaryText
           {
             color: #605e5c;
@@ -1752,41 +1514,25 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         In a meeting
         <div
-          hidden={true}
+          hidden=""
           id="tooltip13"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           In a meeting
         </div>
       </div>
     </div>
     <div
-      className=
+      class=
           ms-Persona-optionalText
           {
             color: #605e5c;
@@ -1800,34 +1546,18 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       dir="auto"
     >
       <div
-        className=
+        class=
             ms-TooltipHost
             {
               display: inline;
             }
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="none"
       >
         Available at 4:00pm
         <div
-          hidden={true}
+          hidden=""
           id="tooltip14"
-          style={
-            Object {
-              "border": 0,
-              "height": 1,
-              "margin": -1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-            }
-          }
+          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
         >
           Available at 4:00pm
         </div>

@@ -480,7 +480,9 @@ export class BaseButton extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -501,7 +503,6 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
-    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -629,8 +630,6 @@ export class BaseDropdown extends FASTElement {
     // @internal
     listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void;
     // @internal
-    listboxSlot: HTMLSlotElement;
-    // @internal
     mousedownHandler(e: MouseEvent): boolean | void;
     multiple?: boolean;
     // @internal
@@ -650,6 +649,8 @@ export class BaseDropdown extends FASTElement {
     selectOption(index?: number, shouldEmit?: boolean): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): boolean | void;
     type: DropdownType;
     // @internal
     typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
@@ -729,22 +730,35 @@ export class BaseProgressBar extends FASTElement {
 // @public
 export class BaseRatingDisplay extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     count?: number;
+    // (undocumented)
+    protected defaultCustomIconViewBox: string;
+    // @internal
+    display: HTMLElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    protected getMaxIcons(): number;
-    protected getSelectedValue(): number;
+    // @internal (undocumented)
+    handleSlotChange(): void;
+    // @internal (undocumented)
+    iconSlot: HTMLSlotElement;
+    // @deprecated
     iconViewBox?: string;
     max?: number;
-    // @internal (undocumented)
-    slottedIcon: HTMLElement[];
-    // @internal (undocumented)
-    slottedIconChanged(): void;
+    // (undocumented)
+    protected maxChanged(): void;
+    // (undocumented)
+    protected renderSlottedIcon(svg: SVGSVGElement | null): void;
+    // Warning: (ae-forgotten-export) The symbol "PropertyNameForCalculation" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected setCustomPropertyValue(propertyName: PropertyNameForCalculation): void;
     value?: number;
+    // (undocumented)
+    protected valueChanged(): void;
 }
 
 // @public
@@ -944,17 +958,21 @@ export class BaseTree extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItems: BaseTreeItem[];
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
     currentSelected: HTMLElement | null;
+    // @internal (undocumented)
+    defaultSlot: HTMLSlotElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     focusHandler(e: FocusEvent): void;
+    // @internal (undocumented)
+    handleDefaultSlotChange(): void;
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
 }
@@ -2309,12 +2327,16 @@ export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
     dialog: HTMLDialogElement;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
+    // (undocumented)
+    protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined): void;
 }
 
 // @public
@@ -2393,10 +2415,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2424,17 +2443,30 @@ export const DividerTemplate: ElementViewTemplate<Divider>;
 export class Drawer extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
+    cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
     dialog: HTMLDialogElement;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
+    // (undocumented)
+    protected observeRoleAttr(): void;
     position: DrawerPosition;
+    // (undocumented)
+    protected roleAttrObserver: MutationObserver;
     show(): void;
     // (undocumented)
     size: DrawerSize;
     type: DrawerType;
+    // (undocumented)
+    protected typeChanged(): void;
+    // (undocumented)
+    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -2930,8 +2962,6 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -2951,6 +2981,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
+    slotchangeHandler(e: Event): void;
 }
 
 // @public
@@ -3236,14 +3267,13 @@ export const MessageBarStyles: ElementStyles;
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
-class ProgressBar_2 extends BaseProgressBar {
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
 }
-export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
 
 // @public
 export const ProgressBarShape: {
@@ -3260,7 +3290,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
 
 // @public
 export const ProgressBarThickness: {
@@ -3284,8 +3314,6 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 // @public
 export class Radio extends BaseCheckbox {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
@@ -3369,10 +3397,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3402,10 +3427,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     compact: boolean;
-    // @override
-    protected getMaxIcons(): number;
-    // @override
-    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
 }
 
@@ -3870,10 +3891,7 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * The appearance of the component
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -4342,9 +4360,13 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 // @public
 export class Tree extends BaseTree {
     appearance: TreeItemAppearance;
+    // (undocumented)
+    protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // (undocumented)
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 
@@ -4357,8 +4379,12 @@ export const TreeDefinition: FASTElementDefinition<typeof Tree>;
 export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
     // @internal
+    protected appearanceChanged(): void;
+    // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // @internal
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 

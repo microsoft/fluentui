@@ -10,6 +10,8 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Dialog}
  */
@@ -123,7 +125,8 @@ export interface IDialogProps
    * The title text to display at the top of the dialog.
    * @deprecated Pass through via `dialogContentProps` instead.
    */
-  title?: string | JSX.Element;
+
+  title?: string | JSXElement;
 
   /**
    * The subtext to display in the dialog.

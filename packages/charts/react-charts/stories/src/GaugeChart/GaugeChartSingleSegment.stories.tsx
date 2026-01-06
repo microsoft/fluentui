@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
-export const GaugeChartSingleSegment = () => {
+export const GaugeChartSingleSegment = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(252);
   const [height, setHeight] = React.useState<number>(173);
   const [chartValue, setChartValue] = React.useState<number>(50);
@@ -18,11 +19,11 @@ export const GaugeChartSingleSegment = () => {
   const _onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChartValue(parseInt(e.target.value, 10));
   };
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { print, test } from './index';
 import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@fluentui/merge-styles';
 
@@ -114,6 +114,6 @@ describe('print', () => {
       animationDelay: '500ms',
     });
 
-    expect(renderer.create(<div className={fadeInClassName} />).toJSON()).toMatchSnapshot();
+    expect(render(<div className={fadeInClassName} />).container.firstChild).toMatchSnapshot();
   });
 });

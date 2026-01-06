@@ -18,7 +18,7 @@ module.exports =
     },
     // helpers.stories.ts is a file that contains helper functions for stories,
     // and should not be treated as a story itself.
-    stories: ['../src/**/!(helpers)*.stories.@(ts|mdx)'],
+    stories: ['../src/**/!(helpers)*.@(stories.ts|mdx)'],
     staticDirs: ['../public'],
     core: {
       disableTelemetry: true,
@@ -30,11 +30,14 @@ module.exports =
         options: {
           backgrounds: false,
           viewport: false,
-          toolbars: false,
+          toolbars: true,
           actions: true,
         },
       },
     ],
+    build: {
+      previewUrl: process.env.DEPLOY_PATH,
+    },
     webpackFinal: async config => {
       config.resolve = config.resolve ?? {};
       config.resolve.extensions = config.resolve.extensions ?? [];

@@ -38,6 +38,11 @@ export interface ScatterChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+
+  /**
    * Callback for getting callout description message
    */
   getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
@@ -52,7 +57,12 @@ export interface ScatterChartProps extends CartesianChartProps {
  * Scatter Chart styles
  * {@docCategory ScatterChart}
  */
-export interface ScatterChartStyles extends CartesianChartStyles {}
+export interface ScatterChartStyles extends CartesianChartStyles {
+  /**
+   * Style for the marker label
+   */
+  markerLabel?: string;
+}
 
 /**
  * Scatter Chart style properties

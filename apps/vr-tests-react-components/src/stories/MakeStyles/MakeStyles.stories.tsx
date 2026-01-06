@@ -4,7 +4,7 @@ import { tokens, webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const useStyles = makeStyles({
   box: {
@@ -35,13 +35,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Box: React.FC = props => {
+const Box: React.FC<{ children?: React.ReactNode }> = props => {
   const classes = useStyles();
 
   return <div className={classes.box}>{props.children}</div>;
 };
 
-const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
+const Container: React.FC<{ className?: string; primary?: boolean; children?: React.ReactNode }> = props => {
   const classes = useStyles();
 
   return (
@@ -60,8 +60,10 @@ export default {
         {storyFn(context)}
       </div>
     ),
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() }),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<'div'>;
 
 export const RtlTwoComponentsInASingleProvider = () => (

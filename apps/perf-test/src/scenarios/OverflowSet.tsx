@@ -3,12 +3,12 @@ import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
 
 const noOp = () => undefined;
 
-const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
+const onRenderItem = (item: IOverflowSetItemProps): React.ReactElement => {
   return <div>{item.name}</div>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
+const onRenderOverflowButton = (overflowItems: any[] | undefined): React.ReactElement => {
   return <button> ... </button>;
 };
 

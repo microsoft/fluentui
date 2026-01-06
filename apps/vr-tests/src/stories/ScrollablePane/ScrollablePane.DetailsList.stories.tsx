@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -110,7 +112,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
     this._selection = new Selection();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     return (
       <div
         style={{
@@ -156,7 +158,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 function onRenderDetailsHeader(
   props: IDetailsHeaderProps,
   defaultRender?: IRenderFunction<IDetailsHeaderProps>,
-): JSX.Element {
+): React.ReactElement {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
@@ -169,7 +171,7 @@ function onRenderDetailsHeader(
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): React.ReactElement {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div style={{ display: 'inline-block' }}>
@@ -197,10 +199,10 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 export default {
   title: 'ScrollablePane Details List',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2",
@@ -217,9 +219,9 @@ export default {
         )
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ScrollablePaneDetailsListStory>;
 
 export const ScrollablePaneDetailsListWithStickyHeaderFooter = () => (
   <ScrollablePaneDetailsListStory />

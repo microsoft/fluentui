@@ -3,9 +3,11 @@ import { flipBlockState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorNeutralBackground1,
+  colorTransparentStroke,
   shadow16,
   spacingHorizontalXS,
   spacingHorizontalXXS,
+  strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 
@@ -20,7 +22,7 @@ export const styles = css`
   :host {
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: none;
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: ${shadow16};
     box-sizing: border-box;
     flex-direction: column;

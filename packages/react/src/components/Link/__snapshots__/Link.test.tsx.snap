@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Link renders Link correctly 1`] = `
 <a
-  className=
+  class=
       ms-Link
       {
         -moz-osx-font-smoothing: grayscale;
@@ -61,7 +61,6 @@ exports[`Link renders Link correctly 1`] = `
         color: LinkText;
       }
   href="#"
-  onClick={[Function]}
 >
   I'm a link
 </a>
@@ -69,7 +68,7 @@ exports[`Link renders Link correctly 1`] = `
 
 exports[`Link renders Link with "as=div" a div element 1`] = `
 <div
-  className=
+  class=
       ms-Link
       customClassName
       {
@@ -146,7 +145,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
         color: LinkText;
       }
-  onClick={[Function]}
 >
   I'm a div
 </div>
@@ -154,7 +152,7 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
 
 exports[`Link renders Link with a custom class name 1`] = `
 <a
-  className=
+  class=
       ms-Link
       customClassName
       {
@@ -214,7 +212,6 @@ exports[`Link renders Link with a custom class name 1`] = `
         color: LinkText;
       }
   href="#"
-  onClick={[Function]}
 >
   I'm a link
 </a>
@@ -222,7 +219,7 @@ exports[`Link renders Link with a custom class name 1`] = `
 
 exports[`Link renders Link with no href as a button 1`] = `
 <button
-  className=
+  class=
       ms-Link
       {
         -moz-osx-font-smoothing: grayscale;
@@ -298,7 +295,6 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
         color: LinkText;
       }
-  onClick={[Function]}
   type="button"
 >
   I'm a link as a button
@@ -307,8 +303,8 @@ exports[`Link renders Link with no href as a button 1`] = `
 
 exports[`Link renders disabled Link correctly 1`] = `
 <a
-  aria-disabled={true}
-  className=
+  aria-disabled="true"
+  class=
       ms-Link
       is-disabled
       {
@@ -348,7 +344,6 @@ exports[`Link renders disabled Link correctly 1`] = `
       &:visited {
         pointer-events: none;
       }
-  onClick={[Function]}
 >
   I'm a disabled link
 </a>
@@ -356,8 +351,8 @@ exports[`Link renders disabled Link correctly 1`] = `
 
 exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 <button
-  aria-disabled={true}
-  className=
+  aria-disabled="true"
+  class=
       ms-Link
       is-disabled
       {
@@ -413,8 +408,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       &:visited {
         pointer-events: none;
       }
-  disabled={true}
-  onClick={[Function]}
+  disabled=""
   type="button"
 >
   I'm a link as a button
@@ -423,7 +417,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 
 exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
 <input
-  className=
+  class=
       ms-Link
       customClassName
       {
@@ -500,7 +494,6 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
         color: LinkText;
       }
-  onClick={[Function]}
   type="text"
   value="This is an input."
 />

@@ -1,50 +1,42 @@
+import type { BasePresenceParams, AnimateOpacity } from '../../types';
+
 export type CollapseOrientation = 'horizontal' | 'vertical';
 
-// TODO: reduce duplication between CollapseDelayedVariantParams and CollapseVariantParams
-export type CollapseDelayedVariantParams = {
-  /** Time (ms) for the size expand. Defaults to the durationNormal value (200 ms). */
-  enterSizeDuration?: number;
+/**
+ * Duration properties for granular timing control in Collapse animations.
+ */
+export type CollapseDurations = {
+  /** Time (ms) for the size animation during enter. Defaults to `duration` for unified timing. */
+  sizeDuration?: number;
 
-  /** Time (ms) for the fade-in. Defaults to the enterSizeDuration param, to sync fade-in with expand. */
-  enterOpacityDuration?: number;
+  /** Time (ms) for the opacity animation during enter. Defaults to `sizeDuration` for synchronized timing. */
+  opacityDuration?: number;
 
-  /** Time (ms) for the size collapse. Defaults to the enterSizeDuration param, for temporal symmetry.. */
+  /** Time (ms) for the size animation during exit. Defaults to `exitDuration` for unified timing. */
   exitSizeDuration?: number;
 
-  /** Defaults to the exitSizeDuration param, to sync the fade-out with the collapse. */
+  /** Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing. */
   exitOpacityDuration?: number;
-
-  /** Time (ms) between the size expand start and the fade-in start. Defaults to `0`.  */
-  enterDelay?: number;
-
-  /** Time (ms) between the fade-out start and the size collapse start. Defaults to `0`.  */
-  exitDelay?: number;
-
-  /** Easing curve for the enter transition, shared by size and opacity. Defaults to the easeEaseMax value.  */
-  enterEasing?: string;
-
-  /** Easing curve for the exit transition, shared by size and opacity. Defaults to the enterEasing param. */
-  exitEasing?: string;
 };
 
-export type CollapseRuntimeParams = {
-  /** Whether to animate the opacity. Defaults to `true`. */
-  animateOpacity?: boolean;
+export type CollapseParams = BasePresenceParams &
+  AnimateOpacity &
+  CollapseDurations & {
+    /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
+    orientation?: CollapseOrientation;
 
-  /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
-  orientation?: CollapseOrientation;
-};
+    /** The starting size for the expand animation. Defaults to `'0px'`. */
+    fromSize?: string;
 
-export type CollapseVariantParams = {
-  /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
-  enterDuration?: number;
+    /**
+     * Time (ms) to delay the inner stagger between size and opacity animations.
+     * On enter this delays the opacity after size; on exit this delays the size after opacity.
+     * Defaults to 0.
+     */
+    staggerDelay?: number;
 
-  /** Easing curve for the enter transition (expand). Defaults to the `easeEaseMax` value.  */
-  enterEasing?: string;
-
-  /** Time (ms) for the exit transition (collapse). Defaults to the `enterDuration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (collapse). Defaults to the `enterEasing` param for symmetry.  */
-  exitEasing?: string;
-};
+    /**
+     * Time (ms) to delay the inner stagger during exit. Defaults to the `staggerDelay` param for symmetry.
+     */
+    exitStaggerDelay?: number;
+  };

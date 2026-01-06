@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { InteractionTag } from '../InteractionTag/InteractionTag';
@@ -8,8 +8,9 @@ import { InteractionTagSecondary } from '../InteractionTagSecondary/InteractionT
 import { TagGroup } from './TagGroup';
 import { TagGroupProps } from './TagGroup.types';
 import { Tag } from '../Tag/Tag';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

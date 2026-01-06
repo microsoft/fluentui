@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -7,7 +7,8 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import type { PopoverProps } from '@fluentui/react-popover';
-const mount = (element: JSX.Element) => {
+import type { JSXElement } from '@fluentui/react-utilities';
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -381,8 +382,11 @@ describe('Popover', () => {
 
       it('should work as inertTrapFocus when set to false', () => {
         mount(
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          <Popover legacyTrapFocus={false} trapFocus>
+          <Popover
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
+            legacyTrapFocus={false}
+            trapFocus
+          >
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>

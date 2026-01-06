@@ -1,8 +1,16 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart, ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
-import { useId } from '@fluentui/react-components';
+import { makeStyles, tokens, useId } from '@fluentui/react-components';
 
-export const AreaChartSecondaryYAxis = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const AreaChartSecondaryYAxis = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');
@@ -135,6 +143,7 @@ export const AreaChartSecondaryYAxis = () => {
           xAxisTitle="Number of days"
           secondaryYAxistitle="Variation of stock market prices 2"
           secondaryYScaleOptions={{}}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </div>

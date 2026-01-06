@@ -33,3 +33,5 @@ export {
   useAriaLiveAnnouncerContextValues_unstable,
 } from './AriaLiveAnnouncer/index';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from './AriaLiveAnnouncer/index';
+
+export { useTypingAnnounce } from './useTypingAnnounce/index';

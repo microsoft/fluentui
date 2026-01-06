@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #faf9f8;
@@ -13,7 +13,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
       }
 >
   <div
-    className=
+    class=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
@@ -24,16 +24,11 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
           overflow: hidden;
           position: relative;
         }
-    style={
-      Object {
-        "height": 100,
-        "width": undefined,
-      }
-    }
+    style="height: 100px;"
   >
     <img
       alt=""
-      className=
+      class=
           ms-Image-image
           ms-Image-image--cover
           ms-Image-image--portrait
@@ -46,14 +41,12 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
             opacity: 0;
             width: 100%;
           }
-      onError={[Function]}
-      onLoad={[Function]}
       role="presentation"
       src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/document-preview2.png"
     />
   </div>
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -67,8 +60,8 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -94,7 +87,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
 
 exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #faf9f8;
@@ -105,7 +98,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
       }
 >
   <div
-    className=
+    class=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
@@ -115,16 +108,11 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
           font-weight: 400;
           overflow: hidden;
         }
-    style={
-      Object {
-        "height": 150,
-        "width": undefined,
-      }
-    }
+    style="height: 150px;"
   >
     <img
       alt=""
-      className=
+      class=
           ms-Image-image
           ms-Image-image--portrait
           is-notLoaded
@@ -135,14 +123,12 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
             opacity: 0;
             width: auto;
           }
-      onError={[Function]}
-      onLoad={[Function]}
       role="presentation"
       src="someinvalidurl"
     />
   </div>
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -156,8 +142,8 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -183,7 +169,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
 
 exports[`DocumentCard renders DocumentCardImage correctly without an image or icon 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #faf9f8;
@@ -194,7 +180,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -208,8 +194,8 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             display: inline-block;
@@ -225,7 +211,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
 
 exports[`DocumentCard renders DocumentCardImage correctly without an image provided 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #faf9f8;
@@ -236,7 +222,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -250,8 +236,8 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;

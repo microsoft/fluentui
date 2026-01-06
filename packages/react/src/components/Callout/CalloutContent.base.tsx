@@ -72,7 +72,7 @@ function useBounds(
   targetWindow: Window | undefined,
 ) {
   const [targetWindowResized, setTargetWindowResized] = React.useState(false);
-  const cachedBounds = React.useRef<IRectangle | undefined>();
+  const cachedBounds = React.useRef<IRectangle | undefined>(undefined);
 
   const getBounds = React.useCallback((): IRectangle | undefined => {
     if (!cachedBounds.current || targetWindowResized) {
@@ -189,15 +189,15 @@ function useMaxHeight(
  */
 function usePositions(
   props: ICalloutProps,
-  hostElement: React.RefObject<HTMLDivElement>,
+  hostElement: React.RefObject<HTMLDivElement | null>,
   calloutElement: HTMLDivElement | null,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
-  popupRef: React.RefObject<HTMLDivElement>,
+  popupRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
   const positionAttempts = React.useRef(0);
-  const previousTarget = React.useRef<Target>();
+  const previousTarget = React.useRef<Target>(undefined);
   const async = useAsync();
   const {
     hidden,
@@ -211,7 +211,7 @@ function usePositions(
   } = props;
 
   const win = useWindowEx();
-  const localRef = React.useRef<HTMLDivElement | null>();
+  const localRef = React.useRef<HTMLDivElement | null>(undefined);
   let popupStyles: CSSStyleDeclaration | undefined;
   if (localRef.current !== popupRef.current) {
     localRef.current = popupRef.current;
@@ -345,7 +345,7 @@ function useDismissHandlers(
     preventDismissOnEvent,
   }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
-  hostElement: React.RefObject<HTMLDivElement>,
+  hostElement: React.RefObject<HTMLDivElement | null>,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   targetWindow: Window | undefined,
 ) {
@@ -502,7 +502,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     const hostElement = React.useRef<HTMLDivElement>(null);
     const popupRef = React.useRef<HTMLDivElement>(null);
-    const mergedPopupRefs = useMergedRefs(popupRef, popupProps?.ref);
+    const mergedPopupRefs = useMergedRefs(popupRef, popupProps?.ref as React.Ref<HTMLDivElement>);
     const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
     const calloutCallback = React.useCallback((calloutEl: any) => {
       setCalloutElement(calloutEl);

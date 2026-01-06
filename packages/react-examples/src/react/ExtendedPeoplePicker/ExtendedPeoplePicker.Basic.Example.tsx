@@ -35,7 +35,7 @@ const focusZoneProps = {
 };
 
 export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
-  const picker = React.useRef<ExtendedPeoplePicker>(null);
+  const picker = React.useRef<ExtendedPeoplePicker | null>(null);
   const [peopleList, setPeopleList] = React.useState<IPersonaProps[]>(people);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);
   const [searchMoreAvailable, setSearchMoreAvailable] = React.useState<boolean>(true);
@@ -180,11 +180,11 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
     getTextFromItem: (persona: IPersonaProps) => persona.text || '',
     pickerSuggestionsProps: suggestionProps,
     key: 'normal',
-    onRemoveSuggestion: onRemoveSuggestion,
+    onRemoveSuggestion,
     onValidateInput: validateInput,
     onZeroQuerySuggestion: returnMostRecentlyUsed,
     showForceResolve: shouldShowForceResolve,
-    onInputChanged: onInputChanged,
+    onInputChanged,
     onSuggestionsHidden: () => {
       console.log('FloatingPicker: hidden');
     },
@@ -194,14 +194,14 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   };
 
   const selectedItemsListProps = {
-    onCopyItems: onCopyItems,
+    onCopyItems,
     onExpandGroup: onExpandItem,
     removeMenuItemText: 'Remove',
     copyMenuItemText: 'Copy name',
     editMenuItemText: 'Edit',
-    getEditingItemText: getEditingItemText,
+    getEditingItemText,
     onRenderFloatingPicker: FloatingPeoplePicker,
-    floatingPickerProps: floatingPickerProps,
+    floatingPickerProps,
   };
 
   return (

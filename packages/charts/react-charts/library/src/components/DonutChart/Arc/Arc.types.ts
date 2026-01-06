@@ -68,7 +68,7 @@ export interface ArcProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * internal prop for href
@@ -104,6 +104,12 @@ export interface ArcProps {
    * Additional CSS class(es) to apply to the Chart.
    */
   className?: string;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
 export interface ArcData {

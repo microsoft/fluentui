@@ -104,6 +104,20 @@ export type {
   IScatterChartDataPoint,
   IBaseDataPoint,
   AxisCategoryOrder,
+  IGanttChartDataPoint,
+  AxisScaleType,
+  AxisProps,
+  IDataPointV2,
+  IDataSeries,
+  IBarSeries,
+  ILineSeries,
+  IChartAnnotation as ChartAnnotation,
+  ChartAnnotationCoordinate,
+  IChartAnnotationConnectorProps as ChartAnnotationConnectorProps,
+  ChartAnnotationArrowHead,
+  IChartAnnotationLayoutProps as ChartAnnotationLayoutProps,
+  IChartAnnotationStyleProps as ChartAnnotationStyleProps,
+  IChartAnnotationAccessibilityProps as ChartAnnotationAccessibilityProps,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -140,14 +154,20 @@ export type {
   IHorizontalBarChartWithAxisStyles,
 } from './HorizontalBarChartWithAxis';
 export { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
+export type { IFunnelChartProps, IFunnelChartStyleProps, IFunnelChartStyles } from './FunnelChart';
+export { FunnelChart } from './FunnelChart';
 export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/colors';
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
+export type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart';
+export { AnnotationOnlyChart } from './AnnotationOnlyChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
 export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
+export type { IGanttChartProps, IGanttChartStyleProps, IGanttChartStyles } from './GanttChart';
+export { GanttChart } from './GanttChart';
 
 import './version';

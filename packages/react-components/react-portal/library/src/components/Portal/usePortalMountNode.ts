@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useThemeClassName_unstable as useThemeClassName,
@@ -24,6 +26,7 @@ type UseElementFactoryOptions = {
   className: string;
   dir: string;
   disabled: boolean | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   focusVisibleRef: React.MutableRefObject<HTMLElement | null>;
   targetNode: HTMLElement | ShadowRoot | undefined;
 };
@@ -35,6 +38,8 @@ type UseElementFactory = (options: UseElementFactoryOptions) => HTMLDivElement |
  * Creates a new element on a "document.body" to mount portals.
  */
 const useLegacyElementFactory: UseElementFactory = options => {
+  'use no memo';
+
   const { className, dir, focusVisibleRef, targetNode } = options;
 
   const targetElement = React.useMemo(() => {
@@ -63,7 +68,6 @@ const useLegacyElementFactory: UseElementFactory = options => {
     targetElement.setAttribute('dir', dir);
     targetElement.setAttribute('data-portal-node', 'true');
 
-    // eslint-disable-next-line react-compiler/react-compiler
     focusVisibleRef.current = targetElement;
   }, [className, dir, targetElement, focusVisibleRef]);
 
@@ -76,6 +80,35 @@ const useLegacyElementFactory: UseElementFactory = options => {
   return targetElement;
 };
 
+const initializeElementFactory = () => {
+  let currentElement: HTMLDivElement | undefined = undefined;
+
+  function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
+    if (currentElement) {
+      return currentElement;
+    }
+
+    if (forceCreation) {
+      currentElement = targetRoot.ownerDocument.createElement('div');
+      targetRoot.appendChild(currentElement);
+    }
+
+    return currentElement;
+  }
+
+  function dispose() {
+    if (currentElement) {
+      currentElement.remove();
+      currentElement = undefined;
+    }
+  }
+
+  return {
+    get,
+    dispose,
+  };
+};
+
 /**
  * This is a modern element factory for React 18 and above. It is safe for concurrent rendering.
  *
@@ -84,38 +117,11 @@ const useLegacyElementFactory: UseElementFactory = options => {
  * - all other methods (and properties) will be called by React once a portal is mounted
  */
 const useModernElementFactory: UseElementFactory = options => {
+  'use no memo';
+
   const { className, dir, focusVisibleRef, targetNode } = options;
 
-  const [elementFactory] = React.useState(() => {
-    let currentElement: HTMLDivElement | undefined = undefined;
-
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: false): HTMLDivElement | undefined;
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: true): HTMLDivElement;
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
-      if (currentElement) {
-        return currentElement;
-      }
-
-      if (forceCreation) {
-        currentElement = targetRoot.ownerDocument.createElement('div');
-        targetRoot.appendChild(currentElement);
-      }
-
-      return currentElement;
-    }
-
-    function dispose() {
-      if (currentElement) {
-        currentElement.remove();
-        currentElement = undefined;
-      }
-    }
-
-    return {
-      get,
-      dispose,
-    };
-  });
+  const [elementFactory] = React.useState(initializeElementFactory);
 
   const elementProxy = React.useMemo(() => {
     if (targetNode === undefined || options.disabled) {
@@ -125,26 +131,35 @@ const useModernElementFactory: UseElementFactory = options => {
     return new Proxy({} as HTMLDivElement, {
       get(_, property: keyof HTMLDivElement) {
         // Heads up!
+        // `createPortal()` performs a check for `nodeType` property to determine if the mount node is a valid DOM node
+        // before mounting the portal. We hardcode the value to `Node.ELEMENT_NODE` to pass this check and avoid
+        // premature node creation
+        if (property === 'nodeType') {
+          // Can't use the `Node.ELEMENT_NODE` as it's a browser API and  not available in all environments, e.g SSR
+          return 1; // `Node.ELEMENT_NODE`
+        }
+
+        // Heads up!
         // We intercept the `remove()` method to remove the mount node only when portal has been unmounted already.
         if (property === 'remove') {
           const targetElement = elementFactory.get(targetNode, false);
 
           if (targetElement) {
-            // If the mountElement has children, the portal is still mounted
+            // If the mountElement has children, the portal is still mounted, otherwise we can dispose of it
             const portalHasNoChildren = targetElement.childNodes.length === 0;
 
             if (portalHasNoChildren) {
-              return targetElement.remove.bind(targetElement);
+              elementFactory.dispose();
             }
           }
 
           return () => {
-            // If the mountElement has children, ignore the remove call
+            // Always return a no-op function to avoid errors in the code
           };
         }
 
         const targetElement = elementFactory.get(targetNode, true);
-        const targetProperty = targetElement[property];
+        const targetProperty = targetElement ? targetElement[property] : undefined;
 
         if (typeof targetProperty === 'function') {
           return targetProperty.bind(targetElement);
@@ -153,8 +168,20 @@ const useModernElementFactory: UseElementFactory = options => {
         return targetProperty;
       },
 
-      set(_, property: keyof HTMLDivElement, value) {
-        const targetElement = elementFactory.get(targetNode, true);
+      set(_, property: keyof HTMLDivElement | '_virtual' | 'focusVisible', value) {
+        const ignoredProperty = property === '_virtual' || property === 'focusVisible';
+
+        // We should use the `elementFactory.get(targetNode, !ignoredProperty)`,
+        // but TypeScript requires a literal `true` or `false` for the overload signature.
+        // This workaround ensures the correct overload is called and avoids TypeScript errors.
+        const targetElement = ignoredProperty
+          ? elementFactory.get(targetNode, false)
+          : elementFactory.get(targetNode, true);
+
+        if (ignoredProperty && !targetElement) {
+          // We ignore the `_virtual` and `focusVisible` properties to avoid conflicts with the proxy
+          return true;
+        }
 
         if (targetElement) {
           Object.assign(targetElement, { [property]: value });
@@ -165,12 +192,6 @@ const useModernElementFactory: UseElementFactory = options => {
       },
     });
   }, [elementFactory, targetNode, options.disabled]);
-
-  React.useEffect(() => {
-    return () => {
-      elementProxy?.remove();
-    };
-  }, [elementProxy]);
 
   useInsertionEffect!(() => {
     if (!elementProxy) {
@@ -191,18 +212,36 @@ const useModernElementFactory: UseElementFactory = options => {
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
 
+  React.useEffect(() => {
+    return () => {
+      elementProxy?.remove();
+    };
+  }, [elementProxy]);
+
   return elementProxy;
 };
+
+/**
+ * Element factory based on the React version.
+ *
+ * React 17 and below:
+ * - useLegacyElementFactory
+ *
+ * React 18 and above:
+ * - useModernElementFactory
+ */
+const useElementFactory = useInsertionEffect ? useModernElementFactory : useLegacyElementFactory;
 
 /**
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  'use no memo';
+  ('use no memo');
 
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
   const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
@@ -216,11 +255,5 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     targetNode: mountNode ?? targetDocument?.body,
   };
 
-  if (useInsertionEffect) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useModernElementFactory(factoryOptions);
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useLegacyElementFactory(factoryOptions);
+  return useElementFactory(factoryOptions);
 };

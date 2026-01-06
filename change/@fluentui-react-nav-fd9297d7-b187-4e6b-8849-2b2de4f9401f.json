@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: only display actions on hover",
-  "packageName": "@fluentui/react-nav",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

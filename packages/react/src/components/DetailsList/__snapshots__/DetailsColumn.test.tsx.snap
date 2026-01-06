@@ -1,17 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DetailsColumn renders a sortable icon on an unsorted column when showSortIconWhenUnsorted is set to true 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -34,17 +29,16 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={2}
-      aria-rowcount={1}
+      aria-colcount="2"
+      aria-rowcount="1"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -80,15 +74,11 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -139,15 +129,14 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -216,14 +205,14 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -263,8 +252,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -297,17 +286,13 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -345,11 +330,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -359,7 +340,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
           </div>
           <div
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -424,20 +405,14 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-item-key="1"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 40,
-              }
-            }
+            style="width: 40px;"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -451,7 +426,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
               <span
                 aria-describedby="header1-1-tooltip"
                 aria-labelledby="header1-1-name"
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -494,13 +469,11 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                     }
                 data-is-focusable="true"
                 id="header1-1"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
                 role="button"
+                tabindex="-1"
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -514,8 +487,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   Foo
                 </span>
                 <i
-                  aria-hidden={true}
-                  className=
+                  aria-hidden="true"
+                  class=
                       ms-Icon
                       {
                         display: inline-block;
@@ -537,11 +510,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         top: 1px;
                       }
                   data-icon-name="Sort"
-                  style={
-                    Object {
-                      "fontFamily": "\\"FabricMDL2Icons\\"",
-                    }
-                  }
+                  style="font-family: \\"FabricMDL2Icons\\";"
                 >
                   
                 </i>
@@ -549,7 +518,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
             </span>
           </div>
           <label
-            className=
+            class=
 
                 {
                   border: 0px;
@@ -567,7 +536,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   white-space: nowrap;
                   width: 1px;
                 }
-            hidden={true}
+            hidden=""
             id="header1-1-tooltip"
           >
             Foo
@@ -575,24 +544,15 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -604,16 +564,12 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               />
             </div>

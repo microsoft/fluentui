@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import {
   Switch,
@@ -10,7 +11,7 @@ import {
   RadioGroupOnChangeData,
 } from '@fluentui/react-components';
 
-export const GroupedVerticalBarNegative = () => {
+export const GroupedVerticalBarNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(400);
   const [barWidth, setBarWidth] = React.useState<number>(16);
@@ -60,11 +61,11 @@ export const GroupedVerticalBarNegative = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 
@@ -334,7 +335,7 @@ export const GroupedVerticalBarNegative = () => {
           isCalloutForStack={selectedCallout === 'StackCallout'}
           barWidth={barWidth}
           hideLabels={hideLabels}
-          enableReflow={true}
+          reflowProps={{ mode: 'min-width' }}
           roundCorners={roundCorners}
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,

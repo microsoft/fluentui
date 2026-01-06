@@ -72,7 +72,7 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 };
 
 // @public
-export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
+export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[]) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
 // @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -82,9 +82,9 @@ export function getParent(child: Node | null, options?: GetParentOptions): Node 
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
-    primarySlotTagName: keyof JSX.IntrinsicElements;
+    primarySlotTagName: JSXIntrinsicElementKeys;
     props: Props;
-    excludedPropNames?: ExcludedPropKeys[] | undefined;
+    excludedPropNames?: ExcludedPropKeys[];
 }) => {
     root: {
         style: React_2.CSSProperties | undefined;
@@ -93,8 +93,11 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
     primary: Omit<Props, ExcludedPropKeys>;
 };
 
+// @public
+export function getReactElementRef<T>(element: React_2.ReactElement | null | undefined): React_2.Ref<T> | undefined;
+
 // @internal
-export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
+export const getRTLSafeKey: (key: string, dir: "ltr" | "rtl") => string;
 
 // @public
 export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
@@ -144,6 +147,15 @@ export function isSlot<Props extends {}>(element: unknown): element is SlotCompo
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
+
+// @public
+export type JSXElement = React_2.ReactElement<any, any>;
+
+// @public
+export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
+
+// @public
+export type JSXIntrinsicElementKeys = Exclude<React_2.ElementType, React_2.ComponentType>;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
@@ -197,7 +209,7 @@ export interface RefAttributes<T> extends React_2.Attributes {
 }
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T | null> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
@@ -258,7 +270,7 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | ComponentType<any> | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends JSXIntrinsicElementKeys | ComponentType<any> | UnknownSlotProps, AlternateAs extends JSXIntrinsicElementKeys = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends JSXIntrinsicElementKeys ? {
     as?: Type;
 } & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends ComponentType<infer Props> ? Props extends UnknownSlotProps ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
     as: AlternateAs;
@@ -293,13 +305,13 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & Functi
     children?: ReactNode;
 }> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 // @public (undocumented)
 export type SlotOptions<Props extends UnknownSlotProps> = {
-    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     defaultProps?: Partial<Props>;
 };
 
@@ -335,12 +347,15 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
+    as?: JSXIntrinsicElementKeys;
     children?: ReactNode;
 };
 
 // @internal
-export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+export function useAnimationFrame(): readonly [(fn: FrameRequestCallback) => number, () => void];
+
+// @public
+export function useApplyScrollbarWidth<T extends HTMLElement>(options?: UseApplyScrollbarWidthOptions): React_2.RefCallback<T>;
 
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
@@ -353,7 +368,7 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
-export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 
 // @internal
 export function useFirstMount(): boolean;
@@ -399,7 +414,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 

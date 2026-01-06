@@ -1,5 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { Option } from '../Option';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type UseComboboxFilterConfig<T extends { children: React.ReactNode; value: string } | string> = {
   /** Provides a custom filter for the option. */
@@ -15,7 +18,7 @@ type UseComboboxFilterConfig<T extends { children: React.ReactNode; value: strin
   optionToText?: (option: T) => string;
 
   /** Provides a custom render for the option. */
-  renderOption?: (option: T) => JSX.Element;
+  renderOption?: (option: T) => JSXElement;
 };
 
 function defaultFilter(optionText: string, query: string) {
@@ -37,7 +40,7 @@ export function useComboboxFilter<T extends { children: React.ReactNode; value: 
   query: string,
   options: T[],
   config: UseComboboxFilterConfig<T>,
-) {
+): JSXElement[] {
   const {
     filter = defaultFilter,
     noOptionsMessage = "We couldn't find any matches.",

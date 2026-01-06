@@ -28,7 +28,7 @@ import { IYValueHover } from '../../index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -48,7 +48,7 @@ export const BREAKPOINTS = [
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
-export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number): number => {
   let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
   if (needleRotation < 0) {
     needleRotation = 0;
@@ -65,7 +65,7 @@ export const getSegmentLabel = (
   maxValue: number,
   variant?: GaugeChartVariant,
   isAriaLabel: boolean = false,
-) => {
+): string => {
   if (isAriaLabel) {
     return minValue === 0 && variant === GaugeChartVariant.SingleSegment
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
@@ -135,7 +135,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
   private _legendsHeight: number;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -199,19 +199,24 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       className: this.props.className,
-      chartWidth: width,
-      chartHeight: height - this._legendsHeight,
       chartValueSize,
     });
 
     return (
-      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
+        <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
           <svg
             className={this._classNames.chart}
             role="region"
             aria-label={this._getChartTitle()}
             onMouseLeave={this._handleMouseOut}
+            width={width}
+            height={height - this._legendsHeight}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (
@@ -364,7 +369,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, this._isRTL, opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRTL,
+      opts,
+    );
   };
 
   private _getMargins = () => {
@@ -659,7 +669,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture) as React.ReactNode}
           </div>
         </div>
         <div
@@ -732,7 +742,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     const { culture } = this.props;
-    const yValue = formatToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -754,10 +764,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {formatToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                  culture,
-                )}
+                {
+                  formatToLocaleString(
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                    culture,
+                  ) as React.ReactNode
+                }
               </div>
             </div>
           </div>
@@ -773,9 +785,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {' '}
+                  {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {formatToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                 </div>
               </div>
             );

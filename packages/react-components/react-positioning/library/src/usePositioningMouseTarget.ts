@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createVirtualElementFromClick } from './createVirtualElementFromClick';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
@@ -13,7 +15,7 @@ import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
  */
 export const usePositioningMouseTarget = (
   initialState?: PositioningVirtualElement | (() => PositioningVirtualElement),
-) => {
+): readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget] => {
   const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | undefined>(initialState);
 
   const setVirtualMouseTarget: SetVirtualMouseTarget = event => {

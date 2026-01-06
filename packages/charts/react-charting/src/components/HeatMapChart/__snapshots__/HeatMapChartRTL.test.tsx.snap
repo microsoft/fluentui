@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 1`] = `
 <div>
@@ -622,7 +622,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -760,19 +762,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="10"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                10
-              </tspan>
+              10
             </text>
           </g>
           <g
@@ -789,19 +779,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="20"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                20
-              </tspan>
+              20
             </text>
           </g>
         </g>
@@ -973,7 +951,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1218,7 +1196,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1356,19 +1336,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="yPoint p1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                yPoint p1
-              </tspan>
+              yPoint p1
             </text>
           </g>
           <g
@@ -1385,19 +1353,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="yPoint p2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                yPoint p2
-              </tspan>
+              yPoint p2
             </text>
           </g>
         </g>
@@ -1577,7 +1533,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { App, IAppDefinition, IAppLink } from '../components/App/index';
 import { Router, Route } from './router/index';
 import { Fabric } from '@fluentui/react/lib/Fabric';
@@ -15,18 +15,19 @@ import { ExampleGroup, IExample } from './examplesOf';
  */
 export function createApp(
   examples: ExampleGroup | ExampleGroup[],
-  defaultRouteComponent: () => JSX.Element | null = () => null,
+  defaultRouteComponent: () => React.ReactElement | null = () => null,
   appTitle?: string,
   headerLinks?: IAppLink[],
 ): void {
   let rootElement: HTMLElement | null;
+  let root: ReactDOMClient.Root | null;
   const groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
   function _onLoad(): void {
     rootElement = document.createElement('div');
     document.body.appendChild(rootElement);
 
-    const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
+    const routes: (React.ReactElement | React.ReactElement[])[] = groups.map(group =>
       group.examples.map(example => {
         return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
       }),
@@ -47,7 +48,9 @@ export function createApp(
 
     const renderApp = (props: {}) => <App appDefinition={appDefinition} {...props} />;
 
-    ReactDOM.render(
+    root = ReactDOMClient.createRoot(rootElement!);
+
+    root.render(
       <Fabric>
         <Router>
           <Route key="minimal" path="?minimal" component={_getComponent}>
@@ -59,13 +62,13 @@ export function createApp(
           </Route>
         </Router>
       </Fabric>,
-      rootElement,
     );
   }
 
   function _onUnload(): void {
-    if (rootElement) {
-      ReactDOM.unmountComponentAtNode(rootElement);
+    if (root && rootElement) {
+      root.unmount();
+      root = null;
       rootElement = null;
     }
   }
@@ -81,7 +84,12 @@ export function createApp(
   window.onunload = _onUnload;
 }
 
-function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
+type ReactProps<T> = {
+  children?: React.ReactNode;
+  ref?: React.LegacyRef<T>;
+};
+
+function _getComponent<TProps extends ReactProps<{}>>(props: TProps): React.ReactElement {
   return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
 }
 

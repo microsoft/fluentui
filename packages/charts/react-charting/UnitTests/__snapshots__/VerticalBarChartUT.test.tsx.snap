@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`vertical bar chart with numeric x-axis data Should render the vertical bar chart with numeric x-axis data - RTL 1`] = `
 <div>
@@ -28,7 +28,9 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -479,7 +481,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

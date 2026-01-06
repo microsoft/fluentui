@@ -19,6 +19,8 @@ import type {
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
 export interface IMarqueeSelectionState {
@@ -44,6 +46,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _async: Async;
   private _events: EventGroup;
@@ -100,7 +103,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     this._async.dispose();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { rootProps, children, theme, className, styles } = this.props;
     const { dragRect } = this.state;
 

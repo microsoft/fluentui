@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListenToChanges = () => {
+export const ListenToChanges = (): JSXElement => {
   const styles = useStyles();
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());

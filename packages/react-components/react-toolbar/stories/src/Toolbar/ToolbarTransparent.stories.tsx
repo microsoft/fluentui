@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 
-export const Transparent = (props: Partial<ToolbarProps>) => (
+export const Transparent = (props: Partial<ToolbarProps>): JSXElement => (
   <Toolbar aria-label="transparent" {...props}>
     <ToolbarToggleButton
       appearance="transparent"

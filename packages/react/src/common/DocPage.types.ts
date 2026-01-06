@@ -1,6 +1,8 @@
 import type { IStyleFunctionOrObject } from '../Utilities';
 import type { ITheme, IStyle } from '../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IExample {
   /** Title of the example */
   title: string;
@@ -9,7 +11,8 @@ export interface IExample {
   code: string;
 
   /** Working example of the example */
-  view: JSX.Element;
+
+  view: JSXElement;
 
   isScrollable?: boolean;
 
@@ -31,7 +34,8 @@ export interface IDocPageProps {
   componentUrl: string;
 
   /** Knobs that applies to all the examples */
-  exampleKnobs?: JSX.Element;
+
+  exampleKnobs?: JSXElement;
 
   /** Array of examples, displayed in the order defined */
   examples?: IExample[];
@@ -76,12 +80,14 @@ export interface IDocPageProps {
    * Related link
    * @deprecated No longer shown on ComponentPage
    */
-  related?: JSX.Element;
+
+  related?: JSXElement;
 
   /** Pass through other sections for ComponentPage */
   otherSections?: {
     title: string;
-    section: JSX.Element;
+
+    section: JSXElement;
   }[];
 
   /**

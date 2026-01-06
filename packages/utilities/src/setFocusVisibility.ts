@@ -28,7 +28,7 @@ function updateClassList(el: HTMLElement | null | undefined, enabled: boolean) {
 export function setFocusVisibility(
   enabled: boolean,
   target?: Element,
-  registeredProviders?: React.RefObject<HTMLElement>[],
+  registeredProviders?: React.RefObject<HTMLElement | null>[],
 ): void {
   if (registeredProviders) {
     registeredProviders.forEach(ref => updateClassList(ref.current, enabled));

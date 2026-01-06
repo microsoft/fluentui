@@ -11,6 +11,8 @@ import type { ShadowConfig } from '@fluentui/merge-styles';
 
 import { memoizeFunction } from '../memoize';
 
+import type { JSXElement } from '../jsx';
+
 const memoizedMakeShadowConfig = memoizeFunction(makeShadowConfig);
 const mergeComponentStyles = memoizeFunction(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,6 +35,8 @@ export function customizable(
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
       public static contextType = WindowContext;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      public context!: any;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
@@ -51,7 +55,7 @@ export function customizable(
         Customizations.unobserve(this._onSettingChanged);
       }
 
-      public render(): JSX.Element {
+      public render(): JSXElement {
         return (
           <MergeStylesShadowRootConsumer stylesheetKey={scope}>
             {(inShadow: boolean) => {

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * Utility for cleaning directories.
  * Usage: node build/clean.js %path%

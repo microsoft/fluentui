@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FluentProvider } from '@fluentui/react-provider';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
@@ -465,7 +464,7 @@ describe('SankeyChart - mouse events', () => {
 
   it('Should render tooltip correctly on mouseover when node description is large', () => {
     const { container } = render(<SankeyChart data={data()} height={500} width={800} />);
-    const textElement = container.querySelector('text[x="739"]');
+    const textElement = container.querySelector('text[x="740"]');
     fireEvent.mouseOver(textElement!);
     expect(container).toMatchSnapshot();
   });

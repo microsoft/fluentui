@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { CarouselSliderContextValue, CarouselSliderState } from './CarouselSlider.types';
 
@@ -7,7 +9,7 @@ export const carouselSliderContextDefaultValue: CarouselSliderContextValue = {
   cardFocus: false,
 };
 
-export const useCarouselSliderContext = () =>
+export const useCarouselSliderContext = (): CarouselSliderContextValue =>
   React.useContext(carouselSliderContext) ?? carouselSliderContextDefaultValue;
 
 export const CarouselSliderContextProvider = carouselSliderContext.Provider;

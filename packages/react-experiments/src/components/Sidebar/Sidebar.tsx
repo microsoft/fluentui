@@ -17,6 +17,7 @@ import type { IButtonStyles } from '@fluentui/react/lib/Button';
 import type { ITheme } from '@fluentui/react/lib/Styling';
 import type { ISidebarClassNames } from './Sidebar.classNames';
 import type { ISidebar, ISidebarItemProps, ISidebarProps } from './Sidebar.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ISidebarState {
   // whether the sidebar is currently collapsed or not.
@@ -52,7 +53,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } =
       this.props;
 
@@ -112,7 +113,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  public toggleCollapsed = () => {
+  public toggleCollapsed = (): void => {
     this.setState((prevState: ISidebarState) => {
       return { isCollapsed: !this.state.isCollapsed };
     });
@@ -136,19 +137,19 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return this.state.isCollapsed;
   }
 
-  private _renderItemInSidebar(item: ISidebarItemProps): JSX.Element | null {
+  private _renderItemInSidebar(item: ISidebarItemProps): JSXElement | null {
     if (!item) {
       return null;
     }
     if (item.onRender) {
-      return item.onRender(item, () => undefined) as JSX.Element;
+      return item.onRender(item, () => undefined) as JSXElement;
     } else if (item.items && item.items.length > 0) {
       return this._renderSidebarItemWithChildren(item);
     }
     return this._renderSidebarButton(item);
   }
 
-  private _renderSidebarButton(item: ISidebarItemProps, overrideCollapse: boolean = false): JSX.Element | null {
+  private _renderSidebarButton(item: ISidebarItemProps, overrideCollapse: boolean = false): JSXElement | null {
     if (!item) {
       return null;
     }
@@ -178,7 +179,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  private _renderSidebarItemWithChildren(item: ISidebarItemProps): JSX.Element | null {
+  private _renderSidebarItemWithChildren(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
     }
@@ -190,7 +191,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return this._renderSidebarButtonWithMenu(item);
   }
 
-  private _renderSidebarAccordion(item: ISidebarItemProps): JSX.Element | null {
+  private _renderSidebarAccordion(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
     }
@@ -238,7 +239,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  private _renderAccordionItems(items: ISidebarItemProps[] | undefined): JSX.Element | null {
+  private _renderAccordionItems(items: ISidebarItemProps[] | undefined): JSXElement | null {
     if (!items) {
       return null;
     }
@@ -254,7 +255,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return <div>{children}</div>;
   }
 
-  private _renderSidebarButtonWithMenu(item: ISidebarItemProps): JSX.Element | null {
+  private _renderSidebarButtonWithMenu(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
     }
@@ -274,7 +275,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     if (name) {
       children.unshift({
         key: name + '-header',
-        name: name,
+        name,
         iconProps: { iconName: '' },
         className: 'ba-SidebarContextualMenuButton-header ',
         disabled: true,
@@ -358,7 +359,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return className;
   }
 
-  private _renderSidebarButtonMenuItem = (item: any, dismissMenu: () => void): JSX.Element | null => {
+  private _renderSidebarButtonMenuItem = (item: any, dismissMenu: () => void): JSXElement | null => {
     return this._renderSidebarButton(item, true);
   };
 }

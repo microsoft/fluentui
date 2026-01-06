@@ -11,6 +11,8 @@ import {
 import { ScatterChartBasicExample } from './ScatterChart.Basic.Example';
 import { ScatterChartDateExample } from './ScatterChart.DateAxis.Example';
 import { ScatterChartStringExample } from './ScatterChart.StringAxis.Example';
+import { ScatterChartLogAxisExample } from './ScatterChart.LogAxis.Example';
+import type { JSXElement } from '@fluentui/utilities';
 
 const ScatterChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.Basic.Example.tsx') as string;
@@ -18,10 +20,12 @@ const ScatterChartDateExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.DateAxis.Example.tsx') as string;
 const ScatterChartStringExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.StringAxis.Example.tsx') as string;
+const ScatterChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.LogAxis.Example.tsx') as string;
 // All Scatter charts locale is impacted.
 
 export class ScatterChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Scatter Chart"
@@ -36,6 +40,9 @@ export class ScatterChartPage extends React.Component<IComponentDemoPageProps, {
             </ExampleCard>
             <ExampleCard title="ScatterChart string" code={ScatterChartStringExampleCode}>
               <ScatterChartStringExample />
+            </ExampleCard>
+            <ExampleCard title="ScatterChart log axis" code={ScatterChartLogAxisExampleCode}>
+              <ScatterChartLogAxisExample />
             </ExampleCard>
           </div>
         }

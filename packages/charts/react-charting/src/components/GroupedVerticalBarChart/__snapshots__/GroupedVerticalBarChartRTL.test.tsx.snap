@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Vertical Bar chart with data 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_GVBC_empty2"
+    id="_GVBC_empty3"
     role="alert"
     style="opacity: 0;"
   />
@@ -28,10 +28,10 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -39,12 +39,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -80,7 +82,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -172,7 +174,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -272,6 +274,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -541,7 +549,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -550,7 +558,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -784,10 +792,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -795,12 +803,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -836,7 +846,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -928,7 +938,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1028,6 +1038,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -1297,7 +1313,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1306,7 +1322,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1540,10 +1556,10 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -1551,12 +1567,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1592,7 +1610,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -1684,7 +1702,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1784,6 +1802,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -2053,7 +2077,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2062,7 +2086,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2296,10 +2320,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -2307,12 +2331,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2348,7 +2374,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2440,7 +2466,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2540,6 +2566,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -2809,7 +2841,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2818,7 +2850,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3052,10 +3084,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -3063,12 +3095,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -3104,7 +3138,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -3196,7 +3230,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -3296,6 +3330,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -3565,7 +3605,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3574,7 +3614,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4445,10 +4485,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -4456,12 +4496,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -4494,7 +4536,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           transform="translate(0, -35)"
         />
         <g
@@ -4522,8 +4564,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -4674,7 +4722,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone13"
+          data-focuszone-id="FocusZone14"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -5014,10 +5062,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -5025,12 +5073,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone12"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -5063,7 +5113,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           transform="translate(0, -35)"
         />
         <g
@@ -5091,8 +5141,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -7796,10 +7852,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_7"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_8"
       />
       <div
         class=
@@ -7807,12 +7863,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
-        data-focuszone-id="FocusZone15"
+            {
+              position: relative;
+            }
+        data-focuszone-id="FocusZone16"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -7848,7 +7906,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_7"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -7940,7 +7998,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_7"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -8040,6 +8098,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -8309,7 +8373,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone16"
+                  data-focuszone-id="FocusZone17"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -8318,7 +8382,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }

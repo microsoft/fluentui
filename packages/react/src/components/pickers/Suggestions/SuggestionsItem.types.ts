@@ -3,6 +3,7 @@ import type { IStyle, ITheme } from '../../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import type { ISuggestionModel } from './Suggestions.types';
 import { IIconProps } from '../../Icon/Icon.types';
+import type { JSXElement } from '@fluentui/utilities';
 /**
  * SuggestionItem component.
  * {@docCategory Pickers}
@@ -26,7 +27,7 @@ export interface ISuggestionItemProps<T> {
 
   /** Optional renderer to override the default one for each type of picker. */
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
+  RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSXElement;
 
   /** Callback for when the user clicks on the suggestion. */
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;

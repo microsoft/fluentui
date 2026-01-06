@@ -1,27 +1,18 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
 <div
-  className="TestClassName"
+  class="TestClassName"
 >
   <div
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
+    style="position: relative;"
   >
     <div
       data-automation-id="visibleContent"
-      style={
-        Object {
-          "position": "fixed",
-          "visibility": "hidden",
-        }
-      }
+      style="position: fixed; visibility: hidden;"
     >
       <div
-        className=
+        class=
             ms-FocusZone
             ms-CommandBar
             &:focus {
@@ -43,13 +34,10 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
             }
         data-focuszone-id="FocusZone0"
         data-tabster="{\\"uncontrolled\\": {}}"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
         role="menubar"
       >
         <div
-          className=
+          class=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
               {
@@ -62,7 +50,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
           role="none"
         >
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -71,7 +59,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
             role="none"
           >
             <button
-              className=
+              class=
                   ms-Button
                   ms-Button--commandBar
                   ms-CommandBarItem-link
@@ -174,19 +162,14 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                   &:active .ms-Button-menuIcon {
                     color: #323130;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               name="asdf"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
               role="menuitem"
+              tabindex="0"
               type="button"
             >
               <span
-                className=
+                class=
                     ms-Button-flexContainer
                     {
                       align-items: center;
@@ -198,7 +181,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                 data-automationid="splitbuttonprimary"
               >
                 <span
-                  className=
+                  class=
                       ms-Button-textContainer
                       {
                         display: block;
@@ -206,7 +189,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                       }
                 >
                   <span
-                    className=
+                    class=
                         ms-Button-label
                         {
                           display: block;
@@ -227,7 +210,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
             </button>
           </div>
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -236,7 +219,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
             role="none"
           >
             <button
-              className=
+              class=
                   ms-Button
                   ms-Button--commandBar
                   ms-CommandBarItem-link
@@ -339,19 +322,14 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                   &:active .ms-Button-menuIcon {
                     color: #323130;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               name="asdf"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
               role="menuitem"
+              tabindex="-1"
               type="button"
             >
               <span
-                className=
+                class=
                     ms-Button-flexContainer
                     {
                       align-items: center;
@@ -363,7 +341,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                 data-automationid="splitbuttonprimary"
               >
                 <span
-                  className=
+                  class=
                       ms-Button-textContainer
                       {
                         display: block;
@@ -371,7 +349,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                       }
                 >
                   <span
-                    className=
+                    class=
                         ms-Button-label
                         {
                           display: block;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IACLargeDataExampleState {
   width: number;
@@ -15,7 +16,7 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
@@ -26,7 +27,7 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const chart1Points = [
       {
         x: 20,

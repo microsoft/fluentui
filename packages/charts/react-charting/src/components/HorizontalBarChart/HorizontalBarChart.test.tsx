@@ -2,7 +2,7 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, HorizontalBarChart, HorizontalBarChartVariant } from './index';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const global: any;
@@ -174,7 +174,9 @@ describe('HorizontalBarChart - mouse events', () => {
     // Find the first bar (rect) and fire mouseOver
     const rects = wrapper.container.querySelectorAll('rect');
     expect(rects.length).toBeGreaterThan(0);
-    rects[2].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    act(() => {
+      rects[2].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
     // Wait for callout to appear
     expect(wrapper.container).toMatchSnapshot();
   });
@@ -195,7 +197,9 @@ describe('HorizontalBarChart - mouse events', () => {
     );
     const rects = container.querySelectorAll('rect');
     expect(rects.length).toBeGreaterThan(0);
-    rects[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    act(() => {
+      rects[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
     // Wait for the custom callout content to appear
     expect(container).toMatchSnapshot();
   });

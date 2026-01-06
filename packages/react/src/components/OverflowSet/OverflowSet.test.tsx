@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as path from 'path';
-import { RenderResult, act, fireEvent, render } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
-import { create } from '@fluentui/test-utilities';
+import { type RenderResult, act, fireEvent, render } from '@testing-library/react';
 
 import { CommandBarButton } from '../../Button';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
@@ -12,6 +10,8 @@ import { OverflowSet } from './OverflowSet';
 import { isConformant } from '../../common/isConformant';
 import type { IKeytipProps, IUniqueKeytip } from '../../Keytips';
 import type { IOverflowSetItemProps } from './OverflowSet.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
@@ -43,23 +43,25 @@ const runAllTimers = () =>
 describe('OverflowSet', () => {
   describe('snapshot tests', () => {
     test('basicSnapshot', () => {
-      const component = create(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={noOp} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={noOp} />);
+
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     test('snapshot with classname', () => {
-      const component = create(<OverflowSet className="foobar" onRenderItem={noOp} onRenderOverflowButton={noOp} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(
+        <OverflowSet className="foobar" onRenderItem={noOp} onRenderOverflowButton={noOp} />,
+      );
+
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     test('snapshot with classname and vertical layout', () => {
-      const component = create(
+      const { container } = render(
         <OverflowSet className="foobar" vertical onRenderItem={noOp} onRenderOverflowButton={noOp} />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 
@@ -71,16 +73,14 @@ describe('OverflowSet', () => {
 
   it('does not render overflow when there are no overflow items', () => {
     const onRenderOverflowButton = jest.fn();
-    renderer.create(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} />);
+    render(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} />);
 
     expect(onRenderOverflowButton).not.toHaveBeenCalled();
   });
 
   it('does not render overflow when overflow items is an empty array', () => {
     const onRenderOverflowButton = jest.fn();
-    renderer.create(
-      <OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />,
-    );
+    render(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />);
 
     expect(onRenderOverflowButton).not.toHaveBeenCalled();
   });
@@ -92,7 +92,7 @@ describe('OverflowSet', () => {
     let overflowItems: IOverflowSetItemProps[];
     const layerRef = React.createRef<KeytipLayerBase>();
 
-    const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
+    const onRenderItem = (item: IOverflowSetItemProps): JSXElement => {
       return (
         <CommandBarButton {...item} menuProps={item.subMenuProps}>
           {item.name}
@@ -100,7 +100,7 @@ describe('OverflowSet', () => {
       );
     };
 
-    const onRenderOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
+    const onRenderOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
       return (
         <CommandBarButton
           menuIconProps={{ iconName: 'More' }}
@@ -574,7 +574,7 @@ describe('OverflowSet', () => {
             },
           ];
 
-          const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
+          const delayedOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
             // Overflow button which delays 2s before opening the menu
             // This simulates latency when opening the menu
             // (note that we'll actually skip through this latency with jest.runAllTimers())

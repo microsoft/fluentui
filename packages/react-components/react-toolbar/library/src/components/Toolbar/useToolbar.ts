@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useEventCallback, useControllableState, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { ToggableHandler, ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';

@@ -31,6 +31,8 @@ import type { KeytipTransitionModifier, IKeytipTransitionKey } from '../../utili
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
   keytips: IKeytipProps[];
@@ -66,6 +68,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _events: EventGroup;
   private _async: Async;
@@ -83,7 +86,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   private _keyHandled = false;
 
   constructor(props: IKeytipLayerProps, context: any) {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     initializeComponentRef(this);
@@ -111,7 +113,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { content, styles } = this.props;
 
     const { keytips, visibleKeytips } = this.state;

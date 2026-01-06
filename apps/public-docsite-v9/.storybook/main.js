@@ -9,7 +9,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   ...rootMain,
   stories: [
     ...rootMain.stories,
-    '../src/**/*.stories.mdx',
+    '../src/**/*.mdx',
     '../src/**/index.stories.@(ts|tsx)',
     ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
     ...getPackageStoriesGlob({
@@ -20,8 +20,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
         '@fluentui/theme-designer',
         // Exclude non v9 stories
         '@fluentui/react',
-        '@fluentui/react-northstar',
-        '@fluentui/react-icons-northstar',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
         '@fluentui/react-nav',
       ],
@@ -35,8 +33,11 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
+  build: {
+    previewUrl: process.env.DEPLOY_PATH,
+  },
   webpackFinal: (config, options) => {
-    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
+    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal(config, options) });
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
@@ -54,7 +55,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     charts: {
       title: 'Charts v9',
       // Workaround to enable docsite using PR workflow till master workflow is enabled
-      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
+      url: 'https://storybooks.fluentui.dev/charts/',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts',
     },
