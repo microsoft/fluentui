@@ -4,53 +4,130 @@ import {
   scaleLog as d3ScaleLog,
   scaleTime as d3ScaleTime,
   scaleUtc as d3ScaleUtc,
+  NumberValue,
   ScaleContinuousNumeric,
   ScaleTime,
 } from 'd3-scale';
-import { extent as d3Extent } from 'd3-array';
+import { extent as d3Extent, range as d3Range } from 'd3-array';
+import { format as d3Format } from 'd3-format';
 import { AxisScaleType } from '../../types/DataPoint';
+import {
+  generateDateTicks,
+  generateNumericTicks,
+  getDateFormatLevel,
+  isValidDomainValue,
+} from '../../utilities/utilities';
+import {
+  isInvalidValue,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  formatDateToLocaleString,
+} from '@fluentui/chart-utilities';
+import { timeFormat as d3TimeFormat, utcFormat as d3UtcFormat } from 'd3-time-format';
 
-export const createScale = (
+export const EPSILON = 1e-6;
+
+export const createRadialScale = (
   scaleType: string,
   domain: (string | number | Date)[],
   range: number[],
   opts: {
     useUTC?: boolean;
-    niceBounds?: boolean;
-    innerPadding?: number;
     tickCount?: number;
-    hideTickOverlap?: boolean;
     tickValues?: (string | number | Date)[];
     tickText?: string[];
-    tickFormat?: () => string;
+    tickFormat?: string;
+    culture?: string;
+    tickStep?: number | string;
+    tick0?: number | Date;
+    dateLocalizeOptions?: Intl.DateTimeFormatOptions;
   } = {},
 ) => {
   if (scaleType === 'category') {
-    return d3ScaleBand()
+    const scale = d3ScaleBand()
       .domain(domain as string[])
       .range(range)
-      .paddingInner(opts.innerPadding || 0);
+      .paddingInner(1);
+    const tickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as string[]) : (domain as string[]);
+    const tickFormat = (domainValue: string, index: number) => {
+      if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
+        return opts.tickText[index];
+      }
+      return domainValue;
+    };
+    return { scale, tickValues, tickLabels: tickValues.map(tickFormat) };
   }
 
   let scale: ScaleContinuousNumeric<number, number, undefined> | ScaleTime<number, number>;
-  switch (scaleType) {
-    case 'log':
-      scale = d3ScaleLog();
-      break;
-    case 'date':
-      scale = opts.useUTC ? d3ScaleUtc() : d3ScaleTime();
-      break;
-    default:
-      scale = d3ScaleLinear();
+  if (scaleType === 'date') {
+    scale = opts.useUTC ? d3ScaleUtc() : d3ScaleTime();
+  } else {
+    scale = scaleType === 'log' ? d3ScaleLog() : d3ScaleLinear();
   }
 
   scale.domain(domain as (number | Date)[]);
   scale.range(range);
-  if (opts.niceBounds) {
-    scale.nice();
-  }
+  scale.nice();
 
-  return scale;
+  const tickCount = opts.tickCount ?? 3;
+  let tickFormat;
+  let customTickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as (number | Date)[]) : undefined;
+  if (scaleType === 'date') {
+    let lowestFormatLevel = 100;
+    let highestFormatLevel = -1;
+
+    (scale as ScaleTime<number, number>).ticks().forEach((domainValue: Date) => {
+      const formatLevel = getDateFormatLevel(domainValue, opts.useUTC);
+      if (formatLevel > highestFormatLevel) {
+        highestFormatLevel = formatLevel;
+      }
+      if (formatLevel < lowestFormatLevel) {
+        lowestFormatLevel = formatLevel;
+      }
+    });
+    const formatOptions =
+      opts.dateLocalizeOptions ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+    tickFormat = (domainValue: Date, index: number) => {
+      if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
+        return opts.tickText[index];
+      }
+      if (isInvalidValue(opts.culture) && typeof opts.tickFormat === 'string') {
+        if (opts.useUTC) {
+          return d3UtcFormat(opts.tickFormat)(domainValue);
+        } else {
+          return d3TimeFormat(opts.tickFormat)(domainValue);
+        }
+      }
+      return formatDateToLocaleString(domainValue, opts.culture, opts.useUTC, false, formatOptions);
+    };
+    if (opts.tickStep) {
+      customTickValues = generateDateTicks(opts.tickStep, opts.tick0, scale.domain() as Date[], opts.useUTC);
+    }
+  } else {
+    const defaultTickFormat = (scale as ScaleContinuousNumeric<number, number>).tickFormat(tickCount);
+    tickFormat = (domainValue: NumberValue, index: number) => {
+      if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
+        return opts.tickText[index];
+      }
+      if (typeof opts.tickFormat === 'string') {
+        return d3Format(opts.tickFormat)(domainValue);
+      }
+      const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+      return defaultTickFormat(value) === '' ? '' : (formatToLocaleString(value, opts.culture) as string);
+    };
+    if (opts.tickStep) {
+      customTickValues = generateNumericTicks(
+        scaleType as AxisScaleType,
+        opts.tickStep,
+        opts.tick0,
+        scale.domain() as number[],
+      );
+    }
+  }
+  const tickValues = customTickValues ?? scale.ticks(tickCount);
+  const tickLabels = tickValues.map(tickFormat);
+
+  return { scale, tickValues, tickLabels };
 };
 
 export const getScaleType = (
@@ -73,27 +150,89 @@ export const getScaleType = (
   return scaleType;
 };
 
-export const getDomain = (
+export const getScaleDomain = (
   scaleType: string,
   values: (string | number | Date)[],
   opts: {
-    start?: number | Date;
-    end?: number | Date;
+    rangeStart?: number | Date;
+    rangeEnd?: number | Date;
   } = {},
 ) => {
   if (scaleType === 'category') {
     return Array.from(new Set(values));
   }
 
-  let [min, max] = d3Extent(values as (number | Date)[]);
-  if (typeof opts.start !== 'undefined') {
-    min = opts.start;
+  let [min, max] = d3Extent(values.filter(v => isValidDomainValue(v, scaleType as AxisScaleType)) as (number | Date)[]);
+  if (scaleType === 'linear') {
+    [min, max] = d3Extent([min, max, 0] as number[]);
   }
-  if (typeof opts.end !== 'undefined') {
-    max = opts.end;
+  if (!isInvalidValue(opts.rangeStart)) {
+    min = opts.rangeStart;
   }
-  if (typeof min !== 'undefined' && typeof max !== 'undefined') {
-    return [min, max];
+  if (!isInvalidValue(opts.rangeEnd)) {
+    max = opts.rangeEnd;
   }
-  return [];
+
+  if (isInvalidValue(min) || isInvalidValue(max)) {
+    return [];
+  }
+  return [min!, max!];
+};
+
+export const degToRad = (deg: number) => (deg * Math.PI) / 180;
+
+export const createAngularScale = (
+  scaleType: string,
+  domain: (string | number | Date)[],
+  // range: number[],
+  opts: {
+    tickCount?: number;
+    tickValues?: (string | number | Date)[];
+    tickText?: string[];
+    tickFormat?: string;
+    culture?: string;
+    tickStep?: number | string;
+    tick0?: number | Date;
+  } = {},
+): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
+  if (scaleType === 'category') {
+    const mp = {};
+    domain.forEach((d, i) => {
+      mp[d] = i;
+    });
+    const x = 360 / domain.length;
+    const tickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as string[]) : (domain as string[]);
+    const tickFormat = (domainValue: string, index: number) => {
+      if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
+        return opts.tickText[index];
+      }
+      return domainValue;
+    };
+    return {
+      scale: (v: string) => degToRad(mp[v] * x),
+      tickValues,
+      tickLabels: tickValues.map(tickFormat),
+    };
+  }
+
+  let customTickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as number[]) : undefined;
+  const tickFormat = (domainValue: number, index: number) => {
+    if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
+      return opts.tickText[index];
+    }
+    if (typeof opts.tickFormat === 'string') {
+      return d3Format(opts.tickFormat)(domainValue);
+    }
+    return formatToLocaleString(domainValue, opts.culture) as string;
+  };
+  if (opts.tickStep) {
+    customTickValues = generateNumericTicks(scaleType as AxisScaleType, opts.tickStep, opts.tick0, [0, 360 - EPSILON]);
+  }
+  const tickValues = customTickValues ?? d3Range(0, 360, 360 / (opts.tickCount ?? 8));
+
+  return {
+    scale: (v: number) => degToRad(v),
+    tickValues,
+    tickLabels: tickValues.map(tickFormat),
+  };
 };

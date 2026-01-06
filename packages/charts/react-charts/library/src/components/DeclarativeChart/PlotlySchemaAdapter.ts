@@ -94,7 +94,7 @@ import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
 import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
-import { PolarChartProps } from '../PolarChart/PolarChart.types';
+import { PolarAxisProps, PolarChartProps } from '../PolarChart/PolarChart.types';
 import {
   ChartAnnotation,
   ChartAnnotationArrowHead,
@@ -3087,6 +3087,7 @@ export const transformPlotlyJsonToPolarChartProps = (
     width: input.layout?.width,
     height: input.layout?.height ?? 400,
     hideLegend,
+    ...getsomething(input.data, input.layout),
   };
 };
 
@@ -4018,4 +4019,102 @@ const parseLocalDate = (value: string | number) => {
     }
   }
   return new Date(value);
+};
+
+const getAxisType2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): AxisType => {
+  if (['linear', 'log', 'date', 'category'].includes(ax?.type ?? '')) {
+    return ax!.type!;
+  }
+
+  if (isNumberArray(values) && !isYearArray(values)) {
+    return 'linear';
+  }
+  if (isDateArray(values)) {
+    return 'date';
+  }
+  return 'category';
+};
+
+const getAxisTickProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): PolarAxisProps => {
+  if (!ax) {
+    return {};
+  }
+
+  const props: PolarAxisProps = {};
+  const axType = getAxisType2(values, ax);
+
+  if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+    const tickValues = axType === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
+
+    props.tickValues = tickValues;
+    props.tickText = ax.ticktext;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+    const dtick = plotlyDtick(ax.dtick, axType);
+    const tick0 = plotlyTick0(ax.tick0, axType, dtick);
+
+    props.tickStep = dtick;
+    props.tick0 = tick0;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
+    props.tickCount = ax.nticks;
+  }
+
+  return props;
+};
+
+const getAxisCategoryOrderProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined) => {
+  const axType = getAxisType2(values, ax);
+  if (axType !== 'category') {
+    return 'data';
+  }
+
+  const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
+  if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
+    return ax!.categoryarray;
+  }
+
+  if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+    const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+    return ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
+  }
+
+  return ax.categoryorder;
+};
+
+const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const m = {
+    r: 'radialAxis',
+    theta: 'angularAxis',
+  };
+
+  const props = {};
+
+  Object.entries(m).forEach(([key, propName]) => {
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      if (isArrayOrTypedArray(series[key])) {
+        series[key]!.forEach(val => {
+          if (!isInvalidValue(val)) {
+            values.push(val as Datum);
+          }
+        });
+      }
+    });
+
+    const subplotId = (data[0] as { subplot?: string })?.subplot || 'polar';
+    props[propName] = {
+      categoryOrder: getAxisCategoryOrderProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
+      ...getAxisTickProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
+      tickFormat: '',
+      title: '',
+      scaleType: '',
+    };
+  });
+
+  return props;
 };

@@ -335,7 +335,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-function getMultiLevelD3DateFormatter(
+export function getMultiLevelD3DateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
@@ -2358,7 +2358,7 @@ export const generateMonthlyTicks = (
   return ticks;
 };
 
-const generateNumericTicks = (
+export const generateNumericTicks = (
   scaleType: AxisScaleType | undefined,
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
@@ -2391,7 +2391,7 @@ const generateNumericTicks = (
   }
 };
 
-const generateDateTicks = (
+export const generateDateTicks = (
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],

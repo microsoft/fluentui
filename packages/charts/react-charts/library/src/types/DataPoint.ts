@@ -1258,7 +1258,7 @@ export interface PolarDataPoint {
   /**
    *
    */
-  r: number;
+  r: string | number | Date;
 
   /**
    *

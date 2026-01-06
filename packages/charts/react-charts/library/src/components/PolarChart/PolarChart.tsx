@@ -4,20 +4,24 @@ import * as React from 'react';
 import { PolarChartProps } from './PolarChart.types';
 import { usePolarChartStyles } from './usePolarChartStyles.styles';
 import { useImageExport } from '../../utilities/hooks';
-import { pointRadial as d3PointRadial, areaRadial as d3AreaRadial, lineRadial as d3LineRadial } from 'd3-shape';
+import {
+  pointRadial as d3PointRadial,
+  areaRadial as d3AreaRadial,
+  lineRadial as d3LineRadial,
+  curveLinearClosed as d3CurveLinearClosed,
+} from 'd3-shape';
 import { PolarDataPoint } from '../../types/DataPoint';
 import { tokens } from '@fluentui/react-theme';
 import { Legend, Legends } from '../Legends/index';
-import { createScale, getDomain, getScaleType } from './PolarChart.utils';
+import { createRadialScale, getScaleDomain, getScaleType, EPSILON, createAngularScale } from './PolarChart.utils';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { getCurveFactory, getColorFromToken, getNextColor } from '../../utilities/index';
+import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { extent as d3Extent } from 'd3-array';
 
 const DEFAULT_LEGEND_HEIGHT = 32;
 const LABEL_WIDTH = 36;
 const LABEL_HEIGHT = 16;
 const LABEL_OFFSET = 8;
-const EPSILON = 1e-6;
 const MIN_PIXEL = 4;
 const MAX_PIXEL = 16;
 
@@ -75,9 +79,9 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
     const svgWidth = props.width || containerWidth;
     const svgHeight = (props.height || containerHeight) - legendContainerHeight;
-    const innerRadius = props.innerRadius || 0;
     const outerRadius =
       Math.min(svgWidth - (margins.left + margins.right), svgHeight - (margins.top + margins.bottom)) / 2;
+    const innerRadius = Math.min(Math.abs(props.hole || 0), 1) * outerRadius;
 
     const legendColorMap = React.useRef<Record<string, string>>({});
     const chartData = React.useMemo(() => {
@@ -103,90 +107,114 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       });
     }, [props.data]);
 
-    const xValues = React.useMemo(() => chartData.flatMap(series => series.data.map(point => point.r)), [chartData]);
-    const xScaleType = React.useMemo(
+    const rValues = React.useMemo(() => chartData.flatMap(series => series.data.map(point => point.r)), [chartData]);
+    const rScaleType = React.useMemo(
       () =>
-        getScaleType(xValues, {
-          scaleType: props.xScaleType,
+        getScaleType(rValues, {
+          scaleType: props.radialAxis?.scaleType,
           supportsLog: true,
         }),
-      [xValues, props.xScaleType],
+      [rValues, props.radialAxis?.scaleType],
     );
-    const xDomain = React.useMemo(() => getDomain(xScaleType, xValues), [xScaleType, xValues]);
-    const xScale = React.useMemo(
-      () => createScale(xScaleType, xDomain, [innerRadius, outerRadius], { innerPadding: 1 }),
-      [xScaleType, xDomain, innerRadius, outerRadius],
+    const rScaleDomain = React.useMemo(
+      () =>
+        getScaleDomain(rScaleType, rValues, {
+          rangeStart: props.radialAxis?.rangeStart,
+          rangeEnd: props.radialAxis?.rangeEnd,
+        }),
+      [rScaleType, rValues, props.radialAxis?.rangeStart, props.radialAxis?.rangeEnd],
     );
-    const xTickValues = React.useMemo(() => ('ticks' in xScale ? xScale.ticks(3) : xScale.domain()), [xScale]);
-    const xTickFormat = React.useCallback((x: string | number | Date) => `${x}`, []);
+    const {
+      scale: rScale,
+      tickValues: rTickValues,
+      tickLabels: rTickLabels,
+    } = React.useMemo(
+      () =>
+        createRadialScale(rScaleType, rScaleDomain, [innerRadius, outerRadius], {
+          useUTC: props.useUTC,
+          tickCount: props.radialAxis?.tickCount,
+          tickValues: props.radialAxis?.tickValues,
+          tickText: props.radialAxis?.tickText,
+          tickFormat: props.radialAxis?.tickFormat,
+          culture: props.culture,
+          tickStep: props.radialAxis?.tickStep,
+          tick0: props.radialAxis?.tick0,
+          dateLocalizeOptions: props.dateLocalizeOptions,
+        }),
+      [rScaleType, rScaleDomain, innerRadius, outerRadius],
+    );
 
-    const yValues = React.useMemo(
+    const aValues = React.useMemo(
       () => chartData.flatMap(series => series.data.map(point => point.theta)),
       [chartData],
     );
-    const yScaleType = React.useMemo(
+    const aType = React.useMemo(
       () =>
-        getScaleType(yValues, {
-          scaleType: props.yScaleType,
+        getScaleType(aValues, {
+          scaleType: props.angularAxis?.scaleType,
           supportsLog: true,
         }),
-      [yValues, props.yScaleType],
+      [aValues, props.angularAxis?.scaleType],
     );
-    const yDomain = React.useMemo(() => getDomain(yScaleType, yValues), [yScaleType, yValues]);
-    const yScale = React.useMemo(
+    const aDomain = React.useMemo(() => getScaleDomain(aType, aValues), [aType, aValues]);
+    const {
+      scale: aScale,
+      tickValues: aTickValues,
+      tickLabels: aTickLabels,
+    } = React.useMemo(
       () =>
-        createScale(yScaleType, yScaleType === 'category' ? [...yDomain, ''] : yDomain, [0, 2 * Math.PI], {
-          innerPadding: 1,
+        createAngularScale(aType, aDomain, {
+          tickCount: props.angularAxis?.tickCount,
+          tickValues: props.angularAxis?.tickValues,
+          tickText: props.angularAxis?.tickText,
+          tickFormat: props.angularAxis?.tickFormat,
+          culture: props.culture,
+          tickStep: props.angularAxis?.tickStep,
+          tick0: props.angularAxis?.tick0,
         }),
-      [yScaleType, yDomain],
+      [aType, aDomain],
     );
-    const yTickValues = React.useMemo(
-      () => ('ticks' in yScale ? yScale.ticks() : yScale.domain().slice(0, -1)),
-      [yScale],
-    );
-    const yTickFormat = React.useCallback((y: string | number | Date) => `${y}`, []);
 
     const classes = usePolarChartStyles(props);
 
     const renderPolarGrid = React.useCallback(() => {
-      const extXTickValues = [];
-      if (innerRadius > 0 && xDomain[0] !== xTickValues[0]) {
-        extXTickValues.push(xDomain[0]);
+      const extRTickValues = [];
+      if (innerRadius > 0 && rScaleDomain[0] !== rTickValues[0]) {
+        extRTickValues.push(rScaleDomain[0]);
       }
-      extXTickValues.push(...xTickValues);
-      if (xDomain[xDomain.length - 1] !== xTickValues[xTickValues.length - 1]) {
-        extXTickValues.push(xDomain[xDomain.length - 1]);
+      extRTickValues.push(...rTickValues);
+      if (rScaleDomain[rScaleDomain.length - 1] !== rTickValues[rTickValues.length - 1]) {
+        extRTickValues.push(rScaleDomain[rScaleDomain.length - 1]);
       }
 
       return (
         <g>
           <g>
-            {extXTickValues.map((xTickValue, xTickIndex) => {
-              const className =
-                xTickIndex === extXTickValues.length - 1 ? classes.gridLineOuter : classes.gridLineInner;
+            {extRTickValues.map((r, rIndex) => {
+              const className = rIndex === extRTickValues.length - 1 ? classes.gridLineOuter : classes.gridLineInner;
 
               if (props.shape === 'polygon') {
                 let d = '';
-                yTickValues.forEach((yTickValue, yTickIndex) => {
-                  const radialPoint = d3PointRadial(yScale(yTickValue as any)!, xScale(xTickValue as any)!);
-                  d += (yTickIndex === 0 ? 'M' : 'L') + radialPoint.join(',') + ' ';
+                aTickValues.forEach((a, aIndex) => {
+                  const radialPoint = d3PointRadial(aScale(a), rScale(r as any)!);
+                  d += (aIndex === 0 ? 'M' : 'L') + radialPoint.join(',') + ' ';
                 });
                 d += 'Z';
 
-                return <path key={xTickIndex} d={d} className={className} />;
+                return <path key={rIndex} d={d} className={className} />;
               }
 
-              return <circle key={xTickIndex} cx={0} cy={0} r={xScale(xTickValue as any)} className={className} />;
+              return <circle key={rIndex} cx={0} cy={0} r={rScale(r as any)} className={className} />;
             })}
           </g>
           <g>
-            {yTickValues.map((yTickValue, yTickIndex) => {
-              const radialPoint1 = d3PointRadial(yScale(yTickValue as any)!, innerRadius);
-              const radialPoint2 = d3PointRadial(yScale(yTickValue as any)!, outerRadius);
+            {aTickValues.map((a, aIndex) => {
+              const radialPoint1 = d3PointRadial(aScale(a), innerRadius);
+              const radialPoint2 = d3PointRadial(aScale(a), outerRadius);
 
               return (
                 <path
-                  key={yTickIndex}
+                  key={aIndex}
                   d={`M${radialPoint1.join(',')} L${radialPoint2.join(',')}`}
                   className={classes.gridLineInner}
                 />
@@ -195,36 +223,36 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         </g>
       );
-    }, [innerRadius, outerRadius, xDomain, xTickValues, yTickValues, xScale, yScale, props.shape, classes]);
+    }, [innerRadius, outerRadius, rScaleDomain, rTickValues, aTickValues, rScale, aScale, props.shape, classes]);
 
     const renderPolarTicks = React.useCallback(() => {
       return (
         <g>
           <g>
-            {xTickValues.map((xTickValue, xTickIndex) => {
+            {rTickValues.map((r, rIndex) => {
               return (
                 <text
-                  key={xTickIndex}
+                  key={rIndex}
                   x={-LABEL_OFFSET}
-                  y={-xScale(xTickValue as any)!}
+                  y={-rScale(r as any)!}
                   textAnchor="end"
                   dominantBaseline="middle"
                   aria-hidden={true}
                   className={classes.tickLabel}
                 >
-                  {xTickFormat(xTickValue)}
+                  {rTickLabels[rIndex]}
                 </text>
               );
             })}
           </g>
           <g>
-            {yTickValues.map((yTickValue, yTickIndex) => {
-              const angle = yScale(yTickValue as any)!;
+            {aTickValues.map((a, aIndex) => {
+              const angle = aScale(a);
               const [pointX, pointY] = d3PointRadial(angle, outerRadius + LABEL_OFFSET);
 
               return (
                 <text
-                  key={yTickIndex}
+                  key={aIndex}
                   x={pointX}
                   y={pointY}
                   textAnchor={
@@ -238,14 +266,14 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
                   aria-hidden={true}
                   className={classes.tickLabel}
                 >
-                  {yTickFormat(yTickValue)}
+                  {aTickLabels[aIndex]}
                 </text>
               );
             })}
           </g>
         </g>
       );
-    }, [xTickValues, yTickValues, xScale, yScale, outerRadius, xTickFormat, yTickFormat, classes]);
+    }, [rTickValues, aTickValues, rScale, aScale, outerRadius, classes]);
 
     const getActiveLegends = React.useCallback(() => {
       return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
@@ -264,10 +292,10 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
       return areaData.map((series, seriesIndex) => {
         const radialArea = d3AreaRadial<PolarDataPoint>()
-          .angle(d => yScale(d.theta as any)!)
+          .angle(d => aScale(d.theta))
           .innerRadius(innerRadius)
-          .outerRadius(d => xScale(d.r as any)!)
-          .curve(getCurveFactory(series.lineOptions?.curve));
+          .outerRadius(d => rScale(d.r as any)!)
+          .curve(d3CurveLinearClosed);
         const shouldHighlight = legendHighlighted(series.legend);
 
         return (
@@ -294,16 +322,16 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         );
       });
-    }, [chartData, innerRadius, xScale, yScale, legendHighlighted]);
+    }, [chartData, innerRadius, rScale, aScale, legendHighlighted]);
 
     const renderRadialLines = React.useCallback(() => {
       const lineData = chartData.filter(series => series.type === 'linepolar');
 
       return lineData.map((series, seriesIndex) => {
         const radialLine = d3LineRadial<PolarDataPoint>()
-          .angle(d => yScale(d.theta as any)!)
-          .radius(d => xScale(d.r as any)!)
-          .curve(getCurveFactory(series.lineOptions?.curve));
+          .angle(d => aScale(d.theta))
+          .radius(d => rScale(d.r as any)!)
+          .curve(d3CurveLinearClosed);
 
         return (
           <g
@@ -328,7 +356,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         );
       });
-    }, [chartData, xScale, yScale, legendHighlighted]);
+    }, [chartData, rScale, aScale, legendHighlighted]);
 
     const [minMarkerSize, maxMarkerSize] = React.useMemo(
       () => d3Extent<number>(chartData.flatMap(series => series.data.map(point => point.markerSize as number))),
@@ -344,10 +372,10 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       ) => {
         setPopoverTarget(event.currentTarget);
         setPopoverOpen(legendHighlighted(legend));
-        setPopoverXValue(point.radialAxisCalloutData ?? xTickFormat(point.r));
+        setPopoverXValue(point.radialAxisCalloutData ?? point.r);
         setPopoverLegend(legend);
         setPopoverColor(point.color!);
-        setPopoverYValue(point.angularAxisCalloutData ?? yTickFormat(point.theta));
+        setPopoverYValue(point.angularAxisCalloutData ?? point.theta);
         setActivePoint(pointId);
       },
       [],
@@ -371,7 +399,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               } data points.`}
             >
               {series.data.map((point, pointIndex) => {
-                const [x, y] = d3PointRadial(yScale(point.theta as any)!, xScale(point.r as any)!);
+                const [x, y] = d3PointRadial(aScale(point.theta), rScale(point.r as any)!);
                 const id = `${seriesIndex}-${pointIndex}`;
                 const isActive = activePoint === id;
                 let radius = isActive ? 6 : MIN_PIXEL;
@@ -381,9 +409,9 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
                     ((point.markerSize - minMarkerSize!) / (maxMarkerSize! - minMarkerSize!)) * (MAX_PIXEL - MIN_PIXEL);
                 }
 
-                const xValue = point.radialAxisCalloutData || xTickFormat(point.r);
+                const xValue = point.radialAxisCalloutData || point.r;
                 const legend = series.legend;
-                const yValue = point.angularAxisCalloutData || yTickFormat(point.theta);
+                const yValue = point.angularAxisCalloutData || point.theta;
                 const ariaLabel = point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
 
                 return (
@@ -408,17 +436,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           );
         });
       },
-      [
-        legendHighlighted,
-        xScale,
-        yScale,
-        activePoint,
-        showPopover,
-        xTickFormat,
-        yTickFormat,
-        minMarkerSize,
-        maxMarkerSize,
-      ],
+      [legendHighlighted, rScale, aScale, activePoint, showPopover, minMarkerSize, maxMarkerSize],
     );
 
     const onLegendSelectionChange = React.useCallback(
