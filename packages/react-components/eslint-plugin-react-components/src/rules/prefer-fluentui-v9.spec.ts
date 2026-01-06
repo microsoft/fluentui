@@ -87,5 +87,23 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    {
+      code: `function hello() { import('@fluentui/react').then(m => { window.v8 = m.Button; console.log('react loaded'); }); }`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Button', fluent9: 'Button', package: '@fluentui/react-components' },
+        },
+      ],
+    },
+    {
+      code: `async function loadComponent() { const m = await import('@fluentui/react'); return m.Calendar; }`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Calendar', fluent9: 'Calendar', package: '@fluentui/react-calendar-compat' },
+        },
+      ],
+    },
   ],
 });
