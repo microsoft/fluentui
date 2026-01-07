@@ -10,10 +10,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@swc/helpers": "^0.5.1",
     "babel-loader": "^9.1.3",

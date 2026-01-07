@@ -74,7 +74,7 @@ jobs:
 
       - name: build, test, lint, test-ssr (affected)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --exclude react-19-tests-v9 --nxBail
+          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
@@ -165,7 +165,7 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e --exclude react-19-tests-v9 --nxBail --parallel 1
+        run: yarn nx affected -t e2e --nxBail --parallel 1
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v6

@@ -546,6 +546,7 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/tsconfig.json",
                         "{projectRoot}/tsconfig.lib.json",
                         "{projectRoot}/src/**/*.tsx?",
+                        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
                         Object {
                           "externalDependencies": Array [
                             "@microsoft/api-extractor",
@@ -631,6 +632,7 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/tsconfig.json",
                         "{projectRoot}/tsconfig.lib.json",
                         "{projectRoot}/src/**/*.tsx?",
+                        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
                         Object {
                           "externalDependencies": Array [
                             "@microsoft/api-extractor",

@@ -6,13 +6,6 @@ const rootConfig = require('../../../../eslint.config.js');
 module.exports = defineConfig([
   ...rootConfig,
   {
-    rules: {
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          packageDir: ['.', '../../../../'],
-        },
-      ],
-    },
+    rules: {},
   },
 ]);
