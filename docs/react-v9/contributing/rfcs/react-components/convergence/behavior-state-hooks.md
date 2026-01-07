@@ -23,6 +23,9 @@ Behavior state hooks provide pure behavior and accessibility for Fluent UI v9 co
 - Motion logic (animations, transitions)
 - Default slot implementations (icons, components)
 
+> [!IMPORTANT]
+> Behavior state hooks provide ARIA attributes and semantic structure, but **not visual accessibility** (e.g., focus indicators, sufficient contrast). You're responsible for implementing these in your custom styles.
+
 Behavior state hooks serve as the foundation layer that styled components are built upon.
 
 ## Problem Statement
@@ -389,7 +392,10 @@ Most teams should use the styled component layer. Behavior state hooks are only 
 
 ### Do behavior state hooks guarantee accessibility?
 
-Behavior state hooks provide correct ARIA attributes, keyboard handling, and semantic structure. However, **you're responsible for ensuring custom styles don't interfere with accessibility (e.g., sufficient contrast, visible focus indicators).**
+Behavior state hooks provide correct ARIA attributes, keyboard handling, and semantic structure.
+
+> [!IMPORTANT]
+> You're responsible for ensuring custom styles don't interfere with accessibility (e.g., sufficient contrast, visible focus indicators).
 
 ### What about accessibility-critical inline styles?
 
@@ -417,11 +423,24 @@ This gives teams maximum control and avoids bundling code they might not use. If
 
 ### Can I mix behavior state hooks with styled components?
 
-Yes! You can use behavior state hooks for some components and styled components for others in the same application. Keep in mind you'll need to provide styles when using behavior state hooks.
+Yes. You can use behavior state hooks for some components and styled components for others in the same application.
+
+> [!NOTE]
+> We recommend sticking to a single option in your application to avoid UI misalignments.
+
+Keep in mind you'll need to provide styles when using behavior state hooks.
 
 ### Why the `_unstable` suffix?
 
 The `_unstable` suffix is consistent with Fluent UI's convention for hooks. While behavior state hooks are meant to be used in production, the suffix indicates they're lower-level primitives whose implementation details may evolve.
+
+## Out of Scope
+
+### Render functions
+
+Behavior state hooks provide only state and accessibility handling. To build complete components, you'll also need render functions to produce markup.
+
+We recommend re-using existing render functions (e.g., `renderButton_unstable`) rather than implementing custom render logic. Components that use portals or complex rendering patterns may require additional considerations. Future guidance on render functions will be provided in the Unstyled Components RFC.
 
 ## Future Work
 
