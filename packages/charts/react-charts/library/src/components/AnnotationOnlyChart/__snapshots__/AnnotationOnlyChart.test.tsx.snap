@@ -64,11 +64,12 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                   >
                     <div
                       aria-label="Test Annotation 1"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-1"
                       data-chart-annotation="true"
                       role="note"
                       style="opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 1
                     </div>
@@ -89,11 +90,12 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                   >
                     <div
                       aria-label="Test Annotation 2"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-2"
                       data-chart-annotation="true"
                       role="note"
                       style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 2
                     </div>
@@ -191,11 +193,12 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                   >
                     <div
                       aria-label="Test Annotation 1"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-1"
                       data-chart-annotation="true"
                       role="note"
                       style="opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 1
                     </div>
@@ -216,11 +219,12 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                   >
                     <div
                       aria-label="Test Annotation 2"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-2"
                       data-chart-annotation="true"
                       role="note"
                       style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 2
                     </div>

@@ -237,17 +237,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;
     }
-    if (_getHighlightedLegend().length === 1) {
-      if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
-        _updatePosition(clientX, clientY);
-        setPopoverOpen(true);
-        setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
-        setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
-        setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
-        setColor(lineData.color);
-      }
-    } else {
-      _onStackHoverFocus(lineData.xItem, event);
+    if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
+      _updatePosition(clientX, clientY);
+      setPopoverOpen(true);
+      setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
+      setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
+      setCalloutLegend(lineData.legend);
+      setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
+      setColor(lineData.color);
     }
   }
 
@@ -488,17 +485,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _toFocusWholeStack(_isHavingLines: boolean): boolean {
     const { isCalloutForStack = false } = props;
-    let shouldFocusStackOnly: boolean = false;
-    if (_isHavingLines) {
-      if (_getHighlightedLegend().length === 1) {
-        shouldFocusStackOnly = false;
-      } else {
-        shouldFocusStackOnly = true;
-      }
-    } else {
-      shouldFocusStackOnly = isCalloutForStack;
-    }
-    return shouldFocusStackOnly;
+    return isCalloutForStack;
   }
 
   function _getDomainNRangeValues(
@@ -640,14 +627,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        const noBarsAndLinesActive =
-          circlePoint.xItem.chartData.filter(
-            dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
-          ).length === 0;
         const yScaleBandwidthTranslate =
           !circlePoint.useSecondaryYScale && _yAxisType === YAxisType.StringAxis
             ? (yScalePrimary as StringScale).bandwidth() / 2
             : 0;
+        const shouldHighlight = _isLegendHighlighted(circlePoint.legend) || _noLegendHighlighted() ? true : false;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -671,15 +655,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               circleRef.refElement = e;
             }}
-            {...(noBarsAndLinesActive
-              ? {
-                  tabIndex: !props.hideTooltip ? 0 : undefined,
-                  onFocus: event => _lineFocus(event, circlePoint, circleRef),
-                  onBlur: _handleMouseOut,
-                  role: 'img',
-                  'aria-label': _getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint),
-                }
-              : {})}
+            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            onFocus={event => _lineFocus(event, circlePoint, circleRef)}
+            onBlur={_handleMouseOut}
+            role="img"
+            aria-label={_getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint, true)}
           />,
         );
       });
@@ -1371,8 +1351,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       ...getAccessibleDataObject(callOutAccessibilityData),
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
-      isCalloutForStack:
-        props.isCalloutForStack || (_isHavingLines && (_noLegendHighlighted() || _getHighlightedLegend().length > 1)),
+      isCalloutForStack: shouldFocusWholeStack,
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,

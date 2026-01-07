@@ -649,11 +649,16 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
           data-annotation-key={key}
         >
           <div
-            className={mergeClasses(classes.annotationContent, annotation.style?.className)}
+            className={mergeClasses(
+              classes.annotationContent,
+              classes.annotationContentInteractive,
+              annotation.style?.className,
+            )}
             style={contentStyle}
             role={annotation.accessibility?.role ?? 'note'}
             aria-label={annotation.accessibility?.ariaLabel ?? (annotationPlainText ? annotationPlainText : undefined)}
             aria-describedby={annotation.accessibility?.ariaDescribedBy}
+            tabIndex={0}
             data-chart-annotation="true"
             data-annotation-key={key}
           >
