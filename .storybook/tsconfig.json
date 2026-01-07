@@ -1,8 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "Bundler",
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
