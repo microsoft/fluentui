@@ -793,6 +793,33 @@ function groupDataBySeries(
 }
 
 /**
+ * Finds the primary data layer from unit specs for line/area charts
+ * Skips rect layers (used for color fill bars) and finds the actual line/point/area layer
+ *
+ * @param unitSpecs - Array of normalized unit specs
+ * @returns The primary spec containing the actual chart data, or undefined if not found
+ */
+function findPrimaryLineSpec(unitSpecs: VegaLiteUnitSpec[]): VegaLiteUnitSpec | undefined {
+  // First, try to find a line, point, or area layer
+  const lineSpec = unitSpecs.find(spec => {
+    const markType = typeof spec.mark === 'string' ? spec.mark : spec.mark?.type;
+    return markType === 'line' || markType === 'point' || markType === 'area';
+  });
+
+  if (lineSpec) {
+    return lineSpec;
+  }
+
+  // If no line/point/area layer, find first layer with actual field encodings (not just datum)
+  const dataSpec = unitSpecs.find(spec => {
+    const encoding = spec.encoding || {};
+    return encoding.x?.field || encoding.y?.field;
+  });
+
+  return dataSpec || unitSpecs[0];
+}
+
+/**
  * Transforms Vega-Lite specification to Fluent LineChart props
  *
  * @param spec - Vega-Lite specification
@@ -805,8 +832,23 @@ export function transformVegaLiteToLineChartProps(
   colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): LineChartProps {
-  // Initialize transformation context
-  const { dataValues, encoding, markProps } = initializeTransformContext(spec);
+  // Initialize transformation context, but find the primary line/point layer for layered specs
+  warnUnsupportedFeatures(spec);
+  const unitSpecs = normalizeSpec(spec);
+
+  if (unitSpecs.length === 0) {
+    throw new Error('VegaLiteSchemaAdapter: No valid unit specs found in specification');
+  }
+
+  // For layered specs, find the actual line/point layer (not rect layers for color fill bars)
+  const primarySpec = findPrimaryLineSpec(unitSpecs);
+  if (!primarySpec) {
+    throw new Error('VegaLiteSchemaAdapter: No valid line/point layer found in specification');
+  }
+
+  const dataValues = extractDataValues(primarySpec.data);
+  const encoding = primarySpec.encoding || {};
+  const markProps = getMarkProperties(primarySpec.mark);
 
   // Extract field names
   const { xField, yField, colorField } = extractEncodingFields(encoding);
@@ -1486,7 +1528,8 @@ export function transformVegaLiteToAreaChartProps(
 
   // Determine stacking mode based on Vega-Lite spec
   const unitSpecs = normalizeSpec(spec);
-  const primarySpec = unitSpecs[0];
+  // Use findPrimaryLineSpec to skip auxiliary layers (like rect for color fill bars)
+  const primarySpec = findPrimaryLineSpec(unitSpecs);
   const encoding = primarySpec?.encoding || {};
 
   // Check if stacking is enabled

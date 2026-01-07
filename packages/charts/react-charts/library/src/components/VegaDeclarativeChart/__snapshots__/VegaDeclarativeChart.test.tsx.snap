@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations should render bar chart with single line overlay 1`] = `
 <div>
@@ -8526,6 +8526,318 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render linech
                   class="fui-legend__text"
                 >
                   default
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render linechart_colorFillBars correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Line Chart with Color Fill Bars. Line chart with 1 lines. The X axis displays time. The Y axis displays Value. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="NaN"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, NaN)"
+            >
+              <path
+                class="domain"
+                d="M64.5,6V0.5H-19.5V6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(64.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  01/01/2023, 12 AM
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(22.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  01/03/2023, 12 AM
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-19.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  01/05/2023, 12 AM
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M-6,NaNH0.5V20.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  23
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  46
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  69
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  92
+                </text>
+              </g>
+            </g>
+            <g>
+              <line
+                id="verticalLine_r_3_"
+                stroke="#323130"
+                stroke-dasharray="5,5"
+                visibility="hidden"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="NaN"
+              />
+              <g>
+                <rect
+                  fill="lightblue"
+                  fill-opacity="0.4"
+                  height="NaN"
+                  width="NaN"
+                  y="NaN"
+                />
+                <g
+                  aria-label="default, line 1 of 1 with 5 data points."
+                  role="region"
+                />
+              </g>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="rotate(-90, 16, NaN)"
+              width="6"
+              x="13"
+              y="NaN"
+            />
+            <text
+              aria-describedby="tooltip-_r_b_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_a_"
+              text-anchor="middle"
+              transform="rotate(-90, 16, NaN)"
+              x="16"
+              y="NaN"
+            >
+              Value
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="true"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="default"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  default
+                </div>
+              </button>
+              <button
+                aria-label="region-0"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: lightblue; --rect-borderColor: lightblue;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  region-0
                 </div>
               </button>
             </div>

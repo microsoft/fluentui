@@ -1887,7 +1887,6 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 
   // Schemas with known data or feature issues to skip
   const skipSchemas = new Set([
-    'linechart_colorFillBars', // Uses datum encodings (not supported)
     'multiplot_inventory_fulfillment', // Missing xAxisPoint data
     'patient_vitals_line', // No valid values for field 'value'
     'bandwidth_stacked_area', // No valid values for field 'bandwidth'
@@ -2007,7 +2006,6 @@ describe('VegaDeclarativeChart - Transformation Snapshots', () => {
   describe('Chart Props Transformation', () => {
     // Schemas with known data or feature issues to skip
     const skipSchemas = new Set([
-      'linechart_colorFillBars', // Uses datum encodings (not supported)
       'multiplot_inventory_fulfillment', // Missing xAxisPoint data
       'patient_vitals_line', // No valid values for field 'value'
       'bandwidth_stacked_area', // No valid values for field 'bandwidth'
