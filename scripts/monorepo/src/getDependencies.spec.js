@@ -50,17 +50,17 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
-          "name": "eslint-plugin",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": true,
           "name": "react-conformance",
         },
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
           "name": "react-conformance-griffel",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "eslint-plugin",
         },
         Object {
           "dependencyType": "devDependencies",
