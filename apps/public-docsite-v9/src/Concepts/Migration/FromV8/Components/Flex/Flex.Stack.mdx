@@ -313,30 +313,10 @@ horizontalAlign/verticalAlign change which props they affect depending on your `
 
 Here is a table you can follow for which prop to use for alignment:
 
-<table>
-  <thead>
-    <tr>
-      <th>Direction</th>
-      <th>`flex-direction`</th>
-      <th>Horizontal alignment</th>
-      <th>Vertical alignment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>default</td>
-      <td>column</td>
-      <td>align-items</td>
-      <td>justify-content</td>
-    </tr>
-    <tr>
-      <td>horizontal</td>
-      <td>row</td>
-      <td>justify-content</td>
-      <td>align-items</td>
-    </tr>
-  </tbody>
-</table>
+| Direction  | \`flex-direction\` | Horizontal alignment | Vertical alignment |
+| ---------- | ------------------ | -------------------- | ------------------ |
+| default    | column             | align-items          | justify-content    |
+| horizontal | row                | justify-content      | align-items        |
 
 You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flex container.
 
@@ -455,27 +435,10 @@ MDN documentation:
 
 `reversed` will append "reverse" to your `flex-direction` CSS prop. Below is a table to reflect what you should use:
 
-<table>
-  <thead>
-    <tr>
-      <th>Alignment</th>
-      <th>CSS</th>
-      <th>With `reversed` prop</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>default</td>
-      <td>column</td>
-      <td>column-reverse</td>
-    </tr>
-    <tr>
-      <td>horizontal</td>
-      <td>row</td>
-      <td>row-reverse</td>
-    </tr>
-  </tbody>
-</table>
+| Alignment  | CSS    | With \`reversed\` prop |
+| ---------- | ------ | ---------------------- |
+| default    | column | column-reverse         |
+| horizontal | row    | row-reverse            |
 
 Example usage for an horizontal layout:
 

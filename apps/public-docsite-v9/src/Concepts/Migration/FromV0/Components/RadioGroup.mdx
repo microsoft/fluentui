@@ -62,191 +62,42 @@ const RadioGroupV9BasicExample = () => {
 
 This table maps `RadioGroup` v0 props to the `RadioGroup` v9 equivalent.
 
-<table>
-  <thead>
-    <tr>
-      <th>v0</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`accessibility`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`as`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`checkedValue`</td>
-      <td>`value`</td>
-      <td>Mutually exclusive with `defaultValue`</td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`defaultCheckedValue`</td>
-      <td>`defaultValue`</td>
-      <td>Mutually exclusive with `value`</td>
-    </tr>
-    <tr>
-      <td>`design`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`items`</td>
-      <td>`children`</td>
-      <td>v9 uses React `children` rather than data props</td>
-    </tr>
-    <tr>
-      <td>`key`</td>
-      <td>`key`</td>
-      <td>v9 uses the intrinsic React prop</td>
-    </tr>
-    <tr>
-      <td>`onCheckedValueChange`</td>
-      <td>`onChange`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ref`</td>
-      <td>`ref`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`variables`</td>
-      <td>n/a</td>
-      <td>Use `FluentProvider` to customize themes</td>
-    </tr>
-    <tr>
-      <td>`vertical`</td>
-      <td>`layout`</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+| v0                       | v9               | Notes                                             |
+| ------------------------ | ---------------- | ------------------------------------------------- |
+| \`accessibility\`        | n/a              |                                                   |
+| \`as\`                   | n/a              |                                                   |
+| \`checkedValue\`         | \`value\`        | Mutually exclusive with \`defaultValue\`          |
+| \`className\`            | \`className\`    |                                                   |
+| \`defaultCheckedValue\`  | \`defaultValue\` | Mutually exclusive with \`value\`                 |
+| \`design\`               | n/a              |                                                   |
+| \`items\`                | \`children\`     | v9 uses React \`children\` rather than data props |
+| \`key\`                  | \`key\`          | v9 uses the intrinsic React prop                  |
+| \`onCheckedValueChange\` | \`onChange\`     |                                                   |
+| \`ref\`                  | \`ref\`          |                                                   |
+| \`styles\`               | \`className\`    |                                                   |
+| \`variables\`            | n/a              | Use \`FluentProvider\` to customize themes        |
+| \`vertical\`             | \`layout\`       |                                                   |
 
 This table maps v0 `RadioGroupItem` props to the v9 `Radio` equivalent.
 
-<table>
-  <thead>
-    <tr>
-      <th>v0</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`accessibility`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`as`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`checked`</td>
-      <td>`checked`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`checkedIndicator`</td>
-      <td>`indicator`</td>
-      <td>Use slots to customize `Radio`</td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`defaultChecked`</td>
-      <td>`defaultChecked`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`design`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`disabled`</td>
-      <td>`disabled`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`indicator`</td>
-      <td>`indicator`</td>
-      <td>Use slots to customize `Radio`</td>
-    </tr>
-    <tr>
-      <td>`key`</td>
-      <td>`key`</td>
-      <td>v9 uses the intrinsic React prop</td>
-    </tr>
-    <tr>
-      <td>`label`</td>
-      <td>`label`</td>
-      <td>In v9 this is a slot so this prop can be a string, a component or a shorthand object</td>
-    </tr>
-    <tr>
-      <td>`name`</td>
-      <td>`name`</td>
-      <td>
-        When used inside `RadioGroup` this is assigned via the `name` prop on `RadioGroup` or given a default value when
-        not assigned there
-      </td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onChange`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ref`</td>
-      <td>`ref`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`shouldFocus`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`value`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`variables`</td>
-      <td>n/a</td>
-      <td>Use `FluentProvider` to customized themes</td>
-    </tr>
-    <tr>
-      <td>`vertical`</td>
-      <td>n/a</td>
-      <td>`labelPosition` can be used to change the location of the label text</td>
-    </tr>
-  </tbody>
-</table>
+| v0                   | v9                 | Notes                                                                                                                                     |
+| -------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| \`accessibility\`    | n/a                |                                                                                                                                           |
+| \`as\`               | n/a                |                                                                                                                                           |
+| \`checked\`          | \`checked\`        |                                                                                                                                           |
+| \`checkedIndicator\` | \`indicator\`      | Use slots to customize \`Radio\`                                                                                                          |
+| \`className\`        | \`className\`      |                                                                                                                                           |
+| \`defaultChecked\`   | \`defaultChecked\` |                                                                                                                                           |
+| \`design\`           | n/a                |                                                                                                                                           |
+| \`disabled\`         | \`disabled\`       |                                                                                                                                           |
+| \`indicator\`        | \`indicator\`      | Use slots to customize \`Radio\`                                                                                                          |
+| \`key\`              | \`key\`            | v9 uses the intrinsic React prop                                                                                                          |
+| \`label\`            | \`label\`          | In v9 this is a slot so this prop can be a string, a component or a shorthand object                                                      |
+| \`name\`             | \`name\`           | When used inside \`RadioGroup\` this is assigned via the \`name\` prop on \`RadioGroup\` or given a default value when not assigned there |
+| \`onChange\`         | \`onChange\`       |                                                                                                                                           |
+| \`ref\`              | \`ref\`            |                                                                                                                                           |
+| \`shouldFocus\`      | n/a                |                                                                                                                                           |
+| \`styles\`           | \`className\`      |                                                                                                                                           |
+| \`value\`            | n/a                |                                                                                                                                           |
+| \`variables\`        | n/a                | Use \`FluentProvider\` to customized themes                                                                                               |
+| \`vertical\`         | n/a                | \`labelPosition\` can be used to change the location of the label text                                                                    |

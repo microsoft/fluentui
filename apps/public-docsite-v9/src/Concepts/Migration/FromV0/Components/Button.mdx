@@ -24,92 +24,27 @@ const Component = () => <Button>Here is Button</Button>;
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>Button props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>as, className</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>content</td>
-      <td>see Migrate content prop in this document</td>
-    </tr>
-    <tr>
-      <td>variables, styles</td>
-      <td>see Migrate style overrides in this document</td>
-    </tr>
-    <tr>
-      <td>accessibility</td>
-      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
-    </tr>
-    <tr>
-      <td>circular</td>
-      <td>replace with `shape="circular"`</td>
-    </tr>
-    <tr>
-      <td>disabled</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>disabledFocusable</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>flat</td>
-      <td>REMOVED: it's a default view now, we're moving away from shadows</td>
-    </tr>
-    <tr>
-      <td>fluid</td>
-      <td>REMOVED: use styles to set width to 100% and flex grow to 1</td>
-    </tr>
-    <tr>
-      <td>icon</td>
-      <td>keep it as is. See Button + Icon integration in this document</td>
-    </tr>
-    <tr>
-      <td>iconOnly</td>
-      <td>REMOVED: see Migrate iconOnly prop in this document</td>
-    </tr>
-    <tr>
-      <td>iconPosition</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>inverted</td>
-      <td>REMOVED: use styles and color tokens to set a proper styling \*</td>
-    </tr>
-    <tr>
-      <td>loader, loading</td>
-      <td>REMOVED: see Migrate loading and loader props in this document</td>
-    </tr>
-    <tr>
-      <td>primary</td>
-      <td>use `appearance="primary"`</td>
-    </tr>
-    <tr>
-      <td>secondary</td>
-      <td>REMOVED: the button appears with the default style</td>
-    </tr>
-    <tr>
-      <td>size</td>
-      <td>keep it as is. Values: `small`, `medium`(default) and `large`</td>
-    </tr>
-    <tr>
-      <td>text</td>
-      <td>use `appearance="transparent"`</td>
-    </tr>
-    <tr>
-      <td>tinted</td>
-      <td>REMOVED: use Default button instead</td>
-    </tr>
-  </tbody>
-</table>
+| Button props      | migrate guide                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| as, className     | keep it as is                                                                                              |
+| content           | see Migrate content prop in this document                                                                  |
+| variables, styles | see Migrate style overrides in this document                                                               |
+| accessibility     | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| circular          | replace with \`shape="circular"\`                                                                          |
+| disabled          | keep it as is                                                                                              |
+| disabledFocusable | keep it as is                                                                                              |
+| flat              | REMOVED: it's a default view now, we're moving away from shadows                                           |
+| fluid             | REMOVED: use styles to set width to 100% and flex grow to 1                                                |
+| icon              | keep it as is. See Button + Icon integration in this document                                              |
+| iconOnly          | REMOVED: see Migrate iconOnly prop in this document                                                        |
+| iconPosition      | keep it as is                                                                                              |
+| inverted          | REMOVED: use styles and color tokens to set a proper styling \\\*                                          |
+| loader, loading   | REMOVED: see Migrate loading and loader props in this document                                             |
+| primary           | use \`appearance="primary"\`                                                                               |
+| secondary         | REMOVED: the button appears with the default style                                                         |
+| size              | keep it as is. Values: \`small\`, \`medium\`(default) and \`large\`                                        |
+| text              | use \`appearance="transparent"\`                                                                           |
+| tinted            | REMOVED: use Default button instead                                                                        |
 
 \* this may be changed
 Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/exciting-liskov-y5u5hy?file=/example.tsx)

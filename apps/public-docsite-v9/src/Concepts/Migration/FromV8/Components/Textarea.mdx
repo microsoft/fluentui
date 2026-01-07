@@ -68,206 +68,43 @@ const TextareaV9BasicExample = () => {
 
 This table maps `TextField` v8 props to the `Textarea` v9 equivalent.
 
-<table>
-  <thead>
-    <tr>
-      <th>v0</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`ariaLabel`</td>
-      <td>aria-label</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`autoAdjustHeight`</td>
-      <td>n/a</td>
-      <td>Auto-resize will be added in the future. See spec for more information</td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td>
-        To use a custom className for the container use as follows: `<textarea root={{ className: customClassName }} />`
-      </td>
-    </tr>
-    <tr>
-      <td>`autoComplete`</td>
-      <td>`autoComplete`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`borderless`</td>
-      <td>`appearance`</td>
-      <td>Equivalent `appearance` could be either `filledLighter` or `filledDarker`</td>
-    </tr>
-    <tr>
-      <td>`canRevealPassword`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`componentRef`</td>
-      <td>ref</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`defaultValue`</td>
-      <td>`defaultValue`</td>
-      <td>Mutually exclusive with `value`</td>
-    </tr>
-    <tr>
-      <td>`deferredValidationTime`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`description`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`disabled`</td>
-      <td>`disabled`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`errorMessage`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`iconProps`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`inputClassName`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`invalid`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`label`</td>
-      <td>n/a</td>
-      <td>To add a label, use the `Label` component</td>
-    </tr>
-    <tr>
-      <td>`multiline`</td>
-      <td>n/a</td>
-      <td>`Textarea` is multiline by default</td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onChange`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onGetErrorMessage`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onNotifyValidationResult`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderDescription`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderInput`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderLabel`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderPrefix`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderSuffix`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`prefix`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`readOnly`</td>
-      <td>`readonly`</td>
-      <td>This is handled by native component</td>
-    </tr>
-    <tr>
-      <td>`resizable`</td>
-      <td>`resize`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`revealPasswordAriaLabel`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`suffix`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`theme`</td>
-      <td>n/a</td>
-      <td>use `FluentProvider` to customize themes</td>
-    </tr>
-    <tr>
-      <td>`underlined`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`validateOnFocusIn`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`validateOnFocusOut`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`validateOnLoad`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`value`</td>
-      <td>`value`</td>
-      <td>Mutually exclusive with `defaultValue`</td>
-    </tr>
-  </tbody>
-</table>
+| v0                           | v9               | Notes                                                                           |
+| ---------------------------- | ---------------- | ------------------------------------------------------------------------------- |
+| \`ariaLabel\`                | aria-label       |                                                                                 |
+| \`autoAdjustHeight\`         | n/a              | Auto-resize will be added in the future. See spec for more information          |
+| \`className\`                | \`className\`    | To use a custom className for the container use as follows: \`\`                |
+| \`autoComplete\`             | \`autoComplete\` |                                                                                 |
+| \`borderless\`               | \`appearance\`   | Equivalent \`appearance\` could be either \`filledLighter\` or \`filledDarker\` |
+| \`canRevealPassword\`        | n/a              |                                                                                 |
+| \`className\`                | \`className\`    |                                                                                 |
+| \`componentRef\`             | ref              |                                                                                 |
+| \`defaultValue\`             | \`defaultValue\` | Mutually exclusive with \`value\`                                               |
+| \`deferredValidationTime\`   | n/a              |                                                                                 |
+| \`description\`              | n/a              |                                                                                 |
+| \`disabled\`                 | \`disabled\`     |                                                                                 |
+| \`errorMessage\`             | n/a              |                                                                                 |
+| \`iconProps\`                | n/a              |                                                                                 |
+| \`inputClassName\`           | \`className\`    |                                                                                 |
+| \`invalid\`                  | n/a              |                                                                                 |
+| \`label\`                    | n/a              | To add a label, use the \`Label\` component                                     |
+| \`multiline\`                | n/a              | \`Textarea\` is multiline by default                                            |
+| \`onChange\`                 | \`onChange\`     |                                                                                 |
+| \`onGetErrorMessage\`        | n/a              |                                                                                 |
+| \`onNotifyValidationResult\` | n/a              |                                                                                 |
+| \`onRenderDescription\`      | n/a              |                                                                                 |
+| \`onRenderInput\`            | n/a              |                                                                                 |
+| \`onRenderLabel\`            | n/a              |                                                                                 |
+| \`onRenderPrefix\`           | n/a              |                                                                                 |
+| \`onRenderSuffix\`           | n/a              |                                                                                 |
+| \`prefix\`                   | n/a              |                                                                                 |
+| \`readOnly\`                 | \`readonly\`     | This is handled by native component                                             |
+| \`resizable\`                | \`resize\`       |                                                                                 |
+| \`revealPasswordAriaLabel\`  | n/a              |                                                                                 |
+| \`styles\`                   | \`className\`    |                                                                                 |
+| \`suffix\`                   | n/a              |                                                                                 |
+| \`theme\`                    | n/a              | use \`FluentProvider\` to customize themes                                      |
+| \`underlined\`               | n/a              |                                                                                 |
+| \`validateOnFocusIn\`        | n/a              |                                                                                 |
+| \`validateOnFocusOut\`       | n/a              |                                                                                 |
+| \`validateOnLoad\`           | n/a              |                                                                                 |
+| \`value\`                    | \`value\`        | Mutually exclusive with \`defaultValue\`                                        |

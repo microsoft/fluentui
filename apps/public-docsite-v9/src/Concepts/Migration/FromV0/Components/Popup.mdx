@@ -31,36 +31,13 @@ const Component = () => (
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>Popup props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>defaultOpen, closeOnScroll, inline, open, onOpenChange, mountNode, mouseLeaveDelay, trapFocus</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>content, contentRef</td>
-      <td>see Migrate content and contentRef in this document</td>
-    </tr>
-    <tr>
-      <td>trigger</td>
-      <td>Move `trigger` to JSX children of `PopoverTrigger` component</td>
-    </tr>
-    <tr>
-      <td>pointing</td>
-      <td>Replace with `withArrow={true}`</td>
-    </tr>
-    <tr>
-      <td>on</td>
-      <td>Replace `on='hover'` with `openOnHover`; `on='content'` with `openOnContext`</td>
-    </tr>
-  </tbody>
-</table>
+| Popup props                                                                                   | migrate guide                                                                        |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| defaultOpen, closeOnScroll, inline, open, onOpenChange, mountNode, mouseLeaveDelay, trapFocus | keep it as is                                                                        |
+| content, contentRef                                                                           | see Migrate content and contentRef in this document                                  |
+| trigger                                                                                       | Move \`trigger\` to JSX children of \`PopoverTrigger\` component                     |
+| pointing                                                                                      | Replace with \`withArrow={true}\`                                                    |
+| on                                                                                            | Replace \`on='hover'\` with \`openOnHover\`; \`on='content'\` with \`openOnContext\` |
 
 #### Postioning props:
 

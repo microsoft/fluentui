@@ -70,159 +70,29 @@ const CheckboxShimBasicExample = () => {
 
 This table maps `Checkbox` v8 props to the `Checkbox` v9 equivalent and `CheckboxShim`.
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-      <th>shim</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`ariaDescribedBy`</td>
-      <td>`aria-describedby`</td>
-      <td>`ariaDescribedBy`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ariaLabel`</td>
-      <td>`aria-label`</td>
-      <td>`ariaLabel`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ariaLabelledBy`</td>
-      <td>`aria-labelledby`</td>
-      <td>`ariaLabelledBy`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ariaPositionInSet`</td>
-      <td>`aria-posinset`</td>
-      <td>`aria-posinset`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ariaSetSize`</td>
-      <td>`aria-setsize`</td>
-      <td>`aria-setsize`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`boxSide`</td>
-      <td>`labelPosition`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`checked`</td>
-      <td>`checked`</td>
-      <td>`checked`</td>
-      <td>Mutually exclusive with `defaultChecked`</td>
-    </tr>
-    <tr>
-      <td>`checkmarkIconProps`</td>
-      <td>`indicator`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`componentRef`</td>
-      <td>`ref`</td>
-      <td>`componentRef`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`defaultChecked`</td>
-      <td>`defaultChecked`</td>
-      <td>`defaultChecked`</td>
-      <td>Mutually exclusive with `checked`</td>
-    </tr>
-    <tr>
-      <td>`defaultIndeterminate`</td>
-      <td>`defaultChecked`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`disabled`</td>
-      <td>`disabled`</td>
-      <td>`disabled`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`id`</td>
-      <td>`id`</td>
-      <td>`id`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`indeterminate`</td>
-      <td>`checked`</td>
-      <td>n/a</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`inputProps`</td>
-      <td>n/a</td>
-      <td>n/a</td>
-      <td>Props go directly to the `input` slot</td>
-    </tr>
-    <tr>
-      <td>`label`</td>
-      <td>`label`</td>
-      <td>`label`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`name`</td>
-      <td>`name`</td>
-      <td>`name`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onChange`</td>
-      <td>`onChange`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onRenderLabel`</td>
-      <td>n/a</td>
-      <td>`onRenderLabel`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`required`</td>
-      <td>`required`</td>
-      <td>`required`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`className`</td>
-      <td>`className`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`theme`</td>
-      <td>n/a</td>
-      <td>`theme`</td>
-      <td>Use `FluentProvider` to customize themes</td>
-    </tr>
-    <tr>
-      <td>`title`</td>
-      <td>n/a</td>
-      <td>`title`</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+| v8                       | v9                   | shim                | Notes                                      |
+| ------------------------ | -------------------- | ------------------- | ------------------------------------------ |
+| \`ariaDescribedBy\`      | \`aria-describedby\` | \`ariaDescribedBy\` |                                            |
+| \`ariaLabel\`            | \`aria-label\`       | \`ariaLabel\`       |                                            |
+| \`ariaLabelledBy\`       | \`aria-labelledby\`  | \`ariaLabelledBy\`  |                                            |
+| \`ariaPositionInSet\`    | \`aria-posinset\`    | \`aria-posinset\`   |                                            |
+| \`ariaSetSize\`          | \`aria-setsize\`     | \`aria-setsize\`    |                                            |
+| \`boxSide\`              | \`labelPosition\`    | n/a                 |                                            |
+| \`checked\`              | \`checked\`          | \`checked\`         | Mutually exclusive with \`defaultChecked\` |
+| \`checkmarkIconProps\`   | \`indicator\`        | n/a                 |                                            |
+| \`className\`            | \`className\`        | \`className\`       |                                            |
+| \`componentRef\`         | \`ref\`              | \`componentRef\`    |                                            |
+| \`defaultChecked\`       | \`defaultChecked\`   | \`defaultChecked\`  | Mutually exclusive with \`checked\`        |
+| \`defaultIndeterminate\` | \`defaultChecked\`   | n/a                 |                                            |
+| \`disabled\`             | \`disabled\`         | \`disabled\`        |                                            |
+| \`id\`                   | \`id\`               | \`id\`              |                                            |
+| \`indeterminate\`        | \`checked\`          | n/a                 |                                            |
+| \`inputProps\`           | n/a                  | n/a                 | Props go directly to the \`input\` slot    |
+| \`label\`                | \`label\`            | \`label\`           |                                            |
+| \`name\`                 | \`name\`             | \`name\`            |                                            |
+| \`onChange\`             | \`onChange\`         | \`onChange\`        |                                            |
+| \`onRenderLabel\`        | n/a                  | \`onRenderLabel\`   |                                            |
+| \`required\`             | \`required\`         | \`required\`        |                                            |
+| \`styles\`               | \`className\`        | \`className\`       |                                            |
+| \`theme\`                | n/a                  | \`theme\`           | Use \`FluentProvider\` to customize themes |
+| \`title\`                | n/a                  | \`title\`           |                                            |

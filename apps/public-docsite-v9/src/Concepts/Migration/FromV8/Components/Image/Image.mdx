@@ -163,64 +163,20 @@ const Component = () => {
 
 The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes.
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`height`</td>
-      <td>`height`</td>
-    </tr>
-    <tr>
-      <td>`width`</td>
-      <td>`width`</td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`className`</td>
-    </tr>
-    <tr>
-      <td>`coverStyle`</td>
-      <td>`fit="cover"`</td>
-    </tr>
-    <tr>
-      <td>`imageFit`</td>
-      <td>`fit`</td>
-    </tr>
-    <tr>
-      <td>`maximizeFrame`</td>
-      <td>`block`.</td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`className`</td>
-    </tr>
-    <tr>
-      <td>`loading`</td>
-      <td>Not supported -> use onLoad and onError events</td>
-    </tr>
-    <tr>
-      <td>`onLoadingStateChange`</td>
-      <td>Not supported -> use onLoad and onError events</td>
-    </tr>
-    <tr>
-      <td>`shouldFadeIn`</td>
-      <td>Not supported -> implement animation via makeStyles and className + onLoad</td>
-    </tr>
-    <tr>
-      <td>`shouldStartVisible`</td>
-      <td>Not supported -> use onLoad and onError events</td>
-    </tr>
-    <tr>
-      <td>`theme`</td>
-      <td>Use `FluentProvider` to customize the theme</td>
-    </tr>
-  </tbody>
-</table>
+| v8                       | v9                                                                         |
+| ------------------------ | -------------------------------------------------------------------------- |
+| \`height\`               | \`height\`                                                                 |
+| \`width\`                | \`width\`                                                                  |
+| \`className\`            | \`className\`                                                              |
+| \`coverStyle\`           | \`fit="cover"\`                                                            |
+| \`imageFit\`             | \`fit\`                                                                    |
+| \`maximizeFrame\`        | \`block\`.                                                                 |
+| \`styles\`               | \`className\`                                                              |
+| \`loading\`              | Not supported -> use onLoad and onError events                             |
+| \`onLoadingStateChange\` | Not supported -> use onLoad and onError events                             |
+| \`shouldFadeIn\`         | Not supported -> implement animation via makeStyles and className + onLoad |
+| \`shouldStartVisible\`   | Not supported -> use onLoad and onError events                             |
+| \`theme\`                | Use \`FluentProvider\` to customize the theme                              |
 
 In v9, the boolean props from [IImageStyleProps](https://developer.microsoft.com/en-us/fluentui#/controls/web/image#IImageStyleProps)
 — such as `isCenter`, `isCenterCover`, `isCenterContain`, `isContain`, `isLandscape`, `isNone`, `isError`, `isLoaded`, and `isNotImageFit` — are no longer supported.

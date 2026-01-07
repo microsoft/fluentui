@@ -38,68 +38,21 @@ export const Component = () => {
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>`MenuButton` props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>as, className</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>variables, styles, design</td>
-      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
-    </tr>
-    <tr>
-      <td>accessibility</td>
-      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
-    </tr>
-    <tr>
-      <td>ref, key</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>contextMenu</td>
-      <td>use `openOnContext` instead</td>
-    </tr>
-    <tr>
-      <td>menu</td>
-      <td>see [Migrate menu and trigger props](#./Migrate-`menu`-and-`trigger`-props) in this document</td>
-    </tr>
-    <tr>
-      <td>mouseLeaveDelay</td>
-      <td>replace with `hoverDelay`</td>
-    </tr>
-    <tr>
-      <td>on</td>
-      <td>replace `on='hover'` with `openOnHover`; `on='context'` with `openOnContext`</td>
-    </tr>
-    <tr>
-      <td>onMenuItemClick</td>
-      <td>use `onClick` with each `MenuItem` instead</td>
-    </tr>
-    <tr>
-      <td>defaultOpen</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>onOpenChange</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>open</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>trigger</td>
-      <td>see [Migrate menu and trigger props](#./Migrate-`menu`-and-`trigger`-props) in this document</td>
-    </tr>
-  </tbody>
-</table>
+| \`MenuButton\` props      | migrate guide                                                                                              |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                              |
+| variables, styles, design | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                 |
+| accessibility             | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| ref, key                  | keep it as is                                                                                              |
+| contextMenu               | use \`openOnContext\` instead                                                                              |
+| menu                      | see \[Migrate menu and trigger props\](#./Migrate-\`menu\`-and-\`trigger\`-props) in this document         |
+| mouseLeaveDelay           | replace with \`hoverDelay\`                                                                                |
+| on                        | replace \`on='hover'\` with \`openOnHover\`; \`on='context'\` with \`openOnContext\`                       |
+| onMenuItemClick           | use \`onClick\` with each \`MenuItem\` instead                                                             |
+| defaultOpen               | keep it as is                                                                                              |
+| onOpenChange              | keep it as is                                                                                              |
+| open                      | keep it as is                                                                                              |
+| trigger                   | see \[Migrate menu and trigger props\](#./Migrate-\`menu\`-and-\`trigger\`-props) in this document         |
 
 Postioning props: `align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned` are now attributes of the `positioning` prop.
 v9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<MenuButton position="below" align="end" />` can be migrate to a string like `<Menu positioning="below-end" />`.

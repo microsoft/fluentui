@@ -101,67 +101,18 @@ Some packages don't follow the preview naming convention but are still considere
 
 **Migration Guide:**
 
-<table>
-  <thead>
-    <tr>
-      <th>Deprecated Package</th>
-      <th>Stable Alternative</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`@fluentui/react-alert`</td>
-      <td>`@fluentui/react-components` (`Toast`, `MessageBar`)</td>
-    </tr>
-    <tr>
-      <td>`@fluentui/react-infobutton`</td>
-      <td>`@fluentui/react-components` (`InfoLabel`)</td>
-    </tr>
-  </tbody>
-</table>
+| Deprecated Package             | Stable Alternative                                         |
+| ------------------------------ | ---------------------------------------------------------- |
+| \`@fluentui/react-alert\`      | \`@fluentui/react-components\` (\`Toast\`, \`MessageBar\`) |
+| \`@fluentui/react-infobutton\` | \`@fluentui/react-components\` (\`InfoLabel\`)             |
 
 **Migration strategy:** Migrate to stable alternatives as soon as possible. Deprecated packages may not receive updates or security fixes.
 
 ## Quick Reference
 
-<table>
-  <thead>
-    <tr>
-      <th>Maturity Level</th>
-      <th>Version Format</th>
-      <th>Production Ready</th>
-      <th>Breaking Changes</th>
-      <th>Import Source</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>🟢 Stable</td>
-      <td>`9.x.x`</td>
-      <td>✅ Yes</td>
-      <td>❌ No</td>
-      <td>`@fluentui/react-components`</td>
-    </tr>
-    <tr>
-      <td>🟡 Preview</td>
-      <td>`0.x.x`</td>
-      <td>⚠️ Use with caution</td>
-      <td>✅ Possible</td>
-      <td>`@fluentui/react-<name>-preview`</td>
-    </tr>
-    <tr>
-      <td>🔵 Compat</td>
-      <td>`0.x.x`</td>
-      <td>⚠️ Migration only</td>
-      <td>✅ Possible</td>
-      <td>`@fluentui/react-<name>-compat`</td>
-    </tr>
-    <tr>
-      <td>🔴 Deprecated</td>
-      <td>various</td>
-      <td>❌ No</td>
-      <td>N/A</td>
-      <td>`@fluentui/react-components/unstable`</td>
-    </tr>
-  </tbody>
-</table>
+| Maturity Level | Version Format | Production Ready    | Breaking Changes | Import Source                           |
+| -------------- | -------------- | ------------------- | ---------------- | --------------------------------------- |
+| 🟢 Stable      | \`9.x.x\`      | ✅ Yes              | ❌ No            | \`@fluentui/react-components\`          |
+| 🟡 Preview     | \`0.x.x\`      | ⚠️ Use with caution | ✅ Possible      | \`@fluentui/react-\-preview\`           |
+| 🔵 Compat      | \`0.x.x\`      | ⚠️ Migration only   | ✅ Possible      | \`@fluentui/react-\-compat\`            |
+| 🔴 Deprecated  | various        | ❌ No               | N/A              | \`@fluentui/react-components/unstable\` |

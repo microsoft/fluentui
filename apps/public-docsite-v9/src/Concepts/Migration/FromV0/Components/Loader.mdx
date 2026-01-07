@@ -26,63 +26,19 @@ The `Spinner` in V9 looks slightly different than the `Loader` in V0 but it is e
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>Loader props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>accessibility</td>
-      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
-    </tr>
-    <tr>
-      <td>as, className</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>variables, styles, design</td>
-      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
-    </tr>
-    <tr>
-      <td>delay</td>
-      <td>not supported</td>
-    </tr>
-    <tr>
-      <td>indicator</td>
-      <td>not supported</td>
-    </tr>
-    <tr>
-      <td>inline</td>
-      <td>use mixin `inline`</td>
-    </tr>
-    <tr>
-      <td>label</td>
-      <td>
-        keep it as is but font styles will be different; use mixin `v0SpinnerLabelStyle` to keep the V0 label font
-        styles. [See example](#./Keep-V0-font-styles)
-      </td>
-    </tr>
-    <tr>
-      <td>labelPosition</td>
-      <td>same prop but different values, see [Migrate labelPosition prop](#./Migrate-labelPosition-props)</td>
-    </tr>
-    <tr>
-      <td>secondary</td>
-      <td>change to `appearance` prop with `inverted` value instead</td>
-    </tr>
-    <tr>
-      <td>size</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>svg</td>
-      <td>not supported</td>
-    </tr>
-  </tbody>
-</table>
+| Loader props              | migrate guide                                                                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| accessibility             | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)                                                   |
+| as, className             | keep it as is                                                                                                                                                |
+| variables, styles, design | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                                                                   |
+| delay                     | not supported                                                                                                                                                |
+| indicator                 | not supported                                                                                                                                                |
+| inline                    | use mixin \`inline\`                                                                                                                                         |
+| label                     | keep it as is but font styles will be different; use mixin \`v0SpinnerLabelStyle\` to keep the V0 label font styles. \[See example\](#./Keep-V0-font-styles) |
+| labelPosition             | same prop but different values, see \[Migrate labelPosition prop\](#./Migrate-labelPosition-props)                                                           |
+| secondary                 | change to \`appearance\` prop with \`inverted\` value instead                                                                                                |
+| size                      | keep it as is                                                                                                                                                |
+| svg                       | not supported                                                                                                                                                |
 
 \* this may be changed
 Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/loader-migration-fluentui-forked-xfngje?file=/example.tsx)

@@ -38,75 +38,22 @@ const Component = props => (
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>Menu props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>as, className</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>accessibility</td>
-      <td>
-        remove tabListBehavior and see
-        [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)
-      </td>
-    </tr>
-    <tr>
-      <td>variables, design, styles</td>
-      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
-    </tr>
-    <tr>
-      <td>activeIndex</td>
-      <td>replace with `selectedValue` prop</td>
-    </tr>
-    <tr>
-      <td>disabled</td>
-      <td>you can either disable the entire `TabList` or individual `TabItem` components</td>
-    </tr>
-    <tr>
-      <td>defaultActiveIndex</td>
-      <td>replace with `defaultSelectedValue` prop</td>
-    </tr>
-    <tr>
-      <td>fluid</td>
-      <td>irrelevant (see Menu migration) or use styles</td>
-    </tr>
-    <tr>
-      <td>icon</td>
-      <td>move to `Tab` component</td>
-    </tr>
-    <tr>
-      <td>items</td>
-      <td>map items to `Tab` component</td>
-    </tr>
-    <tr>
-      <td>onActiveIndexChange</td>
-      <td>remove, use `onTabSelect`</td>
-    </tr>
-    <tr>
-      <td>onItemClick</td>
-      <td>replace with `onTabSelect`</td>
-    </tr>
-    <tr>
-      <td>ref, key</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>underlined</td>
-      <td>remove, has underlined by default or use styles</td>
-    </tr>
-    <tr>
-      <td>vertical</td>
-      <td>keep it as is</td>
-    </tr>
-  </tbody>
-</table>
+| Menu props                | migrate guide                                                                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                                                         |
+| accessibility             | remove tabListBehavior and see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| variables, design, styles | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                                            |
+| activeIndex               | replace with \`selectedValue\` prop                                                                                                   |
+| disabled                  | you can either disable the entire \`TabList\` or individual \`TabItem\` components                                                    |
+| defaultActiveIndex        | replace with \`defaultSelectedValue\` prop                                                                                            |
+| fluid                     | irrelevant (see Menu migration) or use styles                                                                                         |
+| icon                      | move to \`Tab\` component                                                                                                             |
+| items                     | map items to \`Tab\` component                                                                                                        |
+| onActiveIndexChange       | remove, use \`onTabSelect\`                                                                                                           |
+| onItemClick               | replace with \`onTabSelect\`                                                                                                          |
+| ref, key                  | keep it as is                                                                                                                         |
+| underlined                | remove, has underlined by default or use styles                                                                                       |
+| vertical                  | keep it as is                                                                                                                         |
 
 Here is a comparison for both versions: [Sandbox](https://codesandbox.io/s/tablist-migration-fluentui-forked-lmdx81?file=/example.tsx)
 

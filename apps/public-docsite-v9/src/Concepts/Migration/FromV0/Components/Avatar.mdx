@@ -22,64 +22,20 @@ const Component = () => <Avatar />;
 
 ## How to migrate props:
 
-<table>
-  <thead>
-    <tr>
-      <th>Avatar props</th>
-      <th>migrate guide</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>as, className</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>variables, design, styles</td>
-      <td>see Migrate style overrides in this document</td>
-    </tr>
-    <tr>
-      <td>accessibility</td>
-      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
-    </tr>
-    <tr>
-      <td>key, ref</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>getInitials</td>
-      <td>use `initials` prop instead</td>
-    </tr>
-    <tr>
-      <td>icon</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>image</td>
-      <td>see Migrate image prop in this document</td>
-    </tr>
-    <tr>
-      <td>label</td>
-      <td>use `initials` prop instead</td>
-    </tr>
-    <tr>
-      <td>name</td>
-      <td>keep it as is</td>
-    </tr>
-    <tr>
-      <td>size</td>
-      <td>see Migrate size prop in this document</td>
-    </tr>
-    <tr>
-      <td>square</td>
-      <td>replace with `shape="square"`</td>
-    </tr>
-    <tr>
-      <td>status</td>
-      <td>see Migrate status prop in this document</td>
-    </tr>
-  </tbody>
-</table>
+| Avatar props              | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                            |
+| variables, design, styles | see Migrate style overrides in this document                                                             |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| key, ref                  | keep it as is                                                                                            |
+| getInitials               | use `initials` prop instead                                                                              |
+| icon                      | keep it as is                                                                                            |
+| image                     | see Migrate image prop in this document                                                                  |
+| label                     | use `initials` prop instead                                                                              |
+| name                      | keep it as is                                                                                            |
+| size                      | see Migrate size prop in this document                                                                   |
+| square                    | replace with `shape="square"`                                                                            |
+| status                    | see Migrate status prop in this document                                                                 |
 
 ---
 
@@ -163,41 +119,14 @@ const Component = () => (
 ## Migrate `size` prop
 
 Introduced new size values:
-
-<table>
-  <thead>
-    <tr>
-      <th>Value before</th>
-      <th>Value after</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>smallest</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <td>smaller</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <td>small</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <td>medium</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <td>large</td>
-      <td>64</td>
-    </tr>
-    <tr>
-      <td>largest</td>
-      <td>96</td>
-    </tr>
-  </tbody>
-</table>
+| Value before | Value after |
+| ------------ | ----------- |
+| smallest | 20 |
+| smaller | 24 |
+| small | 28 |
+| medium | 32 |
+| large | 64 |
+| largest | 96 |
 
 Before:
 

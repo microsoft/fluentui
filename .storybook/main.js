@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+// ESM import workaround for CJS modules
+const remarkGfm = require('remark-gfm').default;
 
 const {
   loadWorkspaceAddon,
@@ -18,7 +20,17 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
   stories: [],
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            // Enable GitHub Flavored Markdown support in MDX files
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
     '@storybook/addon-links',
 
     // internal monorepo custom addons

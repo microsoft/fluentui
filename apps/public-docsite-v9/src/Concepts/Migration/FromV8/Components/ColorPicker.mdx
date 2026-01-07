@@ -81,253 +81,65 @@ export const Default = () => {
 
 This table maps v8 `ColorPicker` component props to their v9 equivalents.
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`alphaType`</td>
-      <td>`not supported`</td>
-      <td>Use `AlphaSlider` component.</td>
-    </tr>
-    <tr>
-      <td>`alphaSliderHidden`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`color`</td>
-      <td>`color`</td>
-      <td>Type changed `IColor, string`->`HSV`</td>
-    </tr>
-    <tr>
-      <td>`className`</td>
-      <td>`not supported`</td>
-      <td>Slot system supports it by default. We don't need to provide it explicitly.</td>
-    </tr>
-    <tr>
-      <td>`componentRef`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`hexLabel`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`redLabel`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`greenLabel`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`blueLabel`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`alphaLabel`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onColorChange`</td>
-      <td>Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>`</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`shape`</td>
-      <td>New prop, `shape` of the ColorPicker.</td>
-    </tr>
-    <tr>
-      <td>`showPreview`</td>
-      <td>`not supported`</td>
-      <td>Use `ColorSwatch` instead.</td>
-    </tr>
-    <tr>
-      <td>`strings`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`styles`</td>
-      <td>`not supported`</td>
-      <td>Use style customization through `className` instead.</td>
-    </tr>
-    <tr>
-      <td>`theme`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`tooltipProps`</td>
-      <td>`not supported`</td>
-      <td>Use `Tooltip` component instead.</td>
-    </tr>
-  </tbody>
-</table>
+| v8                    | v9                | Notes                                                                                            |
+| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------ |
+| \`alphaType\`         | \`not supported\` | Use \`AlphaSlider\` component.                                                                   |
+| \`alphaSliderHidden\` | \`not supported\` |                                                                                                  |
+| \`color\`             | \`color\`         | Type changed \`IColor, string\`->\`HSV\`                                                         |
+| \`className\`         | \`not supported\` | Slot system supports it by default. We don't need to provide it explicitly.                      |
+| \`componentRef\`      | \`not supported\` |                                                                                                  |
+| \`hexLabel\`          | \`not supported\` |                                                                                                  |
+| \`redLabel\`          | \`not supported\` |                                                                                                  |
+| \`greenLabel\`        | \`not supported\` |                                                                                                  |
+| \`blueLabel\`         | \`not supported\` |                                                                                                  |
+| \`alphaLabel\`        | \`not supported\` |                                                                                                  |
+| \`onChange\`          | \`onColorChange\` | Renamed. Type changed \`(ev: React.SyntheticEvent, color: IColor) => void;\` => \`EventHandler\` |
+| \`no equivalent\`     | \`shape\`         | New prop, \`shape\` of the ColorPicker.                                                          |
+| \`showPreview\`       | \`not supported\` | Use \`ColorSwatch\` instead.                                                                     |
+| \`strings\`           | \`not supported\` |                                                                                                  |
+| \`styles\`            | \`not supported\` | Use style customization through \`className\` instead.                                           |
+| \`theme\`             | \`not supported\` |                                                                                                  |
+| \`tooltipProps\`      | \`not supported\` | Use \`Tooltip\` component instead.                                                               |
 
 ### ColorRectangle -> ColorArea
 
 This table maps changes between `ColorRectangle` and `ColorArea` equivalent in v9.
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`ariaLabel`</td>
-      <td>`not supported`</td>
-      <td>Use native `aria-attributes`</td>
-    </tr>
-    <tr>
-      <td>`ariaValueFormat`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`ariaDescription`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`color`</td>
-      <td>`color`</td>
-      <td>Type changed `IColor`->`HSV`</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`defaultColor`</td>
-      <td>Default color for uncontrollable ColorArea</td>
-    </tr>
-    <tr>
-      <td>`minSize`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onColorChange`</td>
-      <td>Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>`</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`shape`</td>
-      <td>New prop, `shape` of the ColorPicker.</td>
-    </tr>
-  </tbody>
-</table>
+| v8                  | v9                | Notes                                                                                            |
+| ------------------- | ----------------- | ------------------------------------------------------------------------------------------------ |
+| \`ariaLabel\`       | \`not supported\` | Use native \`aria-attributes\`                                                                   |
+| \`ariaValueFormat\` | \`not supported\` |                                                                                                  |
+| \`ariaDescription\` | \`not supported\` |                                                                                                  |
+| \`color\`           | \`color\`         | Type changed \`IColor\`->\`HSV\`                                                                 |
+| \`no equivalent\`   | \`defaultColor\`  | Default color for uncontrollable ColorArea                                                       |
+| \`minSize\`         | \`not supported\` |                                                                                                  |
+| \`onChange\`        | \`onColorChange\` | Renamed. Type changed \`(ev: React.SyntheticEvent, color: IColor) => void;\` => \`EventHandler\` |
+| \`no equivalent\`   | \`shape\`         | New prop, \`shape\` of the ColorPicker.                                                          |
 
 ### ColorSlider
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`type`</td>
-      <td>`channel`</td>
-      <td>Color channel. Currently supported `hue`, `saturation` and `brightness`. For alpha channel use `AlphaSlider`</td>
-    </tr>
-    <tr>
-      <td>`color`</td>
-      <td>`color`</td>
-      <td>Type changed `IColor`->`HSV`</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`defaultColor`</td>
-      <td>Default color for uncontrollable ColorArea</td>
-    </tr>
-    <tr>
-      <td>`minValue`</td>
-      <td>`not supported`</td>
-      <td>Use native input `min` prop</td>
-    </tr>
-    <tr>
-      <td>`maxValue`</td>
-      <td>`not supported`</td>
-      <td>Use native input `max` prop</td>
-    </tr>
-    <tr>
-      <td>`isAlpha`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`overlayColor`</td>
-      <td>`not supported`</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>`thumbColor`</td>
-      <td>`not supported`</td>
-      <td>Use native input `max` prop</td>
-    </tr>
-    <tr>
-      <td>`overlayStyle`</td>
-      <td>`not supported`</td>
-      <td>Use native input `max` prop</td>
-    </tr>
-    <tr>
-      <td>`onChange`</td>
-      <td>`onColorChange`</td>
-      <td>Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>`</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`shape`</td>
-      <td>New prop, `shape` of the ColorPicker.</td>
-    </tr>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`vertical`</td>
-      <td>Vertical slider.</td>
-    </tr>
-  </tbody>
-</table>
+| v8                | v9                | Notes                                                                                                                |
+| ----------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
+| \`type\`          | \`channel\`       | Color channel. Currently supported \`hue\`, \`saturation\` and \`brightness\`. For alpha channel use \`AlphaSlider\` |
+| \`color\`         | \`color\`         | Type changed \`IColor\`->\`HSV\`                                                                                     |
+| \`no equivalent\` | \`defaultColor\`  | Default color for uncontrollable ColorArea                                                                           |
+| \`minValue\`      | \`not supported\` | Use native input \`min\` prop                                                                                        |
+| \`maxValue\`      | \`not supported\` | Use native input \`max\` prop                                                                                        |
+| \`isAlpha\`       | \`not supported\` |                                                                                                                      |
+| \`overlayColor\`  | \`not supported\` |                                                                                                                      |
+| \`thumbColor\`    | \`not supported\` | Use native input \`max\` prop                                                                                        |
+| \`overlayStyle\`  | \`not supported\` | Use native input \`max\` prop                                                                                        |
+| \`onChange\`      | \`onColorChange\` | Renamed. Type changed \`(ev: React.SyntheticEvent, color: IColor) => void;\` => \`EventHandler\`                     |
+| \`no equivalent\` | \`shape\`         | New prop, \`shape\` of the ColorPicker.                                                                              |
+| \`no equivalent\` | \`vertical\`      | Vertical slider.                                                                                                     |
 
 ### No equivalent in V8 -> AlphaSlider
 
 For aplha channel, use `AlphaSlider` component.
 It has all the props of the `ColorSlider`.
 
-<table>
-  <thead>
-    <tr>
-      <th>v8</th>
-      <th>v9</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`no equivalent`</td>
-      <td>`transparency`</td>
-      <td>The `transparency` property determines how the alpha channel is interpreted.</td>
-    </tr>
-  </tbody>
-</table>
+| v8                | v9               | Notes                                                                          |
+| ----------------- | ---------------- | ------------------------------------------------------------------------------ |
+| \`no equivalent\` | \`transparency\` | The \`transparency\` property determines how the alpha channel is interpreted. |
 
 For more examples, please refer to the [ColorPicker documentation](https://react.fluentui.dev/?path=/docs/preview-components-colorpicker--docs).
