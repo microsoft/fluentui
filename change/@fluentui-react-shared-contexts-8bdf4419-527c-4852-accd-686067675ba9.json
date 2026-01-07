@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "including package react-file-type-icons v9",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

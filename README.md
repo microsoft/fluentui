@@ -2,9 +2,7 @@
 
 [![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/164/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build?definitionId=164) ![GitHub contributors](https://img.shields.io/github/contributors/microsoft/fluentui?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/microsoft/fluentui?style=flat-square) [![Twitter Follow](https://img.shields.io/twitter/follow/fluentui?logo=x&style=flat-square)](https://twitter.com/FluentUI?ref_src=twsrc%5Etfw)
 
-> Fluent UI React is shipping its v9 final stable release. Visit the [Fluent UI React v9 Release page on the wiki](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-v9-Release) to learn more about the upcoming release schedule.
-
-Fluent UI web represents a collection of utilities, React components, and Web Components for building web applications.
+Fluent UI is a collection of utilities and React components for building web applications.
 
 This repo is home to 3 separate projects today. Combining Fluent UI React v9 components with Fluent UI React v8 or v0 components is possible and allows gradual migration to Fluent UI v9.
 
@@ -26,6 +24,8 @@ The following table will help you navigate the 3 projects and understand their d
 <!-- prettier-ignore-end -->
 
 > Why are there two React versions? Fluent UI v8 is still widely used. We encourage you to migrate to Fluent UI v9. See the [Migration overview](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-component-mapping--docs).
+
+For docs on how to contribute to our repo, check out the [contributing docs](https://github.com/microsoft/fluentui/tree/master/docs/react-v9/contributing) folder.
 
 ## FluentUI Insights
 
