@@ -330,8 +330,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       return lineData.map((series, seriesIndex) => {
         const radialLine = d3LineRadial<PolarDataPoint>()
           .angle(d => aScale(d.theta))
-          .radius(d => rScale(d.r as any)!)
-          .curve(d3CurveLinearClosed);
+          .radius(d => rScale(d.r as any)!);
 
         return (
           <g

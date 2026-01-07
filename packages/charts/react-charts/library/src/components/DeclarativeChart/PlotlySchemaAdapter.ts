@@ -70,6 +70,7 @@ import type {
   AxisType,
   Shape,
   Annotations,
+  PolarLayout,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -110,6 +111,10 @@ export const SINGLE_REPEAT = 'repeat(1, 1fr)';
 type DomainInterval = {
   start: number;
   end: number;
+};
+
+type ExtDomainInterval = DomainInterval & {
+  cellName: string;
 };
 
 export type AxisProperties = {
@@ -3455,8 +3460,8 @@ export const getGridProperties = (
   isMultiPlot: boolean,
   validTracesInfo: TraceInfo[],
 ): GridProperties => {
-  const domainX: DomainInterval[] = [];
-  const domainY: DomainInterval[] = [];
+  const domainX: ExtDomainInterval[] = [];
+  const domainY: ExtDomainInterval[] = [];
   let cartesianDomains = 0;
   type AnnotationProps = {
     xAnnotation?: string;
@@ -3482,9 +3487,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
         }
         const xAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainXInfo: DomainInterval = {
+        const domainXInfo: ExtDomainInterval = {
           start: xAxisLayout?.domain ? xAxisLayout.domain[0] : 0,
           end: xAxisLayout?.domain ? xAxisLayout.domain[1] : 1,
+          cellName: `x${domainX.length === 0 ? '' : domainX.length + 1}` as XAxisName,
         };
         domainX.push(domainXInfo);
       } else if (key.startsWith('yaxis')) {
@@ -3499,9 +3505,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
         }
         const yAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainYInfo: DomainInterval = {
+        const domainYInfo: ExtDomainInterval = {
           start: yAxisLayout?.domain ? yAxisLayout.domain[0] : 0,
           end: yAxisLayout?.domain ? yAxisLayout.domain[1] : 1,
+          cellName: `x${domainY.length === 0 ? '' : domainY.length + 1}` as XAxisName,
         };
         domainY.push(domainYInfo);
       }
@@ -3512,13 +3519,15 @@ export const getGridProperties = (
   validTracesInfo.forEach((trace, index) => {
     if (isNonPlotType(trace.type)) {
       const series = schema?.data?.[index] as Partial<PieData> | Partial<SankeyData>;
-      const domainXInfo: DomainInterval = {
+      const domainXInfo: ExtDomainInterval = {
         start: series.domain?.x ? series.domain.x[0] : 0,
         end: series.domain?.x ? series.domain.x[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainX.length - cartesianDomains + 1}`,
       };
-      const domainYInfo: DomainInterval = {
+      const domainYInfo: ExtDomainInterval = {
         start: series.domain?.y ? series.domain.y[0] : 0,
         end: series.domain?.y ? series.domain.y[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainY.length - cartesianDomains + 1}`,
       };
       domainX.push(domainXInfo);
       domainY.push(domainYInfo);
@@ -3526,6 +3535,23 @@ export const getGridProperties = (
   });
 
   if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
+    Object.keys(layout ?? {}).forEach(key => {
+      if (key.startsWith('polar')) {
+        const polarLayout = layout[key as keyof typeof layout] as Partial<PolarLayout>;
+        const domainXInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.x ? polarLayout.domain.x[0] : 0,
+          end: polarLayout.domain?.x ? polarLayout.domain.x[1] : 1,
+          cellName: key,
+        };
+        const domainYInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.y ? polarLayout.domain.y[0] : 0,
+          end: polarLayout.domain?.y ? polarLayout.domain.y[1] : 1,
+          cellName: key,
+        };
+        domainX.push(domainXInfo);
+        domainY.push(domainYInfo);
+      }
+    });
     layout.annotations?.forEach(annotation => {
       const xMatches = domainX.flatMap((interval, idx) =>
         (annotation?.x as number) >= interval.start && (annotation?.x as number) <= interval.end ? [idx] : [],
@@ -3551,7 +3577,7 @@ export const getGridProperties = (
   }
 
   if (domainX.length > 0) {
-    const uniqueXIntervals = new Map<string, DomainInterval>();
+    const uniqueXIntervals = new Map<string, ExtDomainInterval>();
     domainX.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueXIntervals.has(key)) {
@@ -3565,11 +3591,6 @@ export const getGridProperties = (
     templateColumns = `repeat(${sortedXStart.length}, 1fr)`;
 
     domainX.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
-
       const columnIndex = sortedXStart.findIndex(start => start === interval.start);
       const columnNumber = columnIndex + 1; // Column numbers are 1-based
 
@@ -3583,11 +3604,11 @@ export const getGridProperties = (
         xDomain: interval,
         yDomain: { start: 0, end: 1 }, // Default yDomain for x-axis
       };
-      gridLayout[cellName] = row;
+      gridLayout[interval.cellName] = row;
     });
   }
   if (domainY.length > 0) {
-    const uniqueYIntervals = new Map<string, DomainInterval>();
+    const uniqueYIntervals = new Map<string, ExtDomainInterval>();
     domainY.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueYIntervals.has(key)) {
@@ -3602,17 +3623,13 @@ export const getGridProperties = (
 
     templateRows = `repeat(${numberOfRows}, 1fr)`;
     domainY.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
       const rowIndex = sortedYStart.findIndex(start => start === interval.start);
       const rowNumber = numberOfRows - rowIndex; // Rows are 1-based and we need to reverse the order for CSS grid
 
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
 
-      const cell = gridLayout[cellName];
+      const cell = gridLayout[interval.cellName];
 
       if (cell !== undefined) {
         cell.row = rowNumber;

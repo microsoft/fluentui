@@ -481,7 +481,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
         nonCartesianTraceCount++;
       } else {
-        traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+        traceKey = ['scatterpolar'].includes(trace.type!)
+          ? (trace as { subplot?: string }).subplot ?? 'polar'
+          : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
       }
       if (!groupedTraces[traceKey]) {
         groupedTraces[traceKey] = [];
