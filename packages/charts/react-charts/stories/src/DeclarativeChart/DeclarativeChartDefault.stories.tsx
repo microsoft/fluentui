@@ -159,7 +159,7 @@ const DEFAULT_SCHEMAS = [
 const dropdownStyles = { width: 200 };
 const inputStyles = { maxWidth: 300 };
 
-type LoadingState = 'initial' | 'loading' | 'loaded';
+type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
 export const DeclarativeChartBasicExample = (): JSXElement => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
@@ -176,7 +176,6 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
   const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
-  const [isLoadMoreDisabled, setLoadMoreDisabled] = React.useState(false);
 
   React.useEffect(() => {
     doc?.addEventListener('contextmenu', e => {
@@ -184,8 +183,8 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     });
   }, [doc]);
 
-  const loadSchemas = React.useCallback(async (_loadingState: LoadingState = 'loading') => {
-    setLoadingState(_loadingState);
+  const loadSchemas = React.useCallback(async (startLoadingState: LoadingState = 'loading') => {
+    setLoadingState(startLoadingState);
     let disableLoadMore = false;
     const offset = loadedSchemas.current.length;
     const promises = Array.from({ length: 100 }, (_, index) => {
@@ -205,8 +204,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
         .catch(() => ({ key: filename, schema: {} }));
     });
     loadedSchemas.current.push(...(await Promise.all(promises)).filter(item => item.schema !== null));
-    setLoadingState('loaded');
-    setLoadMoreDisabled(disableLoadMore);
+    setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
   }, []);
 
   React.useEffect(() => {
@@ -222,33 +220,47 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     [showMore],
   );
 
-  React.useEffect(() => {
-    if (showMore) {
-      if (loadingState === 'initial' || loadedSchemas.current.length === 0) {
-        setOptions([]);
-        setSelectedOptions([]);
-        setDropdownValue('');
-        setSelectedLegends('');
-      } else if (loadingState === 'loaded') {
-        const _options = loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }));
-        setOptions(_options);
-        if (!dropdownValue.includes('data_')) {
-          setSelectedOptions([_options[0].key]);
-          setDropdownValue(_options[0].text);
-          const selectedPlotlySchema = getSchemaByKey(_options[0].key);
-          const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-          setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
-        }
+  const applySelection = React.useCallback(
+    (option: { key: string; text: string } | undefined) => {
+      if (!option) {
+        return;
       }
-    } else {
+      setSelectedOptions([option.key]);
+      setDropdownValue(option.text);
+      const schema = getSchemaByKey(option.key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+    },
+    [getSchemaByKey],
+  );
+
+  React.useEffect(() => {
+    if (!showMore) {
       setOptions(DEFAULT_OPTIONS);
-      setSelectedOptions([DEFAULT_OPTIONS[0].key]);
-      setDropdownValue(DEFAULT_OPTIONS[0].text);
-      const selectedPlotlySchema = getSchemaByKey(DEFAULT_OPTIONS[0].key);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      applySelection(DEFAULT_OPTIONS[0]);
+      return;
     }
-  }, [showMore, loadingState, dropdownValue, getSchemaByKey]);
+    // showMore === true
+    if (loadingState === 'initial' || loadedSchemas.current.length === 0) {
+      setOptions([]);
+      setSelectedOptions([]);
+      setDropdownValue('');
+      setSelectedLegends('');
+      return;
+    }
+    const _options = loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }));
+    if (loadingState.includes('loaded')) {
+      setOptions(_options);
+    }
+    setSelectedOptions(prevSelectedOptions => {
+      if (prevSelectedOptions[0]?.includes('data_')) {
+        return prevSelectedOptions;
+      }
+      setDropdownValue(_options[0].text);
+      const schema = getSchemaByKey(_options[0].key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+      return [_options[0].key];
+    });
+  }, [showMore, loadingState, applySelection]);
 
   const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowMore(ev.currentTarget.checked);
@@ -256,13 +268,9 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
 
   const onOptionSelect = React.useCallback(
     (ev: SelectionEvents, data: OptionOnSelectData) => {
-      setSelectedOptions(data.selectedOptions);
-      setDropdownValue(data.optionText ?? '');
-      const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      applySelection({ key: data.selectedOptions[0], text: data.optionText ?? '' });
     },
-    [getSchemaByKey],
+    [applySelection],
   );
 
   const onSelectedLegendsChange = React.useCallback(
@@ -360,11 +368,11 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
         {showMore && (
           <div>
             <Button
-              icon={loadingState === 'loaded' ? undefined : <Spinner size="tiny" />}
+              icon={loadingState.includes('loaded') ? undefined : <Spinner size="tiny" />}
               onClick={() => loadSchemas()}
-              disabledFocusable={loadingState !== 'loaded' || isLoadMoreDisabled}
+              disabledFocusable={loadingState !== 'partially_loaded'}
             >
-              {loadingState === 'loaded' ? 'Load more' : 'Loading'}
+              {loadingState.includes('loaded') ? 'Load more' : 'Loading'}
             </Button>
           </div>
         )}
