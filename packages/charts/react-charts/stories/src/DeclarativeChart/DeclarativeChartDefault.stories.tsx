@@ -260,7 +260,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
       setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
       return [_options[0].key];
     });
-  }, [showMore, loadingState, applySelection]);
+  }, [showMore, loadingState, applySelection, getSchemaByKey]);
 
   const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowMore(ev.currentTarget.checked);
