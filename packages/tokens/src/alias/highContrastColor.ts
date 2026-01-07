@@ -34,6 +34,10 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForeground3BrandPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForeground3BrandSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForeground4: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralForeground5: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralForeground5Hover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
+  colorNeutralForeground5Pressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
+  colorNeutralForeground5Selected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
   colorNeutralForegroundInvertedDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
   colorBrandForegroundLink: hcHyperlink, // LinkText Global.Color.hcHyperlink
@@ -91,6 +95,11 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground5Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground5Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground6: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackground7: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackground7Hover: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralBackground7Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralBackground7Selected: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralBackground8: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundAlpha: hcCanvas, // Canvas Global.Color.hcCanvas
@@ -111,6 +120,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorTransparentBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorTransparentBackgroundSelected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackgroundDisabled: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundDisabled2: hcDisabled, // GrayText Global.Color.hcDisabled
   colorNeutralBackgroundInvertedDisabled: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralStencil1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStencil2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
@@ -150,6 +160,10 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStroke1Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStroke3: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStroke4: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStroke4Hover: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralStroke4Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralStroke4Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralStrokeSubtle: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeOnBrand: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralStrokeOnBrand2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
@@ -165,6 +179,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandStrokeHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralStrokeDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
+  colorNeutralStrokeDisabled2: hcDisabled, // GrayText Global.Color.hcDisabled
   colorNeutralStrokeInvertedDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
   colorTransparentStroke: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorTransparentStrokeInteractive: hcHighlight, // Highlight Global.Color.hcHighlight
