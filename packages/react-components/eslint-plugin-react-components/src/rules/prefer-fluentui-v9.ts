@@ -70,10 +70,7 @@ export const rule = createRule<Options, MessageIds>({
        * Example: import { Button } from '@fluentui/react';
        */
       ImportDeclaration(node) {
-        const source = node.source.value;
-        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/');
-
-        if (!isFluentV8Import) {
+        if (!isFluentV8Import(node.source.value)) {
           return;
         }
         for (const specifier of node.specifiers) {
@@ -94,7 +91,7 @@ export const rule = createRule<Options, MessageIds>({
        * - function hello() { import('@fluentui/react').then(m => window.v8 = m); }
        */
       ImportExpression(node) {
-        if (node.source.type !== AST_NODE_TYPES.Literal || node.source.value !== '@fluentui/react') {
+        if (node.source.type !== AST_NODE_TYPES.Literal || !isFluentV8Import(node.source.value as string)) {
           return;
         }
 
@@ -367,4 +364,13 @@ function findComponentUsagesInScope(declarator: TSESTree.VariableDeclarator, var
 
   traverse(currentNode);
   return components;
+}
+
+/**
+ * Checks if the import source is from Fluent UI v8.
+ * @param source - The import source string.
+ * @returns True if the source is from Fluent UI v8, false otherwise.
+ */
+function isFluentV8Import(source: string) {
+  return source === '@fluentui/react' || source.startsWith('@fluentui/react/');
 }

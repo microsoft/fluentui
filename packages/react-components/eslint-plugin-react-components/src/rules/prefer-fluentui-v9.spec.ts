@@ -104,10 +104,8 @@ ruleTester.run(RULE_NAME, rule, {
           data: { fluent8: 'Calendar', fluent9: 'Calendar', package: '@fluentui/react-calendar-compat' },
         },
       ],
-
-   },
-   {
-               
+    },
+    {
       code: `import { CompoundButton } from '@fluentui/react/lib/Button';`,
       errors: [
         {
