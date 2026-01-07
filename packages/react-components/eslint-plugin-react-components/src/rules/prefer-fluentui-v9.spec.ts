@@ -104,6 +104,21 @@ ruleTester.run(RULE_NAME, rule, {
           data: { fluent8: 'Calendar', fluent9: 'Calendar', package: '@fluentui/react-calendar-compat' },
         },
       ],
+
+   },
+   {
+               
+      code: `import { CompoundButton } from '@fluentui/react/lib/Button';`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'CompoundButton', fluent9: 'CompoundButton', package: '@fluentui/react-components' },
+        },
+      ],
+    },
+    {
+      code: `import { Stack } from '@fluentui/react/lib/Stack';`,
+      errors: [{ messageId: 'replaceStackWithFlex' }],
     },
   ],
 });

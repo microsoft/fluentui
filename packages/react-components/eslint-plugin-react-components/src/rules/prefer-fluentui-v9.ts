@@ -70,7 +70,10 @@ export const rule = createRule<Options, MessageIds>({
        * Example: import { Button } from '@fluentui/react';
        */
       ImportDeclaration(node) {
-        if (node.source.value !== '@fluentui/react') {
+        const source = node.source.value;
+        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/');
+
+        if (!isFluentV8Import) {
           return;
         }
         for (const specifier of node.specifiers) {

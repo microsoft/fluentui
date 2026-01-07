@@ -1,3 +1,7 @@
+---
+applyTo: 'yarn.lock,**/package.json,.github/workflows/**/*.yml'
+---
+
 # Dependabot Security Fixes Instructions
 
 This instruction guide explains how Dependabot automation works for security fixes in the Fluent UI monorepo and provides procedures for handling security vulnerabilities.
