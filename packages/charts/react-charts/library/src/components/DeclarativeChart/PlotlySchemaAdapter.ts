@@ -70,6 +70,7 @@ import type {
   AxisType,
   Shape,
   Annotations,
+  PolarLayout,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -94,6 +95,7 @@ import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
 import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
+import { PolarAxisProps, PolarChartProps } from '../PolarChart/PolarChart.types';
 import {
   ChartAnnotation,
   ChartAnnotationArrowHead,
@@ -109,6 +111,10 @@ export const SINGLE_REPEAT = 'repeat(1, 1fr)';
 type DomainInterval = {
   start: number;
   end: number;
+};
+
+type ExtDomainInterval = DomainInterval & {
+  cellName: string;
 };
 
 export type AxisProperties = {
@@ -3147,154 +3153,101 @@ export const transformPlotlyJsonToFunnelChartProps = (
   };
 };
 
-export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
-  const projection: PlotlySchema = { ...input };
+export const transformPlotlyJsonToPolarChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.RefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): PolarChartProps => {
+  const polarData: PolarChartProps['data'] = [];
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const thetaunit = (input.layout?.polar?.angularaxis as { thetaunit?: 'radians' | 'degrees' } | undefined)?.thetaunit;
 
-  // Find the global min and max radius across all series
-  let minRadius = 0;
-  let maxRadius = 0;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const rVals = (input.data[sindex] as Partial<PlotData>).r;
-    if (rVals && isArrayOrTypedArray(rVals)) {
-      for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-        if (!isInvalidValue(rVals[ptindex])) {
-          minRadius = Math.min(minRadius, rVals[ptindex] as number);
-          maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
-        }
-      }
-    }
-  }
+  input.data.forEach((series: Partial<PlotData>, index: number) => {
+    const legend = legends[index];
 
-  // If there are negative radii, compute the shift
-  const radiusShift = minRadius < 0 ? -minRadius : 0;
+    if (series.type === 'scatterpolar') {
+      const isAreaTrace = series.fill === 'toself' || series.fill === 'tonext';
+      const isLineTrace = typeof series.mode === 'undefined' ? true : series.mode.includes('lines');
+      const colors = isAreaTrace ? series.fillcolor : isLineTrace ? series.line?.color : series.marker?.color;
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        colors,
+        colorMap,
+        isDarkTheme,
+      );
+      const seriesColor = resolveColor(
+        extractedColors,
+        index,
+        legend,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
+      const seriesOpacity = getOpacity(series, index);
+      const finalSeriesColor = rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8();
+      const lineOptions = getLineOptions(series.line);
 
-  // Collect all unique theta values from all scatterpolar series for equal spacing
-  const allThetaValues: Set<string> = new Set();
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    if (series.theta && isArrayOrTypedArray(series.theta)) {
-      series.theta.forEach(theta => allThetaValues.add(String(theta)));
-    }
-  }
+      const commonProps = {
+        legend,
+        legendShape: getLegendShape(series),
+        color: finalSeriesColor,
+        data:
+          series.r
+            ?.map((r, rIndex) => {
+              const theta = series.theta?.[rIndex];
+              const markerSize = Array.isArray(series.marker?.size) ? series.marker.size[rIndex] : series.marker?.size;
+              const text = Array.isArray(series.text) ? series.text[rIndex] : series.text;
+              const markerColor = resolveColor(
+                extractedColors,
+                rIndex,
+                legend,
+                colorMap,
+                input.layout?.template?.layout?.colorway,
+                isDarkTheme,
+              );
+              const markerOpacity = getOpacity(series, rIndex);
 
-  // Project all points and create a perfect square domain
-  const allX: number[] = [];
-  const allY: number[] = [];
-  let originX: number | null = null;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
-    if (isArrayOrTypedArray(series.theta)) {
-      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
-    }
-    series.x = [] as Datum[];
-    series.y = [] as Datum[];
-    const thetas = series.theta!;
-    const rVals = series.r!;
+              if (isInvalidValue(r) || isInvalidValue(theta)) {
+                return;
+              }
 
-    // Skip if rVals or thetas are not arrays
-    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
-      projection.data[sindex] = series;
-      continue;
-    }
+              return {
+                r: r as number,
+                theta:
+                  typeof theta === 'number' && thetaunit === 'radians' ? (theta * 180) / Math.PI : (theta as string),
+                color: markerColor ? rgb(markerColor).copy({ opacity: markerOpacity }).formatHex8() : finalSeriesColor,
+                ...(typeof markerSize !== 'undefined' ? { markerSize } : {}),
+                ...(typeof text !== 'undefined' ? { text } : {}),
+              };
+            })
+            .filter(item => typeof item !== 'undefined') || [],
+      };
 
-    // retrieve polar axis settings
-    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
-    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
-
-    // Compute tick positions if categorical
-    let uniqueTheta: Datum[] = [];
-    let categorical = false;
-    if (!isNumberArray(thetas)) {
-      uniqueTheta = Array.from(new Set(thetas));
-      categorical = true;
-    }
-
-    for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-      if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
-        continue;
-      }
-
-      // Map theta to angle in radians
-      let thetaRad: number;
-      if (categorical) {
-        const idx = uniqueTheta.indexOf(thetas[ptindex]);
-        const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = startAngleInRad + dirMultiplier * idx * step;
+      if (isAreaTrace || isLineTrace) {
+        polarData.push({
+          type: isAreaTrace ? 'areapolar' : 'linepolar',
+          ...commonProps,
+          lineOptions,
+        });
       } else {
-        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
-      }
-      // Shift only the polar origin (not the cartesian)
-      const rawRadius = rVals[ptindex] as number;
-      const polarRadius = rawRadius + radiusShift; // Only for projection
-      // Calculate cartesian coordinates (with shifted polar origin)
-      const x = polarRadius * Math.cos(thetaRad);
-      const y = polarRadius * Math.sin(thetaRad);
-
-      // Calculate the cartesian coordinates of the original polar origin (0,0)
-      // This is the point that should be mapped to (0,0) in cartesian coordinates
-      if (sindex === 0 && ptindex === 0) {
-        // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
-        // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
-        originX = radiusShift;
-      }
-
-      series.x.push(x);
-      series.y.push(y);
-      allX.push(x);
-      allY.push(y);
-    }
-
-    // Map text to each data point for downstream chart rendering
-    if (series.x && series.y) {
-      (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
-        x: xVal,
-        y: (series.y as number[])[idx],
-        ...(series.text ? { text: (series.text as string[])[idx] } : {}),
-      }));
-    }
-
-    projection.data[sindex] = series;
-  }
-
-  // 7. Recenter all cartesian coordinates
-  if (originX !== null) {
-    for (let sindex = 0; sindex < projection.data.length; sindex++) {
-      const series = projection.data[sindex] as Partial<PlotData>;
-      if (series.x && series.y) {
-        series.x = (series.x as number[]).map((v: number) => v - originX!);
+        polarData.push({
+          type: 'scatterpolar',
+          ...commonProps,
+        });
       }
     }
-    // Also recenter allX for normalization
-    for (let i = 0; i < allX.length; i++) {
-      allX[i] = allX[i] - originX!;
-    }
-  }
+  });
 
-  // 8. Find the maximum absolute value among all x and y
-  let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
-  maxAbs = maxAbs === 0 ? 1 : maxAbs;
-
-  // 9. Rescale all points so that the largest |x| or |y| is 0.5
-  for (let sindex = 0; sindex < projection.data.length; sindex++) {
-    const series = projection.data[sindex] as Partial<PlotData>;
-    if (series.x && series.y) {
-      series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
-      series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
-    }
-  }
-
-  // 10. Customize layout for perfect square with absolute positioning
-  const size = input.layout?.width || input.layout?.height || 500;
-  projection.layout = {
-    ...projection.layout,
-    width: size,
-    height: size,
+  return {
+    data: polarData,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 400,
+    hideLegend,
+    ...getsomething(input.data, input.layout),
   };
-  // Attach originX as custom properties
-  (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
-
-  return projection;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -3661,8 +3614,8 @@ export const getGridProperties = (
   isMultiPlot: boolean,
   validTracesInfo: TraceInfo[],
 ): GridProperties => {
-  const domainX: DomainInterval[] = [];
-  const domainY: DomainInterval[] = [];
+  const domainX: ExtDomainInterval[] = [];
+  const domainY: ExtDomainInterval[] = [];
   let cartesianDomains = 0;
   type AnnotationProps = {
     xAnnotation?: string;
@@ -3688,9 +3641,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
         }
         const xAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainXInfo: DomainInterval = {
+        const domainXInfo: ExtDomainInterval = {
           start: xAxisLayout?.domain ? xAxisLayout.domain[0] : 0,
           end: xAxisLayout?.domain ? xAxisLayout.domain[1] : 1,
+          cellName: `x${domainX.length === 0 ? '' : domainX.length + 1}` as XAxisName,
         };
         domainX.push(domainXInfo);
       } else if (key.startsWith('yaxis')) {
@@ -3705,9 +3659,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
         }
         const yAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainYInfo: DomainInterval = {
+        const domainYInfo: ExtDomainInterval = {
           start: yAxisLayout?.domain ? yAxisLayout.domain[0] : 0,
           end: yAxisLayout?.domain ? yAxisLayout.domain[1] : 1,
+          cellName: `x${domainY.length === 0 ? '' : domainY.length + 1}` as XAxisName,
         };
         domainY.push(domainYInfo);
       }
@@ -3718,13 +3673,15 @@ export const getGridProperties = (
   validTracesInfo.forEach((trace, index) => {
     if (isNonPlotType(trace.type)) {
       const series = schema?.data?.[index] as Partial<PieData> | Partial<SankeyData>;
-      const domainXInfo: DomainInterval = {
+      const domainXInfo: ExtDomainInterval = {
         start: series.domain?.x ? series.domain.x[0] : 0,
         end: series.domain?.x ? series.domain.x[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainX.length - cartesianDomains + 1}`,
       };
-      const domainYInfo: DomainInterval = {
+      const domainYInfo: ExtDomainInterval = {
         start: series.domain?.y ? series.domain.y[0] : 0,
         end: series.domain?.y ? series.domain.y[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainY.length - cartesianDomains + 1}`,
       };
       domainX.push(domainXInfo);
       domainY.push(domainYInfo);
@@ -3732,6 +3689,23 @@ export const getGridProperties = (
   });
 
   if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
+    Object.keys(layout ?? {}).forEach(key => {
+      if (key.startsWith('polar')) {
+        const polarLayout = layout[key as keyof typeof layout] as Partial<PolarLayout>;
+        const domainXInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.x ? polarLayout.domain.x[0] : 0,
+          end: polarLayout.domain?.x ? polarLayout.domain.x[1] : 1,
+          cellName: key,
+        };
+        const domainYInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.y ? polarLayout.domain.y[0] : 0,
+          end: polarLayout.domain?.y ? polarLayout.domain.y[1] : 1,
+          cellName: key,
+        };
+        domainX.push(domainXInfo);
+        domainY.push(domainYInfo);
+      }
+    });
     layout.annotations?.forEach(annotation => {
       const xMatches = domainX.flatMap((interval, idx) =>
         (annotation?.x as number) >= interval.start && (annotation?.x as number) <= interval.end ? [idx] : [],
@@ -3757,7 +3731,7 @@ export const getGridProperties = (
   }
 
   if (domainX.length > 0) {
-    const uniqueXIntervals = new Map<string, DomainInterval>();
+    const uniqueXIntervals = new Map<string, ExtDomainInterval>();
     domainX.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueXIntervals.has(key)) {
@@ -3771,11 +3745,6 @@ export const getGridProperties = (
     templateColumns = `repeat(${sortedXStart.length}, 1fr)`;
 
     domainX.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
-
       const columnIndex = sortedXStart.findIndex(start => start === interval.start);
       const columnNumber = columnIndex + 1; // Column numbers are 1-based
 
@@ -3789,11 +3758,11 @@ export const getGridProperties = (
         xDomain: interval,
         yDomain: { start: 0, end: 1 }, // Default yDomain for x-axis
       };
-      gridLayout[cellName] = row;
+      gridLayout[interval.cellName] = row;
     });
   }
   if (domainY.length > 0) {
-    const uniqueYIntervals = new Map<string, DomainInterval>();
+    const uniqueYIntervals = new Map<string, ExtDomainInterval>();
     domainY.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueYIntervals.has(key)) {
@@ -3808,17 +3777,13 @@ export const getGridProperties = (
 
     templateRows = `repeat(${numberOfRows}, 1fr)`;
     domainY.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
       const rowIndex = sortedYStart.findIndex(start => start === interval.start);
       const rowNumber = numberOfRows - rowIndex; // Rows are 1-based and we need to reverse the order for CSS grid
 
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
 
-      const cell = gridLayout[cellName];
+      const cell = gridLayout[interval.cellName];
 
       if (cell !== undefined) {
         cell.row = rowNumber;
@@ -4235,4 +4200,102 @@ const parseLocalDate = (value: string | number) => {
     }
   }
   return new Date(value);
+};
+
+const getAxisType2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): AxisType => {
+  if (['linear', 'log', 'date', 'category'].includes(ax?.type ?? '')) {
+    return ax!.type!;
+  }
+
+  if (isNumberArray(values) && !isYearArray(values)) {
+    return 'linear';
+  }
+  if (isDateArray(values)) {
+    return 'date';
+  }
+  return 'category';
+};
+
+const getAxisTickProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): PolarAxisProps => {
+  if (!ax) {
+    return {};
+  }
+
+  const props: PolarAxisProps = {};
+  const axType = getAxisType2(values, ax);
+
+  if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+    const tickValues = axType === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
+
+    props.tickValues = tickValues;
+    props.tickText = ax.ticktext;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+    const dtick = plotlyDtick(ax.dtick, axType);
+    const tick0 = plotlyTick0(ax.tick0, axType, dtick);
+
+    props.tickStep = dtick;
+    props.tick0 = tick0;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
+    props.tickCount = ax.nticks;
+  }
+
+  return props;
+};
+
+const getAxisCategoryOrderProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined) => {
+  const axType = getAxisType2(values, ax);
+  if (axType !== 'category') {
+    return 'data';
+  }
+
+  const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
+  if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
+    return ax!.categoryarray;
+  }
+
+  if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+    const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+    return ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
+  }
+
+  return ax.categoryorder;
+};
+
+const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const m = {
+    r: 'radialAxis',
+    theta: 'angularAxis',
+  };
+
+  const props = {};
+
+  Object.entries(m).forEach(([key, propName]) => {
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      if (isArrayOrTypedArray(series[key])) {
+        series[key]!.forEach(val => {
+          if (!isInvalidValue(val)) {
+            values.push(val as Datum);
+          }
+        });
+      }
+    });
+
+    const subplotId = (data[0] as { subplot?: string })?.subplot || 'polar';
+    props[propName] = {
+      categoryOrder: getAxisCategoryOrderProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
+      ...getAxisTickProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
+      tickFormat: '',
+      title: '',
+      scaleType: '',
+    };
+  });
+
+  return props;
 };
