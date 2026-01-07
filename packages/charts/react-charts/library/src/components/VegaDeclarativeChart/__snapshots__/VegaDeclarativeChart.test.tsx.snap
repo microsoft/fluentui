@@ -8755,7 +8755,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render linech
                   fill="lightblue"
                   fill-opacity="0.4"
                   height="NaN"
-                  width="NaN"
+                  width="42"
+                  x="43"
                   y="NaN"
                 />
                 <g

@@ -299,8 +299,7 @@ function getChartType(spec: VegaLiteSpec): {
     // Vertical bars with color encoding
     if (hasColorEncoding) {
       // Check for xOffset encoding which indicates grouped bars
-      // @ts-expect-error - xOffset is a valid Vega-Lite encoding
-      const hasXOffset = !!encoding?.xOffset?.field;
+      const hasXOffset = !!(encoding as Record<string, unknown>)?.xOffset;
 
       if (hasXOffset) {
         return { type: 'grouped-bar', mark: markType };

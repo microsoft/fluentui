@@ -305,6 +305,16 @@ function extractColorFillBars(spec: VegaLiteSpec, isDarkTheme?: boolean): ColorF
     return colorFillBars;
   }
 
+  // Detect if x-axis is temporal by checking the primary data layer (non-rect layer)
+  const isXTemporal = spec.layer.some(layer => {
+    const layerMark = typeof layer.mark === 'string' ? layer.mark : layer.mark?.type;
+    // Skip rect layers, look at line/point/area layers
+    if (layerMark === 'rect') {
+      return false;
+    }
+    return layer.encoding?.x?.type === 'temporal';
+  });
+
   let colorIndex = 0;
   spec.layer.forEach((layer, index) => {
     const mark = typeof layer.mark === 'string' ? layer.mark : layer.mark?.type;
@@ -318,14 +328,29 @@ function extractColorFillBars(spec: VegaLiteSpec, isDarkTheme?: boolean): ColorF
           : getNextColor(colorIndex++, 0, isDarkTheme);
 
       // Extract start and end x values
-      const startX = encoding.x.datum || encoding.x.value;
-      const endX = encoding.x2.datum || encoding.x2.value;
+      const rawStartX = encoding.x.datum || encoding.x.value;
+      const rawEndX = encoding.x2.datum || encoding.x2.value;
 
-      if (startX !== undefined && endX !== undefined) {
+      if (rawStartX !== undefined && rawEndX !== undefined) {
+        // Convert to Date if x-axis is temporal and values are date-like strings
+        let startX: number | Date = rawStartX as number | Date;
+        let endX: number | Date = rawEndX as number | Date;
+
+        if (isXTemporal) {
+          const parsedStart = new Date(rawStartX as string | number);
+          const parsedEnd = new Date(rawEndX as string | number);
+          if (!isNaN(parsedStart.getTime())) {
+            startX = parsedStart;
+          }
+          if (!isNaN(parsedEnd.getTime())) {
+            endX = parsedEnd;
+          }
+        }
+
         colorFillBars.push({
           legend: `region-${index}`,
           color,
-          data: [{ startX: startX as number | Date, endX: endX as number | Date }],
+          data: [{ startX, endX }],
           applyPattern: false,
         });
       }
