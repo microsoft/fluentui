@@ -209,6 +209,8 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/tsconfig.json',
         '{projectRoot}/tsconfig.lib.json',
         '{projectRoot}/src/**/*.tsx?',
+        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
         { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
       ],
       outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
@@ -322,35 +324,23 @@ function buildLintTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  const hasFlatConfig =
+  const hasEslintConfig =
     existsSync(join(projectRoot, 'eslint.config.js')) ||
     existsSync(join(projectRoot, 'eslint.config.cjs')) ||
     existsSync(join(projectRoot, 'eslint.config.mjs'));
-  const hasLegacyConfig =
-    existsSync(join(projectRoot, '.eslintrc.json')) || existsSync(join(projectRoot, '.eslintrc.js'));
 
-  if (!hasFlatConfig && !hasLegacyConfig) {
+  if (!hasEslintConfig) {
     return null;
   }
-
-  const command = hasFlatConfig
-    ? `${config.pmc.exec} eslint src`
-    : `${config.pmc.exec} cross-env ESLINT_USE_FLAT_CONFIG=false eslint src`;
 
   return {
     executor: 'nx:run-commands',
     cache: true,
-    options: { cwd: projectRoot, command },
+    options: { cwd: projectRoot, command: `${config.pmc.exec} eslint src` },
     inputs: [
       'default',
-      '{projectRoot}/.eslintrc.json',
-      '{projectRoot}/.eslintrc.js',
-      '{projectRoot}/eslint.config.js',
-      '{projectRoot}/eslint.config.cjs',
-      '{projectRoot}/eslint.config.mjs',
-      '{workspaceRoot}/.eslintrc.json',
-      '{workspaceRoot}/.eslintignore',
-      '{workspaceRoot}/eslint.config.js',
+      '{projectRoot}/eslint.{js,cjs,mjs}',
+      '{workspaceRoot}/eslint.config.{js,cjs,mjs}',
       { externalDependencies: ['eslint'] },
     ],
     outputs: ['{options.outputFile}'],

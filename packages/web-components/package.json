@@ -76,7 +76,6 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.10",
-    "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "8.6.14",

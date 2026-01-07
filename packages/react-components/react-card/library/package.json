@@ -12,15 +12,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-button": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-provider": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
-  },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-jsx-runtime": "^9.3.4",

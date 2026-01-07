@@ -16,9 +16,5 @@
   },
   "dependencies": {
     "office-ui-fabric-core": "^11.0.0"
-  },
-  "devDependencies": {
-    "@fluentui/style-utilities": "*",
-    "@fluentui/scripts-tasks": "*"
   }
 }

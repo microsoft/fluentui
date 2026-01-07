@@ -17,12 +17,6 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/react-icon-provider": "^1.4.3",
