@@ -63,7 +63,7 @@ describe(`#getDependencies`, () => {
           "name": "eslint-plugin",
         },
         Object {
-          "dependencyType": "dependencies",
+          "dependencyType": "devDependencies",
           "isTopLevel": false,
           "name": "eslint-plugin-react-components",
         },
