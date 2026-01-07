@@ -72,7 +72,7 @@ In this RFC, a "behavior state hook" refers to a `use{Component}Base_unstable` h
 | -------------------- | --------------------------------------------------- | ---------------------------------------------------- |
 | **Behavior only**    | Pure component logic, no visual design              | ARIA attributes, keyboard handling, focus management |
 | **No default slots** | Slots are defined, but nothing is filled by default | Icons, components must be passed by consumer         |
-| **No style logic**   | Zero styling dependencies                           | No styles, no design tokens, no animation/motion     |
+| **No styling**       | Bare bones "HTML"                                   | No styles, no design tokens, no animation/motion     |
 | **Base types**       | Separate type definitions without design props      | `ButtonBaseProps` vs `ButtonProps`                   |
 
 ## Type Definitions
@@ -272,38 +272,6 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
 | **Fluent UI maintainers**           | Clean separation of concerns; easier testing; single source of truth for behavior |
 | **Design system teams**             | Build on proven accessibility without inheriting Fluent's visual design           |
 
-## Implementation Checklist
-
-### 1. Create base types
-
-- Define `{Component}BaseProps` (behavior only)
-- Define `{Component}BaseState` (behavior only)
-- Ensure `{Component}Props` extends `{Component}BaseProps`
-- Ensure `{Component}State` extends `{Component}BaseState`
-
-### 2. Create behavior state hook
-
-- Implement `use{Component}Base_unstable`
-- Accept base props, return base state
-- Handle accessibility via ARIA hooks
-- Define semantic slot structure
-- No styling, design tokens, or motion logic
-- No default slot implementations
-- Add inline styles only for accessibility- or functionality-critical cases (document rationale)
-
-### 3. Update component state hook
-
-- Refactor to call behavior state hook
-- Add design props/state on top
-- Verify no duplicated behavior logic
-
-### 4. Export and test
-
-- Export behavior state hook from package
-- Test accessibility and slot structure
-- Verify no Griffel imports
-- Verify component state hook works correctly
-
 ## Testing Strategy
 
 Test each behavior state hook for:
@@ -370,22 +338,18 @@ Behavior state hooks are for advanced use cases only. Use them when:
 
 Behavior state hooks are the foundation layer that styled components build upon:
 
-```tsx
-// Behavior State Hook (behavior only)
-useButtonBase_unstable() → ButtonBaseState
+```mermaid
+graph TD
+  A["useButtonBase_unstable<br/>(behavior only)<br/>→ ButtonBaseState"]
+  B["useButton_unstable<br/>(adds design)<br/>→ ButtonState"]
+  C["Button<br/>(adds styles)<br/>→ Rendered component"]
 
-// Component State Hook (adds design)
-useButton_unstable() {
-  const baseState = useButtonBase_unstable(...)
-  return { ...baseState, appearance, size, shape }
-}
+  A -->|baseState| B
+  B -->|state| C
 
-// Styled component (adds styles)
-Button() {
-  const state = useButton_unstable(...)
-  useButtonStyles_unstable(state)
-  return renderButton_unstable(state)
-}
+  style A fill:#e1f5ff
+  style B fill:#f3e5f5
+  style C fill:#e8f5e9
 ```
 
 Most teams should use the styled component layer. Behavior state hooks are only for teams building their own component architecture.
