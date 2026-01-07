@@ -118,7 +118,7 @@ function isVConcatSpec(spec: VegaLiteSpec): boolean {
 /**
  * Check if spec is any kind of concatenation
  */
-// @ts-ignore - Function reserved for future use
+// @ts-expect-error - Function reserved for future use
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function isConcatSpec(spec: VegaLiteSpec): boolean {
   return isHConcatSpec(spec) || isVConcatSpec(spec);
@@ -299,7 +299,7 @@ function getChartType(spec: VegaLiteSpec): {
     // Vertical bars with color encoding
     if (hasColorEncoding) {
       // Check for xOffset encoding which indicates grouped bars
-      // @ts-ignore - xOffset is a valid Vega-Lite encoding
+      // @ts-expect-error - xOffset is a valid Vega-Lite encoding
       const hasXOffset = !!encoding?.xOffset?.field;
 
       if (hasXOffset) {
@@ -606,6 +606,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
 
         // Only warn for unsupported layered specs
         if (!isBarLineCombo) {
+          // eslint-disable-next-line no-console
           console.warn(
             'VegaDeclarativeChart: Layered specifications with multiple chart types are not fully supported. ' +
               'Only the first layer will be rendered. Bar+Line combinations are supported via VerticalStackedBarChart.',

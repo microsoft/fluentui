@@ -5,7 +5,9 @@ import type { VegaDeclarativeChartProps } from './VegaDeclarativeChart';
 
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   jest.spyOn(console, 'warn').mockImplementation(() => {});
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   jest.spyOn(console, 'error').mockImplementation(() => {});
 });
 

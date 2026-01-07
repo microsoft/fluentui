@@ -21,7 +21,9 @@ import {
 
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   jest.spyOn(console, 'warn').mockImplementation(() => {});
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   jest.spyOn(console, 'error').mockImplementation(() => {});
 });
 
@@ -1938,7 +1940,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 
     it('should render with custom dimensions', () => {
       const spec = allSchemas[0]?.spec;
-      if (!spec) return;
+      if (!spec) {
+        return;
+      }
 
       const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
@@ -1947,7 +1951,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 
     it('should render in dark theme', () => {
       const spec = allSchemas[0]?.spec;
-      if (!spec) return;
+      if (!spec) {
+        return;
+      }
 
       const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
@@ -2001,7 +2007,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 describe('VegaDeclarativeChart - Transformation Snapshots', () => {
   const allSchemas = loadAllSchemasWithCategories();
 
-  if (allSchemas.length === 0) return;
+  if (allSchemas.length === 0) {
+    return;
+  }
 
   describe('Chart Props Transformation', () => {
     // Schemas with known data or feature issues to skip

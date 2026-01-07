@@ -257,7 +257,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 
     it('should render with custom dimensions', () => {
       const spec = allSchemas[0]?.spec;
-      if (!spec) return;
+      if (!spec) {
+        return;
+      }
 
       const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
@@ -266,7 +268,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 
     it('should render in dark theme', () => {
       const spec = allSchemas[0]?.spec;
-      if (!spec) return;
+      if (!spec) {
+        return;
+      }
 
       const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
@@ -320,7 +324,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
 describe('VegaDeclarativeChart - Transformation Snapshots', () => {
   const allSchemas = loadAllSchemas();
 
-  if (allSchemas.length === 0) return;
+  if (allSchemas.length === 0) {
+    return;
+  }
 
   describe('Chart Props Transformation', () => {
     // Test a sample from each category to verify transformation
