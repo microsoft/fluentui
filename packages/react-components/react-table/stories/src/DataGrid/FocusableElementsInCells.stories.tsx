@@ -131,7 +131,11 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'Single action';
     },
     renderCell: () => {
-      return <Button icon={<OpenRegular />}>Open</Button>;
+      return (
+        <Button onClick={e => e.stopPropagation()} icon={<OpenRegular />}>
+          Open
+        </Button>
+      );
     },
   }),
   createTableColumn<Item>({
@@ -141,10 +145,10 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderCell: () => {
       return (
-        <>
+        <span onClick={e => e.stopPropagation()}>
           <Button aria-label="Edit" icon={<EditRegular />} />
           <Button aria-label="Delete" icon={<DeleteRegular />} />
-        </>
+        </span>
       );
     },
   }),
