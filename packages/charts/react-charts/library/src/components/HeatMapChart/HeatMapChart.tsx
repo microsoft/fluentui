@@ -29,6 +29,7 @@ import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
 import { useImageExport } from '../../utilities/hooks';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -70,6 +71,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const _emptyChartId = useId('_HeatMap_empty');
     const _margins = React.useRef<Margins>({});
     const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
+    const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -276,7 +278,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
           rectangles.push(rectElement);
         });
       });
-      return rectangles;
+      return <g {...arrowNavigationAttributes}>{rectangles}</g>;
     };
     /**
      * when the legend is hovered we need to highlight

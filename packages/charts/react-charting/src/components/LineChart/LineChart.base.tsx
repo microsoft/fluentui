@@ -441,6 +441,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         isRTL,
         this.props.xScaleType,
         this._hasMarkersMode,
+        this.props.xMinValue,
+        this.props.xMaxValue,
       );
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(

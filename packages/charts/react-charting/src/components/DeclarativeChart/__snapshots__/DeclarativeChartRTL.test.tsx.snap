@@ -334,7 +334,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,-21.500000000000007)"
+                  transform="translate(0,-29.9)"
                 >
                   <line
                     stroke="currentColor"
@@ -346,13 +346,31 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     x="-10"
                   >
-                    3
+                    2
                   </text>
                 </g>
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,-0.5000000000000036)"
+                  transform="translate(0,-17.3)"
+                >
+                  <line
+                    stroke="currentColor"
+                    x2="540"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.32em"
+                    fill="currentColor"
+                    x="-10"
+                  >
+                    4
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(0,-4.699999999999999)"
                 >
                   <line
                     stroke="currentColor"
@@ -370,6 +388,24 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 <g
                   class="tick"
                   opacity="1"
+                  transform="translate(0,7.900000000000002)"
+                >
+                  <line
+                    stroke="currentColor"
+                    x2="540"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.32em"
+                    fill="currentColor"
+                    x="-10"
+                  >
+                    8
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
                   transform="translate(0,20.5)"
                 >
                   <line
@@ -382,7 +418,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     x="-10"
                   >
-                    9
+                    10
                   </text>
                 </g>
               </g>
@@ -396,7 +432,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               </g>
               <g>
                 <path
-                  d="M40,-41.807L100,-42.623L160,-37.707L220,-37.825L280,-37.706L340,-36.113L400,-39.814L460,-37.736L520,-40.029L580,-38.716"
+                  d="M40,-41.926L100,-42.66L160,-38.237L220,-38.342L280,-38.235L340,-36.801L400,-40.132L460,-38.263L520,-40.326L580,-39.145"
                   fill="transparent"
                   id="0-line-areaChart_0"
                   opacity="0"
@@ -404,14 +440,14 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   stroke-width="3"
                 />
                 <path
-                  d="M40,-41.807L100,-42.623L160,-37.707L220,-37.825L280,-37.706L340,-36.113L400,-39.814L460,-37.736L520,-40.029L580,-38.716L580,-43L520,-43L460,-43L400,-43L340,-43L280,-43L220,-43L160,-43L100,-43L40,-43Z"
+                  d="M40,-41.926L100,-42.66L160,-38.237L220,-38.342L280,-38.235L340,-36.801L400,-40.132L460,-38.263L520,-40.326L580,-39.145L580,-43L520,-43L460,-43L400,-43L340,-43L280,-43L220,-43L160,-43L100,-43L40,-43Z"
                   fill="#ff9933ff"
                   fill-opacity="0.7"
                   id="0-graph-areaChart_0"
                   opacity="1"
                 />
                 <path
-                  d="M40,-34.162L100,-38.224L160,-25.944L220,-29.605L280,-25.737L340,-28.997L400,-34.072L460,-30.602L520,-36.255L580,-32.4"
+                  d="M40,-35.045L100,-38.702L160,-27.65L220,-30.945L280,-27.463L340,-30.397L400,-34.965L460,-31.842L520,-36.929L580,-33.46"
                   fill="transparent"
                   id="1-line-areaChart_0"
                   opacity="0.1"
@@ -419,14 +455,14 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   stroke-width="3"
                 />
                 <path
-                  d="M40,-34.162L100,-38.224L160,-25.944L220,-29.605L280,-25.737L340,-28.997L400,-34.072L460,-30.602L520,-36.255L580,-32.4L580,-38.716L520,-40.029L460,-37.736L400,-39.814L340,-36.113L280,-37.706L220,-37.825L160,-37.707L100,-42.623L40,-41.807Z"
+                  d="M40,-35.045L100,-38.702L160,-27.65L220,-30.945L280,-27.463L340,-30.397L400,-34.965L460,-31.842L520,-36.929L580,-33.46L580,-39.145L520,-40.326L460,-38.263L400,-40.132L340,-36.801L280,-38.235L220,-38.342L160,-38.237L100,-42.66L40,-41.926Z"
                   fill="#3780bfff"
                   fill-opacity="0.1"
                   id="1-graph-areaChart_0"
                   opacity="1"
                 />
                 <path
-                  d="M40,-23.602L100,-30.529L160,-8.116L220,-20.408L280,-13.635L340,-19.547L400,-24.194L460,-22.73L520,-26.407L580,-25.934"
+                  d="M40,-25.542L100,-31.776L160,-11.604L220,-22.667L280,-16.571L340,-21.892L400,-26.075L460,-24.757L520,-28.066L580,-27.641"
                   fill="transparent"
                   id="2-line-areaChart_0"
                   opacity="0.1"
@@ -434,14 +470,14 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   stroke-width="3"
                 />
                 <path
-                  d="M40,-23.602L100,-30.529L160,-8.116L220,-20.408L280,-13.635L340,-19.547L400,-24.194L460,-22.73L520,-26.407L580,-25.934L580,-32.4L520,-36.255L460,-30.602L400,-34.072L340,-28.997L280,-25.737L220,-29.605L160,-25.944L100,-38.224L40,-34.162Z"
+                  d="M40,-25.542L100,-31.776L160,-11.604L220,-22.667L280,-16.571L340,-21.892L400,-26.075L460,-24.757L520,-28.066L580,-27.641L580,-33.46L520,-36.929L460,-31.842L400,-34.965L340,-30.397L280,-27.463L220,-30.945L160,-27.65L100,-38.702L40,-35.045Z"
                   fill="#32ab60ff"
                   fill-opacity="0.1"
                   id="2-graph-areaChart_0"
                   opacity="1"
                 />
                 <path
-                  d="M40,-10.212L100,-19.014L160,16.551L220,-8.81L280,5.027L340,-3.457L400,-12.65L460,-13.714L520,-11.06L580,-14.544"
+                  d="M40,-13.491L100,-21.412L160,10.596L220,-12.229L280,0.225L340,-7.411L400,-15.685L460,-16.642L520,-14.254L580,-17.39"
                   fill="transparent"
                   id="3-line-areaChart_0"
                   opacity="0.1"
@@ -449,7 +485,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   stroke-width="3"
                 />
                 <path
-                  d="M40,-10.212L100,-19.014L160,16.551L220,-8.81L280,5.027L340,-3.457L400,-12.65L460,-13.714L520,-11.06L580,-14.544L580,-25.934L520,-26.407L460,-22.73L400,-24.194L340,-19.547L280,-13.635L220,-20.408L160,-8.116L100,-30.529L40,-23.602Z"
+                  d="M40,-13.491L100,-21.412L160,10.596L220,-12.229L280,0.225L340,-7.411L400,-15.685L460,-16.642L520,-14.254L580,-17.39L580,-27.641L520,-28.066L460,-24.757L400,-26.075L340,-21.892L280,-16.571L220,-22.667L160,-11.604L100,-31.776L40,-25.542Z"
                   fill="#800080ff"
                   fill-opacity="0.1"
                   id="3-graph-areaChart_0"
@@ -463,7 +499,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="0. a, 0.17."
                     cx="40"
-                    cy="-41.80657629370952"
+                    cy="-41.92591866433856"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_0"
@@ -476,7 +512,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="1. a, 0.054."
                     cx="100"
-                    cy="-42.622650809245584"
+                    cy="-42.660385728321025"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_1"
@@ -489,7 +525,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="2. a, 0.756."
                     cx="160"
-                    cy="-37.7073775479316"
+                    cy="-38.23663979313844"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_2"
@@ -502,7 +538,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="3. a, 0.739."
                     cx="220"
-                    cy="-37.824680748526596"
+                    cy="-38.34221267367394"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_3"
@@ -515,7 +551,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="4. a, 0.756."
                     cx="280"
-                    cy="-37.705914389427676"
+                    cy="-38.23532295048491"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_4"
@@ -528,7 +564,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="5. a, 0.984."
                     cx="340"
-                    cy="-36.1126432405536"
+                    cy="-36.80137891649824"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_5"
@@ -541,7 +577,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="6. a, 0.455."
                     cx="399.99999999999994"
-                    cy="-39.81353270263555"
+                    cy="-40.132179432372"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_6"
@@ -554,7 +590,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="7. a, 0.752."
                     cx="460.00000000000006"
-                    cy="-37.73642424881348"
+                    cy="-38.26278182393212"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_7"
@@ -567,7 +603,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="8. a, 0.424."
                     cx="520"
-                    cy="-40.02908133949783"
+                    cy="-40.326173205548045"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_8"
@@ -580,7 +616,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="9. a, 0.612."
                     cx="580"
-                    cy="-38.71612583378442"
+                    cy="-39.144513250405964"
                     data-is-focusable="true"
                     fill="#ff9933ff"
                     id="circle2_9"
@@ -599,7 +635,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="0. b, 1.092."
                     cx="40"
-                    cy="-34.16152700722826"
+                    cy="-35.04537430650544"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_10"
@@ -612,7 +648,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="1. b, 0.628."
                     cx="100"
-                    cy="-38.223992962132016"
+                    cy="-38.701593665918814"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_11"
@@ -625,7 +661,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="2. b, 1.68."
                     cx="160"
-                    cy="-25.944306414504386"
+                    cy="-27.64987577305395"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_12"
@@ -638,7 +674,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="3. b, 1.174."
                     cx="220"
-                    cy="-29.605368758604584"
+                    cy="-30.944831882744126"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_13"
@@ -651,7 +687,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="4. b, 1.71."
                     cx="280"
-                    cy="-25.736939232464096"
+                    cy="-27.46324530921769"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_14"
@@ -664,7 +700,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="5. b, 1.017."
                     cx="340"
-                    cy="-28.996834981671103"
+                    cy="-30.397151483503986"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_15"
@@ -677,7 +713,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="6. b, 0.82."
                     cx="399.99999999999994"
-                    cy="-34.07242776053101"
+                    cy="-34.9651849844779"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_16"
@@ -690,7 +726,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="7. b, 1.019."
                     cx="460.00000000000006"
-                    cy="-30.602166676808537"
+                    cy="-31.841950009127686"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_17"
@@ -703,7 +739,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="8. b, 0.539."
                     cx="520"
-                    cy="-36.254793105859854"
+                    cy="-36.92931379527386"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_18"
@@ -716,7 +752,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="9. b, 0.902."
                     cx="580"
-                    cy="-32.3999999745966"
+                    cy="-33.45999997713694"
                     data-is-focusable="false"
                     fill="#3780bfff"
                     id="circle2_19"
@@ -735,7 +771,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="0. c, 1.508."
                     cx="40"
-                    cy="-23.602377863959674"
+                    cy="-25.542140077563708"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_20"
@@ -748,7 +784,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="1. c, 1.099."
                     cx="100"
-                    cy="-30.528825533094793"
+                    cy="-31.775942979785313"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_21"
@@ -761,7 +797,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="2. c, 2.547."
                     cx="160"
-                    cy="-8.116087079826098"
+                    cy="-11.60447837184349"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_22"
@@ -774,7 +810,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="3. c, 1.314."
                     cx="220"
-                    cy="-20.407885373543984"
+                    cy="-22.667096836189586"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_23"
@@ -787,7 +823,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="4. c, 1.729."
                     cx="280"
-                    cy="-13.634977609878746"
+                    cy="-16.57147984889087"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_24"
@@ -800,7 +836,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="5. c, 1.35."
                     cx="340"
-                    cy="-19.54654549543326"
+                    cy="-21.891890945889934"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_25"
@@ -813,7 +849,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="6. c, 1.411."
                     cx="399.99999999999994"
-                    cy="-24.1941858582439"
+                    cy="-26.074767272419507"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_26"
@@ -826,7 +862,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="7. c, 1.125."
                     cx="460.00000000000006"
-                    cy="-22.730447829459955"
+                    cy="-24.75740304651396"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_27"
@@ -839,7 +875,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="8. c, 1.407."
                     cx="520"
-                    cy="-26.40676098306311"
+                    cy="-28.066084884756798"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_28"
@@ -852,7 +888,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="9. c, 0.924."
                     cx="580"
-                    cy="-25.934450183554876"
+                    cy="-27.641005165199388"
                     data-is-focusable="false"
                     fill="#32ab60ff"
                     id="circle2_29"
@@ -871,7 +907,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="0. d, 1.913."
                     cx="40"
-                    cy="-10.211967501408111"
+                    cy="-13.490770751267297"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_30"
@@ -884,7 +920,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="1. d, 1.645."
                     cx="100"
-                    cy="-19.013753166031247"
+                    cy="-21.412377849428122"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_31"
@@ -897,7 +933,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="2. d, 3.524."
                     cx="160"
-                    cy="16.550981452865962"
+                    cy="10.595883307579363"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_32"
@@ -910,7 +946,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="3. d, 1.657."
                     cx="220"
-                    cy="-8.810290949096029"
+                    cy="-12.22926185418643"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_33"
@@ -923,7 +959,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="4. d, 2.666."
                     cx="280"
-                    cy="5.027471516289296"
+                    cy="0.22472436466036427"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_34"
@@ -936,7 +972,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="5. d, 2.299."
                     cx="340"
-                    cy="-3.456508025579488"
+                    cy="-7.410857223021537"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_35"
@@ -949,7 +985,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="6. d, 1.649."
                     cx="399.99999999999994"
-                    cy="-12.650275401022567"
+                    cy="-15.68524786092031"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_36"
@@ -962,7 +998,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="7. d, 1.288."
                     cx="460.00000000000006"
-                    cy="-13.713836049934985"
+                    cy="-16.642452444941483"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_37"
@@ -975,7 +1011,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="8. d, 2.192."
                     cx="520"
-                    cy="-11.060134959710552"
+                    cy="-14.254121463739498"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_38"
@@ -988,7 +1024,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   <circle
                     aria-label="9. d, 1.627."
                     cx="580"
-                    cy="-14.544113451797218"
+                    cy="-17.389702106617502"
                     data-is-focusable="false"
                     fill="#800080ff"
                     id="circle2_39"

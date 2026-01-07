@@ -1179,8 +1179,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         const barLabelsToDisplay = barsToDisplay.filter(
           point => point.barLabel && (_noLegendHighlighted() || _isLegendHighlighted(point.legend)),
         );
-        if (barLabelsToDisplay.length > 0) {
-          customBarLabel = barLabelsToDisplay[barLabelsToDisplay.length - 1].barLabel!;
+        // For stacked bars, we want to show the total of the stack, not individual bar labels
+        // Only use customBarLabel if there's exactly one bar with a label in the stack
+        if (barLabelsToDisplay.length === 1) {
+          customBarLabel = barLabelsToDisplay[0].barLabel!;
         }
         if (_noLegendHighlighted()) {
           showLabel = true;
