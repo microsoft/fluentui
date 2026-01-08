@@ -521,6 +521,15 @@ export interface ChartTableProps {
         style?: React_2.CSSProperties;
     }[][];
     styles?: ChartTableStyles;
+    titleFont?: Partial<Font>;
+    titlePad?: {
+        t?: number;
+        r?: number;
+        b?: number;
+        l?: number;
+    };
+    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
     width?: string | number;
 }
 
@@ -536,6 +545,8 @@ export interface ChartTableStyles {
     headerCell?: string;
     // (undocumented)
     root?: string | React_2.CSSProperties;
+    // (undocumented)
+    svgTooltip?: string;
     // (undocumented)
     table?: string;
 }
@@ -735,6 +746,15 @@ export interface DonutChartProps extends CartesianChartProps {
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
+    titleFont?: Partial<Font>;
+    titlePad?: {
+        t?: number;
+        r?: number;
+        b?: number;
+        l?: number;
+    };
+    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
     valueInsideDonut?: string | number;
     width?: number;
 }
@@ -751,6 +771,7 @@ export interface DonutChartStyles {
     chartWrapper?: string;
     legendContainer: string;
     root?: string;
+    svgTooltip?: string;
 }
 
 // @public (undocumented)
@@ -817,6 +838,15 @@ export interface FunnelChartProps {
     legendProps?: Partial<LegendsProps>;
     orientation?: 'horizontal' | 'vertical';
     styles?: FunnelChartStyles;
+    titleFont?: Partial<Font>;
+    titlePad?: {
+        t?: number;
+        r?: number;
+        b?: number;
+        l?: number;
+    };
+    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
     width?: number;
 }
 
@@ -833,6 +863,7 @@ export interface FunnelChartStyles {
     chart?: string;
     chartTitle?: string;
     root?: string;
+    svgTooltip?: string;
     text?: string;
 }
 
@@ -900,6 +931,15 @@ export interface GaugeChartProps {
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
     sublabel?: string;
+    titleFont?: Partial<Font>;
+    titlePad?: {
+        t?: number;
+        r?: number;
+        b?: number;
+        l?: number;
+    };
+    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
     variant?: GaugeChartVariant;
     width?: number;
 }
@@ -1615,6 +1655,15 @@ export interface SankeyChartProps {
     shouldResize?: number;
     strings?: SankeyChartStrings;
     styles?: SankeyChartStyles;
+    titleFont?: Partial<Font>;
+    titlePad?: {
+        t?: number;
+        r?: number;
+        b?: number;
+        l?: number;
+    };
+    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
     width?: number;
 }
 
@@ -1632,6 +1681,7 @@ export interface SankeyChartStyles {
     nodes?: string;
     nodeTextContainer?: string;
     root?: string;
+    svgTooltip?: string;
     toolTip?: string;
 }
 

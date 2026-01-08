@@ -15,8 +15,13 @@ import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
+import { wrapContent } from '../../utilities/utilities';
+import { getChartTitleInlineStyles } from '../../utilities/index';
+import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 
 const PADDING_PERCENTAGE = 0.3;
+const AXIS_TITLE_PADDING = 8;
+const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 type NodeId = number | string;
 type ItemValues<T> = { [key: NodeId]: T };
@@ -547,7 +552,10 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _chartId = useId('sankeyChart');
   const _emptyChartId = useId('_SankeyChart_empty');
   const _labelTooltipId = useId('tooltip');
-  const _margins = React.useRef<Margins>({ top: 36, right: 48, bottom: 32, left: 48 });
+  const titleHeight = props.data?.chartTitle
+    ? Math.max((typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + 16, 36)
+    : 36;
+  const _margins = React.useRef<Margins>({ top: titleHeight, right: 48, bottom: 32, left: 48 });
   const { targetDocument, dir } = useFluent();
   const _window = targetDocument?.defaultView;
   const _isRtl: boolean = dir === 'rtl';
@@ -928,6 +936,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       } else if (!selectedNode) {
         return singleNode.color;
       }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
   };
 
@@ -1118,6 +1127,13 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     const nodeData = _createNodes(nodes, nodeAttributes);
     const linkData = _createLinks(links, linkAttributes);
 
+    const commonSvgToolTipProps: SVGTooltipTextProps = {
+      wrapContent,
+      showBackground: true,
+      className: classes.svgTooltip,
+      content: '',
+    };
+
     const calloutProps: ChartPopoverProps = {
       isPopoverOpen: isCalloutVisible,
       clickPosition,
@@ -1138,9 +1154,27 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId} className={classes.chart}>
             {!props.hideLegend && props.data.chartTitle && (
-              <text x={width / 2} y={20} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
-                {props.data.chartTitle}
-              </text>
+              <SVGTooltipText
+                {...commonSvgToolTipProps}
+                content={props.data.chartTitle}
+                textProps={{
+                  x: width / 2,
+                  y: Math.max(
+                    (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
+                    VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+                  ),
+                  textAnchor: 'middle',
+                  className: classes.chartTitle,
+                  'aria-hidden': true,
+                  style: getChartTitleInlineStyles(
+                    props.titleFont,
+                    props.titleXAnchor,
+                    props.titleYAnchor,
+                    props.titlePad,
+                  ),
+                }}
+                maxWidth={width - 20}
+              />
             )}
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {

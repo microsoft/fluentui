@@ -1,4 +1,5 @@
 import { Ref } from 'react';
+import type { Font } from '@fluentui/chart-utilities';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Chart, ChartProps } from '../../types/DataPoint';
 
@@ -97,6 +98,26 @@ export interface SankeyChartProps {
   culture?: string;
 
   /**
+   * Font properties for the chart title
+   */
+  titleFont?: Partial<Font>;
+
+  /**
+   * Horizontal anchor/alignment for the chart title
+   */
+  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+
+  /**
+   * Vertical anchor/alignment for the chart title
+   */
+  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+
+  /**
+   * Padding for the chart title
+   */
+  titlePad?: { t?: number; r?: number; b?: number; l?: number };
+
+  /**
    * Whether to hide the legend
    * @default false
    */
@@ -154,6 +175,11 @@ export interface SankeyChartStyles {
    * Styles for the chart svg element
    */
   chart?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 
   /**
    * Style for the chart title.

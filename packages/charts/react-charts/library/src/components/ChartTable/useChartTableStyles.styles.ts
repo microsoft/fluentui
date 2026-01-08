@@ -4,7 +4,7 @@ import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ChartTableProps, ChartTableStyles } from './ChartTable.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { getChartTitleStyles } from '../../utilities/index';
+import { getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -16,6 +16,7 @@ export const chartTableClassNames: SlotClassNames<ChartTableStyles> = {
   bodyCell: 'fui-ChartTable__bodyCell',
   chart: 'fui-ChartTable__chart',
   chartTitle: 'fui-ChartTable__chartTitle',
+  svgTooltip: 'fui-ChartTable__svgTooltip',
 };
 
 const useStyles = makeStyles({
@@ -50,6 +51,12 @@ const useStyles = makeStyles({
     },
   },
   chartTitle: getChartTitleStyles() as GriffelStyle,
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
 });
 
 /**
@@ -65,5 +72,6 @@ export const useChartTableStyles = (props: ChartTableProps): ChartTableStyles =>
     bodyCell: mergeClasses(chartTableClassNames.bodyCell, baseStyles.bodyCell /*props.styles?.bodyCell*/),
     chart: mergeClasses(chartTableClassNames.chart /*props.styles?.chart*/),
     chartTitle: mergeClasses(chartTableClassNames.chartTitle, baseStyles.chartTitle /*props.styles?.chartTitle*/),
+    svgTooltip: mergeClasses(chartTableClassNames.svgTooltip, baseStyles.svgTooltip /*props.styles?.svgTooltip*/),
   };
 };

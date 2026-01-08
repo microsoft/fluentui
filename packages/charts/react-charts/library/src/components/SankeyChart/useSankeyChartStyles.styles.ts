@@ -15,6 +15,7 @@ export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   chartWrapper: 'fui-sc__chartWrapper',
   chart: 'fui-sc__chart',
   chartTitle: 'fui-sc__chartTitle',
+  svgTooltip: 'fui-sc__svgTooltip',
 };
 const useStyles = makeStyles({
   root: {
@@ -59,6 +60,12 @@ const useStyles = makeStyles({
     display: 'block',
   },
   chartTitle: getChartTitleStyles() as GriffelStyle,
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
 });
 
 export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles => {
@@ -80,5 +87,6 @@ export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles
     ),
     chart: mergeClasses(sankeyChartClassNames.chart, baseStyles.chart, props.styles?.chart),
     chartTitle: mergeClasses(sankeyChartClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
+    svgTooltip: mergeClasses(sankeyChartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
   };
 };

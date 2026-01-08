@@ -6,9 +6,14 @@ import { useChartTableStyles } from './useChartTableStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
-import { resolveCSSVariables } from '../../utilities/utilities';
+import { resolveCSSVariables, wrapContent } from '../../utilities/utilities';
+import { getChartTitleInlineStyles } from '../../utilities/index';
 import { useImageExport } from '../../utilities/hooks';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+
+const AXIS_TITLE_PADDING = 8;
+const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -52,6 +57,13 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     const classes = useChartTableStyles(props);
     const arrowAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
+    const commonSvgToolTipProps: SVGTooltipTextProps = {
+      wrapContent,
+      showBackground: true,
+      className: classes.svgTooltip,
+      content: '',
+    };
+
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
     }
@@ -92,6 +104,9 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     const titleHeight = chartTitle ? 30 : 0;
     const totalHeight = typeof height === 'number' ? height : 650;
     const tableHeight = `${totalHeight - titleHeight}px`;
+    const svgWidth = typeof width === 'number' ? width : '100%';
+    const titleMaxWidth = typeof width === 'number' ? width - 20 : undefined;
+    const titleX = typeof width === 'number' ? width / 2 : 0;
 
     return (
       <div
@@ -101,11 +116,29 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
         className={classes.root as string}
         style={{ height: `${totalHeight}px`, overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={`${totalHeight}px`}>
+        <svg width={svgWidth} height={`${totalHeight}px`}>
           {chartTitle && (
-            <text x="50%" y={15} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
-              {chartTitle}
-            </text>
+            <SVGTooltipText
+              {...commonSvgToolTipProps}
+              content={chartTitle}
+              textProps={{
+                x: titleX,
+                y: Math.max(
+                  (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
+                  VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+                ),
+                textAnchor: 'middle',
+                className: classes.chartTitle,
+                'aria-hidden': true,
+                style: getChartTitleInlineStyles(
+                  props.titleFont,
+                  props.titleXAnchor,
+                  props.titleYAnchor,
+                  props.titlePad,
+                ),
+              }}
+              maxWidth={titleMaxWidth}
+            />
           )}
           <foreignObject x="0" y={titleHeight} width="100%" height={tableHeight}>
             <div

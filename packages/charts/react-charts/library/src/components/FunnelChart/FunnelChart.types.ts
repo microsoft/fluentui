@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { Font } from '@fluentui/chart-utilities';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
 import { Chart } from '../../types/index';
@@ -88,6 +89,26 @@ export interface FunnelChartProps {
   className?: string;
 
   /**
+   * Font properties for the chart title
+   */
+  titleFont?: Partial<Font>;
+
+  /**
+   * Horizontal anchor/alignment for the chart title
+   */
+  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+
+  /**
+   * Vertical anchor/alignment for the chart title
+   */
+  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+
+  /**
+   * Padding for the chart title
+   */
+  titlePad?: { t?: number; r?: number; b?: number; l?: number };
+
+  /**
    * Orientation of the funnel chart
    * @defaultvalue 'horizontal'
    */
@@ -137,6 +158,11 @@ export interface FunnelChartStyles {
    * Styles for text elements
    */
   text?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 
   /**
    * Styles for the callout root element

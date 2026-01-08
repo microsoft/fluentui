@@ -63,18 +63,61 @@ export const getChartTitleStyles = (): GriffelStyle => {
 /**
  * Creates dynamic chart title styles using CSS properties.
  * @param titleFont - Optional font configuration from Plotly layout
+ * @param xanchor - Optional horizontal anchor/alignment ('auto' | 'left' | 'center' | 'right')
+ * @param yanchor - Optional vertical anchor/alignment ('auto' | 'top' | 'middle' | 'bottom')
+ * @param pad - Optional padding configuration
  * @returns Style object with CSS properties for dynamic styling
  */
-export function getChartTitleInlineStyles(titleFont: Partial<Font> | undefined): React.CSSProperties {
-  if (!titleFont) {
-    return {};
+export function getChartTitleInlineStyles(
+  titleFont: Partial<Font> | undefined,
+  xanchor?: string,
+  yanchor?: string,
+  pad?: { t?: number; r?: number; b?: number; l?: number },
+): React.CSSProperties {
+  const styles: React.CSSProperties = {};
+
+  if (titleFont) {
+    Object.assign(
+      styles,
+      titleFont.family && { fontFamily: titleFont.family },
+      titleFont.size && { fontSize: `${titleFont.size}px` },
+      titleFont.weight && { fontWeight: titleFont.weight },
+      titleFont.color && { fill: titleFont.color as string },
+      titleFont.shadow && titleFont.shadow !== 'none' && { filter: `drop-shadow(${titleFont.shadow})` },
+    );
   }
 
-  return {
-    ...(titleFont.family && { fontFamily: titleFont.family }),
-    ...(titleFont.size && { fontSize: `${titleFont.size}px` }),
-    ...(titleFont.weight && { fontWeight: titleFont.weight }),
-    ...(titleFont.color && { fill: titleFont.color as string }),
-    ...(titleFont.shadow && titleFont.shadow !== 'none' && { filter: `drop-shadow(${titleFont.shadow})` }),
-  };
+  if (xanchor) {
+    const anchorMap: Record<string, React.CSSProperties['textAlign']> = {
+      left: 'left',
+      center: 'center',
+      right: 'right',
+    };
+    const alignmentKey = xanchor.toLowerCase();
+    if (anchorMap[alignmentKey]) {
+      styles.textAlign = anchorMap[alignmentKey];
+    }
+  }
+
+  if (yanchor) {
+    const anchorMap: Record<string, React.CSSProperties['alignSelf']> = {
+      top: 'flex-start',
+      middle: 'center',
+      bottom: 'flex-end',
+    };
+    const alignmentKey = yanchor.toLowerCase();
+    if (anchorMap[alignmentKey]) {
+      styles.alignSelf = anchorMap[alignmentKey];
+    }
+  }
+
+  if (pad) {
+    const t = pad.t ?? 0;
+    const r = pad.r ?? 0;
+    const b = pad.b ?? 0;
+    const l = pad.l ?? 0;
+    styles.padding = `${t}px ${r}px ${b}px ${l}px`;
+  }
+
+  return styles;
 }

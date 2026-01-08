@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useRtl } from '../../utilities/index';
+import { useRtl, wrapContent, getChartTitleInlineStyles } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends } from '../Legends/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -20,6 +20,10 @@ import {
 } from './funnelGeometry';
 import { ChartPopoverProps } from '../../index';
 import { useImageExport } from '../../utilities/hooks';
+import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+
+const AXIS_TITLE_PADDING = 8;
+const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -424,6 +428,13 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
   const classes = useFunnelChartStyles(props);
 
+  const commonSvgToolTipProps: SVGTooltipTextProps = {
+    wrapContent,
+    showBackground: true,
+    className: classes.svgTooltip,
+    content: '',
+  };
+
   const calloutProps: ChartPopoverProps = {
     ...props.calloutProps,
     color: calloutData?.color,
@@ -434,7 +445,10 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const width = props.width || 350;
   const height = props.height || 500;
 
-  const funnelMarginTop = 40;
+  const titleHeight = props.chartTitle
+    ? Math.max((typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + 16, 40)
+    : 40;
+  const funnelMarginTop = titleHeight;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
   const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
@@ -450,9 +464,22 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
         aria-label={props.chartTitle}
       >
         {!props.hideLegend && props.chartTitle && (
-          <text x={width / 2} y={20} textAnchor="middle" className={classes.chartTitle} aria-hidden={true}>
-            {props.chartTitle}
-          </text>
+          <SVGTooltipText
+            {...commonSvgToolTipProps}
+            content={props.chartTitle}
+            textProps={{
+              x: width / 2,
+              y: Math.max(
+                (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
+                VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+              ),
+              textAnchor: 'middle',
+              className: classes.chartTitle,
+              'aria-hidden': true,
+              style: getChartTitleInlineStyles(props.titleFont, props.titleXAnchor, props.titleYAnchor, props.titlePad),
+            }}
+            maxWidth={width - 20}
+          />
         )}
         <g
           transform={
