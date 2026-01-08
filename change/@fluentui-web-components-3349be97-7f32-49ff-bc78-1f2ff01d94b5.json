@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update verify-packaging script to exclude root eslintrc file",
-  "packageName": "@fluentui/web-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

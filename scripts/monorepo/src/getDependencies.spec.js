@@ -65,11 +65,6 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
-          "name": "eslint-plugin-react-components",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
           "name": "scripts-cypress",
         },
       ]
