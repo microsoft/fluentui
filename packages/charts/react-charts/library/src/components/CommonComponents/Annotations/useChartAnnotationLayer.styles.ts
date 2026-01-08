@@ -115,8 +115,6 @@ const useStyles = makeStyles({
     paddingLeft: '8px',
     paddingRight: '8px',
     borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
     whiteSpace: 'pre-wrap',
     zIndex: 2,
   },

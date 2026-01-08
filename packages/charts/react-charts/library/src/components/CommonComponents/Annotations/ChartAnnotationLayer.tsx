@@ -21,7 +21,6 @@ import {
   useChartAnnotationLayerStyles,
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
@@ -497,9 +496,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               preserveOriginalOpacity: annotation.style?.opacity === undefined,
             }),
           }
-        : {
-            backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
-          }),
+        : {}),
       borderColor: annotation.style?.borderColor,
       borderWidth: annotation.style?.borderWidth,
       borderStyle: annotation.style?.borderStyle ?? (annotation.style?.borderColor ? 'solid' : undefined),
