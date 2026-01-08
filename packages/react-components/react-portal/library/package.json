@@ -11,12 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-provider": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.26.0",
     "@fluentui/react-tabster": "^9.26.11",

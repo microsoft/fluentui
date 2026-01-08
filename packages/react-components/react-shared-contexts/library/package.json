@@ -11,10 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@fluentui/react-theme": "^9.2.0",
     "@swc/helpers": "^0.5.1"

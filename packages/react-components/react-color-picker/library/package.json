@@ -17,12 +17,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/react-context-selector": "^9.2.13",

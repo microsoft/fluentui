@@ -16,15 +16,6 @@
   "scripts": {
     "build": "just-scripts build"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.4.23",
     "@fluentui/merge-styles": "^8.6.14",

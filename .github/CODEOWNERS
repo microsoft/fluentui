@@ -42,7 +42,6 @@
 /typings @microsoft/fluentui-react-build
 
 #### Root Build files
-/.eslintrc.* @microsoft/fluentui-react-build
 /.yarnrc @microsoft/fluentui-react-build
 /.gitattributes @microsoft/fluentui-react-build
 /.gitignore @microsoft/fluentui-react-build
@@ -400,8 +399,9 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build
-**/.eslintrc.js @microsoft/fluentui-react-build
-**/.eslintrc.json @microsoft/fluentui-react-build
+**/eslint.config.js @microsoft/fluentui-react-build
+**/eslint.config.cjs @microsoft/fluentui-react-build
+**/eslint.config.mjs @microsoft/fluentui-react-build
 **/tsconfig.json @microsoft/fluentui-react-build
 **/tsconfig.lib.json @microsoft/fluentui-react-build
 **/tsconfig.spec.json @microsoft/fluentui-react-build
