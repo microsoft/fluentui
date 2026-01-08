@@ -34,7 +34,7 @@ export const SingleSelect = (): JSXElement => {
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           {selectedOption && (
-            <TagPickerGroup aria-label="Selected Employees">
+            <TagPickerGroup aria-roledescription="List" aria-label="Selected Employees">
               <Tag
                 key={selectedOption}
                 shape="rounded"
