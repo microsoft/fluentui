@@ -77,6 +77,63 @@ import { DefaultButton } from '@fluentui/react';
 const Component = () => <DefaultButton>...</DefaultButton>;
 ```
 
+### enforce-use-client
+
+Ensures that source files using client-only React features begin with the top-level `'use client'` directive, and flags files that include the directive unnecessarily.
+
+The rule looks for any of the following client-only features:
+
+- React client hooks and APIs (e.g. `useState`, `useEffect`, `useRef`, `forwardRef`, `memo`)
+- Custom hooks (functions whose name starts with `use` and are not in the safe set: `use`, `useId`)
+- JSX event handler props (properties starting with `on` followed by a capital letter, like `onClick`)
+- Direct references to browser globals (`window`, `document`, `navigator`, `localStorage`, `sessionStorage`, `history`, `location`)
+
+If at least one feature is present, the directive must be the very first statement in the file. If no features are found, any existing `'use client'` directive will be reported as unnecessary and auto-fixed.
+
+#### ❌ Don't (missing directive)
+
+```ts
+import * as React from 'react';
+
+export function MyComponent() {
+  const [value, setValue] = React.useState('');
+  return <button onClick={() => setValue('clicked')}>{value}</button>;
+}
+```
+
+#### ✅ Do (directive present)
+
+```ts
+'use client';
+import * as React from 'react';
+
+export function MyComponent() {
+  const [value, setValue] = React.useState('');
+  return <button onClick={() => setValue('clicked')}>{value}</button>;
+}
+```
+
+#### ❌ Don't (unnecessary directive)
+
+```ts
+'use client';
+// Pure utilities – no client-only APIs
+export function add(a: number, b: number) {
+  return a + b;
+}
+```
+
+#### ✅ Do (directive removed)
+
+```ts
+// Pure utilities – no client-only APIs
+export function add(a: number, b: number) {
+  return a + b;
+}
+```
+
+No options – enable to enforce consistent usage of the directive.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
