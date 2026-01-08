@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Remove border and shading from annotations only chart",
-  "packageName": "@fluentui/react-charts",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

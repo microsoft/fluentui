@@ -21,6 +21,7 @@ import {
   useChartAnnotationLayerStyles,
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
@@ -393,7 +394,7 @@ const resolveCoordinates = (
 };
 
 export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.memo(props => {
-  const { annotations: annotationsProp, context } = props;
+  const { annotations: annotationsProp, context, hideDefaultStyles } = props;
 
   const classes = useChartAnnotationLayerStyles(props);
   const idPrefix = useId('chart-annotation');
@@ -496,7 +497,9 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               preserveOriginalOpacity: annotation.style?.opacity === undefined,
             }),
           }
-        : {}),
+        : hideDefaultStyles ? {} : {
+            backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
+          }),
       borderColor: annotation.style?.borderColor,
       borderWidth: annotation.style?.borderWidth,
       borderStyle: annotation.style?.borderStyle ?? (annotation.style?.borderColor ? 'solid' : undefined),
@@ -597,6 +600,8 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       ...containerStyle,
     };
 
+    const annotationClass = hideDefaultStyles ? classes.annotationNoDefaults : classes.annotation;
+
     if (!isMeasurementValid) {
       measurementElements.push(
         <div
@@ -610,7 +615,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
             }
           }}
           className={mergeClasses(
-            classes.annotation,
+            annotationClass,
             classes.measurement,
             layout?.className,
             annotation.style?.className,
@@ -641,7 +646,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
         data-annotation-key={key}
       >
         <div
-          className={mergeClasses(classes.annotation, layout?.className, annotation.style?.className)}
+          className={mergeClasses(annotationClass, layout?.className, annotation.style?.className)}
           style={containerStyle}
           data-annotation-key={key}
         >
