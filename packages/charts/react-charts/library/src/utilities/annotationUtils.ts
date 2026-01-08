@@ -42,10 +42,6 @@ export const normalizePaddingRect = (padding?: {
  * @param fallback - The fallback value if extraction fails (defaults to 0)
  * @returns The extracted and validated number, or the fallback value
  */
-export const safeRectValue = (
-  rect: any,
-  key: 'x' | 'y' | 'width' | 'height',
-  fallback: number = 0,
-): number => {
+export const safeRectValue = (rect: any, key: 'x' | 'y' | 'width' | 'height', fallback: number = 0): number => {
   return rect && typeof rect[key] === 'number' && Number.isFinite(rect[key]) ? rect[key] : fallback;
 };

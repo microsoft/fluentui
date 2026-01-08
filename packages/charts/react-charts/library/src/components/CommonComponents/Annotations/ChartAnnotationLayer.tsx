@@ -327,7 +327,12 @@ const resolveViewportRelative = (
   }
 
   const padding = context.viewportPadding;
-  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
+  const {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom,
+  } = normalizePaddingRect(padding);
 
   const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
   const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
