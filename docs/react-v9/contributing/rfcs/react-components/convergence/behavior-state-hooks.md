@@ -335,16 +335,20 @@ Test each behavior state hook for:
 
 ## Release Strategy
 
-Behavior state hooks will be developed on a feature branch and released experimentally before stabilizing:
+Behavior state hooks will be implemented in main branch (internal only) and released experimentally from a feature branch:
 
 ### Development and Release Process
 
-| Stage                  | Approach                                                                                                   |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Feature branch**     | Develop on dedicated branch to iterate without blocking main branch                                        |
-| **Experimental tags**  | Release individual component packages with experimental tags (e.g., `@fluentui/react-button@experimental`) |
-| **Partner validation** | Gather feedback and refine API surface based on real-world usage                                           |
-| **Stable release**     | Merge to main and release as stable exports once approach is validated                                     |
+| Stage                        | Approach                                                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Implementation in main**   | Implement behavior hooks in main branch WITHOUT exporting them publicly (internal only)                    |
+| **Export in feature branch** | Feature branch adds public exports and experimental releases (e.g., `@fluentui/react-button@experimental`) |
+| **Partner validation**       | Gather feedback and refine API surface based on real-world usage from experimental releases                |
+| **Stable release**           | Merge feature branch to main (only adds exports) and release as stable once approach is validated          |
+
+**Rationale for implementing in main:**
+
+Implementing behavior hooks in main (without public exports) allows existing hooks to compose them immediately, reducing the maintenance burden of syncing changes between branches. The feature branch only needs to manage the public API surface (exports), making merge conflicts minimal and allowing main branch development to continue without being blocked by the experimental phase.
 
 ### Experimental Release Benefits
 
@@ -352,6 +356,7 @@ Behavior state hooks will be developed on a feature branch and released experime
 - API surface can be refined based on actual usage patterns
 - Stable releases remain unaffected during validation
 - Components can be released incrementally as completed
+- Minimal merge conflicts when syncing main to feature branch
 
 ### Stability Guarantees
 
