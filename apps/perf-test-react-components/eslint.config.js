@@ -10,7 +10,7 @@ module.exports = [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'no-console': 'off',
       '@nx/workspace-no-restricted-globals': 'off',
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 ];

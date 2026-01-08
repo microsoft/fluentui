@@ -6,7 +6,7 @@ module.exports = [
   ...rootConfig,
   {
     rules: {
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 ];
