@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "support chart title from plotly schema",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

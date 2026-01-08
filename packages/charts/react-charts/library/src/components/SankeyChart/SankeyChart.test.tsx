@@ -170,12 +170,16 @@ describe('Sankey chart - Subcomponent Node', () => {
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
-      const pathsAfterMouseOver = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      // Assert
-      expect(pathsAfterMouseOver).toBeDefined();
-      expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
-      expect(nodes[0].getAttribute('fill')).toEqual('#757575');
-      expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      await waitFor(() => {
+        const pathsAfterMouseOver = screen.getAllByText(
+          (content, element) => element!.tagName.toLowerCase() === 'path',
+        );
+        // Assert
+        expect(pathsAfterMouseOver).toBeDefined();
+        expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+        expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+        expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      });
     },
   );
 });
@@ -212,7 +216,7 @@ describe('Sankey chart - Mouse events', () => {
     },
   );
 
-  testWithoutWait(
+  testWithWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
@@ -220,9 +224,13 @@ describe('Sankey chart - Mouse events', () => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const prevFill = nodes[1].getAttribute('fill');
       fireEvent.mouseOver(nodes[0]);
-      expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      });
       fireEvent.mouseOut(nodes[0]);
-      expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      });
     },
   );
 });

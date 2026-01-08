@@ -4,6 +4,7 @@ import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponen
 import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
+import type { Font } from '@fluentui/chart-utilities';
 
 /**
  * Donut Chart properties.
@@ -49,6 +50,26 @@ export interface DonutChartProps extends CartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Font properties for the chart title
+   */
+  titleFont?: Partial<Font>;
+
+  /**
+   * Horizontal anchor/alignment for the chart title
+   */
+  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+
+  /**
+   * Vertical anchor/alignment for the chart title
+   */
+  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+
+  /**
+   * Padding for the chart title
+   */
+  titlePad?: { t?: number; r?: number; b?: number; l?: number };
 
   /**
    * Prop to show the arc labels in percentage format
@@ -157,6 +178,11 @@ export interface DonutChartStyles {
   legendContainer: string;
 
   /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
+
+  /**
    * styles for axis annotation
    */
   axisAnnotation?: string;
@@ -165,4 +191,9 @@ export interface DonutChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 }
