@@ -1,6 +1,8 @@
-import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 
-// NOTE: The rule will be available in ESLint configs as "@nx/workspace-enforce-use-client"
+import { createRule } from './utils/create-rule';
+
+// NOTE: The rule will be available in ESLint configs as "@fluentui/react-components/enforce-use-client"
 export const RULE_NAME = 'enforce-use-client';
 
 type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
@@ -103,7 +105,7 @@ const isPotentialCustomHook = (name: string): boolean =>
 /**
  * ESLint rule configuration and metadata
  */
-export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
+export const rule = createRule<[], MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -192,7 +194,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
        * Check function calls for React APIs and custom hooks
        */
       CallExpression(node: TSESTree.CallExpression) {
-        if (shouldSkipAnalysis()) return;
+        if (shouldSkipAnalysis()) {
+          return;
+        }
 
         if (node.callee.type === AST_NODE_TYPES.Identifier) {
           const name = node.callee.name;
@@ -218,7 +222,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
        * Check JSX attributes for event handlers
        */
       JSXAttribute(node: TSESTree.JSXAttribute) {
-        if (shouldSkipAnalysis()) return;
+        if (shouldSkipAnalysis()) {
+          return;
+        }
 
         if (node.name.type === AST_NODE_TYPES.JSXIdentifier && isEventHandler(node.name.name)) {
           recordFirstClientFeature('event_handler', node.name.name, node);
@@ -229,7 +235,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
        * Check member expressions for browser APIs
        */
       MemberExpression(node: TSESTree.MemberExpression) {
-        if (shouldSkipAnalysis()) return;
+        if (shouldSkipAnalysis()) {
+          return;
+        }
 
         if (node.object.type === AST_NODE_TYPES.Identifier && BROWSER_GLOBALS.has(node.object.name)) {
           recordFirstClientFeature('browser_api', node.object.name, node);
@@ -275,10 +283,14 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
         }
 
         // If there are no client features and no directive, nothing to do
-        if (!hasClientFeatures) return;
+        if (!hasClientFeatures) {
+          return;
+        }
 
         // Already has correct directive
-        if (ruleState.topDirectivePresent) return;
+        if (ruleState.topDirectivePresent) {
+          return;
+        }
 
         // Report error on the specific problematic API call for better DX
         const clientFeatureDetection = ruleState.firstClientFeature!;

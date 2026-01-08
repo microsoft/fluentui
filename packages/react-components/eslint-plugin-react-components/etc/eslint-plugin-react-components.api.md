@@ -4,24 +4,34 @@
 
 ```ts
 
+import type { ESLint } from 'eslint';
 import { RuleListener } from '@typescript-eslint/utils/dist/ts-eslint';
 import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint';
 
 // @public (undocumented)
-export const plugin: {
-    meta: {
-        name: string;
-        version: string;
+export const configs: {
+    recommended: {
+        plugins: string[];
+        rules: {};
     };
-    configs: {
-        recommended: {
-            plugins: string[];
-            rules: {};
+    'flat/recommended': {
+        plugins: {
+            [x: string]: ESLint.Plugin;
         };
+        rules: {};
     };
-    rules: {
-        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
-    };
+};
+
+// @public (undocumented)
+export const meta: {
+    name: string;
+    version: string;
+};
+
+// @public (undocumented)
+export const rules: {
+    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [], unknown, RuleListener>;
+    "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
 };
 
 // (No @packageDocumentation comment for this package)
