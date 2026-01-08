@@ -22,6 +22,7 @@ import {
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { normalizePaddingRect, safeRectValue } from '../../../utilities/annotationUtils';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
@@ -326,14 +327,7 @@ const resolveViewportRelative = (
   }
 
   const padding = context.viewportPadding;
-  const paddingLeft =
-    typeof padding?.left === 'number' && Number.isFinite(padding.left) && padding.left > 0 ? padding.left : 0;
-  const paddingRight =
-    typeof padding?.right === 'number' && Number.isFinite(padding.right) && padding.right > 0 ? padding.right : 0;
-  const paddingTop =
-    typeof padding?.top === 'number' && Number.isFinite(padding.top) && padding.top > 0 ? padding.top : 0;
-  const paddingBottom =
-    typeof padding?.bottom === 'number' && Number.isFinite(padding.bottom) && padding.bottom > 0 ? padding.bottom : 0;
+  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
 
   const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
   const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
@@ -600,12 +594,10 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       ? context.plotRect
       : undefined;
 
-    const clampX = clampRect && typeof clampRect.x === 'number' && Number.isFinite(clampRect.x) ? clampRect.x : 0;
-    const clampY = clampRect && typeof clampRect.y === 'number' && Number.isFinite(clampRect.y) ? clampRect.y : 0;
-    const clampWidth =
-      clampRect && typeof clampRect.width === 'number' && Number.isFinite(clampRect.width) ? clampRect.width : 0;
-    const clampHeight =
-      clampRect && typeof clampRect.height === 'number' && Number.isFinite(clampRect.height) ? clampRect.height : 0;
+    const clampX = safeRectValue(clampRect, 'x');
+    const clampY = safeRectValue(clampRect, 'y');
+    const clampWidth = safeRectValue(clampRect, 'width');
+    const clampHeight = safeRectValue(clampRect, 'height');
 
     const maxTopLeftX = clampWidth > 0 ? clampX + clampWidth - width : baseTopLeftX;
     const maxTopLeftY = clampHeight > 0 ? clampY + clampHeight - height : baseTopLeftY;

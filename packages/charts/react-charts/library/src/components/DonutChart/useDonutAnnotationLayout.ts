@@ -6,6 +6,7 @@ import {
   DEFAULT_CONNECTOR_END_PADDING,
   DEFAULT_CONNECTOR_START_PADDING,
 } from '../CommonComponents/Annotations/useChartAnnotationLayer.styles';
+import { normalizeViewportPadding } from '../../utilities/annotationUtils';
 
 const CSS_SIZE_REGEX = /^(-?\d*\.?\d+)(px|em|rem)?$/i;
 const DEFAULT_PADDING_SIDES = Object.freeze({ top: 4, right: 8, bottom: 4, left: 8 });
@@ -194,9 +195,6 @@ const isViewportRelativeAnnotation = (annotation: ChartAnnotation): boolean => {
   const coordinates = annotation.coordinates;
   return !!layout && layout.clipToBounds === false && coordinates?.type === 'relative';
 };
-
-const normalizeViewportPadding = (value: number | undefined): number =>
-  typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0;
 
 const resolveViewportAnchor = (
   relative: number,
@@ -538,10 +536,10 @@ const createAnnotationContext = (
   const safeWidth = typeof svgWidth === 'number' && svgWidth > 0 ? svgWidth : 1;
   const safeHeight = typeof svgHeight === 'number' && svgHeight > 0 ? svgHeight : 1;
 
-  const paddingLeft = Number.isFinite(padding.left) && padding.left > 0 ? padding.left : 0;
-  const paddingRight = Number.isFinite(padding.right) && padding.right > 0 ? padding.right : 0;
-  const paddingTop = Number.isFinite(padding.top) && padding.top > 0 ? padding.top : 0;
-  const paddingBottom = Number.isFinite(padding.bottom) && padding.bottom > 0 ? padding.bottom : 0;
+  const paddingLeft = normalizeViewportPadding(padding.left);
+  const paddingRight = normalizeViewportPadding(padding.right);
+  const paddingTop = normalizeViewportPadding(padding.top);
+  const paddingBottom = normalizeViewportPadding(padding.bottom);
 
   const fallbackDiameter = Math.max(Math.min(safeWidth, safeHeight), 1);
   const safeOuterRadius = typeof outerRadiusValue === 'number' && outerRadiusValue > 0 ? outerRadiusValue : 0;
