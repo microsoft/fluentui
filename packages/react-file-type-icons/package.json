@@ -17,11 +17,6 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/style-utilities": "^8.13.6",

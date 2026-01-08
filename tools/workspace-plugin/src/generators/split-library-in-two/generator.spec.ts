@@ -173,13 +173,9 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
         "devDependencies": Object {
-          "@proj/eslint-plugin": "*",
           "@proj/react-components": "*",
           "@proj/react-one-compat": "*",
-          "@proj/react-storybook-addon": "*",
-          "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
-          "@proj/scripts-storybook": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -241,12 +237,7 @@ describe('split-library-in-two generator', () => {
       module.exports = [
         ...fluentPlugin.configs['flat/react'],
         {
-          rules: {
-            'import/no-extraneous-dependencies': [
-              'error',
-              { packageDir: ['.', '../../../../'] },
-            ],
-          },
+          rules: {},
         },
       ];
       "

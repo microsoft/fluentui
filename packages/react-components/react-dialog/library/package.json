@@ -11,18 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-provider": "*",
-    "@fluentui/react-popover": "*",
-    "@fluentui/react-tooltip": "*",
-    "@fluentui/react-button": "*",
-    "@fluentui/react-menu": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
-  },
   "dependencies": {
     "@fluentui/react-utilities": "^9.26.0",
     "@fluentui/react-jsx-runtime": "^9.3.4",
