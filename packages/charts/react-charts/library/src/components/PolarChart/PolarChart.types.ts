@@ -113,7 +113,7 @@ export interface PolarChartProps {
   shape?: 'circle' | 'polygon';
 
   /**
-   *
+   * @default 'counterclockwise'
    */
   direction?: 'clockwise' | 'counterclockwise';
 

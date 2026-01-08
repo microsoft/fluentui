@@ -179,7 +179,9 @@ export const getScaleDomain = (
   return [min!, max!];
 };
 
-export const degToRad = (deg: number) => (deg * Math.PI) / 180;
+const degToRad = (deg: number) => (deg * Math.PI) / 180;
+const handleDir = (deg: number, direction: 'clockwise' | 'counterclockwise' = 'counterclockwise') =>
+  (((direction === 'clockwise' ? deg : 450 - deg) % 360) + 360) % 360;
 
 export const createAngularScale = (
   scaleType: string,
@@ -193,6 +195,7 @@ export const createAngularScale = (
     culture?: string;
     tickStep?: number | string;
     tick0?: number | Date;
+    direction?: 'clockwise' | 'counterclockwise';
   } = {},
 ): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
   if (scaleType === 'category') {
@@ -209,7 +212,7 @@ export const createAngularScale = (
       return domainValue;
     };
     return {
-      scale: (v: string) => degToRad(mp[v] * x),
+      scale: (v: string) => degToRad(handleDir(mp[v] * x, opts.direction)),
       tickValues,
       tickLabels: tickValues.map(tickFormat),
     };
@@ -231,7 +234,7 @@ export const createAngularScale = (
   const tickValues = customTickValues ?? d3Range(0, 360, 360 / (opts.tickCount ?? 8));
 
   return {
-    scale: (v: number) => degToRad(v),
+    scale: (v: number) => degToRad(handleDir(v, opts.direction)),
     tickValues,
     tickLabels: tickValues.map(tickFormat),
   };

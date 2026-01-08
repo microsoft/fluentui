@@ -152,11 +152,11 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       () =>
         getScaleType(aValues, {
           scaleType: props.angularAxis?.scaleType,
-          supportsLog: true,
+          // supportsLog: true,
         }),
       [aValues, props.angularAxis?.scaleType],
     );
-    const aDomain = React.useMemo(() => getScaleDomain(aType, aValues), [aType, aValues]);
+    const aDomain = React.useMemo(() => getScaleDomain(aType, aValues) as (string | number)[], [aType, aValues]);
     const {
       scale: aScale,
       tickValues: aTickValues,
@@ -171,6 +171,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           culture: props.culture,
           tickStep: props.angularAxis?.tickStep,
           tick0: props.angularAxis?.tick0,
+          direction: props.direction,
         }),
       [aType, aDomain],
     );
@@ -230,12 +231,22 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
         <g>
           <g>
             {rTickValues.map((r, rIndex) => {
+              const angle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
+              const [pointX, pointY] = d3PointRadial(angle, rScale(r as any)!);
+              const multiplier = angle > EPSILON && angle - Math.PI < EPSILON ? 1 : -1;
               return (
                 <text
                   key={rIndex}
-                  x={-LABEL_OFFSET}
-                  y={-rScale(r as any)!}
-                  textAnchor="end"
+                  x={pointX + LABEL_OFFSET * Math.cos(angle) * multiplier}
+                  y={pointY + LABEL_OFFSET * Math.sin(angle) * multiplier}
+                  textAnchor={
+                    Math.abs(angle - Math.PI / 2) < EPSILON || Math.abs(angle - (3 * Math.PI) / 2) < EPSILON
+                      ? 'middle'
+                      : (angle > EPSILON && angle - Math.PI / 2 < -EPSILON) ||
+                        (angle - Math.PI > EPSILON && angle - (3 * Math.PI) / 2 < -EPSILON)
+                      ? 'start'
+                      : 'end'
+                  }
                   dominantBaseline="middle"
                   aria-hidden={true}
                   className={classes.tickLabel}
@@ -273,7 +284,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         </g>
       );
-    }, [rTickValues, aTickValues, rScale, aScale, outerRadius, classes]);
+    }, [rTickValues, aTickValues, rScale, aScale, outerRadius, classes, props.direction]);
 
     const getActiveLegends = React.useCallback(() => {
       return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
