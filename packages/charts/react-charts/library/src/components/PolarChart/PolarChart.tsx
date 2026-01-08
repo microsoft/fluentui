@@ -15,7 +15,7 @@ import { tokens } from '@fluentui/react-theme';
 import { Legend, Legends } from '../Legends/index';
 import { createRadialScale, getScaleDomain, getScaleType, EPSILON, createAngularScale } from './PolarChart.utils';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
+import { getColorFromToken, getNextColor, sortAxisCategories } from '../../utilities/index';
 import { extent as d3Extent } from 'd3-array';
 
 const DEFAULT_LEGEND_HEIGHT = 32;
@@ -107,6 +107,34 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       });
     }, [props.data]);
 
+    const mapCategoryToValues = React.useCallback(
+      (xyz?: boolean) => {
+        const categoryToValues: Record<string, number[]> = {};
+        chartData.forEach(series => {
+          series.data.forEach(point => {
+            const category = (xyz ? point.theta : point.r) as string;
+            if (!categoryToValues[category]) {
+              categoryToValues[category] = [];
+            }
+            const value = xyz ? point.r : point.theta;
+            if (typeof value === 'number') {
+              categoryToValues[category].push(value);
+            }
+          });
+        });
+        return categoryToValues;
+      },
+      [chartData],
+    );
+
+    const getOrderedRValues = React.useCallback(() => {
+      return sortAxisCategories(mapCategoryToValues(), props.radialAxis?.categoryOrder);
+    }, [mapCategoryToValues, props.radialAxis?.categoryOrder]);
+
+    const getOrderedAValues = React.useCallback(() => {
+      return sortAxisCategories(mapCategoryToValues(true), props.angularAxis?.categoryOrder);
+    }, [mapCategoryToValues, props.angularAxis?.categoryOrder]);
+
     const rValues = React.useMemo(() => chartData.flatMap(series => series.data.map(point => point.r)), [chartData]);
     const rScaleType = React.useMemo(
       () =>
@@ -118,11 +146,13 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     );
     const rScaleDomain = React.useMemo(
       () =>
-        getScaleDomain(rScaleType, rValues, {
-          rangeStart: props.radialAxis?.rangeStart,
-          rangeEnd: props.radialAxis?.rangeEnd,
-        }),
-      [rScaleType, rValues, props.radialAxis?.rangeStart, props.radialAxis?.rangeEnd],
+        rScaleType === 'category'
+          ? getOrderedRValues()
+          : getScaleDomain(rScaleType, rValues as (number | Date)[], {
+              rangeStart: props.radialAxis?.rangeStart,
+              rangeEnd: props.radialAxis?.rangeEnd,
+            }),
+      [getOrderedRValues, rScaleType, rValues, props.radialAxis?.rangeStart, props.radialAxis?.rangeEnd],
     );
     const {
       scale: rScale,
@@ -156,7 +186,10 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
         }),
       [aValues, props.angularAxis?.scaleType],
     );
-    const aDomain = React.useMemo(() => getScaleDomain(aType, aValues) as (string | number)[], [aType, aValues]);
+    const aDomain = React.useMemo(
+      () => (aType === 'category' ? getOrderedAValues() : (getScaleDomain(aType, aValues as number[]) as number[])),
+      [getOrderedAValues, aType, aValues],
+    );
     const {
       scale: aScale,
       tickValues: aTickValues,
@@ -233,6 +266,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
             {rTickValues.map((r, rIndex) => {
               const angle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
               const [pointX, pointY] = d3PointRadial(angle, rScale(r as any)!);
+              // (0, pi]
               const multiplier = angle > EPSILON && angle - Math.PI < EPSILON ? 1 : -1;
               return (
                 <text
@@ -240,9 +274,11 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
                   x={pointX + LABEL_OFFSET * Math.cos(angle) * multiplier}
                   y={pointY + LABEL_OFFSET * Math.sin(angle) * multiplier}
                   textAnchor={
+                    // pi/2 or 3pi/2
                     Math.abs(angle - Math.PI / 2) < EPSILON || Math.abs(angle - (3 * Math.PI) / 2) < EPSILON
                       ? 'middle'
-                      : (angle > EPSILON && angle - Math.PI / 2 < -EPSILON) ||
+                      : // (0, pi/2) or (pi, 3pi/2)
+                      (angle > EPSILON && angle - Math.PI / 2 < -EPSILON) ||
                         (angle - Math.PI > EPSILON && angle - (3 * Math.PI) / 2 < -EPSILON)
                       ? 'start'
                       : 'end'

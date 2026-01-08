@@ -4131,6 +4131,7 @@ const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
       title: '',
       scaleType: '',
     };
+    props.direction = layout?.[subplotId]?.[m.theta.toLowerCase()]?.direction;
   });
 
   return props;

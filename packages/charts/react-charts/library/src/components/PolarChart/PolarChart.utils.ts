@@ -152,16 +152,12 @@ export const getScaleType = (
 
 export const getScaleDomain = (
   scaleType: string,
-  values: (string | number | Date)[],
+  values: (number | Date)[],
   opts: {
     rangeStart?: number | Date;
     rangeEnd?: number | Date;
   } = {},
 ) => {
-  if (scaleType === 'category') {
-    return Array.from(new Set(values));
-  }
-
   let [min, max] = d3Extent(values.filter(v => isValidDomainValue(v, scaleType as AxisScaleType)) as (number | Date)[]);
   if (scaleType === 'linear') {
     [min, max] = d3Extent([min, max, 0] as number[]);
