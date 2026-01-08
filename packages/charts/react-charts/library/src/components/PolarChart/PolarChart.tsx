@@ -10,7 +10,7 @@ import {
   lineRadial as d3LineRadial,
   curveLinearClosed as d3CurveLinearClosed,
 } from 'd3-shape';
-import { PolarDataPoint } from '../../types/DataPoint';
+import { AreaPolarSeries, LinePolarSeries, PolarDataPoint, ScatterPolarSeries } from '../../types/DataPoint';
 import { tokens } from '@fluentui/react-theme';
 import { Legend, Legends } from '../Legends/index';
 import { createRadialScale, getScaleDomain, getScaleType, EPSILON, createAngularScale } from './PolarChart.utils';
@@ -87,24 +87,29 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     const chartData = React.useMemo(() => {
       legendColorMap.current = {};
       let colorIndex = 0;
+      const order = ['areapolar', 'linepolar', 'scatterpolar'];
 
-      return props.data.map(series => {
-        const seriesColor = series.color ? getColorFromToken(series.color) : getNextColor(colorIndex++, 0);
-        if (!(series.legend in legendColorMap.current)) {
-          legendColorMap.current[series.legend] = seriesColor;
-        }
+      return props.data
+        .map(series => {
+          const seriesColor = series.color ? getColorFromToken(series.color) : getNextColor(colorIndex++, 0);
+          if (!(series.legend in legendColorMap.current)) {
+            legendColorMap.current[series.legend] = seriesColor;
+          }
 
-        return {
-          ...series,
-          color: seriesColor,
-          data: series.data.map(point => {
-            return {
-              ...point,
-              color: point.color ? getColorFromToken(point.color) : seriesColor,
-            };
-          }),
-        };
-      });
+          return {
+            ...series,
+            color: seriesColor,
+            data: series.data.map(point => {
+              return {
+                ...point,
+                color: point.color ? getColorFromToken(point.color) : seriesColor,
+              };
+            }),
+          };
+        })
+        .sort((a, b) => {
+          return order.indexOf(a.type) - order.indexOf(b.type);
+        });
     }, [props.data]);
 
     const mapCategoryToValues = React.useCallback(
@@ -334,10 +339,8 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       [getActiveLegends],
     );
 
-    const renderRadialAreas = React.useCallback(() => {
-      const areaData = chartData.filter(series => series.type === 'areapolar');
-
-      return areaData.map((series, seriesIndex) => {
+    const renderRadialArea = React.useCallback(
+      (series: AreaPolarSeries) => {
         const radialArea = d3AreaRadial<PolarDataPoint>()
           .angle(d => aScale(d.theta))
           .innerRadius(innerRadius)
@@ -346,63 +349,39 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
         const shouldHighlight = legendHighlighted(series.legend);
 
         return (
-          <g
-            key={seriesIndex}
-            role="region"
-            aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
-              series.data.length
-            } data points.`}
-          >
-            <path
-              d={radialArea(series.data)!}
-              fill={series.color}
-              fillOpacity={shouldHighlight ? 0.7 : 0.1}
-              stroke={series.color}
-              strokeOpacity={shouldHighlight ? 1 : 0.1}
-              strokeWidth={series.lineOptions?.strokeWidth ?? 2}
-              strokeDasharray={series.lineOptions?.strokeDasharray}
-              strokeDashoffset={series.lineOptions?.strokeDashoffset}
-              strokeLinecap={series.lineOptions?.strokeLinecap}
-              pointerEvents="none"
-            />
-            <g>{renderRadialPoints([series])}</g>
-          </g>
+          <path
+            d={radialArea(series.data)!}
+            fill={series.color}
+            fillOpacity={shouldHighlight ? 0.7 : 0.1}
+            pointerEvents="none"
+          />
         );
-      });
-    }, [chartData, innerRadius, rScale, aScale, legendHighlighted]);
+      },
+      [innerRadius, rScale, aScale, legendHighlighted],
+    );
 
-    const renderRadialLines = React.useCallback(() => {
-      const lineData = chartData.filter(series => series.type === 'linepolar');
-
-      return lineData.map((series, seriesIndex) => {
+    const renderRadialLine = React.useCallback(
+      (series: AreaPolarSeries | LinePolarSeries) => {
         const radialLine = d3LineRadial<PolarDataPoint>()
           .angle(d => aScale(d.theta))
           .radius(d => rScale(d.r as any)!);
 
         return (
-          <g
-            key={seriesIndex}
-            role="region"
-            aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
-              series.data.length
-            } data points.`}
-          >
-            <path
-              d={radialLine(series.data)!}
-              fill="none"
-              stroke={series.color}
-              strokeOpacity={legendHighlighted(series.legend) ? 1 : 0.1}
-              strokeWidth={series.lineOptions?.strokeWidth ?? 2}
-              strokeDasharray={series.lineOptions?.strokeDasharray}
-              strokeDashoffset={series.lineOptions?.strokeDashoffset}
-              strokeLinecap={series.lineOptions?.strokeLinecap}
-              pointerEvents="none"
-            />
-            <g>{renderRadialPoints([series])}</g>
-          </g>
+          <path
+            d={radialLine(series.data)!}
+            fill="none"
+            stroke={series.color}
+            strokeOpacity={legendHighlighted(series.legend) ? 1 : 0.1}
+            strokeWidth={series.lineOptions?.strokeWidth ?? 2}
+            strokeDasharray={series.lineOptions?.strokeDasharray}
+            strokeDashoffset={series.lineOptions?.strokeDashoffset}
+            strokeLinecap={series.lineOptions?.strokeLinecap}
+            pointerEvents="none"
+          />
         );
-      });
-    }, [chartData, rScale, aScale, legendHighlighted]);
+      },
+      [rScale, aScale, legendHighlighted],
+    );
 
     const [minMarkerSize, maxMarkerSize] = React.useMemo(
       () => d3Extent<number>(chartData.flatMap(series => series.data.map(point => point.markerSize as number))),
@@ -433,54 +412,46 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     }, []);
 
     const renderRadialPoints = React.useCallback(
-      (scatterData: typeof chartData) => {
-        return scatterData.map((series, seriesIndex) => {
-          const shouldHighlight = legendHighlighted(series.legend);
-          return (
-            <g
-              key={seriesIndex}
-              role="region"
-              aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
-                series.data.length
-              } data points.`}
-            >
-              {series.data.map((point, pointIndex) => {
-                const [x, y] = d3PointRadial(aScale(point.theta), rScale(point.r as any)!);
-                const id = `${seriesIndex}-${pointIndex}`;
-                const isActive = activePoint === id;
-                let radius = isActive ? 6 : MIN_PIXEL;
-                if (typeof point.markerSize !== 'undefined' && minMarkerSize !== maxMarkerSize) {
-                  radius =
-                    MIN_PIXEL +
-                    ((point.markerSize - minMarkerSize!) / (maxMarkerSize! - minMarkerSize!)) * (MAX_PIXEL - MIN_PIXEL);
-                }
+      (series: AreaPolarSeries | LinePolarSeries | ScatterPolarSeries, seriesIndex: number) => {
+        const shouldHighlight = legendHighlighted(series.legend);
+        return (
+          <g>
+            {series.data.map((point, pointIndex) => {
+              const [x, y] = d3PointRadial(aScale(point.theta), rScale(point.r as any)!);
+              const id = `${seriesIndex}-${pointIndex}`;
+              const isActive = activePoint === id;
+              let radius = isActive ? 6 : MIN_PIXEL;
+              if (typeof point.markerSize !== 'undefined' && minMarkerSize !== maxMarkerSize) {
+                radius =
+                  MIN_PIXEL +
+                  ((point.markerSize - minMarkerSize!) / (maxMarkerSize! - minMarkerSize!)) * (MAX_PIXEL - MIN_PIXEL);
+              }
 
-                const xValue = point.radialAxisCalloutData || point.r;
-                const legend = series.legend;
-                const yValue = point.angularAxisCalloutData || point.theta;
-                const ariaLabel = point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+              const xValue = point.radialAxisCalloutData || point.r;
+              const legend = series.legend;
+              const yValue = point.angularAxisCalloutData || point.theta;
+              const ariaLabel = point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
 
-                return (
-                  <circle
-                    key={pointIndex}
-                    cx={x}
-                    cy={y}
-                    r={radius}
-                    fill={isActive ? tokens.colorNeutralBackground1 : point.color}
-                    stroke={isActive ? point.color : 'none'}
-                    strokeWidth={isActive ? 2 : 0}
-                    opacity={shouldHighlight ? 1 : 0.1}
-                    tabIndex={shouldHighlight ? 0 : -1}
-                    onMouseOver={e => showPopover(e, point, id, series.legend)}
-                    onFocus={e => showPopover(e, point, id, series.legend)}
-                    role="img"
-                    aria-label={ariaLabel}
-                  />
-                );
-              })}
-            </g>
-          );
-        });
+              return (
+                <circle
+                  key={pointIndex}
+                  cx={x}
+                  cy={y}
+                  r={radius}
+                  fill={isActive ? tokens.colorNeutralBackground1 : point.color}
+                  stroke={isActive ? point.color : 'none'}
+                  strokeWidth={isActive ? 2 : 0}
+                  opacity={shouldHighlight ? 1 : 0.1}
+                  tabIndex={shouldHighlight ? 0 : -1}
+                  onMouseOver={e => showPopover(e, point, id, series.legend)}
+                  onFocus={e => showPopover(e, point, id, series.legend)}
+                  role="img"
+                  aria-label={ariaLabel}
+                />
+              );
+            })}
+          </g>
+        );
       },
       [legendHighlighted, rScale, aScale, activePoint, showPopover, minMarkerSize, maxMarkerSize],
     );
@@ -545,9 +516,21 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           >
             {renderPolarGrid()}
             <g>
-              {renderRadialAreas()}
-              {renderRadialLines()}
-              {renderRadialPoints(chartData.filter(series => series.type === 'scatterpolar'))}
+              {chartData.map((series, seriesIndex) => {
+                return (
+                  <g
+                    key={seriesIndex}
+                    role="region"
+                    aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
+                      series.data.length
+                    } data points.`}
+                  >
+                    {series.type === 'areapolar' && renderRadialArea(series)}
+                    {(series.type === 'areapolar' || series.type === 'linepolar') && renderRadialLine(series)}
+                    {renderRadialPoints(series, seriesIndex)}
+                  </g>
+                );
+              })}
             </g>
             {renderPolarTicks()}
           </svg>
