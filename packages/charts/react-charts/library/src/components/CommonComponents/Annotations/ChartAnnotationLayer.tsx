@@ -497,7 +497,9 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               preserveOriginalOpacity: annotation.style?.opacity === undefined,
             }),
           }
-        : hideDefaultStyles ? {} : {
+        : hideDefaultStyles
+        ? {}
+        : {
             backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
           }),
       borderColor: annotation.style?.borderColor,
@@ -614,12 +616,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               }
             }
           }}
-          className={mergeClasses(
-            annotationClass,
-            classes.measurement,
-            layout?.className,
-            annotation.style?.className,
-          )}
+          className={mergeClasses(annotationClass, classes.measurement, layout?.className, annotation.style?.className)}
           style={measurementStyle}
           aria-hidden={true}
           data-annotation-key={key}
