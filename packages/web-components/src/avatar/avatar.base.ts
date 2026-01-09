@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, Updates } from '@microsoft/fast-element';
 
 /**
  * The base class used for constructing a fluent-avatar custom element
@@ -84,13 +84,15 @@ export class BaseAvatar extends FASTElement {
         });
     }
 
-    if (!this.abortSignal || this.abortSignal.signal.aborted) {
-      this.abortSignal = new AbortController();
-    }
+    Updates.enqueue(() => {
+      if (!this.abortSignal || this.abortSignal.signal.aborted) {
+        this.abortSignal = new AbortController();
+      }
 
-    this.defaultSlot.addEventListener('slotchange', () => this.slotchangeHandler(), {
-      once: true,
-      signal: this.abortSignal.signal,
+      this.defaultSlot.addEventListener('slotchange', () => this.slotchangeHandler(), {
+        once: true,
+        signal: this.abortSignal.signal,
+      });
     });
   }
 }
