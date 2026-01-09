@@ -70,16 +70,18 @@ export class BaseAvatar extends FASTElement {
    * @internal
    */
   public slotchangeHandler(): void {
+    this.normalize();
+
     const elements = this.defaultSlot.assignedElements();
 
     if (!elements.length && !this.innerText.trim()) {
-      const nodes = this.defaultSlot.assignedNodes();
+      const nodes = this.defaultSlot.assignedNodes() as Element[];
 
-      nodes.forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE && !node.textContent?.trim()) {
-          (node as Element).remove();
-        }
-      });
+      nodes
+        .filter(node => node.nodeType === Node.TEXT_NODE)
+        .forEach(node => {
+          this.removeChild(node);
+        });
     }
 
     if (!this.abortSignal || this.abortSignal.signal.aborted) {

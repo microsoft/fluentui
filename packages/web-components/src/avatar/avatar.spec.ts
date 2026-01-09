@@ -41,6 +41,12 @@ test.describe('Avatar', () => {
 
       await expect(icon).toBeHidden();
     });
+
+    await test.step('should retain comment nodes in the default slot when no name or initials are provided', async () => {
+      await fastPage.setTemplate({ innerHTML: `\n<!--hello-->\n<!--world-->\n` });
+
+      await expect(icon).toBeVisible();
+    });
   });
 
   test('When no name value is set, should render with custom initials based on the provided initials value', async ({
