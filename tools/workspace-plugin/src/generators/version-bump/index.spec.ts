@@ -167,7 +167,7 @@ describe('version-string-replace generator', () => {
   });
 
   describe(`--version`, () => {
-    async function setupForVersionArgument(tree: Tree, scope: 'all' | string) {
+    async function setupForVersionArgument(scope: 'all' | string) {
       tree = setupDummyPackage(tree, {
         name: 'react-components',
         version: '9.10.20',
@@ -196,14 +196,14 @@ describe('version-string-replace generator', () => {
     }
 
     it('should bump to explicit version', async () => {
-      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument(tree, 'react-button');
+      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument('react-button');
 
       expect(suitePackageJson.version).toBe('9.10.20');
       expect(suitePackageJson.dependencies['@proj/react-button']).toBe('9.0.0-experimental.foo.20220101-abc');
       expect(reactButtonPackageJson.version).toBe('9.0.0-experimental.foo.20220101-abc');
     });
     it('should bump all packages to <version>', async () => {
-      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument(tree, 'all');
+      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument('all');
 
       expect(suitePackageJson.version).toBe('9.0.0-experimental.foo.20220101-abc');
       expect(suitePackageJson.dependencies['@proj/react-button']).toBe('9.0.0-experimental.foo.20220101-abc');
