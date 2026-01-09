@@ -14,6 +14,7 @@ import {
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -98,6 +99,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     data: VerticalStackedChartProps[],
   ) => _getLineLegends(data);
   const _emptyChartId: string = useId('_VSBC_empty');
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical', circular: true });
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
   let _xAxisLabels: string[] = [];
@@ -483,7 +485,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       : null;
   }
 
-  function _toFocusWholeStack(_isHavingLines: boolean): boolean {
+  function _toFocusWholeStack(): boolean {
     const { isCalloutForStack = false } = props;
     return isCalloutForStack;
   }
@@ -979,10 +981,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xElement: SVGElement,
   ): JSXElement[] {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = props;
-    const _isHavingLines = props.data.some(
-      (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
-    );
-    const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
+    const shouldFocusWholeStack = _toFocusWholeStack();
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
@@ -1337,7 +1336,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const _isHavingLines = props.data.some(
       (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
     );
-    const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
+    const shouldFocusWholeStack = _toFocusWholeStack();
     _dataset = _createDataSetLayer();
     const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
@@ -1399,7 +1398,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         children={(props: ChildProps) => {
           return (
             <>
-              <g>{_bars}</g>
+              <g {..._arrowNavigationAttributes}>{_bars}</g>
               <g>
                 {_isHavingLines &&
                   _createLines(

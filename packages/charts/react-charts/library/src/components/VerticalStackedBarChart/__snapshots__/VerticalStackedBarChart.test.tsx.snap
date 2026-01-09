@@ -201,7 +201,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -740,7 +742,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -1431,7 +1435,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -1944,7 +1950,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -2510,7 +2518,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -3053,7 +3063,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </text>
           </g>
         </g>
-        <g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
           <g>
             <g
               id="0-singleBar"
@@ -3678,7 +3690,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -4165,7 +4179,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -4676,7 +4692,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -5187,7 +5205,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -5698,7 +5718,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -6216,7 +6238,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -6672,7 +6696,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -7179,7 +7205,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             aria-label="0. Metadata1, 40%. Metadata2, 5%."
@@ -7761,7 +7789,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -8354,7 +8384,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
@@ -8872,7 +8904,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           </text>
         </g>
       </g>
-      <g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
         <g>
           <g
             id="0-singleBar"
