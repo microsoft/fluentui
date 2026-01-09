@@ -530,7 +530,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
   tree.write(
     `${rootPath}/stories/index.stories.tsx`,
     stripIndents`
-    import { Meta } from '@storybook/react';
+    import { Meta } from '@storybook/react-webpack5';
     import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
     export { Default } from './Default.stories';

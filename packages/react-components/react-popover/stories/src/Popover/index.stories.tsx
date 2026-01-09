@@ -1,5 +1,5 @@
 import { Popover, PopoverProvider, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
 

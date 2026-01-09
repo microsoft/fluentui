@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { Field } from '@fluentui/react-components';
 
 export { Default } from './FieldDefault.stories';

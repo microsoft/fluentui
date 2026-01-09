@@ -1,5 +1,5 @@
-import type { Parameters } from '@storybook/react';
-import type { StoryContextForEnhancers } from '@storybook/csf';
+import type { Parameters } from '@storybook/react-webpack5';
+import type { StoryContextForEnhancers } from 'storybook/internal/csf';
 
 import { withExportToSandboxButton } from '../decorators/with-export-to-sandbox-button';
 
