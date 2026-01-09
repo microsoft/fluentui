@@ -4124,14 +4124,22 @@ const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
     });
 
     const subplotId = (data[0] as { subplot?: string })?.subplot || 'polar';
+    const polarLayout = layout?.[subplotId];
+    const axType = getAxisType2(values, polarLayout?.[propName.toLowerCase()]);
     props[propName] = {
-      categoryOrder: getAxisCategoryOrderProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
-      ...getAxisTickProps2(values, layout?.[subplotId]?.[propName.toLowerCase()]),
+      categoryOrder: getAxisCategoryOrderProps2(values, polarLayout?.[propName.toLowerCase()]),
+      ...getAxisTickProps2(values, polarLayout?.[propName.toLowerCase()]),
       tickFormat: '',
       title: '',
-      scaleType: '',
+      scaleType: axType === 'log' ? 'log' : 'default',
+      rangeStart: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
+        ? polarLayout[propName.toLowerCase()].range[0]
+        : undefined,
+      rangeEnd: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
+        ? polarLayout[propName.toLowerCase()].range[1]
+        : undefined,
     };
-    props.direction = layout?.[subplotId]?.[m.theta.toLowerCase()]?.direction;
+    props.direction = polarLayout?.[m.theta.toLowerCase()]?.direction;
   });
 
   return props;

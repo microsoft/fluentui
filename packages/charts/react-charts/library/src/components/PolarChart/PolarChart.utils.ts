@@ -69,7 +69,7 @@ export const createRadialScale = (
   scale.range(range);
   scale.nice();
 
-  const tickCount = opts.tickCount ?? 3;
+  const tickCount = opts.tickCount ?? 4;
   let tickFormat;
   let customTickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as (number | Date)[]) : undefined;
   if (scaleType === 'date') {

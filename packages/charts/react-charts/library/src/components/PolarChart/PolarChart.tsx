@@ -15,7 +15,7 @@ import { tokens } from '@fluentui/react-theme';
 import { Legend, Legends } from '../Legends/index';
 import { createRadialScale, getScaleDomain, getScaleType, EPSILON, createAngularScale } from './PolarChart.utils';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { getColorFromToken, getNextColor, sortAxisCategories } from '../../utilities/index';
+import { getColorFromToken, getCurveFactory, getNextColor, sortAxisCategories } from '../../utilities/index';
 import { extent as d3Extent } from 'd3-array';
 
 const DEFAULT_LEGEND_HEIGHT = 32;
@@ -23,7 +23,7 @@ const LABEL_WIDTH = 36;
 const LABEL_HEIGHT = 16;
 const LABEL_OFFSET = 10;
 const TICK_SIZE = 6;
-const MIN_PIXEL = 4;
+const MIN_PIXEL = 2;
 const MAX_PIXEL = 16;
 
 export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwardRef<HTMLDivElement, PolarChartProps>(
@@ -219,12 +219,13 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
     const renderPolarGrid = React.useCallback(() => {
       const extRTickValues = [];
-      if (innerRadius > 0 && rScaleDomain[0] !== rTickValues[0]) {
-        extRTickValues.push(rScaleDomain[0]);
+      const rDomain = rScale.domain();
+      if (innerRadius > 0 && rDomain[0] !== rTickValues[0]) {
+        extRTickValues.push(rDomain[0]);
       }
       extRTickValues.push(...rTickValues);
-      if (rScaleDomain[rScaleDomain.length - 1] !== rTickValues[rTickValues.length - 1]) {
-        extRTickValues.push(rScaleDomain[rScaleDomain.length - 1]);
+      if (rDomain[rDomain.length - 1] !== rTickValues[rTickValues.length - 1]) {
+        extRTickValues.push(rDomain[rDomain.length - 1]);
       }
 
       return (
@@ -266,7 +267,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     }, [innerRadius, outerRadius, rScaleDomain, rTickValues, aTickValues, rScale, aScale, props.shape, classes]);
 
     const renderPolarTicks = React.useCallback(() => {
-      const radialAxisAngle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
+      const radialAxisAngle = Math.PI / 2;
       const radialPoint1 = d3PointRadial(radialAxisAngle, innerRadius);
       const radialPoint2 = d3PointRadial(radialAxisAngle, outerRadius);
 
@@ -338,7 +339,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           </g>
         </g>
       );
-    }, [rTickValues, aTickValues, rScale, aScale, outerRadius, classes, props.direction]);
+    }, [rTickValues, aTickValues, rScale, aScale, outerRadius, classes]);
 
     const getActiveLegends = React.useCallback(() => {
       return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
@@ -358,7 +359,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           .angle(d => aScale(d.theta))
           .innerRadius(innerRadius)
           .outerRadius(d => rScale(d.r as any)!)
-          .curve(d3CurveLinearClosed);
+          .curve(getCurveFactory(series.lineOptions?.curve, d3CurveLinearClosed));
         const shouldHighlight = legendHighlighted(series.legend);
 
         return (
@@ -377,7 +378,8 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       (series: AreaPolarSeries | LinePolarSeries) => {
         const radialLine = d3LineRadial<PolarDataPoint>()
           .angle(d => aScale(d.theta))
-          .radius(d => rScale(d.r as any)!);
+          .radius(d => rScale(d.r as any)!)
+          .curve(getCurveFactory(series.lineOptions?.curve));
 
         return (
           <path
@@ -385,7 +387,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
             fill="none"
             stroke={series.color}
             strokeOpacity={legendHighlighted(series.legend) ? 1 : 0.1}
-            strokeWidth={series.lineOptions?.strokeWidth ?? 2}
+            strokeWidth={series.lineOptions?.strokeWidth ?? 3}
             strokeDasharray={series.lineOptions?.strokeDasharray}
             strokeDashoffset={series.lineOptions?.strokeDashoffset}
             strokeLinecap={series.lineOptions?.strokeLinecap}
