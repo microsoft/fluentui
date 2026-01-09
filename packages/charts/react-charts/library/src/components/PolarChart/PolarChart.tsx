@@ -21,7 +21,8 @@ import { extent as d3Extent } from 'd3-array';
 const DEFAULT_LEGEND_HEIGHT = 32;
 const LABEL_WIDTH = 36;
 const LABEL_HEIGHT = 16;
-const LABEL_OFFSET = 8;
+const LABEL_OFFSET = 10;
+const TICK_SIZE = 6;
 const MIN_PIXEL = 4;
 const MAX_PIXEL = 16;
 
@@ -265,35 +266,47 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     }, [innerRadius, outerRadius, rScaleDomain, rTickValues, aTickValues, rScale, aScale, props.shape, classes]);
 
     const renderPolarTicks = React.useCallback(() => {
+      const radialAxisAngle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
+      const radialPoint1 = d3PointRadial(radialAxisAngle, innerRadius);
+      const radialPoint2 = d3PointRadial(radialAxisAngle, outerRadius);
+
       return (
         <g>
           <g>
+            <path d={`M${radialPoint1.join(',')} L${radialPoint2.join(',')}`} className={classes.gridLineOuter} />
             {rTickValues.map((r, rIndex) => {
-              const angle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
-              const [pointX, pointY] = d3PointRadial(angle, rScale(r as any)!);
+              const [pointX, pointY] = d3PointRadial(radialAxisAngle, rScale(r as any)!);
               // (0, pi]
-              const multiplier = angle > EPSILON && angle - Math.PI < EPSILON ? 1 : -1;
+              const multiplier = radialAxisAngle > EPSILON && radialAxisAngle - Math.PI < EPSILON ? 1 : -1;
               return (
-                <text
-                  key={rIndex}
-                  x={pointX + LABEL_OFFSET * Math.cos(angle) * multiplier}
-                  y={pointY + LABEL_OFFSET * Math.sin(angle) * multiplier}
-                  textAnchor={
-                    // pi/2 or 3pi/2
-                    Math.abs(angle - Math.PI / 2) < EPSILON || Math.abs(angle - (3 * Math.PI) / 2) < EPSILON
-                      ? 'middle'
-                      : // (0, pi/2) or (pi, 3pi/2)
-                      (angle > EPSILON && angle - Math.PI / 2 < -EPSILON) ||
-                        (angle - Math.PI > EPSILON && angle - (3 * Math.PI) / 2 < -EPSILON)
-                      ? 'start'
-                      : 'end'
-                  }
-                  dominantBaseline="middle"
-                  aria-hidden={true}
-                  className={classes.tickLabel}
-                >
-                  {rTickLabels[rIndex]}
-                </text>
+                <g key={rIndex}>
+                  <path
+                    d={`M${pointX},${pointY} L${pointX + TICK_SIZE * Math.cos(radialAxisAngle) * multiplier},${
+                      pointY + TICK_SIZE * Math.sin(radialAxisAngle) * multiplier
+                    }`}
+                    className={classes.gridLineOuter}
+                  />
+                  <text
+                    x={pointX + (TICK_SIZE + LABEL_OFFSET) * Math.cos(radialAxisAngle) * multiplier}
+                    y={pointY + (TICK_SIZE + LABEL_OFFSET) * Math.sin(radialAxisAngle) * multiplier}
+                    textAnchor={
+                      // pi/2 or 3pi/2
+                      Math.abs(radialAxisAngle - Math.PI / 2) < EPSILON ||
+                      Math.abs(radialAxisAngle - (3 * Math.PI) / 2) < EPSILON
+                        ? 'middle'
+                        : // (0, pi/2) or (pi, 3pi/2)
+                        (radialAxisAngle > EPSILON && radialAxisAngle - Math.PI / 2 < -EPSILON) ||
+                          (radialAxisAngle - Math.PI > EPSILON && radialAxisAngle - (3 * Math.PI) / 2 < -EPSILON)
+                        ? 'start'
+                        : 'end'
+                    }
+                    dominantBaseline="middle"
+                    aria-hidden={true}
+                    className={classes.tickLabel}
+                  >
+                    {rTickLabels[rIndex]}
+                  </text>
+                </g>
               );
             })}
           </g>
