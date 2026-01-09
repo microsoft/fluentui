@@ -234,4 +234,3 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
 
   return validatedSchema;
 }
-

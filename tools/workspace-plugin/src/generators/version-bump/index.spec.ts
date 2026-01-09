@@ -387,5 +387,3 @@ function setupDummyPackage(
 
   return tree;
 }
-
-
