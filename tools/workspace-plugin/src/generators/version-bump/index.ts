@@ -39,7 +39,7 @@ function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: Use
   }
 
   updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
-    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
+    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag, schema.version);
 
     // nightly releases should bypass beachball disallowed changetypes
     if (
@@ -124,7 +124,7 @@ const bumpDependency = (options: {
   const { dependencies, dependencyName, version, bumpType } = options;
 
   const hasCaret = dependencies[dependencyName].includes('^');
-  const versionToBump = hasCaret && bumpType !== 'nightly' ? `^${version}` : version;
+  const versionToBump = hasCaret && bumpType && bumpType !== 'nightly' ? `^${version}` : version;
   dependencies[dependencyName] = versionToBump;
 };
 
@@ -140,6 +140,7 @@ function runBatchMigration(tree: Tree, schema: ValidatedSchema, userLog: UserLog
           all: false,
           bumpType: schema.bumpType,
           prereleaseTag: schema.prereleaseTag,
+          version: schema.version,
           exclude: schema.exclude,
         },
         userLog,
@@ -148,7 +149,16 @@ function runBatchMigration(tree: Tree, schema: ValidatedSchema, userLog: UserLog
   });
 }
 
-function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpType'], prereleaseTag?: string) {
+function bumpVersion(
+  packageJson: PackageJson,
+  bumpType: ValidatedSchema['bumpType'],
+  prereleaseTag?: string,
+  version?: string,
+) {
+  if (version) {
+    return version;
+  }
+
   if (bumpType === 'nightly') {
     // initialize the prerelease tag so that prerelease doesn't bump to 0.0.1
     packageJson.version = '0.0.0-empty';
@@ -161,7 +171,7 @@ function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpTy
 
   if (bumpType === 'nightly') {
     semverVersion.inc('prerelease', prereleaseTag);
-  } else {
+  } else if (bumpType) {
     semverVersion.inc(bumpType, prereleaseTag);
   }
 
@@ -190,9 +200,9 @@ export const validBumpTypes = [
   'nightly',
 ] as const;
 
-interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude'>> {
-  bumpType: (typeof validBumpTypes)[number];
-
+interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'version' | 'bumpType'>> {
+  bumpType?: (typeof validBumpTypes)[number];
+  version?: string;
   exclude: string[];
 }
 
@@ -201,20 +211,27 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  const validateBumpType = (type: string): type is ValidatedSchema['bumpType'] => {
-    return validBumpTypes.includes(type as ValidatedSchema['bumpType']);
+  if (!schema.version && !schema.bumpType) {
+    throw new Error('Either --bumpType or --version must be provided');
+  }
+
+  const validateBumpType = (type?: string): type is ValidatedSchema['bumpType'] => {
+    return !!type && validBumpTypes.includes(type as NonNullable<ValidatedSchema['bumpType']>);
   };
-  if (!validateBumpType(schema.bumpType)) {
+
+  if (schema.bumpType && !validateBumpType(schema.bumpType)) {
     throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validBumpTypes}`);
   }
 
   const validatedSchema: ValidatedSchema = {
-    bumpType: schema.bumpType,
+    bumpType: schema.bumpType as ValidatedSchema['bumpType'],
     prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
+    version: schema.version,
     exclude: schema.exclude ? schema.exclude.split(',') : [],
   };
 
   return validatedSchema;
 }
+
