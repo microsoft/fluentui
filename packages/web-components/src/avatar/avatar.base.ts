@@ -58,6 +58,8 @@ export class BaseAvatar extends FASTElement {
 
   disconnectedCallback(): void {
     this.abortSignal?.abort();
+    this.abortSignal = undefined;
+
     super.disconnectedCallback();
   }
 
@@ -80,7 +82,10 @@ export class BaseAvatar extends FASTElement {
       });
     }
 
-    this.abortSignal = this.abortSignal ?? new AbortController();
+    if (!this.abortSignal || this.abortSignal.signal.aborted) {
+      this.abortSignal = new AbortController();
+    }
+
     this.defaultSlot.addEventListener('slotchange', () => this.slotchangeHandler(), {
       once: true,
       signal: this.abortSignal.signal,
