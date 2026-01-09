@@ -19,6 +19,17 @@ import { ScaleLinear } from 'd3-scale';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
+// @internal
+export const __donutChartInternals: {
+    computeAnnotationViewportPadding: (annotations: readonly ChartAnnotation[] | undefined, width: number | undefined, height: number | undefined, outerRadius: number) => AnnotationViewportPadding;
+    resolveDonutViewportLayout: (annotations: readonly ChartAnnotation[] | undefined, width: number | undefined, height: number | undefined, hideLabels: boolean | undefined) => {
+        padding: AnnotationViewportPadding;
+        svgWidth: number | undefined;
+        svgHeight: number | undefined;
+        outerRadius: number;
+    };
+};
+
 // @public (undocumented)
 export interface AccessibilityProps {
     ariaDescribedBy?: string;
@@ -343,6 +354,12 @@ export interface ChartAnnotationContext {
     svgRect: {
         width: number;
         height: number;
+    };
+    viewportPadding?: {
+        top: number;
+        right: number;
+        bottom: number;
+        left: number;
     };
     xScale?: (value: any) => number;
     yScalePrimary?: (value: any) => number;
@@ -742,10 +759,12 @@ export interface DonutChartStyleProps extends CartesianChartStyleProps {
 
 // @public
 export interface DonutChartStyles {
+    annotationLayer?: string;
     axisAnnotation?: string;
     chart?: string;
     chartWrapper?: string;
     legendContainer: string;
+    plotContainer?: string;
     root?: string;
 }
 

@@ -83,6 +83,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return donut chart props 1`] = `
 Object {
+  "annotations": Array [],
   "data": Object {
     "chartData": Array [
       Object {
@@ -211,6 +212,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return pie chart props 1`] = `
 Object {
+  "annotations": Array [],
   "data": Object {
     "chartData": Array [
       Object {

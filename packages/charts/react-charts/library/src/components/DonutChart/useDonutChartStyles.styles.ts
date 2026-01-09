@@ -12,9 +12,11 @@ import { getAxisTitleStyle } from '../../utilities/index';
 export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   root: 'fui-donut__root',
   chart: 'fui-donut__chart',
+  plotContainer: 'fui-donut__plotContainer',
   legendContainer: 'fui-donut__legendContainer',
   chartWrapper: 'fui-donut__chartWrapper',
   axisAnnotation: 'fui-donut__axisAnnotation',
+  annotationLayer: 'fui-donut__annotationLayer',
 };
 
 /**
@@ -36,9 +38,17 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
+  plotContainer: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+  },
   legendContainer: {
     paddingTop: tokens.spacingVerticalL,
     width: '100%',
+  },
+  annotationLayer: {
+    pointerEvents: 'none',
   },
   axisAnnotation: getAxisTitleStyle() as GriffelStyle,
 });
@@ -53,12 +63,18 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
   return {
     root: mergeClasses(donutClassNames.root, baseStyles.root, className, props.styles?.root),
     chart: mergeClasses(donutClassNames.chart, baseStyles.chart, props.styles?.chart),
+    plotContainer: mergeClasses(donutClassNames.plotContainer, baseStyles.plotContainer, props.styles?.plotContainer),
     legendContainer: mergeClasses(
       donutClassNames.legendContainer,
       baseStyles.legendContainer,
       props.styles?.legendContainer,
     ),
     chartWrapper: mergeClasses(donutClassNames.chartWrapper, props.styles?.chartWrapper),
+    annotationLayer: mergeClasses(
+      donutClassNames.annotationLayer,
+      baseStyles.annotationLayer,
+      props.styles?.annotationLayer,
+    ),
     axisAnnotation: mergeClasses(
       donutClassNames.axisAnnotation,
       baseStyles.axisAnnotation,

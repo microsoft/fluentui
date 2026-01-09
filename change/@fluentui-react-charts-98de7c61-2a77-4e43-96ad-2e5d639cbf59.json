@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Prevent donut annotation connectors from collapsing so arrows remain visible near viewport edges.",
+  "packageName": "@fluentui/react-charts",
+  "email": "chartingdev@microsoft.com",
+  "dependentChangeType": "patch"
+}
