@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): Add prop to regulate removal of default annotation styling",
+  "packageName": "@fluentui/react-charts",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
