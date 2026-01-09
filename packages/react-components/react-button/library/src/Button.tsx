@@ -5,4 +5,5 @@ export {
   renderButton_unstable,
   useButtonStyles_unstable,
   useButton_unstable,
+  useButtonBase_unstable,
 } from './components/Button/index';

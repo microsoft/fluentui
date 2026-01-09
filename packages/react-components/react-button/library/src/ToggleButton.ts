@@ -5,4 +5,5 @@ export {
   toggleButtonClassNames,
   useToggleButtonStyles_unstable,
   useToggleButton_unstable,
+  useToggleButtonBase_unstable,
 } from './components/ToggleButton/index';

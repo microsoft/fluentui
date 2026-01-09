@@ -4,6 +4,7 @@ export {
   renderButton_unstable,
   useButtonStyles_unstable,
   useButton_unstable,
+  // useButtonBase_unstable,
 } from './Button';
 export type { ButtonProps, ButtonSlots, ButtonState } from './Button';
 export {
@@ -12,6 +13,7 @@ export {
   renderCompoundButton_unstable,
   useCompoundButtonStyles_unstable,
   useCompoundButton_unstable,
+  // useCompoundButtonBase_unstable,
 } from './CompoundButton';
 export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton';
 export {
@@ -20,6 +22,7 @@ export {
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,
   useMenuButton_unstable,
+  // useMenuButtonBase_unstable,
 } from './MenuButton';
 export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuButton';
 export {
@@ -28,6 +31,7 @@ export {
   splitButtonClassNames,
   useSplitButtonStyles_unstable,
   useSplitButton_unstable,
+  // useSplitButtonBase_unstable,
 } from './SplitButton';
 export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './SplitButton';
 export {
@@ -36,6 +40,7 @@ export {
   toggleButtonClassNames,
   useToggleButtonStyles_unstable,
   useToggleButton_unstable,
+  // useToggleButtonBase_unstable,
 } from './ToggleButton';
 export type { ToggleButtonProps, ToggleButtonState } from './ToggleButton';
 

@@ -5,4 +5,5 @@ export {
   splitButtonClassNames,
   useSplitButtonStyles_unstable,
   useSplitButton_unstable,
+  useSplitButtonBase_unstable,
 } from './components/SplitButton/index';

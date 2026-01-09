@@ -5,4 +5,5 @@ export {
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,
   useMenuButton_unstable,
+  useMenuButtonBase_unstable,
 } from './components/MenuButton/index';
