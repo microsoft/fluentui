@@ -211,6 +211,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
           tickStep: props.angularAxis?.tickStep,
           tick0: props.angularAxis?.tick0,
           direction: props.direction,
+          unit: props.angularAxis?.unit,
         }),
       [aType, aDomain],
     );

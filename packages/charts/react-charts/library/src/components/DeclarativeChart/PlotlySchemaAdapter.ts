@@ -3008,7 +3008,21 @@ export const transformPlotlyJsonToPolarChartProps = (
 ): PolarChartProps => {
   const polarData: PolarChartProps['data'] = [];
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
-  const thetaunit = (input.layout?.polar?.angularaxis as { thetaunit?: 'radians' | 'degrees' } | undefined)?.thetaunit;
+
+  const values: Datum[] = [];
+  input.data.forEach((series: Partial<PlotData>) => {
+    if (isArrayOrTypedArray(series.r)) {
+      series.r!.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    }
+  });
+  const subplotId = ((input.data[0] as { subplot?: string })?.subplot || 'polar') as keyof Layout;
+  const polarLayout = input.layout?.[subplotId] as Partial<PolarLayout> | undefined;
+  const axType = getAxisType2(values, polarLayout?.radialaxis);
+  const resolveRValue = getAxisValueResolver(axType);
 
   input.data.forEach((series: Partial<PlotData>, index: number) => {
     const legend = legends[index];
@@ -3035,6 +3049,7 @@ export const transformPlotlyJsonToPolarChartProps = (
       const seriesOpacity = getOpacity(series, index);
       const finalSeriesColor = rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8();
       const lineOptions = getLineOptions(series.line);
+      const thetaunit = (series as { thetaunit?: 'radians' | 'degrees' | 'gradians' }).thetaunit;
 
       const commonProps = {
         legend,
@@ -3056,14 +3071,20 @@ export const transformPlotlyJsonToPolarChartProps = (
               );
               const markerOpacity = getOpacity(series, rIndex);
 
-              if (isInvalidValue(r) || isInvalidValue(theta)) {
+              if (isInvalidValue(resolveRValue(r)) || isInvalidValue(theta)) {
                 return;
               }
 
               return {
-                r: r as number,
+                r: resolveRValue(r)!,
                 theta:
-                  typeof theta === 'number' && thetaunit === 'radians' ? (theta * 180) / Math.PI : (theta as string),
+                  typeof theta === 'number'
+                    ? thetaunit === 'radians'
+                      ? (theta * 180) / Math.PI
+                      : thetaunit === 'gradians'
+                      ? theta * 0.9
+                      : theta
+                    : (theta as string),
                 color: markerColor ? rgb(markerColor).copy({ opacity: markerOpacity }).formatHex8() : finalSeriesColor,
                 ...(typeof markerSize !== 'undefined' ? { markerSize } : {}),
                 ...(typeof text !== 'undefined' ? { text } : {}),
@@ -4129,8 +4150,6 @@ const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
     props[propName] = {
       categoryOrder: getAxisCategoryOrderProps2(values, polarLayout?.[propName.toLowerCase()]),
       ...getAxisTickProps2(values, polarLayout?.[propName.toLowerCase()]),
-      tickFormat: '',
-      title: '',
       scaleType: axType === 'log' ? 'log' : 'default',
       rangeStart: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
         ? polarLayout[propName.toLowerCase()].range[0]
@@ -4138,6 +4157,7 @@ const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
       rangeEnd: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
         ? polarLayout[propName.toLowerCase()].range[1]
         : undefined,
+      unit: polarLayout?.[m.theta.toLowerCase()]?.thetaunit,
     };
     props.direction = polarLayout?.[m.theta.toLowerCase()]?.direction;
   });

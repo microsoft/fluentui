@@ -176,6 +176,7 @@ export const getScaleDomain = (
 };
 
 const degToRad = (deg: number) => (deg * Math.PI) / 180;
+const radToDeg = (rad: number) => (rad * 180) / Math.PI;
 const handleDir = (deg: number, direction: 'clockwise' | 'counterclockwise' = 'counterclockwise') =>
   (((direction === 'clockwise' ? deg : 450 - deg) % 360) + 360) % 360;
 
@@ -192,6 +193,7 @@ export const createAngularScale = (
     tickStep?: number | string;
     tick0?: number | Date;
     direction?: 'clockwise' | 'counterclockwise';
+    unit?: 'degrees' | 'radians';
   } = {},
 ): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
   if (scaleType === 'category') {
@@ -222,10 +224,14 @@ export const createAngularScale = (
     if (typeof opts.tickFormat === 'string') {
       return d3Format(opts.tickFormat)(domainValue);
     }
-    return formatToLocaleString(domainValue, opts.culture) as string;
+    console.log(opts.unit);
+    return opts.unit === 'radians' ? `${domainValue / 180}π` : `${domainValue}°`;
   };
   if (opts.tickStep) {
-    customTickValues = generateNumericTicks(scaleType as AxisScaleType, opts.tickStep, opts.tick0, [0, 360 - EPSILON]);
+    customTickValues = generateNumericTicks(scaleType as AxisScaleType, opts.tickStep, opts.tick0, [
+      0,
+      (opts.unit === 'radians' ? 2 * Math.PI : 360) - EPSILON,
+    ])?.map(v => (opts.unit === 'radians' ? radToDeg(v) : v));
   }
   const tickValues = customTickValues ?? d3Range(0, 360, 360 / (opts.tickCount ?? 8));
 

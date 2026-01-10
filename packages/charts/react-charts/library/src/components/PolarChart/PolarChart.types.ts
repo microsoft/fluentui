@@ -125,7 +125,12 @@ export interface PolarChartProps {
   /**
    *
    */
-  angularAxis?: PolarAxisProps;
+  angularAxis?: PolarAxisProps & {
+    /**
+     * @default 'degrees'
+     */
+    unit?: 'radians' | 'degrees';
+  };
 
   /**
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
