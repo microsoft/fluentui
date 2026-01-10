@@ -1,0 +1,52 @@
+name: Create Experimental Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      feature-name:
+        description: 'Name of the feature (dash-case, e.g., foo-bar)'
+        required: true
+        type: string
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Validate feature name
+        run: |
+          FEATURE_NAME="${{ github.event.inputs.feature-name }}"
+          # Regex for kebab-case: lowercase letters, numbers, and dashes. Must not start/end with dash.
+          if [[ ! $FEATURE_NAME =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+            echo "::error::Invalid feature name '$FEATURE_NAME'. It must be dash-case (e.g., foo-bar, no spaces, no camelCase)."
+            exit 1
+          fi
+
+      - name: Create branch using gh cli
+        run: |
+          FEATURE_NAME="${{ github.event.inputs.feature-name }}"
+          BRANCH_NAME="experimental/$FEATURE_NAME"
+
+          # We use the GitHub API (via gh cli) instead of standard git checkout/push for efficiency.
+          # In a large monorepo, checking out the entire repository just to create a branch is slow and resource-heavy.
+          # The API approach is instantaneous and doesn't require local disk space.
+
+          echo "Checking if branch $BRANCH_NAME exists..."
+          # Pre-flight check to avoid failing the ref creation with an "already exists" error from the API
+          if gh api "repos/${{ github.repository }}/branches/$BRANCH_NAME" --silent 2>/dev/null; then
+            echo "::error::Branch '$BRANCH_NAME' already exists."
+            exit 1
+          fi
+
+          echo "Getting master SHA..."
+          # Fetch the current tip of the master branch to use as the starting point
+          MASTER_SHA=$(gh api "repos/${{ github.repository }}/branches/master" --template '{{.commit.sha}}')
+
+          echo "Creating branch $BRANCH_NAME at $MASTER_SHA..."
+          # Create a new git reference (branch) pointing to the master's SHA
+          gh api "repos/${{ github.repository }}/git/refs" \
+            -f ref="refs/heads/$BRANCH_NAME" \
+            -f sha="$MASTER_SHA"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
