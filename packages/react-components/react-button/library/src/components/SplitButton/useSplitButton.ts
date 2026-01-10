@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
@@ -13,11 +13,7 @@ export const useSplitButton_unstable = (
   props: SplitButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): SplitButtonState => {
-  const {
-    appearance = 'secondary',
-    shape = 'rounded',
-    size = 'medium',
-  } = props;
+  const { appearance = 'secondary', shape = 'rounded', size = 'medium' } = props;
 
   const state = useSplitButtonBase_unstable(props, ref);
 

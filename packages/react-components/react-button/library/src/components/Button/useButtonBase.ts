@@ -18,13 +18,7 @@ export const useButtonBase_unstable = (
   props: ButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ButtonBaseState => {
-  const {
-    as = 'button',
-    disabled = false,
-    disabledFocusable = false,
-    icon,
-    iconPosition = 'before',
-  } = props;
+  const { as = 'button', disabled = false, disabledFocusable = false, icon, iconPosition = 'before' } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
   return {
     // Props passed at the top-level

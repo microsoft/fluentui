@@ -26,7 +26,7 @@ export const useMenuButton_unstable = (
     ...state,
     menuIcon: {
       children: <ChevronDownRegular />,
-      ...state.menuIcon
+      ...state.menuIcon,
     },
   };
 };
