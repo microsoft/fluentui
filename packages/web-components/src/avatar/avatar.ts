@@ -125,8 +125,8 @@ export class Avatar extends BaseAvatar {
     const size = this.size ?? 32;
 
     return (
-      this.initials ??
-      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
+      this.initials ||
+      getInitials(this.name, window.getComputedStyle(this).direction === 'rtl', {
         firstInitialOnly: size <= 16,
       })
     );
