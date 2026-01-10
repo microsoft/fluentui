@@ -7,4 +7,5 @@ export {
   PopoverTrigger,
   renderPopoverTrigger_unstable,
   usePopoverTrigger_unstable,
+  usePopoverTriggerBase_unstable,
 } from './components/PopoverTrigger/index';
