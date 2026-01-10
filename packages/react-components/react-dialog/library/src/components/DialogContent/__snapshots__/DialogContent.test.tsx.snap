@@ -4,6 +4,7 @@ exports[`DialogContent renders a default state 1`] = `
 <div>
   <div
     class="fui-DialogContent"
+    tabindex="0"
   >
     Default DialogContent
   </div>
