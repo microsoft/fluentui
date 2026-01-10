@@ -4,6 +4,7 @@ export {
   tooltipClassNames,
   useTooltipStyles_unstable,
   useTooltip_unstable,
+  // useTooltipBase_unstable,
 } from './Tooltip';
 export type {
   OnVisibleChangeData,
