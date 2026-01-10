@@ -387,7 +387,10 @@ export const Default = () => {
             <ErrorBoundary>
               {parsedSchema ? (
                 <div style={{ width: `${width}px`, height: `${height}px` }}>
-                  <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: parsedSchema }} />
+                  <VegaDeclarativeChart
+                    key={selectedChart}
+                    chartSchema={{ vegaLiteSpec: { ...parsedSchema, width, height } }}
+                  />
                 </div>
               ) : (
                 <div style={{ color: 'red' }}>Invalid JSON schema. Please check your syntax.</div>
