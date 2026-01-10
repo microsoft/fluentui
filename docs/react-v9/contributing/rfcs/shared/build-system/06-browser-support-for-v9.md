@@ -58,7 +58,7 @@ With an eye towards being a modern library, Fluent will follow a yearly audit pr
 
 - A source of truth for Fluent team and consumers to refer to for browser support.
 - Able to ship modern ES2019 code with the option of going to ES2020 without downleveling.
-- Less maintanance by putting onus of older/unsupported browsers to consumers.
+- Less maintenance by putting onus of older/unsupported browsers to consumers.
 
 ### Cons
 
