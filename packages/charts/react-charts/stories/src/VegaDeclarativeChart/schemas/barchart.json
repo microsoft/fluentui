@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart.",
+  "data": {
+    "values": [
+      { "category": "A", "value": 28 },
+      { "category": "B", "value": 55 },
+      { "category": "C", "value": 43 },
+      { "category": "D", "value": 91 },
+      { "category": "E", "value": 81 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "value", "type": "quantitative", "axis": { "title": "Value" } },
+    "y": { "field": "category", "type": "nominal", "axis": { "title": "Category" } }
+  },
+  "title": "Horizontal Bar Chart"
+}

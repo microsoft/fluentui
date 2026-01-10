@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Budget vs Actual spending by department",
+  "data": {
+    "values": [
+      { "department": "Marketing", "category": "Budget", "amount": 250000 },
+      { "department": "Marketing", "category": "Actual", "amount": 235000 },
+      { "department": "Engineering", "category": "Budget", "amount": 450000 },
+      { "department": "Engineering", "category": "Actual", "amount": 478000 },
+      { "department": "Sales", "category": "Budget", "amount": 320000 },
+      { "department": "Sales", "category": "Actual", "amount": 310000 },
+      { "department": "Operations", "category": "Budget", "amount": 180000 },
+      { "department": "Operations", "category": "Actual", "amount": 192000 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "department", "type": "nominal", "axis": { "title": "Department" } },
+    "y": { "field": "amount", "type": "quantitative", "axis": { "title": "Amount ($)", "format": "$,.0f" } },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": { "domain": ["Budget", "Actual"], "range": ["#1f77b4", "#ff7f0e"] }
+    },
+    "xOffset": { "field": "category" }
+  },
+  "title": "Budget vs Actual - Department Comparison"
+}

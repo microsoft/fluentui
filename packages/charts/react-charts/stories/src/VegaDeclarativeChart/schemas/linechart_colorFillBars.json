@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart with background color regions.",
+  "layer": [
+    {
+      "mark": { "type": "rect", "opacity": 0.2, "color": "lightblue" },
+      "encoding": {
+        "x": { "datum": "2023-01-02" },
+        "x2": { "datum": "2023-01-04" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "date": "2023-01-01", "value": 28 },
+          { "date": "2023-01-02", "value": 55 },
+          { "date": "2023-01-03", "value": 43 },
+          { "date": "2023-01-04", "value": 91 },
+          { "date": "2023-01-05", "value": 81 }
+        ]
+      },
+      "mark": "line",
+      "encoding": {
+        "x": { "field": "date", "type": "temporal", "axis": { "title": "Date" } },
+        "y": { "field": "value", "type": "quantitative", "axis": { "title": "Value" } }
+      }
+    }
+  ],
+  "title": "Line Chart with Color Fill Bars"
+}

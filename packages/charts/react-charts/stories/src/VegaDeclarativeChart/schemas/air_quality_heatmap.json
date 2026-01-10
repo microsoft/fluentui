@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Air quality index by location",
+  "data": {
+    "values": [
+      { "city": "New York", "time": "Morning", "aqi": 45 },
+      { "city": "New York", "time": "Afternoon", "aqi": 62 },
+      { "city": "New York", "time": "Evening", "aqi": 58 },
+      { "city": "Los Angeles", "time": "Morning", "aqi": 85 },
+      { "city": "Los Angeles", "time": "Afternoon", "aqi": 95 },
+      { "city": "Los Angeles", "time": "Evening", "aqi": 78 },
+      { "city": "Chicago", "time": "Morning", "aqi": 52 },
+      { "city": "Chicago", "time": "Afternoon", "aqi": 68 },
+      { "city": "Chicago", "time": "Evening", "aqi": 61 },
+      { "city": "Houston", "time": "Morning", "aqi": 72 },
+      { "city": "Houston", "time": "Afternoon", "aqi": 88 },
+      { "city": "Houston", "time": "Evening", "aqi": 75 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "time", "type": "ordinal", "axis": { "title": "Time of Day" } },
+    "y": { "field": "city", "type": "ordinal", "axis": { "title": "City" } },
+    "color": {
+      "field": "aqi",
+      "type": "quantitative",
+      "scale": { "scheme": "redyellowgreen", "domain": [0, 150], "reverse": true },
+      "legend": { "title": "AQI" }
+    },
+    "tooltip": [
+      { "field": "city", "type": "ordinal" },
+      { "field": "time", "type": "ordinal" },
+      { "field": "aqi", "type": "quantitative", "title": "Air Quality Index" }
+    ]
+  },
+  "title": "Air Quality Index Heatmap"
+}

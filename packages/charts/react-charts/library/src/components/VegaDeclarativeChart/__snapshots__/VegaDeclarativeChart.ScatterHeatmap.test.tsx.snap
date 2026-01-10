@@ -1,0 +1,2080 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`VegaDeclarativeChart - Heatmap Charts should render heatmap from actual air_quality_heatmap.json schema 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 350px;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. The X axis displays Time of Day. The Y axis displays City. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="350"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 295)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-19.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="19"
+              y="336"
+            />
+            <text
+              aria-describedby="tooltip-_r_r_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_q_"
+              text-anchor="middle"
+              x="22"
+              y="342"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,295.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,260.1119402985075)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="New York"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    New York
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,191.7039800995025)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Los Angeles"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Los Angeles
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,123.2960199004975)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Chicago"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Chicago
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,54.888059701492516)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Houston"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Houston
+                  </tspan>
+                </text>
+              </g>
+            </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Morning, Houston. , 72."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(138, 69, 118)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  72
+                </text>
+              </g>
+              <g
+                aria-label="Afternoon, Houston. , 88."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(219, 21, 36)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  88
+                </text>
+              </g>
+              <g
+                aria-label="Evening, Houston. , 75."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(153, 60, 102)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  75
+                </text>
+              </g>
+              <g
+                aria-label="Morning, Chicago. , 52."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(36, 129, 219)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  52
+                </text>
+              </g>
+              <g
+                aria-label="Afternoon, Chicago. , 68."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(118, 81, 138)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  68
+                </text>
+              </g>
+              <g
+                aria-label="Evening, Chicago. , 61."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(82, 102, 173)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  61
+                </text>
+              </g>
+              <g
+                aria-label="Morning, Los Angeles. , 85."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(204, 30, 51)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  85
+                </text>
+              </g>
+              <g
+                aria-label="Afternoon, Los Angeles. , 95."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(255, 0, 0)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  95
+                </text>
+              </g>
+              <g
+                aria-label="Evening, Los Angeles. , 78."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(168, 51, 87)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  78
+                </text>
+              </g>
+              <g
+                aria-label="Morning, New York. , 45."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(0, 150, 255)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  45
+                </text>
+              </g>
+              <g
+                aria-label="Afternoon, New York. , 62."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(87, 99, 168)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  62
+                </text>
+              </g>
+              <g
+                aria-label="Evening, New York. , 58."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(67, 111, 188)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  58
+                </text>
+              </g>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="rotate(-90, 16, 157.5)"
+              width="6"
+              x="13"
+              y="151.5"
+            />
+            <text
+              aria-describedby="tooltip-_r_t_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_s_"
+              text-anchor="middle"
+              transform="rotate(-90, 16, 157.5)"
+              x="16"
+              y="157.5"
+            >
+              City
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_p_"
+          style="opacity: 0;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Heatmap Charts should render heatmap from actual attendance_heatmap.json schema 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 350px;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Weekly Attendance Patterns. Heat map chart with 12 data points. The X axis displays Day of Week. The Y axis displays Class Period. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="350"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 295)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-19.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="19"
+              y="336"
+            />
+            <text
+              aria-describedby="tooltip-_r_11_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_10_"
+              text-anchor="middle"
+              x="22"
+              y="342"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,295.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,260.1119402985075)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Period 1"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Period 1
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,191.7039800995025)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Period 2"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Period 2
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,123.2960199004975)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Period 3"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Period 3
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,54.888059701492516)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Period 4"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Period 4
+                  </tspan>
+                </text>
+              </g>
+            </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="Monday, Period 4. , 85."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(0, 150, 255)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  85
+                </text>
+              </g>
+              <g
+                aria-label="Tuesday, Period 4. , 86."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(28, 134, 227)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  86
+                </text>
+              </g>
+              <g
+                aria-label="Wednesday, Period 4. , 88."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 21.36815920398007)"
+              >
+                <rect
+                  fill="rgb(85, 100, 170)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  88
+                </text>
+              </g>
+              <g
+                aria-label="Monday, Period 3. , 87."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(57, 117, 198)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  87
+                </text>
+              </g>
+              <g
+                aria-label="Tuesday, Period 3. , 91."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(170, 50, 85)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  91
+                </text>
+              </g>
+              <g
+                aria-label="Wednesday, Period 3. , 90."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 89.77611940298506)"
+              >
+                <rect
+                  fill="rgb(142, 67, 114)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  90
+                </text>
+              </g>
+              <g
+                aria-label="Monday, Period 2. , 89."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(114, 83, 142)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  89
+                </text>
+              </g>
+              <g
+                aria-label="Tuesday, Period 2. , 88."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(85, 100, 170)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  88
+                </text>
+              </g>
+              <g
+                aria-label="Wednesday, Period 2. , 92."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 158.18407960199005)"
+              >
+                <rect
+                  fill="rgb(198, 34, 57)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  92
+                </text>
+              </g>
+              <g
+                aria-label="Monday, Period 1. , 92."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(36.18543046357616, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(198, 34, 57)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  92
+                </text>
+              </g>
+              <g
+                aria-label="Tuesday, Period 1. , 90."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(8.370860927152322, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(142, 67, 114)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  90
+                </text>
+              </g>
+              <g
+                aria-label="Wednesday, Period 1. , 94."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.443708609271518, 226.59203980099502)"
+              >
+                <rect
+                  fill="rgb(255, 0, 0)"
+                  height="67.03980099502489"
+                  width="27.25827814569536"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(13.62913907284768, 33.519900497512445)"
+                >
+                  94
+                </text>
+              </g>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="rotate(-90, 16, 157.5)"
+              width="6"
+              x="13"
+              y="151.5"
+            />
+            <text
+              aria-describedby="tooltip-_r_13_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_12_"
+              text-anchor="middle"
+              transform="rotate(-90, 16, 157.5)"
+              x="16"
+              y="157.5"
+            >
+              Class Period
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_v_"
+          style="opacity: 0;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Heatmap Charts should render heatmap with rect marks and quantitative color 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 350px;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="350"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 315)"
+            >
+              <path
+                class="domain"
+                d="M40.5,0.5H-19.5"
+                stroke="currentColor"
+              />
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,315.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,240.519801980198)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Mon"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Mon
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,94.48019801980196)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  data-full="Tue"
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  <tspan
+                    dy="0.32em"
+                    x="-10"
+                  >
+                    Tue
+                  </tspan>
+                </text>
+              </g>
+            </g>
+            <g
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            >
+              <g
+                aria-label="A, Tue. , 30."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(10.297029702970299, 22.9207920792079)"
+              >
+                <rect
+                  fill="rgb(170, 50, 85)"
+                  height="143.11881188118812"
+                  width="29.10891089108911"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(14.554455445544555, 71.55940594059406)"
+                >
+                  30
+                </text>
+              </g>
+              <g
+                aria-label="B, Tue. , 40."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.405940594059405, 22.9207920792079)"
+              >
+                <rect
+                  fill="rgb(255, 0, 0)"
+                  height="143.11881188118812"
+                  width="29.10891089108911"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(14.554455445544555, 71.55940594059406)"
+                >
+                  40
+                </text>
+              </g>
+              <g
+                aria-label="A, Mon. , 10."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(10.297029702970299, 168.96039603960395)"
+              >
+                <rect
+                  fill="rgb(0, 150, 255)"
+                  height="143.11881188118812"
+                  width="29.10891089108911"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(14.554455445544555, 71.55940594059406)"
+                >
+                  10
+                </text>
+              </g>
+              <g
+                aria-label="B, Mon. , 20."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(-19.405940594059405, 168.96039603960395)"
+              >
+                <rect
+                  fill="rgb(85, 100, 170)"
+                  height="143.11881188118812"
+                  width="29.10891089108911"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(14.554455445544555, 71.55940594059406)"
+                >
+                  20
+                </text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_n_"
+          style="opacity: 0;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from actual bmi_scatter.json schema 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="BMI Distribution ScatterThe X axis displays Height (cm). The Y axis displays Weight (kg). "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="NaN"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, NaN)"
+            >
+              <path
+                class="domain"
+                d="M64.5,6V0.5H-19.5V6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(47.7,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  160
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(19.700000000000003,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  170
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-8.300000000000004,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  180
+                </text>
+              </g>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="19"
+              y="NaN"
+            />
+            <text
+              aria-describedby="tooltip-_r_i_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_h_"
+              text-anchor="middle"
+              x="22"
+              y="NaN"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M-6,NaNH0.5V20.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  75
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-84"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-94"
+                >
+                  100
+                </text>
+              </g>
+            </g>
+            <g>
+              <line
+                id="verticalLine_r_e_"
+                stroke="#323130"
+                stroke-dasharray="5,5"
+                visibility="hidden"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="NaN"
+              />
+              <g>
+                <g
+                  aria-label="Underweight, series 3 of 3 with 2 data points."
+                  role="region"
+                />
+                <g
+                  aria-label="Overweight, series 2 of 3 with 5 data points."
+                  role="region"
+                />
+                <g
+                  aria-label="Normal, series 1 of 3 with 3 data points."
+                  role="region"
+                />
+              </g>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="rotate(-90, 16, NaN)"
+              width="6"
+              x="13"
+              y="NaN"
+            />
+            <text
+              aria-describedby="tooltip-_r_k_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_j_"
+              text-anchor="middle"
+              transform="rotate(-90, 16, NaN)"
+              x="16"
+              y="NaN"
+            >
+              Weight (kg)
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="true"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Normal"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(255, 127, 14); border-color: rgb(255, 127, 14); --rect-content-high-contrast: linear-gradient(to right, #ff7f0e, #ff7f0e);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Normal
+                </div>
+              </button>
+              <button
+                aria-label="Overweight"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(44, 160, 44); border-color: rgb(44, 160, 44); --rect-content-high-contrast: linear-gradient(to right, #2ca02c, #2ca02c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Overweight
+                </div>
+              </button>
+              <button
+                aria-label="Underweight"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #d62728; --rect-borderColor: #d62728;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(214, 39, 40); border-color: rgb(214, 39, 40); --rect-content-high-contrast: linear-gradient(to right, #d62728, #d62728);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Underweight
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with basic point encoding 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Chart. The X axis displays values. The Y axis displays values. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="NaN"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, NaN)"
+            >
+              <path
+                class="domain"
+                d="M40.5,6V0.5H-19.5V6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(22.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  20
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-1.4999999999999982,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  40
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M-6,NaNH0.5V20.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  11
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  22
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  33
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  44
+                </text>
+              </g>
+            </g>
+            <g>
+              <line
+                id="verticalLine_r_2_"
+                stroke="#323130"
+                stroke-dasharray="5,5"
+                visibility="hidden"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="NaN"
+              />
+              <g>
+                <g
+                  aria-label="C, series 3 of 3 with 1 data points."
+                  role="region"
+                />
+                <g
+                  aria-label="B, series 2 of 3 with 2 data points."
+                  role="region"
+                />
+                <g
+                  aria-label="A, series 1 of 3 with 2 data points."
+                  role="region"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="true"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="A"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  A
+                </div>
+              </button>
+              <button
+                aria-label="B"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  B
+                </div>
+              </button>
+              <button
+                aria-label="C"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  C
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with size encoding 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Chart. The X axis displays values. The Y axis displays values. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="NaN"
+            role="region"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, NaN)"
+            >
+              <path
+                class="domain"
+                d="M40.5,6V0.5H-19.5V6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(35.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  160
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(10.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  170
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-14.499999999999996,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  180
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M-6,NaNH0.5V20.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  75
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  100
+                </text>
+              </g>
+            </g>
+            <g>
+              <line
+                id="verticalLine_r_8_"
+                stroke="#323130"
+                stroke-dasharray="5,5"
+                visibility="hidden"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="NaN"
+              />
+              <g>
+                <g
+                  aria-label="Overweight, series 2 of 2 with 3 data points."
+                  role="region"
+                />
+                <g
+                  aria-label="Normal, series 1 of 2 with 2 data points."
+                  role="region"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="true"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Normal"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Normal
+                </div>
+              </button>
+              <button
+                aria-label="Overweight"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Overweight
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

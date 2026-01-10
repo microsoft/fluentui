@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Multiple area series without stacking - each fills to zero independently",
+  "title": "Department Performance - Overlapping Areas (No Stack)",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "values": [
+      { "quarter": "Q1 2024", "department": "Sales", "performance": 85 },
+      { "quarter": "Q1 2024", "department": "Marketing", "performance": 70 },
+      { "quarter": "Q1 2024", "department": "Support", "performance": 60 },
+      { "quarter": "Q2 2024", "department": "Sales", "performance": 88 },
+      { "quarter": "Q2 2024", "department": "Marketing", "performance": 75 },
+      { "quarter": "Q2 2024", "department": "Support", "performance": 65 },
+      { "quarter": "Q3 2024", "department": "Sales", "performance": 92 },
+      { "quarter": "Q3 2024", "department": "Marketing", "performance": 82 },
+      { "quarter": "Q3 2024", "department": "Support", "performance": 70 },
+      { "quarter": "Q4 2024", "department": "Sales", "performance": 95 },
+      { "quarter": "Q4 2024", "department": "Marketing", "performance": 88 },
+      { "quarter": "Q4 2024", "department": "Support", "performance": 75 }
+    ]
+  },
+  "mark": {
+    "type": "area",
+    "fillOpacity": 0.5
+  },
+  "encoding": {
+    "x": {
+      "field": "quarter",
+      "type": "ordinal",
+      "axis": {
+        "title": "Quarter"
+      }
+    },
+    "y": {
+      "field": "performance",
+      "type": "quantitative",
+      "stack": null,
+      "axis": {
+        "title": "Performance Score"
+      }
+    },
+    "color": {
+      "field": "department",
+      "type": "nominal",
+      "legend": {
+        "title": "Department"
+      }
+    }
+  }
+}

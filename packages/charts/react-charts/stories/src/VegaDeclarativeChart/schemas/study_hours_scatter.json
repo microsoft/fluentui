@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Study hours vs grade correlation",
+  "data": {
+    "values": [
+      { "studyHours": 15, "grade": 72, "student": "Student 1" },
+      { "studyHours": 25, "grade": 85, "student": "Student 2" },
+      { "studyHours": 10, "grade": 65, "student": "Student 3" },
+      { "studyHours": 30, "grade": 92, "student": "Student 4" },
+      { "studyHours": 20, "grade": 78, "student": "Student 5" },
+      { "studyHours": 35, "grade": 95, "student": "Student 6" },
+      { "studyHours": 12, "grade": 68, "student": "Student 7" },
+      { "studyHours": 28, "grade": 88, "student": "Student 8" },
+      { "studyHours": 18, "grade": 75, "student": "Student 9" },
+      { "studyHours": 32, "grade": 90, "student": "Student 10" }
+    ]
+  },
+  "mark": { "type": "circle", "size": 150 },
+  "encoding": {
+    "x": { "field": "studyHours", "type": "quantitative", "axis": { "title": "Weekly Study Hours" } },
+    "y": { "field": "grade", "type": "quantitative", "axis": { "title": "Final Grade" } },
+    "color": { "field": "grade", "type": "quantitative", "scale": { "scheme": "viridis" }, "legend": null },
+    "tooltip": [
+      { "field": "student", "type": "nominal" },
+      { "field": "studyHours", "type": "quantitative", "title": "Study Hours" },
+      { "field": "grade", "type": "quantitative", "title": "Grade" }
+    ]
+  },
+  "title": "Study Hours vs Final Grade"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Biodiversity counts by region",
+  "data": {
+    "values": [
+      { "region": "Amazon", "category": "Mammals", "count": 427 },
+      { "region": "Amazon", "category": "Birds", "count": 1300 },
+      { "region": "Amazon", "category": "Reptiles", "count": 378 },
+      { "region": "Congo", "category": "Mammals", "count": 268 },
+      { "region": "Congo", "category": "Birds", "count": 700 },
+      { "region": "Congo", "category": "Reptiles", "count": 280 },
+      { "region": "Borneo", "category": "Mammals", "count": 222 },
+      { "region": "Borneo", "category": "Birds", "count": 420 },
+      { "region": "Borneo", "category": "Reptiles", "count": 254 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "region", "type": "nominal", "axis": { "title": "Region" } },
+    "y": { "field": "count", "type": "quantitative", "axis": { "title": "Species Count" } },
+    "color": { "field": "category", "type": "nominal", "legend": { "title": "Category" } },
+    "xOffset": { "field": "category" }
+  },
+  "title": "Biodiversity by Rainforest Region"
+}

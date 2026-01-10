@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Medication adherence tracking",
+  "data": {
+    "values": [
+      { "week": "Week 1", "medication": "Med A", "adherence": 95 },
+      { "week": "Week 1", "medication": "Med B", "adherence": 88 },
+      { "week": "Week 1", "medication": "Med C", "adherence": 92 },
+      { "week": "Week 2", "medication": "Med A", "adherence": 92 },
+      { "week": "Week 2", "medication": "Med B", "adherence": 85 },
+      { "week": "Week 2", "medication": "Med C", "adherence": 90 },
+      { "week": "Week 3", "medication": "Med A", "adherence": 89 },
+      { "week": "Week 3", "medication": "Med B", "adherence": 82 },
+      { "week": "Week 3", "medication": "Med C", "adherence": 87 },
+      { "week": "Week 4", "medication": "Med A", "adherence": 94 },
+      { "week": "Week 4", "medication": "Med B", "adherence": 88 },
+      { "week": "Week 4", "medication": "Med C", "adherence": 91 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+    "y": { "field": "adherence", "type": "quantitative", "axis": { "title": "Adherence (%)" } },
+    "color": { "field": "medication", "type": "nominal", "legend": { "title": "Medication" } }
+  },
+  "title": "Medication Adherence Rates"
+}

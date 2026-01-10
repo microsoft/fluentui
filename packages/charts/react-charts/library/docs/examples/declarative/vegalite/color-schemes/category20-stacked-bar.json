@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked bar chart with category20 color scheme",
+  "mark": "bar",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "value": 10, "segment": "Segment 1" },
+      { "quarter": "Q1", "value": 15, "segment": "Segment 2" },
+      { "quarter": "Q1", "value": 8, "segment": "Segment 3" },
+      { "quarter": "Q1", "value": 12, "segment": "Segment 4" },
+      { "quarter": "Q2", "value": 12, "segment": "Segment 1" },
+      { "quarter": "Q2", "value": 18, "segment": "Segment 2" },
+      { "quarter": "Q2", "value": 10, "segment": "Segment 3" },
+      { "quarter": "Q2", "value": 14, "segment": "Segment 4" },
+      { "quarter": "Q3", "value": 14, "segment": "Segment 1" },
+      { "quarter": "Q3", "value": 20, "segment": "Segment 2" },
+      { "quarter": "Q3", "value": 12, "segment": "Segment 3" },
+      { "quarter": "Q3", "value": 16, "segment": "Segment 4" },
+      { "quarter": "Q4", "value": 16, "segment": "Segment 1" },
+      { "quarter": "Q4", "value": 22, "segment": "Segment 2" },
+      { "quarter": "Q4", "value": 14, "segment": "Segment 3" },
+      { "quarter": "Q4", "value": 18, "segment": "Segment 4" }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "quarter",
+      "type": "nominal",
+      "axis": { "title": "Quarter" }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": { "title": "Value" }
+    },
+    "color": {
+      "field": "segment",
+      "type": "nominal",
+      "scale": { "scheme": "category20" },
+      "legend": { "title": "Segment" }
+    }
+  },
+  "title": "Quarterly Values by Segment (Category20 Scheme)",
+  "width": 600,
+  "height": 400
+}

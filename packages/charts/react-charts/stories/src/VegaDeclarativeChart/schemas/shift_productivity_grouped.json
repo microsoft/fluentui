@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Shift productivity comparison",
+  "data": {
+    "values": [
+      { "shift": "Day", "metric": "Units/Hour", "value": 125 },
+      { "shift": "Day", "metric": "Efficiency %", "value": 92 },
+      { "shift": "Night", "metric": "Units/Hour", "value": 108 },
+      { "shift": "Night", "metric": "Efficiency %", "value": 85 },
+      { "shift": "Weekend", "metric": "Units/Hour", "value": 95 },
+      { "shift": "Weekend", "metric": "Efficiency %", "value": 78 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "shift", "type": "nominal", "axis": { "title": "Shift" } },
+    "y": { "field": "value", "type": "quantitative", "axis": { "title": "Value" } },
+    "color": { "field": "metric", "type": "nominal", "legend": { "title": "Metric" } },
+    "xOffset": { "field": "metric" }
+  },
+  "title": "Shift Productivity Comparison"
+}

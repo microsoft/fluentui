@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scatter chart showing correlation.",
+  "data": {
+    "values": [
+      { "x": 10, "y": 20, "size": 5, "category": "A" },
+      { "x": 20, "y": 30, "size": 10, "category": "A" },
+      { "x": 30, "y": 25, "size": 15, "category": "A" },
+      { "x": 40, "y": 45, "size": 8, "category": "B" },
+      { "x": 50, "y": 40, "size": 12, "category": "B" },
+      { "x": 60, "y": 55, "size": 20, "category": "B" }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "x", "type": "quantitative", "axis": { "title": "X Axis" } },
+    "y": { "field": "y", "type": "quantitative", "axis": { "title": "Y Axis" } },
+    "size": { "field": "size", "type": "quantitative" },
+    "color": { "field": "category", "type": "nominal" }
+  },
+  "title": "Scatter Chart"
+}

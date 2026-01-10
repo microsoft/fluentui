@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Multi-series line chart with category10 color scheme",
+  "mark": "line",
+  "data": {
+    "values": [
+      { "month": "Jan", "sales": 28, "category": "Electronics" },
+      { "month": "Feb", "sales": 55, "category": "Electronics" },
+      { "month": "Mar", "sales": 43, "category": "Electronics" },
+      { "month": "Apr", "sales": 91, "category": "Electronics" },
+      { "month": "May", "sales": 81, "category": "Electronics" },
+      { "month": "Jan", "sales": 35, "category": "Clothing" },
+      { "month": "Feb", "sales": 60, "category": "Clothing" },
+      { "month": "Mar", "sales": 50, "category": "Clothing" },
+      { "month": "Apr", "sales": 75, "category": "Clothing" },
+      { "month": "May", "sales": 70, "category": "Clothing" },
+      { "month": "Jan", "sales": 20, "category": "Food" },
+      { "month": "Feb", "sales": 45, "category": "Food" },
+      { "month": "Mar", "sales": 38, "category": "Food" },
+      { "month": "Apr", "sales": 62, "category": "Food" },
+      { "month": "May", "sales": 58, "category": "Food" }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "axis": { "title": "Month" }
+    },
+    "y": {
+      "field": "sales",
+      "type": "quantitative",
+      "axis": { "title": "Sales" }
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": { "scheme": "category10" },
+      "legend": { "title": "Category" }
+    }
+  },
+  "title": "Sales by Category (Category10 Scheme)",
+  "width": 600,
+  "height": 400
+}

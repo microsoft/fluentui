@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Test case: Type mismatch - quantitative with strings (should throw validation error)",
+  "mark": "line",
+  "data": {
+    "values": [
+      { "x": "one", "y": 28 },
+      { "x": "two", "y": 55 },
+      { "x": "three", "y": 43 }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "axis": { "title": "X Axis (Quantitative)" }
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "axis": { "title": "Y Axis" }
+    }
+  },
+  "title": "Type Mismatch Test (Should Error)"
+}
