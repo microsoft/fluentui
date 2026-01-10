@@ -2,14 +2,11 @@
 
 import * as React from 'react';
 import {
-  useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
   usePortalMountNode as usePortalMountNodeContext,
+  useThemeClassName_unstable as useThemeClassName,
 } from '@fluentui/react-shared-contexts';
-import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
-
-import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -24,6 +21,7 @@ export type UsePortalMountNodeOptions = {
 
 type UseElementFactoryOptions = {
   className: string;
+  style: React.CSSProperties;
   dir: string;
   disabled: boolean | undefined;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -40,7 +38,7 @@ type UseElementFactory = (options: UseElementFactoryOptions) => HTMLDivElement |
 const useLegacyElementFactory: UseElementFactory = options => {
   'use no memo';
 
-  const { className, dir, focusVisibleRef, targetNode } = options;
+  const { className, dir, focusVisibleRef, style, targetNode } = options;
 
   const targetElement = React.useMemo(() => {
     if (targetNode === undefined || options.disabled) {
@@ -68,8 +66,10 @@ const useLegacyElementFactory: UseElementFactory = options => {
     targetElement.setAttribute('dir', dir);
     targetElement.setAttribute('data-portal-node', 'true');
 
+    Object.assign(targetElement.style, style);
+
     focusVisibleRef.current = targetElement;
-  }, [className, dir, targetElement, focusVisibleRef]);
+  }, [className, style, dir, targetElement, focusVisibleRef]);
 
   React.useEffect(() => {
     return () => {
@@ -119,7 +119,7 @@ const initializeElementFactory = () => {
 const useModernElementFactory: UseElementFactory = options => {
   'use no memo';
 
-  const { className, dir, focusVisibleRef, targetNode } = options;
+  const { className, dir, focusVisibleRef, targetNode, style } = options;
 
   const [elementFactory] = React.useState(initializeElementFactory);
 
@@ -204,11 +204,15 @@ const useModernElementFactory: UseElementFactory = options => {
     elementProxy.setAttribute('dir', dir);
     elementProxy.setAttribute('data-portal-node', 'true');
 
+    Object.assign(elementProxy.style, style);
+
     focusVisibleRef.current = elementProxy;
 
     return () => {
       elementProxy.classList.remove(...classesToApply);
       elementProxy.removeAttribute('dir');
+
+      Object.keys(style).forEach(property => elementProxy.style.removeProperty(property));
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
 
@@ -243,15 +247,27 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const factoryOptions: UseElementFactoryOptions = {
     dir,
     disabled: options.disabled,
     focusVisibleRef,
-
-    className: mergeClasses(themeClassName, classes.root, options.className),
+    className: [themeClassName, options.className].filter(Boolean).join(' '),
+    style: React.useMemo(
+      () => ({
+        // Creates new stacking context to prevent z-index issues
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
+        //
+        // Also keeps a portal on top of a page to prevent scrollbars from appearing
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000000,
+      }),
+      [],
+    ),
     targetNode: mountNode ?? targetDocument?.body,
   };
 
