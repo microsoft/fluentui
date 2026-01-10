@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: switch Portal to use inline styles instead of CSS",
+  "packageName": "@fluentui/react-portal",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
