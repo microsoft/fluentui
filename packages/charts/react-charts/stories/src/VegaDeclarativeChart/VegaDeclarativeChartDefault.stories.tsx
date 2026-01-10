@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-components';
 
 // Dynamically import all schemas
-// @ts-ignore
+// @ts-expect-error - require.context is a webpack feature not typed in TS
 const schemasContext = require.context('./schemas', false, /\.json$/);
 const ALL_SCHEMAS: Record<string, any> = {};
 const SCHEMA_NAMES: string[] = [];
@@ -243,7 +243,7 @@ ALL_OPTIONS.sort((a, b) => {
   return a.text.localeCompare(b.text);
 });
 
-export const Default = () => {
+export const Default = (): React.ReactElement => {
   const [selectedChart, setSelectedChart] = React.useState<string>('linechart');
   const [schemaText, setSchemaText] = React.useState<string>(JSON.stringify(ALL_SCHEMAS.linechart, null, 2));
   const [width, setWidth] = React.useState<number>(600);
@@ -265,14 +265,14 @@ export const Default = () => {
   };
 
   const handleWidthChange = (_e: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
-    const value = parseInt(data.value);
+    const value = parseInt(data.value, 10);
     if (!isNaN(value) && value > 0) {
       setWidth(value);
     }
   };
 
   const handleHeightChange = (_e: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
-    const value = parseInt(data.value);
+    const value = parseInt(data.value, 10);
     if (!isNaN(value) && value > 0) {
       setHeight(value);
     }
@@ -291,8 +291,12 @@ export const Default = () => {
     selectedCategory === 'All' ? ALL_OPTIONS : ALL_OPTIONS.filter(opt => opt.category === selectedCategory);
 
   const categories = ['All', ...Array.from(SCHEMA_CATEGORIES.keys())].sort((a, b) => {
-    if (a === 'All') return -1;
-    if (b === 'All') return 1;
+    if (a === 'All') {
+      return -1;
+    }
+    if (b === 'All') {
+      return 1;
+    }
     const categoryOrder = [
       'Basic Charts',
       'Financial',
