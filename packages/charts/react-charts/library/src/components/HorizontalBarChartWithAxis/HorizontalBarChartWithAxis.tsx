@@ -768,8 +768,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
   function _getAriaLabel(point: HorizontalBarChartWithAxisDataPoint): string {
     const xValue = point.xAxisCalloutData || point.x;
+    const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
-    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
+    return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + (legend ? `${legend}, ` : '') + `${xValue}.`;
   }
 
   function _renderBarLabel(

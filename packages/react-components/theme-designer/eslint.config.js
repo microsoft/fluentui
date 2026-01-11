@@ -8,7 +8,7 @@ module.exports = [
     rules: {
       '@griffel/styles-file': 'off',
       '@nx/workspace-no-restricted-globals': 'off',
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
       'prefer-exponentiation-operator': 'off',
     },
   },
