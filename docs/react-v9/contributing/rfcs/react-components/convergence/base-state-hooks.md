@@ -1,4 +1,4 @@
-# RFC: Component Behavior State Hooks
+# RFC: Component Base State Hooks
 
 ## Contributors
 
@@ -6,13 +6,13 @@
 
 ## Summary
 
-Behavior state hooks provide pure behavior and accessibility for Fluent UI v9 components, without any styling opinions. They are an **advanced, opt-in feature** for teams building completely custom components that are not based on Fluent 2 design.
+Base state hooks provide pure component logic, accessibility, and structure for Fluent UI v9 components, without any styling opinions. They are an **advanced, opt-in feature** for teams building completely custom components that are not based on Fluent 2 design.
 
-> **Note:** Most teams should use default components. Use behavior state hooks only when you need maximum control over rendering and are building a custom design system that significantly diverges from Fluent 2.
+> **Note:** Most teams should use default components. Use base state hooks only when you need maximum control over rendering and are building a custom design system that significantly diverges from Fluent 2.
 
 **What they include:**
 
-- Component behavior and ARIA patterns
+- Component behavior, structure, and ARIA patterns
 - Keyboard handling
 - Semantic slot structure
 
@@ -24,9 +24,9 @@ Behavior state hooks provide pure behavior and accessibility for Fluent UI v9 co
 - Default slot implementations (icons, components)
 
 > [!IMPORTANT]
-> Behavior state hooks provide ARIA attributes and semantic structure, but **not visual accessibility** (e.g., focus indicators, sufficient contrast). You're responsible for implementing these in your custom styles. When using behavior state hooks, you must ensure your custom styles maintain accessibility standards including visible focus indicators, sufficient color contrast, and appropriate visual feedback for all interactive states.
+> Base state hooks provide ARIA attributes and semantic structure, but **not visual accessibility** (e.g., focus indicators, sufficient contrast). You're responsible for implementing these in your custom styles. When using base state hooks, you must ensure your custom styles maintain accessibility standards including visible focus indicators, sufficient color contrast, and appropriate visual feedback for all interactive states.
 
-Behavior state hooks serve as the foundation layer that styled components are built upon.
+Base state hooks serve as the foundation layer that styled components are built upon.
 
 ## Problem Statement
 
@@ -52,32 +52,32 @@ Currently, these advanced users must:
 
 **Example:** A team building a completely custom design language with their own component architecture (`variant`, `tone`, `emphasis`, custom rendering) still wants Fluent's accessibility and keyboard handling, but has to bundle some code they never use.
 
-Behavior state hooks solve this by providing **only** the behavior layer.
+Base state hooks solve this by providing **only** the base layer.
 
 ## Solution
 
-Introduce behavior state hooks per component using the naming pattern `use${ComponentName}Behavior_unstable`:
+Introduce base state hooks per component using the naming pattern `use${ComponentName}Base_unstable`:
 
 ```tsx
 // Import from the package directly
-import { useButtonBehavior_unstable } from '@fluentui/react-button';
+import { useButtonBase_unstable } from '@fluentui/react-button';
 ```
 
-In this RFC, a "behavior state hook" refers to a `use{Component}Behavior_unstable` hook that accepts behavior props and returns behavior state.
+In this RFC, a "base state hook" refers to a `use{Component}Base_unstable` hook that accepts base props and returns base state.
 
 ### Exports and Naming
 
 **Package exports:**
 
-- Behavior state hooks are exported from individual component packages (e.g., `@fluentui/react-button`)
+- Base state hooks are exported from individual component packages (e.g., `@fluentui/react-button`)
 - They are NOT re-exported from the suite package (`@fluentui/react-components`) initially
 - Re-exporting from the suite may be considered in the future based on adoption and feedback
 
 **Naming pattern:**
 
-- Hook name: `use${ComponentName}Behavior_unstable` (e.g., `useButtonBehavior_unstable`)
-- Props type: `${ComponentName}BehaviorProps` (e.g., `ButtonBehaviorProps`)
-- State type: `${ComponentName}BehaviorState` (e.g., `ButtonBehaviorState`)
+- Hook name: `use${ComponentName}Base_unstable` (e.g., `useButtonBase_unstable`)
+- Props type: `${ComponentName}BaseProps` (e.g., `ButtonBaseProps`)
+- State type: `${ComponentName}BaseState` (e.g., `ButtonBaseState`)
 
 The `_unstable` suffix is consistent with Fluent UI's convention for lower-level primitives whose implementation details may evolve.
 
@@ -85,47 +85,47 @@ The `_unstable` suffix is consistent with Fluent UI's convention for lower-level
 
 | Principle            | Description                                         | Example                                              |
 | -------------------- | --------------------------------------------------- | ---------------------------------------------------- |
-| **Behavior only**    | Pure component logic, no visual design              | ARIA attributes, keyboard handling, focus management |
+| **Base only**        | Pure component logic, no visual design              | ARIA attributes, keyboard handling, focus management |
 | **No default slots** | Slots are defined, but nothing is filled by default | Icons, components must be passed by consumer         |
 | **No styling**       | Bare bones "HTML"                                   | No styles, no design tokens, no animation/motion     |
-| **Behavior types**   | Separate type definitions without design props      | `ButtonBehaviorProps` vs `ButtonProps`               |
+| **Base types**       | Separate type definitions without design props      | `ButtonBaseProps` vs `ButtonProps`                   |
 
 ## Type Definitions
 
-Behavior state hooks use dedicated types that establish a clear hierarchy:
+Base state hooks use dedicated types that establish a clear hierarchy:
 
 ```tsx
-// Behavior types (behavior only)
-export type ButtonBehaviorProps = ComponentProps<ButtonSlots> & {
+// Base types (component logic only)
+export type ButtonBaseProps = ComponentProps<ButtonSlots> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
   iconPosition?: 'before' | 'after';
 };
 
-export type ButtonBehaviorState = ComponentState<ButtonSlots> & {
+export type ButtonBaseState = ComponentState<ButtonSlots> & {
   disabled: boolean;
   disabledFocusable: boolean;
   iconPosition: 'before' | 'after';
   iconOnly: boolean;
 };
 
-// Full types (add design props)
-export type ButtonProps = ButtonBehaviorProps & {
+// Styled component types (add design props)
+export type ButtonProps = ButtonBaseProps & {
   appearance?: 'primary' | 'secondary' | 'outline' | 'subtle' | 'transparent';
   size?: 'small' | 'medium' | 'large';
   shape?: 'rounded' | 'circular' | 'square';
 };
 
-export type ButtonState = ButtonBehaviorState & Required<Pick<ButtonProps, 'appearance' | 'size' | 'shape'>>;
+export type ButtonState = ButtonBaseState & Required<Pick<ButtonProps, 'appearance' | 'size' | 'shape'>>;
 ```
 
-Behavior props/state can still include behavior-related layout semantics (for example, `iconPosition`) when they affect slot structure and keyboard/ARIA behavior, not visual design.
+Base props/state can still include structure-related layout semantics (for example, `iconPosition`) when they affect slot structure and keyboard/ARIA behavior, not visual design.
 
 This hierarchy enables:
 
-- Behavior state hooks accept `ButtonBehaviorProps`, return `ButtonBehaviorState`
+- Base state hooks accept `ButtonBaseProps`, return `ButtonBaseState`
 - Regular state hooks (existing) accept `ButtonProps`, return `ButtonState`
-- Design concerns layer on top of behavior
+- Design concerns layer on top of the base
 
 ## Implementation Example
 
@@ -133,7 +133,7 @@ The Button example is representative; the same layering and composition pattern 
 
 ### Component State Hook (Before)
 
-Component state hooks compose behavior state and design state:
+Component state hooks compose base state and design state:
 
 ```tsx
 import { useButtonBase_unstable } from './useButtonBase';
@@ -144,7 +144,7 @@ export const useButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ButtonState => {
   const {
-    // behavior props
+    // base props
     as = 'button',
     disabled = false,
     disabledFocusable = false,
@@ -161,7 +161,7 @@ export const useButton_unstable = (
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
 
   return {
-    // behavior state
+    // base state
     disabled,
     disabledFocusable,
     iconPosition,
@@ -186,10 +186,10 @@ export const useButton_unstable = (
 
 ### Component State Hook (After)
 
-Component state hooks **compose behavior state hooks and add design state**:
+Component state hooks **compose base state hooks and add design state**:
 
 ```tsx
-import { useButtonBehavior_unstable } from './useButtonBehavior';
+import { useButtonBase_unstable } from './useButtonBase';
 import type { ButtonProps, ButtonState } from './Button.types';
 
 export const useButton_unstable = (
@@ -199,7 +199,7 @@ export const useButton_unstable = (
   const { appearance = 'secondary', size = 'medium', shape = 'rounded' } = props;
 
   return {
-    ...useButtonBehavior_unstable(props, ref),
+    ...useButtonBase_unstable(props, ref),
     appearance,
     size,
     shape,
@@ -207,7 +207,7 @@ export const useButton_unstable = (
 };
 ```
 
-### Behavior State Hook
+### Base State Hook
 
 The code below is illustrative; some type details may be simplified to keep the example readable.
 
@@ -215,12 +215,12 @@ The code below is illustrative; some type details may be simplified to keep the 
 import * as React from 'react';
 import { type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ButtonBehaviorProps, ButtonBehaviorState } from './Button.types';
+import type { ButtonBaseProps, ButtonBaseState } from './Button.types';
 
-export const useButtonBehavior_unstable = (
-  props: ButtonBehaviorProps,
+export const useButtonBase_unstable = (
+  props: ButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): ButtonBehaviorState => {
+): ButtonBaseState => {
   const { as = 'button', disabled = false, disabledFocusable = false, icon, iconPosition = 'before' } = props;
 
   // Optional slots only defined if explicitly provided
@@ -244,7 +244,7 @@ export const useButtonBehavior_unstable = (
 };
 ```
 
-This composition centralizes behavior while keeping design concerns separate.
+This composition centralizes base while keeping design concerns separate.
 
 ## Usage Example
 
@@ -252,18 +252,18 @@ Building a custom button with your own design system:
 
 ```tsx
 import * as React from 'react';
-import { useButtonBehavior_unstable, renderButton_unstable } from '@fluentui/react-button';
-import type { ButtonBehaviorProps, ButtonState } from '@fluentui/react-button';
+import { useButtonBase_unstable, renderButton_unstable } from '@fluentui/react-button';
+import type { ButtonBaseProps, ButtonState } from '@fluentui/react-button';
 import './custom-button.css';
 
-type CustomButtonProps = ButtonBehaviorProps & {
+type CustomButtonProps = ButtonBaseProps & {
   variant?: 'primary' | 'secondary' | 'tertiary';
   tone?: 'neutral' | 'success' | 'warning' | 'danger';
 };
 
 export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
   ({ variant = 'primary', tone = 'neutral', ...props }, ref) => {
-    const state = useButtonBehavior_unstable(props, ref);
+    const state = useButtonBase_unstable(props, ref);
 
     // Apply your custom class names, might use 3rd party packages like `classnames` or `clsx`
     state.root.className = ['custom-btn', `custom-btn--${variant}`, `custom-btn--${tone}`, state.root.className]
@@ -281,15 +281,15 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
 
 ## Benefits
 
-| Audience                            | Benefit                                                                           |
-| ----------------------------------- | --------------------------------------------------------------------------------- |
-| **Teams building custom libraries** | Pure behavior foundation without visual opinions; complete rendering control      |
-| **Fluent UI maintainers**           | Clean separation of concerns; easier testing; single source of truth for behavior |
-| **Design system teams**             | Build on proven accessibility without inheriting Fluent's visual design           |
+| Audience                            | Benefit                                                                                  |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Teams building custom libraries** | Pure component logic foundation without visual opinions; complete rendering control      |
+| **Fluent UI maintainers**           | Clean separation of concerns; easier testing; single source of truth for component logic |
+| **Design system teams**             | Build on proven accessibility without inheriting Fluent's visual design                  |
 
 ## Testing Strategy
 
-Test each behavior state hook for:
+Test each base state hook for:
 
 | Category          | Verification                                            |
 | ----------------- | ------------------------------------------------------- |
@@ -302,9 +302,9 @@ Test each behavior state hook for:
 
 ## Comparison with Styled Variants
 
-- **Layers**: `use{Component}Behavior_unstable` (behavior state hook) → `use{Component}_unstable` (component state hook) → `{Component}` (styled component)
+- **Layers**: `use{Component}Base_unstable` (base state hook) → `use{Component}_unstable` (component state hook) → `{Component}` (styled component)
 - **Recommended for**: Advanced custom component libraries → Fluent UI internals/customization → most teams
-- **Behavior + accessibility**: Present in all three layers
+- **Component logic + accessibility**: Present in all three layers
 - **Design props**: Only in `use{Component}_unstable` and `{Component}`
 - **Default slot implementations**: Only in `use{Component}_unstable` and `{Component}`
 - **Style logic / motion logic**: Only in `use{Component}_unstable` and `{Component}`
@@ -321,34 +321,34 @@ Test each behavior state hook for:
 
 ### Phase 2: Rollout
 
-| Task                     | Purpose                                                     |
-| ------------------------ | ----------------------------------------------------------- |
-| Document type patterns   | Provide guide for `BehaviorProps` and `BehaviorState` types |
-| Apply to more components | Roll out to Divider, Menu, Tabs, and other components       |
-| Update documentation     | Create usage examples and migration guides                  |
+| Task                     | Purpose                                               |
+| ------------------------ | ----------------------------------------------------- |
+| Document type patterns   | Provide guide for `BaseProps` and `BaseState` types   |
+| Apply to more components | Roll out to Divider, Menu, Tabs, and other components |
+| Update documentation     | Create usage examples and migration guides            |
 
 ### Phase 3: Maintenance
 
 - Monitor adoption and collect feedback
-- Keep behavior state hooks aligned with accessibility best practices
+- Keep base state hooks aligned with accessibility best practices
 - Maintain slot structure stability across updates
 
 ## Release Strategy
 
-Behavior state hooks will be implemented in main branch (internal only) and released experimentally from a feature branch:
+Base state hooks will be implemented in main branch (internal only) and released experimentally from a feature branch:
 
 ### Development and Release Process
 
 | Stage                        | Approach                                                                                                   |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Implementation in main**   | Implement behavior hooks in main branch WITHOUT exporting them publicly (internal only)                    |
+| **Implementation in main**   | Implement base hooks in main branch WITHOUT exporting them publicly (internal only)                        |
 | **Export in feature branch** | Feature branch adds public exports and experimental releases (e.g., `@fluentui/react-button@experimental`) |
 | **Partner validation**       | Gather feedback and refine API surface based on real-world usage from experimental releases                |
 | **Stable release**           | Merge feature branch to main (only adds exports) and release as stable once approach is validated          |
 
 **Rationale for implementing in main:**
 
-Implementing behavior hooks in main (without public exports) allows existing hooks to compose them immediately, reducing the maintenance burden of syncing changes between branches. The feature branch only needs to manage the public API surface (exports), making merge conflicts minimal and allowing main branch development to continue without being blocked by the experimental phase.
+Implementing base hooks in main (without public exports) allows existing hooks to compose them immediately, reducing the maintenance burden of syncing changes between branches. The feature branch only needs to manage the public API surface (exports), making merge conflicts minimal and allowing main branch development to continue without being blocked by the experimental phase.
 
 ### Experimental Release Benefits
 
@@ -360,40 +360,40 @@ Implementing behavior hooks in main (without public exports) allows existing hoo
 
 ### Stability Guarantees
 
-Once behavior state hooks transition from experimental to stable, they follow the same guarantees as other `_unstable` APIs in Fluent UI:
+Once base state hooks transition from experimental to stable, they follow the same guarantees as other `_unstable` APIs in Fluent UI:
 
 - **Implementation details** (internal logic, slot structure changes) may change in minor versions
 - **Public API surface** (props, state shape, hook signature) will follow semver for breaking changes
-- **Accessibility behavior** (ARIA patterns, keyboard handling) will be maintained and improved without breaking changes when possible
+- **Accessibility base** (ARIA patterns, keyboard handling) will be maintained and improved without breaking changes when possible
 - **Slot structure** will aim for stability, but may evolve with prior communication to minimize impact on consumers
 
 ## FAQ
 
-### When should I use behavior state hooks?
+### When should I use base state hooks?
 
-Behavior state hooks are for advanced use cases only. Use them when:
+Base state hooks are for advanced use cases only. Use them when:
 
 - Building a completely custom component library or design system that fundamentally differs from Fluent 2
 - Creating white-label products requiring complete component architecture customization
 - Needing full control over component rendering logic and structure
 
-**For most teams, behavior state hooks are NOT the right choice.** Instead:
+**For most teams, base state hooks are NOT the right choice.** Instead:
 
 - **Default case:** Use styled components (`Button`) for standard Fluent UI applications
 - **Custom styling needs:** Use styled components with `className` prop, `customStyleHooks_unstable`, or design token overrides
-- **Complete customization:** Only use behavior state hooks (`useButtonBehavior_unstable`) when you need to control rendering and component structure
+- **Complete customization:** Only use base state hooks (`useButtonBase_unstable`) when you need to control rendering and component structure
 
-### How do behavior state hooks relate to styled components?
+### How do base state hooks relate to styled components?
 
-Behavior state hooks are the foundation layer that styled components build upon:
+Base state hooks are the foundation layer that styled components build upon:
 
 ```mermaid
 graph TD
-  A["useButtonBehavior_unstable<br/>(behavior only)<br/>→ ButtonBehaviorState"]
+  A["useButtonBase_unstable<br/>(base only)<br/>→ ButtonBaseState"]
   B["useButton_unstable<br/>(adds design)<br/>→ ButtonState"]
   C["Button<br/>(adds styles)<br/>→ Rendered component"]
 
-  A -->|behaviorState| B
+  A -->|baseState| B
   B -->|state| C
 
   style A fill:#e1f5ff
@@ -401,18 +401,18 @@ graph TD
   style C fill:#e8f5e9
 ```
 
-Most teams should use the styled component layer. Behavior state hooks are only for teams building their own component architecture.
+Most teams should use the styled component layer. Base state hooks are only for teams building their own component architecture.
 
-### Do behavior state hooks guarantee accessibility?
+### Do base state hooks guarantee accessibility?
 
-Behavior state hooks provide correct ARIA attributes, keyboard handling, and semantic structure.
+Base state hooks provide correct ARIA attributes, keyboard handling, and semantic structure.
 
 > [!IMPORTANT]
 > You're responsible for ensuring custom styles don't interfere with accessibility (e.g., sufficient contrast, visible focus indicators).
 
 ### What about accessibility-critical inline styles?
 
-Default behavior state hooks should not apply styles. The exception is when a specific CSS property is required for accessibility or core functionality (and is currently implemented via Griffel styles). In those cases, apply the minimum inline style needed and document the rationale.
+Default base state hooks should not apply styles. The exception is when a specific CSS property is required for accessibility or core functionality (and is currently implemented via Griffel styles). In those cases, apply the minimum inline style needed and document the rationale.
 
 **Examples of accessibility- or functionality-critical styles:**
 
@@ -422,7 +422,7 @@ Default behavior state hooks should not apply styles. The exception is when a sp
 
 **Implementation approach:**
 
-If inline styles are required, apply the minimum inline style needed in behavior state hooks on a case-by-case basis. This requires:
+If inline styles are required, apply the minimum inline style needed in base state hooks on a case-by-case basis. This requires:
 
 1. **Careful investigation**: Identify which styles are truly required for accessibility vs. visual design
 2. **Partner validation**: Confirm with partners that inline styles don't break existing implementations
@@ -434,29 +434,29 @@ If inline styles are required, apply the minimum inline style needed in behavior
 
 This gives teams maximum control and avoids bundling code they might not use. If you need default implementations for optional slots (like icons), use styled components instead.
 
-### Can I mix behavior state hooks with styled components?
+### Can I mix base state hooks with styled components?
 
-Yes. You can use behavior state hooks for some components and styled components for others in the same application.
+Yes. You can use base state hooks for some components and styled components for others in the same application.
 
 > [!NOTE]
 > We recommend sticking to a single option in your application to avoid UI misalignments.
 
-Keep in mind you'll need to provide styles when using behavior state hooks.
+Keep in mind you'll need to provide styles when using base state hooks.
 
 ### Why the `_unstable` suffix?
 
-The `_unstable` suffix is consistent with Fluent UI's convention for hooks. While behavior state hooks are meant to be used in production, the suffix indicates they're lower-level primitives whose implementation details may evolve.
+The `_unstable` suffix is consistent with Fluent UI's convention for hooks. While base state hooks are meant to be used in production, the suffix indicates they're lower-level primitives whose implementation details may evolve.
 
 ## Out of Scope
 
 ### Render functions
 
-Behavior state hooks provide only state and accessibility handling. To build complete components, you'll also need render functions to produce markup.
+Base state hooks provide only state and accessibility handling. To build complete components, you'll also need render functions to produce markup.
 
 We recommend re-using existing render functions (e.g., `renderButton_unstable`) rather than implementing custom render logic. Components that use portals or complex rendering patterns may require additional considerations. Future guidance on render functions will be provided in the Unstyled Components RFC.
 
 ## Future Work
 
-Behavior state hooks provide the foundation for additional component variants:
+Base state hooks provide the foundation for additional component variants:
 
-- **Unstyled components**: Simple wrappers around behavior state hooks that provide Fluent's component structure without default styling (future proposal). This RFC does not introduce unstyled components; it describes a prerequisite layer.
+- **Unstyled components**: Simple wrappers around base state hooks that provide Fluent's component structure without default styling (future proposal). This RFC does not introduce unstyled components; it describes a prerequisite layer.
