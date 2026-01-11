@@ -128,7 +128,7 @@ interface SharedVrTestArgs {
   selectedRowAppearance?: TableRowProps['appearance'];
 }
 
-export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements, selectedRowAppearance }) => (
   <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
@@ -139,7 +139,7 @@ export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElement
     </TableHeader>
     <TableBody>
       {items.map((item, i) => (
-        <TableRow key={item.file.label} className={`row-${i}`}>
+        <TableRow key={item.file.label} className={`row-${i}`} appearance={selectedRowAppearance}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}
