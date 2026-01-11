@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useId, slot, DistributiveOmit } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
-
-type SplitButtonBaseProps = DistributiveOmit<SplitButtonProps, 'appearance' | 'size' | 'shape'>;
-
-type SplitButtonBaseState = DistributiveOmit<SplitButtonState, 'appearance' | 'size' | 'shape'>;
+import type { SplitButtonBaseProps, SplitButtonBaseState } from './SplitButton.types';
 
 /**
  * Given user props, defines default props for the SplitButton and returns processed state.

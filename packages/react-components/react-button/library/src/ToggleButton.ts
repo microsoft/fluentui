@@ -1,4 +1,9 @@
-export type { ToggleButtonProps, ToggleButtonState } from './components/ToggleButton/index';
+export type {
+  ToggleButtonBaseProps,
+  ToggleButtonProps,
+  ToggleButtonBaseState,
+  ToggleButtonState,
+} from './components/ToggleButton/index';
 export {
   ToggleButton,
   renderToggleButton_unstable,

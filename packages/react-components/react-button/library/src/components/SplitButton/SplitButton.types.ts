@@ -1,6 +1,6 @@
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
 import type { MenuButtonProps, MenuButtonState } from '../MenuButton/MenuButton.types';
 
@@ -24,6 +24,10 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
   Omit<ButtonProps, 'root' | 'as'> &
   Omit<MenuButtonProps, 'root' | 'as'>;
 
+export type SplitButtonBaseProps = DistributiveOmit<SplitButtonProps, 'appearance' | 'size' | 'shape'>;
+
 export type SplitButtonState = ComponentState<SplitButtonSlots> &
   Omit<ButtonState, 'components' | 'iconOnly' | 'root'> &
   Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
+
+export type SplitButtonBaseState = DistributiveOmit<SplitButtonState, 'appearance' | 'size' | 'shape'>;

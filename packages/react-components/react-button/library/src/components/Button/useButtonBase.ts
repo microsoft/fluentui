@@ -2,12 +2,8 @@
 
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
-import { DistributiveOmit, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonState } from './Button.types';
-
-type ButtonBaseProps = DistributiveOmit<ButtonProps, 'appearance' | 'size' | 'shape'>;
-
-type ButtonBaseState = DistributiveOmit<ButtonState, 'appearance' | 'size' | 'shape'>;
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import type { ButtonBaseProps, ButtonBaseState } from './Button.types';
 
 /**
  * Given user props, defines default props for the Button, calls useButtonState, and returns processed state.
@@ -25,7 +21,8 @@ export const useButtonBase_unstable = (
     disabled,
     disabledFocusable,
     iconPosition,
-    iconOnly: Boolean(iconShorthand?.children && !props.children), // Slots definition
+    iconOnly: Boolean(iconShorthand?.children && !props.children),
+    // Slots definition
     components: { root: 'button', icon: 'span' },
     root: slot.always<ARIAButtonSlotProps<'a'>>(getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)), {
       elementType: 'button',

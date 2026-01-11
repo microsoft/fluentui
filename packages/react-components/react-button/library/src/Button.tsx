@@ -1,4 +1,10 @@
-export type { ButtonProps, ButtonSlots, ButtonState } from './components/Button/index';
+export type {
+  ButtonBaseProps,
+  ButtonProps,
+  ButtonSlots,
+  ButtonBaseState,
+  ButtonState,
+} from './components/Button/index';
 export {
   Button,
   buttonClassNames,

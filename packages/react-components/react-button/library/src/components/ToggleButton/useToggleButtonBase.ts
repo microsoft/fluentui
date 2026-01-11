@@ -3,11 +3,7 @@
 import * as React from 'react';
 import { useToggleState } from '../../utils/useToggleState';
 import { useButtonBase_unstable } from '../Button/index';
-import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
-import { DistributiveOmit } from '@fluentui/react-utilities';
-
-type ToggleButtonBaseProps = DistributiveOmit<ToggleButtonProps, 'appearance' | 'shape' | 'size'>;
-type ToggleButtonBaseState = DistributiveOmit<ToggleButtonState, 'appearance' | 'shape' | 'size'>;
+import type { ToggleButtonBaseProps, ToggleButtonBaseState } from './ToggleButton.types';
 
 /**
  * Given user props, defines base props (including behavioral and structural ones) for the ToggleButton returns

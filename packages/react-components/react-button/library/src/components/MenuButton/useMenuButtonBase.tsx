@@ -1,12 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { DistributiveOmit, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useButtonBase_unstable } from '../Button/index';
-import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
-
-type MenuButtonBaseProps = DistributiveOmit<MenuButtonProps, 'appearance' | 'size' | 'shape'>;
-type MenuButtonBaseState = DistributiveOmit<MenuButtonState, 'appearance' | 'size' | 'shape'>;
+import type { MenuButtonBaseProps, MenuButtonBaseState } from './MenuButton.types';
 
 /**
  * Given user props, returns the final state for a MenuButton.

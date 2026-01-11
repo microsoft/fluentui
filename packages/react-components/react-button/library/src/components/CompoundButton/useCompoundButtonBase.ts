@@ -1,12 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { DistributiveOmit, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useButtonBase_unstable } from '../Button/index';
-import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
-
-type CompoundButtonBaseProps = DistributiveOmit<CompoundButtonProps, 'appearance' | 'size' | 'shape'>;
-type CompoundButtonBaseState = DistributiveOmit<CompoundButtonState, 'appearance' | 'size' | 'shape'>;
+import type { CompoundButtonBaseProps, CompoundButtonBaseState } from './CompoundButton.types';
 
 /**
  * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.

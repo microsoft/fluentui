@@ -1,4 +1,10 @@
-export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './components/SplitButton/index';
+export type {
+  SplitButtonBaseProps,
+  SplitButtonProps,
+  SplitButtonSlots,
+  SplitButtonBaseState,
+  SplitButtonState,
+} from './components/SplitButton/index';
 export {
   SplitButton,
   renderSplitButton_unstable,

@@ -1,4 +1,10 @@
-export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './components/CompoundButton/index';
+export type {
+  CompoundButtonBaseProps,
+  CompoundButtonProps,
+  CompoundButtonSlots,
+  CompoundButtonBaseState,
+  CompoundButtonState,
+} from './components/CompoundButton/index';
 export {
   CompoundButton,
   compoundButtonClassNames,

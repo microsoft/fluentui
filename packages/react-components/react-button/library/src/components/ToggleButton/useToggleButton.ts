@@ -6,7 +6,7 @@ import { useToggleButtonBase_unstable } from './useToggleButtonBase';
 import { useButtonContext } from '../../contexts';
 
 /**
- * Given user props, defines default props for the ToggleButton, calls useButtonState and useChecked, and returns
+ * Given user props, defines default props for the ToggleButton, calls `useToggleButtonBase_unstable` and adds design-related props, and returns
  * processed state.
  * @param props - User provided props to the ToggleButton component.
  * @param ref - User provided ref to be passed to the ToggleButton component.
