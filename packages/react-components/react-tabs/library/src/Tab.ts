@@ -10,4 +10,5 @@ export {
   useTabIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
+  useTabBase_unstable,
 } from './components/Tab/index';

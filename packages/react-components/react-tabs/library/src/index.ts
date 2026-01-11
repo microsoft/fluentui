@@ -10,6 +10,7 @@ export {
   useTabIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
+  // useTabBase_unstable,
 } from './Tab';
 export type {
   TabRegisterData,
@@ -32,4 +33,5 @@ export {
   useTabListContextValues_unstable,
   useTabListStyles_unstable,
   useTabList_unstable,
+  // useTabListBase_unstable,
 } from './TabList';
