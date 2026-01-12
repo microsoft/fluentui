@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { PolarChartStyles, PolarChartProps } from './PolarChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -13,9 +15,24 @@ export const polarChartClassNames: SlotClassNames<PolarChartStyles> = {
   gridLineInner: 'fui-polar__gridLineInner',
   gridLineOuter: 'fui-polar__gridLineOuter',
   tickLabel: 'fui-polar__tickLabel',
+  legendContainer: 'fui-polar__legendContainer',
 };
 
 const useStyles = makeStyles({
+  root: {
+    ...typographyStyles.body1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    textAlign: 'left',
+  },
+
+  chart: {
+    display: 'block',
+  },
+
   gridLine: {
     fill: 'none',
     stroke: tokens.colorNeutralForeground1,
@@ -34,6 +51,10 @@ const useStyles = makeStyles({
     ...typographyStyles.caption2Strong,
     fill: tokens.colorNeutralForeground1,
   },
+
+  legendContainer: {
+    width: '100%',
+  },
 });
 
 /**
@@ -43,22 +64,26 @@ export const usePolarChartStyles = (props: PolarChartProps): PolarChartStyles =>
   const baseStyles = useStyles();
 
   return {
+    root: mergeClasses(polarChartClassNames.root, baseStyles.root, props.styles?.root),
+    chartWrapper: mergeClasses(polarChartClassNames.chartWrapper, props.styles?.chartWrapper),
+    chart: mergeClasses(polarChartClassNames.chart, baseStyles.chart, props.styles?.chart),
     gridLineInner: mergeClasses(
       polarChartClassNames.gridLineInner,
       baseStyles.gridLine,
       baseStyles.gridLineInner,
-      // props.styles?.gridLineInner,
+      props.styles?.gridLineInner,
     ),
     gridLineOuter: mergeClasses(
       polarChartClassNames.gridLineOuter,
       baseStyles.gridLine,
       baseStyles.gridLineOuter,
-      // props.styles?.gridLineOuter,
+      props.styles?.gridLineOuter,
     ),
-    tickLabel: mergeClasses(
-      polarChartClassNames.tickLabel,
-      baseStyles.tickLabel,
-      // props.styles?.tickLabel
+    tickLabel: mergeClasses(polarChartClassNames.tickLabel, baseStyles.tickLabel, props.styles?.tickLabel),
+    legendContainer: mergeClasses(
+      polarChartClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
     ),
   };
 };

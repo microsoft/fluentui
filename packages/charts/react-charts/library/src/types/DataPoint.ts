@@ -1252,16 +1252,16 @@ export interface LineSeries<X extends string | number | Date, Y extends string |
 }
 
 /**
- *
+ * Represents a single data point in a polar series.
  */
 export interface PolarDataPoint {
   /**
-   *
+   * Radial value of the data point.
    */
   r: string | number | Date;
 
   /**
-   *
+   * Angular value of the data point, specified as a category or in degrees.
    */
   theta: string | number;
 

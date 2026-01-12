@@ -5,6 +5,7 @@ import {
   scaleTime as d3ScaleTime,
   scaleUtc as d3ScaleUtc,
   NumberValue,
+  ScaleBand,
   ScaleContinuousNumeric,
   ScaleTime,
 } from 'd3-scale';
@@ -42,7 +43,11 @@ export const createRadialScale = (
     tick0?: number | Date;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
   } = {},
-) => {
+): {
+  scale: ScaleBand<string> | ScaleContinuousNumeric<number, number, undefined> | ScaleTime<number, number>;
+  tickValues: (string | number | Date)[];
+  tickLabels: string[];
+} => {
   if (scaleType === 'category') {
     const scale = d3ScaleBand()
       .domain(domain as string[])
@@ -136,7 +141,7 @@ export const getScaleType = (
     scaleType?: AxisScaleType;
     supportsLog?: boolean;
   } = {},
-) => {
+): string => {
   let scaleType = 'category';
   if (typeof values[0] === 'number') {
     if (opts.supportsLog && opts.scaleType === 'log') {
@@ -150,14 +155,14 @@ export const getScaleType = (
   return scaleType;
 };
 
-export const getScaleDomain = (
+export const getContinuousScaleDomain = (
   scaleType: string,
   values: (number | Date)[],
   opts: {
     rangeStart?: number | Date;
     rangeEnd?: number | Date;
   } = {},
-) => {
+): (number | Date)[] => {
   let [min, max] = d3Extent(values.filter(v => isValidDomainValue(v, scaleType as AxisScaleType)) as (number | Date)[]);
   if (scaleType === 'linear') {
     [min, max] = d3Extent([min, max, 0] as number[]);
@@ -176,14 +181,15 @@ export const getScaleDomain = (
 };
 
 const degToRad = (deg: number) => (deg * Math.PI) / 180;
+
 const radToDeg = (rad: number) => (rad * 180) / Math.PI;
-const handleDir = (deg: number, direction: 'clockwise' | 'counterclockwise' = 'counterclockwise') =>
+
+const normalizeAngle = (deg: number, direction?: 'clockwise' | 'counterclockwise') =>
   (((direction === 'clockwise' ? deg : 450 - deg) % 360) + 360) % 360;
 
 export const createAngularScale = (
   scaleType: string,
   domain: (string | number | Date)[],
-  // range: number[],
   opts: {
     tickCount?: number;
     tickValues?: (string | number | Date)[];
@@ -197,11 +203,11 @@ export const createAngularScale = (
   } = {},
 ): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
   if (scaleType === 'category') {
-    const mp = {};
-    domain.forEach((d, i) => {
-      mp[d] = i;
+    const categoryIndexMap: Record<string, number> = {};
+    (domain as string[]).forEach((d, i) => {
+      categoryIndexMap[d] = i;
     });
-    const x = 360 / domain.length;
+    const period = 360 / domain.length;
     const tickValues = Array.isArray(opts.tickValues) ? (opts.tickValues as string[]) : (domain as string[]);
     const tickFormat = (domainValue: string, index: number) => {
       if (Array.isArray(opts.tickValues) && Array.isArray(opts.tickText) && !isInvalidValue(opts.tickText[index])) {
@@ -210,7 +216,7 @@ export const createAngularScale = (
       return domainValue;
     };
     return {
-      scale: (v: string) => degToRad(handleDir(mp[v] * x, opts.direction)),
+      scale: (v: string) => degToRad(normalizeAngle(categoryIndexMap[v] * period, opts.direction)),
       tickValues,
       tickLabels: tickValues.map(tickFormat),
     };
@@ -224,8 +230,7 @@ export const createAngularScale = (
     if (typeof opts.tickFormat === 'string') {
       return d3Format(opts.tickFormat)(domainValue);
     }
-    console.log(opts.unit);
-    return opts.unit === 'radians' ? `${domainValue / 180}π` : `${domainValue}°`;
+    return formatAngle(domainValue, opts.unit);
   };
   if (opts.tickStep) {
     customTickValues = generateNumericTicks(scaleType as AxisScaleType, opts.tickStep, opts.tick0, [
@@ -236,8 +241,11 @@ export const createAngularScale = (
   const tickValues = customTickValues ?? d3Range(0, 360, 360 / (opts.tickCount ?? 8));
 
   return {
-    scale: (v: number) => degToRad(handleDir(v, opts.direction)),
+    scale: (v: number) => degToRad(normalizeAngle(v, opts.direction)),
     tickValues,
     tickLabels: tickValues.map(tickFormat),
   };
 };
+
+export const formatAngle = (value: string | number, unit?: 'radians' | 'degrees'): string =>
+  typeof value === 'string' ? value : unit === 'radians' ? `${value / 180}π` : `${value}°`;

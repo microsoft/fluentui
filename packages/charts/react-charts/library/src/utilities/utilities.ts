@@ -335,7 +335,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-export function getMultiLevelD3DateFormatter(
+function getMultiLevelD3DateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
