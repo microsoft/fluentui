@@ -17,13 +17,6 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/test-utilities": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"

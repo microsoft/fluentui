@@ -5,6 +5,20 @@
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/AppDefinition": {
+      "types": "./lib/AppDefinition.d.ts",
+      "import": "./lib/AppDefinition.js",
+      "require": "./lib-commonjs/AppDefinition.js"
+    },
+    "./dist/api": "./dist/api",
+    "./dist/api/references": "./dist/api/references"
+  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
@@ -26,13 +40,6 @@
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev",
     "update-snapshots": "just-scripts jest -u"
-  },
-  "devDependencies": {
-    "@fluentui/api-docs": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "@fluentui/react": "*",

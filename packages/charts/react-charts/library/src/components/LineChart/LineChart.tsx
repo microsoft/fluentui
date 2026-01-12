@@ -549,10 +549,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
-              xMinValue: props.xMinValue,
-              xMaxValue: props.xMaxValue,
-              yMinValue: props.yMinValue,
-              yMaxValue: props.yMaxValue,
             })
           : 0;
         if (_points[i].data.length === 1) {
@@ -805,6 +801,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                     onFocus={event => _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k)}
                     onMouseOut={_handleMouseOut}
+                    role="img"
+                    aria-label={_points[i].data[k].text ?? _getAriaLabel(i, k)}
                   />,
                 );
               }

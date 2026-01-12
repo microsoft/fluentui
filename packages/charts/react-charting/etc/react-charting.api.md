@@ -458,6 +458,7 @@ export interface ICartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    xMinValue?: number;
     xScaleType?: AxisScaleType;
     yAxis?: AxisProps;
     yAxisAnnotation?: string;

@@ -244,6 +244,8 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
+        xMinValue: this.props.xMinValue,
+        xMaxValue: this.props.xMaxValue,
         ...this.props.xAxis,
       };
 

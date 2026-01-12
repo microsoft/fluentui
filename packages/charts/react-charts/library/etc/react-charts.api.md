@@ -388,6 +388,7 @@ export interface ChartAnnotationLayerProps {
     className?: string;
     // (undocumented)
     context: ChartAnnotationContext;
+    hideDefaultStyles?: boolean;
 }
 
 // @public (undocumented)

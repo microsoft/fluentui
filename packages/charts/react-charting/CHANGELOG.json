@@ -2,6 +2,53 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 05 Jan 2026 14:47:16 GMT",
+      "tag": "@fluentui/react-charting_v5.25.5",
+      "version": "5.25.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "569edee37b5abbc3c4816c9d8e6ad71a013252e4",
+            "comment": "enable custom callout in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5f4d3c4103d008d6a85302f0be6cd7cb5b661473",
+            "comment": "port changes from v9 to v8 using custom github agent"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "85918ce87ffe7b40c517f2a38b5a1f9e34cc96c3",
+            "comment": "support barlabels in declarative HBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "942915fca07e01bf52c68e533e7a9838e7fa8f94",
+            "comment": "enable multiplot for table, gauge and funnel chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "29998d3827059ba391ffdb47ecd9b8f9d12d9025",
+            "comment": "fix percentage label issue in donut, vbc, vsbc and heatmap chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:27:53 GMT",
       "tag": "@fluentui/react-charting_v5.25.4",
       "version": "5.25.4",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "support barlabels in declarative HBC",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

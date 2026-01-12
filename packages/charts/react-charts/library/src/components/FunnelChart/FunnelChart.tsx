@@ -135,6 +135,20 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     return getHighlightedLegend().length === 0;
   }
 
+  function _getAriaLabel(
+    data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
+  ): string {
+    if ('subValue' in data) {
+      // Stacked funnel segment
+      const formattedValue = formatToLocaleString(data.subValue.value.toString(), props.culture);
+      return `${data.stage}, ${data.subValue.category}, ${formattedValue}.`;
+    } else {
+      // Non-stacked funnel segment
+      const formattedValue = formatToLocaleString((data.value ?? 0).toString(), props.culture);
+      return `${data.stage}, ${formattedValue}.`;
+    }
+  }
+
   function _getEventHandlerProps(
     data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
     opacity?: number,
@@ -238,7 +252,16 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const textColor = getContrastTextColor(fill);
     return (
       <g key={key}>
-        <path id={segmentId} d={pathD} fill={fill} opacity={opacity} {...eventHandlers} tabIndex={tabIndex} />
+        <path
+          id={segmentId}
+          d={pathD}
+          fill={fill}
+          opacity={opacity}
+          {...eventHandlers}
+          tabIndex={tabIndex}
+          role="img"
+          aria-label={_getAriaLabel(data)}
+        />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
       </g>
     );
