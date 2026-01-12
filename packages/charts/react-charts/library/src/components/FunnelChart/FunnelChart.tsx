@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useRtl } from '../../utilities/index';
+import { useRtl, ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends } from '../Legends/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -457,14 +457,38 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const width = props.width || 350;
   const height = props.height || 500;
 
-  const funnelMarginTop = 40;
+  const titleHeight = props.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        40,
+      )
+    : 40;
+  const funnelMarginTop = titleHeight;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
   const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
 
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
-      <svg width={width} height={height} className={classes.chart} {...arrowAttributes} aria-label={props.chartTitle}>
+      <svg
+        width={width}
+        height={height}
+        className={classes.chart}
+        {...arrowAttributes}
+        role={'img'}
+        aria-label={props.chartTitle}
+      >
+        {!props.hideLegend && props.chartTitle && (
+          <ChartTitle
+            title={props.chartTitle}
+            x={width / 2}
+            maxWidth={width - 20}
+            className={classes.chartTitle}
+            titleStyles={props.titleStyles}
+            tooltipClassName={classes.svgTooltip}
+          />
+        )}
         <g
           transform={
             isRTL
