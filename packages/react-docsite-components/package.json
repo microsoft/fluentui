@@ -16,13 +16,8 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "*",
-    "@fluentui/eslint-plugin": "*",
     "@types/color-check": "0.0.0",
-    "@types/react-custom-scrollbars": "^4.0.5",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@types/react-custom-scrollbars": "^4.0.5"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",

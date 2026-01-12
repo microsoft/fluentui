@@ -67,7 +67,7 @@ export const Radius = (): JSXElement => {
           <div key={option.value} className={classes.example}>
             <h4>{option.label}</h4>
             <Button onClick={() => toggleSingle(index)}>{visibleStates[index] ? 'Hide' : 'Show'}</Button>
-            <Blur visible={visibleStates[index]} fromRadius={option.value}>
+            <Blur visible={visibleStates[index]} outRadius={option.value}>
               <div className={classes.card}>
                 <div>
                   Blur radius: {option.value}

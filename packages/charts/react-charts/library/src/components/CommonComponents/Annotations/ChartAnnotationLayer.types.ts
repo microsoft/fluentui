@@ -36,6 +36,11 @@ export interface ChartAnnotationLayerProps {
   annotations?: ChartAnnotation[];
   context: ChartAnnotationContext;
   className?: string;
+  /**
+   * When true, removes default border, shadow, and background styling from annotations.
+   * @default false
+   */
+  hideDefaultStyles?: boolean;
 }
 
 export interface ResolvedAnnotationPosition {

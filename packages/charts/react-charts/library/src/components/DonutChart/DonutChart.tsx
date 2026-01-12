@@ -7,7 +7,15 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
+import {
+  areArraysEqual,
+  getColorFromToken,
+  getNextColor,
+  MIN_DONUT_RADIUS,
+  useRtl,
+  ChartTitle,
+  CHART_TITLE_PADDING,
+} from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import type { LegendContainer } from '../../index';
 import { useId, useMergedRefs } from '@fluentui/react-utilities';
@@ -338,7 +346,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       plotContainerStyle,
       resolvedSvgWidth,
       resolvedSvgHeight,
-      outerRadius,
       svgStyle: svgPositionStyle,
     } = useDonutAnnotationLayout({
       annotations,
@@ -347,6 +354,16 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       hideLabels: props.hideLabels,
       isRtl: _isRTL,
     });
+    const donutMarginHorizontal = props.hideLabels ? 0 : 80;
+    const donutMarginVertical = props.hideLabels ? 0 : 40;
+    const titleHeight = data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
+    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
@@ -367,6 +384,16 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
               height={resolvedSvgHeight}
               style={svgPositionStyle}
             >
+              {!hideLegend && data?.chartTitle && (
+                <ChartTitle
+                  title={data.chartTitle}
+                  x={resolvedSvgWidth! / 2}
+                  maxWidth={resolvedSvgWidth! - 20}
+                  className={classes.chartTitle}
+                  titleStyles={props.titleStyles}
+                  tooltipClassName={classes.svgTooltip}
+                />
+              )}
               <Pie
                 width={resolvedSvgWidth}
                 height={resolvedSvgHeight}

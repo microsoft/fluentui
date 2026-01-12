@@ -340,6 +340,7 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -2846,6 +2847,7 @@ Object {
   "xAxis": Object {
     "tickLayout": "auto",
   },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3050,6 +3052,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "xMaxValue": 1830.6731869091736,
@@ -4636,6 +4639,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -4785,6 +4789,7 @@ Object {
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
   "height": 772,
+  "hideLegend": false,
   "width": undefined,
 }
 `;
@@ -5054,6 +5059,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -5202,6 +5208,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5490,7 +5497,13 @@ Object {
   "roundCorners": true,
   "roundedTicks": true,
   "showYAxisLables": true,
+  "titleStyles": Object {
+    "titleFont": Object {
+      "color": "#4D5663",
+    },
+  },
   "width": undefined,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5609,6 +5622,7 @@ Object {
   "xAxis": Object {
     "tickLayout": "auto",
   },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",

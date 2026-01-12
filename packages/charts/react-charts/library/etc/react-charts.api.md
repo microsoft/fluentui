@@ -5,6 +5,7 @@
 ```ts
 
 import { CurveFactory } from 'd3-shape';
+import type { Font } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -244,6 +245,7 @@ export interface CartesianChartProps {
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
+    titleStyles?: TitleStyles;
     useUTC?: string | boolean;
     width?: number;
     wrapXAxisLables?: boolean;
@@ -403,6 +405,7 @@ export interface ChartAnnotationLayerProps {
     className?: string;
     // (undocumented)
     context: ChartAnnotationContext;
+    hideDefaultStyles?: boolean;
 }
 
 // @public (undocumented)
@@ -524,6 +527,7 @@ export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
 
 // @public
 export interface ChartTableProps {
+    chartTitle?: string;
     className?: string;
     componentRef?: React_2.Ref<Chart>;
     headers: {
@@ -536,6 +540,7 @@ export interface ChartTableProps {
         style?: React_2.CSSProperties;
     }[][];
     styles?: ChartTableStyles;
+    titleStyles?: TitleStyles;
     width?: string | number;
 }
 
@@ -546,9 +551,13 @@ export interface ChartTableStyles {
     // (undocumented)
     chart?: string;
     // (undocumented)
+    chartTitle?: string;
+    // (undocumented)
     headerCell?: string;
     // (undocumented)
     root?: string | React_2.CSSProperties;
+    // (undocumented)
+    svgTooltip?: string;
     // (undocumented)
     table?: string;
 }
@@ -748,6 +757,7 @@ export interface DonutChartProps extends CartesianChartProps {
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
+    titleStyles?: TitleStyles;
     valueInsideDonut?: string | number;
     width?: number;
 }
@@ -761,10 +771,12 @@ export interface DonutChartStyles {
     annotationLayer?: string;
     axisAnnotation?: string;
     chart?: string;
+    chartTitle?: string;
     chartWrapper?: string;
     legendContainer: string;
     plotContainer?: string;
     root?: string;
+    svgTooltip?: string;
 }
 
 // @public (undocumented)
@@ -831,6 +843,7 @@ export interface FunnelChartProps {
     legendProps?: Partial<LegendsProps>;
     orientation?: 'horizontal' | 'vertical';
     styles?: FunnelChartStyles;
+    titleStyles?: TitleStyles;
     width?: number;
 }
 
@@ -845,7 +858,9 @@ export interface FunnelChartStyleProps {
 export interface FunnelChartStyles {
     calloutContentRoot?: string;
     chart?: string;
+    chartTitle?: string;
     root?: string;
+    svgTooltip?: string;
     text?: string;
 }
 
@@ -913,6 +928,7 @@ export interface GaugeChartProps {
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
     sublabel?: string;
+    titleStyles?: TitleStyles;
     variant?: GaugeChartVariant;
     width?: number;
 }
@@ -1618,6 +1634,7 @@ export interface SankeyChartProps {
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
+    hideLegend?: boolean;
     parentRef?: HTMLElement | null;
     pathColor?: string;
     reflowProps?: {
@@ -1626,6 +1643,7 @@ export interface SankeyChartProps {
     shouldResize?: number;
     strings?: SankeyChartStrings;
     styles?: SankeyChartStyles;
+    titleStyles?: TitleStyles;
     width?: number;
 }
 
@@ -1637,11 +1655,13 @@ export interface SankeyChartStrings {
 // @public
 export interface SankeyChartStyles {
     chart?: string;
+    chartTitle?: string;
     chartWrapper?: string;
     links?: string;
     nodes?: string;
     nodeTextContainer?: string;
     root?: string;
+    svgTooltip?: string;
     toolTip?: string;
 }
 

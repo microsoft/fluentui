@@ -14,6 +14,7 @@ import {
   getNextColor,
   pointTypes,
   useRtl,
+  ChartTitle,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -598,15 +599,13 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           >
             <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
               {props.chartTitle && (
-                <text
+                <ChartTitle
+                  title={props.chartTitle}
                   x={0}
                   y={-(_outerRadius + TITLE_OFFSET)}
-                  textAnchor="middle"
                   className={classes.chartTitle}
-                  aria-hidden={true}
-                >
-                  {props.chartTitle}
-                </text>
+                  titleStyles={props.titleStyles}
+                />
               )}
               {!props.hideMinMax && (
                 <>
