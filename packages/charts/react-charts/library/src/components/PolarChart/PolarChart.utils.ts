@@ -17,6 +17,7 @@ import {
   generateNumericTicks,
   getDateFormatLevel,
   isValidDomainValue,
+  precisionRound,
 } from '../../utilities/utilities';
 import {
   isInvalidValue,
@@ -248,4 +249,8 @@ export const createAngularScale = (
 };
 
 export const formatAngle = (value: string | number, unit?: 'radians' | 'degrees'): string =>
-  typeof value === 'string' ? value : unit === 'radians' ? `${value / 180}π` : `${value}°`;
+  typeof value === 'string'
+    ? value
+    : unit === 'radians'
+    ? `${precisionRound(value / 180, 6)}π`
+    : `${precisionRound(value, 6)}°`;

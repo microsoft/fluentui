@@ -2363,7 +2363,7 @@ export const generateNumericTicks = (
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: number[],
-) => {
+): number[] | undefined => {
   const refTick = typeof tick0 === 'number' ? tick0 : 0;
 
   if (scaleType === 'log') {
@@ -2396,7 +2396,7 @@ export const generateDateTicks = (
   tick0: number | Date | undefined,
   scaleDomain: Date[],
   useUTC?: boolean,
-) => {
+): Date[] | undefined => {
   const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
 
   if (typeof tickStep === 'number' && tickStep > 0) {
