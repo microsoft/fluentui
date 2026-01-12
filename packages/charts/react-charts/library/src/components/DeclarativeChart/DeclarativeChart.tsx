@@ -39,6 +39,7 @@ import {
   transformPlotlyJsonToGanttChartProps,
   transformPlotlyJsonToAnnotationChartProps,
   transformPlotlyJsonToPolarChartProps,
+  DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
@@ -481,9 +482,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
         nonCartesianTraceCount++;
       } else {
-        traceKey = ['scatterpolar'].includes(trace.type!)
-          ? (trace as { subplot?: string }).subplot ?? 'polar'
-          : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+        traceKey =
+          chart.validTracesInfo![index].type === 'scatterpolar'
+            ? (trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT
+            : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
       }
       if (!groupedTraces[traceKey]) {
         groupedTraces[traceKey] = [];

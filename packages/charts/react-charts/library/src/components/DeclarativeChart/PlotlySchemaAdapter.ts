@@ -3008,21 +3008,7 @@ export const transformPlotlyJsonToPolarChartProps = (
 ): PolarChartProps => {
   const polarData: PolarChartProps['data'] = [];
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
-
-  const values: Datum[] = [];
-  input.data.forEach((series: Partial<PlotData>) => {
-    if (isArrayOrTypedArray(series.r)) {
-      series.r!.forEach(val => {
-        if (!isInvalidValue(val)) {
-          values.push(val as Datum);
-        }
-      });
-    }
-  });
-  const subplotId = ((input.data[0] as { subplot?: string })?.subplot || 'polar') as keyof Layout;
-  const polarLayout = input.layout?.[subplotId] as Partial<PolarLayout> | undefined;
-  const axType = getAxisType2(values, polarLayout?.radialaxis);
-  const resolveRValue = getAxisValueResolver(axType);
+  const resolveRValue = getAxisValueResolver(getPolarAxis(input.data, 'r', input.layout)._type);
 
   input.data.forEach((series: Partial<PlotData>, index: number) => {
     const legend = legends[index];
@@ -3049,7 +3035,7 @@ export const transformPlotlyJsonToPolarChartProps = (
       const seriesOpacity = getOpacity(series, index);
       const finalSeriesColor = rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8();
       const lineOptions = getLineOptions(series.line);
-      const thetaunit = (series as { thetaunit?: 'radians' | 'degrees' | 'gradians' }).thetaunit;
+      const thetaUnit = (series as { thetaunit?: 'radians' | 'degrees' | 'gradians' }).thetaunit;
 
       const commonProps = {
         legend,
@@ -3079,9 +3065,9 @@ export const transformPlotlyJsonToPolarChartProps = (
                 r: resolveRValue(r)!,
                 theta:
                   typeof theta === 'number'
-                    ? thetaunit === 'radians'
+                    ? thetaUnit === 'radians'
                       ? (theta * 180) / Math.PI
-                      : thetaunit === 'gradians'
+                      : thetaUnit === 'gradians'
                       ? theta * 0.9
                       : theta
                     : (theta as string),
@@ -3113,7 +3099,8 @@ export const transformPlotlyJsonToPolarChartProps = (
     width: input.layout?.width,
     height: input.layout?.height ?? 400,
     hideLegend,
-    ...getsomething(input.data, input.layout),
+    ...getPolarAxisProps(input.data, input.layout),
+    //  ...getTitles(input.layout),
   };
 };
 
@@ -3558,7 +3545,7 @@ export const getGridProperties = (
   if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
     Object.keys(layout ?? {}).forEach(key => {
       if (key.startsWith('polar')) {
-        const polarLayout = layout[key as keyof typeof layout] as Partial<PolarLayout>;
+        const polarLayout = layout[key as keyof Layout] as Partial<PolarLayout>;
         const domainXInfo: ExtDomainInterval = {
           start: polarLayout.domain?.x ? polarLayout.domain.x[0] : 0,
           end: polarLayout.domain?.x ? polarLayout.domain.x[1] : 1,
@@ -4059,11 +4046,46 @@ const parseLocalDate = (value: string | number) => {
   return new Date(value);
 };
 
-const getAxisType2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): AxisType => {
-  if (['linear', 'log', 'date', 'category'].includes(ax?.type ?? '')) {
-    return ax!.type!;
+type PolarDataKey = 'r' | 'theta';
+interface PolarAxisObject extends Partial<LayoutAxis> {
+  _type: AxisType;
+  _dataKey: PolarDataKey;
+}
+
+const POLAR_AXIS_BY_DATA_KEY: Record<PolarDataKey, 'radialAxis' | 'angularAxis'> = {
+  r: 'radialAxis',
+  theta: 'angularAxis',
+};
+export const DEFAULT_POLAR_SUBPLOT = 'polar';
+
+const getPolarLayout = (
+  trace: Partial<PlotData>,
+  layout: Partial<Layout> | undefined,
+): Partial<PolarLayout> | undefined => {
+  const subplotId = ((trace as { subplot?: string })?.subplot || DEFAULT_POLAR_SUBPLOT) as keyof Layout;
+  return layout?.[subplotId];
+};
+
+const getValidAxisValues = (data: Data[], dataKey: PolarDataKey): Datum[] => {
+  const values: Datum[] = [];
+  data.forEach((series: Partial<PlotData>) => {
+    if (isArrayOrTypedArray(series[dataKey])) {
+      (series[dataKey] as Datum[]).forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    }
+  });
+  return values;
+};
+
+const getPolarAxisType = (data: Data[], dataKey: PolarDataKey, declaredType: AxisType | undefined): AxisType => {
+  if (['linear', 'log', 'date', 'category'].includes(declaredType ?? '')) {
+    return declaredType!;
   }
 
+  const values = getValidAxisValues(data, dataKey);
   if (isNumberArray(values) && !isYearArray(values)) {
     return 'linear';
   }
@@ -4073,16 +4095,21 @@ const getAxisType2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): Axi
   return 'category';
 };
 
-const getAxisTickProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined): PolarAxisProps => {
-  if (!ax) {
-    return {};
-  }
+const getPolarAxis = (data: Data[], dataKey: PolarDataKey, layout: Partial<Layout> | undefined): PolarAxisObject => {
+  const polarLayout = getPolarLayout(data[0] as Partial<PlotData>, layout);
+  const ax = polarLayout?.[POLAR_AXIS_BY_DATA_KEY[dataKey].toLowerCase() as 'radialaxis' | 'angularaxis'];
+  return {
+    ...ax,
+    _dataKey: dataKey,
+    _type: getPolarAxisType(data, dataKey, ax?.type),
+  };
+};
 
+const getPolarAxisTickProps = (data: Data[], ax: PolarAxisObject): PolarAxisProps => {
   const props: PolarAxisProps = {};
-  const axType = getAxisType2(values, ax);
 
   if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
-    const tickValues = axType === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
+    const tickValues = ax._type === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
 
     props.tickValues = tickValues;
     props.tickText = ax.ticktext;
@@ -4090,8 +4117,8 @@ const getAxisTickProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined)
   }
 
   if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
-    const dtick = plotlyDtick(ax.dtick, axType);
-    const tick0 = plotlyTick0(ax.tick0, axType, dtick);
+    const dtick = plotlyDtick(ax.dtick, ax._type);
+    const tick0 = plotlyTick0(ax.tick0, ax._type, dtick);
 
     props.tickStep = dtick;
     props.tick0 = tick0;
@@ -4105,61 +4132,44 @@ const getAxisTickProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined)
   return props;
 };
 
-const getAxisCategoryOrderProps2 = (values: Datum[], ax: Partial<LayoutAxis> | undefined) => {
-  const axType = getAxisType2(values, ax);
-  if (axType !== 'category') {
+const getPolarAxisCategoryOrder = (data: Data[], ax: PolarAxisObject) => {
+  if (ax._type !== 'category') {
     return 'data';
   }
 
-  const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
-  if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
-    return ax!.categoryarray;
+  const isValidArray = isArrayOrTypedArray(ax.categoryarray) && ax.categoryarray!.length > 0;
+  if (isValidArray && (!ax.categoryorder || ax.categoryorder === 'array')) {
+    return ax.categoryarray;
   }
 
-  if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+  if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+    const values = getValidAxisValues(data, ax._dataKey);
     const categoriesInTraceOrder = Array.from(new Set(values as string[]));
-    return ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
+    return ax.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
   }
 
   return ax.categoryorder;
 };
 
-const getsomething = (data: Data[], layout: Partial<Layout> | undefined) => {
-  const m = {
-    r: 'radialAxis',
-    theta: 'angularAxis',
-  };
+const getPolarAxisProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const props: Partial<PolarChartProps> = {};
 
-  const props = {};
+  (Object.keys(POLAR_AXIS_BY_DATA_KEY) as PolarDataKey[]).forEach(dataKey => {
+    const propName = POLAR_AXIS_BY_DATA_KEY[dataKey];
+    const ax = getPolarAxis(data, dataKey, layout);
 
-  Object.entries(m).forEach(([key, propName]) => {
-    const values: Datum[] = [];
-    data.forEach((series: Partial<PlotData>) => {
-      if (isArrayOrTypedArray(series[key])) {
-        series[key]!.forEach(val => {
-          if (!isInvalidValue(val)) {
-            values.push(val as Datum);
-          }
-        });
-      }
-    });
-
-    const subplotId = (data[0] as { subplot?: string })?.subplot || 'polar';
-    const polarLayout = layout?.[subplotId];
-    const axType = getAxisType2(values, polarLayout?.[propName.toLowerCase()]);
     props[propName] = {
-      categoryOrder: getAxisCategoryOrderProps2(values, polarLayout?.[propName.toLowerCase()]),
-      ...getAxisTickProps2(values, polarLayout?.[propName.toLowerCase()]),
-      scaleType: axType === 'log' ? 'log' : 'default',
-      rangeStart: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
-        ? polarLayout[propName.toLowerCase()].range[0]
-        : undefined,
-      rangeEnd: isArrayOrTypedArray(polarLayout?.[propName.toLowerCase()]?.range)
-        ? polarLayout[propName.toLowerCase()].range[1]
-        : undefined,
-      unit: polarLayout?.[m.theta.toLowerCase()]?.thetaunit,
+      scaleType: ax._type === 'log' ? 'log' : 'default',
+      categoryOrder: getPolarAxisCategoryOrder(data, ax),
+      tickFormat: ax.tickformat,
+      ...getPolarAxisTickProps(data, ax),
+      ...(isArrayOrTypedArray(ax.range) ? { rangeStart: ax.range![0], rangeEnd: ax.range![1] } : {}),
     };
-    props.direction = polarLayout?.[m.theta.toLowerCase()]?.direction;
+
+    if (propName === 'angularAxis') {
+      props[propName].unit = (ax as { thetaunit?: 'radians' | 'degrees' }).thetaunit;
+      props.direction = ax.direction;
+    }
   });
 
   return props;
