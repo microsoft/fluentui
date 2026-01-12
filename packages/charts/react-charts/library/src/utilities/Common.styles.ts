@@ -4,6 +4,12 @@ import { type GriffelStyle } from '@griffel/react';
 import type { Font } from '@fluentui/chart-utilities';
 
 /**
+ * Default padding below chart title (in pixels).
+ * Used consistently across all chart types for spacing between title and chart content.
+ */
+export const CHART_TITLE_PADDING = 20;
+
+/**
  * Shared interface for chart title styling properties.
  * Used by components that display a chart title with customizable font, alignment, and padding.
  * {@docCategory TitleStyles}

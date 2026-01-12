@@ -15,7 +15,7 @@ import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
-import { ChartTitle } from '../../utilities/index';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -550,7 +550,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _labelTooltipId = useId('tooltip');
   const titleHeight = props.data?.chartTitle
     ? Math.max(
-        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) + 16,
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
         36,
       )
     : 36;

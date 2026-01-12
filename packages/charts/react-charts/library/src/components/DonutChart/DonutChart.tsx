@@ -7,7 +7,14 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, ChartTitle } from '../../utilities/index';
+import {
+  areArraysEqual,
+  getColorFromToken,
+  getNextColor,
+  MIN_DONUT_RADIUS,
+  ChartTitle,
+  CHART_TITLE_PADDING,
+} from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -306,7 +313,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const titleHeight = data?.chartTitle
       ? Math.max(
-          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) + 16,
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
           36,
         )
       : 0;

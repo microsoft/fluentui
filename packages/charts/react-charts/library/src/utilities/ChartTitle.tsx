@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { SVGTooltipText, SVGTooltipTextProps } from './SVGTooltipText';
-import { getChartTitleInlineStyles, TitleStyles } from './Common.styles';
+import { CHART_TITLE_PADDING, getChartTitleInlineStyles, TitleStyles } from './Common.styles';
 import { wrapContent } from './utilities';
 
 const AXIS_TITLE_PADDING = 8;
-const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 /**
  * Props for the ChartTitle component
@@ -71,7 +70,7 @@ export const ChartTitle: React.FunctionComponent<ChartTitleProps> = props => {
     y ??
     Math.max(
       (typeof titleFont?.size === 'number' ? titleFont.size : 13) + AXIS_TITLE_PADDING,
-      VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+      CHART_TITLE_PADDING - AXIS_TITLE_PADDING,
     );
   const commonSvgToolTipProps: Partial<SVGTooltipTextProps> = {
     wrapContent,

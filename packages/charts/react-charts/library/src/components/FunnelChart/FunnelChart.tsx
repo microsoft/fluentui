@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useRtl, ChartTitle } from '../../utilities/index';
+import { useRtl, ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends } from '../Legends/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -436,7 +436,8 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
   const titleHeight = props.chartTitle
     ? Math.max(
-        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) + 16,
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
         40,
       )
     : 40;

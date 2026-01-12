@@ -11,7 +11,7 @@ import {
   sanitizeJson,
 } from '@fluentui/chart-utilities';
 import type { GridProperties } from './PlotlySchemaAdapter';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
@@ -544,6 +544,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
 
   const titleStyle: React.CSSProperties = {
+    ...typographyStyles.caption1,
+    color: tokens.colorNeutralForeground1,
     textAlign: 'center',
     marginBottom: tokens.spacingVerticalS,
     ...getChartTitleInlineStyles(titleFont),
