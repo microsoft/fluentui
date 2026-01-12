@@ -2,6 +2,29 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:59 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.4.3",
+      "version": "1.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icon-provider",
+            "comment": "Bump @fluentui/style-utilities to v8.13.6",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Nov 2025 09:34:51 GMT",
       "tag": "@fluentui/react-icon-provider_v1.4.2",
       "version": "1.4.2",

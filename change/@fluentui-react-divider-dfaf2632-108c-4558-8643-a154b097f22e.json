@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: implement headless style hook for Divider component",
-  "packageName": "@fluentui/react-divider",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

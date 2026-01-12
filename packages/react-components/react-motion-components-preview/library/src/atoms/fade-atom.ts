@@ -5,11 +5,11 @@ interface FadeAtomParams extends BaseAtomParams {
   /** Defines how values are applied before and after execution. Defaults to 'both'. */
   fill?: FillMode;
 
-  /** The starting opacity value. Defaults to 0. */
-  fromOpacity?: number;
+  /** Opacity for the out state (exited). Defaults to 0. */
+  outOpacity?: number;
 
-  /** The ending opacity value. Defaults to 1. */
-  toOpacity?: number;
+  /** Opacity for the in state (entered). Defaults to 1. */
+  inOpacity?: number;
 }
 
 /**
@@ -18,8 +18,8 @@ interface FadeAtomParams extends BaseAtomParams {
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param delay - The delay before the motion starts. Defaults to 0.
- * @param fromOpacity - The starting opacity value. Defaults to 0.
- * @param toOpacity - The ending opacity value. Defaults to 1.
+ * @param outOpacity - Opacity for the out state (exited). Defaults to 0.
+ * @param inOpacity - Opacity for the in state (entered). Defaults to 1.
  * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
  */
 export const fadeAtom = ({
@@ -27,10 +27,10 @@ export const fadeAtom = ({
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
-  fromOpacity = 0,
-  toOpacity = 1,
+  outOpacity = 0,
+  inOpacity = 1,
 }: FadeAtomParams): AtomMotion => {
-  const keyframes = [{ opacity: fromOpacity }, { opacity: toOpacity }];
+  const keyframes = [{ opacity: outOpacity }, { opacity: inOpacity }];
   if (direction === 'exit') {
     keyframes.reverse();
   }

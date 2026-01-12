@@ -11,7 +11,7 @@ import {
   sanitizeJson,
 } from '@fluentui/chart-utilities';
 import type { GridProperties } from './PlotlySchemaAdapter';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
@@ -41,6 +41,7 @@ import {
   transformPlotlyJsonToPolarChartProps,
   DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
+import { getChartTitleInlineStyles } from '../../utilities/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
@@ -534,9 +535,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 
   type ChartType = keyof ChartTypeMap;
+
+  const titleObj = plotlyInputWithValidData.layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+
+  const titleStyle: React.CSSProperties = {
+    ...typographyStyles.caption1,
+    color: tokens.colorNeutralForeground1,
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+    ...getChartTitleInlineStyles(titleFont),
+  };
+
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
           display: 'grid',
@@ -578,8 +593,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ? {}
                   : {
                       ...interactiveCommonProps,
-                      xAxisAnnotation: cellProperties?.xAnnotation,
-                      yAxisAnnotation: cellProperties?.yAnnotation,
                     }
               ) as Partial<ReturnType<typeof transformer>>;
 
@@ -589,8 +602,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
                   ...resolvedCommonProps,
-                  xAxisAnnotation: cellProperties?.xAnnotation,
-                  yAxisAnnotation: cellProperties?.yAnnotation,
+                  ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
+                  ...(cellProperties?.yAnnotation && { yAxisAnnotation: cellProperties.yAnnotation }),
                   componentRef: (ref: Chart | null) => {
                     chartRefs.current[chartIdx] = {
                       compRef: ref,

@@ -1,4 +1,4 @@
-import { type ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Avatar } from './avatar.js';
 
 const defaultIconTemplate = html`<svg
@@ -21,7 +21,7 @@ const defaultIconTemplate = html`<svg
  */
 export function avatarTemplate<T extends Avatar>(): ElementViewTemplate<T> {
   return html<T>`
-    <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
+    <slot ${ref('defaultSlot')}>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
     <slot name="badge"></slot>
   `;
 }

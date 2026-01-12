@@ -20,10 +20,5 @@
   "dependencies": {
     "@fluentui/react-components": "*",
     "@fluentui/react-utilities": "*"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-storybook": "*"
   }
 }

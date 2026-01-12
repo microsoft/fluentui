@@ -26,7 +26,7 @@ jobs:
     name: Generate screenshots
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -35,7 +35,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
           node-version: '22'
@@ -47,7 +47,7 @@ jobs:
         run: yarn nx affected -t test-vr --nxBail
 
       - name: Prepare VR screenshots for upload
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         id: screenshots_root
         with:
           script: |
@@ -60,7 +60,7 @@ jobs:
           result-encoding: string
 
       - name: Upload VR screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: vrscreenshot
           retention-days: 1
@@ -69,7 +69,7 @@ jobs:
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: pr-number
           retention-days: 1

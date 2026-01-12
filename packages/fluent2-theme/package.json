@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/fluent2-theme",
-  "version": "8.107.149",
+  "version": "8.107.150",
   "description": "A Fluent2 theme for Fluent UI React 8.x",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,13 +21,8 @@
     "clean": "just-scripts clean",
     "start": "just-scripts dev:storybook"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
-    "@fluentui/react": "^8.125.2",
+    "@fluentui/react": "^8.125.3",
     "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   }

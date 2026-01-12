@@ -9,12 +9,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -386,7 +387,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_0__2_1"
                 opacity="1"
@@ -402,7 +402,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_0__2_11L"
                 opacity="1"
@@ -444,7 +443,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_0__1_1"
                 opacity="1"
@@ -460,7 +458,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_0__1_11L"
                 opacity="1"
@@ -502,7 +499,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_0__0_1"
                 opacity="1"
@@ -518,7 +514,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_0__0_11L"
                 opacity="1"
@@ -629,12 +624,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -974,7 +970,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         </g>
         <g>
           <line
-            id="verticalLine_r_f_"
+            id="verticalLine_r_e_"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -989,7 +985,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID_r_d__2_1"
+                id="lineID_r_c__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1004,9 +1000,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 d="M625 182.2226956521739
      H 635
      L630 190.8826956521739 Z"
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_c__2_1"
+                id="circle_r_b__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1018,9 +1013,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 d="M271 49.070521739130434
      H 281
      L276 57.73052173913044 Z"
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_c__2_11L"
+                id="circle_r_b__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1031,7 +1025,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_c__2_11D"
+                id="circle_r_b__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1043,7 +1037,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID_r_d__1_1"
+                id="lineID_r_c__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1060,9 +1054,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L163 110.21739130434783
      L153 110.21739130434783
      Z"
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_c__1_1"
+                id="circle_r_b__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1076,9 +1069,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L399 30.326086956521735
      L389 30.326086956521735
      Z"
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_c__1_11L"
+                id="circle_r_b__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1089,7 +1081,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_c__1_11D"
+                id="circle_r_b__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1101,7 +1093,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID_r_d__0_1"
+                id="lineID_r_c__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1118,9 +1110,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      M35 131.84782608695653
      A 5 5 0 1 1 45 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_c__0_1"
+                id="circle_r_b__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1134,9 +1125,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      M271 51.95652173913044
      A 5 5 0 1 1 281 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_c__0_11L"
+                id="circle_r_b__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1147,7 +1137,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_c__0_11D"
+                id="circle_r_b__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1278,12 +1268,13 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1623,7 +1614,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         </g>
         <g>
           <line
-            id="verticalLine_r_cd_"
+            id="verticalLine_r_bc_"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(630, 185.1086956521739)"
@@ -1639,7 +1630,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID_r_cb__2_1"
+                id="lineID_r_ba__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1656,9 +1647,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circle_r_ca__2_1"
+                id="circle_r_b9__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1672,9 +1662,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_ca__2_11L"
+                id="circle_r_b9__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1685,7 +1674,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_ca__2_11D"
+                id="circle_r_b9__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1697,7 +1686,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID_r_cb__1_1"
+                id="lineID_r_ba__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1714,9 +1703,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_ca__1_1"
+                id="circle_r_b9__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1730,9 +1718,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_ca__1_11L"
+                id="circle_r_b9__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1743,7 +1730,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_ca__1_11D"
+                id="circle_r_b9__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1755,7 +1742,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID_r_cb__0_1"
+                id="lineID_r_ba__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1772,9 +1759,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_ca__0_1"
+                id="circle_r_b9__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1788,9 +1774,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_ca__0_11L"
+                id="circle_r_b9__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1801,7 +1786,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_ca__0_11D"
+                id="circle_r_b9__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1888,7 +1873,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_cm_"
+      id="callout_r_bk_"
     >
       <div
         class="fui-PopoverSurface"
@@ -1958,12 +1943,13 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2303,7 +2289,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         </g>
         <g>
           <line
-            id="verticalLine_r_dn_"
+            id="verticalLine_r_cj_"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(630, 185.1086956521739)"
@@ -2319,7 +2305,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID_r_dl__2_1"
+                id="lineID_r_ch__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -2336,9 +2322,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circle_r_dk__2_1"
+                id="circle_r_cg__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2352,9 +2337,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_dk__2_11L"
+                id="circle_r_cg__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2365,7 +2349,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_dk__2_11D"
+                id="circle_r_cg__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2377,7 +2361,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID_r_dl__1_1"
+                id="lineID_r_ch__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -2394,9 +2378,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_dk__1_1"
+                id="circle_r_cg__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2410,9 +2393,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_dk__1_11L"
+                id="circle_r_cg__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2423,7 +2405,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_dk__1_11D"
+                id="circle_r_cg__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2435,7 +2417,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID_r_dl__0_1"
+                id="lineID_r_ch__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -2452,9 +2434,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_dk__0_1"
+                id="circle_r_cg__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2468,9 +2449,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_dk__0_11L"
+                id="circle_r_cg__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2481,7 +2461,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_dk__0_11D"
+                id="circle_r_cg__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2568,7 +2548,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_e0_"
+      id="callout_r_cr_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2603,11 +2583,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -2616,12 +2591,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2961,7 +2937,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_94_"
+                id="verticalLine_r_8c_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -2976,7 +2952,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_92__2_1"
+                    id="lineID_r_8a__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -2993,9 +2969,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_91__2_1"
+                    id="circle_r_89__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3009,9 +2984,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_91__2_11L"
+                    id="circle_r_89__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3022,7 +2996,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_91__2_11D"
+                    id="circle_r_89__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3034,7 +3008,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_92__1_1"
+                    id="lineID_r_8a__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -3051,9 +3025,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_91__1_1"
+                    id="circle_r_89__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3067,9 +3040,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_91__1_11L"
+                    id="circle_r_89__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3080,7 +3052,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_91__1_11D"
+                    id="circle_r_89__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3092,7 +3064,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_92__0_1"
+                    id="lineID_r_8a__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -3109,9 +3081,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_91__0_1"
+                    id="circle_r_89__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3125,9 +3096,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_91__0_11L"
+                    id="circle_r_89__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3138,7 +3108,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_91__0_11D"
+                    id="circle_r_89__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3234,12 +3204,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3579,7 +3550,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_94_"
+              id="verticalLine_r_8c_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3594,7 +3565,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_92__2_1"
+                  id="lineID_r_8a__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -3611,9 +3582,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_91__2_1"
+                  id="circle_r_89__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3627,9 +3597,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_91__2_11L"
+                  id="circle_r_89__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3640,7 +3609,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_91__2_11D"
+                  id="circle_r_89__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3652,7 +3621,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_92__1_1"
+                  id="lineID_r_8a__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -3669,9 +3638,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_91__1_1"
+                  id="circle_r_89__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3685,9 +3653,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_91__1_11L"
+                  id="circle_r_89__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3698,7 +3665,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_91__1_11D"
+                  id="circle_r_89__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3710,7 +3677,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_92__0_1"
+                  id="lineID_r_8a__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -3727,9 +3694,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_91__0_1"
+                  id="circle_r_89__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3743,9 +3709,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_91__0_11L"
+                  id="circle_r_89__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3756,7 +3721,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_91__0_11D"
+                  id="circle_r_89__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3911,12 +3876,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4256,7 +4222,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_6u_"
+                id="verticalLine_r_6c_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -4271,7 +4237,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_6s__2_1"
+                    id="lineID_r_6a__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -4288,9 +4254,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_6r__2_1"
+                    id="circle_r_69__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4304,9 +4269,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_6r__2_11L"
+                    id="circle_r_69__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4317,7 +4281,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_6r__2_11D"
+                    id="circle_r_69__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4329,7 +4293,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_6s__1_1"
+                    id="lineID_r_6a__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -4346,9 +4310,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_6r__1_1"
+                    id="circle_r_69__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4362,9 +4325,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_6r__1_11L"
+                    id="circle_r_69__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4375,7 +4337,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_6r__1_11D"
+                    id="circle_r_69__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4387,7 +4349,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_6s__0_1"
+                    id="lineID_r_6a__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -4404,9 +4366,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_6r__0_1"
+                    id="circle_r_69__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4420,9 +4381,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_6r__0_11L"
+                    id="circle_r_69__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4433,7 +4393,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_6r__0_11D"
+                    id="circle_r_69__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4529,12 +4489,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -4874,7 +4835,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_6u_"
+              id="verticalLine_r_6c_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -4889,7 +4850,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_6s__2_1"
+                  id="lineID_r_6a__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -4906,9 +4867,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_6r__2_1"
+                  id="circle_r_69__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4922,9 +4882,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_6r__2_11L"
+                  id="circle_r_69__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4935,7 +4894,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_6r__2_11D"
+                  id="circle_r_69__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4947,7 +4906,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_6s__1_1"
+                  id="lineID_r_6a__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -4964,9 +4923,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_6r__1_1"
+                  id="circle_r_69__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4980,9 +4938,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_6r__1_11L"
+                  id="circle_r_69__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4993,7 +4950,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_6r__1_11D"
+                  id="circle_r_69__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5005,7 +4962,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_6s__0_1"
+                  id="lineID_r_6a__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -5022,9 +4979,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_6r__0_1"
+                  id="circle_r_69__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5038,9 +4994,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_6r__0_11L"
+                  id="circle_r_69__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5051,7 +5006,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_6r__0_11D"
+                  id="circle_r_69__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5206,12 +5161,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -5551,7 +5507,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_81_"
+                id="verticalLine_r_7c_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5566,7 +5522,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7v__2_1"
+                    id="lineID_r_7a__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -5583,9 +5539,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_7u__2_1"
+                    id="circle_r_79__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5599,9 +5554,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_7u__2_11L"
+                    id="circle_r_79__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5612,7 +5566,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_7u__2_11D"
+                    id="circle_r_79__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5624,7 +5578,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7v__1_1"
+                    id="lineID_r_7a__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -5641,9 +5595,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_7u__1_1"
+                    id="circle_r_79__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5657,9 +5610,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_7u__1_11L"
+                    id="circle_r_79__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5670,7 +5622,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_7u__1_11D"
+                    id="circle_r_79__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5682,7 +5634,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7v__0_1"
+                    id="lineID_r_7a__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -5699,9 +5651,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_7u__0_1"
+                    id="circle_r_79__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5715,9 +5666,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_7u__0_11L"
+                    id="circle_r_79__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5728,7 +5678,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_7u__0_11D"
+                    id="circle_r_79__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5834,12 +5784,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -6179,7 +6130,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_81_"
+              id="verticalLine_r_7c_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -6194,7 +6145,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7v__2_1"
+                  id="lineID_r_7a__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -6211,9 +6162,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_7u__2_1"
+                  id="circle_r_79__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6227,9 +6177,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_7u__2_11L"
+                  id="circle_r_79__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6240,7 +6189,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_7u__2_11D"
+                  id="circle_r_79__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6252,7 +6201,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7v__1_1"
+                  id="lineID_r_7a__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -6269,9 +6218,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_7u__1_1"
+                  id="circle_r_79__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6285,9 +6233,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_7u__1_11L"
+                  id="circle_r_79__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6298,7 +6245,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_7u__1_11D"
+                  id="circle_r_79__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6310,7 +6257,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7v__0_1"
+                  id="lineID_r_7a__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -6327,9 +6274,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_7u__0_1"
+                  id="circle_r_79__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6343,9 +6289,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_7u__0_11L"
+                  id="circle_r_79__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6356,7 +6301,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_7u__0_11D"
+                  id="circle_r_79__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6521,12 +6466,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -6866,7 +6812,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_7a_"
+                id="verticalLine_r_6n_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -6881,7 +6827,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_78__2_1"
+                    id="lineID_r_6l__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -6898,9 +6844,8 @@ Object {
      M629.5 16.630434782608695
      A 0.5 0.5 0 1 1 630.5 16.630434782608695
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_77__2_1"
+                    id="circle_r_6k__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6914,9 +6859,8 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_77__2_11L"
+                    id="circle_r_6k__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6927,7 +6871,7 @@ Object {
                     cx="276"
                     cy="19.34782608695652"
                     focusable="false"
-                    id="circle_r_77__2_11D"
+                    id="circle_r_6k__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6939,7 +6883,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_78__1_1"
+                    id="lineID_r_6l__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -6956,9 +6900,8 @@ Object {
      M157.5 18.26086956521739
      A 0.5 0.5 0 1 1 158.5 18.26086956521739
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_77__1_1"
+                    id="circle_r_6k__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6972,9 +6915,8 @@ Object {
      M393.5 19.891304347826086
      A 0.5 0.5 0 1 1 394.5 19.891304347826086
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_77__1_11L"
+                    id="circle_r_6k__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6985,7 +6927,7 @@ Object {
                     cx="394"
                     cy="19.891304347826086"
                     focusable="false"
-                    id="circle_r_77__1_11D"
+                    id="circle_r_6k__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6997,7 +6939,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_78__0_1"
+                    id="lineID_r_6l__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -7014,9 +6956,8 @@ Object {
      M39.5 17.717391304347828
      A 0.5 0.5 0 1 1 40.5 17.717391304347828
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_77__0_1"
+                    id="circle_r_6k__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7030,9 +6971,8 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_77__0_11L"
+                    id="circle_r_6k__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7043,7 +6983,7 @@ Object {
                     cx="276"
                     cy="19.34782608695652"
                     focusable="false"
-                    id="circle_r_77__0_11D"
+                    id="circle_r_6k__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7065,12 +7005,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -7410,7 +7351,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_7a_"
+              id="verticalLine_r_6n_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -7425,7 +7366,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_78__2_1"
+                  id="lineID_r_6l__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -7442,9 +7383,8 @@ Object {
      M629.5 16.630434782608695
      A 0.5 0.5 0 1 1 630.5 16.630434782608695
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_77__2_1"
+                  id="circle_r_6k__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7458,9 +7398,8 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_77__2_11L"
+                  id="circle_r_6k__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7471,7 +7410,7 @@ Object {
                   cx="276"
                   cy="19.34782608695652"
                   focusable="false"
-                  id="circle_r_77__2_11D"
+                  id="circle_r_6k__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7483,7 +7422,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_78__1_1"
+                  id="lineID_r_6l__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -7500,9 +7439,8 @@ Object {
      M157.5 18.26086956521739
      A 0.5 0.5 0 1 1 158.5 18.26086956521739
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_77__1_1"
+                  id="circle_r_6k__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7516,9 +7454,8 @@ Object {
      M393.5 19.891304347826086
      A 0.5 0.5 0 1 1 394.5 19.891304347826086
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_77__1_11L"
+                  id="circle_r_6k__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7529,7 +7466,7 @@ Object {
                   cx="394"
                   cy="19.891304347826086"
                   focusable="false"
-                  id="circle_r_77__1_11D"
+                  id="circle_r_6k__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7541,7 +7478,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_78__0_1"
+                  id="lineID_r_6l__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -7558,9 +7495,8 @@ Object {
      M39.5 17.717391304347828
      A 0.5 0.5 0 1 1 40.5 17.717391304347828
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_77__0_1"
+                  id="circle_r_6k__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7574,9 +7510,8 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_77__0_11L"
+                  id="circle_r_6k__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7587,7 +7522,7 @@ Object {
                   cx="276"
                   cy="19.34782608695652"
                   focusable="false"
-                  id="circle_r_77__0_11D"
+                  id="circle_r_6k__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7668,12 +7603,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -8013,7 +7949,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_7l_"
+                id="verticalLine_r_71_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -8028,7 +7964,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7j__2_1"
+                    id="lineID_r_6v__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -8045,9 +7981,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_7i__2_1"
+                    id="circle_r_6u__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -8061,9 +7996,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_7i__2_11L"
+                    id="circle_r_6u__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -8074,7 +8008,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_7i__2_11D"
+                    id="circle_r_6u__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8086,7 +8020,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7j__1_1"
+                    id="lineID_r_6v__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -8103,9 +8037,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_7i__1_1"
+                    id="circle_r_6u__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -8119,9 +8052,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_7i__1_11L"
+                    id="circle_r_6u__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -8132,7 +8064,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_7i__1_11D"
+                    id="circle_r_6u__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8144,7 +8076,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_7j__0_1"
+                    id="lineID_r_6v__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -8161,9 +8093,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_7i__0_1"
+                    id="circle_r_6u__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -8177,9 +8108,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_7i__0_11L"
+                    id="circle_r_6u__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -8190,7 +8120,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_7i__0_11D"
+                    id="circle_r_6u__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8286,12 +8216,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -8631,7 +8562,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_7l_"
+              id="verticalLine_r_71_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -8646,7 +8577,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7j__2_1"
+                  id="lineID_r_6v__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -8663,9 +8594,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_7i__2_1"
+                  id="circle_r_6u__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8679,9 +8609,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_7i__2_11L"
+                  id="circle_r_6u__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8692,7 +8621,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_7i__2_11D"
+                  id="circle_r_6u__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8704,7 +8633,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7j__1_1"
+                  id="lineID_r_6v__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -8721,9 +8650,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_7i__1_1"
+                  id="circle_r_6u__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8737,9 +8665,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_7i__1_11L"
+                  id="circle_r_6u__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8750,7 +8677,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_7i__1_11D"
+                  id="circle_r_6u__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8762,7 +8689,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_7j__0_1"
+                  id="lineID_r_6v__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -8779,9 +8706,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_7i__0_1"
+                  id="circle_r_6u__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8795,9 +8721,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_7i__0_11L"
+                  id="circle_r_6u__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8808,7 +8733,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_7i__0_11D"
+                  id="circle_r_6u__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8963,12 +8888,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -8997,21 +8923,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="20"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="20"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9030,21 +8949,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="25"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="25"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9063,21 +8975,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="30"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="30"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9096,21 +9001,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="35"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="35"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9129,21 +9027,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="40"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="40"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9162,21 +9053,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="45"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="45"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9195,21 +9079,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="50"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="50"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9228,21 +9105,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="55"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="55"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9261,21 +9131,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="60"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="60"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9294,21 +9157,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="65"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="65"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9327,21 +9183,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="70"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="70"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -9462,7 +9311,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_8c_"
+                id="verticalLine_r_7m_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -9477,7 +9326,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8a__2_1"
+                    id="lineID_r_7k__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -9494,9 +9343,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_89__2_1"
+                    id="circle_r_7j__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -9510,9 +9358,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_89__2_11L"
+                    id="circle_r_7j__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -9523,7 +9370,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_89__2_11D"
+                    id="circle_r_7j__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9535,7 +9382,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8a__1_1"
+                    id="lineID_r_7k__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -9552,9 +9399,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_89__1_1"
+                    id="circle_r_7j__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9568,9 +9414,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_89__1_11L"
+                    id="circle_r_7j__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9581,7 +9426,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_89__1_11D"
+                    id="circle_r_7j__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9593,7 +9438,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8a__0_1"
+                    id="lineID_r_7k__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -9610,9 +9455,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_89__0_1"
+                    id="circle_r_7j__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9626,9 +9470,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_89__0_11L"
+                    id="circle_r_7j__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9639,7 +9482,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_89__0_11D"
+                    id="circle_r_7j__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9724,13 +9567,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_7s_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -9740,12 +9583,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -9774,21 +9618,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="20"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="20"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9807,21 +9644,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="25"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="25"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9840,21 +9670,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="30"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="30"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9873,21 +9696,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="35"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="35"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9906,21 +9722,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="40"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="40"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9939,21 +9748,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="45"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="45"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -9972,21 +9774,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="50"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="50"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -10005,21 +9800,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="55"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="55"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -10038,21 +9826,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="60"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="60"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -10071,21 +9852,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="65"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="65"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -10104,21 +9878,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="70"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="70"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -10239,7 +10006,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_8c_"
+              id="verticalLine_r_7m_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -10254,7 +10021,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8a__2_1"
+                  id="lineID_r_7k__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -10271,9 +10038,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_89__2_1"
+                  id="circle_r_7j__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -10287,9 +10053,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_89__2_11L"
+                  id="circle_r_7j__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -10300,7 +10065,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_89__2_11D"
+                  id="circle_r_7j__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10312,7 +10077,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8a__1_1"
+                  id="lineID_r_7k__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -10329,9 +10094,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_89__1_1"
+                  id="circle_r_7j__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10345,9 +10109,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_89__1_11L"
+                  id="circle_r_7j__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10358,7 +10121,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_89__1_11D"
+                  id="circle_r_7j__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10370,7 +10133,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8a__0_1"
+                  id="lineID_r_7k__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -10387,9 +10150,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_89__0_1"
+                  id="circle_r_7j__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10403,9 +10165,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_89__0_11L"
+                  id="circle_r_7j__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10416,7 +10177,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_89__0_11D"
+                  id="circle_r_7j__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10501,6 +10262,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-cart__tooltip"
+        id="tooltip__r_7s_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -10563,11 +10329,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -10576,12 +10337,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -10921,7 +10683,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_8o_"
+                id="verticalLine_r_81_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -10936,7 +10698,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8m__2_1"
+                    id="lineID_r_7v__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -10953,9 +10715,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_8l__2_1"
+                    id="circle_r_7u__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -10969,9 +10730,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_8l__2_11L"
+                    id="circle_r_7u__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -10982,7 +10742,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_8l__2_11D"
+                    id="circle_r_7u__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -10994,7 +10754,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8m__1_1"
+                    id="lineID_r_7v__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -11011,9 +10771,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_8l__1_1"
+                    id="circle_r_7u__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -11027,9 +10786,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
-                    id="circle_r_8l__1_11L"
+                    id="circle_r_7u__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -11040,7 +10798,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_8l__1_11D"
+                    id="circle_r_7u__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -11052,7 +10810,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_8m__0_1"
+                    id="lineID_r_7v__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -11069,9 +10827,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_8l__0_1"
+                    id="circle_r_7u__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -11085,9 +10842,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
-                    id="circle_r_8l__0_11L"
+                    id="circle_r_7u__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -11098,7 +10854,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_8l__0_11D"
+                    id="circle_r_7u__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -11194,12 +10950,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -11539,7 +11296,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_8o_"
+              id="verticalLine_r_81_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -11554,7 +11311,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8m__2_1"
+                  id="lineID_r_7v__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -11571,9 +11328,8 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_8l__2_1"
+                  id="circle_r_7u__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11587,9 +11343,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_8l__2_11L"
+                  id="circle_r_7u__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11600,7 +11355,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_8l__2_11D"
+                  id="circle_r_7u__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11612,7 +11367,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8m__1_1"
+                  id="lineID_r_7v__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -11629,9 +11384,8 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_8l__1_1"
+                  id="circle_r_7u__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11645,9 +11399,8 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_8l__1_11L"
+                  id="circle_r_7u__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11658,7 +11411,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_8l__1_11D"
+                  id="circle_r_7u__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11670,7 +11423,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_8m__0_1"
+                  id="lineID_r_7v__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -11687,9 +11440,8 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_8l__0_1"
+                  id="circle_r_7u__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11703,9 +11455,8 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_8l__0_11L"
+                  id="circle_r_7u__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11716,7 +11467,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_8l__0_11D"
+                  id="circle_r_7u__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11866,12 +11617,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12116,7 +11868,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine_r_5d_"
+            id="verticalLine_r_4v_"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -12131,7 +11883,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5b__2_1"
+                id="lineID_r_4t__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -12148,9 +11900,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_5a__2_1"
+                id="circle_r_4s__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12164,9 +11915,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_5a__2_11L"
+                id="circle_r_4s__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12177,7 +11927,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_5a__2_11D"
+                id="circle_r_4s__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12189,7 +11939,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5b__1_1"
+                id="lineID_r_4t__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -12206,9 +11956,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_5a__1_1"
+                id="circle_r_4s__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12222,9 +11971,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_5a__1_11L"
+                id="circle_r_4s__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12235,7 +11983,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_5a__1_11D"
+                id="circle_r_4s__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12247,7 +11995,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5b__0_1"
+                id="lineID_r_4t__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -12264,9 +12012,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_5a__0_1"
+                id="circle_r_4s__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12280,9 +12027,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_5a__0_11L"
+                id="circle_r_4s__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12293,7 +12039,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_5a__0_11D"
+                id="circle_r_4s__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12391,12 +12137,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12641,7 +12388,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine_r_5p_"
+            id="verticalLine_r_5a_"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -12656,7 +12403,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5n__2_1"
+                id="lineID_r_58__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -12673,9 +12420,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_5m__2_1"
+                id="circle_r_57__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12689,9 +12435,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_5m__2_11L"
+                id="circle_r_57__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12702,7 +12447,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_5m__2_11D"
+                id="circle_r_57__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12714,7 +12459,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5n__1_1"
+                id="lineID_r_58__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -12731,9 +12476,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_5m__1_1"
+                id="circle_r_57__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12747,9 +12491,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
-                id="circle_r_5m__1_11L"
+                id="circle_r_57__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12760,7 +12503,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_5m__1_11D"
+                id="circle_r_57__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12772,7 +12515,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_5n__0_1"
+                id="lineID_r_58__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -12789,9 +12532,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_5m__0_1"
+                id="circle_r_57__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12805,9 +12547,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
-                id="circle_r_5m__0_11L"
+                id="circle_r_57__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12818,7 +12559,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_5m__0_11D"
+                id="circle_r_57__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12910,7 +12651,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme and accessibility Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_62_"
+    class="fui-FluentProvider fui-FluentProvider_r_5i_"
     dir="ltr"
   >
     <div
@@ -12920,12 +12661,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -13265,7 +13007,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           </g>
           <g>
             <line
-              id="verticalLine_r_66_"
+              id="verticalLine_r_5m_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -13280,7 +13022,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_64__2_1"
+                  id="lineID_r_5k__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -13297,9 +13039,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_63__2_1"
+                  id="circle_r_5j__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -13313,9 +13054,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_63__2_11L"
+                  id="circle_r_5j__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -13326,7 +13066,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_63__2_11D"
+                  id="circle_r_5j__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -13338,7 +13078,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_64__1_1"
+                  id="lineID_r_5k__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -13355,9 +13095,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_63__1_1"
+                  id="circle_r_5j__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -13371,9 +13110,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
-                  id="circle_r_63__1_11L"
+                  id="circle_r_5j__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -13384,7 +13122,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_63__1_11D"
+                  id="circle_r_5j__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -13396,7 +13134,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_64__0_1"
+                  id="lineID_r_5k__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -13413,9 +13151,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_63__0_1"
+                  id="circle_r_5j__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -13429,9 +13166,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
-                  id="circle_r_63__0_11L"
+                  id="circle_r_5j__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -13442,7 +13178,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_63__0_11D"
+                  id="circle_r_5j__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"

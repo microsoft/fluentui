@@ -12,15 +12,15 @@ import {
 function expectFadeAtom(
   atom: import('@fluentui/react-motion').AtomMotion,
   direction: 'enter' | 'exit',
-  fromOpacity: number = 0,
-  toOpacity: number = 1,
+  outOpacity: number = 0,
+  inOpacity: number = 1,
 ) {
   expectValidAtomMotion(atom);
 
   if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'opacity', [fromOpacity, toOpacity]);
+    expectKeyframeProperty(atom, 'opacity', [outOpacity, inOpacity]);
   } else {
-    expectKeyframeProperty(atom, 'opacity', [toOpacity, fromOpacity]);
+    expectKeyframeProperty(atom, 'opacity', [inOpacity, outOpacity]);
   }
 }
 
@@ -44,8 +44,8 @@ describe('fadeAtom', () => {
     const atom = fadeAtom({
       direction: 'enter',
       duration: 300,
-      fromOpacity: 0.5,
-      toOpacity: 0.8,
+      outOpacity: 0.5,
+      inOpacity: 0.8,
     });
 
     expect(atom.keyframes).toEqual([{ opacity: 0.5 }, { opacity: 0.8 }]);
@@ -110,8 +110,8 @@ describe('fadeAtom', () => {
   });
 
   it('validates custom opacity values with test utility', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300, fromOpacity: 0.2, toOpacity: 0.7 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300, fromOpacity: 0.3, toOpacity: 0.8 });
+    const enterAtom = fadeAtom({ direction: 'enter', duration: 300, outOpacity: 0.2, inOpacity: 0.7 });
+    const exitAtom = fadeAtom({ direction: 'exit', duration: 300, outOpacity: 0.3, inOpacity: 0.8 });
 
     expectFadeAtom(enterAtom, 'enter', 0.2, 0.7);
     expectFadeAtom(exitAtom, 'exit', 0.3, 0.8);

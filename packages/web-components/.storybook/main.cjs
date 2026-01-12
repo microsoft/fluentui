@@ -30,7 +30,7 @@ module.exports =
         options: {
           backgrounds: false,
           viewport: false,
-          toolbars: false,
+          toolbars: true,
           actions: true,
         },
       },

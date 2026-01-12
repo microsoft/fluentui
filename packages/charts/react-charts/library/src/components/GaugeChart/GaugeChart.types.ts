@@ -1,6 +1,7 @@
 import { LegendsProps } from '../Legends/index';
 import { AccessibilityProps, Chart } from '../../types/index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Gauge Chart segment interface.
@@ -48,6 +49,11 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
  * {@docCategory GaugeChart}
  */
 export interface GaugeChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Width of the chart
    */

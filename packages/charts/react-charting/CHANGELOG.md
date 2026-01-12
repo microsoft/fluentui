@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 26 Nov 2025 09:34:50 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Jan 2026 14:47:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.5)
+
+Mon, 05 Jan 2026 14:47:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.4..@fluentui/react-charting_v5.25.5)
+
+### Patches
+
+- enable custom callout in scatter chart ([PR #35565](https://github.com/microsoft/fluentui/pull/35565) by anushgupta@microsoft.com)
+- port changes from v9 to v8 using custom github agent ([PR #35595](https://github.com/microsoft/fluentui/pull/35595) by anushgupta@microsoft.com)
+- support barlabels in declarative HBC ([PR #35598](https://github.com/microsoft/fluentui/pull/35598) by anushgupta@microsoft.com)
+- enable multiplot for table, gauge and funnel chart ([PR #35575](https://github.com/microsoft/fluentui/pull/35575) by anushgupta@microsoft.com)
+- fix percentage label issue in donut, vbc, vsbc and heatmap chart ([PR #35597](https://github.com/microsoft/fluentui/pull/35597) by anushgupta@microsoft.com)
+
+## [5.25.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.4)
+
+Wed, 10 Dec 2025 06:27:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.3..@fluentui/react-charting_v5.25.4)
+
+### Patches
+
+- fix: resolve minor gantt chart bugs ([PR #35543](https://github.com/microsoft/fluentui/pull/35543) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.38 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/react-focus to v8.10.3 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/theme-samples to v8.7.222 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/react to v8.125.3 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [5.25.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.3)
 

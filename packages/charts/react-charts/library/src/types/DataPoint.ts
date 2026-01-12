@@ -210,6 +210,12 @@ export interface VerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -249,6 +255,11 @@ export interface HorizontalBarChartWithAxisDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -631,6 +642,12 @@ export interface VSChartDataPoint {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -741,6 +758,11 @@ export interface GVBarChartSeriesPoint {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 }
 
 /**
