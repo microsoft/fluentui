@@ -31,8 +31,8 @@ import {
 } from '../../utilities/index';
 import { extent as d3Extent } from 'd3-array';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { formatToLocaleString } from '../../../../../chart-utilities/src/formatter';
-import { useFluent } from '../../../../../../react-components/react-shared-contexts/library/src/ProviderContext';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const DEFAULT_LEGEND_HEIGHT = 32;
 const LABEL_WIDTH = 36;
