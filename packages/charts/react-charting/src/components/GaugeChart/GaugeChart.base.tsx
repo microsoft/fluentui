@@ -20,6 +20,7 @@ import {
   getNextColor,
   getNextGradient,
   pointTypes,
+  ChartTitle,
 } from '../../utilities/index';
 import { ILegend, ILegendContainer, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -220,15 +221,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (
-                <text
+                <ChartTitle
+                  title={this.props.chartTitle}
                   x={0}
                   y={-(this._outerRadius + TITLE_OFFSET)}
-                  textAnchor="middle"
                   className={this._classNames.chartTitle}
-                  aria-hidden={true}
-                >
-                  {this.props.chartTitle}
-                </text>
+                  titleStyles={this.props.titleStyles}
+                />
               )}
               {!this.props.hideMinMax && (
                 <>

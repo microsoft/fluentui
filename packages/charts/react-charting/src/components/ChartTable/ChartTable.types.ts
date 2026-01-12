@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChart } from '../../types/index';
+import { ITitleStyles } from '../../utilities/Common.styles';
 
 export interface IChartTableStyleProps {
   theme: ITheme;
@@ -13,6 +14,11 @@ export interface IChartTableStyleProps {
  * {@docCategory ChartTable}
  */
 export interface IChartTableProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * 1d or 2d Array of header values.
    */
@@ -34,6 +40,11 @@ export interface IChartTableProps {
    * @default '650px'
    */
   height?: string | number;
+
+  /**
+   * Chart title to display above the table
+   */
+  chartTitle?: string;
 
   /**
    * Theme (provided through customization)
@@ -67,4 +78,6 @@ export interface IChartTableStyles {
   headerCell?: IStyle;
   bodyCell?: IStyle;
   chart?: IStyle;
+  chartTitle?: IStyle;
+  svgTooltip?: IStyle;
 }

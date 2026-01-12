@@ -32,6 +32,7 @@ import {
   truncateString,
   tooltipOfAxislabels,
   DEFAULT_WRAP_WIDTH,
+  getChartTitleInlineStyles,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
@@ -573,10 +574,16 @@ export class CartesianChartBase
                 content={this.props.xAxisAnnotation}
                 textProps={{
                   x: this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
-                  y: VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+                  y: Math.max(
+                    (typeof this.props.titleStyles?.titleFont?.size === 'number'
+                      ? this.props.titleStyles.titleFont.size
+                      : 13) + AXIS_TITLE_PADDING,
+                    VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
+                  ),
                   className: this._classNames.axisAnnotation!,
                   textAnchor: 'middle',
                   'aria-hidden': true,
+                  style: getChartTitleInlineStyles(this.props.titleStyles?.titleFont),
                 }}
                 maxWidth={xAxisTitleMaxWidth}
                 {...commonSvgToolTipProps}

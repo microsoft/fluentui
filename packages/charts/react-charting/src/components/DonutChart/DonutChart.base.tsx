@@ -14,6 +14,8 @@ import {
   getNextGradient,
   areArraysEqual,
   MIN_DONUT_RADIUS,
+  ChartTitle,
+  CHART_TITLE_PADDING,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
@@ -130,8 +132,15 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
+    const titleHeight = data?.chartTitle
+      ? Math.max(
+          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
     const outerRadius =
-      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
+      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical - titleHeight) / 2;
     const chartData = this._elevateToMinimums(points);
     const valueInsideDonut =
       this.props.innerRadius! > MIN_DONUT_RADIUS
@@ -167,6 +176,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             width={this.state._width}
             height={this.state._height}
           >
+            {!hideLegend && data?.chartTitle && (
+              <ChartTitle
+                title={data.chartTitle}
+                x={this.state._width! / 2}
+                maxWidth={this.state._width! - 20}
+                className={this._classNames.chartTitle}
+                titleStyles={this.props.titleStyles}
+                tooltipClassName={this._classNames.svgTooltip}
+              />
+            )}
             <Pie
               width={this.state._width!}
               height={this.state._height!}
