@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import { SVGTooltipText, SVGTooltipTextProps } from './SVGTooltipText';
 import { getChartTitleInlineStyles, TitleStyles } from './Common.styles';
