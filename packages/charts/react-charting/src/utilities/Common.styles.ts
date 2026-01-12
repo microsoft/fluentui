@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import type { IRawStyle } from '@fluentui/merge-styles';
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
