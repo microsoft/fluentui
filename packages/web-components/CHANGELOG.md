@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Nov 2025 04:06:59 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jan 2026 04:07:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.2)
+
+Mon, 12 Jan 2026 04:07:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.1..@fluentui/web-components_v3.0.0-rc.2)
+
+### Changes
+
+- fix: remove empty text nodes from avatar ([PR #33963](https://github.com/microsoft/fluentui/pull/33963) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.1)
 
