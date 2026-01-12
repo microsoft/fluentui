@@ -80,7 +80,6 @@ export interface PolarChartProps {
 
   /**
    * Margins around the chart area.
-   * @default { top: 26, right: 46, bottom: 26, left: 46 }
    */
   margins?: Margins;
 
