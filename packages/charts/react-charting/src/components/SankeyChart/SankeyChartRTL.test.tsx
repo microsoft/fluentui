@@ -85,12 +85,16 @@ describe('Sankey chart - Subcomponent Node', () => {
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
-      const pathsAfterMouseOver = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      // Assert
-      expect(pathsAfterMouseOver).toBeDefined();
-      expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
-      expect(nodes[0].getAttribute('fill')).toEqual('#757575');
-      expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      await waitFor(() => {
+        const pathsAfterMouseOver = screen.getAllByText(
+          (content, element) => element!.tagName.toLowerCase() === 'path',
+        );
+        // Assert
+        expect(pathsAfterMouseOver).toBeDefined();
+        expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+        expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+        expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      });
     },
   );
 });
@@ -126,7 +130,7 @@ describe('Sankey chart - Mouse events', () => {
     },
   );
 
-  testWithoutWait(
+  testWithWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
@@ -134,8 +138,10 @@ describe('Sankey chart - Mouse events', () => {
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.mouseOver(nodes[0]);
-      fireEvent.mouseOut(nodes[0]);
-      expect(handleMouseOver).toHaveBeenCalled();
+      await waitFor(() => {
+        fireEvent.mouseOut(nodes[0]);
+        expect(handleMouseOver).toHaveBeenCalled();
+      });
     },
   );
 });

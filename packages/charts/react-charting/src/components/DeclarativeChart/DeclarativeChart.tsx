@@ -53,6 +53,7 @@ import { ILegendContainer, ILegendsProps, Legends } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { resolveCSSVariables } from '../../utilities/utilities';
+import { getChartTitleInlineStyles } from '../../utilities/Common.styles';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -513,9 +514,26 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 
   type ChartType = keyof ChartTypeMap;
+
+  const titleObj = plotlyInputWithValidData.layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+
+  const { fontFamily, fontSize, fontWeight } = theme.fonts.medium;
+  const titleStyle: React.CSSProperties = {
+    fontFamily,
+    fontSize,
+    fontWeight,
+    color: theme.semanticColors.bodyText,
+    textAlign: 'center',
+    marginBottom: '8px',
+    ...getChartTitleInlineStyles(titleFont),
+  };
+
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
           display: 'grid',
@@ -557,8 +575,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ? {}
                   : {
                       ...interactiveCommonProps,
-                      xAxisAnnotation: cellProperties?.xAnnotation,
-                      yAxisAnnotation: cellProperties?.yAnnotation,
                     }
               ) as Partial<ReturnType<typeof transformer>>;
 
@@ -568,8 +584,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
                   ...resolvedCommonProps,
-                  xAxisAnnotation: cellProperties?.xAnnotation,
-                  yAxisAnnotation: cellProperties?.yAnnotation,
+                  ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
+                  ...(cellProperties?.yAnnotation && { yAxisAnnotation: cellProperties.yAnnotation }),
                   componentRef: (ref: IChart | null) => {
                     chartRefs.current[chartIdx] = {
                       compRef: ref,

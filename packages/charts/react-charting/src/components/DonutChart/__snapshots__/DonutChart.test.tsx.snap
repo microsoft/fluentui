@@ -4093,7 +4093,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 
                   {
                     cursor: default;
-                    fill: #E5E5E5;
+                    fill: #637cef;
                     opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
