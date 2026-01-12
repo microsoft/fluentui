@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import type { DividerProps, DividerState } from './Divider.types';
-
-type DividerBaseProps = Omit<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>;
-
-type DividerBaseState = Omit<DividerState, 'alignContent' | 'appearance' | 'inset' | 'vertical'>;
+import type { DividerBaseProps, DividerBaseState } from './Divider.types';
 
 /**
  * Returns the props and state required to render the component
