@@ -15,13 +15,9 @@ import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
-import { wrapContent } from '../../utilities/utilities';
-import { getChartTitleInlineStyles } from '../../utilities/index';
-import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+import { ChartTitle } from '../../utilities/index';
 
 const PADDING_PERCENTAGE = 0.3;
-const AXIS_TITLE_PADDING = 8;
-const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 type NodeId = number | string;
 type ItemValues<T> = { [key: NodeId]: T };
@@ -553,7 +549,10 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _emptyChartId = useId('_SankeyChart_empty');
   const _labelTooltipId = useId('tooltip');
   const titleHeight = props.data?.chartTitle
-    ? Math.max((typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + 16, 36)
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) + 16,
+        36,
+      )
     : 36;
   const _margins = React.useRef<Margins>({ top: titleHeight, right: 48, bottom: 32, left: 48 });
   const { targetDocument, dir } = useFluent();
@@ -1127,13 +1126,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     const nodeData = _createNodes(nodes, nodeAttributes);
     const linkData = _createLinks(links, linkAttributes);
 
-    const commonSvgToolTipProps: SVGTooltipTextProps = {
-      wrapContent,
-      showBackground: true,
-      className: classes.svgTooltip,
-      content: '',
-    };
-
     const calloutProps: ChartPopoverProps = {
       isPopoverOpen: isCalloutVisible,
       clickPosition,
@@ -1154,26 +1146,13 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId} className={classes.chart}>
             {!props.hideLegend && props.data.chartTitle && (
-              <SVGTooltipText
-                {...commonSvgToolTipProps}
-                content={props.data.chartTitle}
-                textProps={{
-                  x: width / 2,
-                  y: Math.max(
-                    (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
-                    VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
-                  ),
-                  textAnchor: 'middle',
-                  className: classes.chartTitle,
-                  'aria-hidden': true,
-                  style: getChartTitleInlineStyles(
-                    props.titleFont,
-                    props.titleXAnchor,
-                    props.titleYAnchor,
-                    props.titlePad,
-                  ),
-                }}
+              <ChartTitle
+                title={props.data.chartTitle}
+                x={width / 2}
                 maxWidth={width - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
               />
             )}
             {nodeLinkDomOrderArray.map(item => {

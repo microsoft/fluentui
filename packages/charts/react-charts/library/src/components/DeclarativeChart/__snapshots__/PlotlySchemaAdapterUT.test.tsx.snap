@@ -5495,8 +5495,10 @@ Object {
   "roundCorners": true,
   "roundedTicks": true,
   "showYAxisLables": true,
-  "titleFont": Object {
-    "color": "#4D5663",
+  "titleStyles": Object {
+    "titleFont": Object {
+      "color": "#4D5663",
+    },
   },
   "width": undefined,
   "xAxisAnnotation": "",

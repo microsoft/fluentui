@@ -102,6 +102,7 @@ import {
   ChartAnnotationHorizontalAlign,
   ChartAnnotationVerticalAlign,
 } from '../../types/ChartAnnotation';
+import type { TitleStyles } from '../../utilities/Common.styles';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -180,12 +181,16 @@ function getTitles(layout: Partial<Layout> | undefined) {
   const titleYAnchor = typeof titleObj === 'object' ? titleObj?.yanchor : undefined;
   const titlePad = typeof titleObj === 'object' ? titleObj?.pad : undefined;
 
-  const titles = {
-    chartTitle,
+  const titleStyles: TitleStyles = {
     ...(titleFont ? { titleFont } : {}),
     ...(titleXAnchor ? { titleXAnchor } : {}),
     ...(titleYAnchor ? { titleYAnchor } : {}),
     ...(titlePad ? { titlePad } : {}),
+  };
+
+  const titles = {
+    chartTitle,
+    ...(Object.keys(titleStyles).length > 0 ? { titleStyles } : {}),
     xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
     yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
     xAxisAnnotation: chartTitle,
@@ -1350,7 +1355,7 @@ export const transformPlotlyJsonToDonutProps = (
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
-  const { chartTitle, titleFont, titleXAnchor, titleYAnchor, titlePad } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
   // Build anticlockwise order by keeping the first item, reversing the rest
   const legends = Object.keys(mapLegendToDataPoint);
   const reorderedEntries =
@@ -1379,10 +1384,7 @@ export const transformPlotlyJsonToDonutProps = (
       : true,
     roundCorners: true,
     order: 'sorted',
-    ...(titleFont && { titleFont }),
-    ...(titleXAnchor && { titleXAnchor }),
-    ...(titleYAnchor && { titleYAnchor }),
-    ...(titlePad && { titlePad }),
+    ...titleStyles,
   } as DonutChartProps;
 };
 
@@ -2697,7 +2699,7 @@ export const transformPlotlyJsonToSankeyProps = (
   //   },
   // };
 
-  const { chartTitle, titleFont, titleXAnchor, titleYAnchor, titlePad } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     data: {
@@ -2709,10 +2711,7 @@ export const transformPlotlyJsonToSankeyProps = (
     // TODO
     // styles,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    ...(titleFont && { titleFont }),
-    ...(titleXAnchor && { titleXAnchor }),
-    ...(titleYAnchor && { titleYAnchor }),
-    ...(titlePad && { titlePad }),
+    ...titleStyles,
   } as SankeyChartProps;
 };
 
@@ -2817,7 +2816,7 @@ export const transformPlotlyJsonToGaugeProps = (
     sublabel: sublabelColor,
   };
 
-  const { chartTitle, titleFont, titleXAnchor, titleYAnchor, titlePad } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     segments,
@@ -2835,10 +2834,7 @@ export const transformPlotlyJsonToGaugeProps = (
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',
     styles,
     roundCorners: true,
-    ...(titleFont && { titleFont }),
-    ...(titleXAnchor && { titleXAnchor }),
-    ...(titleYAnchor && { titleYAnchor }),
-    ...(titlePad && { titlePad }),
+    ...titleStyles,
   } as GaugeChartProps;
 };
 
@@ -3007,7 +3003,7 @@ export const transformPlotlyJsonToChartTableProps = (
     values: tableHeader?.values ?? templateHeader?.values ?? [],
   };
 
-  const { chartTitle, titleFont, titleXAnchor, titleYAnchor, titlePad } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     headers: normalizeHeaders(tableData.header?.values ?? [], header),
@@ -3016,10 +3012,7 @@ export const transformPlotlyJsonToChartTableProps = (
     height: input.layout?.height,
     styles,
     chartTitle,
-    ...(titleFont && { titleFont }),
-    ...(titleXAnchor && { titleXAnchor }),
-    ...(titleYAnchor && { titleYAnchor }),
-    ...(titlePad && { titlePad }),
+    ...titleStyles,
   } as ChartTableProps;
 };
 
@@ -3169,7 +3162,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
       });
     });
   }
-  const { chartTitle, titleFont, titleXAnchor, titleYAnchor, titlePad } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     data: funnelData,
@@ -3178,10 +3171,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     height: input.layout?.height,
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    ...(titleFont && { titleFont }),
-    ...(titleXAnchor && { titleXAnchor }),
-    ...(titleYAnchor && { titleYAnchor }),
-    ...(titlePad && { titlePad }),
+    ...titleStyles,
   } as FunnelChartProps;
 };
 

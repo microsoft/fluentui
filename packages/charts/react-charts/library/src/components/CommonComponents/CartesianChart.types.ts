@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
-import type { Font } from '@fluentui/chart-utilities';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import {
   AccessibilityProps,
   Chart,
@@ -177,6 +177,11 @@ export interface CartesianChartStyles {
  * {@docCategory CartesianChart}
  */
 export interface CartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
@@ -572,11 +577,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Define the chart title
    */
   chartTitle?: string;
-
-  /**
-   * Font properties for the chart title
-   */
-  titleFont?: Partial<Font>;
 
   /**
    * Only used for Area chart

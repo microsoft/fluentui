@@ -1,5 +1,5 @@
 import { Ref } from 'react';
-import type { Font } from '@fluentui/chart-utilities';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Chart, ChartProps } from '../../types/DataPoint';
 
@@ -10,6 +10,11 @@ export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoi
  * {@docCategory SankeyChart}
  */
 export interface SankeyChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -96,26 +101,6 @@ export interface SankeyChartProps {
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
-
-  /**
-   * Font properties for the chart title
-   */
-  titleFont?: Partial<Font>;
-
-  /**
-   * Horizontal anchor/alignment for the chart title
-   */
-  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-
-  /**
-   * Vertical anchor/alignment for the chart title
-   */
-  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
-
-  /**
-   * Padding for the chart title
-   */
-  titlePad?: { t?: number; r?: number; b?: number; l?: number };
 
   /**
    * Whether to hide the legend

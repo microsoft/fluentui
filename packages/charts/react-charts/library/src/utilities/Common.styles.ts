@@ -3,6 +3,30 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { type GriffelStyle } from '@griffel/react';
 import type { Font } from '@fluentui/chart-utilities';
 
+/**
+ * Shared interface for chart title styling properties.
+ * Used by components that display a chart title with customizable font, alignment, and padding.
+ * {@docCategory TitleStyles}
+ */
+export interface TitleStyles {
+  /**
+   * Font configuration for the title
+   */
+  titleFont?: Partial<Font>;
+  /**
+   * Horizontal anchor/alignment for the chart title
+   */
+  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
+  /**
+   * Vertical anchor/alignment for the chart title
+   */
+  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+  /**
+   * Padding for the chart title
+   */
+  titlePad?: { t?: number; r?: number; b?: number; l?: number };
+}
+
 export const getTooltipStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.body1,

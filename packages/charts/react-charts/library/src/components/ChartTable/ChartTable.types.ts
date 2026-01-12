@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Font } from '@fluentui/chart-utilities';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { Chart } from './index';
 
 /**
@@ -7,6 +7,11 @@ import { Chart } from './index';
  * {@docCategory ChartTable}
  */
 export interface ChartTableProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * 1d or 2d Array of header values.
    */
@@ -49,26 +54,6 @@ export interface ChartTableProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.Ref<Chart>;
-
-  /**
-   * Font properties for the chart title
-   */
-  titleFont?: Partial<Font>;
-
-  /**
-   * Horizontal anchor/alignment for the chart title
-   */
-  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-
-  /**
-   * Vertical anchor/alignment for the chart title
-   */
-  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
-
-  /**
-   * Padding for the chart title
-   */
-  titlePad?: { t?: number; r?: number; b?: number; l?: number };
 }
 
 /**

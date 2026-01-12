@@ -234,6 +234,7 @@ export interface CartesianChartProps {
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
+    titleStyles?: TitleStyles;
     useUTC?: string | boolean;
     width?: number;
     wrapXAxisLables?: boolean;
@@ -521,15 +522,7 @@ export interface ChartTableProps {
         style?: React_2.CSSProperties;
     }[][];
     styles?: ChartTableStyles;
-    titleFont?: Partial<Font>;
-    titlePad?: {
-        t?: number;
-        r?: number;
-        b?: number;
-        l?: number;
-    };
-    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+    titleStyles?: TitleStyles;
     width?: string | number;
 }
 
@@ -746,15 +739,7 @@ export interface DonutChartProps extends CartesianChartProps {
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
-    titleFont?: Partial<Font>;
-    titlePad?: {
-        t?: number;
-        r?: number;
-        b?: number;
-        l?: number;
-    };
-    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+    titleStyles?: TitleStyles;
     valueInsideDonut?: string | number;
     width?: number;
 }
@@ -838,15 +823,7 @@ export interface FunnelChartProps {
     legendProps?: Partial<LegendsProps>;
     orientation?: 'horizontal' | 'vertical';
     styles?: FunnelChartStyles;
-    titleFont?: Partial<Font>;
-    titlePad?: {
-        t?: number;
-        r?: number;
-        b?: number;
-        l?: number;
-    };
-    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+    titleStyles?: TitleStyles;
     width?: number;
 }
 
@@ -931,15 +908,7 @@ export interface GaugeChartProps {
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
     sublabel?: string;
-    titleFont?: Partial<Font>;
-    titlePad?: {
-        t?: number;
-        r?: number;
-        b?: number;
-        l?: number;
-    };
-    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+    titleStyles?: TitleStyles;
     variant?: GaugeChartVariant;
     width?: number;
 }
@@ -1513,7 +1482,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
         tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
-    titleFont?: Partial<Font>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
@@ -1655,15 +1623,7 @@ export interface SankeyChartProps {
     shouldResize?: number;
     strings?: SankeyChartStrings;
     styles?: SankeyChartStyles;
-    titleFont?: Partial<Font>;
-    titlePad?: {
-        t?: number;
-        r?: number;
-        b?: number;
-        l?: number;
-    };
-    titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-    titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
+    titleStyles?: TitleStyles;
     width?: number;
 }
 

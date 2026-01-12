@@ -788,13 +788,14 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               textProps={{
                 x: margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
                 y: Math.max(
-                  (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
+                  (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+                    AXIS_TITLE_PADDING,
                   VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
                 ),
                 className: classes.axisAnnotation!,
                 textAnchor: 'middle',
                 'aria-hidden': true,
-                style: getChartTitleInlineStyles(props.titleFont),
+                style: getChartTitleInlineStyles(props.titleStyles?.titleFont),
               }}
               maxWidth={xAxisTitleMaxWidth}
             />

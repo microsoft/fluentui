@@ -1982,6 +1982,12 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
         <g
           transform="translate(0, -48)"
         >
+          <rect
+            height="3"
+            width="6"
+            x="-3"
+            y="74"
+          />
           <text
             aria-describedby="tooltip-_r_7_"
             aria-hidden="true"
@@ -4363,6 +4369,12 @@ Object {
             <g
               transform="translate(0, -48)"
             >
+              <rect
+                height="3"
+                width="6"
+                x="-3"
+                y="74"
+              />
               <text
                 aria-describedby="tooltip-_r_2i_"
                 aria-hidden="true"
@@ -4606,6 +4618,12 @@ Object {
           <g
             transform="translate(0, -48)"
           >
+            <rect
+              height="3"
+              width="6"
+              x="-3"
+              y="74"
+            />
             <text
               aria-describedby="tooltip-_r_2i_"
               aria-hidden="true"

@@ -7,25 +7,15 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import {
-  areArraysEqual,
-  getColorFromToken,
-  getNextColor,
-  MIN_DONUT_RADIUS,
-  wrapContent,
-  getChartTitleInlineStyles,
-} from '../../utilities/index';
+import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, ChartTitle } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
-import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
-const AXIS_TITLE_PADDING = 8;
-const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 
 // Create a DonutChart variant which uses these default styles and this styled subcomponent.
 /**
@@ -311,18 +301,14 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 
     const classes = useDonutChartStyles(props);
 
-    const commonSvgToolTipProps: SVGTooltipTextProps = {
-      wrapContent,
-      showBackground: true,
-      className: classes.svgTooltip,
-      content: '',
-    };
-
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const titleHeight = data?.chartTitle
-      ? Math.max((typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + 16, 36)
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) + 16,
+          36,
+        )
       : 0;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
     const chartData = _elevateToMinimums(points);
@@ -340,26 +326,13 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
             {!hideLegend && data?.chartTitle && (
-              <SVGTooltipText
-                {...commonSvgToolTipProps}
-                content={data.chartTitle}
-                textProps={{
-                  x: _width! / 2,
-                  y: Math.max(
-                    (typeof props.titleFont?.size === 'number' ? props.titleFont.size : 13) + AXIS_TITLE_PADDING,
-                    VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
-                  ),
-                  textAnchor: 'middle',
-                  className: classes.chartTitle,
-                  'aria-hidden': true,
-                  style: getChartTitleInlineStyles(
-                    props.titleFont,
-                    props.titleXAnchor,
-                    props.titleYAnchor,
-                    props.titlePad,
-                  ),
-                }}
+              <ChartTitle
+                title={data.chartTitle}
+                x={_width! / 2}
                 maxWidth={_width! - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
               />
             )}
             <Pie

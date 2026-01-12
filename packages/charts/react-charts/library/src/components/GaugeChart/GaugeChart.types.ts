@@ -1,7 +1,7 @@
 import { LegendsProps } from '../Legends/index';
 import { AccessibilityProps, Chart } from '../../types/index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import type { Font } from '@fluentui/chart-utilities';
+import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Gauge Chart segment interface.
@@ -49,6 +49,11 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
  * {@docCategory GaugeChart}
  */
 export interface GaugeChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Width of the chart
    */
@@ -133,26 +138,6 @@ export interface GaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ChartPopoverProps>;
-
-  /**
-   * Font properties for the chart title
-   */
-  titleFont?: Partial<Font>;
-
-  /**
-   * Horizontal anchor/alignment for the chart title
-   */
-  titleXAnchor?: 'auto' | 'left' | 'center' | 'right';
-
-  /**
-   * Vertical anchor/alignment for the chart title
-   */
-  titleYAnchor?: 'auto' | 'top' | 'middle' | 'bottom';
-
-  /**
-   * Padding for the chart title
-   */
-  titlePad?: { t?: number; r?: number; b?: number; l?: number };
 
   /**
    * Specifies the variant of GaugeChart to be rendered
