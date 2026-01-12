@@ -327,7 +327,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     ]);
 
     const renderPolarTicks = React.useCallback(() => {
-      const radialAxisAngle = Math.PI / 2;
+      const radialAxisAngle = props.direction === 'clockwise' ? 0 : Math.PI / 2;
       const radialAxisStartPoint = d3PointRadial(radialAxisAngle, innerRadius);
       const radialAxisEndPoint = d3PointRadial(radialAxisAngle, outerRadius);
       // (0, pi]

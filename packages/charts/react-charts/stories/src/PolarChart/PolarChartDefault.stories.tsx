@@ -1,33 +1,32 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { PolarChart, PolarChartProps } from '@fluentui/react-charts';
-import { Switch } from '@fluentui/react-components';
 
 const data: PolarChartProps['data'] = [
   {
     type: 'areapolar',
     legend: 'Mike',
-    color: 'rgb(255, 0, 0)',
+    color: '#8884d8',
     data: [
-      { r: 120, theta: 'Math', markerSize: 6 },
-      { r: 98, theta: 'Chinese', markerSize: 8 },
-      { r: 86, theta: 'English', markerSize: 10 },
-      { r: 99, theta: 'Geography', markerSize: 12 },
-      { r: 85, theta: 'Physics', markerSize: 14 },
-      { r: 65, theta: 'History', markerSize: 16 },
+      { r: 120, theta: 'Math' },
+      { r: 98, theta: 'Chinese' },
+      { r: 86, theta: 'English' },
+      { r: 99, theta: 'Geography' },
+      { r: 85, theta: 'Physics' },
+      { r: 65, theta: 'History' },
     ],
   },
   {
     type: 'areapolar',
     legend: 'Lily',
-    color: 'rgb(0, 0, 255)',
+    color: '#82ca9d',
     data: [
-      { r: 110, theta: 'Math', markerSize: 6 },
-      { r: 130, theta: 'Chinese', markerSize: 8 },
-      { r: 130, theta: 'English', markerSize: 10 },
-      { r: 100, theta: 'Geography', markerSize: 12 },
-      { r: 90, theta: 'Physics', markerSize: 14 },
-      { r: 85, theta: 'History', markerSize: 16 },
+      { r: 110, theta: 'Math' },
+      { r: 130, theta: 'Chinese' },
+      { r: 130, theta: 'English' },
+      { r: 100, theta: 'Geography' },
+      { r: 90, theta: 'Physics' },
+      { r: 85, theta: 'History' },
     ],
   },
 ];
@@ -35,8 +34,6 @@ const data: PolarChartProps['data'] = [
 export const PolarChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);
-  const [enableGradient, setEnableGradient] = React.useState(false);
-  const [roundedCorners, setRoundedCorners] = React.useState(false);
 
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -89,32 +86,8 @@ export const PolarChartBasic = (): JSXElement => {
           <span>{height}</span>
         </div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginTop: 10 }}>
-        <div>
-          <Switch
-            checked={enableGradient}
-            onChange={(_, val) => setEnableGradient(val.checked)}
-            label="Enable Gradient"
-          />
-        </div>
-        <div>
-          <Switch
-            checked={roundedCorners}
-            onChange={(_, val) => setRoundedCorners(val.checked)}
-            label="Rounded Corners"
-          />
-        </div>
-      </div>
       <div style={{ width, height, marginTop: 10 }}>
-        <PolarChart
-          data={data}
-          // showYAxisLables
-          width={width}
-          height={height}
-          // shape="polygon"
-          // enableGradient={enableGradient}
-          // roundCorners={roundedCorners}
-        />
+        <PolarChart data={data} width={width} height={height} shape="polygon" direction="clockwise" />
       </div>
     </div>
   );
