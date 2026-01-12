@@ -22,7 +22,7 @@ import {
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { normalizePaddingRect, safeRectValue } from '../../../utilities/annotationUtils';
+import { normalizePaddingRect, safeRectValue, clamp } from '../../../utilities/annotationUtils';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
@@ -256,8 +256,6 @@ const normalizeBandOffset = (
   }
   return position;
 };
-
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
 type AxisCoordinateType = 'data' | 'relative' | 'pixel';
 

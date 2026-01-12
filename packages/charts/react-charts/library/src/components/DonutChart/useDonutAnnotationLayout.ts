@@ -6,10 +6,18 @@ import {
   DEFAULT_CONNECTOR_END_PADDING,
   DEFAULT_CONNECTOR_START_PADDING,
 } from '../CommonComponents/Annotations/useChartAnnotationLayer.styles';
-import { normalizeViewportPadding } from '../../utilities/annotationUtils';
+import {
+  normalizeViewportPadding,
+  isFiniteNumber,
+  applyToAllSides,
+  parseCssSizeToPixels,
+  resolvePaddingSides,
+  OverflowRect,
+  aggregateMaxOverflow,
+  addMarginToOverflow,
+  hasPaddingConverged,
+} from '../../utilities/annotationUtils';
 
-const CSS_SIZE_REGEX = /^(-?\d*\.?\d+)(px|em|rem)?$/i;
-const DEFAULT_PADDING_SIDES = Object.freeze({ top: 4, right: 8, bottom: 4, left: 8 });
 const DEFAULT_VIEWPORT_FONT_SIZE = 14;
 const DEFAULT_LINE_HEIGHT_RATIO = 1.35;
 const DEFAULT_VIEWPORT_MAX_WIDTH = 180;
@@ -20,12 +28,7 @@ const CONNECTOR_FALLBACK_DIRECTION = Object.freeze({ x: 0, y: -1 });
 const LINE_BREAK_REGEX = /<br\s*\/?>(?=\s*)|\n/gi;
 const EMPTY_ANNOTATIONS: readonly ChartAnnotation[] = Object.freeze([]);
 
-export type AnnotationViewportPadding = {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-};
+export type AnnotationViewportPadding = OverflowRect;
 
 const ZERO_ANNOTATION_VIEWPORT_PADDING: AnnotationViewportPadding = Object.freeze({
   top: 0,
@@ -34,12 +37,7 @@ const ZERO_ANNOTATION_VIEWPORT_PADDING: AnnotationViewportPadding = Object.freez
   left: 0,
 });
 
-type AnnotationOverflow = {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-};
+type AnnotationOverflow = OverflowRect;
 
 type DonutViewportLayout = {
   padding: AnnotationViewportPadding;
@@ -72,68 +70,6 @@ const sanitizeAnnotationSegment = (segment: string): string =>
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-
-const parseCssSizeToPixels = (value: string | undefined): number | undefined => {
-  if (typeof value !== 'string') {
-    return undefined;
-  }
-
-  const match = CSS_SIZE_REGEX.exec(value.trim());
-  if (!match) {
-    return undefined;
-  }
-
-  const numeric = Number.parseFloat(match[1]);
-  if (!Number.isFinite(numeric)) {
-    return undefined;
-  }
-
-  const unit = match[2]?.toLowerCase();
-  if (!unit || unit === 'px') {
-    return numeric;
-  }
-  if (unit === 'em' || unit === 'rem') {
-    return numeric * 16;
-  }
-  return undefined;
-};
-
-const resolvePaddingSides = (padding: string | undefined) => {
-  if (typeof padding !== 'string' || padding.trim().length === 0) {
-    return { ...DEFAULT_PADDING_SIDES };
-  }
-
-  const tokens = padding.trim().split(/\s+/);
-  if (tokens.length === 0 || tokens.length > 4) {
-    return { ...DEFAULT_PADDING_SIDES };
-  }
-
-  const values = tokens.map(token => parseCssSizeToPixels(token));
-  if (values.some(value => value === undefined)) {
-    return { ...DEFAULT_PADDING_SIDES };
-  }
-
-  switch (values.length) {
-    case 1: {
-      const v = values[0]!;
-      return { top: v, right: v, bottom: v, left: v };
-    }
-    case 2: {
-      const [vertical, horizontal] = values as number[];
-      return { top: vertical, right: horizontal, bottom: vertical, left: horizontal };
-    }
-    case 3: {
-      const [top, horizontal, bottom] = values as number[];
-      return { top, right: horizontal, bottom, left: horizontal };
-    }
-    case 4: {
-      const [top, right, bottom, left] = values as number[];
-      return { top, right, bottom, left };
-    }
-    default:
-      return { ...DEFAULT_PADDING_SIDES };
-  }
-};
 
 const getAnnotationSegments = (text: string): string[] => {
   const rawSegments = text.split(LINE_BREAK_REGEX);
@@ -398,70 +334,39 @@ const computeAnnotationViewportPadding = (
   let padding: AnnotationViewportPadding = { ...basePadding };
 
   for (let iteration = 0; iteration < 4; iteration++) {
-    let overflowTop = 0;
-    let overflowRight = 0;
-    let overflowBottom = 0;
-    let overflowLeft = 0;
+    const overflows: OverflowRect[] = [];
 
     annotations?.forEach(annotation => {
       const overflow = estimateViewportAnnotationOverflow(annotation, width, height, padding);
-      if (!overflow) {
-        return;
-      }
-
-      if (overflow.top > 0) {
-        overflowTop = Math.max(overflowTop, overflow.top);
-      }
-      if (overflow.right > 0) {
-        overflowRight = Math.max(overflowRight, overflow.right);
-      }
-      if (overflow.bottom > 0) {
-        overflowBottom = Math.max(overflowBottom, overflow.bottom);
-      }
-      if (overflow.left > 0) {
-        overflowLeft = Math.max(overflowLeft, overflow.left);
+      if (overflow) {
+        overflows.push(overflow);
       }
     });
 
-    const overflowPaddingTop = overflowTop > 0 ? overflowTop + ADDITIONAL_MARGIN_SAFETY : 0;
-    const overflowPaddingRight = overflowRight > 0 ? overflowRight + ADDITIONAL_MARGIN_SAFETY : 0;
-    const overflowPaddingBottom = overflowBottom > 0 ? overflowBottom + ADDITIONAL_MARGIN_SAFETY : 0;
-    const overflowPaddingLeft = overflowLeft > 0 ? overflowLeft + ADDITIONAL_MARGIN_SAFETY : 0;
+    const aggregatedOverflow = aggregateMaxOverflow(overflows);
+    const overflowPadding = addMarginToOverflow(aggregatedOverflow, ADDITIONAL_MARGIN_SAFETY);
 
     const nextPadding: AnnotationViewportPadding = {
-      top: Math.max(basePadding.top, padding.top, overflowPaddingTop),
-      right: Math.max(basePadding.right, padding.right, overflowPaddingRight),
-      bottom: Math.max(basePadding.bottom, padding.bottom, overflowPaddingBottom),
-      left: Math.max(basePadding.left, padding.left, overflowPaddingLeft),
+      top: Math.max(basePadding.top, padding.top, overflowPadding.top),
+      right: Math.max(basePadding.right, padding.right, overflowPadding.right),
+      bottom: Math.max(basePadding.bottom, padding.bottom, overflowPadding.bottom),
+      left: Math.max(basePadding.left, padding.left, overflowPadding.left),
     };
 
-    const converged =
-      Math.abs(nextPadding.top - padding.top) < 0.5 &&
-      Math.abs(nextPadding.right - padding.right) < 0.5 &&
-      Math.abs(nextPadding.bottom - padding.bottom) < 0.5 &&
-      Math.abs(nextPadding.left - padding.left) < 0.5;
-
-    padding = nextPadding;
-
-    if (converged) {
+    if (hasPaddingConverged(padding, nextPadding)) {
+      padding = nextPadding;
       break;
     }
+
+    padding = nextPadding;
   }
 
   if (padding.top < 0.5 && padding.right < 0.5 && padding.bottom < 0.5 && padding.left < 0.5) {
     return ZERO_ANNOTATION_VIEWPORT_PADDING;
   }
 
-  return {
-    top: Math.max(padding.top, 0),
-    right: Math.max(padding.right, 0),
-    bottom: Math.max(padding.bottom, 0),
-    left: Math.max(padding.left, 0),
-  };
+  return applyToAllSides(side => Math.max(padding[side], 0)) as AnnotationViewportPadding;
 };
-
-const isFiniteNumber = (value: number | undefined): value is number =>
-  typeof value === 'number' && Number.isFinite(value);
 
 const resolveOuterRadius = (width: number, height: number, hideLabels: boolean | undefined): number => {
   const donutMarginHorizontal = hideLabels ? 0 : 80;
