@@ -8,8 +8,10 @@ export {
 } from './Tooltip';
 export type {
   OnVisibleChangeData,
+  // TooltipBaseProps,
   TooltipProps,
   TooltipSlots,
+  // TooltipBaseState,
   TooltipState,
   TooltipChildProps as TooltipTriggerProps,
 } from './Tooltip';

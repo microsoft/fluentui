@@ -21,13 +21,10 @@ import {
   slot,
   getReactElementRef,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
+import type { TooltipBaseProps, TooltipBaseState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { useTooltipTimeout } from './private/useTooltipTimeout';
 import { Escape } from '@fluentui/keyboard-keys';
-
-type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
-type TooltipBaseState = Omit<TooltipState, 'appearance'>;
 
 /**
  * Create the state required to render Tooltip.

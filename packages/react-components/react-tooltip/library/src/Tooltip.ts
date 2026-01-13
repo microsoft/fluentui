@@ -1,8 +1,10 @@
 export type {
   OnVisibleChangeData,
   TooltipChildProps,
+  TooltipBaseProps,
   TooltipProps,
   TooltipSlots,
+  TooltipBaseState,
   TooltipState,
 } from './components/Tooltip/index';
 export {
