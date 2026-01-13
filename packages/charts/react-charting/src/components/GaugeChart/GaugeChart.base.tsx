@@ -227,6 +227,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   y={-(this._outerRadius + TITLE_OFFSET)}
                   className={this._classNames.chartTitle}
                   titleStyles={this.props.titleStyles}
+                  tooltipClassName={this._classNames.svgTooltip}
                 />
               )}
               {!this.props.hideMinMax && (

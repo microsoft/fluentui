@@ -274,6 +274,11 @@ export interface IGaugeChartStyles {
   needle?: IStyle;
 
   /**
+   * Styles for SVG tooltip background
+   */
+  svgTooltip?: IStyle;
+
+  /**
    * Styles for the chart title
    */
   chartTitle?: IStyle;

@@ -132,13 +132,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
-    const titleHeight = data?.chartTitle
-      ? Math.max(
-          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
-            CHART_TITLE_PADDING,
-          36,
-        )
-      : 0;
+    const titleHeight =
+      !hideLegend && data?.chartTitle
+        ? Math.max(
+            (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+              CHART_TITLE_PADDING,
+            36,
+          )
+        : 0;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical - titleHeight) / 2;
     const chartData = this._elevateToMinimums(points);
@@ -186,28 +187,30 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 tooltipClassName={this._classNames.svgTooltip}
               />
             )}
-            <Pie
-              width={this.state._width!}
-              height={this.state._height!}
-              outerRadius={outerRadius}
-              innerRadius={this.props.innerRadius!}
-              data={chartData!}
-              enableGradient={this.props.enableGradient}
-              roundCorners={this.props.roundCorners}
-              onFocusCallback={this._focusCallback}
-              hoverOnCallback={this._hoverCallback}
-              hoverLeaveCallback={this._hoverLeave}
-              uniqText={this._uniqText}
-              onBlurCallback={this._onBlur}
-              activeArc={this._getHighlightedLegend()}
-              focusedArcId={this.state.focusedArcId || ''}
-              href={this.props.href!}
-              calloutId={this._calloutId}
-              valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-              theme={this.props.theme!}
-              showLabelsInPercent={this.props.showLabelsInPercent}
-              hideLabels={this.props.hideLabels}
-            />
+            <g transform={`translate(0, ${titleHeight})`}>
+              <Pie
+                width={this.state._width!}
+                height={this.state._height! - titleHeight}
+                outerRadius={outerRadius}
+                innerRadius={this.props.innerRadius!}
+                data={chartData!}
+                enableGradient={this.props.enableGradient}
+                roundCorners={this.props.roundCorners}
+                onFocusCallback={this._focusCallback}
+                hoverOnCallback={this._hoverCallback}
+                hoverLeaveCallback={this._hoverLeave}
+                uniqText={this._uniqText}
+                onBlurCallback={this._onBlur}
+                activeArc={this._getHighlightedLegend()}
+                focusedArcId={this.state.focusedArcId || ''}
+                href={this.props.href!}
+                calloutId={this._calloutId}
+                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+                theme={this.props.theme!}
+                showLabelsInPercent={this.props.showLabelsInPercent}
+                hideLabels={this.props.hideLabels}
+              />
+            </g>
           </svg>
         </FocusZone>
         <Callout

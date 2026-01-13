@@ -1,6 +1,6 @@
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
-import { getChartTitleStyle } from '../../utilities/Common.styles';
+import { getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/Common.styles';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
   const { theme, chartValueSize, className, lineColor, toDrawShape, solidFill, gradientFill, opacity } = props;
@@ -61,6 +61,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       stroke: theme.semanticColors.bodyBackground,
     },
 
+    svgTooltip: getSvgTooltipStyle(theme),
     chartTitle: getChartTitleStyle(theme),
 
     segment: {
