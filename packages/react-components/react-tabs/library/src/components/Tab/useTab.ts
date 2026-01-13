@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { omit, slot, } from '@fluentui/react-utilities';
+import { omit, slot } from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
-import { useTabListContext_unstable } from '../TabList/TabListContext';
+import { useTabListContext_unstable } from '../TabList';
 import { useTabBase_unstable } from './useTabBase';
 
 /**

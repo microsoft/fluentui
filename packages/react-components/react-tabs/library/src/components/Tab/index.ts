@@ -1,5 +1,5 @@
 export { Tab } from './Tab';
-export type { TabInternalSlots, TabProps, TabSlots, TabState, TabValue } from './Tab.types';
+export type { TabInternalSlots, TabBaseProps, TabProps, TabSlots, TabBaseState, TabState, TabValue } from './Tab.types';
 export { renderTab_unstable } from './renderTab';
 export { useTab_unstable } from './useTab';
 export { useTabBase_unstable } from './useTabBase';

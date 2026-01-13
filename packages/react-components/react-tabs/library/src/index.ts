@@ -1,4 +1,11 @@
-export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
+export type {
+  // TabBaseProps,
+  TabProps,
+  TabSlots,
+  // TabBaseState,
+  TabState,
+  TabValue,
+} from './Tab';
 export {
   renderTab_unstable,
   Tab,
@@ -20,8 +27,10 @@ export type {
   SelectTabEventHandler,
   TabListContextValue,
   TabListContextValues,
+  // TabListBaseProps,
   TabListProps,
   TabListSlots,
+  // TabListBaseState,
   TabListState,
 } from './TabList';
 export {

@@ -6,8 +6,10 @@ export type {
   SelectTabEventHandler,
   TabListContextValue,
   TabListContextValues,
+  TabListBaseProps,
   TabListProps,
   TabListSlots,
+  TabListBaseState,
   TabListState,
   TabRegisterData,
 } from './TabList.types';

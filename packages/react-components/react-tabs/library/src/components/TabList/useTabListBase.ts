@@ -9,11 +9,14 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import type { TabRegisterData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
-import { TabValue } from '../Tab/Tab.types';
-
-type TabListPropsBase = Omit<TabListProps, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
-type TabListStateBase = Omit<TabListState, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
+import type {
+  TabRegisterData,
+  SelectTabData,
+  SelectTabEvent,
+  TabListBaseProps,
+  TabListBaseState,
+} from './TabList.types';
+import type { TabValue } from '../Tab';
 
 /**
  * Create the state required to render TabList.
@@ -24,7 +27,7 @@ type TabListStateBase = Omit<TabListState, 'appearance' | 'size' | 'reserveSelec
  * @param props - props from this instance of TabList
  * @param ref - reference to root HTMLElement of TabList
  */
-export const useTabListBase_unstable = (props: TabListPropsBase, ref: React.Ref<HTMLElement>): TabListStateBase => {
+export const useTabListBase_unstable = (props: TabListBaseProps, ref: React.Ref<HTMLElement>): TabListBaseState => {
   const { disabled = false, onTabSelect, selectTabOnFocus = false, vertical = false } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
@@ -116,5 +119,6 @@ export const useTabListBase_unstable = (props: TabListPropsBase, ref: React.Ref<
     onUnregister,
     onSelect,
     getRegisteredTabs,
+    vertical,
   };
 };

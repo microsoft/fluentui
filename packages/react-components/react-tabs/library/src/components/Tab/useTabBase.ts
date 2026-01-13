@@ -9,12 +9,9 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import type { TabProps, TabState } from './Tab.types';
-import { useTabListContext_unstable } from '../TabList/TabListContext';
-import { SelectTabEvent } from '../TabList/TabList.types';
-
-type TabPropsBase = Omit<TabProps, 'contentReservedSpace'>;
-type TabStateBase = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;
+import type { TabBaseProps, TabBaseState } from './Tab.types';
+import { useTabListContext_unstable } from '../TabList';
+import type { SelectTabEvent } from '../TabList';
 
 /**
  * Create the state required to render Tab.
@@ -25,7 +22,7 @@ type TabStateBase = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace
  * @param props - props from this instance of Tab
  * @param ref - reference to root HTMLElement of Tab
  */
-export const useTabBase_unstable = (props: TabPropsBase, ref: React.Ref<HTMLElement>): TabStateBase => {
+export const useTabBase_unstable = (props: TabBaseProps, ref: React.Ref<HTMLElement>): TabBaseState => {
   const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value } = props;
 
   const selectTabOnFocus = useTabListContext_unstable(ctx => ctx.selectTabOnFocus);
@@ -83,7 +80,7 @@ export const useTabBase_unstable = (props: TabPropsBase, ref: React.Ref<HTMLElem
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,
       }),
       { elementType: 'button' },
-    ) as TabState['root'],
+    ) as TabBaseState['root'],
     icon: iconSlot,
     iconOnly,
     content: contentSlot,

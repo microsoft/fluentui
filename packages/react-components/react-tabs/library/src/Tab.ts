@@ -1,4 +1,12 @@
-export type { TabInternalSlots, TabProps, TabSlots, TabState, TabValue } from './components/Tab/index';
+export type {
+  TabInternalSlots,
+  TabBaseProps,
+  TabProps,
+  TabSlots,
+  TabBaseState,
+  TabState,
+  TabValue,
+} from './components/Tab/index';
 export {
   Tab,
   renderTab_unstable,
