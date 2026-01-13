@@ -82,7 +82,7 @@ export const getMarkerLabelStyle = (): GriffelStyle => {
 
 export const getChartTitleStyles = (): GriffelStyle => {
   return {
-    ...typographyStyles.caption1,
+    ...typographyStyles.caption2Strong,
     fill: tokens.colorNeutralForeground1,
     forcedColorAdjust: 'auto',
     textAlign: 'center',
