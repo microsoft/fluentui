@@ -631,8 +631,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _xAxisScale,
       _yAxisScale,
       props.data.scatterChartData,
-      props.showXAxisLablesTooltip,
-      props.wrapXAxisLables,
       _circleId,
       _getAriaLabel,
       _getPointFill,
