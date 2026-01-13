@@ -217,7 +217,12 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
             )}
             <div className={contentClassName} role="presentation">
               {hasAnnotations ? (
-                <ChartAnnotationLayer annotations={resolvedAnnotations} context={context} theme={theme} hideDefaultStyles={true} />
+                <ChartAnnotationLayer
+                  annotations={resolvedAnnotations}
+                  context={context}
+                  theme={theme}
+                  hideDefaultStyles={true}
+                />
               ) : null}
             </div>
           </div>

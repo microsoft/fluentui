@@ -444,7 +444,10 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
             backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity),
           }
         : !hideDefaultStyles && {
-            backgroundColor: applyOpacityToColor(theme.semanticColors.bodyBackground, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
+            backgroundColor: applyOpacityToColor(
+              theme.semanticColors.bodyBackground,
+              DEFAULT_ANNOTATION_BACKGROUND_OPACITY,
+            ),
           }),
       borderColor: annotation.style?.borderColor,
       borderWidth: annotation.style?.borderWidth,
