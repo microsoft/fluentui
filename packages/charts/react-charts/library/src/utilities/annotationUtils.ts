@@ -49,8 +49,7 @@ export const safeRectValue = (rect: any, key: 'x' | 'y' | 'width' | 'height', fa
 /**
  * Clamps a value between min and max bounds
  */
-export const clamp = (value: number, min: number, max: number): number =>
-  Math.max(min, Math.min(max, value));
+export const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value));
 
 /**
  * Type guard to check if a value is a finite number
@@ -62,8 +61,8 @@ export const isFiniteNumber = (value: number | undefined): value is number =>
  * Helper to apply a callback to all four sides of a rect
  * Reduces repetitive code for top/right/bottom/left operations
  */
-export const applyToAllSides = <T,>(
-  callback: (side: 'top' | 'right' | 'bottom' | 'left') => T
+export const applyToAllSides = <T>(
+  callback: (side: 'top' | 'right' | 'bottom' | 'left') => T,
 ): { top: T; right: T; bottom: T; left: T } => ({
   top: callback('top'),
   right: callback('right'),
@@ -158,9 +157,7 @@ export type OverflowRect = {
 /**
  * Aggregates multiple overflow rects by taking maximum for each side
  */
-export const aggregateMaxOverflow = (
-  overflows: OverflowRect[]
-): OverflowRect => {
+export const aggregateMaxOverflow = (overflows: OverflowRect[]): OverflowRect => {
   return overflows.reduce(
     (acc, overflow) => ({
       top: Math.max(acc.top, overflow.top || 0),
@@ -168,17 +165,14 @@ export const aggregateMaxOverflow = (
       bottom: Math.max(acc.bottom, overflow.bottom || 0),
       left: Math.max(acc.left, overflow.left || 0),
     }),
-    { top: 0, right: 0, bottom: 0, left: 0 }
+    { top: 0, right: 0, bottom: 0, left: 0 },
   );
 };
 
 /**
  * Adds margin to non-zero overflow sides
  */
-export const addMarginToOverflow = (
-  overflow: OverflowRect,
-  margin: number
-): OverflowRect => ({
+export const addMarginToOverflow = (overflow: OverflowRect, margin: number): OverflowRect => ({
   top: overflow.top > 0 ? overflow.top + margin : 0,
   right: overflow.right > 0 ? overflow.right + margin : 0,
   bottom: overflow.bottom > 0 ? overflow.bottom + margin : 0,
@@ -188,11 +182,7 @@ export const addMarginToOverflow = (
 /**
  * Checks if padding has converged between iterations
  */
-export const hasPaddingConverged = (
-  prev: OverflowRect,
-  next: OverflowRect,
-  threshold: number = 0.5
-): boolean =>
+export const hasPaddingConverged = (prev: OverflowRect, next: OverflowRect, threshold: number = 0.5): boolean =>
   Math.abs(next.top - prev.top) < threshold &&
   Math.abs(next.right - prev.right) < threshold &&
   Math.abs(next.bottom - prev.bottom) < threshold &&
