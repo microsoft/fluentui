@@ -4,7 +4,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
-import { getChartTitleStyles } from '../../utilities/index';
+import { getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   root: 'fui-gc__root',
@@ -27,6 +27,7 @@ export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   calloutInfoContainer: '',
   legendsContainer: 'fui-gc__legendsContainer',
   chartWrapper: 'fui-gc__chartWrapper',
+  svgTooltip: 'fui-gc__svgTooltip',
 };
 
 const useStyles = makeStyles({
@@ -60,6 +61,12 @@ const useStyles = makeStyles({
   needle: {
     fill: tokens.colorNeutralForeground1,
     stroke: tokens.colorNeutralBackground1,
+  },
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
   },
   chartTitle: getChartTitleStyles() as GriffelStyle,
   segment: {
@@ -130,6 +137,7 @@ export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles =>
     sublabel: mergeClasses(gaugeChartClassNames.sublabel, baseStyles.sublabel, props.styles?.sublabel),
     needle: mergeClasses(gaugeChartClassNames.needle, baseStyles.needle, props.styles?.needle),
     chartTitle: mergeClasses(gaugeChartClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
+    svgTooltip: mergeClasses(gaugeChartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
     segment: mergeClasses(gaugeChartClassNames.segment, baseStyles.segment, props.styles?.segment),
     gradientSegment: mergeClasses(
       gaugeChartClassNames.gradientSegment,

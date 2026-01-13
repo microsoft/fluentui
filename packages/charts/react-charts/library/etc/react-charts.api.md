@@ -952,6 +952,7 @@ export interface GaugeChartStyles {
     segment?: string;
     shapeStyles?: string;
     sublabel?: string;
+    svgTooltip?: string;
 }
 
 // @public (undocumented)

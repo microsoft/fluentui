@@ -605,6 +605,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   y={-(_outerRadius + TITLE_OFFSET)}
                   className={classes.chartTitle}
                   titleStyles={props.titleStyles}
+                  tooltipClassName={classes.svgTooltip}
                 />
               )}
               {!props.hideMinMax && (
