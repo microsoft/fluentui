@@ -97,6 +97,9 @@ export const getMarkerLabelStyle = (theme: ITheme): IStyle => {
 export const getChartTitleStyle = (theme: ITheme): IStyle => {
   return {
     ...theme.fonts.small,
+    color: NeutralColors.gray160,
+    fontWeight: FontWeights.semibold,
+    fontStyle: 'normal',
     fill: theme.semanticColors.bodyText,
     textAlign: 'center',
     marginBottom: '8px',

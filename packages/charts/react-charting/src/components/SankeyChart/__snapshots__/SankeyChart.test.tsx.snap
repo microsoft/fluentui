@@ -1670,6 +1670,48 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -3035,6 +3077,48 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -4397,6 +4481,48 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host11"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -4641,6 +4767,48 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host28"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -5340,6 +5508,48 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host18"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -5782,6 +5992,48 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -7141,6 +7393,48 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -8509,6 +8803,48 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 
@@ -8525,6 +8861,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
+              fill="#8764B8"
               height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
@@ -8556,7 +8893,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   aria-hidden="true"
                   dx="0.4em"
                   dy="1.2em"
-                  fill="#323130"
+                  fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
                   id="nodeBar5-name"
@@ -8571,7 +8908,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 aria-hidden="true"
                 dx="0.4em"
                 dy="2em"
-                fill="#323130"
+                fill="#FFFFFF"
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
@@ -8599,7 +8936,6 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
-              fill="#8764B8"
               height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
@@ -8631,7 +8967,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   aria-hidden="true"
                   dx="0.4em"
                   dy="1.2em"
-                  fill="#FFFFFF"
+                  fill="#323130"
                   font-size="10"
                   font-weight="regular"
                   id="nodeBar7-name"
@@ -8646,7 +8982,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 aria-hidden="true"
                 dx="0.4em"
                 dy="2em"
-                fill="#FFFFFF"
+                fill="#323130"
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
@@ -8858,7 +9194,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               fill-opacity="1"
               id="link29"
               role="img"
-              stroke="#757575"
+              stroke="#4B3867"
               stroke-opacity="1"
               stroke-width="2"
               tabindex="-1"
@@ -8904,7 +9240,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               fill-opacity="1"
               id="link30"
               role="img"
-              stroke="#4B3867"
+              stroke="#757575"
               stroke-opacity="1"
               stroke-width="2"
               tabindex="-1"
@@ -8950,7 +9286,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               fill-opacity="1"
               id="link31"
               role="img"
-              stroke="#4B3867"
+              stroke="#757575"
               stroke-opacity="1"
               stroke-width="2"
               tabindex="-1"
@@ -9278,12 +9614,11 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
-              fill="#8764B8"
               height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
-              stroke="#4B3867"
+              stroke="#004E4E"
               stroke-width="2"
               tabindex="-1"
               width="124"
@@ -9310,7 +9645,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   aria-hidden="true"
                   dx="0.4em"
                   dy="1.2em"
-                  fill="#FFFFFF"
+                  fill="#323130"
                   font-size="10"
                   font-weight="regular"
                   id="nodeBar19-name"
@@ -9325,7 +9660,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 aria-hidden="true"
                 dx="0.4em"
                 dy="2em"
-                fill="#FFFFFF"
+                fill="#323130"
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
@@ -9542,7 +9877,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               fill-opacity="1"
               id="link39"
               role="img"
-              stroke="#4B3867"
+              stroke="#757575"
               stroke-opacity="1"
               stroke-width="2"
               tabindex="-1"
@@ -9761,12 +10096,11 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
-              fill="#8764B8"
               height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
-              stroke="#4B3867"
+              stroke="#3B52B4"
               stroke-width="2"
               tabindex="-1"
               width="124"
@@ -9793,7 +10127,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   aria-hidden="true"
                   dx="0.4em"
                   dy="1.2em"
-                  fill="#FFFFFF"
+                  fill="#323130"
                   font-size="10"
                   font-weight="regular"
                   id="nodeBar27-name"
@@ -9808,7 +10142,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 aria-hidden="true"
                 dx="0.4em"
                 dy="2em"
-                fill="#FFFFFF"
+                fill="#323130"
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
@@ -9868,6 +10202,48 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         id="sankeyChart2"
         width="912"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="453"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host42"
+          tabindex="-1"
+          text-anchor="middle"
+          x="456"
+          y="21"
+        >
+          Sankey Chart
+        </text>
         <g
           class=
 

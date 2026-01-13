@@ -1225,17 +1225,18 @@ export function createYAxisLabels(
 export const wrapContent = (content: string, id: string, maxWidth: number): boolean => {
   const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
   textElement.text(content);
-  if (!textElement.node()) {
+  const node = textElement.node();
+  if (!node || typeof node.getComputedTextLength !== 'function') {
     return false;
   }
 
   let isOverflowing = false;
-  let textLength = textElement.node()!.getComputedTextLength();
+  let textLength = node.getComputedTextLength();
   while (textLength > maxWidth && content.length > 0) {
     content = content.slice(0, -1);
     textElement.text(content + '...');
     isOverflowing = true;
-    textLength = textElement.node()!.getComputedTextLength();
+    textLength = node.getComputedTextLength();
   }
   return isOverflowing;
 };

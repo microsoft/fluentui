@@ -1592,10 +1592,12 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      color: #323130;
                       fill: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
-                      font-weight: 400;
+                      font-style: normal;
+                      font-weight: 600;
                       margin-bottom: 8px;
                       text-align: center;
                     }
@@ -20511,10 +20513,12 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      color: #323130;
                       fill: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
-                      font-weight: 400;
+                      font-style: normal;
+                      font-weight: 600;
                       margin-bottom: 8px;
                       text-align: center;
                     }

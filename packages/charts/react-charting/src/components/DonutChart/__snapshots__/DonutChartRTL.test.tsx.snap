@@ -42,6 +42,48 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         viewBox="0 0 0 0"
         width="0"
       >
+        <rect
+          class=
+
+              {
+                fill: #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
+          height="3"
+          width="6"
+          x="-3"
+          y="15"
+        />
+        <text
+          aria-hidden="true"
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #323130;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-align: center;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
+          data-is-focusable="false"
+          id="tooltip-host4"
+          tabindex="-1"
+          text-anchor="middle"
+          x="0"
+          y="21"
+        >
+          Donut chart example
+        </text>
         <g
           transform="translate(0, -20)"
         >
@@ -60,7 +102,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+              d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
               data-is-focusable="true"
               id="_Pie_1first20000"
               role="img"
@@ -82,7 +124,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+              d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
               data-is-focusable="true"
               id="_Pie_1second39000"
               role="img"
@@ -104,7 +146,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+              d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
               data-is-focusable="true"
               id="_Pie_1third45000"
               role="img"
@@ -308,7 +350,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone8"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -689,6 +731,48 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           viewBox="0 0 0 0"
           width="0"
         >
+          <rect
+            class=
+
+                {
+                  fill: #1b1a19;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
+                }
+            height="3"
+            width="6"
+            x="-3"
+            y="15"
+          />
+          <text
+            aria-hidden="true"
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #323130;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: 600;
+                  margin-bottom: 8px;
+                  text-align: center;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
+            data-is-focusable="false"
+            id="tooltip-host7"
+            tabindex="-1"
+            text-anchor="middle"
+            x="0"
+            y="21"
+          >
+            Donut chart example
+          </text>
           <g
             transform="translate(0, -20)"
           >
@@ -707,7 +791,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+                d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
                 data-is-focusable="true"
                 id="_Pie_4first20000"
                 role="img"
@@ -729,7 +813,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+                d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
                 data-is-focusable="true"
                 id="_Pie_4second39000"
                 role="img"
@@ -751,7 +835,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+                d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
                 data-is-focusable="true"
                 id="_Pie_4third45000"
                 role="img"
@@ -801,7 +885,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone10"
+                  data-focuszone-id="FocusZone11"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
