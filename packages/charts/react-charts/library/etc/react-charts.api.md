@@ -111,6 +111,13 @@ export interface AreaChartStyles extends CartesianChartStyles {
 }
 
 // @public
+export interface AreaPolarSeries extends DataSeries {
+    data: PolarDataPoint[];
+    lineOptions?: LineChartLineOptions;
+    type: 'areapolar';
+}
+
+// @public
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
@@ -1421,6 +1428,13 @@ export interface LineDataInVerticalStackedBarChart {
 }
 
 // @public
+export interface LinePolarSeries extends DataSeries {
+    data: PolarDataPoint[];
+    lineOptions?: LineChartLineOptions;
+    type: 'linepolar';
+}
+
+// @public
 export interface LineSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
     data: DataPointV2<X, Y>[];
     gaps?: LineChartGap[];
@@ -1489,6 +1503,73 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes;
     yAxisPadding?: number;
     yAxisType?: YAxisType;
+}
+
+// @public
+export type PolarAxisProps = AxisProps & {
+    tickValues?: number[] | Date[] | string[];
+    tickFormat?: string;
+    tickCount?: number;
+    categoryOrder?: AxisCategoryOrder;
+    scaleType?: AxisScaleType;
+    rangeStart?: number | Date;
+    rangeEnd?: number | Date;
+};
+
+// @public (undocumented)
+export const PolarChart: React_2.FunctionComponent<PolarChartProps>;
+
+// @public
+export interface PolarChartProps {
+    angularAxis?: PolarAxisProps & {
+        unit?: 'radians' | 'degrees';
+    };
+    chartTitle?: string;
+    componentRef?: React_2.Ref<Chart>;
+    culture?: string;
+    data: (AreaPolarSeries | LinePolarSeries | ScatterPolarSeries)[];
+    dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+    direction?: 'clockwise' | 'counterclockwise';
+    height?: number;
+    hideLegend?: boolean;
+    hideTooltip?: boolean;
+    hole?: number;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    margins?: Margins;
+    radialAxis?: PolarAxisProps;
+    shape?: 'circle' | 'polygon';
+    styles?: PolarChartStyles;
+    useUTC?: boolean;
+    width?: number;
+}
+
+// @public
+export interface PolarChartStyleProps {
+}
+
+// @public
+export interface PolarChartStyles {
+    chart?: string;
+    chartWrapper?: string;
+    gridLineInner?: string;
+    gridLineOuter?: string;
+    legendContainer?: string;
+    root?: string;
+    tickLabel?: string;
+}
+
+// @public
+export interface PolarDataPoint {
+    angularAxisCalloutData?: string;
+    callOutAccessibilityData?: AccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    r: string | number | Date;
+    radialAxisCalloutData?: string;
+    text?: string;
+    theta: string | number;
 }
 
 // @public (undocumented)
@@ -1687,6 +1768,12 @@ export interface ScatterChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface ScatterChartStyles extends CartesianChartStyles {
     markerLabel?: string;
+}
+
+// @public
+export interface ScatterPolarSeries extends DataSeries {
+    data: PolarDataPoint[];
+    type: 'scatterpolar';
 }
 
 // @public
