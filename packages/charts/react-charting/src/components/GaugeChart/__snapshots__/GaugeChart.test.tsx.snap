@@ -4048,6 +4048,14 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           transform="translate(0, -40)"
         >
           <rect
+            class=
+
+                {
+                  fill: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
+                }
             height="3"
             width="6"
             x="-3"
@@ -4060,14 +4068,12 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #323130;
                   fill: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-style: normal;
                   font-weight: 600;
-                  margin-bottom: 8px;
-                  text-align: center;
+                  text-anchor: middle;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;

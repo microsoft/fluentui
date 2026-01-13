@@ -63,14 +63,12 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -85,73 +83,77 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -585,14 +587,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -607,130 +607,134 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="auto"
-              text-anchor="start"
-              x="-1.143083014314768"
-              y="1.6411463135214557"
-            >
-              20k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="auto"
+                text-anchor="start"
+                x="-1.143083014314768"
+                y="1.6411463135214557"
+              >
+                20k
+              </text>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="hanging"
-              text-anchor="start"
-              x="-1.3603172563291284"
-              y="-1.4661299267572407"
-            >
-              39k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="hanging"
+                text-anchor="start"
+                x="-1.3603172563291284"
+                y="-1.4661299267572407"
+              >
+                39k
+              </text>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="auto"
-              text-anchor="end"
-              x="1.9541939332494636"
-              y="0.4255890873260158"
-            >
-              45k
-            </text>
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="auto"
+                text-anchor="end"
+                x="1.9541939332494636"
+                y="0.4255890873260158"
+              >
+                45k
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -1164,14 +1168,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -1186,130 +1188,134 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="auto"
-              text-anchor="start"
-              x="-1.143083014314768"
-              y="1.6411463135214557"
-            >
-              19%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="auto"
+                text-anchor="start"
+                x="-1.143083014314768"
+                y="1.6411463135214557"
+              >
+                19%
+              </text>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="hanging"
-              text-anchor="start"
-              x="-1.3603172563291284"
-              y="-1.4661299267572407"
-            >
-              38%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="hanging"
+                text-anchor="start"
+                x="-1.3603172563291284"
+                y="-1.4661299267572407"
+              >
+                38%
+              </text>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
-            <text
-              aria-hidden="true"
-              class=
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+              <text
+                aria-hidden="true"
+                class=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              dominant-baseline="auto"
-              text-anchor="end"
-              x="1.9541939332494636"
-              y="0.4255890873260158"
-            >
-              43%
-            </text>
+                    {
+                      fill: #323130;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                dominant-baseline="auto"
+                text-anchor="end"
+                x="1.9541939332494636"
+                y="0.4255890873260158"
+              >
+                43%
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -1743,14 +1749,12 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -1765,160 +1769,164 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
-
-                  {
-                    cursor: default;
-                    fill: transparent;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-            <clippath
-              id="Arc_clip9#4760D5_#637CEF"
-            >
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
               <path
-                d="M0,0Z"
-              />
-            </clippath>
-            <foreignobject
-              clip-path="url(#Arc_clip9#4760D5_#637CEF)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
+                aria-label="2020/04/30, 20000."
                 class=
 
                     {
-                      background: conic-gradient(
-                              from 0rad,
-                              #4760D5,
-                              #637CEF 1.2167664052268437rad
-                            );
-                      height: 100%;
+                      cursor: default;
+                      fill: transparent;
                       opacity: 1;
-                      width: 100%;
+                      outline: transparent;
+                      stroke: #ffffff;
                     }
-              />
-            </foreignobject>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
-
-                  {
-                    cursor: default;
-                    fill: transparent;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-            <clippath
-              id="Arc_clip10#795AA6_#9373C0"
-            >
-              <path
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
                 d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
               />
-            </clippath>
-            <foreignobject
-              clip-path="url(#Arc_clip10#795AA6_#9373C0)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
+              <clippath
+                id="Arc_clip9#4760D5_#637CEF"
+              >
+                <path
+                  d="M0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip9#4760D5_#637CEF)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class=
+
+                      {
+                        background: conic-gradient(
+                                from 0rad,
+                                #4760D5,
+                                #637CEF 1.2167664052268437rad
+                              );
+                        height: 100%;
+                        opacity: 1;
+                        width: 100%;
+                      }
+                />
+              </foreignobject>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
                 class=
 
                     {
-                      background: conic-gradient(
-                              from 1.2167664052268437rad,
-                              #795AA6,
-                              #9373C0 2.3536944901923453rad
-                            );
-                      height: 100%;
+                      cursor: default;
+                      fill: transparent;
                       opacity: 1;
-                      width: 100%;
+                      outline: transparent;
+                      stroke: #ffffff;
                     }
-              />
-            </foreignobject>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
-
-                  {
-                    cursor: default;
-                    fill: transparent;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
-            <clippath
-              id="Arc_clip11#159195_#2AA0A4"
-            >
-              <path
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
                 d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
               />
-            </clippath>
-            <foreignobject
-              clip-path="url(#Arc_clip11#159195_#2AA0A4)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
+              <clippath
+                id="Arc_clip10#795AA6_#9373C0"
+              >
+                <path
+                  d="M0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip10#795AA6_#9373C0)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class=
+
+                      {
+                        background: conic-gradient(
+                                from 1.2167664052268437rad,
+                                #795AA6,
+                                #9373C0 2.3536944901923453rad
+                              );
+                        height: 100%;
+                        opacity: 1;
+                        width: 100%;
+                      }
+                />
+              </foreignobject>
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
                 class=
 
                     {
-                      background: conic-gradient(
-                              from 3.5704608954191888rad,
-                              #159195,
-                              #2AA0A4 2.7127244117603975rad
-                            );
-                      height: 100%;
+                      cursor: default;
+                      fill: transparent;
                       opacity: 1;
-                      width: 100%;
+                      outline: transparent;
+                      stroke: #ffffff;
                     }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
               />
-            </foreignobject>
+              <clippath
+                id="Arc_clip11#159195_#2AA0A4"
+              >
+                <path
+                  d="M0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip11#159195_#2AA0A4)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class=
+
+                      {
+                        background: conic-gradient(
+                                from 3.5704608954191888rad,
+                                #159195,
+                                #2AA0A4 2.7127244117603975rad
+                              );
+                        height: 100%;
+                        opacity: 1;
+                        width: 100%;
+                      }
+                />
+              </foreignobject>
+            </g>
           </g>
         </g>
       </svg>
@@ -2352,14 +2360,12 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -2374,73 +2380,77 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -2874,14 +2884,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -2896,73 +2904,77 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -3396,14 +3408,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -3418,73 +3428,77 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #637cef;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #637cef;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #e3008c;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #e3008c;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #2aa0a4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #2aa0a4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -3918,14 +3932,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -3940,73 +3952,77 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -4420,73 +4436,77 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         width="0"
       >
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -4561,14 +4581,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -4583,73 +4601,77 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -5083,14 +5105,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -5105,73 +5125,77 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           Donut chart example
         </text>
         <g
-          transform="translate(0, -20)"
+          transform="translate(0, 36)"
         >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class=
+          <g
+            transform="translate(0, -38)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1first20000"
-              role="img"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1first20000"
+                role="img"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1second39000"
-              role="img"
-              tabindex="-1"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class=
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
 
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0,0Z"
-              data-is-focusable="true"
-              id="_Pie_1third45000"
-              role="img"
-              tabindex="-1"
-            />
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #ffffff;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0,0Z"
+                data-is-focusable="true"
+                id="_Pie_1third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
           </g>
         </g>
       </svg>

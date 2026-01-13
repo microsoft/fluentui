@@ -63,14 +63,12 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -558,14 +556,12 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #323130;
                   fill: #f3f2f1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-style: normal;
                   font-weight: 600;
-                  margin-bottom: 8px;
-                  text-align: center;
+                  text-anchor: middle;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
@@ -1053,14 +1049,12 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;

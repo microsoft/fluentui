@@ -1691,14 +1691,12 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -3098,14 +3096,12 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -4502,14 +4498,12 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -4788,14 +4782,12 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -5529,14 +5521,12 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -6013,14 +6003,12 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -7414,14 +7402,12 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -8824,14 +8810,12 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;
@@ -10223,14 +10207,12 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #323130;
                 fill: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-style: normal;
                 font-weight: 600;
-                margin-bottom: 8px;
-                text-align: center;
+                text-anchor: middle;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 fill: CanvasText;

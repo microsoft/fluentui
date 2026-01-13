@@ -132,14 +132,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
-    const titleHeight =
-      !hideLegend && data?.chartTitle
-        ? Math.max(
-            (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
-              CHART_TITLE_PADDING,
-            36,
-          )
-        : 0;
+    const titleHeight = data?.chartTitle
+      ? Math.max(
+          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical - titleHeight) / 2;
     const chartData = this._elevateToMinimums(points);

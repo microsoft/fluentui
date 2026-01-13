@@ -1592,14 +1592,12 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #323130;
                       fill: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-style: normal;
                       font-weight: 600;
-                      margin-bottom: 8px;
-                      text-align: center;
+                      text-anchor: middle;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       fill: CanvasText;
@@ -1614,516 +1612,520 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                 ...
               </text>
               <g
-                transform="translate(0, -20)"
+                transform="translate(0, 36)"
               >
-                <g>
-                  <path
-                    aria-label="Merc, 7."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #3487c7;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M0.716,38.823A3,3,0,1,1,4.002,41.809A42,42,0,0,1,-41.343,7.402A3,3,0,1,1,-37.582,9.763L-56.047,14.925Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Merc7"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Volvo, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ea38a6;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-37.196,11.142A3,3,0,1,1,-39.188,15.111A42,42,0,0,1,-41.986,-1.068A3,3,0,1,1,-38.778,2.001L-57.904,3.342Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Volvo1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Valiant, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #4f6bed;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-38.677,3.43A3,3,0,1,1,-41.427,6.916A42,42,0,0,1,-40.913,-9.494A3,3,0,1,1,-38.387,-5.843L-57.392,-8.377Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Valiant1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Porsche, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #6d5700;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-38.576,-4.423A3,3,0,1,1,-41.971,-1.561A42,42,0,0,1,-38.166,-17.533A3,3,0,1,1,-36.426,-13.447L-54.532,-19.754Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Porsche1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Pontiac, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #863593;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-36.897,-12.095A3,3,0,1,1,-40.798,-9.974A42,42,0,0,1,-33.857,-24.853A3,3,0,1,1,-32.975,-20.502L-49.442,-30.323Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Pontiac1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Maserati, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #405f14;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-33.709,-19.272A3,3,0,1,1,-37.957,-17.979A42,42,0,0,1,-28.164,-31.158A3,3,0,1,1,-28.176,-26.718L-42.329,-39.651Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Maserati1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Lotus, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #9a3d0c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-29.142,-25.66A3,3,0,1,1,-33.563,-25.249A42,42,0,0,1,-21.318,-36.187A3,3,0,1,1,-22.223,-31.841L-33.485,-47.358Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Lotus1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Lincoln, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #2c72a8;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-23.383,-30.999A3,3,0,1,1,-27.796,-31.486A42,42,0,0,1,-13.601,-39.737A3,3,0,1,1,-15.362,-35.661L-23.271,-53.127Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Lincoln1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Honda, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #0e7a0b;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-16.667,-35.07A3,3,0,1,1,-20.892,-36.435A42,42,0,0,1,-5.327,-41.661A3,3,0,1,1,-7.872,-38.023L-12.105,-56.723Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Honda1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Ford, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #674c8c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-9.269,-37.707A3,3,0,1,1,-13.133,-39.894A42,42,0,0,1,3.165,-41.881A3,3,0,1,1,-0.06,-38.829L-0.444,-57.998Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Ford1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Ferrari, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #026467;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-1.492,-38.8A3,3,0,1,1,-4.837,-41.721A42,42,0,0,1,11.527,-40.387A3,3,0,1,1,7.754,-38.047L11.235,-56.901Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Ferrari1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Duster, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ad006a;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M6.345,-38.307A3,3,0,1,1,3.657,-41.841A42,42,0,0,1,19.418,-37.242A3,3,0,1,1,15.251,-35.709L22.455,-53.477Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Duster1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Dodge, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #3c51b4;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M13.924,-36.247A3,3,0,1,1,12.001,-40.249A42,42,0,0,1,26.515,-32.573A3,3,0,1,1,22.124,-31.91L32.756,-47.865Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Dodge1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Datsun, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #2aa0a4;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M20.932,-32.704A3,3,0,1,1,19.854,-37.011A42,42,0,0,1,32.526,-26.571A3,3,0,1,1,28.092,-26.805L41.717,-40.295Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Datsun1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Chrysler, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ae8c00;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M27.085,-27.823A3,3,0,1,1,26.895,-32.259A42,42,0,0,1,37.208,-19.483A3,3,0,1,1,32.911,-20.604L48.972,-31.076Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Chrysler1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Camaro, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #dbdbdb;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M32.129,-21.804A3,3,0,1,1,32.836,-26.188A42,42,0,0,1,40.367,-11.598A3,3,0,1,1,36.384,-13.561L54.224,-20.587Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Camaro1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Cadillac, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ea38a6;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M35.859,-14.893A3,3,0,1,1,37.434,-19.045A42,42,0,0,1,41.875,-3.238A3,3,0,1,1,38.369,-5.962L57.257,-9.255Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Cadillac1"
-                    role="img"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="AMC, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #9a3d0c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M38.123,-7.373A3,3,0,1,1,40.5,-11.123A42,42,0,0,1,41.67,5.254A3,3,0,1,1,38.784,1.88L57.948,2.455Z"
-                    data-is-focusable="false"
-                    id="_Pie_1AMC1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Toyota, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #9373c0;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M38.827,0.449A3,3,0,1,1,41.91,-2.746A42,42,0,0,1,36.642,20.526A3,3,0,1,1,35.235,16.315L52.779,24.049Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Toyota2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Mazda, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #c50f1f;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M35.813,15.005A3,3,0,1,1,39.871,13.203A42,42,0,0,1,26.245,32.791A3,3,0,1,1,26.523,28.359L39.875,42.118Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Mazda2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Hornet, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #13a10e;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M27.551,27.362A3,3,0,1,1,31.989,27.216A42,42,0,0,1,12.001,40.249A3,3,0,1,1,13.924,36.247L21.128,54.015Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Hornet2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Fiat, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #f7630c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M15.251,35.709A3,3,0,1,1,19.418,37.242A42,42,0,0,1,-4.002,41.809A3,3,0,1,1,-0.716,38.823L-0.716,57.996Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Fiat2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <text
-                  class=
-
-                      {
-                        fill: #323130;
-                        font-size: 24px;
-                        font-weight: 600;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                        fill: CanvasText;
-                      }
-                  dominant-baseline="middle"
-                  text-anchor="middle"
-                  y="5"
+                <g
+                  transform="translate(0, -38)"
                 >
-                  <tspan
-                    dy="0em"
-                    id="WordBreakId-0-0"
-                    x="0"
+                  <g>
+                    <path
+                      aria-label="Merc, 7."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #3487c7;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M0.716,38.823A3,3,0,1,1,4.002,41.809A42,42,0,0,1,-41.343,7.402A3,3,0,1,1,-37.582,9.763L-56.047,14.925Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Merc7"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Volvo, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #ea38a6;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-37.196,11.142A3,3,0,1,1,-39.188,15.111A42,42,0,0,1,-41.986,-1.068A3,3,0,1,1,-38.778,2.001L-57.904,3.342Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Volvo1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Valiant, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #4f6bed;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-38.677,3.43A3,3,0,1,1,-41.427,6.916A42,42,0,0,1,-40.913,-9.494A3,3,0,1,1,-38.387,-5.843L-57.392,-8.377Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Valiant1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Porsche, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #6d5700;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-38.576,-4.423A3,3,0,1,1,-41.971,-1.561A42,42,0,0,1,-38.166,-17.533A3,3,0,1,1,-36.426,-13.447L-54.532,-19.754Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Porsche1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Pontiac, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #863593;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-36.897,-12.095A3,3,0,1,1,-40.798,-9.974A42,42,0,0,1,-33.857,-24.853A3,3,0,1,1,-32.975,-20.502L-49.442,-30.323Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Pontiac1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Maserati, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #405f14;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-33.709,-19.272A3,3,0,1,1,-37.957,-17.979A42,42,0,0,1,-28.164,-31.158A3,3,0,1,1,-28.176,-26.718L-42.329,-39.651Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Maserati1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Lotus, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #9a3d0c;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-29.142,-25.66A3,3,0,1,1,-33.563,-25.249A42,42,0,0,1,-21.318,-36.187A3,3,0,1,1,-22.223,-31.841L-33.485,-47.358Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Lotus1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Lincoln, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #2c72a8;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-23.383,-30.999A3,3,0,1,1,-27.796,-31.486A42,42,0,0,1,-13.601,-39.737A3,3,0,1,1,-15.362,-35.661L-23.271,-53.127Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Lincoln1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Honda, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #0e7a0b;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-16.667,-35.07A3,3,0,1,1,-20.892,-36.435A42,42,0,0,1,-5.327,-41.661A3,3,0,1,1,-7.872,-38.023L-12.105,-56.723Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Honda1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Ford, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #674c8c;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-9.269,-37.707A3,3,0,1,1,-13.133,-39.894A42,42,0,0,1,3.165,-41.881A3,3,0,1,1,-0.06,-38.829L-0.444,-57.998Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Ford1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Ferrari, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #026467;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-1.492,-38.8A3,3,0,1,1,-4.837,-41.721A42,42,0,0,1,11.527,-40.387A3,3,0,1,1,7.754,-38.047L11.235,-56.901Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Ferrari1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Duster, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #ad006a;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M6.345,-38.307A3,3,0,1,1,3.657,-41.841A42,42,0,0,1,19.418,-37.242A3,3,0,1,1,15.251,-35.709L22.455,-53.477Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Duster1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Dodge, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #3c51b4;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M13.924,-36.247A3,3,0,1,1,12.001,-40.249A42,42,0,0,1,26.515,-32.573A3,3,0,1,1,22.124,-31.91L32.756,-47.865Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Dodge1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Datsun, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #2aa0a4;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M20.932,-32.704A3,3,0,1,1,19.854,-37.011A42,42,0,0,1,32.526,-26.571A3,3,0,1,1,28.092,-26.805L41.717,-40.295Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Datsun1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Chrysler, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #ae8c00;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M27.085,-27.823A3,3,0,1,1,26.895,-32.259A42,42,0,0,1,37.208,-19.483A3,3,0,1,1,32.911,-20.604L48.972,-31.076Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Chrysler1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Camaro, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #dbdbdb;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M32.129,-21.804A3,3,0,1,1,32.836,-26.188A42,42,0,0,1,40.367,-11.598A3,3,0,1,1,36.384,-13.561L54.224,-20.587Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Camaro1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Cadillac, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #ea38a6;
+                            opacity: 1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M35.859,-14.893A3,3,0,1,1,37.434,-19.045A42,42,0,0,1,41.875,-3.238A3,3,0,1,1,38.369,-5.962L57.257,-9.255Z"
+                      data-is-focusable="true"
+                      id="_Pie_1Cadillac1"
+                      role="img"
+                      tabindex="0"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="AMC, 1."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #9a3d0c;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M38.123,-7.373A3,3,0,1,1,40.5,-11.123A42,42,0,0,1,41.67,5.254A3,3,0,1,1,38.784,1.88L57.948,2.455Z"
+                      data-is-focusable="false"
+                      id="_Pie_1AMC1"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Toyota, 2."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #9373c0;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M38.827,0.449A3,3,0,1,1,41.91,-2.746A42,42,0,0,1,36.642,20.526A3,3,0,1,1,35.235,16.315L52.779,24.049Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Toyota2"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Mazda, 2."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #c50f1f;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M35.813,15.005A3,3,0,1,1,39.871,13.203A42,42,0,0,1,26.245,32.791A3,3,0,1,1,26.523,28.359L39.875,42.118Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Mazda2"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Hornet, 2."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #13a10e;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M27.551,27.362A3,3,0,1,1,31.989,27.216A42,42,0,0,1,12.001,40.249A3,3,0,1,1,13.924,36.247L21.128,54.015Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Hornet2"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Fiat, 2."
+                      class=
+
+                          {
+                            cursor: default;
+                            fill: #f7630c;
+                            opacity: 0.1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M15.251,35.709A3,3,0,1,1,19.418,37.242A42,42,0,0,1,-4.002,41.809A3,3,0,1,1,-0.716,38.823L-0.716,57.996Z"
+                      data-is-focusable="false"
+                      id="_Pie_1Fiat2"
+                      role="img"
+                      tabindex="-1"
+                    />
+                  </g>
+                  <text
+                    class=
+
+                        {
+                          fill: #323130;
+                          font-size: 24px;
+                          font-weight: 600;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          fill: CanvasText;
+                        }
+                    dominant-baseline="middle"
+                    text-anchor="middle"
                     y="5"
                   >
-                    1 
-                  </tspan>
-                </text>
+                    <tspan
+                      dy="0em"
+                      id="WordBreakId-0-0"
+                      x="0"
+                      y="5"
+                    >
+                      1 
+                    </tspan>
+                  </text>
+                </g>
               </g>
             </svg>
           </div>
@@ -19802,171 +19804,175 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
               width="0"
             >
               <g
-                transform="translate(0, -20)"
+                transform="translate(0, 0)"
               >
-                <g>
-                  <path
-                    aria-label="Oxygen, 4500."
-                    class=
+                <g
+                  transform="translate(0, -20)"
+                >
+                  <g>
+                    <path
+                      aria-label="Oxygen, 4500."
+                      class=
 
-                        {
-                          cursor: default;
-                          fill: #FEBFB3;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M0.4,0L-1,0A1,1,0,0,1,-0.99,-0.142L0.396,0.057L6.061,-39.538Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Oxygen4500"
-                    role="img"
-                    tabindex="0"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
+                          {
+                            cursor: default;
+                            fill: #FEBFB3;
+                            opacity: 1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M0.4,0L-1,0A1,1,0,0,1,-0.99,-0.142L0.396,0.057L6.061,-39.538Z"
+                      data-is-focusable="true"
+                      id="_Pie_1Oxygen4500"
+                      role="img"
+                      tabindex="0"
+                    />
+                    <text
+                      aria-hidden="true"
+                      class=
 
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="hanging"
-                    text-anchor="start"
-                    x="-2.992431396957591"
-                    y="-0.21296557116688497"
-                  >
-                    4.5k
-                  </text>
-                </g>
-                <g>
-                  <path
-                    aria-label="Nitrogen, 500."
-                    class=
+                          {
+                            fill: #323130;
+                            font-size: 12px;
+                            font-weight: 600;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            fill: CanvasText;
+                          }
+                      dominant-baseline="hanging"
+                      text-anchor="start"
+                      x="-2.992431396957591"
+                      y="-0.21296557116688497"
+                    >
+                      4.5k
+                    </text>
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Nitrogen, 500."
+                      class=
 
-                        {
-                          cursor: default;
-                          fill: #D0F9B1;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-0.327,0.945L20.384,-34.416Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Nitrogen500"
-                    role="img"
-                    tabindex="-1"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
+                          {
+                            cursor: default;
+                            fill: #D0F9B1;
+                            opacity: 1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-0.327,0.945L20.384,-34.416Z"
+                      data-is-focusable="true"
+                      id="_Pie_1Nitrogen500"
+                      role="img"
+                      tabindex="-1"
+                    />
+                    <text
+                      aria-hidden="true"
+                      class=
 
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="hanging"
-                    text-anchor="end"
-                    x="0.9818088892614404"
-                    y="-2.8347929915546244"
-                  >
-                    500
-                  </text>
-                </g>
-                <g>
-                  <path
-                    aria-label="Carbon_Dioxide, 1053."
-                    class=
+                          {
+                            fill: #323130;
+                            font-size: 12px;
+                            font-weight: 600;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            fill: CanvasText;
+                          }
+                      dominant-baseline="hanging"
+                      text-anchor="end"
+                      x="0.9818088892614404"
+                      y="-2.8347929915546244"
+                    >
+                      500
+                    </text>
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Carbon_Dioxide, 1053."
+                      class=
 
-                        {
-                          cursor: default;
-                          fill: #96D38C;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-0.794,0.609L38.733,-9.988Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Carbon_Dioxide1053"
-                    role="img"
-                    tabindex="-1"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
+                          {
+                            cursor: default;
+                            fill: #96D38C;
+                            opacity: 1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M-0.794,0.609L38.733,-9.988Z"
+                      data-is-focusable="true"
+                      id="_Pie_1Carbon_Dioxide1053"
+                      role="img"
+                      tabindex="-1"
+                    />
+                    <text
+                      aria-hidden="true"
+                      class=
 
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="hanging"
-                    text-anchor="end"
-                    x="2.380575816630471"
-                    y="-1.8256118922909557"
-                  >
-                    1.1k
-                  </text>
-                </g>
-                <g>
-                  <path
-                    aria-label="Hydrogen, 2500."
-                    class=
+                          {
+                            fill: #323130;
+                            font-size: 12px;
+                            font-weight: 600;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            fill: CanvasText;
+                          }
+                      dominant-baseline="hanging"
+                      text-anchor="end"
+                      x="2.380575816630471"
+                      y="-1.8256118922909557"
+                    >
+                      1.1k
+                    </text>
+                  </g>
+                  <g>
+                    <path
+                      aria-label="Hydrogen, 2500."
+                      class=
 
-                        {
-                          cursor: default;
-                          fill: #E1396C;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M0.355,-0.51A0.219,0.219,0,1,1,0.517,-0.721L-0.4,39.998Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Hydrogen2500"
-                    role="img"
-                    tabindex="-1"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
+                          {
+                            cursor: default;
+                            fill: #E1396C;
+                            opacity: 1;
+                            outline: transparent;
+                            stroke: #ffffff;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                      d="M0.355,-0.51A0.219,0.219,0,1,1,0.517,-0.721L-0.4,39.998Z"
+                      data-is-focusable="true"
+                      id="_Pie_1Hydrogen2500"
+                      role="img"
+                      tabindex="-1"
+                    />
+                    <text
+                      aria-hidden="true"
+                      class=
 
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="auto"
-                    text-anchor="end"
-                    x="2.380575816630475"
-                    y="1.8256118922909508"
-                  >
-                    2.5k
-                  </text>
+                          {
+                            fill: #323130;
+                            font-size: 12px;
+                            font-weight: 600;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            fill: CanvasText;
+                          }
+                      dominant-baseline="auto"
+                      text-anchor="end"
+                      x="2.380575816630475"
+                      y="1.8256118922909508"
+                    >
+                      2.5k
+                    </text>
+                  </g>
                 </g>
               </g>
             </svg>
@@ -20513,14 +20519,12 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #323130;
                       fill: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-style: normal;
                       font-weight: 600;
-                      margin-bottom: 8px;
-                      text-align: center;
+                      text-anchor: middle;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       fill: CanvasText;
