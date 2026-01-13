@@ -107,7 +107,9 @@ export const parseCssSizeToPixels = (value: string | undefined): number | undefi
  * Resolves CSS padding shorthand to individual sides
  * Supports 1-4 value syntax like CSS padding
  */
-export const resolvePaddingSides = (padding: string | undefined) => {
+export const resolvePaddingSides = (
+  padding: string | undefined,
+): { top: number; right: number; bottom: number; left: number } => {
   if (typeof padding !== 'string' || padding.trim().length === 0) {
     return { ...DEFAULT_PADDING_SIDES };
   }
@@ -187,3 +189,76 @@ export const hasPaddingConverged = (prev: OverflowRect, next: OverflowRect, thre
   Math.abs(next.right - prev.right) < threshold &&
   Math.abs(next.bottom - prev.bottom) < threshold &&
   Math.abs(next.left - prev.left) < threshold;
+
+/**
+ * Shared constants for annotation layout behavior.
+ * Keeping these in one place reduces duplication across chart implementations.
+ */
+export const DEFAULT_ANNOTATION_MAX_WIDTH = 180;
+export const DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE = 6;
+export const DEFAULT_CONNECTOR_FALLBACK_DIRECTION = Object.freeze({ x: 0, y: -1 });
+
+/**
+ * Resolves a relative coordinate (0..1) to a pixel coordinate within a padded container.
+ * If the relative value is invalid, returns the padded center.
+ */
+export const resolveRelativeWithPadding = (
+  relative: number,
+  totalSize: number,
+  paddingStart: number,
+  paddingEnd: number,
+): number => {
+  const effectiveSize = Math.max(totalSize - paddingStart - paddingEnd, 0);
+  if (!Number.isFinite(relative)) {
+    return paddingStart + effectiveSize / 2;
+  }
+  if (effectiveSize === 0) {
+    return paddingStart;
+  }
+  return paddingStart + relative * effectiveSize;
+};
+
+export type Point = { x: number; y: number };
+
+/**
+ * Ensures a connector has enough clearance between an anchor point and a display point.
+ * If the current distance is less than minDistance, returns an adjusted display point.
+ */
+export const applyMinDistanceFromAnchor = (
+  anchor: Point,
+  displayPoint: Point,
+  minDistance: number,
+  fallbackDirection: Point = DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+): Point => {
+  const dx = displayPoint.x - anchor.x;
+  const dy = displayPoint.y - anchor.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (!Number.isFinite(distance) || distance >= minDistance) {
+    return displayPoint;
+  }
+
+  const ux = distance === 0 ? fallbackDirection.x : dx / distance;
+  const uy = distance === 0 ? fallbackDirection.y : dy / distance;
+
+  return {
+    x: anchor.x + ux * minDistance,
+    y: anchor.y + uy * minDistance,
+  };
+};
+
+/**
+ * Takes the per-side max across multiple rects.
+ */
+export const maxSides = (...rects: Array<Partial<OverflowRect> | undefined>): OverflowRect => {
+  return applyToAllSides(side => {
+    let maxValue = 0;
+    for (const rect of rects) {
+      const candidate = rect?.[side];
+      if (typeof candidate === 'number' && Number.isFinite(candidate)) {
+        maxValue = Math.max(maxValue, candidate);
+      }
+    }
+    return maxValue;
+  });
+};

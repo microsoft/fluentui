@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ChartAnnotation } from '../../types/ChartAnnotation';
 import type { ChartAnnotationContext } from '../CommonComponents';
@@ -12,19 +14,23 @@ import {
   applyToAllSides,
   parseCssSizeToPixels,
   resolvePaddingSides,
+  resolveRelativeWithPadding,
+  applyMinDistanceFromAnchor,
   OverflowRect,
   aggregateMaxOverflow,
   addMarginToOverflow,
   hasPaddingConverged,
+  maxSides,
+  DEFAULT_ANNOTATION_MAX_WIDTH,
+  DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE,
+  DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
 } from '../../utilities/annotationUtils';
 
 const DEFAULT_VIEWPORT_FONT_SIZE = 14;
 const DEFAULT_LINE_HEIGHT_RATIO = 1.35;
-const DEFAULT_VIEWPORT_MAX_WIDTH = 180;
+const DEFAULT_VIEWPORT_MAX_WIDTH = DEFAULT_ANNOTATION_MAX_WIDTH;
 const APPROX_CHAR_WIDTH_RATIO = 0.55;
 const ADDITIONAL_MARGIN_SAFETY = 12;
-const CONNECTOR_MIN_ARROW_CLEARANCE = 6;
-const CONNECTOR_FALLBACK_DIRECTION = Object.freeze({ x: 0, y: -1 });
 const LINE_BREAK_REGEX = /<br\s*\/?>(?=\s*)|\n/gi;
 const EMPTY_ANNOTATIONS: readonly ChartAnnotation[] = Object.freeze([]);
 
@@ -132,22 +138,6 @@ const isViewportRelativeAnnotation = (annotation: ChartAnnotation): boolean => {
   return !!layout && layout.clipToBounds === false && coordinates?.type === 'relative';
 };
 
-const resolveViewportAnchor = (
-  relative: number,
-  containerSize: number,
-  paddingStart: number,
-  paddingEnd: number,
-): number => {
-  const effectiveSize = Math.max(containerSize - paddingStart - paddingEnd, 0);
-  if (!Number.isFinite(relative)) {
-    return paddingStart + effectiveSize / 2;
-  }
-  if (effectiveSize === 0) {
-    return paddingStart;
-  }
-  return paddingStart + relative * effectiveSize;
-};
-
 const estimateViewportAnnotationOverflow = (
   annotation: ChartAnnotation,
   containerWidth: number,
@@ -191,8 +181,8 @@ const estimateViewportAnnotationOverflow = (
   const paddingTop = normalizeViewportPadding(padding.top);
   const paddingBottom = normalizeViewportPadding(padding.bottom);
 
-  const anchorX = resolveViewportAnchor(coordinates.x, containerWidth, paddingLeft, paddingRight);
-  const anchorY = resolveViewportAnchor(coordinates.y, containerHeight, paddingTop, paddingBottom);
+  const anchorX = resolveRelativeWithPadding(coordinates.x, containerWidth, paddingLeft, paddingRight);
+  const anchorY = resolveRelativeWithPadding(coordinates.y, containerHeight, paddingTop, paddingBottom);
 
   const pointX = anchorX + offsetX;
   const pointY = anchorY + offsetY;
@@ -219,17 +209,18 @@ const estimateViewportAnnotationOverflow = (
         ? annotation.connector.endPadding
         : DEFAULT_CONNECTOR_END_PADDING;
 
-    const minDistance = Math.max(startPadding + endPadding + CONNECTOR_MIN_ARROW_CLEARANCE, startPadding);
-    const dx = displayX - anchorX;
-    const dy = displayY - anchorY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+    const minDistance = Math.max(startPadding + endPadding + DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE, startPadding);
 
-    if (distance < minDistance) {
-      const unitX = distance === 0 ? CONNECTOR_FALLBACK_DIRECTION.x : dx / distance;
-      const unitY = distance === 0 ? CONNECTOR_FALLBACK_DIRECTION.y : dy / distance;
+    const desired = applyMinDistanceFromAnchor(
+      { x: anchorX, y: anchorY },
+      { x: displayX, y: displayY },
+      minDistance,
+      DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+    );
 
-      displayX = anchorX + unitX * minDistance;
-      displayY = anchorY + unitY * minDistance;
+    if (desired.x !== displayX || desired.y !== displayY) {
+      displayX = desired.x;
+      displayY = desired.y;
 
       topLeftX = displayX + alignOffsetX;
       topLeftY = displayY + alignOffsetY;
@@ -346,12 +337,7 @@ const computeAnnotationViewportPadding = (
     const aggregatedOverflow = aggregateMaxOverflow(overflows);
     const overflowPadding = addMarginToOverflow(aggregatedOverflow, ADDITIONAL_MARGIN_SAFETY);
 
-    const nextPadding: AnnotationViewportPadding = {
-      top: Math.max(basePadding.top, padding.top, overflowPadding.top),
-      right: Math.max(basePadding.right, padding.right, overflowPadding.right),
-      bottom: Math.max(basePadding.bottom, padding.bottom, overflowPadding.bottom),
-      left: Math.max(basePadding.left, padding.left, overflowPadding.left),
-    };
+    const nextPadding: AnnotationViewportPadding = maxSides(basePadding, padding, overflowPadding);
 
     if (hasPaddingConverged(padding, nextPadding)) {
       padding = nextPadding;
