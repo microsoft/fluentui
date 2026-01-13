@@ -146,19 +146,19 @@ describe('isMonthArray', () => {
 
 describe('correctYearMonth', () => {
   test('Should return dates array when input array contains months data', () => {
-    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
+    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2025', '11 01, 2025', '1 01, 2026']);
   });
 
   test('Should return error when input array contains invalid months', () => {
-    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2026', '11 01, 2026', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
-    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
+    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2026', 'February 01, 2026']);
   });
 
   test('Should return dates array when input array contains months data in MM format', () => {
-    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
+    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2026', 'Feb 01, 2026']);
   });
 
   test('Should return dates array when input array is empty', () => {
@@ -542,6 +542,105 @@ describe('transformPlotlyJsonToAnnotationChartProps', () => {
 
       expect(result.annotations).toHaveLength(1);
       expect(result.annotations?.[0].style?.rotation).toBe(45);
+    });
+
+    test('does not coerce date-like category strings when xaxis.type is category', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          xaxis: { type: 'category' },
+          yaxis: { type: 'linear' },
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('does not infer date from date-like strings when axis type is omitted', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('treats annotations without explicit xref/yref as axis-bound data annotations', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
     });
   });
 

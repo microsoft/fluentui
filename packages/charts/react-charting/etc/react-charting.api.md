@@ -460,6 +460,7 @@ export interface ICartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    xMinValue?: number;
     xScaleType?: AxisScaleType;
     yAxis?: AxisProps;
     yAxisAnnotation?: string;
@@ -972,6 +973,7 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
 
 // @public (undocumented)
 export interface IGVBarChartSeriesPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number;
@@ -1108,6 +1110,7 @@ export interface IHorizontalBarChartStyles {
 
 // @public (undocumented)
 export interface IHorizontalBarChartWithAxisDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     gradient?: [string, string];
@@ -1127,6 +1130,7 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
     enableGradient?: boolean;
+    hideLabels?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>;
@@ -1141,6 +1145,7 @@ export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartSt
 
 // @public
 export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
+    barLabel?: IStyle;
     chartLabel?: IStyle;
     opacityChangeOnHover: IStyle;
     xAxisDomain?: IStyle;
@@ -1830,6 +1835,7 @@ export interface ITreeStyles {
 
 // @public (undocumented)
 export interface IVerticalBarChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     gradient?: [string, string];
@@ -1960,6 +1966,7 @@ export interface IVerticalStackedChartProps {
 
 // @public (undocumented)
 export interface IVSChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number | string;

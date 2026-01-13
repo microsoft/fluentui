@@ -465,10 +465,18 @@ export class BaseAnchor extends FASTElement {
 // @public
 export class BaseAvatar extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    defaultSlot: HTMLSlotElement;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     initials?: string | undefined;
     name?: string | undefined;
+    // @internal
+    slotchangeHandler(): void;
 }
 
 // @public

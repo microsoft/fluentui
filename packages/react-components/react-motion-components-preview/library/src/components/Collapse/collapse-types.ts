@@ -25,8 +25,8 @@ export type CollapseParams = BasePresenceParams &
     /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
     orientation?: CollapseOrientation;
 
-    /** The starting size for the expand animation. Defaults to `'0px'`. */
-    fromSize?: string;
+    /** Size for the out state (collapsed). Defaults to `'0px'`. */
+    outSize?: string;
 
     /**
      * Time (ms) to delay the inner stagger between size and opacity animations.

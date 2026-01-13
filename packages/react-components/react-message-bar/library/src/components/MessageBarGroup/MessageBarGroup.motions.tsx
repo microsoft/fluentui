@@ -16,7 +16,7 @@ export const MessageBarMotion = createPresenceComponent<{ animate?: MessageBarGr
       enter:
         animate === 'both'
           ? // enter with slide and fade
-            [fadeAtom({ direction: 'enter', duration }), slideAtom({ direction: 'enter', fromY: '-100%', duration })]
+            [fadeAtom({ direction: 'enter', duration }), slideAtom({ direction: 'enter', outY: '-100%', duration })]
           : [], // no enter motion
 
       // Always exit with a fade

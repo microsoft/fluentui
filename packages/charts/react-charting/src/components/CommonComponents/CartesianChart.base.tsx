@@ -246,6 +246,8 @@ export class CartesianChartBase
         hideTickOverlap:
           this.props.rotateXAxisLables || this.props.xAxis?.tickLayout === 'auto' ? false : this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
+        xMinValue: this.props.xMinValue,
+        xMaxValue: this.props.xMaxValue,
         ...this.props.xAxis,
       };
 

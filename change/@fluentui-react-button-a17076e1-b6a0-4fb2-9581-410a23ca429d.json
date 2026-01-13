@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix test target dependencies",
+  "packageName": "@fluentui/react-button",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
