@@ -8,7 +8,6 @@ import { CellActionsAlwaysVisible, CellActionsDefault, CellActionsInHeaderCell }
 
 export default {
   title: 'Table layout table - cell actions',
-
   decorators: [],
   parameters: {
     storyWright: { steps: new Steps().hover('.row-1').snapshot('hover row').end() },
@@ -17,6 +16,10 @@ export default {
 
 export const Default = () => <CellActionsDefault noNativeElements={false} />;
 Default.storyName = 'default';
+
+export const Neutral = () => <CellActionsDefault selectedRowAppearance="neutral" noNativeElements={false} />;
+
+export const Brand = () => <CellActionsDefault selectedRowAppearance="brand" noNativeElements={false} />;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 
