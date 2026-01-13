@@ -1983,6 +1983,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           transform="translate(0, -48)"
         >
           <rect
+            class="fui-gc__svgTooltip"
             height="3"
             width="6"
             x="-3"
@@ -4370,6 +4371,7 @@ Object {
               transform="translate(0, -48)"
             >
               <rect
+                class="fui-gc__svgTooltip"
                 height="3"
                 width="6"
                 x="-3"
@@ -4619,6 +4621,7 @@ Object {
             transform="translate(0, -48)"
           >
             <rect
+              class="fui-gc__svgTooltip"
               height="3"
               width="6"
               x="-3"

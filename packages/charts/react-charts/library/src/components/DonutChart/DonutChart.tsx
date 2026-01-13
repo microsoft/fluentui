@@ -348,24 +348,26 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
                 tooltipClassName={classes.svgTooltip}
               />
             )}
-            <Pie
-              width={_width!}
-              height={_height!}
-              outerRadius={outerRadius}
-              innerRadius={props.innerRadius!}
-              data={chartData!}
-              onFocusCallback={_focusCallback}
-              hoverOnCallback={_hoverCallback}
-              hoverLeaveCallback={_hoverLeave}
-              uniqText={_uniqText}
-              onBlurCallback={_onBlur}
-              activeArc={_getHighlightedLegend()}
-              focusedArcId={focusedArcId || ''}
-              href={props.href!}
-              valueInsideDonut={_toLocaleString(valueInsideDonut)}
-              showLabelsInPercent={props.showLabelsInPercent}
-              hideLabels={props.hideLabels}
-            />
+            <g transform={`translate(0, ${titleHeight})`}>
+              <Pie
+                width={_width!}
+                height={_height!}
+                outerRadius={outerRadius}
+                innerRadius={props.innerRadius!}
+                data={chartData!}
+                onFocusCallback={_focusCallback}
+                hoverOnCallback={_hoverCallback}
+                hoverLeaveCallback={_hoverLeave}
+                uniqText={_uniqText}
+                onBlurCallback={_onBlur}
+                activeArc={_getHighlightedLegend()}
+                focusedArcId={focusedArcId || ''}
+                href={props.href!}
+                valueInsideDonut={_toLocaleString(valueInsideDonut)}
+                showLabelsInPercent={props.showLabelsInPercent}
+                hideLabels={props.hideLabels}
+              />
+            </g>
           </svg>
         </div>
         <ChartPopover
