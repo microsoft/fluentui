@@ -3833,7 +3833,7 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
     if (axId === 'x' && axType === 'category') {
       props.xAxis = {
         tickLayout: 'auto',
-      } as ICartesianChartProps['xAxis'];
+      };
     }
 
     if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {

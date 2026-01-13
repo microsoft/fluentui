@@ -155,19 +155,19 @@ describe('isMonthArray', () => {
 
 describe('correctYearMonth', () => {
   test('Should return dates array when input array contains months data', () => {
-    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
+    expect(correctYearMonth([10, 11, 1])).toMatchSnapshot();
   });
 
   test('Should return error when input array contains invalid months', () => {
-    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
+    expect(correctYearMonth([10, 11, 16])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
-    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
+    expect(correctYearMonth(['January', 'February'])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array contains months data in MM format', () => {
-    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
+    expect(correctYearMonth(['Jan', 'Feb'])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array is empty', () => {

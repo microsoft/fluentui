@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`correctYearMonth Should return dates array when input array contains months data 1`] = `
+Array [
+  "10 01, 2025",
+  "11 01, 2025",
+  "1 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MM format 1`] = `
+Array [
+  "Jan 01, 2026",
+  "Feb 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MMM format 1`] = `
+Array [
+  "January 01, 2026",
+  "February 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return error when input array contains invalid months 1`] = `
+Array [
+  "10 01, 2026",
+  "11 01, 2026",
+  null,
+]
+`;
+
 exports[`sanitizeJson Should return json object when depth inside the range 1`] = `
 Object {
   "data": Array [

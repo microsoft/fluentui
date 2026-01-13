@@ -60,7 +60,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             >
               <g
                 class=
-
+                    fui-cart__xAxis
                     & text {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4957,7 +4957,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
             >
               <g
                 class=
-
+                    fui-cart__xAxis
                     & text {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -18794,13 +18794,56 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               </g>
             </svg>
           </div>
-          <span
-            aria-hidden="true"
-            id="fui_measurement_span"
-            style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
-          >
-            x_1...
-          </span>
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background: #ffffff;
+                  border-radius: 2px;
+                  color: #323130;
+                  display: flex;
+                  flex-direction: column;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  padding-bottom: 8px;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 8px;
+                  pointer-events: none;
+                  position: absolute;
+                  text-align: center;
+                }
+            id="tooltip_3"
+            style="opacity: 0;"
+          />
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background: #ffffff;
+                  border-radius: 2px;
+                  color: #323130;
+                  display: flex;
+                  flex-direction: column;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  padding-bottom: 8px;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  padding-top: 8px;
+                  pointer-events: none;
+                  position: absolute;
+                  text-align: center;
+                }
+            id="tooltip_3"
+            style="opacity: 0;"
+          />
         </div>
       </div>
     </div>

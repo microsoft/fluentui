@@ -558,10 +558,10 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -573,7 +573,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -586,7 +586,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -613,7 +613,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -741,7 +741,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -953,7 +953,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1266,10 +1266,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -1281,7 +1281,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1294,7 +1294,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1321,7 +1321,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -1449,7 +1449,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1661,7 +1661,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

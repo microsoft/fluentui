@@ -3900,10 +3900,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -3915,7 +3915,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3928,7 +3928,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3955,7 +3955,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4101,7 +4101,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4428,7 +4428,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4772,10 +4772,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -4787,7 +4787,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4800,7 +4800,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4827,7 +4827,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4973,7 +4973,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5296,7 +5296,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -5646,10 +5646,10 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -5661,7 +5661,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5674,7 +5674,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5701,7 +5701,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -5847,7 +5847,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5976,7 +5976,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementSecondarychart_9"
+            id="yAxisGElementSecondarychart_8"
             text-anchor="start"
             transform="translate(610, 0)"
           >
@@ -6304,7 +6304,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6648,10 +6648,10 @@ exports[`Line chart rendering should render the line chart with all negative y v
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -6663,7 +6663,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6676,7 +6676,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -6703,7 +6703,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -6849,7 +6849,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -7176,7 +7176,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -7520,10 +7520,10 @@ exports[`Line chart rendering should render the line chart with negative y value
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -7535,7 +7535,7 @@ exports[`Line chart rendering should render the line chart with negative y value
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -7548,7 +7548,7 @@ exports[`Line chart rendering should render the line chart with negative y value
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -7575,7 +7575,7 @@ exports[`Line chart rendering should render the line chart with negative y value
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -7721,7 +7721,7 @@ exports[`Line chart rendering should render the line chart with negative y value
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8066,7 +8066,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -8410,10 +8410,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -8425,7 +8425,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -8438,7 +8438,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -8465,7 +8465,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -8611,7 +8611,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8938,7 +8938,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -9282,10 +9282,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -9297,7 +9297,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             overflow: auto;
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -9310,7 +9310,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -9337,7 +9337,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -9483,7 +9483,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -9810,7 +9810,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10167,10 +10167,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             position: relative;
             width: 100%;
           }
-      id="chart_12"
+      id="chart_11"
     >
       <div
-        id="defaultTabbableElement_13"
+        id="defaultTabbableElement_12"
       />
       <div
         class=
@@ -10182,7 +10182,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               overflow: auto;
               position: relative;
             }
-        data-focuszone-id="FocusZone15"
+        data-focuszone-id="FocusZone14"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -10195,7 +10195,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -10222,7 +10222,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_12"
+            id="xAxisGElementchart_11"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -10368,7 +10368,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_12"
+            id="yAxisGElementchart_11"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -10695,7 +10695,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone16"
+                  data-focuszone-id="FocusZone15"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >

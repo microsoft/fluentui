@@ -18,10 +18,10 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -45,7 +45,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -72,7 +72,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -218,7 +218,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -330,7 +330,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -368,7 +368,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -406,7 +406,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -473,7 +473,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

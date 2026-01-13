@@ -18,11 +18,9 @@ import {
   ScaleBand,
   ScaleLinear,
   ScaleContinuousNumeric as IScaleContinuousNumeric,
-  ScaleContinuousNumeric,
   ScaleTime as IScaleTime,
-  ScaleTime,
 } from 'd3-scale';
-import { select as d3Select, selectAll as d3SelectAll, Selection } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll, Selection as ISelection } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
@@ -253,7 +251,7 @@ export function createNumericXAxis(
   chartType: ChartTypes,
   culture?: string,
   scaleType?: AxisScaleType,
-): { xScale: IScaleContinuousNumeric<number, number>; tickValues: string[] } {
+): { xScale: IScaleContinuousNumeric<number, number>; tickValues: number[]; tickLabels: string[] } {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = true,
@@ -283,7 +281,7 @@ export function createNumericXAxis(
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
   };
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+  if (hideTickOverlap) {
     const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map((v, i) => tickFormat(v, i))) + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
@@ -311,8 +309,8 @@ export function createNumericXAxis(
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
+  return { xScale: xAxisScale, tickValues, tickLabels: tickValues.map(xAxis.tickFormat()!) };
 }
 
 /**
@@ -436,13 +434,14 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
   chartType?: ChartTypes,
-): { xScale: IScaleTime<number, number>; tickValues: string[] } {
+): { xScale: IScaleTime<number, number>; tickValues: Date[]; tickLabels: string[] } {
   const {
     domainNRangeValues,
     xAxisElement,
     tickPadding = 6,
     xAxistickSize = 6,
     xAxisCount,
+    hideTickOverlap,
     calcMaxLabelWidth,
     tickStep,
     tick0,
@@ -502,10 +501,12 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
-  const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
-  const [start, end] = xAxisScale.range();
-  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
+  if (hideTickOverlap) {
+    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
+    const [start, end] = xAxisScale.range();
+
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+  }
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -529,8 +530,8 @@ export function createDateXAxis(
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
+  return { xScale: xAxisScale, tickValues, tickLabels: tickValues.map(xAxis.tickFormat()!) };
 }
 
 /**
@@ -547,7 +548,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
-): { xScale: ScaleBand<string>; tickValues: string[] } {
+): { xScale: ScaleBand<string>; tickValues: string[]; tickLabels: string[] } {
   const {
     domainNRangeValues,
     xAxistickSize = 6,
@@ -613,7 +614,7 @@ export function createStringXAxis(
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return { xScale: xAxisScale, tickValues };
+  return { xScale: xAxisScale, tickValues, tickLabels: tickValues.map(xAxis.tickFormat()!) };
 }
 
 /**
@@ -1249,25 +1250,22 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfAxislabels(axistooltipProps: {
   tooltipCls: string;
-  axis:
-    | Selection<SVGElement, unknown, null, undefined>
-    | Selection<SVGSVGElement | null, unknown, null, undefined>
-    | Selection<SVGSVGElement, unknown, null, undefined>
-    | null;
+  axis: ISelection<SVGSVGElement, unknown, null, undefined> | null;
   id: string;
   container?: HTMLElement | null;
-}): null | undefined {
+}): void | null {
   const { tooltipCls, axis, id, container } = axistooltipProps;
   if (axis === null) {
     return null;
   }
-  const div = ((container ? d3Select(container) : d3Select('body')) as Selection<HTMLElement, unknown, null, undefined>)
+  const div = (
+    (container ? d3Select(container) : d3Select('body')) as ISelection<HTMLElement, unknown, null, undefined>
+  )
     .append('div')
     .attr('id', id)
     .attr('class', tooltipCls)
     .style('opacity', 0);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (axis as any).selectAll('.tick text').each(function (this: SVGTextElement) {
+  axis.selectAll<SVGTextElement, unknown>('.tick text').each(function () {
     const tickSelection = d3Select(this);
     const fullLabel = tickSelection.attr('data-full');
     if (tickSelection.text() === fullLabel) {
@@ -1917,8 +1915,8 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
 
 const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
 
-export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string): string {
-  const containerStyles = getComputedStyle(chartContainer);
+export function resolveCSSVariables(container: HTMLElement, styleRules: string): string {
+  const containerStyles = getComputedStyle(container);
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
@@ -2008,31 +2006,6 @@ export const getTextSize = (
   textSizeCache.set(cacheKey, { width, height });
 
   return { width, height };
-};
-
-export const createMeasurementSpan = (
-  text: string | number,
-  className: string,
-  parentElement?: HTMLElement | null,
-): HTMLElement => {
-  let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
-  if (!measurementSpan) {
-    measurementSpan = document.createElement('span');
-    measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
-    measurementSpan.setAttribute('aria-hidden', 'true');
-
-    if (parentElement) {
-      parentElement.appendChild(measurementSpan);
-    } else {
-      document.body.appendChild(measurementSpan);
-    }
-  }
-
-  measurementSpan.setAttribute('class', className);
-  Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
-  measurementSpan.textContent = `${text}`;
-
-  return measurementSpan;
 };
 
 export function getCurveFactory(
@@ -2419,7 +2392,7 @@ export const findCalloutPoints = (
 export const autoLayoutXAxisLabels = (
   tickValues: number[] | Date[] | string[],
   tickLabels: string[],
-  scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
+  scale: IScaleContinuousNumeric<number, number> | IScaleTime<number, number> | ScaleBand<string>,
   axisNode: SVGSVGElement | null,
   containerWidth: number,
   container?: HTMLElement | null,
@@ -2485,7 +2458,7 @@ export const autoLayoutXAxisLabels = (
 const truncateAndStaggerXAxisLabels = (
   tickValues: number[] | Date[] | string[],
   tickLabels: string[],
-  scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
+  scale: IScaleContinuousNumeric<number, number> | IScaleTime<number, number> | ScaleBand<string>,
   axisNode: SVGSVGElement | null,
   containerWidth: number,
   container?: HTMLElement | null,

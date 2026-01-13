@@ -45,7 +45,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -974,7 +974,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1916,7 +1916,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -2846,7 +2846,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3775,7 +3775,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;

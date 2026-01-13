@@ -639,7 +639,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1214,7 +1214,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;

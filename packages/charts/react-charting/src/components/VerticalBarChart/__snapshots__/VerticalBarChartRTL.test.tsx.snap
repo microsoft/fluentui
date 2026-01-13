@@ -18,10 +18,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -45,7 +45,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -72,7 +72,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -218,7 +218,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -330,7 +330,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -368,7 +368,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -406,7 +406,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -473,7 +473,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -817,10 +817,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -831,7 +831,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -844,7 +844,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -871,7 +871,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -1017,7 +1017,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1129,7 +1129,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -1167,7 +1167,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1205,7 +1205,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1272,7 +1272,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1629,10 +1629,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
             position: relative;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_5"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_6"
       />
       <div
         class=
@@ -1643,7 +1643,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             {
               position: relative;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -1656,7 +1656,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -1683,7 +1683,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_5"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -1829,7 +1829,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_5"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -1941,7 +1941,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="47.400000000000006"
-                id="_VBC_bar_12"
+                id="_VBC_bar_11"
                 role="img"
                 rx="0"
                 tabindex="0"
@@ -1979,7 +1979,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#002050"
                 height="237"
-                id="_VBC_bar_14"
+                id="_VBC_bar_13"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -2017,7 +2017,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#00188f"
                 height="142.2"
-                id="_VBC_bar_16"
+                id="_VBC_bar_15"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -2084,7 +2084,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone10"
+                  data-focuszone-id="FocusZone9"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -2415,7 +2415,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty2"
+    id="_VBC_empty1"
     role="alert"
     style="opacity: 0;"
   />
@@ -2440,10 +2440,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -2454,7 +2454,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2467,7 +2467,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2494,7 +2494,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2640,7 +2640,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2752,7 +2752,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -2790,7 +2790,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2828,7 +2828,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2895,7 +2895,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10064,10 +10064,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -10078,7 +10078,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10091,7 +10091,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -10118,7 +10118,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -10264,7 +10264,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -10376,7 +10376,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.39999999999998"
-              id="_VBC_bar_15"
+              id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="0"
@@ -10414,7 +10414,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_17"
+              id="_VBC_bar_16"
               role="img"
               rx="0"
               tabindex="-1"
@@ -10452,7 +10452,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_19"
+              id="_VBC_bar_18"
               role="img"
               rx="0"
               tabindex="-1"
@@ -10519,7 +10519,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -12345,10 +12345,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -12359,7 +12359,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -12372,7 +12372,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -12399,7 +12399,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -12545,7 +12545,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -12657,7 +12657,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -12695,7 +12695,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -12733,7 +12733,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -12800,7 +12800,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -13144,10 +13144,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -13158,7 +13158,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -13171,7 +13171,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -13198,7 +13198,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -13344,7 +13344,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -13473,7 +13473,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementSecondarychart_3"
+            id="yAxisGElementSecondarychart_2"
             text-anchor="start"
             transform="translate(610, 0)"
           >
@@ -13586,7 +13586,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -13624,7 +13624,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -13662,7 +13662,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -13729,7 +13729,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -14073,10 +14073,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -14087,7 +14087,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -14100,7 +14100,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -14127,7 +14127,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -14237,7 +14237,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -14351,7 +14351,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#627CEF"
               height="237"
-              id="_VBC_bar_9"
+              id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
@@ -14391,7 +14391,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#C19C00"
               height="169.28571428571428"
-              id="_VBC_bar_11"
+              id="_VBC_bar_10"
               role="img"
               rx="0"
               tabindex="-1"
@@ -14431,7 +14431,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#E650AF"
               height="128.65714285714284"
-              id="_VBC_bar_13"
+              id="_VBC_bar_12"
               role="img"
               rx="0"
               tabindex="-1"
@@ -14471,7 +14471,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0E7878"
               height="189.60000000000002"
-              id="_VBC_bar_15"
+              id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="-1"
@@ -14538,7 +14538,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -14682,10 +14682,10 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -14696,7 +14696,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -14709,7 +14709,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -14736,7 +14736,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -14882,7 +14882,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -15012,7 +15012,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="23.69999999999999"
-              id="_VBC_bar_15"
+              id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="0"
@@ -15050,7 +15050,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="118.49999999999999"
-              id="_VBC_bar_17"
+              id="_VBC_bar_16"
               role="img"
               rx="0"
               tabindex="-1"
@@ -15088,7 +15088,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="71.10000000000002"
-              id="_VBC_bar_19"
+              id="_VBC_bar_18"
               role="img"
               rx="0"
               tabindex="-1"
@@ -15155,7 +15155,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone13"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

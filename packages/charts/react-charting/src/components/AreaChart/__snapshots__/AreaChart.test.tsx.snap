@@ -1941,7 +1941,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2246,7 +2246,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2580,7 +2580,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2914,7 +2914,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3239,7 +3239,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3562,7 +3562,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3737,7 +3737,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4071,7 +4071,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4405,7 +4405,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4739,7 +4739,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;

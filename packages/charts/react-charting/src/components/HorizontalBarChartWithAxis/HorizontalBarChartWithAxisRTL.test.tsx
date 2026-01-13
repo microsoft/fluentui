@@ -386,8 +386,9 @@ runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
     async container => {
       await new Promise(resolve => setTimeout(resolve));
       // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(4);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Stri...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(4);
+      expect(tickLabels[0].textContent).toEqual('Stri...');
     },
   );
 });
