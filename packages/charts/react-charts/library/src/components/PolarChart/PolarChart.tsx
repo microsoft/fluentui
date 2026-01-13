@@ -39,9 +39,9 @@ const LABEL_WIDTH = 36;
 const LABEL_HEIGHT = 16;
 const LABEL_OFFSET = 10;
 const TICK_SIZE = 6;
-const MIN_PIXEL = 2;
-const MAX_PIXEL = 16;
-const DEFAULT_PIXEL = 6;
+const MIN_MARKER_SIZE_PX = 2;
+const MAX_MARKER_SIZE_PX = 16;
+const MIN_MARKER_SIZE_PX_MARKERS_ONLY = 4;
 
 export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwardRef<HTMLDivElement, PolarChartProps>(
   (props, forwardedRef) => {
@@ -97,11 +97,19 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       [props.margins],
     );
 
-    const svgWidth = props.width || containerWidth;
-    const svgHeight = (props.height || containerHeight) - legendContainerHeight;
-    const outerRadius =
-      Math.min(svgWidth - (margins.left + margins.right), svgHeight - (margins.top + margins.bottom)) / 2;
-    const innerRadius = Math.max(0, Math.min(Math.abs(props.hole || 0), 1)) * outerRadius;
+    const svgWidth = React.useMemo(() => props.width || containerWidth, [props.width, containerWidth]);
+    const svgHeight = React.useMemo(
+      () => (props.height || containerHeight) - legendContainerHeight,
+      [props.height, containerHeight, legendContainerHeight],
+    );
+    const outerRadius = React.useMemo(
+      () => Math.min(svgWidth - (margins.left + margins.right), svgHeight - (margins.top + margins.bottom)) / 2,
+      [svgWidth, svgHeight, margins],
+    );
+    const innerRadius = React.useMemo(
+      () => Math.max(0, Math.min(Math.abs(props.hole || 0), 1)) * outerRadius,
+      [props.hole, outerRadius],
+    );
 
     const legendColorMap = React.useRef<Record<string, string>>({});
     const chartData = React.useMemo(() => {
@@ -414,6 +422,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       aTickLabels,
       innerRadius,
       rTickLabels,
+      props.direction,
     ]);
 
     const getActiveLegends = React.useCallback(() => {
@@ -509,6 +518,11 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
       setActivePoint('');
     }, []);
 
+    const markersOnlyMode = React.useMemo(
+      () => chartData.filter(s => s.type === 'areapolar' || s.type === 'linepolar').length === 0,
+      [chartData],
+    );
+
     const renderRadialPoints = React.useCallback(
       (series: AreaPolarSeries | LinePolarSeries | ScatterPolarSeries, seriesIndex: number) => {
         const shouldHighlight = legendHighlighted(series.legend);
@@ -524,14 +538,13 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               const [x, y] = d3PointRadial(aScale(point.theta), rScale(point.r as any)!);
               const id = `${seriesIndex}-${pointIndex}`;
               const isActive = activePoint === id;
-              let radius =
-                chartData.filter(s => s.type === 'areapolar' || s.type === 'linepolar').length === 0
-                  ? DEFAULT_PIXEL
-                  : MIN_PIXEL;
+              const minPx = markersOnlyMode ? MIN_MARKER_SIZE_PX_MARKERS_ONLY : MIN_MARKER_SIZE_PX;
+              let radius = minPx;
               if (typeof point.markerSize !== 'undefined' && minMarkerSize !== maxMarkerSize) {
                 radius =
-                  MIN_PIXEL +
-                  ((point.markerSize - minMarkerSize!) / (maxMarkerSize! - minMarkerSize!)) * (MAX_PIXEL - MIN_PIXEL);
+                  minPx +
+                  ((point.markerSize - minMarkerSize!) / (maxMarkerSize! - minMarkerSize!)) *
+                    (MAX_MARKER_SIZE_PX - minPx);
               }
 
               const xValue =
@@ -569,7 +582,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
         showPopover,
         minMarkerSize,
         maxMarkerSize,
-        chartData,
+        markersOnlyMode,
         props.angularAxis?.unit,
         props.culture,
         props.useUTC,

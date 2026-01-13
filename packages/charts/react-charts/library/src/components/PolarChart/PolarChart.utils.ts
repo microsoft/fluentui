@@ -26,6 +26,7 @@ import {
   formatDateToLocaleString,
 } from '@fluentui/chart-utilities';
 import { timeFormat as d3TimeFormat, utcFormat as d3UtcFormat } from 'd3-time-format';
+import { PolarChartProps } from './PolarChart.types';
 
 export const EPSILON = 1e-6;
 
@@ -131,9 +132,8 @@ export const createRadialScale = (
     }
   }
   const tickValues = customTickValues ?? scale.ticks(tickCount);
-  const tickLabels = tickValues.map(tickFormat);
 
-  return { scale, tickValues, tickLabels };
+  return { scale, tickValues, tickLabels: tickValues.map(tickFormat) };
 };
 
 export const getScaleType = (
@@ -185,7 +185,7 @@ const degToRad = (deg: number) => (deg * Math.PI) / 180;
 
 const radToDeg = (rad: number) => (rad * 180) / Math.PI;
 
-const normalizeAngle = (deg: number, direction?: 'clockwise' | 'counterclockwise') =>
+const normalizeAngle = (deg: number, direction: PolarChartProps['direction']) =>
   (((direction === 'clockwise' ? deg : 450 - deg) % 360) + 360) % 360;
 
 export const createAngularScale = (
@@ -199,8 +199,8 @@ export const createAngularScale = (
     culture?: string;
     tickStep?: number | string;
     tick0?: number | Date;
-    direction?: 'clockwise' | 'counterclockwise';
-    unit?: 'degrees' | 'radians';
+    direction?: PolarChartProps['direction'];
+    unit?: NonNullable<PolarChartProps['angularAxis']>['unit'];
   } = {},
 ): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
   if (scaleType === 'category') {
@@ -248,7 +248,10 @@ export const createAngularScale = (
   };
 };
 
-export const formatAngle = (value: string | number, unit?: 'radians' | 'degrees'): string =>
+export const formatAngle = (
+  value: string | number,
+  unit: NonNullable<PolarChartProps['angularAxis']>['unit'],
+): string =>
   typeof value === 'string'
     ? value
     : unit === 'radians'
