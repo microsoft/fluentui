@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { SpinButton } from '@fluentui/react-components';
 
 import descriptionMd from './SpinButtonDescription.md';

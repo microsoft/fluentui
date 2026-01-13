@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/SpinButton Migration" />
 
@@ -260,25 +260,25 @@ const SpinButtonV9CustomSuffixBasicExample = () => {
 
 This table maps v8 `SpinButton` props to the v9 `SpinButton` equivalent.
 
-| v8                  | v9                    | Notes                                                                                                    |
-| ------------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
-| `componentRef`      | `ref`                 | v9 provides access to the underlyig DOM node, not ISpinButton                                            |
-| `defaultValue`      | `defaultValue`        | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `value`.        |
-| `value`             | `value`               | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `defaultValue`. |
-| `min`               | `min`                 |                                                                                                          |
-| `max`               | `max`                 |                                                                                                          |
-| `step`              | `step`                |                                                                                                          |
-| `precision`         | `precision`           |                                                                                                          |
-| `onChange`          | `onChange`            | Typescript types have changed                                                                            |
-| `onValidate`        | n/a                   |                                                                                                          |
-| `onIncrement`       | `onChange`            | See example above                                                                                        |
-| `onDecrement`       | `onChange`            | See example above                                                                                        |
-| `label`             | Use `Label` component | Be sure to associate `Label` with `SpinButton` via `htmlFor`                                             |
-| `labelPosition`     | Use `Label` component |                                                                                                          |
-| `ariaLabel`         | `aria-label`          |                                                                                                          |
-| `ariaDescribedBy`   | `aria-describedby`    |                                                                                                          |
-| `ariaPositionInSet` | `aria-posinset`       | You probably don't need this for `SpinButton`                                                            |
-| `ariaSetSize`       | `aria-setsize`        | You probably don't need this for `SpinButton`                                                            |
-| `ariaValueNow`      | n/a                   | Set internally by `SpinButton`                                                                           |
-| `ariaValueText`     | `aria-valuetext`      | Set internally by `SpinButton` but can be overridden by setting this prop                                |
-| `iconProps`         | Use `Icon` component  |                                                                                                          |
+| v8                    | v9                      | Notes                                                                                                          |
+| --------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------- |
+| \`componentRef\`      | \`ref\`                 | v9 provides access to the underlyig DOM node, not ISpinButton                                                  |
+| \`defaultValue\`      | \`defaultValue\`        | v9 uses \`number\` rather than \`string\` for the type of this prop. Mutually exclusive with \`value\`.        |
+| \`value\`             | \`value\`               | v9 uses \`number\` rather than \`string\` for the type of this prop. Mutually exclusive with \`defaultValue\`. |
+| \`min\`               | \`min\`                 |                                                                                                                |
+| \`max\`               | \`max\`                 |                                                                                                                |
+| \`step\`              | \`step\`                |                                                                                                                |
+| \`precision\`         | \`precision\`           |                                                                                                                |
+| \`onChange\`          | \`onChange\`            | Typescript types have changed                                                                                  |
+| \`onValidate\`        | n/a                     |                                                                                                                |
+| \`onIncrement\`       | \`onChange\`            | See example above                                                                                              |
+| \`onDecrement\`       | \`onChange\`            | See example above                                                                                              |
+| \`label\`             | Use \`Label\` component | Be sure to associate \`Label\` with \`SpinButton\` via \`htmlFor\`                                             |
+| \`labelPosition\`     | Use \`Label\` component |                                                                                                                |
+| \`ariaLabel\`         | \`aria-label\`          |                                                                                                                |
+| \`ariaDescribedBy\`   | \`aria-describedby\`    |                                                                                                                |
+| \`ariaPositionInSet\` | \`aria-posinset\`       | You probably don't need this for \`SpinButton\`                                                                |
+| \`ariaSetSize\`       | \`aria-setsize\`        | You probably don't need this for \`SpinButton\`                                                                |
+| \`ariaValueNow\`      | n/a                     | Set internally by \`SpinButton\`                                                                               |
+| \`ariaValueText\`     | \`aria-valuetext\`      | Set internally by \`SpinButton\` but can be overridden by setting this prop                                    |
+| \`iconProps\`         | Use \`Icon\` component  |                                                                                                                |

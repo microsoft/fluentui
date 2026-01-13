@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Avatar } from '@fluentui/react-components';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 export { Default } from './AvatarDefault.stories';
 export { Name } from './AvatarName.stories';

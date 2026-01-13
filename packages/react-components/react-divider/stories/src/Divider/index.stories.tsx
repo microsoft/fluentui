@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { Divider } from '@fluentui/react-components';
 import descriptionMd from './DividerDescription.md';
 export { Default } from './DividerDefault.stories';
