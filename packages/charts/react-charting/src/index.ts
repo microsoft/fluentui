@@ -169,5 +169,12 @@ export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContai
 export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
 export type { IGanttChartProps, IGanttChartStyleProps, IGanttChartStyles } from './GanttChart';
 export { GanttChart } from './GanttChart';
+export type {
+  IPolarChartProps as PolarChartProps,
+  IPolarChartStyleProps as PolarChartStyleProps,
+  IPolarChartStyles as PolarChartStyles,
+  PolarAxisProps,
+} from './PolarChart';
+export { PolarChart } from './PolarChart';
 
 import './version';
