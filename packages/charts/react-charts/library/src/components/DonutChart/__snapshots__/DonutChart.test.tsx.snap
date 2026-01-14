@@ -40,7 +40,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, 80)"
+            transform="translate(0, 89)"
           >
             <g>
               <path
@@ -208,7 +208,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             transform="translate(0, 36)"
           >
             <g
-              transform="translate(0, 80)"
+              transform="translate(0, 89)"
             >
               <g>
                 <path
@@ -378,7 +378,7 @@ Object {
               transform="translate(0, 36)"
             >
               <g
-                transform="translate(0, 80)"
+                transform="translate(0, 89)"
               >
                 <g>
                   <path
@@ -600,7 +600,7 @@ Object {
             transform="translate(0, 36)"
           >
             <g
-              transform="translate(0, 80)"
+              transform="translate(0, 89)"
             >
               <g>
                 <path
@@ -862,7 +862,7 @@ Object {
               transform="translate(0, 36)"
             >
               <g
-                transform="translate(0, 80)"
+                transform="translate(0, 89)"
               >
                 <g>
                   <path
@@ -1084,7 +1084,7 @@ Object {
             transform="translate(0, 36)"
           >
             <g
-              transform="translate(0, 80)"
+              transform="translate(0, 89)"
             >
               <g>
                 <path
@@ -1340,7 +1340,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -1502,7 +1502,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -1694,7 +1694,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -1886,7 +1886,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -2048,7 +2048,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -2210,7 +2210,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -2361,7 +2361,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 100)"
+          transform="translate(0, 109)"
         >
           <g>
             <path
@@ -2449,7 +2449,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -2611,7 +2611,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         transform="translate(0, 36)"
       >
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
