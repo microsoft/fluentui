@@ -21,7 +21,7 @@ export const getStyles = (props: IPolarChartStyleProps): IPolarChartStyles => {
 
     gridLineInner: [
       {
-        opacity: 1,
+        opacity: 0.2,
       },
       getGridLineStyle(theme),
     ],
