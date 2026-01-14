@@ -9,6 +9,7 @@ import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { ICalloutProps as ICalloutProps_2 } from '@fluentui/react';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IHoverCardStyleProps } from '@fluentui/react/lib/HoverCard';
 import { IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
@@ -450,7 +451,9 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
-    xAxis?: AxisProps;
+    xAxis?: AxisProps & {
+        tickLayout?: 'default' | 'auto';
+    };
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -1529,6 +1532,52 @@ export interface IPieChartStyles {
     root?: IStyle;
 }
 
+// @public
+export interface IPolarChartProps {
+    angularAxis?: PolarAxisProps & {
+        unit?: 'radians' | 'degrees';
+    };
+    calloutProps?: Partial<ICalloutProps_2>;
+    chartTitle?: string;
+    componentRef?: React_2.Ref<IChart>;
+    culture?: string;
+    // Warning: (ae-forgotten-export) The symbol "IAreaPolarSeries" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ILinePolarSeries" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IScatterPolarSeries" needs to be exported by the entry point index.d.ts
+    data: (IAreaPolarSeries | ILinePolarSeries | IScatterPolarSeries)[];
+    dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+    direction?: 'clockwise' | 'counterclockwise';
+    height?: number;
+    hideLegend?: boolean;
+    hideTooltip?: boolean;
+    hole?: number;
+    // (undocumented)
+    legendProps?: Partial<ILegendsProps>;
+    margins?: IMargins;
+    radialAxis?: PolarAxisProps;
+    shape?: 'circle' | 'polygon';
+    styles?: IStyleFunctionOrObject_2<IPolarChartStyleProps, IPolarChartStyles>;
+    theme?: ITheme_2;
+    useUTC?: boolean;
+    width?: number;
+}
+
+// @public
+export interface IPolarChartStyleProps {
+    theme: ITheme_2;
+}
+
+// @public
+export interface IPolarChartStyles {
+    chart?: IStyle_2;
+    chartWrapper?: IStyle_2;
+    gridLineInner?: IStyle_2;
+    gridLineOuter?: IStyle_2;
+    legendContainer?: IStyle_2;
+    root?: IStyle_2;
+    tickLabel?: IStyle_2;
+}
+
 // @public (undocumented)
 export interface IRefArrayData {
     // (undocumented)
@@ -2027,6 +2076,20 @@ export enum NodesComposition {
 
 // @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
+
+// @public
+export type PolarAxisProps = AxisProps & {
+    tickValues?: number[] | Date[] | string[];
+    tickFormat?: string;
+    tickCount?: number;
+    categoryOrder?: AxisCategoryOrder;
+    scaleType?: AxisScaleType;
+    rangeStart?: number | Date;
+    rangeEnd?: number | Date;
+};
+
+// @public
+export const PolarChart: React_2.FunctionComponent<IPolarChartProps>;
 
 // @public
 export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
