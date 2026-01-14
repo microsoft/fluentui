@@ -22,11 +22,20 @@ import {
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { normalizePaddingRect, safeRectValue, clamp } from '../../../utilities/annotationUtils';
+import {
+  normalizePaddingRect,
+  safeRectValue,
+  clamp,
+  applyMinDistanceFromAnchor,
+  DEFAULT_ANNOTATION_MAX_WIDTH,
+  DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+  DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE,
+  resolveRelativeWithPadding,
+} from '../../../utilities/annotationUtils';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
-const DEFAULT_FOREIGN_OBJECT_WIDTH = 180;
+const DEFAULT_FOREIGN_OBJECT_WIDTH = DEFAULT_ANNOTATION_MAX_WIDTH;
 const DEFAULT_FOREIGN_OBJECT_HEIGHT = 60;
 const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
@@ -336,11 +345,11 @@ const resolveViewportRelative = (
   const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
 
   if (axis === 'x') {
-    const resolvedX = paddingLeft + value * (effectiveWidth > 0 ? effectiveWidth : 0);
+    const resolvedX = resolveRelativeWithPadding(value, svgWidth, paddingLeft, paddingRight);
     return Number.isFinite(resolvedX) ? resolvedX : paddingLeft + effectiveWidth / 2;
   }
 
-  const resolvedY = paddingTop + value * (effectiveHeight > 0 ? effectiveHeight : 0);
+  const resolvedY = resolveRelativeWithPadding(value, svgHeight, paddingTop, paddingBottom);
   return Number.isFinite(resolvedY) ? resolvedY : paddingTop + effectiveHeight / 2;
 };
 
@@ -618,20 +627,18 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     if (annotation.connector) {
       const startPadding = annotation.connector.startPadding ?? 12;
       const endPadding = annotation.connector.endPadding ?? 0;
-      const minArrowClearance = 6;
-      const minDistance = Math.max(startPadding + endPadding + minArrowClearance, startPadding);
+      const minDistance = Math.max(startPadding + endPadding + DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE, startPadding);
 
-      const dx = displayPoint.x - resolved.anchor.x;
-      const dy = displayPoint.y - resolved.anchor.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      const desiredDisplayPoint = applyMinDistanceFromAnchor(
+        resolved.anchor,
+        displayPoint,
+        minDistance,
+        DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+      );
 
-      if (distance < minDistance) {
-        const fallbackDirection: AnnotationPoint = { x: 0, y: -1 };
-        const ux = distance === 0 ? fallbackDirection.x : dx / distance;
-        const uy = distance === 0 ? fallbackDirection.y : dy / distance;
-
-        const desiredDisplayX = resolved.anchor.x + ux * minDistance;
-        const desiredDisplayY = resolved.anchor.y + uy * minDistance;
+      if (desiredDisplayPoint !== displayPoint) {
+        const desiredDisplayX = desiredDisplayPoint.x;
+        const desiredDisplayY = desiredDisplayPoint.y;
 
         let desiredTopLeftX = desiredDisplayX + offsetX;
         let desiredTopLeftY = desiredDisplayY + offsetY;

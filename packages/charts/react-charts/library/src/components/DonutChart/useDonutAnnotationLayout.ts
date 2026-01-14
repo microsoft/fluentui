@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ChartAnnotation } from '../../types/ChartAnnotation';
 import type { ChartAnnotationContext } from '../CommonComponents';
@@ -20,11 +22,15 @@ import {
   aggregateMaxOverflow,
   addMarginToOverflow,
   hasPaddingConverged,
+  maxSides,
+  DEFAULT_ANNOTATION_MAX_WIDTH,
+  DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE,
+  DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
 } from '../../utilities/annotationUtils';
 
 const DEFAULT_VIEWPORT_FONT_SIZE = 14;
 const DEFAULT_LINE_HEIGHT_RATIO = 1.35;
-const DEFAULT_VIEWPORT_MAX_WIDTH = 180;
+const DEFAULT_VIEWPORT_MAX_WIDTH = DEFAULT_ANNOTATION_MAX_WIDTH;
 const APPROX_CHAR_WIDTH_RATIO = 0.55;
 const ADDITIONAL_MARGIN_SAFETY = 12;
 const EMPTY_ANNOTATIONS: readonly ChartAnnotation[] = Object.freeze([]);
@@ -117,7 +123,6 @@ const isViewportRelativeAnnotation = (annotation: ChartAnnotation): boolean => {
   const coordinates = annotation.coordinates;
   return !!layout && layout.clipToBounds === false && coordinates?.type === 'relative';
 };
-
 
 const estimateViewportAnnotationOverflow = (
   annotation: ChartAnnotation,
@@ -305,12 +310,7 @@ const computeAnnotationViewportPadding = (
     const aggregatedOverflow = aggregateMaxOverflow(overflows);
     const overflowPadding = addMarginToOverflow(aggregatedOverflow, ADDITIONAL_MARGIN_SAFETY);
 
-    const nextPadding: AnnotationViewportPadding = {
-      top: Math.max(basePadding.top, padding.top, overflowPadding.top),
-      right: Math.max(basePadding.right, padding.right, overflowPadding.right),
-      bottom: Math.max(basePadding.bottom, padding.bottom, overflowPadding.bottom),
-      left: Math.max(basePadding.left, padding.left, overflowPadding.left),
-    };
+    const nextPadding: AnnotationViewportPadding = maxSides(basePadding, padding, overflowPadding);
 
     if (hasPaddingConverged(padding, nextPadding)) {
       padding = nextPadding;

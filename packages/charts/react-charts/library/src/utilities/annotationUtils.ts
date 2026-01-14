@@ -49,8 +49,7 @@ export const safeRectValue = (rect: any, key: 'x' | 'y' | 'width' | 'height', fa
 /**
  * Clamps a value between min and max bounds
  */
-export const clamp = (value: number, min: number, max: number): number =>
-  Math.max(min, Math.min(max, value));
+export const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value));
 
 /**
  * Type guard to check if a value is a finite number
@@ -62,8 +61,8 @@ export const isFiniteNumber = (value: number | undefined): value is number =>
  * Helper to apply a callback to all four sides of a rect
  * Reduces repetitive code for top/right/bottom/left operations
  */
-export const applyToAllSides = <T,>(
-  callback: (side: 'top' | 'right' | 'bottom' | 'left') => T
+export const applyToAllSides = <T>(
+  callback: (side: 'top' | 'right' | 'bottom' | 'left') => T,
 ): { top: T; right: T; bottom: T; left: T } => ({
   top: callback('top'),
   right: callback('right'),
@@ -108,7 +107,9 @@ export const parseCssSizeToPixels = (value: string | undefined): number | undefi
  * Resolves CSS padding shorthand to individual sides
  * Supports 1-4 value syntax like CSS padding
  */
-export const resolvePaddingSides = (padding: string | undefined) => {
+export const resolvePaddingSides = (
+  padding: string | undefined,
+): { top: number; right: number; bottom: number; left: number } => {
   if (typeof padding !== 'string' || padding.trim().length === 0) {
     return { ...DEFAULT_PADDING_SIDES };
   }
@@ -158,9 +159,7 @@ export type OverflowRect = {
 /**
  * Aggregates multiple overflow rects by taking maximum for each side
  */
-export const aggregateMaxOverflow = (
-  overflows: OverflowRect[]
-): OverflowRect => {
+export const aggregateMaxOverflow = (overflows: OverflowRect[]): OverflowRect => {
   return overflows.reduce(
     (acc, overflow) => ({
       top: Math.max(acc.top, overflow.top || 0),
@@ -168,17 +167,14 @@ export const aggregateMaxOverflow = (
       bottom: Math.max(acc.bottom, overflow.bottom || 0),
       left: Math.max(acc.left, overflow.left || 0),
     }),
-    { top: 0, right: 0, bottom: 0, left: 0 }
+    { top: 0, right: 0, bottom: 0, left: 0 },
   );
 };
 
 /**
  * Adds margin to non-zero overflow sides
  */
-export const addMarginToOverflow = (
-  overflow: OverflowRect,
-  margin: number
-): OverflowRect => ({
+export const addMarginToOverflow = (overflow: OverflowRect, margin: number): OverflowRect => ({
   top: overflow.top > 0 ? overflow.top + margin : 0,
   right: overflow.right > 0 ? overflow.right + margin : 0,
   bottom: overflow.bottom > 0 ? overflow.bottom + margin : 0,
@@ -188,11 +184,7 @@ export const addMarginToOverflow = (
 /**
  * Checks if padding has converged between iterations
  */
-export const hasPaddingConverged = (
-  prev: OverflowRect,
-  next: OverflowRect,
-  threshold: number = 0.5
-): boolean =>
+export const hasPaddingConverged = (prev: OverflowRect, next: OverflowRect, threshold: number = 0.5): boolean =>
   Math.abs(next.top - prev.top) < threshold &&
   Math.abs(next.right - prev.right) < threshold &&
   Math.abs(next.bottom - prev.bottom) < threshold &&
@@ -231,9 +223,12 @@ export const splitTextIntoSegments = (
 
 // Connector utilities
 export type Point2D = { x: number; y: number };
+export type Point = Point2D;
 
 export const CONNECTOR_MIN_ARROW_CLEARANCE = 6;
+export const DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE = 6;
 export const CONNECTOR_FALLBACK_DIRECTION: Point2D = Object.freeze({ x: 0, y: -1 });
+export const DEFAULT_CONNECTOR_FALLBACK_DIRECTION = CONNECTOR_FALLBACK_DIRECTION;
 
 /**
  * Enforces minimum distance between anchor and display points for connector rendering
@@ -265,6 +260,33 @@ export const enforceConnectorMinDistance = (
   return displayPoint;
 };
 
+/**
+ * Ensures a connector has enough clearance between an anchor point and a display point.
+ * If the current distance is less than minDistance, returns an adjusted display point.
+ */
+export const applyMinDistanceFromAnchor = (
+  anchor: Point,
+  displayPoint: Point,
+  minDistance: number,
+  fallbackDirection: Point = DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+): Point => {
+  const dx = displayPoint.x - anchor.x;
+  const dy = displayPoint.y - anchor.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (!Number.isFinite(distance) || distance >= minDistance) {
+    return displayPoint;
+  }
+
+  const ux = distance === 0 ? fallbackDirection.x : dx / distance;
+  const uy = distance === 0 ? fallbackDirection.y : dy / distance;
+
+  return {
+    x: anchor.x + ux * minDistance,
+    y: anchor.y + uy * minDistance,
+  };
+};
+
 // Viewport resolution utilities
 /**
  * Resolves a relative position value within a padded container
@@ -290,6 +312,19 @@ export const resolveViewportRelativePosition = (
 };
 
 /**
+ * Resolves a relative coordinate (0..1) to a pixel coordinate within a padded container.
+ * If the relative value is invalid, returns the padded center.
+ */
+export const resolveRelativeWithPadding = (
+  relative: number,
+  totalSize: number,
+  paddingStart: number,
+  paddingEnd: number,
+): number => {
+  return resolveViewportRelativePosition(relative, totalSize, paddingStart, paddingEnd);
+};
+
+/**
  * Resolves both x and y relative coordinates within a padded container
  */
 export const resolveViewportRelativePoint = (
@@ -303,4 +338,26 @@ export const resolveViewportRelativePoint = (
     x: resolveViewportRelativePosition(relativeX, containerWidth, padding.left, padding.right),
     y: resolveViewportRelativePosition(relativeY, containerHeight, padding.top, padding.bottom),
   };
+};
+
+/**
+ * Shared constants for annotation layout behavior.
+ * Keeping these in one place reduces duplication across chart implementations.
+ */
+export const DEFAULT_ANNOTATION_MAX_WIDTH = 180;
+
+/**
+ * Takes the per-side max across multiple rects.
+ */
+export const maxSides = (...rects: Array<Partial<OverflowRect> | undefined>): OverflowRect => {
+  return applyToAllSides(side => {
+    let maxValue = 0;
+    for (const rect of rects) {
+      const candidate = rect?.[side];
+      if (typeof candidate === 'number' && Number.isFinite(candidate)) {
+        maxValue = Math.max(maxValue, candidate);
+      }
+    }
+    return maxValue;
+  });
 };
