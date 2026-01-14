@@ -198,8 +198,8 @@ const TEXT_LINE_BREAK_REGEX = /[\r\n]+/;
  */
 export const sanitizeTextSegment = (segment: string): string =>
   segment
-    .replace(/<[^>]+>/g, ' ')  // Remove HTML tags
-    .replace(/\s+/g, ' ')      // Collapse whitespace
+    .replace(/<[^>]+>/g, ' ') // Remove HTML tags
+    .replace(/\s+/g, ' ') // Collapse whitespace
     .trim();
 
 /**

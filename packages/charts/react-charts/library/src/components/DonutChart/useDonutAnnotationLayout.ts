@@ -72,13 +72,11 @@ export type UseDonutAnnotationLayoutResult = {
   svgStyle?: React.CSSProperties;
 };
 
-
 const estimateAnnotationSize = (annotation: ChartAnnotation): { width: number; height: number } => {
   const fontSize = parseCssSizeToPixels(annotation.style?.fontSize) ?? DEFAULT_VIEWPORT_FONT_SIZE;
-  const maxWidth =
-    isFiniteNumber(annotation.layout?.maxWidth)
-      ? Math.max(annotation.layout.maxWidth, fontSize * 2)
-      : DEFAULT_VIEWPORT_MAX_WIDTH;
+  const maxWidth = isFiniteNumber(annotation.layout?.maxWidth)
+    ? Math.max(annotation.layout.maxWidth, fontSize * 2)
+    : DEFAULT_VIEWPORT_MAX_WIDTH;
 
   const paddingSides = resolvePaddingSides(annotation.style?.padding ?? DEFAULT_ANNOTATION_PADDING);
   const totalHorizontalPadding = paddingSides.left + paddingSides.right;
@@ -146,10 +144,7 @@ const estimateViewportAnnotationOverflow = (
     return undefined;
   }
 
-  if (
-    !isFiniteNumber(coordinates.x) ||
-    !isFiniteNumber(coordinates.y)
-  ) {
+  if (!isFiniteNumber(coordinates.x) || !isFiniteNumber(coordinates.y)) {
     return undefined;
   }
 
@@ -158,7 +153,12 @@ const estimateViewportAnnotationOverflow = (
   const offsetX = isFiniteNumber(layout.offsetX) ? layout.offsetX : 0;
   const offsetY = isFiniteNumber(layout.offsetY) ? layout.offsetY : 0;
 
-  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
+  const {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom,
+  } = normalizePaddingRect(padding);
 
   const anchorX = resolveViewportRelativePosition(coordinates.x, containerWidth, paddingLeft, paddingRight);
   const anchorY = resolveViewportRelativePosition(coordinates.y, containerHeight, paddingTop, paddingBottom);
@@ -179,20 +179,18 @@ const estimateViewportAnnotationOverflow = (
   let displayY = topLeftY - alignOffsetY;
 
   if (annotation.connector) {
-    const startPadding =
-      isFiniteNumber(annotation.connector.startPadding)
-        ? annotation.connector.startPadding
-        : DEFAULT_CONNECTOR_START_PADDING;
-    const endPadding =
-      isFiniteNumber(annotation.connector.endPadding)
-        ? annotation.connector.endPadding
-        : DEFAULT_CONNECTOR_END_PADDING;
+    const startPadding = isFiniteNumber(annotation.connector.startPadding)
+      ? annotation.connector.startPadding
+      : DEFAULT_CONNECTOR_START_PADDING;
+    const endPadding = isFiniteNumber(annotation.connector.endPadding)
+      ? annotation.connector.endPadding
+      : DEFAULT_CONNECTOR_END_PADDING;
 
     const adjustedDisplay = enforceConnectorMinDistance(
       { x: anchorX, y: anchorY },
       { x: displayX, y: displayY },
       startPadding,
-      endPadding
+      endPadding,
     );
     displayX = adjustedDisplay.x;
     displayY = adjustedDisplay.y;
@@ -400,7 +398,12 @@ const createAnnotationContext = (
   const safeWidth = typeof svgWidth === 'number' && svgWidth > 0 ? svgWidth : 1;
   const safeHeight = typeof svgHeight === 'number' && svgHeight > 0 ? svgHeight : 1;
 
-  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
+  const {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom,
+  } = normalizePaddingRect(padding);
 
   const fallbackDiameter = Math.max(Math.min(safeWidth, safeHeight), 1);
   const safeOuterRadius = typeof outerRadiusValue === 'number' && outerRadiusValue > 0 ? outerRadiusValue : 0;
@@ -477,15 +480,9 @@ export const useDonutAnnotationLayout = ({
     const fallbackSvgWidth = isFiniteNumber(width) ? Math.max(width, 0) : 0;
     const fallbackSvgHeight = isFiniteNumber(height) ? Math.max(height, 0) : 0;
 
-    const resolvedSvgWidth =
-      isFiniteNumber(layout.svgWidth)
-        ? Math.max(layout.svgWidth, 0)
-        : fallbackSvgWidth;
+    const resolvedSvgWidth = isFiniteNumber(layout.svgWidth) ? Math.max(layout.svgWidth, 0) : fallbackSvgWidth;
 
-    const resolvedSvgHeight =
-      isFiniteNumber(layout.svgHeight)
-        ? Math.max(layout.svgHeight, 0)
-        : fallbackSvgHeight;
+    const resolvedSvgHeight = isFiniteNumber(layout.svgHeight) ? Math.max(layout.svgHeight, 0) : fallbackSvgHeight;
 
     const annotationViewportPadding = layout.padding;
     const hasAnnotationViewportPadding =
