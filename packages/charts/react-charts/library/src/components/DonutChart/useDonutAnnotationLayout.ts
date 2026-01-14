@@ -24,8 +24,6 @@ import {
   hasPaddingConverged,
   maxSides,
   DEFAULT_ANNOTATION_MAX_WIDTH,
-  DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE,
-  DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
 } from '../../utilities/annotationUtils';
 
 const DEFAULT_VIEWPORT_FONT_SIZE = 14;
