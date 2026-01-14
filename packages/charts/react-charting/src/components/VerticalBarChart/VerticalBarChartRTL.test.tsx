@@ -835,6 +835,10 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
     VerticalBarChart,
     { data: pointsWithLine, showXAxisLablesTooltip: true },
     container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(8);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
       const tickLabels = container.querySelectorAll('tspan');
       expect(tickLabels).toHaveLength(6);
       expect(tickLabels[1].textContent).toEqual('20,0...');
