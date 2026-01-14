@@ -140,7 +140,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         )
       : 0;
     const outerRadius =
-      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical - titleHeight) / 2;
+      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points);
     const valueInsideDonut =
       this.props.innerRadius! > MIN_DONUT_RADIUS
@@ -174,7 +174,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             aria-label={data?.chartTitle}
             ref={(node: SVGElement | null) => this._setViewBox(node)}
             width={this.state._width}
-            height={this.state._height}
+            height={this.state._height! + titleHeight}
           >
             {!hideLegend && data?.chartTitle && (
               <ChartTitle
@@ -189,7 +189,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             <g transform={`translate(0, ${titleHeight})`}>
               <Pie
                 width={this.state._width!}
-                height={this.state._height! - titleHeight}
+                height={this.state._height!}
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}

@@ -38,7 +38,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -86,7 +86,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -562,7 +562,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -610,7 +610,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -648,7 +648,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 dominant-baseline="auto"
                 text-anchor="start"
                 x="-1.143083014314768"
-                y="1.6411463135214557"
+                y="1.6411463135214555"
               >
                 20k
               </text>
@@ -730,7 +730,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 dominant-baseline="auto"
                 text-anchor="end"
                 x="1.9541939332494636"
-                y="0.4255890873260158"
+                y="0.42558908732601586"
               >
                 45k
               </text>
@@ -1143,7 +1143,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -1191,7 +1191,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -1229,7 +1229,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 dominant-baseline="auto"
                 text-anchor="start"
                 x="-1.143083014314768"
-                y="1.6411463135214557"
+                y="1.6411463135214555"
               >
                 19%
               </text>
@@ -1311,7 +1311,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 dominant-baseline="auto"
                 text-anchor="end"
                 x="1.9541939332494636"
-                y="0.4255890873260158"
+                y="0.42558908732601586"
               >
                 43%
               </text>
@@ -1724,7 +1724,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -1772,7 +1772,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -2335,7 +2335,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -2383,7 +2383,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -2859,7 +2859,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -2907,7 +2907,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -2924,7 +2924,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
+                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                 data-is-focusable="true"
                 id="_Pie_1first20000"
                 role="img"
@@ -2946,7 +2946,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
+                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                 data-is-focusable="true"
                 id="_Pie_1second39000"
                 role="img"
@@ -2968,7 +2968,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
+                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                 data-is-focusable="true"
                 id="_Pie_1third45000"
                 role="img"
@@ -3383,7 +3383,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -3431,7 +3431,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -3907,7 +3907,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -3955,7 +3955,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -4431,7 +4431,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -4439,7 +4439,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -4556,7 +4556,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -4604,7 +4604,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
@@ -5080,7 +5080,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-40"
+        height="-4"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -5128,7 +5128,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -38)"
+            transform="translate(0, -20)"
           >
             <g>
               <path
