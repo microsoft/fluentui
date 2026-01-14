@@ -47,7 +47,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               <path
                 aria-label="2020/04/30, 20000."
                 class="fui-donut-arc__root"
-                d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                 id="_Pie__r_0_first20000"
                 opacity="1"
                 role="img"
@@ -59,7 +59,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               <path
                 aria-label="2020/04/20, 39000."
                 class="fui-donut-arc__root"
-                d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                 id="_Pie__r_0_second39000"
                 opacity="1"
                 role="img"
@@ -71,7 +71,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               <path
                 aria-label="2020/04/25, 45000."
                 class="fui-donut-arc__root"
-                d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                 id="_Pie__r_0_third45000"
                 opacity="1"
                 role="img"
@@ -216,7 +216,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                   id="_Pie__r_28_first20000"
                   opacity="1"
                   role="img"
@@ -228,7 +228,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                   id="_Pie__r_28_second39000"
                   opacity="1"
                   role="img"
@@ -240,7 +240,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                   id="_Pie__r_28_third45000"
                   opacity="1"
                   role="img"
@@ -387,7 +387,7 @@ Object {
                   <path
                     aria-label="2020/04/30, 20000."
                     class="fui-donut-arc__root"
-                    d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                    d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                     id="_Pie__r_54_first20000"
                     opacity="1"
                     role="img"
@@ -399,7 +399,7 @@ Object {
                   <path
                     aria-label="2020/04/20, 39000."
                     class="fui-donut-arc__root"
-                    d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                    d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                     id="_Pie__r_54_second39000"
                     opacity="1"
                     role="img"
@@ -411,7 +411,7 @@ Object {
                   <path
                     aria-label="2020/04/25, 45000."
                     class="fui-donut-arc__root"
-                    d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                    d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                     id="_Pie__r_54_third45000"
                     opacity="1"
                     role="img"
@@ -610,7 +610,7 @@ Object {
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                   id="_Pie__r_54_first20000"
                   opacity="1"
                   role="img"
@@ -622,7 +622,7 @@ Object {
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                   id="_Pie__r_54_second39000"
                   opacity="1"
                   role="img"
@@ -634,7 +634,7 @@ Object {
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                   id="_Pie__r_54_third45000"
                   opacity="1"
                   role="img"
@@ -873,7 +873,7 @@ Object {
                   <path
                     aria-label="2020/04/30, 20000."
                     class="fui-donut-arc__root"
-                    d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                    d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                     id="_Pie__r_5j_first20000"
                     opacity="1"
                     role="img"
@@ -885,7 +885,7 @@ Object {
                   <path
                     aria-label="2020/04/20, 39000."
                     class="fui-donut-arc__root"
-                    d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                    d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                     id="_Pie__r_5j_second39000"
                     opacity="1"
                     role="img"
@@ -897,7 +897,7 @@ Object {
                   <path
                     aria-label="2020/04/25, 45000."
                     class="fui-donut-arc__root"
-                    d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                    d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                     id="_Pie__r_5j_third45000"
                     opacity="1"
                     role="img"
@@ -1096,7 +1096,7 @@ Object {
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
-                  d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+                  d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
                   id="_Pie__r_5j_first20000"
                   opacity="1"
                   role="img"
@@ -1108,7 +1108,7 @@ Object {
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
-                  d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+                  d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
                   id="_Pie__r_5j_second39000"
                   opacity="1"
                   role="img"
@@ -1120,7 +1120,7 @@ Object {
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
-                  d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+                  d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
                   id="_Pie__r_5j_third45000"
                   opacity="1"
                   role="img"
@@ -1353,7 +1353,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_40_first20000"
               opacity="1"
               role="img"
@@ -1365,7 +1365,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_40_second39000"
               opacity="1"
               role="img"
@@ -1377,7 +1377,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_40_third45000"
               opacity="1"
               role="img"
@@ -1902,7 +1902,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.987,-81.994A82,82,0,0,1,76.567,-29.352L51.238,-19.99A55,55,0,0,0,0.987,-54.991Z"
+              d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
               id="_Pie__r_2k_first20000"
               opacity="1"
               role="img"
@@ -1914,7 +1914,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.251,-27.5A82,82,0,0,1,-33.199,74.979L-21.97,50.422A55,55,0,0,0,51.923,-18.138Z"
+              d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
               id="_Pie__r_2k_second39000"
               opacity="1"
               role="img"
@@ -1926,7 +1926,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.994,74.158A82,82,0,0,1,-0.987,-81.994L-0.987,-54.991A55,55,0,0,0,-23.766,49.6Z"
+              d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
               id="_Pie__r_2k_third45000"
               opacity="1"
               role="img"
@@ -2065,7 +2065,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_2q_first20000"
               opacity="1"
               role="img"
@@ -2077,7 +2077,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_2q_second39000"
               opacity="1"
               role="img"
@@ -2089,7 +2089,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_2q_third45000"
               opacity="1"
               role="img"
@@ -2228,7 +2228,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_39_first20000"
               opacity="1"
               role="img"
@@ -2240,7 +2240,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_39_second39000"
               opacity="1"
               role="img"
@@ -2252,7 +2252,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_39_third45000"
               opacity="1"
               role="img"
@@ -2380,7 +2380,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_30_first20000"
               opacity="1"
               role="img"
@@ -2392,7 +2392,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_30_second39000"
               opacity="1"
               role="img"
@@ -2404,7 +2404,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_30_third45000"
               opacity="1"
               role="img"
@@ -2469,7 +2469,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_33_first20000"
               opacity="1"
               role="img"
@@ -2481,7 +2481,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_33_second39000"
               opacity="1"
               role="img"
@@ -2493,7 +2493,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_33_third45000"
               opacity="1"
               role="img"
@@ -2632,7 +2632,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
-              d="M0.82,-81.996A82,82,0,0,1,76.627,-29.196L0,0Z"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               id="_Pie__r_3e_first20000"
               opacity="1"
               role="img"
@@ -2644,7 +2644,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
-              d="M77.195,-27.657A82,82,0,0,1,-33.352,74.911L0,0Z"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               id="_Pie__r_3e_second39000"
               opacity="1"
               role="img"
@@ -2656,7 +2656,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
-              d="M-34.843,74.229A82,82,0,0,1,-0.82,-81.996L0,0Z"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               id="_Pie__r_3e_third45000"
               opacity="1"
               role="img"

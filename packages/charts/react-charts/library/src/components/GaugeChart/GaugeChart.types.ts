@@ -205,6 +205,11 @@ export interface GaugeChartStyles {
   chartTitle?: string;
 
   /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
+
+  /**
    * Styles for the segments
    */
   segment?: string;
