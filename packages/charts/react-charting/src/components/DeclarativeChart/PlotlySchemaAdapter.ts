@@ -1584,7 +1584,6 @@ export const transformPlotlyJsonToVSBCProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundedTicks: true,
-    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
@@ -1768,7 +1767,6 @@ export const transformPlotlyJsonToGVBCProps = (
     hideLegend,
     roundCorners: true,
     roundedTicks: true,
-    wrapXAxisLables: true,
     showYAxisLables: true,
     ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getTitles(processedInput.layout),
@@ -1892,7 +1890,6 @@ export const transformPlotlyJsonToVBCProps = (
     hideLegend,
     roundCorners: true,
     roundedTicks: true,
-    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     showYAxisLables: true,
     ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
@@ -2001,9 +1998,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const xAxisType = getAxisType(input.data, getAxisObjects(input.data, input.layout).x);
-  const resolveXValue = getAxisValueResolver(xAxisType);
-  const shouldWrapLabels = xAxisType === 'category';
+  const resolveXValue = getAxisValueResolver(getAxisType(input.data, getAxisObjects(input.data, input.layout).x));
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -2179,7 +2174,6 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
-    wrapXAxisLables: shouldWrapLabels,
     showYAxisLables: true,
     roundedTicks: true,
     ...getXMinMaxValues(input.data[0], input.layout),
@@ -2623,7 +2617,6 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
     ...getAxisTickProps(input.data, input.layout),
@@ -4046,17 +4039,25 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
     const axType = getAxisType(data, ax);
 
+    if (axId === 'x' && axType === 'category') {
+      props.xAxis = {
+        tickLayout: 'auto',
+      };
+    }
+
     if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
       const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
 
       if (axId === 'x') {
         props.tickValues = tickValues;
         props.xAxis = {
+          ...props.xAxis,
           tickText: ax.ticktext,
         };
       } else if (axId === 'y') {
         props.yAxisTickValues = tickValues;
         props.yAxis = {
+          ...props.yAxis,
           tickText: ax.ticktext,
         };
       }
@@ -4069,11 +4070,13 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
       if (axId === 'x') {
         props.xAxis = {
+          ...props.xAxis,
           tickStep: dtick,
           tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
+          ...props.yAxis,
           tickStep: dtick,
           tick0,
         };
