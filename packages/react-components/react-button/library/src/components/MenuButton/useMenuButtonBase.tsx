@@ -21,7 +21,6 @@ export const useMenuButtonBase_unstable = (
     : false;
 
   return {
-    // Button state
     ...buttonState,
 
     // State calculated from a set of props
