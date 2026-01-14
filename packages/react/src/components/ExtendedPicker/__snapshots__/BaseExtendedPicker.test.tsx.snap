@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1`] = `
 <div

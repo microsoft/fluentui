@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import {
   AccessibilityProps,
   Chart,
@@ -177,6 +178,11 @@ export interface CartesianChartStyles {
  */
 export interface CartesianChartProps {
   /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
+  /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
    * These values decide wheather chart re render or not. Please check examples for reference
@@ -278,7 +284,7 @@ export interface CartesianChartProps {
   xMinValue?: number;
 
   /**
-   * maximum data value point in x-axis (for numeric x-axis)
+   * maximum data value point in x-axis
    */
   xMaxValue?: number;
 
@@ -512,7 +518,17 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
 
   /**
    * Configuration for the y-axis.

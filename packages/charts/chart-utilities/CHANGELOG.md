@@ -1,8 +1,26 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Tue, 11 Nov 2025 10:09:27 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:27:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.38](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.38)
+
+Wed, 10 Dec 2025 06:27:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.37..@fluentui/chart-utilities_v1.1.38)
+
+### Patches
+
+- fix: resolve minor gantt chart bugs ([PR #35543](https://github.com/microsoft/fluentui/pull/35543) by kumarkshitij@microsoft.com)
+
+## [1.1.37](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.37)
+
+Wed, 26 Nov 2025 09:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.36..@fluentui/chart-utilities_v1.1.37)
+
+### Patches
+
+- fix: decode and replace all bdata values in plotly json ([PR #35495](https://github.com/microsoft/fluentui/pull/35495) by kumarkshitij@microsoft.com)
 
 ## [1.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.36)
 

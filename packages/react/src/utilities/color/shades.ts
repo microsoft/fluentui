@@ -176,7 +176,7 @@ export function getContrastRatio(color1: IColor, color2: IColor): number {
     if (x <= 0.03928) {
       return x / 12.92;
     } else {
-      return Math.pow((x + 0.055) / 1.055, 2.4);
+      return ((x + 0.055) / 1.055) ** 2.4;
     }
   }
 

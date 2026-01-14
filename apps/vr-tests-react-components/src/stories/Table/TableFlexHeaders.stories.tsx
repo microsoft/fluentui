@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Table } from '@fluentui/react-table';
 import { Steps } from 'storywright';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST } from '../../utilities';

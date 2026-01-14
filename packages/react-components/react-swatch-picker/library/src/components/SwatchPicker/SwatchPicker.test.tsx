@@ -66,7 +66,7 @@ describe('SwatchPicker', () => {
             aria-checked="false"
             class="fui-ImageSwatch"
             role="radio"
-            style="background-image: url(path/img.png);"
+            style="background-image: url(\\"path/img.png\\");"
           />
           <button
             aria-checked="false"

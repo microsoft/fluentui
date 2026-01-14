@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = `
 <div>
@@ -9,12 +9,13 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Sales Performance by Category"
+        aria-label="Sales Performance by CategoryThe X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -429,7 +430,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -448,7 +449,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
             />
             <div
               class="fui-legend__text"

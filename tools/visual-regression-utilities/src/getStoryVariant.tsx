@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Args, Decorator, StoryObj } from '@storybook/react';
+import type { Args, Decorator, StoryObj } from '@storybook/react-webpack5';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
 

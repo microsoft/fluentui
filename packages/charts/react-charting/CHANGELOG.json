@@ -2,6 +2,157 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 05 Jan 2026 14:47:16 GMT",
+      "tag": "@fluentui/react-charting_v5.25.5",
+      "version": "5.25.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "569edee37b5abbc3c4816c9d8e6ad71a013252e4",
+            "comment": "enable custom callout in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5f4d3c4103d008d6a85302f0be6cd7cb5b661473",
+            "comment": "port changes from v9 to v8 using custom github agent"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "85918ce87ffe7b40c517f2a38b5a1f9e34cc96c3",
+            "comment": "support barlabels in declarative HBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "942915fca07e01bf52c68e533e7a9838e7fa8f94",
+            "comment": "enable multiplot for table, gauge and funnel chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "29998d3827059ba391ffdb47ecd9b8f9d12d9025",
+            "comment": "fix percentage label issue in donut, vbc, vsbc and heatmap chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Dec 2025 06:27:53 GMT",
+      "tag": "@fluentui/react-charting_v5.25.4",
+      "version": "5.25.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.38",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.10.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.222",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.125.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 09:34:50 GMT",
+      "tag": "@fluentui/react-charting_v5.25.3",
+      "version": "5.25.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "97cf7d522555d3363ec4751af38a78b7bea76af0",
+            "comment": "set reference line legends after the main chart legends"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "03d35996a507b5b4ef28c2c8448b19eaafd677ab",
+            "comment": "fix: handle frequent uncaught exceptions"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b49426b717fb2801d15f22c5d53b5ee5d585b58e",
+            "comment": "fix: handle empty legends list in multiplot image export"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.37",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.10.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.221",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.125.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:21 GMT",
       "tag": "@fluentui/react-charting_v5.25.2",
       "version": "5.25.2",

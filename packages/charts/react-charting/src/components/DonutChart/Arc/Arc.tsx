@@ -31,7 +31,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();

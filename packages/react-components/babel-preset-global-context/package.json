@@ -9,11 +9,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
-  },
   "dependencies": {
     "@babel/core": "^7.10.4",
     "@babel/generator": "^7.12.13",
@@ -25,7 +20,7 @@
     "find-up": "^5.0.0"
   },
   "peerDependencies": {
-    "@fluentui/global-context": "9.0.0-beta.97"
+    "@fluentui/global-context": "9.0.0-beta.98"
   },
   "beachball": {
     "disallowedChangeTypes": [

@@ -171,7 +171,6 @@ export class CartesianChartBase
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       calloutProps,
@@ -202,7 +201,6 @@ export class CartesianChartBase
       enableReflow: this.props.enableReflow,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let callout: JSXElement | null = null;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -246,6 +244,8 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
+        xMinValue: this.props.xMinValue,
+        xMaxValue: this.props.xMaxValue,
         ...this.props.xAxis,
       };
 
@@ -688,7 +688,7 @@ export class CartesianChartBase
    * @param chartHoverProps
    * @returns
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _generateCallout(calloutProps: any, chartHoverProps: any): JSXElement {
     return (
       <Callout

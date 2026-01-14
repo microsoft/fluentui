@@ -2,6 +2,60 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Wed, 17 Dec 2025 18:10:11 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.12",
+      "version": "9.8.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.4",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.9",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.20.11",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-tabster to v9.26.11",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.26.0",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Dec 2025 22:38:27 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.11",
+      "version": "9.8.11",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 19:18:14 GMT",
       "tag": "@fluentui/react-tooltip_v9.8.11",
       "version": "9.8.11",

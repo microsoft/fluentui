@@ -15,6 +15,7 @@ import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -547,14 +548,21 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _chartId = useId('sankeyChart');
   const _emptyChartId = useId('_SankeyChart_empty');
   const _labelTooltipId = useId('tooltip');
-  const _margins = React.useRef<Margins>({ top: 36, right: 48, bottom: 32, left: 48 });
+  const titleHeight = props.data?.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        36,
+      )
+    : 36;
+  const _margins = React.useRef<Margins>({ top: titleHeight, right: 48, bottom: 32, left: 48 });
   const { targetDocument, dir } = useFluent();
   const _window = targetDocument?.defaultView;
   const _isRtl: boolean = dir === 'rtl';
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
@@ -928,6 +936,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       } else if (!selectedNode) {
         return singleNode.color;
       }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
   };
 
@@ -987,7 +996,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
-        .html(text);
+        .text(text);
     }
   };
 
@@ -1137,6 +1146,16 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId} className={classes.chart}>
+            {!props.hideLegend && props.data.chartTitle && (
+              <ChartTitle
+                title={props.data.chartTitle}
+                x={width / 2}
+                maxWidth={width - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
+              />
+            )}
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (

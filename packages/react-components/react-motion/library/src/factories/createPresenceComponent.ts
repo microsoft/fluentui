@@ -241,6 +241,17 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         ],
       );
 
+      React.useEffect(() => {
+        // Heads up!
+        //
+        // Dispose the handle when unmounting the component to clean up retained references. Doing it in a separate
+        // effect to ensure that the component is unmounted.
+
+        if (unmountOnExit && !mounted) {
+          handleRef.current?.dispose();
+        }
+      }, [handleRef, unmountOnExit, mounted]);
+
       if (mounted) {
         return child;
       }

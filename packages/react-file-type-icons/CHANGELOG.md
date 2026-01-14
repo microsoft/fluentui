@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 11 Nov 2025 10:09:28 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:27:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.15.3)
+
+Wed, 10 Dec 2025 06:27:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.15.2..@fluentui/react-file-type-icons_v8.15.3)
+
+### Patches
+
+- chore: remove unused eslint-disable directives ([PR #35518](https://github.com/microsoft/fluentui/pull/35518) by vgenaev@gmail.com)
+- Bump @fluentui/style-utilities to v8.13.6 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+
+## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.15.2)
+
+Wed, 26 Nov 2025 09:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.15.1..@fluentui/react-file-type-icons_v8.15.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.13.5 ([commit](https://github.com/microsoft/fluentui/commit/7340400092f5d4b1ee09ce1f4de5ca403624cc21) by beachball)
 
 ## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.15.1)
 

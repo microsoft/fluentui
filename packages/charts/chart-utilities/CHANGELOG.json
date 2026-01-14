@@ -2,6 +2,51 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 05 Jan 2026 14:47:16 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.38",
+      "version": "1.1.38",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Dec 2025 06:27:46 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.38",
+      "version": "1.1.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 09:34:50 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.37",
+      "version": "1.1.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "03d35996a507b5b4ef28c2c8448b19eaafd677ab",
+            "comment": "fix: decode and replace all bdata values in plotly json"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:27 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.36",
       "version": "1.1.36",

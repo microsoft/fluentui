@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useRtl } from '../../utilities/index';
+import { useRtl, ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends } from '../Legends/index';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { getContrastTextColor } from '../../utilities/colors';
@@ -135,6 +135,20 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     return getHighlightedLegend().length === 0;
   }
 
+  function _getAriaLabel(
+    data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
+  ): string {
+    if ('subValue' in data) {
+      // Stacked funnel segment
+      const formattedValue = formatToLocaleString(data.subValue.value.toString(), props.culture);
+      return `${data.stage}, ${data.subValue.category}, ${formattedValue}.`;
+    } else {
+      // Non-stacked funnel segment
+      const formattedValue = formatToLocaleString((data.value ?? 0).toString(), props.culture);
+      return `${data.stage}, ${formattedValue}.`;
+    }
+  }
+
   function _getEventHandlerProps(
     data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
     opacity?: number,
@@ -238,17 +252,22 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const textColor = getContrastTextColor(fill);
     return (
       <g key={key}>
-        <path id={segmentId} d={pathD} fill={fill} opacity={opacity} {...eventHandlers} tabIndex={tabIndex} />
+        <path
+          id={segmentId}
+          d={pathD}
+          fill={fill}
+          opacity={opacity}
+          {...eventHandlers}
+          tabIndex={tabIndex}
+          role="img"
+          aria-label={_getAriaLabel(data)}
+        />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
       </g>
     );
   }
 
-  function _createFunnel(
-    containerHeight: number,
-    containerWidth: number,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement[] {
+  function _createFunnel(containerHeight: number, containerWidth: number): JSXElement[] {
     const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
@@ -300,8 +319,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
       funnelHeight: number;
       isRTL: boolean;
     },
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement {
+  ): JSXElement {
     // Ensure stages have subValues for geometry functions
     const stagesWithSubValues = geometryParams.stages.map(s => ({
       ...s,
@@ -345,11 +363,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     });
   }
 
-  function _createStackedFunnel(
-    containerHeight: number,
-    containerWidth: number,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement[] {
+  function _createStackedFunnel(containerHeight: number, containerWidth: number): JSXElement[] {
     const { data } = props;
 
     const stages = data;
@@ -359,7 +373,6 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const paths: JSXElement[] = [];
 
     const geometryParams = {
@@ -384,8 +397,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     return paths;
   }
 
-  function _renderLegends(): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement {
+  function _renderLegends(): JSXElement {
     if (props.hideLegend) {
       return <></>;
     }
@@ -445,14 +457,38 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const width = props.width || 350;
   const height = props.height || 500;
 
-  const funnelMarginTop = 40;
+  const titleHeight = props.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        40,
+      )
+    : 40;
+  const funnelMarginTop = titleHeight;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
-  const focusAttributes = useFocusableGroup();
+  const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classes.root} {...focusAttributes} style={{ width, height }}>
-      <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
+    <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
+      <svg
+        width={width}
+        height={height}
+        className={classes.chart}
+        {...arrowAttributes}
+        role={'img'}
+        aria-label={props.chartTitle}
+      >
+        {!props.hideLegend && props.chartTitle && (
+          <ChartTitle
+            title={props.chartTitle}
+            x={width / 2}
+            maxWidth={width - 20}
+            className={classes.chartTitle}
+            titleStyles={props.titleStyles}
+            tooltipClassName={classes.svgTooltip}
+          />
+        )}
         <g
           transform={
             isRTL

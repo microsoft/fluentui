@@ -39,7 +39,7 @@ export type SwitchOnChangeData = {
  */
 export type SwitchProps = Omit<
   ComponentProps<Partial<SwitchSlots>, 'input'>,
-  'checked' | 'defaultChecked' | 'onChange'
+  'checked' | 'defaultChecked' | 'onChange' | 'size'
 > & {
   /**
    * Defines the controlled checked state of the Switch.
@@ -66,6 +66,13 @@ export type SwitchProps = Omit<
   labelPosition?: 'above' | 'after' | 'before';
 
   /**
+   * The size of the Switch.
+   *
+   *  @default 'medium'
+   */
+  size?: 'small' | 'medium';
+
+  /**
    * Callback to be called when the checked state value changes.
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
@@ -75,4 +82,4 @@ export type SwitchProps = Omit<
 /**
  * State used in rendering Switch
  */
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;

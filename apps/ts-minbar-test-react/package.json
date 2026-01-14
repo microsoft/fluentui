@@ -10,9 +10,5 @@
   "scripts": {
     "type-check": "tsc -p .",
     "test-integration": "ts-node --transpileOnly ./src/index.ts"
-  },
-  "devDependencies": {
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-projects-test": "*"
   }
 }

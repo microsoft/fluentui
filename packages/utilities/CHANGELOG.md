@@ -1,8 +1,18 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 11 Nov 2025 10:09:26 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:28:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.17.2)
+
+Wed, 10 Dec 2025 06:28:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.17.1..@fluentui/utilities_v8.17.2)
+
+### Patches
+
+- chore: remove unused eslint-disable directives ([PR #35518](https://github.com/microsoft/fluentui/pull/35518) by vgenaev@gmail.com)
+- Bump @fluentui/react-window-provider to v2.3.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.17.1)
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { Switch } from '@fluentui/react-switch';
 
@@ -59,20 +59,40 @@ export const DisabledAndCheckedHighContrast = getStoryVariant(DisabledAndChecked
 
 export const DisabledAndCheckedDarkMode = getStoryVariant(DisabledAndChecked, DARK_MODE);
 
+export const Small = () => <Switch className="test-class" size="small" label="Toggle switch" />;
+
 export const WithLabelAbove = () => <Switch className="test-class" label="Toggle switch" labelPosition="above" />;
 WithLabelAbove.storyName = 'With label above';
 
 export const WithLabelAboveRTL = getStoryVariant(WithLabelAbove, RTL);
+
+export const SmallWithLabelAbove = () => (
+  <Switch className="test-class" size="small" label="Toggle switch" labelPosition="above" />
+);
+
+export const SmallWithLabelAboveRTL = getStoryVariant(SmallWithLabelAbove, RTL);
 
 export const WithLabelAfter = () => <Switch className="test-class" label="Toggle switch" labelPosition="after" />;
 WithLabelAfter.storyName = 'With label after';
 
 export const WithLabelAfterRTL = getStoryVariant(WithLabelAfter, RTL);
 
+export const SmallWithLabelAfter = () => (
+  <Switch className="test-class" size="small" label="Toggle switch" labelPosition="after" />
+);
+
+export const SmallWithLabelAfterRTL = getStoryVariant(SmallWithLabelAfter, RTL);
+
 export const WithLabelBefore = () => <Switch className="test-class" label="Toggle switch" labelPosition="before" />;
 WithLabelBefore.storyName = 'With label before';
 
 export const WithLabelBeforeRTL = getStoryVariant(WithLabelBefore, RTL);
+
+export const SmallWithLabelBefore = () => (
+  <Switch className="test-class" size="small" label="Toggle switch" labelPosition="before" />
+);
+
+export const SmallWithLabelBeforeRTL = getStoryVariant(SmallWithLabelBefore, RTL);
 
 export const WithLabelWrapping = () => (
   <Switch

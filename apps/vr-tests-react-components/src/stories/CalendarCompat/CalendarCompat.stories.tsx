@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Calendar } from '@fluentui/react-calendar-compat';
 import { SampleCalendarCompatMultiDayView } from './utils';
 import { Steps, type StoryParameters } from 'storywright';

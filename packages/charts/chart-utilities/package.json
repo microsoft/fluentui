@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/chart-utilities",
-  "version": "1.1.36",
+  "version": "1.1.38",
   "description": "React web chart utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,12 +22,6 @@
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "update-snapshots": "cross-env TZ=UTC just-scripts jest -u"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",

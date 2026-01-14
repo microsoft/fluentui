@@ -106,7 +106,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -151,7 +151,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -1277,7 +1277,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
       const selectedNode = state.selectedNode;
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 

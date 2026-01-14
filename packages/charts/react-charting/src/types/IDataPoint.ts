@@ -222,6 +222,12 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -267,6 +273,11 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -597,6 +608,7 @@ interface ISLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
@@ -663,6 +675,12 @@ export interface IVSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -773,6 +791,11 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * Whether to use the secondary y scale or not

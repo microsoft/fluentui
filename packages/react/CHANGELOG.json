@@ -2,6 +2,116 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:52 GMT",
+      "tag": "@fluentui/react_v8.125.3",
+      "version": "8.125.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.6.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.70",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.10.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.10.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.3.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.13.6",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.7.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.17.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Nov 2025 09:34:51 GMT",
+      "tag": "@fluentui/react_v8.125.2",
+      "version": "8.125.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.6.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.69",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.10.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.13.5",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:28 GMT",
       "tag": "@fluentui/react_v8.125.1",
       "version": "8.125.1",

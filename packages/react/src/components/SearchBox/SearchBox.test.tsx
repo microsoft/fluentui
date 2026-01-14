@@ -177,12 +177,7 @@ describe('SearchBox', () => {
   it('handles onChanged', () => {
     const onChanged = jest.fn();
 
-    render(
-      <SearchBox
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        onChanged={onChanged}
-      />,
-    );
+    render(<SearchBox onChanged={onChanged} />);
     expect(onChanged).toHaveBeenCalledTimes(0);
 
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'New value' } });

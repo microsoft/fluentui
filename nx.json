@@ -15,7 +15,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "inputs": ["production", "^production", "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json"],
       "cache": true
     },
     "build-storybook": {
@@ -68,14 +68,9 @@
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ],
+      "inputs": ["default", "{workspaceRoot/eslint.config.js}"],
       "options": {
-        "command": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint src"
+        "command": "eslint src"
       }
     },
     "format": {
@@ -138,6 +133,9 @@
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "master",
+  "tui": {
+    "enabled": false
+  },
   "plugins": [
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",

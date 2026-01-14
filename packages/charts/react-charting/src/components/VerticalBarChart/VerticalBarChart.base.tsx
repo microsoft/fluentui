@@ -105,7 +105,7 @@ export class VerticalBarChartBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _bars: JSXElement[];
   private _xAxisLabels: string[];
   private _yMax: number;
@@ -158,7 +158,6 @@ export class VerticalBarChartBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     this._adjustProps();
     this._xAxisLabels = this._getOrderedXAxisLabels();
@@ -170,7 +169,7 @@ export class VerticalBarChartBase
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     const legendBars: JSXElement = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -324,7 +323,7 @@ export class VerticalBarChartBase
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     const line: JSXElement[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
@@ -481,10 +480,9 @@ export class VerticalBarChartBase
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSXElement => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     const content: JSXElement[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
         <ChartHoverCard
@@ -499,7 +497,7 @@ export class VerticalBarChartBase
     });
     return <>{content}</>;
   };
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSXElement => {
     const { useSingleColor = false } = this.props;
     return (
@@ -515,7 +513,6 @@ export class VerticalBarChartBase
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout = (props?: IVerticalBarChartDataPoint): JSXElement | null => {
     return props
       ? this._isHavingLine
@@ -787,7 +784,7 @@ export class VerticalBarChartBase
         : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -870,7 +867,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -898,7 +895,6 @@ export class VerticalBarChartBase
     return bars;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -985,7 +981,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -1015,7 +1011,6 @@ export class VerticalBarChartBase
     return bars;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -1098,7 +1093,7 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
@@ -1144,7 +1139,6 @@ export class VerticalBarChartBase
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSXElement => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
@@ -1275,7 +1269,14 @@ export class VerticalBarChartBase
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
+  private _renderBarLabel(
+    xPoint: number,
+    yPoint: number,
+    barValue: number,
+    legend: string,
+    isNegativeBar: boolean,
+    customBarLabel?: string,
+  ) {
     if (
       this.props.hideLabels ||
       this._barWidth < 16 ||
@@ -1283,6 +1284,14 @@ export class VerticalBarChartBase
     ) {
       return null;
     }
+
+    // Use custom barLabel if provided, otherwise use the formatted barValue
+    const displayLabel =
+      customBarLabel !== undefined
+        ? customBarLabel
+        : typeof this.props.yAxisTickFormat === 'function'
+        ? this.props.yAxisTickFormat(barValue)
+        : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1292,9 +1301,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {typeof this.props.yAxisTickFormat === 'function'
-          ? this.props.yAxisTickFormat(barValue)
-          : formatScientificLimitWidth(barValue)}
+        {displayLabel}
       </text>
     );
   }

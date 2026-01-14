@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cdn url change to support latest vault/list filetype icons",
-  "packageName": "@fluentui/style-utilities",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

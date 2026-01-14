@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`sanitizeJson Should return json object when depth inside the range 1`] = `
 Object {
@@ -338,7 +338,7 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
-  "wrapXAxisLables": true,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -2842,7 +2842,10 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3047,6 +3050,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "xMaxValue": 1830.6731869091736,
@@ -4633,7 +4637,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -4783,6 +4787,7 @@ Object {
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
   "height": 772,
+  "hideLegend": false,
   "width": undefined,
 }
 `;
@@ -5052,7 +5057,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -5201,7 +5206,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLabels": false,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5490,8 +5495,13 @@ Object {
   "roundCorners": true,
   "roundedTicks": true,
   "showYAxisLables": true,
+  "titleStyles": Object {
+    "titleFont": Object {
+      "color": "#4D5663",
+    },
+  },
   "width": undefined,
-  "wrapXAxisLables": false,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -5607,7 +5617,10 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
