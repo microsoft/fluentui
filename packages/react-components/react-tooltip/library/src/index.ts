@@ -4,14 +4,15 @@ export {
   tooltipClassNames,
   useTooltipStyles_unstable,
   useTooltip_unstable,
-  // useTooltipBase_unstable,
 } from './Tooltip';
 export type {
   OnVisibleChangeData,
-  // TooltipBaseProps,
   TooltipProps,
   TooltipSlots,
-  // TooltipBaseState,
   TooltipState,
   TooltipChildProps as TooltipTriggerProps,
 } from './Tooltip';
+
+// Experimental APIs - will be uncommented in experimental release
+// export { useTooltipBase_unstable } from './Tooltip';
+// export type { TooltipBaseProps, TooltipBaseState } from './Tooltip';
