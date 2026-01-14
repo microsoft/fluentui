@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: upgrade to storybook 9",
-  "packageName": "@fluentui/web-components",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

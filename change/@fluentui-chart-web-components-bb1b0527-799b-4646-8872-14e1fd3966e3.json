@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: upgrade to storybook 9",
-  "packageName": "@fluentui/chart-web-components",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "none"
-}
