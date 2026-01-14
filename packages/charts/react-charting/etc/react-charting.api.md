@@ -937,6 +937,7 @@ export interface IGaugeChartStyles {
     segment?: IStyle;
     shapeStyles?: IStyle;
     sublabel?: IStyle;
+    svgTooltip?: IStyle;
 }
 
 // @public (undocumented)
