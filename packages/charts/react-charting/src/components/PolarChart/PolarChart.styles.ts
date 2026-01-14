@@ -34,7 +34,7 @@ export const getStyles = (props: IPolarChartStyleProps): IPolarChartStyles => {
     ],
 
     tickLabel: {
-      fontSize: FontSizes.small,
+      fontSize: FontSizes.mini,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
     },

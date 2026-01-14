@@ -22,7 +22,15 @@ import {
   createAngularScale,
   formatAngle,
 } from './PolarChart.utils';
-import { Callout, classNamesFunction, DirectionalHint, FocusZone, FocusZoneDirection, getRTL } from '@fluentui/react';
+import {
+  Callout,
+  classNamesFunction,
+  DirectionalHint,
+  FocusZone,
+  FocusZoneDirection,
+  getRTL,
+  getWindow,
+} from '@fluentui/react';
 import {
   ChartHoverCard,
   getColorFromToken,
@@ -97,7 +105,8 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
       setLegendContainerHeight(0);
     } else if (legendContainerRef.current) {
       const { height } = legendContainerRef.current.getBoundingClientRect();
-      const marginTop = getComputedStyle(legendContainerRef.current).marginTop || '0px';
+      const _window = getWindow(legendContainerRef.current);
+      const marginTop = _window?.getComputedStyle(legendContainerRef.current).marginTop || '0px';
       setLegendContainerHeight(Math.max(height, DEFAULT_LEGEND_HEIGHT) + parseFloat(marginTop));
     }
   }, [props.hideLegend]);
@@ -665,31 +674,32 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
           className={classes.chart}
           width={svgWidth}
           height={svgHeight}
-          viewBox={`${-svgWidth / 2} ${-svgHeight / 2} ${svgWidth} ${svgHeight}`}
           role="region"
           aria-label={
             (props.chartTitle ? `${props.chartTitle}. ` : '') + `Polar chart with ${chartData.length} data series.`
           }
         >
-          {renderPolarGrid()}
-          <g>
-            {chartData.map((series, seriesIndex) => {
-              return (
-                <g
-                  key={seriesIndex}
-                  role="region"
-                  aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
-                    series.data.length
-                  } data points.`}
-                >
-                  {series.type === 'areapolar' && renderRadialArea(series)}
-                  {(series.type === 'areapolar' || series.type === 'linepolar') && renderRadialLine(series)}
-                  {renderRadialPoints(series, seriesIndex)}
-                </g>
-              );
-            })}
+          <g transform={`translate(${svgWidth / 2}, ${svgHeight / 2})`}>
+            {renderPolarGrid()}
+            <g>
+              {chartData.map((series, seriesIndex) => {
+                return (
+                  <g
+                    key={seriesIndex}
+                    role="region"
+                    aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
+                      series.data.length
+                    } data points.`}
+                  >
+                    {series.type === 'areapolar' && renderRadialArea(series)}
+                    {(series.type === 'areapolar' || series.type === 'linepolar') && renderRadialLine(series)}
+                    {renderRadialPoints(series, seriesIndex)}
+                  </g>
+                );
+              })}
+            </g>
+            {renderPolarTicks()}
           </g>
-          {renderPolarTicks()}
         </svg>
       </FocusZone>
       {renderLegends()}
