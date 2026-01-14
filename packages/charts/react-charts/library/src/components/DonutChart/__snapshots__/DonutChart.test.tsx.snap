@@ -12,7 +12,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="196"
         width="0"
       >
         <rect
@@ -180,7 +180,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="196"
           width="0"
         >
           <rect
@@ -350,7 +350,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="196"
             width="0"
           >
             <rect
@@ -572,7 +572,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="196"
           width="0"
         >
           <rect
@@ -834,7 +834,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="196"
             width="0"
           >
             <rect
@@ -1056,7 +1056,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="196"
           width="0"
         >
           <rect
@@ -1312,7 +1312,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -1474,7 +1474,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -1666,7 +1666,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -1858,7 +1858,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -2020,7 +2020,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -2182,7 +2182,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -2354,7 +2354,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="200"
+      height="236"
       width="0"
     >
       <g
@@ -2421,7 +2421,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect
@@ -2583,7 +2583,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="196"
       width="0"
     >
       <rect

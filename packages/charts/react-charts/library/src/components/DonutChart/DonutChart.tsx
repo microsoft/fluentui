@@ -318,7 +318,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           36,
         )
       : 0;
-    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
+    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
@@ -337,7 +337,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           </text>
         )}
         <div className={classes.chartWrapper} {...arrowAttributes}>
-          <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
+          <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height! + titleHeight}>
             {!hideLegend && data?.chartTitle && (
               <ChartTitle
                 title={data.chartTitle}
