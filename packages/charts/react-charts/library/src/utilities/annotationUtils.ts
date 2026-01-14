@@ -197,3 +197,110 @@ export const hasPaddingConverged = (
   Math.abs(next.right - prev.right) < threshold &&
   Math.abs(next.bottom - prev.bottom) < threshold &&
   Math.abs(next.left - prev.left) < threshold;
+
+// Text processing utilities
+const TEXT_LINE_BREAK_REGEX = /[\r\n]+/;
+
+/**
+ * Sanitizes a text segment by removing HTML tags, collapsing whitespace, and trimming
+ */
+export const sanitizeTextSegment = (segment: string): string =>
+  segment
+    .replace(/<[^>]+>/g, ' ')  // Remove HTML tags
+    .replace(/\s+/g, ' ')      // Collapse whitespace
+    .trim();
+
+/**
+ * Splits text into segments by line breaks and sanitizes each segment
+ * Supports custom line break regex and sanitizer function
+ */
+export const splitTextIntoSegments = (
+  text: string,
+  lineBreakRegex: RegExp = TEXT_LINE_BREAK_REGEX,
+  sanitizer: (segment: string) => string = sanitizeTextSegment,
+): string[] => {
+  const rawSegments = text.split(lineBreakRegex);
+
+  if (rawSegments.length === 0) {
+    return [''];
+  }
+
+  const sanitized = rawSegments.map(sanitizer);
+  return sanitized.length > 0 ? sanitized : [''];
+};
+
+// Connector utilities
+export type Point2D = { x: number; y: number };
+
+export const CONNECTOR_MIN_ARROW_CLEARANCE = 6;
+export const CONNECTOR_FALLBACK_DIRECTION: Point2D = Object.freeze({ x: 0, y: -1 });
+
+/**
+ * Enforces minimum distance between anchor and display points for connector rendering
+ * Moves the display point away from the anchor if they are too close
+ */
+export const enforceConnectorMinDistance = (
+  anchorPoint: Point2D,
+  displayPoint: Point2D,
+  startPadding: number,
+  endPadding: number,
+  minArrowClearance: number = CONNECTOR_MIN_ARROW_CLEARANCE,
+  fallbackDirection: Point2D = CONNECTOR_FALLBACK_DIRECTION,
+): Point2D => {
+  const minDistance = Math.max(startPadding + endPadding + minArrowClearance, startPadding);
+  const dx = displayPoint.x - anchorPoint.x;
+  const dy = displayPoint.y - anchorPoint.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < minDistance) {
+    const unitX = distance === 0 ? fallbackDirection.x : dx / distance;
+    const unitY = distance === 0 ? fallbackDirection.y : dy / distance;
+
+    return {
+      x: anchorPoint.x + unitX * minDistance,
+      y: anchorPoint.y + unitY * minDistance,
+    };
+  }
+
+  return displayPoint;
+};
+
+// Viewport resolution utilities
+/**
+ * Resolves a relative position value within a padded container
+ * Returns the absolute position given a relative coordinate (0-1 range)
+ */
+export const resolveViewportRelativePosition = (
+  relativeValue: number,
+  containerSize: number,
+  paddingStart: number,
+  paddingEnd: number,
+): number => {
+  const effectiveSize = Math.max(containerSize - paddingStart - paddingEnd, 0);
+
+  if (!Number.isFinite(relativeValue)) {
+    return paddingStart + effectiveSize / 2;
+  }
+
+  if (effectiveSize === 0) {
+    return paddingStart;
+  }
+
+  return paddingStart + relativeValue * effectiveSize;
+};
+
+/**
+ * Resolves both x and y relative coordinates within a padded container
+ */
+export const resolveViewportRelativePoint = (
+  relativeX: number,
+  relativeY: number,
+  containerWidth: number,
+  containerHeight: number,
+  padding: { top: number; right: number; bottom: number; left: number },
+): Point2D => {
+  return {
+    x: resolveViewportRelativePosition(relativeX, containerWidth, padding.left, padding.right),
+    y: resolveViewportRelativePosition(relativeY, containerHeight, padding.top, padding.bottom),
+  };
+};

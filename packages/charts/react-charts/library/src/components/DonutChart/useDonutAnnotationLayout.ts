@@ -8,10 +8,14 @@ import {
 } from '../CommonComponents/Annotations/useChartAnnotationLayer.styles';
 import {
   normalizeViewportPadding,
+  normalizePaddingRect,
   isFiniteNumber,
   applyToAllSides,
   parseCssSizeToPixels,
   resolvePaddingSides,
+  splitTextIntoSegments,
+  enforceConnectorMinDistance,
+  resolveViewportRelativePosition,
   OverflowRect,
   aggregateMaxOverflow,
   addMarginToOverflow,
@@ -23,9 +27,6 @@ const DEFAULT_LINE_HEIGHT_RATIO = 1.35;
 const DEFAULT_VIEWPORT_MAX_WIDTH = 180;
 const APPROX_CHAR_WIDTH_RATIO = 0.55;
 const ADDITIONAL_MARGIN_SAFETY = 12;
-const CONNECTOR_MIN_ARROW_CLEARANCE = 6;
-const CONNECTOR_FALLBACK_DIRECTION = Object.freeze({ x: 0, y: -1 });
-const LINE_BREAK_REGEX = /<br\s*\/?>(?=\s*)|\n/gi;
 const EMPTY_ANNOTATIONS: readonly ChartAnnotation[] = Object.freeze([]);
 
 export type AnnotationViewportPadding = OverflowRect;
@@ -65,26 +66,11 @@ export type UseDonutAnnotationLayoutResult = {
   svgStyle?: React.CSSProperties;
 };
 
-const sanitizeAnnotationSegment = (segment: string): string =>
-  segment
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-const getAnnotationSegments = (text: string): string[] => {
-  const rawSegments = text.split(LINE_BREAK_REGEX);
-  if (rawSegments.length === 0) {
-    return [''];
-  }
-
-  const sanitized = rawSegments.map(segment => sanitizeAnnotationSegment(segment));
-  return sanitized.length > 0 ? sanitized : [''];
-};
 
 const estimateAnnotationSize = (annotation: ChartAnnotation): { width: number; height: number } => {
   const fontSize = parseCssSizeToPixels(annotation.style?.fontSize) ?? DEFAULT_VIEWPORT_FONT_SIZE;
   const maxWidth =
-    typeof annotation.layout?.maxWidth === 'number' && Number.isFinite(annotation.layout.maxWidth)
+    isFiniteNumber(annotation.layout?.maxWidth)
       ? Math.max(annotation.layout.maxWidth, fontSize * 2)
       : DEFAULT_VIEWPORT_MAX_WIDTH;
 
@@ -96,7 +82,7 @@ const estimateAnnotationSize = (annotation: ChartAnnotation): { width: number; h
   const approxCharsPerLine = Math.max(Math.floor(maxWidth / charWidth), 1);
 
   const text = typeof annotation.text === 'string' ? annotation.text : String(annotation.text ?? '');
-  const segments = getAnnotationSegments(text);
+  const segments = splitTextIntoSegments(text);
   let lineCount = 0;
   let longestSegmentLength = 0;
 
@@ -132,21 +118,6 @@ const isViewportRelativeAnnotation = (annotation: ChartAnnotation): boolean => {
   return !!layout && layout.clipToBounds === false && coordinates?.type === 'relative';
 };
 
-const resolveViewportAnchor = (
-  relative: number,
-  containerSize: number,
-  paddingStart: number,
-  paddingEnd: number,
-): number => {
-  const effectiveSize = Math.max(containerSize - paddingStart - paddingEnd, 0);
-  if (!Number.isFinite(relative)) {
-    return paddingStart + effectiveSize / 2;
-  }
-  if (effectiveSize === 0) {
-    return paddingStart;
-  }
-  return paddingStart + relative * effectiveSize;
-};
 
 const estimateViewportAnnotationOverflow = (
   annotation: ChartAnnotation,
@@ -162,37 +133,30 @@ const estimateViewportAnnotationOverflow = (
   }
 
   if (
-    typeof containerWidth !== 'number' ||
-    !Number.isFinite(containerWidth) ||
+    !isFiniteNumber(containerWidth) ||
     containerWidth <= 0 ||
-    typeof containerHeight !== 'number' ||
-    !Number.isFinite(containerHeight) ||
+    !isFiniteNumber(containerHeight) ||
     containerHeight <= 0
   ) {
     return undefined;
   }
 
   if (
-    typeof coordinates.x !== 'number' ||
-    !Number.isFinite(coordinates.x) ||
-    typeof coordinates.y !== 'number' ||
-    !Number.isFinite(coordinates.y)
+    !isFiniteNumber(coordinates.x) ||
+    !isFiniteNumber(coordinates.y)
   ) {
     return undefined;
   }
 
   const { width, height } = estimateAnnotationSize(annotation);
 
-  const offsetX = typeof layout.offsetX === 'number' && Number.isFinite(layout.offsetX) ? layout.offsetX : 0;
-  const offsetY = typeof layout.offsetY === 'number' && Number.isFinite(layout.offsetY) ? layout.offsetY : 0;
+  const offsetX = isFiniteNumber(layout.offsetX) ? layout.offsetX : 0;
+  const offsetY = isFiniteNumber(layout.offsetY) ? layout.offsetY : 0;
 
-  const paddingLeft = normalizeViewportPadding(padding.left);
-  const paddingRight = normalizeViewportPadding(padding.right);
-  const paddingTop = normalizeViewportPadding(padding.top);
-  const paddingBottom = normalizeViewportPadding(padding.bottom);
+  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
 
-  const anchorX = resolveViewportAnchor(coordinates.x, containerWidth, paddingLeft, paddingRight);
-  const anchorY = resolveViewportAnchor(coordinates.y, containerHeight, paddingTop, paddingBottom);
+  const anchorX = resolveViewportRelativePosition(coordinates.x, containerWidth, paddingLeft, paddingRight);
+  const anchorY = resolveViewportRelativePosition(coordinates.y, containerHeight, paddingTop, paddingBottom);
 
   const pointX = anchorX + offsetX;
   const pointY = anchorY + offsetY;
@@ -211,29 +175,24 @@ const estimateViewportAnnotationOverflow = (
 
   if (annotation.connector) {
     const startPadding =
-      typeof annotation.connector.startPadding === 'number' && Number.isFinite(annotation.connector.startPadding)
+      isFiniteNumber(annotation.connector.startPadding)
         ? annotation.connector.startPadding
         : DEFAULT_CONNECTOR_START_PADDING;
     const endPadding =
-      typeof annotation.connector.endPadding === 'number' && Number.isFinite(annotation.connector.endPadding)
+      isFiniteNumber(annotation.connector.endPadding)
         ? annotation.connector.endPadding
         : DEFAULT_CONNECTOR_END_PADDING;
 
-    const minDistance = Math.max(startPadding + endPadding + CONNECTOR_MIN_ARROW_CLEARANCE, startPadding);
-    const dx = displayX - anchorX;
-    const dy = displayY - anchorY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < minDistance) {
-      const unitX = distance === 0 ? CONNECTOR_FALLBACK_DIRECTION.x : dx / distance;
-      const unitY = distance === 0 ? CONNECTOR_FALLBACK_DIRECTION.y : dy / distance;
-
-      displayX = anchorX + unitX * minDistance;
-      displayY = anchorY + unitY * minDistance;
-
-      topLeftX = displayX + alignOffsetX;
-      topLeftY = displayY + alignOffsetY;
-    }
+    const adjustedDisplay = enforceConnectorMinDistance(
+      { x: anchorX, y: anchorY },
+      { x: displayX, y: displayY },
+      startPadding,
+      endPadding
+    );
+    displayX = adjustedDisplay.x;
+    displayY = adjustedDisplay.y;
+    topLeftX = displayX + alignOffsetX;
+    topLeftY = displayY + alignOffsetY;
   }
 
   const left = topLeftX;
@@ -268,11 +227,11 @@ const computeAnnotationViewportPadding = (
   }
 
   if (
-    typeof width !== 'number' ||
+    !isFiniteNumber(width) ||
     width <= 0 ||
-    typeof height !== 'number' ||
+    !isFiniteNumber(height) ||
     height <= 0 ||
-    !Number.isFinite(outerRadius) ||
+    !isFiniteNumber(outerRadius) ||
     outerRadius <= 0
   ) {
     return ZERO_ANNOTATION_VIEWPORT_PADDING;
@@ -292,11 +251,11 @@ const computeAnnotationViewportPadding = (
     }
 
     const { x, y } = coordinates;
-    if (typeof x === 'number' && Number.isFinite(x)) {
+    if (isFiniteNumber(x)) {
       minRelativeX = Math.min(minRelativeX, x);
       maxRelativeX = Math.max(maxRelativeX, x);
     }
-    if (typeof y === 'number' && Number.isFinite(y)) {
+    if (isFiniteNumber(y)) {
       minRelativeY = Math.min(minRelativeY, y);
       maxRelativeY = Math.max(maxRelativeY, y);
     }
@@ -441,10 +400,7 @@ const createAnnotationContext = (
   const safeWidth = typeof svgWidth === 'number' && svgWidth > 0 ? svgWidth : 1;
   const safeHeight = typeof svgHeight === 'number' && svgHeight > 0 ? svgHeight : 1;
 
-  const paddingLeft = normalizeViewportPadding(padding.left);
-  const paddingRight = normalizeViewportPadding(padding.right);
-  const paddingTop = normalizeViewportPadding(padding.top);
-  const paddingBottom = normalizeViewportPadding(padding.bottom);
+  const { left: paddingLeft, right: paddingRight, top: paddingTop, bottom: paddingBottom } = normalizePaddingRect(padding);
 
   const fallbackDiameter = Math.max(Math.min(safeWidth, safeHeight), 1);
   const safeOuterRadius = typeof outerRadiusValue === 'number' && outerRadiusValue > 0 ? outerRadiusValue : 0;
@@ -486,19 +442,20 @@ const createPlotContainerStyle = (
   padding: AnnotationViewportPadding,
 ): React.CSSProperties => {
   const style: React.CSSProperties = {};
-  const totalHorizontalPadding = normalizeViewportPadding(padding.left) + normalizeViewportPadding(padding.right);
-  const totalVerticalPadding = normalizeViewportPadding(padding.top) + normalizeViewportPadding(padding.bottom);
+  const normalizedPadding = normalizePaddingRect(padding);
+  const totalHorizontalPadding = normalizedPadding.left + normalizedPadding.right;
+  const totalVerticalPadding = normalizedPadding.top + normalizedPadding.bottom;
 
   const desiredWidth = Math.max(resolvedSvgWidth + totalHorizontalPadding, 0);
   const desiredHeight = Math.max(resolvedSvgHeight + totalVerticalPadding, 0);
 
-  if (typeof width === 'number' && Number.isFinite(width)) {
+  if (isFiniteNumber(width)) {
     style.width = Math.max(width, desiredWidth);
   } else if (desiredWidth > 0) {
     style.width = desiredWidth;
   }
 
-  if (typeof height === 'number' && Number.isFinite(height)) {
+  if (isFiniteNumber(height)) {
     style.height = Math.max(height, desiredHeight);
   } else if (desiredHeight > 0) {
     style.height = desiredHeight;
@@ -517,16 +474,16 @@ export const useDonutAnnotationLayout = ({
   return React.useMemo<UseDonutAnnotationLayoutResult>(() => {
     const annotationList = annotations ?? EMPTY_ANNOTATIONS;
     const layout = resolveDonutViewportLayout(annotationList, width, height, hideLabels);
-    const fallbackSvgWidth = typeof width === 'number' && Number.isFinite(width) ? Math.max(width, 0) : 0;
-    const fallbackSvgHeight = typeof height === 'number' && Number.isFinite(height) ? Math.max(height, 0) : 0;
+    const fallbackSvgWidth = isFiniteNumber(width) ? Math.max(width, 0) : 0;
+    const fallbackSvgHeight = isFiniteNumber(height) ? Math.max(height, 0) : 0;
 
     const resolvedSvgWidth =
-      typeof layout.svgWidth === 'number' && Number.isFinite(layout.svgWidth)
+      isFiniteNumber(layout.svgWidth)
         ? Math.max(layout.svgWidth, 0)
         : fallbackSvgWidth;
 
     const resolvedSvgHeight =
-      typeof layout.svgHeight === 'number' && Number.isFinite(layout.svgHeight)
+      isFiniteNumber(layout.svgHeight)
         ? Math.max(layout.svgHeight, 0)
         : fallbackSvgHeight;
 
