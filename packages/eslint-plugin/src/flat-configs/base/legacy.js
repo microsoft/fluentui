@@ -1,12 +1,24 @@
 // @ts-check
 const core = require('../core');
-const tseslint = require('typescript-eslint');
 const { getNamingConventionRule } = require('../../utils/configHelpers');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
-  ...core,
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
+  core,
   {
+    rules: {
+      'prefer-regex-literals': 'off',
+      'no-promise-executor-return': 'off',
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
     rules: {
       /**
        * `@typescript-eslint`plugin eslint rules

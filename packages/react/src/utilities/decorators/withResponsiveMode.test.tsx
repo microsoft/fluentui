@@ -4,7 +4,6 @@ import { setResponsiveMode, withResponsiveMode, ResponsiveMode } from './withRes
 
 import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 @withResponsiveMode
 class Example extends React.Component<any, any> {
   public render(): JSXElement {

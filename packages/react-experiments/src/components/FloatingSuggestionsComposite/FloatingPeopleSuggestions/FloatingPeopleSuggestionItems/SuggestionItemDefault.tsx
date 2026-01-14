@@ -7,7 +7,6 @@ import type { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
 import type { ISuggestionItemDefaultStylesProps, ISuggestionItemDefaultStyles } from './SuggestionItemDefault.styles';
 import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSXElement = (
   personaProps: IPersonaProps,
   suggestionItemProps?: ISuggestionItemProps<IPersonaProps>,

@@ -13,15 +13,22 @@ Let's say we implement custom lint rule named `uppercase-const`.
 
 Following rule declaration will enable it for particular lint config:
 
-```jsonc
-/* @filename <project-root>/.eslintrc */
-{
-  "extends:" ["../../.eslintrc"],
-  "rules": {
-     /* pattern: <@nx/workspace>-<custom-rule-name> */
-    "@nx/workspace-uppercase-const": "error"
-  }
-}
+```js
+// @filename <project-root>/eslint.config.js
+// @ts-check
+const fluentPlugin = require('@fluentui/eslint-plugin');
+
+/** @type {import("eslint").Linter.Config[]} */
+module.exports = [
+  // or 'flat/react-legacy', 'flat/node', etc.
+  ...fluentPlugin.configs['flat/core'],
+  {
+    rules: {
+      // pattern: <@nx/workspace>-<custom-rule-name>
+      '@nx/workspace-uppercase-const': 'error',
+    },
+  },
+];
 ```
 
 ## Adding new rule:

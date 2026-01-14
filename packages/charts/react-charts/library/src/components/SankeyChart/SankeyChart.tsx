@@ -8,13 +8,14 @@ import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
 import { Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode, ImageExportOptions } from '../../types/DataPoint';
+import { Margins, SLink, SNode } from '../../types/DataPoint';
 import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -541,20 +542,27 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   SankeyChartProps
 >((props, forwardedRef) => {
   const classes = useSankeyChartStyles(props);
-  const chartContainer = React.useRef<HTMLDivElement>(null);
+  const { chartContainerRef: chartContainer } = useImageExport(props.componentRef, true, false);
   const _reqID = React.useRef<number | undefined>(undefined);
   const _linkId = useId('link');
   const _chartId = useId('sankeyChart');
   const _emptyChartId = useId('_SankeyChart_empty');
   const _labelTooltipId = useId('tooltip');
-  const _margins = React.useRef<Margins>({ top: 36, right: 48, bottom: 32, left: 48 });
+  const titleHeight = props.data?.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        36,
+      )
+    : 36;
+  const _margins = React.useRef<Margins>({ top: titleHeight, right: 48, bottom: 32, left: 48 });
   const { targetDocument, dir } = useFluent();
   const _window = targetDocument?.defaultView;
   const _isRtl: boolean = dir === 'rtl';
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
@@ -569,17 +577,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const [yCalloutValue, setYCalloutValue] = React.useState<string>();
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: chartContainer.current,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(chartContainer.current, undefined, _isRtl, opts);
-      },
-    }),
-    [],
-  );
 
   const _fitParentContainer = React.useCallback((): void => {
     _reqID.current = _window?.requestAnimationFrame(() => {
@@ -939,12 +936,13 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       } else if (!selectedNode) {
         return singleNode.color;
       }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
   };
 
   const _fillStreamColors = (singleLink: SLink, gradientUrl: string): string | undefined => {
     if (selectedState && selectedLinks.has(singleLink.index!)) {
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   };
 
@@ -998,7 +996,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
-        .html(text);
+        .text(text);
     }
   };
 
@@ -1148,6 +1146,16 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId} className={classes.chart}>
+            {!props.hideLegend && props.data.chartTitle && (
+              <ChartTitle
+                title={props.data.chartTitle}
+                x={width / 2}
+                maxWidth={width - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
+              />
+            )}
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (

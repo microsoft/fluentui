@@ -1,13 +1,13 @@
 // @ts-check
 const core = require('../core');
 const compat = require('eslint-plugin-compat');
-const tseslint = require('typescript-eslint');
+const { defineConfig } = require('eslint/config');
 
 const { testFiles, storyFiles } = require('../../utils/configHelpers');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
-  ...core,
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
+  core,
   {
     rules: {
       '@fluentui/max-len': 'off',
@@ -17,8 +17,9 @@ module.exports = tseslint.config(
   {
     files: ['**/src/**/*.{ts,tsx,js}'],
     ignores: [...testFiles, ...storyFiles],
-    extends: [compat.configs['flat/recommended']],
+    ...compat.configs['flat/recommended'],
     rules: {
+      ...compat.configs['flat/recommended'].rules,
       '@rnx-kit/no-export-all': ['error', { expand: 'all' }],
     },
     settings: {

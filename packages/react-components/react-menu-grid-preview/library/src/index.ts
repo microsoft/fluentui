@@ -37,7 +37,7 @@ export {
 export type { MenuGridRowProps, MenuGridRowSlots, MenuGridRowState } from './MenuGridRow';
 export {
   MenuGridGroup,
-  MenuGridGroupClassNames,
+  menuGridGroupClassNames,
   renderMenuGridGroup_unstable,
   useMenuGridGroupContextValues_unstable,
   useMenuGridGroupStyles_unstable,

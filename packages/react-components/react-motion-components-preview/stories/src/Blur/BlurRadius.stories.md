@@ -1,1 +1,1 @@
-Compare different `fromRadius` values to control the spread of the blur effect.
+Compare different `outRadius` values to control the spread of the blur effect.

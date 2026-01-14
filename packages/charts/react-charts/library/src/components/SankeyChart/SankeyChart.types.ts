@@ -1,4 +1,5 @@
-import { RefObject } from 'react';
+import { Ref } from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Chart, ChartProps } from '../../types/DataPoint';
 
@@ -9,6 +10,11 @@ export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoi
  * {@docCategory SankeyChart}
  */
 export interface SankeyChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -84,7 +90,7 @@ export interface SankeyChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: RefObject<Chart>;
+  componentRef?: Ref<Chart>;
 
   /**
    * props for the callout in the chart
@@ -95,6 +101,12 @@ export interface SankeyChartProps {
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
+
+  /**
+   * Whether to hide the legend
+   * @default false
+   */
+  hideLegend?: boolean;
 
   /**
    * Props related to reflow behavior of the chart
@@ -148,6 +160,16 @@ export interface SankeyChartStyles {
    * Styles for the chart svg element
    */
   chart?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 }
 
 /**

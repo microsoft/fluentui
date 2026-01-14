@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:48 GMT",
+      "tag": "@fluentui/example-data_v8.4.25",
+      "version": "8.4.25",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/example-data",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Oct 2025 07:21:57 GMT",
       "tag": "@fluentui/example-data_v8.4.25",
       "version": "8.4.25",

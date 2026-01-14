@@ -140,7 +140,7 @@ export class InterfaceParserHelper extends BaseParser {
               description: comment,
               name: identifierName,
               type,
-              defaultValue: defaultValue,
+              defaultValue,
               interfacePropertyType: propType,
               deprecatedMessage,
             });

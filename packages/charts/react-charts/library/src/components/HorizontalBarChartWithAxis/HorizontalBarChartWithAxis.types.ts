@@ -60,17 +60,6 @@ export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
   yAxisPadding?: number;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
-   */
-  showYAxisLablesTooltip?: boolean;
-
-  /**
-   *@default false
-   *Used for showing complete y axis lables   */
-  showYAxisLables?: boolean;
-
-  /**
    * @default false
    * The prop used to enable gradient fill color for the chart.
    */
@@ -81,6 +70,12 @@ export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
    * The prop used to enable rounded corners for the bars.
    */
   roundCorners?: boolean;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 /**
@@ -145,4 +140,9 @@ export interface HorizontalBarChartWithAxisStyles extends CartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: string;
+
+  /**
+   * Style for the bar labels displayed at the end of each bar
+   */
+  barLabel?: string;
 }

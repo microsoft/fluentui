@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
 <div>
@@ -2065,7 +2065,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
                 text-align: center;
               }
           data-icon-name="More"
-          style="font-family: \\"FabricMDL2Icons\\";"
+          style="font-family: \\"FabricMDL2Icons\\"; color: inherit;"
         >
           
         </i>

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenuGrid renders a default state 1`] = `
+<div
+  aria-labelledby=""
+  class="fui-MenuGrid"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+  role="grid"
+>
+  Default MenuGrid
+</div>
+`;

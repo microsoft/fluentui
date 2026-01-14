@@ -86,6 +86,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       overflowButtonAs,
     } = props;
 
+    // eslint-disable-next-line prefer-const
     let classNames: { [key in keyof IPivotStyles]: string };
     const nameProps = {
       'aria-label': props['aria-label'],

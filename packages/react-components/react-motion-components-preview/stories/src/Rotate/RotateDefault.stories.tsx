@@ -104,11 +104,11 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('z');
-  const [fromAngle, setFromAngle] = React.useState<number>(-90);
+  const [outAngle, setOutAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const fromAngleSliderId = useId();
+  const outAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -141,18 +141,18 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
 
           <Field className={classes.sliderField}>
             <div className={classes.sliderHeader}>
-              <Label htmlFor={fromAngleSliderId} className={classes.sliderLabel}>
-                From Angle
+              <Label htmlFor={outAngleSliderId} className={classes.sliderLabel}>
+                Out Angle
               </Label>
-              <span className={classes.valueDisplay}>{fromAngle}°</span>
+              <span className={classes.valueDisplay}>{outAngle}°</span>
             </div>
             <Slider
               min={angleMin}
               max={angleMax}
-              defaultValue={fromAngle}
-              id={fromAngleSliderId}
+              defaultValue={outAngle}
+              id={outAngleSliderId}
               onChange={(_, data) => {
-                setFromAngle(data.value);
+                setOutAngle(data.value);
               }}
             />
           </Field>
@@ -198,7 +198,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         </div>
       </div>
 
-      <Rotate visible={visible} axis={axis} fromAngle={fromAngle} duration={duration}>
+      <Rotate visible={visible} axis={axis} outAngle={outAngle} duration={duration}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>

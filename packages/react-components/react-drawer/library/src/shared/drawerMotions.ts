@@ -58,7 +58,10 @@ export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({
       transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       opacity: 0,
     },
-    { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+    {
+      transform: 'translate3d(0, 0, 0)',
+      opacity: 1,
+    },
   ];
   const duration = durations[size];
 

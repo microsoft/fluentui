@@ -201,8 +201,11 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       logger,
     );
 
-    json.devDependencies ??= {};
-    json.devDependencies = { ...deps, ...json.devDependencies };
+    // NOTE: this is no longer needed as we use Nx Graph to resolve project dependencies, only production dependencies are required or devDeps that don't adhere to single version policy
+    if (deps !== null) {
+      json.devDependencies ??= {};
+      json.devDependencies = { ...deps, ...json.devDependencies };
+    }
 
     return json;
   });
@@ -316,21 +319,20 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       private: true,
       devDependencies: {
         ...storiesWorkspaceDeps,
-        // always added
-        [`@${options.npmScope}/react-storybook-addon`]: '*',
-        [`@${options.npmScope}/react-storybook-addon-export-to-sandbox`]: '*',
-        [`@${options.npmScope}/scripts-storybook`]: '*',
-        [`@${options.npmScope}/eslint-plugin`]: '*',
       },
     },
     publicApi: stripIndents`export {}`,
-    eslintrc: {
-      extends: ['plugin:@fluentui/eslint-plugin/react'],
-      root: true,
-      rules: {
-        'import/no-extraneous-dependencies': ['error', { packageDir: ['.', options.projectOffsetFromRoot.updated] }],
-      },
-    },
+    eslintConfig: `// @ts-check
+
+const fluentPlugin = require('@fluentui/eslint-plugin');
+
+module.exports = [
+  ...fluentPlugin.configs['flat/react'],
+  {
+    rules: {},
+  },
+];
+`,
     tsconfig: {
       root: {
         ...options.oldContent.tsConfig,
@@ -361,7 +363,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   tree.write(joinPathFragments(newProjectRoot, 'README.md'), templates.readme);
   tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), templates.publicApi);
-  writeJson(tree, joinPathFragments(newProjectRoot, '.eslintrc.json'), templates.eslintrc);
+  tree.write(joinPathFragments(newProjectRoot, 'eslint.config.js'), templates.eslintConfig);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
   writeJson(tree, joinPathFragments(newProjectRoot, 'package.json'), templates.packageJson);
@@ -371,7 +373,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   });
   updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/main.js'), content => {
     content = content
-      .replace(new RegExp('../stories/', 'g'), '../src/')
+      .replace(/\.\.\/stories\//g, '../src/')
       .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
 
     return content;
@@ -580,5 +582,5 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
 
   logger.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
 
-  return deps;
+  return Object.keys(deps).length > 0 ? deps : null;
 }

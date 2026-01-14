@@ -49,7 +49,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let menuClassNames: IMenuItemClassNames;
     let container: HTMLElement;
 
@@ -87,7 +87,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when hide checkmark icon for toggle command', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let menuClassNames: IMenuItemClassNames;
     let container: HTMLElement;
 
@@ -135,7 +135,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has icons', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       let menuClassNames: IMenuItemClassNames;
       let container: HTMLElement;
       registerIcons({ icons: { itemIcon: 'itemIcon' } });
@@ -163,7 +163,7 @@ describe('ContextMenuItemChildren', () => {
 
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       let menuClassNames: IMenuItemClassNames;
       let container: HTMLElement;
 
@@ -191,7 +191,7 @@ describe('ContextMenuItemChildren', () => {
 
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let menuClassNames: IMenuItemClassNames;
     let container: HTMLElement;
 
@@ -218,7 +218,6 @@ describe('ContextMenuItemChildren', () => {
   });
 });
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

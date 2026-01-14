@@ -14,7 +14,7 @@ jobs:
       artifact_id: ${{ steps.artifact_upload.outputs.artifact_id }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -23,7 +23,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: 'yarn'
@@ -58,7 +58,7 @@ jobs:
       - name: Upload Pages Artifact
         if: steps.affected_storybooks_count.outputs.value > 0
         id: artifact_upload
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _pages
 

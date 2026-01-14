@@ -31,7 +31,6 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
@@ -93,7 +92,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   public componentWillUnmount(): void {
     this._suggestions.current?.deselectAllSuggestions();
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   public render(): JSXElement {
     const { className, headerItemsProps, footerItemsProps } = this.props;
 
@@ -208,7 +207,6 @@ export class SuggestionsControl<T extends {}> extends React.Component<
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderHeaderItems(): JSXElement | null {
     const { headerItemsProps, suggestionsHeaderContainerAriaLabel } = this.props;
     const { selectedHeaderIndex } = this.state;
@@ -243,7 +241,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
       </div>
     ) : null;
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderFooterItems(): JSXElement | null {
     const { footerItemsProps, suggestionsFooterContainerAriaLabel } = this.props;
     const { selectedFooterIndex } = this.state;
@@ -278,7 +276,6 @@ export class SuggestionsControl<T extends {}> extends React.Component<
     ) : null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSuggestions(): JSXElement {
     return <SuggestionsCore<T> ref={this._suggestions} {...this.props} suggestions={this.state.suggestions} />;
   }

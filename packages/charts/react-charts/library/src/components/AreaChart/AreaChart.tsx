@@ -1,10 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
-import { select as d3Select } from 'd3-selection';
 import { tokens } from '@fluentui/react-theme';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import {
@@ -18,8 +16,6 @@ import {
   Margins,
   YValueHover,
   ChartPopoverProps,
-  Chart,
-  ImageExportOptions,
 } from '../../index';
 import {
   calloutData,
@@ -27,7 +23,6 @@ import {
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   getSecureProps,
@@ -39,16 +34,15 @@ import {
   domainRangeOfNumericForAreaLineScatterCharts,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   createStringYAxis,
-  useRtl,
   YAxisType,
   findCalloutPoints,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, LegendContainer, Legends } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { ScaleLinear } from 'd3-scale';
-import { toImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { useImageExport } from '../../utilities/hooks';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -94,7 +88,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const _verticalLineId: string = useId('verticalLine_');
     const _circleId: string = useId('circle');
     const _rectId: string = useId('rectangle');
-    const _tooltipId: string = useId('AreaChartTooltipID');
     //enableComputationOptimization is used for optimized code to group data points by x value
     //from O(n^2) to O(n) using a map.
     const _enableComputationOptimization: boolean = true;
@@ -123,9 +116,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     let _xAxisRectScale: any;
     // determines if the given area chart has multiple stacked bar charts
     let _isMultiStackChart: boolean;
-    const cartesianChartRef = React.useRef<Chart>(null);
-    const _legendsRef = React.useRef<LegendContainer>(null);
-    const _isRTL: boolean = useRtl();
+    const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -153,19 +144,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       }
       prevPropsRef.current = props;
     }, [props]);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
-
-    const classes = useAreaChartStyles(props);
 
     function _getMinMaxOfYAxis(points: LineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) {
       return findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
@@ -862,29 +840,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           {...getSecureProps(pointLineOptions)}
         />,
       );
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at x axis labels.
-      if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-        const xAxisElement = d3Select(xElement).call(xScale);
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: xAxisElement,
-        };
-        xAxisElement && tooltipOfAxislabels(tooltipProps);
-      }
       return graph;
     }
 

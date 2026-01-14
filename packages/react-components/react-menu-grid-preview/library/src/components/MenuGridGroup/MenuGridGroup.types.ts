@@ -15,5 +15,5 @@ export type MenuGridGroupState = ComponentState<MenuGridGroupSlots> & {
 };
 
 export type MenuGridGroupContextValues = {
-  MenuGridGroup: MenuGridGroupContextValue;
+  menuGridGroup: MenuGridGroupContextValue;
 };

@@ -36,7 +36,7 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground1Hover,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
       color: tokens.colorNeutralForeground1Pressed,
@@ -57,7 +57,7 @@ const useRootCheckedStyles = makeStyles({
         color: 'Highlight',
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
@@ -80,7 +80,7 @@ const useRootCheckedStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
 
@@ -99,7 +99,7 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
@@ -119,7 +119,7 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2Hover,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
@@ -136,7 +136,7 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
@@ -157,7 +157,7 @@ const useRootDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
@@ -175,7 +175,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -191,7 +191,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
@@ -205,7 +205,7 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },

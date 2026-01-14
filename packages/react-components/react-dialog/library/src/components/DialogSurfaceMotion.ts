@@ -2,7 +2,7 @@ import { createPresenceComponentVariant, motionTokens } from '@fluentui/react-mo
 import { Scale } from '@fluentui/react-motion-components-preview';
 
 export const DialogSurfaceMotion = createPresenceComponentVariant(Scale, {
-  fromScale: 0.85,
+  outScale: 0.85,
   easing: motionTokens.curveDecelerateMid,
   duration: motionTokens.durationGentle,
   exitEasing: motionTokens.curveAccelerateMin,

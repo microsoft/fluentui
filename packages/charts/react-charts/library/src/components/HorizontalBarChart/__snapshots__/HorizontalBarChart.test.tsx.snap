@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
@@ -931,7 +931,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(164, 38, 44); border-color: #a4262c; --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
+                style="height: 12px; background-color: rgb(164, 38, 44); border-color: rgb(164, 38, 44); --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
               />
               <div
                 class="fui-legend__text"
@@ -960,7 +960,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(92, 45, 145); border-color: #5c2d91; --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
+                style="height: 12px; background-color: rgb(92, 45, 145); border-color: rgb(92, 45, 145); --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
               />
               <div
                 class="fui-legend__text"
@@ -1077,7 +1077,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(164, 38, 44); border-color: #a4262c; --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
+                style="height: 12px; background-color: rgb(164, 38, 44); border-color: rgb(164, 38, 44); --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
               />
               <div
                 class="fui-legend__text"
@@ -1106,7 +1106,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(92, 45, 145); border-color: #5c2d91; --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
+                style="height: 12px; background-color: rgb(92, 45, 145); border-color: rgb(92, 45, 145); --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
               />
               <div
                 class="fui-legend__text"

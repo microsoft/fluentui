@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "typings": "lib-commonjs/index.d.ts",
@@ -17,11 +17,6 @@
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",

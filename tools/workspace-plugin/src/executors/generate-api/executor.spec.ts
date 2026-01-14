@@ -7,6 +7,7 @@ import {
 } from '@microsoft/api-extractor';
 import { basename, join } from 'node:path';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 
 import { type TsConfig } from '../../types';
 
@@ -14,11 +15,14 @@ import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
 import { isCI } from './lib/shared';
 
-// =========== mocks START
-import { execSync } from 'node:child_process';
-// =========== mocks END
-
 const fixturesRootDir = join(__dirname, '__fixtures__');
+
+jest.mock('node:child_process', () => {
+  return {
+    ...jest.requireActual('node:child_process'),
+    execSync: jest.fn(),
+  };
+});
 
 const options: GenerateApiExecutorSchema = {};
 const _context: ExecutorContext = {
@@ -33,12 +37,6 @@ const _context: ExecutorContext = {
   nxJsonConfiguration: {},
   projectGraph: { nodes: {}, dependencies: {} },
 };
-
-jest.mock('node:child_process', () => {
-  return {
-    execSync: jest.fn(),
-  };
-});
 
 const execSyncMock = execSync as jest.Mock;
 

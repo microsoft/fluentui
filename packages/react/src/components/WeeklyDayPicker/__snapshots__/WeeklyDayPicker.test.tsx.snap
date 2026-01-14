@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday correctly 1`] = `
 <div

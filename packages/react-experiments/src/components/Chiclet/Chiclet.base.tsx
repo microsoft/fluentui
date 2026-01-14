@@ -7,7 +7,6 @@ import type { IChicletCardProps } from './ChicletCard.types';
 import type { JSXElement } from '@fluentui/utilities';
 
 export class ChicletBase extends React.Component<IChicletProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const props: IChicletCardProps = this.props;
     switch (this.props.size) {

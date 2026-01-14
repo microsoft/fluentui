@@ -81,7 +81,7 @@ const SelectedPersonaInner = React.memo(
         const dragDropOptions: IDragDropOptions = {
           eventMap: eventsToRegister,
           selectionIndex: index,
-          context: { data: item, index: index },
+          context: { data: item, index },
           ...dragDropEvents,
           updateDropState: _updateDroppingState,
         };

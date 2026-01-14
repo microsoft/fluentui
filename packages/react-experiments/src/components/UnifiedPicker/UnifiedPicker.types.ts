@@ -21,7 +21,7 @@ export interface IUnifiedPickerProps<T> {
    * Component to render selected items
    * selectedItemsListProps will be passed as props to this component
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderSelectedItems: (props: ISelectedItemsListProps<T>) => JSXElement;
 
   /**
@@ -33,7 +33,7 @@ export interface IUnifiedPickerProps<T> {
    * Component to render floating suggestions
    * floatingSuggestionProps will be passed as props to this component
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSXElement;
 
   /**
@@ -75,7 +75,7 @@ export interface IUnifiedPickerProps<T> {
   /**
    * Header component
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   headerComponent?: JSXElement;
 
   /**

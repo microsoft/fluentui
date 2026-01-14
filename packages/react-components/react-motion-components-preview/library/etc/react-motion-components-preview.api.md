@@ -14,12 +14,12 @@ import * as React_2 from 'react';
 export const Blur: PresenceComponent<BlurParams>;
 
 // @public
-export const blurAtom: ({ direction, duration, easing, delay, fromRadius, toRadius, }: BlurAtomParams) => AtomMotion;
+export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
-    fromRadius?: string;
-    toRadius?: string;
+    outRadius?: string;
+    inRadius?: string;
 };
 
 // @public
@@ -39,7 +39,7 @@ export type CollapseDurations = {
 // @public (undocumented)
 export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurations & {
     orientation?: CollapseOrientation;
-    fromSize?: string;
+    outSize?: string;
     staggerDelay?: number;
     exitStaggerDelay?: number;
 };
@@ -54,12 +54,12 @@ export const CollapseSnappy: PresenceComponent<CollapseParams>;
 export const Fade: PresenceComponent<FadeParams>;
 
 // @public
-export const fadeAtom: ({ direction, duration, easing, delay, fromOpacity, toOpacity, }: FadeAtomParams) => AtomMotion;
+export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
-    fromOpacity?: number;
-    toOpacity?: number;
+    outOpacity?: number;
+    inOpacity?: number;
 };
 
 // @public (undocumented)
@@ -72,25 +72,25 @@ export const FadeSnappy: PresenceComponent<FadeParams>;
 export const Rotate: PresenceComponent<RotateParams>;
 
 // @public
-export const rotateAtom: ({ direction, duration, easing, delay, axis, fromAngle, toAngle, }: RotateAtomParams) => AtomMotion;
+export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
     axis?: Axis3D;
-    fromAngle?: number;
-    toAngle?: number;
+    outAngle?: number;
+    inAngle?: number;
 };
 
 // @public
 export const Scale: PresenceComponent<ScaleParams>;
 
 // @public
-export const scaleAtom: ({ direction, duration, easing, delay, fromScale, toScale, }: ScaleAtomParams) => AtomMotion;
+export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
-    fromScale?: number;
-    toScale?: number;
+    outScale?: number;
+    inScale?: number;
 };
 
 // @public (undocumented)
@@ -103,14 +103,14 @@ export const ScaleSnappy: PresenceComponent<ScaleParams>;
 export const Slide: PresenceComponent<SlideParams>;
 
 // @public
-export const slideAtom: ({ direction, duration, easing, delay, fromX, fromY, toX, toY, }: SlideAtomParams) => AtomMotion;
+export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {
-    fromX?: string;
-    fromY?: string;
-    toX?: string;
-    toY?: string;
+    outX?: string;
+    outY?: string;
+    inX?: string;
+    inY?: string;
 };
 
 // @public (undocumented)

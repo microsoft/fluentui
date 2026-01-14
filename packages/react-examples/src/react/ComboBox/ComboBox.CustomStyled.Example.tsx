@@ -72,7 +72,7 @@ const onRenderOption = (item: IComboBoxOption) => {
         fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
       }
 
-      return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
+      return <span style={{ fontFamily }}>{item.text}</span>;
   }
 };
 

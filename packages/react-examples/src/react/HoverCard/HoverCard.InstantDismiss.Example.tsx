@@ -50,7 +50,7 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
     );
   };
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
   };
   return (
     <ThemeProvider>

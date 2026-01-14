@@ -31,7 +31,7 @@ export const HoverCardEventListenerTargetExample: React.FunctionComponent = () =
   const targetRef = React.useRef<HTMLElement | null>(null);
   const eventListenerTargetRef = React.useRef<HTMLElement | null>(null);
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
     directionalHint: DirectionalHint.rightTopEdge,
   };
   return (

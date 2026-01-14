@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';
 import { buttonId } from './utils';
 

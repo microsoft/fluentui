@@ -20,7 +20,7 @@ type FluentStoryProps = {
 export const FluentStory = ({ id, height }: FluentStoryProps): JSXElement => {
   return (
     <div className="sb-story sb-unstyled">
-      <iframe title={id} src={`/iframe.html?id=${id}&mode=story`} style={iframeStyle} height={height} />
+      <iframe title={id} src={`iframe.html?id=${id}&mode=story`} style={iframeStyle} height={height} />
     </div>
   );
 };

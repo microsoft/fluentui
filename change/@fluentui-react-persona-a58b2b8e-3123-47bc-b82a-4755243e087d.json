@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace",
+  "packageName": "@fluentui/react-persona",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

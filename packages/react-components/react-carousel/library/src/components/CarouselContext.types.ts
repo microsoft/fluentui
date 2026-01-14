@@ -3,6 +3,8 @@ import * as React from 'react';
 
 import type { CarouselUpdateData } from '../Carousel';
 
+export type CarouselAppearance = 'flat' | 'elevated';
+
 export type CarouselIndexChangeData = (
   | EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>>
   | EventData<'focus', React.FocusEvent>
@@ -17,6 +19,7 @@ export type CarouselIndexChangeData = (
 
 export type CarouselContextValue = {
   activeIndex: number;
+  appearance?: CarouselAppearance;
   circular: boolean;
   selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => number;
   selectPageByDirection: (

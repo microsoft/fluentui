@@ -56,12 +56,7 @@ describe('PersonaCoin', () => {
 
   it('renders correctly with onRender callback', () => {
     const { container } = render(
-      <PersonaCoin
-        {...coinProp}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        onRenderCoin={wrapPersona(coinProp)}
-        onRenderInitials={wrapPersona(coinProp)}
-      />,
+      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />,
     );
     expect(container.firstChild).toMatchSnapshot();
   });

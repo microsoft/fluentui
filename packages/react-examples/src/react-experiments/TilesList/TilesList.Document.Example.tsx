@@ -180,7 +180,7 @@ export class TilesListDocumentExample extends React.Component<
 
     this.setState({
       isDataLoaded: !isDataLoaded,
-      cells: cells,
+      cells,
     });
   };
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use distinct hover background color",
+  "packageName": "@fluentui/react-table",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

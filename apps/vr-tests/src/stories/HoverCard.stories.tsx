@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
@@ -28,8 +28,8 @@ export default {
     storyWright: {
       steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-HoverCard-content')
-        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-HoverCard-host')
+        .snapshot('fully expanded with test content')
         .end(),
     },
   } satisfies StoryParameters,

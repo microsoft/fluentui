@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
@@ -23,17 +23,19 @@ export default {
   parameters: {
     storyWright: {
       steps: new Steps()
-        .executeScript('document.getElementById("testWrapper").style.width = "500px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "750px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "750px"')
         .snapshot('Wide', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "250px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "250px"')
+        .snapshot('Narrow', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
+        .snapshot('Narrow - Overflow menu open', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-linkInMenu[data-last-tab]')
         .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
         .hover('.ms-Pivot-overflowMenuButton')
         .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
         .end(),

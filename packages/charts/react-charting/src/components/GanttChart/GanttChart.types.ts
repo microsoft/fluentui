@@ -50,19 +50,6 @@ export interface IGanttChartProps extends ICartesianChartProps {
   yAxisPadding?: number;
 
   /**
-   * If true, truncates y-axis tick labels longer than `noOfCharsToTruncate` with ellipses
-   * and displays them in a tooltip on hover.
-   * @default false
-   */
-  showYAxisLablesTooltip?: boolean;
-
-  /**
-   * If true, renders full y-axis tick labels without truncation.
-   * @default false
-   */
-  showYAxisLables?: boolean;
-
-  /**
    * If true, enables gradient fills for the bars.
    * @default false
    */

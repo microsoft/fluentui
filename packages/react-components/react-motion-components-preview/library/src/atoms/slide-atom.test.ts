@@ -40,25 +40,25 @@ describe('slideAtom', () => {
     expect(exitAtom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 0px' }]);
   });
 
-  it('applies custom fromX and fromY values', () => {
+  it('applies custom outX and outY values', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
-      fromX: '100px',
-      fromY: '-50px',
+      outX: '100px',
+      outY: '-50px',
     });
 
     expect(atom.keyframes).toEqual([{ translate: '100px -50px' }, { translate: '0px 0px' }]);
   });
 
-  it('applies custom toX and toY values', () => {
+  it('applies custom inX and inY values', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
-      fromX: '100px',
-      fromY: '-50px',
-      toX: '20px',
-      toY: '10px',
+      outX: '100px',
+      outY: '-50px',
+      inX: '20px',
+      inY: '10px',
     });
 
     expect(atom.keyframes).toEqual([{ translate: '100px -50px' }, { translate: '20px 10px' }]);
@@ -68,16 +68,16 @@ describe('slideAtom', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
-      fromX: '100%',
-      fromY: '-100%',
-      toX: '50%',
-      toY: '25%',
+      outX: '100%',
+      outY: '-100%',
+      inX: '50%',
+      inY: '25%',
     });
 
     expect(atom.keyframes).toEqual([{ translate: '100% -100%' }, { translate: '50% 25%' }]);
   });
 
-  it('uses default values when fromX and fromY are not provided', () => {
+  it('uses default values when outX and outY are not provided', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
@@ -107,10 +107,10 @@ describe('slideAtom', () => {
       duration: 400,
       delay: 50,
       easing: 'ease-in-out',
-      fromX: '200px',
-      fromY: '100px',
-      toX: '50px',
-      toY: '25px',
+      outX: '200px',
+      outY: '100px',
+      inX: '50px',
+      inY: '25px',
     });
 
     expect(atom).toMatchObject({
@@ -125,8 +125,8 @@ describe('slideAtom', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
-      fromX: '0px',
-      fromY: '0px',
+      outX: '0px',
+      outY: '0px',
     });
 
     expect(atom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 0px' }]);
@@ -160,18 +160,18 @@ describe('slideAtom', () => {
     const enterAtom = slideAtom({
       direction: 'enter',
       duration: 300,
-      fromX: '100px',
-      fromY: '-50px',
-      toX: '20px',
-      toY: '10px',
+      outX: '100px',
+      outY: '-50px',
+      inX: '20px',
+      inY: '10px',
     });
     const exitAtom = slideAtom({
       direction: 'exit',
       duration: 300,
-      fromX: '100px',
-      fromY: '-50px',
-      toX: '20px',
-      toY: '10px',
+      outX: '100px',
+      outY: '-50px',
+      inX: '20px',
+      inY: '10px',
     });
 
     expectSlideAtom(enterAtom, 'enter', '100px -50px', '20px 10px');

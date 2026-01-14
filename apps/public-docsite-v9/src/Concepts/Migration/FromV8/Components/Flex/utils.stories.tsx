@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Source } from '@storybook/addon-docs';
+import { Source } from '@storybook/addon-docs/blocks';
 import { makeStyles } from '@fluentui/react-components';
 
 const useCodeComparisonStyles = makeStyles({

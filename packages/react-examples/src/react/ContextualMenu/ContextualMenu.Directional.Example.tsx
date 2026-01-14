@@ -36,8 +36,8 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
 
   const menuProps: IContextualMenuProps = React.useMemo(
     () => ({
-      isBeakVisible: isBeakVisible,
-      directionalHint: directionalHint,
+      isBeakVisible,
+      directionalHint,
       directionalHintForRTL: useDirectionalHintForRTL ? directionalHintForRTL : undefined,
       gapSpace: 0,
       beakWidth: 20,

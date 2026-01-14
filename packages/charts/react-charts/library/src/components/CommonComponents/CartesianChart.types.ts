@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import {
   AccessibilityProps,
   Chart,
@@ -177,6 +178,11 @@ export interface CartesianChartStyles {
  */
 export interface CartesianChartProps {
   /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
+  /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
    * These values decide wheather chart re render or not. Please check examples for reference
@@ -271,6 +277,11 @@ export interface CartesianChartProps {
    * maximum data value point in y-axis
    */
   yMaxValue?: number;
+
+  /**
+   * minimum data value point in x-axis (for numeric x-axis)
+   */
+  xMinValue?: number;
 
   /**
    * maximum data value point in x-axis
@@ -451,7 +462,7 @@ export interface CartesianChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart | null>;
+  componentRef?: React.Ref<Chart>;
 
   /**
    * Prop to set the x axis annotation. Used to display additional information on the x-axis.
@@ -507,13 +518,34 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
 
   /**
    * Configuration for the y-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
   yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 export interface YValueHover {
@@ -736,7 +768,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**
@@ -746,6 +777,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;

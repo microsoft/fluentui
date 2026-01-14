@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable no-restricted-globals */
 import * as React from 'react';
 import { useCallback, useState, useEffect, useRef } from 'react';
 import { Tooltip } from '@fluentui/react-tooltip';
@@ -12,12 +11,7 @@ import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
   className?: string;
-  content:
-    | string
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    | JSXElement
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    | JSXElement[];
+  content: string | JSXElement | JSXElement[];
   accessibilityData?: AccessibilityProps;
 }
 

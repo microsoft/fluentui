@@ -2,6 +2,27 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:48 GMT",
+      "tag": "@fluentui/dom-utilities_v2.3.10",
+      "version": "2.3.10",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 07:22:41 GMT",
       "tag": "@fluentui/dom-utilities_v2.3.10",
       "version": "2.3.10",

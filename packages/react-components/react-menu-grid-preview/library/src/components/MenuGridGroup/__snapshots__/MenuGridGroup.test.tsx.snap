@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenuGridGroup renders a default state 1`] = `
+<div
+  aria-labelledby="menu-grid-group-header_r_7_"
+  class="fui-MenuGridGroup"
+  role="rowgroup"
+>
+  Default MenuGridGroup
+</div>
+`;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { RenderFunction } from '../../utilities/index';
 import {
   ChartProps,

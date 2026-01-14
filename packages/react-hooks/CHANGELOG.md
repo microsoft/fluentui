@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Thu, 23 Oct 2025 10:23:19 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:27:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.10.2)
+
+Wed, 10 Dec 2025 06:27:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.10.1..@fluentui/react-hooks_v8.10.2)
+
+### Patches
+
+- chore: remove unused eslint-disable directives ([PR #35518](https://github.com/microsoft/fluentui/pull/35518) by vgenaev@gmail.com)
+- Bump @fluentui/react-window-provider to v2.3.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/utilities to v8.17.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+
+## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.10.1)
+
+Tue, 11 Nov 2025 10:09:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.10.0..@fluentui/react-hooks_v8.10.1)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- Bump @fluentui/react-window-provider to v2.3.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
+- Bump @fluentui/utilities to v8.17.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
 
 ## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.10.0)
 

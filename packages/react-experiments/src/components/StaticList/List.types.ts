@@ -12,6 +12,6 @@ export interface IGenericListProps<TItem extends IObjectWithKey> {
   itemHeight: number;
 
   /** Callback to render one item in the list */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderItem: (item: TItem, index: number) => JSXElement | null;
 }

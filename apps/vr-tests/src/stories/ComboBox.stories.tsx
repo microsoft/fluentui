@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { getStoryVariant, RTL, TestWrapperDecoratorTallFixedWidth } from '../utilities';
@@ -50,7 +50,7 @@ export default {
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
-        .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
+        .snapshot('click') // Dropdown extends beyond testWrapper
         .end(),
     },
   } satisfies StoryParameters,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { TestWrapperDecorator } from '../../utilities';
@@ -17,7 +17,7 @@ export default {
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Dropdown')
         .hover('.ms-Dropdown')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .end(),
     },
   } satisfies StoryParameters,

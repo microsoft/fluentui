@@ -60,8 +60,8 @@ const onRenderExpandedCard = (item: IExampleItem): JSXElement => {
 
 const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   const expandingCardProps: IExpandingCardProps = {
-    onRenderCompactCard: onRenderCompactCard,
-    onRenderExpandedCard: onRenderExpandedCard,
+    onRenderCompactCard,
+    onRenderExpandedCard,
     renderData: item,
   };
   if (column.key === 'location') {

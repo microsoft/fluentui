@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-message-bar): update slide atom param from \"fromY\" to \"outY\"",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -77,10 +77,10 @@ export function createDocumentItems(count: number, indexOffset: number): IExampl
 
 export function createGroup(items: IExampleItem[], type: 'document' | 'media', index: number): IExampleGroup {
   return {
-    items: items,
-    index: index,
+    items,
+    index,
     name: lorem(4),
-    type: type,
+    type,
     key: `group-${index}`,
   };
 }
@@ -167,7 +167,7 @@ export function getExampleTilesListCells(
                   width: isLargeSize ? 171 * item.aspectRatio : 135 * item.aspectRatio,
                   height: isLargeSize ? 171 : 135,
                 },
-          onRenderCell: onRenderCell,
+          onRenderCell,
           isPlaceholder: shimmerMode,
         };
       }),
@@ -195,14 +195,14 @@ export function createShimmerGroups(type: 'document' | 'media', index: number): 
         {
           key: `shimmerItem-${index}`,
           name: lorem(4),
-          index: index,
+          index,
           aspectRatio: 1,
         },
       ],
-      index: index,
+      index,
       name: lorem(4),
       key: `shimmerGroup-${index}`,
-      type: type,
+      type,
     },
   ];
 }

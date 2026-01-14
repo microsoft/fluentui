@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-nav): update Rotate param from \"fromAngle\" to \"outAngle\"",
+  "packageName": "@fluentui/react-nav",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

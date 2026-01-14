@@ -689,7 +689,6 @@ describe('SpinButton', () => {
       const onChange = jest.fn();
       let keyCode: number | undefined;
       const onValidate = jest.fn((value: string, event?: React.SyntheticEvent) => {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
         keyCode = (event as React.KeyboardEvent).which;
         return value;
       });

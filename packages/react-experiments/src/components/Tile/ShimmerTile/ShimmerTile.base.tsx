@@ -60,7 +60,6 @@ export class ShimmerTileBase extends React.Component<IShimmerTileProps, {}> {
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       styles,

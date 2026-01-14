@@ -201,7 +201,7 @@ export const useSlider = (
 
     let numDec = 0;
     if (isFinite(step)) {
-      while (Math.round(step * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step) {
+      while (Math.round(step * 10 ** numDec) / 10 ** numDec !== step) {
         numDec++;
       }
     }

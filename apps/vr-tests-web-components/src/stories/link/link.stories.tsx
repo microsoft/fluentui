@@ -46,7 +46,7 @@ export const WithLongText = () =>
     </style>
     <p class="max-width">
     This paragraph contains a link which is very long.
-    <fluent-link href="#">Fluent links wrap correctly between lines when they are very long.</fluent-link> This is
+    <fluent-link id="${linkId}" href="#">Fluent links wrap correctly between lines when they are very long.</fluent-link> This is
     because they are inline elements.
     </p>
 `);

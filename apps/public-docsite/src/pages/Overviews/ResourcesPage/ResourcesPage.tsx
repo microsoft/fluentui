@@ -53,17 +53,6 @@ function _otherSections(): IPageSectionProps[] {
         </Markdown>
       ),
     },
-    {
-      sectionName: 'Microsoft employees',
-      editUrl: baseUrl + 'docs/default/MicrosoftEmployees.md',
-      content: (
-        <Markdown>
-          {
-            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
-          }
-        </Markdown>
-      ),
-    },
   ];
 }
 

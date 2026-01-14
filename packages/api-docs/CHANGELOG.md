@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.28)
+
+Tue, 11 Nov 2025 10:09:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.27..@fluentui/api-docs_v8.2.28)
+
+### Patches
+
+- chore: bump tsdoc"  ([PR #35378](https://github.com/microsoft/fluentui/pull/35378) by vgenaev@gmail.com)
 
 ## [8.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.27)
 

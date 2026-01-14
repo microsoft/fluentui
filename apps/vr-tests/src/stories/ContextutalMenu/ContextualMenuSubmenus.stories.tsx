@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { TestWrapperDecorator } from '../../utilities';
@@ -56,13 +56,13 @@ export default {
     storyWright: {
       steps: new Steps()
         .click('#button')
-        .snapshot('menu opened', { cropTo: '.ms-Layer' })
+        .snapshot('menu opened')
         .hover('#parent')
-        .snapshot('parent hovered', { cropTo: '.ms-Layer' })
+        .snapshot('parent hovered')
         .hover('#item1')
-        .snapshot('item1 hovered', { cropTo: '.ms-Layer' })
+        .snapshot('item1 hovered')
         .hover('#item2')
-        .snapshot('item2 hovered', { cropTo: '.ms-Layer' })
+        .snapshot('item2 hovered')
         .end(),
     },
   } satisfies StoryParameters,

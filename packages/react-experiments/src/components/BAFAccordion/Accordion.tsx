@@ -33,7 +33,6 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onRenderMenu, className, buttonAs, onClick, ...other } = this.props;

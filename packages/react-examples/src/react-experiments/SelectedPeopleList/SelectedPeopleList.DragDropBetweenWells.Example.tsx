@@ -16,7 +16,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSXElement => {
 
   const selection = new Selection();
   const dragDropHelper = new DragDropHelper({
-    selection: selection,
+    selection,
     minimumPixelsForDrag: 5,
   });
 

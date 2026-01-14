@@ -173,13 +173,9 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
         "devDependencies": Object {
-          "@proj/eslint-plugin": "*",
           "@proj/react-components": "*",
           "@proj/react-one-compat": "*",
-          "@proj/react-storybook-addon": "*",
-          "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
-          "@proj/scripts-storybook": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -233,25 +229,20 @@ describe('split-library-in-two generator', () => {
         ],
       }
     `);
-    expect(readJson(tree, `${storiesConfig.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
-      Object {
-        "extends": Array [
-          "plugin:@fluentui/eslint-plugin/react",
-        ],
-        "root": true,
-        "rules": Object {
-          "import/no-extraneous-dependencies": Array [
-            "error",
-            Object {
-              "packageDir": Array [
-                ".",
-                "../../../../",
-              ],
-            },
-          ],
+    expect(tree.read(`${storiesConfig.root}/eslint.config.js`, 'utf-8')).toMatchInlineSnapshot(`
+      "// @ts-check
+
+      const fluentPlugin = require('@fluentui/eslint-plugin');
+
+      module.exports = [
+        ...fluentPlugin.configs['flat/react'],
+        {
+          rules: {},
         },
-      }
+      ];
+      "
     `);
+
     expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`
       "# @proj/react-hello-stories
 
@@ -539,7 +530,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
   tree.write(
     `${rootPath}/stories/index.stories.tsx`,
     stripIndents`
-    import { Meta } from '@storybook/react';
+    import { Meta } from '@storybook/react-webpack5';
     import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
     export { Default } from './Default.stories';

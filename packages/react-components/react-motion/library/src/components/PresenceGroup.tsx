@@ -38,7 +38,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
   constructor(props: PresenceGroupProps, context?: unknown) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - React.Component constructor has only one argument in React 19
-    super(props, context); // eslint-disable-line @typescript-eslint/no-deprecated
+    super(props, context);
 
     this.state = {
       childMapping: {},

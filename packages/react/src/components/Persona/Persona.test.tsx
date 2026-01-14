@@ -67,11 +67,7 @@ describe('Persona', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
     const { container } = render(
-      <Persona
-        {...exampleWithoutImage}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        onRenderCoin={wrapPersona(exampleWithoutImage, true)}
-      />,
+      <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />,
     );
     expect(container.firstChild).toMatchSnapshot();
   });

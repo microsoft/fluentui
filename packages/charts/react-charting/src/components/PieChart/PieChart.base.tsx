@@ -21,7 +21,6 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     this._emptyChartId = getId('_PieChart_empty');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { data, width, height, colors, chartTitle } = this.props;
 

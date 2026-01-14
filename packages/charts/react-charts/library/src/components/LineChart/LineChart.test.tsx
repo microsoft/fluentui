@@ -19,27 +19,46 @@ const { Timezone } = require('../../../scripts/constants');
 expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
 
-/* function updateChartWidthAndHeight() {
+function updateChartWidthAndHeight() {
   jest.useFakeTimers();
   Object.defineProperty(window, 'requestAnimationFrame', {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
-} */
+  window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
+}
 
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const basicPoints: LineChartPoints[] = [
@@ -214,6 +233,7 @@ const tickValues = [
 ];
 
 describe('Line chart rendering', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -400,6 +420,9 @@ const eventAnnotationProps = {
 };
 
 describe('Line chart - Subcomponent line', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
@@ -426,6 +449,9 @@ describe('Line chart - Subcomponent line', () => {
 });
 
 describe('Line chart - Subcomponent legend', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
@@ -569,6 +595,9 @@ describe('Line chart - Subcomponent legend', () => {
 });
 
 describe('Line chart - Subcomponent Time Range', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render time range with sepcified data',
     LineChart,
@@ -606,10 +635,10 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     { data: dateChartPoints, showXAxisLablesTooltip: true },
     container => {
       // Arrange
-      const xAxisLabels = getById(container, /showDots/i);
+      const xAxisLabels = container.querySelectorAll('tspan');
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
+      expect(xAxisLabels[0].textContent).toEqual('Febr...');
     },
     undefined,
     undefined,
@@ -645,6 +674,7 @@ describe('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -681,6 +711,7 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -707,6 +738,9 @@ describe('Line chart - Accessibility', () => {
 });
 
 describe('LineChart snapShot testing', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('renders LineChart correctly', async () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     expect(wrapper).toMatchSnapshot();
@@ -772,6 +806,7 @@ describe('LineChart snapShot testing', () => {
 });
 
 describe('LineChart - basic props', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -800,6 +835,9 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No prop changes', () => {
     const props = {
       data: basicChartPoints,
@@ -830,6 +868,9 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
@@ -851,6 +892,7 @@ describe('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
 
   beforeEach(() => {
+    updateChartWidthAndHeight();
     root = document.createElement('div');
     document.body.appendChild(root);
   });
@@ -864,11 +906,9 @@ describe('LineChart - mouse events', () => {
     }
   });
 
-  // @FIXME: this tests is failing with jest 29.7.0
   it('Should render callout correctly on mouseover', () => {
     // Render the LineChart and simulate mouseover using React Testing Library
     const { container } = render(<LineChart data={basicChartPoints} />, { container: root! });
-    // Find the first line element by id pattern
     const line = container.querySelector('line[id^="lineID"]');
     expect(line).toBeDefined();
     act(() => {

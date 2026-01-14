@@ -95,7 +95,6 @@ const focusZonePropsInHoverCard = {
   'aria-label': 'Legend 1 selected',
 };
 
-/* eslint-disable @typescript-eslint/no-deprecated */
 describe('Legends snapShot testing', () => {
   it('renders Legends correctly', () => {
     const { container } = render(<Legends legends={legends} />);

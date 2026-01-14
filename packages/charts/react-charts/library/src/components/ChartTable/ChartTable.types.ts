@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { Chart } from './index';
 
 /**
@@ -6,6 +7,11 @@ import { Chart } from './index';
  * {@docCategory ChartTable}
  */
 export interface ChartTableProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * 1d or 2d Array of header values.
    */
@@ -29,6 +35,11 @@ export interface ChartTableProps {
   height?: string | number;
 
   /**
+   * Chart title to display above the table
+   */
+  chartTitle?: string;
+
+  /**
    * Additional class name(s) to apply to the table chart
    */
   className?: string;
@@ -42,7 +53,7 @@ export interface ChartTableProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
 }
 
 /**
@@ -55,4 +66,6 @@ export interface ChartTableStyles {
   headerCell?: string;
   bodyCell?: string;
   chart?: string;
+  chartTitle?: string;
+  svgTooltip?: string;
 }

@@ -209,6 +209,8 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/tsconfig.json',
         '{projectRoot}/tsconfig.lib.json',
         '{projectRoot}/src/**/*.tsx?',
+        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
         { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
       ],
       outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
@@ -322,21 +324,23 @@ function buildLintTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.eslintrc.json')) && !existsSync(join(projectRoot, '.eslintrc.js'))) {
+  const hasEslintConfig =
+    existsSync(join(projectRoot, 'eslint.config.js')) ||
+    existsSync(join(projectRoot, 'eslint.config.cjs')) ||
+    existsSync(join(projectRoot, 'eslint.config.mjs'));
+
+  if (!hasEslintConfig) {
     return null;
   }
 
   return {
+    executor: 'nx:run-commands',
     cache: true,
-    command: `${config.pmc.exec} eslint src`,
-    options: { cwd: projectRoot },
+    options: { cwd: projectRoot, command: `${config.pmc.exec} eslint src` },
     inputs: [
       'default',
-      '{projectRoot}/.eslintrc.json',
-      '{projectRoot}/.eslintrc.js',
-      '{workspaceRoot}/.eslintrc.json',
-      '{workspaceRoot}/.eslintignore',
-      '{workspaceRoot}/eslint.config.js',
+      '{projectRoot}/eslint.{js,cjs,mjs}',
+      '{workspaceRoot}/eslint.config.{js,cjs,mjs}',
       { externalDependencies: ['eslint'] },
     ],
     outputs: ['{options.outputFile}'],
@@ -629,7 +633,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           cwd: '{projectRoot}',
         },
         cache: true,
-        inputs: inputs,
+        inputs,
         outputs: [
           `{workspaceRoot}/tmp/rit/react-${reactVersion}/${config.projectJSON.name}-react-${reactVersion}-${projectSuffixId}`,
         ],
@@ -655,7 +659,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
-          inputs: inputs,
+          inputs,
           outputs: [],
           dependsOn: [targetNamePrepare],
           metadata: {
@@ -685,7 +689,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
-          inputs: inputs,
+          inputs,
           outputs: [],
           parallelism: runOption === 'e2e' ? false : true,
           // this should be set via nx.json
@@ -719,7 +723,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           params: 'forward',
         };
       }),
-    inputs: inputs,
+    inputs,
     outputs: [],
     metadata: {
       technologies: ['react-integration-tester'],

@@ -5,7 +5,6 @@ import type { IHorizontalPersonaProps } from './Persona.types';
 import type { IVerticalPersonaProps } from './Vertical/VerticalPersona.types';
 import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const Persona = (props: IVerticalPersonaProps | IHorizontalPersonaProps): JSXElement => {
   return props.vertical === true ? <VerticalPersona {...props} /> : <HorizontalPersona {...props} />;
 };

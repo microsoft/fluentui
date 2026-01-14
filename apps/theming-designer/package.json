@@ -11,11 +11,6 @@
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@fluentui/react": "*",
     "@fluentui/merge-styles": "*",

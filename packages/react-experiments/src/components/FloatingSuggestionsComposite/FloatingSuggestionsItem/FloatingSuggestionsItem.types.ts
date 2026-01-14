@@ -18,7 +18,6 @@ export interface IFloatingSuggestionItemProps<T> {
   key?: string;
   id?: string;
   theme?: ITheme;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSXElement;
 }
 

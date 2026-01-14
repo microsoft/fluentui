@@ -11,7 +11,9 @@ const CMD_LOG = process.env.RIT_CMD_LOG; // file to append JSON lines: {command,
 const GIT_ROOT = process.env.RIT_MOCK_GIT_ROOT; // absolute path to use for `git rev-parse --show-toplevel`
 
 function logCommand(command, cwd) {
-  if (!CMD_LOG) {return;}
+  if (!CMD_LOG) {
+    return;
+  }
   try {
     fs.appendFileSync(CMD_LOG, JSON.stringify({ command, cwd }) + '\n');
   } catch {}

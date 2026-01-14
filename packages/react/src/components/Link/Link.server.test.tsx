@@ -14,7 +14,6 @@ describe('Link (server-side rendering)', () => {
     expect(
       /ms-Link($| )/.test(
         ReactDOM.renderToStaticMarkup(
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           <Customizer settings={{ theme: NoClassNamesTheme }}>
             <Link href="helloworld.html">My Link</Link>
           </Customizer>,

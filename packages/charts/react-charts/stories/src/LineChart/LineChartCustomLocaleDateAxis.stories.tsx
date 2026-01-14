@@ -169,7 +169,6 @@ export const LineChartCustomLocaleDateAxis = (props: LineChartProps): JSXElement
           margins={margins}
           xAxisTickCount={10}
           allowMultipleShapesForPoints={allowMultipleShapes}
-          rotateXAxisLables={true}
           timeFormatLocale={customLocale as TimeLocaleDefinition}
           enablePerfOptimization={true}
         />

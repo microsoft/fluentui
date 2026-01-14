@@ -38,7 +38,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -68,7 +68,7 @@ import {
   calcRequiredWidth,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -122,7 +122,7 @@ export class VerticalStackedBarChartBase
   private _points: IVerticalStackedChartProps[];
   private _dataset: IVerticalStackedBarDataPoint[];
   private _xAxisLabels: string[];
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _bars: JSXElement[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
@@ -210,7 +210,7 @@ export class VerticalStackedBarChartBase
       const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
       const { isCalloutForStack = false } = this.props;
       this._dataset = this._createDataSetLayer();
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       const legendBars: JSXElement = this._getLegendData(
         this._points,
         this.props.theme!.palette,
@@ -314,7 +314,12 @@ export class VerticalStackedBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   /**
@@ -349,7 +354,6 @@ export class VerticalStackedBarChartBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -416,7 +420,6 @@ export class VerticalStackedBarChartBase
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
@@ -569,7 +572,10 @@ export class VerticalStackedBarChartBase
     const { palette } = theme!;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
+    const firstXValue = this._points[0]?.xAxisPoint;
+    this._xAxisType = isInvalidValue(firstXValue)
+      ? XAxisTypes.StringAxis
+      : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
     this._lineObject = this._getFormattedLineData(this.props.data);
     this._xAxisInnerPadding = getScalePadding(
       this.props.xAxisInnerPadding,
@@ -605,7 +611,6 @@ export class VerticalStackedBarChartBase
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout(props?: IVSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartHoverCard
@@ -645,7 +650,6 @@ export class VerticalStackedBarChartBase
     data: IVerticalStackedChartProps[],
     palette: IPalette,
     lineLegends: LineLegends[],
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement {
     if (this.props.hideLegend) {
       return <></>;
@@ -703,7 +707,7 @@ export class VerticalStackedBarChartBase
         legendsOfLine.push(legend);
       });
     }
-    const totalLegends: ILegend[] = legendsOfLine.concat(actions);
+    const totalLegends: ILegend[] = actions.concat(legendsOfLine);
     return (
       <Legends
         legends={totalLegends}
@@ -941,7 +945,6 @@ export class VerticalStackedBarChartBase
     yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
@@ -1148,18 +1151,31 @@ export class VerticalStackedBarChartBase
           role: 'img',
         };
       let showLabel = false;
-      let barLabel = 0;
+      let barLabel: string | number = 0;
+      let selectedBarTotalValue: number = 0;
+      let customBarLabel: string | undefined = undefined;
       if (!this.props.hideLabels && this._yAxisType !== YAxisType.StringAxis) {
+        // Collect all bars with barLabel that match the legend filter
+        const barLabelsToDisplay = barsToDisplay.filter(
+          point => point.barLabel && (this._noLegendHighlighted() || this._isLegendHighlighted(point.legend)),
+        );
+        // For stacked bars, we want to show the total of the stack, not individual bar labels
+        // Only use customBarLabel if there's exactly one bar with a label in the stack
+        if (barLabelsToDisplay.length === 1) {
+          customBarLabel = barLabelsToDisplay[0].barLabel!;
+        }
         if (this._noLegendHighlighted()) {
           showLabel = true;
-          barLabel = barTotalValue;
+          barLabel = customBarLabel ?? barTotalValue;
+          selectedBarTotalValue = barTotalValue;
         } else {
           barsToDisplay.forEach(point => {
             if (this._isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data as number;
+              selectedBarTotalValue += point.data as number;
             }
           });
+          barLabel = customBarLabel ?? selectedBarTotalValue;
         }
       }
       return (
@@ -1181,14 +1197,16 @@ export class VerticalStackedBarChartBase
             <text
               x={xPoint + this._barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={selectedBarTotalValue >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {typeof this.props.yAxisTickFormat === 'function'
+              {typeof barLabel === 'string'
+                ? barLabel
+                : typeof this.props.yAxisTickFormat === 'function'
                 ? this.props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>
@@ -1217,7 +1235,7 @@ export class VerticalStackedBarChartBase
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     return bars.filter((bar): bar is JSXElement => !!bar);
   };
 

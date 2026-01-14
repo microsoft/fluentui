@@ -99,14 +99,7 @@ describe('Button', () => {
 
     it('can handle elementRef', () => {
       const ref = React.createRef<HTMLElement>();
-      render(
-        <DefaultButton
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          elementRef={ref}
-        >
-          Content
-        </DefaultButton>,
-      );
+      render(<DefaultButton elementRef={ref}>Content</DefaultButton>);
       expect(ref.current).toBeTruthy();
     });
 
@@ -776,7 +769,6 @@ describe('Button', () => {
             text="Create account"
             split={true}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -812,7 +804,6 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -834,7 +825,6 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -856,7 +846,6 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}

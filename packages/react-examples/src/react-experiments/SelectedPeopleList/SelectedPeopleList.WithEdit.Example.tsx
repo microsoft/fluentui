@@ -29,7 +29,7 @@ export const SelectedPeopleListWithEditExample = (): JSXElement => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
     const suggestionList = suggestions.map(item => {
-      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     return suggestionList;
   };

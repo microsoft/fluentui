@@ -17,16 +17,11 @@
     "just": "just-scripts",
     "lint": "just-scripts lint"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
-    "@fluentui/react": "^8.125.0",
-    "@fluentui/theme": "^2.7.0",
-    "@storybook/addon-essentials": "8.6.14",
-    "@fluentui/azure-themes": "^8.6.143",
-    "@fluentui/theme-samples": "^8.7.219",
+    "@fluentui/react": "^8.125.3",
+    "@fluentui/theme": "^2.7.2",
+    "@fluentui/azure-themes": "^8.6.146",
+    "@fluentui/theme-samples": "^8.7.222",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

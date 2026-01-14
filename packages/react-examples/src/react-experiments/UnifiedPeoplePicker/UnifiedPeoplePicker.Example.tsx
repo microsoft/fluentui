@@ -236,7 +236,7 @@ export const UnifiedPeoplePickerExample = (): JSXElement => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
-      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     // We want to show top 5 results
     setPeopleSuggestions(suggestionList.splice(0, 5));

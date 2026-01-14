@@ -33,11 +33,7 @@ describe('Popup', () => {
     const { getByText } = render(
       <>
         <div id="sibling">sibling</div>
-        <Popup
-          aria-modal
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          enableAriaHiddenSiblings={false}
-        >
+        <Popup aria-modal enableAriaHiddenSiblings={false}>
           content
         </Popup>
       </>,
@@ -52,11 +48,7 @@ describe('Popup', () => {
     const { getByText } = render(
       <>
         <div id="sibling">sibling</div>
-        <Popup
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          enableAriaHiddenSiblings
-          aria-modal={false}
-        >
+        <Popup enableAriaHiddenSiblings aria-modal={false}>
           content
         </Popup>
       </>,

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix heatmap navigation issue",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

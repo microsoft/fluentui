@@ -53,7 +53,7 @@ describe(`workspace-plugin`, () => {
     await tempFs.createFiles({
       'proj/project.json': serializeJson({}),
       'proj/package.json': serializeJson({}),
-      'proj/.eslintrc.json': '{}',
+      'proj/eslint.config.js': 'module.exports = {}',
       'proj/jest.config.js': 'module.exports = {}',
       'proj/monosize.config.mjs': 'export default {}',
     });
@@ -63,14 +63,11 @@ describe(`workspace-plugin`, () => {
     expect(targets?.lint).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn eslint src",
+        "executor": "nx:run-commands",
         "inputs": Array [
           "default",
-          "{projectRoot}/.eslintrc.json",
-          "{projectRoot}/.eslintrc.js",
-          "{workspaceRoot}/.eslintrc.json",
-          "{workspaceRoot}/.eslintignore",
-          "{workspaceRoot}/eslint.config.js",
+          "{projectRoot}/eslint.{js,cjs,mjs}",
+          "{workspaceRoot}/eslint.config.{js,cjs,mjs}",
           Object {
             "externalDependencies": Array [
               "eslint",
@@ -92,6 +89,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
+          "command": "yarn eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
@@ -548,6 +546,7 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/tsconfig.json",
                         "{projectRoot}/tsconfig.lib.json",
                         "{projectRoot}/src/**/*.tsx?",
+                        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
                         Object {
                           "externalDependencies": Array [
                             "@microsoft/api-extractor",
@@ -633,6 +632,7 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/tsconfig.json",
                         "{projectRoot}/tsconfig.lib.json",
                         "{projectRoot}/src/**/*.tsx?",
+                        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
                         Object {
                           "externalDependencies": Array [
                             "@microsoft/api-extractor",

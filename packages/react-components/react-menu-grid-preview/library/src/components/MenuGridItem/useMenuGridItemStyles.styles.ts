@@ -6,11 +6,11 @@ import type { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types'
 
 export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
   root: 'fui-MenuGridItem',
-  icon: 'fui-MenuGridRow__icon',
-  content: 'fui-MenuGridRow__content',
-  subText: 'fui-MenuGridRow__subText',
-  firstSubAction: 'fui-MenuGridRow__firstSubAction',
-  secondSubAction: 'fui-MenuGridRow__secondSubAction',
+  icon: 'fui-MenuGridItem__icon',
+  content: 'fui-MenuGridItem__content',
+  subText: 'fui-MenuGridItem__subText',
+  firstSubAction: 'fui-MenuGridItem__firstSubAction',
+  secondSubAction: 'fui-MenuGridItem__secondSubAction',
 };
 
 const useStyles = makeStyles({

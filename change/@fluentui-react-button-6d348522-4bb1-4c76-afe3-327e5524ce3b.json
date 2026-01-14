@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove experimental style hooks",
+  "packageName": "@fluentui/react-button",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

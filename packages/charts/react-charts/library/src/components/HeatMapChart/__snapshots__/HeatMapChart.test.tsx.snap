@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
@@ -14,12 +14,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -126,94 +127,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -283,12 +288,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -395,94 +401,98 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+            <g
+              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 22.42574257425744)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
+            <g
+              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
             >
-              25
-            </text>
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -611,12 +621,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -723,92 +734,96 @@ Object {
               </g>
             </g>
             <g
-              aria-label="p4, p1. Nasty, 50."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(255, 197, 186)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="p4, p1. Nasty, 50."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="p3, p1. Excellent, 75."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(255, 200, 178)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 197, 186)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="p3, p1. Excellent, 75."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                75
-              </text>
-            </g>
-            <g
-              aria-label="p4, p2. Excellent, 100."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(255, 203, 169)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 200, 178)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  75
+                </text>
+              </g>
+              <g
+                aria-label="p4, p2. Excellent, 100."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                100
-              </text>
-            </g>
-            <g
-              aria-label="p3, p2. Nasty, 25."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(255, 195, 195)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(255, 203, 169)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  100
+                </text>
+              </g>
+              <g
+                aria-label="p3, p2. Nasty, 25."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(255, 195, 195)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -878,12 +893,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -990,92 +1006,96 @@ Object {
             </g>
           </g>
           <g
-            aria-label="p4, p1. Nasty, 50."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(255, 197, 186)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+            <g
+              aria-label="p4, p1. Nasty, 50."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 22.42574257425744)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="p3, p1. Excellent, 75."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(255, 200, 178)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 197, 186)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="p3, p1. Excellent, 75."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
-              75
-            </text>
-          </g>
-          <g
-            aria-label="p4, p2. Excellent, 100."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(255, 203, 169)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 200, 178)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                75
+              </text>
+            </g>
+            <g
+              aria-label="p4, p2. Excellent, 100."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
-              100
-            </text>
-          </g>
-          <g
-            aria-label="p3, p2. Nasty, 25."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(255, 195, 195)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(255, 203, 169)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                100
+              </text>
+            </g>
+            <g
+              aria-label="p3, p2. Nasty, 25."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
             >
-              25
-            </text>
+              <rect
+                fill="rgb(255, 195, 195)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -1204,12 +1224,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1316,94 +1337,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 17.524752475247524)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="2.4257425742574257"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 1.2128712871287128)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 17.524752475247524)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 17.524752475247524)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="2.4257425742574257"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 1.2128712871287128)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 17.524752475247524)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 15.049504950495049)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="2.4257425742574257"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 1.2128712871287128)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 15.049504950495049)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 15.049504950495049)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="2.4257425742574257"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 1.2128712871287128)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 15.049504950495049)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="2.4257425742574257"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 1.2128712871287128)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -1418,12 +1443,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -1530,94 +1556,98 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 17.524752475247524)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
+            <g
+              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 17.524752475247524)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="2.4257425742574257"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 1.2128712871287128)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 17.524752475247524)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 17.524752475247524)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 15.049504950495049)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="2.4257425742574257"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 1.2128712871287128)"
+              >
+                25
+              </text>
+            </g>
+            <g
+              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 15.049504950495049)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="2.4257425742574257"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 1.2128712871287128)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 15.049504950495049)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="2.4257425742574257"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 1.2128712871287128)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 15.049504950495049)"
             >
-              25
-            </text>
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="2.4257425742574257"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 1.2128712871287128)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -1691,12 +1721,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1803,94 +1834,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -1960,12 +1995,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2072,94 +2108,98 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+            <g
+              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 22.42574257425744)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
+            <g
+              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
             >
-              25
-            </text>
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -2288,12 +2328,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2400,94 +2441,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -2557,12 +2602,13 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Heat map chart with 4 data points. "
+          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2669,94 +2715,98 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+            <g
+              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 22.42574257425744)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
+            <g
+              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
-              50
-            </text>
-          </g>
-          <g
-            aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              <rect
+                fill="rgb(159, 198, 222)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                50
+              </text>
+            </g>
+            <g
+              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
             >
-              25
-            </text>
+              <rect
+                fill="rgb(166, 207, 226)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
+              </text>
+            </g>
           </g>
         </svg>
       </div>
@@ -2879,7 +2929,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider_r_1h_"
+        class="fui-FluentProvider fui-FluentProvider_r_1e_"
         dir="ltr"
       >
         <div
@@ -2889,12 +2939,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3001,94 +3052,98 @@ Object {
                 </g>
               </g>
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(45.8415841584158, 22.42574257425744)"
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               >
-                <rect
-                  fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                <g
+                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 22.42574257425744)"
                 >
-                  50
-                </text>
-              </g>
-              <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(337.9207920792079, 22.42574257425744)"
-              >
-                <rect
-                  fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 22.42574257425744)"
                 >
-                  25
-                </text>
-              </g>
-              <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(45.8415841584158, 143.71287128712873)"
-              >
-                <rect
-                  fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 143.71287128712873)"
                 >
-                  50
-                </text>
-              </g>
-              <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(337.9207920792079, 143.71287128712873)"
-              >
-                <rect
-                  fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 143.71287128712873)"
                 >
-                  25
-                </text>
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
               </g>
             </svg>
           </div>
@@ -3153,7 +3208,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider_r_1h_"
+      class="fui-FluentProvider fui-FluentProvider_r_1e_"
       dir="ltr"
     >
       <div
@@ -3163,12 +3218,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3275,94 +3331,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -3495,12 +3555,13 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Heat map chart with 4 data points. "
+              aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
               class="fui-cart__chart"
               height="300"
+              role="region"
               style="display: block;"
               width="650"
             >
@@ -3607,94 +3668,98 @@ Object {
                 </g>
               </g>
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(45.8415841584158, 22.42574257425744)"
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               >
-                <rect
-                  fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                <g
+                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 22.42574257425744)"
                 >
-                  50
-                </text>
-              </g>
-              <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(337.9207920792079, 22.42574257425744)"
-              >
-                <rect
-                  fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 22.42574257425744)"
                 >
-                  25
-                </text>
-              </g>
-              <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(45.8415841584158, 143.71287128712873)"
-              >
-                <rect
-                  fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(45.8415841584158, 143.71287128712873)"
                 >
-                  50
-                </text>
-              </g>
-              <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  <rect
+                    fill="rgb(159, 198, 222)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    50
+                  </text>
+                </g>
+                <g
+                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-                fill-opacity="1"
-                role="img"
-                tabindex="0"
-                transform="translate(337.9207920792079, 143.71287128712873)"
-              >
-                <rect
-                  fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
-                  width="286.23762376237624"
-                />
-                <text
-                  class="fui-hmc__text"
-                  dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
-                  text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  fill-opacity="1"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(337.9207920792079, 143.71287128712873)"
                 >
-                  25
-                </text>
+                  <rect
+                    fill="rgb(166, 207, 226)"
+                    height="118.86138613861385"
+                    width="286.23762376237624"
+                  />
+                  <text
+                    class="fui-hmc__text"
+                    dominant-baseline="middle"
+                    fill="var(--colorNeutralForeground1)"
+                    text-anchor="middle"
+                    transform="translate(143.11881188118812, 59.430693069306926)"
+                  >
+                    25
+                  </text>
+                </g>
               </g>
             </svg>
           </div>
@@ -3768,12 +3833,13 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Heat map chart with 4 data points. "
+            aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3880,94 +3946,98 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+              <g
+                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 22.42574257425744)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 22.42574257425744)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
+              <g
+                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(45.8415841584158, 143.71287128712873)"
               >
-                50
-              </text>
-            </g>
-            <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                <rect
+                  fill="rgb(159, 198, 222)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  50
+                </text>
+              </g>
+              <g
+                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
-            >
-              <rect
-                fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                fill-opacity="1"
+                role="img"
+                tabindex="0"
+                transform="translate(337.9207920792079, 143.71287128712873)"
               >
-                25
-              </text>
+                <rect
+                  fill="rgb(166, 207, 226)"
+                  height="118.86138613861385"
+                  width="286.23762376237624"
+                />
+                <text
+                  class="fui-hmc__text"
+                  dominant-baseline="middle"
+                  fill="var(--colorNeutralForeground1)"
+                  text-anchor="middle"
+                  transform="translate(143.11881188118812, 59.430693069306926)"
+                >
+                  25
+                </text>
+              </g>
             </g>
           </svg>
         </div>
@@ -4092,12 +4162,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4204,84 +4275,88 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           </g>
         </g>
         <g
-          aria-label="Lorem ipsum dolor sit amet"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
-          <rect
-            fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="ut labore et dolore magna aliqua"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
-        >
-          <rect
-            fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="sed do eiusmod tempor incididunt"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
-        </g>
-        <g
-          aria-label="consectetur adipiscing elit"
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          />
+          <g
+            aria-label="Lorem ipsum dolor sit amet"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 22.42574257425744)"
+          >
+            <rect
+              fill="rgb(151, 189, 219)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="ut labore et dolore magna aliqua"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 22.42574257425744)"
+          >
+            <rect
+              fill="rgb(166, 207, 226)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="sed do eiusmod tempor incididunt"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(159, 198, 222)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
+          <g
+            aria-label="consectetur adipiscing elit"
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(144, 180, 215)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            />
+          </g>
         </g>
       </svg>
     </div>
@@ -4353,12 +4428,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Heat map chart with 4 data points. "
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4465,92 +4541,96 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
-          aria-label="xPoint p4, yPoint p1. Nasty, 50."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
-          <rect
-            fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+          <g
+            aria-label="xPoint p4, yPoint p1. Nasty, 50."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 22.42574257425744)"
           >
-            50
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p3, yPoint p1. Excellent, 75."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
-        >
-          <rect
-            fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(159, 198, 222)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              50
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p3, yPoint p1. Excellent, 75."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 22.42574257425744)"
           >
-            75
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p4, yPoint p2. Excellent, 100."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(151, 189, 219)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              75
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p4, yPoint p2. Excellent, 100."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(45.8415841584158, 143.71287128712873)"
           >
-            100
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p3, yPoint p2. Nasty, 25."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
-        >
-          <rect
-            fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            <rect
+              fill="rgb(144, 180, 215)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              100
+            </text>
+          </g>
+          <g
+            aria-label="xPoint p3, yPoint p2. Nasty, 25."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
           >
-            25
-          </text>
+            <rect
+              fill="rgb(166, 207, 226)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              25
+            </text>
+          </g>
         </g>
       </svg>
     </div>

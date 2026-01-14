@@ -29,7 +29,7 @@ export const useToolbarToggleButton_unstable = (
   const handleOnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
-    if (state.disabled) {
+    if (state.disabled || state.disabledFocusable) {
       e.preventDefault();
       e.stopPropagation();
       return;

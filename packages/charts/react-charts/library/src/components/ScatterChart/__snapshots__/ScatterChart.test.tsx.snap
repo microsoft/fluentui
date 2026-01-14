@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = `
 <div>
@@ -9,12 +9,13 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Sales Performance by Category"
+        aria-label="Sales Performance by CategoryThe X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -276,7 +277,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#00bcf2"
                 id="circle_r_0__1_1"
                 opacity="1"
-                r="10.461538461538462"
+                r="10"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -290,7 +291,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#00bcf2"
                 id="circle_r_0__1_2"
                 opacity="1"
-                r="9.538461538461538"
+                r="9"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -304,7 +305,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#00bcf2"
                 id="circle_r_0__1_3"
                 opacity="1"
-                r="7.6923076923076925"
+                r="7"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -318,7 +319,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#00bcf2"
                 id="circle_r_0__1_4"
                 opacity="1"
-                r="4.923076923076923"
+                r="4"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -337,7 +338,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#0078d4"
                 id="circle_r_0__0_0"
                 opacity="1"
-                r="13.692307692307693"
+                r="13.5"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -351,7 +352,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#0078d4"
                 id="circle_r_0__0_1"
                 opacity="1"
-                r="11.384615384615385"
+                r="11"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -365,7 +366,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#0078d4"
                 id="circle_r_0__0_2"
                 opacity="1"
-                r="9.076923076923077"
+                r="8.5"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -379,7 +380,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#0078d4"
                 id="circle_r_0__0_3"
                 opacity="1"
-                r="6.769230769230769"
+                r="6"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -393,7 +394,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 fill="#0078d4"
                 id="circle_r_0__0_4"
                 opacity="1"
-                r="5.846153846153847"
+                r="5"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -429,7 +430,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -448,7 +449,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
             />
             <div
               class="fui-legend__text"

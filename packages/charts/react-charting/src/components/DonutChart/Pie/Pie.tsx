@@ -34,7 +34,6 @@ export class Pie extends React.Component<IPieProps, {}> {
       .padAngle(0);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSXElement => {
     let color = d && d.data && d.data.color;
     let nextColor = color;
@@ -73,11 +72,14 @@ export class Pie extends React.Component<IPieProps, {}> {
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { pie, data } = this.props;
-    const focusData = this._pieForFocusRing(data);
-    const piechart = pie(data);
+
+    // Filter out data points with value 0 to avoid gaps in the donut chart
+    const filteredData = data.filter((d: IChartDataPoint) => d.data !== 0);
+
+    const focusData = this._pieForFocusRing(filteredData.map(d => d.data!));
+    const piechart = pie(filteredData);
     const translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
     const classNames = getClassNames(getStyles, {
       theme: this.props.theme!,

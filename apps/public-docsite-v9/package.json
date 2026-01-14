@@ -18,12 +18,6 @@
     "storybook:docs": "yarn storybook --docs",
     "test": "jest --passWithNoTests"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/storybook-llms-extractor": "*"
-  },
   "dependencies": {
     "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-datepicker-compat": "*",
@@ -38,7 +32,7 @@
     "@fluentui/theme-designer": "*",
     "@fluentui/recipes": "*",
     "@fluentui/react-timepicker-compat": "*",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@microsoft/applicationinsights-web": "^3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

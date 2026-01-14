@@ -68,6 +68,7 @@ describe('eslint-rule generator', () => {
 
     expect(tree.read(paths.spec, 'utf-8')).toMatchInlineSnapshot(`
       "import { RuleTester } from '@typescript-eslint/rule-tester';
+      import type { RuleTesterConfig } from '@typescript-eslint/rule-tester';
       import { rule, RULE_NAME } from './uppercase';
       const ruleTester = new RuleTester();
       ruleTester.run(RULE_NAME, rule, {

@@ -3,13 +3,13 @@
 import * as React from 'react';
 import { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';
-import { useRtl } from '../../utilities/utilities';
-import { ImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';
+import { ChartTitle } from '../../utilities/index';
+import { useImageExport } from '../../utilities/hooks';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -48,21 +48,10 @@ function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string
 
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
-    const { headers, rows, width, height } = props;
-    const _isRTL: boolean = useRtl();
-    const _rootElem = React.useRef<HTMLDivElement | null>(null);
+    const { headers, rows, width, height, chartTitle } = props;
+    const { chartContainerRef: _rootElem } = useImageExport(props.componentRef, true, false);
     const classes = useChartTableStyles(props);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: _rootElem.current,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(_rootElem.current, undefined, _isRTL, opts);
-        },
-      }),
-      [],
-    );
+    const arrowAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
@@ -101,16 +90,33 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
       }
     }
 
+    const titleHeight = chartTitle ? 30 : 0;
+    const totalHeight = typeof height === 'number' ? height : 650;
+    const tableHeight = `${totalHeight - titleHeight}px`;
+    const svgWidth = typeof width === 'number' ? width : '100%';
+    const titleMaxWidth = typeof width === 'number' ? width - 20 : undefined;
+    const titleX = typeof width === 'number' ? width / 2 : 0;
+
     return (
       <div
         ref={el => {
           _rootElem.current = el;
         }}
         className={classes.root as string}
-        style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
+        style={{ height: `${totalHeight}px`, overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={height ?? '650px'}>
-          <foreignObject x="0" y="0" width="100%" height="100%">
+        <svg width={svgWidth} height={`${totalHeight}px`}>
+          {chartTitle && (
+            <ChartTitle
+              title={chartTitle}
+              x={titleX}
+              maxWidth={titleMaxWidth}
+              className={classes.chartTitle}
+              titleStyles={props.titleStyles}
+              tooltipClassName={classes.svgTooltip}
+            />
+          )}
+          <foreignObject x="0" y={titleHeight} width="100%" height={tableHeight}>
             <div
               style={{
                 maxHeight: height ? `${height}px` : '650px',
@@ -123,6 +129,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                 style={{
                   width: width ? `${width}px` : '100%',
                 }}
+                {...arrowAttributes}
               >
                 <thead>
                   <tr>

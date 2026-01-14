@@ -10,7 +10,6 @@ import { ThemeProvider } from './ThemeProvider';
 describe('makeStyles', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const useThemedStyles = makeStyles(theme => ({
     root: {
       background: theme.palette.themePrimary,
@@ -25,7 +24,6 @@ describe('makeStyles', () => {
 
   const ThemeStyledComponent = () => <ThemeStyledComponentInner />;
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const useStaticStyles = makeStyles({
     root: {
       background: 'yellow',
@@ -46,7 +44,6 @@ describe('makeStyles', () => {
   });
 
   it('can create basic styles as an object (no type errors)', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     makeStyles({
       root: {
         alignItems: 'center',
@@ -55,7 +52,6 @@ describe('makeStyles', () => {
   });
 
   it('can create style functions (no type errors)', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     makeStyles(() => ({
       root: {
         alignItems: 'center',
@@ -76,7 +72,6 @@ describe('makeStyles', () => {
     });
 
     render(
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       <Customizer settings={{ theme: customTheme }}>
         <ThemeStyledComponent />
       </Customizer>,

@@ -36,14 +36,14 @@ const onRenderGroupHeaderCheckbox = (props?: IGroupHeaderCheckboxProps) => {
 };
 
 export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
-  const items: IObjectWithKey[] = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
+  const items: IObjectWithKey[] = useConst(() => createListItems(groupCount ** (groupDepth + 1)));
   const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
   const columns = useConst(() =>
     Object.keys(items[0])
       .slice(0, 3)
       .map(
         (key: string): IColumn => ({
-          key: key,
+          key,
           name: key,
           fieldName: key,
           minWidth: 300,

@@ -181,7 +181,7 @@ export const ExpandableContainer = (): JSXElement => {
         visible={expanded}
         duration={COLLAPSE_DURATION}
         easing={motionTokens.curveEasyEase}
-        fromSize={COLLAPSED_HEIGHT}
+        outSize={COLLAPSED_HEIGHT}
         animateOpacity={false}
         exitDelay={STAGGER_EXIT_DELAY}
       >

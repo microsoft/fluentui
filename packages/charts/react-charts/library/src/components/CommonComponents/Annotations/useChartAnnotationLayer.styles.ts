@@ -9,6 +9,7 @@ import { ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
 export interface ChartAnnotationLayerStyles {
   root?: string;
   annotation?: string;
+  annotationNoDefaults?: string;
   connectorLayer?: string;
   measurement?: string;
   annotationContent?: string;
@@ -30,7 +31,13 @@ export const DEFAULT_CONNECTOR_END_PADDING = 0;
 export const DEFAULT_CONNECTOR_STROKE_WIDTH = 2;
 export const DEFAULT_CONNECTOR_ARROW: ChartAnnotationArrowHead = 'end';
 
-export const applyOpacityToColor = (color: string | undefined, opacity: number): string | undefined => {
+export const applyOpacityToColor = (
+  color: string | undefined,
+  opacity: number,
+  options?: {
+    preserveOriginalOpacity?: boolean;
+  },
+): string | undefined => {
   if (!color) {
     return undefined;
   }
@@ -38,6 +45,13 @@ export const applyOpacityToColor = (color: string | undefined, opacity: number):
   const parsed = d3Color(color);
   if (!parsed) {
     return color;
+  }
+
+  const originalOpacity = typeof parsed.opacity === 'number' ? parsed.opacity : 1;
+  const preserveOriginalOpacity = options?.preserveOriginalOpacity ?? true;
+
+  if (preserveOriginalOpacity && originalOpacity < 1) {
+    return parsed.toString();
   }
 
   parsed.opacity = Math.max(0, Math.min(1, opacity));
@@ -63,6 +77,7 @@ export const getDefaultConnectorStrokeColor = (): string => tokens.colorNeutralF
 export const chartAnnotationLayerClassNames: SlotClassNames<ChartAnnotationLayerStyles> = {
   root: 'fui-chartAnnotationLayer__root',
   annotation: 'fui-chartAnnotationLayer__annotation',
+  annotationNoDefaults: 'fui-chartAnnotationLayer__annotationNoDefaults',
   connectorLayer: 'fui-chartAnnotationLayer__connectorLayer',
   measurement: 'fui-chartAnnotationLayer__measurement',
   annotationContent: 'fui-chartAnnotationLayer__annotationContent',
@@ -75,6 +90,24 @@ export const chartAnnotationLayerClassNames: SlotClassNames<ChartAnnotationLayer
 /**
  * Base Styles
  */
+const annotationBaseStyles = {
+  ...typographyStyles.caption1,
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  color: tokens.colorNeutralForeground1,
+  paddingTop: '4px',
+  paddingBottom: '4px',
+  paddingLeft: '8px',
+  paddingRight: '8px',
+  borderRadius: tokens.borderRadiusMedium,
+  whiteSpace: 'pre-wrap',
+  zIndex: 2,
+} as const;
+
 const useStyles = makeStyles({
   root: {
     position: 'absolute',
@@ -89,23 +122,12 @@ const useStyles = makeStyles({
     zIndex: 1,
   },
   annotation: {
-    ...typographyStyles.caption1,
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    color: tokens.colorNeutralForeground1,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-    paddingLeft: '8px',
-    paddingRight: '8px',
-    borderRadius: tokens.borderRadiusMedium,
+    ...annotationBaseStyles,
     boxShadow: tokens.shadow16,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
-    whiteSpace: 'pre-wrap',
-    zIndex: 2,
+  },
+  annotationNoDefaults: {
+    ...annotationBaseStyles,
   },
   connectorLayer: {
     position: 'absolute',

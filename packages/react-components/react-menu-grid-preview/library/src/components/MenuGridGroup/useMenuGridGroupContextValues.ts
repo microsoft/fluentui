@@ -5,7 +5,7 @@ import type { MenuGridGroupContextValues, MenuGridGroupState } from './MenuGridG
 
 export function useMenuGridGroupContextValues_unstable(state: MenuGridGroupState): MenuGridGroupContextValues {
   const { headerId } = state;
-  const MenuGridGroup = React.useMemo(() => ({ headerId }), [headerId]);
+  const menuGridGroup = React.useMemo(() => ({ headerId }), [headerId]);
 
-  return { MenuGridGroup };
+  return { menuGridGroup };
 }

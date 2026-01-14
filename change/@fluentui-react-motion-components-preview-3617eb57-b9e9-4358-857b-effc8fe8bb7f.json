@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "refactor(motion-components): improve parameter naming from 'from/to' to 'out/in'",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add support for chart only annotation",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
