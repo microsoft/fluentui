@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
+
 import { useTabListBase_unstable } from './useTabListBase';
 import { renderTabList_unstable } from './renderTabList';
 import { renderTab_unstable, TabState, useTabBase_unstable } from '../Tab';
@@ -90,38 +92,7 @@ describe('useTabListBase', () => {
     userEvent.click(result.getByRole('tab', { name: 'Second' }));
 
     // Ensure the `Second` tab is selected
-    expect(result.getByRole('tablist')).toMatchInlineSnapshot(`
-      <div
-        aria-orientation="horizontal"
-        class="tab-list tab-list--outline"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
-        role="tablist"
-      >
-        <button
-          aria-selected="false"
-          class="tab tab--outline"
-          data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
-          role="tab"
-          type="button"
-          value="1"
-        >
-          <span>
-            First
-          </span>
-        </button>
-        <button
-          aria-selected="true"
-          class="tab tab--outline tab-selected"
-          data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
-          role="tab"
-          type="button"
-          value="2"
-        >
-          <span>
-            Second
-          </span>
-        </button>
-      </div>
-    `);
+    expect(result.getByRole('tab', { name: 'Second' })).toHaveAttribute('aria-selected', 'true');
+    expect(result.getByRole('tab', { name: 'First' })).not.toHaveAttribute('aria-selected', 'true');
   });
 });
