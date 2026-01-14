@@ -7,7 +7,14 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS } from '../../utilities/index';
+import {
+  areArraysEqual,
+  getColorFromToken,
+  getNextColor,
+  MIN_DONUT_RADIUS,
+  ChartTitle,
+  CHART_TITLE_PADDING,
+} from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -304,7 +311,14 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
-    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
+    const titleHeight = data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
+    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
@@ -324,24 +338,36 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         )}
         <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
-            <Pie
-              width={_width!}
-              height={_height!}
-              outerRadius={outerRadius}
-              innerRadius={props.innerRadius!}
-              data={chartData!}
-              onFocusCallback={_focusCallback}
-              hoverOnCallback={_hoverCallback}
-              hoverLeaveCallback={_hoverLeave}
-              uniqText={_uniqText}
-              onBlurCallback={_onBlur}
-              activeArc={_getHighlightedLegend()}
-              focusedArcId={focusedArcId || ''}
-              href={props.href!}
-              valueInsideDonut={_toLocaleString(valueInsideDonut)}
-              showLabelsInPercent={props.showLabelsInPercent}
-              hideLabels={props.hideLabels}
-            />
+            {!hideLegend && data?.chartTitle && (
+              <ChartTitle
+                title={data.chartTitle}
+                x={_width! / 2}
+                maxWidth={_width! - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
+              />
+            )}
+            <g transform={`translate(0, ${titleHeight})`}>
+              <Pie
+                width={_width!}
+                height={_height!}
+                outerRadius={outerRadius}
+                innerRadius={props.innerRadius!}
+                data={chartData!}
+                onFocusCallback={_focusCallback}
+                hoverOnCallback={_hoverCallback}
+                hoverLeaveCallback={_hoverLeave}
+                uniqText={_uniqText}
+                onBlurCallback={_onBlur}
+                activeArc={_getHighlightedLegend()}
+                focusedArcId={focusedArcId || ''}
+                href={props.href!}
+                valueInsideDonut={_toLocaleString(valueInsideDonut)}
+                showLabelsInPercent={props.showLabelsInPercent}
+                hideLabels={props.hideLabels}
+              />
+            </g>
           </svg>
         </div>
         <ChartPopover

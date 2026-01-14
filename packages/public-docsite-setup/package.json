@@ -27,4 +27,5 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*"
   }
+  "dependencies": {}
 }

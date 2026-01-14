@@ -55,7 +55,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       outfile: esmOutfile,
 
       inject: [
-        // @storybook/addon-actions has a condition based on "module", this works with Webpack, but it's not defined in
+        // storybook/actions has a condition based on "module", this works with Webpack, but it's not defined in
         // esbuild that causes ReferenceError.
         require.resolve('../shims/module'),
       ],

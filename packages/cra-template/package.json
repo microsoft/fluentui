@@ -16,9 +16,5 @@
   "files": [
     "template",
     "template.json"
-  ],
-  "devDependencies": {
-    "@fluentui/react": "*",
-    "@fluentui/scripts-projects-test": "*"
-  }
+  ]
 }

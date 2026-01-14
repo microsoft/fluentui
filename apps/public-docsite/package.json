@@ -23,12 +23,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/common-styles": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-monaco-editor": "*",
-    "write-file-webpack-plugin": "^4.1.0",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
     "@fluentui/font-icons-mdl2": "*",

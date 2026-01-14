@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { Text, Display } from '@fluentui/react-components';
 import textDescriptionMd from './TextDescription.md';
 import textBestPracticesMd from './TextBestPractices.md';

@@ -2304,10 +2304,6 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType,
   yScaleType: primaryYScaleType,
   secondaryYScaleType,
-  xMinValue,
-  xMaxValue,
-  yMinValue,
-  yMaxValue,
 }: {
   data: LineChartPoints[] | ScatterChartPoints[];
   xScale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number>;
@@ -2317,10 +2313,6 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType?: AxisScaleType;
   yScaleType?: AxisScaleType;
   secondaryYScaleType?: AxisScaleType;
-  xMinValue?: number;
-  xMaxValue?: number;
-  yMinValue?: number;
-  yMaxValue?: number;
 }): number => {
   // Note: This function is executed after the scale is created, so the actual padding can be
   // obtained by calculating the difference between the respective minimums or maximums of the
@@ -2332,14 +2324,14 @@ export const getRangeForScatterMarkerSize = ({
   // it the other way around (i.e., adjusting the scale domain first with padding and then scaling
   // the markers to fit inside the plot area).
   const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
-  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType, xMinValue, xMaxValue);
+  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
   const scaleXMin = xMin instanceof Date ? new Date(+xMin - xPadding.start) : xMin - xPadding.start;
   const scaleXMax = xMax instanceof Date ? new Date(+xMax + xPadding.end) : xMax + xPadding.end;
   const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
 
   const yScaleType = useSecondaryYScale ? secondaryYScaleType : primaryYScaleType;
   const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(data, undefined, useSecondaryYScale, yScaleType);
-  const yPadding = getDomainPaddingForMarkers(yMin, yMax, yScaleType, yMinValue, yMaxValue);
+  const yPadding = getDomainPaddingForMarkers(yMin, yMax, yScaleType);
   const scaleYMin = yMin - yPadding.start;
   const scaleYMax = yMax + yPadding.end;
   const yScale = (useSecondaryYScale ? yScaleSecondary : yScalePrimary)!;
@@ -2406,12 +2398,12 @@ export const generateMonthlyTicks = (
   return ticks;
 };
 
-const generateNumericTicks = (
+export const generateNumericTicks = (
   scaleType: AxisScaleType | undefined,
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: number[],
-) => {
+): number[] | undefined => {
   const refTick = typeof tick0 === 'number' ? tick0 : 0;
 
   if (scaleType === 'log') {
@@ -2439,12 +2431,12 @@ const generateNumericTicks = (
   }
 };
 
-const generateDateTicks = (
+export const generateDateTicks = (
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],
   useUTC?: boolean,
-) => {
+): Date[] | undefined => {
   const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
 
   if (typeof tickStep === 'number' && tickStep > 0) {

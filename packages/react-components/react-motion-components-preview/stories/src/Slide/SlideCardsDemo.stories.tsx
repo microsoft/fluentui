@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button, Card, CardHeader, CardPreview, Body1 } from '@fluentui/react-components';
-import { SlideRelaxed } from '@fluentui/react-motion-components-preview';
+import { Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -41,50 +41,56 @@ const cardData = [
     title: 'Welcome',
     content: 'Getting started',
     color: tokens.colorPaletteBlueBackground2,
-    fromX: '-50px',
-    fromY: '0px',
+    outX: '-50px',
+    outY: '0px',
   },
   {
     id: 2,
     title: 'Features',
     content: 'Explore the capabilities',
     color: tokens.colorPaletteGreenBackground2,
-    fromX: '0px',
-    fromY: '-50px',
+    outX: '0px',
+    outY: '-50px',
   },
   {
     id: 3,
     title: 'Customize',
     content: 'Make it your own',
     color: tokens.colorPalettePurpleBackground2,
-    fromX: '50px',
-    fromY: '0px',
+    outX: '50px',
+    outY: '0px',
   },
   {
     id: 4,
     title: 'Advanced',
     content: 'Pro techniques',
     color: tokens.colorPaletteRedBackground2,
-    fromX: '-30px',
-    fromY: '30px',
+    outX: '-30px',
+    outY: '30px',
   },
   {
     id: 5,
     title: 'Examples',
     content: 'Real-world usage',
     color: tokens.colorPalettePeachBackground2,
-    fromX: '0px',
-    fromY: '50px',
+    outX: '0px',
+    outY: '50px',
   },
   {
     id: 6,
     title: 'Resources',
     content: 'Documentation & help',
     color: tokens.colorPaletteLightTealBackground2,
-    fromX: '30px',
-    fromY: '30px',
+    outX: '30px',
+    outY: '30px',
   },
 ];
+
+// 3 bounces, 95% decay
+const curveSpringEnter = `linear(0, 1 25%, 1.070 27%, 1.121 29%, 1.152 31%, 1.166 33%, 1.162 36%, 1.123 40%, 1.031 47%, 0.9916 51%, 0.9690 55%, 0.9628 60%, 1.002 76%, 1.008 87%, 1.000)`;
+
+// 7% anticipation, exponent 3
+const curveAnticipationExit = `linear(0, -0.01368 11%, -0.06081 30%, -0.07000 39%, -0.05935 47%, -0.02949 54%, 0.01530 60%, 0.08107 66%, 0.1542 71%, 0.2458 76%, 0.3577 81%, 0.4917 86%, 0.6497 91%, 0.7945 95%, 0.9566 99%, 1.000)`;
 
 export const CardsDemo = (): JSXElement => {
   const classes = useClasses();
@@ -129,13 +135,15 @@ export const CardsDemo = (): JSXElement => {
 
       <div className={classes.cardGrid}>
         {cardData.map(card => (
-          <SlideRelaxed
+          <Slide
             key={card.id}
             visible={visibleCards.has(card.id)}
-            fromX={card.fromX}
-            fromY={card.fromY}
-            duration={350}
-            exitDuration={250}
+            outX={card.outX}
+            outY={card.outY}
+            duration={500}
+            exitDuration={500}
+            easing={curveSpringEnter}
+            exitEasing={curveAnticipationExit}
           >
             <Card className={classes.card}>
               <CardPreview className={classes.cardPreview} style={{ backgroundColor: card.color }}>
@@ -150,7 +158,7 @@ export const CardsDemo = (): JSXElement => {
                 description={<Body1>{card.content}</Body1>}
               />
             </Card>
-          </SlideRelaxed>
+          </Slide>
         ))}
       </div>
     </div>
