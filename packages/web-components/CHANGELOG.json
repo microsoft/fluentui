@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 14 Jan 2026 04:07:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.3",
+      "version": "3.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a5b354084d7de7c0c0567b96624590ba513f6d4c",
+            "comment": "chore: upgrade to storybook 9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Jan 2026 04:07:48 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.2",
       "version": "3.0.0-rc.2",

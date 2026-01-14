@@ -166,6 +166,51 @@ describe('version-string-replace generator', () => {
     expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
 
+  describe(`--version`, () => {
+    async function setupForVersionArgument(scope: 'all' | string) {
+      tree = setupDummyPackage(tree, {
+        name: 'react-components',
+        version: '9.10.20',
+        dependencies: {
+          '@proj/react-button': '^9.1.1',
+        },
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-components/src' },
+      });
+
+      tree = setupDummyPackage(tree, {
+        name: 'react-button',
+        version: '9.1.1',
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+      });
+
+      if (scope === 'all') {
+        await generator(tree, { all: true, version: '9.0.0-experimental.foo.20220101-abc' });
+      } else {
+        await generator(tree, { name: 'react-button', version: '9.0.0-experimental.foo.20220101-abc' });
+      }
+
+      const suitePackageJson = readJson(tree, 'packages/react-components/package.json');
+      const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
+
+      return { suitePackageJson, reactButtonPackageJson };
+    }
+
+    it('should bump to explicit version', async () => {
+      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument('react-button');
+
+      expect(suitePackageJson.version).toBe('9.10.20');
+      expect(suitePackageJson.dependencies['@proj/react-button']).toBe('9.0.0-experimental.foo.20220101-abc');
+      expect(reactButtonPackageJson.version).toBe('9.0.0-experimental.foo.20220101-abc');
+    });
+    it('should bump all packages to <version>', async () => {
+      const { reactButtonPackageJson, suitePackageJson } = await setupForVersionArgument('all');
+
+      expect(suitePackageJson.version).toBe('9.0.0-experimental.foo.20220101-abc');
+      expect(suitePackageJson.dependencies['@proj/react-button']).toBe('9.0.0-experimental.foo.20220101-abc');
+      expect(reactButtonPackageJson.version).toBe('9.0.0-experimental.foo.20220101-abc');
+    });
+  });
+
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
