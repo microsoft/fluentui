@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 import clickImg from '../assets/Dropdown/dropdown-click.png';
 import collapsedImg from '../assets/Dropdown/dropdown-collapsed.png';
 import hoverImg from '../assets/Dropdown/dropdown-hover.png';
@@ -135,53 +135,15 @@ The `filled-lighter`, `filled-darker`, and `underline` all have contrast require
   alt="Diagram of an open dropdown annotated with numbers. Number 1 points to the Dropdown trigger button. 2 points to the popup containing all the options. 3 points to a single option."
 />
 
-<table>
-  <thead>
-    <tr>
-      <th>Role</th>
-      <th>States and properties</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="4">1. combobox</td>
-      <td>
-        <code>type="button"</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>aria-haspopup="listbox"</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>aria-activedescendant="active-option-id"</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>aria-expanded="true/false"</code>
-      </td>
-    </tr>
-    <tr>
-      <td>2. listbox</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>3. option</td>
-      <td>
-        <code>aria-selected="true/false"</code>
-      </td>
-    </tr>
-    <tr>
-      <td>wrapper (no role)</td>
-      <td>
-        <code>aria-owns="listbox-id"*</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Role                                       | States and properties        |
+| ------------------------------------------ | ---------------------------- |
+| 1\. combobox                               | `type="button"`              |
+| `aria-haspopup="listbox"`                  |
+| `aria-activedescendant="active-option-id"` |
+| `aria-expanded="true/false"`               |
+| 2\. listbox                                | \-                           |
+| 3\. option                                 | `aria-selected="true/false"` |
+| wrapper (no role)                          | `aria-owns="listbox-id"*`    |
 
 ** \* putting `aria-owns` on the wrapping element moves the listbox immediately after the trigger in the accessibility tree, even though it is rendered at the end of the DOM. For all screen readers but VoiceOver, this enables virtual cursor navigation between the trigger and listbox/options. **
 

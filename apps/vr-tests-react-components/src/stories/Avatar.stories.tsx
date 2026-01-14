@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';

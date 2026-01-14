@@ -1,6 +1,6 @@
 // NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';

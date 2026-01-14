@@ -1,7 +1,7 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { isIE11 } from '@fluentui/react';
-import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
+import { CARTESIAN_XAXIS_CLASSNAME, getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 const isIE11Var: boolean = isIE11();
 
@@ -26,6 +26,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         height: '100%',
         flexDirection: 'column',
         overflow: 'hidden',
+        position: 'relative',
       },
       className,
     ],
@@ -40,36 +41,39 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     },
     axisTitle: getAxisTitleStyle(theme!, theme.fonts.xSmall),
     axisAnnotation: getAxisTitleStyle(theme!, theme.fonts.small),
-    xAxis: {
-      selectors: {
-        text: [
-          theme.fonts.tiny,
-          {
-            fill: theme.semanticColors.bodyText,
-            fontWeight: '600',
+    xAxis: [
+      {
+        selectors: {
+          text: [
+            theme.fonts.tiny,
+            {
+              fill: theme.semanticColors.bodyText,
+              fontWeight: '600',
+              selectors: {
+                [HighContrastSelector]: {
+                  fill: 'CanvasText',
+                },
+              },
+            },
+          ],
+          line: {
+            opacity: 0.2,
+            stroke: theme.semanticColors.bodyText,
+            width: '1px',
             selectors: {
               [HighContrastSelector]: {
-                fill: 'CanvasText',
+                opacity: 0.1,
+                stroke: 'CanvasText',
               },
             },
           },
-        ],
-        line: {
-          opacity: 0.2,
-          stroke: theme.semanticColors.bodyText,
-          width: '1px',
-          selectors: {
-            [HighContrastSelector]: {
-              opacity: 0.1,
-              stroke: 'CanvasText',
-            },
+          path: {
+            display: 'none',
           },
         },
-        path: {
-          display: 'none',
-        },
       },
-    },
+      CARTESIAN_XAXIS_CLASSNAME,
+    ],
     yAxis: {
       selectors: {
         text: [

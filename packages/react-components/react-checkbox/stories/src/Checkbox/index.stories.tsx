@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { tokens, Checkbox } from '@fluentui/react-components';
 
 export { Default } from './CheckboxDefault.stories';

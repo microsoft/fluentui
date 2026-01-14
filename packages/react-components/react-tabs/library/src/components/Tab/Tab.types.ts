@@ -43,6 +43,8 @@ export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'valu
     value: TabValue;
   };
 
+export type TabBaseProps = Omit<TabProps, 'contentReservedSpace'>;
+
 /**
  * State used in rendering Tab
  */
@@ -78,3 +80,5 @@ export type TabState = ComponentState<TabInternalSlots> &
      */
     vertical: boolean;
   };
+
+export type TabBaseState = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;

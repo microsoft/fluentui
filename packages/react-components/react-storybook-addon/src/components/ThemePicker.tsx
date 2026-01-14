@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
+import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components';
 import { ArrowDownIcon } from '@storybook/icons';
-import { useParameter } from '@storybook/manager-api';
+import { useParameter } from 'storybook/manager-api';
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import { ThemeIds, themes, defaultTheme } from '../theme';

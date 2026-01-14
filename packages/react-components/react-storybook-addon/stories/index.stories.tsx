@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Subtitle1, Text } from '@fluentui/react-components';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 export const Demos = (): JSXElement => {
   return (
