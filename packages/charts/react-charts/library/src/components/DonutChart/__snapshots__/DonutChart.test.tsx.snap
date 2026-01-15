@@ -12,7 +12,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="178"
+        height="214"
         width="0"
       >
         <rect
@@ -20,7 +20,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           height="3"
           width="6"
           x="-3"
-          y="15"
+          y="-6"
         />
         <text
           aria-describedby="tooltip-_r_2_"
@@ -29,7 +29,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           id="tooltip-host_r_1_"
           text-anchor="middle"
           x="0"
-          y="21"
+          y="0"
         >
           ...
         </text>
@@ -37,47 +37,43 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
-          transform="translate(0, 18)"
+          transform="translate(0, 98)"
         >
-          <g
-            transform="translate(0, 80)"
-          >
-            <g>
-              <path
-                aria-label="2020/04/30, 20000."
-                class="fui-donut-arc__root"
-                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                id="_Pie__r_0_first20000"
-                opacity="1"
-                role="img"
-                style="fill: #E5E5E5; cursor: default;"
-                tabindex="0"
-              />
-            </g>
-            <g>
-              <path
-                aria-label="2020/04/20, 39000."
-                class="fui-donut-arc__root"
-                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                id="_Pie__r_0_second39000"
-                opacity="1"
-                role="img"
-                style="fill: #0078D4; cursor: default;"
-                tabindex="0"
-              />
-            </g>
-            <g>
-              <path
-                aria-label="2020/04/25, 45000."
-                class="fui-donut-arc__root"
-                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                id="_Pie__r_0_third45000"
-                opacity="1"
-                role="img"
-                style="fill: #DADADA; cursor: default;"
-                tabindex="0"
-              />
-            </g>
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              class="fui-donut-arc__root"
+              d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+              id="_Pie__r_0_first20000"
+              opacity="1"
+              role="img"
+              style="fill: #E5E5E5; cursor: default;"
+              tabindex="0"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              class="fui-donut-arc__root"
+              d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+              id="_Pie__r_0_second39000"
+              opacity="1"
+              role="img"
+              style="fill: #0078D4; cursor: default;"
+              tabindex="0"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              class="fui-donut-arc__root"
+              d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+              id="_Pie__r_0_third45000"
+              opacity="1"
+              role="img"
+              style="fill: #DADADA; cursor: default;"
+              tabindex="0"
+            />
           </g>
         </g>
       </svg>
@@ -88,6 +84,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     />
     <div
       class="fui-donut__legendContainer"
+      style="margin-top: -36px;"
     >
       <div
         aria-label="Legends"
@@ -180,7 +177,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="178"
+          height="214"
           width="0"
         >
           <rect
@@ -188,7 +185,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_1k_"
@@ -197,7 +194,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             id="tooltip-host_r_1j_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -205,47 +202,43 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
-            transform="translate(0, 18)"
+            transform="translate(0, 98)"
           >
-            <g
-              transform="translate(0, 80)"
-            >
-              <g>
-                <path
-                  aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
-                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                  id="_Pie__r_1i_first20000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #E5E5E5; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
-                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                  id="_Pie__r_1i_second39000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #0078D4; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
-                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                  id="_Pie__r_1i_third45000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #DADADA; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_1i_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_1i_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_1i_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
             </g>
           </g>
         </svg>
@@ -256,6 +249,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       />
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -350,7 +344,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="178"
+            height="214"
             width="0"
           >
             <rect
@@ -358,7 +352,7 @@ Object {
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_40_"
@@ -367,7 +361,7 @@ Object {
               id="tooltip-host_r_3v_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -375,47 +369,43 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 18)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="2020/04/30, 20000."
-                    class="fui-donut-arc__root"
-                    d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                    id="_Pie__r_3u_first20000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #E5E5E5; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="2020/04/20, 39000."
-                    class="fui-donut-arc__root"
-                    d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                    id="_Pie__r_3u_second39000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #0078D4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="2020/04/25, 45000."
-                    class="fui-donut-arc__root"
-                    d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                    id="_Pie__r_3u_third45000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #DADADA; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="2020/04/30, 20000."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                  id="_Pie__r_3u_first20000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/20, 39000."
+                  class="fui-donut-arc__root"
+                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                  id="_Pie__r_3u_second39000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/25, 45000."
+                  class="fui-donut-arc__root"
+                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_3u_third45000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -467,6 +457,7 @@ Object {
         </div>
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -572,7 +563,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="178"
+          height="214"
           width="0"
         >
           <rect
@@ -580,7 +571,7 @@ Object {
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_40_"
@@ -589,7 +580,7 @@ Object {
             id="tooltip-host_r_3v_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -597,47 +588,43 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 18)"
+            transform="translate(0, 98)"
           >
-            <g
-              transform="translate(0, 80)"
-            >
-              <g>
-                <path
-                  aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
-                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                  id="_Pie__r_3u_first20000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #E5E5E5; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
-                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                  id="_Pie__r_3u_second39000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #0078D4; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
-                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                  id="_Pie__r_3u_third45000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #DADADA; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_3u_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_3u_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_3u_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
             </g>
           </g>
         </svg>
@@ -689,6 +676,7 @@ Object {
       </div>
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -834,7 +822,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="178"
+            height="214"
             width="0"
           >
             <rect
@@ -842,7 +830,7 @@ Object {
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_4d_"
@@ -851,7 +839,7 @@ Object {
               id="tooltip-host_r_4c_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -859,47 +847,43 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 18)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="2020/04/30, 20000."
-                    class="fui-donut-arc__root"
-                    d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                    id="_Pie__r_4b_first20000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #E5E5E5; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="2020/04/20, 39000."
-                    class="fui-donut-arc__root"
-                    d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                    id="_Pie__r_4b_second39000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #0078D4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="2020/04/25, 45000."
-                    class="fui-donut-arc__root"
-                    d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                    id="_Pie__r_4b_third45000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #DADADA; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="2020/04/30, 20000."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                  id="_Pie__r_4b_first20000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/20, 39000."
+                  class="fui-donut-arc__root"
+                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                  id="_Pie__r_4b_second39000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/25, 45000."
+                  class="fui-donut-arc__root"
+                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_4b_third45000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -951,6 +935,7 @@ Object {
         </div>
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -1056,7 +1041,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="178"
+          height="214"
           width="0"
         >
           <rect
@@ -1064,7 +1049,7 @@ Object {
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_4d_"
@@ -1073,7 +1058,7 @@ Object {
             id="tooltip-host_r_4c_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -1081,47 +1066,43 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 18)"
+            transform="translate(0, 98)"
           >
-            <g
-              transform="translate(0, 80)"
-            >
-              <g>
-                <path
-                  aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
-                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-                  id="_Pie__r_4b_first20000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #E5E5E5; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
-                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-                  id="_Pie__r_4b_second39000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #0078D4; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
-                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                  id="_Pie__r_4b_third45000"
-                  opacity="1"
-                  role="img"
-                  style="fill: #DADADA; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_4b_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_4b_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_4b_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
             </g>
           </g>
         </svg>
@@ -1173,6 +1154,7 @@ Object {
       </div>
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -1312,7 +1294,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -1320,7 +1302,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_32_"
@@ -1329,7 +1311,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         id="tooltip-host_r_31_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1337,47 +1319,43 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_30_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_30_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_30_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -1388,6 +1366,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1474,7 +1453,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -1482,7 +1461,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2o_"
@@ -1491,7 +1470,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         id="tooltip-host_r_2n_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1499,77 +1478,73 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2m_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="auto"
-              text-anchor="start"
-              x="-1.143083014314768"
-              y="1.6411463135214555"
-            >
-              20k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2m_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="hanging"
-              text-anchor="start"
-              x="-1.3603172563291284"
-              y="-1.4661299267572407"
-            >
-              39k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2m_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="auto"
-              text-anchor="end"
-              x="1.9541939332494636"
-              y="0.42558908732601586"
-            >
-              45k
-            </text>
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="start"
+            x="-1.143083014314768"
+            y="1.6411463135214555"
+          >
+            20k
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="hanging"
+            text-anchor="start"
+            x="-1.3603172563291284"
+            y="-1.4661299267572407"
+          >
+            39k
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="end"
+            x="1.9541939332494636"
+            y="0.42558908732601586"
+          >
+            45k
+          </text>
         </g>
       </g>
     </svg>
@@ -1580,6 +1555,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1666,7 +1642,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -1674,7 +1650,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2t_"
@@ -1683,7 +1659,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         id="tooltip-host_r_2s_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1691,77 +1667,73 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2r_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="auto"
-              text-anchor="start"
-              x="-1.143083014314768"
-              y="1.6411463135214555"
-            >
-              19%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2r_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="hanging"
-              text-anchor="start"
-              x="-1.3603172563291284"
-              y="-1.4661299267572407"
-            >
-              38%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2r_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-donut-arc__arcLabel"
-              dominant-baseline="auto"
-              text-anchor="end"
-              x="1.9541939332494636"
-              y="0.42558908732601586"
-            >
-              43%
-            </text>
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="start"
+            x="-1.143083014314768"
+            y="1.6411463135214555"
+          >
+            19%
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="hanging"
+            text-anchor="start"
+            x="-1.3603172563291284"
+            y="-1.4661299267572407"
+          >
+            38%
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="end"
+            x="1.9541939332494636"
+            y="0.42558908732601586"
+          >
+            43%
+          </text>
         </g>
       </g>
     </svg>
@@ -1772,6 +1744,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1858,7 +1831,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -1866,7 +1839,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_1u_"
@@ -1875,7 +1848,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         id="tooltip-host_r_1t_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1883,47 +1856,43 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
-              id="_Pie__r_1s_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
-              id="_Pie__r_1s_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
-              id="_Pie__r_1s_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+            id="_Pie__r_1s_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+            id="_Pie__r_1s_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+            id="_Pie__r_1s_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -1934,6 +1903,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2020,7 +1990,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -2028,7 +1998,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_23_"
@@ -2037,7 +2007,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         id="tooltip-host_r_22_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2045,47 +2015,43 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_21_first20000"
-              opacity="1"
-              role="img"
-              style="cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_21_second39000"
-              opacity="1"
-              role="img"
-              style="cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_21_third45000"
-              opacity="1"
-              role="img"
-              style="cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_first20000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_second39000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_third45000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -2096,6 +2062,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2182,7 +2149,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -2190,7 +2157,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2f_"
@@ -2199,7 +2166,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         id="tooltip-host_r_2e_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2207,47 +2174,43 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2d_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2d_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2d_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -2258,6 +2221,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2358,47 +2322,43 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
       width="0"
     >
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 100)"
       >
-        <g
-          transform="translate(0, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_26_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_26_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_26_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -2421,7 +2381,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -2429,7 +2389,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2a_"
@@ -2438,7 +2398,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         id="tooltip-host_r_29_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2446,47 +2406,43 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_28_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_28_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_28_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -2497,6 +2453,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2583,7 +2540,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="178"
+      height="214"
       width="0"
     >
       <rect
@@ -2591,7 +2548,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2j_"
@@ -2600,7 +2557,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         id="tooltip-host_r_2i_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2608,47 +2565,43 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 18)"
+        transform="translate(0, 98)"
       >
-        <g
-          transform="translate(0, 80)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2h_first20000"
-              opacity="1"
-              role="img"
-              style="fill: #E5E5E5; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2h_second39000"
-              opacity="1"
-              role="img"
-              style="fill: #0078D4; cursor: default;"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
-              d="M0,0Z"
-              id="_Pie__r_2h_third45000"
-              opacity="1"
-              role="img"
-              style="fill: #DADADA; cursor: default;"
-              tabindex="0"
-            />
-          </g>
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
         </g>
       </g>
     </svg>
@@ -2659,6 +2612,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"

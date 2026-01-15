@@ -347,32 +347,31 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
               <ChartTitle
                 title={data.chartTitle}
                 x={_width! / 2}
+                y={0}
                 maxWidth={_width! - 20}
                 className={classes.chartTitle}
                 titleStyles={props.titleStyles}
                 tooltipClassName={classes.svgTooltip}
               />
             )}
-            <g transform={`translate(0, ${titleHeight / 2})`}>
-              <Pie
-                width={_width!}
-                height={_height!}
-                outerRadius={outerRadius}
-                innerRadius={props.innerRadius!}
-                data={chartData!}
-                onFocusCallback={_focusCallback}
-                hoverOnCallback={_hoverCallback}
-                hoverLeaveCallback={_hoverLeave}
-                uniqText={_uniqText}
-                onBlurCallback={_onBlur}
-                activeArc={_getHighlightedLegend()}
-                focusedArcId={focusedArcId || ''}
-                href={props.href!}
-                valueInsideDonut={_toLocaleString(valueInsideDonut)}
-                showLabelsInPercent={props.showLabelsInPercent}
-                hideLabels={props.hideLabels}
-              />
-            </g>
+            <Pie
+              width={_width!}
+              height={_height!}
+              outerRadius={outerRadius}
+              innerRadius={props.innerRadius!}
+              data={chartData!}
+              onFocusCallback={_focusCallback}
+              hoverOnCallback={_hoverCallback}
+              hoverLeaveCallback={_hoverLeave}
+              uniqText={_uniqText}
+              onBlurCallback={_onBlur}
+              activeArc={_getHighlightedLegend()}
+              focusedArcId={focusedArcId || ''}
+              href={props.href!}
+              valueInsideDonut={_toLocaleString(valueInsideDonut)}
+              showLabelsInPercent={props.showLabelsInPercent}
+              hideLabels={props.hideLabels}
+            />
           </svg>
         </div>
         <ChartPopover
@@ -405,6 +404,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
               legendContainer.current = e;
             }}
             className={classes.legendContainer}
+            style={{ marginTop: data?.chartTitle ? `-${titleHeight}px` : undefined }}
           >
             {legendBars}
           </div>
