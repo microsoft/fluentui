@@ -58,7 +58,7 @@ export const Reversed = (): JSXElement => {
         <Stagger visible={visible} reversed>
           {/* Create a list of items, each wrapped with a presence transition */}
           {Array.from({ length: 8 }, (_, i) => (
-            <Slide key={`stagger-item-${i}`}>
+            <Slide key={`stagger-item-${i}`} outY="20px">
               {/* Outer div protects the inner div from Slide's opacity animation */}
               <div>
                 <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>
