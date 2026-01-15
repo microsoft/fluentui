@@ -4,7 +4,7 @@ import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { getAxisTitleStyle } from '../../utilities/index';
+import { getAxisTitleStyle, getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -15,6 +15,8 @@ export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   legendContainer: 'fui-donut__legendContainer',
   chartWrapper: 'fui-donut__chartWrapper',
   axisAnnotation: 'fui-donut__axisAnnotation',
+  chartTitle: 'fui-donut__chartTitle',
+  svgTooltip: 'fui-donut__svgTooltip',
 };
 
 /**
@@ -41,6 +43,13 @@ const useStyles = makeStyles({
     width: '100%',
   },
   axisAnnotation: getAxisTitleStyle() as GriffelStyle,
+  chartTitle: getChartTitleStyles() as GriffelStyle,
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
 });
 
 /**
@@ -64,5 +73,7 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       baseStyles.axisAnnotation,
       props.styles?.axisAnnotation,
     ),
+    chartTitle: mergeClasses(donutClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
+    svgTooltip: mergeClasses(donutClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
   };
 };

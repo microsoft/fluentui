@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`correctYearMonth Should return dates array when input array contains months data 1`] = `
+Array [
+  "10 01, 2025",
+  "11 01, 2025",
+  "1 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MM format 1`] = `
+Array [
+  "Jan 01, 2026",
+  "Feb 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MMM format 1`] = `
+Array [
+  "January 01, 2026",
+  "February 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return error when input array contains invalid months 1`] = `
+Array [
+  "10 01, 2026",
+  "11 01, 2026",
+  null,
+]
+`;
+
 exports[`sanitizeJson Should return json object when depth inside the range 1`] = `
 Object {
   "data": Array [
@@ -346,7 +376,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -609,7 +638,6 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
-  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -3115,7 +3143,9 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -4907,7 +4937,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -6621,7 +6650,6 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -6912,7 +6940,6 @@ Object {
   "showYAxisLables": true,
   "supportNegativeData": true,
   "width": undefined,
-  "wrapXAxisLables": false,
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -7029,7 +7056,9 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",

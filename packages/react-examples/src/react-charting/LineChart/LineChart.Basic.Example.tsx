@@ -244,7 +244,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             height={this.state.height}
             width={this.state.width}
-            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             enablePerfOptimization={true}
             yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
