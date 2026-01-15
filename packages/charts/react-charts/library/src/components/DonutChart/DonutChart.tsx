@@ -353,7 +353,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
                 tooltipClassName={classes.svgTooltip}
               />
             )}
-            <g transform={`translate(0, ${titleHeight})`}>
+            <g transform={`translate(0, ${titleHeight / 2})`}>
               <Pie
                 width={_width!}
                 height={_height!}
