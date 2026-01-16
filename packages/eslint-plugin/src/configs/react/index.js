@@ -3,7 +3,7 @@ const configHelpers = require('../../utils/configHelpers');
 const baseConfig = require('../base/index');
 const reactConfig = require('./config');
 const reactCompilerPlugin = require('eslint-plugin-react-compiler');
-const { __internal } = require('../../internal-flat');
+const { __internal } = require('../../internal');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
 const { defineConfig } = require('eslint/config');
 
