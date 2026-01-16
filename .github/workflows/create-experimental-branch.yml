@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       feature-name:
-        description: 'Name of the feature (dash-case, e.g., foo-bar)'
+        description: 'Feature branch name in dash-case (e.g., foo-bar). Omit the "experimental/" prefix—it will be added automatically.'
         required: true
         type: string
 
