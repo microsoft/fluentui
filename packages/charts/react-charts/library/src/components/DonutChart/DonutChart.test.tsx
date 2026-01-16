@@ -1,11 +1,13 @@
 import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ChartDataPoint, ChartProps, DonutChart } from './index';
+import { __donutChartInternals } from './DonutChart';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import * as utils from '../../utilities/utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
+import type { ChartAnnotation } from '../../types/ChartAnnotation';
 
 expect.extend(toHaveNoViolations);
 
@@ -178,6 +180,178 @@ describe('Donut chart interactions', () => {
     await (() => {
       expect(getByClass(container, /PopoverSurface/i)[1]).toHaveTextContent('39,000');
     });
+  });
+
+  describe('Donut chart viewport layout', () => {
+    const { resolveDonutViewportLayout } = __donutChartInternals;
+    const baseWidth = 400;
+    const baseHeight = 320;
+
+    it('adds padding when viewport annotations overflow due to offsets', () => {
+      const annotations: ChartAnnotation[] = [
+        {
+          text: 'Offset annotation outside viewport',
+          coordinates: { type: 'relative', x: 0.5, y: 0.5 },
+          layout: {
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: -220,
+            offsetY: -140,
+            clipToBounds: false,
+          },
+        },
+      ];
+
+      const layout = resolveDonutViewportLayout(annotations, baseWidth, baseHeight, true);
+
+      expect(layout.padding.left).toBeGreaterThan(12);
+      expect(layout.padding.top).toBeGreaterThan(12);
+      expect(layout.svgWidth).toBeLessThan(baseWidth);
+      expect(layout.svgHeight).toBeLessThan(baseHeight);
+
+      const defaultLayout = resolveDonutViewportLayout(undefined, baseWidth, baseHeight, true);
+      expect(layout.outerRadius).toBeLessThan(defaultLayout.outerRadius);
+    });
+
+    it('keeps original layout when viewport annotations remain inside bounds', () => {
+      const annotations: ChartAnnotation[] = [
+        {
+          text: 'Centered annotation',
+          coordinates: { type: 'relative', x: 0.5, y: 0.5 },
+          layout: {
+            align: 'center',
+            verticalAlign: 'middle',
+            clipToBounds: false,
+          },
+        },
+      ];
+
+      const layout = resolveDonutViewportLayout(annotations, baseWidth, baseHeight, true);
+
+      expect(layout.padding.top).toBe(0);
+      expect(layout.padding.right).toBe(0);
+      expect(layout.padding.bottom).toBe(0);
+      expect(layout.padding.left).toBe(0);
+      expect(layout.svgWidth).toBe(baseWidth);
+      expect(layout.svgHeight).toBe(baseHeight);
+    });
+
+    it('keeps viewport annotations within the viewport bounds after layout adjustments', () => {
+      const annotations: ChartAnnotation[] = [
+        {
+          text: 'Left edge',
+          coordinates: { type: 'relative', x: -0.2, y: 0.4 },
+          layout: {
+            align: 'end',
+            verticalAlign: 'middle',
+            clipToBounds: false,
+          },
+        },
+        {
+          text: 'Right edge',
+          coordinates: { type: 'relative', x: 1.25, y: 0.6 },
+          layout: {
+            align: 'start',
+            verticalAlign: 'middle',
+            clipToBounds: false,
+          },
+        },
+        {
+          text: 'Top edge',
+          coordinates: { type: 'relative', x: 0.5, y: -0.1 },
+          layout: {
+            align: 'center',
+            verticalAlign: 'bottom',
+            clipToBounds: false,
+          },
+        },
+        {
+          text: 'Bottom edge',
+          coordinates: { type: 'relative', x: 0.5, y: 1.2 },
+          layout: {
+            align: 'center',
+            verticalAlign: 'top',
+            clipToBounds: false,
+          },
+        },
+      ];
+
+      const { container } = render(
+        <DonutChart
+          data={chartPointsDC}
+          innerRadius={55}
+          width={420}
+          height={320}
+          hideLegend={true}
+          annotations={annotations}
+        />,
+      );
+
+      const annotationSvg = container.querySelector('[data-chart-annotation-svg="true"]') as SVGElement;
+      expect(annotationSvg).toBeTruthy();
+
+      const viewBox = annotationSvg.getAttribute('viewBox');
+      expect(viewBox).toBeTruthy();
+      const viewBoxParts = viewBox!.split(' ');
+      expect(viewBoxParts).toHaveLength(4);
+      const viewportWidth = Number(viewBoxParts[2]);
+      const viewportHeight = Number(viewBoxParts[3]);
+      expect(Number.isFinite(viewportWidth)).toBe(true);
+      expect(Number.isFinite(viewportHeight)).toBe(true);
+
+      const foreignObjects = annotationSvg.querySelectorAll('foreignObject[data-annotation-key]');
+      expect(foreignObjects.length).toBe(annotations.length);
+
+      foreignObjects.forEach(foreignObject => {
+        const x = Number(foreignObject.getAttribute('x'));
+        const y = Number(foreignObject.getAttribute('y'));
+        const widthAttr = Number(foreignObject.getAttribute('width'));
+        const heightAttr = Number(foreignObject.getAttribute('height'));
+
+        expect(Number.isFinite(x)).toBe(true);
+        expect(Number.isFinite(y)).toBe(true);
+        expect(Number.isFinite(widthAttr)).toBe(true);
+        expect(Number.isFinite(heightAttr)).toBe(true);
+        expect(x).toBeGreaterThanOrEqual(-0.5);
+        expect(y).toBeGreaterThanOrEqual(-0.5);
+        expect(x + widthAttr).toBeLessThanOrEqual(viewportWidth + 0.5);
+        expect(y + heightAttr).toBeLessThanOrEqual(viewportHeight + 0.5);
+      });
+    });
+  });
+
+  test('does not expand annotation viewport when viewport-relative annotations are provided', () => {
+    const annotations: ChartAnnotation[] = [
+      {
+        text: 'Annotation',
+        coordinates: { type: 'relative', x: 0.5, y: 0.1 },
+        layout: {
+          verticalAlign: 'bottom',
+          clipToBounds: false,
+        },
+      },
+    ];
+
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} annotations={annotations} />);
+
+    const plotContainer = container.querySelector('.fui-donut__plotContainer') as HTMLDivElement;
+    expect(plotContainer).toBeTruthy();
+
+    const containerHeight = parseFloat(plotContainer.style.height);
+    expect(containerHeight).not.toBeGreaterThan(200);
+
+    const chartSvg = container.querySelector('.fui-donut__chart') as SVGElement;
+    expect(chartSvg).toBeTruthy();
+    expect(parseFloat(chartSvg.style.top)).toBeGreaterThan(0);
+
+    const annotationSvg = container.querySelector('[data-chart-annotation-svg="true"]') as SVGElement;
+    expect(annotationSvg).toBeTruthy();
+    const viewBox = annotationSvg.getAttribute('viewBox');
+    expect(viewBox).toBeTruthy();
+    const viewBoxParts = viewBox!.split(' ');
+    expect(viewBoxParts).toHaveLength(4);
+    const viewBoxHeight = Number(viewBoxParts[3]);
+    expect(viewBoxHeight).not.toBeGreaterThan(200);
   });
 
   test('Should change value inside donut with the legend value on mouseOver legend ', () => {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add support for donut annotations",
+  "packageName": "@fluentui/react-charts",
+  "email": "chartingdev@microsoft.com",
+  "dependentChangeType": "patch"
+}

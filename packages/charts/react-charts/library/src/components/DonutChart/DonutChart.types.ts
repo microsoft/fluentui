@@ -157,6 +157,11 @@ export interface DonutChartStyles {
    * Style for the chart.
    */
   chart?: string;
+
+  /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: string;
   /**
    * Style for the legend container.
    */
@@ -176,6 +181,11 @@ export interface DonutChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: string;
 
   /**
    * Style for SVG tooltip text

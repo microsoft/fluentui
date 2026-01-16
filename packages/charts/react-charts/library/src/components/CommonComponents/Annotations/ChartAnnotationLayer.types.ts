@@ -17,6 +17,8 @@ export interface ChartAnnotationContext {
   plotRect: AnnotationPlotRect;
   /** Size of the owning SVG element */
   svgRect: { width: number; height: number };
+  /** Padding reserved around the viewport (used for donut layout adjustments) */
+  viewportPadding?: { top: number; right: number; bottom: number; left: number };
   /** Indicates if layout should be mirrored */
   isRtl?: boolean;
   /** Primary x scale mapping data domain to pixels */

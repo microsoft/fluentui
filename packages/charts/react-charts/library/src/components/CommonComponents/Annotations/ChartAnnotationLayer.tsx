@@ -22,14 +22,26 @@ import {
 } from './useChartAnnotationLayer.styles';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import {
+  normalizePaddingRect,
+  safeRectValue,
+  clamp,
+  applyMinDistanceFromAnchor,
+  DEFAULT_ANNOTATION_MAX_WIDTH,
+  DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+  DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE,
+  resolveRelativeWithPadding,
+} from '../../../utilities/annotationUtils';
 
 const DEFAULT_HORIZONTAL_ALIGN = 'center';
 const DEFAULT_VERTICAL_ALIGN = 'middle';
-const DEFAULT_FOREIGN_OBJECT_WIDTH = 180;
+const DEFAULT_FOREIGN_OBJECT_WIDTH = DEFAULT_ANNOTATION_MAX_WIDTH;
 const DEFAULT_FOREIGN_OBJECT_HEIGHT = 60;
 const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
 const ARROW_SIZE_SCALE = 0.35;
+const MIN_CONNECTOR_ARROW_LENGTH = 8;
+const CONNECTOR_START_RATIO = 0.4;
 const MAX_SIMPLE_MARKUP_DEPTH = 5;
 const CHAR_CODE_LESS_THAN = '<'.codePointAt(0)!;
 const CHAR_CODE_GREATER_THAN = '>'.codePointAt(0)!;
@@ -254,8 +266,6 @@ const normalizeBandOffset = (
   return position;
 };
 
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-
 type AxisCoordinateType = 'data' | 'relative' | 'pixel';
 
 const resolveDataCoordinate = (
@@ -306,6 +316,41 @@ const resolveAxisCoordinate = (
     default:
       return undefined;
   }
+};
+
+const resolveViewportRelative = (
+  axis: 'x' | 'y',
+  value: number,
+  context: ChartAnnotationContext,
+): number | undefined => {
+  if (!Number.isFinite(value)) {
+    return undefined;
+  }
+
+  const svgWidth = context.svgRect.width;
+  const svgHeight = context.svgRect.height;
+  if (!Number.isFinite(svgWidth) || !Number.isFinite(svgHeight)) {
+    return undefined;
+  }
+
+  const padding = context.viewportPadding;
+  const {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom,
+  } = normalizePaddingRect(padding);
+
+  const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
+  const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
+
+  if (axis === 'x') {
+    const resolvedX = resolveRelativeWithPadding(value, svgWidth, paddingLeft, paddingRight);
+    return Number.isFinite(resolvedX) ? resolvedX : paddingLeft + effectiveWidth / 2;
+  }
+
+  const resolvedY = resolveRelativeWithPadding(value, svgHeight, paddingTop, paddingBottom);
+  return Number.isFinite(resolvedY) ? resolvedY : paddingTop + effectiveHeight / 2;
 };
 
 const createMeasurementSignature = (
@@ -368,10 +413,16 @@ const resolveCoordinates = (
   const offsetX = layout?.offsetX ?? 0;
   const offsetY = layout?.offsetY ?? 0;
 
-  const anchorX = resolveAxisCoordinate('x', descriptor.xType, coordinates.x, context);
-  const anchorY = resolveAxisCoordinate('y', descriptor.yType, coordinates.y, context, {
-    yAxis: descriptor.yAxis,
-  });
+  const useViewportSpace = layout?.clipToBounds === false;
+
+  const anchorX =
+    useViewportSpace && descriptor.xType === 'relative' && typeof coordinates.x === 'number'
+      ? resolveViewportRelative('x', coordinates.x, context)
+      : resolveAxisCoordinate('x', descriptor.xType, coordinates.x, context);
+  const anchorY =
+    useViewportSpace && descriptor.yType === 'relative' && typeof coordinates.y === 'number'
+      ? resolveViewportRelative('y', coordinates.y, context)
+      : resolveAxisCoordinate('y', descriptor.yType, coordinates.y, context, { yAxis: descriptor.yAxis });
 
   if (anchorX === undefined || anchorY === undefined) {
     return undefined;
@@ -493,9 +544,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       maxWidth: layout?.maxWidth,
       ...(hasCustomBackground
         ? {
-            backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity, {
-              preserveOriginalOpacity: annotation.style?.opacity === undefined,
-            }),
+            backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity),
           }
         : hideDefaultStyles
         ? {}
@@ -541,17 +590,34 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     const baseTopLeftX = resolved.point.x + offsetX;
     const baseTopLeftY = resolved.point.y + offsetY;
 
-    const usePlotBounds = layout?.clipToBounds !== false;
-    const viewportX = usePlotBounds ? context.plotRect.x : 0;
-    const viewportY = usePlotBounds ? context.plotRect.y : 0;
-    const viewportWidth = usePlotBounds ? context.plotRect.width : context.svgRect.width ?? 0;
-    const viewportHeight = usePlotBounds ? context.plotRect.height : context.svgRect.height ?? 0;
+    const usesViewportSpace = annotation.coordinates?.type === 'relative' && layout?.clipToBounds === false;
+    const clampRect = usesViewportSpace
+      ? {
+          x: 0,
+          y: 0,
+          width:
+            typeof context.svgRect.width === 'number' && Number.isFinite(context.svgRect.width)
+              ? context.svgRect.width
+              : 0,
+          height:
+            typeof context.svgRect.height === 'number' && Number.isFinite(context.svgRect.height)
+              ? context.svgRect.height
+              : 0,
+        }
+      : layout?.clipToBounds !== false
+      ? context.plotRect
+      : undefined;
 
-    const maxTopLeftX = viewportWidth > 0 ? viewportX + viewportWidth - width : baseTopLeftX;
-    const maxTopLeftY = viewportHeight > 0 ? viewportY + viewportHeight - height : baseTopLeftY;
+    const clampX = safeRectValue(clampRect, 'x');
+    const clampY = safeRectValue(clampRect, 'y');
+    const clampWidth = safeRectValue(clampRect, 'width');
+    const clampHeight = safeRectValue(clampRect, 'height');
 
-    let topLeftX = viewportWidth > 0 ? clamp(baseTopLeftX, viewportX, Math.max(viewportX, maxTopLeftX)) : baseTopLeftX;
-    let topLeftY = viewportHeight > 0 ? clamp(baseTopLeftY, viewportY, Math.max(viewportY, maxTopLeftY)) : baseTopLeftY;
+    const maxTopLeftX = clampWidth > 0 ? clampX + clampWidth - width : baseTopLeftX;
+    const maxTopLeftY = clampHeight > 0 ? clampY + clampHeight - height : baseTopLeftY;
+
+    let topLeftX = clampWidth > 0 ? clamp(baseTopLeftX, clampX, Math.max(clampX, maxTopLeftX)) : baseTopLeftX;
+    let topLeftY = clampHeight > 0 ? clamp(baseTopLeftY, clampY, Math.max(clampY, maxTopLeftY)) : baseTopLeftY;
 
     let displayPoint = {
       x: topLeftX - offsetX,
@@ -561,28 +627,26 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     if (annotation.connector) {
       const startPadding = annotation.connector.startPadding ?? 12;
       const endPadding = annotation.connector.endPadding ?? 0;
-      const minArrowClearance = 6;
-      const minDistance = Math.max(startPadding + endPadding + minArrowClearance, startPadding);
+      const minDistance = Math.max(startPadding + endPadding + DEFAULT_CONNECTOR_MIN_ARROW_CLEARANCE, startPadding);
 
-      const dx = displayPoint.x - resolved.anchor.x;
-      const dy = displayPoint.y - resolved.anchor.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      const desiredDisplayPoint = applyMinDistanceFromAnchor(
+        resolved.anchor,
+        displayPoint,
+        minDistance,
+        DEFAULT_CONNECTOR_FALLBACK_DIRECTION,
+      );
 
-      if (distance < minDistance) {
-        const fallbackDirection: AnnotationPoint = { x: 0, y: -1 };
-        const ux = distance === 0 ? fallbackDirection.x : dx / distance;
-        const uy = distance === 0 ? fallbackDirection.y : dy / distance;
-
-        const desiredDisplayX = resolved.anchor.x + ux * minDistance;
-        const desiredDisplayY = resolved.anchor.y + uy * minDistance;
+      if (desiredDisplayPoint !== displayPoint) {
+        const desiredDisplayX = desiredDisplayPoint.x;
+        const desiredDisplayY = desiredDisplayPoint.y;
 
         let desiredTopLeftX = desiredDisplayX + offsetX;
         let desiredTopLeftY = desiredDisplayY + offsetY;
 
         desiredTopLeftX =
-          viewportWidth > 0 ? clamp(desiredTopLeftX, viewportX, Math.max(viewportX, maxTopLeftX)) : desiredTopLeftX;
+          clampWidth > 0 ? clamp(desiredTopLeftX, clampX, Math.max(clampX, maxTopLeftX)) : desiredTopLeftX;
         desiredTopLeftY =
-          viewportHeight > 0 ? clamp(desiredTopLeftY, viewportY, Math.max(viewportY, maxTopLeftY)) : desiredTopLeftY;
+          clampHeight > 0 ? clamp(desiredTopLeftY, clampY, Math.max(clampY, maxTopLeftY)) : desiredTopLeftY;
 
         topLeftX = desiredTopLeftX;
         topLeftY = desiredTopLeftY;
@@ -683,22 +747,42 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       const ux = dx / distance;
       const uy = dy / distance;
 
-      const sizeBasis = Math.max(1, Math.min(width, height));
-      const proportionalSize = sizeBasis * ARROW_SIZE_SCALE;
-      const maxByPadding = startPadding > 0 ? startPadding * 1.25 : MAX_ARROW_SIZE;
-      const maxByDistance = distance * 0.6;
-      const markerSize = clamp(proportionalSize, MIN_ARROW_SIZE, Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance));
-      const markerStrokeWidth = clamp(strokeWidth, 1, markerSize / 2);
+      const availableDistance = Math.max(distance - endPadding, 0);
+      const startLimitByArrow = availableDistance - MIN_CONNECTOR_ARROW_LENGTH;
+      const startLimitByRatio = availableDistance * CONNECTOR_START_RATIO;
+      const startLimit = Math.min(availableDistance, Math.max(startLimitByRatio, startLimitByArrow));
+      const effectiveStartPadding = availableDistance > 0 ? Math.max(0, Math.min(startPadding, startLimit)) : 0;
 
       const start: AnnotationPoint = {
-        x: displayPoint.x + ux * startPadding,
-        y: displayPoint.y + uy * startPadding,
+        x: displayPoint.x + ux * effectiveStartPadding,
+        y: displayPoint.y + uy * effectiveStartPadding,
       };
 
       const end: AnnotationPoint = {
         x: resolved.anchor.x - ux * endPadding,
         y: resolved.anchor.y - uy * endPadding,
       };
+
+      const arrowLength = Math.max(distance - effectiveStartPadding - endPadding, 0);
+
+      const sizeBasis = Math.max(1, Math.min(width, height));
+      const proportionalSize = sizeBasis * ARROW_SIZE_SCALE;
+      const maxByPadding = startPadding > 0 ? startPadding * 1.25 : MAX_ARROW_SIZE;
+      const maxByDistance = distance * 0.6;
+      let markerSize = clamp(proportionalSize, MIN_ARROW_SIZE, Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance));
+
+      if (arrowLength > 0) {
+        const markerMinByLength = Math.max(1, Math.min(MIN_ARROW_SIZE, arrowLength));
+        const markerMaxByLength = Math.max(
+          markerMinByLength,
+          Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance, arrowLength),
+        );
+        markerSize = clamp(markerSize, markerMinByLength, markerMaxByLength);
+      } else {
+        markerSize = Math.min(markerSize, MIN_ARROW_SIZE);
+      }
+
+      const markerStrokeWidth = clamp(strokeWidth, 1, markerSize / 2);
 
       connectors.push({
         key: `${key}-connector`,

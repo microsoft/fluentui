@@ -145,6 +145,17 @@ describe('isMonthArray', () => {
 });
 
 describe('correctYearMonth', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+    // `correctYearMonth` derives year information from the current date.
+    // Freeze time to keep these expectations stable across calendar years.
+    jest.setSystemTime(new Date('2026-01-05T00:00:00.000Z'));
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   test('Should return dates array when input array contains months data', () => {
     expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2025', '11 01, 2025', '1 01, 2026']);
   });
@@ -204,6 +215,79 @@ describe('transform Plotly Json To chart Props', () => {
     expect(
       transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToDonutProps - infers vertical alignment from arrow offsets', () => {
+    const plotlySchema = {
+      visualizer: 'plotly',
+      data: [
+        {
+          type: 'pie' as const,
+          values: [10, 20],
+          labels: ['A', 'B'],
+        },
+      ],
+      layout: {
+        annotations: [
+          {
+            text: 'Above',
+            xref: 'paper' as const,
+            yref: 'paper' as const,
+            x: 0.5,
+            y: 1,
+            showarrow: true,
+            ax: 0,
+            ay: -40,
+          },
+          {
+            text: 'Below',
+            xref: 'paper' as const,
+            yref: 'paper' as const,
+            x: 0.5,
+            y: 0,
+            showarrow: true,
+            ax: 0,
+            ay: 40,
+          },
+        ],
+      },
+      frames: [] as never[],
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default', false);
+    expect(result.annotations).toHaveLength(2);
+    expect(result.annotations?.[0].layout?.verticalAlign).toBe('bottom');
+    expect(result.annotations?.[1].layout?.verticalAlign).toBe('top');
+  });
+
+  test('transformPlotlyJsonToDonutProps - defaults to end arrow when showarrow is true', () => {
+    const plotlySchema = {
+      visualizer: 'plotly',
+      data: [
+        {
+          type: 'pie' as const,
+          values: [100],
+          labels: ['Only'],
+        },
+      ],
+      layout: {
+        annotations: [
+          {
+            text: 'Default arrow',
+            xref: 'paper' as const,
+            yref: 'paper' as const,
+            x: 0.5,
+            y: 0.5,
+            showarrow: true,
+          },
+        ],
+      },
+      frames: [] as never[],
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default', false);
+    expect(result.annotations).toHaveLength(1);
+    expect(result.annotations?.[0].connector?.arrow).toBe('end');
   });
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
@@ -315,7 +399,9 @@ describe('transform Plotly Json To chart Props', () => {
       textColor: '#ffffff',
       fontSize: '12px',
     });
-    expect(relative?.layout).toBeUndefined();
+    expect(relative?.layout).toEqual({
+      clipToBounds: false,
+    });
     expect(relative?.connector).toBeUndefined();
 
     expect(pixel).toBeDefined();
@@ -325,8 +411,10 @@ describe('transform Plotly Json To chart Props', () => {
       y: 40,
     });
     expect(pixel?.layout).toEqual({
+      clipToBounds: false,
       offsetX: 15,
       offsetY: 12,
+      verticalAlign: 'top',
     });
     expect(pixel?.style).toEqual({
       textColor: '#111111',
@@ -351,7 +439,9 @@ describe('transform Plotly Json To chart Props', () => {
       textColor: '#222222',
       fontSize: '12px',
     });
-    expect(domain?.layout).toBeUndefined();
+    expect(domain?.layout).toEqual({
+      clipToBounds: false,
+    });
     expect(domain?.connector).toBeUndefined();
   });
 
