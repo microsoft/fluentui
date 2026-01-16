@@ -11,20 +11,25 @@ export const DirectionalSlide: React.FC<{
   animateBackwards?: boolean;
   children: JSXElement;
 }> = ({
-  // The DURATION_3 constant is a string in seconds, but WAAPI expects a number in ms
-  duration = 367,
+  // Using durationSlower (400ms) as the closest token to the original 367ms
+  duration = motionTokens.durationSlower,
   easing = motionTokens.curveDecelerateMax,
   animationDirection = AnimationDirection.Vertical,
   animateBackwards = false,
   children,
 }) => {
-  let fromX = '0px';
-  let fromY = '0px';
+  let outX = '0px';
+  let outY = '0px';
+  const distance = animateBackwards ? '-20px' : '20px';
   if (animationDirection === AnimationDirection.Horizontal) {
-    fromX = animateBackwards ? '-20px' : '20px';
+    outX = distance;
   } else {
     // default to vertical
-    fromY = animateBackwards ? '-20px' : '20px';
+    outY = distance;
   }
-  return <Slide.In {...{ duration, easing, fromX, fromY }}>{children}</Slide.In>;
+  return (
+    <Slide.In duration={duration} easing={easing} outX={outX} outY={outY}>
+      {children}
+    </Slide.In>
+  );
 };
