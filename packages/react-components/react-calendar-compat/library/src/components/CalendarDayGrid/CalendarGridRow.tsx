@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getWeekNumbersInMonth } from '../../utils';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
