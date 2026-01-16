@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { DirectionalSlide } from '../../utils/calendarMotions';
+import { DirectionalSlide, HeaderFade } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
@@ -212,9 +212,11 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           tabIndex={!!onUserHeaderSelect || !yearPickerHidden ? 0 : -1}
           type="button"
         >
-          <span aria-live="polite" aria-atomic="true">
-            {yearString}
-          </span>
+          <HeaderFade navigationKey={yearString}>
+            <span aria-live="polite" aria-atomic="true">
+              {yearString}
+            </span>
+          </HeaderFade>
         </button>
         <div className={classNames.navigationButtonsContainer}>
           <button
