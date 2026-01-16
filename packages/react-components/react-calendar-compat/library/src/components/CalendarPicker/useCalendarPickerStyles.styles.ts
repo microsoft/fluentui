@@ -2,20 +2,11 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import {
-  DURATION_2,
-  DURATION_3,
-  EASING_FUNCTION_1,
-  EASING_FUNCTION_2,
-  FADE_IN,
-  SLIDE_DOWN_IN20,
-  SLIDE_LEFT_IN20,
-  SLIDE_RIGHT_IN20,
-  SLIDE_UP_IN20,
-} from '../../utils/animations';
-import { AnimationDirection } from '../Calendar/Calendar.types';
+import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
+
+// Note: DURATION_3, EASING_FUNCTION_1, and SLIDE_* animations removed - now handled by motion components (DirectionalSlide)
 
 /**
  * @internal
@@ -145,23 +136,7 @@ const useButtonRowStyles = makeStyles({
       marginBottom: 0,
     },
   },
-  animation: {
-    animationDuration: DURATION_3,
-    animationFillMode: 'both',
-    animationTimingFunction: EASING_FUNCTION_1,
-  },
-  horizontalBackward: {
-    animationName: [FADE_IN, SLIDE_RIGHT_IN20],
-  },
-  horizontalForward: {
-    animationName: [FADE_IN, SLIDE_LEFT_IN20],
-  },
-  verticalBackward: {
-    animationName: [FADE_IN, SLIDE_DOWN_IN20],
-  },
-  verticalForward: {
-    animationName: [FADE_IN, SLIDE_UP_IN20],
-  },
+  // CSS slide animations removed - now handled by motion components (DirectionalSlide)
 });
 
 const useItemButtonStyles = makeStyles({
@@ -302,14 +277,8 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
   const selectedStyles = useSelectedStyles();
   const disabledStyles = useDisabledStyles();
 
-  const {
-    animateBackwards,
-    animationDirection = AnimationDirection.Vertical,
-    className,
-    hasHeaderClickCallback,
-    highlightCurrent,
-    highlightSelected,
-  } = props;
+  // Note: animateBackwards and animationDirection no longer used for buttonRow - handled by motion components
+  const { animateBackwards, className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
 
   return {
     root: mergeClasses(calendarPickerClassNames.root, rootStyles.normalize, rootStyles.base, className),
@@ -329,15 +298,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     buttonRow: mergeClasses(
       calendarPickerClassNames.buttonRow,
       buttonRowStyles.base,
-      buttonRowStyles.animation,
-      animateBackwards !== undefined &&
-        (animationDirection === AnimationDirection.Horizontal
-          ? animateBackwards
-            ? buttonRowStyles.horizontalBackward
-            : buttonRowStyles.horizontalForward
-          : animateBackwards
-          ? buttonRowStyles.verticalBackward
-          : buttonRowStyles.verticalForward),
+      // CSS animations removed - now handled by motion components (DirectionalSlide)
     ),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
