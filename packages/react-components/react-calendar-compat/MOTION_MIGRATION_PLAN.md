@@ -5,7 +5,7 @@
 Migration of Calendar animations from CSS keyframe animations to Fluent UI v9 motion components.
 
 **Last Updated:** January 2026
-**Status:** Phase 1 complete (slide animations migrated), Phase 2 in progress (remaining CSS animations)
+**Status:** Phase 2 complete (all animations migrated to motion components)
 
 ---
 
@@ -19,106 +19,64 @@ Migration of Calendar animations from CSS keyframe animations to Fluent UI v9 mo
 - ✅ Updated `CalendarGridRow` to use `React.forwardRef` (required for motion ref)
 - ✅ Using `motionTokens.durationSlower` (400ms) and `motionTokens.curveDecelerateMax`
 
-### Remaining CSS Animations (Phase 2)
+### Completed (Phase 2: CSS Animation Migration)
 
-The following CSS animations in `animations.ts` are still actively used:
-
-| Animation           | Used In                         | Purpose                              |
-| ------------------- | ------------------------------- | ------------------------------------ |
-| `FADE_IN`           | `CalendarDay`, `CalendarPicker` | Header/button fade on navigation     |
-| `SLIDE_*_IN20`      | `CalendarPicker`                | Button row slide (month/year picker) |
-| `DURATION_2`        | `CalendarDay`, `CalendarPicker` | Fade animation duration              |
-| `DURATION_3`        | `CalendarPicker`                | Slide animation duration             |
-| `EASING_FUNCTION_1` | `CalendarPicker`                | Slide timing (migrated to token)     |
-| `EASING_FUNCTION_2` | `CalendarDay`, `CalendarPicker` | Fade timing (no exact token)         |
-
-### Unused (Can Be Removed)
-
-- `FADE_OUT`, `SLIDE_DOWN_OUT20`, `SLIDE_UP_OUT20`, `TRANSITION_ROW_DISAPPEARANCE`
-- `DURATION_1`, `DURATION_4`
+- ✅ Migrated `CalendarYear` row animations to `DirectionalSlide` motion components
+- ✅ Removed CSS slide animations from `CalendarPicker` styles
+- ✅ Created `HeaderFade` component using `Fade.In` from `@fluentui/react-motion-components-preview`
+- ✅ Migrated header fade animations in `CalendarDay`, `CalendarMonth`, `CalendarYear`
+- ✅ Removed CSS fade animations from `useCalendarDayStyles.styles.ts`
+- ✅ Removed CSS fade animations from `useCalendarPickerStyles.styles.ts`
+- ✅ Marked animation constants as `@deprecated` in `animations.ts`
 
 ---
 
-## Phase 2: Remaining CSS Animation Migration
+## Phase 2: Remaining CSS Animation Migration (COMPLETED)
 
-### Analysis
+### Summary
 
-There are two categories of remaining CSS animations:
+All CSS animations have been migrated to motion components:
 
-#### 1. CalendarPicker Button Row Animations
+#### 1. CalendarYear/CalendarPicker Slide Animations ✅
 
-**Location:** `useCalendarPickerStyles.styles.ts` (lines 141-163)
-**Current implementation:** CSS `@keyframes` with `FADE_IN` + `SLIDE_*_IN20`
+- Added `DirectionalSlide` wrappers around year rows in `CalendarYear.tsx`
+- Removed CSS slide animation styles from `useCalendarPickerStyles.styles.ts`
+- Uses same pattern as CalendarMonth
 
-**Migration approach:** Wrap button rows with `DirectionalSlide` (same pattern as CalendarMonth)
+#### 2. Header Fade Animations ✅
 
-```tsx
-// CalendarMonth.tsx (line ~255) - already using this pattern:
-<DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
-  <div role="row" className={classNames.buttonRow}>
-    {/* month buttons */}
-  </div>
-</DirectionalSlide>
-```
+- Created `HeaderFade` component using `Fade.In` from `@fluentui/react-motion-components-preview`
+- Uses `motionTokens.durationGentle` (~250ms) for timing
+- Component uses `navigationKey` prop to trigger animation on value change
+- Migrated in `CalendarDay.tsx`, `CalendarMonth.tsx`, `CalendarYear.tsx`
+- Removed CSS fade animations from style files
 
-**Files to modify:**
+#### 3. Animation Constants ✅
 
-- `CalendarPicker.tsx` - Add `DirectionalSlide` wrapper around button rows
-- `useCalendarPickerStyles.styles.ts` - Remove CSS animation styles from `buttonRow`
+- All animation constants in `animations.ts` marked as `@deprecated`
+- Constants retained for backwards compatibility only
 
-**Complexity:** Low - follows existing pattern from CalendarMonth
+### Migration Order (COMPLETED)
 
-#### 2. Header Fade Animations
+1. **CalendarYear slide animations** ✅
 
-**Location:** `useCalendarDayStyles.styles.ts` (line 67-71), `useCalendarPickerStyles.styles.ts` (line 72-76)
-**Current implementation:** CSS `@keyframes` with `FADE_IN`, `DURATION_2`, `EASING_FUNCTION_2`
+   - Same pattern as CalendarMonth
+   - Removed `SLIDE_*_IN20` and `DURATION_3` usage
 
-**Migration approach:** Use `Fade.In` from `@fluentui/react-motion-components-preview`
+2. **Header fade animations** ✅
 
-```tsx
-import { Fade } from '@fluentui/react-motion-components-preview';
+   - Created `HeaderFade` component with `navigationKey` for triggering
+   - Used standard motion tokens (slight deviation from original easing accepted)
 
-// Wrap the header text that animates
-<Fade.In duration={motionTokens.durationGentle}>
-  <span aria-live="polite">{yearString}</span>
-</Fade.In>;
-```
-
-**Challenge:** `EASING_FUNCTION_2` (`cubic-bezier(.1,.25,.75,.9)`) has no exact motion token equivalent. Options:
-
-1. Use closest token (`motionTokens.curveEasyEase` or similar)
-2. Keep custom easing value (acceptable deviation)
-3. Accept slight visual difference with standard token
-
-**Files to modify:**
-
-- `CalendarDay.tsx` - Wrap month/year header with `Fade.In`
-- `CalendarPicker.tsx` - Wrap current item button text with `Fade.In`
-- `useCalendarDayStyles.styles.ts` - Remove CSS animation styles
-- `useCalendarPickerStyles.styles.ts` - Remove CSS animation styles
-
-**Complexity:** Medium - needs state management to trigger fade on navigation
-
-### Recommended Migration Order
-
-1. **CalendarPicker button rows** (Low effort, high impact)
-
-   - Same pattern already proven in CalendarMonth
-   - Removes `SLIDE_*_IN20` and `DURATION_3` usage
-
-2. **Header fade animations** (Medium effort)
-
-   - Requires adding state to track navigation changes
-   - May need to accept `EASING_FUNCTION_2` deviation
-
-3. **Cleanup animations.ts** (After above complete)
-   - Remove all unused exports
-   - Consider removing file entirely if everything migrated
+3. **Animation constants deprecated** ✅
+   - All exports marked `@deprecated` for backwards compatibility
 
 ---
 
 ## Validation Tasks
 
+- [x] Build passes: `yarn nx run react-calendar-compat:build`
+- [x] Unit tests pass: `yarn nx run react-calendar-compat:test`
 - [ ] Run VR tests: `yarn nx run vr-tests-react-components:test-vr`
 - [ ] Test keyboard navigation
 - [ ] Test reduced motion preference (`prefers-reduced-motion`)
@@ -128,18 +86,18 @@ import { Fade } from '@fluentui/react-motion-components-preview';
 
 ## Files Modified
 
-| File                                 | Status | Changes                                         |
-| ------------------------------------ | ------ | ----------------------------------------------- |
-| `CalendarDayGrid.tsx`                | ✅     | `DirectionalSlide` wrappers for day rows        |
-| `CalendarGridRow.tsx`                | ✅     | Added `React.forwardRef`                        |
-| `CalendarMonth.tsx`                  | ✅     | `DirectionalSlide` wrappers for month rows      |
-| `calendarMotions.tsx`                | ✅     | Created `DirectionalSlide` component            |
-| `useCalendarDayGridStyles.styles.ts` | ✅     | Removed CSS slide animations                    |
-| `CalendarPicker.tsx`                 | ⏳     | Pending: Add `DirectionalSlide` for button rows |
-| `useCalendarPickerStyles.styles.ts`  | ⏳     | Pending: Remove CSS animations                  |
-| `CalendarDay.tsx`                    | ⏳     | Pending: Add `Fade.In` for header               |
-| `useCalendarDayStyles.styles.ts`     | ⏳     | Pending: Remove CSS fade animation              |
-| `animations.ts`                      | ⏳     | Pending: Remove unused exports                  |
+| File                                 | Status | Changes                                                |
+| ------------------------------------ | ------ | ------------------------------------------------------ |
+| `CalendarDayGrid.tsx`                | ✅     | `DirectionalSlide` wrappers for day rows               |
+| `CalendarGridRow.tsx`                | ✅     | Added `React.forwardRef`                               |
+| `CalendarMonth.tsx`                  | ✅     | `DirectionalSlide` wrappers for month rows, HeaderFade |
+| `CalendarYear.tsx`                   | ✅     | `DirectionalSlide` wrappers for year rows, HeaderFade  |
+| `calendarMotions.tsx`                | ✅     | Created `DirectionalSlide` and `HeaderFade` components |
+| `useCalendarDayGridStyles.styles.ts` | ✅     | Removed CSS slide animations                           |
+| `useCalendarPickerStyles.styles.ts`  | ✅     | Removed CSS slide and fade animations                  |
+| `CalendarDay.tsx`                    | ✅     | Added `HeaderFade` for header                          |
+| `useCalendarDayStyles.styles.ts`     | ✅     | Removed CSS fade animation                             |
+| `animations.ts`                      | ✅     | All exports marked `@deprecated`                       |
 
 ---
 
