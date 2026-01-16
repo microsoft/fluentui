@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- Re-exporting deprecated animations for backwards compatibility */
 export {
   DURATION_1,
   DURATION_2,
@@ -15,6 +16,7 @@ export {
   SLIDE_UP_OUT20,
   TRANSITION_ROW_DISAPPEARANCE,
 } from './animations';
+/* eslint-enable @typescript-eslint/no-deprecated */
 export { DAYS_IN_WEEK, DateRangeType, DayOfWeek, FirstWeekOfYear, MonthOfYear, TimeConstants } from './constants';
 export type { CalendarStrings, DateFormatting, DateGridStrings } from './dateFormatting';
 export {
