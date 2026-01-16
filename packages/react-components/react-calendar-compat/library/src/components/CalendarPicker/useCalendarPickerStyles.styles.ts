@@ -2,7 +2,7 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
+// CSS animations (DURATION_2, EASING_FUNCTION_2, FADE_IN) removed - now handled by HeaderFade motion component
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
 
@@ -60,12 +60,7 @@ const useCurrentItemButtonStyles = makeStyles({
     padding: '0 4px 0 10px',
     textAlign: 'left',
   },
-  animation: {
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
-  },
+  // CSS animation removed - now handled by HeaderFade motion component
   hasHeaderClickCallback: {
     // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
@@ -277,8 +272,8 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
   const selectedStyles = useSelectedStyles();
   const disabledStyles = useDisabledStyles();
 
-  // Note: animateBackwards and animationDirection no longer used for buttonRow - handled by motion components
-  const { animateBackwards, className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
+  // Note: animateBackwards and animationDirection no longer used - handled by motion components
+  const { className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
 
   return {
     root: mergeClasses(calendarPickerClassNames.root, rootStyles.normalize, rootStyles.base, className),
@@ -286,7 +281,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     currentItemButton: mergeClasses(
       calendarPickerClassNames.currentItemButton,
       currentItemButtonStyles.base,
-      animateBackwards !== undefined && currentItemButtonStyles.animation,
+      // CSS animation removed - now handled by HeaderFade motion component
       hasHeaderClickCallback && currentItemButtonStyles.hasHeaderClickCallback,
     ),
     navigationButtonsContainer: mergeClasses(
