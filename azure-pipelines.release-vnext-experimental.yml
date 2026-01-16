@@ -93,7 +93,7 @@ extends:
 
                   echo "Target version: ${NEW_VERSION}"
 
-                  yarn nx g @fluentui/workspace-plugin:version-bump --all --version "${NEW_VERSION}"
+                  yarn nx g @fluentui/workspace-plugin:version-bump --all --explicitVersion "${NEW_VERSION}"
                   git add .
                   git commit -m "bump experimental versions to ${NEW_VERSION}"
                   yarn change --type prerelease --message "Release ${NEW_VERSION}" --dependent-change-type "prerelease"
