@@ -166,7 +166,7 @@ describe('version-string-replace generator', () => {
     expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
 
-  describe(`--version`, () => {
+  describe(`--explicitVersion`, () => {
     async function setupForVersionArgument(scope: 'all' | string) {
       tree = setupDummyPackage(tree, {
         name: 'react-components',
@@ -184,9 +184,9 @@ describe('version-string-replace generator', () => {
       });
 
       if (scope === 'all') {
-        await generator(tree, { all: true, version: '9.0.0-experimental.foo.20220101-abc' });
+        await generator(tree, { all: true, explicitVersion: '9.0.0-experimental.foo.20220101-abc' });
       } else {
-        await generator(tree, { name: 'react-button', version: '9.0.0-experimental.foo.20220101-abc' });
+        await generator(tree, { name: 'react-button', explicitVersion: '9.0.0-experimental.foo.20220101-abc' });
       }
 
       const suitePackageJson = readJson(tree, 'packages/react-components/package.json');
