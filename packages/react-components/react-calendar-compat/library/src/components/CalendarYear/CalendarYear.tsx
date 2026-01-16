@@ -5,7 +5,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
-import { DirectionalSlide } from '../../utils/calendarMotions';
+import { DirectionalSlide, HeaderFade } from '../../utils/calendarMotions';
 import type {
   CalendarYearStrings,
   CalendarYearProps,
@@ -322,16 +322,22 @@ const CalendarYearTitle: React.FunctionComponent<CalendarYearHeaderProps> = prop
         role="button"
         type="button"
       >
-        <span aria-live="assertive" aria-atomic="true">
-          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
-        </span>
+        <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
+          <span aria-live="assertive" aria-atomic="true">
+            {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+          </span>
+        </HeaderFade>
       </button>
     );
   }
 
   return (
     <div className={classNames.current}>
-      {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+      <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
+        <span>
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        </span>
+      </HeaderFade>
     </div>
   );
 };
