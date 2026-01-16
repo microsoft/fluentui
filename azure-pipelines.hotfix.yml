@@ -47,6 +47,8 @@ extends:
                   artifactName: output
             steps:
               - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
               - script: |
                   node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
