@@ -7,6 +7,9 @@ const configHelpers = require('../../utils/configHelpers');
 const { fixupPluginRules } = require('@eslint/compat');
 const { defineConfig } = require('eslint/config');
 
+// eslint-disable-next-line import/no-extraneous-dependencies -- dev dependency provided by the Nx workspace
+const reactComponentsPlugin = require('@fluentui/eslint-plugin-react-components');
+
 /** @type { import("eslint").Linter.Config } */
 module.exports = defineConfig(
   {
@@ -16,6 +19,7 @@ module.exports = defineConfig(
       '@griffel': fixupPluginRules(/** @type {any} */ (griffelPlugin)),
       'jsx-a11y': jsxA11yPlugin,
       'react-hooks': reactHooksPlugin,
+      '@fluentui/react-components': reactComponentsPlugin,
     },
     languageOptions: {
       parserOptions: {

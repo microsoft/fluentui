@@ -11,14 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-conformance": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-northstar": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-storybook": "*"
-  },
   "dependencies": {
     "@fluentui/react-aria": "^9.17.7",
     "@fluentui/react-components": "^9.72.9",

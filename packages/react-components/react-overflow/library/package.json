@@ -11,13 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-portal": "*",
-    "@fluentui/react-menu": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
-  },
   "dependencies": {
     "@fluentui/priority-overflow": "^9.2.1",
     "@fluentui/react-context-selector": "^9.2.13",

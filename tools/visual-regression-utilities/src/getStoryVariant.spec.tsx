@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { type StoryObj } from '@storybook/react';
+import { type StoryObj } from '@storybook/react-webpack5';
 
 import { Button } from '@fluentui/react-button';
 import { webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';

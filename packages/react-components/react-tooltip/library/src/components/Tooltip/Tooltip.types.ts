@@ -122,6 +122,8 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
     withArrow?: boolean;
   };
 
+export type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
+
 /**
  * State used in rendering Tooltip
  */
@@ -145,3 +147,5 @@ export type TooltipState = ComponentState<TooltipSlots> &
      */
     arrowClassName?: string;
   };
+
+export type TooltipBaseState = Omit<TooltipState, 'appearance'>;

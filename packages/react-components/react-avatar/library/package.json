@@ -12,13 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/react-provider": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "es6-weak-map": "^2.0.2",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
+    "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
     "@fluentui/react-badge": "^9.4.12",

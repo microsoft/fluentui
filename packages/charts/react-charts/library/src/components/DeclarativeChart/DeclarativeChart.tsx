@@ -11,7 +11,7 @@ import {
   sanitizeJson,
 } from '@fluentui/chart-utilities';
 import type { GridProperties } from './PlotlySchemaAdapter';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
 import { hsl as d3Hsl } from 'd3-color';
@@ -32,14 +32,16 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
   transformPlotlyJsonToScatterChartProps,
-  projectPolarToCartesian,
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
   transformPlotlyJsonToAnnotationChartProps,
+  transformPlotlyJsonToPolarChartProps,
+  DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
+import { getChartTitleInlineStyles } from '../../utilities/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
@@ -56,6 +58,7 @@ import { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
+import { PolarChart } from '../PolarChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
@@ -79,6 +82,7 @@ const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 // Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
 //const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
+const ResponsivePolarChart = withResponsiveContainer(PolarChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -248,6 +252,10 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToFunnelChartProps;
     renderer: typeof FunnelChart;
   } & PreTransformHooks;
+  scatterpolar: {
+    transformer: typeof transformPlotlyJsonToPolarChartProps;
+    renderer: typeof ResponsivePolarChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -321,6 +329,10 @@ const chartMap: ChartTypeMap = {
   funnel: {
     transformer: transformPlotlyJsonToFunnelChartProps,
     renderer: FunnelChart,
+  },
+  scatterpolar: {
+    transformer: transformPlotlyJsonToPolarChartProps,
+    renderer: ResponsivePolarChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
@@ -464,23 +476,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  if (chart.type === 'scatterpolar') {
-    const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
-    plotlyInputWithValidData.data = cartesianProjection.data;
-    plotlyInputWithValidData.layout = cartesianProjection.layout;
-    validTracesFilteredIndex.forEach((trace, index) => {
-      if (trace.type === 'scatterpolar') {
-        const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
-        if (mode.includes('line')) {
-          validTracesFilteredIndex[index].type = 'line';
-        } else if (mode.includes('markers') || mode === 'text') {
-          validTracesFilteredIndex[index].type = 'scatter';
-        } else {
-          validTracesFilteredIndex[index].type = 'line';
-        }
-      }
-    });
-  }
   const groupedTraces: Record<string, number[]> = {};
   let nonCartesianTraceCount = 0;
 
@@ -494,7 +489,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
         nonCartesianTraceCount++;
       } else {
-        traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+        traceKey =
+          chart.validTracesInfo![index].type === 'scatterpolar'
+            ? (trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT
+            : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
       }
       if (!groupedTraces[traceKey]) {
         groupedTraces[traceKey] = [];
@@ -543,9 +541,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 
   type ChartType = keyof ChartTypeMap;
+
+  const titleObj = plotlyInputWithValidData.layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+
+  const titleStyle: React.CSSProperties = {
+    ...typographyStyles.caption1,
+    color: tokens.colorNeutralForeground1,
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalS,
+    ...getChartTitleInlineStyles(titleFont),
+  };
+
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
           display: 'grid',
@@ -587,8 +599,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ? {}
                   : {
                       ...interactiveCommonProps,
-                      xAxisAnnotation: cellProperties?.xAnnotation,
-                      yAxisAnnotation: cellProperties?.yAnnotation,
                     }
               ) as Partial<ReturnType<typeof transformer>>;
 
@@ -598,8 +608,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
                   ...resolvedCommonProps,
-                  xAxisAnnotation: cellProperties?.xAnnotation,
-                  yAxisAnnotation: cellProperties?.yAnnotation,
+                  ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
+                  ...(cellProperties?.yAnnotation && { yAxisAnnotation: cellProperties.yAnnotation }),
                   componentRef: (ref: Chart | null) => {
                     chartRefs.current[chartIdx] = {
                       compRef: ref,

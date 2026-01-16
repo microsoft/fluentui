@@ -20,12 +20,6 @@
   "syncpack": {
     "dependencyTypes": []
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@fluentui/chart-utilities": "^1.1.38",
     "@fluentui/react-button": "^9.7.1",

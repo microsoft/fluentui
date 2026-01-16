@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { createTheme, ThemeProvider, Theme as ThemeV8, DefaultPalette } from '@fluentui/react';
 import {

@@ -2,6 +2,59 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Wed, 14 Jan 2026 04:07:26 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.61",
+      "version": "0.0.61",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "a5b354084d7de7c0c0567b96624590ba513f6d4c",
+            "comment": "chore: upgrade to storybook 9"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.3",
+            "commit": "a5b354084d7de7c0c0567b96624590ba513f6d4c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jan 2026 04:07:48 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.60",
+      "version": "0.0.60",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.2",
+            "commit": "ee24cc9ccd31483a3b7e5c77757d320d32ab1236"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jan 2026 04:07:39 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.59",
+      "version": "0.0.59",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Dec 2025 04:07:54 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.59",
       "version": "0.0.59",
