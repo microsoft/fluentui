@@ -104,6 +104,78 @@ function extractDataValues(data: VegaLiteData | undefined): Array<Record<string,
 }
 
 /**
+ * Applies a fold transform to convert wide-format data to long-format
+ * The fold transform unpivots specified fields into key-value pairs
+ *
+ * @param data - Array of data records in wide format
+ * @param foldFields - Array of field names to fold
+ * @param asFields - [keyName, valueName] for the new columns (defaults to ['key', 'value'])
+ * @returns Array of data records in long format
+ */
+function applyFoldTransform(
+  data: Array<Record<string, unknown>>,
+  foldFields: string[],
+  asFields: [string, string] = ['key', 'value'],
+): Array<Record<string, unknown>> {
+  const [keyField, valueField] = asFields;
+  const result: Array<Record<string, unknown>> = [];
+
+  for (const row of data) {
+    // Create a base row without the fields being folded
+    const baseRow: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(row)) {
+      if (!foldFields.includes(key)) {
+        baseRow[key] = value;
+      }
+    }
+
+    // Create a new row for each folded field
+    for (const field of foldFields) {
+      if (field in row) {
+        result.push({
+          ...baseRow,
+          [keyField]: field,
+          [valueField]: row[field],
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Applies transforms from a Vega-Lite spec to data
+ * Currently supports: fold transform
+ *
+ * @param data - Array of data records
+ * @param transforms - Array of Vega-Lite transform specifications
+ * @returns Transformed data array
+ */
+function applyTransforms(
+  data: Array<Record<string, unknown>>,
+  transforms: Array<Record<string, unknown>> | undefined,
+): Array<Record<string, unknown>> {
+  if (!transforms || transforms.length === 0) {
+    return data;
+  }
+
+  let result = data;
+
+  for (const transform of transforms) {
+    // Handle fold transform
+    if ('fold' in transform && Array.isArray(transform.fold)) {
+      const foldFields = transform.fold as string[];
+      const asFields = (transform.as as [string, string]) || ['key', 'value'];
+      result = applyFoldTransform(result, foldFields, asFields);
+    }
+    // Additional transforms can be added here (filter, calculate, aggregate, etc.)
+  }
+
+  return result;
+}
+
+/**
  * Normalizes a Vega-Lite spec into an array of unit specs with resolved data and encoding
  * Handles both single-view and layered specifications
  */
@@ -473,15 +545,16 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
   const xType = encoding?.x?.type;
   const yType = encoding?.y?.type;
 
-  // Bar charts require at least one categorical axis
+  // Bar charts require at least one categorical axis, or temporal x-axis for time-series bars, or bin for histograms
   if (mark === 'bar' && !encoding?.x?.bin) {
     const isXCategorical = xType === 'nominal' || xType === 'ordinal';
     const isYCategorical = yType === 'nominal' || yType === 'ordinal';
+    const isXTemporal = xType === 'temporal';
 
-    if (!isXCategorical && !isYCategorical) {
+    if (!isXCategorical && !isYCategorical && !isXTemporal) {
       throw new Error(
-        'VegaLiteSchemaAdapter: Bar charts require at least one categorical axis (nominal/ordinal) ' +
-          'or use bin encoding for histograms',
+        'VegaLiteSchemaAdapter: Bar charts require at least one categorical axis (nominal/ordinal), ' +
+          'a temporal x-axis, or use bin encoding for histograms',
       );
     }
   }
@@ -501,8 +574,14 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
  */
 function warnUnsupportedFeatures(spec: VegaLiteSpec): void {
   if (spec.transform && spec.transform.length > 0) {
-    // Transform pipeline is not yet supported.
-    // Data transformations will be ignored. Apply transformations to your data before passing to the chart.
+    // Check for unsupported transforms (fold is now supported)
+    const unsupportedTransforms = spec.transform.filter(
+      (t: Record<string, unknown>) => !('fold' in t),
+    );
+    if (unsupportedTransforms.length > 0) {
+      // Some transforms are not yet supported.
+      // Unsupported data transformations will be ignored.
+    }
   }
 
   if (spec.selection) {
@@ -611,7 +690,9 @@ function initializeTransformContext(spec: VegaLiteSpec, skipWarnings = false) {
   }
 
   const primarySpec = unitSpecs[0];
-  const dataValues = extractDataValues(primarySpec.data);
+  const rawDataValues = extractDataValues(primarySpec.data);
+  // Apply any transforms (fold, etc.) from the spec
+  const dataValues = applyTransforms(rawDataValues, spec.transform);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
 
@@ -871,7 +952,9 @@ export function transformVegaLiteToLineChartProps(
     throw new Error('VegaLiteSchemaAdapter: No valid line/point layer found in specification');
   }
 
-  const dataValues = extractDataValues(primarySpec.data);
+  const rawDataValues = extractDataValues(primarySpec.data);
+  // Apply any transforms (fold, etc.) from the spec
+  const dataValues = applyTransforms(rawDataValues, spec.transform);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
 
