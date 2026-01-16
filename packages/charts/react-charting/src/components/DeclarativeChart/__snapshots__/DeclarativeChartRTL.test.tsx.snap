@@ -1567,7 +1567,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     width: 100%;
                   }
               focusable="false"
-              height="-4"
+              height="-76"
               viewBox="0 0 0 0"
               width="0"
             >
@@ -1615,7 +1615,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                 transform="translate(0, 36)"
               >
                 <g
-                  transform="translate(0, -20)"
+                  transform="translate(0, -38)"
                 >
                   <g>
                     <path
@@ -1632,7 +1632,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M0.58,-38.835A3,3,0,0,1,3.855,-41.823A42,42,0,0,1,39.24,-14.973A3,3,0,0,1,37.245,-11.014L-38.675,10.21Z"
+                      d="M0.716,38.823A3,3,0,1,1,4.002,41.809A42,42,0,0,1,-41.343,7.402A3,3,0,1,1,-37.582,9.763L-56.047,14.925Z"
                       data-is-focusable="false"
                       id="_Pie_1Merc7"
                       role="img"
@@ -1654,7 +1654,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M37.557,-9.897A3,3,0,0,1,41.316,-7.547A42,42,0,0,1,41.451,-6.771A3,3,0,0,1,38.7,-3.295L-39.938,2.219Z"
+                      d="M-37.196,11.142A3,3,0,1,1,-39.188,15.111A42,42,0,0,1,-41.986,-1.068A3,3,0,1,1,-38.778,2.001L-57.904,3.342Z"
                       data-is-focusable="false"
                       id="_Pie_1Volvo1"
                       role="img"
@@ -1676,7 +1676,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M38.781,-2.138A3,3,0,0,1,41.99,0.921A42,42,0,0,1,41.965,1.708A3,3,0,0,1,38.571,4.56L-39.568,-5.863Z"
+                      d="M-38.677,3.43A3,3,0,1,1,-41.427,6.916A42,42,0,0,1,-40.913,-9.494A3,3,0,1,1,-38.387,-5.843L-57.392,-8.377Z"
                       data-is-focusable="false"
                       id="_Pie_1Valiant1"
                       role="img"
@@ -1698,7 +1698,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M38.418,5.709A3,3,0,0,1,40.946,9.351A42,42,0,0,1,40.763,10.117A3,3,0,0,1,36.865,12.227L-37.579,-13.705Z"
+                      d="M-38.576,-4.423A3,3,0,1,1,-41.971,-1.561A42,42,0,0,1,-38.166,-17.533A3,3,0,1,1,-36.426,-13.447L-54.532,-19.754Z"
                       data-is-focusable="false"
                       id="_Pie_1Porsche1"
                       role="img"
@@ -1720,7 +1720,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M36.483,13.323A3,3,0,0,1,38.227,17.399A42,42,0,0,1,37.894,18.112A3,3,0,0,1,33.65,19.395L-34.053,-20.986Z"
+                      d="M-36.897,-12.095A3,3,0,1,1,-40.798,-9.974A42,42,0,0,1,-33.857,-24.853A3,3,0,1,1,-32.975,-20.502L-49.442,-30.323Z"
                       data-is-focusable="false"
                       id="_Pie_1Pontiac1"
                       role="img"
@@ -1742,7 +1742,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M33.056,20.391A3,3,0,0,1,33.944,24.735A42,42,0,0,1,33.474,25.367A3,3,0,0,1,29.06,25.769L-29.134,-27.409Z"
+                      d="M-33.709,-19.272A3,3,0,1,1,-37.957,-17.979A42,42,0,0,1,-28.164,-31.158A3,3,0,1,1,-28.176,-26.718L-42.329,-39.651Z"
                       data-is-focusable="false"
                       id="_Pie_1Maserati1"
                       role="img"
@@ -1764,7 +1764,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M28.277,26.626A3,3,0,0,1,28.273,31.059A42,42,0,0,1,27.685,31.584A3,3,0,0,1,23.28,31.09L-23.023,-32.71Z"
+                      d="M-29.142,-25.66A3,3,0,1,1,-33.563,-25.249A42,42,0,0,1,-21.318,-36.187A3,3,0,1,1,-22.223,-31.841L-33.485,-47.358Z"
                       data-is-focusable="false"
                       id="_Pie_1Lotus1"
                       role="img"
@@ -1786,7 +1786,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M22.341,31.771A3,3,0,0,1,21.445,36.113A42,42,0,0,1,20.764,36.508A3,3,0,0,1,16.548,35.138L-15.97,-36.674Z"
+                      d="M-23.383,-30.999A3,3,0,1,1,-27.796,-31.486A42,42,0,0,1,-13.601,-39.737A3,3,0,1,1,-15.362,-35.661L-23.271,-53.127Z"
                       data-is-focusable="false"
                       id="_Pie_1Lincoln1"
                       role="img"
@@ -1808,7 +1808,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M15.491,35.617A3,3,0,0,1,13.74,39.689A42,42,0,0,1,12.993,39.94A3,3,0,0,1,9.139,37.749L-8.264,-39.137Z"
+                      d="M-16.667,-35.07A3,3,0,1,1,-20.892,-36.435A42,42,0,0,1,-5.327,-41.661A3,3,0,1,1,-7.872,-38.023L-12.105,-56.723Z"
                       data-is-focusable="false"
                       id="_Pie_1Honda1"
                       role="img"
@@ -1830,7 +1830,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M8.008,38.005A3,3,0,0,1,5.473,41.642A42,42,0,0,1,4.691,41.737A3,3,0,0,1,1.357,38.816L-0.22,-39.999Z"
+                      d="M-9.269,-37.707A3,3,0,1,1,-13.133,-39.894A42,42,0,0,1,3.165,-41.881A3,3,0,1,1,-0.06,-38.829L-0.444,-57.998Z"
                       data-is-focusable="false"
                       id="_Pie_1Ford1"
                       role="img"
@@ -1852,7 +1852,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M0.197,38.839A3,3,0,0,1,-3.018,41.891A42,42,0,0,1,-3.803,41.827A3,3,0,0,1,-6.482,38.295L7.833,-39.226Z"
+                      d="M-1.492,-38.8A3,3,0,1,1,-4.837,-41.721A42,42,0,0,1,11.527,-40.387A3,3,0,1,1,7.754,-38.047L11.235,-56.901Z"
                       data-is-focusable="false"
                       id="_Pie_1Ferrari1"
                       role="img"
@@ -1874,7 +1874,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-7.622,38.084A3,3,0,0,1,-11.386,40.427A42,42,0,0,1,-12.142,40.207A3,3,0,0,1,-14.055,36.208L15.566,-36.847Z"
+                      d="M6.345,-38.307A3,3,0,1,1,3.657,-41.841A42,42,0,0,1,19.418,-37.242A3,3,0,1,1,15.251,-35.709L22.455,-53.477Z"
                       data-is-focusable="false"
                       id="_Pie_1Duster1"
                       role="img"
@@ -1896,7 +1896,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-15.13,35.772A3,3,0,0,1,-19.287,37.309A42,42,0,0,1,-19.984,36.941A3,3,0,0,1,-21.053,32.639L22.662,-32.961Z"
+                      d="M13.924,-36.247A3,3,0,1,1,12.001,-40.249A42,42,0,0,1,26.515,-32.573A3,3,0,1,1,22.124,-31.91L32.756,-47.865Z"
                       data-is-focusable="false"
                       id="_Pie_1Dodge1"
                       role="img"
@@ -1918,7 +1918,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-22.018,31.996A3,3,0,0,1,-26.4,32.665A42,42,0,0,1,-27.008,32.165A3,3,0,0,1,-27.19,27.735L28.83,-27.727Z"
+                      d="M20.932,-32.704A3,3,0,1,1,19.854,-37.011A42,42,0,0,1,32.526,-26.571A3,3,0,1,1,28.092,-26.805L41.717,-40.295Z"
                       data-is-focusable="false"
                       id="_Pie_1Datsun1"
                       role="img"
@@ -1940,7 +1940,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-28.006,26.911A3,3,0,0,1,-32.433,26.685A42,42,0,0,1,-32.928,26.072A3,3,0,0,1,-32.214,21.697L33.82,-21.359Z"
+                      d="M27.085,-27.823A3,3,0,1,1,26.895,-32.259A42,42,0,0,1,37.208,-19.483A3,3,0,1,1,32.911,-20.604L48.972,-31.076Z"
                       data-is-focusable="false"
                       id="_Pie_1Chrysler1"
                       role="img"
@@ -1962,7 +1962,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-32.848,20.725A3,3,0,0,1,-37.139,19.613A42,42,0,0,1,-37.5,18.913A3,3,0,0,1,-35.921,14.771L37.426,-14.117Z"
+                      d="M32.129,-21.804A3,3,0,1,1,32.836,-26.188A42,42,0,0,1,40.367,-11.598A3,3,0,1,1,36.384,-13.561L54.224,-20.587Z"
                       data-is-focusable="false"
                       id="_Pie_1Camaro1"
                       role="img"
@@ -1984,7 +1984,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-36.346,13.692A3,3,0,0,1,-40.326,11.739A42,42,0,0,1,-40.539,10.981A3,3,0,0,1,-38.159,7.241L39.501,-6.298Z"
+                      d="M35.859,-14.893A3,3,0,1,1,37.434,-19.045A42,42,0,0,1,41.875,-3.238A3,3,0,1,1,38.369,-5.962L57.257,-9.255Z"
                       data-is-focusable="true"
                       id="_Pie_1Cadillac1"
                       role="img"
@@ -2006,7 +2006,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-38.358,6.098A3,3,0,0,1,-41.863,3.385A42,42,0,0,1,-41.919,2.599A3,3,0,0,1,-38.835,-0.585L39.96,1.779Z"
+                      d="M38.123,-7.373A3,3,0,1,1,40.5,-11.123A42,42,0,0,1,41.67,5.254A3,3,0,1,1,38.784,1.88L57.948,2.455Z"
                       data-is-focusable="false"
                       id="_Pie_1AMC1"
                       role="img"
@@ -2028,7 +2028,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-38.8,-1.745A3,3,0,0,1,-41.688,-5.108A42,42,0,0,1,-39.824,-13.342A3,3,0,0,1,-35.77,-15.134L36.364,16.664Z"
+                      d="M38.827,0.449A3,3,0,1,1,41.91,-2.746A42,42,0,0,1,36.642,20.526A3,3,0,1,1,35.235,16.315L52.779,24.049Z"
                       data-is-focusable="false"
                       id="_Pie_1Toyota2"
                       role="img"
@@ -2050,7 +2050,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-35.302,-16.196A3,3,0,0,1,-36.714,-20.398A42,42,0,0,1,-31.893,-27.328A3,3,0,0,1,-27.462,-27.466L27.438,29.106Z"
+                      d="M35.813,15.005A3,3,0,1,1,39.871,13.203A42,42,0,0,1,26.245,32.791A3,3,0,1,1,26.523,28.359L39.875,42.118Z"
                       data-is-focusable="false"
                       id="_Pie_1Mazda2"
                       role="img"
@@ -2072,7 +2072,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-26.63,-28.273A3,3,0,0,1,-26.359,-32.698A42,42,0,0,1,-19.287,-37.309A3,3,0,0,1,-15.13,-35.772L14.491,37.283Z"
+                      d="M27.551,27.362A3,3,0,1,1,31.989,27.216A42,42,0,0,1,12.001,40.249A3,3,0,1,1,13.924,36.247L21.128,54.015Z"
                       data-is-focusable="false"
                       id="_Pie_1Hornet2"
                       role="img"
@@ -2094,7 +2094,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           &::-moz-focus-inner {
                             border: 0;
                           }
-                      d="M-14.055,-36.208A3,3,0,0,1,-12.142,-40.207A42,42,0,0,1,-3.855,-41.823A3,3,0,0,1,-0.58,-38.835L-0.58,39.996Z"
+                      d="M15.251,35.709A3,3,0,1,1,19.418,37.242A42,42,0,0,1,-4.002,41.809A3,3,0,1,1,-0.716,38.823L-0.716,57.996Z"
                       data-is-focusable="false"
                       id="_Pie_1Fiat2"
                       role="img"
@@ -2139,6 +2139,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                   padding-top: 16px;
                   width: 100%;
                 }
+            style="margin-top: 36px;"
           >
             <div
               class=
@@ -19987,6 +19988,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                   padding-top: 16px;
                   width: 100%;
                 }
+            style="margin-top: 0px;"
           >
             <div
               class=

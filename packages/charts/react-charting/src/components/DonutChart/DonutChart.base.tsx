@@ -104,9 +104,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   public componentDidMount(): void {
     if (this._rootElem) {
+      const titleHeight = this._getTitleHeight();
       this.setState({
         _width: this._rootElem.offsetWidth,
-        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT - titleHeight,
       });
     }
   }
@@ -132,13 +133,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
-    const titleHeight = data?.chartTitle
-      ? Math.max(
-          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
-            CHART_TITLE_PADDING,
-          36,
-        )
-      : 0;
+    const titleHeight = this._getTitleHeight();
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points);
@@ -174,7 +169,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             aria-label={data?.chartTitle}
             ref={(node: SVGElement | null) => this._setViewBox(node)}
             width={this.state._width}
-            height={this.state._height! + titleHeight}
+            height={this.state._height!}
           >
             {!hideLegend && data?.chartTitle && (
               <ChartTitle
@@ -238,7 +233,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             />
           )}
         </Callout>
-        {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
+        {!hideLegend && (
+          <div className={this._classNames.legendContainer} style={{ marginTop: titleHeight }}>
+            {legendBars}
+          </div>
+        )}
       </div>
     ) : (
       <div
@@ -268,6 +267,17 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: false,
     });
   };
+
+  private _getTitleHeight(): number {
+    const { data } = this.props;
+    return data?.chartTitle
+      ? Math.max(
+          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
+  }
 
   private _elevateToMinimums(data: IChartDataPoint[]) {
     let sumOfData = 0;

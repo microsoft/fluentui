@@ -38,7 +38,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               overflow: visible;
             }
         focusable="false"
-        height="-4"
+        height="-76"
         viewBox="0 0 0 0"
         width="0"
       >
@@ -86,7 +86,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           transform="translate(0, 36)"
         >
           <g
-            transform="translate(0, -20)"
+            transform="translate(0, -38)"
           >
             <g>
               <path
@@ -103,7 +103,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+                d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
                 data-is-focusable="true"
                 id="_Pie_1first20000"
                 role="img"
@@ -125,7 +125,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+                d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
                 data-is-focusable="true"
                 id="_Pie_1second39000"
                 role="img"
@@ -147,7 +147,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+                d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
                 data-is-focusable="true"
                 id="_Pie_1third45000"
                 role="img"
@@ -322,6 +322,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             padding-top: 16px;
             width: 100%;
           }
+      style="margin-top: 36px;"
     >
       <div
         class=
@@ -729,7 +730,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 overflow: visible;
               }
           focusable="false"
-          height="-4"
+          height="-76"
           viewBox="0 0 0 0"
           width="0"
         >
@@ -777,7 +778,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             transform="translate(0, 36)"
           >
             <g
-              transform="translate(0, -20)"
+              transform="translate(0, -38)"
             >
               <g>
                 <path
@@ -794,7 +795,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+                  d="M0.668,-54.996A55,55,0,0,1,51.354,-19.693L-35.87,12.545Z"
                   data-is-focusable="true"
                   id="_Pie_4first20000"
                   role="img"
@@ -816,7 +817,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+                  d="M51.817,-18.439A55,55,0,0,1,-22.262,50.293L16.407,-34.275Z"
                   data-is-focusable="true"
                   id="_Pie_4second39000"
                   role="img"
@@ -838,7 +839,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+                  d="M-23.478,49.737A55,55,0,0,1,-0.668,-54.996L-0.668,37.994Z"
                   data-is-focusable="true"
                   id="_Pie_4third45000"
                   role="img"
@@ -859,6 +860,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               padding-top: 16px;
               width: 100%;
             }
+        style="margin-top: 36px;"
       >
         <div
           class=
