@@ -30,5 +30,5 @@ export interface VersionBumpGeneratorSchema {
   /**
    * Explicit version to set
    */
-  version?: string;
+  explicitVersion?: string;
 }
