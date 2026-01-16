@@ -1,17 +1,16 @@
 import { motionTokens } from '@fluentui/react-motion';
 
 export const EASING_FUNCTION_1 = motionTokens.curveDecelerateMax;
-// This is nearly linear easing
+// This is nearly linear easing - no exact motion token equivalent
 export const EASING_FUNCTION_2 = 'cubic-bezier(.1,.25,.75,.9)';
-// TODO: migrate to the closest duration tokens
-// These constants are strings in seconds for CSS, but WAAPI expects numbers in milliseconds
-// DURATION_2 is used in CalendarDay for the fade animation
-// DURATION_3 is used in CalendarDayGrid for the slide animation
-// DURATION_1 and DURATION_4 are not currently used
-export const DURATION_1 = '0.167s'; // motionTokens.durationFast   = 150
-export const DURATION_2 = '0.267s'; // motionTokens.durationGentle = 250
-export const DURATION_3 = '0.367s'; // motionTokens.durationSlower = 400
-export const DURATION_4 = '0.467s'; // motionTokens.durationUltraSlow = 500
+
+// Duration constants for CSS animations
+// DURATION_2 is used in CalendarDay/CalendarPicker for the fade animation (CSS)
+// DURATION_3 is no longer used - slide animations now use motion components directly
+export const DURATION_1 = `${motionTokens.durationFast}ms`;
+export const DURATION_2 = `${motionTokens.durationGentle}ms`;
+export const DURATION_3 = `${motionTokens.durationSlower}ms`;
+export const DURATION_4 = `${motionTokens.durationUltraSlow}ms`;
 
 export const FADE_IN = {
   from: {
