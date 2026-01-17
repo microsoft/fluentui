@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: remove useDividerBase hook",
+  "packageName": "@fluentui/react-divider",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
