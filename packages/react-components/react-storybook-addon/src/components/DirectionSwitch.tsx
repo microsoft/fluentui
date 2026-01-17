@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IconButton } from '@storybook/components';
-import { styled } from '@storybook/theming';
+import { IconButton } from 'storybook/internal/components';
+import { styled } from 'storybook/theming';
 
 import { JSXElement } from '@fluentui/react-utilities';
 import { DIR_ID } from '../constants';

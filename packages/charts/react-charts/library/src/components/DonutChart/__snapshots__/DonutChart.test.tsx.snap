@@ -12,7 +12,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="160"
+        height="214"
         width="0"
       >
         <rect
@@ -20,7 +20,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           height="3"
           width="6"
           x="-3"
-          y="15"
+          y="-6"
         />
         <text
           aria-describedby="tooltip-_r_2_"
@@ -29,7 +29,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           id="tooltip-host_r_1_"
           text-anchor="middle"
           x="0"
-          y="21"
+          y="0"
         >
           ...
         </text>
@@ -37,7 +37,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
-          transform="translate(0, 80)"
+          transform="translate(0, 98)"
         >
           <g>
             <path
@@ -84,6 +84,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     />
     <div
       class="fui-donut__legendContainer"
+      style="margin-top: -36px;"
     >
       <div
         aria-label="Legends"
@@ -176,7 +177,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="214"
           width="0"
         >
           <rect
@@ -184,7 +185,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_1k_"
@@ -193,7 +194,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             id="tooltip-host_r_1j_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -201,7 +202,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
-            transform="translate(0, 80)"
+            transform="translate(0, 98)"
           >
             <g>
               <path
@@ -248,6 +249,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       />
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -342,7 +344,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -350,7 +352,7 @@ Object {
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_40_"
@@ -359,7 +361,7 @@ Object {
               id="tooltip-host_r_3v_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -367,7 +369,7 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 80)"
+              transform="translate(0, 98)"
             >
               <g>
                 <path
@@ -455,6 +457,7 @@ Object {
         </div>
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -560,7 +563,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="214"
           width="0"
         >
           <rect
@@ -568,7 +571,7 @@ Object {
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_40_"
@@ -577,7 +580,7 @@ Object {
             id="tooltip-host_r_3v_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -585,7 +588,7 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 80)"
+            transform="translate(0, 98)"
           >
             <g>
               <path
@@ -673,6 +676,7 @@ Object {
       </div>
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -818,7 +822,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -826,7 +830,7 @@ Object {
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_4d_"
@@ -835,7 +839,7 @@ Object {
               id="tooltip-host_r_4c_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -843,7 +847,7 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 80)"
+              transform="translate(0, 98)"
             >
               <g>
                 <path
@@ -931,6 +935,7 @@ Object {
         </div>
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -1036,7 +1041,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="160"
+          height="214"
           width="0"
         >
           <rect
@@ -1044,7 +1049,7 @@ Object {
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_4d_"
@@ -1053,7 +1058,7 @@ Object {
             id="tooltip-host_r_4c_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -1061,7 +1066,7 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 80)"
+            transform="translate(0, 98)"
           >
             <g>
               <path
@@ -1149,6 +1154,7 @@ Object {
       </div>
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -1288,7 +1294,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -1296,7 +1302,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_32_"
@@ -1305,7 +1311,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         id="tooltip-host_r_31_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1313,7 +1319,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -1360,6 +1366,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1446,7 +1453,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -1454,7 +1461,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2o_"
@@ -1463,7 +1470,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         id="tooltip-host_r_2n_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1471,7 +1478,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -1548,6 +1555,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1634,7 +1642,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -1642,7 +1650,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2t_"
@@ -1651,7 +1659,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         id="tooltip-host_r_2s_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1659,7 +1667,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -1736,6 +1744,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1822,7 +1831,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -1830,7 +1839,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_1u_"
@@ -1839,7 +1848,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         id="tooltip-host_r_1t_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -1847,7 +1856,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -1894,6 +1903,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -1980,7 +1990,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -1988,7 +1998,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_23_"
@@ -1997,7 +2007,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         id="tooltip-host_r_22_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2005,7 +2015,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -2052,6 +2062,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2138,7 +2149,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -2146,7 +2157,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2f_"
@@ -2155,7 +2166,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         id="tooltip-host_r_2e_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2163,7 +2174,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -2210,6 +2221,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2306,7 +2318,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="200"
+      height="218"
       width="0"
     >
       <g
@@ -2369,7 +2381,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -2377,7 +2389,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2a_"
@@ -2386,7 +2398,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         id="tooltip-host_r_29_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2394,7 +2406,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -2441,6 +2453,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
@@ -2527,7 +2540,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="160"
+      height="214"
       width="0"
     >
       <rect
@@ -2535,7 +2548,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         height="3"
         width="6"
         x="-3"
-        y="15"
+        y="-6"
       />
       <text
         aria-describedby="tooltip-_r_2j_"
@@ -2544,7 +2557,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         id="tooltip-host_r_2i_"
         text-anchor="middle"
         x="0"
-        y="21"
+        y="0"
       >
         ...
       </text>
@@ -2552,7 +2565,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 80)"
+        transform="translate(0, 98)"
       >
         <g>
           <path
@@ -2599,6 +2612,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   />
   <div
     class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"

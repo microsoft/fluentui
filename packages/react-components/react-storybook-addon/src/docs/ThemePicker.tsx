@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addons } from '@storybook/preview-api';
+import { addons } from 'storybook/preview-api';
 
 import { Menu, MenuItemRadio, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { MenuProps } from '@fluentui/react-menu';

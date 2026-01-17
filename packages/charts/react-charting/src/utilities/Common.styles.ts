@@ -43,7 +43,6 @@ export const getTooltipStyle = (theme: ITheme): IStyle => {
     padding: '8px',
     position: 'absolute',
     textAlign: 'center',
-    top: '0px',
     background: theme.semanticColors.bodyBackground,
     borderRadius: '2px',
     pointerEvents: 'none',

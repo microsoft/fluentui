@@ -26,13 +26,14 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
   transformPlotlyJsonToScatterChartProps,
-  projectPolarToCartesian,
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
   transformPlotlyJsonToAnnotationChartProps,
+  transformPlotlyJsonToPolarChartProps,
+  DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -54,6 +55,7 @@ import type { JSXElement } from '@fluentui/utilities';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { resolveCSSVariables } from '../../utilities/utilities';
 import { getChartTitleInlineStyles } from '../../utilities/Common.styles';
+import { PolarChart } from '../PolarChart/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -70,6 +72,7 @@ const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 // Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
 //const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
+const ResponsivePolarChart = withResponsiveContainer(PolarChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -234,6 +237,10 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToGanttChartProps;
     renderer: typeof ResponsiveGanttChart;
   } & PreTransformHooks;
+  scatterpolar: {
+    transformer: typeof transformPlotlyJsonToPolarChartProps;
+    renderer: typeof ResponsivePolarChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -307,6 +314,10 @@ const chartMap: ChartTypeMap = {
   gantt: {
     transformer: transformPlotlyJsonToGanttChartProps,
     renderer: ResponsiveGanttChart,
+  },
+  scatterpolar: {
+    transformer: transformPlotlyJsonToPolarChartProps,
+    renderer: ResponsivePolarChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
@@ -434,24 +445,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  if (chart.type === 'scatterpolar') {
-    const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
-    plotlyInputWithValidData.data = cartesianProjection.data;
-    plotlyInputWithValidData.layout = cartesianProjection.layout;
-    validTracesFilteredIndex.forEach((trace, index) => {
-      if (trace.type === 'scatterpolar') {
-        const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
-        if (mode.includes('line')) {
-          validTracesFilteredIndex[index].type = 'line';
-        } else if (mode.includes('markers') || mode === 'text') {
-          validTracesFilteredIndex[index].type = 'scatter';
-        } else {
-          validTracesFilteredIndex[index].type = 'line';
-        }
-      }
-    });
-  }
-
   const groupedTraces: Record<string, number[]> = {};
   let nonCartesianTraceCount = 0;
 
@@ -465,7 +458,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
         nonCartesianTraceCount++;
       } else {
-        traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+        traceKey =
+          chart.validTracesInfo![index].type === 'scatterpolar'
+            ? (trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT
+            : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
       }
       if (!groupedTraces[traceKey]) {
         groupedTraces[traceKey] = [];

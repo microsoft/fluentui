@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Slider Migration" />
 
@@ -28,21 +28,21 @@ Slider upgrade doc in V9: [Slider upgrade to V9](https://react.fluentui.dev/?pat
 
 ## How to migrate props:
 
-| Slider props                | migrate guide                                                                                            |
-| --------------------------- | -------------------------------------------------------------------------------------------------------- |
-| accessibility               | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
-| as, className               | keep it as is                                                                                            |
-| defaultValue                | keep it as is                                                                                            |
-| disabled                    | keep it as is                                                                                            |
-| getA11yValueMessageOnChange | create your own message for a11y attr `aria-valuetext` by listening `onChange` and updating state value  |
-| fluid                       | use `slider.fluid()` mixin in Slider component's style file                                              |
-| input                       | keep it as is                                                                                            |
-| max, min                    | keep it as is                                                                                            |
-| onChange                    | keep it as is                                                                                            |
-| step                        | keep it as is                                                                                            |
-| value                       | keep it as is                                                                                            |
-| vertical                    | keep it as is                                                                                            |
-| variables, styles, design   | see [Migrate style overrides](#migrate-style-overrides) in this document                                 |
+| Slider props                | migrate guide                                                                                               |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| accessibility               | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)  |
+| as, className               | keep it as is                                                                                               |
+| defaultValue                | keep it as is                                                                                               |
+| disabled                    | keep it as is                                                                                               |
+| getA11yValueMessageOnChange | create your own message for a11y attr \`aria-valuetext\` by listening \`onChange\` and updating state value |
+| fluid                       | use \`slider.fluid()\` mixin in Slider component's style file                                               |
+| input                       | keep it as is                                                                                               |
+| max, min                    | keep it as is                                                                                               |
+| onChange                    | keep it as is                                                                                               |
+| step                        | keep it as is                                                                                               |
+| value                       | keep it as is                                                                                               |
+| vertical                    | keep it as is                                                                                               |
+| variables, styles, design   | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                  |
 
 Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/slider-migration-fluentui-forked-e3zdj5?file=/example.tsx)
 

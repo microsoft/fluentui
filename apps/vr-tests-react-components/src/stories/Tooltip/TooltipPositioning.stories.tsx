@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
