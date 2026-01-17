@@ -20,6 +20,7 @@ import type { AreaChartProps } from '../AreaChart/index';
 import type { DonutChartProps } from '../DonutChart/index';
 import type { ScatterChartProps } from '../ScatterChart/index';
 import type { HeatMapChartProps } from '../HeatMapChart/index';
+import type { PolarChartProps, PolarAxisProps } from '../PolarChart/index';
 import type {
   ChartProps,
   LineChartPoints,
@@ -34,6 +35,10 @@ import type {
   ChartAnnotation,
   LineDataInVerticalStackedBarChart,
   AxisCategoryOrder,
+  PolarDataPoint,
+  LinePolarSeries,
+  AreaPolarSeries,
+  ScatterPolarSeries,
 } from '../../types/index';
 import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
@@ -575,9 +580,7 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
 function warnUnsupportedFeatures(spec: VegaLiteSpec): void {
   if (spec.transform && spec.transform.length > 0) {
     // Check for unsupported transforms (fold is now supported)
-    const unsupportedTransforms = spec.transform.filter(
-      (t: Record<string, unknown>) => !('fold' in t),
-    );
+    const unsupportedTransforms = spec.transform.filter((t: Record<string, unknown>) => !('fold' in t));
     if (unsupportedTransforms.length > 0) {
       // Some transforms are not yet supported.
       // Unsupported data transformations will be ignored.
@@ -2237,5 +2240,156 @@ export function transformVegaLiteToPolarScatterChartProps(
     width: typeof spec.width === 'number' ? spec.width : undefined,
     height: typeof spec.height === 'number' ? spec.height : undefined,
     hideLegend: encoding.color?.legend?.disable ?? false,
+  };
+}
+
+/**
+ * Transforms Vega-Lite specification with theta/radius encodings to Fluent PolarChart props
+ * Supports line, point, and area marks with polar coordinates
+ *
+ * @param spec - Vega-Lite specification with theta and radius encodings
+ * @param colorMap - Color mapping ref for consistent coloring
+ * @param isDarkTheme - Whether dark theme is active
+ * @returns PolarChartProps for rendering with Fluent PolarChart component
+ */
+export function transformVegaLiteToPolarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: React.RefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): PolarChartProps {
+  // Initialize transformation context
+  const { dataValues, encoding, markProps, primarySpec } = initializeTransformContext(spec, true);
+
+  // Extract field names
+  const { thetaField, radiusField, colorField } = extractEncodingFields(encoding);
+
+  // Validate polar encodings
+  if (!thetaField || !radiusField) {
+    throw new Error('VegaLiteSchemaAdapter: Both theta and radius encodings are required for polar charts');
+  }
+
+  validateDataArray(dataValues, thetaField, 'PolarChart');
+  validateDataArray(dataValues, radiusField, 'PolarChart');
+
+  // Determine mark type for polar chart series type
+  const mark = primarySpec.mark;
+  const markType = typeof mark === 'string' ? mark : mark?.type;
+  const isAreaMark = markType === 'area';
+  const isLineMark = markType === 'line';
+
+  // Extract color configuration
+  const { colorScheme, colorRange } = extractColorConfig(encoding);
+
+  // Group data by series (color field)
+  const seriesMap = new Map<string, PolarDataPoint[]>();
+  const colorIndex = new Map<string, number>();
+  let currentColorIndex = 0;
+
+  dataValues.forEach(row => {
+    const thetaValue = row[thetaField];
+    const radiusValue = row[radiusField];
+
+    // Skip invalid values
+    if (isInvalidValue(thetaValue) || isInvalidValue(radiusValue)) {
+      return;
+    }
+
+    const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';
+
+    if (!colorIndex.has(seriesName)) {
+      colorIndex.set(seriesName, currentColorIndex++);
+    }
+
+    if (!seriesMap.has(seriesName)) {
+      seriesMap.set(seriesName, []);
+    }
+
+    // Convert theta value - handle different types
+    let theta: string | number;
+    if (typeof thetaValue === 'number') {
+      // Numeric theta - assume degrees
+      theta = thetaValue;
+    } else {
+      // Categorical theta
+      theta = String(thetaValue);
+    }
+
+    // Convert radius value
+    const r = typeof radiusValue === 'number' ? radiusValue : Number(radiusValue);
+
+    seriesMap.get(seriesName)!.push({
+      theta,
+      r,
+    });
+  });
+
+  // Convert series map to polar chart data array
+  const polarData: (AreaPolarSeries | LinePolarSeries | ScatterPolarSeries)[] = [];
+
+  seriesMap.forEach((dataPoints, seriesName) => {
+    const color = markProps.color || getVegaColor(colorIndex.get(seriesName)!, colorScheme, colorRange, isDarkTheme);
+    const curveOption = mapInterpolateToCurve(markProps.interpolate);
+
+    if (isAreaMark) {
+      const series: AreaPolarSeries = {
+        type: 'areapolar',
+        legend: seriesName,
+        color,
+        data: dataPoints,
+        ...(curveOption && {
+          lineOptions: {
+            curve: curveOption,
+          },
+        }),
+      };
+      polarData.push(series);
+    } else if (isLineMark) {
+      const series: LinePolarSeries = {
+        type: 'linepolar',
+        legend: seriesName,
+        color,
+        data: dataPoints,
+        ...(curveOption && {
+          lineOptions: {
+            curve: curveOption,
+          },
+        }),
+      };
+      polarData.push(series);
+    } else {
+      // Default to scatter polar for point marks
+      const series: ScatterPolarSeries = {
+        type: 'scatterpolar',
+        legend: seriesName,
+        color,
+        data: dataPoints,
+      };
+      polarData.push(series);
+    }
+  });
+
+  // Extract chart titles
+  const titles = getVegaLiteTitles(spec);
+
+  // Build axis props from encoding
+  const radialAxis: PolarAxisProps = {};
+  const angularAxis: PolarAxisProps & { unit?: 'radians' | 'degrees' } = {};
+
+  // Determine angular axis category order if theta is categorical
+  const thetaType = encoding.theta?.type;
+  if (thetaType === 'nominal' || thetaType === 'ordinal') {
+    // Get unique theta values in order for category order
+    const thetaValues = Array.from(new Set(dataValues.map(row => String(row[thetaField]))));
+    angularAxis.categoryOrder = thetaValues as unknown as AxisCategoryOrder;
+  }
+
+  return {
+    data: polarData,
+    ...(titles.chartTitle && { chartTitle: titles.chartTitle }),
+    width: typeof spec.width === 'number' ? spec.width : undefined,
+    height: typeof spec.height === 'number' ? spec.height : 400,
+    hideLegend: encoding.color?.legend?.disable ?? false,
+    radialAxis,
+    angularAxis,
   };
 }

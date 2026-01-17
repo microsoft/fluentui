@@ -12,6 +12,7 @@ import {
   transformVegaLiteToDonutChartProps,
   transformVegaLiteToHeatMapChartProps,
   transformVegaLiteToHistogramProps,
+  transformVegaLiteToPolarChartProps,
 } from '../DeclarativeChart/VegaLiteSchemaAdapter';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { LineChart } from '../LineChart/index';
@@ -23,6 +24,7 @@ import { AreaChart } from '../AreaChart/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
+import { PolarChart } from '../PolarChart/index';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { webLightTheme } from '@fluentui/tokens';
 import type { Chart } from '../../types/index';
@@ -168,6 +170,7 @@ const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
+const ResponsivePolarChart = withResponsiveContainer(PolarChart);
 
 /**
  * Chart type mapping with transformers and renderers
@@ -193,6 +196,7 @@ type VegaChartTypeMap = {
   donut: { transformer: typeof transformVegaLiteToDonutChartProps; renderer: typeof ResponsiveDonutChart };
   heatmap: { transformer: typeof transformVegaLiteToHeatMapChartProps; renderer: typeof ResponsiveHeatMapChart };
   histogram: { transformer: typeof transformVegaLiteToHistogramProps; renderer: typeof ResponsiveVerticalBarChart };
+  polar: { transformer: typeof transformVegaLiteToPolarChartProps; renderer: typeof ResponsivePolarChart };
 };
 
 const vegaChartMap: VegaChartTypeMap = {
@@ -215,6 +219,7 @@ const vegaChartMap: VegaChartTypeMap = {
   donut: { transformer: transformVegaLiteToDonutChartProps, renderer: ResponsiveDonutChart },
   heatmap: { transformer: transformVegaLiteToHeatMapChartProps, renderer: ResponsiveHeatMapChart },
   histogram: { transformer: transformVegaLiteToHistogramProps, renderer: ResponsiveVerticalBarChart },
+  polar: { transformer: transformVegaLiteToPolarChartProps, renderer: ResponsivePolarChart },
 };
 
 /**
@@ -231,7 +236,8 @@ function getChartType(spec: VegaLiteSpec): {
     | 'scatter'
     | 'donut'
     | 'heatmap'
-    | 'histogram';
+    | 'histogram'
+    | 'polar';
   mark: string;
 } {
   // Handle layered specs - check if it's a bar+line combo for stacked bar with lines
@@ -266,6 +272,12 @@ function getChartType(spec: VegaLiteSpec): {
   // Donut charts have innerRadius defined in mark properties
   if (markType === 'arc' && encoding?.theta) {
     return { type: 'donut', mark: markType };
+  }
+
+  // Polar charts: non-arc marks with theta and radius encodings
+  // This handles line, point, area marks with polar coordinates
+  if (encoding?.theta && encoding?.radius && markType !== 'arc') {
+    return { type: 'polar', mark: markType };
   }
 
   // Rect marks for heatmaps
@@ -353,6 +365,8 @@ function renderSingleChart(
     return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} />;
   } else if (chartType.type === 'heatmap') {
     return <ChartRenderer {...chartProps} componentRef={chartRef} />;
+  } else if (chartType.type === 'polar') {
+    return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} />;
   } else {
     return <ChartRenderer {...chartProps} {...interactiveCommonProps} />;
   }
