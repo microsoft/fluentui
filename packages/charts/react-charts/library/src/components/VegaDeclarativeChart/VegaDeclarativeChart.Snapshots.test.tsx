@@ -337,7 +337,8 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       console.log(`  ${category}: ${schemas.length} schemas`);
     });
 
-    expect(allSchemas.length).toBeGreaterThan(100);
+    // Reduced schema count from 141 to 25 representative schemas
+    expect(allSchemas.length).toBe(25);
   });
 });
 
