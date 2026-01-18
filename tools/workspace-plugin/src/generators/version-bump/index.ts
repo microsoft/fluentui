@@ -39,7 +39,7 @@ function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: Use
   }
 
   updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
-    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag, schema.version);
+    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag, schema.explicitVersion);
 
     // nightly releases should bypass beachball disallowed changetypes
     if (
@@ -140,7 +140,7 @@ function runBatchMigration(tree: Tree, schema: ValidatedSchema, userLog: UserLog
           all: false,
           bumpType: schema.bumpType,
           prereleaseTag: schema.prereleaseTag,
-          version: schema.version,
+          explicitVersion: schema.explicitVersion,
           exclude: schema.exclude,
         },
         userLog,
@@ -200,9 +200,10 @@ export const validBumpTypes = [
   'nightly',
 ] as const;
 
-interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'version' | 'bumpType'>> {
+interface ValidatedSchema
+  extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'explicitVersion' | 'bumpType'>> {
   bumpType?: (typeof validBumpTypes)[number];
-  version?: string;
+  explicitVersion?: string;
   exclude: string[];
 }
 
@@ -211,8 +212,8 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  if (!schema.version && !schema.bumpType) {
-    throw new Error('Either --bumpType or --version must be provided');
+  if (!schema.explicitVersion && !schema.bumpType) {
+    throw new Error('Either --bumpType or --explicitVersion must be provided');
   }
 
   const validateBumpType = (type?: string): type is ValidatedSchema['bumpType'] => {
@@ -228,7 +229,7 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
-    version: schema.version,
+    explicitVersion: schema.explicitVersion,
     exclude: schema.exclude ? schema.exclude.split(',') : [],
   };
 

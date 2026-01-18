@@ -28,7 +28,7 @@
       "type": "string",
       "description": "Comma-delimited list of projects that should not be bumped when using the --all flag"
     },
-    "version": {
+    "explicitVersion": {
       "type": "string",
       "description": "Explicit version to set. If provided, bumpType and prereleaseTag are ignored."
     }
