@@ -902,7 +902,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render donutc
           <svg
             aria-label="Donut Chart"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -910,7 +910,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render donutc
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_j_"
@@ -919,7 +919,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render donutc
               id="tooltip-host_r_i_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -927,59 +927,55 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render donutc
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="A, 28."
-                    class="fui-donut-arc__root"
-                    d="M0.5,-49.998A50,50,0,0,1,36.229,-34.46L0,0Z"
-                    id="_Pie__r_h_A28"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="B, 55."
-                    class="fui-donut-arc__root"
-                    d="M36.91,-33.729A50,50,0,0,1,33.675,36.959L0,0Z"
-                    id="_Pie__r_h_B55"
-                    opacity="1"
-                    role="img"
-                    style="fill: #e3008c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="C, 43."
-                    class="fui-donut-arc__root"
-                    d="M32.93,37.625A50,50,0,0,1,-24.42,43.631L0,0Z"
-                    id="_Pie__r_h_C43"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="D, 91."
-                    class="fui-donut-arc__root"
-                    d="M-25.288,43.134A50,50,0,0,1,-0.5,-49.998L0,0Z"
-                    id="_Pie__r_h_D91"
-                    opacity="1"
-                    role="img"
-                    style="fill: #9373c0; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="A, 28."
+                  class="fui-donut-arc__root"
+                  d="M0.5,-49.998A50,50,0,0,1,36.229,-34.46L0,0Z"
+                  id="_Pie__r_h_A28"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="B, 55."
+                  class="fui-donut-arc__root"
+                  d="M36.91,-33.729A50,50,0,0,1,33.675,36.959L0,0Z"
+                  id="_Pie__r_h_B55"
+                  opacity="1"
+                  role="img"
+                  style="fill: #e3008c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="C, 43."
+                  class="fui-donut-arc__root"
+                  d="M32.93,37.625A50,50,0,0,1,-24.42,43.631L0,0Z"
+                  id="_Pie__r_h_C43"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="D, 91."
+                  class="fui-donut-arc__root"
+                  d="M-25.288,43.134A50,50,0,0,1,-0.5,-49.998L0,0Z"
+                  id="_Pie__r_h_D91"
+                  opacity="1"
+                  role="img"
+                  style="fill: #9373c0; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -990,6 +986,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render donutc
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -6311,7 +6308,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Climate Charts should render rene
           <svg
             aria-label="Renewable Energy Mix"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -6319,7 +6316,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Climate Charts should render rene
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_ot_"
@@ -6328,7 +6325,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Climate Charts should render rene
               id="tooltip-host_r_os_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -6336,71 +6333,67 @@ exports[`VegaDeclarativeChart - Snapshot Tests Climate Charts should render rene
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Solar, 28."
-                    class="fui-donut-arc__root"
-                    d="M0.6,-59.997A60,60,0,0,1,59.13,10.18L0,0Z"
-                    id="_Pie__r_or_Solar28"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Wind, 35."
-                    class="fui-donut-arc__root"
-                    d="M58.915,11.361A60,60,0,0,1,-42.359,42.494L0,0Z"
-                    id="_Pie__r_or_Wind35"
-                    opacity="1"
-                    role="img"
-                    style="fill: #ca5010; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Hydro, 22."
-                    class="fui-donut-arc__root"
-                    d="M-43.2,41.638A60,60,0,0,1,-49.745,-33.547L0,0Z"
-                    id="_Pie__r_or_Hydro22"
-                    opacity="1"
-                    role="img"
-                    style="fill: #c50f1f; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Geothermal, 8."
-                    class="fui-donut-arc__root"
-                    d="M-49.065,-34.535A60,60,0,0,1,-26.789,-53.688L0,0Z"
-                    id="_Pie__r_or_Geothermal8"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Biomass, 7."
-                    class="fui-donut-arc__root"
-                    d="M-25.71,-54.213A60,60,0,0,1,-0.6,-59.997L0,0Z"
-                    id="_Pie__r_or_Biomass7"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Solar, 28."
+                  class="fui-donut-arc__root"
+                  d="M0.6,-59.997A60,60,0,0,1,59.13,10.18L0,0Z"
+                  id="_Pie__r_or_Solar28"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Wind, 35."
+                  class="fui-donut-arc__root"
+                  d="M58.915,11.361A60,60,0,0,1,-42.359,42.494L0,0Z"
+                  id="_Pie__r_or_Wind35"
+                  opacity="1"
+                  role="img"
+                  style="fill: #ca5010; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Hydro, 22."
+                  class="fui-donut-arc__root"
+                  d="M-43.2,41.638A60,60,0,0,1,-49.745,-33.547L0,0Z"
+                  id="_Pie__r_or_Hydro22"
+                  opacity="1"
+                  role="img"
+                  style="fill: #c50f1f; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Geothermal, 8."
+                  class="fui-donut-arc__root"
+                  d="M-49.065,-34.535A60,60,0,0,1,-26.789,-53.688L0,0Z"
+                  id="_Pie__r_or_Geothermal8"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Biomass, 7."
+                  class="fui-donut-arc__root"
+                  d="M-25.71,-54.213A60,60,0,0,1,-0.6,-59.997L0,0Z"
+                  id="_Pie__r_or_Biomass7"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -6411,6 +6404,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Climate Charts should render rene
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -9237,7 +9231,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render c
           <svg
             aria-label="Customer Segmentation"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -9245,7 +9239,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render c
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_6l_"
@@ -9254,7 +9248,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render c
               id="tooltip-host_r_6k_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -9262,71 +9256,67 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render c
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="VIP, 850."
-                    class="fui-donut-arc__root"
-                    d="M0.7,-69.997A70,70,0,0,1,17.831,-67.691L0,0Z"
-                    id="_Pie__r_6j_VIP850"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="High Value, 2340."
-                    class="fui-donut-arc__root"
-                    d="M19.181,-67.321A70,70,0,0,1,57.306,-40.199L0,0Z"
-                    id="_Pie__r_6j_HighValue2340"
-                    opacity="1"
-                    role="img"
-                    style="fill: #ca5010; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Medium Value, 5670."
-                    class="fui-donut-arc__root"
-                    d="M58.099,-39.045A70,70,0,0,1,34.242,61.053L0,0Z"
-                    id="_Pie__r_6j_MediumValue5670"
-                    opacity="1"
-                    role="img"
-                    style="fill: #c50f1f; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Low Value, 8920."
-                    class="fui-donut-arc__root"
-                    d="M33.014,61.726A70,70,0,0,1,-60.183,-35.749L0,0Z"
-                    id="_Pie__r_6j_LowValue8920"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="New, 3450."
-                    class="fui-donut-arc__root"
-                    d="M-59.456,-36.945A70,70,0,0,1,-0.7,-69.997L0,0Z"
-                    id="_Pie__r_6j_New3450"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="VIP, 850."
+                  class="fui-donut-arc__root"
+                  d="M0.7,-69.997A70,70,0,0,1,17.831,-67.691L0,0Z"
+                  id="_Pie__r_6j_VIP850"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="High Value, 2340."
+                  class="fui-donut-arc__root"
+                  d="M19.181,-67.321A70,70,0,0,1,57.306,-40.199L0,0Z"
+                  id="_Pie__r_6j_HighValue2340"
+                  opacity="1"
+                  role="img"
+                  style="fill: #ca5010; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Medium Value, 5670."
+                  class="fui-donut-arc__root"
+                  d="M58.099,-39.045A70,70,0,0,1,34.242,61.053L0,0Z"
+                  id="_Pie__r_6j_MediumValue5670"
+                  opacity="1"
+                  role="img"
+                  style="fill: #c50f1f; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Low Value, 8920."
+                  class="fui-donut-arc__root"
+                  d="M33.014,61.726A70,70,0,0,1,-60.183,-35.749L0,0Z"
+                  id="_Pie__r_6j_LowValue8920"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="New, 3450."
+                  class="fui-donut-arc__root"
+                  d="M-59.456,-36.945A70,70,0,0,1,-0.7,-69.997L0,0Z"
+                  id="_Pie__r_6j_New3450"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -9337,6 +9327,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render c
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -10868,7 +10859,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render m
           <svg
             aria-label="Market Share Distribution"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -10876,7 +10867,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render m
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_86_"
@@ -10885,7 +10876,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render m
               id="tooltip-host_r_85_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -10893,59 +10884,55 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render m
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Company A, 35."
-                    class="fui-donut-arc__root"
-                    d="M0.6,-59.997A60,60,0,0,1,49.168,34.388L0,0Z"
-                    id="_Pie__r_84_CompanyA35"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Company B, 28."
-                    class="fui-donut-arc__root"
-                    d="M48.47,35.364A60,60,0,0,1,-42.891,41.956L0,0Z"
-                    id="_Pie__r_84_CompanyB28"
-                    opacity="1"
-                    role="img"
-                    style="fill: #e3008c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Company C, 22."
-                    class="fui-donut-arc__root"
-                    d="M-43.722,41.09A60,60,0,0,1,-49.168,-34.388L0,0Z"
-                    id="_Pie__r_84_CompanyC22"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Company D, 15."
-                    class="fui-donut-arc__root"
-                    d="M-48.47,-35.364A60,60,0,0,1,-0.6,-59.997L0,0Z"
-                    id="_Pie__r_84_CompanyD15"
-                    opacity="1"
-                    role="img"
-                    style="fill: #9373c0; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Company A, 35."
+                  class="fui-donut-arc__root"
+                  d="M0.6,-59.997A60,60,0,0,1,49.168,34.388L0,0Z"
+                  id="_Pie__r_84_CompanyA35"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Company B, 28."
+                  class="fui-donut-arc__root"
+                  d="M48.47,35.364A60,60,0,0,1,-42.891,41.956L0,0Z"
+                  id="_Pie__r_84_CompanyB28"
+                  opacity="1"
+                  role="img"
+                  style="fill: #e3008c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Company C, 22."
+                  class="fui-donut-arc__root"
+                  d="M-43.722,41.09A60,60,0,0,1,-49.168,-34.388L0,0Z"
+                  id="_Pie__r_84_CompanyC22"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Company D, 15."
+                  class="fui-donut-arc__root"
+                  d="M-48.47,-35.364A60,60,0,0,1,-0.6,-59.997L0,0Z"
+                  id="_Pie__r_84_CompanyD15"
+                  opacity="1"
+                  role="img"
+                  style="fill: #9373c0; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -10956,6 +10943,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests E-Commerce Charts should render m
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -19381,7 +19369,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render co
           <svg
             aria-label="Course Enrollment Distribution"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -19389,7 +19377,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render co
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_js_"
@@ -19398,7 +19386,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render co
               id="tooltip-host_r_jr_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -19406,83 +19394,79 @@ exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render co
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Computer Science, 450."
-                    class="fui-donut-arc__root"
-                    d="M0.65,-64.997A65,65,0,0,1,60.829,-22.909L0,0Z"
-                    id="_Pie__r_jq_ComputerScience450"
-                    opacity="1"
-                    role="img"
-                    style="fill: #3487c7; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Engineering, 380."
-                    class="fui-donut-arc__root"
-                    d="M61.275,-21.687A65,65,0,0,1,50.799,40.551L0,0Z"
-                    id="_Pie__r_jq_Engineering380"
-                    opacity="1"
-                    role="img"
-                    style="fill: #20547c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Business, 520."
-                    class="fui-donut-arc__root"
-                    d="M49.978,41.559A65,65,0,0,1,-31.747,56.72L0,0Z"
-                    id="_Pie__r_jq_Business520"
-                    opacity="1"
-                    role="img"
-                    style="fill: #f7630c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Arts & Humanities, 290."
-                    class="fui-donut-arc__root"
-                    d="M-32.875,56.074A65,65,0,0,1,-62.7,17.137L0,0Z"
-                    id="_Pie__r_jq_Arts&Humanities290"
-                    opacity="1"
-                    role="img"
-                    style="fill: #d06228; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Natural Sciences, 360."
-                    class="fui-donut-arc__root"
-                    d="M-63.031,15.879A65,65,0,0,1,-49.136,-42.551L0,0Z"
-                    id="_Pie__r_jq_NaturalSciences360"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Social Sciences, 310."
-                    class="fui-donut-arc__root"
-                    d="M-48.276,-43.526A65,65,0,0,1,-0.65,-64.997L0,0Z"
-                    id="_Pie__r_jq_SocialSciences310"
-                    opacity="1"
-                    role="img"
-                    style="fill: #0e7a0b; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Computer Science, 450."
+                  class="fui-donut-arc__root"
+                  d="M0.65,-64.997A65,65,0,0,1,60.829,-22.909L0,0Z"
+                  id="_Pie__r_jq_ComputerScience450"
+                  opacity="1"
+                  role="img"
+                  style="fill: #3487c7; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Engineering, 380."
+                  class="fui-donut-arc__root"
+                  d="M61.275,-21.687A65,65,0,0,1,50.799,40.551L0,0Z"
+                  id="_Pie__r_jq_Engineering380"
+                  opacity="1"
+                  role="img"
+                  style="fill: #20547c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Business, 520."
+                  class="fui-donut-arc__root"
+                  d="M49.978,41.559A65,65,0,0,1,-31.747,56.72L0,0Z"
+                  id="_Pie__r_jq_Business520"
+                  opacity="1"
+                  role="img"
+                  style="fill: #f7630c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Arts & Humanities, 290."
+                  class="fui-donut-arc__root"
+                  d="M-32.875,56.074A65,65,0,0,1,-62.7,17.137L0,0Z"
+                  id="_Pie__r_jq_Arts&Humanities290"
+                  opacity="1"
+                  role="img"
+                  style="fill: #d06228; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Natural Sciences, 360."
+                  class="fui-donut-arc__root"
+                  d="M-63.031,15.879A65,65,0,0,1,-49.136,-42.551L0,0Z"
+                  id="_Pie__r_jq_NaturalSciences360"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Social Sciences, 310."
+                  class="fui-donut-arc__root"
+                  d="M-48.276,-43.526A65,65,0,0,1,-0.65,-64.997L0,0Z"
+                  id="_Pie__r_jq_SocialSciences310"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0e7a0b; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -19493,6 +19477,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Education Charts should render co
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -25043,7 +25028,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render po
           <svg
             aria-label="Portfolio Allocation"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -25051,7 +25036,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render po
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_4t_"
@@ -25060,7 +25045,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render po
               id="tooltip-host_r_4s_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -25068,71 +25053,67 @@ exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render po
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Stocks, 450000."
-                    class="fui-donut-arc__root"
-                    d="M0.5,-49.998A50,50,0,0,1,41.836,27.382L0,0Z"
-                    id="_Pie__r_4r_Stocks450000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #3487c7; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Bonds, 280000."
-                    class="fui-donut-arc__root"
-                    d="M41.28,28.213A50,50,0,0,1,-17.637,46.786L0,0Z"
-                    id="_Pie__r_4r_Bonds280000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #f7630c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Real Estate, 350000."
-                    class="fui-donut-arc__root"
-                    d="M-18.569,46.424A50,50,0,0,1,-44.478,-22.841L0,0Z"
-                    id="_Pie__r_4r_RealEstate350000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Commodities, 120000."
-                    class="fui-donut-arc__root"
-                    d="M-44.012,-23.726A50,50,0,0,1,-24.218,-43.743L0,0Z"
-                    id="_Pie__r_4r_Commodities120000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #c50f1f; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Cash, 100000."
-                    class="fui-donut-arc__root"
-                    d="M-23.338,-44.219A50,50,0,0,1,-0.5,-49.998L0,0Z"
-                    id="_Pie__r_4r_Cash100000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #9373c0; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Stocks, 450000."
+                  class="fui-donut-arc__root"
+                  d="M0.5,-49.998A50,50,0,0,1,41.836,27.382L0,0Z"
+                  id="_Pie__r_4r_Stocks450000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #3487c7; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Bonds, 280000."
+                  class="fui-donut-arc__root"
+                  d="M41.28,28.213A50,50,0,0,1,-17.637,46.786L0,0Z"
+                  id="_Pie__r_4r_Bonds280000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #f7630c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Real Estate, 350000."
+                  class="fui-donut-arc__root"
+                  d="M-18.569,46.424A50,50,0,0,1,-44.478,-22.841L0,0Z"
+                  id="_Pie__r_4r_RealEstate350000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Commodities, 120000."
+                  class="fui-donut-arc__root"
+                  d="M-44.012,-23.726A50,50,0,0,1,-24.218,-43.743L0,0Z"
+                  id="_Pie__r_4r_Commodities120000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #c50f1f; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Cash, 100000."
+                  class="fui-donut-arc__root"
+                  d="M-23.338,-44.219A50,50,0,0,1,-0.5,-49.998L0,0Z"
+                  id="_Pie__r_4r_Cash100000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #9373c0; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -25143,6 +25124,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Financial Charts should render po
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -28087,7 +28069,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render d
           <svg
             aria-label="Disease Prevalence Distribution"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -28095,7 +28077,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render d
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_gt_"
@@ -28104,7 +28086,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render d
               id="tooltip-host_r_gs_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -28112,83 +28094,79 @@ exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render d
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Hypertension, 1850."
-                    class="fui-donut-arc__root"
-                    d="M0.55,-54.997A55,55,0,0,1,53.284,13.632L0,0Z"
-                    id="_Pie__r_gr_Hypertension1850"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Diabetes Type 2, 1340."
-                    class="fui-donut-arc__root"
-                    d="M53.001,14.695A55,55,0,0,1,-0.639,54.996L0,0Z"
-                    id="_Pie__r_gr_DiabetesType21340"
-                    opacity="1"
-                    role="img"
-                    style="fill: #e3008c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Asthma, 890."
-                    class="fui-donut-arc__root"
-                    d="M-1.738,54.973A55,55,0,0,1,-43.184,34.06L0,0Z"
-                    id="_Pie__r_gr_Asthma890"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Heart Disease, 675."
-                    class="fui-donut-arc__root"
-                    d="M-43.857,33.19A55,55,0,0,1,-54.995,-0.717L0,0Z"
-                    id="_Pie__r_gr_HeartDisease675"
-                    opacity="1"
-                    role="img"
-                    style="fill: #9373c0; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Arthritis, 1120."
-                    class="fui-donut-arc__root"
-                    d="M-54.97,-1.817A55,55,0,0,1,-23.487,-49.733L0,0Z"
-                    id="_Pie__r_gr_Arthritis1120"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="COPD, 420."
-                    class="fui-donut-arc__root"
-                    d="M-22.487,-50.193A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                    id="_Pie__r_gr_COPD420"
-                    opacity="1"
-                    role="img"
-                    style="fill: #3a96dd; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Hypertension, 1850."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,53.284,13.632L0,0Z"
+                  id="_Pie__r_gr_Hypertension1850"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Diabetes Type 2, 1340."
+                  class="fui-donut-arc__root"
+                  d="M53.001,14.695A55,55,0,0,1,-0.639,54.996L0,0Z"
+                  id="_Pie__r_gr_DiabetesType21340"
+                  opacity="1"
+                  role="img"
+                  style="fill: #e3008c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Asthma, 890."
+                  class="fui-donut-arc__root"
+                  d="M-1.738,54.973A55,55,0,0,1,-43.184,34.06L0,0Z"
+                  id="_Pie__r_gr_Asthma890"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Heart Disease, 675."
+                  class="fui-donut-arc__root"
+                  d="M-43.857,33.19A55,55,0,0,1,-54.995,-0.717L0,0Z"
+                  id="_Pie__r_gr_HeartDisease675"
+                  opacity="1"
+                  role="img"
+                  style="fill: #9373c0; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Arthritis, 1120."
+                  class="fui-donut-arc__root"
+                  d="M-54.97,-1.817A55,55,0,0,1,-23.487,-49.733L0,0Z"
+                  id="_Pie__r_gr_Arthritis1120"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="COPD, 420."
+                  class="fui-donut-arc__root"
+                  d="M-22.487,-50.193A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_gr_COPD420"
+                  opacity="1"
+                  role="img"
+                  style="fill: #3a96dd; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -28199,6 +28177,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Healthcare Charts should render d
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -36581,7 +36560,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render ch
           <svg
             aria-label="Marketing Budget by Channel"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -36589,7 +36568,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render ch
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_dg_"
@@ -36598,7 +36577,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render ch
               id="tooltip-host_r_df_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -36606,83 +36585,79 @@ exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render ch
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Email, 45000."
-                    class="fui-donut-arc__root"
-                    d="M0.6,-59.997A60,60,0,0,1,35.506,-48.367L0,0Z"
-                    id="_Pie__r_de_Email45000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #637cef; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Social Media, 85000."
-                    class="fui-donut-arc__root"
-                    d="M36.466,-47.647A60,60,0,0,1,57.988,15.407L0,0Z"
-                    id="_Pie__r_de_SocialMedia85000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #e3008c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Search Ads, 120000."
-                    class="fui-donut-arc__root"
-                    d="M57.669,16.563A60,60,0,0,1,-21.746,55.921L0,0Z"
-                    id="_Pie__r_de_SearchAds120000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2aa0a4; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Display Ads, 65000."
-                    class="fui-donut-arc__root"
-                    d="M-22.86,55.475A60,60,0,0,1,-57.669,16.563L0,0Z"
-                    id="_Pie__r_de_DisplayAds65000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #9373c0; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Content Marketing, 55000."
-                    class="fui-donut-arc__root"
-                    d="M-57.988,15.407A60,60,0,0,1,-52.596,-28.874L0,0Z"
-                    id="_Pie__r_de_ContentMarketing55000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Influencer, 75000."
-                    class="fui-donut-arc__root"
-                    d="M-52.008,-29.92A60,60,0,0,1,-0.6,-59.997L0,0Z"
-                    id="_Pie__r_de_Influencer75000"
-                    opacity="1"
-                    role="img"
-                    style="fill: #3a96dd; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Email, 45000."
+                  class="fui-donut-arc__root"
+                  d="M0.6,-59.997A60,60,0,0,1,35.506,-48.367L0,0Z"
+                  id="_Pie__r_de_Email45000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #637cef; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Social Media, 85000."
+                  class="fui-donut-arc__root"
+                  d="M36.466,-47.647A60,60,0,0,1,57.988,15.407L0,0Z"
+                  id="_Pie__r_de_SocialMedia85000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #e3008c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Search Ads, 120000."
+                  class="fui-donut-arc__root"
+                  d="M57.669,16.563A60,60,0,0,1,-21.746,55.921L0,0Z"
+                  id="_Pie__r_de_SearchAds120000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2aa0a4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Display Ads, 65000."
+                  class="fui-donut-arc__root"
+                  d="M-22.86,55.475A60,60,0,0,1,-57.669,16.563L0,0Z"
+                  id="_Pie__r_de_DisplayAds65000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #9373c0; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Content Marketing, 55000."
+                  class="fui-donut-arc__root"
+                  d="M-57.988,15.407A60,60,0,0,1,-52.596,-28.874L0,0Z"
+                  id="_Pie__r_de_ContentMarketing55000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Influencer, 75000."
+                  class="fui-donut-arc__root"
+                  d="M-52.008,-29.92A60,60,0,0,1,-0.6,-59.997L0,0Z"
+                  id="_Pie__r_de_Influencer75000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #3a96dd; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -36693,6 +36668,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Marketing Charts should render ch
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -53934,7 +53910,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Sports Charts should render genre
           <svg
             aria-label="Content Genre Distribution"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -53942,7 +53918,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Sports Charts should render genre
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_vq_"
@@ -53951,7 +53927,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Sports Charts should render genre
               id="tooltip-host_r_vp_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -53959,83 +53935,79 @@ exports[`VegaDeclarativeChart - Snapshot Tests Sports Charts should render genre
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Action, 24."
-                    class="fui-donut-arc__root"
-                    d="M0.5,-49.998A50,50,0,0,1,49.833,-4.077L0,0Z"
-                    id="_Pie__r_vo_Action24"
-                    opacity="1"
-                    role="img"
-                    style="fill: #3487c7; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Comedy, 18."
-                    class="fui-donut-arc__root"
-                    d="M49.905,-3.08A50,50,0,0,1,24.976,43.315L0,0Z"
-                    id="_Pie__r_vo_Comedy18"
-                    opacity="1"
-                    role="img"
-                    style="fill: #20547c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Drama, 22."
-                    class="fui-donut-arc__root"
-                    d="M24.105,43.806A50,50,0,0,1,-37.658,32.892L0,0Z"
-                    id="_Pie__r_vo_Drama22"
-                    opacity="1"
-                    role="img"
-                    style="fill: #f7630c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Sci-Fi, 15."
-                    class="fui-donut-arc__root"
-                    d="M-38.308,32.132A50,50,0,0,1,-48.723,-11.23L0,0Z"
-                    id="_Pie__r_vo_Sci-Fi15"
-                    opacity="1"
-                    role="img"
-                    style="fill: #d06228; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Horror, 12."
-                    class="fui-donut-arc__root"
-                    d="M-48.488,-12.202A50,50,0,0,1,-27.597,-41.694L0,0Z"
-                    id="_Pie__r_vo_Horror12"
-                    opacity="1"
-                    role="img"
-                    style="fill: #13a10e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Documentary, 9."
-                    class="fui-donut-arc__root"
-                    d="M-26.758,-42.238A50,50,0,0,1,-0.5,-49.998L0,0Z"
-                    id="_Pie__r_vo_Documentary9"
-                    opacity="1"
-                    role="img"
-                    style="fill: #0e7a0b; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Action, 24."
+                  class="fui-donut-arc__root"
+                  d="M0.5,-49.998A50,50,0,0,1,49.833,-4.077L0,0Z"
+                  id="_Pie__r_vo_Action24"
+                  opacity="1"
+                  role="img"
+                  style="fill: #3487c7; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Comedy, 18."
+                  class="fui-donut-arc__root"
+                  d="M49.905,-3.08A50,50,0,0,1,24.976,43.315L0,0Z"
+                  id="_Pie__r_vo_Comedy18"
+                  opacity="1"
+                  role="img"
+                  style="fill: #20547c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Drama, 22."
+                  class="fui-donut-arc__root"
+                  d="M24.105,43.806A50,50,0,0,1,-37.658,32.892L0,0Z"
+                  id="_Pie__r_vo_Drama22"
+                  opacity="1"
+                  role="img"
+                  style="fill: #f7630c; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Sci-Fi, 15."
+                  class="fui-donut-arc__root"
+                  d="M-38.308,32.132A50,50,0,0,1,-48.723,-11.23L0,0Z"
+                  id="_Pie__r_vo_Sci-Fi15"
+                  opacity="1"
+                  role="img"
+                  style="fill: #d06228; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Horror, 12."
+                  class="fui-donut-arc__root"
+                  d="M-48.488,-12.202A50,50,0,0,1,-27.597,-41.694L0,0Z"
+                  id="_Pie__r_vo_Horror12"
+                  opacity="1"
+                  role="img"
+                  style="fill: #13a10e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Documentary, 9."
+                  class="fui-donut-arc__root"
+                  d="M-26.758,-42.238A50,50,0,0,1,-0.5,-49.998L0,0Z"
+                  id="_Pie__r_vo_Documentary9"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0e7a0b; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -54046,6 +54018,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Sports Charts should render genre
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -56505,7 +56478,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render b
           <svg
             aria-label="Open Bugs by Priority"
             class="fui-donut__chart fui-charts-resp-child__chart"
-            height="160"
+            height="214"
             width="0"
           >
             <rect
@@ -56513,7 +56486,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render b
               height="3"
               width="6"
               x="-3"
-              y="15"
+              y="-6"
             />
             <text
               aria-describedby="tooltip-_r_r4_"
@@ -56522,7 +56495,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render b
               id="tooltip-host_r_r3_"
               text-anchor="middle"
               x="0"
-              y="21"
+              y="0"
             >
               ...
             </text>
@@ -56530,59 +56503,55 @@ exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render b
               hidden=""
             />
             <g
-              transform="translate(0, 36)"
+              transform="translate(0, 98)"
             >
-              <g
-                transform="translate(0, 80)"
-              >
-                <g>
-                  <path
-                    aria-label="Critical, 12."
-                    class="fui-donut-arc__root"
-                    d="M0.55,-54.997A55,55,0,0,1,26.355,-48.274L0,0Z"
-                    id="_Pie__r_r2_Critical12"
-                    opacity="1"
-                    role="img"
-                    style="fill: #d62728; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="High, 28."
-                    class="fui-donut-arc__root"
-                    d="M27.315,-47.738A55,55,0,0,1,54.769,5.032L0,0Z"
-                    id="_Pie__r_r2_High28"
-                    opacity="1"
-                    role="img"
-                    style="fill: #ff7f0e; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Medium, 45."
-                    class="fui-donut-arc__root"
-                    d="M54.658,6.126A55,55,0,0,1,-20.262,51.132L0,0Z"
-                    id="_Pie__r_r2_Medium45"
-                    opacity="1"
-                    role="img"
-                    style="fill: #ffcc00; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Low, 67."
-                    class="fui-donut-arc__root"
-                    d="M-21.281,50.716A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                    id="_Pie__r_r2_Low67"
-                    opacity="1"
-                    role="img"
-                    style="fill: #2ca02c; cursor: default;"
-                    tabindex="0"
-                  />
-                </g>
+              <g>
+                <path
+                  aria-label="Critical, 12."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,26.355,-48.274L0,0Z"
+                  id="_Pie__r_r2_Critical12"
+                  opacity="1"
+                  role="img"
+                  style="fill: #d62728; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="High, 28."
+                  class="fui-donut-arc__root"
+                  d="M27.315,-47.738A55,55,0,0,1,54.769,5.032L0,0Z"
+                  id="_Pie__r_r2_High28"
+                  opacity="1"
+                  role="img"
+                  style="fill: #ff7f0e; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Medium, 45."
+                  class="fui-donut-arc__root"
+                  d="M54.658,6.126A55,55,0,0,1,-20.262,51.132L0,0Z"
+                  id="_Pie__r_r2_Medium45"
+                  opacity="1"
+                  role="img"
+                  style="fill: #ffcc00; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="Low, 67."
+                  class="fui-donut-arc__root"
+                  d="M-21.281,50.716A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_r2_Low67"
+                  opacity="1"
+                  role="img"
+                  style="fill: #2ca02c; cursor: default;"
+                  tabindex="0"
+                />
               </g>
             </g>
           </svg>
@@ -56593,6 +56562,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Technology Charts should render b
         />
         <div
           class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
@@ -63816,7 +63786,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
         <svg
           aria-label="Disease Prevalence Distribution"
           class="fui-donut__chart fui-charts-resp-child__chart"
-          height="160"
+          height="214"
           width="0"
         >
           <rect
@@ -63824,7 +63794,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_1ct_"
@@ -63833,7 +63803,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             id="tooltip-host_r_1cs_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -63841,83 +63811,79 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             hidden=""
           />
           <g
-            transform="translate(0, 36)"
+            transform="translate(0, 98)"
           >
-            <g
-              transform="translate(0, 80)"
-            >
-              <g>
-                <path
-                  aria-label="Hypertension, 1850."
-                  class="fui-donut-arc__root"
-                  d="M0.55,-54.997A55,55,0,0,1,53.284,13.632L0,0Z"
-                  id="_Pie__r_1cr_Hypertension1850"
-                  opacity="1"
-                  role="img"
-                  style="fill: #637cef; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Diabetes Type 2, 1340."
-                  class="fui-donut-arc__root"
-                  d="M53.001,14.695A55,55,0,0,1,-0.639,54.996L0,0Z"
-                  id="_Pie__r_1cr_DiabetesType21340"
-                  opacity="1"
-                  role="img"
-                  style="fill: #e3008c; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Asthma, 890."
-                  class="fui-donut-arc__root"
-                  d="M-1.738,54.973A55,55,0,0,1,-43.184,34.06L0,0Z"
-                  id="_Pie__r_1cr_Asthma890"
-                  opacity="1"
-                  role="img"
-                  style="fill: #2aa0a4; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Heart Disease, 675."
-                  class="fui-donut-arc__root"
-                  d="M-43.857,33.19A55,55,0,0,1,-54.995,-0.717L0,0Z"
-                  id="_Pie__r_1cr_HeartDisease675"
-                  opacity="1"
-                  role="img"
-                  style="fill: #9373c0; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Arthritis, 1120."
-                  class="fui-donut-arc__root"
-                  d="M-54.97,-1.817A55,55,0,0,1,-23.487,-49.733L0,0Z"
-                  id="_Pie__r_1cr_Arthritis1120"
-                  opacity="1"
-                  role="img"
-                  style="fill: #13a10e; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="COPD, 420."
-                  class="fui-donut-arc__root"
-                  d="M-22.487,-50.193A55,55,0,0,1,-0.55,-54.997L0,0Z"
-                  id="_Pie__r_1cr_COPD420"
-                  opacity="1"
-                  role="img"
-                  style="fill: #3a96dd; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
+            <g>
+              <path
+                aria-label="Hypertension, 1850."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,53.284,13.632L0,0Z"
+                id="_Pie__r_1cr_Hypertension1850"
+                opacity="1"
+                role="img"
+                style="fill: #637cef; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Diabetes Type 2, 1340."
+                class="fui-donut-arc__root"
+                d="M53.001,14.695A55,55,0,0,1,-0.639,54.996L0,0Z"
+                id="_Pie__r_1cr_DiabetesType21340"
+                opacity="1"
+                role="img"
+                style="fill: #e3008c; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Asthma, 890."
+                class="fui-donut-arc__root"
+                d="M-1.738,54.973A55,55,0,0,1,-43.184,34.06L0,0Z"
+                id="_Pie__r_1cr_Asthma890"
+                opacity="1"
+                role="img"
+                style="fill: #2aa0a4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Heart Disease, 675."
+                class="fui-donut-arc__root"
+                d="M-43.857,33.19A55,55,0,0,1,-54.995,-0.717L0,0Z"
+                id="_Pie__r_1cr_HeartDisease675"
+                opacity="1"
+                role="img"
+                style="fill: #9373c0; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Arthritis, 1120."
+                class="fui-donut-arc__root"
+                d="M-54.97,-1.817A55,55,0,0,1,-23.487,-49.733L0,0Z"
+                id="_Pie__r_1cr_Arthritis1120"
+                opacity="1"
+                role="img"
+                style="fill: #13a10e; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="COPD, 420."
+                class="fui-donut-arc__root"
+                d="M-22.487,-50.193A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_1cr_COPD420"
+                opacity="1"
+                role="img"
+                style="fill: #3a96dd; cursor: default;"
+                tabindex="0"
+              />
             </g>
           </g>
         </svg>
@@ -63928,6 +63894,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
       />
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
@@ -64788,7 +64755,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
         <svg
           aria-label="Market Share Distribution"
           class="fui-donut__chart fui-charts-resp-child__chart"
-          height="160"
+          height="214"
           width="0"
         >
           <rect
@@ -64796,7 +64763,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             height="3"
             width="6"
             x="-3"
-            y="15"
+            y="-6"
           />
           <text
             aria-describedby="tooltip-_r_1bu_"
@@ -64805,7 +64772,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             id="tooltip-host_r_1bt_"
             text-anchor="middle"
             x="0"
-            y="21"
+            y="0"
           >
             ...
           </text>
@@ -64813,59 +64780,55 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             hidden=""
           />
           <g
-            transform="translate(0, 36)"
+            transform="translate(0, 98)"
           >
-            <g
-              transform="translate(0, 80)"
-            >
-              <g>
-                <path
-                  aria-label="Company A, 35."
-                  class="fui-donut-arc__root"
-                  d="M0.6,-59.997A60,60,0,0,1,49.168,34.388L0,0Z"
-                  id="_Pie__r_1bs_CompanyA35"
-                  opacity="1"
-                  role="img"
-                  style="fill: #637cef; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Company B, 28."
-                  class="fui-donut-arc__root"
-                  d="M48.47,35.364A60,60,0,0,1,-42.891,41.956L0,0Z"
-                  id="_Pie__r_1bs_CompanyB28"
-                  opacity="1"
-                  role="img"
-                  style="fill: #e3008c; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Company C, 22."
-                  class="fui-donut-arc__root"
-                  d="M-43.722,41.09A60,60,0,0,1,-49.168,-34.388L0,0Z"
-                  id="_Pie__r_1bs_CompanyC22"
-                  opacity="1"
-                  role="img"
-                  style="fill: #2aa0a4; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="Company D, 15."
-                  class="fui-donut-arc__root"
-                  d="M-48.47,-35.364A60,60,0,0,1,-0.6,-59.997L0,0Z"
-                  id="_Pie__r_1bs_CompanyD15"
-                  opacity="1"
-                  role="img"
-                  style="fill: #9373c0; cursor: default;"
-                  tabindex="0"
-                />
-              </g>
+            <g>
+              <path
+                aria-label="Company A, 35."
+                class="fui-donut-arc__root"
+                d="M0.6,-59.997A60,60,0,0,1,49.168,34.388L0,0Z"
+                id="_Pie__r_1bs_CompanyA35"
+                opacity="1"
+                role="img"
+                style="fill: #637cef; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Company B, 28."
+                class="fui-donut-arc__root"
+                d="M48.47,35.364A60,60,0,0,1,-42.891,41.956L0,0Z"
+                id="_Pie__r_1bs_CompanyB28"
+                opacity="1"
+                role="img"
+                style="fill: #e3008c; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Company C, 22."
+                class="fui-donut-arc__root"
+                d="M-43.722,41.09A60,60,0,0,1,-49.168,-34.388L0,0Z"
+                id="_Pie__r_1bs_CompanyC22"
+                opacity="1"
+                role="img"
+                style="fill: #2aa0a4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="Company D, 15."
+                class="fui-donut-arc__root"
+                d="M-48.47,-35.364A60,60,0,0,1,-0.6,-59.997L0,0Z"
+                id="_Pie__r_1bs_CompanyD15"
+                opacity="1"
+                role="img"
+                style="fill: #9373c0; cursor: default;"
+                tabindex="0"
+              />
             </g>
           </g>
         </svg>
@@ -64876,6 +64839,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
       />
       <div
         class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
