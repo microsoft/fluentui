@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Same-Origin Test - Security Research</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .box { background: #f0f0f0; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .result { background: #e8f5e9; padding: 10px; border-radius: 4px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Same-Origin Policy Test</h1>
+    <p>This is a harmless security research test file.</p>
+    <p>Purpose: Verify that PR preview content shares origin with other paths.</p>
+    
+    <div class="box">
+        <h3>Test Results</h3>
+        <div class="result" id="result">Running test...</div>
+    </div>
+    
+    <script>
+        // Harmless test - only writes a marker to localStorage
+        var marker = 'POC_SAME_ORIGIN_TEST_2026_01_18';
+        var timestamp = new Date().toISOString();
+        
+        // Write harmless marker
+        localStorage.setItem(marker, timestamp);
+        
+        // Display result
+        document.getElementById('result').innerHTML = 
+            'Origin: ' + window.location.origin + '<br>' +
+            'Path: ' + window.location.pathname + '<br>' +
+            'Marker set: ' + marker + '<br>' +
+            'Value: ' + timestamp;
+        
+        console.log('Same-origin test marker set:', marker, timestamp);
+    </script>
+    
+    <p><strong>Note:</strong> This file only sets a harmless localStorage marker for verification purposes.</p>
+</body>
+</html>
