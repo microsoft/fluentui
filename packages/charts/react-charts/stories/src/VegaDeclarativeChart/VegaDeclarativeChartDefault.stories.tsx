@@ -13,7 +13,7 @@ import {
 // Inline schemas (25 total covering various chart types)
 // No relative imports allowed - all schemas inlined directly
 const ALL_SCHEMAS: Record<string, any> = {
-  ad_ctr_scatter: {
+  adCtrScatter: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Ad click-through rate analysis',
     data: {
@@ -47,7 +47,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Ad Performance - CTR Analysis',
   },
-  age_distribution_bar: {
+  ageDistributionBar: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Patient age distribution',
     data: {
@@ -71,7 +71,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Patient Age Distribution',
   },
-  air_quality_heatmap: {
+  airQualityHeatmap: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Air quality index by location',
     data: {
@@ -108,7 +108,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Air Quality Index Heatmap',
   },
-  api_response_line: {
+  apiResponseLine: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'API response time monitoring',
     data: {
@@ -136,7 +136,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'API Response Time Monitoring',
   },
-  area_multiSeries_noStack: {
+  areaMultiSeriesNoStack: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Multiple area series without stacking - each fills to zero independently',
     title: 'Department Performance - Overlapping Areas (No Stack)',
@@ -187,7 +187,7 @@ const ALL_SCHEMAS: Record<string, any> = {
       },
     },
   },
-  area_single_tozeroy: {
+  areaSingleTozeroy: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Single series area chart with fill to zero baseline (tozeroy mode)',
     title: 'Monthly Revenue - Single Series (Fill to Zero)',
@@ -230,7 +230,7 @@ const ALL_SCHEMAS: Record<string, any> = {
       },
     },
   },
-  area_stacked_tonexty: {
+  areaStackedTonexty: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Stacked area chart with multiple series (tonexty mode)',
     title: 'Product Sales by Category - Stacked Areas',
@@ -329,7 +329,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Simple Area Chart',
   },
-  attendance_bar: {
+  attendanceBar: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Stadium attendance figures',
     data: {
@@ -350,7 +350,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Home Game Attendance',
   },
-  attendance_heatmap: {
+  attendanceHeatmap: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Class attendance patterns',
     data: {
@@ -395,7 +395,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Weekly Attendance Patterns',
   },
-  bandwidth_stacked_area: {
+  bandwidthStackedArea: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Network bandwidth usage',
     data: {
@@ -437,7 +437,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Horizontal Bar Chart',
   },
-  biodiversity_grouped: {
+  biodiversityGrouped: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Biodiversity counts by region',
     data: {
@@ -462,7 +462,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Biodiversity by Rainforest Region',
   },
-  bmi_scatter: {
+  bmiScatter: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'BMI distribution analysis',
     data: {
@@ -499,7 +499,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'BMI Distribution Scatter',
   },
-  budget_actual_grouped: {
+  budgetActualGrouped: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Budget vs Actual spending by department',
     data: {
@@ -527,7 +527,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Budget vs Actual - Department Comparison',
   },
-  bug_priority_donut: {
+  bugPriorityDonut: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Bug priority distribution',
     data: {
@@ -557,7 +557,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Open Bugs by Priority',
   },
-  campaign_performance_combo: {
+  campaignPerformanceCombo: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Marketing campaign performance',
     layer: [
@@ -590,7 +590,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     resolve: { scale: { y: 'independent' } },
     title: 'Campaign Spend vs Conversions',
   },
-  cashflow_combo: {
+  cashflowCombo: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Monthly cash flow analysis',
     layer: [
@@ -629,7 +629,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     resolve: { scale: { y: 'independent' } },
     title: 'Cash Flow Analysis',
   },
-  category_sales_stacked: {
+  categorySalesStacked: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Category sales breakdown',
     data: {
@@ -656,7 +656,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Category Sales - Stacked View',
   },
-  channel_distribution_donut: {
+  channelDistributionDonut: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Marketing channel distribution',
     data: {
@@ -685,7 +685,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Marketing Budget by Channel',
   },
-  climate_zones_scatter: {
+  climateZonesScatter: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Climate zone temperature distribution',
     data: {
@@ -712,7 +712,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Climate Zones Classification',
   },
-  co2_emissions_area: {
+  co2EmissionsArea: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'CO2 emissions over time',
     data: {
@@ -738,7 +738,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Global CO₂ Emissions Trend',
   },
-  code_commits_combo: {
+  codeCommitsCombo: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Code commit activity',
     layer: [
@@ -771,7 +771,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     resolve: { scale: { y: 'independent' } },
     title: 'Code Commits & Contributors',
   },
-  conversion_funnel: {
+  conversionFunnel: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'E-commerce conversion funnel',
     data: {
@@ -792,7 +792,7 @@ const ALL_SCHEMAS: Record<string, any> = {
     },
     title: 'Conversion Funnel Analysis',
   },
-  course_enrollment_donut: {
+  courseEnrollmentDonut: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
     description: 'Course enrollment breakdown',
     data: {
