@@ -4,7 +4,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_GVBC_empty3"
+    id="_GVBC_empty2"
     role="alert"
     style="opacity: 0;"
   />
@@ -26,12 +26,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -42,7 +43,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -55,7 +56,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -82,7 +83,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -174,7 +175,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -549,7 +550,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -790,12 +791,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -806,7 +808,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -819,7 +821,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -846,7 +848,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -938,7 +940,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1313,7 +1315,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1554,12 +1556,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -1570,7 +1573,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1583,7 +1586,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1610,7 +1613,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -1702,7 +1705,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2077,7 +2080,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2318,12 +2321,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -2334,7 +2338,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2347,7 +2351,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2374,7 +2378,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2466,7 +2470,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2841,7 +2845,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3082,12 +3086,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -3098,7 +3103,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3111,7 +3116,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3138,7 +3143,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -3230,7 +3235,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -3605,7 +3610,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4483,12 +4488,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -4499,7 +4505,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4512,7 +4518,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4536,7 +4542,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           transform="translate(0, -35)"
         />
         <g
@@ -4564,7 +4570,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
         <rect
@@ -4722,7 +4728,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone14"
+          data-focuszone-id="FocusZone13"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -5060,12 +5066,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -5076,7 +5083,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5089,7 +5096,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5113,7 +5120,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           transform="translate(0, -35)"
         />
         <g
@@ -5141,7 +5148,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
         <rect
@@ -7850,12 +7857,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
-      id="chart_7"
+      id="chart_6"
     >
       <div
-        id="defaultTabbableElement_8"
+        id="defaultTabbableElement_7"
       />
       <div
         class=
@@ -7866,7 +7874,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               position: relative;
             }
-        data-focuszone-id="FocusZone16"
+        data-focuszone-id="FocusZone15"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -7879,7 +7887,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -7906,7 +7914,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_7"
+            id="xAxisGElementchart_6"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -7998,7 +8006,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_7"
+            id="yAxisGElementchart_6"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -8373,7 +8381,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone17"
+                  data-focuszone-id="FocusZone16"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >

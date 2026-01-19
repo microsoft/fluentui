@@ -65,6 +65,7 @@ import type {
   DTickValue,
   AxisType,
   Shape,
+  PolarLayout,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -99,6 +100,7 @@ import {
   ChartAnnotationVerticalAlign,
 } from '../../types/IChartAnnotation';
 import { calculatePrecision, precisionRound } from '@fluentui/react';
+import { PolarAxisProps, IPolarChartProps } from '../PolarChart/index';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -106,6 +108,10 @@ export const SINGLE_REPEAT = 'repeat(1, 1fr)';
 type DomainInterval = {
   start: number;
   end: number;
+};
+
+type ExtDomainInterval = DomainInterval & {
+  cellName: string;
 };
 
 export type AxisProperties = {
@@ -207,6 +213,18 @@ const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => 
     return {
       yMinValue: range[0],
       yMaxValue: range[1],
+    };
+  }
+  return {};
+};
+
+const getXMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getXAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      xMinValue: range[0],
+      xMaxValue: range[1],
+      showRoundOffXTickValues: false,
     };
   }
   return {};
@@ -361,6 +379,75 @@ export const resolveXAxisPoint = (
     return x;
   }
   return x;
+};
+
+/**
+ * Formats text values according to the texttemplate specification
+ * Supports D3 format specifiers within %{text:format} patterns
+ * @param textValue The raw text value to format
+ * @param textTemplate The template string (e.g., "%{text:.1f}%", "%{text:.2%}", "%{text:,.0f}")
+ * @param index Optional index for array-based templates
+ * @returns Formatted text string
+ *
+ * Examples:
+ * - "%{text:.1f}%" → Formats number with 1 decimal place and adds % suffix
+ * - "%{text:.2%}" → Formats as percentage with 2 decimal places
+ * - "%{text:,.0f}" → Formats with thousands separator and no decimals
+ * - "%{text:$,.2f}" → Formats as currency with thousands separator and 2 decimals
+ */
+const formatTextWithTemplate = (
+  textValue: string | number,
+  textTemplate?: string | string[],
+  index?: number,
+): string => {
+  if (!textTemplate) {
+    return String(textValue);
+  }
+  const numVal = typeof textValue === 'number' ? textValue : parseFloat(String(textValue));
+  if (isNaN(numVal)) {
+    return String(textValue);
+  }
+  const template = typeof textTemplate === 'string' ? textTemplate : textTemplate[index || 0] || '';
+
+  // Match Plotly's texttemplate pattern: %{text:format} or %{text}
+  // Can be followed by any literal text like %, $, etc.
+  const plotlyPattern = /%\{text(?::([^}]+))?\}(.*)$/;
+  const match = template.match(plotlyPattern);
+
+  if (match) {
+    const formatSpec = match[1]; // The format specifier (e.g., ".1f", ".2%", ",.0f") or undefined
+    const suffix = match[2]; // Any text after the closing brace (e.g., "%", " units")
+
+    // If no format specifier is provided (e.g., %{text}%), try to infer from suffix
+    if (!formatSpec) {
+      // Check if suffix starts with % - assume simple percentage with 1 decimal
+      if (suffix.startsWith('%')) {
+        return `${numVal.toFixed(1)}${suffix}`;
+      }
+      // No format specifier, just return the number with the suffix
+      return `${numVal}${suffix}`;
+    }
+
+    try {
+      // Use D3 format function to apply the format specifier
+      const formatter = d3Format(formatSpec);
+      const formattedValue = formatter(numVal);
+      return `${formattedValue}${suffix}`;
+    } catch (error) {
+      // Try to extract precision for basic fallback
+      const precisionMatch = formatSpec.match(/\.(\d+)[f%]/);
+      const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 2;
+
+      // Check if it's a percentage format
+      if (formatSpec.includes('%')) {
+        return `${(numVal * 100).toFixed(precision)}%${suffix}`;
+      }
+
+      return `${numVal.toFixed(precision)}${suffix}`;
+    }
+  }
+
+  return String(textValue);
 };
 
 /**
@@ -1284,7 +1371,9 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+    showLabelsInPercent: firstData.textinfo
+      ? ['percent', 'label+percent', 'percent+label'].includes(firstData.textinfo)
+      : true,
     roundCorners: true,
     order: 'sorted',
   };
@@ -1331,6 +1420,11 @@ export const transformPlotlyJsonToVSBCProps = (
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
+      const textValues = Array.isArray(series.text)
+        ? series.text.slice(rangeStart, rangeEnd)
+        : typeof series.text === 'string'
+        ? series.text
+        : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
@@ -1359,12 +1453,19 @@ export const transformPlotlyJsonToVSBCProps = (
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
         const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
+        let barLabel = Array.isArray(textValues) ? textValues[index2] : textValues;
+
+        // Apply texttemplate formatting if specified
+        if (barLabel && series.texttemplate) {
+          barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index2);
+        }
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
             yAxisCalloutData,
+            ...(barLabel ? { barLabel: String(barLabel) } : {}),
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -1408,6 +1509,14 @@ export const transformPlotlyJsonToVSBCProps = (
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
+        if (shape.xref === 'x domain') {
+          if (val === 0) {
+            return xCategories[0];
+          }
+          if (val === 1) {
+            return xCategories[xCategories.length - 1];
+          }
+        }
         if (typeof val === 'number' && Array.isArray(xCategories)) {
           if (xCategories[val] !== undefined) {
             return xCategories[val];
@@ -1480,7 +1589,8 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -1583,12 +1693,20 @@ export const transformPlotlyJsonToGVBCProps = (
                 );
             const opacity = getOpacity(series, xIndex);
             const yVal = series.y![xIndex] as number;
+            // Extract text value for barLabel
+            let barLabel = Array.isArray(series.text) ? series.text[xIndex] : series.text;
+
+            // Apply texttemplate formatting if specified
+            if (barLabel && series.texttemplate) {
+              barLabel = formatTextWithTemplate(barLabel, series.texttemplate, xIndex);
+            }
 
             return {
               x: x!.toString(),
               y: yVal,
               yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
               color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+              ...(barLabel ? { barLabel: String(barLabel) } : {}),
             };
           })
           .filter(item => typeof item !== 'undefined'),
@@ -1654,8 +1772,9 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: true,
+    roundedTicks: true,
     showYAxisLables: true,
+    ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1745,6 +1864,12 @@ export const transformPlotlyJsonToVBCProps = (
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
 
+      // Handle text values and texttemplate formatting for histogram bins
+      let barLabel = Array.isArray(series.text) ? series.text[index] : series.text;
+      if (barLabel && series.texttemplate) {
+        barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index);
+      }
+
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
@@ -1753,6 +1878,7 @@ export const transformPlotlyJsonToVBCProps = (
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
+        ...(barLabel ? { barLabel: String(barLabel) } : {}),
       });
     });
   });
@@ -1769,8 +1895,9 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
+    roundedTicks: true,
     showYAxisLables: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -1877,9 +2004,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const xAxisType = getAxisType(input.data, getAxisObjects(input.data, input.layout).x);
-  const resolveXValue = getAxisValueResolver(xAxisType);
-  const shouldWrapLabels = xAxisType === 'category';
+  const resolveXValue = getAxisValueResolver(getAxisType(input.data, getAxisObjects(input.data, input.layout).x));
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -2055,8 +2180,9 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
-    wrapXAxisLables: shouldWrapLabels,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2074,7 +2200,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
       enableReflow: false,
       ...commonProps,
       ...yMinMax,
@@ -2136,6 +2261,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             y: yValue,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            ...(series.text?.[i] ? { barLabel: series.text[i].toString() } : {}),
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
@@ -2166,6 +2292,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
@@ -2288,6 +2416,53 @@ export const transformPlotlyJsonToHeatmapProps = (
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
+  // Build a 2D array of annotations based on their grid position
+  const annotationGrid: (string | undefined)[][] = [];
+  const rawAnnotations = input.layout?.annotations;
+
+  if (rawAnnotations) {
+    const annotationsArray = Array.isArray(rawAnnotations) ? rawAnnotations : [rawAnnotations];
+
+    // Collect all unique x and y values from valid annotations
+    const xSet = new Set<number>();
+    const ySet = new Set<number>();
+    const validAnnotations: Array<{ x: number; y: number; text: string }> = [];
+
+    annotationsArray.forEach((a: PlotlyAnnotation) => {
+      if (
+        a &&
+        typeof a.x === 'number' &&
+        typeof a.y === 'number' &&
+        typeof a.text === 'string' &&
+        (a.xref === 'x' || a.xref === undefined) &&
+        (a.yref === 'y' || a.yref === undefined)
+      ) {
+        xSet.add(a.x);
+        ySet.add(a.y);
+        validAnnotations.push({ x: a.x, y: a.y, text: cleanText(a.text) });
+      }
+    });
+
+    if (validAnnotations.length > 0) {
+      // Get sorted unique x and y values
+      const xValues = Array.from(xSet).sort((a, b) => a - b);
+      const yValues = Array.from(ySet).sort((a, b) => a - b);
+
+      // Initialize 2D grid and populate
+      validAnnotations.forEach(annotation => {
+        const xIdx = xValues.indexOf(annotation.x);
+        const yIdx = yValues.indexOf(annotation.y);
+        if (!annotationGrid[yIdx]) {
+          annotationGrid[yIdx] = [];
+        }
+        annotationGrid[yIdx][xIdx] = annotation.text;
+      });
+    }
+  }
+
+  // Helper function to get annotation from 2D grid by index
+  const getAnnotationByIndex = (xIdx: number, yIdx: number): string | undefined => annotationGrid[yIdx]?.[xIdx];
+
   if (firstData.type === 'histogram2d') {
     const xValues: (string | number)[] = [];
     const yValues: (string | number)[] = [];
@@ -2336,11 +2511,13 @@ export const transformPlotlyJsonToHeatmapProps = (
           isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
         );
 
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
+
         heatmapDataPoints.push({
           x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
           y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2350,16 +2527,31 @@ export const transformPlotlyJsonToHeatmapProps = (
       });
     });
   } else {
-    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+    // If x and y are not provided, generate indices based on z dimensions
+    const zArray = firstData.z as number[][];
+    const xValues = firstData.x as Datum[] | undefined;
+    const yValues = firstData.y as Datum[] | undefined;
+
+    // Determine the dimensions from z array
+    const yLength = zArray?.length ?? 0;
+    const xLength = zArray?.[0]?.length ?? 0;
+
+    // Use provided x/y values or generate indices
+    const xData = xValues ?? Array.from({ length: xLength }, (_, i) => i);
+    const yData = yValues ?? Array.from({ length: yLength }, (_, i) => yLength - 1 - i);
+
+    xData.forEach((xVal, xIdx: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      firstData.y?.forEach((yVal: any, yIdx: number) => {
-        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+      yData.forEach((yVal: any, yIdx: number) => {
+        const zVal = zArray?.[yIdx]?.[xIdx];
+
+        const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
           x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
           y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2431,7 +2623,6 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
     ...getAxisTickProps(input.data, input.layout),
@@ -2468,6 +2659,14 @@ export const transformPlotlyJsonToSankeyProps = (
     colorMap,
     isDarkTheme,
   );
+  const extractedLinkColors = extractColor(
+    input.layout?.template?.layout?.colorway,
+    colorwayType,
+    link?.color,
+    colorMap,
+    isDarkTheme,
+  );
+
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
       const color = resolveColor(
@@ -2487,8 +2686,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     links: validLinks.map((validLink: any, index: number) => {
+      const color = resolveColor(
+        extractedLinkColors,
+        index,
+        validLink.target,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       return {
         ...validLink,
+        color,
       };
     }),
   } as ISankeyChartData;
@@ -2966,154 +3174,109 @@ export const transformPlotlyJsonToFunnelChartProps = (
   };
 };
 
-export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
-  const projection: PlotlySchema = { ...input };
+export const transformPlotlyJsonToPolarChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.RefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IPolarChartProps => {
+  const polarData: IPolarChartProps['data'] = [];
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const resolveRValue = getAxisValueResolver(getPolarAxis(input.data, 'r', input.layout)._type);
 
-  // Find the global min and max radius across all series
-  let minRadius = 0;
-  let maxRadius = 0;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const rVals = (input.data[sindex] as Partial<PlotData>).r;
-    if (rVals && isArrayOrTypedArray(rVals)) {
-      for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-        if (!isInvalidValue(rVals[ptindex])) {
-          minRadius = Math.min(minRadius, rVals[ptindex] as number);
-          maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
-        }
-      }
-    }
-  }
+  input.data.forEach((series: Partial<PlotData>, index: number) => {
+    const legend = legends[index];
 
-  // If there are negative radii, compute the shift
-  const radiusShift = minRadius < 0 ? -minRadius : 0;
+    if (series.type === 'scatterpolar') {
+      const isAreaTrace = series.fill === 'toself' || series.fill === 'tonext';
+      const isLineTrace = typeof series.mode === 'undefined' ? true : series.mode.includes('lines');
+      const colors = isAreaTrace ? series.fillcolor : isLineTrace ? series.line?.color : series.marker?.color;
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        colors,
+        colorMap,
+        isDarkTheme,
+      );
+      const seriesColor = resolveColor(
+        extractedColors,
+        index,
+        legend,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
+      const seriesOpacity = getOpacity(series, index);
+      const finalSeriesColor = rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8();
+      const lineOptions = getLineOptions(series.line);
+      const thetaUnit = (series as { thetaunit?: 'radians' | 'degrees' | 'gradians' }).thetaunit;
 
-  // Collect all unique theta values from all scatterpolar series for equal spacing
-  const allThetaValues: Set<string> = new Set();
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    if (series.theta && isArrayOrTypedArray(series.theta)) {
-      series.theta.forEach(theta => allThetaValues.add(String(theta)));
-    }
-  }
+      const commonProps = {
+        legend,
+        legendShape: getLegendShape(series),
+        color: finalSeriesColor,
+        data:
+          series.r
+            ?.map((r, rIndex) => {
+              const theta = series.theta?.[rIndex];
+              const markerSize = Array.isArray(series.marker?.size) ? series.marker.size[rIndex] : series.marker?.size;
+              const text = Array.isArray(series.text) ? series.text[rIndex] : series.text;
+              const markerColor = resolveColor(
+                extractedColors,
+                rIndex,
+                legend,
+                colorMap,
+                input.layout?.template?.layout?.colorway,
+                isDarkTheme,
+              );
+              const markerOpacity = getOpacity(series, rIndex);
 
-  // Project all points and create a perfect square domain
-  const allX: number[] = [];
-  const allY: number[] = [];
-  let originX: number | null = null;
-  for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
-    if (isArrayOrTypedArray(series.theta)) {
-      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
-    }
-    series.x = [] as Datum[];
-    series.y = [] as Datum[];
-    const thetas = series.theta!;
-    const rVals = series.r!;
+              if (isInvalidValue(resolveRValue(r)) || isInvalidValue(theta)) {
+                return;
+              }
 
-    // Skip if rVals or thetas are not arrays
-    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
-      projection.data[sindex] = series;
-      continue;
-    }
+              return {
+                r: resolveRValue(r)!,
+                theta:
+                  typeof theta === 'number'
+                    ? thetaUnit === 'radians'
+                      ? (theta * 180) / Math.PI
+                      : thetaUnit === 'gradians'
+                      ? theta * 0.9
+                      : theta
+                    : (theta as string),
+                color: markerColor ? rgb(markerColor).copy({ opacity: markerOpacity }).formatHex8() : finalSeriesColor,
+                ...(typeof markerSize !== 'undefined' ? { markerSize } : {}),
+                ...(typeof text !== 'undefined' ? { text } : {}),
+              };
+            })
+            .filter(item => typeof item !== 'undefined') || [],
+      };
 
-    // retrieve polar axis settings
-    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
-    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
-
-    // Compute tick positions if categorical
-    let uniqueTheta: Datum[] = [];
-    let categorical = false;
-    if (!isNumberArray(thetas)) {
-      uniqueTheta = Array.from(new Set(thetas));
-      categorical = true;
-    }
-
-    for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
-      if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
-        continue;
-      }
-
-      // Map theta to angle in radians
-      let thetaRad: number;
-      if (categorical) {
-        const idx = uniqueTheta.indexOf(thetas[ptindex]);
-        const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = startAngleInRad + dirMultiplier * idx * step;
+      if (isAreaTrace || isLineTrace) {
+        polarData.push({
+          type: isAreaTrace ? 'areapolar' : 'linepolar',
+          ...commonProps,
+          lineOptions,
+        });
       } else {
-        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
-      }
-      // Shift only the polar origin (not the cartesian)
-      const rawRadius = rVals[ptindex] as number;
-      const polarRadius = rawRadius + radiusShift; // Only for projection
-      // Calculate cartesian coordinates (with shifted polar origin)
-      const x = polarRadius * Math.cos(thetaRad);
-      const y = polarRadius * Math.sin(thetaRad);
-
-      // Calculate the cartesian coordinates of the original polar origin (0,0)
-      // This is the point that should be mapped to (0,0) in cartesian coordinates
-      if (sindex === 0 && ptindex === 0) {
-        // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
-        // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
-        originX = radiusShift;
-      }
-
-      series.x.push(x);
-      series.y.push(y);
-      allX.push(x);
-      allY.push(y);
-    }
-
-    // Map text to each data point for downstream chart rendering
-    if (series.x && series.y) {
-      (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
-        x: xVal,
-        y: (series.y as number[])[idx],
-        ...(series.text ? { text: (series.text as string[])[idx] } : {}),
-      }));
-    }
-
-    projection.data[sindex] = series;
-  }
-
-  // 7. Recenter all cartesian coordinates
-  if (originX !== null) {
-    for (let sindex = 0; sindex < projection.data.length; sindex++) {
-      const series = projection.data[sindex] as Partial<PlotData>;
-      if (series.x && series.y) {
-        series.x = (series.x as number[]).map((v: number) => v - originX!);
+        polarData.push({
+          type: 'scatterpolar',
+          ...commonProps,
+        });
       }
     }
-    // Also recenter allX for normalization
-    for (let i = 0; i < allX.length; i++) {
-      allX[i] = allX[i] - originX!;
-    }
-  }
+  });
 
-  // 8. Find the maximum absolute value among all x and y
-  let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
-  maxAbs = maxAbs === 0 ? 1 : maxAbs;
-
-  // 9. Rescale all points so that the largest |x| or |y| is 0.5
-  for (let sindex = 0; sindex < projection.data.length; sindex++) {
-    const series = projection.data[sindex] as Partial<PlotData>;
-    if (series.x && series.y) {
-      series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
-      series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
-    }
-  }
-
-  // 10. Customize layout for perfect square with absolute positioning
-  const size = input.layout?.width || input.layout?.height || 500;
-  projection.layout = {
-    ...projection.layout,
-    width: size,
-    height: size,
+  return {
+    data: polarData,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 400,
+    hideLegend,
+    ...getPolarAxisProps(input.data, input.layout),
+    //  ...getTitles(input.layout),
   };
-  // Attach originX as custom properties
-  (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
-
-  return projection;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -3478,7 +3641,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie', 'annotation'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation', 'table', 'gauge', 'funnel'].includes(chartType);
 };
 
 export const getGridProperties = (
@@ -3486,8 +3649,8 @@ export const getGridProperties = (
   isMultiPlot: boolean,
   validTracesInfo: TraceInfo[],
 ): GridProperties => {
-  const domainX: DomainInterval[] = [];
-  const domainY: DomainInterval[] = [];
+  const domainX: ExtDomainInterval[] = [];
+  const domainY: ExtDomainInterval[] = [];
   let cartesianDomains = 0;
   type AnnotationProps = {
     xAnnotation?: string;
@@ -3513,9 +3676,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
         }
         const xAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainXInfo: DomainInterval = {
+        const domainXInfo: ExtDomainInterval = {
           start: xAxisLayout?.domain ? xAxisLayout.domain[0] : 0,
           end: xAxisLayout?.domain ? xAxisLayout.domain[1] : 1,
+          cellName: `x${domainX.length === 0 ? '' : domainX.length + 1}` as XAxisName,
         };
         domainX.push(domainXInfo);
       } else if (key.startsWith('yaxis')) {
@@ -3530,9 +3694,10 @@ export const getGridProperties = (
           throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
         }
         const yAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
-        const domainYInfo: DomainInterval = {
+        const domainYInfo: ExtDomainInterval = {
           start: yAxisLayout?.domain ? yAxisLayout.domain[0] : 0,
           end: yAxisLayout?.domain ? yAxisLayout.domain[1] : 1,
+          cellName: `x${domainY.length === 0 ? '' : domainY.length + 1}` as XAxisName,
         };
         domainY.push(domainYInfo);
       }
@@ -3543,13 +3708,15 @@ export const getGridProperties = (
   validTracesInfo.forEach((trace, index) => {
     if (isNonPlotType(trace.type)) {
       const series = schema?.data?.[index] as Partial<PieData> | Partial<SankeyData>;
-      const domainXInfo: DomainInterval = {
+      const domainXInfo: ExtDomainInterval = {
         start: series.domain?.x ? series.domain.x[0] : 0,
         end: series.domain?.x ? series.domain.x[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainX.length - cartesianDomains + 1}`,
       };
-      const domainYInfo: DomainInterval = {
+      const domainYInfo: ExtDomainInterval = {
         start: series.domain?.y ? series.domain.y[0] : 0,
         end: series.domain?.y ? series.domain.y[1] : 1,
+        cellName: `${NON_PLOT_KEY_PREFIX}${domainY.length - cartesianDomains + 1}`,
       };
       domainX.push(domainXInfo);
       domainY.push(domainYInfo);
@@ -3557,6 +3724,23 @@ export const getGridProperties = (
   });
 
   if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
+    Object.keys(layout ?? {}).forEach(key => {
+      if (key.startsWith('polar')) {
+        const polarLayout = layout[key as keyof Layout] as Partial<PolarLayout>;
+        const domainXInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.x ? polarLayout.domain.x[0] : 0,
+          end: polarLayout.domain?.x ? polarLayout.domain.x[1] : 1,
+          cellName: key,
+        };
+        const domainYInfo: ExtDomainInterval = {
+          start: polarLayout.domain?.y ? polarLayout.domain.y[0] : 0,
+          end: polarLayout.domain?.y ? polarLayout.domain.y[1] : 1,
+          cellName: key,
+        };
+        domainX.push(domainXInfo);
+        domainY.push(domainYInfo);
+      }
+    });
     layout.annotations?.forEach(annotation => {
       const xMatches = domainX.flatMap((interval, idx) =>
         (annotation?.x as number) >= interval.start && (annotation?.x as number) <= interval.end ? [idx] : [],
@@ -3582,7 +3766,7 @@ export const getGridProperties = (
   }
 
   if (domainX.length > 0) {
-    const uniqueXIntervals = new Map<string, DomainInterval>();
+    const uniqueXIntervals = new Map<string, ExtDomainInterval>();
     domainX.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueXIntervals.has(key)) {
@@ -3597,11 +3781,6 @@ export const getGridProperties = (
     templateColumns = `repeat(${sortedXStart.length}, 1fr)`;
 
     domainX.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
-
       const columnIndex = sortedXStart.findIndex(start => start === interval.start);
       const columnNumber = columnIndex + 1; // Column numbers are 1-based
 
@@ -3615,12 +3794,12 @@ export const getGridProperties = (
         xDomain: interval,
         yDomain: { start: 0, end: 1 }, // Default yDomain for x-axis
       };
-      gridLayout[cellName] = row;
+      gridLayout[interval.cellName] = row;
     });
   }
 
   if (domainY.length > 0) {
-    const uniqueYIntervals = new Map<string, DomainInterval>();
+    const uniqueYIntervals = new Map<string, ExtDomainInterval>();
     domainY.forEach(interval => {
       const key = `${interval.start}-${interval.end}`;
       if (!uniqueYIntervals.has(key)) {
@@ -3636,17 +3815,12 @@ export const getGridProperties = (
     templateRows = `repeat(${numberOfRows}, 1fr)`;
 
     domainY.forEach((interval, index) => {
-      const cellName =
-        index >= cartesianDomains
-          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
-          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
-
       const rowIndex = sortedYStart.findIndex(start => start === interval.start);
       const rowNumber = numberOfRows - rowIndex; // Rows are 1-based and we need to reverse the order for CSS grid
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
 
-      const cell = gridLayout[cellName];
+      const cell = gridLayout[interval.cellName];
 
       if (cell !== undefined) {
         cell.row = rowNumber;
@@ -3837,17 +4011,25 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
     const axType = getAxisType(data, ax);
 
+    if (axId === 'x' && axType === 'category') {
+      props.xAxis = {
+        tickLayout: 'auto',
+      };
+    }
+
     if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
       const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
 
       if (axId === 'x') {
         props.tickValues = tickValues;
         props.xAxis = {
+          ...props.xAxis,
           tickText: ax.ticktext,
         };
       } else if (axId === 'y') {
         props.yAxisTickValues = tickValues;
         props.yAxis = {
+          ...props.yAxis,
           tickText: ax.ticktext,
         };
       }
@@ -3860,11 +4042,13 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
       if (axId === 'x') {
         props.xAxis = {
+          ...props.xAxis,
           tickStep: dtick,
           tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
+          ...props.yAxis,
           tickStep: dtick,
           tick0,
         };
@@ -4055,4 +4239,133 @@ const getAxisValueResolver = (axType: AxisType, dateParser?: (v: string | number
         return null;
     }
   };
+};
+
+type PolarDataKey = 'r' | 'theta';
+interface IPolarAxisObject extends Partial<LayoutAxis> {
+  _type: AxisType;
+  _dataKey: PolarDataKey;
+}
+
+const POLAR_AXIS_BY_DATA_KEY: Record<PolarDataKey, 'radialAxis' | 'angularAxis'> = {
+  r: 'radialAxis',
+  theta: 'angularAxis',
+};
+export const DEFAULT_POLAR_SUBPLOT = 'polar';
+
+const getPolarLayout = (
+  trace: Partial<PlotData>,
+  layout: Partial<Layout> | undefined,
+): Partial<PolarLayout> | undefined => {
+  const subplotId = ((trace as { subplot?: string })?.subplot || DEFAULT_POLAR_SUBPLOT) as keyof Layout;
+  return layout?.[subplotId];
+};
+
+const getValidAxisValues = (data: Data[], dataKey: PolarDataKey): Datum[] => {
+  const values: Datum[] = [];
+  data.forEach((series: Partial<PlotData>) => {
+    if (isArrayOrTypedArray(series[dataKey])) {
+      (series[dataKey] as Datum[]).forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    }
+  });
+  return values;
+};
+
+const getPolarAxisType = (data: Data[], dataKey: PolarDataKey, declaredType: AxisType | undefined): AxisType => {
+  if (['linear', 'log', 'date', 'category'].includes(declaredType ?? '')) {
+    return declaredType!;
+  }
+
+  const values = getValidAxisValues(data, dataKey);
+  if (isNumberArray(values) && !isYearArray(values)) {
+    return 'linear';
+  }
+  if (isDateArray(values)) {
+    return 'date';
+  }
+  return 'category';
+};
+
+const getPolarAxis = (data: Data[], dataKey: PolarDataKey, layout: Partial<Layout> | undefined): IPolarAxisObject => {
+  const polarLayout = getPolarLayout(data[0] as Partial<PlotData>, layout);
+  const ax = polarLayout?.[POLAR_AXIS_BY_DATA_KEY[dataKey].toLowerCase() as 'radialaxis' | 'angularaxis'];
+  return {
+    ...ax,
+    _dataKey: dataKey,
+    _type: getPolarAxisType(data, dataKey, ax?.type),
+  };
+};
+
+const getPolarAxisTickProps = (data: Data[], ax: IPolarAxisObject): PolarAxisProps => {
+  const props: PolarAxisProps = {};
+
+  if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+    const tickValues = ax._type === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
+
+    props.tickValues = tickValues;
+    props.tickText = ax.ticktext;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+    const dtick = plotlyDtick(ax.dtick, ax._type);
+    const tick0 = plotlyTick0(ax.tick0, ax._type, dtick);
+
+    props.tickStep = dtick;
+    props.tick0 = tick0;
+    return props;
+  }
+
+  if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
+    props.tickCount = ax.nticks;
+  }
+
+  return props;
+};
+
+const getPolarAxisCategoryOrder = (data: Data[], ax: IPolarAxisObject) => {
+  if (ax._type !== 'category') {
+    return 'data';
+  }
+
+  const isValidArray = isArrayOrTypedArray(ax.categoryarray) && ax.categoryarray!.length > 0;
+  if (isValidArray && (!ax.categoryorder || ax.categoryorder === 'array')) {
+    return ax.categoryarray;
+  }
+
+  if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+    const values = getValidAxisValues(data, ax._dataKey);
+    const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+    return ax.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
+  }
+
+  return ax.categoryorder;
+};
+
+const getPolarAxisProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const props: Partial<IPolarChartProps> = {};
+
+  (Object.keys(POLAR_AXIS_BY_DATA_KEY) as PolarDataKey[]).forEach(dataKey => {
+    const propName = POLAR_AXIS_BY_DATA_KEY[dataKey];
+    const ax = getPolarAxis(data, dataKey, layout);
+
+    props[propName] = {
+      scaleType: ax._type === 'log' ? 'log' : 'default',
+      categoryOrder: getPolarAxisCategoryOrder(data, ax),
+      tickFormat: ax.tickformat,
+      ...getPolarAxisTickProps(data, ax),
+      ...(isArrayOrTypedArray(ax.range) ? { rangeStart: ax.range![0], rangeEnd: ax.range![1] } : {}),
+    };
+
+    if (propName === 'angularAxis') {
+      props[propName].unit = (ax as { thetaunit?: 'radians' | 'degrees' }).thetaunit;
+      props.direction = ax.direction;
+    }
+  });
+
+  return props;
 };

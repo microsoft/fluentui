@@ -20,10 +20,6 @@
     "just": "just-scripts",
     "lint": "just-scripts lint"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/react-icons-mdl2": "^1.4.3",

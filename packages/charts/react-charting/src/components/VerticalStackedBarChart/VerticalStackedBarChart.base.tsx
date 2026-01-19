@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
@@ -45,7 +44,6 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -132,7 +130,6 @@ export class VerticalStackedBarChartBase
   private _isRtl: boolean = getRTL();
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
-  private _tooltipId: string;
   private _yMax: number;
   private _yMin: number;
   private _calloutAnchorPoint: CalloutAnchorPointData | null;
@@ -172,7 +169,6 @@ export class VerticalStackedBarChartBase
     });
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
-    this._tooltipId = getId('VSBCTooltipId_');
     if (!this._isChartEmpty()) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
@@ -1151,18 +1147,31 @@ export class VerticalStackedBarChartBase
           role: 'img',
         };
       let showLabel = false;
-      let barLabel = 0;
+      let barLabel: string | number = 0;
+      let selectedBarTotalValue: number = 0;
+      let customBarLabel: string | undefined = undefined;
       if (!this.props.hideLabels && this._yAxisType !== YAxisType.StringAxis) {
+        // Collect all bars with barLabel that match the legend filter
+        const barLabelsToDisplay = barsToDisplay.filter(
+          point => point.barLabel && (this._noLegendHighlighted() || this._isLegendHighlighted(point.legend)),
+        );
+        // For stacked bars, we want to show the total of the stack, not individual bar labels
+        // Only use customBarLabel if there's exactly one bar with a label in the stack
+        if (barLabelsToDisplay.length === 1) {
+          customBarLabel = barLabelsToDisplay[0].barLabel!;
+        }
         if (this._noLegendHighlighted()) {
           showLabel = true;
-          barLabel = barTotalValue;
+          barLabel = customBarLabel ?? barTotalValue;
+          selectedBarTotalValue = barTotalValue;
         } else {
           barsToDisplay.forEach(point => {
             if (this._isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data as number;
+              selectedBarTotalValue += point.data as number;
             }
           });
+          barLabel = customBarLabel ?? selectedBarTotalValue;
         }
       }
       return (
@@ -1184,14 +1193,16 @@ export class VerticalStackedBarChartBase
             <text
               x={xPoint + this._barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={selectedBarTotalValue >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {typeof this.props.yAxisTickFormat === 'function'
+              {typeof barLabel === 'string'
+                ? barLabel
+                : typeof this.props.yAxisTickFormat === 'function'
                 ? this.props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>
@@ -1199,28 +1210,6 @@ export class VerticalStackedBarChartBase
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
-
     return bars.filter((bar): bar is JSXElement => !!bar);
   };
 

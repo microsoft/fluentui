@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
-import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { DividerProps, DividerState } from './Divider.types';
+import { useDividerBase_unstable } from './useDividerBase';
 
 /**
  * Returns the props and state required to render the component
@@ -8,41 +10,19 @@ import type { DividerProps, DividerState } from './Divider.types';
  * @param ref - User-provided ref to be passed to the Divider component.
  */
 export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
-  const { alignContent = 'center', appearance = 'default', inset = false, vertical = false, wrapper } = props;
-  const dividerId = useId('divider-');
+  const { alignContent = 'center', appearance = 'default', inset = false, vertical = false, ...rest } = props;
+
+  const state = useDividerBase_unstable(rest, ref);
 
   return {
-    // Props passed at the top-level
     alignContent,
     appearance,
     inset,
     vertical,
-
-    // Slots definition
-    components: {
-      root: 'div',
-      wrapper: 'div',
+    ...state,
+    root: {
+      ...state.root,
+      'aria-orientation': vertical ? 'vertical' : 'horizontal',
     },
-
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        role: 'separator',
-        'aria-orientation': vertical ? 'vertical' : 'horizontal',
-        'aria-labelledby': props.children ? dividerId : undefined,
-        ...props,
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
-      } as const),
-      { elementType: 'div' },
-    ),
-    wrapper: slot.always(wrapper, {
-      defaultProps: {
-        id: dividerId,
-        children: props.children,
-      },
-      elementType: 'div',
-    }),
   };
 };

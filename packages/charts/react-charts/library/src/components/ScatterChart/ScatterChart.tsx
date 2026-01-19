@@ -43,7 +43,6 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -69,7 +68,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const _circleId: string = useId('circle');
   const _seriesId: string = useId('seriesID');
   const _verticalLine: string = useId('verticalLine');
-  const _tooltipId: string = useId('ScatterChartTooltipId_');
   const _firstRenderOptimization = true;
   const _emptyChartId: string = useId('_ScatterChart_empty');
   let _points: ScatterChartDataWithIndex[] = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
@@ -393,10 +391,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           yScalePrimary: _yAxisScale,
           xScaleType: props.xScaleType,
           yScaleType: props.yScaleType,
-          xMinValue: props.xMinValue,
-          xMaxValue: props.xMaxValue,
-          yMinValue: props.yMinValue,
-          yMaxValue: props.yMaxValue,
         })
       : 0;
 
@@ -519,27 +513,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           {pointsForSeries}
         </g>,
       );
-    }
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(_xAxisScale);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }

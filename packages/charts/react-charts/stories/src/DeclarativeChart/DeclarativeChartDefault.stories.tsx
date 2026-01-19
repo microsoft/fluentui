@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { DeclarativeChart, IDeclarativeChart, Schema } from '@fluentui/react-charts';
 import {
+  Button,
   Dropdown,
   Field,
   Input,
@@ -158,18 +159,7 @@ const DEFAULT_SCHEMAS = [
 const dropdownStyles = { width: 200 };
 const inputStyles = { maxWidth: 300 };
 
-const cachedFetch = (url: string) => {
-  const cachedData = localStorage.getItem(url);
-  if (cachedData) {
-    return Promise.resolve(JSON.parse(cachedData));
-  }
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem(url, JSON.stringify(data));
-      return data;
-    });
-};
+type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
 export const DeclarativeChartBasicExample = (): JSXElement => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
@@ -185,7 +175,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
   const [fluentDataVizColorPalette, setFluentDataVizColorPalette] =
     React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
-  const [isLoading, setLoading] = React.useState(false);
+  const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
 
   React.useEffect(() => {
     doc?.addEventListener('contextmenu', e => {
@@ -193,28 +183,33 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     });
   }, [doc]);
 
-  React.useEffect(() => {
-    const loadSchemas = async () => {
-      setLoading(true);
-      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-      const _schemas: { key: string; schema: any }[] = [];
-      for (let i = 1; i <= 80; i++) {
-        try {
-          const filename = `data_${('00' + i).slice(-3)}`;
-          const schema = await cachedFetch(
-            `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/apps/plotly_examples/src/data/${filename}.json`,
-          );
-          _schemas.push({ key: filename, schema });
-        } catch (error) {
-          // Nothing to do here
-        }
-      }
-      loadedSchemas.current = _schemas;
-      setLoading(false);
-    };
-
-    loadSchemas();
+  const loadSchemas = React.useCallback(async (startLoadingState: LoadingState = 'loading') => {
+    setLoadingState(startLoadingState);
+    let disableLoadMore = false;
+    const offset = loadedSchemas.current.length;
+    const promises = Array.from({ length: 100 }, (_, index) => {
+      const id = offset + index + 1;
+      const filename = `data_${id < 100 ? ('00' + id).slice(-3) : id}`;
+      return fetch(
+        `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/apps/plotly_examples/src/data/${filename}.json`,
+      )
+        .then(response => {
+          if (response.status === 404) {
+            disableLoadMore = true;
+            return null;
+          }
+          return response.json();
+        })
+        .then(schema => ({ key: filename, schema }))
+        .catch(() => ({ key: filename, schema: {} }));
+    });
+    loadedSchemas.current.push(...(await Promise.all(promises)).filter(item => item.schema !== null));
+    setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
   }, []);
+
+  React.useEffect(() => {
+    loadSchemas('initial');
+  }, [loadSchemas]);
 
   const getSchemaByKey = React.useCallback(
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -225,24 +220,47 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     [showMore],
   );
 
+  const applySelection = React.useCallback(
+    (option: { key: string; text: string } | undefined) => {
+      if (!option) {
+        return;
+      }
+      setSelectedOptions([option.key]);
+      setDropdownValue(option.text);
+      const schema = getSchemaByKey(option.key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+    },
+    [getSchemaByKey],
+  );
+
   React.useEffect(() => {
-    if (showMore && (isLoading || loadedSchemas.current.length === 0)) {
+    if (!showMore) {
+      setOptions(DEFAULT_OPTIONS);
+      applySelection(DEFAULT_OPTIONS[0]);
+      return;
+    }
+    // showMore === true
+    if (loadingState === 'initial' || loadedSchemas.current.length === 0) {
       setOptions([]);
       setSelectedOptions([]);
       setDropdownValue('');
       setSelectedLegends('');
-    } else {
-      const _options = showMore
-        ? loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }))
-        : DEFAULT_OPTIONS;
-      setOptions(_options);
-      setSelectedOptions([_options[0].key]);
-      setDropdownValue(_options[0].text);
-      const selectedPlotlySchema = getSchemaByKey(_options[0].key);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      return;
     }
-  }, [showMore, isLoading, getSchemaByKey]);
+    const _options = loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }));
+    if (loadingState.includes('loaded')) {
+      setOptions(_options);
+    }
+    setSelectedOptions(prevSelectedOptions => {
+      if (prevSelectedOptions[0]?.includes('data_')) {
+        return prevSelectedOptions;
+      }
+      setDropdownValue(_options[0].text);
+      const schema = getSchemaByKey(_options[0].key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+      return [_options[0].key];
+    });
+  }, [showMore, loadingState, applySelection, getSchemaByKey]);
 
   const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowMore(ev.currentTarget.checked);
@@ -250,13 +268,9 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
 
   const onOptionSelect = React.useCallback(
     (ev: SelectionEvents, data: OptionOnSelectData) => {
-      setSelectedOptions(data.selectedOptions);
-      setDropdownValue(data.optionText ?? '');
-      const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      applySelection({ key: data.selectedOptions[0], text: data.optionText ?? '' });
     },
-    [getSchemaByKey],
+    [applySelection],
   );
 
   const onSelectedLegendsChange = React.useCallback(
@@ -293,7 +307,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
 
   const renderDeclarativeChart = React.useCallback(() => {
     if (showMore) {
-      if (isLoading) {
+      if (loadingState === 'initial') {
         return <Spinner label="Loading..." />;
       } else if (loadedSchemas.current.length === 0) {
         return <div>More examples could not be loaded.</div>;
@@ -325,7 +339,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
     );
   }, [
     showMore,
-    isLoading,
+    loadingState,
     selectedOptions,
     selectedLegends,
     getSchemaByKey,
@@ -336,7 +350,7 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
   return (
     <div>
       <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'end' }}>
         <Field label="Select a schema">
           <Dropdown
             value={dropdownValue}
@@ -351,6 +365,17 @@ export const DeclarativeChartBasicExample = (): JSXElement => {
             ))}
           </Dropdown>
         </Field>
+        {showMore && (
+          <div>
+            <Button
+              icon={loadingState.includes('loaded') ? undefined : <Spinner size="tiny" />}
+              onClick={() => loadSchemas()}
+              disabledFocusable={loadingState !== 'partially_loaded'}
+            >
+              {loadingState.includes('loaded') ? 'Load more' : 'Loading'}
+            </Button>
+          </div>
+        )}
         <Field label="Select a color palette">
           <Dropdown
             value={fluentDataVizColorPalette}

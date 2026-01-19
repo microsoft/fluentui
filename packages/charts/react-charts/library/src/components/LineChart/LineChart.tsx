@@ -33,7 +33,6 @@ import {
   ChartTypes,
   getXAxisType,
   XAxisTypes,
-  tooltipOfAxislabels,
   Points,
   pointTypes,
   getTypeOfAxis,
@@ -164,7 +163,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let lines: JSXElement[];
     let _renderedColorFillBars: JSXElement[];
     const _colorFillBars = React.useRef<ColorFillBarsProps[]>([]);
-    let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
     let _firstRenderOptimization = true;
@@ -551,10 +549,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
-              xMinValue: props.xMinValue,
-              xMaxValue: props.xMaxValue,
-              yMinValue: props.yMinValue,
-              yMaxValue: props.yMaxValue,
             })
           : 0;
         if (_points[i].data.length === 1) {
@@ -807,6 +801,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                     onFocus={event => _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k)}
                     onMouseOut={_handleMouseOut}
+                    role="img"
+                    aria-label={_points[i].data[k].text ?? _getAriaLabel(i, k)}
                   />,
                 );
               }
@@ -1341,27 +1337,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             {pointsForLine}
           </g>,
         );
-      }
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at x axis labels.
-      if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-        const xAxisElement = d3Select(xElement).call(_xAxisScale);
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: xAxisElement,
-        };
-        xAxisElement && tooltipOfAxislabels(tooltipProps);
       }
       return lines;
     }

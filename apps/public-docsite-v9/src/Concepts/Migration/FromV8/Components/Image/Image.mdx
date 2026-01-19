@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { Image } from '@fluentui/react-components';
 import { FitDifferences } from './FitDifferences';
 
@@ -163,20 +163,20 @@ const Component = () => {
 
 The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes.
 
-| v8                     | v9                                                                         |
-| ---------------------- | -------------------------------------------------------------------------- |
-| `height`               | `height`                                                                   |
-| `width`                | `width`                                                                    |
-| `className`            | `className`                                                                |
-| `coverStyle`           | `fit="cover"`                                                              |
-| `imageFit`             | `fit`                                                                      |
-| `maximizeFrame`        | `block`.                                                                   |
-| `styles`               | `className`                                                                |
-| `loading`              | Not supported -> use onLoad and onError events                             |
-| `onLoadingStateChange` | Not supported -> use onLoad and onError events                             |
-| `shouldFadeIn`         | Not supported -> implement animation via makeStyles and className + onLoad |
-| `shouldStartVisible`   | Not supported -> use onLoad and onError events                             |
-| `theme`                | Use `FluentProvider` to customize the theme                                |
+| v8                       | v9                                                                         |
+| ------------------------ | -------------------------------------------------------------------------- |
+| \`height\`               | \`height\`                                                                 |
+| \`width\`                | \`width\`                                                                  |
+| \`className\`            | \`className\`                                                              |
+| \`coverStyle\`           | \`fit="cover"\`                                                            |
+| \`imageFit\`             | \`fit\`                                                                    |
+| \`maximizeFrame\`        | \`block\`.                                                                 |
+| \`styles\`               | \`className\`                                                              |
+| \`loading\`              | Not supported -> use onLoad and onError events                             |
+| \`onLoadingStateChange\` | Not supported -> use onLoad and onError events                             |
+| \`shouldFadeIn\`         | Not supported -> implement animation via makeStyles and className + onLoad |
+| \`shouldStartVisible\`   | Not supported -> use onLoad and onError events                             |
+| \`theme\`                | Use \`FluentProvider\` to customize the theme                              |
 
 In v9, the boolean props from [IImageStyleProps](https://developer.microsoft.com/en-us/fluentui#/controls/web/image#IImageStyleProps)
 — such as `isCenter`, `isCenterCover`, `isCenterContain`, `isContain`, `isLandscape`, `isNone`, `isError`, `isLoaded`, and `isNotImageFit` — are no longer supported.

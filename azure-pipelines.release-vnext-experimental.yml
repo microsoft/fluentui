@@ -1,0 +1,124 @@
+pr: none
+trigger: none
+
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: true
+
+# Customize build number to include major version
+# Example: v9_20201022.1
+name: 'v9_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: release.vnext # Used to scope beachball to release only vnext packages
+    value: true
+  - name: tags
+    value: production,externalfacing
+
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
+
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                displayName: Configure git user (used by beachball)
+
+              - task: Bash@3
+                name: validation
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    BRANCH="$(Build.SourceBranch)"
+                    if [[ ! $BRANCH =~ refs/heads/experimental/ ]]; then
+                      echo "##vso[task.logissue type=error]Branch '$BRANCH' must start with 'refs/heads/experimental/'"
+                      exit 1
+                    fi
+                    FEATURE_NAME=${BRANCH#refs/heads/experimental/}
+                    echo "##vso[task.setvariable variable=featureName;isOutput=true]$FEATURE_NAME"
+                    echo "Feature name: $FEATURE_NAME"
+                displayName: Validate branch and extract feature name
+
+              - script: |
+                  yarn install --frozen-lockfile
+                displayName: Install dependencies
+
+                # Deletes all existing changefiles so that only bump that happens is for nightly
+              - script: |
+                  rm -f change/*
+                displayName: 'Delete existing changefiles'
+
+                # Bumps all v9 packages to a x.x.x-experimental.<feature>.<date>-<hash> version and checks in change files
+                # x.x.x is derived from the current version @fluentui/react-components package.json
+              - script: |
+                  FEATURE_NAME=$(validation.featureName)
+                  BASE_VERSION=$(node -p "require('./packages/react-components/react-components/package.json').version")
+                  DATE=$(date +"%Y%m%d")
+                  HASH=$(git rev-parse --short HEAD)
+                  NEW_VERSION="${BASE_VERSION}-experimental.${FEATURE_NAME}.${DATE}-${HASH}"
+
+                  echo "Target version: ${NEW_VERSION}"
+
+                  yarn nx g @fluentui/workspace-plugin:version-bump --all --explicitVersion "${NEW_VERSION}"
+                  git add .
+                  git commit -m "bump experimental versions to ${NEW_VERSION}"
+                  yarn change --type prerelease --message "Release ${NEW_VERSION}" --dependent-change-type "prerelease"
+                displayName: 'Bump and commit experimental versions'
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting" --nxBail
+                displayName: build
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting" --nxBail
+                displayName: lint
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting" --nxBail
+                displayName: test
+
+              - script: |
+                  yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
+                  git reset --hard origin/$(Build.SourceBranchName)
+                displayName: Publish changes and bump versions
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
+
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false

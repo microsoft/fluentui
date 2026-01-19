@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-dialog): update Scale param from \"fromScale\" to \"outScale\"",
+  "packageName": "@fluentui/react-dialog",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -15,13 +15,8 @@
     "e2e:local": "cypress open --component"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/storybook": "*",
     "@types/d3-format": "^3.0.0",
-    "@types/d3-fetch": "^3.0.1",
-    "@fluentui/scripts-webpack": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@types/d3-fetch": "^3.0.1"
   },
   "dependencies": {
     "@fluentui/azure-themes": "^8.6.146",
@@ -33,8 +28,8 @@
     "@fluentui/merge-styles": "^8.6.14",
     "@fluentui/react": "^8.125.3",
     "@fluentui/react-cards": "^0.207.3",
-    "@fluentui/react-charting": "^5.25.4",
-    "@fluentui/react-docsite-components": "^8.16.0",
+    "@fluentui/react-charting": "^5.25.5",
+    "@fluentui/react-docsite-components": "^8.16.1",
     "@fluentui/react-experiments": "^8.16.3",
     "@fluentui/react-file-type-icons": "^8.15.3",
     "@fluentui/react-focus": "^8.10.3",

@@ -67,7 +67,7 @@ const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
   easing: curveOvershootFirmOut,
   exitEasing: curveOvershootFirmInOut,
-  fromScale: 0.5,
+  outScale: 0.5,
 });
 
 const LoremIpsum = () => (

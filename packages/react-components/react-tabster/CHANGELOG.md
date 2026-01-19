@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 11 Nov 2025 19:18:11 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.11)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.10..@fluentui/react-tabster_v9.26.11)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
 
 ## [9.26.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.10)
 

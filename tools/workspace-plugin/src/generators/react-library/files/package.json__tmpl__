@@ -18,12 +18,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@<%= npmScope %>/eslint-plugin": "*",
-    "@<%= npmScope %>/react-conformance": "*",
-    "@<%= npmScope %>/react-conformance-griffel": "*",
-    "@<%= npmScope %>/scripts-api-extractor": "*"
-  },
   "dependencies": {
     "@<%= npmScope %>/react-jsx-runtime": "",
     "@<%= npmScope %>/react-shared-contexts": "",

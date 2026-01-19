@@ -210,6 +210,12 @@ export interface VerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -249,6 +255,11 @@ export interface HorizontalBarChartWithAxisDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -631,6 +642,12 @@ export interface VSChartDataPoint {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -741,6 +758,11 @@ export interface GVBarChartSeriesPoint {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 }
 
 /**
@@ -1249,4 +1271,109 @@ export interface LineSeries<X extends string | number | Date, Y extends string |
    * Callback invoked when the line itself is clicked.
    */
   onLineClick?: () => void;
+}
+
+/**
+ * Represents a single data point in a polar series.
+ */
+export interface PolarDataPoint {
+  /**
+   * Radial value of the data point.
+   */
+  r: string | number | Date;
+
+  /**
+   * Angular value of the data point, specified as a category or in degrees.
+   */
+  theta: string | number;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the radial axis value.
+   */
+  radialAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the angular axis value.
+   */
+  angularAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Represents a scatterpolar series.
+ */
+export interface ScatterPolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'scatterpolar' for this series.
+   */
+  type: 'scatterpolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+}
+
+/**
+ * Represents a linepolar series.
+ */
+export interface LinePolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'linepolar' for this series.
+   */
+  type: 'linepolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
+}
+
+/**
+ * Represents a areapolar series.
+ */
+export interface AreaPolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'areapolar' for this series.
+   */
+  type: 'areapolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
 }

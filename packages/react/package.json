@@ -27,17 +27,7 @@
     "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/example-data": "*",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/webpack-utilities": "*",
-    "office-ui-fabric-core": "^11.0.0",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "office-ui-fabric-core": "^11.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.6.11",
