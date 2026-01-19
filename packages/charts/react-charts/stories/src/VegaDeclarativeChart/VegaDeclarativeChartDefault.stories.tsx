@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VegaDeclarativeChart } from '../../../library/src/components/VegaDeclarativeChart';
 import {
+  Button,
   Dropdown,
   Field,
   Input,
@@ -8,10 +9,12 @@ import {
   Option,
   OptionOnSelectData,
   SelectionEvents,
+  Spinner,
+  Switch,
 } from '@fluentui/react-components';
 
 // Inline schemas (25 total covering various chart types)
-// No relative imports allowed - all schemas inlined directly
+// These are the default schemas shown in "show few" mode
 const ALL_SCHEMAS: Record<string, any> = {
   adCtrScatter: {
     $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
@@ -825,6 +828,12 @@ const ALL_SCHEMAS: Record<string, any> = {
 
 const SCHEMA_NAMES: string[] = Object.keys(ALL_SCHEMAS);
 
+// Convert ALL_SCHEMAS to array format for easier handling
+const DEFAULT_SCHEMAS: Array<{ key: string; schema: any }> = SCHEMA_NAMES.map(key => ({
+  key,
+  schema: ALL_SCHEMAS[key],
+}));
+
 interface ErrorBoundaryProps {
   children: React.ReactNode;
 }
@@ -1046,17 +1055,94 @@ ALL_OPTIONS.sort((a, b) => {
   return a.text.localeCompare(b.text);
 });
 
+type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
+
 export const Default = (): React.ReactElement => {
   const [selectedChart, setSelectedChart] = React.useState<string>('linechart');
-  const [schemaText, setSchemaText] = React.useState<string>(JSON.stringify(ALL_SCHEMAS.linechart, null, 2));
+  const [schemaText, setSchemaText] = React.useState<string>(
+    JSON.stringify(DEFAULT_SCHEMAS.find(s => s.key === 'linechart')?.schema || {}, null, 2),
+  );
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(400);
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
+  const [showMore, setShowMore] = React.useState(false);
+  const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
+  const loadedSchemas = React.useRef<Array<{ key: string; schema: any }>>([]);
+
+  // Load schemas from GitHub fluentui-charting-contrib repository
+  const loadSchemas = React.useCallback(
+    async (startLoadingState: LoadingState = 'loading') => {
+      setLoadingState(startLoadingState);
+      let disableLoadMore = false;
+      const offset = loadedSchemas.current.length;
+      const promises = Array.from({ length: 100 }, (_, index) => {
+        const id = offset + index + 1;
+        const filename = `data_${id < 100 ? ('00' + id).slice(-3) : id}_vega`;
+        return fetch(
+          `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/vega_data/${filename}.json`,
+        )
+          .then(response => {
+            if (response.status === 404) {
+              disableLoadMore = true;
+              return null;
+            }
+            return response.json();
+          })
+          .then(schema => {
+            if (!schema) {
+              return null;
+            }
+            return { key: filename, schema };
+          })
+          .catch(() => null);
+      });
+
+      const results = await Promise.all(promises);
+      loadedSchemas.current.push(...(results.filter(item => item !== null) as Array<{ key: string; schema: any }>));
+      setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
+    },
+    [],
+  );
+
+  React.useEffect(() => {
+    if (showMore) {
+      loadSchemas('initial');
+    }
+  }, [showMore, loadSchemas]);
+
+  const getSchemaByKey = React.useCallback(
+    (key: string): any => {
+      // First check DEFAULT_SCHEMAS
+      const defaultSchema = DEFAULT_SCHEMAS.find(x => x.key === key);
+      if (defaultSchema) {
+        return defaultSchema.schema;
+      }
+      // Then check loaded schemas if in showMore mode
+      if (showMore) {
+        const loadedSchema = loadedSchemas.current.find(x => x.key === key);
+        if (loadedSchema) {
+          return loadedSchema.schema;
+        }
+      }
+      return null;
+    },
+    [showMore],
+  );
+
+  const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+    setShowMore(ev.currentTarget.checked);
+    // Reset to first chart when switching modes
+    if (!ev.currentTarget.checked) {
+      setSelectedChart('linechart');
+      setSchemaText(JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2));
+    }
+  }, []);
 
   const handleChartChange = (_e: SelectionEvents, data: OptionOnSelectData) => {
     const chartKey = data.optionValue || 'linechart';
     setSelectedChart(chartKey);
-    setSchemaText(JSON.stringify(ALL_SCHEMAS[chartKey], null, 2));
+    const schema = getSchemaByKey(chartKey);
+    setSchemaText(JSON.stringify(schema || {}, null, 2));
   };
 
   const handleCategoryChange = (_e: SelectionEvents, data: OptionOnSelectData) => {
@@ -1090,40 +1176,76 @@ export const Default = (): React.ReactElement => {
     parseError = e.message;
   }
 
-  const filteredOptions =
-    selectedCategory === 'All' ? ALL_OPTIONS : ALL_OPTIONS.filter(opt => opt.category === selectedCategory);
+  // Get available schemas based on showMore mode
+  const availableSchemas = React.useMemo(() => {
+    if (showMore) {
+      return loadedSchemas.current.length > 0 ? loadedSchemas.current : [];
+    }
+    return DEFAULT_SCHEMAS;
+  }, [showMore, loadedSchemas.current.length]);
 
-  const categories = ['All', ...Array.from(SCHEMA_CATEGORIES.keys())].sort((a, b) => {
-    if (a === 'All') {
-      return -1;
+  // Generate options from available schemas
+  const currentOptions = React.useMemo(() => {
+    const schemas = showMore
+      ? [...DEFAULT_SCHEMAS, ...loadedSchemas.current]
+      : DEFAULT_SCHEMAS;
+    return schemas.map(item => {
+      const text = item.key
+        .split(/[-_]/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      return { key: item.key, text, category: 'All' };
+    });
+  }, [showMore, loadedSchemas.current.length]);
+
+  const filteredOptions = currentOptions;
+
+  const schemaCount = showMore ? DEFAULT_SCHEMAS.length + loadedSchemas.current.length : DEFAULT_SCHEMAS.length;
+
+  const categories = React.useMemo(() => {
+    // In "show few" mode, only show "All" category
+    if (!showMore) {
+      return ['All'];
     }
-    if (b === 'All') {
-      return 1;
-    }
-    const categoryOrder = [
-      'Basic Charts',
-      'Financial',
-      'E-Commerce',
-      'Marketing',
-      'Healthcare',
-      'Education',
-      'Manufacturing',
-      'Climate',
-      'Technology',
-      'Sports',
-      'Other',
-    ];
-    return categoryOrder.indexOf(a) - categoryOrder.indexOf(b);
-  });
+    // In "show more" mode, show all categories
+    return ['All', ...Array.from(SCHEMA_CATEGORIES.keys())].sort((a, b) => {
+      if (a === 'All') {
+        return -1;
+      }
+      if (b === 'All') {
+        return 1;
+      }
+      const categoryOrder = [
+        'Basic Charts',
+        'Financial',
+        'E-Commerce',
+        'Marketing',
+        'Healthcare',
+        'Education',
+        'Manufacturing',
+        'Climate',
+        'Technology',
+        'Sports',
+        'Other',
+      ];
+      return categoryOrder.indexOf(a) - categoryOrder.indexOf(b);
+    });
+  }, [showMore]);
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Vega-Lite Declarative Chart - {SCHEMA_NAMES.length} Schemas</h1>
+      <h1>Vega-Lite Declarative Chart - {schemaCount} Schemas</h1>
       <p>
-        This component renders charts from Vega-Lite specifications. Browse through {SCHEMA_NAMES.length} real-world
-        chart examples across {SCHEMA_CATEGORIES.size} categories. Select a chart type or edit the JSON schema below to
-        customize the visualization.
+        This component renders charts from Vega-Lite specifications. Browse through {schemaCount}
+        {showMore ? ' chart examples (including additional schemas from GitHub)' : ' chart examples'}.
+        {showMore
+          ? ' Use "Load more" to load additional schemas from the fluentui-charting-contrib repository.'
+          : ' Enable "Show more" to load thousands of additional examples from GitHub.'}
       </p>
+
+      <div style={{ marginBottom: '20px' }}>
+        <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
+      </div>
 
       <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', flexWrap: 'wrap' }}>
         <Field label="Category">
@@ -1133,10 +1255,20 @@ export const Default = (): React.ReactElement => {
                 key={category}
                 value={category}
                 text={`${category} (${
-                  category === 'All' ? SCHEMA_NAMES.length : SCHEMA_CATEGORIES.get(category)?.length || 0
+                  category === 'All'
+                    ? schemaCount
+                    : showMore
+                      ? SCHEMA_CATEGORIES.get(category)?.length || 0
+                      : 0
                 })`}
               >
-                {category} ({category === 'All' ? SCHEMA_NAMES.length : SCHEMA_CATEGORIES.get(category)?.length || 0})
+                {category} (
+                {category === 'All'
+                  ? schemaCount
+                  : showMore
+                    ? SCHEMA_CATEGORIES.get(category)?.length || 0
+                    : 0}
+                )
               </Option>
             ))}
           </Dropdown>
@@ -1163,6 +1295,18 @@ export const Default = (): React.ReactElement => {
         <Field label="Height (px)">
           <Input type="number" value={height.toString()} onChange={handleHeightChange} style={{ width: '100px' }} />
         </Field>
+
+        {showMore && (
+          <div>
+            <Button
+              icon={loadingState.includes('loaded') ? undefined : <Spinner size="tiny" />}
+              onClick={() => loadSchemas()}
+              disabled={loadingState !== 'partially_loaded'}
+            >
+              {loadingState.includes('loaded') ? 'Load more' : 'Loading'}
+            </Button>
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
@@ -1208,8 +1352,8 @@ export const Default = (): React.ReactElement => {
       </div>
 
       <div style={{ marginTop: '20px' }}>
-        <h3>Chart Categories ({SCHEMA_NAMES.length} Total):</h3>
-        <ul style={{ columns: 3 }}>
+        <h3>Chart Categories ({schemaCount} Total):</h3>
+        <ul style={{ columns: showMore ? 3 : 2 }}>
           {Array.from(SCHEMA_CATEGORIES.entries())
             .sort((a, b) => {
               const categoryOrder = [
@@ -1233,6 +1377,12 @@ export const Default = (): React.ReactElement => {
               </li>
             ))}
         </ul>
+        {showMore && loadedSchemas.current.length > 0 && (
+          <p>
+            <strong>Additional GitHub Examples:</strong> {loadedSchemas.current.length} schemas loaded from{' '}
+            fluentui-charting-contrib
+          </p>
+        )}
 
         <h3 style={{ marginTop: '20px' }}>Features Supported:</h3>
         <ul>
