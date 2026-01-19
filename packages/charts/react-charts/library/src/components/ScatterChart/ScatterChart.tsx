@@ -95,6 +95,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -208,6 +209,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         isRTL,
         props.xScaleType,
         true,
+        props.xMinValue,
+        props.xMaxValue,
       );
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
@@ -390,6 +393,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           yScalePrimary: _yAxisScale,
           xScaleType: props.xScaleType,
           yScaleType: props.yScaleType,
+          xMinValue: props.xMinValue,
+          xMaxValue: props.xMaxValue,
+          yMinValue: props.yMinValue,
+          yMaxValue: props.yMaxValue,
         })
       : 0;
 
@@ -567,6 +574,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
           setStackCalloutProps(found!);
+          setDataPointCalloutProps(found!);
           setActivePoint(circleId);
         }
       });
@@ -601,6 +609,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
         setYValueHover(found.values);
         setStackCalloutProps(found!);
+        setDataPointCalloutProps(found!);
         setActivePoint(circleId);
       }
     } else {
@@ -632,6 +641,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     if (isPopoverOpen) {
       setPopoverOpen(false);
     }
+  }
+
+  function _getCustomizedCallout() {
+    return props.onRenderCalloutPerStack
+      ? props.onRenderCalloutPerStack(stackCalloutProps)
+      : props.onRenderCalloutPerDataPoint
+      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+      : null;
   }
 
   /**
@@ -706,6 +723,12 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     isCalloutForStack: true,
     culture: props.culture,
     isCartesian: true,
+    customCallout: {
+      customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+      customCalloutProps: props.calloutPropsPerDataPoint
+        ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+        : undefined,
+    },
   };
   const tickParams = {
     tickValues,

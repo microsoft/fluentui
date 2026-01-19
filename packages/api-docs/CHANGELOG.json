@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:28:04 GMT",
+      "tag": "@fluentui/api-docs_v8.2.28",
+      "version": "8.2.28",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:27 GMT",
       "tag": "@fluentui/api-docs_v8.2.28",
       "version": "8.2.28",

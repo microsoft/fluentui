@@ -12,9 +12,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 grouped bar series. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -431,9 +432,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 grouped bar series. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -857,9 +859,10 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         tabindex="0"
       />
       <svg
-        aria-label="Vertical bar chart with 2 grouped bar series. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1348,9 +1351,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -1765,9 +1769,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2241,9 +2246,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2665,9 +2671,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3148,9 +3155,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -3510,9 +3518,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3931,9 +3940,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4348,9 +4358,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -4824,9 +4835,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -5288,9 +5300,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -5811,9 +5824,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -6316,9 +6330,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -6885,9 +6900,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 2 grouped bar series. "
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -7302,9 +7318,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 2 grouped bar series. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >

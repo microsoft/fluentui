@@ -2,6 +2,59 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 10 Dec 2025 06:27:53 GMT",
+      "tag": "@fluentui/react-charting_v5.25.4",
+      "version": "5.25.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "048de705a8094eb356bf0992655dd6815c9c5ab2",
+            "comment": "chore: remove unused eslint-disable directives"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.38",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.10.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.222",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.125.3",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Nov 2025 09:34:50 GMT",
       "tag": "@fluentui/react-charting_v5.25.3",
       "version": "5.25.3",

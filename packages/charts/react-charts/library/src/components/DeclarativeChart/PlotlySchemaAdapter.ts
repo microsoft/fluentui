@@ -471,83 +471,6 @@ const toFiniteNumber = (value: unknown): number | undefined => {
 };
 
 /**
- * Normalizes Plotly axis reference strings so equivalent aliases (e.g. `xaxis1`, `x1`) collapse to the base axis id.
- */
-const normalizeAxisRef = (ref: string | undefined, axis: 'x' | 'y'): string => {
-  if (!ref) {
-    return axis;
-  }
-
-  const normalized = ref.toLowerCase();
-  if (
-    normalized === axis ||
-    normalized === `${axis}axis` ||
-    normalized === `${axis}axis1` ||
-    normalized === `${axis}1`
-  ) {
-    return axis;
-  }
-
-  const match = normalized.match(/^([xy])(axis)?(\d+)$/);
-  if (match && match[1] === axis && match[3]) {
-    return match[3] === '1' ? axis : `${axis}${match[3]}`;
-  }
-
-  return normalized;
-};
-
-/**
- * Scans the data traces bound to a given axis and returns the numeric min/max values plotted on that axis.
- */
-const getAxisNumericRangeFromData = (
-  axis: 'x' | 'y',
-  ref: string | undefined,
-  layout: Partial<Layout> | undefined,
-  data: Data[] | undefined,
-): [number, number] | undefined => {
-  if (!data || data.length === 0) {
-    return undefined;
-  }
-
-  const axisLayout = getAxisLayoutByRef(layout, ref, axis);
-  const targetRef = normalizeAxisRef(ref, axis);
-  const traceAxisKey = axis === 'x' ? 'xaxis' : 'yaxis';
-
-  let minValue: number | undefined;
-  let maxValue: number | undefined;
-
-  data.forEach(trace => {
-    const plotTrace = trace as Partial<PlotData>;
-    const traceAxisRef = normalizeAxisRef(plotTrace[traceAxisKey as 'xaxis' | 'yaxis'] as string | undefined, axis);
-    if (traceAxisRef !== targetRef) {
-      return;
-    }
-
-    const values = (axis === 'x' ? plotTrace.x : plotTrace.y) as unknown;
-    if (!isArrayOrTypedArray(values)) {
-      return;
-    }
-
-    const arrayLike = values as ArrayLike<unknown>;
-    for (let index = 0; index < arrayLike.length; index++) {
-      const value = arrayLike[index];
-      const numeric = toNumericValue(convertDataValue(value, axisLayout));
-      if (numeric === undefined || Number.isNaN(numeric)) {
-        continue;
-      }
-      minValue = minValue === undefined ? numeric : Math.min(minValue, numeric);
-      maxValue = maxValue === undefined ? numeric : Math.max(maxValue, numeric);
-    }
-  });
-
-  if (minValue === undefined || maxValue === undefined || minValue === maxValue) {
-    return undefined;
-  }
-
-  return [minValue, maxValue];
-};
-
-/**
  * Converts Plotly's bottom-origin relative Y coordinate into the SVG top-origin space used by our overlay.
  */
 const transformRelativeYForChart = (value: number | undefined): number | undefined => {
@@ -664,60 +587,39 @@ const convertDataValue = (
   if (value === undefined || value === null) {
     return undefined;
   }
-  if (axisLayout?.type === 'date' || isDate(value)) {
+
+  const axisType = axisLayout?.type;
+
+  if (axisType === 'date') {
     const dateValue = value instanceof Date ? value : new Date(value as string | number);
     return Number.isNaN(dateValue.getTime()) ? undefined : dateValue;
   }
-  if (typeof value === 'number') {
-    return value;
-  }
-  if (axisLayout?.type === 'linear' || axisLayout?.type === 'log') {
-    const numeric = Number(value);
-    return Number.isFinite(numeric) ? numeric : undefined;
-  }
-  if (value instanceof Date) {
-    return value;
-  }
-  return value as string | number;
-};
 
-const toNumericValue = (value: string | number | Date | undefined): number | undefined => {
   if (value instanceof Date) {
-    const timestamp = value.getTime();
-    return Number.isFinite(timestamp) ? timestamp : undefined;
+    return Number.isNaN(value.getTime()) ? undefined : value;
   }
+
   if (typeof value === 'number') {
     return Number.isFinite(value) ? value : undefined;
   }
-  if (typeof value === 'string') {
+
+  if (axisType === 'linear' || axisType === 'log') {
     const numeric = Number(value);
     return Number.isFinite(numeric) ? numeric : undefined;
   }
-  return undefined;
-};
 
-const toRelativeCoordinate = (
-  value: unknown,
-  axisLayout: Partial<LayoutAxis> | undefined,
-  fallbackRange?: [number, number],
-): number | undefined => {
-  const range = Array.isArray(axisLayout?.range) ? axisLayout!.range : undefined;
-
-  let start = range && range.length >= 2 ? toNumericValue(convertDataValue(range[0], axisLayout)) : undefined;
-  let end = range && range.length >= 2 ? toNumericValue(convertDataValue(range[1], axisLayout)) : undefined;
-
-  if ((start === undefined || end === undefined || start === end) && fallbackRange) {
-    [start, end] = fallbackRange;
+  if (typeof value === 'string') {
+    const shouldTryParseDate = axisType === undefined || axisType === '-' || axisType === null;
+    if (shouldTryParseDate && isDate(value)) {
+      const parsedDate = new Date(value);
+      if (!Number.isNaN(parsedDate.getTime()) && parsedDate.getFullYear() >= 1900) {
+        return parsedDate;
+      }
+    }
+    return value;
   }
 
-  const current = toNumericValue(convertDataValue(value, axisLayout));
-
-  if (start === undefined || end === undefined || current === undefined || start === end) {
-    return undefined;
-  }
-
-  const relative = (current - start) / (end - start);
-  return Number.isFinite(relative) ? relative : undefined;
+  return value as string | number;
 };
 
 const createAnnotationId = (text: string, index: number): string => {
@@ -797,6 +699,47 @@ const mapArrowDashToPattern = (value: string | undefined): string | undefined =>
   }
 };
 
+type CoordinateRefType = 'axis' | 'relative' | 'pixel';
+
+const mapRefTypeToCoordinateType = (refType: CoordinateRefType): 'data' | 'relative' | 'pixel' => {
+  return refType === 'axis' ? 'data' : refType;
+};
+
+const normalizeCoordinateValueForType = (
+  coordinateType: 'data' | 'relative' | 'pixel',
+  value: string | number | Date,
+): string | number | Date | undefined => {
+  if (coordinateType === 'data') {
+    return value;
+  }
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+};
+
+const getAnnotationCoordinateValue = (
+  axis: 'x' | 'y',
+  refType: CoordinateRefType,
+  annotation: PlotlyAnnotation,
+  layout: Partial<Layout> | undefined,
+): string | number | Date | undefined => {
+  if (refType === 'axis') {
+    const axisRef = (axis === 'x' ? annotation?.xref : annotation?.yref) as string | undefined;
+    const axisLayout = getAxisLayoutByRef(layout, axisRef, axis);
+    const rawValue = axis === 'x' ? annotation?.x : annotation?.y;
+    return convertDataValue(rawValue, axisLayout);
+  }
+
+  const numericValue = toFiniteNumber(axis === 'x' ? annotation?.x : annotation?.y);
+  if (numericValue === undefined) {
+    return undefined;
+  }
+
+  if (refType === 'relative') {
+    return axis === 'y' ? transformRelativeYForChart(numericValue) : numericValue;
+  }
+
+  return numericValue;
+};
+
 /**
  * Converts a Plotly annotation definition into the internal `ChartAnnotation` format, translating coordinates,
  * layout alignment, styling, and connector metadata while skipping unsupported configurations.
@@ -804,7 +747,6 @@ const mapArrowDashToPattern = (value: string | undefined): string | undefined =>
 const convertPlotlyAnnotation = (
   annotation: PlotlyAnnotation,
   layout: Partial<Layout> | undefined,
-  data: Data[] | undefined,
   index: number,
 ): ChartAnnotation | undefined => {
   if (!annotation || (annotation as { visible?: boolean }).visible === false) {
@@ -818,76 +760,54 @@ const convertPlotlyAnnotation = (
     return undefined;
   }
 
-  let coordinates: ChartAnnotation['coordinates'] | undefined;
+  const xValue = getAnnotationCoordinateValue('x', xRefType, annotation, layout);
+  const yValue = getAnnotationCoordinateValue('y', yRefType, annotation, layout);
+  if (xValue === undefined || yValue === undefined) {
+    return undefined;
+  }
 
-  if (xRefType === 'axis' && yRefType === 'axis') {
-    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
-    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
-    const xValue = convertDataValue(annotation.x, xAxisLayout);
-    const yValue = convertDataValue(annotation.y, yAxisLayout);
-    if (xValue === undefined || yValue === undefined) {
-      return undefined;
-    }
-    const yRefNormalized = typeof annotation.yref === 'string' ? annotation.yref.toLowerCase() : undefined;
+  const xCoordinateType = mapRefTypeToCoordinateType(xRefType);
+  const yCoordinateType = mapRefTypeToCoordinateType(yRefType);
+  const normalizedX = normalizeCoordinateValueForType(xCoordinateType, xValue);
+  const normalizedY = normalizeCoordinateValueForType(yCoordinateType, yValue);
+  if (normalizedX === undefined || normalizedY === undefined) {
+    return undefined;
+  }
+
+  const yRefNormalized = typeof annotation.yref === 'string' ? annotation.yref.toLowerCase() : undefined;
+  const yAxisProps =
+    yCoordinateType === 'data' && yRefNormalized === 'y2' ? ({ yAxis: 'secondary' as const } as const) : undefined;
+
+  let coordinates: ChartAnnotation['coordinates'];
+
+  if (xCoordinateType === 'data' && yCoordinateType === 'data') {
     coordinates = {
       type: 'data',
-      x: xValue,
-      y: yValue,
-      ...(yRefNormalized === 'y2' ? { yAxis: 'secondary' as const } : {}),
+      x: normalizedX,
+      y: normalizedY,
+      ...(yAxisProps ?? {}),
     };
-  } else if (xRefType === 'relative' && yRefType === 'relative') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yValue = toFiniteNumber(annotation.y);
-    const chartRelativeY = transformRelativeYForChart(yValue);
-    if (xValue === undefined || chartRelativeY === undefined) {
-      return undefined;
-    }
+  } else if (xCoordinateType === 'relative' && yCoordinateType === 'relative') {
     coordinates = {
       type: 'relative',
-      x: xValue,
-      y: chartRelativeY,
+      x: normalizedX as number,
+      y: normalizedY as number,
     };
-  } else if (xRefType === 'relative' && yRefType === 'axis') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
-    const yFallbackRange = getAxisNumericRangeFromData('y', annotation.yref as string | undefined, layout, data);
-    const yRelative = toRelativeCoordinate(annotation.y, yAxisLayout, yFallbackRange);
-    const chartRelativeY = transformRelativeYForChart(yRelative);
-    if (xValue === undefined || chartRelativeY === undefined) {
-      return undefined;
-    }
-    coordinates = {
-      type: 'relative',
-      x: xValue,
-      y: chartRelativeY,
-    };
-  } else if (xRefType === 'axis' && yRefType === 'relative') {
-    const yValue = toFiniteNumber(annotation.y);
-    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
-    const xFallbackRange = getAxisNumericRangeFromData('x', annotation.xref as string | undefined, layout, data);
-    const xRelative = toRelativeCoordinate(annotation.x, xAxisLayout, xFallbackRange);
-    const chartRelativeY = transformRelativeYForChart(yValue);
-    if (xRelative === undefined || chartRelativeY === undefined) {
-      return undefined;
-    }
-    coordinates = {
-      type: 'relative',
-      x: xRelative,
-      y: chartRelativeY,
-    };
-  } else if (xRefType === 'pixel' && yRefType === 'pixel') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yValue = toFiniteNumber(annotation.y);
-    if (xValue === undefined || yValue === undefined) {
-      return undefined;
-    }
+  } else if (xCoordinateType === 'pixel' && yCoordinateType === 'pixel') {
     coordinates = {
       type: 'pixel',
-      x: xValue,
-      y: yValue,
+      x: normalizedX as number,
+      y: normalizedY as number,
     };
   } else {
-    return undefined;
+    coordinates = {
+      type: 'mixed',
+      xCoordinateType,
+      yCoordinateType,
+      x: normalizedX,
+      y: normalizedY,
+      ...(yAxisProps ?? {}),
+    };
   }
 
   const textValue = annotation.text;
@@ -1063,7 +983,6 @@ const convertPlotlyAnnotation = (
 
 const getChartAnnotationsFromLayout = (
   layout: Partial<Layout> | undefined,
-  data: Data[] | undefined,
   isMultiPlot: boolean,
 ): ChartAnnotation[] | undefined => {
   if (isMultiPlot || !layout?.annotations) {
@@ -1071,7 +990,7 @@ const getChartAnnotationsFromLayout = (
   }
   const annotationsArray = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
   const converted = annotationsArray
-    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, layout, data, index))
+    .map((annotation, index) => convertPlotlyAnnotation(annotation as PlotlyAnnotation, layout, index))
     .filter((annotation): annotation is ChartAnnotation => annotation !== undefined);
 
   return converted.length > 0 ? converted : undefined;
@@ -1166,7 +1085,7 @@ export const transformPlotlyJsonToAnnotationChartProps = (
   _colorwayType: ColorwayType,
   _isDarkTheme?: boolean,
 ): AnnotationOnlyChartProps => {
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot) ?? [];
   const titles = getTitles(input.layout);
   const layoutTitle = titles.chartTitle || undefined;
 
@@ -1478,7 +1397,7 @@ export const transformPlotlyJsonToVSBCProps = (
     });
 
   const vsbcData = Object.values(mapXToDataPoints);
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
 
   return {
     data: vsbcData,
@@ -1659,7 +1578,7 @@ export const transformPlotlyJsonToGVBCProps = (
     }
   });
 
-  const annotations = getChartAnnotationsFromLayout(processedInput.layout, processedInput.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(processedInput.layout, isMultiPlot);
 
   return {
     dataV2: gvbcDataV2,
@@ -1774,7 +1693,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
   return {
     data: vbcData,
     width: input.layout?.width,
@@ -2055,7 +1974,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     scatterChartData: [...chartData, ...(lineShape as ScatterChartPoints[])],
   };
 
-  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+  const annotations = getChartAnnotationsFromLayout(input.layout, isMultiPlot);
 
   const commonProps = {
     supportNegativeData: true,
@@ -2231,7 +2150,7 @@ export const transformPlotlyJsonToGanttChartProps = (
             )
           : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
         const opacity = getOpacity(series, i);
-        const base = +resolveGanttXValue(series.base?.[i] as Datum);
+        const base = +resolveGanttXValue((isArrayOrTypedArray(series.base) ? series.base![i] : series.base) as Datum);
         const xVal = +resolveGanttXValue(series.x?.[i] as Datum);
 
         ganttData.push({
@@ -3716,7 +3635,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
     if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
-      result[propName] = ax!.categoryarray;
+      result[propName] = ax?.autorange === 'reversed' ? ax!.categoryarray!.slice().reverse() : ax!.categoryarray;
       return;
     }
 

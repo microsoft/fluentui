@@ -12,9 +12,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -386,7 +387,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_0__2_1"
                 opacity="1"
@@ -402,7 +402,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_0__2_11L"
                 opacity="1"
@@ -444,7 +443,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_0__1_1"
                 opacity="1"
@@ -460,7 +458,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_0__1_11L"
                 opacity="1"
@@ -502,7 +499,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_0__0_1"
                 opacity="1"
@@ -518,7 +514,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_0__0_11L"
                 opacity="1"
@@ -632,9 +627,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1004,7 +1000,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 d="M625 182.2226956521739
      H 635
      L630 190.8826956521739 Z"
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_c__2_1"
                 opacity="1"
@@ -1018,7 +1013,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 d="M271 49.070521739130434
      H 281
      L276 57.73052173913044 Z"
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_c__2_11L"
                 opacity="1"
@@ -1060,7 +1054,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L163 110.21739130434783
      L153 110.21739130434783
      Z"
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_c__1_1"
                 opacity="1"
@@ -1076,7 +1069,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L399 30.326086956521735
      L389 30.326086956521735
      Z"
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_c__1_11L"
                 opacity="1"
@@ -1118,7 +1110,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      M35 131.84782608695653
      A 5 5 0 1 1 45 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_c__0_1"
                 opacity="1"
@@ -1134,7 +1125,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      M271 51.95652173913044
      A 5 5 0 1 1 281 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_c__0_11L"
                 opacity="1"
@@ -1281,9 +1271,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1656,7 +1647,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
                 id="circle_r_ca__2_1"
                 opacity="1"
@@ -1672,7 +1662,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_ca__2_11L"
                 opacity="1"
@@ -1714,7 +1703,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_ca__1_1"
                 opacity="1"
@@ -1730,7 +1718,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_ca__1_11L"
                 opacity="1"
@@ -1772,7 +1759,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_ca__0_1"
                 opacity="1"
@@ -1788,7 +1774,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_ca__0_11L"
                 opacity="1"
@@ -1961,9 +1946,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2336,7 +2322,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
                 id="circle_r_dk__2_1"
                 opacity="1"
@@ -2352,7 +2337,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_dk__2_11L"
                 opacity="1"
@@ -2394,7 +2378,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_dk__1_1"
                 opacity="1"
@@ -2410,7 +2393,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_dk__1_11L"
                 opacity="1"
@@ -2452,7 +2434,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_dk__0_1"
                 opacity="1"
@@ -2468,7 +2449,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_dk__0_11L"
                 opacity="1"
@@ -2619,9 +2599,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -2993,7 +2974,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_91__2_1"
                     opacity="1"
@@ -3009,7 +2989,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_91__2_11L"
                     opacity="1"
@@ -3051,7 +3030,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_91__1_1"
                     opacity="1"
@@ -3067,7 +3045,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_91__1_11L"
                     opacity="1"
@@ -3109,7 +3086,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_91__0_1"
                     opacity="1"
@@ -3125,7 +3101,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_91__0_11L"
                     opacity="1"
@@ -3237,9 +3212,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3611,7 +3587,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_91__2_1"
                   opacity="1"
@@ -3627,7 +3602,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_91__2_11L"
                   opacity="1"
@@ -3669,7 +3643,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_91__1_1"
                   opacity="1"
@@ -3685,7 +3658,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_91__1_11L"
                   opacity="1"
@@ -3727,7 +3699,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_91__0_1"
                   opacity="1"
@@ -3743,7 +3714,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_91__0_11L"
                   opacity="1"
@@ -3914,9 +3884,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -4288,7 +4259,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_6r__2_1"
                     opacity="1"
@@ -4304,7 +4274,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_6r__2_11L"
                     opacity="1"
@@ -4346,7 +4315,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_6r__1_1"
                     opacity="1"
@@ -4362,7 +4330,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_6r__1_11L"
                     opacity="1"
@@ -4404,7 +4371,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_6r__0_1"
                     opacity="1"
@@ -4420,7 +4386,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_6r__0_11L"
                     opacity="1"
@@ -4532,9 +4497,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -4906,7 +4872,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_6r__2_1"
                   opacity="1"
@@ -4922,7 +4887,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_6r__2_11L"
                   opacity="1"
@@ -4964,7 +4928,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_6r__1_1"
                   opacity="1"
@@ -4980,7 +4943,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_6r__1_11L"
                   opacity="1"
@@ -5022,7 +4984,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_6r__0_1"
                   opacity="1"
@@ -5038,7 +4999,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_6r__0_11L"
                   opacity="1"
@@ -5209,9 +5169,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -5583,7 +5544,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_7u__2_1"
                     opacity="1"
@@ -5599,7 +5559,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_7u__2_11L"
                     opacity="1"
@@ -5641,7 +5600,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_7u__1_1"
                     opacity="1"
@@ -5657,7 +5615,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_7u__1_11L"
                     opacity="1"
@@ -5699,7 +5656,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_7u__0_1"
                     opacity="1"
@@ -5715,7 +5671,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_7u__0_11L"
                     opacity="1"
@@ -5837,9 +5792,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -6211,7 +6167,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_7u__2_1"
                   opacity="1"
@@ -6227,7 +6182,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_7u__2_11L"
                   opacity="1"
@@ -6269,7 +6223,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_7u__1_1"
                   opacity="1"
@@ -6285,7 +6238,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_7u__1_11L"
                   opacity="1"
@@ -6327,7 +6279,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_7u__0_1"
                   opacity="1"
@@ -6343,7 +6294,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_7u__0_11L"
                   opacity="1"
@@ -6524,9 +6474,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="50"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -6898,7 +6849,6 @@ Object {
      M629.5 16.630434782608695
      A 0.5 0.5 0 1 1 630.5 16.630434782608695
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_77__2_1"
                     opacity="1"
@@ -6914,7 +6864,6 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_77__2_11L"
                     opacity="1"
@@ -6956,7 +6905,6 @@ Object {
      M157.5 18.26086956521739
      A 0.5 0.5 0 1 1 158.5 18.26086956521739
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_77__1_1"
                     opacity="1"
@@ -6972,7 +6920,6 @@ Object {
      M393.5 19.891304347826086
      A 0.5 0.5 0 1 1 394.5 19.891304347826086
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_77__1_11L"
                     opacity="1"
@@ -7014,7 +6961,6 @@ Object {
      M39.5 17.717391304347828
      A 0.5 0.5 0 1 1 40.5 17.717391304347828
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_77__0_1"
                     opacity="1"
@@ -7030,7 +6976,6 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_77__0_11L"
                     opacity="1"
@@ -7068,9 +7013,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="50"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -7442,7 +7388,6 @@ Object {
      M629.5 16.630434782608695
      A 0.5 0.5 0 1 1 630.5 16.630434782608695
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_77__2_1"
                   opacity="1"
@@ -7458,7 +7403,6 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_77__2_11L"
                   opacity="1"
@@ -7500,7 +7444,6 @@ Object {
      M157.5 18.26086956521739
      A 0.5 0.5 0 1 1 158.5 18.26086956521739
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_77__1_1"
                   opacity="1"
@@ -7516,7 +7459,6 @@ Object {
      M393.5 19.891304347826086
      A 0.5 0.5 0 1 1 394.5 19.891304347826086
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_77__1_11L"
                   opacity="1"
@@ -7558,7 +7500,6 @@ Object {
      M39.5 17.717391304347828
      A 0.5 0.5 0 1 1 40.5 17.717391304347828
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_77__0_1"
                   opacity="1"
@@ -7574,7 +7515,6 @@ Object {
      M275.5 19.34782608695652
      A 0.5 0.5 0 1 1 276.5 19.34782608695652
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_77__0_11L"
                   opacity="1"
@@ -7671,9 +7611,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -8045,7 +7986,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_7i__2_1"
                     opacity="1"
@@ -8061,7 +8001,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_7i__2_11L"
                     opacity="1"
@@ -8103,7 +8042,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_7i__1_1"
                     opacity="1"
@@ -8119,7 +8057,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_7i__1_11L"
                     opacity="1"
@@ -8161,7 +8098,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_7i__0_1"
                     opacity="1"
@@ -8177,7 +8113,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_7i__0_11L"
                     opacity="1"
@@ -8289,9 +8224,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -8663,7 +8599,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_7i__2_1"
                   opacity="1"
@@ -8679,7 +8614,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_7i__2_11L"
                   opacity="1"
@@ -8721,7 +8655,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_7i__1_1"
                   opacity="1"
@@ -8737,7 +8670,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_7i__1_11L"
                   opacity="1"
@@ -8779,7 +8711,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_7i__0_1"
                   opacity="1"
@@ -8795,7 +8726,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_7i__0_11L"
                   opacity="1"
@@ -8966,9 +8896,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -9494,7 +9425,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_89__2_1"
                     opacity="1"
@@ -9510,7 +9440,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_89__2_11L"
                     opacity="1"
@@ -9552,7 +9481,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_89__1_1"
                     opacity="1"
@@ -9568,7 +9496,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_89__1_11L"
                     opacity="1"
@@ -9610,7 +9537,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_89__0_1"
                     opacity="1"
@@ -9626,7 +9552,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_89__0_11L"
                     opacity="1"
@@ -9743,9 +9668,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -10271,7 +10197,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_89__2_1"
                   opacity="1"
@@ -10287,7 +10212,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_89__2_11L"
                   opacity="1"
@@ -10329,7 +10253,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_89__1_1"
                   opacity="1"
@@ -10345,7 +10268,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_89__1_11L"
                   opacity="1"
@@ -10387,7 +10309,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_89__0_1"
                   opacity="1"
@@ -10403,7 +10324,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_89__0_11L"
                   opacity="1"
@@ -10579,9 +10499,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="LineChart"
+            aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
             class="fui-cart__chart"
             height="300"
+            role="region"
             style="display: block;"
             width="650"
           >
@@ -10953,7 +10874,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_8l__2_1"
                     opacity="1"
@@ -10969,7 +10889,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="yellow"
                     id="circle_r_8l__2_11L"
                     opacity="1"
@@ -11011,7 +10930,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_8l__1_1"
                     opacity="1"
@@ -11027,7 +10945,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                    data-is-focusable="true"
                     fill="green"
                     id="circle_r_8l__1_11L"
                     opacity="1"
@@ -11069,7 +10986,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_8l__0_1"
                     opacity="1"
@@ -11085,7 +11001,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                    data-is-focusable="true"
                     fill="red"
                     id="circle_r_8l__0_11L"
                     opacity="1"
@@ -11197,9 +11112,10 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -11571,7 +11487,6 @@ Object {
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_8l__2_1"
                   opacity="1"
@@ -11587,7 +11502,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_8l__2_11L"
                   opacity="1"
@@ -11629,7 +11543,6 @@ Object {
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_8l__1_1"
                   opacity="1"
@@ -11645,7 +11558,6 @@ Object {
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_8l__1_11L"
                   opacity="1"
@@ -11687,7 +11599,6 @@ Object {
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_8l__0_1"
                   opacity="1"
@@ -11703,7 +11614,6 @@ Object {
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_8l__0_11L"
                   opacity="1"
@@ -11869,9 +11779,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12148,7 +12059,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_5a__2_1"
                 opacity="1"
@@ -12164,7 +12074,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_5a__2_11L"
                 opacity="1"
@@ -12206,7 +12115,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_5a__1_1"
                 opacity="1"
@@ -12222,7 +12130,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_5a__1_11L"
                 opacity="1"
@@ -12264,7 +12171,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_5a__0_1"
                 opacity="1"
@@ -12280,7 +12186,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_5a__0_11L"
                 opacity="1"
@@ -12394,9 +12299,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
         class="fui-cart__chart"
         height="300"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12673,7 +12579,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_5m__2_1"
                 opacity="1"
@@ -12689,7 +12594,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="yellow"
                 id="circle_r_5m__2_11L"
                 opacity="1"
@@ -12731,7 +12635,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_5m__1_1"
                 opacity="1"
@@ -12747,7 +12650,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                data-is-focusable="true"
                 fill="green"
                 id="circle_r_5m__1_11L"
                 opacity="1"
@@ -12789,7 +12691,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_5m__0_1"
                 opacity="1"
@@ -12805,7 +12706,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                data-is-focusable="true"
                 fill="red"
                 id="circle_r_5m__0_11L"
                 opacity="1"
@@ -12923,9 +12823,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
           class="fui-cart__chart"
           height="300"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -13297,7 +13198,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M629.5 185.1086956521739
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_63__2_1"
                   opacity="1"
@@ -13313,7 +13213,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="yellow"
                   id="circle_r_63__2_11L"
                   opacity="1"
@@ -13355,7 +13254,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M157.5 105.21739130434783
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_63__1_1"
                   opacity="1"
@@ -13371,7 +13269,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M393.5 25.326086956521735
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
-                  data-is-focusable="true"
                   fill="green"
                   id="circle_r_63__1_11L"
                   opacity="1"
@@ -13413,7 +13310,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M39.5 131.84782608695653
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_63__0_1"
                   opacity="1"
@@ -13429,7 +13325,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      M275.5 51.95652173913044
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
-                  data-is-focusable="true"
                   fill="red"
                   id="circle_r_63__0_11L"
                   opacity="1"

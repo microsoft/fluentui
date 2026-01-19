@@ -12,9 +12,10 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -481,9 +482,10 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -897,9 +899,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -1321,9 +1324,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Gantt chart with 8 data points. "
+          aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
           class="fui-cart__chart"
           height="0"
+          role="region"
           style="display: block;"
           width="600"
         >
@@ -1748,9 +1752,10 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
-              aria-label="Gantt chart with 8 data points. "
+              aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
               class="fui-cart__chart"
               height="0"
+              role="region"
               style="display: block;"
               width="600"
             >
@@ -2170,9 +2175,10 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Gantt chart with 8 data points. "
+            aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
             class="fui-cart__chart"
             height="0"
+            role="region"
             style="display: block;"
             width="600"
           >
@@ -2643,9 +2649,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 6 data points. "
+        aria-label="Gantt chart with 6 data points. The X axis displays time. The Y axis displays values. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3082,9 +3089,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3540,9 +3548,10 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -3960,9 +3969,10 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >
@@ -4429,9 +4439,10 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Gantt chart with 8 data points. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         class="fui-cart__chart"
         height="0"
+        role="region"
         style="display: block;"
         width="600"
       >

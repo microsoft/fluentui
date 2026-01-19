@@ -1362,12 +1362,14 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
   isRTL: boolean,
   scaleType?: AxisScaleType,
   hasMarkersMode?: boolean,
+  xMinVal?: number,
+  xMaxVal?: number,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
   if (hasMarkersMode) {
-    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType);
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType, xMinVal, xMaxVal);
     xMin = xMin - xPadding.start;
     xMax = xMax + xPadding.end;
   }
@@ -2206,6 +2208,8 @@ export const getDomainPaddingForMarkers = (
   minVal: number,
   maxVal: number,
   scaleType?: AxisScaleType,
+  userMinVal?: number,
+  userMaxVal?: number,
 ): { start: number; end: number } => {
   if (scaleType === 'log') {
     return {
@@ -2214,10 +2218,25 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  const defaultPadding = (maxVal - minVal) * 0.1;
+  /* if user explicitly sets userMinVal or userMaxVal, we will check that to avoid excessive padding on either side.
+     If the difference between minVal and userMinVal is more than 10% of the data range, we set padding to 0 on that side.
+     this is to avoid cases where userMinVal is significantly smaller than minVal or userMaxVal is significantly larger than
+     maxVal, which would lead to excessive padding. In other cases, we apply the default 10% padding on both sides.
+  */
+  const rangePadding = (maxVal - minVal) * 0.1;
+
+  // If explicit bounds are set and they're far from the data range, don't add extra padding
+  const paddingAlreadySatisfiedAtMin =
+    userMinVal !== undefined && rangePadding > Math.abs(minVal - Math.min(minVal, userMinVal));
+  const paddingAlreadySatisfiedAtMax =
+    userMaxVal !== undefined && rangePadding > Math.abs(maxVal - Math.max(maxVal, userMaxVal));
+
+  const startPadding = paddingAlreadySatisfiedAtMin ? 0 : rangePadding;
+  const endPadding = paddingAlreadySatisfiedAtMax ? 0 : rangePadding;
+
   return {
-    start: defaultPadding,
-    end: defaultPadding,
+    start: startPadding,
+    end: endPadding,
   };
 };
 
@@ -2264,6 +2283,10 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType,
   yScaleType: primaryYScaleType,
   secondaryYScaleType,
+  xMinValue,
+  xMaxValue,
+  yMinValue,
+  yMaxValue,
 }: {
   data: LineChartPoints[] | ScatterChartPoints[];
   xScale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number>;
@@ -2273,6 +2296,10 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType?: AxisScaleType;
   yScaleType?: AxisScaleType;
   secondaryYScaleType?: AxisScaleType;
+  xMinValue?: number;
+  xMaxValue?: number;
+  yMinValue?: number;
+  yMaxValue?: number;
 }): number => {
   // Note: This function is executed after the scale is created, so the actual padding can be
   // obtained by calculating the difference between the respective minimums or maximums of the
@@ -2284,14 +2311,14 @@ export const getRangeForScatterMarkerSize = ({
   // it the other way around (i.e., adjusting the scale domain first with padding and then scaling
   // the markers to fit inside the plot area).
   const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
-  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
+  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType, xMinValue, xMaxValue);
   const scaleXMin = xMin instanceof Date ? new Date(+xMin - xPadding.start) : xMin - xPadding.start;
   const scaleXMax = xMax instanceof Date ? new Date(+xMax + xPadding.end) : xMax + xPadding.end;
   const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
 
   const yScaleType = useSecondaryYScale ? secondaryYScaleType : primaryYScaleType;
   const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(data, undefined, useSecondaryYScale, yScaleType);
-  const yPadding = getDomainPaddingForMarkers(yMin, yMax, yScaleType);
+  const yPadding = getDomainPaddingForMarkers(yMin, yMax, yScaleType, yMinValue, yMaxValue);
   const scaleYMin = yMin - yPadding.start;
   const scaleYMax = yMax + yPadding.end;
   const yScale = (useSecondaryYScale ? yScaleSecondary : yScalePrimary)!;
@@ -2372,7 +2399,7 @@ const generateNumericTicks = (
         refTick,
         tickStep,
         scaleDomain.map(d => Math.log10(d)),
-      ).map(t => Math.pow(10, t));
+      ).map(t => 10 ** t);
     }
 
     if (typeof tickStep === 'string') {
@@ -2449,7 +2476,7 @@ export function calculatePrecision(value: number | string): number {
  * @param precision - The number of decimal places to round the number to
  */
 export function precisionRound(value: number, precision: number, base: number = 10): number {
-  const exp = Math.pow(base, precision);
+  const exp = base ** precision;
   return Math.round(value * exp) / exp;
 }
 
