@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "honor alignment and padding properties for chart title",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
