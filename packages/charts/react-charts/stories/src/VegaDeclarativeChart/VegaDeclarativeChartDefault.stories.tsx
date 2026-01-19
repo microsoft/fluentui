@@ -1110,10 +1110,11 @@ export const Default = (): React.ReactElement => {
   );
 
   React.useEffect(() => {
-    if (showMore) {
+    if (showMore && loadedSchemasCount === 0) {
       loadSchemas('initial');
     }
-  }, [showMore, loadSchemas]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showMore]);
 
   const getSchemaByKey = React.useCallback(
     (key: string): any => {
@@ -1140,6 +1141,10 @@ export const Default = (): React.ReactElement => {
     if (!ev.currentTarget.checked) {
       setSelectedChart(DEFAULT_SCHEMAS[0].key);
       setSchemaText(JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2));
+      // Clear loaded schemas to free memory
+      loadedSchemas.current = [];
+      setLoadedSchemasCount(0);
+      setLoadingState('initial');
     }
   }, []);
 
@@ -1345,7 +1350,7 @@ export const Default = (): React.ReactElement => {
               {parsedSchema ? (
                 <div style={{ width: `${width}px`, height: `${height}px` }}>
                   <VegaDeclarativeChart
-                    key={selectedChart}
+                    key={`${selectedChart}-${width}-${height}`}
                     chartSchema={{ vegaLiteSpec: { ...parsedSchema, width, height } }}
                   />
                 </div>
