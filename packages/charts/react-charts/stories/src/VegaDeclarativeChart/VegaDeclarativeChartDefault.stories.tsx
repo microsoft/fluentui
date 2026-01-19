@@ -1058,9 +1058,9 @@ ALL_OPTIONS.sort((a, b) => {
 type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
 export const Default = (): React.ReactElement => {
-  const [selectedChart, setSelectedChart] = React.useState<string>('linechart');
+  const [selectedChart, setSelectedChart] = React.useState<string>(DEFAULT_SCHEMAS[0].key);
   const [schemaText, setSchemaText] = React.useState<string>(
-    JSON.stringify(DEFAULT_SCHEMAS.find(s => s.key === 'linechart')?.schema || {}, null, 2),
+    JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2),
   );
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(400);
@@ -1068,12 +1068,12 @@ export const Default = (): React.ReactElement => {
   const [showMore, setShowMore] = React.useState(false);
   const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
   const loadedSchemas = React.useRef<Array<{ key: string; schema: any }>>([]);
+  const [loadedSchemasCount, setLoadedSchemasCount] = React.useState(0);
 
   // Load schemas from GitHub fluentui-charting-contrib repository
   const loadSchemas = React.useCallback(
     async (startLoadingState: LoadingState = 'loading') => {
       setLoadingState(startLoadingState);
-      let disableLoadMore = false;
       const offset = loadedSchemas.current.length;
       const promises = Array.from({ length: 100 }, (_, index) => {
         const id = offset + index + 1;
@@ -1083,7 +1083,6 @@ export const Default = (): React.ReactElement => {
         )
           .then(response => {
             if (response.status === 404) {
-              disableLoadMore = true;
               return null;
             }
             return response.json();
@@ -1098,7 +1097,13 @@ export const Default = (): React.ReactElement => {
       });
 
       const results = await Promise.all(promises);
-      loadedSchemas.current.push(...(results.filter(item => item !== null) as Array<{ key: string; schema: any }>));
+      const validResults = results.filter(item => item !== null) as Array<{ key: string; schema: any }>;
+      loadedSchemas.current.push(...validResults);
+      setLoadedSchemasCount(loadedSchemas.current.length);
+
+      // Only disable "Load more" if we got very few results (less than 10 out of 100)
+      // This indicates we've reached the end of available schemas
+      const disableLoadMore = validResults.length < 10;
       setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
     },
     [],
@@ -1133,13 +1138,13 @@ export const Default = (): React.ReactElement => {
     setShowMore(ev.currentTarget.checked);
     // Reset to first chart when switching modes
     if (!ev.currentTarget.checked) {
-      setSelectedChart('linechart');
+      setSelectedChart(DEFAULT_SCHEMAS[0].key);
       setSchemaText(JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2));
     }
   }, []);
 
   const handleChartChange = (_e: SelectionEvents, data: OptionOnSelectData) => {
-    const chartKey = data.optionValue || 'linechart';
+    const chartKey = data.optionValue || DEFAULT_SCHEMAS[0].key;
     setSelectedChart(chartKey);
     const schema = getSchemaByKey(chartKey);
     setSchemaText(JSON.stringify(schema || {}, null, 2));
@@ -1179,10 +1184,10 @@ export const Default = (): React.ReactElement => {
   // Get available schemas based on showMore mode
   const availableSchemas = React.useMemo(() => {
     if (showMore) {
-      return loadedSchemas.current.length > 0 ? loadedSchemas.current : [];
+      return loadedSchemasCount > 0 ? loadedSchemas.current : [];
     }
     return DEFAULT_SCHEMAS;
-  }, [showMore, loadedSchemas.current.length]);
+  }, [showMore, loadedSchemasCount]);
 
   // Generate options from available schemas
   const currentOptions = React.useMemo(() => {
@@ -1196,11 +1201,12 @@ export const Default = (): React.ReactElement => {
         .join(' ');
       return { key: item.key, text, category: 'All' };
     });
-  }, [showMore, loadedSchemas.current.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showMore, loadedSchemasCount]);
 
   const filteredOptions = currentOptions;
 
-  const schemaCount = showMore ? DEFAULT_SCHEMAS.length + loadedSchemas.current.length : DEFAULT_SCHEMAS.length;
+  const schemaCount = showMore ? DEFAULT_SCHEMAS.length + loadedSchemasCount : DEFAULT_SCHEMAS.length;
 
   const categories = React.useMemo(() => {
     // In "show few" mode, only show "All" category
@@ -1276,7 +1282,7 @@ export const Default = (): React.ReactElement => {
 
         <Field label="Chart Type">
           <Dropdown
-            value={filteredOptions.find(opt => opt.key === selectedChart)?.text || 'Line Chart'}
+            value={filteredOptions.find(opt => opt.key === selectedChart)?.text || filteredOptions[0]?.text || 'Chart'}
             onOptionSelect={handleChartChange}
             style={{ width: '300px' }}
           >
@@ -1377,9 +1383,9 @@ export const Default = (): React.ReactElement => {
               </li>
             ))}
         </ul>
-        {showMore && loadedSchemas.current.length > 0 && (
+        {showMore && loadedSchemasCount > 0 && (
           <p>
-            <strong>Additional GitHub Examples:</strong> {loadedSchemas.current.length} schemas loaded from{' '}
+            <strong>Additional GitHub Examples:</strong> {loadedSchemasCount} schemas loaded from{' '}
             fluentui-charting-contrib
           </p>
         )}
