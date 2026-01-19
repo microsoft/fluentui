@@ -10,6 +10,7 @@ import type {
   VegaLiteType,
   VegaLiteEncoding,
   VegaLiteSort,
+  VegaLiteTitleParams,
 } from './VegaLiteTypes';
 import type { LineChartProps } from '../LineChart/index';
 import type { VerticalBarChartProps } from '../VerticalBarChart/index';
@@ -43,6 +44,7 @@ import type {
 import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
 import { getNextColor } from '../../utilities/colors';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { getVegaColor } from './VegaLiteColorAdapter';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
 import type { Bin } from 'd3-array';
@@ -1129,12 +1131,13 @@ export function getVegaLiteLegendsProps(
 }
 
 /**
- * Extracts chart titles from Vega-Lite specification
+ * Extracts chart titles and title styles from Vega-Lite specification
  */
 export function getVegaLiteTitles(spec: VegaLiteSpec): {
   chartTitle?: string;
   xAxisTitle?: string;
   yAxisTitle?: string;
+  titleStyles?: TitleStyles;
 } {
   const unitSpecs = normalizeSpec(spec);
 
@@ -1145,10 +1148,66 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
   const primarySpec = unitSpecs[0];
   const encoding = primarySpec.encoding || {};
 
+  // Extract chart title
+  const chartTitle = typeof spec.title === 'string' ? spec.title : spec.title?.text;
+
+  // Extract title styles if title is an object
+  let titleStyles: TitleStyles | undefined;
+  if (typeof spec.title === 'object' && spec.title !== null) {
+    const titleObj = spec.title as VegaLiteTitleParams;
+
+    // Build titleFont object if any font properties are present
+    const titleFont: TitleStyles['titleFont'] = {};
+    if (titleObj.font) titleFont.family = titleObj.font;
+    if (titleObj.fontSize) titleFont.size = titleObj.fontSize;
+    if (titleObj.fontWeight) {
+      // Convert string weights to numbers (Font interface expects number)
+      const weight = titleObj.fontWeight;
+      if (typeof weight === 'string') {
+        const weightMap: Record<string, number> = {
+          normal: 400,
+          bold: 700,
+          lighter: 300,
+          bolder: 600,
+        };
+        titleFont.weight = weightMap[weight.toLowerCase()] || 400;
+      } else {
+        titleFont.weight = weight;
+      }
+    }
+    if (titleObj.color) titleFont.color = titleObj.color;
+
+    // Map Vega-Lite anchor values to TitleStyles anchor values
+    const anchorMap: Record<string, TitleStyles['titleXAnchor']> = {
+      start: 'left',
+      middle: 'center',
+      end: 'right',
+    };
+
+    titleStyles = {
+      ...(Object.keys(titleFont).length > 0 ? { titleFont } : {}),
+      ...(titleObj.anchor && anchorMap[titleObj.anchor] ? { titleXAnchor: anchorMap[titleObj.anchor] } : {}),
+      ...(titleObj.offset !== undefined || titleObj.subtitlePadding !== undefined
+        ? {
+            titlePad: {
+              t: titleObj.offset,
+              b: titleObj.subtitlePadding,
+            },
+          }
+        : {}),
+    };
+
+    // Only include titleStyles if it has properties
+    if (Object.keys(titleStyles).length === 0) {
+      titleStyles = undefined;
+    }
+  }
+
   return {
-    chartTitle: typeof spec.title === 'string' ? spec.title : spec.title?.text,
+    chartTitle,
     xAxisTitle: encoding.x?.axis?.title ?? undefined,
     yAxisTitle: encoding.y?.axis?.title ?? undefined,
+    ...(titleStyles ? { titleStyles } : {}),
   };
 }
 
@@ -1228,6 +1287,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     roundCorners: true,
     wrapXAxisLables: typeof barData[0]?.x === 'string',
     ...categoryOrderProps,
@@ -1432,6 +1492,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     width: spec.width as number | undefined,
     height: (spec.height as number | undefined) ?? 350,
     hideLegend: true,
@@ -1526,6 +1587,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
   };
 }
 
@@ -1591,6 +1653,7 @@ export function transformVegaLiteToHorizontalBarChartProps(
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
   };
 
   if (annotations.length > 0) {
@@ -1748,6 +1811,7 @@ export function transformVegaLiteToScatterChartProps(
     },
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     ...(yAxisType && { yAxisType }),
     ...categoryOrderProps,
   };
@@ -1834,6 +1898,7 @@ export function transformVegaLiteToDonutChartProps(
       chartData,
     },
     innerRadius,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
   };
 }
 
@@ -1930,6 +1995,7 @@ export function transformVegaLiteToHeatMapChartProps(
     rangeValuesForColorScale: rangeValues,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     width: spec.width as number | undefined,
     height: (spec.height as number | undefined) ?? 350,
     hideLegend: true,
@@ -2056,6 +2122,7 @@ export function transformVegaLiteToHistogramProps(
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle || xField,
     yAxisTitle: titles.yAxisTitle || yAggregate,
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     roundCorners: true,
     hideTickOverlap: true,
     maxBarWidth: 50,
@@ -2237,6 +2304,7 @@ export function transformVegaLiteToPolarScatterChartProps(
     ...(titles.chartTitle && { chartTitle: titles.chartTitle }),
     ...(titles.xAxisTitle && { xAxisTitle: titles.xAxisTitle }),
     ...(titles.yAxisTitle && { yAxisTitle: titles.yAxisTitle }),
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     width: typeof spec.width === 'number' ? spec.width : undefined,
     height: typeof spec.height === 'number' ? spec.height : undefined,
     hideLegend: encoding.color?.legend?.disable ?? false,
@@ -2386,6 +2454,7 @@ export function transformVegaLiteToPolarChartProps(
   return {
     data: polarData,
     ...(titles.chartTitle && { chartTitle: titles.chartTitle }),
+    ...(titles.titleStyles ? titles.titleStyles : {}),
     width: typeof spec.width === 'number' ? spec.width : undefined,
     height: typeof spec.height === 'number' ? spec.height : 400,
     hideLegend: encoding.color?.legend?.disable ?? false,

@@ -573,6 +573,64 @@ export interface VegaLiteLayerSpec {
 }
 
 /**
+ * Vega-Lite title configuration with styling options
+ */
+export interface VegaLiteTitleParams {
+  /**
+   * Title text
+   */
+  text: string;
+
+  /**
+   * Subtitle text
+   */
+  subtitle?: string;
+
+  /**
+   * Font for the title
+   */
+  font?: string;
+
+  /**
+   * Font size for the title
+   */
+  fontSize?: number;
+
+  /**
+   * Font style for the title (e.g., 'normal', 'italic')
+   */
+  fontStyle?: string;
+
+  /**
+   * Font weight for the title (e.g., 'normal', 'bold', 100-900)
+   */
+  fontWeight?: string | number;
+
+  /**
+   * Color of the title text
+   */
+  color?: string;
+
+  /**
+   * Horizontal anchor position for the title
+   * - 'start': left-aligned
+   * - 'middle': centered
+   * - 'end': right-aligned
+   */
+  anchor?: 'start' | 'middle' | 'end';
+
+  /**
+   * Vertical offset from the top of the chart
+   */
+  offset?: number;
+
+  /**
+   * Additional padding around the subtitle
+   */
+  subtitlePadding?: number;
+}
+
+/**
  * Top-level Vega-Lite specification
  */
 export interface VegaLiteSpec {
@@ -582,9 +640,9 @@ export interface VegaLiteSpec {
   $schema?: string;
 
   /**
-   * Chart title
+   * Chart title - can be a string or a detailed title configuration
    */
-  title?: string | { text: string; subtitle?: string };
+  title?: string | VegaLiteTitleParams;
 
   /**
    * Chart description
