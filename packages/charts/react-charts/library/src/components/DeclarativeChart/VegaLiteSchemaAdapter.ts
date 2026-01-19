@@ -1158,8 +1158,12 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
 
     // Build titleFont object if any font properties are present
     const titleFont: TitleStyles['titleFont'] = {};
-    if (titleObj.font) titleFont.family = titleObj.font;
-    if (titleObj.fontSize) titleFont.size = titleObj.fontSize;
+    if (titleObj.font) {
+      titleFont.family = titleObj.font;
+    }
+    if (titleObj.fontSize) {
+      titleFont.size = titleObj.fontSize;
+    }
     if (titleObj.fontWeight) {
       // Convert string weights to numbers (Font interface expects number)
       const weight = titleObj.fontWeight;
@@ -1175,7 +1179,9 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
         titleFont.weight = weight;
       }
     }
-    if (titleObj.color) titleFont.color = titleObj.color;
+    if (titleObj.color) {
+      titleFont.color = titleObj.color;
+    }
 
     // Map Vega-Lite anchor values to TitleStyles anchor values
     const anchorMap: Record<string, TitleStyles['titleXAnchor']> = {
