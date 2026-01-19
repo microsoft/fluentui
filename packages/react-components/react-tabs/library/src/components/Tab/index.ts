@@ -1,8 +1,7 @@
 export { Tab } from './Tab';
 export type { TabInternalSlots, TabBaseProps, TabProps, TabSlots, TabBaseState, TabState, TabValue } from './Tab.types';
 export { renderTab_unstable } from './renderTab';
-export { useTab_unstable } from './useTab';
-export { useTabBase_unstable } from './useTabBase';
+export { useTab_unstable, useTabBase_unstable, useTabFocusAttributes_unstable } from './useTab';
 export {
   tabClassNames,
   tabReservedSpaceClassNames,

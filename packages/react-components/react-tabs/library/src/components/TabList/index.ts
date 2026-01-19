@@ -15,7 +15,10 @@ export type {
 } from './TabList.types';
 export { TabListContext, TabListProvider, useTabListContext_unstable } from './TabListContext';
 export { renderTabList_unstable } from './renderTabList';
-export { useTabList_unstable } from './useTabList';
-export { useTabListBase_unstable } from './useTabListBase';
+export {
+  useTabList_unstable,
+  useTabListBase_unstable,
+  useTabListFocusAttributes_unstable as useTabListFocusAttributes,
+} from './useTabList';
 export { useTabListContextValues_unstable } from './useTabListContextValues';
 export { tabListClassNames, useTabListStyles_unstable } from './useTabListStyles.styles';

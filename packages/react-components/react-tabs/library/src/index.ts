@@ -36,6 +36,6 @@ export {
 
 // Experimental APIs - will be uncommented in experimental release
 // export type { TabBaseProps, TabBaseState } from './Tab';
-// export { useTabBase_unstable } from './Tab';
+// export { useTabBase_unstable, useTabFocusAttributes_unstable } from './Tab';
 // export type { TabListBaseProps, TabListBaseState } from './TabList';
-// export { useTabListBase_unstable } from './TabList';
+// export { useTabListBase_unstable, useTabListFocusAttributes_unstable } from './TabList';
