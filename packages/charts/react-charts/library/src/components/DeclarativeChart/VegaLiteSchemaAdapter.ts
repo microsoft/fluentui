@@ -957,6 +957,17 @@ export function transformVegaLiteToLineChartProps(
     throw new Error('VegaLiteSchemaAdapter: No valid line/point layer found in specification');
   }
 
+  // Check if there's a point layer in addition to line layer (for line+point combo charts)
+  const hasPointLayer = unitSpecs.some(unitSpec => {
+    const markType = typeof unitSpec.mark === 'string' ? unitSpec.mark : unitSpec.mark?.type;
+    return markType === 'point';
+  });
+  const hasLineLayer = unitSpecs.some(unitSpec => {
+    const markType = typeof unitSpec.mark === 'string' ? unitSpec.mark : unitSpec.mark?.type;
+    return markType === 'line';
+  });
+  const shouldShowPoints = hasPointLayer && hasLineLayer;
+
   const rawDataValues = extractDataValues(primarySpec.data);
   // Apply any transforms (fold, etc.) from the spec
   const dataValues = applyTransforms(rawDataValues, spec.transform);
@@ -1000,6 +1011,7 @@ export function transformVegaLiteToLineChartProps(
       legend: seriesName,
       data: dataPoints,
       color,
+      hideNonActiveDots: !shouldShowPoints,
       ...(curveOption && {
         lineOptions: {
           curve: curveOption,
@@ -1904,6 +1916,8 @@ export function transformVegaLiteToDonutChartProps(
       chartData,
     },
     innerRadius,
+    width: typeof spec.width === 'number' ? spec.width : undefined,
+    height: typeof spec.height === 'number' ? spec.height : undefined,
     ...(titles.titleStyles ? titles.titleStyles : {}),
   };
 }
