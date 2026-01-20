@@ -149,6 +149,10 @@ export type ColorTokens = {
     colorNeutralForeground3BrandPressed: string;
     colorNeutralForeground3BrandSelected: string;
     colorNeutralForeground4: string;
+    colorNeutralForeground5: string;
+    colorNeutralForeground5Hover: string;
+    colorNeutralForeground5Pressed: string;
+    colorNeutralForeground5Selected: string;
     colorNeutralForegroundDisabled: string;
     colorNeutralForegroundInvertedDisabled: string;
     colorBrandForegroundLink: string;
@@ -206,6 +210,14 @@ export type ColorTokens = {
     colorNeutralBackground5Pressed: string;
     colorNeutralBackground5Selected: string;
     colorNeutralBackground6: string;
+    colorNeutralBackground7: string;
+    colorNeutralBackground7Hover: string;
+    colorNeutralBackground7Pressed: string;
+    colorNeutralBackground7Selected: string;
+    colorNeutralBackground8: string;
+    colorNeutralBackground8Hover: string;
+    colorNeutralBackground8Pressed: string;
+    colorNeutralBackground8Selected: string;
     colorNeutralBackgroundInverted: string;
     colorNeutralBackgroundStatic: string;
     colorNeutralBackgroundAlpha: string;
@@ -226,6 +238,7 @@ export type ColorTokens = {
     colorTransparentBackgroundPressed: string;
     colorTransparentBackgroundSelected: string;
     colorNeutralBackgroundDisabled: string;
+    colorNeutralBackgroundDisabled2: string;
     colorNeutralBackgroundInvertedDisabled: string;
     colorNeutralStencil1: string;
     colorNeutralStencil2: string;
@@ -265,6 +278,10 @@ export type ColorTokens = {
     colorNeutralStroke1Selected: string;
     colorNeutralStroke2: string;
     colorNeutralStroke3: string;
+    colorNeutralStroke4: string;
+    colorNeutralStroke4Hover: string;
+    colorNeutralStroke4Pressed: string;
+    colorNeutralStroke4Selected: string;
     colorNeutralStrokeSubtle: string;
     colorNeutralStrokeOnBrand: string;
     colorNeutralStrokeOnBrand2: string;
@@ -280,6 +297,7 @@ export type ColorTokens = {
     colorCompoundBrandStrokeHover: string;
     colorCompoundBrandStrokePressed: string;
     colorNeutralStrokeDisabled: string;
+    colorNeutralStrokeDisabled2: string;
     colorNeutralStrokeInvertedDisabled: string;
     colorTransparentStroke: string;
     colorTransparentStrokeInteractive: string;

@@ -85,11 +85,14 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground5Pressed: grey[94], // #f0f0f0 Global.Color.Grey.94
   colorNeutralBackground5Selected: grey[98], // #fafafa Global.Color.Grey.98
   colorNeutralBackground6: grey[90], // #e6e6e6 Global.Color.Grey.90
-  colorNeutralBackground7: '#00000000', // #00000000 undefined
+  colorNeutralBackground7: '#00000000', // transparent
   colorNeutralBackground7Hover: grey[92], // #ebebeb Global.Color.Grey.92
   colorNeutralBackground7Pressed: grey[84], // #d6d6d6 Global.Color.Grey.84
-  colorNeutralBackground7Selected: '#00000000', // #00000000 undefined
+  colorNeutralBackground7Selected: '#00000000', // transparent
   colorNeutralBackground8: grey[99], // #fcfcfc Global.Color.Grey.99
+  colorNeutralBackground8Hover: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralBackground8Pressed: grey[12], // #1f1f1f Global.Color.Grey.12
+  colorNeutralBackground8Selected: grey[22], // #383838 Global.Color.Grey.22
   colorNeutralBackgroundInverted: grey[16], // #292929 Global.Color.Grey.16
   colorNeutralBackgroundStatic: grey[20], // #333333 Global.Color.Grey.20
   colorNeutralBackgroundAlpha: whiteAlpha[50], // rgba(255, 255, 255, 0.5) Global.Color.WhiteAlpha.50

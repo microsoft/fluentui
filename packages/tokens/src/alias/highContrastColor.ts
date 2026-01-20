@@ -100,6 +100,9 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground7Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground7Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground8: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackground8Hover: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralBackground8Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralBackground8Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundAlpha: hcCanvas, // Canvas Global.Color.hcCanvas
