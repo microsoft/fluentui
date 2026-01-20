@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   Text,
   makeStyles,
@@ -14,6 +13,7 @@ import {
   ToastBody,
   ToastFooter,
   ToastStatus,
+  ToastLink,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -60,11 +60,11 @@ export const ToastLifecycle = (): JSXElement => {
   const notify = () => {
     dispatchToast(
       <Toast>
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle action={<ToastLink>Undo</ToastLink>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
+          <ToastLink>Action</ToastLink>
+          <ToastLink>Action</ToastLink>
         </ToastFooter>
       </Toast>,
       {

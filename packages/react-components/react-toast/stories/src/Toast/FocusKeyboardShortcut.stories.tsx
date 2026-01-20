@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   Toaster,
   useToastController,
@@ -11,6 +10,7 @@ import {
   ToastBody,
   ToastFooter,
   ToastTrigger,
+  ToastLink,
 } from '@fluentui/react-components';
 
 export const FocusKeyboardShortcut = (): JSXElement => {
@@ -22,7 +22,7 @@ export const FocusKeyboardShortcut = (): JSXElement => {
         <ToastTitle
           action={
             <ToastTrigger>
-              <Link>Dismiss</Link>
+              <ToastLink>Dismiss</ToastLink>
             </ToastTrigger>
           }
         >
@@ -30,8 +30,8 @@ export const FocusKeyboardShortcut = (): JSXElement => {
         </ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
+          <ToastLink>Action</ToastLink>
+          <ToastLink>Action</ToastLink>
         </ToastFooter>
       </Toast>,
       { intent: 'success' },

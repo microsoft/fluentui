@@ -11,6 +11,9 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { LinkProps } from '@fluentui/react-link';
+import type { LinkSlots } from '@fluentui/react-link';
+import type { LinkState } from '@fluentui/react-link';
 import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -28,6 +31,9 @@ export const renderToaster_unstable: (state: ToasterState) => JSXElement;
 
 // @public
 export const renderToastFooter_unstable: (state: ToastFooterState) => JSXElement;
+
+// @public
+export const renderToastLink_unstable: (state: ToastLinkState) => JSXElement;
 
 // @public
 export const renderToastTitle_unstable: (state: ToastTitleState) => JSXElement;
@@ -122,6 +128,21 @@ export type ToastId = string;
 
 // @public (undocumented)
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
+// @public
+export const ToastLink: ForwardRefComponent<ToastLinkProps>;
+
+// @public (undocumented)
+export const toastLinkClassNames: SlotClassNames<ToastLinkSlots>;
+
+// @public
+export type ToastLinkProps = LinkProps;
+
+// @public
+export type ToastLinkSlots = LinkSlots;
+
+// @public
+export type ToastLinkState = LinkState;
 
 // @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
@@ -218,6 +239,12 @@ export const useToastFooter_unstable: (props: ToastFooterProps, ref: React_2.Ref
 
 // @public
 export const useToastFooterStyles_unstable: (state: ToastFooterState) => ToastFooterState;
+
+// @public
+export const useToastLink_unstable: (props: ToastLinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => ToastLinkState;
+
+// @public
+export const useToastLinkStyles_unstable: (state: ToastLinkState) => ToastLinkState;
 
 // @public
 export const useToastStyles_unstable: (state: ToastState) => ToastState;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ToastLink renders a default state 1`] = `
+<div>
+  <button
+    class="fui-ToastLink fui-Link"
+    type="button"
+  >
+    Default ToastLink
+  </button>
+</div>
+`;

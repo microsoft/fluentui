@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Link inside Toast with inverted appearance now uses colorBrandForegroundInverted tokens",
+  "packageName": "@fluentui/react-toast",
+  "email": "user@example.com",
+  "dependentChangeType": "patch"
+}

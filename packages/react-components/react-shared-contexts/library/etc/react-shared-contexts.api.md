@@ -211,6 +211,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
     useToastFooterStyles_unstable: CustomStyleHook;
+    useToastLinkStyles_unstable: CustomStyleHook;
     useToastStyles_unstable: CustomStyleHook;
     useToastTitleStyles_unstable: CustomStyleHook;
     useToggleButtonStyles_unstable: CustomStyleHook;
@@ -408,6 +409,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
     useToastFooterStyles_unstable: CustomStyleHook;
+    useToastLinkStyles_unstable: CustomStyleHook;
     useToastStyles_unstable: CustomStyleHook;
     useToastTitleStyles_unstable: CustomStyleHook;
     useToggleButtonStyles_unstable: CustomStyleHook;
@@ -605,6 +607,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
     useToastFooterStyles_unstable: CustomStyleHook;
+    useToastLinkStyles_unstable: CustomStyleHook;
     useToastStyles_unstable: CustomStyleHook;
     useToastTitleStyles_unstable: CustomStyleHook;
     useToggleButtonStyles_unstable: CustomStyleHook;

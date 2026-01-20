@@ -2,13 +2,13 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   Toaster,
   useToastController,
   ToastTitle,
   ToastTrigger,
   Toast,
+  ToastLink,
 } from '@fluentui/react-components';
 
 export const DismissToastWithAction = (): JSXElement => {
@@ -20,7 +20,7 @@ export const DismissToastWithAction = (): JSXElement => {
         <ToastTitle
           action={
             <ToastTrigger>
-              <Link>Dismiss</Link>
+              <ToastLink>Dismiss</ToastLink>
             </ToastTrigger>
           }
         >

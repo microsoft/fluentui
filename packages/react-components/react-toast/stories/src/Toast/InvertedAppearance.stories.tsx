@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   Toaster,
   useToastController,
@@ -10,6 +9,7 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
+  ToastLink,
 } from '@fluentui/react-components';
 
 export const InvertedAppearance = (): JSXElement => {
@@ -18,11 +18,11 @@ export const InvertedAppearance = (): JSXElement => {
   const notify = () =>
     dispatchToast(
       <Toast appearance="inverted">
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle action={<ToastLink>Undo</ToastLink>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
+          <ToastLink>Action</ToastLink>
+          <ToastLink>Action</ToastLink>
         </ToastFooter>
       </Toast>,
       { intent: 'success' },

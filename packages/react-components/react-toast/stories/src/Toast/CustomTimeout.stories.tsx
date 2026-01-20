@@ -3,7 +3,6 @@ import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Button,
-  Link,
   SpinButton,
   Field,
   Toaster,
@@ -11,6 +10,7 @@ import {
   ToastTitle,
   Toast,
   ToastTrigger,
+  ToastLink,
 } from '@fluentui/react-components';
 
 export const CustomTimeout = (): JSXElement => {
@@ -23,7 +23,7 @@ export const CustomTimeout = (): JSXElement => {
         <ToastTitle
           action={
             <ToastTrigger>
-              <Link>Dismiss</Link>
+              <ToastLink>Dismiss</ToastLink>
             </ToastTrigger>
           }
         >

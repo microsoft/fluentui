@@ -189,6 +189,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useToastContainerStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;
   useToastFooterStyles_unstable: CustomStyleHook;
+  useToastLinkStyles_unstable: CustomStyleHook;
   useToastStyles_unstable: CustomStyleHook;
   useToastTitleStyles_unstable: CustomStyleHook;
   useToggleButtonStyles_unstable: CustomStyleHook;

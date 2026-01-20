@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   ProgressBar,
   Text,
@@ -13,6 +12,7 @@ import {
   ToastBody,
   ToastFooter,
   ToastTrigger,
+  ToastLink,
 } from '@fluentui/react-components';
 
 const intervalDelay = 100;
@@ -52,7 +52,7 @@ export const ProgressToast = (): JSXElement => {
         <ToastTitle
           action={
             <ToastTrigger>
-              <Link>Dismiss</Link>
+              <ToastLink>Dismiss</ToastLink>
             </ToastTrigger>
           }
         >
@@ -63,8 +63,8 @@ export const ProgressToast = (): JSXElement => {
           <DownloadProgressBar onDownloadEnd={dismiss} />
         </ToastBody>
         <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
+          <ToastLink>Action</ToastLink>
+          <ToastLink>Action</ToastLink>
         </ToastFooter>
       </Toast>,
       {

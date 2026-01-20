@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
-  Link,
   Button,
   Toaster,
   useToastController,
@@ -10,6 +9,7 @@ import {
   ToastTitle,
   Text,
   makeStyles,
+  ToastLink,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -33,7 +33,7 @@ export const Inline = (): JSXElement => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle action={<ToastLink>Undo</ToastLink>}>Email sent</ToastTitle>
       </Toast>,
       { intent: 'success' },
     );

@@ -1258,6 +1258,7 @@ export {
   useToastFooter_unstable,
   renderToastFooter_unstable,
   toastFooterClassNames,
+  ToastLink,
 } from '@fluentui/react-toast';
 
 export type {
