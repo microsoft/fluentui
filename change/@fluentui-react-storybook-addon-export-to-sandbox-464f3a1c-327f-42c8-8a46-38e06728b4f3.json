@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add withExportToSandboxButton decorator export and fix default story missing export button",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
