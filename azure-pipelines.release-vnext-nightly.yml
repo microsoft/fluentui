@@ -1,6 +1,12 @@
 pr: none
 trigger: none
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 # Customize build number to include major version
 # Example: v9_20201022.1
 name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
@@ -56,6 +62,8 @@ extends:
                   artifactName: output
             steps:
               - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
               - script: |
                   git config user.name "Fluent UI Build"
@@ -98,6 +106,7 @@ extends:
                   yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
                   git reset --hard origin/$(Build.SourceBranchName)
                 displayName: Publish changes and bump versions
+                condition: not(${{ parameters.dryRun }})
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:
