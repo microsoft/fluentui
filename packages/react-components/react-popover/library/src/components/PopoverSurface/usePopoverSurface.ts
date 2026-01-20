@@ -1,10 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
-import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import type {
+  PopoverSurfaceProps,
+  PopoverSurfaceState,
+  PopoverSurfaceBaseProps,
+  PopoverSurfaceBaseState,
+} from './PopoverSurface.types';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -19,14 +24,34 @@ export const usePopoverSurface_unstable = (
   props: PopoverSurfaceProps,
   ref: React.Ref<HTMLDivElement>,
 ): PopoverSurfaceState => {
+  const size = usePopoverContext_unstable(context => context.size);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const state = usePopoverSurfaceBase_unstable(props, ref);
+
+  return {
+    appearance,
+    size,
+    ...state,
+  };
+};
+
+/**
+ * Base hook that builds PopoverSurface state for behavior and structure only.
+ *
+ * @internal
+ * @param props - User provided props to the PopoverSurface component.
+ * @param ref - User provided ref to be passed to the PopoverSurface component.
+ */
+export const usePopoverSurfaceBase_unstable = (
+  props: PopoverSurfaceBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): PopoverSurfaceBaseState => {
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const mountNode = usePopoverContext_unstable(context => context.mountNode);
   const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
-  const size = usePopoverContext_unstable(context => context.size);
   const withArrow = usePopoverContext_unstable(context => context.withArrow);
-  const appearance = usePopoverContext_unstable(context => context.appearance);
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
@@ -36,27 +61,22 @@ export const usePopoverSurface_unstable = (
     alwaysFocusable: !trapFocus,
   });
 
-  const state: PopoverSurfaceState = {
+  const state: PopoverSurfaceBaseState = {
     inline,
-    appearance,
     withArrow,
-    size,
     arrowRef,
     mountNode,
     components: {
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        // FIXME:
-        // `contentRef` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      {
         ref: useMergedRefs(ref, contentRef) as React.Ref<HTMLDivElement>,
         role: trapFocus ? 'dialog' : 'group',
         'aria-modal': trapFocus ? true : undefined,
         ...modalAttributes,
         ...props,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

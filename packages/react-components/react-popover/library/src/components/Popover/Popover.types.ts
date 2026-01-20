@@ -145,6 +145,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   unstable_disableAutoFocus?: boolean;
 };
 
+export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
+
 /**
  * Popover State
  */
@@ -205,6 +207,8 @@ export type PopoverState = Pick<
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
+
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'size'>;
 
 /**
  * Data attached to open/close events
