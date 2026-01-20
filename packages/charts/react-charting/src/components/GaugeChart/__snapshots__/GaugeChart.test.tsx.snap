@@ -4079,6 +4079,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                   fill: CanvasText;
                 }
             data-is-focusable="false"
+            dominant-baseline="auto"
             id="tooltip-host4"
             tabindex="-1"
             text-anchor="middle"

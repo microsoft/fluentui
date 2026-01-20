@@ -74,6 +74,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -599,6 +600,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -1181,6 +1183,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -1763,6 +1766,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -2375,6 +2379,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -2900,6 +2905,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -3425,6 +3431,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -3950,6 +3957,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -4600,6 +4608,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"
@@ -5125,6 +5134,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host4"
           tabindex="-1"
           text-anchor="middle"

@@ -58,26 +58,37 @@ export interface IChartTitleProps {
  * This component encapsulates the common pattern for rendering chart titles across all chart types.
  */
 export const ChartTitle: React.FunctionComponent<IChartTitleProps> = props => {
-  const {
-    title,
-    x,
-    y,
-    maxWidth,
-    className,
-    titleStyles,
-    textAnchor = 'middle',
-    tooltipProps,
-    tooltipClassName,
-    theme,
-  } = props;
+  const { title, x, y, maxWidth, className, titleStyles, tooltipProps, tooltipClassName, theme } = props;
 
   const { titleFont, titleXAnchor, titleYAnchor, titlePad } = titleStyles ?? {};
+  const computedTextAnchor = titleXAnchor === 'left' ? 'start' : titleXAnchor === 'right' ? 'end' : 'middle';
+
+  // Calculate dominantBaseline from titleYAnchor for vertical alignment
+  // 'top' means text hangs below the y position (text-before-edge/hanging)
+  // 'bottom' means text sits above the y position (text-after-edge/alphabetic)
+  // 'middle' means text is centered on the y position (central)
+  const computedDominantBaseline =
+    titleYAnchor === 'top'
+      ? 'hanging'
+      : titleYAnchor === 'bottom'
+      ? 'alphabetic'
+      : titleYAnchor === 'middle'
+      ? 'central'
+      : 'auto';
+
+  // Calculate x position with padding adjustments
+  const computedX = x + (titlePad?.l ?? 0) - (titlePad?.r ?? 0);
+
+  // Calculate y position with padding adjustments
   const calculatedY =
-    y ??
-    Math.max(
-      (typeof titleFont?.size === 'number' ? titleFont.size : 13) + AXIS_TITLE_PADDING,
-      CHART_TITLE_PADDING - AXIS_TITLE_PADDING,
-    );
+    (y ??
+      Math.max(
+        (typeof titleFont?.size === 'number' ? titleFont.size : 13) + AXIS_TITLE_PADDING,
+        CHART_TITLE_PADDING - AXIS_TITLE_PADDING,
+      )) +
+    (titlePad?.t ?? 0) -
+    (titlePad?.b ?? 0);
+
   const commonSvgToolTipProps: Partial<ISVGTooltipTextProps> = {
     wrapContent,
     showBackground: true,
@@ -90,12 +101,13 @@ export const ChartTitle: React.FunctionComponent<IChartTitleProps> = props => {
       {...commonSvgToolTipProps}
       content={title}
       textProps={{
-        x,
+        x: computedX,
         y: calculatedY,
-        textAnchor,
+        textAnchor: computedTextAnchor,
+        dominantBaseline: computedDominantBaseline,
         className,
         'aria-hidden': true,
-        style: getChartTitleInlineStyles(titleFont, titleXAnchor, titleYAnchor, titlePad),
+        style: getChartTitleInlineStyles(titleFont),
       }}
       maxWidth={maxWidth}
     />

@@ -1702,6 +1702,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"
@@ -3107,6 +3108,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"
@@ -4509,6 +4511,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host11"
           tabindex="-1"
           text-anchor="middle"
@@ -4793,6 +4796,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host28"
           tabindex="-1"
           text-anchor="middle"
@@ -5532,6 +5536,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host18"
           tabindex="-1"
           text-anchor="middle"
@@ -6014,6 +6019,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"
@@ -7413,6 +7419,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"
@@ -8821,6 +8828,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"
@@ -10218,6 +10226,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill: CanvasText;
               }
           data-is-focusable="false"
+          dominant-baseline="auto"
           id="tooltip-host42"
           tabindex="-1"
           text-anchor="middle"

@@ -1393,7 +1393,7 @@ export const transformPlotlyJsonToDonutProps = (
       : true,
     roundCorners: true,
     order: 'sorted',
-    ...titleStyles,
+    ...(titleStyles ? { titleStyles } : {}),
   } as IDonutChartProps;
 };
 
@@ -2737,7 +2737,7 @@ export const transformPlotlyJsonToSankeyProps = (
     styles,
     enableReflow: false,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    ...titleStyles,
+    ...(titleStyles ? { titleStyles } : {}),
   } as ISankeyChartProps;
 };
 
@@ -2860,7 +2860,7 @@ export const transformPlotlyJsonToGaugeProps = (
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
     roundCorners: true,
-    ...titleStyles,
+    ...(titleStyles ? { titleStyles } : {}),
   } as IGaugeChartProps;
 };
 const cleanText = (text: string): string => {
@@ -3038,7 +3038,7 @@ export const transformPlotlyJsonToChartTableProps = (
     height: input.layout?.height,
     styles,
     chartTitle,
-    ...titleStyles,
+    ...(titleStyles ? { titleStyles } : {}),
   } as IChartTableProps;
 };
 
@@ -3199,7 +3199,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     height: input.layout?.height,
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    ...titleStyles,
+    ...(titleStyles ? { titleStyles } : {}),
   } as IFunnelChartProps;
 };
 

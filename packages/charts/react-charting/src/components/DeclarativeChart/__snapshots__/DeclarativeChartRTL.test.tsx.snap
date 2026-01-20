@@ -1604,6 +1604,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                       fill: CanvasText;
                     }
                 data-is-focusable="true"
+                dominant-baseline="auto"
                 id="tooltip-host4"
                 tabindex="-1"
                 text-anchor="middle"
@@ -20444,6 +20445,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       fill: CanvasText;
                     }
                 data-is-focusable="false"
+                dominant-baseline="auto"
                 id="tooltip-host37"
                 tabindex="-1"
                 text-anchor="middle"
