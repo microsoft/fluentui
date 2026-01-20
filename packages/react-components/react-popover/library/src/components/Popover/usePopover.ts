@@ -18,7 +18,13 @@ import {
 } from '@fluentui/react-positioning';
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
-import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
+import type {
+  OpenPopoverEvents,
+  PopoverBaseProps,
+  PopoverBaseState,
+  PopoverProps,
+  PopoverState,
+} from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
 
 /**
@@ -30,9 +36,37 @@ import { popoverSurfaceBorderRadius } from './constants';
  * @param props - props from this instance of Popover
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
+  const { appearance, size = 'medium' } = props;
+  const positioning = resolvePositioningShorthand(props.positioning);
+  const withArrow = props.withArrow && !positioning.coverTarget;
+
+  const state = usePopoverBase_unstable({
+    ...props,
+    positioning: {
+      ...positioning,
+      // Update the offset with the arrow size only when it's available
+      ...(withArrow ? { offset: mergeArrowOffset(positioning.offset, arrowHeights[size]) } : {}),
+    },
+  });
+
+  return {
+    appearance,
+    size,
+    ...state,
+  };
+};
+
+/**
+ * Base hook that builds Popover state for behavior and structure only.
+ * Does not add design-related defaults such as appearance or size.
+ * Does not manage focus behavior, it's handled by `usePopoverFocusManagement_unstable`.
+ *
+ * @internal
+ * @param props - props from this instance of Popover
+ */
+export const usePopoverBase_unstable = (props: PopoverBaseProps): PopoverBaseState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
   const initialState = {
-    size: 'medium',
     contextTarget,
     setContextTarget,
     ...props,
@@ -83,7 +117,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     }
   });
 
-  const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
+  const toggleOpen = React.useCallback<PopoverBaseState['toggleOpen']>(
     (e: OpenPopoverEvents) => {
       setOpen(e, !open);
     },
@@ -156,11 +190,11 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
  * Creates and manages the Popover open state
  */
 function useOpenState(
-  state: Pick<PopoverState, 'setContextTarget' | 'onOpenChange'> & Pick<PopoverProps, 'open' | 'defaultOpen'>,
+  state: Pick<PopoverBaseState, 'setContextTarget' | 'onOpenChange'> & Pick<PopoverBaseProps, 'open' | 'defaultOpen'>,
 ) {
   'use no memo';
 
-  const onOpenChange: PopoverState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+  const onOpenChange: PopoverBaseState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpenState] = useControllableState({
     state: state.open,
@@ -193,8 +227,8 @@ function useOpenState(
  * Creates and sets the necessary trigger, target and content refs used by Popover
  */
 function usePopoverRefs(
-  state: Pick<PopoverState, 'size' | 'contextTarget'> &
-    Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
+  state: Pick<PopoverBaseState, 'contextTarget'> &
+    Pick<PopoverBaseProps, 'positioning' | 'openOnContext' | 'withArrow'>,
 ) {
   'use no memo';
 
@@ -209,10 +243,6 @@ function usePopoverRefs(
   // no reason to render arrow when covering the target
   if (positioningOptions.coverTarget) {
     state.withArrow = false;
-  }
-
-  if (state.withArrow) {
-    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeights[state.size]);
   }
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);

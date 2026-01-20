@@ -781,25 +781,58 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={xAxisTitleMaxWidth}
             />
           )}
-          {props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '' && (
-            <SVGTooltipText
-              {...commonSvgToolTipProps}
-              content={props.xAxisAnnotation}
-              textProps={{
-                x: margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
-                y: Math.max(
-                  (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
-                    AXIS_TITLE_PADDING,
-                  VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
-                ),
-                className: classes.axisAnnotation!,
-                textAnchor: 'middle',
-                'aria-hidden': true,
-                style: getChartTitleInlineStyles(props.titleStyles?.titleFont),
-              }}
-              maxWidth={xAxisTitleMaxWidth}
-            />
-          )}
+          {props.xAxisAnnotation !== undefined &&
+            props.xAxisAnnotation !== '' &&
+            (() => {
+              const { titleFont, titleXAnchor, titleYAnchor, titlePad } = props.titleStyles ?? {};
+              const fontSize = typeof titleFont?.size === 'number' ? titleFont.size : 13;
+              const padL = titlePad?.l ?? 0;
+              const padR = titlePad?.r ?? 0;
+              const padT = titlePad?.t ?? 0;
+              const padB = titlePad?.b ?? 0;
+
+              const xPos =
+                (titleXAnchor === 'left'
+                  ? margins.left! + AXIS_TITLE_PADDING
+                  : titleXAnchor === 'right'
+                  ? margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth
+                  : margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2) +
+                padL -
+                padR;
+
+              const yPos =
+                Math.max(fontSize + AXIS_TITLE_PADDING, VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING) +
+                padT -
+                padB;
+
+              const textAnchor = titleXAnchor === 'left' ? 'start' : titleXAnchor === 'right' ? 'end' : 'middle';
+
+              const dominantBaseline =
+                titleYAnchor === 'top'
+                  ? 'hanging'
+                  : titleYAnchor === 'bottom'
+                  ? 'alphabetic'
+                  : titleYAnchor === 'middle'
+                  ? 'central'
+                  : 'auto';
+
+              return (
+                <SVGTooltipText
+                  {...commonSvgToolTipProps}
+                  content={props.xAxisAnnotation}
+                  textProps={{
+                    x: xPos,
+                    y: yPos,
+                    className: classes.axisAnnotation!,
+                    textAnchor,
+                    dominantBaseline,
+                    'aria-hidden': true,
+                    style: getChartTitleInlineStyles(titleFont),
+                  }}
+                  maxWidth={xAxisTitleMaxWidth}
+                />
+              );
+            })()}
           <g
             ref={(e: SVGSVGElement | null) => {
               yAxisElement.current = e!;
