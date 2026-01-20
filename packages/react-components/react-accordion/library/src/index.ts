@@ -67,3 +67,10 @@ export type { AccordionItemContextValue } from './contexts/accordionItem';
 export { AccordionHeaderProvider, useAccordionHeaderContext_unstable } from './contexts/accordionHeader';
 
 export type { AccordionHeaderContextValue } from './contexts/accordionHeader';
+
+// Experimental APIs
+// export type { AccordionBaseState, AccordionBaseProps } from './Accordion';
+// export { useAccordionBase_unstable } from './Accordion';
+// export { useAccordionHeaderBase_unstable } from './AccordionHeader';
+// export type { AccordionPanelBaseState, AccordionPanelBaseProps } from './AccordionPanel';
+// export { useAccordionPanelBase_unstable } from './AccordionPanel';
