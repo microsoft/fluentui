@@ -11,6 +11,11 @@ export type BorderRadiusTokens = {
     borderRadiusMedium: string;
     borderRadiusLarge: string;
     borderRadiusXLarge: string;
+    borderRadius2XLarge: string;
+    borderRadius3XLarge: string;
+    borderRadius4XLarge: string;
+    borderRadius5XLarge: string;
+    borderRadius6XLarge: string;
     borderRadiusCircular: string;
 };
 
@@ -215,10 +220,10 @@ export type ColorTokens = {
     colorNeutralBackground7Pressed: string;
     colorNeutralBackground7Selected: string;
     colorNeutralBackground8: string;
-    colorNeutralBackground8Hover: string;
-    colorNeutralBackground8Pressed: string;
-    colorNeutralBackground8Selected: string;
     colorNeutralBackgroundInverted: string;
+    colorNeutralBackgroundInvertedHover: string;
+    colorNeutralBackgroundInvertedPressed: string;
+    colorNeutralBackgroundInvertedSelected: string;
     colorNeutralBackgroundStatic: string;
     colorNeutralBackgroundAlpha: string;
     colorNeutralBackgroundAlpha2: string;
