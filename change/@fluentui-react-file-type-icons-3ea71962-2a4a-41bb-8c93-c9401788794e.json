@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "adding filetypeicon for campaign item",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
