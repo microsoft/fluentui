@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: filter out custom props for CalrouselButton",
+  "packageName": "@fluentui/react-carousel",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
