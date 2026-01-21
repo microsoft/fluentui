@@ -12,7 +12,7 @@ import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.
 export const renderPopoverSurface_unstable = (state: PopoverSurfaceState): JSXElement => {
   assertSlots<PopoverSurfaceSlots>(state);
 
-  const surfaceContent = (
+  const surface = (
     <state.root>
       {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
       {state.root.children}
@@ -20,8 +20,8 @@ export const renderPopoverSurface_unstable = (state: PopoverSurfaceState): JSXEl
   );
 
   if (state.inline) {
-    return surfaceContent;
+    return surface;
   }
 
-  return <Portal mountNode={state.mountNode}>{surfaceContent}</Portal>;
+  return <Portal mountNode={state.mountNode}>{surface}</Portal>;
 };
