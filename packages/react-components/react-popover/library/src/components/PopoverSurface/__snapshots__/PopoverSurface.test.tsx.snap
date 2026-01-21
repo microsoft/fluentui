@@ -7,6 +7,7 @@ exports[`PopoverSurface renders a default state 1`] = `
   data-tabster="{\\"restorer\\":{\\"type\\":0}}"
   data-testid="component"
   role="group"
+  style="opacity: 0;"
 >
   Default PopoverSurface
 </div>
