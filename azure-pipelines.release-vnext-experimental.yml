@@ -70,8 +70,11 @@ extends:
                       echo "##vso[task.logissue type=error]Branch '$BRANCH' must start with 'refs/heads/experimental/'"
                       exit 1
                     fi
+                    BRANCH_PATH=${BRANCH#refs/heads/}
                     FEATURE_NAME=${BRANCH#refs/heads/experimental/}
+                    echo "##vso[task.setvariable variable=branchPath;isOutput=true]$BRANCH_PATH"
                     echo "##vso[task.setvariable variable=featureName;isOutput=true]$FEATURE_NAME"
+                    echo "Branch path: $BRANCH_PATH"
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
 
@@ -114,8 +117,8 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn beachball publish -b origin/$(Build.SourceBranchName) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
-                  git reset --hard origin/$(Build.SourceBranchName)
+                  yarn beachball publish -b origin/$(validation.branchPath) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
+                  git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
 
