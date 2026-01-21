@@ -1,4 +1,4 @@
-# RFC: Imperative WAAPI Slide Animation for Popovers
+# Imperative WAAPI Slide Animation for Popovers
 
 ## Summary
 
@@ -65,4 +65,4 @@ The `PositioningSlide` component is kept for backward compatibility but could be
 - [x] Update `useMenuPopover.ts` to use the new hook
 - [x] Update `renderMenuPopover.tsx` to remove `PositioningSlide` wrapper
 - [x] Add tests for the new hook
-- [ ] Decide on `PositioningSlide` deprecation/removal
+- [x] Remove `PositioningSlide` component
