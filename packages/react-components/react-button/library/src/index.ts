@@ -45,7 +45,7 @@ export { ButtonContextProvider, useButtonContext } from './contexts/index';
 export type { ButtonContextValue } from './contexts/index';
 
 // Experimental APIs - will be uncommented in the experimental release branch
-// export { useButtonBase_unstable } from './Button';
-// export type { ButtonBaseProps, ButtonBaseState } from './Button';
-// export { useToggleButtonBase_unstable } from './ToggleButton';
-// export type { ToggleButtonBaseProps, ToggleButtonBaseState } from './ToggleButton';
+export { useButtonBase_unstable } from './Button';
+export type { ButtonBaseProps, ButtonBaseState } from './Button';
+export { useToggleButtonBase_unstable } from './ToggleButton';
+export type { ToggleButtonBaseProps, ToggleButtonBaseState } from './ToggleButton';

@@ -18,5 +18,6 @@ export {
   useTabIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
+  useTabA11yBehavior_unstable,
   useTabBase_unstable,
 } from './components/Tab/index';
