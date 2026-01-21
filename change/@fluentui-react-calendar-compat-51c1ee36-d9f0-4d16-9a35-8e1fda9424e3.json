@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-calendar): migrate to motion components",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

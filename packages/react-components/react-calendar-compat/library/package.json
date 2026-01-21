@@ -15,6 +15,8 @@
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.3.4",
+    "@fluentui/react-motion": "^9.11.5",
+    "@fluentui/react-motion-components-preview": "^0.14.2",
     "@fluentui/react-shared-contexts": "^9.26.0",
     "@fluentui/react-tabster": "^9.26.11",
     "@fluentui/react-theme": "^9.2.0",
