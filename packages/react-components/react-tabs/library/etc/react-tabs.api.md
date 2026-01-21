@@ -126,7 +126,7 @@ export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'
 // @public
 export type TabValue = unknown;
 
-// @internal
+// @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public

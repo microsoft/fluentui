@@ -13,7 +13,6 @@ import type { SelectTabEvent } from '../TabList';
  * The returned state can be modified with hooks such as useTabStyles_unstable,
  * before being passed to renderTab_unstable.
  *
- * @internal
  * @param props - props from this instance of Tab
  * @param ref - reference to root HTMLElement of Tab
  */
@@ -21,7 +20,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const { content } = props;
 
   const state = useTabBase_unstable(props, ref);
-  const focusAttributes = useTabFocusAttributes_unstable(state);
+  const focusAttributes = useTabA11yBehavior_unstable(state);
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
@@ -117,12 +116,13 @@ export const useTabBase_unstable = (props: TabBaseProps, ref: React.Ref<HTMLElem
 };
 
 /**
- * Hook to return focus attributes to a Tab based on selected state.
+ * Hook to return a11y attributes to a Tab based on selected state.
  * Should be applied on the button with role="tab".
  *
- * @internal
+ * @param selected - whether the Tab is selected
+ * @returns Tabster DOM attributes
  */
-export const useTabFocusAttributes_unstable = ({ selected }: Pick<TabBaseState, 'selected'>): TabsterDOMAttribute => {
+export const useTabA11yBehavior_unstable = ({ selected }: Pick<TabBaseState, 'selected'>): TabsterDOMAttribute => {
   return useTabsterAttributes({
     focusable: { isDefault: selected },
   });

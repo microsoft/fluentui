@@ -26,7 +26,7 @@ import type { TabValue } from '../Tab';
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const { appearance = 'transparent', reserveSelectedTabSpace = true, size = 'medium' } = props;
   const state = useTabListBase_unstable(props, ref);
-  const focusAttributes = useTabListFocusAttributes_unstable({ vertical: state.vertical });
+  const focusAttributes = useTabListA11yBehavior_unstable({ vertical: state.vertical });
 
   return {
     ...state,
@@ -142,13 +142,13 @@ export const useTabListBase_unstable = (props: TabListBaseProps, ref: React.Ref<
 };
 
 /**
- * Hook to get Tabster DOM attributes for TabList focus handling
+ * Hook to get accessibility attributes for TabList component, such as roving tab index.
+ * Based on Tabster's useArrowNavigationGroup.
  *
- * @internal
  * @param vertical - whether the TabList is vertical
  * @returns Tabster DOM attributes
  */
-export const useTabListFocusAttributes_unstable = ({
+export const useTabListA11yBehavior_unstable = ({
   vertical,
 }: Pick<TabListBaseState, 'vertical'>): TabsterDOMAttribute => {
   return useArrowNavigationGroup({
