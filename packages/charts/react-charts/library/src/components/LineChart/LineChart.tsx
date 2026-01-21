@@ -68,6 +68,8 @@ const bisect = bisector((d: any) => d.x).left;
 const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
+// Scale factor to reduce marker sizes (0.6 = 60% of calculated size)
+const MARKER_SIZE_SCALE_FACTOR = 0.6;
 
 /**
  *
@@ -549,7 +551,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
-            })
+            }) * MARKER_SIZE_SCALE_FACTOR
           : 0;
         if (_points[i].data.length === 1) {
           const {
