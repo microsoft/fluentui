@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-positioning): add PositioningSlideIn motion component and getSlideOffsets utility",
+  "comment": "feat(react-positioning): add useSlideAnimation hook for imperative WAAPI slide animations",
   "packageName": "@fluentui/react-positioning",
   "email": "robertpenner@microsoft.com",
   "dependentChangeType": "patch"

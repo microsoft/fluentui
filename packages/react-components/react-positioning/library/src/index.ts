@@ -1,7 +1,6 @@
 export { createVirtualElementFromClick } from './createVirtualElementFromClick';
 export { createArrowHeightStyles, createArrowStyles } from './createArrowStyles';
 export { createSlideStyles } from './createSlideStyles';
-export { PositioningSlide } from './PositioningSlide';
 export { useSlideAnimation } from './useSlideAnimation';
 export type { UseSlideAnimationParams } from './useSlideAnimation';
 export type { CreateArrowStylesOptions } from './createArrowStyles';

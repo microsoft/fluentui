@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "refactor(react-popover): migrate Popover from CSS slide to motion component",
+  "comment": "refactor(react-popover): migrate Popover slide animation from CSS to imperative WAAPI",
   "packageName": "@fluentui/react-popover",
   "email": "robertpenner@microsoft.com",
   "dependentChangeType": "patch"

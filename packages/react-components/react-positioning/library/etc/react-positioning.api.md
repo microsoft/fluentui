@@ -8,7 +8,6 @@ import type { GriffelStyle } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { RefObjectFunction } from '@fluentui/react-utilities';
-import { SlideParams } from '@fluentui/react-motion-components-preview';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -109,9 +108,6 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 // @public (undocumented)
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
-
-// @public
-export const PositioningSlide: React_2.FC<PositioningSlideParams>;
 
 // @public (undocumented)
 export type PositioningVirtualElement = {
