@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
+import { useSlideAnimation } from '@fluentui/react-positioning';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type {
   PopoverSurfaceProps,
@@ -61,6 +62,8 @@ export const usePopoverSurfaceBase_unstable = (
     alwaysFocusable: !trapFocus,
   });
 
+  const slideRef = useSlideAnimation({ distance: '10px' });
+
   const state: PopoverSurfaceBaseState = {
     inline,
     withArrow,
@@ -71,7 +74,7 @@ export const usePopoverSurfaceBase_unstable = (
     },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, contentRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, contentRef, slideRef) as React.Ref<HTMLDivElement>,
         role: trapFocus ? 'dialog' : 'group',
         'aria-modal': trapFocus ? true : undefined,
         ...modalAttributes,

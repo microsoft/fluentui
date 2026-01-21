@@ -4,7 +4,6 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
-import { PositioningSlide } from '@fluentui/react-positioning';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -20,11 +19,9 @@ export const renderPopoverSurface_unstable = (state: PopoverSurfaceState): JSXEl
     </state.root>
   );
 
-  const surface = <PositioningSlide distance="10px">{surfaceContent}</PositioningSlide>;
-
   if (state.inline) {
-    return surface;
+    return surfaceContent;
   }
 
-  return <Portal mountNode={state.mountNode}>{surface}</Portal>;
+  return <Portal mountNode={state.mountNode}>{surfaceContent}</Portal>;
 };
