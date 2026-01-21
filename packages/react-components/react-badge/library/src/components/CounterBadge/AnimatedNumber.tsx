@@ -1,5 +1,65 @@
+'use client';
+
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'inline-flex',
+  },
+
+  digitSlot: {
+    position: 'relative',
+    display: 'inline-block',
+    overflow: 'hidden',
+  },
+
+  previousDigit: {
+    position: 'absolute',
+    inset: '0',
+    transform: 'translateY(0)',
+    opacity: 1,
+    transitionProperty: 'transform, opacity',
+    transitionDuration: '75ms',
+    transitionTimingFunction: 'cubic-bezier(0.9, 0.1, 1, 0.2)',
+  },
+
+  previousDigitAnimateOutUp: {
+    transform: 'translateY(-100%)',
+    opacity: 0,
+  },
+
+  previousDigitAnimateOutDown: {
+    transform: 'translateY(100%)',
+    opacity: 0,
+  },
+
+  currentDigit: {
+    display: 'inline-block',
+    transform: 'translateY(0)',
+    opacity: 1,
+  },
+
+  currentDigitInitialUp: {
+    transform: 'translateY(100%)',
+    opacity: 0,
+  },
+
+  currentDigitInitialDown: {
+    transform: 'translateY(-100%)',
+    opacity: 0,
+  },
+
+  // Current digit animating in
+  currentDigitAnimateIn: {
+    transform: 'translateY(0)',
+    opacity: 1,
+    transitionProperty: 'transform, opacity',
+    transitionDuration: '150ms',
+    transitionTimingFunction: 'cubic-bezier(0.1, 0.9, 0.2, 1)',
+  },
+});
 
 interface DigitSlotProps {
   currentDigit: string;
@@ -12,6 +72,7 @@ function DigitSlot({ currentDigit, previousDigit, isAnimating, direction }: Digi
   const [showPrevious, setShowPrevious] = useState(false);
   const [animateOut, setAnimateOut] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+  const styles = useStyles();
 
   useEffect(() => {
     if (isAnimating && previousDigit !== null) {
@@ -37,39 +98,25 @@ function DigitSlot({ currentDigit, previousDigit, isAnimating, direction }: Digi
     }
   }, [isAnimating, previousDigit]);
 
-  const baseStyle: React.CSSProperties = {
-    position: 'relative',
-    display: 'inline-block',
-    overflow: 'hidden',
-  };
+  const previousDigitClassName = mergeClasses(
+    styles.previousDigit,
+    animateOut && direction === 'up' && styles.previousDigitAnimateOutUp,
+    animateOut && direction === 'down' && styles.previousDigitAnimateOutDown,
+  );
 
-  const previousStyle: React.CSSProperties = {
-    position: 'absolute',
-    inset: '0',
-    transform: animateOut ? (direction === 'up' ? 'translateY(-100%)' : 'translateY(100%)') : 'translateY(0)',
-    opacity: animateOut ? 0 : 1,
-    transition: 'transform 75ms cubic-bezier(0.9,0.1,1,0.2), opacity 75ms cubic-bezier(0.9,0.1,1,0.2)',
-  };
-
-  const currentStyle: React.CSSProperties = {
-    display: 'inline-block',
-    transform: animateIn
-      ? 'translateY(0)'
-      : isAnimating
-      ? direction === 'up'
-        ? 'translateY(100%)'
-        : 'translateY(-100%)'
-      : 'translateY(0)',
-    opacity: animateIn || !isAnimating ? 1 : 0,
-    transition: animateIn
-      ? 'transform 150ms cubic-bezier(0.1,0.9,0.2,1), opacity 150ms cubic-bezier(0.1,0.9,0.2,1)'
-      : 'none',
-  };
+  const currentDigitClassName = mergeClasses(
+    styles.currentDigit,
+    // Initial position when animating (before transition starts)
+    !animateIn && isAnimating && direction === 'up' && styles.currentDigitInitialUp,
+    !animateIn && isAnimating && direction === 'down' && styles.currentDigitInitialDown,
+    // Animate in
+    animateIn && styles.currentDigitAnimateIn,
+  );
 
   return (
-    <span style={baseStyle}>
-      {showPrevious && previousDigit !== null && <span style={previousStyle}>{previousDigit}</span>}
-      <span style={currentStyle}>{currentDigit}</span>
+    <span className={styles.digitSlot}>
+      {showPrevious && previousDigit !== null && <span className={previousDigitClassName}>{previousDigit}</span>}
+      <span className={currentDigitClassName}>{currentDigit}</span>
     </span>
   );
 }
@@ -84,6 +131,7 @@ export function AnimatedNumber({ value }: AnimatedNumberProps) {
   const [animatingIndices, setAnimatingIndices] = useState<Set<number>>(new Set());
   const [direction, setDirection] = useState<'up' | 'down'>('up');
   const prevValueRef = useRef(value);
+  const styles = useStyles();
 
   useEffect(() => {
     if (value === prevValueRef.current) return;
@@ -123,7 +171,7 @@ export function AnimatedNumber({ value }: AnimatedNumberProps) {
   const displayLength = currentChars.length;
 
   return (
-    <span style={{ display: 'inline-flex' }}>
+    <span className={styles.root}>
       {currentChars.map((char, index) => {
         const adjustedIndex = maxLength - displayLength + index;
         const prevChar = previousChars[adjustedIndex] !== ' ' ? previousChars[adjustedIndex] : null;
