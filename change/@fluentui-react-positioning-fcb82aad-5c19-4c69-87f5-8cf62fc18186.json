@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-positioning): add PositioningSlideIn motion component and getSlideOffsets utility",
+  "packageName": "@fluentui/react-positioning",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
