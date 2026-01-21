@@ -116,6 +116,8 @@ extends:
               - script: |
                   yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
                   git reset --hard origin/$(Build.SourceBranchName)
+                env:
+                  GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
 
