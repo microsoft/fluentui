@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add focusgroup attribute to baseElementProperties",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
