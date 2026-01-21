@@ -158,6 +158,17 @@ export type UseSafeZoneOptions = {
     onSafeZoneTimeout?: () => void;
 };
 
+// @public
+export function useSlideAnimation(params?: UseSlideAnimationParams): React_2.RefCallback<HTMLElement>;
+
+// @public
+export type UseSlideAnimationParams = {
+    distance?: string;
+    duration?: number;
+    easing?: string;
+    animateOpacity?: boolean;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
