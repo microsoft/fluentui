@@ -10,6 +10,7 @@ import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { DividerSlots } from '@fluentui/react-divider';
 import type { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -29,8 +30,20 @@ export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSXEleme
 // @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
 
+// @public (undocumented)
+export type ToolbarBaseProps = Omit<ToolbarProps, 'size'>;
+
+// @public (undocumented)
+export type ToolbarBaseState = Omit<ToolbarState, 'size'>;
+
 // @public
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
+
+// @public (undocumented)
+export type ToolbarButtonBaseProps = DistributiveOmit<ToolbarButtonProps, 'appearance'>;
+
+// @public (undocumented)
+export type ToolbarButtonBaseState = DistributiveOmit<ToolbarButtonState, 'appearance' | 'size' | 'shape'>;
 
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
@@ -58,6 +71,12 @@ export type ToolbarContextValues = {
 
 // @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
+
+// @public (undocumented)
+export type ToolbarDividerBaseProps = ToolbarDividerProps;
+
+// @public (undocumented)
+export type ToolbarDividerBaseState = Omit<ToolbarDividerState, 'appearance'>;
 
 // @public
 export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>> & {
@@ -93,6 +112,12 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
 // @public
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
+// @public (undocumented)
+export type ToolbarRadioButtonBaseProps = DistributiveOmit<ToolbarRadioButtonProps, 'appearance'>;
+
+// @public (undocumented)
+export type ToolbarRadioButtonBaseState = DistributiveOmit<ToolbarRadioButtonState, 'appearance'>;
+
 // @public
 export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle' | 'transparent';
@@ -126,6 +151,12 @@ export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarP
 // @public
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
+// @public (undocumented)
+export type ToolbarToggleButtonBaseProps = DistributiveOmit<ToolbarToggleButtonProps, 'appearance'>;
+
+// @public (undocumented)
+export type ToolbarToggleButtonBaseState = DistributiveOmit<ToolbarToggleButtonState, 'appearance'>;
+
 // @public
 export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle' | 'transparent';
@@ -139,8 +170,14 @@ export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & To
 // @public
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
 
+// @internal
+export const useToolbarBase_unstable: (props: ToolbarBaseProps, ref: React_2.Ref<HTMLElement>) => ToolbarBaseState;
+
 // @public
 export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
+
+// @internal
+export const useToolbarButtonBase_unstable: (props: ToolbarButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonBaseState;
 
 // @public
 export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => void;
@@ -154,6 +191,9 @@ export function useToolbarContextValues_unstable(state: ToolbarState): ToolbarCo
 // @public
 export const useToolbarDivider_unstable: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
 
+// @internal
+export const useToolbarDividerBase_unstable: (props: ToolbarDividerBaseProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerBaseState;
+
 // @public
 export const useToolbarDividerStyles_unstable: (state: ToolbarDividerState) => ToolbarDividerState;
 
@@ -166,6 +206,9 @@ export const useToolbarGroupStyles_unstable: (state: ToolbarGroupState) => Toolb
 // @public
 export const useToolbarRadioButton_unstable: (props: ToolbarRadioButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonState;
 
+// @internal
+export const useToolbarRadioButtonBase_unstable: (props: ToolbarRadioButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonBaseState;
+
 // @public
 export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => ToolbarRadioButtonState;
 
@@ -174,6 +217,9 @@ export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
 
 // @public
 export const useToolbarToggleButton_unstable: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
+
+// @internal
+export const useToolbarToggleButtonBase_unstable: (props: ToolbarToggleButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonBaseState;
 
 // @public
 export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => ToolbarToggleButtonState;

@@ -16,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Divider: ForwardRefComponent<DividerProps>;
 
 // @public (undocumented)
+export type DividerBaseProps = Omit<DividerProps, 'alignContent' | 'appearance' | 'inset'>;
+
+// @public (undocumented)
+export type DividerBaseState = Omit<DividerState, 'alignContent' | 'appearance' | 'inset'>;
+
+// @public (undocumented)
 export const dividerClassNames: SlotClassNames<DividerSlots>;
 
 // @public (undocumented)
@@ -40,6 +46,9 @@ export const renderDivider_unstable: (state: DividerState) => JSXElement;
 
 // @public
 export const useDivider_unstable: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
+
+// @public
+export const useDividerBase_unstable: (props: DividerBaseProps, ref?: React_2.Ref<HTMLElement>) => DividerBaseState;
 
 // @public (undocumented)
 export const useDividerStyles_unstable: (state: DividerState) => DividerState;

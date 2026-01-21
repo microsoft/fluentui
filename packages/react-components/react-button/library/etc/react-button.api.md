@@ -7,6 +7,7 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -15,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
+
+// @public (undocumented)
+export type ButtonBaseProps = DistributiveOmit<ButtonProps, ButtonDesignPropNames>;
+
+// @public (undocumented)
+export type ButtonBaseState = DistributiveOmit<ButtonState, ButtonDesignPropNames>;
 
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
@@ -53,6 +60,12 @@ export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProp
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public (undocumented)
+export type CompoundButtonBaseProps = DistributiveOmit<CompoundButtonProps, ButtonDesignPropNames>;
+
+// @public (undocumented)
+export type CompoundButtonBaseState = DistributiveOmit<CompoundButtonState, ButtonDesignPropNames>;
+
+// @public (undocumented)
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
@@ -69,6 +82,12 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
+
+// @public (undocumented)
+export type MenuButtonBaseProps = DistributiveOmit<MenuButtonProps, ButtonDesignPropNames>;
+
+// @public (undocumented)
+export type MenuButtonBaseState = DistributiveOmit<MenuButtonState, ButtonDesignPropNames>;
 
 // @public (undocumented)
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
@@ -102,6 +121,12 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSXElement
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
 // @public (undocumented)
+export type SplitButtonBaseProps = DistributiveOmit<SplitButtonProps, ButtonDesignPropNames>;
+
+// @public (undocumented)
+export type SplitButtonBaseState = DistributiveOmit<SplitButtonState, ButtonDesignPropNames>;
+
+// @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
@@ -121,6 +146,12 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
 // @public (undocumented)
+export type ToggleButtonBaseProps = DistributiveOmit<ToggleButtonProps, ButtonDesignPropNames>;
+
+// @public (undocumented)
+export type ToggleButtonBaseState = DistributiveOmit<ToggleButtonState, ButtonDesignPropNames>;
+
+// @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
@@ -135,6 +166,9 @@ export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, '
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
+// @public
+export const useButtonBase_unstable: (props: ButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonBaseState;
+
 // @internal
 export const useButtonContext: () => ButtonContextValue;
 
@@ -144,11 +178,17 @@ export const useButtonStyles_unstable: (state: ButtonState) => ButtonState;
 // @public
 export const useCompoundButton_unstable: (props: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
 
+// @public
+export const useCompoundButtonBase_unstable: ({ contentContainer, secondaryContent, ...props }: CompoundButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonBaseState;
+
 // @public (undocumented)
 export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => CompoundButtonState;
 
 // @public
 export const useMenuButton_unstable: (props: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
+
+// @public
+export const useMenuButtonBase_unstable: ({ menuIcon, ...props }: MenuButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonBaseState;
 
 // @public (undocumented)
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
@@ -156,11 +196,17 @@ export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButto
 // @public
 export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
 
+// @public
+export const useSplitButtonBase_unstable: (props: SplitButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonBaseState;
+
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;
 
 // @public
 export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+
+// @public
+export const useToggleButtonBase_unstable: (props: ToggleButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonBaseState;
 
 // @public (undocumented)
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
