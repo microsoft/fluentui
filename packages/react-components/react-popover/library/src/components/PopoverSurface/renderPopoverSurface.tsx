@@ -1,8 +1,11 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
+'use client';
+
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
+import { PositioningSlide } from '@fluentui/react-positioning';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -11,12 +14,14 @@ import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.
 export const renderPopoverSurface_unstable = (state: PopoverSurfaceState): JSXElement => {
   assertSlots<PopoverSurfaceSlots>(state);
 
-  const surface = (
+  const surfaceContent = (
     <state.root>
       {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
       {state.root.children}
     </state.root>
   );
+
+  const surface = <PositioningSlide distance="10px">{surfaceContent}</PositioningSlide>;
 
   if (state.inline) {
     return surface;
