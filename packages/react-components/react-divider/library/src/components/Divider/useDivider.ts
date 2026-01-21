@@ -26,7 +26,6 @@ export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElem
  * Base hook that provides behavior and structure of the Divider component.
  * It doesn't include design-related features.
  *
- * @internal
  * @param props - User-provided props to the Divider component.
  * @param ref - User-provided ref to be passed to the Divider component.
  */
