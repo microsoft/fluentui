@@ -1,9 +1,12 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
+'use client';
+
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import { Portal } from '@fluentui/react-portal';
+import { PositioningSlide } from '@fluentui/react-positioning';
+import { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 
 /**
  * Render the final JSX of MenuPopover
@@ -11,10 +14,16 @@ import { Portal } from '@fluentui/react-portal';
 export const renderMenuPopover_unstable = (state: MenuPopoverState): JSXElement => {
   assertSlots<MenuPopoverSlots>(state);
 
+  const content = (
+    <PositioningSlide distance="10px">
+      <state.root />
+    </PositioningSlide>
+  );
+
   if (state.inline) {
     return (
       <>
-        <state.root />
+        {content}
         {state.safeZone}
       </>
     );
@@ -22,7 +31,7 @@ export const renderMenuPopover_unstable = (state: MenuPopoverState): JSXElement 
 
   return (
     <Portal mountNode={state.mountNode}>
-      <state.root />
+      {content}
       {state.safeZone}
     </Portal>
   );
