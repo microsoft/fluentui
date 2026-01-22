@@ -24,6 +24,7 @@
     "@fluentui/react-divider": "^9.5.1",
     "@fluentui/react-drawer": "^9.11.1",
     "@fluentui/react-field": "^9.4.12",
+    "@fluentui/react-file-type-icons": "^9.0.0",
     "@fluentui/react-image": "^9.3.12",
     "@fluentui/react-infobutton": "9.0.0-beta.108",
     "@fluentui/react-infolabel": "^9.4.13",

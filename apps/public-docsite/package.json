@@ -34,7 +34,7 @@
     "@fluentui/react-examples": "*",
     "@fluentui/react-experiments": "*",
     "@fluentui/fluent2-theme": "*",
-    "@fluentui/react-file-type-icons": "*",
+    "@fluentui/react-file-type-icons-v8": "*",
     "@fluentui/react-icons-mdl2": "*",
     "@fluentui/react-icons-mdl2-branded": "*",
     "@fluentui/set-version": "*",

@@ -76,6 +76,10 @@
       "@fluentui/react-drawer-stories": ["packages/react-components/react-drawer/stories/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
+      "@fluentui/react-file-type-icons": ["packages/react-components/react-file-type-icons/library/src/index.ts"],
+      "@fluentui/react-file-type-icons-stories": [
+        "packages/react-components/react-file-type-icons/stories/src/index.ts"
+      ],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],

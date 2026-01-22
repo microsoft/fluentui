@@ -23,5 +23,9 @@
     "lint": "just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
   },
   "license": "MIT",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
+  }
   "dependencies": {}
 }

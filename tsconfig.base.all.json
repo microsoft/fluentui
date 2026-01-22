@@ -26,7 +26,7 @@
       "@fluentui/react-date-time": ["packages/react-date-time/src/index.ts"],
       "@fluentui/react-experiments": ["packages/react-experiments/src/index.ts"],
       "@fluentui/react-experiments/lib/*": ["packages/react-experiments/src/*"],
-      "@fluentui/react-file-type-icons": ["packages/react-file-type-icons/src/index.ts"],
+      "@fluentui/react-file-type-icons-v8": ["packages/react-file-type-icons/src/index.ts"],
       "@fluentui/react-focus": ["packages/react-focus/src/index.ts"],
       "@fluentui/react-hooks": ["packages/react-hooks/src/index.ts"],
       "@fluentui/scheme-utilities": ["packages/scheme-utilities/src/index.ts"],
@@ -121,6 +121,10 @@
       "@fluentui/react-drawer-stories": ["packages/react-components/react-drawer/stories/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
+      "@fluentui/react-file-type-icons": ["packages/react-components/react-file-type-icons/library/src/index.ts"],
+      "@fluentui/react-file-type-icons-stories": [
+        "packages/react-components/react-file-type-icons/stories/src/index.ts"
+      ],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],

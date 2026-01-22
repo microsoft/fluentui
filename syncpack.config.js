@@ -27,6 +27,13 @@ const config = {
       isIgnored: true,
     },
     {
+      // Allow both v8 and v9 versions of @fluentui/react-file-type-icons to coexist
+      // v8 publishes as 8.x.x, v9 publishes as 9.x.x to the same npm package name
+      packages: ['**'],
+      dependencies: ['@fluentui/react-file-type-icons'],
+      isIgnored: true,
+    },
+    {
       packages: ['@fluentui/fluentui-repo'],
       dependencies: [
         '@floating-ui/dom',
