@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
-import { useTabListBase_unstable } from './useTabListBase';
+import { useTabListBase_unstable } from './useTabList';
 import { renderTabList_unstable } from './renderTabList';
 import { renderTab_unstable, TabState, useTabBase_unstable } from '../Tab';
 import { useTabListContextValues_unstable } from './useTabListContextValues';
@@ -42,6 +42,14 @@ describe('useTabListBase', () => {
 
       state.root.className = mergeClasses('tab-list', `tab-list--${appearance}`, state.root.className);
 
+      // Use `focusgroup` proposal to for tab roving navigation
+      // @ts-expect-error - `focusgroup` is not yet typed
+      state.root.focusgroup = `tablist ${state.vertical ? 'block' : 'inline'} no-memory wrap`;
+
+      // or apply Tabster focus attributes
+      // const focusProps = useTabListA11yBehavior_unstable({ vertical: state.vertical });
+      // state.root = { ...state.root, ...focusProps };
+
       return renderTabList_unstable(state as TabListState, contextValues);
     },
   );
@@ -58,13 +66,12 @@ describe('useTabListBase', () => {
       <div
         aria-orientation="horizontal"
         class="tab-list tab-list--outline"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
+        focusgroup="tablist inline no-memory wrap"
         role="tablist"
       >
         <button
           aria-selected="true"
           class="tab tab--outline tab-selected"
-          data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
           role="tab"
           type="button"
           value="1"
@@ -76,7 +83,6 @@ describe('useTabListBase', () => {
         <button
           aria-selected="false"
           class="tab tab--outline"
-          data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
           role="tab"
           type="button"
           value="2"
