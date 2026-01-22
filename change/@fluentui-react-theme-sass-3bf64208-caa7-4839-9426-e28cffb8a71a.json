@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(tokens): Add CAP DR tokens",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -149,6 +149,7 @@ export type Greys =
   | 94
   | 96
   | 98
+  | 99
   | 100;
 
 export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
@@ -204,6 +205,7 @@ export const grey: Record<Greys, string> = {
   '94': '#f0f0f0',
   '96': '#f5f5f5',
   '98': '#fafafa',
+  '99': '#fcfcfc',
   '100': '#ffffff',
 };
 

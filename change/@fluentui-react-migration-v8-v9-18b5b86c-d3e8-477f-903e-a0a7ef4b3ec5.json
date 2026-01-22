@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update CAP DR tokens",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}
