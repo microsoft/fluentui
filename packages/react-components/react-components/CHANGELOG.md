@@ -1,8 +1,83 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 17 Dec 2025 18:10:05 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jan 2026 17:06:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.10)
+
+Thu, 22 Jan 2026 17:06:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.9..@fluentui/react-components_v9.72.10)
+
+### Minor changes
+
+- `@fluentui/react-toolbar`
+  - feat: add base hooks for Toolbar components ([PR #35658](https://github.com/microsoft/fluentui/pull/35658) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: add base hook for Tooltip component ([PR #35637](https://github.com/microsoft/fluentui/pull/35637) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Update CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(motion-components): improve parameter naming from 'from/to' to 'out/in' ([PR #35592](https://github.com/microsoft/fluentui/pull/35592) by robertpenner@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: add base hooks for Popover component ([PR #35635](https://github.com/microsoft/fluentui/pull/35635) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: add base hooks for tabs components ([PR #35638](https://github.com/microsoft/fluentui/pull/35638) by dmytrokirpa@microsoft.com)
+  - refactor(react-tabs): separate focus behavior from base hook ([PR #35675](https://github.com/microsoft/fluentui/pull/35675) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: add base hooks ([PR #35634](https://github.com/microsoft/fluentui/pull/35634) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: add base hooks ([PR #35660](https://github.com/microsoft/fluentui/pull/35660) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - feat: add base hooks for button components ([PR #35631](https://github.com/microsoft/fluentui/pull/35631) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - feat: add focusgroup attribute to baseElementProperties ([PR #35674](https://github.com/microsoft/fluentui/pull/35674) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: cleanup animation handle on unmounted component ([PR #35617](https://github.com/microsoft/fluentui/pull/35617) by olfedias@microsoft.com)
+- `@fluentui/react-nav`
+  - fix(react-nav): update Rotate param from "fromAngle" to "outAngle" ([PR #35592](https://github.com/microsoft/fluentui/pull/35592) by robertpenner@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility ([PR #35350](https://github.com/microsoft/fluentui/pull/35350) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - fix: use distinct hover background color ([PR #35588](https://github.com/microsoft/fluentui/pull/35588) by vgenaev@gmail.com)
+- `@fluentui/react-charts`
+  - fix(react-charts): Add prop to regulate removal of default annotation styling ([PR #35627](https://github.com/microsoft/fluentui/pull/35627) by 120183316+srmukher@users.noreply.github.com)
+  - fix barlabel issue for stacked bars ([PR #35597](https://github.com/microsoft/fluentui/pull/35597) by anushgupta@microsoft.com)
+  - fix scatter marker issue ([PR #35595](https://github.com/microsoft/fluentui/pull/35595) by anushgupta@microsoft.com)
+  - support chart title from plotly schema ([PR #35606](https://github.com/microsoft/fluentui/pull/35606) by anushgupta@microsoft.com)
+  - fix chart title styles ([PR #35645](https://github.com/microsoft/fluentui/pull/35645) by anushgupta@microsoft.com)
+  - fix: resolve minor bugs ([PR #35651](https://github.com/microsoft/fluentui/pull/35651) by kumarkshitij@microsoft.com)
+  - fix funnel chart navigation issue ([PR #35594](https://github.com/microsoft/fluentui/pull/35594) by anushgupta@microsoft.com)
+  - fix nvda bugs ([PR #35621](https://github.com/microsoft/fluentui/pull/35621) by anushgupta@microsoft.com)
+  - feat: Add PolarChart ([PR #35583](https://github.com/microsoft/fluentui/pull/35583) by kumarkshitij@microsoft.com)
+  - fix(react-charts): Fixing date related annotation issue ([PR #35577](https://github.com/microsoft/fluentui/pull/35577) by 120183316+srmukher@users.noreply.github.com)
+  - fix chart title bugs ([PR #35646](https://github.com/microsoft/fluentui/pull/35646) by anushgupta@microsoft.com)
+  - honor alignment and padding properties for chart title ([PR #35673](https://github.com/microsoft/fluentui/pull/35673) by anushgupta@microsoft.com)
+  - support for barlabels in declarative HBC ([PR #35576](https://github.com/microsoft/fluentui/pull/35576) by anushgupta@microsoft.com)
+  - fix heatmap navigation issue ([PR #35593](https://github.com/microsoft/fluentui/pull/35593) by anushgupta@microsoft.com)
+  - fix chart width issue in donut chart ([PR #35652](https://github.com/microsoft/fluentui/pull/35652) by anushgupta@microsoft.com)
+  - fix accessibility issues  ([PR #35584](https://github.com/microsoft/fluentui/pull/35584) by anushgupta@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix(react-dialog): update Scale param from "fromScale" to "outScale" ([PR #35592](https://github.com/microsoft/fluentui/pull/35592) by robertpenner@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: remove experimental style hooks ([PR #35620](https://github.com/microsoft/fluentui/pull/35620) by dmytrokirpa@microsoft.com)
+  - refactor: refactor divider base hook ([PR #35679](https://github.com/microsoft/fluentui/pull/35679) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - fix: use brand tokens for inverted variant ([PR #35681](https://github.com/microsoft/fluentui/pull/35681) by vgenaev@gmail.com)
+- `@fluentui/react-message-bar`
+  - fix(react-message-bar): update slide atom param from "fromY" to "outY" ([PR #35592](https://github.com/microsoft/fluentui/pull/35592) by robertpenner@microsoft.com)
+- `@fluentui/react-button`
+  - chore: remove experimental style hooks ([PR #35620](https://github.com/microsoft/fluentui/pull/35620) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - chore(tokens): Add CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - chore(tokens): Add CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
 
 ## [9.72.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.9)
 

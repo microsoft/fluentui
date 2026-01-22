@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "^1.0.0-alpha.22",
+    "@fluentui/tokens": "^1.0.0-alpha.23",
     "@fluentui/web-components": "^3.0.0-rc.3",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",

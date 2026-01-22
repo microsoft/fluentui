@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(tokens): Add CAP DR tokens",
-  "packageName": "@fluentui/tokens",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}
