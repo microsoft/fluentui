@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add infinite loop detection to overflow library",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
