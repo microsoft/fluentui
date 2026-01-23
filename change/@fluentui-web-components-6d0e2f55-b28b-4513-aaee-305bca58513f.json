@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update CAP DR tokens",
-  "packageName": "@fluentui/web-components",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}
