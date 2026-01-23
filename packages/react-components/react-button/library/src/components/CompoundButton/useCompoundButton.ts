@@ -11,12 +11,14 @@ import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.
  * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton_unstable = (
-  { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
+  props: CompoundButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CompoundButtonState => {
+  const { contentContainer, secondaryContent, ...buttonProps } = props;
+
   const state: CompoundButtonState = {
     // Button state
-    ...useButton_unstable(props, ref),
+    ...useButton_unstable(buttonProps, ref),
 
     // Slots definition
     components: {

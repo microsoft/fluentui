@@ -10,10 +10,11 @@ import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
  * Given user props, returns the final state for a MenuButton.
  */
 export const useMenuButton_unstable = (
-  { menuIcon, ...props }: MenuButtonProps,
+  props: MenuButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
-  const buttonState = useButton_unstable(props, ref);
+  const { menuIcon, ...buttonProps } = props;
+  const buttonState = useButton_unstable(buttonProps, ref);
 
   return {
     ...buttonState,
