@@ -5,6 +5,7 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
+import { ITitleStyles } from '../../utilities/Common.styles';
 import {
   AxisCategoryOrder,
   AxisProps,
@@ -221,6 +222,11 @@ export interface ICartesianChartStyles {
  * {@docCategory CartesianChart}
  */
 export interface ICartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.

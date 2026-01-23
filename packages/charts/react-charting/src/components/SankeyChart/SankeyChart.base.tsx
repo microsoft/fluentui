@@ -19,6 +19,7 @@ import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../typ
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import {
   ISankeyChartAccessibilityProps,
   ISankeyChartData,
@@ -646,7 +647,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._chartId = getId('sankeyChart');
     this._emptyChartId = getId('_SankeyChart_empty');
     this._labelTooltipId = getId('tooltip');
-    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
+    const titleHeight = props.data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 36;
+    this._margins = { top: titleHeight, right: 48, bottom: 32, left: 48 };
     // We memo-ize creation so that we only create a new object when any of the fields change.
     this._computeClassNamesProps = memoizeFunction(
       (
@@ -856,6 +864,16 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
             <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
+              {!this.props.hideLegend && this.props.data.chartTitle && (
+                <ChartTitle
+                  title={this.props.data.chartTitle}
+                  x={width / 2}
+                  maxWidth={width - 20}
+                  className={classNames.chartTitle}
+                  titleStyles={this.props.titleStyles}
+                  tooltipClassName={classNames.svgTooltip}
+                />
+              )}
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: fix test target dependencies",
-  "packageName": "@fluentui/react-link",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

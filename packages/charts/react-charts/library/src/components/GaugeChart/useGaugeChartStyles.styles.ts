@@ -71,7 +71,7 @@ const useStyles = makeStyles({
   chartTitle: getChartTitleStyles() as GriffelStyle,
   segment: {
     outline: 'none',
-    stroke: tokens.colorNeutralStroke1,
+    stroke: tokens.colorStrokeFocus2,
   },
   gradientSegment: {
     width: '100%',
