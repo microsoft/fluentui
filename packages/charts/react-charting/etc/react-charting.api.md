@@ -6,6 +6,7 @@
 
 import { CurveFactory } from 'd3-shape';
 import { FocusZoneDirection } from '@fluentui/react-focus';
+import type { Font } from '@fluentui/chart-utilities';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
@@ -448,6 +449,8 @@ export interface ICartesianChartProps {
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[];
     timeFormatLocale?: TimeLocaleDefinition;
+    // Warning: (ae-forgotten-export) The symbol "ITitleStyles" needs to be exported by the entry point index.d.ts
+    titleStyles?: ITitleStyles;
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
@@ -591,6 +594,7 @@ export interface IChartProps {
 
 // @public
 export interface IChartTableProps {
+    chartTitle?: string;
     className?: string;
     componentRef?: IRefObject<IChart>;
     headers: {
@@ -604,6 +608,7 @@ export interface IChartTableProps {
     }[][];
     styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
     theme?: ITheme;
+    titleStyles?: ITitleStyles;
     width?: string | number;
 }
 
@@ -622,9 +627,13 @@ export interface IChartTableStyles {
     // (undocumented)
     chart?: IStyle;
     // (undocumented)
+    chartTitle?: IStyle;
+    // (undocumented)
     headerCell?: IStyle;
     // (undocumented)
     root?: IStyle;
+    // (undocumented)
+    svgTooltip?: IStyle;
     // (undocumented)
     table?: IStyle;
 }
@@ -744,6 +753,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
+    titleStyles?: ITitleStyles;
     valueInsideDonut?: string | number;
 }
 
@@ -755,9 +765,11 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 export interface IDonutChartStyles {
     axisAnnotation?: IStyle;
     chart?: IStyle;
+    chartTitle?: IStyle;
     chartWrapper?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
+    svgTooltip?: IStyle;
 }
 
 // @public (undocumented)
@@ -793,6 +805,7 @@ export interface IFunnelChartProps {
     orientation?: 'horizontal' | 'vertical';
     styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
     theme?: ITheme;
+    titleStyles?: ITitleStyles;
     width?: number;
 }
 
@@ -807,10 +820,12 @@ export interface IFunnelChartStyleProps {
 // @public
 export interface IFunnelChartStyles {
     chart?: IStyle;
+    chartTitle?: IStyle;
     root?: IStyle;
     subComponentStyles: {
         calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
+    svgTooltip?: IStyle;
     text?: IStyle;
 }
 
@@ -875,6 +890,7 @@ export interface IGaugeChartProps {
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
     theme?: ITheme;
+    titleStyles?: ITitleStyles;
     variant?: GaugeChartVariant;
     width?: number;
 }
@@ -924,6 +940,7 @@ export interface IGaugeChartStyles {
     segment?: IStyle;
     shapeStyles?: IStyle;
     sublabel?: IStyle;
+    svgTooltip?: IStyle;
 }
 
 // @public (undocumented)
@@ -1637,12 +1654,14 @@ export interface ISankeyChartProps {
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
+    hideLegend?: boolean;
     parentRef?: HTMLElement | null;
     pathColor?: string;
     shouldResize?: number;
     strings?: ISankeyChartStrings;
     styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
     theme?: ITheme;
+    titleStyles?: ITitleStyles;
     width?: number;
 }
 
@@ -1671,11 +1690,13 @@ export interface ISankeyChartStyleProps {
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
     chart?: IStyle;
+    chartTitle?: IStyle;
     chartWrapper?: IStyle;
     links?: IStyle;
     nodes?: IStyle;
     nodeTextContainer?: IStyle;
     root?: IStyle;
+    svgTooltip?: IStyle;
     toolTip?: IStyle;
 }
 
