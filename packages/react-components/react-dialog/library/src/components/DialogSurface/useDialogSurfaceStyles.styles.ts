@@ -1,7 +1,7 @@
 'use client';
 
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { isResolvedShorthand, type SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
@@ -77,16 +77,32 @@ const useStyles = makeStyles({
 });
 
 /**
+ * Resolves whether the backdrop should be transparent based on context and prop override.
+ */
+function resolveBackdropTransparent(isNestedDialog: boolean, backdropAppearance?: 'dimmed' | 'transparent'): boolean {
+  switch (backdropAppearance) {
+    case 'dimmed':
+      return false;
+    case 'transparent':
+      return true;
+    default:
+      return isNestedDialog;
+  }
+}
+
+/**
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
-  const { isNestedDialog, root, backdrop, open, unmountOnClose } = state;
+  const { root, backdrop, open, unmountOnClose, isNestedDialog } = state;
 
   const rootBaseStyle = useRootBaseStyle();
   const backdropBaseStyle = useBackdropBaseStyle();
   const styles = useStyles();
+  const backdropAppearance = isResolvedShorthand(backdrop) ? backdrop.appearance : undefined;
+  const isBackdropTransparent = resolveBackdropTransparent(isNestedDialog, backdropAppearance);
 
   const mountedAndClosed = !unmountOnClose && !open;
 
@@ -101,10 +117,14 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && styles.nestedDialogBackdrop,
       mountedAndClosed && styles.dialogHidden,
+      isBackdropTransparent && styles.nestedDialogBackdrop,
       backdrop.className,
     );
+
+    if (backdrop?.appearance) {
+      delete backdrop.appearance;
+    }
   }
 
   return state;
