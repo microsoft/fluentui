@@ -38,8 +38,6 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
 // @public
 export function concatStyleSets(...styleSets: (IStyleSet | MissingOrShadowConfig_2)[]): IConcatenatedStyleSet<any>;
 
-// Warning: (ae-forgotten-export) The symbol "DeepPartialV2" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSetBase>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): DeepPartialV2<TStyleSet>;
 
@@ -47,6 +45,12 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
 export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
+
+// Warning: (ae-forgotten-export) The symbol "IDeepPartialArray" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "DeepPartialObject" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type DeepPartialV2<T> = T extends Function ? T : T extends Array<infer U> ? IDeepPartialArray<U> : T extends object ? DeepPartialObject<T> : T;
 
 // @public (undocumented)
 export const DEFAULT_SHADOW_CONFIG: ShadowConfig;
