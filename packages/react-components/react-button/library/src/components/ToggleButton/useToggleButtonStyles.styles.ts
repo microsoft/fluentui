@@ -276,7 +276,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     toggleButtonClassNames.root,
 
     // Appearance base styles (applies to both checked and unchecked)
-    appearance && rootAppearanceStyles[appearance],
+    appearance === 'outline' && rootAppearanceStyles.outline,
 
     // Primary high contrast styles
     appearance === 'primary' && primaryHighContrastStyles.base,
