@@ -562,7 +562,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
+  const { disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
+  const appearance = state.appearance === 'tint' ? 'secondary' : state.appearance;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
