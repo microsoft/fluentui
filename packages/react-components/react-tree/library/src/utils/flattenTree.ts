@@ -1,18 +1,27 @@
 import { HeadlessFlatTreeItemProps } from '../FlatTree';
 import { TreeItemProps, TreeItemValue } from '../TreeItem';
 
+/**
+ * @deprecated - deprecating in favor of user flattening its custom data structure on its own
+ */
 export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
   value: TreeItemValue;
   subtree?: FlattenTreeItem<Props>[];
 };
 
+/**
+ * @deprecated - deprecating in favor of user flattening its custom data structure on its own
+ */
 export type FlattenedTreeItem<Props extends TreeItemProps> = HeadlessFlatTreeItemProps & Props;
 
 function flattenTreeRecursive<Props extends TreeItemProps>(
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   items: FlattenTreeItem<Props>[],
   parent?: HeadlessFlatTreeItemProps & Props,
   level = 1,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): FlattenedTreeItem<Props>[] {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return items.reduce<FlattenedTreeItem<Props>[]>((acc, { subtree, ...item }, index) => {
     const flatTreeItem = {
       'aria-level': level,
@@ -20,6 +29,7 @@ function flattenTreeRecursive<Props extends TreeItemProps>(
       'aria-setsize': items.length,
       parentValue: parent?.value,
       ...item,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     } as FlattenedTreeItem<Props>;
     acc.push(flatTreeItem);
     if (subtree !== undefined) {
@@ -30,6 +40,9 @@ function flattenTreeRecursive<Props extends TreeItemProps>(
 }
 
 /**
+ *
+ * @deprecated - deprecating in favor of user flattening its custom data structure on its own
+ *
  * Converts a nested structure to a flat one which can be consumed by `useFlatTreeItems`
  * @example
  * ```tsx
@@ -71,5 +84,7 @@ function flattenTreeRecursive<Props extends TreeItemProps>(
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const flattenTree_unstable = <Props extends TreeItemProps>(
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   items: FlattenTreeItem<Props>[],
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): FlattenedTreeItem<Props>[] => flattenTreeRecursive(items);
