@@ -14,6 +14,14 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
+const useRootAppearanceStyles = makeStyles({
+  // Appearance variations that apply regardless of checked state
+  outline: {
+    // Ensure box-shadow transitions in both directions (checked <-> unchecked)
+    transitionProperty: 'background, border, color, box-shadow',
+  },
+});
+
 const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
@@ -74,18 +82,22 @@ const useRootCheckedStyles = makeStyles({
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    // Use inset box-shadow to create thicker border visual without affecting layout
+    boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1} inset`,
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
+      boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1Hover} inset`,
     },
 
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
+      boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1Pressed} inset`,
     },
 
     ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1} inset, 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2} inset`,
     }),
   },
   primary: {
@@ -252,6 +264,7 @@ const usePrimaryHighContrastStyles = makeStyles({
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   'use no memo';
 
+  const rootAppearanceStyles = useRootAppearanceStyles();
   const rootCheckedStyles = useRootCheckedStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const iconCheckedStyles = useIconCheckedStyles();
@@ -261,6 +274,9 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
 
   state.root.className = mergeClasses(
     toggleButtonClassNames.root,
+
+    // Appearance base styles (applies to both checked and unchecked)
+    appearance && rootAppearanceStyles[appearance],
 
     // Primary high contrast styles
     appearance === 'primary' && primaryHighContrastStyles.base,
