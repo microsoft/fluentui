@@ -120,7 +120,8 @@ export const HorizontalBarWithAxisBasic = (): JSXElement => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">

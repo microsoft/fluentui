@@ -136,7 +136,8 @@ export const LineChartEvents = (props: LineChartProps): JSXElement => {
           max={1000}
           id="changeHeight_Events"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <Switch
           label={
