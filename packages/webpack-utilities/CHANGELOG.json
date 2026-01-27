@@ -2,6 +2,27 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:07 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.29",
+      "version": "8.1.29",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "97e6233d301640501d5dcf27ef8a90e5aca51f34",
+            "comment": "chore: migrate to new eslint flat config format"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 07:33:32 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.29",
       "version": "8.1.29",

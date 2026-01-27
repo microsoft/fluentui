@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
