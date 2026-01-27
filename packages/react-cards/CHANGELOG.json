@@ -2,6 +2,35 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:18:58 GMT",
+      "tag": "@fluentui/react-cards_v0.207.4",
+      "version": "0.207.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.125.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.6.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:27:52 GMT",
       "tag": "@fluentui/react-cards_v0.207.3",
       "version": "0.207.3",

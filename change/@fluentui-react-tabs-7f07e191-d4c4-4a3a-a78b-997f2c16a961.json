@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor(react-tabs): separate focus behavior from base hook",
-  "packageName": "@fluentui/react-tabs",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

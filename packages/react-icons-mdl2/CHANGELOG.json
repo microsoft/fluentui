@@ -2,6 +2,29 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:03 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.4.4",
+      "version": "1.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.4.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:27:59 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.4.3",
       "version": "1.4.3",

@@ -133,21 +133,48 @@ export const VerticalStackedBarAxisCategoryOrder = (): JSXElement => {
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             Width:&nbsp;
           </label>
-          <input type="range" id="input-width" value={width} min={200} max={1000} onChange={_onWidthChange} />
+          <input
+            type="range"
+            id="input-width"
+            value={width}
+            min={200}
+            max={1000}
+            onChange={_onWidthChange}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          />
           <span style={{ marginLeft: '8px' }}>{width}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             Height:&nbsp;
           </label>
-          <input type="range" id="input-height" value={height} min={200} max={1000} onChange={_onHeightChange} />
+          <input
+            type="range"
+            id="input-height"
+            value={height}
+            min={200}
+            max={1000}
+            onChange={_onHeightChange}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
+          />
           <span style={{ marginLeft: '8px' }}>{height}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
           </label>
-          <input type="range" id="input-datasize" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} />
+          <input
+            type="range"
+            id="input-datasize"
+            value={dataSize}
+            min={0}
+            max={50}
+            onChange={_onDataSizeChange}
+            aria-label="Change Data Size"
+            aria-valuetext={`current value ${dataSize}', Minimum 0 and Maximum 50`}
+          />
           <span style={{ marginLeft: '8px' }}>{dataSize}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>

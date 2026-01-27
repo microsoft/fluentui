@@ -205,7 +205,8 @@ export const VerticalStackedBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_widthSliderId}
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor={_heightSliderId}>Change Height:</label>
       <input
@@ -215,7 +216,8 @@ export const VerticalStackedBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_heightSliderId}
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <div style={rootStyle}>
         <VerticalStackedBarChart

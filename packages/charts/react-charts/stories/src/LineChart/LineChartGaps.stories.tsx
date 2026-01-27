@@ -232,7 +232,8 @@ export const LineChartGaps = (props: LineChartProps): JSXElement => {
           max={1500}
           id="changeWidth_Gaps"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 500 and Maximum 1500`}
         />
         <label htmlFor="ChangeHeight_Gaps">Change Height:</label>
         <input
@@ -242,7 +243,8 @@ export const LineChartGaps = (props: LineChartProps): JSXElement => {
           max={1000}
           id="changeHeight_Gaps"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>

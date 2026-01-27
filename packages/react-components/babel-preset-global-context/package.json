@@ -20,7 +20,7 @@
     "find-up": "^5.0.0"
   },
   "peerDependencies": {
-    "@fluentui/global-context": "9.0.0-beta.98"
+    "@fluentui/global-context": "9.0.0-beta.99"
   },
   "beachball": {
     "disallowedChangeTypes": [

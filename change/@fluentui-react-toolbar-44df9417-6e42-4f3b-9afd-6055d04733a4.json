@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Toolbar components",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

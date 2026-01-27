@@ -2,6 +2,35 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:06:30 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.23",
+      "version": "1.0.0-alpha.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "97e6233d301640501d5dcf27ef8a90e5aca51f34",
+            "comment": "chore: migrate to new eslint flat config format"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "chore(tokens): Add CAP DR tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:40 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.22",
       "version": "1.0.0-alpha.22",
