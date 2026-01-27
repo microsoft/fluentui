@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Make sure the dir based on existing document dir",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "anarmawala@microsoft.com",
+  "dependentChangeType": "patch"
+}
