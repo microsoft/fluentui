@@ -986,6 +986,21 @@ export class BaseTree extends FASTElement {
 }
 
 // @public
+export const borderRadius2XLarge = "var(--borderRadius2XLarge)";
+
+// @public
+export const borderRadius3XLarge = "var(--borderRadius3XLarge)";
+
+// @public
+export const borderRadius4XLarge = "var(--borderRadius4XLarge)";
+
+// @public
+export const borderRadius5XLarge = "var(--borderRadius5XLarge)";
+
+// @public
+export const borderRadius6XLarge = "var(--borderRadius6XLarge)";
+
+// @public
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
 
 // @public
@@ -1330,6 +1345,21 @@ export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Sel
 export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
 
 // @public
+export const colorNeutralBackground7 = "var(--colorNeutralBackground7)";
+
+// @public
+export const colorNeutralBackground7Hover = "var(--colorNeutralBackground7Hover)";
+
+// @public
+export const colorNeutralBackground7Pressed = "var(--colorNeutralBackground7Pressed)";
+
+// @public
+export const colorNeutralBackground7Selected = "var(--colorNeutralBackground7Selected)";
+
+// @public
+export const colorNeutralBackground8 = "var(--colorNeutralBackground8)";
+
+// @public
 export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
 
 // @public
@@ -1339,10 +1369,22 @@ export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)
 export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
 
 // @public
+export const colorNeutralBackgroundDisabled2 = "var(--colorNeutralBackgroundDisabled2)";
+
+// @public
 export const colorNeutralBackgroundInverted = "var(--colorNeutralBackgroundInverted)";
 
 // @public
 export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgroundInvertedDisabled)";
+
+// @public
+export const colorNeutralBackgroundInvertedHover = "var(--colorNeutralBackgroundInvertedHover)";
+
+// @public
+export const colorNeutralBackgroundInvertedPressed = "var(--colorNeutralBackgroundInvertedPressed)";
+
+// @public
+export const colorNeutralBackgroundInvertedSelected = "var(--colorNeutralBackgroundInvertedSelected)";
 
 // @public
 export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
@@ -1435,6 +1477,18 @@ export const colorNeutralForeground3Selected = "var(--colorNeutralForeground3Sel
 export const colorNeutralForeground4 = "var(--colorNeutralForeground4)";
 
 // @public
+export const colorNeutralForeground5 = "var(--colorNeutralForeground5)";
+
+// @public
+export const colorNeutralForeground5Hover = "var(--colorNeutralForeground5Hover)";
+
+// @public
+export const colorNeutralForeground5Pressed = "var(--colorNeutralForeground5Pressed)";
+
+// @public
+export const colorNeutralForeground5Selected = "var(--colorNeutralForeground5Selected)";
+
+// @public
 export const colorNeutralForegroundDisabled = "var(--colorNeutralForegroundDisabled)";
 
 // @public
@@ -1522,6 +1576,18 @@ export const colorNeutralStroke2 = "var(--colorNeutralStroke2)";
 export const colorNeutralStroke3 = "var(--colorNeutralStroke3)";
 
 // @public
+export const colorNeutralStroke4 = "var(--colorNeutralStroke4)";
+
+// @public
+export const colorNeutralStroke4Hover = "var(--colorNeutralStroke4Hover)";
+
+// @public
+export const colorNeutralStroke4Pressed = "var(--colorNeutralStroke4Pressed)";
+
+// @public
+export const colorNeutralStroke4Selected = "var(--colorNeutralStroke4Selected)";
+
+// @public
 export const colorNeutralStrokeAccessible = "var(--colorNeutralStrokeAccessible)";
 
 // @public
@@ -1541,6 +1607,9 @@ export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
 
 // @public
 export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
+
+// @public
+export const colorNeutralStrokeDisabled2 = "var(--colorNeutralStrokeDisabled2)";
 
 // @public
 export const colorNeutralStrokeInvertedDisabled = "var(--colorNeutralStrokeInvertedDisabled)";

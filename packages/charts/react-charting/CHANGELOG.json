@@ -2,6 +2,65 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:18:59 GMT",
+      "tag": "@fluentui/react-charting_v5.25.6",
+      "version": "5.25.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7",
+            "comment": "support chart title from plotly schema"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c39e1d30eea7f12a312ef89a43c4ef2fede411ca",
+            "comment": "feat(react-charting): Add prop to regulate removal of default annotation styling"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "182caa4ff028038c61d9e35979ab3e93a7cf0cd3",
+            "comment": "feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fb1285feb479f5821dc0fc1fc10485025730e6a1",
+            "comment": "feat: add PolarChart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.10.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.223",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.125.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Jan 2026 14:47:16 GMT",
       "tag": "@fluentui/react-charting_v5.25.5",
       "version": "5.25.5",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Wed, 10 Dec 2025 06:27:57 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jan 2026 05:19:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.16.0)
+
+Tue, 27 Jan 2026 05:19:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.15.3..@fluentui/react-file-type-icons_v8.16.0)
+
+### Minor changes
+
+- adding filetypeicon for campaign item ([PR #35650](https://github.com/microsoft/fluentui/pull/35650) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.14.0 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
 
 ## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.15.3)
 

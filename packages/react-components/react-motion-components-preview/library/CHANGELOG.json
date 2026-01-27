@@ -2,6 +2,29 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:06:32 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "refactor(motion-components): improve parameter naming from 'from/to' to 'out/in'"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:39 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.14.1",
       "version": "0.14.1",

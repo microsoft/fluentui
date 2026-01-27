@@ -2,6 +2,29 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:06:39 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.26.1",
+      "version": "9.26.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.2.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:20 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.26.0",
       "version": "9.26.0",

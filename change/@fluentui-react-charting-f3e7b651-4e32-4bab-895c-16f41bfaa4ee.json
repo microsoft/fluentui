@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add PolarChart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

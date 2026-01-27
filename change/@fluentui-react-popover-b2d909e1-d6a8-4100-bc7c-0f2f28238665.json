@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Popover component",
-  "packageName": "@fluentui/react-popover",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
