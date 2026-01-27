@@ -1,7 +1,7 @@
 'use client';
 
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { isResolvedShorthand, type SlotClassNames } from '@fluentui/react-utilities';
+import { isResolvedShorthand } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
@@ -12,6 +12,7 @@ import {
   SURFACE_PADDING,
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>> = {
   root: 'fui-DialogSurface',

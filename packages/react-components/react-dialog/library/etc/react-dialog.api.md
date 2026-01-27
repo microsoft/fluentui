@@ -16,7 +16,7 @@ import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 

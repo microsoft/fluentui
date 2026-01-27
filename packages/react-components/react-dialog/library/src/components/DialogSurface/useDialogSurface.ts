@@ -16,12 +16,7 @@ import { useDialogContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import { useMotionForwardedRef } from '../MotionRefForwarder';
-import type {
-  DialogSurfaceElement,
-  DialogSurfaceProps,
-  DialogSurfaceState,
-  DialogBackdropSlotProps,
-} from './DialogSurface.types';
+import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
  * Create the state required to render DialogSurface.
