@@ -112,7 +112,8 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 400 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -122,7 +123,8 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
           max={400}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 312 and Maximum 400`}
         />
       </div>
       <div style={rootStyle}>

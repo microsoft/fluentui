@@ -307,7 +307,8 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => 
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth_Example"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Example">Change Height:</label>
         <input

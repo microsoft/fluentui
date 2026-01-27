@@ -88,13 +88,31 @@ export const VerticalBarAxisTooltip = (): JSXElement => {
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
-          <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
+          <input
+            type="range"
+            value={width}
+            min={200}
+            max={1000}
+            onChange={_onWidthChange}
+            id="input-width"
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          />
         </div>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
           </label>
-          <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
+          <input
+            type="range"
+            value={height}
+            min={200}
+            max={1000}
+            id="input-height"
+            onChange={_onHeightChange}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
+          />
         </div>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox label="barWidth:&nbsp;" checked={barWidthEnabled} onChange={_onBarWidthCheckChange} />
