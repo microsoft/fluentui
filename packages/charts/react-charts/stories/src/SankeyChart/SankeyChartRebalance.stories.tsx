@@ -374,9 +374,27 @@ export const SankeyChartRebalance: React.FunctionComponent<{}> = (): JSXElement 
           onChange={_onDataSourceChange}
         />
         <label>change Width:</label>
-        <input type="range" id="changeWidth_Rebalance" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <input
+          type="range"
+          id="changeWidth_Rebalance"
+          value={width}
+          min={400}
+          max={1600}
+          onChange={_onWidthChange}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 400 and Maximum 1600`}
+        />
         <label>change Height:</label>
-        <input type="range" id="changeHeight_Rebalance" value={height} min={312} max={400} onChange={_onHeightChange} />
+        <input
+          type="range"
+          id="changeHeight_Rebalance"
+          value={height}
+          min={312}
+          max={400}
+          onChange={_onHeightChange}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 312 and Maximum 400`}
+        />
       </div>
       <div style={rootStyle}>
         <SankeyChart

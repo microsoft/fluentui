@@ -186,7 +186,8 @@ export const ChartTableBasic = (): JSXElement => {
             max={1200}
             id="changeWidth_ChartTable"
             onChange={_onWidthChange}
-            aria-valuetext={`ChangeWidthSlider${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 300 and Maximum 1200`}
           />
           <span>{width}px</span>
         </div>
@@ -199,7 +200,8 @@ export const ChartTableBasic = (): JSXElement => {
             max={800}
             id="changeHeight_ChartTable"
             onChange={_onHeightChange}
-            aria-valuetext={`ChangeHeightSlider${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 800`}
           />
           <span>{height}px</span>
         </div>

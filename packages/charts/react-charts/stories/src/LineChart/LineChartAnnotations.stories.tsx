@@ -159,7 +159,8 @@ export const LineChartAnnotationsExample = (props: LineChartProps): JSXElement =
           max={1500}
           id="changeWidth_Styled"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1500`}
         />
         <span>{width}</span>
         <label htmlFor="changeHeight_Styled">Change Height:</label>
