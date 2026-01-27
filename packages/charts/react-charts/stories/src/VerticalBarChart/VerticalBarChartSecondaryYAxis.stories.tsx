@@ -119,7 +119,8 @@ export const VerticalBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         onChange={_onWidthChange}
         id={_widthSliderId}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor={_heightSliderId}>Change Height:</label>
       <input
@@ -129,7 +130,8 @@ export const VerticalBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_heightSliderId}
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <div style={rootStyle}>
         <VerticalBarChart

@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:08 GMT",
+      "tag": "@fluentui/codemods_v8.4.29",
+      "version": "8.4.29",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 07:19:47 GMT",
       "tag": "@fluentui/codemods_v8.4.29",
       "version": "8.4.29",

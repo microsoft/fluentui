@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 10 Dec 2025 06:28:02 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jan 2026 05:19:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.14.0)
+
+Tue, 27 Jan 2026 05:19:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.6..@fluentui/style-utilities_v8.14.0)
+
+### Minor changes
+
+- updating to latest fabric CDN url ([PR #35650](https://github.com/microsoft/fluentui/pull/35650) by caperez@microsoft.com)
 
 ## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.6)
 

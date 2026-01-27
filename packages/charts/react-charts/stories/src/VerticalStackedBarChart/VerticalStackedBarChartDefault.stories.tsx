@@ -288,7 +288,8 @@ export const VerticalStackedBarDefault = (): JSXElement => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -298,7 +299,8 @@ export const VerticalStackedBarDefault = (): JSXElement => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
         <input
@@ -308,7 +310,8 @@ export const VerticalStackedBarDefault = (): JSXElement => {
           max={10}
           id="changeBarGapMax_Basic"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
       </div>
       <div style={{ marginTop: '10px' }}>

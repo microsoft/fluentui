@@ -182,7 +182,8 @@ export const VerticalBarNegative = (): JSXElement => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -192,7 +193,8 @@ export const VerticalBarNegative = (): JSXElement => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">

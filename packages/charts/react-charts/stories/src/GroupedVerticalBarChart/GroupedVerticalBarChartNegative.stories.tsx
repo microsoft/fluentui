@@ -284,7 +284,8 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
         max={1000}
         id="changeWidth_Basic"
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor="changeHeight_Basic">Change Height:</label>
       <input
@@ -294,7 +295,8 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
         max={1000}
         id="changeHeight_Basic"
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <br />
       <label htmlFor="changeBarwidth">Change Barwidth:</label>

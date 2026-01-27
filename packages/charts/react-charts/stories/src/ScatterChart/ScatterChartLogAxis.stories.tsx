@@ -88,7 +88,8 @@ export const ScatterChartLogAxisExample = (props: ScatterChartProps): JSXElement
             max={1000}
             id="input-width"
             onChange={_onWidthChange}
-            aria-valuetext={`ChangeWidthSlider${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
           />
           <span style={{ marginLeft: '8px' }}>{width}</span>
         </div>
@@ -101,7 +102,8 @@ export const ScatterChartLogAxisExample = (props: ScatterChartProps): JSXElement
             max={1000}
             id="input-height"
             onChange={_onHeightChange}
-            aria-valuetext={`ChangeHeightslider${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
           />
           <span style={{ marginLeft: '8px' }}>{height}</span>
         </div>
