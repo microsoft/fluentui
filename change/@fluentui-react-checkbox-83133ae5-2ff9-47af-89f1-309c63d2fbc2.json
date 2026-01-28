@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding motion to Checkbox component",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "edwl@microsoft.com",
+  "dependentChangeType": "patch"
+}
