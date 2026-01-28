@@ -96,8 +96,9 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
-      boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1} inset, 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2} inset`,
+      ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      // Stack focus indicator (strokeWidthThin) on top of the grey border (strokeWidthThick)
+      boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset, 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralStroke1} inset`,
     }),
   },
   primary: {
