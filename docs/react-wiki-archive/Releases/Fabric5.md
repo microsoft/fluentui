@@ -76,7 +76,7 @@ In order to address these issues, and to have tighter control over the iteration
 - Tighter control over the release process, we can fix things quickly
 - Everything unit tested with 100% code coverage.
 
-If you were using `mergeStyles` from the `@uifabric/styling` package before, there is a minor modification to the styles you pass into it. For selector rules such as `:hover` or `:before`, these must now be encapsulated within a `selectors` collection. This was done to keep type-safety working (once you add a string indexer, you lose type-safety benefits in catching typos like `bakcground: 'red'`.)
+If you were using `mergeStyles` from the `@uifabric/styling` package before, there is a minor modification to the styles you pass into it. For selector rules such as `:hover` or `:before`, these must now be encapsulated within a `selectors` collection. This was done to keep type-safety working (once you add a string indexer, you lose type-safety benefits in catching typos like `background: 'red'`.)
 
 Before:
 
