@@ -1059,9 +1059,7 @@ type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
 export const Default = (): React.ReactElement => {
   const [selectedChart, setSelectedChart] = React.useState<string>(DEFAULT_SCHEMAS[0].key);
-  const [schemaText, setSchemaText] = React.useState<string>(
-    JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2),
-  );
+  const [schemaText, setSchemaText] = React.useState<string>(JSON.stringify(DEFAULT_SCHEMAS[0].schema, null, 2));
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(400);
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
@@ -1071,43 +1069,40 @@ export const Default = (): React.ReactElement => {
   const [loadedSchemasCount, setLoadedSchemasCount] = React.useState(0);
 
   // Load schemas from GitHub fluentui-charting-contrib repository
-  const loadSchemas = React.useCallback(
-    async (startLoadingState: LoadingState = 'loading') => {
-      setLoadingState(startLoadingState);
-      const offset = loadedSchemas.current.length;
-      const promises = Array.from({ length: 100 }, (_, index) => {
-        const id = offset + index + 1;
-        const filename = `data_${id < 100 ? ('00' + id).slice(-3) : id}_vega`;
-        return fetch(
-          `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/vega_data/${filename}.json`,
-        )
-          .then(response => {
-            if (response.status === 404) {
-              return null;
-            }
-            return response.json();
-          })
-          .then(schema => {
-            if (!schema) {
-              return null;
-            }
-            return { key: filename, schema };
-          })
-          .catch(() => null);
-      });
+  const loadSchemas = React.useCallback(async (startLoadingState: LoadingState = 'loading') => {
+    setLoadingState(startLoadingState);
+    const offset = loadedSchemas.current.length;
+    const promises = Array.from({ length: 100 }, (_, index) => {
+      const id = offset + index + 1;
+      const filename = `data_${id < 100 ? ('00' + id).slice(-3) : id}_vega`;
+      return fetch(
+        `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/vega_data/${filename}.json`,
+      )
+        .then(response => {
+          if (response.status === 404) {
+            return null;
+          }
+          return response.json();
+        })
+        .then(schema => {
+          if (!schema) {
+            return null;
+          }
+          return { key: filename, schema };
+        })
+        .catch(() => null);
+    });
 
-      const results = await Promise.all(promises);
-      const validResults = results.filter(item => item !== null) as Array<{ key: string; schema: any }>;
-      loadedSchemas.current.push(...validResults);
-      setLoadedSchemasCount(loadedSchemas.current.length);
+    const results = await Promise.all(promises);
+    const validResults = results.filter(item => item !== null) as Array<{ key: string; schema: any }>;
+    loadedSchemas.current.push(...validResults);
+    setLoadedSchemasCount(loadedSchemas.current.length);
 
-      // Only disable "Load more" if we got very few results (less than 10 out of 100)
-      // This indicates we've reached the end of available schemas
-      const disableLoadMore = validResults.length < 10;
-      setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
-    },
-    [],
-  );
+    // Only disable "Load more" if we got very few results (less than 10 out of 100)
+    // This indicates we've reached the end of available schemas
+    const disableLoadMore = validResults.length < 10;
+    setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
+  }, []);
 
   React.useEffect(() => {
     if (showMore && loadedSchemasCount === 0) {
@@ -1196,9 +1191,7 @@ export const Default = (): React.ReactElement => {
 
   // Generate options from available schemas
   const currentOptions = React.useMemo(() => {
-    const schemas = showMore
-      ? [...DEFAULT_SCHEMAS, ...loadedSchemas.current]
-      : DEFAULT_SCHEMAS;
+    const schemas = showMore ? [...DEFAULT_SCHEMAS, ...loadedSchemas.current] : DEFAULT_SCHEMAS;
     return schemas.map(item => {
       const text = item.key
         .split(/[-_]/)
@@ -1266,20 +1259,11 @@ export const Default = (): React.ReactElement => {
                 key={category}
                 value={category}
                 text={`${category} (${
-                  category === 'All'
-                    ? schemaCount
-                    : showMore
-                      ? SCHEMA_CATEGORIES.get(category)?.length || 0
-                      : 0
+                  category === 'All' ? schemaCount : showMore ? SCHEMA_CATEGORIES.get(category)?.length || 0 : 0
                 })`}
               >
                 {category} (
-                {category === 'All'
-                  ? schemaCount
-                  : showMore
-                    ? SCHEMA_CATEGORIES.get(category)?.length || 0
-                    : 0}
-                )
+                {category === 'All' ? schemaCount : showMore ? SCHEMA_CATEGORIES.get(category)?.length || 0 : 0})
               </Option>
             ))}
           </Dropdown>
