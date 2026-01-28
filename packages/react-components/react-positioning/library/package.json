@@ -14,6 +14,8 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
     "@floating-ui/devtools": "^0.2.3",
+    "@fluentui/react-motion": "^9.11.5",
+    "@fluentui/react-motion-components-preview": "^0.14.2",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.1",

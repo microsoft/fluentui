@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-menu): migrate MenuPopover slide animation from CSS to imperative WAAPI",
+  "packageName": "@fluentui/react-menu",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
