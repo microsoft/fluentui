@@ -14,7 +14,7 @@ import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
-import * as d3Color from 'd3-color';
+import { hsl as d3Hsl } from 'd3-color';
 
 import {
   correctYearMonth,
@@ -96,7 +96,12 @@ export interface Schema {
    * Plotly schema represented as JSON object
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plotlySchema: any;
+  plotlySchema?: any;
+
+  /**
+   * Selected legends (used for multi-select legend interaction)
+   */
+  selectedLegends?: string[];
 }
 
 /**
@@ -340,8 +345,8 @@ const useIsDarkTheme = (): boolean => {
   const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
 
   // Get background and foreground colors
-  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
-  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+  const backgroundColor = d3Hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Hsl(v9Theme.colorNeutralForeground1);
 
   const isDarkTheme = backgroundColor.l < foregroundColor.l;
 
@@ -356,6 +361,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >(({ colorwayType = 'default', ...props }, forwardedRef) => {
+  // Default Plotly adapter path
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {

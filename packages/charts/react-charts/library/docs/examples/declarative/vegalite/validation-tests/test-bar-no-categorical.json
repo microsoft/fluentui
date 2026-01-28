@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Test case: Bar chart without categorical axis (should throw validation error)",
+  "mark": "bar",
+  "data": {
+    "values": [
+      { "x": 1, "y": 28 },
+      { "x": 2, "y": 55 },
+      { "x": 3, "y": 43 },
+      { "x": 4, "y": 91 },
+      { "x": 5, "y": 81 }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "axis": { "title": "X Axis (Quantitative)" }
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "axis": { "title": "Y Axis (Quantitative)" }
+    }
+  },
+  "title": "Bar Chart Without Categorical Axis (Should Error)"
+}

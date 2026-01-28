@@ -1,0 +1,484 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`VegaLiteSchemaAdapter E2E Tests Area Charts Should transform multi-series area chart without stack 1`] = `
+Object {
+  "chartTitle": "Quarter",
+  "data": Object {
+    "chartTitle": "Department Performance - Overlapping Areas (No Stack)",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 85,
+          },
+          Object {
+            "x": 0,
+            "y": 88,
+          },
+          Object {
+            "x": 0,
+            "y": 92,
+          },
+          Object {
+            "x": 0,
+            "y": 95,
+          },
+        ],
+        "legend": "Sales",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 70,
+          },
+          Object {
+            "x": 0,
+            "y": 75,
+          },
+          Object {
+            "x": 0,
+            "y": 82,
+          },
+          Object {
+            "x": 0,
+            "y": 88,
+          },
+        ],
+        "legend": "Marketing",
+      },
+      Object {
+        "color": "#2aa0a4",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 60,
+          },
+          Object {
+            "x": 0,
+            "y": 65,
+          },
+          Object {
+            "x": 0,
+            "y": 70,
+          },
+          Object {
+            "x": 0,
+            "y": 75,
+          },
+        ],
+        "legend": "Support",
+      },
+    ],
+  },
+  "height": 300,
+  "hideLegend": false,
+  "mode": "tozeroy",
+  "width": 600,
+  "yAxisTitle": "Performance Score",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Area Charts Should transform simple area chart 1`] = `
+Object {
+  "chartTitle": "Date",
+  "data": Object {
+    "chartTitle": "Simple Area Chart",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 2023-01-01T00:00:00.000Z,
+            "y": 28,
+          },
+          Object {
+            "x": 2023-01-02T00:00:00.000Z,
+            "y": 55,
+          },
+          Object {
+            "x": 2023-01-03T00:00:00.000Z,
+            "y": 43,
+          },
+          Object {
+            "x": 2023-01-04T00:00:00.000Z,
+            "y": 91,
+          },
+          Object {
+            "x": 2023-01-05T00:00:00.000Z,
+            "y": 81,
+          },
+        ],
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 2023-01-01T00:00:00.000Z,
+            "y": 20,
+          },
+          Object {
+            "x": 2023-01-02T00:00:00.000Z,
+            "y": 40,
+          },
+          Object {
+            "x": 2023-01-03T00:00:00.000Z,
+            "y": 30,
+          },
+          Object {
+            "x": 2023-01-04T00:00:00.000Z,
+            "y": 70,
+          },
+          Object {
+            "x": 2023-01-05T00:00:00.000Z,
+            "y": 60,
+          },
+        ],
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "mode": "tonexty",
+  "width": undefined,
+  "yAxisTitle": "Value",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Bar Charts Should transform age distribution bar chart 1`] = `
+Object {
+  "chartTitle": "Patient Age Distribution",
+  "data": Array [
+    Object {
+      "color": "#637cef",
+      "legend": "145",
+      "x": "0-10",
+      "y": 145,
+    },
+    Object {
+      "color": "#e3008c",
+      "legend": "98",
+      "x": "11-20",
+      "y": 98,
+    },
+    Object {
+      "color": "#2aa0a4",
+      "legend": "234",
+      "x": "21-30",
+      "y": 234,
+    },
+    Object {
+      "color": "#9373c0",
+      "legend": "312",
+      "x": "31-40",
+      "y": 312,
+    },
+    Object {
+      "color": "#13a10e",
+      "legend": "287",
+      "x": "41-50",
+      "y": 287,
+    },
+    Object {
+      "color": "#3a96dd",
+      "legend": "342",
+      "x": "51-60",
+      "y": 342,
+    },
+    Object {
+      "color": "#ca5010",
+      "legend": "398",
+      "x": "61-70",
+      "y": 398,
+    },
+    Object {
+      "color": "#57811b",
+      "legend": "276",
+      "x": "71-80",
+      "y": 276,
+    },
+    Object {
+      "color": "#b146c2",
+      "legend": "189",
+      "x": "81+",
+      "y": 189,
+    },
+  ],
+  "roundCorners": true,
+  "wrapXAxisLables": true,
+  "xAxisTitle": "Age Group",
+  "yAxisTitle": "Number of Patients",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Bar Charts Should transform simple bar chart 1`] = `
+Object {
+  "chartTitle": "Horizontal Bar Chart",
+  "data": Array [],
+  "roundCorners": true,
+  "wrapXAxisLables": false,
+  "xAxisTitle": "Value",
+  "yAxisTitle": "Category",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Heatmap Charts Should transform air quality heatmap 1`] = `
+Object {
+  "chartTitle": "Air Quality Index Heatmap",
+  "data": Array [
+    Object {
+      "data": Array [
+        Object {
+          "rectText": 45,
+          "value": 45,
+          "x": "Morning",
+          "y": "New York",
+        },
+        Object {
+          "rectText": 62,
+          "value": 62,
+          "x": "Afternoon",
+          "y": "New York",
+        },
+        Object {
+          "rectText": 58,
+          "value": 58,
+          "x": "Evening",
+          "y": "New York",
+        },
+        Object {
+          "rectText": 85,
+          "value": 85,
+          "x": "Morning",
+          "y": "Los Angeles",
+        },
+        Object {
+          "rectText": 95,
+          "value": 95,
+          "x": "Afternoon",
+          "y": "Los Angeles",
+        },
+        Object {
+          "rectText": 78,
+          "value": 78,
+          "x": "Evening",
+          "y": "Los Angeles",
+        },
+        Object {
+          "rectText": 52,
+          "value": 52,
+          "x": "Morning",
+          "y": "Chicago",
+        },
+        Object {
+          "rectText": 68,
+          "value": 68,
+          "x": "Afternoon",
+          "y": "Chicago",
+        },
+        Object {
+          "rectText": 61,
+          "value": 61,
+          "x": "Evening",
+          "y": "Chicago",
+        },
+        Object {
+          "rectText": 72,
+          "value": 72,
+          "x": "Morning",
+          "y": "Houston",
+        },
+        Object {
+          "rectText": 88,
+          "value": 88,
+          "x": "Afternoon",
+          "y": "Houston",
+        },
+        Object {
+          "rectText": 75,
+          "value": 75,
+          "x": "Evening",
+          "y": "Houston",
+        },
+      ],
+      "legend": "",
+      "value": 0,
+    },
+  ],
+  "domainValuesForColorScale": Array [
+    45,
+    57.5,
+    70,
+    82.5,
+    95,
+  ],
+  "height": 350,
+  "hideLegend": true,
+  "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
+  "rangeValuesForColorScale": Array [
+    "rgb(0, 150, 255)",
+    "rgb(64, 113, 191)",
+    "rgb(128, 75, 128)",
+    "rgb(191, 38, 64)",
+    "rgb(255, 0, 0)",
+  ],
+  "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
+  "sortOrder": "none",
+  "width": undefined,
+  "wrapXAxisLables": true,
+  "xAxisTitle": "Time of Day",
+  "yAxisTitle": "City",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Line Charts Should transform API response time line chart 1`] = `
+Object {
+  "chartTitle": "Time",
+  "data": Object {
+    "chartTitle": "API Response Time Monitoring",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 2024-11-27T08:00:00.000Z,
+            "y": 145,
+          },
+          Object {
+            "x": 2024-11-27T09:00:00.000Z,
+            "y": 132,
+          },
+          Object {
+            "x": 2024-11-27T10:00:00.000Z,
+            "y": 158,
+          },
+          Object {
+            "x": 2024-11-27T11:00:00.000Z,
+            "y": 142,
+          },
+          Object {
+            "x": 2024-11-27T12:00:00.000Z,
+            "y": 178,
+          },
+          Object {
+            "x": 2024-11-27T13:00:00.000Z,
+            "y": 165,
+          },
+          Object {
+            "x": 2024-11-27T14:00:00.000Z,
+            "y": 152,
+          },
+          Object {
+            "x": 2024-11-27T15:00:00.000Z,
+            "y": 138,
+          },
+          Object {
+            "x": 2024-11-27T16:00:00.000Z,
+            "y": 148,
+          },
+          Object {
+            "x": 2024-11-27T17:00:00.000Z,
+            "y": 156,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "tickFormat": "%H:%M",
+  "width": undefined,
+  "yAxisTitle": "Response Time (ms)",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter E2E Tests Scatter Charts Should transform ad CTR scatter chart 1`] = `
+Object {
+  "data": Object {
+    "chartTitle": "Ad Performance - CTR Analysis",
+    "scatterChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "markerSize": 3600,
+            "x": 120000,
+            "y": 3,
+          },
+        ],
+        "legend": "3",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "markerSize": 1800,
+            "x": 45000,
+            "y": 4,
+          },
+        ],
+        "legend": "4",
+      },
+      Object {
+        "color": "#2aa0a4",
+        "data": Array [
+          Object {
+            "markerSize": 1250,
+            "x": 50000,
+            "y": 2.5,
+          },
+        ],
+        "legend": "2.5",
+      },
+      Object {
+        "color": "#9373c0",
+        "data": Array [
+          Object {
+            "markerSize": 2625,
+            "x": 75000,
+            "y": 3.5,
+          },
+          Object {
+            "markerSize": 3150,
+            "x": 90000,
+            "y": 3.5,
+          },
+        ],
+        "legend": "3.5",
+      },
+      Object {
+        "color": "#13a10e",
+        "data": Array [
+          Object {
+            "markerSize": 1440,
+            "x": 60000,
+            "y": 2.4,
+          },
+        ],
+        "legend": "2.4",
+      },
+      Object {
+        "color": "#3a96dd",
+        "data": Array [
+          Object {
+            "markerSize": 4500,
+            "x": 100000,
+            "y": 4.5,
+          },
+        ],
+        "legend": "4.5",
+      },
+    ],
+  },
+  "xAxisTitle": "Impressions",
+  "yAxisTitle": "Click-Through Rate (%)",
+}
+`;

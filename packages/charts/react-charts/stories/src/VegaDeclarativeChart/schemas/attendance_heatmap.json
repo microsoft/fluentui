@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Class attendance patterns",
+  "data": {
+    "values": [
+      { "day": "Monday", "period": "Period 1", "attendance": 92 },
+      { "day": "Monday", "period": "Period 2", "attendance": 89 },
+      { "day": "Monday", "period": "Period 3", "attendance": 87 },
+      { "day": "Monday", "period": "Period 4", "attendance": 85 },
+      { "day": "Tuesday", "period": "Period 1", "attendance": 90 },
+      { "day": "Tuesday", "period": "Period 2", "attendance": 88 },
+      { "day": "Tuesday", "period": "Period 3", "attendance": 91 },
+      { "day": "Tuesday", "period": "Period 4", "attendance": 86 },
+      { "day": "Wednesday", "period": "Period 1", "attendance": 94 },
+      { "day": "Wednesday", "period": "Period 2", "attendance": 92 },
+      { "day": "Wednesday", "period": "Period 3", "attendance": 90 },
+      { "day": "Wednesday", "period": "Period 4", "attendance": 88 },
+      { "day": "Thursday", "period": "Period 1", "attendance": 91 },
+      { "day": "Thursday", "period": "Period 2", "attendance": 89 },
+      { "day": "Thursday", "period": "Period 3", "attendance": 87 },
+      { "day": "Thursday", "period": "Period 4", "attendance": 84 },
+      { "day": "Friday", "period": "Period 1", "attendance": 88 },
+      { "day": "Friday", "period": "Period 2", "attendance": 85 },
+      { "day": "Friday", "period": "Period 3", "attendance": 83 },
+      { "day": "Friday", "period": "Period 4", "attendance": 79 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "day", "type": "ordinal", "axis": { "title": "Day of Week" } },
+    "y": { "field": "period", "type": "ordinal", "axis": { "title": "Class Period" } },
+    "color": {
+      "field": "attendance",
+      "type": "quantitative",
+      "scale": { "scheme": "blues" },
+      "legend": { "title": "Attendance %" }
+    },
+    "tooltip": [
+      { "field": "day", "type": "ordinal" },
+      { "field": "period", "type": "ordinal" },
+      { "field": "attendance", "type": "quantitative", "title": "Attendance %", "format": ".0f" }
+    ]
+  },
+  "title": "Weekly Attendance Patterns"
+}

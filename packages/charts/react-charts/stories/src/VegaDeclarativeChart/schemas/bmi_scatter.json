@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "BMI distribution analysis",
+  "data": {
+    "values": [
+      { "height": 160, "weight": 52, "bmi": 20.3, "category": "Normal" },
+      { "height": 165, "weight": 68, "bmi": 25.0, "category": "Overweight" },
+      { "height": 170, "weight": 75, "bmi": 25.9, "category": "Overweight" },
+      { "height": 175, "weight": 70, "bmi": 22.9, "category": "Normal" },
+      { "height": 180, "weight": 95, "bmi": 29.3, "category": "Overweight" },
+      { "height": 158, "weight": 45, "bmi": 18.0, "category": "Underweight" },
+      { "height": 172, "weight": 82, "bmi": 27.7, "category": "Overweight" },
+      { "height": 168, "weight": 58, "bmi": 20.5, "category": "Normal" },
+      { "height": 177, "weight": 88, "bmi": 28.1, "category": "Overweight" },
+      { "height": 162, "weight": 48, "bmi": 18.3, "category": "Underweight" }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "height", "type": "quantitative", "axis": { "title": "Height (cm)" } },
+    "y": { "field": "weight", "type": "quantitative", "axis": { "title": "Weight (kg)" } },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": { "domain": ["Underweight", "Normal", "Overweight"], "range": ["#ff7f0e", "#2ca02c", "#d62728"] },
+      "legend": { "title": "BMI Category" }
+    },
+    "size": { "value": 100 },
+    "tooltip": [
+      { "field": "height", "type": "quantitative", "title": "Height (cm)" },
+      { "field": "weight", "type": "quantitative", "title": "Weight (kg)" },
+      { "field": "bmi", "type": "quantitative", "title": "BMI", "format": ".1f" },
+      { "field": "category", "type": "nominal", "title": "Category" }
+    ]
+  },
+  "title": "BMI Distribution Scatter"
+}

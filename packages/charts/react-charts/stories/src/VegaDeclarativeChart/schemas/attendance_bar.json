@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stadium attendance figures",
+  "data": {
+    "values": [
+      { "game": "Game 1", "attendance": 42500 },
+      { "game": "Game 2", "attendance": 45200 },
+      { "game": "Game 3", "attendance": 38900 },
+      { "game": "Game 4", "attendance": 51000 },
+      { "game": "Game 5", "attendance": 48700 },
+      { "game": "Game 6", "attendance": 52500 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "game", "type": "ordinal", "axis": { "title": "Game" } },
+    "y": { "field": "attendance", "type": "quantitative", "axis": { "title": "Attendance", "format": ",.0f" } },
+    "color": { "field": "attendance", "type": "quantitative", "scale": { "scheme": "oranges" }, "legend": null }
+  },
+  "title": "Home Game Attendance"
+}

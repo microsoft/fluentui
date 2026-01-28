@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bug priority distribution",
+  "data": {
+    "values": [
+      { "priority": "Critical", "count": 12 },
+      { "priority": "High", "count": 28 },
+      { "priority": "Medium", "count": 45 },
+      { "priority": "Low", "count": 67 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 55 },
+  "encoding": {
+    "theta": { "field": "count", "type": "quantitative" },
+    "color": {
+      "field": "priority",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Critical", "High", "Medium", "Low"],
+        "range": ["#d62728", "#ff7f0e", "#ffcc00", "#2ca02c"]
+      },
+      "legend": { "title": "Priority" }
+    },
+    "tooltip": [
+      { "field": "priority", "type": "nominal" },
+      { "field": "count", "type": "quantitative", "title": "Open Bugs" }
+    ]
+  },
+  "title": "Open Bugs by Priority"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Ad click-through rate analysis",
+  "data": {
+    "values": [
+      { "impressions": 50000, "clicks": 1250, "campaign": "Summer Sale", "ctr": 2.5 },
+      { "impressions": 75000, "clicks": 2625, "campaign": "Back to School", "ctr": 3.5 },
+      { "impressions": 120000, "clicks": 3600, "campaign": "Holiday Special", "ctr": 3.0 },
+      { "impressions": 45000, "clicks": 1800, "campaign": "Flash Deal", "ctr": 4.0 },
+      { "impressions": 90000, "clicks": 3150, "campaign": "Spring Collection", "ctr": 3.5 },
+      { "impressions": 60000, "clicks": 1440, "campaign": "Clearance", "ctr": 2.4 },
+      { "impressions": 100000, "clicks": 4500, "campaign": "Black Friday", "ctr": 4.5 }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "impressions", "type": "quantitative", "axis": { "title": "Impressions", "format": ",.0f" } },
+    "y": { "field": "ctr", "type": "quantitative", "axis": { "title": "Click-Through Rate (%)" } },
+    "size": {
+      "field": "clicks",
+      "type": "quantitative",
+      "legend": { "title": "Total Clicks" },
+      "scale": { "range": [100, 1000] }
+    },
+    "color": { "field": "ctr", "type": "quantitative", "scale": { "scheme": "blues" }, "legend": null },
+    "tooltip": [
+      { "field": "campaign", "type": "nominal" },
+      { "field": "impressions", "type": "quantitative", "format": ",.0f" },
+      { "field": "clicks", "type": "quantitative", "format": ",.0f" },
+      { "field": "ctr", "type": "quantitative", "format": ".1f", "title": "CTR %" }
+    ]
+  },
+  "title": "Ad Performance - CTR Analysis"
+}

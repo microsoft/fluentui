@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Donut chart with custom color range",
+  "mark": { "type": "arc", "innerRadius": 50 },
+  "data": {
+    "values": [
+      { "category": "A", "value": 28 },
+      { "category": "B", "value": 55 },
+      { "category": "C", "value": 43 },
+      { "category": "D", "value": 91 },
+      { "category": "E", "value": 81 }
+    ]
+  },
+  "encoding": {
+    "theta": {
+      "field": "value",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": {
+        "range": ["#637cef", "#e3008c", "#2aa0a4", "#9373c0", "#13a10e"]
+      },
+      "legend": { "title": "Category" }
+    }
+  },
+  "title": "Distribution by Category (Custom Colors)",
+  "width": 400,
+  "height": 400
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Test case: Nested arrays in data (should throw validation error)",
+  "mark": "line",
+  "data": {
+    "values": [
+      { "x": [1, 2, 3], "y": 28 },
+      { "x": [4, 5, 6], "y": 55 },
+      { "x": [7, 8, 9], "y": 43 }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "axis": { "title": "X Axis" }
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "axis": { "title": "Y Axis" }
+    }
+  },
+  "title": "Nested Arrays Test (Should Error)"
+}

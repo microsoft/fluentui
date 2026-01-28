@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Single series area chart with fill to zero baseline (tozeroy mode)",
+  "title": "Monthly Revenue - Single Series (Fill to Zero)",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "values": [
+      { "month": "2024-01", "revenue": 12000 },
+      { "month": "2024-02", "revenue": 15000 },
+      { "month": "2024-03", "revenue": 18000 },
+      { "month": "2024-04", "revenue": 16000 },
+      { "month": "2024-05", "revenue": 22000 },
+      { "month": "2024-06", "revenue": 25000 },
+      { "month": "2024-07", "revenue": 28000 },
+      { "month": "2024-08", "revenue": 26000 },
+      { "month": "2024-09", "revenue": 30000 },
+      { "month": "2024-10", "revenue": 32000 },
+      { "month": "2024-11", "revenue": 35000 },
+      { "month": "2024-12", "revenue": 38000 }
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "temporal",
+      "axis": {
+        "title": "Month",
+        "format": "%b %Y"
+      }
+    },
+    "y": {
+      "field": "revenue",
+      "type": "quantitative",
+      "stack": null,
+      "axis": {
+        "title": "Revenue ($)",
+        "format": "$,.0f"
+      }
+    }
+  }
+}

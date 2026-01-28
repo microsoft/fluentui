@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "API response time monitoring",
+  "data": {
+    "values": [
+      { "timestamp": "2024-11-27T08:00:00", "responseTime": 145 },
+      { "timestamp": "2024-11-27T09:00:00", "responseTime": 132 },
+      { "timestamp": "2024-11-27T10:00:00", "responseTime": 158 },
+      { "timestamp": "2024-11-27T11:00:00", "responseTime": 142 },
+      { "timestamp": "2024-11-27T12:00:00", "responseTime": 178 },
+      { "timestamp": "2024-11-27T13:00:00", "responseTime": 165 },
+      { "timestamp": "2024-11-27T14:00:00", "responseTime": 152 },
+      { "timestamp": "2024-11-27T15:00:00", "responseTime": 138 },
+      { "timestamp": "2024-11-27T16:00:00", "responseTime": 148 },
+      { "timestamp": "2024-11-27T17:00:00", "responseTime": 156 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2 },
+  "encoding": {
+    "x": { "field": "timestamp", "type": "temporal", "axis": { "title": "Time", "format": "%H:%M" } },
+    "y": { "field": "responseTime", "type": "quantitative", "axis": { "title": "Response Time (ms)" } },
+    "tooltip": [
+      { "field": "timestamp", "type": "temporal", "format": "%H:%M" },
+      { "field": "responseTime", "type": "quantitative", "title": "Response (ms)" }
+    ]
+  },
+  "title": "API Response Time Monitoring"
+}

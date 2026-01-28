@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /** Jest test setup file. */
 require('@testing-library/jest-dom');
+const { resetIdsForTests } = require('@fluentui/react-utilities');
+
+// Reset ID counter before each test for deterministic snapshots
+beforeEach(() => {
+  resetIdsForTests();
+});
 
 // https://github.com/jsdom/jsdom/issues/3368
 global.ResizeObserver = class ResizeObserver {

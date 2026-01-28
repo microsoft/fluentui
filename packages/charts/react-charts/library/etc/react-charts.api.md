@@ -1779,7 +1779,8 @@ export interface ScatterPolarSeries extends DataSeries {
 
 // @public
 export interface Schema {
-    plotlySchema: any;
+    plotlySchema?: any;
+    selectedLegends?: string[];
 }
 
 // @public (undocumented)
@@ -1834,6 +1835,26 @@ export interface SparklineStyles {
 
 // @public (undocumented)
 export const Textbox: React_2.FunctionComponent<TextboxProps>;
+
+// @public
+export const VegaDeclarativeChart: React_2.ForwardRefExoticComponent<VegaDeclarativeChartProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface VegaDeclarativeChartProps {
+    chartSchema: VegaSchema;
+    className?: string;
+    onSchemaChange?: (newSchema: VegaSchema) => void;
+    style?: React_2.CSSProperties;
+}
+
+// @public
+export type VegaLiteSpec = any;
+
+// @public
+export interface VegaSchema {
+    selectedLegends?: string[];
+    vegaLiteSpec: VegaLiteSpec;
+}
 
 // @public
 export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;

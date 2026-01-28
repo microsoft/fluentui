@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Climate zone temperature distribution",
+  "data": {
+    "values": [
+      { "avgTemp": -15, "precipitation": 250, "zone": "Arctic" },
+      { "avgTemp": 5, "precipitation": 800, "zone": "Temperate" },
+      { "avgTemp": 15, "precipitation": 650, "zone": "Subtropical" },
+      { "avgTemp": 25, "precipitation": 2000, "zone": "Tropical" },
+      { "avgTemp": -8, "precipitation": 300, "zone": "Subarctic" },
+      { "avgTemp": 22, "precipitation": 450, "zone": "Arid" },
+      { "avgTemp": 18, "precipitation": 900, "zone": "Mediterranean" }
+    ]
+  },
+  "mark": { "type": "point", "size": 200 },
+  "encoding": {
+    "x": { "field": "avgTemp", "type": "quantitative", "axis": { "title": "Average Temperature (°C)" } },
+    "y": { "field": "precipitation", "type": "quantitative", "axis": { "title": "Annual Precipitation (mm)" } },
+    "color": { "field": "zone", "type": "nominal", "legend": { "title": "Climate Zone" } },
+    "tooltip": [
+      { "field": "zone", "type": "nominal", "title": "Zone" },
+      { "field": "avgTemp", "type": "quantitative", "title": "Avg Temp (°C)" },
+      { "field": "precipitation", "type": "quantitative", "title": "Precipitation (mm)" }
+    ]
+  },
+  "title": "Climate Zones Classification"
+}

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';
 import { tokens } from '@fluentui/react-theme';
-import * as d3 from 'd3-color';
+import { color as d3Color, rgb as d3Rgb } from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';
 import { ChartTitle } from '../../utilities/index';
@@ -12,12 +12,12 @@ import { useImageExport } from '../../utilities/hooks';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 function invertHexColor(hex: string): string {
-  const color = d3.color(hex);
-  if (!color) {
+  const parsedColor = d3Color(hex);
+  if (!parsedColor) {
     return tokens.colorNeutralForeground1!;
   }
-  const rgb = color.rgb();
-  return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
+  const parsedRgb = parsedColor.rgb();
+  return d3Rgb(255 - parsedRgb.r, 255 - parsedRgb.g, 255 - parsedRgb.b).formatHex();
 }
 
 function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string, background?: string): string {
@@ -30,8 +30,8 @@ function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string
   const resolvedFg = resolveCSSVariables(chartContainer, foreground || fallbackFg);
   const resolvedBg = resolveCSSVariables(chartContainer, background || fallbackBg);
 
-  const fg = d3.color(resolvedFg);
-  const bg = d3.color(resolvedBg);
+  const fg = d3Color(resolvedFg);
+  const bg = d3Color(resolvedBg);
 
   if (!fg || !bg) {
     return resolvedBg;
@@ -60,7 +60,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     const bgColorSet = new Set<string>();
     headers.forEach(header => {
       const bg = header?.style?.backgroundColor;
-      const normalized = d3.color(bg || '')?.formatHex();
+      const normalized = d3Color(bg || '')?.formatHex();
       if (normalized) {
         bgColorSet.add(normalized);
       }

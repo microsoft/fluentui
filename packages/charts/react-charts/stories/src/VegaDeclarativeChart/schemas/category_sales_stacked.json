@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Category sales breakdown",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "category": "Electronics", "sales": 125000 },
+      { "quarter": "Q1", "category": "Clothing", "sales": 78000 },
+      { "quarter": "Q1", "category": "Home & Garden", "sales": 52000 },
+      { "quarter": "Q1", "category": "Sports", "sales": 38000 },
+      { "quarter": "Q2", "category": "Electronics", "sales": 142000 },
+      { "quarter": "Q2", "category": "Clothing", "sales": 95000 },
+      { "quarter": "Q2", "category": "Home & Garden", "sales": 68000 },
+      { "quarter": "Q2", "category": "Sports", "sales": 45000 },
+      { "quarter": "Q3", "category": "Electronics", "sales": 138000 },
+      { "quarter": "Q3", "category": "Clothing", "sales": 88000 },
+      { "quarter": "Q3", "category": "Home & Garden", "sales": 61000 },
+      { "quarter": "Q3", "category": "Sports", "sales": 52000 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "quarter", "type": "nominal", "axis": { "title": "Quarter" } },
+    "y": { "field": "sales", "type": "quantitative", "axis": { "title": "Sales ($)", "format": "$,.0f" } },
+    "color": { "field": "category", "type": "nominal", "legend": { "title": "Category" } }
+  },
+  "title": "Category Sales - Stacked View"
+}
