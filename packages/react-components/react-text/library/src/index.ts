@@ -17,3 +17,5 @@ export { Subtitle2Stronger, subtitle2StrongerClassNames } from './Subtitle2Stron
 export { Title1, title1ClassNames } from './Title1';
 export { Title2, title2ClassNames } from './Title2';
 export { Title3, title3ClassNames } from './Title3';
+export { TextProvider, useText } from './providers/TextProvider';
+export type { TextContextValue } from './providers/TextProvider';
