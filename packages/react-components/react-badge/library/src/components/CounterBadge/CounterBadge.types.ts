@@ -45,7 +45,13 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
    * @default false
    */
   showZero?: boolean;
+
+  /**
+   * If the counter should animate when the count changes
+   * @default false
+   */
+  isAnimated?: boolean;
 };
 
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> &
-  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero' | 'isAnimated'>>;

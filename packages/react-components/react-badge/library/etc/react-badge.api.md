@@ -51,10 +51,11 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
     overflowCount?: number;
     shape?: 'circular' | 'rounded';
     showZero?: boolean;
+    isAnimated?: boolean;
 };
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero' | 'isAnimated'>>;
 
 // @public (undocumented)
 export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
