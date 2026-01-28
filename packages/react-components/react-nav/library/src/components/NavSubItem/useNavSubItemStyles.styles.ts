@@ -2,12 +2,12 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import {
-  navItemTokens,
   useContentStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
   useSmallStyles,
 } from '../sharedNavStyles.styles';
+import { navItemTokens } from '../sharedNavItemTokens';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
