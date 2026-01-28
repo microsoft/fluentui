@@ -131,7 +131,7 @@ export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = (): 
           height={height}
           domainValuesForColorScale={[0, 1500]}
           rangeValuesForColorScale={[
-            getColorFromToken(DataVizPalette.color6),
+            getColorFromToken(DataVizPalette.color3),
             getColorFromToken(DataVizPalette.color10),
           ]}
           reflowProps={{ mode: 'min-width' }}

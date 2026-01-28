@@ -334,8 +334,8 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => 
           height={height}
           domainValuesForColorScale={[0, 200, 400, 600]}
           rangeValuesForColorScale={[
+            getColorFromToken(DataVizPalette.highSuccess),
             getColorFromToken(DataVizPalette.success),
-            getColorFromToken(DataVizPalette.warning),
             getColorFromToken(DataVizPalette.error),
             getColorFromToken(DataVizPalette.highError),
           ]}
