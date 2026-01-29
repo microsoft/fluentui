@@ -111,7 +111,7 @@ const storyTemplate = html<StoryArgs<FluentTree>>`
 `;
 
 export default {
-  title: 'Components/Tree',
+  title: 'Components/Tree/Tree',
   component: 'tree',
   render: renderComponent(storyTemplate),
   args: {
