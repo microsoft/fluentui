@@ -26,6 +26,7 @@ Object {
             "y": 95,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "Sales",
       },
       Object {
@@ -48,6 +49,7 @@ Object {
             "y": 88,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "Marketing",
       },
       Object {
@@ -70,6 +72,7 @@ Object {
             "y": 75,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "Support",
       },
     ],
@@ -112,6 +115,7 @@ Object {
             "y": 81,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "A",
       },
       Object {
@@ -138,6 +142,7 @@ Object {
             "y": 60,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "B",
       },
     ],
@@ -348,46 +353,47 @@ Object {
         "color": "#637cef",
         "data": Array [
           Object {
-            "x": 2024-11-27T08:00:00.000Z,
+            "x": 2024-11-27T02:30:00.000Z,
             "y": 145,
           },
           Object {
-            "x": 2024-11-27T09:00:00.000Z,
+            "x": 2024-11-27T03:30:00.000Z,
             "y": 132,
           },
           Object {
-            "x": 2024-11-27T10:00:00.000Z,
+            "x": 2024-11-27T04:30:00.000Z,
             "y": 158,
           },
           Object {
-            "x": 2024-11-27T11:00:00.000Z,
+            "x": 2024-11-27T05:30:00.000Z,
             "y": 142,
           },
           Object {
-            "x": 2024-11-27T12:00:00.000Z,
+            "x": 2024-11-27T06:30:00.000Z,
             "y": 178,
           },
           Object {
-            "x": 2024-11-27T13:00:00.000Z,
+            "x": 2024-11-27T07:30:00.000Z,
             "y": 165,
           },
           Object {
-            "x": 2024-11-27T14:00:00.000Z,
+            "x": 2024-11-27T08:30:00.000Z,
             "y": 152,
           },
           Object {
-            "x": 2024-11-27T15:00:00.000Z,
+            "x": 2024-11-27T09:30:00.000Z,
             "y": 138,
           },
           Object {
-            "x": 2024-11-27T16:00:00.000Z,
+            "x": 2024-11-27T10:30:00.000Z,
             "y": 148,
           },
           Object {
-            "x": 2024-11-27T17:00:00.000Z,
+            "x": 2024-11-27T11:30:00.000Z,
             "y": 156,
           },
         ],
+        "hideNonActiveDots": true,
         "legend": "default",
       },
     ],
