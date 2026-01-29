@@ -115,6 +115,30 @@ export const colorNeutralForeground3BrandSelected = 'var(--colorNeutralForegroun
 export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
 
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground5 | `colorNeutralForeground5`} design token.
+ * @public
+ */
+export const colorNeutralForeground5 = 'var(--colorNeutralForeground5)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground5Hover | `colorNeutralForeground5Hover`} design token.
+ * @public
+ */
+export const colorNeutralForeground5Hover = 'var(--colorNeutralForeground5Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground5Pressed | `colorNeutralForeground5Pressed`} design token.
+ * @public
+ */
+export const colorNeutralForeground5Pressed = 'var(--colorNeutralForeground5Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground5Selected | `colorNeutralForeground5Selected`} design token.
+ * @public
+ */
+export const colorNeutralForeground5Selected = 'var(--colorNeutralForeground5Selected)';
+
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundDisabled | `colorNeutralForegroundDisabled`} design token.
  * @public
  */
@@ -457,10 +481,58 @@ export const colorNeutralBackground5Selected = 'var(--colorNeutralBackground5Sel
 export const colorNeutralBackground6 = 'var(--colorNeutralBackground6)';
 
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground7 | `colorNeutralBackground7`} design token.
+ * @public
+ */
+export const colorNeutralBackground7 = 'var(--colorNeutralBackground7)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground7Hover | `colorNeutralBackground7Hover`} design token.
+ * @public
+ */
+export const colorNeutralBackground7Hover = 'var(--colorNeutralBackground7Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground7Pressed | `colorNeutralBackground7Pressed`} design token.
+ * @public
+ */
+export const colorNeutralBackground7Pressed = 'var(--colorNeutralBackground7Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground7Selected | `colorNeutralBackground7Selected`} design token.
+ * @public
+ */
+export const colorNeutralBackground7Selected = 'var(--colorNeutralBackground7Selected)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground8 | `colorNeutralBackground8`} design token.
+ * @public
+ */
+export const colorNeutralBackground8 = 'var(--colorNeutralBackground8)';
+
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInverted | `colorNeutralBackgroundInverted`} design token.
  * @public
  */
 export const colorNeutralBackgroundInverted = 'var(--colorNeutralBackgroundInverted)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInvertedHover | `colorNeutralBackgroundInvertedHover`} design token.
+ * @public
+ */
+export const colorNeutralBackgroundInvertedHover = 'var(--colorNeutralBackgroundInvertedHover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInvertedPressed | `colorNeutralBackgroundInvertedPressed`} design token.
+ * @public
+ */
+export const colorNeutralBackgroundInvertedPressed = 'var(--colorNeutralBackgroundInvertedPressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInvertedSelected | `colorNeutralBackgroundInvertedSelected`} design token.
+ * @public
+ */
+export const colorNeutralBackgroundInvertedSelected = 'var(--colorNeutralBackgroundInvertedSelected)';
 
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundStatic | `colorNeutralBackgroundStatic`} design token.
@@ -575,6 +647,12 @@ export const colorTransparentBackgroundSelected = 'var(--colorTransparentBackgro
  * @public
  */
 export const colorNeutralBackgroundDisabled = 'var(--colorNeutralBackgroundDisabled)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundDisabled2 | `colorNeutralBackgroundDisabled2`} design token.
+ * @public
+ */
+export const colorNeutralBackgroundDisabled2 = 'var(--colorNeutralBackgroundDisabled2)';
 
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInvertedDisabled | `colorNeutralBackgroundInvertedDisabled`} design token.
@@ -811,6 +889,30 @@ export const colorNeutralStroke2 = 'var(--colorNeutralStroke2)';
 export const colorNeutralStroke3 = 'var(--colorNeutralStroke3)';
 
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke4 | `colorNeutralStroke4`} design token.
+ * @public
+ */
+export const colorNeutralStroke4 = 'var(--colorNeutralStroke4)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke4Hover | `colorNeutralStroke4Hover`} design token.
+ * @public
+ */
+export const colorNeutralStroke4Hover = 'var(--colorNeutralStroke4Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke4Pressed | `colorNeutralStroke4Pressed`} design token.
+ * @public
+ */
+export const colorNeutralStroke4Pressed = 'var(--colorNeutralStroke4Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke4Selected | `colorNeutralStroke4Selected`} design token.
+ * @public
+ */
+export const colorNeutralStroke4Selected = 'var(--colorNeutralStroke4Selected)';
+
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeSubtle | `colorNeutralStrokeSubtle`} design token.
  * @public
  */
@@ -899,6 +1001,12 @@ export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePr
  * @public
  */
 export const colorNeutralStrokeDisabled = 'var(--colorNeutralStrokeDisabled)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeDisabled2 | `colorNeutralStrokeDisabled2`} design token.
+ * @public
+ */
+export const colorNeutralStrokeDisabled2 = 'var(--colorNeutralStrokeDisabled2)';
 
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeInvertedDisabled | `colorNeutralStrokeInvertedDisabled`} design token.
@@ -2117,6 +2225,36 @@ export const borderRadiusLarge = 'var(--borderRadiusLarge)';
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadius2XLarge | `borderRadius2XLarge`} design token.
+ * @public
+ */
+export const borderRadius2XLarge = 'var(--borderRadius2XLarge)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadius3XLarge | `borderRadius3XLarge`} design token.
+ * @public
+ */
+export const borderRadius3XLarge = 'var(--borderRadius3XLarge)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadius4XLarge | `borderRadius4XLarge`} design token.
+ * @public
+ */
+export const borderRadius4XLarge = 'var(--borderRadius4XLarge)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadius5XLarge | `borderRadius5XLarge`} design token.
+ * @public
+ */
+export const borderRadius5XLarge = 'var(--borderRadius5XLarge)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadius6XLarge | `borderRadius6XLarge`} design token.
+ * @public
+ */
+export const borderRadius6XLarge = 'var(--borderRadius6XLarge)';
 
 /**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusCircular | `borderRadiusCircular`} design token.

@@ -4,8 +4,13 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
-import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
-import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
+import { useMenuItemBase_unstable } from '../MenuItem/useMenuItem';
+import type {
+  MenuItemRadioBaseProps,
+  MenuItemRadioBaseState,
+  MenuItemRadioProps,
+  MenuItemRadioState,
+} from './MenuItemRadio.types';
 import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /**
@@ -15,6 +20,26 @@ export const useMenuItemRadio_unstable = (
   props: MenuItemRadioProps,
   ref: React.Ref<ARIAButtonElement<'div'>>,
 ): MenuItemRadioState => {
+  const state = useMenuItemRadioBase_unstable(props, ref);
+
+  // Set default checkmark icon
+  if (state.checkmark) {
+    state.checkmark.children ??= <Checkmark16Filled />;
+  }
+
+  return state;
+};
+
+/**
+ * Base hook for MenuItemRadio component, produces state required to render the component.
+ * It doesn't set any design-related props specific to MenuItemRadio.
+ *
+ * @internal
+ */
+export const useMenuItemRadioBase_unstable = (
+  props: MenuItemRadioBaseProps,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
+): MenuItemRadioBaseState => {
   const { name, value } = props;
 
   const checked = useMenuListContext_unstable(context => {
@@ -25,13 +50,12 @@ export const useMenuItemRadio_unstable = (
   const selectRadio = useMenuListContext_unstable(context => context.selectRadio);
 
   return {
-    ...useMenuItem_unstable(
+    ...useMenuItemBase_unstable(
       {
         ...props,
         role: 'menuitemradio',
         'aria-checked': checked,
         checkmark: slot.optional(props.checkmark, {
-          defaultProps: { children: <Checkmark16Filled /> },
           renderByDefault: true,
           elementType: 'span',
         }),

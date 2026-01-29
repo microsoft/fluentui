@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jan 2026 17:06:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.19.7)
+
+Thu, 22 Jan 2026 17:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.19.6..@fluentui/react-table_v9.19.7)
+
+### Patches
+
+- fix: use distinct hover background color ([PR #35588](https://github.com/microsoft/fluentui/pull/35588) by vgenaev@gmail.com)
+- Bump @fluentui/react-aria to v9.17.8 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-avatar to v9.9.14 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-checkbox to v9.5.13 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.14 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-radio to v9.5.13 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.19.6)
 

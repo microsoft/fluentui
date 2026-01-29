@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:07:00 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:42 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.8",
       "version": "9.0.8",

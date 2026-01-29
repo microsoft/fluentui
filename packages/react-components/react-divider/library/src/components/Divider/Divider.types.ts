@@ -43,9 +43,9 @@ export type DividerProps = ComponentProps<Partial<DividerSlots>> & {
   vertical?: boolean;
 };
 
-export type DividerBaseProps = Omit<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>;
+export type DividerBaseProps = Omit<DividerProps, 'alignContent' | 'appearance' | 'inset'>;
 
 export type DividerState = ComponentState<DividerSlots> &
   Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>>;
 
-export type DividerBaseState = Omit<DividerState, 'alignContent' | 'appearance' | 'inset' | 'vertical'>;
+export type DividerBaseState = Omit<DividerState, 'alignContent' | 'appearance' | 'inset'>;

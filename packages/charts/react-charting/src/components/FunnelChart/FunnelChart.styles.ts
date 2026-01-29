@@ -1,5 +1,6 @@
 import { FontWeights } from '@fluentui/react/lib/Styling';
 import { IFunnelChartStyleProps, IFunnelChartStyles } from './FunnelChart.types';
+import { getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/Common.styles';
 
 export const getFunnelChartStyles = (props: IFunnelChartStyleProps): IFunnelChartStyles => {
   const { theme, className, chartWidth, chartHeight } = props;
@@ -20,6 +21,7 @@ export const getFunnelChartStyles = (props: IFunnelChartStyleProps): IFunnelChar
       width: chartWidth,
       height: chartHeight,
     },
+    chartTitle: getChartTitleStyle(theme),
     text: [
       theme.fonts.medium,
       {
@@ -28,6 +30,7 @@ export const getFunnelChartStyles = (props: IFunnelChartStyleProps): IFunnelChar
         fill: theme.palette.neutralPrimary,
       },
     ],
+    svgTooltip: getSvgTooltipStyle(theme),
     subComponentStyles: {
       calloutStyles: {
         root: {

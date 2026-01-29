@@ -2,6 +2,29 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.147",
+      "version": "8.6.147",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.125.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:28:05 GMT",
       "tag": "@fluentui/azure-themes_v8.6.146",
       "version": "8.6.146",

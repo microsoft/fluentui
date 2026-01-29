@@ -175,7 +175,8 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
             max={1000}
             id={_widthSliderId}
             onChange={(_, data) => setWidth(data.value)}
-            aria-valuetext={`Width slider: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -186,7 +187,8 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
             max={1000}
             id={_heightSliderId}
             onChange={(_, data) => setHeight(data.value)}
-            aria-valuetext={`Height slider: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
           />
         </div>
       </div>

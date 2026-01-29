@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 23 Jan 2026 04:07:04 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.4",
+      "version": "3.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "Update CAP DR tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jan 2026 04:07:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.3",
       "version": "3.0.0-rc.3",

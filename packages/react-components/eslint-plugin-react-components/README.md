@@ -31,7 +31,39 @@ pnpm add --save-dev @fluentui/eslint-plugin-react-components
 
 ## Usage
 
-1. Add the plugin to your `.eslintrc.js` or equivalent configuration file:
+### Flat Config (ESLint 9+, recommended)
+
+Add the plugin to your `eslint.config.js`:
+
+```js
+const fluentuiReactComponents = require('@fluentui/eslint-plugin-react-components');
+
+module.exports = [
+  fluentuiReactComponents.configs.recommended,
+  // Your other configs...
+];
+```
+
+Or configure individual rules manually:
+
+```js
+const fluentuiReactComponents = require('@fluentui/eslint-plugin-react-components');
+
+module.exports = [
+  {
+    plugins: {
+      '@fluentui/react-components': fluentuiReactComponents,
+    },
+    rules: {
+      '@fluentui/react-components/prefer-fluentui-v9': 'warn',
+    },
+  },
+];
+```
+
+### Legacy Config (ESLint 8 and below)
+
+Add the plugin to your `.eslintrc.js`:
 
 ```js
 module.exports = {
@@ -40,7 +72,7 @@ module.exports = {
 };
 ```
 
-2. Or configure individual rules manually:
+Or configure individual rules manually:
 
 ```js
 module.exports = {

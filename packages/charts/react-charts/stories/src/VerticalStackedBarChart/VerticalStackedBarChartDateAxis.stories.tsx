@@ -98,7 +98,8 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           max={1000}
           id="ChangeWidth_Styled"
           onChange={e => setWidth(+e.target.value)}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Styled">Height:</label>
         <input
@@ -108,7 +109,8 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           max={1000}
           id="changeHeight_Styled"
           onChange={e => setHeight(+e.target.value)}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div>
@@ -120,7 +122,8 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           max={10}
           id="changeBarGapMax_Styled"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxslider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
         <label htmlFor="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
         <input
@@ -130,7 +133,8 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           max={10}
           id="ChangeBarCornerRadius_condition"
           onChange={e => setBarCornerRadius(+e.target.value)}
-          aria-valuetext={`ChangeBarCornerRadiusSlider${barCornerRadius}`}
+          aria-label="Change Bar Corner Radius"
+          aria-valuetext={`current value ${barCornerRadius}', Minimum 0 and Maximum 10`}
         />
         <label htmlFor="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
         <input
@@ -140,7 +144,8 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
           max={10}
           id="ChangeBarMinimumHeight_condition"
           onChange={e => setBarMinimumHeight(+e.target.value)}
-          aria-valuetext={`ChangebarBarMinimumHeightslider${barMinimumHeight}`}
+          aria-label="Change Bar Minimum Height"
+          aria-valuetext={`current value ${barMinimumHeight}', Minimum 0 and Maximum 10`}
         />
         <Field label="Pick one">
           <RadioGroup

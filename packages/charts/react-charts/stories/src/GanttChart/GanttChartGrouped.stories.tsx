@@ -131,7 +131,8 @@ export const GanttChartGrouped = (): JSXElement => {
             max={1000}
             id="width-slider"
             onChange={e => setWidth(parseInt(e.target.value, 10))}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -144,7 +145,8 @@ export const GanttChartGrouped = (): JSXElement => {
             max={1000}
             id="height-slider"
             onChange={e => setHeight(parseInt(e.target.value, 10))}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>

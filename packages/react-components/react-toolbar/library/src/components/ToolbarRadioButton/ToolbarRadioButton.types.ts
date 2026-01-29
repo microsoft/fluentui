@@ -1,5 +1,5 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/react-button';
+import type { ComponentProps, ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
+import type { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/react-button';
 
 /**
  * ToolbarRadioButton Props
@@ -11,6 +11,8 @@ export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> &
     value: string;
   };
 
+export type ToolbarRadioButtonBaseProps = DistributiveOmit<ToolbarRadioButtonProps, 'appearance'>;
+
 /**
  * State used in rendering ToolbarRadioButton
  */
@@ -18,3 +20,5 @@ export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> &
   ToggleButtonState &
   Required<Pick<ToggleButtonProps, 'checked'>> &
   Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
+
+export type ToolbarRadioButtonBaseState = DistributiveOmit<ToolbarRadioButtonState, 'appearance'>;
