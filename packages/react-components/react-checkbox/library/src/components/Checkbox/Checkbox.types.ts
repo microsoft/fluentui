@@ -31,6 +31,11 @@ export type CheckboxSlots = {
   // but changing the signature would be a breaking change
   // TODO: change the default value to 'span' in the next major
   indicator: Slot<'div', 'span'>;
+
+  /**
+   * The checkmark icon displayed inside the indicator when checked.
+   */
+  checkmarkIcon: Slot<'svg', 'span' | 'img'>;
 };
 
 /**

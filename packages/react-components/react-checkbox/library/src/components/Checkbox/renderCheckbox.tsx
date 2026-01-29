@@ -12,7 +12,11 @@ export const renderCheckbox_unstable = (state: CheckboxState): JSXElement => {
     <state.root>
       <state.input />
       {state.labelPosition === 'before' && state.label && <state.label />}
-      {state.indicator && <state.indicator />}
+      {state.indicator && state.checkmarkIcon && (
+        <state.indicator>
+          <state.checkmarkIcon />
+        </state.indicator>
+      )}
       {state.labelPosition === 'after' && state.label && <state.label />}
     </state.root>
   );

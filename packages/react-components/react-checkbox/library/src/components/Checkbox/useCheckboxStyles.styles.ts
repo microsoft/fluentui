@@ -1,6 +1,6 @@
 'use client';
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
@@ -11,6 +11,7 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   label: 'fui-Checkbox__label',
   input: 'fui-Checkbox__input',
   indicator: 'fui-Checkbox__indicator',
+  checkmarkIcon: 'fui-Checkbox__checkmarkIcon',
 };
 
 // CSS variables used internally in Checkbox's styles
@@ -18,6 +19,9 @@ const vars = {
   indicatorColor: '--fui-Checkbox__indicator--color',
   indicatorBorderColor: '--fui-Checkbox__indicator--borderColor',
   indicatorBackgroundColor: '--fui-Checkbox__indicator--backgroundColor',
+  indicatorTransform: '--fui-Checkbox__indicator--scale',
+  checkmarkIconOpacity: '--fui-Checkbox__checkmarkIcon--opacity',
+  checkmarkIconTransform: '--fui-Checkbox__checkmarkIcon--transform',
 } as const;
 
 // The indicator size is used by the indicator and label styles
@@ -33,6 +37,15 @@ const useRootBaseClassName = makeResetStyles({
   color: tokens.colorNeutralForeground3,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
+
+const disabledStyles: GriffelStyle = {
+  cursor: 'default',
+
+  color: tokens.colorNeutralForegroundDisabled,
+  [vars.indicatorBackgroundColor]: tokens.colorNeutralForegroundDisabled,
+  [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
+  [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
+};
 
 const useRootStyles = makeStyles({
   unchecked: {
@@ -50,7 +63,6 @@ const useRootStyles = makeStyles({
   checked: {
     color: tokens.colorNeutralForeground1,
     [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
     ':hover': {
@@ -81,16 +93,61 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
-    cursor: 'default',
-
-    color: tokens.colorNeutralForegroundDisabled,
-    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
-
+    ...disabledStyles,
+    ':hover': disabledStyles,
+    ':active': disabledStyles,
     '@media (forced-colors: active)': {
       color: 'GrayText',
       [vars.indicatorColor]: 'GrayText',
     },
+  },
+});
+
+const useMotionColorStyles = makeStyles({
+  default: {
+    ':active': {
+      [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+    },
+  },
+
+  unchecked: {},
+
+  checked: {
+    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+  },
+
+  mixed: {
+    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+  },
+});
+
+const useMotionScaleStyles = makeStyles({
+  default: {
+    ':active': {
+      [vars.indicatorTransform]: 'scale(0.66) translateZ(0)',
+      [vars.checkmarkIconOpacity]: '1',
+      [vars.checkmarkIconTransform]: 'scale(0.66) translateZ(0)',
+    },
+  },
+
+  unchecked: {
+    [vars.indicatorTransform]: 'scale(0) translateZ(0)',
+    [vars.checkmarkIconOpacity]: '0',
+    [vars.checkmarkIconTransform]: 'scale(0) translateZ(0)',
+  },
+
+  checked: {
+    [vars.indicatorTransform]: 'scale(1) translateZ(0)',
+    [vars.checkmarkIconOpacity]: '1',
+    [vars.checkmarkIconTransform]: 'scale(1) translateZ(0)',
+  },
+
+  mixed: {
+    [vars.indicatorTransform]: 'scale(0.57) translateZ(0)',
+    [vars.checkmarkIconOpacity]: '0',
+    [vars.checkmarkIconTransform]: 'scale(0) translateZ(0)',
   },
 });
 
@@ -129,30 +186,68 @@ const useIndicatorBaseClassName = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
+  position: 'relative',
 
-  color: `var(${vars.indicatorColor})`,
-  backgroundColor: `var(${vars.indicatorBackgroundColor})`,
   borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
-  borderStyle: 'solid',
   borderWidth: tokens.strokeWidthThin,
+  borderStyle: 'solid',
   borderRadius: tokens.borderRadiusSmall,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
-  fill: 'currentColor',
   pointerEvents: 'none',
 
+  transitionProperty: 'border-color, color',
+  transitionDuration: tokens.durationFaster,
+  transitionTimingFunction: tokens.curveEasyEase,
+
+  color: `var(${vars.indicatorColor})`,
   fontSize: '12px',
   height: indicatorSizeMedium,
   width: indicatorSizeMedium,
+
+  '&::after': {
+    position: 'absolute',
+    inset: 0,
+    zIndex: tokens.zIndexBackground,
+    content: "''",
+    backgroundColor: `var(${vars.indicatorBackgroundColor})`,
+    transform: `var(${vars.indicatorTransform})`,
+    fill: 'currentColor',
+    transitionProperty: 'transform, background-color, fill',
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveEasyEase,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
+  mixedIndicator: {
+    '::after': {
+      borderRadius: tokens.borderRadiusSmall,
+    },
+  },
+
   large: {
     fontSize: '16px',
     height: indicatorSizeLarge,
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: tokens.borderRadiusCircular },
+  circular: {
+    borderRadius: tokens.borderRadiusCircular,
+
+    '::after': {
+      borderRadius: 'inherit',
+    },
+  },
+});
+
+const useCheckmarkStyles = makeResetStyles({
+  position: 'relative',
+  zIndex: tokens.zIndexContent,
+  opacity: `var(${vars.checkmarkIconOpacity})`,
+  transform: `var(${vars.checkmarkIconTransform})`,
+  transitionProperty: 'transform, opacity',
+  transitionDuration: tokens.durationNormal,
+  transitionTimingFunction: tokens.curveDecelerateMin,
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -193,16 +288,21 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
 
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
+  const motionColorStyles = useMotionColorStyles();
+  const motionScaleStyles = useMotionScaleStyles();
+
   state.root.className = mergeClasses(
     checkboxClassNames.root,
     rootBaseClassName,
-    disabled
-      ? rootStyles.disabled
-      : checked === 'mixed'
-      ? rootStyles.mixed
-      : checked
-      ? rootStyles.checked
-      : rootStyles.unchecked,
+    checked === 'mixed' ? rootStyles.mixed : checked ? rootStyles.checked : rootStyles.unchecked,
+    checked === 'mixed' ? motionScaleStyles.mixed : checked ? motionScaleStyles.checked : motionScaleStyles.unchecked,
+    !disabled &&
+      (checked === 'mixed'
+        ? motionColorStyles.mixed
+        : checked
+        ? motionColorStyles.checked
+        : motionColorStyles.unchecked),
+    disabled && rootStyles.disabled,
     state.root.className,
   );
 
@@ -223,6 +323,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       checkboxClassNames.indicator,
       indicatorBaseClassName,
       size === 'large' && indicatorStyles.large,
+      checked === 'mixed' && indicatorStyles.mixedIndicator,
       shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
@@ -236,6 +337,15 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       labelStyles[size],
       labelStyles[labelPosition],
       state.label.className,
+    );
+  }
+
+  const checkmarkStyles = useCheckmarkStyles();
+  if (state.checkmarkIcon) {
+    state.checkmarkIcon.className = mergeClasses(
+      checkboxClassNames.checkmarkIcon,
+      checkmarkStyles,
+      state.checkmarkIcon.className,
     );
   }
 
