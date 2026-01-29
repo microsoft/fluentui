@@ -1,12 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
-import { useToggleButtonBase_unstable } from './useToggleButtonBase';
-import { useButtonContext } from '../../contexts';
+import { useToggleState } from '../../utils/useToggleState';
+import { useButton_unstable, useButtonBase_unstable } from '../Button/useButton';
+import type { ToggleButtonBaseState, ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
 /**
- * Given user props, defines default props for the ToggleButton, calls `useToggleButtonBase_unstable` and adds design-related props, and returns
+ * Given user props, defines default props for the ToggleButton, calls useButtonState and useChecked, and returns
  * processed state.
  * @param props - User provided props to the ToggleButton component.
  * @param ref - User provided ref to be passed to the ToggleButton component.
@@ -15,17 +15,24 @@ export const useToggleButton_unstable = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  'use no memo';
+  const { checked = false, defaultChecked = false, ...buttonProps } = props;
+  const buttonState = useButton_unstable(buttonProps, ref);
 
-  const { size: contextSize } = useButtonContext();
-  const { appearance = 'secondary', shape = 'rounded', size = contextSize ?? 'medium' } = props;
+  return useToggleState(props, buttonState);
+};
 
-  const buttonState = useToggleButtonBase_unstable(props, ref);
+/**
+ * Base hook for ToggleButton component, which manages state related to slots structure and ARIA attributes.
+ *
+ * @param props - User provided props to the ToggleButton component.
+ * @param ref - User provided ref to be passed to the ToggleButton component.
+ */
+export const useToggleButtonBase_unstable = (
+  props: ToggleButtonProps,
+  ref?: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): ToggleButtonBaseState => {
+  const { checked = false, defaultChecked = false, ...buttonProps } = props;
+  const buttonState = useButtonBase_unstable(buttonProps, ref);
 
-  return {
-    appearance,
-    shape,
-    size,
-    ...buttonState,
-  };
+  return useToggleState(props, buttonState);
 };
