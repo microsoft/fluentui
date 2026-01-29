@@ -9,6 +9,7 @@ export interface SelectionMethods {
   clearItems(event: React.SyntheticEvent): void;
   isSelected(id: SelectionItemId): boolean;
   toggleAllItems(event: React.SyntheticEvent, itemIds: SelectionItemId[]): void;
+  toggleSomeItems(event: React.SyntheticEvent, itemIds: SelectionItemId[]): void;
 }
 
 export type SelectionItemId = string | number;

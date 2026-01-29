@@ -34,6 +34,11 @@ function useSingleSelection(params: Omit<SelectionHookParams, 'selectionMode'>) 
         throw new Error('[react-utilities]: `toggleAllItems` should not be used in single selection mode');
       }
     },
+    toggleSomeItems: () => {
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error('[react-utilities]: `toggleSomeItems` should not be used in single selection mode');
+      }
+    },
     toggleItem: (event, itemId) => changeSelection(event, new Set([itemId])),
     clearItems: event => changeSelection(event, new Set()),
     isSelected: itemId => selected.has(itemId) ?? false,
@@ -77,6 +82,16 @@ function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>
       }
       changeSelection(event, nextSelectedItems);
     },
+    toggleSomeItems: (event, itemIds) => {
+      const allItemsSelected = itemIds.every(itemId => selected.has(itemId));
+      const nextSelectedItems = new Set(selected);
+      if (allItemsSelected) {
+        itemIds.forEach(itemId => nextSelectedItems.delete(itemId));
+      } else {
+        itemIds.forEach(itemId => nextSelectedItems.add(itemId));
+      }
+      changeSelection(event, nextSelectedItems);
+    }
   };
   return [selected, methods] as const;
 }
