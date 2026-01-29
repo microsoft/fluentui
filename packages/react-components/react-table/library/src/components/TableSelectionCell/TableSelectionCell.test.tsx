@@ -73,4 +73,12 @@ describe('TableSelectionCell', () => {
     expect(queryByRole('checkbox')).toBeNull();
     expect(queryByRole('radio')).not.toBeNull();
   });
+
+  it('should not render a radio if invisible', () => {
+    const { queryByRole } = render(<TableSelectionCell type="radio" invisible />, {
+      container: tr,
+    });
+    expect(queryByRole('checkbox')).toBeNull();
+    expect(queryByRole('radio')).toBeNull();
+  });
 });
