@@ -59,6 +59,7 @@ export {
   renderDialogSurface_unstable,
 } from './DialogSurface';
 export type {
+  DialogBackdropSlotProps,
   DialogSurfaceProps,
   DialogSurfaceSlots,
   DialogSurfaceState,

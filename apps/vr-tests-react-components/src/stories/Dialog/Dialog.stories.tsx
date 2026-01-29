@@ -8,9 +8,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@fluentui/react-dialog';
+import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-button';
 import { Combobox, Option } from '@fluentui/react-combobox';
-import { Rocket24Regular } from '@fluentui/react-icons';
+import { Rocket24Regular, Dismiss24Regular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
@@ -528,3 +529,149 @@ export const IntegrationComboboxInline = () => {
     </Dialog>
   );
 };
+
+export const DialogInsideDrawerDefault = () => (
+  <OverlayDrawer open position="start">
+    <DrawerHeader>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+        Drawer with Dialog
+      </DrawerHeaderTitle>
+    </DrawerHeader>
+    <DrawerBody>
+      <Dialog open>
+        <DialogTrigger>
+          <Button>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog inside Drawer</DialogTitle>
+            <DialogContent>This dialog has the default transparent backdrop when nested inside a Drawer.</DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </DrawerBody>
+  </OverlayDrawer>
+);
+
+DialogInsideDrawerDefault.storyName = 'dialog inside drawer default';
+
+export const DialogInsideDrawerDefaultDarkMode = getStoryVariant(DialogInsideDrawerDefault, DARK_MODE);
+export const DialogInsideDrawerDefaultHighContrast = getStoryVariant(DialogInsideDrawerDefault, HIGH_CONTRAST);
+export const DialogInsideDrawerDefaultRTL = getStoryVariant(DialogInsideDrawerDefault, RTL);
+
+export const DialogInsideDrawerDimmed = () => (
+  <OverlayDrawer open position="start">
+    <DrawerHeader>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+        Drawer with Dialog
+      </DrawerHeaderTitle>
+    </DrawerHeader>
+    <DrawerBody>
+      <Dialog open>
+        <DialogTrigger>
+          <Button>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface backdrop={{ appearance: 'dimmed' }}>
+          <DialogBody>
+            <DialogTitle>Dialog inside Drawer</DialogTitle>
+            <DialogContent>This dialog has a dimmed backdrop even though it is nested inside a Drawer.</DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </DrawerBody>
+  </OverlayDrawer>
+);
+
+DialogInsideDrawerDimmed.storyName = 'dialog inside drawer dimmed';
+
+export const DialogInsideDrawerDimmedDarkMode = getStoryVariant(DialogInsideDrawerDimmed, DARK_MODE);
+export const DialogInsideDrawerDimmedHighContrast = getStoryVariant(DialogInsideDrawerDimmed, HIGH_CONTRAST);
+export const DialogInsideDrawerDimmedRTL = getStoryVariant(DialogInsideDrawerDimmed, RTL);
+
+export const DialogInsideDrawerTransparent = () => (
+  <OverlayDrawer open position="start">
+    <DrawerHeader>
+      <DrawerHeaderTitle action={<Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} />}>
+        Drawer with Dialog
+      </DrawerHeaderTitle>
+    </DrawerHeader>
+    <DrawerBody>
+      <Dialog open>
+        <DialogTrigger>
+          <Button>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface backdrop={{ appearance: 'transparent' }}>
+          <DialogBody>
+            <DialogTitle>Dialog inside Drawer</DialogTitle>
+            <DialogContent>This dialog explicitly sets transparent backdrop appearance.</DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </DrawerBody>
+  </OverlayDrawer>
+);
+
+DialogInsideDrawerTransparent.storyName = 'dialog inside drawer transparent';
+
+export const DialogInsideDrawerTransparentDarkMode = getStoryVariant(DialogInsideDrawerTransparent, DARK_MODE);
+export const DialogInsideDrawerTransparentHighContrast = getStoryVariant(DialogInsideDrawerTransparent, HIGH_CONTRAST);
+export const DialogInsideDrawerTransparentRTL = getStoryVariant(DialogInsideDrawerTransparent, RTL);
+
+export const NestedDialogDimmed = () => (
+  <Dialog open>
+    <DialogTrigger>
+      <Button>Open nested dialog</Button>
+    </DialogTrigger>
+    <DialogSurface as="div">
+      <DialogBody>
+        <DialogTitle>Outer Dialog</DialogTitle>
+        <DialogContent>This is the outer dialog.</DialogContent>
+        <DialogActions>
+          <Dialog open>
+            <DialogTrigger>
+              <Button appearance="primary">Open inner dialog</Button>
+            </DialogTrigger>
+            <DialogSurface as="div" backdrop={{ appearance: 'dimmed' }}>
+              <DialogBody>
+                <DialogTitle>Inner Dialog with dimmed backdrop</DialogTitle>
+                <DialogContent>
+                  This inner dialog explicitly sets dimmed backdrop to override the default transparent behavior for
+                  nested dialogs.
+                </DialogContent>
+                <DialogActions>
+                  <DialogTrigger>
+                    <Button appearance="primary">Close</Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+        </DialogActions>
+      </DialogBody>
+    </DialogSurface>
+  </Dialog>
+);
+
+NestedDialogDimmed.storyName = 'nested dialog dimmed';
+
+export const NestedDialogDimmedDarkMode = getStoryVariant(NestedDialogDimmed, DARK_MODE);
+export const NestedDialogDimmedHighContrast = getStoryVariant(NestedDialogDimmed, HIGH_CONTRAST);
+export const NestedDialogDimmedRTL = getStoryVariant(NestedDialogDimmed, RTL);

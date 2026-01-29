@@ -9,6 +9,7 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -53,6 +54,11 @@ export type DialogActionsSlots = {
 
 // @public
 export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
+
+// @public
+export type DialogBackdropSlotProps = ExtractSlotProps<Slot<'div'> & {
+    appearance?: 'dimmed' | 'transparent';
+}>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -180,7 +186,7 @@ export const DialogSurfaceProvider: React_2.Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
-    backdrop?: Slot<'div'>;
+    backdrop?: Slot<DialogBackdropSlotProps>;
     root: Slot<'div'>;
     backdropMotion: Slot<PresenceMotionSlotProps>;
 };

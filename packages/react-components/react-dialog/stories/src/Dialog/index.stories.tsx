@@ -8,6 +8,7 @@ import ssrMd from './DialogSSR.md';
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
+export { BackdropAppearance } from './DialogBackdropAppearance.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
 export { KeepRenderedInTheDOM } from './DialogKeepRenderedInTheDOM.stories';
 export { Actions } from './DialogActions.stories';
