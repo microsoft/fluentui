@@ -1,7 +1,8 @@
+// @ts-check
 const js = require('@eslint/js');
 const { fixupConfigRules } = require('@eslint/compat');
-
 const { FlatCompat } = require('@eslint/eslintrc');
+const fluentPlugin = require('@fluentui/eslint-plugin');
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -9,13 +10,12 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
+/** @type {import("eslint").Linter.Config[]} */
 module.exports = [
-  ...compat.extends('plugin:@fluentui/eslint-plugin/react--legacy'),
+  ...fluentPlugin.configs['flat/react-legacy'],
   {
     files: ['bin/*.js', 'scripts/*.js'],
-    rules: {
-      ...fixupConfigRules(compat.extends('plugin:es/restrict-to-es2017')).rules,
-    },
+    ...fixupConfigRules(compat.extends('plugin:es/restrict-to-es2017'))[0],
   },
   {
     files: ['bin/*.js', 'src/loadSite.ts'],
