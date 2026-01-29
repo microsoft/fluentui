@@ -16,6 +16,16 @@ export type MessageBarBodySlots = {
 export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 
 /**
+ * MessageBarBody base props
+ */
+export type MessageBarBodyBaseProps = ComponentProps<MessageBarBodySlots>;
+
+/**
  * State used in rendering MessageBarBody
  */
 export type MessageBarBodyState = ComponentState<MessageBarBodySlots>;
+
+/**
+ * MessageBarBody base state
+ */
+export type MessageBarBodyBaseState = ComponentState<MessageBarBodySlots>;

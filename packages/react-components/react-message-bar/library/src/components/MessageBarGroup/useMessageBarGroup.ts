@@ -1,6 +1,13 @@
+'use client';
+
 import * as React from 'react';
-import type { MessageBarGroupProps, MessageBarGroupState } from './MessageBarGroup.types';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import type {
+  MessageBarGroupProps,
+  MessageBarGroupState,
+  MessageBarGroupBaseProps,
+  MessageBarGroupBaseState,
+} from './MessageBarGroup.types';
+import { slot } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render MessageBarGroup.
@@ -15,6 +22,27 @@ export const useMessageBarGroup_unstable = (
   props: MessageBarGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarGroupState => {
+  const { animate = 'exit-only', ...baseProps } = props;
+  const baseState = useMessageBarGroupBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    animate,
+    enterStyles: '',
+    exitStyles: '',
+  };
+};
+
+/**
+ * Base hook for MessageBarGroup component, manages state and structure common to all variants of MessageBarGroup
+ *
+ * @param props - base props from this instance of MessageBarGroup
+ * @param ref - reference to root HTMLElement of MessageBarGroup
+ */
+export const useMessageBarGroupBase_unstable = (
+  props: MessageBarGroupBaseProps,
+  ref?: React.Ref<HTMLDivElement>,
+): MessageBarGroupBaseState => {
   if (process.env.NODE_ENV !== 'production') {
     React.Children.forEach(props.children, c => {
       if (!React.isValidElement(c) || c.type === React.Fragment) {
@@ -33,17 +61,7 @@ export const useMessageBarGroup_unstable = (
     components: {
       root: 'div',
     },
-
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    root: slot.always({ ref, ...props }, { elementType: 'div' }),
     children,
-    animate: props.animate ?? 'exit-only',
-    enterStyles: '',
-    exitStyles: '',
   };
 };

@@ -14,6 +14,11 @@ export type MessageBarGroupProps = ComponentProps<MessageBarGroupSlots> & {
 };
 
 /**
+ * MessageBarGroup base props
+ */
+export type MessageBarGroupBaseProps = Omit<MessageBarGroupProps, 'animate'>;
+
+/**
  * State used in rendering MessageBarGroup
  */
 export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> &
@@ -24,3 +29,8 @@ export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> &
     exitStyles: string;
     children: React.ReactElement[];
   };
+
+/**
+ * MessageBarGroup base state
+ */
+export type MessageBarGroupBaseState = Omit<MessageBarGroupState, 'animate' | 'enterStyles' | 'exitStyles'>;

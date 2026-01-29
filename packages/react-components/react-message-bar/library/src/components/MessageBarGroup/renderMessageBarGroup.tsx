@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { MessageBarGroupState, MessageBarGroupSlots } from './MessageBarGroup.types';
+import type { MessageBarGroupState, MessageBarGroupSlots, MessageBarGroupBaseState } from './MessageBarGroup.types';
 import { PresenceGroup } from '@fluentui/react-motion';
 import { MessageBarMotion } from './MessageBarGroup.motions';
 import { MotionRefForwarder } from '../MotionRefForwarder';
@@ -25,4 +25,13 @@ export const renderMessageBarGroup_unstable = (state: MessageBarGroupState): JSX
       </PresenceGroup>
     </state.root>
   );
+};
+
+/**
+ * Render the final JSX of MessageBarGroup without motion
+ */
+export const renderMessageBarGroupBase_unstable = (state: MessageBarGroupBaseState): JSXElement => {
+  assertSlots<MessageBarGroupSlots>(state);
+
+  return <state.root>{state.children}</state.root>;
 };
