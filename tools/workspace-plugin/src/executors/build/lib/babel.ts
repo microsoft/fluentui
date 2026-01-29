@@ -104,14 +104,7 @@ async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number],
       sourceFileName: basename(filename),
     })) /* Bad `transformAsync` types. it can be null only if 2nd param is null(config)*/ as NonNullableRecord<BabelFileResult>;
 
-    // FIXME:
-    // - NOTE: needs to be fixed primarily in {@link 'file://./swc.ts'} as well
-    // - swc does not add source mapping url when using @swc/core imperative APIs (unlike @swc/cli) (//# sourceMappingURL=) !
-    // - we ship transpiled files without proper source mapping since - Wed, 31 May 2023 (the swithc from swc/cli to programatic api useage)
-    // - @swc/cli does add source mapping because besides invoking swc/core programatically it also contains custom logic to add source mapping url https://github.com/swc-project/pkgs/blob/main/packages/cli/src/swc/compile.ts#L42-L44
-    // const resultCode = addSourceMappingUrl(result.code, basename(filename) + '.map');
-
-    const resultCode = result.code;
+    const resultCode = addSourceMappingUrl(result.code, basename(filename) + '.map');
 
     if (resultCode === sourceCode) {
       logger.verbose(`babel: skipped ${filePath}`);
