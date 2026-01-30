@@ -1,5 +1,9 @@
 // @ts-check
 
+// Set timezone to UTC for consistent date formatting in snapshots across all environments
+// This must be set before any date operations occur
+process.env.TZ = 'UTC';
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */

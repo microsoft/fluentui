@@ -58,7 +58,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(27.166666666666668,0)"
+                transform="translate(22.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -76,7 +76,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(-10.166666666666664,0)"
+                transform="translate(-19.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -212,7 +212,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
             </g>
             <g>
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="0-line-areaChart__r_0_"
                 opacity="0.3"
@@ -220,14 +220,14 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#637cef"
                 fill-opacity="0.7"
                 id="0-graph-areaChart__r_0_"
                 opacity="1"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="1-line-areaChart__r_0_"
                 opacity="0.3"
@@ -235,7 +235,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#e3008c"
                 fill-opacity="0.7"
                 id="1-graph-areaChart__r_0_"
@@ -247,8 +247,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. A, 28."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. A, 28."
+                  cx="64"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_2__0"
@@ -259,8 +259,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. A, 55."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. A, 55."
+                  cx="43"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_2__1"
@@ -271,8 +271,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. A, 43."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. A, 43."
+                  cx="22"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_2__2"
@@ -283,8 +283,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. A, 91."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. A, 91."
+                  cx="1"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_2__3"
@@ -295,8 +295,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. A, 81."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. A, 81."
+                  cx="-20"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_2__4"
@@ -313,8 +313,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. B, 20."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. B, 20."
+                  cx="64"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_2__5"
@@ -325,8 +325,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. B, 40."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. B, 40."
+                  cx="43"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_2__6"
@@ -337,8 +337,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. B, 30."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. B, 30."
+                  cx="22"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_2__7"
@@ -349,8 +349,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. B, 70."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. B, 70."
+                  cx="1"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_2__8"
@@ -361,8 +361,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Basic Charts should render areach
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. B, 60."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. B, 60."
+                  cx="-20"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_2__9"
@@ -3460,7 +3460,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(27.166666666666668,0)"
+                transform="translate(22.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -3478,7 +3478,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(-10.166666666666664,0)"
+                transform="translate(-19.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -3614,7 +3614,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
             </g>
             <g>
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="0-line-areaChart__r_60_"
                 opacity="0.3"
@@ -3622,14 +3622,14 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#637cef"
                 fill-opacity="0.7"
                 id="0-graph-areaChart__r_60_"
                 opacity="1"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="1-line-areaChart__r_60_"
                 opacity="0.3"
@@ -3637,7 +3637,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#e3008c"
                 fill-opacity="0.7"
                 id="1-graph-areaChart__r_60_"
@@ -3649,8 +3649,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. A, 28."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. A, 28."
+                  cx="64"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_62__0"
@@ -3661,8 +3661,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. A, 55."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. A, 55."
+                  cx="43"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_62__1"
@@ -3673,8 +3673,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. A, 43."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. A, 43."
+                  cx="22"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_62__2"
@@ -3685,8 +3685,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. A, 91."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. A, 91."
+                  cx="1"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_62__3"
@@ -3697,8 +3697,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. A, 81."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. A, 81."
+                  cx="-20"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_62__4"
@@ -3715,8 +3715,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. B, 20."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. B, 20."
+                  cx="64"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_62__5"
@@ -3727,8 +3727,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. B, 40."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. B, 40."
+                  cx="43"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_62__6"
@@ -3739,8 +3739,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. B, 30."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. B, 30."
+                  cx="22"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_62__7"
@@ -3751,8 +3751,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. B, 70."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. B, 70."
+                  cx="1"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_62__8"
@@ -3763,8 +3763,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render in dark 
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. B, 60."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. B, 60."
+                  cx="-20"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_62__9"
@@ -3931,7 +3931,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(27.166666666666668,0)"
+                transform="translate(22.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -3949,7 +3949,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(-10.166666666666664,0)"
+                transform="translate(-19.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -4085,7 +4085,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
             </g>
             <g>
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="0-line-areaChart__r_5n_"
                 opacity="0.3"
@@ -4093,14 +4093,14 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#637cef"
                 fill-opacity="0.7"
                 id="0-graph-areaChart__r_5n_"
                 opacity="1"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
                 fill="transparent"
                 id="1-line-areaChart__r_5n_"
                 opacity="0.3"
@@ -4108,7 +4108,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                 stroke-width="3"
               />
               <path
-                d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+                d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
                 fill="#e3008c"
                 fill-opacity="0.7"
                 id="1-graph-areaChart__r_5n_"
@@ -4120,8 +4120,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. A, 28."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. A, 28."
+                  cx="64"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5p__0"
@@ -4132,8 +4132,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. A, 55."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. A, 55."
+                  cx="43"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5p__1"
@@ -4144,8 +4144,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. A, 43."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. A, 43."
+                  cx="22"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5p__2"
@@ -4156,8 +4156,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. A, 91."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. A, 91."
+                  cx="1"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5p__3"
@@ -4168,8 +4168,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. A, 81."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. A, 81."
+                  cx="-20"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5p__4"
@@ -4186,8 +4186,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2023, 05:30:00 AM GMT+5:30. B, 20."
-                  cx="59.72222222222222"
+                  aria-label="01/01/2023, 12:00:00 AM UTC. B, 20."
+                  cx="64"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5p__5"
@@ -4198,8 +4198,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/02/2023, 05:30:00 AM GMT+5:30. B, 40."
-                  cx="41.05555555555556"
+                  aria-label="01/02/2023, 12:00:00 AM UTC. B, 40."
+                  cx="43"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5p__6"
@@ -4210,8 +4210,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/03/2023, 05:30:00 AM GMT+5:30. B, 30."
-                  cx="22.388888888888893"
+                  aria-label="01/03/2023, 12:00:00 AM UTC. B, 30."
+                  cx="22"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5p__7"
@@ -4222,8 +4222,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/04/2023, 05:30:00 AM GMT+5:30. B, 70."
-                  cx="3.722222222222225"
+                  aria-label="01/04/2023, 12:00:00 AM UTC. B, 70."
+                  cx="1"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5p__8"
@@ -4234,8 +4234,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Edge Cases should render with cus
                   tabindex="0"
                 />
                 <circle
-                  aria-label="01/05/2023, 05:30:00 AM GMT+5:30. B, 60."
-                  cx="-14.94444444444444"
+                  aria-label="01/05/2023, 12:00:00 AM UTC. B, 60."
+                  cx="-20"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5p__9"
@@ -9779,7 +9779,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(-19.5,0)"
+                transform="translate(41.68208955223881,0)"
               >
                 <line
                   stroke="currentColor"
@@ -9791,7 +9791,43 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   fill="currentColor"
                   y="16"
                 >
-                  Jan 2025
+                  Apr 2024
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(18.864179104477614,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  Jul 2024
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-4.204477611940298,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  Oct 2024
                 </text>
               </g>
             </g>
@@ -9915,7 +9951,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
             </g>
             <g>
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaN"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaN"
                 fill="transparent"
                 id="0-line-areaChart__r_55_"
                 opacity="0.3"
@@ -9923,7 +9959,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 stroke-width="3"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaNL-12.938,NaNC-10.643,NaN,-8.348,NaN,-6.053,NaNC-3.681,NaN,-1.309,NaN,1.062,NaNC3.357,NaN,5.652,NaN,7.947,NaNC10.319,NaN,12.691,NaN,15.062,NaNC17.434,NaN,19.805,NaN,22.177,NaNC24.472,NaN,26.767,NaN,29.062,NaNC31.434,NaN,33.805,NaN,36.177,NaNC38.472,NaN,40.767,NaN,43.062,NaNC45.434,NaN,47.805,NaN,50.177,NaNC52.395,NaN,54.614,NaN,56.833,NaNC59.204,NaN,61.576,NaN,63.947,NaNZ"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaNL-20,NaNC-17.493,NaN,-14.985,NaN,-12.478,NaNC-9.887,NaN,-7.296,NaN,-4.704,NaNC-2.197,NaN,0.31,NaN,2.818,NaNC5.409,NaN,8,NaN,10.591,NaNC13.182,NaN,15.773,NaN,18.364,NaNC20.872,NaN,23.379,NaN,25.887,NaNC28.478,NaN,31.069,NaN,33.66,NaNC36.167,NaN,38.675,NaN,41.182,NaNC43.773,NaN,46.364,NaN,48.955,NaNC51.379,NaN,53.803,NaN,56.227,NaNC58.818,NaN,61.409,NaN,64,NaNZ"
                 fill="#637cef"
                 fill-opacity="0.7"
                 id="0-graph-areaChart__r_55_"
@@ -9935,8 +9971,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2024, 05:30:00 AM GMT+5:30. default, 12000."
-                  cx="63.9474043715847"
+                  aria-label="01/01/2024, 12:00:00 AM UTC. default, 12000."
+                  cx="64"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__0"
@@ -9947,8 +9983,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="02/01/2024, 05:30:00 AM GMT+5:30. default, 15000."
-                  cx="56.83265027322404"
+                  aria-label="02/01/2024, 12:00:00 AM UTC. default, 15000."
+                  cx="56.2268656716418"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__1"
@@ -9959,8 +9995,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="03/01/2024, 05:30:00 AM GMT+5:30. default, 18000."
-                  cx="50.17691256830601"
+                  aria-label="03/01/2024, 12:00:00 AM UTC. default, 18000."
+                  cx="48.95522388059702"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__2"
@@ -9971,8 +10007,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="04/01/2024, 05:30:00 AM GMT+5:30. default, 16000."
-                  cx="43.06215846994535"
+                  aria-label="04/01/2024, 12:00:00 AM UTC. default, 16000."
+                  cx="41.18208955223881"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__3"
@@ -9983,8 +10019,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="05/01/2024, 05:30:00 AM GMT+5:30. default, 22000."
-                  cx="36.17691256830601"
+                  aria-label="05/01/2024, 12:00:00 AM UTC. default, 22000."
+                  cx="33.65970149253731"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__4"
@@ -9995,8 +10031,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="06/01/2024, 05:30:00 AM GMT+5:30. default, 25000."
-                  cx="29.06215846994536"
+                  aria-label="06/01/2024, 12:00:00 AM UTC. default, 25000."
+                  cx="25.8865671641791"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__5"
@@ -10007,8 +10043,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="07/01/2024, 05:30:00 AM GMT+5:30. default, 28000."
-                  cx="22.176912568306015"
+                  aria-label="07/01/2024, 12:00:00 AM UTC. default, 28000."
+                  cx="18.364179104477614"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__6"
@@ -10019,8 +10055,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="08/01/2024, 05:30:00 AM GMT+5:30. default, 26000."
-                  cx="15.06215846994535"
+                  aria-label="08/01/2024, 12:00:00 AM UTC. default, 26000."
+                  cx="10.591044776119402"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__7"
@@ -10031,8 +10067,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="09/01/2024, 05:30:00 AM GMT+5:30. default, 30000."
-                  cx="7.947404371584696"
+                  aria-label="09/01/2024, 12:00:00 AM UTC. default, 30000."
+                  cx="2.8179104477611965"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__8"
@@ -10043,8 +10079,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="10/01/2024, 05:30:00 AM GMT+5:30. default, 32000."
-                  cx="1.062158469945354"
+                  aria-label="10/01/2024, 12:00:00 AM UTC. default, 32000."
+                  cx="-4.704477611940298"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__9"
@@ -10055,8 +10091,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="11/01/2024, 05:30:00 AM GMT+5:30. default, 35000."
-                  cx="-6.0525956284153"
+                  aria-label="11/01/2024, 12:00:00 AM UTC. default, 35000."
+                  cx="-12.477611940298505"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__10"
@@ -10067,8 +10103,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="12/01/2024, 05:30:00 AM GMT+5:30. default, 38000."
-                  cx="-12.937841530054644"
+                  aria-label="12/01/2024, 12:00:00 AM UTC. default, 38000."
+                  cx="-20"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_57__11"
@@ -10216,7 +10252,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(-19.5,0)"
+                transform="translate(41.68208955223881,0)"
               >
                 <line
                   stroke="currentColor"
@@ -10228,7 +10264,43 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   fill="currentColor"
                   y="16"
                 >
-                  Jan
+                  Apr
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(18.864179104477614,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  Jul
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-4.204477611940298,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="16"
+                >
+                  Oct
                 </text>
               </g>
             </g>
@@ -10352,7 +10424,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
             </g>
             <g>
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaN"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaN"
                 fill="transparent"
                 id="0-line-areaChart__r_5e_"
                 opacity="0.3"
@@ -10360,14 +10432,14 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 stroke-width="3"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaNL-12.938,NaNC-10.643,NaN,-8.348,NaN,-6.053,NaNC-3.681,NaN,-1.309,NaN,1.062,NaNC3.357,NaN,5.652,NaN,7.947,NaNC10.319,NaN,12.691,NaN,15.062,NaNC17.434,NaN,19.805,NaN,22.177,NaNC24.472,NaN,26.767,NaN,29.062,NaNC31.434,NaN,33.805,NaN,36.177,NaNC38.472,NaN,40.767,NaN,43.062,NaNC45.434,NaN,47.805,NaN,50.177,NaNC52.395,NaN,54.614,NaN,56.833,NaNC59.204,NaN,61.576,NaN,63.947,NaNZ"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaNL-20,NaNC-17.493,NaN,-14.985,NaN,-12.478,NaNC-9.887,NaN,-7.296,NaN,-4.704,NaNC-2.197,NaN,0.31,NaN,2.818,NaNC5.409,NaN,8,NaN,10.591,NaNC13.182,NaN,15.773,NaN,18.364,NaNC20.872,NaN,23.379,NaN,25.887,NaNC28.478,NaN,31.069,NaN,33.66,NaNC36.167,NaN,38.675,NaN,41.182,NaNC43.773,NaN,46.364,NaN,48.955,NaNC51.379,NaN,53.803,NaN,56.227,NaNC58.818,NaN,61.409,NaN,64,NaNZ"
                 fill="#637cef"
                 fill-opacity="0.7"
                 id="0-graph-areaChart__r_5e_"
                 opacity="1"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaN"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaN"
                 fill="transparent"
                 id="1-line-areaChart__r_5e_"
                 opacity="0.3"
@@ -10375,14 +10447,14 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 stroke-width="3"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaNL-12.938,NaNC-10.643,NaN,-8.348,NaN,-6.053,NaNC-3.681,NaN,-1.309,NaN,1.062,NaNC3.357,NaN,5.652,NaN,7.947,NaNC10.319,NaN,12.691,NaN,15.062,NaNC17.434,NaN,19.805,NaN,22.177,NaNC24.472,NaN,26.767,NaN,29.062,NaNC31.434,NaN,33.805,NaN,36.177,NaNC38.472,NaN,40.767,NaN,43.062,NaNC45.434,NaN,47.805,NaN,50.177,NaNC52.395,NaN,54.614,NaN,56.833,NaNC59.204,NaN,61.576,NaN,63.947,NaNZ"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaNL-20,NaNC-17.493,NaN,-14.985,NaN,-12.478,NaNC-9.887,NaN,-7.296,NaN,-4.704,NaNC-2.197,NaN,0.31,NaN,2.818,NaNC5.409,NaN,8,NaN,10.591,NaNC13.182,NaN,15.773,NaN,18.364,NaNC20.872,NaN,23.379,NaN,25.887,NaNC28.478,NaN,31.069,NaN,33.66,NaNC36.167,NaN,38.675,NaN,41.182,NaNC43.773,NaN,46.364,NaN,48.955,NaNC51.379,NaN,53.803,NaN,56.227,NaNC58.818,NaN,61.409,NaN,64,NaNZ"
                 fill="#e3008c"
                 fill-opacity="0.7"
                 id="1-graph-areaChart__r_5e_"
                 opacity="1"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaN"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaN"
                 fill="transparent"
                 id="2-line-areaChart__r_5e_"
                 opacity="0.3"
@@ -10390,7 +10462,7 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 stroke-width="3"
               />
               <path
-                d="M63.947,NaNC61.576,NaN,59.204,NaN,56.833,NaNC54.614,NaN,52.395,NaN,50.177,NaNC47.805,NaN,45.434,NaN,43.062,NaNC40.767,NaN,38.472,NaN,36.177,NaNC33.805,NaN,31.434,NaN,29.062,NaNC26.767,NaN,24.472,NaN,22.177,NaNC19.805,NaN,17.434,NaN,15.062,NaNC12.691,NaN,10.319,NaN,7.947,NaNC5.652,NaN,3.357,NaN,1.062,NaNC-1.309,NaN,-3.681,NaN,-6.053,NaNC-8.348,NaN,-10.643,NaN,-12.938,NaNL-12.938,NaNC-10.643,NaN,-8.348,NaN,-6.053,NaNC-3.681,NaN,-1.309,NaN,1.062,NaNC3.357,NaN,5.652,NaN,7.947,NaNC10.319,NaN,12.691,NaN,15.062,NaNC17.434,NaN,19.805,NaN,22.177,NaNC24.472,NaN,26.767,NaN,29.062,NaNC31.434,NaN,33.805,NaN,36.177,NaNC38.472,NaN,40.767,NaN,43.062,NaNC45.434,NaN,47.805,NaN,50.177,NaNC52.395,NaN,54.614,NaN,56.833,NaNC59.204,NaN,61.576,NaN,63.947,NaNZ"
+                d="M64,NaNC61.409,NaN,58.818,NaN,56.227,NaNC53.803,NaN,51.379,NaN,48.955,NaNC46.364,NaN,43.773,NaN,41.182,NaNC38.675,NaN,36.167,NaN,33.66,NaNC31.069,NaN,28.478,NaN,25.887,NaNC23.379,NaN,20.872,NaN,18.364,NaNC15.773,NaN,13.182,NaN,10.591,NaNC8,NaN,5.409,NaN,2.818,NaNC0.31,NaN,-2.197,NaN,-4.704,NaNC-7.296,NaN,-9.887,NaN,-12.478,NaNC-14.985,NaN,-17.493,NaN,-20,NaNL-20,NaNC-17.493,NaN,-14.985,NaN,-12.478,NaNC-9.887,NaN,-7.296,NaN,-4.704,NaNC-2.197,NaN,0.31,NaN,2.818,NaNC5.409,NaN,8,NaN,10.591,NaNC13.182,NaN,15.773,NaN,18.364,NaNC20.872,NaN,23.379,NaN,25.887,NaNC28.478,NaN,31.069,NaN,33.66,NaNC36.167,NaN,38.675,NaN,41.182,NaNC43.773,NaN,46.364,NaN,48.955,NaNC51.379,NaN,53.803,NaN,56.227,NaNC58.818,NaN,61.409,NaN,64,NaNZ"
                 fill="#2aa0a4"
                 fill-opacity="0.7"
                 id="2-graph-areaChart__r_5e_"
@@ -10402,8 +10474,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2024, 05:30:00 AM GMT+5:30. Electronics, 5000."
-                  cx="63.9474043715847"
+                  aria-label="01/01/2024, 12:00:00 AM UTC. Electronics, 5000."
+                  cx="64"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__0"
@@ -10414,8 +10486,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="02/01/2024, 05:30:00 AM GMT+5:30. Electronics, 5500."
-                  cx="56.83265027322404"
+                  aria-label="02/01/2024, 12:00:00 AM UTC. Electronics, 5500."
+                  cx="56.2268656716418"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__1"
@@ -10426,8 +10498,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="03/01/2024, 05:30:00 AM GMT+5:30. Electronics, 6000."
-                  cx="50.17691256830601"
+                  aria-label="03/01/2024, 12:00:00 AM UTC. Electronics, 6000."
+                  cx="48.95522388059702"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__2"
@@ -10438,8 +10510,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="04/01/2024, 05:30:00 AM GMT+5:30. Electronics, 5800."
-                  cx="43.06215846994535"
+                  aria-label="04/01/2024, 12:00:00 AM UTC. Electronics, 5800."
+                  cx="41.18208955223881"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__3"
@@ -10450,8 +10522,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="05/01/2024, 05:30:00 AM GMT+5:30. Electronics, 6500."
-                  cx="36.17691256830601"
+                  aria-label="05/01/2024, 12:00:00 AM UTC. Electronics, 6500."
+                  cx="33.65970149253731"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__4"
@@ -10462,8 +10534,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="06/01/2024, 05:30:00 AM GMT+5:30. Electronics, 7000."
-                  cx="29.06215846994536"
+                  aria-label="06/01/2024, 12:00:00 AM UTC. Electronics, 7000."
+                  cx="25.8865671641791"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__5"
@@ -10474,8 +10546,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="07/01/2024, 05:30:00 AM GMT+5:30. Electronics, 7500."
-                  cx="22.176912568306015"
+                  aria-label="07/01/2024, 12:00:00 AM UTC. Electronics, 7500."
+                  cx="18.364179104477614"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__6"
@@ -10486,8 +10558,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="08/01/2024, 05:30:00 AM GMT+5:30. Electronics, 7200."
-                  cx="15.06215846994535"
+                  aria-label="08/01/2024, 12:00:00 AM UTC. Electronics, 7200."
+                  cx="10.591044776119402"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__7"
@@ -10498,8 +10570,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="09/01/2024, 05:30:00 AM GMT+5:30. Electronics, 8000."
-                  cx="7.947404371584696"
+                  aria-label="09/01/2024, 12:00:00 AM UTC. Electronics, 8000."
+                  cx="2.8179104477611965"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__8"
@@ -10510,8 +10582,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="10/01/2024, 05:30:00 AM GMT+5:30. Electronics, 8500."
-                  cx="1.062158469945354"
+                  aria-label="10/01/2024, 12:00:00 AM UTC. Electronics, 8500."
+                  cx="-4.704477611940298"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__9"
@@ -10522,8 +10594,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="11/01/2024, 05:30:00 AM GMT+5:30. Electronics, 9000."
-                  cx="-6.0525956284153"
+                  aria-label="11/01/2024, 12:00:00 AM UTC. Electronics, 9000."
+                  cx="-12.477611940298505"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__10"
@@ -10534,8 +10606,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="12/01/2024, 05:30:00 AM GMT+5:30. Electronics, 9500."
-                  cx="-12.937841530054644"
+                  aria-label="12/01/2024, 12:00:00 AM UTC. Electronics, 9500."
+                  cx="-20"
                   cy="NaN"
                   fill="#637cef"
                   id="circle_r_5g__11"
@@ -10552,8 +10624,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2024, 05:30:00 AM GMT+5:30. Clothing, 3000."
-                  cx="63.9474043715847"
+                  aria-label="01/01/2024, 12:00:00 AM UTC. Clothing, 3000."
+                  cx="64"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__12"
@@ -10564,8 +10636,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="02/01/2024, 05:30:00 AM GMT+5:30. Clothing, 3500."
-                  cx="56.83265027322404"
+                  aria-label="02/01/2024, 12:00:00 AM UTC. Clothing, 3500."
+                  cx="56.2268656716418"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__13"
@@ -10576,8 +10648,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="03/01/2024, 05:30:00 AM GMT+5:30. Clothing, 4000."
-                  cx="50.17691256830601"
+                  aria-label="03/01/2024, 12:00:00 AM UTC. Clothing, 4000."
+                  cx="48.95522388059702"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__14"
@@ -10588,8 +10660,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="04/01/2024, 05:30:00 AM GMT+5:30. Clothing, 3800."
-                  cx="43.06215846994535"
+                  aria-label="04/01/2024, 12:00:00 AM UTC. Clothing, 3800."
+                  cx="41.18208955223881"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__15"
@@ -10600,8 +10672,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="05/01/2024, 05:30:00 AM GMT+5:30. Clothing, 4200."
-                  cx="36.17691256830601"
+                  aria-label="05/01/2024, 12:00:00 AM UTC. Clothing, 4200."
+                  cx="33.65970149253731"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__16"
@@ -10612,8 +10684,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="06/01/2024, 05:30:00 AM GMT+5:30. Clothing, 4500."
-                  cx="29.06215846994536"
+                  aria-label="06/01/2024, 12:00:00 AM UTC. Clothing, 4500."
+                  cx="25.8865671641791"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__17"
@@ -10624,8 +10696,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="07/01/2024, 05:30:00 AM GMT+5:30. Clothing, 5000."
-                  cx="22.176912568306015"
+                  aria-label="07/01/2024, 12:00:00 AM UTC. Clothing, 5000."
+                  cx="18.364179104477614"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__18"
@@ -10636,8 +10708,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="08/01/2024, 05:30:00 AM GMT+5:30. Clothing, 4800."
-                  cx="15.06215846994535"
+                  aria-label="08/01/2024, 12:00:00 AM UTC. Clothing, 4800."
+                  cx="10.591044776119402"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__19"
@@ -10648,8 +10720,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="09/01/2024, 05:30:00 AM GMT+5:30. Clothing, 5500."
-                  cx="7.947404371584696"
+                  aria-label="09/01/2024, 12:00:00 AM UTC. Clothing, 5500."
+                  cx="2.8179104477611965"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__20"
@@ -10660,8 +10732,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="10/01/2024, 05:30:00 AM GMT+5:30. Clothing, 6000."
-                  cx="1.062158469945354"
+                  aria-label="10/01/2024, 12:00:00 AM UTC. Clothing, 6000."
+                  cx="-4.704477611940298"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__21"
@@ -10672,8 +10744,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="11/01/2024, 05:30:00 AM GMT+5:30. Clothing, 6500."
-                  cx="-6.0525956284153"
+                  aria-label="11/01/2024, 12:00:00 AM UTC. Clothing, 6500."
+                  cx="-12.477611940298505"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__22"
@@ -10684,8 +10756,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="12/01/2024, 05:30:00 AM GMT+5:30. Clothing, 7000."
-                  cx="-12.937841530054644"
+                  aria-label="12/01/2024, 12:00:00 AM UTC. Clothing, 7000."
+                  cx="-20"
                   cy="NaN"
                   fill="#e3008c"
                   id="circle_r_5g__23"
@@ -10702,8 +10774,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                 role="region"
               >
                 <circle
-                  aria-label="01/01/2024, 05:30:00 AM GMT+5:30. Home, 2000."
-                  cx="63.9474043715847"
+                  aria-label="01/01/2024, 12:00:00 AM UTC. Home, 2000."
+                  cx="64"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__24"
@@ -10714,8 +10786,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="02/01/2024, 05:30:00 AM GMT+5:30. Home, 2200."
-                  cx="56.83265027322404"
+                  aria-label="02/01/2024, 12:00:00 AM UTC. Home, 2200."
+                  cx="56.2268656716418"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__25"
@@ -10726,8 +10798,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="03/01/2024, 05:30:00 AM GMT+5:30. Home, 2500."
-                  cx="50.17691256830601"
+                  aria-label="03/01/2024, 12:00:00 AM UTC. Home, 2500."
+                  cx="48.95522388059702"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__26"
@@ -10738,8 +10810,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="04/01/2024, 05:30:00 AM GMT+5:30. Home, 2300."
-                  cx="43.06215846994535"
+                  aria-label="04/01/2024, 12:00:00 AM UTC. Home, 2300."
+                  cx="41.18208955223881"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__27"
@@ -10750,8 +10822,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="05/01/2024, 05:30:00 AM GMT+5:30. Home, 2700."
-                  cx="36.17691256830601"
+                  aria-label="05/01/2024, 12:00:00 AM UTC. Home, 2700."
+                  cx="33.65970149253731"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__28"
@@ -10762,8 +10834,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="06/01/2024, 05:30:00 AM GMT+5:30. Home, 3000."
-                  cx="29.06215846994536"
+                  aria-label="06/01/2024, 12:00:00 AM UTC. Home, 3000."
+                  cx="25.8865671641791"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__29"
@@ -10774,8 +10846,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="07/01/2024, 05:30:00 AM GMT+5:30. Home, 3200."
-                  cx="22.176912568306015"
+                  aria-label="07/01/2024, 12:00:00 AM UTC. Home, 3200."
+                  cx="18.364179104477614"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__30"
@@ -10786,8 +10858,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="08/01/2024, 05:30:00 AM GMT+5:30. Home, 3000."
-                  cx="15.06215846994535"
+                  aria-label="08/01/2024, 12:00:00 AM UTC. Home, 3000."
+                  cx="10.591044776119402"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__31"
@@ -10798,8 +10870,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="09/01/2024, 05:30:00 AM GMT+5:30. Home, 3500."
-                  cx="7.947404371584696"
+                  aria-label="09/01/2024, 12:00:00 AM UTC. Home, 3500."
+                  cx="2.8179104477611965"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__32"
@@ -10810,8 +10882,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="10/01/2024, 05:30:00 AM GMT+5:30. Home, 3800."
-                  cx="1.062158469945354"
+                  aria-label="10/01/2024, 12:00:00 AM UTC. Home, 3800."
+                  cx="-4.704477611940298"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__33"
@@ -10822,8 +10894,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="11/01/2024, 05:30:00 AM GMT+5:30. Home, 4000."
-                  cx="-6.0525956284153"
+                  aria-label="11/01/2024, 12:00:00 AM UTC. Home, 4000."
+                  cx="-12.477611940298505"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__34"
@@ -10834,8 +10906,8 @@ exports[`VegaDeclarativeChart - Snapshot Tests Other Charts should render area_s
                   tabindex="0"
                 />
                 <circle
-                  aria-label="12/01/2024, 05:30:00 AM GMT+5:30. Home, 4500."
-                  cx="-12.937841530054644"
+                  aria-label="12/01/2024, 12:00:00 AM UTC. Home, 4500."
+                  cx="-20"
                   cy="NaN"
                   fill="#2aa0a4"
                   id="circle_r_5g__35"
@@ -11967,7 +12039,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             <g
               class="tick"
               opacity="1"
-              transform="translate(27.166666666666668,0)"
+              transform="translate(22.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -11985,7 +12057,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
             <g
               class="tick"
               opacity="1"
-              transform="translate(-10.166666666666664,0)"
+              transform="translate(-19.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -12121,7 +12193,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
           </g>
           <g>
             <path
-              d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+              d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
               fill="transparent"
               id="0-line-areaChart__r_6k_"
               opacity="0.3"
@@ -12129,14 +12201,14 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
               stroke-width="3"
             />
             <path
-              d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+              d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
               fill="#637cef"
               fill-opacity="0.7"
               id="0-graph-areaChart__r_6k_"
               opacity="1"
             />
             <path
-              d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaN"
+              d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaN"
               fill="transparent"
               id="1-line-areaChart__r_6k_"
               opacity="0.3"
@@ -12144,7 +12216,7 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
               stroke-width="3"
             />
             <path
-              d="M59.722,NaNC53.5,NaN,47.278,NaN,41.056,NaNC34.833,NaN,28.611,NaN,22.389,NaNC16.167,NaN,9.944,NaN,3.722,NaNC-2.5,NaN,-8.722,NaN,-14.944,NaNL-14.944,NaNC-8.722,NaN,-2.5,NaN,3.722,NaNC9.944,NaN,16.167,NaN,22.389,NaNC28.611,NaN,34.833,NaN,41.056,NaNC47.278,NaN,53.5,NaN,59.722,NaNZ"
+              d="M64,NaNC57,NaN,50,NaN,43,NaNC36,NaN,29,NaN,22,NaNC15,NaN,8,NaN,1,NaNC-6,NaN,-13,NaN,-20,NaNL-20,NaNC-13,NaN,-6,NaN,1,NaNC8,NaN,15,NaN,22,NaNC29,NaN,36,NaN,43,NaNC50,NaN,57,NaN,64,NaNZ"
               fill="#e3008c"
               fill-opacity="0.7"
               id="1-graph-areaChart__r_6k_"
@@ -12156,8 +12228,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
               role="region"
             >
               <circle
-                aria-label="01/01/2023, 05:30:00 AM GMT+5:30. A, 28."
-                cx="59.72222222222222"
+                aria-label="01/01/2023, 12:00:00 AM UTC. A, 28."
+                cx="64"
                 cy="NaN"
                 fill="#637cef"
                 id="circle_r_6m__0"
@@ -12168,8 +12240,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/02/2023, 05:30:00 AM GMT+5:30. A, 55."
-                cx="41.05555555555556"
+                aria-label="01/02/2023, 12:00:00 AM UTC. A, 55."
+                cx="43"
                 cy="NaN"
                 fill="#637cef"
                 id="circle_r_6m__1"
@@ -12180,8 +12252,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/03/2023, 05:30:00 AM GMT+5:30. A, 43."
-                cx="22.388888888888893"
+                aria-label="01/03/2023, 12:00:00 AM UTC. A, 43."
+                cx="22"
                 cy="NaN"
                 fill="#637cef"
                 id="circle_r_6m__2"
@@ -12192,8 +12264,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/04/2023, 05:30:00 AM GMT+5:30. A, 91."
-                cx="3.722222222222225"
+                aria-label="01/04/2023, 12:00:00 AM UTC. A, 91."
+                cx="1"
                 cy="NaN"
                 fill="#637cef"
                 id="circle_r_6m__3"
@@ -12204,8 +12276,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/05/2023, 05:30:00 AM GMT+5:30. A, 81."
-                cx="-14.94444444444444"
+                aria-label="01/05/2023, 12:00:00 AM UTC. A, 81."
+                cx="-20"
                 cy="NaN"
                 fill="#637cef"
                 id="circle_r_6m__4"
@@ -12222,8 +12294,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
               role="region"
             >
               <circle
-                aria-label="01/01/2023, 05:30:00 AM GMT+5:30. B, 20."
-                cx="59.72222222222222"
+                aria-label="01/01/2023, 12:00:00 AM UTC. B, 20."
+                cx="64"
                 cy="NaN"
                 fill="#e3008c"
                 id="circle_r_6m__5"
@@ -12234,8 +12306,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/02/2023, 05:30:00 AM GMT+5:30. B, 40."
-                cx="41.05555555555556"
+                aria-label="01/02/2023, 12:00:00 AM UTC. B, 40."
+                cx="43"
                 cy="NaN"
                 fill="#e3008c"
                 id="circle_r_6m__6"
@@ -12246,8 +12318,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/03/2023, 05:30:00 AM GMT+5:30. B, 30."
-                cx="22.388888888888893"
+                aria-label="01/03/2023, 12:00:00 AM UTC. B, 30."
+                cx="22"
                 cy="NaN"
                 fill="#e3008c"
                 id="circle_r_6m__7"
@@ -12258,8 +12330,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/04/2023, 05:30:00 AM GMT+5:30. B, 70."
-                cx="3.722222222222225"
+                aria-label="01/04/2023, 12:00:00 AM UTC. B, 70."
+                cx="1"
                 cy="NaN"
                 fill="#e3008c"
                 id="circle_r_6m__8"
@@ -12270,8 +12342,8 @@ exports[`VegaDeclarativeChart - Transformation Snapshots Chart Props Transformat
                 tabindex="0"
               />
               <circle
-                aria-label="01/05/2023, 05:30:00 AM GMT+5:30. B, 60."
-                cx="-14.94444444444444"
+                aria-label="01/05/2023, 12:00:00 AM UTC. B, 60."
+                cx="-20"
                 cy="NaN"
                 fill="#e3008c"
                 id="circle_r_6m__9"
