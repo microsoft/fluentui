@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VegaDeclarativeChart } from '../../../library/src/components/VegaDeclarativeChart';
+import { VegaDeclarativeChart } from '@fluentui/react-charts';
 import {
   Button,
   Dropdown,
@@ -1180,14 +1180,6 @@ export const Default = (): React.ReactElement => {
     parsedSchema = null;
     parseError = e.message;
   }
-
-  // Get available schemas based on showMore mode
-  const availableSchemas = React.useMemo(() => {
-    if (showMore) {
-      return loadedSchemasCount > 0 ? loadedSchemas.current : [];
-    }
-    return DEFAULT_SCHEMAS;
-  }, [showMore, loadedSchemasCount]);
 
   // Generate options from available schemas
   const currentOptions = React.useMemo(() => {
