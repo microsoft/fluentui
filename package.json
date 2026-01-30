@@ -290,7 +290,7 @@
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
     "source-map-loader": "4.0.0",
-    "storybook": "9.1.16",
+    "storybook": "9.1.17",
     "storywright": "0.0.27-storybook7.14",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
