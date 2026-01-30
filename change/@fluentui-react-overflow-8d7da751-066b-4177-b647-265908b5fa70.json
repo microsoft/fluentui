@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add support for pinned items",
+  "packageName": "@fluentui/react-overflow",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

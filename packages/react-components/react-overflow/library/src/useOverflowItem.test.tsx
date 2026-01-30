@@ -37,6 +37,7 @@ describe('useOverflowItem', () => {
           "element": <div />,
           "groupId": "0",
           "id": "test",
+          "pinned": undefined,
           "priority": 0,
         },
       ]

@@ -44,9 +44,14 @@ export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps &
 export type OverflowItemProps = {
     id: string;
     groupId?: string;
-    priority?: number;
     children: React_2.ReactElement;
-};
+} & ({
+    pinned?: boolean;
+    priority?: never;
+} | {
+    pinned?: never;
+    priority?: number;
+});
 
 // @public
 export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
@@ -78,7 +83,7 @@ export const useOverflowCount: () => number;
 export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement | null>;
 
 // @internal
-export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement | null>;
+export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string, pinned?: boolean): React_2.RefObject<TElement | null>;
 
 // @public (undocumented)
 export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
