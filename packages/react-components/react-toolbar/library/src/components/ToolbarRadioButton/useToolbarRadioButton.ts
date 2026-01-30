@@ -24,10 +24,12 @@ export const useToolbarRadioButton_unstable = (
   const { appearance = 'secondary' } = props;
   const size = useToolbarContext_unstable(ctx => ctx.size);
   const state = useToolbarRadioButtonBase_unstable(props, ref);
+
   return {
     ...state,
+
     appearance,
-    size,
+    size: props.size || size,
   };
 };
 
