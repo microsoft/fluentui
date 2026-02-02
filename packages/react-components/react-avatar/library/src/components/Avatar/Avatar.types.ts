@@ -155,6 +155,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
   size?: AvatarSize;
 };
 
+export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
+
 /**
  * State used in rendering Avatar
  */
@@ -170,3 +172,5 @@ export type AvatarState = ComponentState<AvatarSlots> &
      */
     activeAriaLabelElement?: JSXElement;
   };
+
+export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;

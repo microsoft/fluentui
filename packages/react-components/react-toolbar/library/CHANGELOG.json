@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Fri, 30 Jan 2026 12:55:50 GMT",
+      "tag": "@fluentui/react-toolbar_v9.7.1",
+      "version": "9.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "7480b016c4964282218eb319f7c8ca3d916a421e",
+            "comment": "fix: ToolbarRadioButton should respect \"size\" prop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:28 GMT",
       "tag": "@fluentui/react-toolbar_v9.7.0",
       "version": "9.7.0",

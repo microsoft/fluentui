@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 22 Jan 2026 17:06:46 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jan 2026 12:55:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.10)
+
+Fri, 30 Jan 2026 12:55:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.9..@fluentui/react-charts_v9.3.10)
+
+### Patches
+
+- A11y bugs fixes ([PR #35690](https://github.com/microsoft/fluentui/pull/35690) by 132879294+v-baambati@users.noreply.github.com)
+- A11y bug fix ([PR #35704](https://github.com/microsoft/fluentui/pull/35704) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [9.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.9)
 

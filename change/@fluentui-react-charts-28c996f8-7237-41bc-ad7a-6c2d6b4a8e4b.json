@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "A11y bugs fixes",
-  "packageName": "@fluentui/react-charts",
-  "email": "132879294+v-baambati@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

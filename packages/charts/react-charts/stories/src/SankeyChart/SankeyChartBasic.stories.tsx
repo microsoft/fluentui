@@ -9,37 +9,37 @@ const data: ChartProps = {
       {
         nodeId: 0,
         name: 'node0',
-        color: getColorFromToken(DataVizPalette.color3),
-        borderColor: getColorFromToken(DataVizPalette.color23),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 1,
         name: 'node1',
-        color: getColorFromToken(DataVizPalette.color22),
-        borderColor: getColorFromToken(DataVizPalette.color2),
+        color: getColorFromToken(DataVizPalette.color7),
+        borderColor: getColorFromToken(DataVizPalette.color27),
       },
       {
         nodeId: 2,
         name: 'node2',
-        color: getColorFromToken(DataVizPalette.color1),
-        borderColor: getColorFromToken(DataVizPalette.color21),
+        color: getColorFromToken(DataVizPalette.color8),
+        borderColor: getColorFromToken(DataVizPalette.color28),
       },
       {
         nodeId: 3,
         name: 'node3',
-        color: getColorFromToken(DataVizPalette.color27),
-        borderColor: getColorFromToken(DataVizPalette.color7),
+        color: getColorFromToken(DataVizPalette.color9),
+        borderColor: getColorFromToken(DataVizPalette.color29),
       },
       {
         nodeId: 4,
         name: 'node4',
-        color: getColorFromToken(DataVizPalette.color28),
+        color: getColorFromToken(DataVizPalette.color11),
         borderColor: getColorFromToken(DataVizPalette.color8),
       },
       {
         nodeId: 5,
         name: 'node5',
-        color: getColorFromToken(DataVizPalette.color4),
+        color: getColorFromToken(DataVizPalette.color12),
         borderColor: getColorFromToken(DataVizPalette.color24),
       },
     ],
@@ -112,7 +112,8 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 400 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -122,7 +123,8 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
           max={400}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 312 and Maximum 400`}
         />
       </div>
       <div style={rootStyle}>

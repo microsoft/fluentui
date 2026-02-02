@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Thu, 22 Jan 2026 17:06:28 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jan 2026 12:55:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.1)
+
+Fri, 30 Jan 2026 12:55:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.0..@fluentui/react-toolbar_v9.7.1)
+
+### Patches
+
+- fix: ToolbarRadioButton should respect "size" prop ([PR #35710](https://github.com/microsoft/fluentui/pull/35710) by olfedias@microsoft.com)
 
 ## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.0)
 

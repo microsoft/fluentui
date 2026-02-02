@@ -168,7 +168,16 @@ export const VerticalBarDynamic = (): JSXElement => {
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
-          <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
+          <input
+            type="range"
+            value={width}
+            min={200}
+            max={1000}
+            onChange={_onWidthChange}
+            id="input-width"
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          />
         </div>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
@@ -212,6 +221,8 @@ export const VerticalBarDynamic = (): JSXElement => {
             step={0.01}
             onChange={_onInnerPaddingChange}
             disabled={!xAxisInnerPaddingEnabled}
+            aria-label="Change X Axis Inner Padding"
+            aria-valuetext={`current value ${xAxisInnerPadding}', Minimum 0 and Maximum 1`}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
         </div>
@@ -230,6 +241,8 @@ export const VerticalBarDynamic = (): JSXElement => {
             step={0.01}
             onChange={_onOuterPaddingChange}
             disabled={!xAxisOuterPaddingEnabled}
+            aria-label="Change X Axis Outer Padding"
+            aria-valuetext={`current value ${xAxisOuterPadding}', Minimum 0 and Maximum 1`}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
         </div>
@@ -239,7 +252,16 @@ export const VerticalBarDynamic = (): JSXElement => {
           <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
           </label>
-          <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
+          <input
+            type="range"
+            value={dataSize}
+            min={0}
+            max={50}
+            onChange={_onDataSizeChange}
+            id="input-datasize"
+            aria-label="Change Data Size"
+            aria-valuetext={`current value ${dataSize}', Minimum 0 and Maximum 50`}
+          />
         </div>
       </div>
       <div style={{ marginTop: '20px' }}>

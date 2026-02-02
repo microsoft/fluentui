@@ -202,7 +202,6 @@
     "esbuild": "0.25.0",
     "esbuild-loader": "4.1.0",
     "eslint": "9.31.0",
-    "eslint-config-airbnb": "18.2.1",
     "eslint-config-airbnb-extended": "2.1.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "3.7.0",
@@ -357,6 +356,7 @@
     "**/prismjs": "^1.30.0",
     "**/@tensile-perf/runner/express": "^4.21.2",
     "**/tar-fs": "^2.1.4",
+    "jackspeak": "2.1.1",
     "**/micromatch/braces": "^3.0.3"
   },
   "nx": {
