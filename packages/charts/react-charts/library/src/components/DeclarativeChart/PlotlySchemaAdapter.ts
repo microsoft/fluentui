@@ -41,7 +41,7 @@ import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
 import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
-import { GanttChartProps } from '../GanttChart/index';
+import { GanttChartProps, GanttChartAnnotation } from '../GanttChart/index';
 import type { AnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
   DEFAULT_DATE_STRING,
@@ -2300,6 +2300,151 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
+/**
+ * Transform Plotly annotations to GanttChart annotations
+ */
+const transformPlotlyAnnotationsToGanttAnnotations = (
+  input: PlotlySchema,
+  yAxisLabels: string[],
+): GanttChartAnnotation[] => {
+  const rawAnnotations = input.layout?.annotations;
+  if (!rawAnnotations) {
+    return [];
+  }
+
+  const annotationsArray = Array.isArray(rawAnnotations) ? rawAnnotations : [rawAnnotations];
+  const numRows = yAxisLabels.length;
+
+  const ganttAnnotations: GanttChartAnnotation[] = [];
+
+  annotationsArray.forEach((annotation: PlotlyAnnotation, index: number) => {
+    if (!annotation || annotation.text === undefined) {
+      return;
+    }
+
+    const xref = annotation.xref || 'x';
+    const yref = annotation.yref || 'y';
+
+    let date: Date | number | undefined;
+    let taskIndex: number | undefined;
+
+    // Handle x position
+    if (xref === 'paper' && typeof annotation.x === 'number') {
+      // Paper coordinates: x is a fraction of the plot width (0-1)
+      // We'll need to map this to an actual date from the data range
+      // For now, skip paper-based x coordinates as they require domain knowledge
+      return;
+    } else if (typeof annotation.x === 'string') {
+      // Date string
+      date = new Date(annotation.x);
+    } else if (typeof annotation.x === 'number') {
+      // Numeric value - could be a timestamp or number
+      date = annotation.x;
+    }
+
+    // Handle y position
+    let isHeaderAnnotation = false;
+    if (yref === 'paper' && typeof annotation.y === 'number') {
+      if (annotation.y >= 1) {
+        // Paper coordinates y >= 1 means above the chart area - treat as header
+        isHeaderAnnotation = true;
+        taskIndex = 0; // Will be overridden by header position logic
+      } else {
+        // Paper coordinates: y is a fraction of the plot height (0-1)
+        // Map to task index (inverted because y=0 is bottom, y=1 is top)
+        taskIndex = Math.round((1 - annotation.y) * (numRows - 1));
+      }
+    } else if (typeof annotation.y === 'string') {
+      // String label - find the matching row
+      const foundIndex = yAxisLabels.indexOf(annotation.y);
+      if (foundIndex !== -1) {
+        // Use the index directly - GanttChart.tsx handles the y-axis inversion
+        taskIndex = foundIndex;
+      }
+    } else if (typeof annotation.y === 'number') {
+      // Numeric y value - use as-is or find closest row
+      taskIndex = Math.round(annotation.y);
+    }
+
+    if (date === undefined || taskIndex === undefined || taskIndex < 0 || taskIndex >= numRows) {
+      return;
+    }
+
+    // Clean text - strip HTML tags like <b>, <i>, <br> and decode HTML entities
+    const cleanedText = (annotation.text || '')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .trim();
+
+    // Determine position based on ay offset (negative = above, positive = below)
+    let position: 'above' | 'below' | 'on' | 'header' = 'above';
+    if (isHeaderAnnotation) {
+      position = 'header';
+    } else {
+      const ay = typeof annotation.ay === 'number' ? annotation.ay : 0;
+      if (ay > 10) {
+        position = 'below';
+      } else if (ay < -10) {
+        position = 'above';
+      } else if (ay === 0 && typeof annotation.ax === 'number' && annotation.ax !== 0) {
+        // Horizontal arrow (ay=0, ax!=0) - position 'on'
+        position = 'on';
+      }
+    }
+
+    const ganttAnnotation: GanttChartAnnotation = {
+      text: cleanedText,
+      taskIndex,
+      date: typeof date === 'number' ? date : date,
+      position,
+      id: `annotation-${index}`,
+      ariaLabel: cleanedText,
+    };
+
+    // Add style if present
+    if (annotation.font?.color || annotation.font?.size || annotation.bgcolor || annotation.bordercolor) {
+      ganttAnnotation.style = {
+        textColor: annotation.font?.color as string | undefined,
+        fontSize: annotation.font?.size as number | undefined,
+        backgroundColor: annotation.bgcolor as string | undefined,
+        borderColor: annotation.bordercolor as string | undefined,
+      };
+    }
+
+    // Add arrow if present
+    if (annotation.showarrow) {
+      const ax = typeof annotation.ax === 'number' ? annotation.ax : 0;
+      const ay = typeof annotation.ay === 'number' ? annotation.ay : 0;
+
+      // Determine arrow direction
+      let direction: 'left' | 'right' | 'vertical' = 'vertical';
+      if (Math.abs(ax) > Math.abs(ay) && ax !== 0) {
+        // Horizontal arrow - if ax > 0, text is to the right of arrow point, so arrow points left
+        direction = ax > 0 ? 'left' : 'right';
+      }
+
+      ganttAnnotation.arrow = {
+        show: true,
+        color: (annotation.arrowcolor as string) || (annotation.font?.color as string | undefined) || '#000000',
+        width: annotation.arrowwidth || 1,
+        headSize: annotation.arrowsize ? annotation.arrowsize * 6 : 6,
+        headStyle: annotation.arrowhead === 0 ? 'none' : 'triangle',
+        direction,
+        offsetX: Math.abs(ax),
+      };
+    }
+
+    ganttAnnotations.push(ganttAnnotation);
+  });
+
+  return ganttAnnotations;
+};
+
 export const transformPlotlyJsonToGanttChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -2383,6 +2528,16 @@ export const transformPlotlyJsonToGanttChartProps = (
     }
   });
 
+  // Extract unique y-axis labels from the data for annotation mapping
+  const yAxisLabelsSet = new Set<string>();
+  ganttData.forEach(point => {
+    yAxisLabelsSet.add(String(point.y));
+  });
+  const yAxisLabels = Array.from(yAxisLabelsSet).reverse();
+
+  // Transform Plotly annotations to GanttChart annotations
+  const ganttAnnotations = transformPlotlyAnnotationsToGanttAnnotations(input, yAxisLabels);
+
   return {
     data: ganttData,
     showYAxisLables: true,
@@ -2394,6 +2549,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     showYAxisLablesTooltip: true,
     roundCorners: true,
     useUTC: false,
+    ...(ganttAnnotations.length > 0 ? { ganttAnnotations } : {}),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(data, input.layout),
     ...getBarProps(data, input.layout, true),

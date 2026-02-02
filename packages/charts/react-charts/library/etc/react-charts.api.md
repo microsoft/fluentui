@@ -855,6 +855,41 @@ export interface FunnelChartStyles {
 // @public (undocumented)
 export const GanttChart: React_2.FunctionComponent<GanttChartProps>;
 
+// @public
+export interface GanttChartAnnotation {
+    ariaLabel?: string;
+    arrow?: GanttChartAnnotationArrow;
+    date: Date | number;
+    id?: string;
+    position?: GanttChartAnnotationPosition;
+    style?: GanttChartAnnotationStyle;
+    taskIndex: number;
+    text: string;
+}
+
+// @public
+export interface GanttChartAnnotationArrow {
+    color?: string;
+    direction?: 'left' | 'right' | 'vertical';
+    headSize?: number;
+    headStyle?: 'triangle' | 'none';
+    offsetX?: number;
+    show?: boolean;
+    width?: number;
+}
+
+// @public
+export type GanttChartAnnotationPosition = 'above' | 'below' | 'on' | 'header';
+
+// @public
+export interface GanttChartAnnotationStyle {
+    backgroundColor?: string;
+    borderColor?: string;
+    fontSize?: number;
+    fontWeight?: string | number;
+    textColor?: string;
+}
+
 // @public (undocumented)
 export interface GanttChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
@@ -878,6 +913,7 @@ export interface GanttChartProps extends CartesianChartProps {
     culture?: string;
     data?: GanttChartDataPoint[];
     enableGradient?: boolean;
+    ganttAnnotations?: GanttChartAnnotation[];
     maxBarHeight?: number;
     onRenderCalloutPerDataPoint?: RenderFunction<GanttChartDataPoint>;
     roundCorners?: boolean;

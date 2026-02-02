@@ -1,0 +1,10 @@
+{
+  "type": "minor",
+  "comment": {
+    "title": "",
+    "value": ""
+  },
+  "packageName": "@fluentui/react-charts",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
