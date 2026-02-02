@@ -54,9 +54,6 @@ import { useImageExport } from '../../utilities/hooks';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
-// Scale factor to reduce marker sizes (0.6 = 60% of calculated size)
-const MARKER_SIZE_SCALE_FACTOR = 0.6;
-
 type ScatterChartDataWithIndex = ScatterChartPoints & { index: number };
 
 // Create a ScatterChart variant which uses these default styles and this styled subcomponent.
@@ -423,8 +420,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         let circleRadius = activePoint === circleId ? 6 : 4;
 
         if (pointMarkerSize) {
-          if (isContinuousXY && maxMarkerSize !== 0) {
-            circleRadius = (pointMarkerSize * extraMaxPixels * MARKER_SIZE_SCALE_FACTOR) / maxMarkerSize;
+          // Check if there's meaningful variation in marker sizes (more than 10% range)
+          const sizeRange = maxMarkerSize - minMarkerSize;
+          const hasVariation = sizeRange > 0 && sizeRange / maxMarkerSize > 0.1;
+
+          if (isContinuousXY && maxMarkerSize !== 0 && hasVariation) {
+            // Variable marker sizes: scale relative to data range and available space
+            circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
+          } else if (isContinuousXY && maxMarkerSize !== 0 && !hasVariation) {
+            // All markers same/similar size: treat markerSize as diameter (Plotly default behavior)
+            circleRadius = pointMarkerSize / 2;
           } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
             circleRadius =
               minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);

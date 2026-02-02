@@ -8,7 +8,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { Legend, Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { find, findCalloutPoints, YAxisType } from '../../utilities/index';
@@ -68,8 +68,6 @@ const bisect = bisector((d: any) => d.x).left;
 const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
-// Scale factor to reduce marker sizes (0.6 = 60% of calculated size)
-const MARKER_SIZE_SCALE_FACTOR = 0.6;
 
 /**
  *
@@ -521,16 +519,30 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
       const lines: JSXElement[] = [];
+      // Collect all borders, lines, and points separately to ensure markers render on top of all lines
+      const allBorders: JSXElement[] = [];
+      const allLines: JSXElement[] = [];
+      const allPoints: JSXElement[] = [];
       if (isSelectedLegend) {
         _points = selectedLegendPoints;
       } else {
         _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
       }
-      const maxMarkerSize = d3Max(_points, (point: LineChartPoints) => {
-        return d3Max(point.data, (item: LineChartDataPoint) => {
-          return item.markerSize as number;
-        });
-      })!;
+      const maxMarkerSize =
+        d3Max(_points, (point: LineChartPoints) => {
+          return d3Max(point.data, (item: LineChartDataPoint) => {
+            return item.markerSize as number;
+          });
+        }) ?? 0;
+      const minMarkerSize =
+        d3Min(_points, (point: LineChartPoints) => {
+          return d3Min(point.data, (item: LineChartDataPoint) => {
+            return item.markerSize as number;
+          });
+        }) ?? 0;
+      // Check if there's meaningful variation in marker sizes (more than 10% range)
+      const sizeRange = maxMarkerSize - minMarkerSize;
+      const hasVariation = sizeRange > 0 && sizeRange / maxMarkerSize > 0.1;
       for (let i = _points.length - 1; i >= 0; i--) {
         const linesForLine: JSXElement[] = [];
         const bordersForLine: JSXElement[] = [];
@@ -551,7 +563,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
-            }) * MARKER_SIZE_SCALE_FACTOR
+            })
           : 0;
         if (_points[i].data.length === 1) {
           const {
@@ -578,7 +590,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={circleId}
                     r={
                       currentMarkerSize
-                        ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
+                        ? hasVariation
+                          ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
+                          : currentMarkerSize / 2
                         : activePoint === circleId
                         ? 5.5
                         : 3.5
@@ -783,7 +797,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={`${_circleId}_${i}_${k}_marker`}
                     r={
                       markerSize
-                        ? (markerSize! * extraMaxPixels * 0.3) / maxMarkerSize
+                        ? hasVariation
+                          ? (markerSize * extraMaxPixels) / maxMarkerSize
+                          : markerSize / 2
                         : activePoint === _circleId
                         ? 5.5
                         : 3.5
@@ -848,7 +864,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     <circle
                       id={circleId}
                       key={circleId}
-                      r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
+                      r={
+                        currentMarkerSize
+                          ? hasVariation
+                            ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
+                            : currentMarkerSize / 2
+                          : 4
+                      }
                       cx={xPoint1}
                       cy={yPoint1}
                       tabIndex={isLegendSelected ? 0 : undefined}
@@ -1001,7 +1023,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         <circle
                           id={lastCircleId}
                           key={lastCircleId}
-                          r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
+                          r={
+                            currentMarkerSize
+                              ? hasVariation
+                                ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
+                                : currentMarkerSize / 2
+                              : 4
+                          }
                           cx={xPoint2}
                           cy={yPoint2}
                           tabIndex={isLegendSelected ? 0 : undefined}
@@ -1328,18 +1356,19 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           );
         }
 
-        lines.push(
-          <g
-            key={`line_${i}`}
-            role="region"
-            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
-          >
-            {bordersForLine}
-            {linesForLine}
-            {pointsForLine}
-          </g>,
-        );
+        // Collect borders, lines, and points separately
+        allBorders.push(...bordersForLine);
+        allLines.push(...linesForLine);
+        allPoints.push(...pointsForLine);
       }
+
+      // Render all borders first, then all lines, then all points (markers)
+      // This ensures markers from all series appear on top of all lines
+      lines.push(
+        <g key="all-borders">{allBorders}</g>,
+        <g key="all-lines">{allLines}</g>,
+        <g key="all-points">{allPoints}</g>,
+      );
       return lines;
     }
 
