@@ -443,6 +443,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spo: {
     extensions: ['aspx'],
   },
+  spocampaign: {},
   sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],

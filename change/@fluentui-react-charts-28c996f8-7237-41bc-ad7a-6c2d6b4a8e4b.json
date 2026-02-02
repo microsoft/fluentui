@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "support chart title from plotly schema",
+  "comment": "A11y bugs fixes",
   "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
+  "email": "132879294+v-baambati@users.noreply.github.com",
   "dependentChangeType": "patch"
 }

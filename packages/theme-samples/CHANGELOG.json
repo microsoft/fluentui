@@ -2,6 +2,29 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:06 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.223",
+      "version": "8.7.223",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/theme-samples",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.125.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:28:03 GMT",
       "tag": "@fluentui/theme-samples_v8.7.222",
       "version": "8.7.222",

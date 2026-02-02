@@ -36,8 +36,8 @@ export const FunnelChartStacked = (): JSXElement => {
       subValues: [
         { category: 'A', value: 100, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 80, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 50, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 30, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 50, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 30, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
     {
@@ -45,8 +45,8 @@ export const FunnelChartStacked = (): JSXElement => {
       subValues: [
         { category: 'A', value: 60, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 40, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 20, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 10, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 20, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 10, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
     {
@@ -54,8 +54,8 @@ export const FunnelChartStacked = (): JSXElement => {
       subValues: [
         { category: 'A', value: 30, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 20, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 10, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 5, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 10, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 5, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
   ];

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks",
-  "packageName": "@fluentui/react-menu",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

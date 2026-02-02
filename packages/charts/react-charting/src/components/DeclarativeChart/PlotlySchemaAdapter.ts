@@ -100,6 +100,7 @@ import {
   ChartAnnotationVerticalAlign,
 } from '../../types/IChartAnnotation';
 import { calculatePrecision, precisionRound } from '@fluentui/react';
+import type { ITitleStyles } from '../../utilities/Common.styles';
 import { PolarAxisProps, IPolarChartProps } from '../PolarChart/index';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
@@ -177,10 +178,26 @@ const dashOptions = {
 } as const;
 
 function getTitles(layout: Partial<Layout> | undefined) {
+  const titleObj = layout?.title;
+  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+  const titleXAnchor = typeof titleObj === 'object' ? titleObj?.xanchor : undefined;
+  const titleYAnchor = typeof titleObj === 'object' ? titleObj?.yanchor : undefined;
+  const titlePad = typeof titleObj === 'object' ? titleObj?.pad : undefined;
+
+  const titleStyles: ITitleStyles = {
+    ...(titleFont ? { titleFont } : {}),
+    ...(titleXAnchor ? { titleXAnchor } : {}),
+    ...(titleYAnchor ? { titleYAnchor } : {}),
+    ...(titlePad ? { titlePad } : {}),
+  };
+
   const titles = {
-    chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
+    chartTitle,
+    ...(Object.keys(titleStyles).length > 0 ? { titleStyles } : {}),
     xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
     yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
+    xAxisAnnotation: chartTitle,
   };
   return titles;
 }
@@ -1348,7 +1365,7 @@ export const transformPlotlyJsonToDonutProps = (
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
   // Build anticlockwise order by keeping the first item, reversing the rest
   const legends = Object.keys(mapLegendToDataPoint);
   const reorderedEntries =
@@ -1376,7 +1393,8 @@ export const transformPlotlyJsonToDonutProps = (
       : true,
     roundCorners: true,
     order: 'sorted',
-  };
+    ...(titleStyles ? { titleStyles } : {}),
+  } as IDonutChartProps;
 };
 
 export const transformPlotlyJsonToVSBCProps = (
@@ -2707,7 +2725,7 @@ export const transformPlotlyJsonToSankeyProps = (
     },
   };
 
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     data: {
@@ -2718,7 +2736,9 @@ export const transformPlotlyJsonToSankeyProps = (
     height: input.layout?.height ?? 468,
     styles,
     enableReflow: false,
-  };
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
+    ...(titleStyles ? { titleStyles } : {}),
+  } as ISankeyChartProps;
 };
 
 export const transformPlotlyJsonToGaugeProps = (
@@ -2824,7 +2844,7 @@ export const transformPlotlyJsonToGaugeProps = (
     },
   };
 
-  const { chartTitle } = getTitles(input.layout);
+  const { chartTitle, titleStyles } = getTitles(input.layout);
 
   return {
     segments,
@@ -2840,7 +2860,8 @@ export const transformPlotlyJsonToGaugeProps = (
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
     roundCorners: true,
-  };
+    ...(titleStyles ? { titleStyles } : {}),
+  } as IGaugeChartProps;
 };
 const cleanText = (text: string): string => {
   return text
@@ -3008,13 +3029,17 @@ export const transformPlotlyJsonToChartTableProps = (
     values: tableHeader?.values ?? templateHeader?.values ?? [],
   };
 
+  const { chartTitle, titleStyles } = getTitles(input.layout);
+
   return {
     headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,
     styles,
-  };
+    chartTitle,
+    ...(titleStyles ? { titleStyles } : {}),
+  } as IChartTableProps;
 };
 
 function getCategoriesAndValues(series: Partial<PlotData>): {
@@ -3165,13 +3190,17 @@ export const transformPlotlyJsonToFunnelChartProps = (
     });
   }
 
+  const { chartTitle, titleStyles } = getTitles(input.layout);
+
   return {
     data: funnelData,
+    chartTitle,
     width: input.layout?.width,
     height: input.layout?.height,
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-  };
+    ...(titleStyles ? { titleStyles } : {}),
+  } as IFunnelChartProps;
 };
 
 export const transformPlotlyJsonToPolarChartProps = (

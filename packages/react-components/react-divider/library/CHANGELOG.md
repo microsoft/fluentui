@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jan 2026 17:06:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.6.0)
+
+Thu, 22 Jan 2026 17:06:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.5.1..@fluentui/react-divider_v9.6.0)
+
+### Minor changes
+
+- feat: add base hooks ([PR #35634](https://github.com/microsoft/fluentui/pull/35634) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+### Patches
+
+- chore: remove experimental style hooks ([PR #35620](https://github.com/microsoft/fluentui/pull/35620) by dmytrokirpa@microsoft.com)
+- refactor: refactor divider base hook ([PR #35679](https://github.com/microsoft/fluentui/pull/35679) by dmytrokirpa@microsoft.com)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.5.1)
 

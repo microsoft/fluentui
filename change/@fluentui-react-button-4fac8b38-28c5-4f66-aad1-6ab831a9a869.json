@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for button components",
-  "packageName": "@fluentui/react-button",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

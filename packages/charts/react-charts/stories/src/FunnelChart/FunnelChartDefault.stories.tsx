@@ -33,8 +33,8 @@ export const FunnelChartBasic = (): JSXElement => {
   const basicData = [
     { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
     { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-    { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-    { stage: 'Customers', value: 250, color: getColorFromToken(DataVizPalette.color10) },
+    { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color10) },
+    { stage: 'Customers', value: 250, color: getColorFromToken(DataVizPalette.color3) },
   ];
 
   const rootStyle = {

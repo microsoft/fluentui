@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jan 2026 17:06:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.11.2)
+
+Thu, 22 Jan 2026 17:06:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.11.1..@fluentui/react-drawer_v9.11.2)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.16.6 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-motion to v9.11.6 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-portal to v9.8.10 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.11.1)
 

@@ -2,6 +2,77 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:06:59 GMT",
+      "tag": "@fluentui/react-message-bar_v9.6.17",
+      "version": "9.6.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "fix(react-message-bar): update slide atom param from \"fromY\" to \"outY\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.8.0",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.5",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion to v9.11.6",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.0",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.7.2",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.2.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Dec 2025 18:10:11 GMT",
       "tag": "@fluentui/react-message-bar_v9.6.16",
       "version": "9.6.16",

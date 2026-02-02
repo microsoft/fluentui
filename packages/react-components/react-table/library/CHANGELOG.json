@@ -2,6 +2,89 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 22 Jan 2026 17:06:41 GMT",
+      "tag": "@fluentui/react-table_v9.19.7",
+      "version": "9.19.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "32d2e6d036ca462858d6290dd55b0cb0f661cb32",
+            "comment": "fix: use distinct hover background color"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.17.8",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.9.14",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.5.13",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.14",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.5.13",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.26.12",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.2.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.5",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Dec 2025 18:10:11 GMT",
       "tag": "@fluentui/react-table_v9.19.6",
       "version": "9.19.6",

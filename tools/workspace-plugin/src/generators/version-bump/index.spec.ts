@@ -145,24 +145,37 @@ describe('version-string-replace generator', () => {
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
   });
 
-  it('should remove beachball disallowedChangeType config when bumping nightly', async () => {
+  it.each([
+    { scenario: 'bumping nightly', options: { bumpType: 'nightly', prereleaseTag: 'nightly' } },
+    { scenario: 'using explicitVersion', options: { explicitVersion: '9.1.7-experimental.0' } },
+  ] as const)('should remove beachball disallowedChangeType config when $scenario', async ({ options }) => {
+    const versionBumpKind = options.bumpType ?? 'explicitVersion';
     tree = setupDummyPackage(tree, {
-      name: 'make-styles',
+      name: `make-styles-${versionBumpKind}`,
       version: '9.0.0-alpha.0',
-      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      projectConfiguration: {
+        tags: ['vNext', 'platform:web'],
+        sourceRoot: `packages/make-styles-${versionBumpKind}/src`,
+      },
       beachball: {
         disallowedChangeTypes: ['prerelease'],
       },
     });
 
     expect(
-      readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes,
+      readJson<PackageJsonWithBeachball>(tree, `packages/make-styles-${versionBumpKind}/package.json`).beachball
+        ?.disallowedChangeTypes,
     ).toEqual(['prerelease']);
 
-    await generator(tree, { name: 'make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+    await generator(tree, { name: `make-styles-${versionBumpKind}`, ...options });
 
-    const packageJson = readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json');
-    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+    const packageJson = readJson<PackageJsonWithBeachball>(
+      tree,
+      `packages/make-styles-${versionBumpKind}/package.json`,
+    );
+    expect(packageJson.version).toEqual(
+      versionBumpKind === 'explicitVersion' ? '9.1.7-experimental.0' : '0.0.0-nightly.0',
+    );
     expect(packageJson.beachball?.disallowedChangeTypes).toBeUndefined();
   });
 

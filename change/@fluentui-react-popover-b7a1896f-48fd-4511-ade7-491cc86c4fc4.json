@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: incorrect Positioning docs link in Popover component",
-  "packageName": "@fluentui/react-popover",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "none"
-}
