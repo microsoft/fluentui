@@ -71,6 +71,65 @@ export interface GaugeChartAnnotationStyle {
 }
 
 /**
+ * Arrow configuration for gauge annotations
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartAnnotationArrow {
+  /**
+   * Whether to show an arrow pointing from the annotation to the target
+   * @default false
+   */
+  show?: boolean;
+
+  /**
+   * Arrow head style (0-8, matching Plotly arrowhead values)
+   * - 0: No head
+   * - 1: Simple arrowhead
+   * - 2: Filled arrowhead
+   * - 3: Open triangle
+   * - 4: Filled triangle
+   * - 5: Thin arrow
+   * - 6: Wide arrow
+   * - 7: Barbed arrow
+   * - 8: Square end
+   * @default 2
+   */
+  headStyle?: number;
+
+  /**
+   * Arrow color
+   * @default '#333333'
+   */
+  color?: string;
+
+  /**
+   * Arrow shaft width in pixels
+   * @default 1
+   */
+  width?: number;
+
+  /**
+   * Arrow head size multiplier (relative to width)
+   * @default 1
+   */
+  headSize?: number;
+
+  /**
+   * Horizontal offset of arrow tail from annotation (in pixels)
+   * Negative = left, Positive = right
+   * @default 0
+   */
+  tailOffsetX?: number;
+
+  /**
+   * Vertical offset of arrow tail from annotation (in pixels)
+   * Negative = up, Positive = down
+   * @default 20
+   */
+  tailOffsetY?: number;
+}
+
+/**
  * Annotation configuration for GaugeChart
  * {@docCategory GaugeChart}
  */
@@ -86,6 +145,9 @@ export interface GaugeChartAnnotation {
 
   /** Visual styling */
   style?: GaugeChartAnnotationStyle;
+
+  /** Arrow configuration */
+  arrow?: GaugeChartAnnotationArrow;
 
   /** Accessibility label for screen readers */
   ariaLabel?: string;

@@ -867,3 +867,138 @@ describe('GaugeChart - Annotation helper functions', () => {
     expect(Math.abs(posWithOffset.y)).toBeGreaterThan(Math.abs(posNoOffset.y));
   });
 });
+
+describe('GaugeChart - Arrow Annotations', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('should render an annotation with an arrow', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={75}
+        annotations={[
+          {
+            id: 'arrow-annotation',
+            text: 'Target Zone',
+            coordinates: { value: 75, position: 'outer', radialOffset: 30 },
+            arrow: {
+              show: true,
+              color: '#0078d4',
+              width: 2,
+              headStyle: 2,
+              tailOffsetX: 0,
+              tailOffsetY: -40,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Target Zone')).toBeInTheDocument();
+    // Check that a line element (arrow shaft) is rendered
+    const lines = container.querySelectorAll('line');
+    expect(lines.length).toBeGreaterThan(0);
+  });
+
+  it('should render arrow with custom head style', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'custom-arrow',
+            text: 'Custom Arrow',
+            coordinates: { value: 50, position: 'outer', radialOffset: 40 },
+            arrow: {
+              show: true,
+              headStyle: 4,
+              color: 'red',
+              width: 3,
+              headSize: 1.5,
+              tailOffsetY: -50,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Custom Arrow')).toBeInTheDocument();
+    // Check for polygon element (arrowhead)
+    const polygons = container.querySelectorAll('polygon');
+    expect(polygons.length).toBeGreaterThan(0);
+  });
+
+  it('should not render arrow when show is false', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'No Arrow',
+            coordinates: { value: 50, position: 'outer' },
+            arrow: {
+              show: false,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('No Arrow')).toBeInTheDocument();
+    // Should not have any line elements for arrows
+    const annotationLines = container.querySelectorAll('.annotation-arrow line');
+    expect(annotationLines.length).toBe(0);
+  });
+
+  it('should render multiple annotations with arrows', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'arrow-1',
+            text: 'Low',
+            coordinates: { value: 25, position: 'outer', radialOffset: 25 },
+            arrow: { show: true, color: 'green', tailOffsetY: -30 },
+          },
+          {
+            id: 'arrow-2',
+            text: 'High',
+            coordinates: { value: 75, position: 'outer', radialOffset: 25 },
+            arrow: { show: true, color: 'red', tailOffsetY: -30 },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Low')).toBeInTheDocument();
+    expect(screen.getByText('High')).toBeInTheDocument();
+    const lines = container.querySelectorAll('.annotation-arrow line');
+    expect(lines.length).toBe(2);
+  });
+});
+
+describe('GaugeChart - Arrow helper functions', () => {
+  it('getArrowHeadPath should return correct path for different styles', () => {
+    const { getArrowHeadPath } = require('./GaugeChart');
+
+    // Style 0 should return empty string (no head)
+    expect(getArrowHeadPath(0, 1, 1)).toBe('');
+
+    // Style 2 (default filled arrowhead) should return a closed path
+    const path2 = getArrowHeadPath(2, 1, 1);
+    expect(path2).toContain('M 0 0');
+    expect(path2).toContain('Z');
+
+    // All other styles should return non-empty paths
+    for (let style = 1; style <= 8; style++) {
+      const path = getArrowHeadPath(style, 1, 1);
+      expect(path.length).toBeGreaterThan(0);
+    }
+  });
+});

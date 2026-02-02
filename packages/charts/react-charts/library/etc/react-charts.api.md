@@ -907,10 +907,22 @@ export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 // @public
 export interface GaugeChartAnnotation {
     ariaLabel?: string;
+    arrow?: GaugeChartAnnotationArrow;
     coordinates: GaugeChartAnnotationCoordinate;
     id?: string;
     style?: GaugeChartAnnotationStyle;
     text: string;
+}
+
+// @public
+export interface GaugeChartAnnotationArrow {
+    color?: string;
+    headSize?: number;
+    headStyle?: number;
+    show?: boolean;
+    tailOffsetX?: number;
+    tailOffsetY?: number;
+    width?: number;
 }
 
 // @public
@@ -1005,6 +1017,9 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 
 // @public (undocumented)
 export type GaugeValueFormat = 'percentage' | 'fraction';
+
+// @public
+export const getArrowHeadPath: (headStyle: number, headSize: number, width: number) => string;
 
 // @public (undocumented)
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string), forCallout?: boolean) => string;
@@ -1666,6 +1681,9 @@ export interface RefArrayData {
     // (undocumented)
     refElement?: SVGGElement;
 }
+
+// @public
+export const renderAnnotationArrow: (startX: number, startY: number, endX: number, endY: number, arrow: GaugeChartAnnotationArrow, uniqueId: string) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface ResolvedAnnotationPosition {

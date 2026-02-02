@@ -2761,6 +2761,24 @@ const transformPlotlyAnnotationsToGaugeAnnotations = (
       .replace(/<[^>]*>/g, '')
       .trim();
 
+    // Transform arrow properties from Plotly
+    const arrowConfig =
+      annotation.showarrow === true
+        ? {
+            show: true,
+            headStyle: typeof annotation.arrowhead === 'number' ? annotation.arrowhead : 2,
+            color: annotation.arrowcolor?.toString() || '#333333',
+            width: typeof annotation.arrowwidth === 'number' ? annotation.arrowwidth : 1,
+            headSize: typeof annotation.arrowsize === 'number' ? annotation.arrowsize : 1,
+            // Convert Plotly ax/ay (pixel offsets) to tailOffsetX/tailOffsetY
+            // In Plotly, ax/ay define offset from arrow tip to tail/text position
+            // Plotly y-axis goes up, SVG y-axis goes down, so we DON'T negate ay
+            // (Plotly ay=-40 means text is 40px below tip in visual space, same in SVG)
+            tailOffsetX: typeof annotation.ax === 'number' ? annotation.ax : 0,
+            tailOffsetY: typeof annotation.ay === 'number' ? annotation.ay : 40,
+          }
+        : undefined;
+
     return {
       id: `plotly-annotation-${index}`,
       text: cleanedText,
@@ -2777,6 +2795,7 @@ const transformPlotlyAnnotationsToGaugeAnnotations = (
         borderColor: annotation.bordercolor?.toString(),
         borderWidth: annotation.borderwidth,
       },
+      arrow: arrowConfig,
       ariaLabel: cleanedText,
     };
   });
@@ -2886,10 +2905,8 @@ export const transformPlotlyJsonToGaugeProps = (
   const { chartTitle, titleStyles } = getTitles(input.layout);
 
   // Get min/max values for annotation transformation
-  const gaugeMinValue =
-    typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : 0;
-  const gaugeMaxValue =
-    typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : 100;
+  const gaugeMinValue = typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : 0;
+  const gaugeMaxValue = typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : 100;
 
   // Transform Plotly annotations to GaugeChartAnnotation format
   const annotations = transformPlotlyAnnotationsToGaugeAnnotations(

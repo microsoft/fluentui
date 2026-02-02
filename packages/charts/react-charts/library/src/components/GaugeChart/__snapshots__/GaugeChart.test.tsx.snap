@@ -2873,15 +2873,18 @@ exports[`GaugeChart - Annotations should render an annotation at the specified v
             aria-label="Target"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(-41.012193308819754, 41.01219330881976)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(-41.012193308819754, 41.01219330881976)"
             >
-              Target
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                Target
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -3080,43 +3083,52 @@ exports[`GaugeChart - Annotations should render annotations at different radial 
             aria-label="Inner"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(60.81118318204308, 60.81118318204309)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(60.81118318204308, 60.81118318204309)"
             >
-              Inner
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                Inner
+              </text>
+            </g>
           </g>
           <g
             aria-label="Arc"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(0, 72)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(0, 72)"
             >
-              Arc
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                Arc
+              </text>
+            </g>
           </g>
           <g
             aria-label="Outer"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(-41.012193308819754, 41.01219330881976)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(-41.012193308819754, 41.01219330881976)"
             >
-              Outer
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                Outer
+              </text>
+            </g>
           </g>
         </g>
       </svg>
@@ -3315,29 +3327,35 @@ exports[`GaugeChart - Annotations should render multiple annotations 1`] = `
             aria-label="Low"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(41.012193308819754, 41.01219330881976)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(41.012193308819754, 41.01219330881976)"
             >
-              Low
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                Low
+              </text>
+            </g>
           </g>
           <g
             aria-label="High"
             class="fui-gc__annotationContainer"
             role="img"
-            transform="translate(-41.012193308819754, 41.01219330881976)"
           >
-            <text
-              class="fui-gc__annotationText"
-              dominant-baseline="middle"
-              text-anchor="middle"
+            <g
+              transform="translate(-41.012193308819754, 41.01219330881976)"
             >
-              High
-            </text>
+              <text
+                class="fui-gc__annotationText"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                High
+              </text>
+            </g>
           </g>
         </g>
       </svg>

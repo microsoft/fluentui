@@ -6,7 +6,6 @@ import bestPracticesMd from './GaugeChartBestPractices.md';
 export { GaugeChartBasic } from './GaugeChartDefault.stories';
 export { GaugeChartSingleSegment } from './GaugeChartSingleSegment.stories';
 export { GaugeChartResponsive } from './GaugeChartResponsive.stories';
-export { GaugeChartAnnotations } from './GaugeChartAnnotations.stories';
 
 export default {
   title: 'Charts/GaugeChart',

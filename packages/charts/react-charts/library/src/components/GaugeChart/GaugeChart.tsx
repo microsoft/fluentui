@@ -19,7 +19,14 @@ import {
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
-import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment, GaugeChartAnnotation } from './GaugeChart.types';
+import {
+  GaugeChartVariant,
+  GaugeValueFormat,
+  GaugeChartProps,
+  GaugeChartSegment,
+  GaugeChartAnnotation,
+  GaugeChartAnnotationArrow,
+} from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
@@ -101,6 +108,99 @@ export const calcAnnotationPosition = (
     x: radius * Math.sin(angle),
     y: -radius * Math.cos(angle),
   };
+};
+
+/**
+ * Generates SVG path data for an arrowhead based on the arrow style.
+ * @param headStyle - Arrow head style (0-8)
+ * @param headSize - Size multiplier for the arrowhead
+ * @param width - Arrow shaft width
+ * @returns SVG marker path data
+ */
+export const getArrowHeadPath = (headStyle: number, headSize: number, width: number): string => {
+  const size = headSize * width * 3;
+  switch (headStyle) {
+    case 0: // No head
+      return '';
+    case 1: // Simple arrowhead (open)
+      return `M 0 0 L ${-size} ${-size / 2} M 0 0 L ${-size} ${size / 2}`;
+    case 2: // Filled arrowhead (default)
+      return `M 0 0 L ${-size} ${-size / 2} L ${-size} ${size / 2} Z`;
+    case 3: // Open triangle
+      return `M 0 0 L ${-size} ${-size / 2} L ${-size * 0.7} 0 L ${-size} ${size / 2} Z`;
+    case 4: // Filled triangle (larger)
+      return `M 0 0 L ${-size * 1.2} ${-size / 2} L ${-size * 1.2} ${size / 2} Z`;
+    case 5: // Thin arrow
+      return `M 0 0 L ${-size} ${-size / 3} L ${-size} ${size / 3} Z`;
+    case 6: // Wide arrow
+      return `M 0 0 L ${-size} ${-size} L ${-size} ${size} Z`;
+    case 7: // Barbed arrow
+      return `M 0 0 L ${-size} ${-size / 2} L ${-size * 0.6} 0 L ${-size} ${size / 2} Z`;
+    case 8: // Square end
+      return `M 0 ${-size / 2} L 0 ${size / 2} L ${-size / 2} ${size / 2} L ${-size / 2} ${-size / 2} Z`;
+    default:
+      return `M 0 0 L ${-size} ${-size / 2} L ${-size} ${size / 2} Z`;
+  }
+};
+
+/**
+ * Renders an arrow line with arrowhead for annotations.
+ * Uses direct polygon rendering for the arrowhead instead of markers for better compatibility.
+ */
+export const renderAnnotationArrow = (
+  startX: number,
+  startY: number,
+  endX: number,
+  endY: number,
+  arrow: GaugeChartAnnotationArrow,
+  uniqueId: string,
+): React.ReactNode => {
+  const color = arrow.color || '#333333';
+  const width = arrow.width || 1;
+  const headStyle = arrow.headStyle ?? 2;
+  const headSize = arrow.headSize || 1;
+
+  // Calculate arrow direction
+  const dx = endX - startX;
+  const dy = endY - startY;
+  const length = Math.sqrt(dx * dx + dy * dy);
+
+  if (length === 0) {
+    return null;
+  }
+
+  // Normalize direction vector
+  const nx = dx / length;
+  const ny = dy / length;
+
+  // Perpendicular vector for arrow head width
+  const px = -ny;
+  const py = nx;
+
+  // Arrow head size
+  const arrowLength = Math.max(8, headSize * 8);
+  const arrowWidth = Math.max(4, headSize * 4);
+
+  // Calculate arrowhead points
+  const tipX = endX;
+  const tipY = endY;
+  const baseX = endX - nx * arrowLength;
+  const baseY = endY - ny * arrowLength;
+  const leftX = baseX + px * arrowWidth;
+  const leftY = baseY + py * arrowWidth;
+  const rightX = baseX - px * arrowWidth;
+  const rightY = baseY - py * arrowWidth;
+
+  // Shorten the line so it doesn't overlap with the arrowhead
+  const lineEndX = endX - nx * arrowLength * 0.5;
+  const lineEndY = endY - ny * arrowLength * 0.5;
+
+  return (
+    <g className="annotation-arrow" key={`arrow-${uniqueId}`}>
+      <line x1={startX} y1={startY} x2={lineEndX} y2={lineEndY} stroke={color} strokeWidth={width} />
+      {headStyle > 0 && <polygon points={`${tipX},${tipY} ${leftX},${leftY} ${rightX},${rightY}`} fill={color} />}
+    </g>
+  );
 };
 
 export const getSegmentLabel = (
@@ -332,7 +432,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }
 
     function _renderDefaultAnnotation(annotation: GaugeChartAnnotation): React.ReactNode {
-      const { coordinates, style, ariaLabel, id } = annotation;
+      const { coordinates, style, ariaLabel, id, arrow } = annotation;
       const position = coordinates.position || 'outer';
       const radialOffset = coordinates.radialOffset || 0;
 
@@ -355,22 +455,59 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         fontWeight: style?.fontWeight,
       };
 
+      const annotationKey = id || `annotation-${coordinates.value}`;
+
+      // Calculate text and arrow positions
+      // When arrow is enabled, tailOffsetX/Y define the offset from the arc position to the text
+      // This matches Plotly where (x,y) is the arrow tip and (ax,ay) offsets to text position
+      let textX = adjustedX;
+      let textY = y;
+      let arrowElement: React.ReactNode = null;
+
+      if (arrow?.show) {
+        const tailOffsetX = arrow.tailOffsetX || 0;
+        const tailOffsetY = arrow.tailOffsetY || 0;
+
+        // Arrow end points to the arc at the annotation value
+        const arcPosition = calcAnnotationPosition(
+          coordinates.value,
+          'arc',
+          _minValue,
+          _maxValue,
+          _innerRadius,
+          _outerRadius,
+          0,
+        );
+        const arrowEndX = _isRTL ? -arcPosition.x : arcPosition.x;
+        const arrowEndY = arcPosition.y;
+
+        // Text position is offset from the arc position by tailOffsetX/Y
+        // This matches Plotly's behavior where text is at (tip + ax, tip + ay)
+        textX = arrowEndX + (_isRTL ? -tailOffsetX : tailOffsetX);
+        textY = arrowEndY + tailOffsetY;
+
+        // Arrow starts from text and points to arc
+        arrowElement = renderAnnotationArrow(textX, textY, arrowEndX, arrowEndY, arrow, annotationKey);
+      }
+
       return (
         <g
-          key={id || `annotation-${coordinates.value}`}
-          transform={`translate(${adjustedX}, ${y})`}
+          key={annotationKey}
           className={classes.annotationContainer}
           role="img"
           aria-label={ariaLabel || annotation.text}
         >
-          <text
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className={style?.className || classes.annotationText}
-            style={annotationStyle}
-          >
-            {annotation.text}
-          </text>
+          {arrowElement}
+          <g transform={`translate(${textX}, ${textY})`}>
+            <text
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className={style?.className || classes.annotationText}
+              style={annotationStyle}
+            >
+              {annotation.text}
+            </text>
+          </g>
         </g>
       );
     }
