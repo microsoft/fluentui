@@ -8,7 +8,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { Legend, Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { find, findCalloutPoints, YAxisType } from '../../utilities/index';
@@ -528,21 +528,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       } else {
         _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
       }
-      const maxMarkerSize =
-        d3Max(_points, (point: LineChartPoints) => {
-          return d3Max(point.data, (item: LineChartDataPoint) => {
-            return item.markerSize as number;
-          });
-        }) ?? 0;
-      const minMarkerSize =
-        d3Min(_points, (point: LineChartPoints) => {
-          return d3Min(point.data, (item: LineChartDataPoint) => {
-            return item.markerSize as number;
-          });
-        }) ?? 0;
-      // Check if there's meaningful variation in marker sizes (more than 10% range)
-      const sizeRange = maxMarkerSize - minMarkerSize;
-      const hasVariation = sizeRange > 0 && sizeRange / maxMarkerSize > 0.1;
+      const maxMarkerSize = d3Max(_points, (point: LineChartPoints) => {
+        return d3Max(point.data, (item: LineChartDataPoint) => {
+          return item.markerSize as number;
+        });
+      })!;
       for (let i = _points.length - 1; i >= 0; i--) {
         const linesForLine: JSXElement[] = [];
         const bordersForLine: JSXElement[] = [];
@@ -565,6 +555,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               secondaryYScaleType: props.secondaryYScaleType,
             })
           : 0;
+
         if (_points[i].data.length === 1) {
           const {
             x: x1,
@@ -590,9 +581,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={circleId}
                     r={
                       currentMarkerSize
-                        ? hasVariation
-                          ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
-                          : currentMarkerSize / 2
+                        ? maxMarkerSize > extraMaxPixels
+                          ? currentMarkerSize
+                          : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
                         : activePoint === circleId
                         ? 5.5
                         : 3.5
@@ -797,9 +788,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={`${_circleId}_${i}_${k}_marker`}
                     r={
                       markerSize
-                        ? hasVariation
-                          ? (markerSize * extraMaxPixels) / maxMarkerSize
-                          : markerSize / 2
+                        ? maxMarkerSize > extraMaxPixels
+                          ? markerSize
+                          : (markerSize * extraMaxPixels) / maxMarkerSize
                         : activePoint === _circleId
                         ? 5.5
                         : 3.5
@@ -866,9 +857,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       key={circleId}
                       r={
                         currentMarkerSize
-                          ? hasVariation
-                            ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
-                            : currentMarkerSize / 2
+                          ? maxMarkerSize > extraMaxPixels
+                            ? currentMarkerSize
+                            : (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
                           : 4
                       }
                       cx={xPoint1}
@@ -1025,9 +1016,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           key={lastCircleId}
                           r={
                             currentMarkerSize
-                              ? hasVariation
-                                ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize
-                                : currentMarkerSize / 2
+                              ? maxMarkerSize > extraMaxPixels
+                                ? currentMarkerSize
+                                : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
                               : 4
                           }
                           cx={xPoint2}

@@ -420,16 +420,24 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         let circleRadius = activePoint === circleId ? 6 : 4;
 
         if (pointMarkerSize) {
-          // Check if there's meaningful variation in marker sizes (more than 10% range)
-          const sizeRange = maxMarkerSize - minMarkerSize;
-          const hasVariation = sizeRange > 0 && sizeRange / maxMarkerSize > 0.1;
-
-          if (isContinuousXY && maxMarkerSize !== 0 && hasVariation) {
-            // Variable marker sizes: scale relative to data range and available space
-            circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
-          } else if (isContinuousXY && maxMarkerSize !== 0 && !hasVariation) {
-            // All markers same/similar size: treat markerSize as diameter (Plotly default behavior)
-            circleRadius = pointMarkerSize / 2;
+          if (isContinuousXY && maxMarkerSize !== 0) {
+            /*
+              Example Scenario:
+              pointMarker = 100, extraMaxPixel=10,  max=100  (expected:10)
+              pointMarker=2, extraMaxPixel=100, max=2 (expected:2)
+              pointMarker=20, extraMaxPixel=25, max=30 (20- (scale_down_factor)*20 = 16.66) ::: (scale_down = 30--> 25, roughly -16.66%)
+            */
+            if (maxMarkerSize > extraMaxPixels) {
+              /*
+                markers are scaled down, based on available extra space
+                maxMarkerSize --> reduced to --> extraMaxPixels
+                other markers scaled down respectively
+              */
+              circleRadius = (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
+            } else {
+              // if enough space is there, directly render the values, no need to scale it down or up
+              circleRadius = pointMarkerSize;
+            }
           } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
             circleRadius =
               minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
