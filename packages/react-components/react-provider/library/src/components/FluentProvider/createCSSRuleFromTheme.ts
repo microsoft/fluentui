@@ -6,7 +6,10 @@ import type { PartialTheme } from '@fluentui/react-theme';
  * IMPORTANT: Do not strip quotes. Theme values legitimately include quoted font families and other CSS.
  * We only need to ensure the generated text cannot terminate the style tag and inject HTML.
  */
-function escapeForStyleTag(value: string) {
+function escapeForStyleTag(value: unknown) {
+  if (typeof value !== 'string') {
+    return value;
+  }
   // Escape as CSS code points so the resulting CSS still represents the same characters.
   // Using CSS escapes prevents the HTML parser from seeing a literal '<' / '>' and closing <style>.
   return value.replace(/[<>]/g, match => (match === '<' ? '\\3C ' : '\\3E '));
@@ -20,10 +23,10 @@ function escapeForStyleTag(value: string) {
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      return `${cssVarRule}--${cssVar}: ${theme[cssVar]}; `;
+      return `${cssVarRule}--${cssVar}: ${escapeForStyleTag(theme[cssVar])}; `;
     }, '');
 
-    return `${selector} { ${escapeForStyleTag(cssVarsAsString)} }`;
+    return `${selector} { ${cssVarsAsString} }`;
   }
 
   return `${selector} {}`;
