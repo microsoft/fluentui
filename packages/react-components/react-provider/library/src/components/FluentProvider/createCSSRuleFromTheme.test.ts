@@ -17,7 +17,7 @@ describe('createCSSRuleFromTheme', () => {
     );
   });
 
-  it('prevents XSS by removing angle brackets that could inject HTML', () => {
+  it('prevents XSS by replacing angle brackets that could inject HTML', () => {
     const theme = {
       colorBrandBackground: '</style><script>alert("xss")</script>',
     } as PartialTheme;
@@ -25,7 +25,8 @@ describe('createCSSRuleFromTheme', () => {
     const result = createCSSRuleFromTheme('.selector', theme);
     expect(result).not.toContain('<');
     expect(result).not.toContain('>');
-    expect(result).not.toContain('"');
-    expect(result).toMatchInlineSnapshot(`".selector { --colorBrandBackground: /stylescriptalert(xss)/script;  }"`);
+    expect(result).toMatchInlineSnapshot(
+      `".selector { --colorBrandBackground: \\\\3C /style\\\\3E \\\\3C script\\\\3E alert(\\"xss\\")\\\\3C /script\\\\3E ;  }"`,
+    );
   });
 });
