@@ -6,8 +6,8 @@ import type { PartialTheme } from '@fluentui/react-theme';
  */
 const CSS_SANITIZE_PATTERN = /[<>"']/g;
 
-function sanitizeCSSValue(value: unknown) {
-  return typeof value === 'string' ? value.replace(CSS_SANITIZE_PATTERN, '') : value;
+function sanitizeCSSDeclaration(value: string) {
+  return value.replace(CSS_SANITIZE_PATTERN, '');
 }
 
 /**
@@ -18,10 +18,10 @@ function sanitizeCSSValue(value: unknown) {
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      return `${cssVarRule}--${cssVar}: ${sanitizeCSSValue(theme[cssVar])}; `;
+      return `${cssVarRule}--${cssVar}: ${theme[cssVar]}; `;
     }, '');
 
-    return `${selector} { ${cssVarsAsString} }`;
+    return `${selector} { ${sanitizeCSSDeclaration(cssVarsAsString)} }`;
   }
 
   return `${selector} {}`;
