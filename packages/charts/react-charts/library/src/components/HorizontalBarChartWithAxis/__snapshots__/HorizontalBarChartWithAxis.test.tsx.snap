@@ -330,7 +330,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <rect
-            aria-label="10%. 2020/04/30."
+            aria-label="2020/04/30. Oranges, 10%."
             aria-labelledby="toolTipcallout_r_0_"
             fill="#0078d4"
             height="16"
@@ -355,7 +355,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             10k
           </text>
           <rect
-            aria-label="88%. 2020/04/30."
+            aria-label="2020/04/30. Bananas, 88%."
             aria-labelledby="toolTipcallout_r_0_"
             fill="#002050"
             height="16"
@@ -380,7 +380,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             40k
           </text>
           <rect
-            aria-label="37%. 2020/04/30."
+            aria-label="2020/04/30. Apples, 37%."
             aria-labelledby="toolTipcallout_r_0_"
             fill="#00188f"
             height="16"
@@ -405,7 +405,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             25k
           </text>
           <rect
-            aria-label="20%. 2020/04/30."
+            aria-label="2020/04/30. Grapes, 20%."
             aria-labelledby="toolTipcallout_r_0_"
             fill="#00bcf2"
             height="16"
@@ -857,7 +857,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <rect
-            aria-label="1000. String One."
+            aria-label="String One. 1000."
             aria-labelledby="toolTipcallout_r_4_"
             fill="#0078d4"
             height="32.714285714285715"
@@ -883,7 +883,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             1k
           </text>
           <rect
-            aria-label="5000. String Two."
+            aria-label="String Two. 5000."
             aria-labelledby="toolTipcallout_r_4_"
             fill="#00bcf2"
             height="32.714285714285715"
@@ -909,7 +909,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             5k
           </text>
           <rect
-            aria-label="3000. String Three."
+            aria-label="String Three. 3000."
             aria-labelledby="toolTipcallout_r_4_"
             fill="#00188f"
             height="32.714285714285715"
@@ -935,7 +935,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             3k
           </text>
           <rect
-            aria-label="2000. String Four."
+            aria-label="String Four. 2000."
             aria-labelledby="toolTipcallout_r_4_"
             fill="#002050"
             height="32.714285714285715"
@@ -1338,7 +1338,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_2e_"
                 fill="#0078d4"
                 height="16"
@@ -1363,7 +1363,7 @@ Object {
                 10k
               </text>
               <rect
-                aria-label="88%. 2020/04/30."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_2e_"
                 fill="#002050"
                 height="16"
@@ -1388,7 +1388,7 @@ Object {
                 40k
               </text>
               <rect
-                aria-label="37%. 2020/04/30."
+                aria-label="2020/04/30. Apples, 37%."
                 aria-labelledby="toolTipcallout_r_2e_"
                 fill="#00188f"
                 height="16"
@@ -1413,7 +1413,7 @@ Object {
                 25k
               </text>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_2e_"
                 fill="#00bcf2"
                 height="16"
@@ -1865,7 +1865,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_2e_"
               fill="#0078d4"
               height="16"
@@ -1890,7 +1890,7 @@ Object {
               10k
             </text>
             <rect
-              aria-label="88%. 2020/04/30."
+              aria-label="2020/04/30. Bananas, 88%."
               aria-labelledby="toolTipcallout_r_2e_"
               fill="#002050"
               height="16"
@@ -1915,7 +1915,7 @@ Object {
               40k
             </text>
             <rect
-              aria-label="37%. 2020/04/30."
+              aria-label="2020/04/30. Apples, 37%."
               aria-labelledby="toolTipcallout_r_2e_"
               fill="#00188f"
               height="16"
@@ -1940,7 +1940,7 @@ Object {
               25k
             </text>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="2020/04/30. Grapes, 20%."
               aria-labelledby="toolTipcallout_r_2e_"
               fill="#00bcf2"
               height="16"
@@ -2451,7 +2451,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_2i_"
                 fill="#0078d4"
                 height="16"
@@ -2476,7 +2476,7 @@ Object {
                 10k
               </text>
               <rect
-                aria-label="88%. 2020/04/30."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_2i_"
                 fill="#002050"
                 height="16"
@@ -2501,7 +2501,7 @@ Object {
                 40k
               </text>
               <rect
-                aria-label="37%. 2020/04/30."
+                aria-label="2020/04/30. Apples, 37%."
                 aria-labelledby="toolTipcallout_r_2i_"
                 fill="#00188f"
                 height="16"
@@ -2526,7 +2526,7 @@ Object {
                 25k
               </text>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_2i_"
                 fill="#00bcf2"
                 height="16"
@@ -2978,7 +2978,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_2i_"
               fill="#0078d4"
               height="16"
@@ -3003,7 +3003,7 @@ Object {
               10k
             </text>
             <rect
-              aria-label="88%. 2020/04/30."
+              aria-label="2020/04/30. Bananas, 88%."
               aria-labelledby="toolTipcallout_r_2i_"
               fill="#002050"
               height="16"
@@ -3028,7 +3028,7 @@ Object {
               40k
             </text>
             <rect
-              aria-label="37%. 2020/04/30."
+              aria-label="2020/04/30. Apples, 37%."
               aria-labelledby="toolTipcallout_r_2i_"
               fill="#00188f"
               height="16"
@@ -3053,7 +3053,7 @@ Object {
               25k
             </text>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="2020/04/30. Grapes, 20%."
               aria-labelledby="toolTipcallout_r_2i_"
               fill="#00bcf2"
               height="16"
@@ -3564,7 +3564,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_1r_"
                 fill="#0078d4"
                 height="16"
@@ -3589,7 +3589,7 @@ Object {
                 10k
               </text>
               <rect
-                aria-label="88%. 2020/04/30."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_1r_"
                 fill="#002050"
                 height="16"
@@ -3614,7 +3614,7 @@ Object {
                 40k
               </text>
               <rect
-                aria-label="37%. 2020/04/30."
+                aria-label="2020/04/30. Apples, 37%."
                 aria-labelledby="toolTipcallout_r_1r_"
                 fill="#00188f"
                 height="16"
@@ -3639,7 +3639,7 @@ Object {
                 25k
               </text>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_1r_"
                 fill="#00bcf2"
                 height="16"
@@ -4091,7 +4091,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_1r_"
               fill="#0078d4"
               height="16"
@@ -4116,7 +4116,7 @@ Object {
               10k
             </text>
             <rect
-              aria-label="88%. 2020/04/30."
+              aria-label="2020/04/30. Bananas, 88%."
               aria-labelledby="toolTipcallout_r_1r_"
               fill="#002050"
               height="16"
@@ -4141,7 +4141,7 @@ Object {
               40k
             </text>
             <rect
-              aria-label="37%. 2020/04/30."
+              aria-label="2020/04/30. Apples, 37%."
               aria-labelledby="toolTipcallout_r_1r_"
               fill="#00188f"
               height="16"
@@ -4166,7 +4166,7 @@ Object {
               25k
             </text>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="2020/04/30. Grapes, 20%."
               aria-labelledby="toolTipcallout_r_1r_"
               fill="#00bcf2"
               height="16"
@@ -4734,7 +4734,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="10K. Q1."
+                aria-label="Q1. Product A, 10K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
@@ -4748,7 +4748,7 @@ Object {
                 y="191.57142857142856"
               />
               <rect
-                aria-label="-5K. Q1."
+                aria-label="Q1. Product B, -5K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
@@ -4762,7 +4762,7 @@ Object {
                 y="191.57142857142856"
               />
               <rect
-                aria-label="8K. Q1."
+                aria-label="Q1. Product C, 8K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
@@ -4788,7 +4788,7 @@ Object {
                 13k
               </text>
               <rect
-                aria-label="-7K. Q2."
+                aria-label="Q2. Product A, -7K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
@@ -4802,7 +4802,7 @@ Object {
                 y="126.14285714285714"
               />
               <rect
-                aria-label="12K. Q2."
+                aria-label="Q2. Product B, 12K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
@@ -4816,7 +4816,7 @@ Object {
                 y="126.14285714285714"
               />
               <rect
-                aria-label="3K. Q2."
+                aria-label="Q2. Product C, 3K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
@@ -4842,7 +4842,7 @@ Object {
                 8k
               </text>
               <rect
-                aria-label="15K. Q3."
+                aria-label="Q3. Product A, 15K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
@@ -4856,7 +4856,7 @@ Object {
                 y="60.71428571428571"
               />
               <rect
-                aria-label="-4K. Q3."
+                aria-label="Q3. Product B, -4K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#ff8c00"
                 height="45.8"
@@ -4870,7 +4870,7 @@ Object {
                 y="60.71428571428571"
               />
               <rect
-                aria-label="5K. Q3."
+                aria-label="Q3. Product C, 5K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#107c10"
                 height="45.8"
@@ -5361,7 +5361,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="10K. Q1."
+              aria-label="Q1. Product A, 10K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
@@ -5375,7 +5375,7 @@ Object {
               y="191.57142857142856"
             />
             <rect
-              aria-label="-5K. Q1."
+              aria-label="Q1. Product B, -5K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
@@ -5389,7 +5389,7 @@ Object {
               y="191.57142857142856"
             />
             <rect
-              aria-label="8K. Q1."
+              aria-label="Q1. Product C, 8K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
@@ -5415,7 +5415,7 @@ Object {
               13k
             </text>
             <rect
-              aria-label="-7K. Q2."
+              aria-label="Q2. Product A, -7K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
@@ -5429,7 +5429,7 @@ Object {
               y="126.14285714285714"
             />
             <rect
-              aria-label="12K. Q2."
+              aria-label="Q2. Product B, 12K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
@@ -5443,7 +5443,7 @@ Object {
               y="126.14285714285714"
             />
             <rect
-              aria-label="3K. Q2."
+              aria-label="Q2. Product C, 3K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
@@ -5469,7 +5469,7 @@ Object {
               8k
             </text>
             <rect
-              aria-label="15K. Q3."
+              aria-label="Q3. Product A, 15K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
@@ -5483,7 +5483,7 @@ Object {
               y="60.71428571428571"
             />
             <rect
-              aria-label="-4K. Q3."
+              aria-label="Q3. Product B, -4K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#ff8c00"
               height="45.8"
@@ -5497,7 +5497,7 @@ Object {
               y="60.71428571428571"
             />
             <rect
-              aria-label="5K. Q3."
+              aria-label="Q3. Product C, 5K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#107c10"
               height="45.8"
@@ -5990,7 +5990,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_23_"
                 fill="#0078d4"
                 height="1"
@@ -6003,7 +6003,7 @@ Object {
                 y="8.200000000000001"
               />
               <rect
-                aria-label="88%. 2020/04/30."
+                aria-label="2020/04/30. Bananas, 88%."
                 aria-labelledby="toolTipcallout_r_23_"
                 fill="#002050"
                 height="1"
@@ -6016,7 +6016,7 @@ Object {
                 y="11.719999999999999"
               />
               <rect
-                aria-label="37%. 2020/04/30."
+                aria-label="2020/04/30. Apples, 37%."
                 aria-labelledby="toolTipcallout_r_23_"
                 fill="#00188f"
                 height="1"
@@ -6029,7 +6029,7 @@ Object {
                 y="19.2"
               />
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="2020/04/30. Grapes, 20%."
                 aria-labelledby="toolTipcallout_r_23_"
                 fill="#00bcf2"
                 height="1"
@@ -6376,7 +6376,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_23_"
               fill="#0078d4"
               height="1"
@@ -6389,7 +6389,7 @@ Object {
               y="8.200000000000001"
             />
             <rect
-              aria-label="88%. 2020/04/30."
+              aria-label="2020/04/30. Bananas, 88%."
               aria-labelledby="toolTipcallout_r_23_"
               fill="#002050"
               height="1"
@@ -6402,7 +6402,7 @@ Object {
               y="11.719999999999999"
             />
             <rect
-              aria-label="37%. 2020/04/30."
+              aria-label="2020/04/30. Apples, 37%."
               aria-labelledby="toolTipcallout_r_23_"
               fill="#00188f"
               height="1"
@@ -6415,7 +6415,7 @@ Object {
               y="19.2"
             />
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="2020/04/30. Grapes, 20%."
               aria-labelledby="toolTipcallout_r_23_"
               fill="#00bcf2"
               height="1"
@@ -6843,7 +6843,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="1000. String One."
+                aria-label="String One. 1000."
                 aria-labelledby="toolTipcallout_r_26_"
                 fill="#0078d4"
                 height="32.714285714285715"
@@ -6869,7 +6869,7 @@ Object {
                 1k
               </text>
               <rect
-                aria-label="5000. String Two."
+                aria-label="String Two. 5000."
                 aria-labelledby="toolTipcallout_r_26_"
                 fill="#00bcf2"
                 height="32.714285714285715"
@@ -6895,7 +6895,7 @@ Object {
                 5k
               </text>
               <rect
-                aria-label="3000. String Three."
+                aria-label="String Three. 3000."
                 aria-labelledby="toolTipcallout_r_26_"
                 fill="#00188f"
                 height="32.714285714285715"
@@ -6921,7 +6921,7 @@ Object {
                 3k
               </text>
               <rect
-                aria-label="2000. String Four."
+                aria-label="String Four. 2000."
                 aria-labelledby="toolTipcallout_r_26_"
                 fill="#002050"
                 height="32.714285714285715"
@@ -7344,7 +7344,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="1000. String One."
+              aria-label="String One. 1000."
               aria-labelledby="toolTipcallout_r_26_"
               fill="#0078d4"
               height="32.714285714285715"
@@ -7370,7 +7370,7 @@ Object {
               1k
             </text>
             <rect
-              aria-label="5000. String Two."
+              aria-label="String Two. 5000."
               aria-labelledby="toolTipcallout_r_26_"
               fill="#00bcf2"
               height="32.714285714285715"
@@ -7396,7 +7396,7 @@ Object {
               5k
             </text>
             <rect
-              aria-label="3000. String Three."
+              aria-label="String Three. 3000."
               aria-labelledby="toolTipcallout_r_26_"
               fill="#00188f"
               height="32.714285714285715"
@@ -7422,7 +7422,7 @@ Object {
               3k
             </text>
             <rect
-              aria-label="2000. String Four."
+              aria-label="String Four. 2000."
               aria-labelledby="toolTipcallout_r_26_"
               fill="#002050"
               height="32.714285714285715"
@@ -7880,7 +7880,7 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="1000. String One."
+                aria-label="String One. 1000."
                 aria-labelledby="toolTipcallout_r_2a_"
                 fill="#0078d4"
                 height="32.714285714285715"
@@ -7906,7 +7906,7 @@ Object {
                 1k
               </text>
               <rect
-                aria-label="5000. String Two."
+                aria-label="String Two. 5000."
                 aria-labelledby="toolTipcallout_r_2a_"
                 fill="#00bcf2"
                 height="32.714285714285715"
@@ -7932,7 +7932,7 @@ Object {
                 5k
               </text>
               <rect
-                aria-label="3000. String Three."
+                aria-label="String Three. 3000."
                 aria-labelledby="toolTipcallout_r_2a_"
                 fill="#00188f"
                 height="32.714285714285715"
@@ -7958,7 +7958,7 @@ Object {
                 3k
               </text>
               <rect
-                aria-label="2000. String Four."
+                aria-label="String Four. 2000."
                 aria-labelledby="toolTipcallout_r_2a_"
                 fill="#002050"
                 height="32.714285714285715"
@@ -8352,7 +8352,7 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="1000. String One."
+              aria-label="String One. 1000."
               aria-labelledby="toolTipcallout_r_2a_"
               fill="#0078d4"
               height="32.714285714285715"
@@ -8378,7 +8378,7 @@ Object {
               1k
             </text>
             <rect
-              aria-label="5000. String Two."
+              aria-label="String Two. 5000."
               aria-labelledby="toolTipcallout_r_2a_"
               fill="#00bcf2"
               height="32.714285714285715"
@@ -8404,7 +8404,7 @@ Object {
               5k
             </text>
             <rect
-              aria-label="3000. String Three."
+              aria-label="String Three. 3000."
               aria-labelledby="toolTipcallout_r_2a_"
               fill="#00188f"
               height="32.714285714285715"
@@ -8430,7 +8430,7 @@ Object {
               3k
             </text>
             <rect
-              aria-label="2000. String Four."
+              aria-label="String Four. 2000."
               aria-labelledby="toolTipcallout_r_2a_"
               fill="#002050"
               height="32.714285714285715"

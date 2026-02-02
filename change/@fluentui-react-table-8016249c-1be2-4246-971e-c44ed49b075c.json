@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: single-select Table radio header should be fully hidden, not just 0 opacity",
+  "packageName": "@fluentui/react-table",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

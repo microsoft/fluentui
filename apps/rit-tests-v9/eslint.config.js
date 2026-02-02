@@ -9,7 +9,7 @@ module.exports = [
   ...fluentPlugin.configs['flat/react'],
   {
     rules: {
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
       '@nx/workspace-no-restricted-globals': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'import/no-extraneous-dependencies': 'off',

@@ -394,7 +394,7 @@ const resolveCoordinates = (
 };
 
 export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.memo(props => {
-  const { annotations: annotationsProp, context } = props;
+  const { annotations: annotationsProp, context, hideDefaultStyles } = props;
 
   const classes = useChartAnnotationLayerStyles(props);
   const idPrefix = useId('chart-annotation');
@@ -497,6 +497,8 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               preserveOriginalOpacity: annotation.style?.opacity === undefined,
             }),
           }
+        : hideDefaultStyles
+        ? {}
         : {
             backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
           }),
@@ -600,6 +602,8 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       ...containerStyle,
     };
 
+    const annotationClass = hideDefaultStyles ? classes.annotationNoDefaults : classes.annotation;
+
     if (!isMeasurementValid) {
       measurementElements.push(
         <div
@@ -612,12 +616,7 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               }
             }
           }}
-          className={mergeClasses(
-            classes.annotation,
-            classes.measurement,
-            layout?.className,
-            annotation.style?.className,
-          )}
+          className={mergeClasses(annotationClass, classes.measurement, layout?.className, annotation.style?.className)}
           style={measurementStyle}
           aria-hidden={true}
           data-annotation-key={key}
@@ -644,16 +643,21 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
         data-annotation-key={key}
       >
         <div
-          className={mergeClasses(classes.annotation, layout?.className, annotation.style?.className)}
+          className={mergeClasses(annotationClass, layout?.className, annotation.style?.className)}
           style={containerStyle}
           data-annotation-key={key}
         >
           <div
-            className={mergeClasses(classes.annotationContent, annotation.style?.className)}
+            className={mergeClasses(
+              classes.annotationContent,
+              classes.annotationContentInteractive,
+              annotation.style?.className,
+            )}
             style={contentStyle}
             role={annotation.accessibility?.role ?? 'note'}
             aria-label={annotation.accessibility?.ariaLabel ?? (annotationPlainText ? annotationPlainText : undefined)}
             aria-describedby={annotation.accessibility?.ariaDescribedBy}
+            tabIndex={0}
             data-chart-annotation="true"
             data-annotation-key={key}
           >

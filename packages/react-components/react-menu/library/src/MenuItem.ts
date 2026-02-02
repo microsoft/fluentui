@@ -5,4 +5,5 @@ export {
   renderMenuItem_unstable,
   useMenuItemStyles_unstable,
   useMenuItem_unstable,
+  useMenuItemBase_unstable,
 } from './components/MenuItem/index';

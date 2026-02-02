@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { Badge } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 export default {

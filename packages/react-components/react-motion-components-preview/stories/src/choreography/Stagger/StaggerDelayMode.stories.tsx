@@ -19,7 +19,7 @@ const curveOvershootFirmOut =
 const renderAvatarsWithTransition = () => {
   return avatarData.map(avatar => (
     <Scale
-      fromScale={0}
+      outScale={0}
       duration={600}
       exitDuration={300}
       easing={curveOvershootFirmOut}

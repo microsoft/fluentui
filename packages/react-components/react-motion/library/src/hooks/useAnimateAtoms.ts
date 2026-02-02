@@ -15,6 +15,81 @@ const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
   duration: 1,
 };
 
+/**
+ * Creates an animation handle that controls multiple animations.
+ * Is used to avoid leaking "element" references from the hook.
+ *
+ * @param animations
+ */
+function createHandle(animations: Animation[]): AnimationHandle {
+  return {
+    set playbackRate(rate: number) {
+      animations.forEach(animation => {
+        animation.playbackRate = rate;
+      });
+    },
+    setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
+      // Heads up!
+      // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+      // See: https://issues.chromium.org/u/2/issues/383016426
+      const promises = animations.map(animation => {
+        return new Promise<void>((resolve, reject) => {
+          animation.onfinish = () => resolve();
+          animation.oncancel = () => reject();
+        });
+      });
+
+      Promise.all(promises)
+        .then(() => {
+          onfinish();
+        })
+        .catch(() => {
+          oncancel();
+        });
+    },
+    isRunning() {
+      return animations.some(animation => isAnimationRunning(animation));
+    },
+
+    dispose: () => {
+      animations.length = 0;
+    },
+
+    cancel: () => {
+      animations.forEach(animation => {
+        animation.cancel();
+      });
+    },
+    pause: () => {
+      animations.forEach(animation => {
+        animation.pause();
+      });
+    },
+    play: () => {
+      animations.forEach(animation => {
+        animation.play();
+      });
+    },
+    finish: () => {
+      animations.forEach(animation => {
+        animation.finish();
+      });
+    },
+    reverse: () => {
+      // Heads up!
+      //
+      // This is used for the interruptible motion. If the animation is running, we need to reverse it.
+      //
+      // TODO: what do with animations that have "delay"?
+      // TODO: what do with animations that have different "durations"?
+
+      animations.forEach(animation => {
+        animation.reverse();
+      });
+    },
+  };
+}
+
 function useAnimateAtomsInSupportedEnvironment() {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
   const SUPPORTS_PERSIST = typeof window !== 'undefined' && typeof window.Animation?.prototype.persist === 'function';
@@ -67,68 +142,7 @@ function useAnimateAtomsInSupportedEnvironment() {
         })
         .filter(animation => !!animation) as Animation[];
 
-      return {
-        set playbackRate(rate: number) {
-          animations.forEach(animation => {
-            animation.playbackRate = rate;
-          });
-        },
-        setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
-          // Heads up!
-          // This could use "Animation:finished", but it's causing a memory leak in Chromium.
-          // See: https://issues.chromium.org/u/2/issues/383016426
-          const promises = animations.map(animation => {
-            return new Promise<void>((resolve, reject) => {
-              animation.onfinish = () => resolve();
-              animation.oncancel = () => reject();
-            });
-          });
-
-          Promise.all(promises)
-            .then(() => {
-              onfinish();
-            })
-            .catch(() => {
-              oncancel();
-            });
-        },
-        isRunning() {
-          return animations.some(animation => isAnimationRunning(animation));
-        },
-
-        cancel: () => {
-          animations.forEach(animation => {
-            animation.cancel();
-          });
-        },
-        pause: () => {
-          animations.forEach(animation => {
-            animation.pause();
-          });
-        },
-        play: () => {
-          animations.forEach(animation => {
-            animation.play();
-          });
-        },
-        finish: () => {
-          animations.forEach(animation => {
-            animation.finish();
-          });
-        },
-        reverse: () => {
-          // Heads up!
-          //
-          // This is used for the interruptible motion. If the animation is running, we need to reverse it.
-          //
-          // TODO: what do with animations that have "delay"?
-          // TODO: what do with animations that have different "durations"?
-
-          animations.forEach(animation => {
-            animation.reverse();
-          });
-        },
-      };
+      return createHandle(animations);
     },
     [SUPPORTS_PERSIST],
   );
@@ -179,6 +193,10 @@ function useAnimateAtomsInTestEnvironment() {
         },
         isRunning() {
           return false;
+        },
+
+        dispose() {
+          /* no-op */
         },
 
         cancel() {

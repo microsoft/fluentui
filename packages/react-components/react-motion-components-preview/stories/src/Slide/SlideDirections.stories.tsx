@@ -78,14 +78,14 @@ const useClasses = makeStyles({
 });
 
 const slideDirections = {
-  Top: { fromX: '0%', fromY: '-100%' },
-  'Top-Right': { fromX: '100%', fromY: '-100%' },
-  Right: { fromX: '100%', fromY: '0%' },
-  'Bottom-Right': { fromX: '100%', fromY: '100%' },
-  Bottom: { fromX: '0%', fromY: '100%' },
-  'Bottom-Left': { fromX: '-100%', fromY: '100%' },
-  Left: { fromX: '-100%', fromY: '0%' },
-  'Top-Left': { fromX: '-100%', fromY: '-100%' },
+  Top: { outX: '0%', outY: '-100%' },
+  'Top-Right': { outX: '100%', outY: '-100%' },
+  Right: { outX: '100%', outY: '0%' },
+  'Bottom-Right': { outX: '100%', outY: '100%' },
+  Bottom: { outX: '0%', outY: '100%' },
+  'Bottom-Left': { outX: '-100%', outY: '100%' },
+  Left: { outX: '-100%', outY: '0%' },
+  'Top-Left': { outX: '-100%', outY: '-100%' },
 };
 
 const directionIcons: Record<keyof typeof slideDirections, FluentIcon> = {
@@ -146,11 +146,11 @@ export const Directions = (): JSXElement => {
       </div>
 
       <div className={classes.demo}>
-        <Slide visible={visible} fromX={slideParams.fromX} fromY={slideParams.fromY}>
+        <Slide visible={visible} outX={slideParams.outX} outY={slideParams.outY}>
           <div className={classes.card}>
             <p>Slide from {selectedDirection}</p>
-            <p>fromX = {slideParams.fromX}</p>
-            <p>fromY = {slideParams.fromY}</p>
+            <p>outX = {slideParams.outX}</p>
+            <p>outY = {slideParams.outY}</p>
           </div>
         </Slide>
       </div>

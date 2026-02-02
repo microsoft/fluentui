@@ -58,17 +58,17 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                   y="170"
                 >
                   <div
-                    class="fui-chartAnnotationLayer__annotation"
+                    class=""
                     data-annotation-key="annotation-1"
-                    style="background-color: var(--colorNeutralBackground1);"
                   >
                     <div
                       aria-label="Test Annotation 1"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-1"
                       data-chart-annotation="true"
                       role="note"
                       style="opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 1
                     </div>
@@ -83,17 +83,18 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                   y="250"
                 >
                   <div
-                    class="fui-chartAnnotationLayer__annotation"
+                    class=""
                     data-annotation-key="annotation-2"
                     style="background-color: rgba(255, 255, 255, 0.8);"
                   >
                     <div
                       aria-label="Test Annotation 2"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-2"
                       data-chart-annotation="true"
                       role="note"
                       style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 2
                     </div>
@@ -102,10 +103,10 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
               </svg>
               <div
                 aria-hidden="true"
-                class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
+                class="fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden; background-color: var(--colorNeutralBackground1);"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
               >
                 <div
                   class="fui-chartAnnotationLayer__annotationContent"
@@ -116,7 +117,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
               </div>
               <div
                 aria-hidden="true"
-                class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
+                class="fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-2"
                 data-chart-annotation-measurement="true"
                 style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
@@ -185,17 +186,17 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                   y="170"
                 >
                   <div
-                    class="fui-chartAnnotationLayer__annotation"
+                    class=""
                     data-annotation-key="annotation-1"
-                    style="background-color: var(--colorNeutralBackground1);"
                   >
                     <div
                       aria-label="Test Annotation 1"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-1"
                       data-chart-annotation="true"
                       role="note"
                       style="opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 1
                     </div>
@@ -210,17 +211,18 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                   y="250"
                 >
                   <div
-                    class="fui-chartAnnotationLayer__annotation"
+                    class=""
                     data-annotation-key="annotation-2"
                     style="background-color: rgba(255, 255, 255, 0.8);"
                   >
                     <div
                       aria-label="Test Annotation 2"
-                      class="fui-chartAnnotationLayer__annotationContent"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
                       data-annotation-key="annotation-2"
                       data-chart-annotation="true"
                       role="note"
                       style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
                     >
                       Test Annotation 2
                     </div>
@@ -229,10 +231,10 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
               </svg>
               <div
                 aria-hidden="true"
-                class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
+                class="fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden; background-color: var(--colorNeutralBackground1);"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
               >
                 <div
                   class="fui-chartAnnotationLayer__annotationContent"
@@ -243,7 +245,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
               </div>
               <div
                 aria-hidden="true"
-                class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
+                class="fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-2"
                 data-chart-annotation-measurement="true"
                 style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"

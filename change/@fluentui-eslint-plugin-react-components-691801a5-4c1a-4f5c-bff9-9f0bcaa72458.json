@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: support granular lib imports",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

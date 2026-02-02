@@ -1,14 +1,14 @@
 // @ts-check
 
-const fluentPlugin = require('@fluentui/eslint-plugin');
+const rootConfig = require('../../../eslint.config.js');
 
 module.exports = [
-  ...fluentPlugin.configs['flat/react'],
+  ...rootConfig,
   {
     rules: {
       '@griffel/styles-file': 'off',
       '@nx/workspace-no-restricted-globals': 'off',
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
       'prefer-exponentiation-operator': 'off',
     },
   },

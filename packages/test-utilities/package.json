@@ -18,11 +18,6 @@
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",
     "enzyme": "^3.0.0",

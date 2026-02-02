@@ -1,9 +1,9 @@
 // @ts-check
 
-const fluentPlugin = require('@fluentui/eslint-plugin');
+const rootConfig = require('../../../../eslint.config.js');
 
 module.exports = [
-  ...fluentPlugin.configs['flat/react'],
+  ...rootConfig,
   {
     files: ['**/*.stories.{tsx,ts}'],
     rules: {

@@ -7,12 +7,6 @@ module.exports = [
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'warn',
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          packageDir: ['.', '../../../../'],
-        },
-      ],
     },
   },
 ];

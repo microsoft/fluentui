@@ -18,12 +18,6 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "tslib": "^2.1.0"
   },

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
 import { Chart } from '../../types/index';
@@ -33,6 +34,11 @@ export interface FunnelChartDataPoint {
  */
 export interface FunnelChartProps {
   /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
+  /**
    * Data points for the funnel chart
    */
   data: FunnelChartDataPoint[];
@@ -40,6 +46,7 @@ export interface FunnelChartProps {
    * Title for the chart
    */
   chartTitle?: string;
+
   /**
    * Width of the chart
    */
@@ -128,9 +135,19 @@ export interface FunnelChartStyles {
   chart?: string;
 
   /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
+
+  /**
    * Styles for text elements
    */
   text?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 
   /**
    * Styles for the callout root element

@@ -173,13 +173,9 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
         "devDependencies": Object {
-          "@proj/eslint-plugin": "*",
           "@proj/react-components": "*",
           "@proj/react-one-compat": "*",
-          "@proj/react-storybook-addon": "*",
-          "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
-          "@proj/scripts-storybook": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -241,12 +237,7 @@ describe('split-library-in-two generator', () => {
       module.exports = [
         ...fluentPlugin.configs['flat/react'],
         {
-          rules: {
-            'import/no-extraneous-dependencies': [
-              'error',
-              { packageDir: ['.', '../../../../'] },
-            ],
-          },
+          rules: {},
         },
       ];
       "
@@ -539,7 +530,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
   tree.write(
     `${rootPath}/stories/index.stories.tsx`,
     stripIndents`
-    import { Meta } from '@storybook/react';
+    import { Meta } from '@storybook/react-webpack5';
     import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
     export { Default } from './Default.stories';

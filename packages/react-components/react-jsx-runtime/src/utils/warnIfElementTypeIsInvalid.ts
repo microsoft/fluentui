@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { isValidElementType } from 'react-is';
 
 export function warnIfElementTypeIsInvalid(type: React.ElementType): void {
-  if (process.env.NODE_ENV === 'development' && typeof type === 'object' && !isValidElementType(type)) {
+  if (
+    process.env.NODE_ENV === 'development' &&
+    typeof type === 'object' &&
+    type !== null &&
+    // eslint-disable-next-line dot-notation
+    type['$$typeof'] === undefined
+  ) {
     // eslint-disable-next-line no-console
     console.error(/** #__DE-INDENT__ */ `
         @fluentui/react-jsx-runtime:

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/AvatarGroup Migration" />
 
@@ -79,20 +79,20 @@ const AvatarGroupV9BasicExample = () => {
 
 This table maps `Facepile` v8 props to the v9's `AvatarGroup` equivalent.
 
-| v8 `Facepile`            | v9 `AvatarGroup`                                           |
-| ------------------------ | ---------------------------------------------------------- |
-| `personas`               | `children`                                                 |
-| `addButtonProps`         | -                                                          |
-| `className`              | `className`                                                |
-| `getPersonaProps`        | `AvatarGroupItem`'s props                                  |
-| `maxDisplayablePersonas` | `maxAvatars` option in `partitionAvatarGroupItems`         |
-| `onRenderPersona`        | Render function for the `AvatarGroupItem`                  |
-| `onRenderPersonaCoin`    | Render function for the `avatar` slot in `AvatarGroupItem` |
-| `onRenderPersonaWrapper` | -                                                          |
-| `overflowButtonProps`    | `AvatarGroupPopover`'s props                               |
-| `overflowButtonType`     | `AvatarGroupPopover`'s `indicator` prop                    |
-| `overflowPersonas`       | `AvatarGroupPopover`'s children                            |
-| `personaSize`            | `size`                                                     |
-| `showAddButton`          | -                                                          |
-| `showTooltip`            | -                                                          |
-| `styles`                 | (theme)                                                    |
+| v8 \`Facepile\`            | v9 \`AvatarGroup\`                                             |
+| -------------------------- | -------------------------------------------------------------- |
+| \`personas\`               | \`children\`                                                   |
+| \`addButtonProps\`         | \-                                                             |
+| \`className\`              | \`className\`                                                  |
+| \`getPersonaProps\`        | \`AvatarGroupItem\`'s props                                    |
+| \`maxDisplayablePersonas\` | \`maxAvatars\` option in \`partitionAvatarGroupItems\`         |
+| \`onRenderPersona\`        | Render function for the \`AvatarGroupItem\`                    |
+| \`onRenderPersonaCoin\`    | Render function for the \`avatar\` slot in \`AvatarGroupItem\` |
+| \`onRenderPersonaWrapper\` | \-                                                             |
+| \`overflowButtonProps\`    | \`AvatarGroupPopover\`'s props                                 |
+| \`overflowButtonType\`     | \`AvatarGroupPopover\`'s \`indicator\` prop                    |
+| \`overflowPersonas\`       | \`AvatarGroupPopover\`'s children                              |
+| \`personaSize\`            | \`size\`                                                       |
+| \`showAddButton\`          | \-                                                             |
+| \`showTooltip\`            | \-                                                             |
+| \`styles\`                 | (theme)                                                        |

@@ -18,9 +18,9 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "typescript-eslint": "^8.46.2",
-    "eslint": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript-eslint": ">= 8.46.2",
+    "eslint": ">= 8.0.0",
+    "typescript": ">= 5.0.0"
   },
   "exports": {
     ".": {

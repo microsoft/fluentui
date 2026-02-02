@@ -24,13 +24,6 @@
     "build": "just-scripts build",
     "verify-packaging": "just-scripts verify-packaging"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/dom-utilities": "^2.3.10",
     "@fluentui/merge-styles": "^8.6.14",

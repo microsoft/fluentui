@@ -48,7 +48,7 @@ export const Default = (): JSXElement => {
         </Field>
       </div>
 
-      <Slide visible={visible}>
+      <Slide visible={visible} outY="20px">
         <div className={classes.card}>
           <LoremIpsum />
         </div>

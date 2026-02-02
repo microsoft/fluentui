@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/style-utilities",
-  "version": "8.13.6",
+  "version": "8.14.0",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -23,12 +23,6 @@
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

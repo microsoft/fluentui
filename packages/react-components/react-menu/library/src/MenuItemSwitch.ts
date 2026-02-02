@@ -6,4 +6,5 @@ export {
   renderMenuItemSwitch_unstable,
   useMenuItemSwitchStyles_unstable,
   useMenuItemSwitch_unstable,
+  useMenuItemSwitchBase_unstable,
 } from './components/MenuItemSwitch/index';

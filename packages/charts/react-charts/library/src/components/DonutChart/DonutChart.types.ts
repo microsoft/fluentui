@@ -4,12 +4,18 @@ import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponen
 import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Donut Chart properties.
  * {@docCategory DonutChart}
  */
 export interface DonutChartProps extends CartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -157,6 +163,11 @@ export interface DonutChartStyles {
   legendContainer: string;
 
   /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
+
+  /**
    * styles for axis annotation
    */
   axisAnnotation?: string;
@@ -165,4 +176,9 @@ export interface DonutChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 }

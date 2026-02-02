@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import UseSafeZoneAreaDescription from './UseSafeZoneAreaDescription.md';
 import { UseSafeZoneAreaDefault } from './UseSafeZoneAreaDefault.stories';

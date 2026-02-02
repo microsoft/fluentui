@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "enable multiplot for table, gauge and funnel chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

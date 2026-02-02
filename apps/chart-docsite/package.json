@@ -19,12 +19,6 @@
     "storybook:docs": "yarn storybook --docs",
     "test": "jest --passWithNoTests"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/storybook-llms-extractor": "*"
-  },
   "dependencies": {
     "@fluentui/react-charts": "*",
     "@fluentui/react-storybook-addon": "*",

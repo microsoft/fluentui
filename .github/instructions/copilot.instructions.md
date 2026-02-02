@@ -1,17 +1,21 @@
+---
+applyTo: '**'
+---
+
 # Fluent UI Copilot Instructions
 
 You are working in the Microsoft Fluent UI monorepo, a comprehensive design system and UI component library for web applications. This repository contains multiple versions and implementations of Fluent UI components serving millions of users across Microsoft's products.
 
 ## Repository Overview
 
-This is a large Nx monorepo (Nx 20.8.1) with the following key characteristics:
+This is a large Nx monorepo with the following key characteristics:
 
-- **Package Manager**: Yarn with strict dependency management
+- **Package Manager**: Yarn v1 with strict dependency management
 - **Build System**: Nx workspace with custom plugins (`tools/workspace-plugin/`)
-- **Node.js Versions**: ^20.0.0 || ^22.0.0
+- **Node.js Versions**: ^22.0.0
 - **Languages**: TypeScript (strict mode), React, Web Components
-- **Testing**: Jest, Cypress (E2E), Chromatic (VR), SSR testing
-- **Documentation**: Storybook sites, API docs via API Extractor
+- **Testing**: Jest, Cypress (E2E), Storybook + StoryWright (Visual Regression), SSR testing (test-ssr)
+- **Documentation**: Storybook sites, api.md files via API Extractor
 - **Release**: Beachball for version management and change files
 
 ## Project Structure
@@ -19,16 +23,25 @@ This is a large Nx monorepo (Nx 20.8.1) with the following key characteristics:
 1. **Fluent UI v9** (`@fluentui/react-components`) - **PRIORITIZE FOR NEW WORK**
 
    - Location: `packages/react-components/`
+   - Nx Project Tags: `vNext`
    - Features: Current stable version, actively developed. Tree-shakeable, atomic CSS classes
 
 2. **Fluent UI v8** (`@fluentui/react`) - **MAINTENANCE ONLY**
 
    - Location: `packages/react/`
+   - Nx Project Tags: `v8`
    - Status: Maintenance mode
    - Features: Runtime styling, mature and stable
 
-3. **Web Components** (`@fluentui/web-components`) - Framework-agnostic
+3. **Fluent UI Charting**
+
+   - Location: `packages/charts/`
+   - Nx Project Tags: `v8`, `vNext`,`charting`
+   - Features: Charting components compatible with both v8 and v9
+
+4. **Web Components** (`@fluentui/web-components`) - Framework-agnostic
    - Location: `packages/web-components/`
+   - Nx Project Tags: `web-components`
    - Used by: Microsoft Edge
    - Features: Platform-agnostic web standards
 
@@ -38,7 +51,7 @@ More information about the projects and their status can be found through NX tag
 
 ### Essential Nx Workspace Commands
 
-This workspace uses **Nx 20.8.1** with custom workspace plugins. Key commands:
+This workspace uses **Nx** with custom workspace plugins. Key commands:
 
 ```bash
 # Initial setup
@@ -88,9 +101,8 @@ yarn nx show projects                   # List all projects
 yarn nx run react-button:test
 yarn nx run react-button:test -u              # Update snapshots
 
-# Visual Regression - Chromatic via Storybook
-yarn nx run react-button:build-storybook
-yarn nx run vr-tests-react-components:test-vr
+# Visual Regression -  Storybook + StoryWright
+yarn nx run vr-tests-react-components:test-vr # Creates Diff images only. no actual assertions are run - this is used only from CI
 
 # E2E Integration Tests - Cypress
 yarn nx run react-components:e2e
@@ -99,9 +111,11 @@ yarn nx run react-components:e2e
 yarn nx run ssr-tests-v9:test-ssr
 
 # Cross-version React compatibility
-yarn nx run react-17-tests-v9:test
-yarn nx run react-18-tests-v9:test
-yarn nx run react-19-tests-v9:test
+yarn nx run rit-tests-v9:test-rit
+
+# Cross-version React testing for react-text project
+yarn nx run react-text:test-rit
+
 ```
 
 ### Code Quality and Standards

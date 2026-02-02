@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`correctYearMonth Should return dates array when input array contains months data 1`] = `
+Array [
+  "10 01, 2025",
+  "11 01, 2025",
+  "1 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MM format 1`] = `
+Array [
+  "Jan 01, 2026",
+  "Feb 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return dates array when input array contains months data in MMM format 1`] = `
+Array [
+  "January 01, 2026",
+  "February 01, 2026",
+]
+`;
+
+exports[`correctYearMonth Should return error when input array contains invalid months 1`] = `
+Array [
+  "10 01, 2026",
+  "11 01, 2026",
+  null,
+]
+`;
+
 exports[`sanitizeJson Should return json object when depth inside the range 1`] = `
 Object {
   "data": Array [
@@ -346,7 +376,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -609,7 +639,7 @@ Object {
   "showRoundOffXTickValues": false,
   "showYAxisLables": true,
   "width": 850,
-  "wrapXAxisLables": true,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -3115,7 +3145,10 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3320,6 +3353,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisAnnotation": "PHP Framework Popularity at Work - SitePoint, 2015",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "xMaxValue": 1830.6731869091736,
@@ -4907,7 +4941,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
+  "xAxisAnnotation": "",
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -5058,6 +5092,7 @@ Object {
   },
   "enableReflow": false,
   "height": 772,
+  "hideLegend": false,
   "styles": Object {
     "root": Object {
       "fontSize": 10,
@@ -6621,7 +6656,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
-  "wrapXAxisLables": false,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -6911,8 +6946,13 @@ Object {
   "roundedTicks": true,
   "showYAxisLables": true,
   "supportNegativeData": true,
+  "titleStyles": Object {
+    "titleFont": Object {
+      "color": "#4D5663",
+    },
+  },
   "width": undefined,
-  "wrapXAxisLables": false,
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
@@ -7029,7 +7069,10 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
-  "wrapXAxisLables": true,
+  "xAxis": Object {
+    "tickLayout": "auto",
+  },
+  "xAxisAnnotation": "",
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",

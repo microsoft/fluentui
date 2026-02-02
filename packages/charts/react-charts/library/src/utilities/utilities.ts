@@ -514,7 +514,7 @@ export function createDateXAxis(
   if (hideTickOverlap) {
     const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
     const [start, end] = xAxisScale.range();
-    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+    tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -2398,12 +2398,12 @@ export const generateMonthlyTicks = (
   return ticks;
 };
 
-const generateNumericTicks = (
+export const generateNumericTicks = (
   scaleType: AxisScaleType | undefined,
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: number[],
-) => {
+): number[] | undefined => {
   const refTick = typeof tick0 === 'number' ? tick0 : 0;
 
   if (scaleType === 'log') {
@@ -2431,12 +2431,12 @@ const generateNumericTicks = (
   }
 };
 
-const generateDateTicks = (
+export const generateDateTicks = (
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],
   useUTC?: boolean,
-) => {
+): Date[] | undefined => {
   const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
 
   if (typeof tickStep === 'number' && tickStep > 0) {
