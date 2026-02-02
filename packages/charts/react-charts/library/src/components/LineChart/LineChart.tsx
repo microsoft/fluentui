@@ -581,7 +581,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={circleId}
                     r={
                       currentMarkerSize
-                        ? maxMarkerSize > extraMaxPixels
+                        ? maxMarkerSize < extraMaxPixels
                           ? currentMarkerSize
                           : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
                         : activePoint === circleId
@@ -788,7 +788,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     key={`${_circleId}_${i}_${k}_marker`}
                     r={
                       markerSize
-                        ? maxMarkerSize > extraMaxPixels
+                        ? maxMarkerSize < extraMaxPixels
                           ? markerSize
                           : (markerSize * extraMaxPixels) / maxMarkerSize
                         : activePoint === _circleId
@@ -857,7 +857,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       key={circleId}
                       r={
                         currentMarkerSize
-                          ? maxMarkerSize > extraMaxPixels
+                          ? maxMarkerSize < extraMaxPixels
                             ? currentMarkerSize
                             : (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
                           : 4
@@ -1016,7 +1016,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           key={lastCircleId}
                           r={
                             currentMarkerSize
-                              ? maxMarkerSize > extraMaxPixels
+                              ? maxMarkerSize < extraMaxPixels
                                 ? currentMarkerSize
                                 : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
                               : 4

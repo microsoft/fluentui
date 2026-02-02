@@ -427,16 +427,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               pointMarker=2, extraMaxPixel=100, max=2 (expected:2)
               pointMarker=20, extraMaxPixel=25, max=30 (20- (scale_down_factor)*20 = 16.66) ::: (scale_down = 30--> 25, roughly -16.66%)
             */
-            if (maxMarkerSize > extraMaxPixels) {
+            if (maxMarkerSize < extraMaxPixels) {
+              // if enough space is there, directly render the values, no need to scale it down or up
+              circleRadius = pointMarkerSize;
+            } else {
               /*
                 markers are scaled down, based on available extra space
                 maxMarkerSize --> reduced to --> extraMaxPixels
                 other markers scaled down respectively
               */
               circleRadius = (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
-            } else {
-              // if enough space is there, directly render the values, no need to scale it down or up
-              circleRadius = pointMarkerSize;
             }
           } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
             circleRadius =
