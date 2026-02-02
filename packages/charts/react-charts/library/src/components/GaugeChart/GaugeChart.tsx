@@ -19,7 +19,7 @@ import {
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
-import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
+import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment, GaugeChartAnnotation } from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
@@ -49,6 +49,58 @@ export const calcNeedleRotation = (chartValue: number, minValue: number, maxValu
   }
 
   return needleRotation;
+};
+
+/**
+ * Converts a gauge value to an angle in radians for SVG positioning.
+ * The gauge spans from -90° (left, minValue) to +90° (right, maxValue).
+ * @returns angle in radians for use with Math.cos/sin
+ */
+export const calcValueToAngle = (value: number, minValue: number, maxValue: number): number => {
+  const clampedValue = Math.max(minValue, Math.min(maxValue, value));
+  const fraction = (clampedValue - minValue) / (maxValue - minValue);
+  // Convert to radians: gauge goes from -PI/2 (left) to PI/2 (right)
+  // In SVG coordinates, we need to adjust for the coordinate system
+  const angleDegrees = -90 + fraction * 180; // -90 to +90 degrees
+  return (angleDegrees * Math.PI) / 180;
+};
+
+/**
+ * Calculates the x, y position for an annotation on the gauge chart.
+ */
+export const calcAnnotationPosition = (
+  value: number,
+  position: 'inner' | 'outer' | 'arc',
+  minValue: number,
+  maxValue: number,
+  innerRadius: number,
+  outerRadius: number,
+  radialOffset: number = 0,
+): { x: number; y: number } => {
+  const angle = calcValueToAngle(value, minValue, maxValue);
+
+  let radius: number;
+  const padding = 8;
+  switch (position) {
+    case 'inner':
+      radius = innerRadius - padding - radialOffset;
+      break;
+    case 'outer':
+      radius = outerRadius + padding + radialOffset;
+      break;
+    case 'arc':
+    default:
+      radius = (innerRadius + outerRadius) / 2 + radialOffset;
+      break;
+  }
+
+  // In SVG coordinate system, y increases downward
+  // For a gauge centered at origin with 0 at top:
+  // x = radius * sin(angle), y = -radius * cos(angle)
+  return {
+    x: radius * Math.sin(angle),
+    y: -radius * Math.cos(angle),
+  };
 };
 
 export const getSegmentLabel = (
@@ -277,6 +329,64 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           />
         </g>
       );
+    }
+
+    function _renderDefaultAnnotation(annotation: GaugeChartAnnotation): React.ReactNode {
+      const { coordinates, style, ariaLabel, id } = annotation;
+      const position = coordinates.position || 'outer';
+      const radialOffset = coordinates.radialOffset || 0;
+
+      const { x, y } = calcAnnotationPosition(
+        coordinates.value,
+        position,
+        _minValue,
+        _maxValue,
+        _innerRadius,
+        _outerRadius,
+        radialOffset,
+      );
+
+      // Adjust x for RTL
+      const adjustedX = _isRTL ? -x : x;
+
+      const annotationStyle: React.CSSProperties = {
+        fill: style?.textColor,
+        fontSize: style?.fontSize,
+        fontWeight: style?.fontWeight,
+      };
+
+      return (
+        <g
+          key={id || `annotation-${coordinates.value}`}
+          transform={`translate(${adjustedX}, ${y})`}
+          className={classes.annotationContainer}
+          role="img"
+          aria-label={ariaLabel || annotation.text}
+        >
+          <text
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className={style?.className || classes.annotationText}
+            style={annotationStyle}
+          >
+            {annotation.text}
+          </text>
+        </g>
+      );
+    }
+
+    function _renderAnnotations() {
+      const { annotations, onRenderAnnotation } = props;
+      if (!annotations || annotations.length === 0) {
+        return null;
+      }
+
+      return annotations.map(annotation => {
+        if (onRenderAnnotation) {
+          return onRenderAnnotation(annotation, _renderDefaultAnnotation);
+        }
+        return _renderDefaultAnnotation(annotation);
+      });
     }
 
     function _renderLegends() {
@@ -695,6 +805,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   wrapContent={_wrapContent}
                 />
               )}
+              {_renderAnnotations()}
             </g>
           </svg>
         </div>

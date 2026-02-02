@@ -1,7 +1,95 @@
+import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
 import { AccessibilityProps, Chart } from '../../types/index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { TitleStyles } from '../../utilities/Common.styles';
+
+/**
+ * Position type for gauge annotations relative to the arc
+ * {@docCategory GaugeChart}
+ */
+export type GaugeChartAnnotationPosition = 'inner' | 'outer' | 'arc';
+
+/**
+ * Coordinate specification for gauge annotations
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartAnnotationCoordinate {
+  /**
+   * The value on the gauge where the annotation should be placed.
+   * Will be clamped between minValue and maxValue.
+   */
+  value: number;
+
+  /**
+   * Radial position relative to the gauge arc
+   * - 'inner': Inside the arc (towards center)
+   * - 'outer': Outside the arc
+   * - 'arc': On the arc itself
+   * @default 'outer'
+   */
+  position?: GaugeChartAnnotationPosition;
+
+  /**
+   * Pixel offset from the calculated position (positive = outward from center)
+   * @default 0
+   */
+  radialOffset?: number;
+}
+
+/**
+ * Style properties for gauge annotations
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartAnnotationStyle {
+  /** Text color */
+  textColor?: string;
+
+  /** Background color */
+  backgroundColor?: string;
+
+  /** Border color */
+  borderColor?: string;
+
+  /** Border width in pixels */
+  borderWidth?: number;
+
+  /** Border radius in pixels */
+  borderRadius?: number;
+
+  /** Font size */
+  fontSize?: string;
+
+  /** Font weight */
+  fontWeight?: React.CSSProperties['fontWeight'];
+
+  /** Padding around text */
+  padding?: string;
+
+  /** Custom CSS class */
+  className?: string;
+}
+
+/**
+ * Annotation configuration for GaugeChart
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartAnnotation {
+  /** Unique identifier for the annotation */
+  id?: string;
+
+  /** Text content to display */
+  text: string;
+
+  /** Position specification */
+  coordinates: GaugeChartAnnotationCoordinate;
+
+  /** Visual styling */
+  style?: GaugeChartAnnotationStyle;
+
+  /** Accessibility label for screen readers */
+  ariaLabel?: string;
+}
 
 /**
  * Gauge Chart segment interface.
@@ -162,6 +250,21 @@ export interface GaugeChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.Ref<Chart>;
+
+  /**
+   * Annotations to display on the gauge chart.
+   * Annotations can be used to highlight specific values, thresholds, or targets.
+   */
+  annotations?: GaugeChartAnnotation[];
+
+  /**
+   * Custom renderer for annotations.
+   * Use this to provide a custom rendering for annotations.
+   */
+  onRenderAnnotation?: (
+    annotation: GaugeChartAnnotation,
+    defaultRender: (annotation: GaugeChartAnnotation) => React.ReactNode,
+  ) => React.ReactNode;
 }
 
 /**
@@ -273,4 +376,14 @@ export interface GaugeChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the annotation container
+   */
+  annotationContainer?: string;
+
+  /**
+   * Styles for annotation text
+   */
+  annotationText?: string;
 }

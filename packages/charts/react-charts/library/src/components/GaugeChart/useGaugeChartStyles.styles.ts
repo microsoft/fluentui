@@ -28,6 +28,8 @@ export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   legendsContainer: 'fui-gc__legendsContainer',
   chartWrapper: 'fui-gc__chartWrapper',
   svgTooltip: 'fui-gc__svgTooltip',
+  annotationContainer: 'fui-gc__annotationContainer',
+  annotationText: 'fui-gc__annotationText',
 };
 
 const useStyles = makeStyles({
@@ -125,6 +127,17 @@ const useStyles = makeStyles({
   legendsContainer: {
     width: '100%',
   },
+  annotationContainer: {
+    ...typographyStyles.caption1,
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+  },
+  annotationText: {
+    ...typographyStyles.caption1,
+    fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
+    pointerEvents: 'none',
+  },
 });
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   const baseStyles = useStyles();
@@ -185,6 +198,16 @@ export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles =>
       gaugeChartClassNames.legendsContainer,
       baseStyles.legendsContainer,
       props.styles?.legendsContainer,
+    ),
+    annotationContainer: mergeClasses(
+      gaugeChartClassNames.annotationContainer,
+      baseStyles.annotationContainer,
+      props.styles?.annotationContainer,
+    ),
+    annotationText: mergeClasses(
+      gaugeChartClassNames.annotationText,
+      baseStyles.annotationText,
+      props.styles?.annotationText,
     ),
   };
 };

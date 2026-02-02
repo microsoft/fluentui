@@ -678,3 +678,192 @@ describe('Gauge Chart - Callout', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
 });
+
+describe('GaugeChart - Annotations', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('should render an annotation at the specified value', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Target')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render multiple annotations', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Low',
+            coordinates: { value: 25, position: 'outer' },
+          },
+          {
+            text: 'High',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Low')).toBeInTheDocument();
+    expect(screen.getByText('High')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render annotations at different radial positions', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Inner',
+            coordinates: { value: 25, position: 'inner' },
+          },
+          {
+            text: 'Arc',
+            coordinates: { value: 50, position: 'arc' },
+          },
+          {
+            text: 'Outer',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Inner')).toBeInTheDocument();
+    expect(screen.getByText('Arc')).toBeInTheDocument();
+    expect(screen.getByText('Outer')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply custom styles to annotations', () => {
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Styled',
+            coordinates: { value: 50, position: 'outer' },
+            style: {
+              textColor: 'red',
+              fontSize: '14px',
+              fontWeight: 'bold',
+            },
+          },
+        ]}
+      />,
+    );
+    const annotation = screen.getByText('Styled');
+    expect(annotation).toBeInTheDocument();
+  });
+
+  it('should use custom ariaLabel for accessibility', () => {
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+            ariaLabel: 'Target value at 75',
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByLabelText('Target value at 75')).toBeInTheDocument();
+  });
+
+  it('should not render annotations when array is empty', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={50} annotations={[]} />);
+    expect(getByClass(container, /annotationText/i)).toHaveLength(0);
+  });
+
+  it('should support custom annotation rendering', () => {
+    const customRenderer = jest.fn((annotation, defaultRender) => {
+      return (
+        <g key={annotation.id} data-testid="custom-annotation">
+          <text>{`Custom: ${annotation.text}`}</text>
+        </g>
+      );
+    });
+
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'custom-1',
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+        onRenderAnnotation={customRenderer}
+      />,
+    );
+    expect(customRenderer).toHaveBeenCalled();
+    expect(screen.getByText('Custom: Target')).toBeInTheDocument();
+  });
+});
+
+describe('GaugeChart - Annotation helper functions', () => {
+  it('calcValueToAngle should convert value to correct angle', () => {
+    const { calcValueToAngle } = require('./GaugeChart');
+    // At minValue (0), angle should be -90 degrees = -PI/2 radians
+    expect(calcValueToAngle(0, 0, 100)).toBeCloseTo(-Math.PI / 2, 5);
+    // At maxValue (100), angle should be +90 degrees = PI/2 radians
+    expect(calcValueToAngle(100, 0, 100)).toBeCloseTo(Math.PI / 2, 5);
+    // At midpoint (50), angle should be 0 degrees = 0 radians
+    expect(calcValueToAngle(50, 0, 100)).toBeCloseTo(0, 5);
+  });
+
+  it('calcAnnotationPosition should calculate correct positions', () => {
+    const { calcAnnotationPosition } = require('./GaugeChart');
+    const innerRadius = 50;
+    const outerRadius = 70;
+
+    // At value 50 (center), x should be 0
+    const posCenter = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posCenter.x).toBeCloseTo(0, 3);
+    expect(posCenter.y).toBeLessThan(0); // y should be negative (above center)
+
+    // At value 0 (left), x should be negative
+    const posLeft = calcAnnotationPosition(0, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posLeft.x).toBeLessThan(0);
+
+    // At value 100 (right), x should be positive
+    const posRight = calcAnnotationPosition(100, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posRight.x).toBeGreaterThan(0);
+  });
+
+  it('calcAnnotationPosition should apply radial offset correctly', () => {
+    const { calcAnnotationPosition } = require('./GaugeChart');
+    const innerRadius = 50;
+    const outerRadius = 70;
+
+    const posNoOffset = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius, 0);
+    const posWithOffset = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius, 10);
+
+    // At value 50, both should have x = 0, but offset should move y further from center
+    expect(Math.abs(posWithOffset.y)).toBeGreaterThan(Math.abs(posNoOffset.y));
+  });
+});
