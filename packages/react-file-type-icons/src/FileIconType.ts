@@ -28,5 +28,5 @@ export enum FileIconType {
   portfolio,
   album,
   listForm,
-  campaign
+  campaign,
 }

@@ -116,17 +116,18 @@ import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
 const documentExtensions = ['docx', 'pdf', 'txt', 'rtf'];
 
 return (
-  <div>
-    {documentExtensions.map(ext => (
-      <div key={ext}>
-        <Icon {...getFileTypeIconProps({ extension: ext, size: 48 })} />
-        <div>.{ext}</div>
-      </div>
-    ))}
-  </div>
-);
-`}
-/>
+
+{' '}
+
+<div>
+  {documentExtensions.map(ext => (
+    <div key={ext}>
+      <Icon {...getFileTypeIconProps({ extension: ext, size: 48 })} />
+      <div>.{ext}</div>
+    </div>
+  ))}
+</div>
+); `} />
 
 ### Icon Sizes
 
