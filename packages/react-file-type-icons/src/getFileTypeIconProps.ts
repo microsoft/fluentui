@@ -2,7 +2,7 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
-let _typeToIconName: { [key: number]: string };
+let _typeToIconName: { [key:number]: string};
 
 const GENERIC_FILE = 'genericfile';
 
@@ -50,8 +50,8 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
   // Next, obtain the suffix using the icon size, user's device pixel ration, and
   // preference for svg or png
-  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+  let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
   return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
@@ -66,13 +66,11 @@ export function getFileTypeIconNameFromExtensionOrType(
       _extensionToIconName = {};
 
       for (const iconName in FileTypeIconMap) {
-        if (FileTypeIconMap.hasOwnProperty(iconName)) {
-          const extensions = FileTypeIconMap[iconName].extensions;
+        const extensions = FileTypeIconMap[iconName].extensions;
 
-          if (extensions) {
-            for (let i = 0; i < extensions.length; i++) {
-              _extensionToIconName[extensions[i]] = iconName;
-            }
+        if (extensions) {
+          for (let i = 0; i < extensions.length; i++) {
+            _extensionToIconName[extensions[i]] = iconName;
           }
         }
       }
@@ -81,18 +79,18 @@ export function getFileTypeIconNameFromExtensionOrType(
     // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
+
   } else if (type) {
+
     if (!_typeToIconName) {
       _typeToIconName = {};
 
       for (const iconName in FileTypeIconMap) {
-        if (FileTypeIconMap.hasOwnProperty(iconName)) {
-          const types = FileTypeIconMap[iconName].types;
+        const types = FileTypeIconMap[iconName].types;
 
-          if (types) {
-            for (let i = 0; i < types.length; i++) {
-              _typeToIconName[types[i]] = iconName;
-            }
+        if (types) {
+          for (let i = 0; i < types.length; i++) {
+            _typeToIconName[types[i]] = iconName
           }
         }
       }
@@ -111,7 +109,7 @@ export function getFileTypeIconSuffix(
 ): string {
   // eslint-disable-next-line no-restricted-globals
   win ??= window;
-  const devicePixelRatio: number = win.devicePixelRatio;
+  let devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

@@ -152,7 +152,7 @@ export const styles = css`
     position: absolute;
     bottom: 0;
     right: 0;
-    box-shadow: 0 0 0 ${strokeWidthThin}) ${colorNeutralBackground1};
+    box-shadow: 0 0 0 ${strokeWidthThin} ${colorNeutralBackground1};
   }
 
   :host([size='64']) ::slotted([slot='badge']),
@@ -160,7 +160,7 @@ export const styles = css`
   :host([size='96']) ::slotted([slot='badge']),
   :host([size='120']) ::slotted([slot='badge']),
   :host([size='128']) ::slotted([slot='badge']) {
-    box-shadow: 0 0 0 ${strokeWidthThick}) ${colorNeutralBackground1};
+    box-shadow: 0 0 0 ${strokeWidthThick} ${colorNeutralBackground1};
   }
 
   :host([size='16']),
@@ -494,8 +494,8 @@ export const styles = css`
     right: 0;
     border-radius: inherit;
     transition-property: margin, opacity;
-    transition-duration: ${durationUltraSlow}), ${durationSlower};
-    transition-delay: ${animations.fastEase}), ${animations.nullEasing});
+    transition-duration: ${durationUltraSlow}, ${durationSlower};
+    transition-delay: ${animations.fastEase}, ${animations.nullEasing};
   }
   :host([active])::before {
     box-shadow: ${shadow8};

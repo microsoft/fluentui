@@ -1,8 +1,10 @@
+'use client';
+
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-avatar';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { PersonaProps, PersonaState } from './Persona.types';
+import type { PersonaBaseProps, PersonaBaseState, PersonaProps, PersonaState } from './Persona.types';
 
 /**
  * Create the state required to render Persona.
@@ -14,68 +16,93 @@ import type { PersonaProps, PersonaState } from './Persona.types';
  * @param ref - reference to root HTMLElement of Persona
  */
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
-  const { name, presenceOnly = false, size = 'medium', textAlignment = 'start', textPosition = 'after' } = props;
+  const {
+    avatar,
+    presenceOnly = false,
+    size = 'medium',
+    textAlignment = 'start',
+    textPosition = 'after',
+    presence,
+    ...baseProps
+  } = props;
 
-  const primaryText = slot.optional(props.primaryText, {
-    renderByDefault: true,
-    defaultProps: {
-      children: name,
-    },
-    elementType: 'span',
-  });
-  const secondaryText = slot.optional(props.secondaryText, { elementType: 'span' });
-  const tertiaryText = slot.optional(props.tertiaryText, { elementType: 'span' });
-  const quaternaryText = slot.optional(props.quaternaryText, { elementType: 'span' });
-  const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
+  const state = usePersonaBase_unstable(baseProps, ref);
+
   return {
-    numTextLines,
+    ...state,
     presenceOnly,
     size,
     textAlignment,
     textPosition,
     components: {
-      root: 'div',
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
       avatar: Avatar,
       presence: PresenceBadge,
-      primaryText: 'span',
-      secondaryText: 'span',
-      tertiaryText: 'span',
-      quaternaryText: 'span',
     },
-
-    root: slot.always(
-      getIntrinsicElementProps(
-        'div',
-        {
-          ...props,
-          // FIXME:
-          // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-          // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-          ref: ref as React.Ref<HTMLDivElement>,
-        },
-        /* excludedPropNames */ ['name'],
-      ),
-      { elementType: 'div' },
-    ),
     avatar: !presenceOnly
-      ? slot.optional(props.avatar, {
+      ? slot.optional(avatar, {
           renderByDefault: true,
           defaultProps: {
-            name,
-            badge: props.presence,
+            name: props.name,
+            badge: presence,
             size: avatarSizes[size],
           },
           elementType: Avatar,
         })
       : undefined,
     presence: presenceOnly
-      ? slot.optional(props.presence, {
+      ? slot.optional(presence, {
           defaultProps: {
             size: presenceSizes[size],
           },
           elementType: PresenceBadge,
         })
       : undefined,
+  };
+};
+
+/**
+ * Base hook for Persona component, manages state and structure common to all variants of Persona
+ */
+export const usePersonaBase_unstable = (props: PersonaBaseProps, ref?: React.Ref<HTMLElement>): PersonaBaseState => {
+  const {
+    name,
+    primaryText: primaryTextProp,
+    secondaryText: secondaryTextProp,
+    tertiaryText: tertiaryTextProp,
+    quaternaryText: quaternaryTextProp,
+    ...rest
+  } = props;
+
+  const primaryText = slot.optional(primaryTextProp, {
+    renderByDefault: true,
+    defaultProps: {
+      children: name,
+    },
+    elementType: 'span',
+  });
+  const secondaryText = slot.optional(secondaryTextProp, { elementType: 'span' });
+  const tertiaryText = slot.optional(tertiaryTextProp, { elementType: 'span' });
+  const quaternaryText = slot.optional(quaternaryTextProp, { elementType: 'span' });
+  const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
+
+  return {
+    numTextLines,
+    components: {
+      root: 'div',
+      primaryText: 'span',
+      secondaryText: 'span',
+      tertiaryText: 'span',
+      quaternaryText: 'span',
+    },
+    root: slot.always(
+      {
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...rest,
+      },
+      { elementType: 'div' },
+    ),
     primaryText,
     secondaryText,
     tertiaryText,

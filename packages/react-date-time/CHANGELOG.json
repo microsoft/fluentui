@@ -2,6 +2,29 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:00 GMT",
+      "tag": "@fluentui/react-date-time_v8.8.4",
+      "version": "8.8.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.125.4",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:27:54 GMT",
       "tag": "@fluentui/react-date-time_v8.8.3",
       "version": "8.8.3",

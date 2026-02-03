@@ -476,6 +476,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   spo: {
     extensions: ['aspx'],
   },
+  spocampaign: {
+    types: [FileIconType.campaign],
+  },
   sponews: {
     types: [FileIconType.news],
   },

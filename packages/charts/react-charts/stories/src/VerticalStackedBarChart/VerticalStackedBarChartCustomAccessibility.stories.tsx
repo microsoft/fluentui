@@ -167,7 +167,8 @@ export const VerticalStackedBarCustomAccessibility = (): JSXElement => {
           max={1000}
           id="changeWidth_Custom"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Custom">Change Height:</label>
         <input
@@ -177,7 +178,8 @@ export const VerticalStackedBarCustomAccessibility = (): JSXElement => {
           max={1000}
           id="changeHeight_Custom"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="ChangeBarGapMax_Custom">BarGapMax:</label>
         <input
@@ -187,7 +189,8 @@ export const VerticalStackedBarCustomAccessibility = (): JSXElement => {
           max={10}
           id="ChangeBarGapMax_Custom"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
       </div>
       <div style={{ marginTop: '20px' }}>

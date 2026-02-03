@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix chart title styles",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

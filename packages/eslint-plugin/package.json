@@ -16,7 +16,6 @@
     "@typescript-eslint/type-utils": "^8.46.2",
     "@typescript-eslint/utils": "^8.46.2",
     "@nx/eslint-plugin": "21.6.10",
-    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-compiler": "0.0.0-experimental-a97cca1-20240529",
     "eslint-config-airbnb-extended": "2.1.2",

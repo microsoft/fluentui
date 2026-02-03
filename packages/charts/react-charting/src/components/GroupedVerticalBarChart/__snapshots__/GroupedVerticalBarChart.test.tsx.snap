@@ -15,12 +15,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -31,7 +32,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -44,7 +45,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -68,7 +69,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           transform="translate(0, -35)"
         />
         <g
@@ -96,7 +97,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
         <rect
@@ -254,7 +255,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone14"
+          data-focuszone-id="FocusZone13"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -592,12 +593,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_4"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_5"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -608,7 +610,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -621,7 +623,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -645,7 +647,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_4"
+          id="xAxisGElementchart_3"
           transform="translate(0, -35)"
         />
         <g
@@ -673,7 +675,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_4"
+          id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
         <rect

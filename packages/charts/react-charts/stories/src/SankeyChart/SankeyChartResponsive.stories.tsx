@@ -1,6 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { ChartProps, ResponsiveContainer, SankeyChart } from '@fluentui/react-charts';
+import {
+  ChartProps,
+  DataVizPalette,
+  getColorFromToken,
+  ResponsiveContainer,
+  SankeyChart,
+} from '@fluentui/react-charts';
 
 export const SankeyChartResponsive = (): JSXElement => {
   const data: ChartProps = {
@@ -10,38 +16,38 @@ export const SankeyChartResponsive = (): JSXElement => {
         {
           nodeId: 0,
           name: 'node0',
-          color: '#00758F',
-          borderColor: '#002E39',
+          color: getColorFromToken(DataVizPalette.color11),
+          borderColor: getColorFromToken(DataVizPalette.color21),
         },
         {
           nodeId: 1,
           name: 'node1',
-          color: '#77004D',
-          borderColor: '#43002C',
+          color: getColorFromToken(DataVizPalette.color12),
+          borderColor: getColorFromToken(DataVizPalette.color22),
         },
         {
           nodeId: 2,
           name: 'node2',
-          color: '#4F6BED',
-          borderColor: '#3B52B4',
+          color: getColorFromToken(DataVizPalette.color13),
+          borderColor: getColorFromToken(DataVizPalette.color23),
         },
         {
           nodeId: 3,
           name: 'node3',
-          color: '#937600',
-          borderColor: '#6D5700',
+          color: getColorFromToken(DataVizPalette.color14),
+          borderColor: getColorFromToken(DataVizPalette.color24),
         },
         {
           nodeId: 4,
           name: 'node4',
-          color: '#286EA8',
-          borderColor: '#00457E',
+          color: getColorFromToken(DataVizPalette.color2),
+          borderColor: getColorFromToken(DataVizPalette.color22),
         },
         {
           nodeId: 5,
           name: 'node5',
-          color: '#A43FB1',
-          borderColor: '#7C158A',
+          color: getColorFromToken(DataVizPalette.color15),
+          borderColor: getColorFromToken(DataVizPalette.color25),
         },
       ],
       links: [

@@ -98,7 +98,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
 
   /**
    * Configures the position of the Popover.
-   * Explore [Positioning docs](?path=/docs/concepts-developer-positioning-components--docs) for more options.
+   * Explore [Positioning docs](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs) for more options.
    */
   positioning?: PositioningShorthand;
 
@@ -144,6 +144,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_disableAutoFocus?: boolean;
 };
+
+export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
 
 /**
  * Popover State
@@ -205,6 +207,8 @@ export type PopoverState = Pick<
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
+
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'size'>;
 
 /**
  * Data attached to open/close events
