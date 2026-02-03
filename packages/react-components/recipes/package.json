@@ -19,10 +19,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-provider": "^9.22.12",
-    "@fluentui/react-theme": "^9.2.0",
-    "@fluentui/react-text": "^9.6.12",
-    "@fluentui/react-utilities": "^9.26.0",
+    "@fluentui/react-provider": "^9.22.13",
+    "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-text": "^9.6.13",
+    "@fluentui/react-utilities": "^9.26.1",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-icons": "^2.0.245"

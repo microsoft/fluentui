@@ -15,25 +15,25 @@ const dataSimple: ChartProps = {
       {
         nodeId: 0,
         name: 'Large Source',
-        color: getColorFromToken(DataVizPalette.color1),
+        color: getColorFromToken(DataVizPalette.color11),
         borderColor: getColorFromToken(DataVizPalette.color21),
       },
       {
         nodeId: 1,
         name: 'Tiny Source',
-        color: getColorFromToken(DataVizPalette.color2),
+        color: getColorFromToken(DataVizPalette.color12),
         borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 2,
         name: 'Large Target',
-        color: getColorFromToken(DataVizPalette.color3),
+        color: getColorFromToken(DataVizPalette.color13),
         borderColor: getColorFromToken(DataVizPalette.color23),
       },
       {
         nodeId: 3,
         name: 'Tiny Target',
-        color: getColorFromToken(DataVizPalette.color4),
+        color: getColorFromToken(DataVizPalette.color14),
         borderColor: getColorFromToken(DataVizPalette.color24),
       },
     ],
@@ -374,9 +374,27 @@ export const SankeyChartRebalance: React.FunctionComponent<{}> = (): JSXElement 
           onChange={_onDataSourceChange}
         />
         <label>change Width:</label>
-        <input type="range" id="changeWidth_Rebalance" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <input
+          type="range"
+          id="changeWidth_Rebalance"
+          value={width}
+          min={400}
+          max={1600}
+          onChange={_onWidthChange}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 400 and Maximum 1600`}
+        />
         <label>change Height:</label>
-        <input type="range" id="changeHeight_Rebalance" value={height} min={312} max={400} onChange={_onHeightChange} />
+        <input
+          type="range"
+          id="changeHeight_Rebalance"
+          value={height}
+          min={312}
+          max={400}
+          onChange={_onHeightChange}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 312 and Maximum 400`}
+        />
       </div>
       <div style={rootStyle}>
         <SankeyChart

@@ -56,3 +56,7 @@ export {
   useAvatarGroupContext_unstable,
 } from './contexts/index';
 export type { AvatarContextValue } from './contexts/index';
+
+// Experimental APIs, will be undocumented in experimental branch
+// export { useAvatarBase_unstable } from './Avatar';
+// export type { AvatarBaseProps, AvatarBaseState } from './Avatar';

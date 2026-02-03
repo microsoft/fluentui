@@ -53,6 +53,8 @@ extends:
                   artifactName: output
             steps:
               - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
               - script: |
                   npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
                 displayName: 'Deprecate package'

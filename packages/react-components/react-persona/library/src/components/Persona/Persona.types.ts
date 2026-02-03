@@ -83,6 +83,8 @@ export type PersonaProps = ComponentProps<PersonaSlots> & {
   textAlignment?: 'center' | 'start';
 };
 
+export type PersonaBaseProps = ComponentProps<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaProps, 'name'>;
+
 /**
  * State used in rendering Persona
  */
@@ -93,3 +95,6 @@ export type PersonaState = ComponentState<PersonaSlots> &
      */
     numTextLines: number;
   };
+
+export type PersonaBaseState = ComponentState<Omit<PersonaSlots, 'avatar' | 'presence'>> &
+  Pick<PersonaState, 'numTextLines'>;

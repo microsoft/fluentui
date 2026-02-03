@@ -643,31 +643,32 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
             className={classes.chart}
             width={svgWidth}
             height={svgHeight}
-            viewBox={`${-svgWidth / 2} ${-svgHeight / 2} ${svgWidth} ${svgHeight}`}
             role="region"
             aria-label={
               (props.chartTitle ? `${props.chartTitle}. ` : '') + `Polar chart with ${chartData.length} data series.`
             }
           >
-            {renderPolarGrid()}
-            <g>
-              {chartData.map((series, seriesIndex) => {
-                return (
-                  <g
-                    key={seriesIndex}
-                    role="region"
-                    aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
-                      series.data.length
-                    } data points.`}
-                  >
-                    {series.type === 'areapolar' && renderRadialArea(series)}
-                    {(series.type === 'areapolar' || series.type === 'linepolar') && renderRadialLine(series)}
-                    {renderRadialPoints(series, seriesIndex)}
-                  </g>
-                );
-              })}
+            <g transform={`translate(${svgWidth / 2}, ${svgHeight / 2})`}>
+              {renderPolarGrid()}
+              <g>
+                {chartData.map((series, seriesIndex) => {
+                  return (
+                    <g
+                      key={seriesIndex}
+                      role="region"
+                      aria-label={`${series.legend}, series ${seriesIndex + 1} of ${chartData.length} with ${
+                        series.data.length
+                      } data points.`}
+                    >
+                      {series.type === 'areapolar' && renderRadialArea(series)}
+                      {(series.type === 'areapolar' || series.type === 'linepolar') && renderRadialLine(series)}
+                      {renderRadialPoints(series, seriesIndex)}
+                    </g>
+                  );
+                })}
+              </g>
+              {renderPolarTicks()}
             </g>
-            {renderPolarTicks()}
           </svg>
         </div>
         {renderLegends()}

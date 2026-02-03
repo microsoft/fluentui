@@ -9,74 +9,74 @@ const data: ChartProps = {
       {
         nodeId: 0,
         name: '192.168.42.72',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 1,
         name: '172.152.48.13',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 2,
         name: '124.360.55.1',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 3,
         name: '192.564.10.2',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 4,
         name: '124.124.50.1',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 5,
         name: '172.630.89.4',
-        color: getColorFromToken(DataVizPalette.color4),
-        borderColor: getColorFromToken(DataVizPalette.color24),
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
       },
       {
         nodeId: 6,
         name: 'inbox',
-        color: getColorFromToken(DataVizPalette.color3),
-        borderColor: getColorFromToken(DataVizPalette.color23),
+        color: getColorFromToken(DataVizPalette.color7),
+        borderColor: getColorFromToken(DataVizPalette.color27),
       },
       {
         nodeId: 7,
         name: 'Junk Folder',
-        color: getColorFromToken(DataVizPalette.color3),
-        borderColor: getColorFromToken(DataVizPalette.color23),
+        color: getColorFromToken(DataVizPalette.color7),
+        borderColor: getColorFromToken(DataVizPalette.color27),
       },
       {
         nodeId: 8,
         name: 'Deleted Folder',
-        color: getColorFromToken(DataVizPalette.color3),
-        borderColor: getColorFromToken(DataVizPalette.color23),
+        color: getColorFromToken(DataVizPalette.color7),
+        borderColor: getColorFromToken(DataVizPalette.color27),
       },
       {
         nodeId: 9,
         name: 'Clicked',
-        color: getColorFromToken(DataVizPalette.color1),
-        borderColor: getColorFromToken(DataVizPalette.color21),
+        color: getColorFromToken(DataVizPalette.color8),
+        borderColor: getColorFromToken(DataVizPalette.color28),
       },
       {
         nodeId: 10,
         name: 'Opened',
-        color: getColorFromToken(DataVizPalette.color1),
-        borderColor: getColorFromToken(DataVizPalette.color21),
+        color: getColorFromToken(DataVizPalette.color8),
+        borderColor: getColorFromToken(DataVizPalette.color28),
       },
       {
         nodeId: 11,
         name: ' No further action  required',
-        color: getColorFromToken(DataVizPalette.color1),
-        borderColor: getColorFromToken(DataVizPalette.color21),
+        color: getColorFromToken(DataVizPalette.color8),
+        borderColor: getColorFromToken(DataVizPalette.color28),
       },
     ],
     links: [
@@ -162,9 +162,27 @@ export const SankeyChartInbox: React.FunctionComponent<{}> = (): JSXElement => {
     <div>
       <div style={{ display: 'flex' }}>
         <label>change Width:</label>
-        <input type="range" id="changeWidth_Inbox" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <input
+          type="range"
+          id="changeWidth_Inbox"
+          value={width}
+          min={400}
+          max={1600}
+          onChange={_onWidthChange}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 400 and Maximum 1600`}
+        />
         <label>change Height:</label>
-        <input type="range" id="changeHeight_Inbox" value={height} min={312} max={400} onChange={_onHeightChange} />
+        <input
+          type="range"
+          id="changeHeight_Inbox"
+          value={height}
+          min={312}
+          max={400}
+          onChange={_onHeightChange}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 312 and Maximum 400`}
+        />
       </div>
       <div style={rootStyle}>
         <SankeyChart

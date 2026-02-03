@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { AccordionProps, AccordionState } from './Accordion.types';
+import { useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+import type { AccordionBaseProps, AccordionBaseState, AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { AccordionRequestToggleData } from '../../contexts/accordion';
@@ -17,25 +17,50 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
   ref: React.Ref<HTMLElement>,
 ): AccordionState<Value> => {
   const {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    navigation,
+    ...baseProps
+  } = props;
+  const state = useAccordionBase_unstable(baseProps, ref);
+
+  /** FIXME: deprecated will be removed after navigation prop is removed */
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: navigation === 'circular',
+    tabbable: true,
+  });
+
+  return {
+    navigation,
+    ...state,
+
+    root: {
+      ...state.root,
+      ...(navigation ? arrowNavigationProps : undefined),
+    },
+  };
+};
+
+/**
+ * Returns the props and state required to render the component
+ * @param props - Accordion properties
+ * @param ref - reference to root HTMLElement of Accordion
+ */
+export const useAccordionBase_unstable = <Value = AccordionItemValue>(
+  props: AccordionBaseProps<Value>,
+  ref: React.Ref<HTMLElement>,
+): AccordionBaseState<Value> => {
+  const {
     openItems: controlledOpenItems,
     defaultOpenItems,
     multiple = false,
     collapsible = false,
     onToggle,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    navigation,
     ...rest
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
     defaultState: defaultOpenItems && (() => initializeUncontrolledOpenItems({ defaultOpenItems, multiple })),
     initialState: [],
-  });
-
-  /** FIXME: deprecated will be removed after navigation prop is removed */
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: navigation === 'circular',
-    tabbable: true,
   });
 
   const requestToggle = useEventCallback((data: AccordionRequestToggleData<Value>) => {
@@ -47,22 +72,16 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
   return {
     collapsible,
     multiple,
-    navigation,
     openItems,
     requestToggle,
     components: {
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ...rest,
-
-        ...(navigation ? arrowNavigationProps : undefined),
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      {
         ref: ref as React.Ref<HTMLDivElement>,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

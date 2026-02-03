@@ -12,8 +12,8 @@
     "lib-commonjs"
   ],
   "dependencies": {
-    "@fluentui/react-provider": "^9.22.12",
-    "@fluentui/react-theme": "^9.2.0",
+    "@fluentui/react-provider": "^9.22.13",
+    "@fluentui/react-theme": "^9.2.1",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
