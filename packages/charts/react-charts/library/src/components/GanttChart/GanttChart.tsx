@@ -485,6 +485,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
             const borderColor = annotation.style?.borderColor;
             const arrowDirection = annotation.arrow?.direction || 'vertical';
             const arrowOffsetX = annotation.arrow?.offsetX || 40;
+            const arrowOffsetY = annotation.arrow?.offsetY || 0;
 
             // Calculate text position
             let textX = xPos;
@@ -494,9 +495,23 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
 
             if (position === 'header') {
               // Header annotations are positioned above the chart area
-              textY = -10; // Above the first row
+              // Get the first visible row's Y position and place header above it
+              const firstRowLabel = _yAxisLabels[_yAxisLabels.length - 1];
+              if (firstRowLabel) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const firstRowY = yScale(firstRowLabel as any)!;
+                textY = firstRowY - fontSize - 10; // Position above first row
+              } else {
+                textY = 10; // Fallback position
+              }
             } else {
-              const yLabel = _yAxisLabels[_yAxisLabels.length - 1 - annotation.taskIndex];
+              // Use taskLabel if available, otherwise fall back to taskIndex
+              let yLabel: string | undefined;
+              if (annotation.taskLabel && _yAxisLabels.includes(annotation.taskLabel)) {
+                yLabel = annotation.taskLabel;
+              } else {
+                yLabel = _yAxisLabels[_yAxisLabels.length - 1 - annotation.taskIndex];
+              }
               if (yLabel === undefined) {
                 return;
               }
@@ -504,6 +519,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               baseY = yScale(yLabel as any)! + scaleBandwidth / 2;
               textY = baseY;
 
+              // Apply horizontal offset for arrows with ax value
               if (arrowDirection === 'left') {
                 // Text is to the right of the arrow point (ax > 0 in Plotly)
                 textX = xPos + arrowOffsetX;
@@ -512,6 +528,12 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
                 // Text is to the left of the arrow point (ax < 0 in Plotly)
                 textX = xPos - arrowOffsetX;
                 textAnchor = 'end';
+              }
+
+              // Apply vertical offset (ay value from Plotly)
+              // In Plotly, negative ay means text is above the arrow point
+              if (arrowOffsetY !== 0) {
+                textY = baseY + arrowOffsetY; // ay is negative for above, positive for below
               } else if (position === 'above') {
                 textY = baseY - _barHeight.current / 2 - 8;
               } else if (position === 'below') {
@@ -532,7 +554,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               const arrowLength = 20;
 
               if (arrowDirection === 'left' || arrowDirection === 'right') {
-                // Horizontal arrow - short connector from text toward bar
+                // Horizontal/diagonal arrow from text position toward the target row
                 if (arrowDirection === 'left') {
                   arrowStartX = textX - 5;
                   arrowEndX = textX - 5 - arrowLength;
@@ -540,7 +562,8 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
                   arrowStartX = textX + 5;
                   arrowEndX = textX + 5 + arrowLength;
                 }
-                arrowStartY = baseY;
+                // Arrow goes from text Y position toward the target row
+                arrowStartY = textY;
                 arrowEndY = baseY;
               } else {
                 // Vertical arrows
@@ -605,8 +628,46 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
                   </text>
                 </g>,
               );
+            } else if (backgroundColor || borderColor) {
+              // Render text with background for non-header annotations
+              const textWidth = annotation.text.length * fontSize * 0.6;
+              const padding = 4;
+              // Adjust rect position based on text anchor
+              let rectX = textX - padding;
+              if (textAnchor === 'middle') {
+                rectX = textX - textWidth / 2 - padding;
+              } else if (textAnchor === 'end') {
+                rectX = textX - textWidth - padding;
+              }
+              annotations.push(
+                <g key={annotationKey}>
+                  <rect
+                    x={rectX}
+                    y={textY - fontSize}
+                    width={textWidth + padding * 2}
+                    height={fontSize + padding}
+                    fill={backgroundColor || 'transparent'}
+                    stroke={borderColor}
+                    strokeWidth={borderColor ? 1 : 0}
+                    rx={2}
+                    ry={2}
+                  />
+                  <text
+                    x={textX}
+                    y={textY - padding / 2}
+                    textAnchor={textAnchor}
+                    fontSize={fontSize}
+                    fontWeight={fontWeight}
+                    fill={textColor}
+                    role="img"
+                    aria-label={annotation.ariaLabel || annotation.text}
+                  >
+                    {annotation.text}
+                  </text>
+                </g>,
+              );
             } else {
-              // Render text
+              // Render plain text
               annotations.push(
                 <text
                   key={annotationKey}

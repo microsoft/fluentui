@@ -1,9 +1,6 @@
 {
   "type": "minor",
-  "comment": {
-    "title": "",
-    "value": ""
-  },
+  "comment": "feat(react-charts): Add annotation support for GanttChart",
   "packageName": "@fluentui/react-charts",
   "email": "srmukher@microsoft.com",
   "dependentChangeType": "patch"

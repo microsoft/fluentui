@@ -2306,6 +2306,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 const transformPlotlyAnnotationsToGanttAnnotations = (
   input: PlotlySchema,
   yAxisLabels: string[],
+  xRange?: { min: number; max: number },
 ): GanttChartAnnotation[] => {
   const rawAnnotations = input.layout?.annotations;
   if (!rawAnnotations) {
@@ -2331,9 +2332,14 @@ const transformPlotlyAnnotationsToGanttAnnotations = (
     // Handle x position
     if (xref === 'paper' && typeof annotation.x === 'number') {
       // Paper coordinates: x is a fraction of the plot width (0-1)
-      // We'll need to map this to an actual date from the data range
-      // For now, skip paper-based x coordinates as they require domain knowledge
-      return;
+      // Map to actual data value using the x-axis range
+      if (xRange) {
+        const xValue = xRange.min + annotation.x * (xRange.max - xRange.min);
+        date = xValue;
+      } else {
+        // No range available, skip this annotation
+        return;
+      }
     } else if (typeof annotation.x === 'string') {
       // Date string
       date = new Date(annotation.x);
@@ -2400,6 +2406,7 @@ const transformPlotlyAnnotationsToGanttAnnotations = (
     const ganttAnnotation: GanttChartAnnotation = {
       text: cleanedText,
       taskIndex,
+      taskLabel: typeof annotation.y === 'string' ? annotation.y : undefined,
       date: typeof date === 'number' ? date : date,
       position,
       id: `annotation-${index}`,
@@ -2436,6 +2443,7 @@ const transformPlotlyAnnotationsToGanttAnnotations = (
         headStyle: annotation.arrowhead === 0 ? 'none' : 'triangle',
         direction,
         offsetX: Math.abs(ax),
+        offsetY: ay,
       };
     }
 
@@ -2535,8 +2543,36 @@ export const transformPlotlyJsonToGanttChartProps = (
   });
   const yAxisLabels = Array.from(yAxisLabelsSet).reverse();
 
+  // Compute x-axis range for paper coordinate conversion
+  let xRange: { min: number; max: number } | undefined;
+  if (ganttData.length > 0) {
+    let minX = Infinity;
+    let maxX = -Infinity;
+    ganttData.forEach(point => {
+      const startVal = point.x.start instanceof Date ? point.x.start.getTime() : (point.x.start as number);
+      const endVal = point.x.end instanceof Date ? point.x.end.getTime() : (point.x.end as number);
+      minX = Math.min(minX, startVal);
+      maxX = Math.max(maxX, endVal);
+    });
+    // Also check layout xaxis range if specified
+    const layoutRange = input.layout?.xaxis?.range;
+    if (layoutRange && layoutRange.length === 2) {
+      const rangeMin =
+        typeof layoutRange[0] === 'number' ? layoutRange[0] : new Date(layoutRange[0] as string).getTime();
+      const rangeMax =
+        typeof layoutRange[1] === 'number' ? layoutRange[1] : new Date(layoutRange[1] as string).getTime();
+      if (!isNaN(rangeMin) && !isNaN(rangeMax)) {
+        minX = rangeMin;
+        maxX = rangeMax;
+      }
+    }
+    if (minX !== Infinity && maxX !== -Infinity) {
+      xRange = { min: minX, max: maxX };
+    }
+  }
+
   // Transform Plotly annotations to GanttChart annotations
-  const ganttAnnotations = transformPlotlyAnnotationsToGanttAnnotations(input, yAxisLabels);
+  const ganttAnnotations = transformPlotlyAnnotationsToGanttAnnotations(input, yAxisLabels, xRange);
 
   return {
     data: ganttData,

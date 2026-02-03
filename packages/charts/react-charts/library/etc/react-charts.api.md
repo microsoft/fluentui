@@ -864,6 +864,7 @@ export interface GanttChartAnnotation {
     position?: GanttChartAnnotationPosition;
     style?: GanttChartAnnotationStyle;
     taskIndex: number;
+    taskLabel?: string;
     text: string;
 }
 
@@ -874,6 +875,7 @@ export interface GanttChartAnnotationArrow {
     headSize?: number;
     headStyle?: 'triangle' | 'none';
     offsetX?: number;
+    offsetY?: number;
     show?: boolean;
     width?: number;
 }

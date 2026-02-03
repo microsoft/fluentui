@@ -91,6 +91,13 @@ export interface GanttChartAnnotationArrow {
    * @default 0
    */
   offsetX?: number;
+
+  /**
+   * Offset in pixels for vertical position (ay value from Plotly).
+   * Negative values mean text is above the arrow point.
+   * @default 0
+   */
+  offsetY?: number;
 }
 
 /**
@@ -105,8 +112,15 @@ export interface GanttChartAnnotation {
 
   /**
    * The index of the task row (0-based) where the annotation should appear.
+   * Used when taskLabel is not provided.
    */
   taskIndex: number;
+
+  /**
+   * The label of the task row where the annotation should appear.
+   * If provided, this takes precedence over taskIndex.
+   */
+  taskLabel?: string;
 
   /**
    * The date position of the annotation on the x-axis.
