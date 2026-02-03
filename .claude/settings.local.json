@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(npx jest:*)",
+      "Bash(npx nx build:*)",
+      "Bash(npx nx:*)",
+      "Bash(while read file)",
+      "Bash(do if ! grep -q \"''use client''\" \"$file\")",
+      "Bash(! grep -q '\"\"use client\"\"' \"$file\")",
+      "Bash(then echo \"$file\")",
+      "Bash(fi:*)",
+      "Bash(done)",
+      "Bash(grep:*)",
+      "Bash(yarn nx test:*)",
+      "Bash(ls:*)",
+      "Bash(yarn nx lint:*)",
+      "Bash(npx eslint:*)",
+      "Bash(node test-rule-manually.js:*)",
+      "Bash(yarn jest:*)",
+      "Bash(xargs cat:*)"
+    ]
+  }
+}

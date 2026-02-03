@@ -583,7 +583,7 @@ ruleTester.run(RULE_NAME, rule, {
       code: `"use client";\n${testCases.customHooks.importedHookReference}`,
     },
     {
-      name: 'Imported SSR-unsafe function reference with "use client" directive',
+      name: 'Imported RSC-unsface function reference with "use client" directive',
       code: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,
     },
 
@@ -859,7 +859,7 @@ ruleTester.run(RULE_NAME, rule, {
       output: `"use client";\n${testCases.customHooks.importedHookReference}`,
     },
     {
-      name: 'Imported SSR-unsafe function reference without "use client" directive',
+      name: 'Imported RSC-unsface function reference without "use client" directive',
       code: testCases.customHooks.importedSSRUnsafeReference,
       errors: [{ messageId: 'missingUseClient' }],
       output: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,

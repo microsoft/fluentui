@@ -37,7 +37,7 @@ interface RuleState {
   firstClientFeature: ClientFeatureDetection | null;
   /** Set of imported custom hook names (e.g., useCustomHook from imports) */
   importedCustomHooks: Set<string>;
-  /** Set of imported SSR-unsafe function names */
+  /** Set of imported RSC-unsface function names */
   importedRSCUnsafeFunctions: Set<string>;
 }
 
@@ -210,7 +210,7 @@ export const rule = createRule<[], MessageIds>({
       },
 
       /**
-       * Track imported custom hooks and SSR-unsafe functions
+       * Track imported custom hooks and RSC-unsface functions
        */
       ImportDeclaration(node: TSESTree.ImportDeclaration) {
         if (shouldSkipAnalysis()) {
@@ -229,7 +229,7 @@ export const rule = createRule<[], MessageIds>({
               ruleState.importedCustomHooks.add(specifier.local.name);
             }
 
-            // Track SSR-unsafe functions
+            // Track RSC-unsface functions
             if (RSC_UNSAFE_FUNCTIONS.has(importedName)) {
               ruleState.importedRSCUnsafeFunctions.add(specifier.local.name);
             }
@@ -238,7 +238,7 @@ export const rule = createRule<[], MessageIds>({
       },
 
       /**
-       * Detect when imported custom hooks or SSR-unsafe functions are referenced
+       * Detect when imported custom hooks or RSC-unsface functions are referenced
        */
       Identifier(node: TSESTree.Identifier) {
         if (shouldSkipAnalysis()) {
@@ -285,7 +285,7 @@ export const rule = createRule<[], MessageIds>({
           recordFirstClientFeature('custom_hook', node.name, node);
         }
 
-        // Check if this is a reference to an imported SSR-unsafe function
+        // Check if this is a reference to an imported RSC-unsface function
         if (ruleState.importedRSCUnsafeFunctions.has(node.name)) {
           recordFirstClientFeature('rsc_unsafe_function', node.name, node);
         }
