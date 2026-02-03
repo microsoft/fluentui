@@ -60,6 +60,10 @@ const useStyles = makeStyles({
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
+      '&:focus-visible': {
+        outline: `${tokens.strokeWidthThick} solid canvasText`,
+        outlineOffset: `calc(${tokens.strokeWidthThick} * -1)`,
+      },
     },
     '&:hover': {
       [HighContrastSelector]: {
