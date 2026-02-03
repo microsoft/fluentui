@@ -162,6 +162,23 @@ export const testCases = {
   },
 
   // =============================================================================
+  // SSR UNSAFE FUNCTIONS - Functions that internally use browser APIs at module scope
+  // =============================================================================
+  ssrUnsafeFunctions: {
+    canUseDOMAtModuleScope: `import * as React from 'react';
+      import { canUseDOM } from '../ssr/index';
+
+      export const useIsomorphicLayoutEffect: typeof React.useEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+    `,
+    canUseDOMInVariable: `import { canUseDOM } from '../ssr/canUseDOM';
+
+      const IS_BROWSER = canUseDOM();
+
+      export const getBrowserInfo = () => IS_BROWSER ? 'browser' : 'server';
+    `,
+  },
+
+  // =============================================================================
   // EVENT HANDLERS - JSX event attributes that require client-side execution
   // =============================================================================
   eventHandlers: {
@@ -230,6 +247,22 @@ export const testCases = {
       export const useComponentState_unstable = (props) => {
         const state = React.useState(0);
         return state;
+      };
+    `,
+    importedHookReference: `import * as React from 'react';
+      import { createPreset } from '../createPreset';
+      import { useBody1Styles } from './useBody1Styles.styles';
+
+      export const Body1 = createPreset({
+        useStyles: useBody1Styles,
+        displayName: 'Body1',
+      });
+    `,
+    importedSSRUnsafeReference: `import { createPreset } from '../createPreset';
+      import { canUseDOM } from '../ssr/canUseDOM';
+
+      export const config = {
+        checkDOM: canUseDOM,
       };
     `,
   },
@@ -331,6 +364,16 @@ export const testCases = {
         root: { backgroundColor: 'red' },
       });
     `,
+    resetStyles: `import { makeResetStyles } from '@griffel/react';
+      export const useResetStyles = makeResetStyles({
+        color: 'blue',
+      });
+    `,
+    staticStyles: `import { makeStaticStyles } from '@griffel/react';
+      export const useStaticStyles = makeStaticStyles({
+        body: { margin: 0 },
+      });
+    `,
     barrelExports: `export { Counter } from './Counter';`,
   },
 
@@ -390,10 +433,6 @@ ruleTester.run(RULE_NAME, rule, {
     {
       name: 'Pure utility functions - no directive needed',
       code: testCases.utilities.pureFunctions,
-    },
-    {
-      name: 'Styling utilities (makeStyles) - no directive needed',
-      code: testCases.utilities.stylingUtilities,
     },
     {
       name: 'Barrel re-exports - no directive needed',
@@ -538,6 +577,34 @@ ruleTester.run(RULE_NAME, rule, {
     {
       name: 'Custom hook with context with "use client" directive',
       code: `"use client";\n${testCases.customHooks.customHookWithContext}`,
+    },
+    {
+      name: 'Imported custom hook reference with "use client" directive',
+      code: `"use client";\n${testCases.customHooks.importedHookReference}`,
+    },
+    {
+      name: 'Imported SSR-unsafe function reference with "use client" directive',
+      code: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,
+    },
+
+    // =============================================================================
+    // SSR UNSAFE FUNCTIONS - With directive (correct usage)
+    // =============================================================================
+    {
+      name: 'Styling utilities (makeStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.stylingUtilities}`,
+    },
+    {
+      name: 'Reset styles (makeResetStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.resetStyles}`,
+    },
+    {
+      name: 'Static styles (makeStaticStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.staticStyles}`,
+    },
+    {
+      name: 'canUseDOM() with "use client" directive',
+      code: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope}`,
     },
 
     // =============================================================================
@@ -693,6 +760,40 @@ ruleTester.run(RULE_NAME, rule, {
     },
 
     // =============================================================================
+    // SSR UNSAFE FUNCTIONS - Missing directive (should error)
+    // =============================================================================
+    {
+      name: 'makeStyles() without "use client" directive',
+      code: testCases.utilities.stylingUtilities,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.stylingUtilities}`,
+    },
+    {
+      name: 'makeResetStyles() without "use client" directive',
+      code: testCases.utilities.resetStyles,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.resetStyles}`,
+    },
+    {
+      name: 'makeStaticStyles() without "use client" directive',
+      code: testCases.utilities.staticStyles,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.staticStyles}`,
+    },
+    {
+      name: 'canUseDOM() called at module scope without "use client" directive',
+      code: testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope}`,
+    },
+    {
+      name: 'canUseDOM() in variable declaration without "use client" directive',
+      code: testCases.ssrUnsafeFunctions.canUseDOMInVariable,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMInVariable}`,
+    },
+
+    // =============================================================================
     // EVENT HANDLERS - Missing directive (should error)
     // =============================================================================
     {
@@ -750,6 +851,18 @@ ruleTester.run(RULE_NAME, rule, {
       code: testCases.customHooks.customHookWithContext,
       errors: [{ messageId: 'missingUseClient' }],
       output: `"use client";\n${testCases.customHooks.customHookWithContext}`,
+    },
+    {
+      name: 'Imported custom hook reference without "use client" directive',
+      code: testCases.customHooks.importedHookReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.customHooks.importedHookReference}`,
+    },
+    {
+      name: 'Imported SSR-unsafe function reference without "use client" directive',
+      code: testCases.customHooks.importedSSRUnsafeReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,
     },
 
     // =============================================================================
@@ -822,12 +935,6 @@ ruleTester.run(RULE_NAME, rule, {
       code: `"use client";\n${testCases.utilities.pureFunctions}`,
       errors: [{ messageId: 'unnecessaryUseClient' }],
       output: testCases.utilities.pureFunctions,
-    },
-    {
-      name: 'Styling utilities with unnecessary "use client" directive',
-      code: `"use client";\n${testCases.utilities.stylingUtilities}`,
-      errors: [{ messageId: 'unnecessaryUseClient' }],
-      output: testCases.utilities.stylingUtilities,
     },
     {
       name: 'Barrel exports with unnecessary "use client" directive',

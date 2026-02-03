@@ -10,7 +10,7 @@ type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
 /**
  * Represents the different types of client-side features that require the 'use client' directive
  */
-type FeatureKind = 'react_api' | 'custom_hook' | 'event_handler' | 'browser_api';
+type FeatureKind = 'react_api' | 'custom_hook' | 'event_handler' | 'browser_api' | 'rsc_unsafe_function';
 
 /**
  * Combined client feature detection result
@@ -35,6 +35,10 @@ interface RuleState {
   misplacedDirective: TSESTree.ExpressionStatement | null;
   /** First detected client-side feature with its node (for early exit and error reporting) */
   firstClientFeature: ClientFeatureDetection | null;
+  /** Set of imported custom hook names (e.g., useCustomHook from imports) */
+  importedCustomHooks: Set<string>;
+  /** Set of imported SSR-unsafe function names */
+  importedRSCUnsafeFunctions: Set<string>;
 }
 
 /**
@@ -88,6 +92,19 @@ const BROWSER_GLOBALS = new Set([
 ]);
 
 /**
+ * Functions that internally use browser APIs and should only be called in 'use client' modules
+ * These functions may have typeof checks internally, but when called at module scope they still
+ * require client-side execution.
+ */
+const RSC_UNSAFE_FUNCTIONS = new Set([
+  'canUseDOM',
+  // Griffel styling functions that require client-side execution
+  'makeStyles',
+  'makeResetStyles',
+  'makeStaticStyles',
+]);
+
+/**
  * Determines if a property name represents an event handler
  * @param name - The property name to check
  * @returns True if the name follows the onXxx pattern
@@ -130,6 +147,8 @@ export const rule = createRule<[], MessageIds>({
       topDirectivePresent: false,
       misplacedDirective: null,
       firstClientFeature: null,
+      importedCustomHooks: new Set(),
+      importedRSCUnsafeFunctions: new Set(),
     };
 
     /**
@@ -191,6 +210,88 @@ export const rule = createRule<[], MessageIds>({
       },
 
       /**
+       * Track imported custom hooks and SSR-unsafe functions
+       */
+      ImportDeclaration(node: TSESTree.ImportDeclaration) {
+        if (shouldSkipAnalysis()) {
+          return;
+        }
+
+        for (const specifier of node.specifiers) {
+          if (specifier.type === AST_NODE_TYPES.ImportSpecifier) {
+            const importedName =
+              specifier.imported.type === AST_NODE_TYPES.Identifier
+                ? specifier.imported.name
+                : specifier.imported.value;
+
+            // Track custom hooks
+            if (isPotentialCustomHook(importedName)) {
+              ruleState.importedCustomHooks.add(specifier.local.name);
+            }
+
+            // Track SSR-unsafe functions
+            if (RSC_UNSAFE_FUNCTIONS.has(importedName)) {
+              ruleState.importedRSCUnsafeFunctions.add(specifier.local.name);
+            }
+          }
+        }
+      },
+
+      /**
+       * Detect when imported custom hooks or SSR-unsafe functions are referenced
+       */
+      Identifier(node: TSESTree.Identifier) {
+        if (shouldSkipAnalysis()) {
+          return;
+        }
+
+        // Skip if this identifier is in a type-only position
+        const parent = node.parent;
+        if (!parent) {
+          return;
+        }
+
+        // Skip type annotations, type parameters, and import/export declarations
+        if (
+          parent.type === AST_NODE_TYPES.TSTypeReference ||
+          parent.type === AST_NODE_TYPES.TSTypeQuery ||
+          parent.type === AST_NODE_TYPES.TSTypeAnnotation ||
+          parent.type === AST_NODE_TYPES.TSTypeParameter ||
+          parent.type === AST_NODE_TYPES.ImportSpecifier ||
+          parent.type === AST_NODE_TYPES.ImportDefaultSpecifier ||
+          parent.type === AST_NODE_TYPES.ImportNamespaceSpecifier ||
+          parent.type === AST_NODE_TYPES.ExportSpecifier
+        ) {
+          return;
+        }
+
+        // Skip if it's a property key in an object (unless it's a shorthand property)
+        if (parent.type === AST_NODE_TYPES.Property) {
+          if (parent.key === node && !parent.shorthand && !parent.computed) {
+            return;
+          }
+        }
+
+        // Skip if it's the left side of an assignment or variable declarator
+        if (
+          (parent.type === AST_NODE_TYPES.AssignmentExpression && parent.left === node) ||
+          (parent.type === AST_NODE_TYPES.VariableDeclarator && parent.id === node)
+        ) {
+          return;
+        }
+
+        // Check if this is a reference to an imported custom hook
+        if (ruleState.importedCustomHooks.has(node.name)) {
+          recordFirstClientFeature('custom_hook', node.name, node);
+        }
+
+        // Check if this is a reference to an imported SSR-unsafe function
+        if (ruleState.importedRSCUnsafeFunctions.has(node.name)) {
+          recordFirstClientFeature('rsc_unsafe_function', node.name, node);
+        }
+      },
+
+      /**
        * Check function calls for React APIs and custom hooks
        */
       CallExpression(node: TSESTree.CallExpression) {
@@ -204,6 +305,8 @@ export const rule = createRule<[], MessageIds>({
             recordFirstClientFeature('react_api', name, node);
           } else if (isPotentialCustomHook(name)) {
             recordFirstClientFeature('custom_hook', name, node);
+          } else if (RSC_UNSAFE_FUNCTIONS.has(name)) {
+            recordFirstClientFeature('rsc_unsafe_function', name, node);
           }
         } else if (node.callee.type === AST_NODE_TYPES.MemberExpression) {
           const memberExpr = node.callee;
