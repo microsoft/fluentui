@@ -14,7 +14,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const DEFAULT_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20251107.003/assets/item-types/";
+export const DEFAULT_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20260113.001/assets/item-types/";
 
 // @public (undocumented)
 export const DEFAULT_ICON_SIZE: FileTypeIconSize;
