@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { createContext as baseCreateContext } from '@fluentui/react-context-selector';

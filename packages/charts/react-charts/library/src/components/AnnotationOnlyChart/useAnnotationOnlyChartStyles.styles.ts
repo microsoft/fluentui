@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { makeStyles } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';

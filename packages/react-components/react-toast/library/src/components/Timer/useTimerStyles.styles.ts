@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { makeResetStyles } from '@griffel/react';
 

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { makeStyles } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';

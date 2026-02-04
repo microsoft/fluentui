@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { makeStyles, tokens } from '@fluentui/react-components';
 
