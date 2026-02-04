@@ -2,6 +2,33 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 30 Jan 2026 12:55:50 GMT",
+      "tag": "@fluentui/react-components_v9.72.11",
+      "version": "9.72.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "7480b016c4964282218eb319f7c8ca3d916a421e",
+            "comment": "fix: ToolbarRadioButton should respect \"size\" prop"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "492633457bfd226a6d84ee521a8773c9265838fe",
+            "comment": "A11y bugs fixes"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "83f780ca128cfe6c9ea35cc3f3b180e2eae1b60d",
+            "comment": "A11y bug fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:27 GMT",
       "tag": "@fluentui/react-components_v9.72.10",
       "version": "9.72.10",

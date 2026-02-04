@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 22 Jan 2026 17:06:27 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jan 2026 12:55:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.11)
+
+Fri, 30 Jan 2026 12:55:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.10..@fluentui/react-components_v9.72.11)
+
+### Patches
+
+- `@fluentui/react-toolbar`
+  - fix: ToolbarRadioButton should respect "size" prop ([PR #35710](https://github.com/microsoft/fluentui/pull/35710) by olfedias@microsoft.com)
+- `@fluentui/react-charts`
+  - A11y bugs fixes ([PR #35690](https://github.com/microsoft/fluentui/pull/35690) by 132879294+v-baambati@users.noreply.github.com)
+  - A11y bug fix ([PR #35704](https://github.com/microsoft/fluentui/pull/35704) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [9.72.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.10)
 

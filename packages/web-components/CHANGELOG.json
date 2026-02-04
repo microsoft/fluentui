@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 04 Feb 2026 04:08:37 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.5",
+      "version": "3.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "31c5eb7c476e7cfe8ef3b172d20357684cf6b101",
+            "comment": "fix: remove extraneous closing parentheses in avatar CSS"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jan 2026 04:07:04 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.4",
       "version": "3.0.0-rc.4",

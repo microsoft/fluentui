@@ -8,9 +8,14 @@ export type AccordionPanelSlots = {
 
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
+export type AccordionPanelBaseProps = ComponentProps<Omit<AccordionPanelSlots, 'collapseMotion'>>;
+
 export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
   /**
    * Internal open state, provided by context.
    */
   open: boolean;
 };
+
+export type AccordionPanelBaseState = ComponentState<Omit<AccordionPanelSlots, 'collapseMotion'>> &
+  Pick<AccordionPanelState, 'open'>;

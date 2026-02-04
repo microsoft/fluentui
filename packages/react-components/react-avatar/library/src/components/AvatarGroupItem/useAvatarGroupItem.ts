@@ -25,7 +25,7 @@ export const useAvatarGroupItem_unstable = (
   const groupSize = useAvatarGroupContext_unstable(ctx => ctx.size);
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
-  const { style, className, ...avatarSlotProps } = props;
+  const { style, className, overflowLabel, ...avatarSlotProps } = props;
   const size = groupSize ?? defaultAvatarGroupSize;
   const hasAvatarGroupContext = useHasParentContext(AvatarGroupContext);
 
@@ -59,7 +59,7 @@ export const useAvatarGroupItem_unstable = (
       },
       elementType: Avatar,
     }),
-    overflowLabel: slot.always(props.overflowLabel, {
+    overflowLabel: slot.always(overflowLabel, {
       defaultProps: {
         // Avatar already has its aria-label set to the name, this will prevent the name to be read twice.
         'aria-hidden': true,

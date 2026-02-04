@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Fri, 30 Jan 2026 12:55:50 GMT",
+      "tag": "@fluentui/react-charts_v9.3.10",
+      "version": "9.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "492633457bfd226a6d84ee521a8773c9265838fe",
+            "comment": "A11y bugs fixes"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "83f780ca128cfe6c9ea35cc3f3b180e2eae1b60d",
+            "comment": "A11y bug fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:46 GMT",
       "tag": "@fluentui/react-charts_v9.3.9",
       "version": "9.3.9",

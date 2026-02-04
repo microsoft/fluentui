@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useEventCallback } from '@fluentui/react-utilities';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
@@ -15,7 +15,7 @@ export const useAccordionItem_unstable = (
   props: AccordionItemProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionItemState => {
-  const { value, disabled = false } = props;
+  const { value, disabled = false, ...rest } = props;
 
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
   const open = useAccordionContext_unstable(ctx => ctx.openItems.includes(value));
@@ -30,13 +30,11 @@ export const useAccordionItem_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      {
+        disabled,
         ref: ref as React.Ref<HTMLDivElement>,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

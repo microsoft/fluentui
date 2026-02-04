@@ -21,4 +21,4 @@ export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> &
   Required<Pick<ToggleButtonProps, 'checked'>> &
   Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
 
-export type ToolbarRadioButtonBaseState = DistributiveOmit<ToolbarRadioButtonState, 'appearance'>;
+export type ToolbarRadioButtonBaseState = DistributiveOmit<ToolbarRadioButtonState, 'appearance' | 'size'>;

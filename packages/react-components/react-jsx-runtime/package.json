@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-utilities": "^9.26.1",
-    "react-is": "^17.0.2",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
