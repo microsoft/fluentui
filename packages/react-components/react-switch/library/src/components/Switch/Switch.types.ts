@@ -80,9 +80,9 @@ export type SwitchProps = Omit<
 };
 
 /**
- * Switch base props, excluding design-related props like labelPosition and size
+ * Switch base props, excluding design-related props like size
  */
-export type SwitchBaseProps = Omit<SwitchProps, 'labelPosition' | 'size'>;
+export type SwitchBaseProps = Omit<SwitchProps, 'size'>;
 
 /**
  * State used in rendering Switch
@@ -90,6 +90,6 @@ export type SwitchBaseProps = Omit<SwitchProps, 'labelPosition' | 'size'>;
 export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;
 
 /**
- * Switch base state, excluding design-related state like labelPosition and size
+ * Switch base state, excluding design-related state like size
  */
-export type SwitchBaseState = Omit<SwitchState, 'labelPosition' | 'size'>;
+export type SwitchBaseState = Omit<SwitchState, 'size'>;

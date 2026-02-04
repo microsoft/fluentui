@@ -18,13 +18,12 @@ import type { SwitchProps, SwitchState, SwitchBaseProps, SwitchBaseState } from 
  * @param ref - reference to `<input>` element of Switch
  */
 export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
-  const { labelPosition = 'after', size = 'medium', ...baseProps } = props;
+  const { size = 'medium', ...baseProps } = props;
 
   const baseState = useSwitchBase_unstable(baseProps, ref);
 
   return {
     ...baseState,
-    labelPosition,
     size,
   };
 };
@@ -39,7 +38,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { checked, defaultChecked, disabled, onChange, required } = props;
+  const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -67,6 +66,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
     elementType: Label,
   });
   return {
+    labelPosition,
     components: { root: 'div', indicator: 'div', input: 'input', label: Label },
 
     root,
