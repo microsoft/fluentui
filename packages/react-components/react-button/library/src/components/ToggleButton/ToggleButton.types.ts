@@ -1,5 +1,4 @@
-import type { DistributiveOmit } from '@fluentui/react-utilities';
-import type { ButtonDesignPropNames, ButtonProps, ButtonState } from '../Button/Button.types';
+import type { ButtonBaseProps, ButtonBaseState, ButtonProps, ButtonState } from '../Button/Button.types';
 
 export type ToggleButtonProps = ButtonProps & {
   /**
@@ -20,8 +19,8 @@ export type ToggleButtonProps = ButtonProps & {
   checked?: boolean;
 };
 
-export type ToggleButtonBaseProps = DistributiveOmit<ToggleButtonProps, ButtonDesignPropNames>;
+export type ToggleButtonBaseProps = ButtonBaseProps & Pick<ToggleButtonProps, 'defaultChecked' | 'checked'>;
 
 export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
 
-export type ToggleButtonBaseState = DistributiveOmit<ToggleButtonState, ButtonDesignPropNames>;
+export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked'>>;

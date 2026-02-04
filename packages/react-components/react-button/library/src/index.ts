@@ -47,11 +47,5 @@ export type { ButtonContextValue } from './contexts/index';
 // Experimental APIs - will be uncommented in the experimental release branch
 // export { useButtonBase_unstable } from './Button';
 // export type { ButtonBaseProps, ButtonBaseState } from './Button';
-// export { useCompoundButtonBase_unstable } from './CompoundButton';
-// export type { CompoundButtonBaseProps, CompoundButtonBaseState } from './CompoundButton';
-// export { useMenuButtonBase_unstable } from './MenuButton';
-// export type { MenuButtonBaseProps, MenuButtonBaseState } from './MenuButton';
-// export { useSplitButtonBase_unstable } from './SplitButton';
-// export type { SplitButtonBaseProps, SplitButtonBaseState } from './SplitButton';
 // export { useToggleButtonBase_unstable } from './ToggleButton';
 // export type { ToggleButtonBaseProps, ToggleButtonBaseState } from './ToggleButton';

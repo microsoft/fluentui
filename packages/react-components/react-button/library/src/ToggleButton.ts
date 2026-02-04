@@ -1,8 +1,8 @@
 export type {
   ToggleButtonBaseProps,
   ToggleButtonProps,
-  ToggleButtonBaseState,
   ToggleButtonState,
+  ToggleButtonBaseState,
 } from './components/ToggleButton/index';
 export {
   ToggleButton,
