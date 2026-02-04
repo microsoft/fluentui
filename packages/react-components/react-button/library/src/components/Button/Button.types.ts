@@ -69,14 +69,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
   size?: ButtonSize;
 };
 
-/**
- * Internal use only: lists prop names related to Button design for use within Button components.
- *
- * @internal
- */
-export type ButtonDesignPropNames = 'appearance' | 'size' | 'shape';
-
-export type ButtonBaseProps = DistributiveOmit<ButtonProps, ButtonDesignPropNames>;
+export type ButtonBaseProps = DistributiveOmit<ButtonProps, 'appearance' | 'size' | 'shape'>;
 
 export type ButtonState = ComponentState<ButtonSlots> &
   Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
@@ -88,4 +81,4 @@ export type ButtonState = ComponentState<ButtonSlots> &
     iconOnly: boolean;
   };
 
-export type ButtonBaseState = DistributiveOmit<ButtonState, ButtonDesignPropNames>;
+export type ButtonBaseState = DistributiveOmit<ButtonState, 'appearance' | 'size' | 'shape'>;
