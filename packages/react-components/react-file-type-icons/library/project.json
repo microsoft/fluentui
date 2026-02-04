@@ -4,5 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-file-type-icons/library/src",
   "tags": ["platform:web", "vNext"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "generate-api": {
+      "dependsOn": ["^generate-api", "^build"]
+    }
+  }
 }
