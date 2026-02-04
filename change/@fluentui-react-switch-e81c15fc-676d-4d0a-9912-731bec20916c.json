@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat: add base state hooks for Switch component",
+  "type": "patch",
+  "comment": "refactor: add base state hooks for Switch component",
   "packageName": "@fluentui/react-switch",
   "email": "copilot@github.com",
   "dependentChangeType": "patch"
