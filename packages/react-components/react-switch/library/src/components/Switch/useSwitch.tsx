@@ -6,7 +6,7 @@ import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
-import type { SwitchProps, SwitchState } from './Switch.types';
+import type { SwitchProps, SwitchState, SwitchBaseProps, SwitchBaseState } from './Switch.types';
 
 /**
  * Create the state required to render Switch.
@@ -18,15 +18,32 @@ import type { SwitchProps, SwitchState } from './Switch.types';
  * @param ref - reference to `<input>` element of Switch
  */
 export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
+  const { size = 'medium', ...baseProps } = props;
+
+  const baseState = useSwitchBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    size,
+  };
+};
+
+/**
+ * Base hook for Switch component, manages state and structure common to all variants of Switch
+ *
+ * @param props - base props from this instance of Switch
+ * @param ref - reference to `<input>` element of Switch
+ */
+export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<HTMLInputElement>): SwitchBaseState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { checked, defaultChecked, disabled, labelPosition = 'after', size = 'medium', onChange, required } = props;
+  const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange', 'size'],
+    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
   });
 
   const id = useId('switch-', nativeProps.primary.id);
@@ -49,13 +66,12 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
     elementType: Label,
   });
   return {
-    labelPosition, //Slots definition
+    labelPosition,
     components: { root: 'div', indicator: 'div', input: 'input', label: Label },
 
     root,
     indicator,
     input,
     label,
-    size,
   };
 };
