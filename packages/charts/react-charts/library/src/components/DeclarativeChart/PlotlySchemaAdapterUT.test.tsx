@@ -415,6 +415,14 @@ describe('transform Plotly Json To chart Props', () => {
     }
   });
 
+  test('transformPlotlyJsonToHeatmapProps - Should return heatmap chart props with annotations', () => {
+    const plotlySchema = require('./tests/schema/fluent_heatmap_annotations_test.json');
+    const result = transformPlotlyJsonToHeatmapProps(plotlySchema, false, { current: colorMap }, 'default', true);
+    expect(result).toMatchSnapshot();
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(3);
+  });
+
   test('transformPlotlyJsonToSankeyProps - Should return sankey chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
     expect(
