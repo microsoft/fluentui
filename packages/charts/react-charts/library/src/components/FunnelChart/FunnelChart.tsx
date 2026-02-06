@@ -20,6 +20,7 @@ import {
 } from './funnelGeometry';
 import { ChartPopoverProps } from '../../index';
 import { useImageExport } from '../../utilities/hooks';
+import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -501,6 +502,15 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
             : _createFunnel(height - funnelMarginTop, funnelWidth)}
         </g>
       </svg>
+      {props.annotations && props.annotations.length > 0 && (
+        <ChartAnnotationLayer
+          annotations={props.annotations}
+          context={{
+            plotRect: { x: 0, y: 0, width, height },
+            svgRect: { width, height },
+          }}
+        />
+      )}
       {isPopoverOpen && (
         <ChartPopover
           {...props.calloutProps}

@@ -3169,6 +3169,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     });
   }
   const { chartTitle, titleStyles } = getTitles(input.layout);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
     data: funnelData,
@@ -3178,6 +3179,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     ...(titleStyles ? { titleStyles } : {}),
+    ...(annotations ? { annotations } : {}),
   } as FunnelChartProps;
 };
 
