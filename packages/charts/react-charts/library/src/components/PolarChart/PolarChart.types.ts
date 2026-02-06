@@ -10,6 +10,7 @@ import {
   ScatterPolarSeries,
 } from '../../types/DataPoint';
 import { LegendsProps } from '../Legends/Legends.types';
+import { ChartAnnotation } from '../../types/ChartAnnotation';
 
 /**
  * Configuration options for a polar axis.
@@ -166,6 +167,11 @@ export interface PolarChartProps {
    * @default false
    */
   useUTC?: boolean;
+
+  /**
+   * Annotations to be displayed on the chart.
+   */
+  annotations?: ChartAnnotation[];
 }
 
 /**

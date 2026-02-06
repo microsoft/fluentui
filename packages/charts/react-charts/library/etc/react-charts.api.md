@@ -1525,6 +1525,7 @@ export interface PolarChartProps {
     angularAxis?: PolarAxisProps & {
         unit?: 'radians' | 'degrees';
     };
+    annotations?: ChartAnnotation[];
     chartTitle?: string;
     componentRef?: React_2.Ref<Chart>;
     culture?: string;

@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "type": "scatterpolar",
+      "r": [85, 92, 78, 88, 95, 85],
+      "theta": ["Sales", "Marketing", "Development", "Support", "Research", "Sales"],
+      "fill": "toself",
+      "fillcolor": "rgba(0, 120, 212, 0.3)",
+      "name": "Team A",
+      "line": {
+        "color": "#0078d4"
+      }
+    },
+    {
+      "type": "scatterpolar",
+      "r": [70, 85, 95, 75, 80, 70],
+      "theta": ["Sales", "Marketing", "Development", "Support", "Research", "Sales"],
+      "fill": "toself",
+      "fillcolor": "rgba(16, 124, 16, 0.3)",
+      "name": "Team B",
+      "line": {
+        "color": "#107c10"
+      }
+    }
+  ],
+  "layout": {
+    "title": "Team Performance Comparison",
+    "polar": {
+      "radialaxis": {
+        "visible": true,
+        "range": [0, 100]
+      }
+    },
+    "showlegend": true,
+    "width": 600,
+    "height": 500,
+    "annotations": [
+      {
+        "text": "<b>Top Performer</b>",
+        "x": 0.85,
+        "y": 0.85,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": true,
+        "arrowhead": 2,
+        "ax": -30,
+        "ay": 20,
+        "font": {
+          "size": 12,
+          "color": "#107c10"
+        }
+      },
+      {
+        "text": "Development leads",
+        "x": 0.5,
+        "y": 0.15,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": false,
+        "font": {
+          "size": 11,
+          "color": "#0078d4"
+        }
+      },
+      {
+        "text": "Data as of Q4 2025",
+        "x": 0.5,
+        "y": -0.05,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": false,
+        "font": {
+          "size": 10,
+          "color": "#666666"
+        }
+      }
+    ]
+  }
+}

@@ -5637,3 +5637,164 @@ Object {
   "yMinValue": 0,
 }
 `;
+
+exports[`transformPlotlyJsonToPolarChartProps Should return polar chart props with annotations 1`] = `
+Object {
+  "angularAxis": Object {
+    "categoryOrder": Array [
+      "Sales",
+      "Marketing",
+      "Development",
+      "Support",
+      "Research",
+    ],
+    "scaleType": "default",
+    "tickFormat": undefined,
+    "unit": undefined,
+  },
+  "annotations": Array [
+    Object {
+      "connector": Object {
+        "arrow": "end",
+        "strokeColor": "#107c10",
+      },
+      "coordinates": Object {
+        "type": "relative",
+        "x": 0.85,
+        "y": 0.15000000000000002,
+      },
+      "id": "annotation-0-lt-b-gt-top-performer-lt-b-gt",
+      "layout": Object {
+        "offsetX": -30,
+        "offsetY": 20,
+      },
+      "style": Object {
+        "fontSize": "12px",
+        "textColor": "#107c10",
+      },
+      "text": "&lt;b&gt;Top Performer&lt;/b&gt;",
+    },
+    Object {
+      "coordinates": Object {
+        "type": "relative",
+        "x": 0.5,
+        "y": 0.85,
+      },
+      "id": "annotation-1-development-leads",
+      "style": Object {
+        "fontSize": "11px",
+        "textColor": "#0078d4",
+      },
+      "text": "Development leads",
+    },
+    Object {
+      "coordinates": Object {
+        "type": "relative",
+        "x": 0.5,
+        "y": 1.05,
+      },
+      "id": "annotation-2-data-as-of-q4-2025",
+      "style": Object {
+        "fontSize": "10px",
+        "textColor": "#666666",
+      },
+      "text": "Data as of Q4 2025",
+    },
+  ],
+  "data": Array [
+    Object {
+      "color": "#0078d4ff",
+      "data": Array [
+        Object {
+          "color": "#0078d4ff",
+          "r": 85,
+          "theta": "Sales",
+        },
+        Object {
+          "color": "#0078d4ff",
+          "r": 92,
+          "theta": "Marketing",
+        },
+        Object {
+          "color": "#0078d4ff",
+          "r": 78,
+          "theta": "Development",
+        },
+        Object {
+          "color": "#0078d4ff",
+          "r": 88,
+          "theta": "Support",
+        },
+        Object {
+          "color": "#0078d4ff",
+          "r": 95,
+          "theta": "Research",
+        },
+        Object {
+          "color": "#0078d4ff",
+          "r": 85,
+          "theta": "Sales",
+        },
+      ],
+      "legend": "Team A",
+      "legendShape": "default",
+      "lineOptions": Object {
+        "curve": "linear",
+      },
+      "type": "areapolar",
+    },
+    Object {
+      "color": "#107c10ff",
+      "data": Array [
+        Object {
+          "color": "#107c10ff",
+          "r": 70,
+          "theta": "Sales",
+        },
+        Object {
+          "color": "#107c10ff",
+          "r": 85,
+          "theta": "Marketing",
+        },
+        Object {
+          "color": "#107c10ff",
+          "r": 95,
+          "theta": "Development",
+        },
+        Object {
+          "color": "#107c10ff",
+          "r": 75,
+          "theta": "Support",
+        },
+        Object {
+          "color": "#107c10ff",
+          "r": 80,
+          "theta": "Research",
+        },
+        Object {
+          "color": "#107c10ff",
+          "r": 70,
+          "theta": "Sales",
+        },
+      ],
+      "legend": "Team B",
+      "legendShape": "default",
+      "lineOptions": Object {
+        "curve": "linear",
+      },
+      "type": "areapolar",
+    },
+  ],
+  "direction": undefined,
+  "height": 500,
+  "hideLegend": false,
+  "radialAxis": Object {
+    "categoryOrder": "data",
+    "rangeEnd": 100,
+    "rangeStart": 0,
+    "scaleType": "default",
+    "tickFormat": undefined,
+  },
+  "width": 600,
+}
+`;
