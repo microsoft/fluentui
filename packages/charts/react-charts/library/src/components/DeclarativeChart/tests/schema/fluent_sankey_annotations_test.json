@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "type": "sankey",
+      "orientation": "h",
+      "node": {
+        "pad": 15,
+        "thickness": 20,
+        "line": { "color": "black", "width": 0.5 },
+        "label": ["Source A", "Source B", "Target X", "Target Y", "Target Z"],
+        "color": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+      },
+      "link": {
+        "source": [0, 0, 1, 1, 1],
+        "target": [2, 3, 2, 3, 4],
+        "value": [8, 4, 2, 8, 4]
+      }
+    }
+  ],
+  "layout": {
+    "title": "Sankey with Annotations",
+    "width": 600,
+    "height": 400,
+    "annotations": [
+      {
+        "text": "Main Flow",
+        "x": 0.5,
+        "y": 0.5,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": false,
+        "font": { "size": 14, "color": "#333333" }
+      }
+    ]
+  }
+}

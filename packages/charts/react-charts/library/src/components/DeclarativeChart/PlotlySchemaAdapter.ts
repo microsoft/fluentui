@@ -2706,6 +2706,7 @@ export const transformPlotlyJsonToSankeyProps = (
   // };
 
   const { chartTitle, titleStyles } = getTitles(input.layout);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
     data: {
@@ -2718,6 +2719,7 @@ export const transformPlotlyJsonToSankeyProps = (
     // styles,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     ...(titleStyles ? { titleStyles } : {}),
+    ...(annotations ? { annotations } : {}),
   } as SankeyChartProps;
 };
 

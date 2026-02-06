@@ -1686,6 +1686,7 @@ export interface SankeyChartData {
 // @public
 export interface SankeyChartProps {
     accessibility?: SankeyChartAccessibilityProps;
+    annotations?: ChartAnnotation[];
     borderColorsForNodes?: string[];
     calloutProps?: ChartPopoverProps;
     className?: string;
