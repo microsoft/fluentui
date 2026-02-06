@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-charts): Add annotations support for ChartTable component",
+  "packageName": "@fluentui/react-charts",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
