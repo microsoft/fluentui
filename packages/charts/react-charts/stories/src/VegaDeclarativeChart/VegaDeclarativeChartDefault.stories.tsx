@@ -875,139 +875,24 @@ function categorizeSchemas(): Map<string, string[]> {
     let category = 'Other';
 
     // Categorization logic based on schema name patterns
-    if (
-      name.includes('stock') ||
-      name.includes('portfolio') ||
-      name.includes('profit') ||
-      name.includes('revenue') ||
-      name.includes('cashflow') ||
-      name.includes('budget') ||
-      name.includes('expense') ||
-      name.includes('roi') ||
-      name.includes('financial') ||
-      name.includes('dividend')
-    ) {
-      category = 'Financial';
-    } else if (
-      name.includes('orders') ||
-      name.includes('conversion') ||
-      name.includes('product') ||
-      name.includes('inventory') ||
-      name.includes('customer') ||
-      name.includes('price') ||
-      name.includes('seasonal') ||
-      name.includes('category') ||
-      name.includes('shipping') ||
-      name.includes('discount') ||
-      name.includes('sales') ||
-      name.includes('market')
-    ) {
-      category = 'E-Commerce';
-    } else if (
-      name.includes('campaign') ||
-      name.includes('engagement') ||
-      name.includes('social') ||
-      name.includes('ad') ||
-      name.includes('ctr') ||
-      name.includes('channel') ||
-      name.includes('influencer') ||
-      name.includes('viral') ||
-      name.includes('sentiment') ||
-      name.includes('impression') ||
-      name.includes('lead')
-    ) {
-      category = 'Marketing';
-    } else if (
-      name.includes('patient') ||
-      name.includes('age') ||
-      name.includes('disease') ||
-      name.includes('treatment') ||
-      name.includes('hospital') ||
-      name.includes('bmi') ||
-      name.includes('recovery') ||
-      name.includes('medication') ||
-      name.includes('symptom') ||
-      name.includes('health')
-    ) {
-      category = 'Healthcare';
-    } else if (
-      name.includes('test') ||
-      name.includes('grade') ||
-      name.includes('course') ||
-      name.includes('student') ||
-      name.includes('attendance') ||
-      name.includes('study') ||
-      name.includes('graduation') ||
-      name.includes('skill') ||
-      name.includes('learning') ||
-      name.includes('dropout')
-    ) {
-      category = 'Education';
-    } else if (
-      name.includes('production') ||
-      name.includes('defect') ||
-      name.includes('machine') ||
-      name.includes('downtime') ||
-      name.includes('quality') ||
-      name.includes('shift') ||
-      name.includes('turnover') ||
-      name.includes('supply') ||
-      name.includes('efficiency') ||
-      name.includes('maintenance')
-    ) {
-      category = 'Manufacturing';
-    } else if (
-      name.includes('temperature') ||
-      name.includes('precipitation') ||
-      name.includes('co2') ||
-      name.includes('renewable') ||
-      name.includes('air') ||
-      name.includes('weather') ||
-      name.includes('sea') ||
-      name.includes('biodiversity') ||
-      name.includes('energy') ||
-      name.includes('climate')
-    ) {
-      category = 'Climate';
-    } else if (
-      name.includes('api') ||
-      name.includes('error') ||
-      name.includes('server') ||
-      name.includes('deployment') ||
-      name.includes('user_sessions') ||
-      name.includes('bug') ||
-      name.includes('performance') ||
-      name.includes('code') ||
-      name.includes('bandwidth') ||
-      name.includes('system') ||
-      name.includes('website') ||
-      name.includes('log_scale')
-    ) {
-      category = 'Technology';
-    } else if (
-      name.includes('player') ||
-      name.includes('team') ||
-      name.includes('game') ||
-      name.includes('season') ||
-      name.includes('attendance_bar') ||
-      name.includes('league') ||
-      name.includes('streaming') ||
-      name.includes('genre') ||
-      name.includes('tournament')
-    ) {
-      category = 'Sports';
-    } else if (
-      name.includes('linechart') ||
-      name.includes('areachart') ||
-      name.includes('barchart') ||
-      name.includes('scatterchart') ||
-      name.includes('donutchart') ||
-      name.includes('heatmapchart') ||
-      name.includes('grouped_bar') ||
-      name.includes('stacked_bar') ||
-      name.includes('line_bar_combo')
-    ) {
-      category = 'Basic Charts';
+    const categoryKeywords: [string, string[]][] = [
+      ['Financial', ['stock', 'portfolio', 'profit', 'revenue', 'cashflow', 'budget', 'expense', 'roi', 'financial', 'dividend']],
+      ['E-Commerce', ['orders', 'conversion', 'product', 'inventory', 'customer', 'price', 'seasonal', 'category', 'shipping', 'discount', 'sales', 'market']],
+      ['Marketing', ['campaign', 'engagement', 'social', 'ad', 'ctr', 'channel', 'influencer', 'viral', 'sentiment', 'impression', 'lead']],
+      ['Healthcare', ['patient', 'age', 'disease', 'treatment', 'hospital', 'bmi', 'recovery', 'medication', 'symptom', 'health']],
+      ['Education', ['test', 'grade', 'course', 'student', 'attendance', 'study', 'graduation', 'skill', 'learning', 'dropout']],
+      ['Manufacturing', ['production', 'defect', 'machine', 'downtime', 'quality', 'shift', 'turnover', 'supply', 'efficiency', 'maintenance']],
+      ['Climate', ['temperature', 'precipitation', 'co2', 'renewable', 'air', 'weather', 'sea', 'biodiversity', 'energy', 'climate']],
+      ['Technology', ['api', 'error', 'server', 'deployment', 'user_sessions', 'bug', 'performance', 'code', 'bandwidth', 'system', 'website', 'log_scale']],
+      ['Sports', ['player', 'team', 'game', 'season', 'attendance_bar', 'league', 'streaming', 'genre', 'tournament']],
+      ['Basic Charts', ['linechart', 'areachart', 'barchart', 'scatterchart', 'donutchart', 'heatmapchart', 'grouped_bar', 'stacked_bar', 'line_bar_combo']],
+    ];
+
+    for (const [cat, keywords] of categoryKeywords) {
+      if (keywords.some(keyword => name.includes(keyword))) {
+        category = cat;
+        break;
+      }
     }
 
     if (!categories.has(category)) {

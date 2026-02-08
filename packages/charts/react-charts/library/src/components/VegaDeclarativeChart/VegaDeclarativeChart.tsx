@@ -25,8 +25,7 @@ import { ScatterChart } from '../ScatterChart/index';
 import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { PolarChart } from '../PolarChart/index';
-import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { webLightTheme } from '@fluentui/tokens';
+import { useIsDarkTheme, useColorMapping } from '../DeclarativeChart/DeclarativeChartHooks';
 import type { Chart } from '../../types/index';
 
 /**
@@ -87,21 +86,6 @@ export interface VegaDeclarativeChartProps {
   style?: React.CSSProperties;
 }
 
-/**
- * Hook to determine if dark theme is active
- */
-function useIsDarkTheme(): boolean {
-  const theme = React.useContext(V9ThemeContext);
-  const currentTheme = theme || webLightTheme;
-  return currentTheme?.colorBrandBackground2 === '#004C50';
-}
-
-/**
- * Hook for color mapping across charts
- */
-function useColorMapping() {
-  return React.useRef<Map<string, string>>(new Map());
-}
 
 /**
  * Check if spec is a horizontal concatenation
@@ -360,16 +344,7 @@ function renderSingleChart(
   const { transformer, renderer: ChartRenderer } = chartConfig;
   const chartProps = transformer(spec, colorMap, isDarkTheme) as any;
 
-  // Special handling for charts with different prop patterns
-  if (chartType.type === 'donut') {
-    return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} />;
-  } else if (chartType.type === 'heatmap') {
-    return <ChartRenderer {...chartProps} componentRef={chartRef} />;
-  } else if (chartType.type === 'polar') {
-    return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} />;
-  } else {
-    return <ChartRenderer {...chartProps} {...interactiveCommonProps} />;
-  }
+  return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} {...interactiveCommonProps} />;
 }
 
 /**

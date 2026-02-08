@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
+import { areArraysEqual } from '../../utilities/utilities';
 
 /**
  * Vega-Lite Color Scheme to Fluent DataViz Palette Adapter
@@ -289,28 +290,19 @@ export function isStandardVegaScheme(range: string[] | undefined): VegaColorSche
 
   const rangeLower = range.map(c => c.toLowerCase());
 
-  if (arraysEqual(rangeLower, VEGA_CATEGORY10)) {
+  if (areArraysEqual(rangeLower, VEGA_CATEGORY10)) {
     return 'category10';
   }
-  if (arraysEqual(rangeLower, VEGA_CATEGORY20)) {
+  if (areArraysEqual(rangeLower, VEGA_CATEGORY20)) {
     return 'category20';
   }
-  if (arraysEqual(rangeLower, VEGA_TABLEAU10)) {
+  if (areArraysEqual(rangeLower, VEGA_TABLEAU10)) {
     return 'tableau10';
   }
-  if (arraysEqual(rangeLower, VEGA_TABLEAU20)) {
+  if (areArraysEqual(rangeLower, VEGA_TABLEAU20)) {
     return 'tableau20';
   }
 
   return undefined;
 }
 
-/**
- * Helper to compare two arrays for equality
- */
-function arraysEqual(a: string[], b: string[]): boolean {
-  if (a.length !== b.length) {
-    return false;
-  }
-  return a.every((val, idx) => val === b[idx]);
-}
