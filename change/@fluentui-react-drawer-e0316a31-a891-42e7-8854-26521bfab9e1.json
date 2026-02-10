@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer'",
+  "packageName": "@fluentui/react-drawer",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

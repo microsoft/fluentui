@@ -879,6 +879,7 @@ export {
   useDialogContent_unstable,
   renderDialogContent_unstable,
   useDialogContext_unstable,
+  useDialogBackdropContext_unstable,
   useDialogSurfaceContext_unstable,
   useDialogSurfaceContextValues_unstable,
   DialogProvider,
@@ -914,6 +915,7 @@ export type {
   DialogContextValue,
   DialogSurfaceContextValue,
   DialogSurfaceContextValues,
+  DialogBackdropContextValue,
 } from '@fluentui/react-dialog';
 
 export {
