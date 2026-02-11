@@ -4,15 +4,16 @@ import {
   Overflow,
   OverflowItem,
   OverflowDivider,
-  OverflowItemProps,
-  OverflowProps,
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
+  type OverflowProps,
+  type OverflowItemProps,
   type OnOverflowChangeData,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 import { OverflowAxis } from '@fluentui/priority-overflow';
+import { DistributiveOmit } from '@fluentui/react-utilities';
 
 const selectors = {
   container: 'data-test-container',
@@ -73,11 +74,12 @@ const setContainerHeight = (size: number) => {
   setContainerSize(size, 'height');
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
-  children,
-  width,
-  ...overflowItemProps
-}) => {
+type ItemProps = { children?: React.ReactNode; width?: number | string } & DistributiveOmit<
+  OverflowItemProps,
+  'children'
+>;
+
+const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
   const selector = {
     [selectors.item]: overflowItemProps.id,
   };
@@ -1110,6 +1112,198 @@ describe('Overflow', () => {
           expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(false);
         }
       });
+    });
+  });
+
+  describe('pinned items', () => {
+    it('should keep pinned item visible when container shrinks', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // At 150px with 50px items + ~50px menu, only ~2 items fit
+      // Item 5 is pinned so it must be visible, item 0 fills remaining space
+      // Item 1 and later non-pinned items should overflow
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="5"]`).should('be.visible');
+      cy.get(`[${selectors.item}="0"]`).should('be.visible');
+      cy.get(`[${selectors.item}="1"]`).should('not.be.visible');
+      cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+
+      // 8 items overflow (1, 2, 3, 4, 6, 7, 8, 9) - pinned item 5 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should keep multiple pinned items visible', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 3 || i === 7}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="3"]`).should('be.visible');
+      cy.get(`[${selectors.item}="7"]`).should('be.visible');
+
+      // 8 items overflow (0, 1, 2, 4, 5, 6, 8, 9) - pinned items 3 and 7 are not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should keep pinned items visible even when they exceed container size', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            // Pin 5 items (0-4), each 50px = 250px total
+            <Item key={i} id={i.toString()} pinned={i < 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // Container is only 60px but pinned items need 250px (5 × 50px)
+      // All pinned items should not be hidden by overflow logic (no display: none)
+      // They may be visually clipped by CSS overflow, but that's expected
+      setContainerWidth(60);
+
+      cy.get(`[${selectors.item}="0"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="1"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="2"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="3"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="4"]`).should('not.have.css', 'display', 'none');
+
+      // First item fits in viewport
+      cy.get(`[${selectors.item}="0"]`).should('be.visible');
+      // Last pinned item is outside viewport (clipped by CSS, not hidden by overflow logic)
+      cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+
+      // Non-pinned items should be hidden by overflow logic
+      cy.get(`[${selectors.item}="5"]`).should('have.css', 'display', 'none');
+      // 5 items overflow (5, 6, 7, 8, 9) - pinned items 0-4 are not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+    });
+
+    it('should exclude pinned items from overflow count', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 9}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // Container fits ~5 items. Item 9 is pinned.
+      // With pinned: items 0-3 and 9 visible, items 4-8 overflow = +5
+      // The count should still reflect actual hidden items
+      setContainerWidth(300);
+
+      cy.get(`[${selectors.item}="9"]`).should('be.visible');
+      // 5 items overflow (4, 5, 6, 7, 8) - pinned item 9 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+    });
+
+    it('should keep pinned item visible regardless of position', () => {
+      // Items with higher priority overflow later, item 9 is last in DOM and pinned
+      const priorities = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+      mount(
+        <Container>
+          {priorities.map((priority, i) =>
+            i === 9 ? (
+              <Item key={i} id={i.toString()} pinned>
+                {i}
+              </Item>
+            ) : (
+              <Item key={i} id={i.toString()} priority={priority}>
+                {i}
+              </Item>
+            ),
+          )}
+          <Menu />
+        </Container>,
+      );
+
+      // Item 9 is last in DOM order but pinned, so it should stay visible
+      setContainerWidth(150);
+      cy.get(`[${selectors.item}="9"]`).should('be.visible');
+      // 8 items overflow (1, 2, 3, 4, 5, 6, 7, 8) - pinned item 9 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should respect minimumVisible with pinned items', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container minimumVisible={3}>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // minimumVisible=3 means at least 3 items should be visible
+      // Item 5 is pinned
+      // At very small size, we should see items 0, 1, 2 (minimum) plus item 5 (pinned)
+      setContainerWidth(100);
+      cy.get(`[${selectors.item}="5"]`).should('be.visible');
+      // 7 items overflow (3, 4, 6, 7, 8, 9 + one more due to space constraints)
+      cy.get(`[${selectors.menu}]`).should('have.text', '+7');
+    });
+
+    it('should allow pinned item to be dynamically set', () => {
+      const Example = () => {
+        const [pinnedId, setPinnedId] = React.useState<string | null>(null);
+        return (
+          <>
+            <Container>
+              {new Array(10).fill(0).map((_, i) => (
+                <Item key={i} id={i.toString()} pinned={pinnedId === i.toString()}>
+                  {i}
+                </Item>
+              ))}
+              <Menu />
+            </Container>
+            <button id="pin-8" onClick={() => setPinnedId('8')}>
+              Pin item 8
+            </button>
+          </>
+        );
+      };
+      mount(<Example />);
+
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
+      // Before pinning: 8 items overflow (2-9)
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+
+      cy.get('#pin-8').click();
+      cy.get(`[${selectors.item}="8"]`).should('be.visible');
+      // After pinning item 8: 8 items overflow (1-7, 9) - pinned item 8 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
     });
   });
 });

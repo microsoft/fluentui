@@ -3,6 +3,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { DrawerContextValue, DrawerProvider } from '../../contexts/drawerContext';
+import { DialogBackdropProvider } from '@fluentui/react-dialog';
 
 import type { OverlayDrawerState, OverlayDrawerInternalSlots } from './OverlayDrawer.types';
 
@@ -17,9 +18,11 @@ export const renderOverlayDrawer_unstable = (
 
   return (
     <DrawerProvider value={contextValue}>
-      <state.dialog>
-        <state.root />
-      </state.dialog>
+      <DialogBackdropProvider value={false}>
+        <state.dialog>
+          <state.root />
+        </state.dialog>
+      </DialogBackdropProvider>
     </DrawerProvider>
   );
 };

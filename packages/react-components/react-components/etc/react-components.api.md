@@ -342,6 +342,7 @@ import { DialogActionsPosition } from '@fluentui/react-dialog';
 import { DialogActionsProps } from '@fluentui/react-dialog';
 import { DialogActionsSlots } from '@fluentui/react-dialog';
 import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBackdropContextValue } from '@fluentui/react-dialog';
 import { DialogBody } from '@fluentui/react-dialog';
 import { dialogBodyClassNames } from '@fluentui/react-dialog';
 import { DialogBodyProps } from '@fluentui/react-dialog';
@@ -1642,6 +1643,7 @@ import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDialog_unstable } from '@fluentui/react-dialog';
 import { useDialogActions_unstable } from '@fluentui/react-dialog';
 import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBackdropContext_unstable } from '@fluentui/react-dialog';
 import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContent_unstable } from '@fluentui/react-dialog';
@@ -2700,6 +2702,8 @@ export { DialogActionsProps }
 export { DialogActionsSlots }
 
 export { DialogActionsState }
+
+export { DialogBackdropContextValue }
 
 export { DialogBody }
 
@@ -5300,6 +5304,8 @@ export { useDialog_unstable }
 export { useDialogActions_unstable }
 
 export { useDialogActionsStyles_unstable }
+
+export { useDialogBackdropContext_unstable }
 
 export { useDialogBody_unstable }
 

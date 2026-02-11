@@ -1,7 +1,6 @@
 'use client';
 
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
@@ -12,6 +11,7 @@ import {
   SURFACE_PADDING,
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>> = {
   root: 'fui-DialogSurface',
@@ -82,11 +82,12 @@ const useStyles = makeStyles({
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
-  const { isNestedDialog, root, backdrop, open, unmountOnClose } = state;
+  const { root, backdrop, open, unmountOnClose, treatBackdropAsNested, backdropAppearance } = state;
 
   const rootBaseStyle = useRootBaseStyle();
   const backdropBaseStyle = useBackdropBaseStyle();
   const styles = useStyles();
+  const isBackdropTransparent = backdropAppearance ? backdropAppearance === 'transparent' : treatBackdropAsNested;
 
   const mountedAndClosed = !unmountOnClose && !open;
 
@@ -101,8 +102,8 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && styles.nestedDialogBackdrop,
       mountedAndClosed && styles.dialogHidden,
+      isBackdropTransparent && styles.nestedDialogBackdrop,
       backdrop.className,
     );
   }
