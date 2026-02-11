@@ -21,8 +21,9 @@ permissions:
 
 jobs:
   generate_vrt_screenshots:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # if: ${{ github.repository_owner == 'microsoft' }}
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     name: Generate screenshots
     timeout-minutes: 60
     steps:
@@ -40,7 +41,7 @@ jobs:
           cache: 'yarn'
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn playwright install --with-deps
 
       - name: Run VR tests (generate screenshots)
