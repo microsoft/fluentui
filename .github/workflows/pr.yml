@@ -23,8 +23,9 @@ env:
 
 jobs:
   main:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # if: ${{ github.repository_owner == 'microsoft' }}
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
@@ -46,7 +47,10 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
+
+      - name: 'Check duplicates in yarn.lock'
+        run: yarn run dedupe --check --json
 
       - name: Workspace lint
         run: |
@@ -82,8 +86,9 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   react-major-versions-integration:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # if: ${{ github.repository_owner == 'microsoft' }}
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
@@ -102,9 +107,12 @@ jobs:
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
       - run: |
-          yarn install --frozen-lockfile
-          yarn rit --react 17 --install-deps
-          yarn rit --react 18 --install-deps
+          yarn install --immutable
+      - run: |
+          node node_modules/.bin/rit --react 17 --install-deps
+          node node_modules/.bin/rit --react 18 --install-deps
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Verify Cypress installs from RIT temp workspaces (React 17 -> v13, React 18 -> v14)
         run: |
@@ -130,7 +138,7 @@ jobs:
           FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--18--type-check,test-rit--17--test,test-rit--18--test --exclude='react-19-tests-v9'
 
   e2e:
-    if: ${{ github.repository_owner == 'microsoft' }}
+    # if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172
@@ -156,7 +164,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Install Playwright dependencies
         run: yarn playwright install --with-deps

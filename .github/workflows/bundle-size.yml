@@ -16,8 +16,9 @@ env:
 
 jobs:
   bundle-size:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # if: ${{ github.repository_owner == 'microsoft' }}
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
@@ -39,7 +40,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Build packages & create reports
         run: yarn nx affected -t bundle-size --nxBail
