@@ -22,6 +22,5 @@
     "just": "just-scripts",
     "lint": "just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
   },
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }

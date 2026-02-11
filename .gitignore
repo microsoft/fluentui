@@ -47,6 +47,13 @@ $RECYCLE.BIN/
 dist.stats.json
 bower_components
 node_modules
+
+# Yarn (ignore everything except patches, plugins, and releases)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+
 temp
 tmp
 lib

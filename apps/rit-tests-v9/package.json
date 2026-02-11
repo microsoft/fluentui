@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@fluentui/react-components": "*",
     "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
-    "@fluentui/react-timepicker-compat": "*",
-    "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-menu-grid-preview": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-timepicker-compat": "*",
     "tslib": "^2.1.0"
   }
 }

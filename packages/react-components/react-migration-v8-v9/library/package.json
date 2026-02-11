@@ -16,8 +16,8 @@
     "@fluentui/fluent2-theme": "^8.107.151",
     "@fluentui/react": "^8.125.4",
     "@fluentui/react-components": "^9.73.0",
-    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-hooks": "^8.10.2",
+    "@fluentui/react-icons": "^2.0.245",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

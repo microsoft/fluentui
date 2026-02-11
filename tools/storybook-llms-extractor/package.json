@@ -3,9 +3,7 @@
   "description": "A CLI tool that extracts documentation from Storybook builds and converts it to LLM-friendly formats.",
   "version": "0.0.3",
   "type": "commonjs",
-  "bin": {
-    "storybook-llms-extractor": "./bin/storybook-llms-extractor.js"
-  },
+  "bin": "./bin/storybook-llms-extractor.js",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "files": [
@@ -24,6 +22,5 @@
   "devDependencies": {
     "@types/turndown": "^5.0.5",
     "@types/yargs": "^17.0.33"
-  },
-  "peerDependencies": {}
+  }
 }

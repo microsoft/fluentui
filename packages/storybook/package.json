@@ -18,9 +18,9 @@
     "lint": "just-scripts lint"
   },
   "dependencies": {
+    "@fluentui/azure-themes": "^8.6.147",
     "@fluentui/react": "^8.125.4",
     "@fluentui/theme": "^2.7.2",
-    "@fluentui/azure-themes": "^8.6.147",
     "@fluentui/theme-samples": "^8.7.223",
     "tslib": "^2.1.0"
   },

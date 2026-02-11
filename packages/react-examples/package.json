@@ -15,8 +15,8 @@
     "e2e:local": "cypress open --component"
   },
   "devDependencies": {
-    "@types/d3-format": "^3.0.0",
-    "@types/d3-fetch": "^3.0.1"
+    "@types/d3-fetch": "^3.0.1",
+    "@types/d3-format": "^3.0.0"
   },
   "dependencies": {
     "@fluentui/azure-themes": "^8.6.147",

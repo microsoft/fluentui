@@ -19,13 +19,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-provider": "^9.22.14",
-    "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-text": "^9.6.14",
+    "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.1",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1",
-    "@fluentui/react-icons": "^2.0.245"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

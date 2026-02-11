@@ -26,14 +26,14 @@
     "react-dom": ">=16.8.0 <20.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.4",
-    "@fluentui/theme": "^2.7.2",
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.25",
     "@fluentui/public-docsite-setup": "^0.3.34",
+    "@fluentui/react": "^8.125.4",
     "@fluentui/react-hooks": "^8.10.2",
-    "@fluentui/set-version": "^8.2.24",
     "@fluentui/react-monaco-editor": "^1.8.6",
+    "@fluentui/set-version": "^8.2.24",
+    "@fluentui/theme": "^2.7.2",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "color-check": "0.0.2",
     "markdown-to-jsx": "^7.0.0",
     "office-ui-fabric-core": "^11.0.0",

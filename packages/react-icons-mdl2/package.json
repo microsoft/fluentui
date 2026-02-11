@@ -18,10 +18,10 @@
     "clean": "just-scripts clean"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/react-icon-provider": "^1.4.4",
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/utilities": "^8.17.2",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -9,7 +9,7 @@
     "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
     "postbuild-storybook:docsite": "yarn postbuild-storybook",
     "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI Charts v9' --distPath ./dist/storybook",
-    "generate-llms-docs": "yarn storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/charts/\" --summaryTitle \"Fluent UI Charts v9\" --summaryDescription \"Fluent UI React charts is a set of modern, accessible, interactive, lightweight and highly customizable visualization library representing the Microsoft design system. These charts are used across 100s of projects inside Microsoft across Microsoft 365, Copilot and Azure.\"",
+    "generate-llms-docs": "storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/charts/\" --summaryTitle \"Fluent UI Charts v9\" --summaryDescription \"Fluent UI React charts is a set of modern, accessible, interactive, lightweight and highly customizable visualization library representing the Microsoft design system. These charts are used across 100s of projects inside Microsoft across Microsoft 365, Copilot and Azure.\"",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",

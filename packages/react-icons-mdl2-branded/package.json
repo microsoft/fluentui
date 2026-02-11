@@ -21,8 +21,8 @@
     "lint": "just-scripts lint"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.24",
     "@fluentui/react-icons-mdl2": "^1.4.4",
+    "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

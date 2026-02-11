@@ -23,9 +23,9 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "tslib": "^2.1.0",
-    "ts-morph": "^23.0.0",
     "glob": "^7.1.2",
+    "ts-morph": "^23.0.0",
+    "tslib": "^2.1.0",
     "yargs": "^13.3.2"
   }
 }

@@ -428,7 +428,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 10px; max-height: -20px; overflow-y: auto; transform: translate(0px, -40px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -4763,7 +4763,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 10px; max-height: -20px; overflow-y: auto; transform: translate(0px, -40px);"
       >
         <div
           class="fui-cart__calloutContentRoot"

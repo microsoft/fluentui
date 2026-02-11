@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "10.0.10",
-    "mocha": "11.2.2",
-    "@microsoft/load-themed-styles": "^1.10.26"
+    "mocha": "11.2.2"
   },
   "dependencies": {
     "tslib": "^2.1.0"

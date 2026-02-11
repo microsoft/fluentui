@@ -125,6 +125,18 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
  * Writes only when the file does not exist or dependencies actually change (to avoid race issues on CI).
  * Returned value indicates whether a write occurred.
  */
+function ensureWorkspaceIsolation(reactRootPath: string) {
+  const yarnLockPath = join(reactRootPath, 'yarn.lock');
+  if (!existsSync(yarnLockPath)) {
+    writeFileSync(yarnLockPath, '');
+  }
+
+  const yarnrcPath = join(reactRootPath, '.yarnrc.yml');
+  if (!existsSync(yarnrcPath)) {
+    writeFileSync(yarnrcPath, 'nodeLinker: node-modules\n');
+  }
+}
+
 function upsertReactRootPackageJson(params: {
   reactRootPath: string;
   react: ReactVersion;
@@ -133,6 +145,7 @@ function upsertReactRootPackageJson(params: {
 }): { wrote: boolean; pkgPath: string } {
   const { reactRootPath, react, dependencies, logger } = params;
   mkdirSync(reactRootPath, { recursive: true });
+  ensureWorkspaceIsolation(reactRootPath);
   const reactRootPkgPath = join(reactRootPath, 'package.json');
 
   const basePkg: PackageJson = {
@@ -272,22 +285,18 @@ function prepareTsConfigTemplate(options: {
   };
 }
 
-async function installDependenciesAtReactRoot(reactVersionRootPath: string, opts: { scaffoldRoot: string }) {
-  // Use a scoped global yarn cache and a global mutex to avoid concurrent cache corruption on CI
-  const yarnCacheFolder = join(opts.scaffoldRoot, '.yarn-cache');
-
+async function installDependenciesAtReactRoot(reactVersionRootPath: string) {
   if (!existsSync(join(reactVersionRootPath, 'package.json'))) {
     throw new Error(`Missing package.json at react root: ${reactVersionRootPath}`);
   }
 
-  mkdirSync(yarnCacheFolder, { recursive: true });
   // small retry loop
   const maxAttempts = 3;
   let attempt = 0;
   while (true) {
     try {
       attempt += 1;
-      await runCmd(`yarn install --mutex network --network-timeout 60000 --cache-folder ${yarnCacheFolder}`, {
+      await runCmd(`yarn install`, {
         cwd: reactVersionRootPath,
       });
       break;
@@ -334,7 +343,7 @@ async function ensureDependencies(params: {
 
     case 'run-install': {
       params.logger.verbose(`Installing dependencies for React ${params.react}...`);
-      await installDependenciesAtReactRoot(params.reactRootPath, { scaffoldRoot: params.mode.scaffoldRoot });
+      await installDependenciesAtReactRoot(params.reactRootPath);
       return;
     }
   }
@@ -527,7 +536,7 @@ export async function installDepsForReactVersion(
 
   logger.verbose(`Installing dependencies under: ${reactRootPath}`);
 
-  await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
+  await installDependenciesAtReactRoot(reactRootPath);
 
   logger.log(`Dependencies installed under shared react root -> ${reactRootPath}.`);
 }

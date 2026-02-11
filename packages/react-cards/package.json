@@ -17,8 +17,8 @@
     "build": "just-scripts build"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.4",
     "@fluentui/foundation-legacy": "^8.6.4",
+    "@fluentui/react": "^8.125.4",
     "@fluentui/set-version": "^8.2.24",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
