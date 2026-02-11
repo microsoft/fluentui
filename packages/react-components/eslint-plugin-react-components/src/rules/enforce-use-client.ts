@@ -10,7 +10,7 @@ type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
 /**
  * Rule options for configuring RSC-unsafe functions
  */
-interface RuleOptions {
+export interface RuleOptions {
   /**
    * Functions that require 'use client' directive when called or referenced.
    * These are functions that internally use browser APIs or client-side features.
