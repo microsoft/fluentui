@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-checkbox": "^9.5.14",
     "@fluentui/react-context-selector": "^9.2.14",
     "@fluentui/react-jsx-runtime": "^9.4.0",
