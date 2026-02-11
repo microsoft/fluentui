@@ -15,7 +15,7 @@
     "storybook": "storybook dev",
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
-    "test-ssr": "test-ssr \"./src/stories/**/*.stories.tsx\""
+    "test-ssr": "yarn run -T test-ssr \"./src/stories/**/*.stories.tsx\""
   },
   "dependencies": {
     "@fluentui/react-components": "*",

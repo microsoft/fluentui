@@ -13,7 +13,6 @@
     "test-perf": "just-scripts perf-test"
   },
   "dependencies": {
-    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@fluentui/react-avatar": "*",
     "@fluentui/react-button": "*",
     "@fluentui/react-components": "*",
@@ -22,6 +21,7 @@
     "@fluentui/react-provider": "*",
     "@fluentui/react-spinbutton": "*",
     "@fluentui/react-theme": "*",
+    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@griffel/core": "^1.16.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "19.2.0",

@@ -26,6 +26,7 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
+    "@fluentui/fluent2-theme": "*",
     "@fluentui/font-icons-mdl2": "*",
     "@fluentui/public-docsite-resources": "*",
     "@fluentui/public-docsite-setup": "*",
@@ -33,7 +34,6 @@
     "@fluentui/react-docsite-components": "*",
     "@fluentui/react-examples": "*",
     "@fluentui/react-experiments": "*",
-    "@fluentui/fluent2-theme": "*",
     "@fluentui/react-file-type-icons": "*",
     "@fluentui/react-icons-mdl2": "*",
     "@fluentui/react-icons-mdl2-branded": "*",

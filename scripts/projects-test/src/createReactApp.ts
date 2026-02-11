@@ -1,5 +1,4 @@
 import fs from 'fs-extra';
-import path from 'path';
 import { shEcho, TempPaths } from './utils';
 
 /**
@@ -9,17 +8,13 @@ import { shEcho, TempPaths } from './utils';
  * @param templateSpec Template name or `file:...` path
  */
 export async function prepareCreateReactApp(tempPaths: TempPaths, templateSpec: string): Promise<void> {
-  const tempUtilProjectPath = path.join(tempPaths.root, 'util');
-  fs.mkdirSync(tempUtilProjectPath);
-
-  try {
-    // restoring bits of create-react-app inside util project
-    await shEcho(`yarn add create-react-app`, tempUtilProjectPath);
-
-    // create test project with util's create-react-app
-    await shEcho(`yarn create-react-app ${tempPaths.testApp} --template ${templateSpec}`, tempUtilProjectPath);
-  } finally {
-    // remove temp util directory
-    fs.removeSync(tempUtilProjectPath);
+  if (fs.existsSync(tempPaths.testApp)) {
+    fs.removeSync(tempPaths.testApp);
   }
+
+  const npmUserAgent = `npm/${process.version} node/${process.version}`;
+  await shEcho(
+    `npm_config_user_agent="${npmUserAgent}" npx create-react-app ${tempPaths.testApp} --template ${templateSpec}`,
+    tempPaths.root,
+  );
 }

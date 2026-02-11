@@ -13,9 +13,9 @@
     "test-perf": "just-scripts perf-test"
   },
   "dependencies": {
-    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@fluentui/example-data": "*",
     "@fluentui/react": "*",
+    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "19.2.0",
     "react-dom": "19.2.0",

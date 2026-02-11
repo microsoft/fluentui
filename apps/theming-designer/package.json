@@ -12,13 +12,13 @@
     "start": "just-scripts dev"
   },
   "dependencies": {
-    "@fluentui/react": "*",
-    "@fluentui/merge-styles": "*",
-    "@fluentui/react-docsite-components": "*",
+    "@fluentui/font-icons-mdl2": "*",
     "@fluentui/foundation-legacy": "*",
+    "@fluentui/merge-styles": "*",
+    "@fluentui/react": "*",
+    "@fluentui/react-docsite-components": "*",
     "@fluentui/scheme-utilities": "*",
     "@fluentui/set-version": "*",
-    "@fluentui/font-icons-mdl2": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "19.2.0",
     "react-dom": "19.2.0",

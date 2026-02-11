@@ -70,7 +70,7 @@ describe(`format-plugin`, () => {
                     "metadata": Object {
                       "description": "Format code with prettier",
                       "help": Object {
-                        "command": "yarn prettier --help",
+                        "command": "yarn run -TB prettier --help",
                         "example": Object {},
                       },
                       "technologies": Array [

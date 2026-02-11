@@ -38,7 +38,7 @@ runs:
         cache: 'yarn'
         node-version: '20'
 
-    - run: yarn install --frozen-lockfile
+    - run: yarn install --immutable
       shell: bash
 
     - run: yarn playwright install --with-deps

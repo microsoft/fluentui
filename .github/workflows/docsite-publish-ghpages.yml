@@ -29,7 +29,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps

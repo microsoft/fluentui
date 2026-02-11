@@ -31,7 +31,7 @@ jobs:
           cache: 'yarn'
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Build all packages & create reports (non-PR)
         run: yarn nx run-many -t bundle-size --nxBail

@@ -27,7 +27,6 @@
     "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },
-  "peerDependencies": {},
   "beachball": {
     "disallowedChangeTypes": [
       "major"
