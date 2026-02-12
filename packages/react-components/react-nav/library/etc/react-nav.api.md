@@ -31,7 +31,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuButtonProps } from '@fluentui/react-button';
-import { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';

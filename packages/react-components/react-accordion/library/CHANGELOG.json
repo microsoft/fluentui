@@ -2,6 +2,33 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:12 GMT",
+      "tag": "@fluentui/react-accordion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bb2f4bc402a88cea3bd61ce3d7bebcfab8406076",
+            "comment": "feat: add base hooks for Accordion components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.17.9",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:07:01 GMT",
       "tag": "@fluentui/react-accordion_v9.8.16",
       "version": "9.8.16",

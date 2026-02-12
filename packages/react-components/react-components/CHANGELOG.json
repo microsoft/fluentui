@@ -2,6 +2,113 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:10 GMT",
+      "tag": "@fluentui/react-components_v9.73.0",
+      "version": "9.73.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "ed9f192aba0e8e2982dc12c0f417e93fe034f59c",
+            "comment": "feat: add base hook for Persona component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bb2f4bc402a88cea3bd61ce3d7bebcfab8406076",
+            "comment": "feat: add base hooks for Accordion components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "18a6e2ba4b5fffcf26fe536a3c6b2788d5fe765c",
+            "comment": "feat: add base hooks for Avatar component"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "feat: add DialogBackdropProvider to react-dialog"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "feat: add appearance to backdrop slot"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "93f8af06be5ab06d974cf936a462d739a98231fb",
+            "comment": "feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f17bb7ecaae51c2c01401a7d37e09a7fde13a373",
+            "comment": "fix: prevent XSS theme vulnerability during SSR"
+          },
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4a303837f102daa3a83eb61a507fc2a62a5f0f32",
+            "comment": "refactor: add base state hooks for Switch component"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "72fa991316ec4a9d207a2926f4bf41c683314bad",
+            "comment": "fix: single-select Table radio header should be fully hidden, not just 0 opacity"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8f7d1cc6974c5bbe6f2539ae8590ccd02cd00441",
+            "comment": "fix: prevent custom props from leaking to the DOM "
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "8f7d1cc6974c5bbe6f2539ae8590ccd02cd00441",
+            "comment": "fix: prevent custom props from leaking to the DOM"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d912aa79a75dbb5c3037925e16abb9dabba0db3e",
+            "comment": "A11y fix: updated focus-visible outline data"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer'"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e",
+            "comment": "fix: update NavSubItemGroup motion handling and fix styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Jan 2026 12:55:50 GMT",
       "tag": "@fluentui/react-components_v9.72.11",
       "version": "9.72.11",

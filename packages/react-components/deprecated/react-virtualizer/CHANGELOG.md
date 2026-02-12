@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Thu, 22 Jan 2026 17:06:30 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.110)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.109..@fluentui/react-virtualizer_v9.0.0-alpha.110)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
 
 ## [9.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.109)
 

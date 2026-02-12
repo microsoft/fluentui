@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: prevent XSS theme vulnerability during SSR",
-  "packageName": "@fluentui/react-provider",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

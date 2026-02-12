@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Fri, 31 Oct 2025 16:22:02 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.3.0)
+
+Thu, 12 Feb 2026 10:46:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.2.1..@fluentui/priority-overflow_v9.3.0)
+
+### Minor changes
+
+- feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.2.1)
 

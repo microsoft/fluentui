@@ -2,6 +2,27 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:11 GMT",
+      "tag": "@fluentui/react-provider_v9.22.14",
+      "version": "9.22.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f17bb7ecaae51c2c01401a7d37e09a7fde13a373",
+            "comment": "fix: prevent XSS theme vulnerability during SSR"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:37 GMT",
       "tag": "@fluentui/react-provider_v9.22.13",
       "version": "9.22.13",

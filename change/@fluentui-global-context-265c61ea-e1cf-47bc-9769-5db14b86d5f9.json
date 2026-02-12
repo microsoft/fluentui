@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: add  missing \"use client\" directive to client components and styles",
+  "packageName": "@fluentui/global-context",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

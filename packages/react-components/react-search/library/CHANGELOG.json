@@ -2,6 +2,27 @@
   "name": "@fluentui/react-search",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:15 GMT",
+      "tag": "@fluentui/react-search_v9.3.14",
+      "version": "9.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search",
+            "comment": "Bump @fluentui/react-input to v9.7.14",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:38 GMT",
       "tag": "@fluentui/react-search_v9.3.13",
       "version": "9.3.13",

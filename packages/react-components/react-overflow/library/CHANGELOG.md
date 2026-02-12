@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 22 Jan 2026 17:06:33 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.7.0)
+
+Thu, 12 Feb 2026 10:46:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.6.7..@fluentui/react-overflow_v9.7.0)
+
+### Minor changes
+
+- feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.3.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
 
 ## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.6.7)
 

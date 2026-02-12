@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 22 Jan 2026 17:06:54 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.11.3)
+
+Thu, 12 Feb 2026 10:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.11.2..@fluentui/react-drawer_v9.11.3)
+
+### Patches
+
+- fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer' ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- Bump @fluentui/react-dialog to v9.17.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.11.2)
 

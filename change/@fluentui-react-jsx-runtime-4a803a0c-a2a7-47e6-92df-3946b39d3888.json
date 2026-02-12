@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

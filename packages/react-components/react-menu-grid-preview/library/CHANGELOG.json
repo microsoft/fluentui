@@ -2,6 +2,33 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:15 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.21.1",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.8",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:58 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.2.8",
       "version": "0.2.8",

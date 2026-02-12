@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 22 Jan 2026 17:06:56 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.4.0)
+
+Thu, 12 Feb 2026 10:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.3.5..@fluentui/react-jsx-runtime_v9.4.0)
+
+### Minor changes
+
+- feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic ([PR #35711](https://github.com/microsoft/fluentui/pull/35711) by dmytrokirpa@microsoft.com)
 
 ## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.3.5)
 

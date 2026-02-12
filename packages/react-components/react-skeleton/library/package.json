@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-skeleton",
-  "version": "9.4.13",
+  "version": "9.4.14",
   "description": "Converged v9 Skeleton Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,8 +12,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-field": "^9.4.13",
-    "@fluentui/react-jsx-runtime": "^9.3.5",
+    "@fluentui/react-field": "^9.4.14",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.1",

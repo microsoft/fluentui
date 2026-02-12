@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.5.13",
+  "version": "9.5.14",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,8 +12,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-field": "^9.4.13",
-    "@fluentui/react-jsx-runtime": "^9.3.5",
+    "@fluentui/react-field": "^9.4.14",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",

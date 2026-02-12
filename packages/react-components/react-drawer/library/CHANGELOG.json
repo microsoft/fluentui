@@ -2,6 +2,33 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:14 GMT",
+      "tag": "@fluentui/react-drawer_v9.11.3",
+      "version": "9.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer'"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.17.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:54 GMT",
       "tag": "@fluentui/react-drawer_v9.11.2",
       "version": "9.11.2",

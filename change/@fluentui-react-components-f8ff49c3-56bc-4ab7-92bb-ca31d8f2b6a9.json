@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add DialogBackdropProvider to react-dialog",
-  "packageName": "@fluentui/react-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

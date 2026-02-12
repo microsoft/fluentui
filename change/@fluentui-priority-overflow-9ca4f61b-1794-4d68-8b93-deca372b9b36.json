@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add support for pinned items",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

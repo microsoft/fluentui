@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 22 Jan 2026 17:07:03 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.8.1)
+
+Thu, 12 Feb 2026 10:46:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.8.0..@fluentui/react-button_v9.8.1)
+
+### Patches
+
+- fix: prevent custom props from leaking to the DOM  ([PR #35689](https://github.com/microsoft/fluentui/pull/35689) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.9 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
 
 ## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.8.0)
 

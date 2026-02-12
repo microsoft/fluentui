@@ -2,6 +2,21 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:14 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "93f8af06be5ab06d974cf936a462d739a98231fb",
+            "comment": "feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:56 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.3.5",
       "version": "9.3.5",

@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 30 Jan 2026 12:55:50 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.0)
+
+Thu, 12 Feb 2026 10:46:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.11..@fluentui/react-components_v9.73.0)
+
+### Minor changes
+
+- `@fluentui/react-overflow`
+  - feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: add base hook for Persona component ([PR #35697](https://github.com/microsoft/fluentui/pull/35697) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - feat: add base hooks for Accordion components ([PR #35682](https://github.com/microsoft/fluentui/pull/35682) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: add base hooks for Avatar component ([PR #35696](https://github.com/microsoft/fluentui/pull/35696) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat: add DialogBackdropProvider to react-dialog ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: add appearance to backdrop slot ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic ([PR #35711](https://github.com/microsoft/fluentui/pull/35711) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: prevent XSS theme vulnerability during SSR ([PR #35717](https://github.com/microsoft/fluentui/pull/35717) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - refactor: add base state hooks for Switch component ([PR #35720](https://github.com/microsoft/fluentui/pull/35720) by copilot@github.com)
+- `@fluentui/react-table`
+  - fix: single-select Table radio header should be fully hidden, not just 0 opacity ([PR #35707](https://github.com/microsoft/fluentui/pull/35707) by sarah.higley@microsoft.com)
+- `@fluentui/react-button`
+  - fix: prevent custom props from leaking to the DOM  ([PR #35689](https://github.com/microsoft/fluentui/pull/35689) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: prevent custom props from leaking to the DOM ([PR #35689](https://github.com/microsoft/fluentui/pull/35689) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - A11y fix: updated focus-visible outline data ([PR #35718](https://github.com/microsoft/fluentui/pull/35718) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-drawer`
+  - fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer' ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-nav`
+  - fix: update NavSubItemGroup motion handling and fix styles ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by dmytrokirpa@microsoft.com)
 
 ## [9.72.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.11)
 
