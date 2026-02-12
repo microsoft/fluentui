@@ -42,10 +42,10 @@ function Tooltip({ visible, children }) {
   );
 }
 
-// Slide from direction
+// Slide from the right
 function Drawer({ open, children }) {
   return (
-    <Slide visible={open} from="right">
+    <Slide visible={open} outX="20px">
       {children}
     </Slide>
   );

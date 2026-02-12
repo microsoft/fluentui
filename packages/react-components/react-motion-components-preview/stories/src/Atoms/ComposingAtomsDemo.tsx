@@ -63,11 +63,11 @@ const useClasses = makeStyles({
 const Pop = createPresenceComponent({
   enter: [
     fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
-    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromScale: 0.7 }),
+    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, outScale: 0.7 }),
   ],
   exit: [
     fadeAtom({ direction: 'exit', duration: motionTokens.durationFast }),
-    scaleAtom({ direction: 'exit', duration: motionTokens.durationFast, fromScale: 0.7 }),
+    scaleAtom({ direction: 'exit', duration: motionTokens.durationFast, outScale: 0.7 }),
   ],
 });
 
@@ -75,23 +75,23 @@ const Pop = createPresenceComponent({
 const FadeSlide = createPresenceComponent({
   enter: [
     fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
-    slideAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromY: '20px' }),
+    slideAtom({ direction: 'enter', duration: motionTokens.durationNormal, outY: '20px' }),
   ],
   exit: [
     fadeAtom({ direction: 'exit', duration: motionTokens.durationFast }),
-    slideAtom({ direction: 'exit', duration: motionTokens.durationFast, fromY: '20px' }),
+    slideAtom({ direction: 'exit', duration: motionTokens.durationFast, outY: '20px' }),
   ],
 });
 
 // Custom "ScaleSlide" effect: scale + slide from left
 const ScaleSlide = createPresenceComponent({
   enter: [
-    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromScale: 0.8 }),
-    slideAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromX: '-30px' }),
+    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, outScale: 0.8 }),
+    slideAtom({ direction: 'enter', duration: motionTokens.durationNormal, outX: '-30px' }),
   ],
   exit: [
-    scaleAtom({ direction: 'exit', duration: motionTokens.durationFast, fromScale: 0.8 }),
-    slideAtom({ direction: 'exit', duration: motionTokens.durationFast, fromX: '-30px' }),
+    scaleAtom({ direction: 'exit', duration: motionTokens.durationFast, outScale: 0.8 }),
+    slideAtom({ direction: 'exit', duration: motionTokens.durationFast, outX: '-30px' }),
   ],
 });
 

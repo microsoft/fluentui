@@ -118,7 +118,7 @@ export const ComponentsGrid: React.FC = () => {
 
       <ComponentCard name="Rotate">
         {visible => (
-          <Rotate visible={visible} fromAngle={-90} toAngle={0} axis="y">
+          <Rotate visible={visible} outAngle={-90} inAngle={0} axis="y">
             <div className={classes.demoBox}>Rotate</div>
           </Rotate>
         )}

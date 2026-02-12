@@ -57,15 +57,15 @@ const createAtomMotion = (type: AtomType) => {
     case 'fade':
       return createMotionComponent(fadeAtom({ direction: 'enter', duration, easing }));
     case 'scale':
-      return createMotionComponent(scaleAtom({ direction: 'enter', duration, easing, fromScale: 0.5 }));
+      return createMotionComponent(scaleAtom({ direction: 'enter', duration, easing, outScale: 0.5 }));
     case 'slide':
-      return createMotionComponent(slideAtom({ direction: 'enter', duration, easing, fromY: '30px' }));
+      return createMotionComponent(slideAtom({ direction: 'enter', duration, easing, outY: '30px' }));
     case 'rotate':
       return createMotionComponent(
-        rotateAtom({ direction: 'enter', duration: 400, easing, axis: 'y', fromAngle: -180 }),
+        rotateAtom({ direction: 'enter', duration: 400, easing, axis: 'y', outAngle: -180 }),
       );
     case 'blur':
-      return createMotionComponent(blurAtom({ direction: 'enter', duration, easing, fromRadius: '10px' }));
+      return createMotionComponent(blurAtom({ direction: 'enter', duration, easing, outRadius: '10px' }));
     default:
       return createMotionComponent(fadeAtom({ direction: 'enter', duration, easing }));
   }

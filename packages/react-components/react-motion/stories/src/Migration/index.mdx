@@ -363,11 +363,11 @@ import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
 const FadeScale = createPresenceComponent({
   enter: [
     fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
-    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, fromScale: 0.9 }),
+    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, outScale: 0.9 }),
   ],
   exit: [
     fadeAtom({ direction: 'exit', duration: motionTokens.durationNormal }),
-    scaleAtom({ direction: 'exit', duration: motionTokens.durationNormal, fromScale: 0.9 }),
+    scaleAtom({ direction: 'exit', duration: motionTokens.durationNormal, outScale: 0.9 }),
   ],
 });
 

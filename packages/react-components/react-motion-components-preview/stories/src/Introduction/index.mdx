@@ -172,12 +172,12 @@ Each component (except Blur and Rotate) comes with pre-configured timing variant
 
 ### Direction Support
 
-**Slide** supports four directions for enter/exit:
+**Slide** supports directional movement via `outX` and `outY` props:
 
-- `from="left"` — Slides in from left, out to left
-- `from="right"` — Slides in from right, out to right
-- `from="top"` — Slides in from top, out to top
-- `from="bottom"` — Slides in from bottom, out to bottom
+- `outX="-20px"` — Slides in from left, out to left
+- `outX="20px"` — Slides in from right, out to right
+- `outY="-20px"` — Slides in from top, out to top
+- `outY="20px"` — Slides in from bottom, out to bottom
 
 ### Choreography with Stagger
 
@@ -278,17 +278,17 @@ All components accept parameters to customize their behavior:
 
 ```tsx
 // Custom opacity range
-<Fade visible={isVisible} fromOpacity={0.5} toOpacity={1}>
+<Fade visible={isVisible} outOpacity={0.5} inOpacity={1}>
   <Content />
 </Fade>
 
 // Custom scale values
-<Scale visible={isVisible} fromScale={0.8} toScale={1}>
+<Scale visible={isVisible} outScale={0.8} inScale={1}>
   <Content />
 </Scale>
 
 // Custom slide direction and distance
-<Slide visible={isVisible} from="right" distance="100px">
+<Slide visible={isVisible} outX="100px">
   <Content />
 </Slide>
 
@@ -325,15 +325,15 @@ function List({ items, visible }) {
 
 ### Component Reference
 
-| Component  | Variants                                               | Key Parameters                                     |
-| ---------- | ------------------------------------------------------ | -------------------------------------------------- |
-| `Fade`     | `FadeSnappy`, `FadeRelaxed`                            | `fromOpacity`, `toOpacity`, `duration`, `easing`   |
-| `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `fromScale`, `toScale`, `duration`, `easing`       |
-| `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `duration`, `easing`                |
-| `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `from`, `distance`, `duration`, `easing`           |
-| `Blur`     | —                                                      | `radius`, `duration`, `easing`                     |
-| `Rotate`   | —                                                      | `axis`, `angle`, `duration`, `easing`              |
-| `Stagger`  | —                                                      | `itemDelay`, `reversed`, `staggerIn`, `staggerOut` |
+| Component  | Variants                                               | Key Parameters                                      |
+| ---------- | ------------------------------------------------------ | --------------------------------------------------- |
+| `Fade`     | `FadeSnappy`, `FadeRelaxed`                            | `outOpacity`, `inOpacity`, `duration`, `easing`     |
+| `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `outScale`, `inScale`, `duration`, `easing`         |
+| `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `outSize`, `duration`, `easing`      |
+| `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `outX`, `outY`, `inX`, `inY`, `duration`, `easing`  |
+| `Blur`     | —                                                      | `outRadius`, `inRadius`, `duration`, `easing`       |
+| `Rotate`   | —                                                      | `axis`, `outAngle`, `inAngle`, `duration`, `easing` |
+| `Stagger`  | —                                                      | `itemDelay`, `reversed`, `staggerIn`, `staggerOut`  |
 
 </div>
 
