@@ -22,6 +22,7 @@ import {
   isScatterPolarSeries,
   isPlottable,
   getRangeForScatterMarkerSize,
+  calculateMarkerRadius,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
@@ -415,34 +416,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         const seriesId = `${_seriesId}_${i}_${j}`;
         const circleId = `${_circleId}_${i}_${j}`;
         const pointMarkerSize = (_points[i].data[j] as ScatterChartDataPoint).markerSize;
-        const minPixel = 4;
-        const maxPixel = 16;
-        let circleRadius = activePoint === circleId ? 6 : 4;
-
-        if (pointMarkerSize) {
-          if (isContinuousXY && maxMarkerSize !== 0) {
-            /*
-              Example Scenario:
-              pointMarker = 100, extraMaxPixel=10,  max=100  (expected:10)
-              pointMarker=2, extraMaxPixel=100, max=2 (expected:2)
-              pointMarker=20, extraMaxPixel=25, max=30 (20- (scale_down_factor)*20 = 16.66) ::: (scale_down = 30--> 25, roughly -16.66%)
-            */
-            if (maxMarkerSize < extraMaxPixels) {
-              // if enough space is there, directly render the values, no need to scale it down or up
-              circleRadius = pointMarkerSize;
-            } else {
-              /*
-                markers are scaled down, based on available extra space
-                maxMarkerSize --> reduced to --> extraMaxPixels
-                other markers scaled down respectively
-              */
-              circleRadius = (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
-            }
-          } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
-            circleRadius =
-              minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
-          }
-        }
+        const circleRadius = calculateMarkerRadius({
+          pointMarkerSize,
+          minMarkerSize,
+          maxMarkerSize,
+          extraMaxPixels,
+          isContinuousXY,
+          isActive: activePoint === circleId,
+          defaultRadius: 4,
+          activeRadius: 6,
+        });
 
         const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
@@ -454,7 +437,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               <circle
                 id={circleId}
                 key={circleId}
-                r={Math.max(circleRadius, 4)}
+                r={circleRadius}
                 cx={xPoint + _xBandwidth}
                 cy={yPoint}
                 data-is-focusable={isLegendSelected}

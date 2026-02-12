@@ -50,6 +50,7 @@ import {
   getDomainPaddingForMarkers,
   isPlottable,
   getRangeForScatterMarkerSize,
+  calculateMarkerRadius,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
@@ -579,15 +580,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   <circle
                     id={circleId}
                     key={circleId}
-                    r={
-                      currentMarkerSize
-                        ? maxMarkerSize < extraMaxPixels
-                          ? currentMarkerSize
-                          : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
-                        : activePoint === circleId
-                        ? 5.5
-                        : 3.5
-                    }
+                    r={calculateMarkerRadius({
+                      pointMarkerSize: currentMarkerSize,
+                      minMarkerSize: 0,
+                      maxMarkerSize,
+                      extraMaxPixels,
+                      isContinuousXY: true,
+                      isActive: activePoint === circleId,
+                    })}
                     cx={xPoint}
                     cy={yPoint}
                     fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
@@ -786,15 +786,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 pointsForLine.push(
                   <circle
                     key={`${_circleId}_${i}_${k}_marker`}
-                    r={
-                      markerSize
-                        ? maxMarkerSize < extraMaxPixels
-                          ? markerSize
-                          : (markerSize * extraMaxPixels) / maxMarkerSize
-                        : activePoint === _circleId
-                        ? 5.5
-                        : 3.5
-                    }
+                    r={calculateMarkerRadius({
+                      pointMarkerSize: markerSize,
+                      minMarkerSize: 0,
+                      maxMarkerSize,
+                      extraMaxPixels,
+                      isContinuousXY: true,
+                      isActive: activePoint === _circleId,
+                    })}
                     cx={xPoint}
                     cy={yPoint}
                     fill={
@@ -1357,8 +1356,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       // This ensures markers from all series appear on top of all lines
       lines.push(
         <g key="all-borders">{allBorders}</g>,
-        <g key="all-lines">{allLines}</g>,
-        <g key="all-points">{allPoints}</g>,
+        <g key="all-lines" role="region" aria-label="Line chart lines">
+          {allLines}
+        </g>,
+        <g key="all-points" role="list" aria-label="Data points">
+          {allPoints}
+        </g>,
       );
       return lines;
     }
