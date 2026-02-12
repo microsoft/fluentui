@@ -17,6 +17,10 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
+  # Use project-local cache to avoid stale global Berry cache on CI
+  # where workspace packages may collide with published npm versions
+  YARN_ENABLE_GLOBAL_CACHE: false
+
   DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
   DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
   DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}

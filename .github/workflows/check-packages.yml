@@ -2,6 +2,11 @@ name: Check packages
 on:
   pull_request:
 
+# Use project-local cache to avoid stale global Berry cache on CI
+# where workspace packages may collide with published npm versions
+env:
+  YARN_ENABLE_GLOBAL_CACHE: false
+
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
