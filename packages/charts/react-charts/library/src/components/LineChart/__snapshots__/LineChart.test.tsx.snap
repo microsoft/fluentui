@@ -366,7 +366,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_1__2_1"
                 opacity="1"
@@ -401,7 +404,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M629.5 185.1086956521739
@@ -971,7 +977,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_c__2_1"
                 opacity="1"
@@ -1006,7 +1015,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M625 182.2226956521739
@@ -1606,7 +1618,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_ba__2_1"
                 opacity="1"
@@ -1641,7 +1656,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M624.5 185.1086956521739
@@ -2271,7 +2289,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_ch__2_1"
                 opacity="1"
@@ -2306,7 +2327,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M624.5 185.1086956521739
@@ -2908,7 +2932,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_8a__2_1"
                     opacity="1"
@@ -2943,7 +2970,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -3511,7 +3541,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_8a__2_1"
                   opacity="1"
@@ -3546,7 +3579,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -4173,7 +4209,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_6a__2_1"
                     opacity="1"
@@ -4208,7 +4247,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -4776,7 +4818,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_6a__2_1"
                   opacity="1"
@@ -4811,7 +4856,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -5438,7 +5486,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_7a__2_1"
                     opacity="1"
@@ -5473,7 +5524,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -6051,7 +6105,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_7a__2_1"
                   opacity="1"
@@ -6086,7 +6143,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -6723,7 +6783,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_6l__2_1"
                     opacity="1"
@@ -6758,7 +6821,10 @@ Object {
                     y2="19.34782608695652"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 16.630434782608695
@@ -7252,7 +7318,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_6l__2_1"
                   opacity="1"
@@ -7287,7 +7356,10 @@ Object {
                   y2="19.34782608695652"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 16.630434782608695
@@ -7840,7 +7912,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_6v__2_1"
                     opacity="1"
@@ -7875,7 +7950,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -8443,7 +8521,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_6v__2_1"
                   opacity="1"
@@ -8478,7 +8559,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -9182,7 +9266,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_7k__2_1"
                     opacity="1"
@@ -9217,7 +9304,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -9867,7 +9957,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_7k__2_1"
                   opacity="1"
@@ -9902,7 +9995,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -10534,7 +10630,10 @@ Object {
               />
               <g>
                 <g />
-                <g>
+                <g
+                  aria-label="Line chart lines"
+                  role="region"
+                >
                   <line
                     id="lineID_r_7v__2_1"
                     opacity="1"
@@ -10569,7 +10668,10 @@ Object {
                     y2="51.95652173913044"
                   />
                 </g>
-                <g>
+                <g
+                  aria-label="Data points"
+                  role="list"
+                >
                   <path
                     aria-label="70. metaData3, 30."
                     d="M629.5 185.1086956521739
@@ -11137,7 +11239,10 @@ Object {
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_7v__2_1"
                   opacity="1"
@@ -11172,7 +11277,10 @@ Object {
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739
@@ -11699,7 +11807,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_4t__2_1"
                 opacity="1"
@@ -11734,7 +11845,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M629.5 185.1086956521739
@@ -12209,7 +12323,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g>
             <g />
-            <g>
+            <g
+              aria-label="Line chart lines"
+              role="region"
+            >
               <line
                 id="lineID_r_58__2_1"
                 opacity="1"
@@ -12244,7 +12361,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 y2="51.95652173913044"
               />
             </g>
-            <g>
+            <g
+              aria-label="Data points"
+              role="list"
+            >
               <path
                 aria-label="70. metaData3, 30."
                 d="M629.5 185.1086956521739
@@ -12818,7 +12938,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             />
             <g>
               <g />
-              <g>
+              <g
+                aria-label="Line chart lines"
+                role="region"
+              >
                 <line
                   id="lineID_r_5k__2_1"
                   opacity="1"
@@ -12853,7 +12976,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   y2="51.95652173913044"
                 />
               </g>
-              <g>
+              <g
+                aria-label="Data points"
+                role="list"
+              >
                 <path
                   aria-label="70. metaData3, 30."
                   d="M629.5 185.1086956521739

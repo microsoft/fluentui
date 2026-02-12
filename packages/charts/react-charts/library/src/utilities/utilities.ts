@@ -2296,7 +2296,18 @@ export const getScatterXDomainExtent = (
 };
 
 /**
- * Calculates the radius for a marker in scatter and line charts.
+ * Calculates the radius for a marker/circle in scatter and line charts.
+ * Handles both continuous (numeric/date) and categorical (string) axes.
+ *
+ * @param pointMarkerSize - The marker size value for the current data point
+ * @param minMarkerSize - The minimum marker size across all data points
+ * @param maxMarkerSize - The maximum marker size across all data points
+ * @param extraMaxPixels - The maximum available pixels for markers (from getRangeForScatterMarkerSize)
+ * @param isContinuousXY - Whether both X and Y axes are continuous (not string-based)
+ * @param isActive - Whether the current point is active/hovered
+ * @param defaultRadius - Default radius when no marker size is specified (default: 3.5)
+ * @param activeRadius - Radius when the point is active (default: 5.5)
+ * @param minRadius - Minimum radius to ensure markers are visible (default: 4)
  * @returns The calculated radius in pixels
  */
 export const calculateMarkerRadius = ({
@@ -2320,19 +2331,27 @@ export const calculateMarkerRadius = ({
   activeRadius?: number;
   minRadius?: number;
 }): number => {
+  const minPixel = 4;
+  const maxPixel = 16;
+
+  // If no marker size is specified, use default or active radius
   if (!pointMarkerSize) {
     return isActive ? activeRadius : defaultRadius;
   }
 
   let radius: number;
   if (isContinuousXY && maxMarkerSize !== 0) {
+    // For continuous axes: scale markers based on available space
     radius = maxMarkerSize < extraMaxPixels ? pointMarkerSize : (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
   } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
-    radius = minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * 12;
+    // For categorical axes: normalize to pixel range [minPixel, maxPixel]
+    radius = minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
   } else {
+    // Fallback to default/active radius
     return isActive ? activeRadius : defaultRadius;
   }
 
+  // Ensure minimum radius for visibility
   return Math.max(radius, minRadius);
 };
 
