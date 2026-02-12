@@ -113,8 +113,8 @@ jobs:
       - run: |
           yarn install --immutable
       - run: |
-          node node_modules/.bin/rit --react 17 --install-deps
-          node node_modules/.bin/rit --react 18 --install-deps
+          yarn rit --react 17 --install-deps
+          yarn rit --react 18 --install-deps
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
