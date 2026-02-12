@@ -215,7 +215,7 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-compiler": "0.0.0-experimental-a97cca1-20240529",
     "eslint-plugin-react-hooks": "5.2.0",
-    "express": "4.21.2",
+    "express": "4.22.1",
     "extract-comments": "1.1.0",
     "file-loader": "6.2.0",
     "find-free-port": "2.0.0",
@@ -354,10 +354,13 @@
     "ws": "8.17.1",
     "playwright": "1.55.1",
     "**/prismjs": "^1.30.0",
-    "**/@tensile-perf/runner/express": "^4.21.2",
+    "**/@tensile-perf/runner/express": "^4.22.1",
     "**/tar-fs": "^2.1.4",
     "jackspeak": "2.1.1",
-    "**/micromatch/braces": "^3.0.3"
+    "**/micromatch/braces": "^3.0.3",
+    "**/just-scripts-utils/tar": "^7.5.7",
+    "**/body-parser/qs": "^6.14.2",
+    "**/@cypress/request/qs": "^6.14.2"
   },
   "nx": {
     "includedScripts": []
