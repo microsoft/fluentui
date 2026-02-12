@@ -2328,7 +2328,7 @@ export const calculateMarkerRadius = ({
   if (isContinuousXY && maxMarkerSize !== 0) {
     radius = maxMarkerSize < extraMaxPixels ? pointMarkerSize : (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
   } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
-    radius = 4 + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * 12;
+    radius = minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * 12;
   } else {
     return isActive ? activeRadius : defaultRadius;
   }
