@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add appearance to backdrop slot",
+  "packageName": "@fluentui/react-dialog",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

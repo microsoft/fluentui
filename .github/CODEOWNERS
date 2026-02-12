@@ -280,8 +280,8 @@ packages/react-components/react-migration-v0-v9/library @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9/stories @microsoft/teams-prg
 packages/react-components/react-datepicker-compat/library @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-datepicker-compat/stories @microsoft/cxe-prg @ValentinaKozlova
-packages/react-components/react-migration-v8-v9/library @microsoft/cxe-prg @geoffcoxmsft @dmytrokirpa
-packages/react-components/react-migration-v8-v9/stories @microsoft/cxe-prg @geoffcoxmsft @dmytrokirpa
+packages/react-components/react-migration-v8-v9/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-migration-v8-v9/stories @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-breadcrumb/library @microsoft/cxe-prg
 packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg
 packages/react-components/react-drawer/library @microsoft/cxe-prg @marcosmoura
@@ -387,7 +387,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
-packages/fluent2-theme @microsoft/cxe-red @geoffcoxmsft
+packages/fluent2-theme @microsoft/cxe-red 
 ## Experiments
 packages/react-experiments @microsoft/cxe-red
 packages/react-experiments/src/components/Signals @ThomasMichon

@@ -1,5 +1,5 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
-import type { ButtonDesignPropNames, ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type MenuButtonSlots = ButtonSlots & {
   /**
@@ -11,8 +11,5 @@ export type MenuButtonSlots = ButtonSlots & {
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
   Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
-export type MenuButtonBaseProps = DistributiveOmit<MenuButtonProps, ButtonDesignPropNames>;
 export type MenuButtonState = ComponentState<MenuButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
-
-export type MenuButtonBaseState = DistributiveOmit<MenuButtonState, ButtonDesignPropNames>;
