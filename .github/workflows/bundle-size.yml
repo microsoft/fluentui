@@ -14,15 +14,10 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
-  # Use project-local cache to avoid stale global Berry cache on CI
-  # where workspace packages may collide with published npm versions
-  YARN_ENABLE_GLOBAL_CACHE: false
-
 jobs:
   bundle-size:
-    # if: ${{ github.repository_owner == 'microsoft' }}
-    # runs-on: macos-14-xlarge
-    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
       actions: 'read'

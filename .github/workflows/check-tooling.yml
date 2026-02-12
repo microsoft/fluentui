@@ -11,11 +11,10 @@ env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
   NX_VERBOSE_LOGGING: true
-  YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:
   check-tools:
-    # if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]

@@ -2,15 +2,10 @@ name: Check packages
 on:
   pull_request:
 
-# Use project-local cache to avoid stale global Berry cache on CI
-# where workspace packages may collide with published npm versions
-env:
-  YARN_ENABLE_GLOBAL_CACHE: false
-
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
-    # if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -48,7 +43,7 @@ jobs:
 
   dependency-mismatches:
     runs-on: ubuntu-latest
-    # if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -75,7 +70,7 @@ jobs:
 
   change-files:
     runs-on: ubuntu-latest
-    # if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v6
         with:

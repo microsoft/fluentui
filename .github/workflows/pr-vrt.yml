@@ -15,19 +15,14 @@ env:
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
-  # Use project-local cache to avoid stale global Berry cache on CI
-  # where workspace packages may collide with published npm versions
-  YARN_ENABLE_GLOBAL_CACHE: false
-
 permissions:
   contents: 'read'
   actions: 'read'
 
 jobs:
   generate_vrt_screenshots:
-    # if: ${{ github.repository_owner == 'microsoft' }}
-    # runs-on: macos-14-xlarge
-    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
     name: Generate screenshots
     timeout-minutes: 60
     steps:
