@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   label:
-    # if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/labeler@v6

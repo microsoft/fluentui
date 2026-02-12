@@ -4,11 +4,6 @@ name: 'Copilot Setup Steps'
 # Allow testing of the setup steps from your repository's "Actions" tab.
 on: workflow_dispatch
 
-# Use project-local cache to avoid stale global Berry cache on CI
-# where workspace packages may collide with published npm versions
-env:
-  YARN_ENABLE_GLOBAL_CACHE: false
-
 jobs:
   # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
   copilot-setup-steps:

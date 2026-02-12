@@ -10,10 +10,6 @@ env:
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
-  # Use project-local cache to avoid stale global Berry cache on CI
-  # where workspace packages may collide with published npm versions
-  YARN_ENABLE_GLOBAL_CACHE: false
-
 permissions:
   contents: 'read'
   actions: 'read'
