@@ -18,11 +18,62 @@ export const RangeSlider: ForwardRefComponent<RangeSliderProps>;
 // @public (undocumented)
 export const rangeSliderClassNames: SlotClassNames<RangeSliderSlots>;
 
-// @public
-export type RangeSliderProps = ComponentProps<RangeSliderSlots> & {};
+// @public (undocumented)
+export const rangeSliderCSSVars: {
+    rangeSliderDirectionVar: string;
+    rangeSliderInnerThumbRadiusVar: string;
+    rangeSliderLowerProgressVar: string;
+    rangeSliderUpperProgressVar: string;
+    rangeSliderProgressColorVar: string;
+    rangeSliderRailSizeVar: string;
+    rangeSliderRailColorVar: string;
+    rangeSliderStepsPercentVar: string;
+    rangeSliderThumbColorVar: string;
+    rangeSliderThumbSizeVar: string;
+};
 
-// @public
-export type RangeSliderState = ComponentState<RangeSliderSlots>;
+// @public (undocumented)
+export type RangeSliderOnChangeData = {
+    value: RangeSliderValue;
+};
+
+// @public (undocumented)
+export type RangeSliderProps = Omit<ComponentProps<Partial<RangeSliderSlots>, 'startInput' | 'endInput'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
+    defaultValue?: RangeSliderValue;
+    disabled?: boolean;
+    max?: number;
+    min?: number;
+    size?: 'small' | 'medium';
+    step?: number;
+    value?: RangeSliderValue;
+    vertical?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RangeSliderOnChangeData) => void;
+};
+
+// @public (undocumented)
+export type RangeSliderSlots = {
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    startThumb: NonNullable<Slot<'div'>>;
+    endThumb: NonNullable<Slot<'div'>>;
+    startInput: NonNullable<Slot<'input'>> & {
+        orient?: 'horizontal' | 'vertical';
+    };
+    endInput: NonNullable<Slot<'input'>> & {
+        orient?: 'horizontal' | 'vertical';
+    };
+};
+
+// @public (undocumented)
+export type RangeSliderState = ComponentState<RangeSliderSlots> & Pick<RangeSliderProps, 'disabled' | 'size' | 'vertical'> & {
+    value: RangeSliderValue;
+};
+
+// @public (undocumented)
+export type RangeSliderValue = {
+    start: number;
+    end: number;
+};
 
 // @public
 export const renderRangeSlider_unstable: (state: RangeSliderState) => JSXElement;
@@ -83,7 +134,10 @@ export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disab
 // @public
 export const useRangeSlider_unstable: (props: RangeSliderProps, ref: React_2.Ref<HTMLDivElement>) => RangeSliderState;
 
-// @public
+// @public (undocumented)
+export const useRangeSliderState_unstable: (state: RangeSliderState, props: RangeSliderProps) => RangeSliderState;
+
+// @public (undocumented)
 export const useRangeSliderStyles_unstable: (state: RangeSliderState) => RangeSliderState;
 
 // @public (undocumented)
