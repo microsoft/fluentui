@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 
 export type RangeSliderValue = {
   /**
@@ -13,7 +13,7 @@ export type RangeSliderValue = {
   end: number;
 };
 
-export type RangeSliderOnChangeData = {
+export type RangeSliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   value: RangeSliderValue;
 };
 
@@ -117,7 +117,7 @@ export type RangeSliderProps = Omit<
   /**
    * Fires when the slider values change.
    */
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RangeSliderOnChangeData) => void;
+  onChange?: EventHandler<RangeSliderOnChangeData>;
 };
 
 export type RangeSliderState = ComponentState<RangeSliderSlots> &
