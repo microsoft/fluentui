@@ -11,11 +11,6 @@ describe('RangeSlider', () => {
     // RangeSlider has two primary input slots (startInput/endInput), so the standard
     // primary-slot conformance test does not apply. The ref goes to the root <div>.
     disabledTests: ['primary-slot-gets-native-props'],
-    testOptions: {
-      'consistent-callback-args': {
-        legacyCallbacks: ['onChange'],
-      },
-    },
   });
 
   afterEach(() => {

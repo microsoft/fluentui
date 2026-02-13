@@ -6,6 +6,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -33,7 +35,7 @@ export const rangeSliderCSSVars: {
 };
 
 // @public (undocumented)
-export type RangeSliderOnChangeData = {
+export type RangeSliderOnChangeData = EventData<'change', React_2.ChangeEvent<HTMLInputElement>> & {
     value: RangeSliderValue;
 };
 
@@ -47,7 +49,7 @@ export type RangeSliderProps = Omit<ComponentProps<Partial<RangeSliderSlots>, 's
     step?: number;
     value?: RangeSliderValue;
     vertical?: boolean;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RangeSliderOnChangeData) => void;
+    onChange?: EventHandler<RangeSliderOnChangeData>;
 };
 
 // @public (undocumented)

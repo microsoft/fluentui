@@ -54,10 +54,12 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   const railRef = React.useRef<HTMLDivElement>(null);
 
   // Shared update function for pointer and input handlers.
-  const updateValues = useEventCallback((start: number, end: number, event?: React.ChangeEvent<HTMLInputElement>) => {
+  const updateValues = useEventCallback((start: number, end: number, event?: React.SyntheticEvent | Event) => {
     setCurrentValues([start, end]);
     if (event) {
       props.onChange?.(event, {
+        type: 'change',
+        event: event as React.ChangeEvent<HTMLInputElement>,
         value: toRangeValue(start, end),
       });
     }
