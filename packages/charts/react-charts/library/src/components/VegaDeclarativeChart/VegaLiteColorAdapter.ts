@@ -285,6 +285,83 @@ export function getVegaColorFromMap(
 }
 
 /**
+ * Sequential and diverging color scheme ramps for heatmaps and continuous color scales.
+ * Each ramp is a 5-point gradient matching D3/Vega defaults.
+ */
+const SEQUENTIAL_SCHEMES: Record<string, string[]> = {
+  blues: ['#deebf7', '#9ecae1', '#4292c6', '#2171b5', '#084594'],
+  greens: ['#e5f5e0', '#a1d99b', '#41ab5d', '#238b45', '#005a32'],
+  reds: ['#fee0d2', '#fc9272', '#ef3b2c', '#cb181d', '#99000d'],
+  oranges: ['#feedde', '#fdbe85', '#fd8d3c', '#e6550d', '#a63603'],
+  purples: ['#efedf5', '#bcbddc', '#807dba', '#6a51a3', '#4a1486'],
+  greys: ['#f0f0f0', '#bdbdbd', '#969696', '#636363', '#252525'],
+  viridis: ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'],
+  inferno: ['#000004', '#57106e', '#bc3754', '#f98c0a', '#fcffa4'],
+  magma: ['#000004', '#51127c', '#b73779', '#fc8961', '#fcfdbf'],
+  plasma: ['#0d0887', '#7e03a8', '#cc4778', '#f89540', '#f0f921'],
+  greenblue: ['#e0f3db', '#a8ddb5', '#4eb3d3', '#2b8cbe', '#08589e'],
+  yellowgreen: ['#ffffcc', '#c2e699', '#78c679', '#31a354', '#006837'],
+  yellowgreenblue: ['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8', '#253494'],
+  redyellowgreen: ['#d73027', '#fc8d59', '#fee08b', '#91cf60', '#1a9850'],
+  blueorange: ['#2166ac', '#67a9cf', '#f7f7f7', '#f4a582', '#b2182b'],
+  redblue: ['#ca0020', '#f4a582', '#f7f7f7', '#92c5de', '#0571b0'],
+};
+
+/**
+ * Gets a sequential or diverging color ramp for heatmap rendering.
+ * Returns an array of `steps` interpolated colors for the given scheme name.
+ *
+ * @param scheme - Vega-Lite scheme name (e.g., 'blues', 'viridis', 'redyellowgreen')
+ * @param steps - Number of color stops (default: 5)
+ * @returns Array of hex/rgb color strings, or undefined if scheme is not recognized
+ */
+export function getSequentialSchemeColors(scheme: string, steps: number = 5): string[] | undefined {
+  const ramp = SEQUENTIAL_SCHEMES[scheme.toLowerCase()];
+  if (!ramp) {
+    return undefined;
+  }
+
+  if (steps === ramp.length) {
+    return [...ramp];
+  }
+
+  // Interpolate to requested number of steps
+  const result: string[] = [];
+  for (let i = 0; i < steps; i++) {
+    const t = steps === 1 ? 0.5 : i / (steps - 1);
+    const pos = t * (ramp.length - 1);
+    const lo = Math.floor(pos);
+    const hi = Math.min(lo + 1, ramp.length - 1);
+    const frac = pos - lo;
+
+    if (frac === 0) {
+      result.push(ramp[lo]);
+    } else {
+      result.push(interpolateHexColor(ramp[lo], ramp[hi], frac));
+    }
+  }
+  return result;
+}
+
+/**
+ * Linearly interpolates between two hex colors
+ */
+function interpolateHexColor(c1: string, c2: string, t: number): string {
+  const r1 = parseInt(c1.slice(1, 3), 16);
+  const g1 = parseInt(c1.slice(3, 5), 16);
+  const b1 = parseInt(c1.slice(5, 7), 16);
+  const r2 = parseInt(c2.slice(1, 3), 16);
+  const g2 = parseInt(c2.slice(3, 5), 16);
+  const b2 = parseInt(c2.slice(5, 7), 16);
+
+  const r = Math.round(r1 + (r2 - r1) * t);
+  const g = Math.round(g1 + (g2 - g1) * t);
+  const b = Math.round(b1 + (b2 - b1) * t);
+
+  return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+/**
  * Checks if the provided range matches a standard Vega scheme
  * Useful for optimizing color assignment
  */

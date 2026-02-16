@@ -2512,7 +2512,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(208, 28, 47)"
+                  fill="rgb(136, 209, 82)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2534,7 +2534,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(173, 49, 82)"
+                  fill="rgb(76, 185, 110)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2556,7 +2556,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(255, 0, 0)"
+                  fill="rgb(253, 231, 37)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2578,7 +2578,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(4, 148, 251)"
+                  fill="rgb(67, 6, 88)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2600,7 +2600,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(11, 143, 244)"
+                  fill="rgb(66, 15, 94)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2622,7 +2622,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(0, 150, 255)"
+                  fill="rgb(68, 1, 84)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2644,7 +2644,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(14, 142, 241)"
+                  fill="rgb(66, 19, 96)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2666,7 +2666,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(10, 144, 245)"
+                  fill="rgb(67, 14, 93)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2688,7 +2688,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(20, 138, 235)"
+                  fill="rgb(65, 26, 101)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2710,7 +2710,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(23, 137, 232)"
+                  fill="rgb(65, 30, 104)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2732,7 +2732,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(18, 139, 237)"
+                  fill="rgb(65, 24, 100)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -2754,7 +2754,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(28, 134, 227)"
+                  fill="rgb(64, 37, 108)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3342,9 +3342,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_57_"
+              aria-describedby="tooltip-_r_4u_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_56_"
+              id="tooltip-host_r_4t_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -3472,7 +3472,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(138, 69, 118)"
+                  fill="rgb(254, 211, 131)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3494,7 +3494,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(219, 21, 36)"
+                  fill="rgb(236, 100, 67)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3516,7 +3516,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(153, 60, 102)"
+                  fill="rgb(253, 191, 119)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3538,7 +3538,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(36, 129, 219)"
+                  fill="rgb(93, 183, 89)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3560,7 +3560,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(118, 81, 138)"
+                  fill="rgb(237, 221, 132)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3582,7 +3582,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(82, 102, 173)"
+                  fill="rgb(176, 212, 108)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3604,7 +3604,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(204, 30, 51)"
+                  fill="rgb(245, 122, 79)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3626,7 +3626,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(255, 0, 0)"
+                  fill="rgb(215, 48, 39)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3648,7 +3648,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(168, 51, 87)"
+                  fill="rgb(253, 171, 107)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3670,7 +3670,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(0, 150, 255)"
+                  fill="rgb(26, 152, 80)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3692,7 +3692,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(87, 99, 168)"
+                  fill="rgb(184, 213, 111)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3714,7 +3714,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(67, 111, 188)"
+                  fill="rgb(149, 208, 98)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3738,9 +3738,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_59_"
+              aria-describedby="tooltip-_r_50_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_58_"
+              id="tooltip-host_r_4v_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -3755,7 +3755,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_55_"
+          id="tooltip__r_4s_"
           style="opacity: 0;"
         />
       </div>
@@ -3810,9 +3810,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_5d_"
+              aria-describedby="tooltip-_r_54_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_5c_"
+              id="tooltip-host_r_53_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -3940,7 +3940,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(0, 150, 255)"
+                  fill="rgb(222, 235, 247)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3962,7 +3962,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(28, 134, 227)"
+                  fill="rgb(194, 220, 237)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -3984,7 +3984,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
                 <rect
-                  fill="rgb(85, 100, 170)"
+                  fill="rgb(127, 183, 216)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4006,7 +4006,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(57, 117, 198)"
+                  fill="rgb(165, 206, 227)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4028,7 +4028,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(170, 50, 85)"
+                  fill="rgb(44, 124, 187)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4050,7 +4050,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
                 <rect
-                  fill="rgb(142, 67, 114)"
+                  fill="rgb(59, 139, 194)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4072,7 +4072,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(114, 83, 142)"
+                  fill="rgb(86, 158, 204)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4094,7 +4094,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(85, 100, 170)"
+                  fill="rgb(127, 183, 216)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4116,7 +4116,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
                 <rect
-                  fill="rgb(198, 34, 57)"
+                  fill="rgb(30, 108, 177)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4138,7 +4138,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(198, 34, 57)"
+                  fill="rgb(30, 108, 177)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4160,7 +4160,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(142, 67, 114)"
+                  fill="rgb(59, 139, 194)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4182,7 +4182,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
                 <rect
-                  fill="rgb(255, 0, 0)"
+                  fill="rgb(8, 69, 148)"
                   height="67.03980099502489"
                   width="27.25827814569536"
                 />
@@ -4206,9 +4206,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_5f_"
+              aria-describedby="tooltip-_r_56_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_5e_"
+              id="tooltip-host_r_55_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4223,7 +4223,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_5b_"
+          id="tooltip__r_52_"
           style="opacity: 0;"
         />
       </div>
@@ -4427,7 +4427,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_53_"
+          id="tooltip__r_4q_"
           style="opacity: 0;"
         />
       </div>
@@ -4539,9 +4539,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4o_"
+              aria-describedby="tooltip-_r_4f_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4n_"
+              id="tooltip-host_r_4e_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -4663,7 +4663,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             </g>
             <g>
               <line
-                id="verticalLine_r_4k_"
+                id="verticalLine_r_4b_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -4696,9 +4696,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4q_"
+              aria-describedby="tooltip-_r_4h_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4p_"
+              id="tooltip-host_r_4g_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -5012,7 +5012,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_48_"
+                id="verticalLine_r_3v_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5358,7 +5358,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_4e_"
+                id="verticalLine_r_45_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
