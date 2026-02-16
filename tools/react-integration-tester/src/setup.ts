@@ -132,9 +132,8 @@ function ensureWorkspaceIsolation(reactRootPath: string) {
   }
 
   const yarnrcPath = join(reactRootPath, '.yarnrc.yml');
-  if (!existsSync(yarnrcPath)) {
-    writeFileSync(yarnrcPath, 'nodeLinker: node-modules\n');
-  }
+  // Always overwrite to ensure enableHardenedMode is disabled (stale cached files may lack it)
+  writeFileSync(yarnrcPath, 'enableHardenedMode: false\nnodeLinker: node-modules\n');
 }
 
 function upsertReactRootPackageJson(params: {
@@ -298,6 +297,7 @@ async function installDependenciesAtReactRoot(reactVersionRootPath: string) {
       attempt += 1;
       await runCmd(`yarn install`, {
         cwd: reactVersionRootPath,
+        env: { YARN_ENABLE_HARDENED_MODE: '0', YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' },
       });
       break;
     } catch (err) {

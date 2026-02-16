@@ -11,6 +11,7 @@ env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
   NX_VERBOSE_LOGGING: true
+  YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:
   check-tools:
