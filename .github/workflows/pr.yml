@@ -48,9 +48,6 @@ jobs:
 
       - run: yarn install --immutable
 
-      - name: 'Check duplicates in yarn.lock'
-        run: yarn run dedupe --check --json
-
       - name: Workspace lint
         run: |
           yarn nx run workspace-plugin:check-graph

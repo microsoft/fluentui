@@ -3348,7 +3348,6 @@ __metadata:
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-compiler: "npm:0.0.0-experimental-a97cca1-20240529"
     eslint-plugin-react-hooks: "npm:5.2.0"
-    express: "npm:4.22.1"
     extract-comments: "npm:1.1.0"
     file-loader: "npm:6.2.0"
     find-free-port: "npm:2.0.0"
@@ -13936,7 +13935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:^3.0.3, braces@npm:~3.0.2":
+"braces@npm:3.0.3":
   version: 3.0.3
   resolution: "braces@npm:3.0.3"
   dependencies:
