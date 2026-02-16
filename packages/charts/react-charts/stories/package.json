@@ -2,6 +2,9 @@
   "name": "@fluentui/react-charts-stories",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "e2e": "node ./scripts/e2e.js"
+  },
   "devDependencies": {
     "d3-format": "^3.0.0",
     "d3-time-format": "^3.0.0"

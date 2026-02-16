@@ -234,9 +234,13 @@ export interface VegaLitePositionEncoding {
 
   /**
    * Aggregate function
-   * TODO: Implement aggregate support
    */
   aggregate?: 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max';
+
+  /**
+   * Axis title (shorthand alternative to axis.title)
+   */
+  title?: string;
 }
 
 /**
@@ -468,6 +472,10 @@ export type VegaLiteMarkDef =
        */
       strokeWidth?: number;
       /**
+       * Stroke dash pattern (e.g., [5, 5] for dashed, [2, 2] for dotted)
+       */
+      strokeDash?: number[];
+      /**
        * Fill opacity
        */
       fillOpacity?: number;
@@ -673,6 +681,16 @@ export interface VegaLiteSpec {
    * Encoding channels (for single view)
    */
   encoding?: VegaLiteEncoding;
+
+  /**
+   * Horizontal concatenation for multi-plot layouts
+   */
+  hconcat?: VegaLiteSpec[];
+
+  /**
+   * Vertical concatenation for multi-plot layouts
+   */
+  vconcat?: VegaLiteSpec[];
 
   /**
    * Layer specification

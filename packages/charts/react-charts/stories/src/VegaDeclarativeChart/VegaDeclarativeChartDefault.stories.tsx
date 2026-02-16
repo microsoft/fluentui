@@ -1207,7 +1207,7 @@ export const Default = (): React.ReactElement => {
 
         <div>
           <Field label="Chart Preview">
-            <ErrorBoundary>
+            <ErrorBoundary key={parsedSchema ? JSON.stringify(parsedSchema).length + '-' + (parsedSchema.title || parsedSchema.data?.values?.length || '') + '-' + JSON.stringify(parsedSchema).substring(50, 200) : 'empty'}>
               {parsedSchema ? (
                 <div style={{ width: `${width}px`, height: `${height}px` }}>
                   <VegaDeclarativeChart

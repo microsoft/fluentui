@@ -1,6 +1,11 @@
-import * as React from 'react';
 import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { areArraysEqual } from '../../utilities/utilities';
+
+/**
+ * A ref-like object holding a mutable Map of legend-label to color.
+ * Structurally compatible with React.RefObject<Map<string, string>>.
+ */
+export type ColorMapRef = { readonly current: Map<string, string> | null };
 
 /**
  * Vega-Lite Color Scheme to Fluent DataViz Palette Adapter
@@ -261,7 +266,7 @@ export function getVegaColor(
  */
 export function getVegaColorFromMap(
   legendLabel: string,
-  colorMap: React.RefObject<Map<string, string>>,
+  colorMap: ColorMapRef,
   scheme: string | undefined,
   range: string[] | undefined,
   isDarkTheme: boolean = false,

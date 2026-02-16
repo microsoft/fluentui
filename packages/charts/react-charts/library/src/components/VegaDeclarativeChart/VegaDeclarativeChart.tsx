@@ -13,7 +13,10 @@ import {
   transformVegaLiteToHeatMapChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
-} from '../DeclarativeChart/VegaLiteSchemaAdapter';
+  getChartType,
+  getMarkType,
+} from './VegaLiteSchemaAdapter';
+import type { VegaLiteUnitSpec, VegaLiteSpec } from './VegaLiteTypes';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { LineChart } from '../LineChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
@@ -28,21 +31,8 @@ import { PolarChart } from '../PolarChart/index';
 import { useIsDarkTheme, useColorMapping } from '../DeclarativeChart/DeclarativeChartHooks';
 import type { Chart } from '../../types/index';
 
-/**
- * Vega-Lite specification type
- *
- * For full type support, install the vega-lite package:
- * ```
- * npm install vega-lite
- * ```
- *
- * Then you can import and use TopLevelSpec:
- * ```typescript
- * import type { TopLevelSpec } from 'vega-lite';
- * const spec: TopLevelSpec = { ... };
- * ```
- */
-export type VegaLiteSpec = any;
+// Re-export the typed VegaLiteSpec for public API
+export type { VegaLiteSpec } from './VegaLiteTypes';
 
 /**
  * Schema for VegaDeclarativeChart component
@@ -99,15 +89,6 @@ function isHConcatSpec(spec: VegaLiteSpec): boolean {
  */
 function isVConcatSpec(spec: VegaLiteSpec): boolean {
   return spec.vconcat && Array.isArray(spec.vconcat) && spec.vconcat.length > 0;
-}
-
-/**
- * Check if spec is any kind of concatenation
- */
-// @ts-expect-error - Function reserved for future use
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function isConcatSpec(spec: VegaLiteSpec): boolean {
-  return isHConcatSpec(spec) || isVConcatSpec(spec);
 }
 
 /**
@@ -206,121 +187,10 @@ const vegaChartMap: VegaChartTypeMap = {
   polar: { transformer: transformVegaLiteToPolarChartProps, renderer: ResponsivePolarChart },
 };
 
-/**
- * Determines the chart type based on Vega-Lite spec
- */
-function getChartType(spec: VegaLiteSpec): {
-  type:
-    | 'line'
-    | 'bar'
-    | 'stacked-bar'
-    | 'grouped-bar'
-    | 'horizontal-bar'
-    | 'area'
-    | 'scatter'
-    | 'donut'
-    | 'heatmap'
-    | 'histogram'
-    | 'polar';
-  mark: string;
-} {
-  // Handle layered specs - check if it's a bar+line combo for stacked bar with lines
-  if (spec.layer && spec.layer.length > 1) {
-    const marks = spec.layer.map((layer: any) => (typeof layer.mark === 'string' ? layer.mark : layer.mark?.type));
-    const hasBar = marks.includes('bar');
-    const hasLine = marks.includes('line') || marks.includes('point');
-
-    // Bar + line combo should use stacked bar chart (which supports line overlays)
-    if (hasBar && hasLine) {
-      const barLayer = spec.layer.find((layer: any) => {
-        const mark = typeof layer.mark === 'string' ? layer.mark : layer.mark?.type;
-        return mark === 'bar';
-      });
-
-      if (barLayer?.encoding?.color?.field) {
-        return { type: 'stacked-bar', mark: 'bar' };
-      }
-      // If no color encoding, still use stacked bar to support line overlay
-      return { type: 'stacked-bar', mark: 'bar' };
-    }
-  }
-
-  // Handle layered specs - use first layer's mark for other cases
-  const mark = spec.layer ? spec.layer[0]?.mark : spec.mark;
-  const markType = typeof mark === 'string' ? mark : mark?.type;
-
-  const encoding = spec.layer ? spec.layer[0]?.encoding : spec.encoding;
-  const hasColorEncoding = !!encoding?.color?.field;
-
-  // Arc marks for pie/donut charts
-  // Donut charts have innerRadius defined in mark properties
-  if (markType === 'arc' && encoding?.theta) {
-    return { type: 'donut', mark: markType };
-  }
-
-  // Polar charts: non-arc marks with theta and radius encodings
-  // This handles line, point, area marks with polar coordinates
-  if (encoding?.theta && encoding?.radius && markType !== 'arc') {
-    return { type: 'polar', mark: markType };
-  }
-
-  // Rect marks for heatmaps
-  // For heatmaps, we need rect mark with x, y, and color (quantitative) encodings
-  // Must have actual field names, not just datum values
-  if (
-    markType === 'rect' &&
-    encoding?.x?.field &&
-    encoding?.y?.field &&
-    encoding?.color?.field &&
-    encoding?.color?.type === 'quantitative'
-  ) {
-    return { type: 'heatmap', mark: markType };
-  }
-
-  // Bar charts
-  if (markType === 'bar') {
-    // Check for histogram: binned x-axis with aggregate y-axis
-    if (encoding?.x?.bin) {
-      return { type: 'histogram', mark: markType };
-    }
-
-    const isXNominal = encoding?.x?.type === 'nominal' || encoding?.x?.type === 'ordinal';
-    const isYNominal = encoding?.y?.type === 'nominal' || encoding?.y?.type === 'ordinal';
-
-    // Horizontal bar: x is quantitative, y is nominal/ordinal
-    if (isYNominal && !isXNominal) {
-      return { type: 'horizontal-bar', mark: markType };
-    }
-
-    // Vertical bars with color encoding
-    if (hasColorEncoding) {
-      // Check for xOffset encoding which indicates grouped bars
-      const hasXOffset = !!(encoding as Record<string, unknown>)?.xOffset;
-
-      if (hasXOffset) {
-        return { type: 'grouped-bar', mark: markType };
-      }
-
-      // Otherwise, default to stacked bar
-      return { type: 'stacked-bar', mark: markType };
-    }
-
-    // Simple vertical bar
-    return { type: 'bar', mark: markType };
-  }
-
-  // Area charts
-  if (markType === 'area') {
-    return { type: 'area', mark: markType };
-  }
-
-  // Scatter/point charts
-  if (markType === 'point' || markType === 'circle' || markType === 'square') {
-    return { type: 'scatter', mark: markType };
-  }
-
-  // Line charts (default)
-  return { type: 'line', mark: markType };
+interface MultiSelectLegendProps {
+  canSelectMultipleLegends: boolean;
+  onChange: (keys: string[]) => void;
+  selectedLegends: string[];
 }
 
 /**
@@ -331,8 +201,8 @@ function renderSingleChart(
   colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme: boolean,
   chartRef: React.RefObject<Chart | null>,
-  multiSelectLegendProps: any,
-  interactiveCommonProps: any,
+  multiSelectLegendProps: MultiSelectLegendProps,
+  interactiveCommonProps: { componentRef: React.RefObject<Chart | null>; legendProps: MultiSelectLegendProps },
 ): React.ReactElement {
   const chartType = getChartType(spec);
   const chartConfig = vegaChartMap[chartType.type];
@@ -342,7 +212,7 @@ function renderSingleChart(
   }
 
   const { transformer, renderer: ChartRenderer } = chartConfig;
-  const chartProps = transformer(spec, colorMap, isDarkTheme) as any;
+  const chartProps = transformer(spec, colorMap, isDarkTheme) as Record<string, unknown>;
 
   return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} {...interactiveCommonProps} />;
 }
@@ -585,9 +455,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       // Check if this is a layered spec (composite chart)
       if (vegaLiteSpec.layer && vegaLiteSpec.layer.length > 1) {
         // Check if it's a supported bar+line combo
-        const marks = vegaLiteSpec.layer.map((layer: any) =>
-          typeof layer.mark === 'string' ? layer.mark : layer.mark?.type,
-        );
+        const marks = vegaLiteSpec.layer.map((layer: VegaLiteUnitSpec) => getMarkType(layer.mark));
         const hasBar = marks.includes('bar');
         const hasLine = marks.includes('line') || marks.includes('point');
         const isBarLineCombo = hasBar && hasLine;
