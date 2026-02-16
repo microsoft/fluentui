@@ -30,20 +30,12 @@ export const meta: {
 
 // @public (undocumented)
 export const rules: {
-<<<<<<< HEAD
-    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener>;
-    "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
-||||||| parent of 3e22f86a7c (chore(eslint-plugin-react-components): update api.md)
-    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [], unknown, RuleListener>;
-    "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
-=======
-    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [], unknown, RuleListener> & {
+    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener> & {
         name: string;
     };
     "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener> & {
         name: string;
     };
->>>>>>> 3e22f86a7c (chore(eslint-plugin-react-components): update api.md)
 };
 
 // (No @packageDocumentation comment for this package)
