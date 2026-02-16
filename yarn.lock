@@ -90,7 +90,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/core-auth@npm:^1.3.0, @azure/core-auth@npm:^1.8.0, @azure/core-auth@npm:^1.9.0":
+"@azure/core-auth@npm:^1.3.0, @azure/core-auth@npm:^1.9.0":
   version: 1.9.0
   resolution: "@azure/core-auth@npm:1.9.0"
   dependencies:
@@ -125,23 +125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/core-rest-pipeline@npm:^1.1.0":
-  version: 1.19.1
-  resolution: "@azure/core-rest-pipeline@npm:1.19.1"
-  dependencies:
-    "@azure/abort-controller": "npm:^2.0.0"
-    "@azure/core-auth": "npm:^1.8.0"
-    "@azure/core-tracing": "npm:^1.0.1"
-    "@azure/core-util": "npm:^1.11.0"
-    "@azure/logger": "npm:^1.0.0"
-    http-proxy-agent: "npm:^7.0.0"
-    https-proxy-agent: "npm:^7.0.0"
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/23f2cb9d08e9535bcdca3123aa89bcfe8c5b9d37d6e9c0f87fa8009a089989bebfa11f5bc6fd96ceb6acee210b00b754ec7e02f3f7ee8916e8593e9ef0d610b8
-  languageName: node
-  linkType: hard
-
-"@azure/core-rest-pipeline@npm:^1.17.0, @azure/core-rest-pipeline@npm:^1.22.0":
+"@azure/core-rest-pipeline@npm:^1.1.0, @azure/core-rest-pipeline@npm:^1.17.0, @azure/core-rest-pipeline@npm:^1.22.0":
   version: 1.22.2
   resolution: "@azure/core-rest-pipeline@npm:1.22.2"
   dependencies:
@@ -162,15 +146,6 @@ __metadata:
   dependencies:
     tslib: "npm:^2.6.2"
   checksum: 10c0/0cb26db9ab5336a1867cc9cd0bd42b1702406d0f76420385789d1a96c8702a38cb081838ea73cd707bb7b340c4386499cf6e77538cacfda4467c251fe2ffa32b
-  languageName: node
-  linkType: hard
-
-"@azure/core-tracing@npm:^1.0.1":
-  version: 1.1.2
-  resolution: "@azure/core-tracing@npm:1.1.2"
-  dependencies:
-    tslib: "npm:^2.6.2"
-  checksum: 10c0/0e844d581117ae81318a503ddfc143146b847ed9152d0c84f20fdc4cb0b2187a4e9da29aed13d5b7a201f39fe601a59c4db6455005ed8e0d3b5aab0ee77a56e1
   languageName: node
   linkType: hard
 
