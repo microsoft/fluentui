@@ -44,7 +44,7 @@ import type {
 import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
-import { getVegaColorFromMap, getVegaColor } from './VegaLiteColorAdapter';
+import { getVegaColorFromMap, getVegaColor, getSequentialSchemeColors } from './VegaLiteColorAdapter';
 import type { ColorMapRef } from './VegaLiteColorAdapter';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
 import type { Bin } from 'd3-array';
@@ -360,9 +360,9 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
 
     // Text marks become annotations
     if (mark === 'text' && encoding.x && encoding.y) {
-      const textValue = encoding.text?.value || encoding.text?.field || '';
-      const xValue = encoding.x.value || encoding.x.field;
-      const yValue = encoding.y.value || encoding.y.field;
+      const textValue = encoding.text?.datum || encoding.text?.value || encoding.text?.field || '';
+      const xValue = encoding.x.datum || encoding.x.value || encoding.x.field;
+      const yValue = encoding.y.datum || encoding.y.value || encoding.y.field;
 
       if (
         textValue &&
@@ -386,37 +386,57 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
 
     // Rule marks can become reference lines (horizontal or vertical)
     if (mark === 'rule') {
+      const markColor = typeof layer.mark === 'object' ? layer.mark.color : '#000';
+      const markStrokeWidth = typeof layer.mark === 'object' ? layer.mark.strokeWidth || 1 : 1;
+      const markStrokeDash = typeof layer.mark === 'object' ? (layer.mark as Record<string, unknown>).strokeDash : undefined;
+
       // Horizontal rule (y value constant)
       if (encoding.y && (encoding.y.value !== undefined || encoding.y.datum !== undefined)) {
-        const yValue = encoding.y.value || encoding.y.datum;
+        const yValue = encoding.y.value ?? encoding.y.datum;
+        // Look for a companion text annotation at the same y-value
+        const companionText = spec.layer?.find((l, i) => {
+          if (i === index) { return false; }
+          const m = getMarkType(l.mark);
+          return m === 'text' && l.encoding?.y &&
+            ((l.encoding.y.datum ?? l.encoding.y.value) === yValue);
+        });
+        const ruleText = companionText
+          ? String(companionText.encoding?.text?.datum || companionText.encoding?.text?.value || yValue)
+          : String(yValue);
+
         annotations.push({
           id: `rule-h-${index}`,
-          text: '', // Rules typically don't have text
+          text: ruleText,
           coordinates: {
             type: 'data',
             x: 0,
             y: yValue as number,
           },
           style: {
-            borderColor: typeof layer.mark === 'object' ? layer.mark.color : '#000',
-            borderWidth: typeof layer.mark === 'object' ? layer.mark.strokeWidth || 1 : 1,
+            textColor: markColor,
+            borderColor: markColor,
+            borderWidth: markStrokeWidth,
+            ...(markStrokeDash && Array.isArray(markStrokeDash) && {
+              borderRadius: 0, // Indicate dashed style
+            }),
           },
         });
       }
       // Vertical rule (x value constant)
       else if (encoding.x && (encoding.x.value !== undefined || encoding.x.datum !== undefined)) {
-        const xValue = encoding.x.value || encoding.x.datum;
+        const xValue = encoding.x.value ?? encoding.x.datum;
         annotations.push({
           id: `rule-v-${index}`,
-          text: '',
+          text: String(xValue),
           coordinates: {
             type: 'data',
             x: xValue as number | string | Date,
             y: 0,
           },
           style: {
-            borderColor: typeof layer.mark === 'object' ? layer.mark.color : '#000',
-            borderWidth: typeof layer.mark === 'object' ? layer.mark.strokeWidth || 1 : 1,
+            textColor: markColor,
+            borderColor: markColor,
+            borderWidth: markStrokeWidth,
           },
         });
       }
@@ -606,11 +626,6 @@ function validateEncodingType(
       if (actualType === 'string') {
         // Auto-correct: treat as nominal for categorical string data
         // This matches Plotly behavior - render as categorical chart
-        // eslint-disable-next-line no-console
-        console.warn(
-          `VegaLiteSchemaAdapter: Field '${field}' marked as quantitative but contains string values. ` +
-          `Auto-correcting to nominal type for categorical rendering.`
-        );
 
         // Modify encoding to use nominal type
         if (encoding && channelName && encoding[channelName]) {
@@ -770,8 +785,9 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
   const primarySpec = unitSpecs[0];
   const rawDataValues = extractDataValues(primarySpec.data);
-  // Apply any transforms (fold, etc.) from the spec
-  const dataValues = applyTransforms(rawDataValues, spec.transform);
+  // Apply any transforms from both top-level spec and primary unit spec
+  let dataValues = applyTransforms(rawDataValues, spec.transform);
+  dataValues = applyTransforms(dataValues, primarySpec.transform);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
 
@@ -1074,6 +1090,25 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
       if (encoding.y.type === 'quantitative') {
         if (typeof sample === 'string' && !isFinite(Number(sample))) {
           encoding.y.type = 'nominal';
+        } else if (typeof sample === 'object' && sample !== null && !Array.isArray(sample) && !(sample instanceof Date)) {
+          // Try to extract a numeric value from the object
+          const numericKeys = Object.keys(sample as Record<string, unknown>).filter(
+            k => typeof (sample as Record<string, unknown>)[k] === 'number',
+          );
+          if (numericKeys.length === 1) {
+            // Object has exactly one numeric property - use it as the value
+            const numericKey = numericKeys[0];
+            const yField = encoding.y.field!;
+            data.forEach(row => {
+              const obj = row[yField];
+              if (typeof obj === 'object' && obj !== null) {
+                row[yField] = (obj as Record<string, unknown>)[numericKey];
+              }
+            });
+            // Keep type as quantitative since we extracted numeric values
+          } else {
+            encoding.y.type = 'nominal';
+          }
         } else if (typeof sample === 'object') {
           encoding.y.type = 'nominal';
         }
@@ -1138,13 +1173,12 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
     return { type: 'polar', mark: markType! };
   }
 
-  // Rect marks for heatmaps
+  // Rect marks for heatmaps (quantitative or nominal color)
   if (
     markType === 'rect' &&
     encoding?.x?.field &&
     encoding?.y?.field &&
-    encoding?.color?.field &&
-    encoding?.color?.type === 'quantitative'
+    encoding?.color?.field
   ) {
     return { type: 'heatmap', mark: markType };
   }
@@ -1613,6 +1647,12 @@ export function transformVegaLiteToVerticalBarChartProps(
   // Extract tick configuration
   const tickConfig = extractTickConfig(spec);
 
+  // Extract y-axis formatting and scale props
+  const yAxisTickFormat = encoding.y?.axis?.format;
+  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
+  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const yAxisType = extractYAxisType(encoding);
+
   const result: VerticalBarChartProps = {
     data: barData,
     chartTitle: titles.chartTitle,
@@ -1622,6 +1662,10 @@ export function transformVegaLiteToVerticalBarChartProps(
     roundCorners: true,
     wrapXAxisLables: typeof barData[0]?.x === 'string',
     hideTickOverlap: true,
+    ...(yAxisTickFormat && { yAxisTickFormat }),
+    ...(yMinValue !== undefined && { yMinValue }),
+    ...(yMaxValue !== undefined && { yMaxValue }),
+    ...(yAxisType && { yAxisType }),
     ...categoryOrderProps,
   };
 
@@ -1664,7 +1708,10 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Use bar specs if available, otherwise fall back to first unit spec
   const primarySpec = barSpecs.length > 0 ? barSpecs[0] : unitSpecs[0];
-  const dataValues = extractDataValues(primarySpec.data);
+  const rawDataValues = extractDataValues(primarySpec.data);
+  // Apply transforms from both top-level spec and primary spec
+  let dataValues = applyTransforms(rawDataValues, spec.transform);
+  dataValues = applyTransforms(dataValues, primarySpec.transform);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
 
@@ -1794,7 +1841,10 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Process line data from additional layers (if any)
   lineSpecs.forEach((lineSpec, lineIndex) => {
-    const lineDataValues = extractDataValues(lineSpec.data);
+    let lineDataValues = extractDataValues(lineSpec.data);
+    // Apply transforms from both top-level spec and line spec
+    lineDataValues = applyTransforms(lineDataValues, spec.transform);
+    lineDataValues = applyTransforms(lineDataValues, lineSpec.transform);
     const lineEncoding = lineSpec.encoding || {};
     const lineMarkProps = getMarkProperties(lineSpec.mark);
 
@@ -1890,6 +1940,11 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Check for log scale on primary Y-axis
   const yAxisType = extractYAxisType(encoding);
 
+  // Extract y-axis formatting and domain props
+  const yAxisTickFormat = encoding.y?.axis?.format;
+  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
+  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+
   // Extract axis category ordering
   const categoryOrderProps = extractAxisCategoryOrderProps(encoding);
 
@@ -1909,6 +1964,9 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     noOfCharsToTruncate: DEFAULT_TRUNCATE_CHARS,
     showYAxisLablesTooltip: true,
     wrapXAxisLables: typeof chartData[0]?.xAxisPoint === 'string',
+    ...(yAxisTickFormat && { yAxisTickFormat }),
+    ...(yMinValue !== undefined && { yMinValue }),
+    ...(yMaxValue !== undefined && { yMaxValue }),
     ...(yAxisType && { yAxisType }),
     ...secondaryYAxisProps,
     ...categoryOrderProps,
@@ -1988,12 +2046,22 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
 
   const titles = getVegaLiteTitles(spec);
 
+  // Extract y-axis formatting and scale props
+  const yAxisTickFormat = encoding.y?.axis?.format;
+  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
+  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const yAxisType = extractYAxisType(encoding);
+
   return {
     data: chartData,
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
+    ...(yAxisTickFormat && { yAxisTickFormat }),
+    ...(yMinValue !== undefined && { yMinValue }),
+    ...(yMaxValue !== undefined && { yMaxValue }),
+    ...(yAxisType && { yAxisType }),
   };
 }
 
@@ -2223,6 +2291,25 @@ export function transformVegaLiteToScatterChartProps(
   const isXTemporal = encoding.x?.type === 'temporal';
   const isYTemporal = encoding.y?.type === 'temporal';
 
+  // Check if y-values are strings (nominal/ordinal) and build ordinal mapping
+  const yIsNominal = encoding.y?.type === 'nominal' || encoding.y?.type === 'ordinal';
+  const yOrdinalMap = new Map<string, number>();
+  const yOrdinalLabels: string[] = [];
+
+  if (yIsNominal) {
+    // Collect unique y-values in order
+    dataValues.forEach(row => {
+      const yVal = row[yField];
+      if (yVal !== undefined) {
+        const key = String(yVal);
+        if (!yOrdinalMap.has(key)) {
+          yOrdinalMap.set(key, yOrdinalMap.size);
+          yOrdinalLabels.push(key);
+        }
+      }
+    });
+  }
+
   // Group data by series (color encoding)
   const groupedData: Record<string, Array<Record<string, unknown>>> = {};
 
@@ -2249,9 +2336,17 @@ export function transformVegaLiteToScatterChartProps(
       const yValue = parseValue(row[yField], isYTemporal);
       const markerSize = sizeField && row[sizeField] !== undefined ? Number(row[sizeField]) : undefined;
 
+      // Map nominal y-values to numeric indices
+      let numericY: number;
+      if (yIsNominal && typeof yValue === 'string') {
+        numericY = yOrdinalMap.get(yValue) ?? 0;
+      } else {
+        numericY = typeof yValue === 'number' ? yValue : 0;
+      }
+
       return {
         x: typeof xValue === 'number' || xValue instanceof Date ? xValue : String(xValue),
-        y: typeof yValue === 'number' ? yValue : 0,
+        y: numericY,
         ...(markerSize !== undefined && { markerSize }),
       };
     });
@@ -2278,6 +2373,11 @@ export function transformVegaLiteToScatterChartProps(
   // Check for log scale on Y-axis
   const yAxisType = extractYAxisType(encoding);
 
+  // Extract y-axis formatting and domain props
+  const yAxisTickFormat = encoding.y?.axis?.format;
+  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
+  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+
   // Extract axis category ordering
   const categoryOrderProps = extractAxisCategoryOrderProps(encoding);
 
@@ -2289,7 +2389,17 @@ export function transformVegaLiteToScatterChartProps(
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
+    ...(yAxisTickFormat && { yAxisTickFormat }),
+    ...(yMinValue !== undefined && { yMinValue }),
+    ...(yMaxValue !== undefined && { yMaxValue }),
     ...(yAxisType && { yAxisType }),
+    // For nominal y-axis, provide tick values and labels
+    ...(yIsNominal && yOrdinalLabels.length > 0 && {
+      yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
+      yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
+      yMinValue: -0.5,
+      yMaxValue: yOrdinalLabels.length - 0.5,
+    }),
     ...categoryOrderProps,
   };
 
@@ -2410,6 +2520,11 @@ export function transformVegaLiteToHeatMapChartProps(
   let minValue = Number.POSITIVE_INFINITY;
   let maxValue = Number.NEGATIVE_INFINITY;
 
+  // Check if color values are nominal (strings) rather than quantitative (numbers)
+  const isNominalColor = encoding.color?.type === 'nominal' || encoding.color?.type === 'ordinal' ||
+    dataValues.some(row => row[colorField] !== undefined && typeof row[colorField] !== 'number');
+  const nominalColorMap = new Map<string, number>();
+
   dataValues.forEach(row => {
     const xValue = row[xField];
     const yValue = row[yField];
@@ -2419,7 +2534,17 @@ export function transformVegaLiteToHeatMapChartProps(
       return;
     }
 
-    const value = typeof colorValue === 'number' ? colorValue : 0;
+    let value: number;
+    if (isNominalColor) {
+      // Map nominal color values to sequential numeric indices
+      const key = String(colorValue);
+      if (!nominalColorMap.has(key)) {
+        nominalColorMap.set(key, nominalColorMap.size);
+      }
+      value = nominalColorMap.get(key)!;
+    } else {
+      value = typeof colorValue === 'number' ? colorValue : 0;
+    }
 
     minValue = Math.min(minValue, value);
     maxValue = Math.max(maxValue, value);
@@ -2428,7 +2553,7 @@ export function transformVegaLiteToHeatMapChartProps(
       x: xValue as string | Date | number,
       y: yValue as string | Date | number,
       value,
-      rectText: value,
+      rectText: isNominalColor ? String(colorValue) : value,
     });
   });
 
@@ -2493,29 +2618,63 @@ export function transformVegaLiteToHeatMapChartProps(
   const titles = getVegaLiteTitles(spec);
 
   // Create color scale domain and range
-  // Use a simple 5-point gradient from min to max
-  const steps = 5;
-  const domainValues: number[] = [];
-  const rangeValues: string[] = [];
+  let domainValues: number[] = [];
+  let rangeValues: string[] = [];
 
-  for (let i = 0; i < steps; i++) {
-    const t = i / (steps - 1);
-    domainValues.push(minValue + (maxValue - minValue) * t);
+  // Check for named color scheme or custom range from encoding
+  const colorScheme = encoding.color?.scale?.scheme as string | undefined;
+  const customRange = encoding.color?.scale?.range as string[] | undefined;
 
-    // Generate gradient from blue to red (cold to hot)
-    // In dark theme, use different colors
-    if (isDarkTheme) {
-      // Dark theme: darker blue to bright orange
-      const r = Math.round(0 + 255 * t);
-      const g = Math.round(100 + (165 - 100) * t);
-      const b = Math.round(255 - 255 * t);
-      rangeValues.push(`rgb(${r}, ${g}, ${b})`);
+  if (isNominalColor && nominalColorMap.size > 0) {
+    // For nominal colors, use categorical color scale
+    const numCategories = nominalColorMap.size;
+    domainValues = Array.from({ length: numCategories }, (_, i) => i);
+
+    if (customRange && customRange.length >= numCategories) {
+      rangeValues = customRange.slice(0, numCategories);
     } else {
-      // Light theme: light blue to red
-      const r = Math.round(0 + 255 * t);
-      const g = Math.round(150 - 150 * t);
-      const b = Math.round(255 - 255 * t);
-      rangeValues.push(`rgb(${r}, ${g}, ${b})`);
+      // Use distinct categorical colors for each category
+      for (let i = 0; i < numCategories; i++) {
+        rangeValues.push(getVegaColor(i, colorScheme, customRange, isDarkTheme ?? false));
+      }
+    }
+  } else {
+    // Quantitative color scale
+    const steps = 5;
+    for (let i = 0; i < steps; i++) {
+      const t = i / (steps - 1);
+      domainValues.push(minValue + (maxValue - minValue) * t);
+    }
+
+    if (customRange && customRange.length > 0) {
+      rangeValues = customRange.length >= steps
+        ? customRange.slice(0, steps)
+        : customRange;
+    } else if (colorScheme) {
+      const schemeColors = getSequentialSchemeColors(colorScheme, steps);
+      if (schemeColors) {
+        const isReversed = encoding.color?.sort === 'descending' ||
+          (encoding.color?.scale as Record<string, unknown>)?.reverse === true;
+        rangeValues = isReversed ? schemeColors.reverse() : schemeColors;
+      }
+    }
+
+    // Fall back to default blue-to-red gradient if no scheme matched
+    if (rangeValues.length === 0) {
+      for (let i = 0; i < steps; i++) {
+        const t = i / (steps - 1);
+        if (isDarkTheme) {
+          const r = Math.round(0 + 255 * t);
+          const g = Math.round(100 + (165 - 100) * t);
+          const b = Math.round(255 - 255 * t);
+          rangeValues.push(`rgb(${r}, ${g}, ${b})`);
+        } else {
+          const r = Math.round(0 + 255 * t);
+          const g = Math.round(150 - 150 * t);
+          const b = Math.round(255 - 255 * t);
+          rangeValues.push(`rgb(${r}, ${g}, ${b})`);
+        }
+      }
     }
   }
 
@@ -2657,10 +2816,34 @@ export function transformVegaLiteToHistogramProps(
   // Calculate histogram data points
   const legend = encoding.color?.field ? String(dataValues[0]?.[encoding.color.field]) : 'Frequency';
   const color = resolveColor(legend, 0, undefined, undefined, colorMap, undefined, undefined, isDarkTheme);
+  const yField = encoding.y?.field;
 
   const histogramData: VerticalBarChartDataPoint[] = bins.map(bin => {
     const x = getBinCenter(bin);
-    const y = calculateHistogramAggregate(yAggregate, bin);
+    let y: number;
+
+    if (yAggregate !== 'count' && yField) {
+      // For non-count aggregates, collect y-field values for rows whose x-value falls in this bin
+      const yValues = dataValues
+        .filter(row => {
+          const xVal = Number(row[xField]);
+          return !isNaN(xVal) && xVal >= bin.x0! && xVal < bin.x1!;
+        })
+        .map(row => Number(row[yField]))
+        .filter(v => !isNaN(v));
+      // Include the last bin's upper bound (x1 is inclusive for the last bin)
+      if (bin === bins[bins.length - 1]) {
+        const extraRows = dataValues
+          .filter(row => Number(row[xField]) === bin.x1!)
+          .map(row => Number(row[yField]))
+          .filter(v => !isNaN(v));
+        yValues.push(...extraRows);
+      }
+      y = calculateHistogramAggregate(yAggregate, yValues);
+    } else {
+      y = calculateHistogramAggregate(yAggregate, bin);
+    }
+
     const xAxisCalloutData = `[${bin.x0} - ${bin.x1})`;
 
     return {
@@ -2674,6 +2857,7 @@ export function transformVegaLiteToHistogramProps(
 
   const titles = getVegaLiteTitles(spec);
   const annotations = extractAnnotations(spec);
+  const yAxisTickFormat = encoding.y?.axis?.format;
 
   return {
     data: histogramData,
@@ -2685,6 +2869,7 @@ export function transformVegaLiteToHistogramProps(
     hideTickOverlap: true,
     maxBarWidth: DEFAULT_MAX_BAR_WIDTH,
     ...(annotations.length > 0 && { annotations }),
+    ...(yAxisTickFormat && { yAxisTickFormat }),
     mode: 'histogram',
   };
 }

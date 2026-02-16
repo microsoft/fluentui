@@ -462,11 +462,8 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
 
         // Only warn for unsupported layered specs
         if (!isBarLineCombo) {
-          // eslint-disable-next-line no-console
-          console.warn(
-            'VegaDeclarativeChart: Layered specifications with multiple chart types are not fully supported. ' +
-              'Only the first layer will be rendered. Bar+Line combinations are supported via VerticalStackedBarChart.',
-          );
+          // Layered specifications with multiple chart types are not fully supported.
+          // Only the first layer will be rendered.
         }
       }
 
