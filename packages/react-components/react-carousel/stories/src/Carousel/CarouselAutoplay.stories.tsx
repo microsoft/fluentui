@@ -168,7 +168,7 @@ export const Autoplay = (): JSXElement => {
             value={autoplayInterval.toString()}
             onChange={(e, data) => {
               const value = parseInt(data.value, 10);
-              if (!isNaN(value) && value > 0) {
+              if (!isNaN(value) && value >= 1000) {
                 setAutoplayInterval(value);
               }
             }}
