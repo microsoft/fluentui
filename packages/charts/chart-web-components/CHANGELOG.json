@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Tue, 17 Feb 2026 04:07:52 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.63",
+      "version": "0.0.63",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "2b0d32457b4ab696d0135d68a88da6e47a0e2aaf",
+            "comment": "chore: bump storybook to mitigate CVE"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Feb 2026 04:08:37 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.63",
       "version": "0.0.63",
