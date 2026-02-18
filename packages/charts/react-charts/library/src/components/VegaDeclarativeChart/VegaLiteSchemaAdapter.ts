@@ -48,6 +48,7 @@ import { getVegaColorFromMap, getVegaColor, getSequentialSchemeColors } from './
 import type { ColorMapRef } from './VegaLiteColorAdapter';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
 import type { Bin } from 'd3-array';
+import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
 
 /**
@@ -703,6 +704,22 @@ function extractYAxisType(encoding: VegaLiteEncoding): 'log' | undefined {
 }
 
 /**
+ * Creates a value formatter from a d3-format specifier string.
+ * Returns undefined if no format is specified or if the format is invalid.
+ */
+function createValueFormatter(formatSpec: string | undefined): ((value: number) => string) | undefined {
+  if (!formatSpec) {
+    return undefined;
+  }
+  try {
+    const formatter = d3Format(formatSpec);
+    return formatter;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Converts Vega-Lite sort specification to Fluent Charts AxisCategoryOrder
  * Supports: 'ascending', 'descending', null, array, or object with op/order
  * @param sort - Vega-Lite sort specification
@@ -945,6 +962,7 @@ function groupDataBySeries(
   isXTemporal: boolean,
   isYTemporal: boolean,
   xType?: VegaLiteType,
+  sizeField?: string | undefined,
 ): { seriesMap: Map<string, LineChartDataPoint[]>; ordinalMapping?: Map<string, number>; ordinalLabels?: string[] } {
   const seriesMap = new Map<string, LineChartDataPoint[]>();
 
@@ -997,9 +1015,12 @@ function groupDataBySeries(
       numericX = xValue;
     }
 
+    const markerSize = sizeField && row[sizeField] !== undefined ? Number(row[sizeField]) : undefined;
+
     seriesMap.get(seriesName)!.push({
       x: numericX,
       y: yValue as number,
+      ...(markerSize !== undefined && !isNaN(markerSize) && { markerSize }),
     });
   });
 
@@ -1260,6 +1281,20 @@ export function transformVegaLiteToLineChartProps(
   // Extract field names
   const { xField, yField, colorField } = extractEncodingFields(encoding);
 
+  // Check for size encoding from any layer (e.g., point layer with size in line+point combo)
+  let sizeField: string | undefined;
+  if (unitSpecs.length > 1) {
+    for (const unitSpec of unitSpecs) {
+      const unitEncoding = unitSpec.encoding || {};
+      if (unitEncoding.size?.field) {
+        sizeField = unitEncoding.size.field;
+        break;
+      }
+    }
+  } else {
+    sizeField = encoding.size?.field;
+  }
+
   // Validate data and encodings
   if (!xField || !yField) {
     throw new Error('VegaLiteSchemaAdapter: Line chart requires both x and y encodings with field names');
@@ -1279,6 +1314,7 @@ export function transformVegaLiteToLineChartProps(
     isXTemporal,
     isYTemporal,
     encoding.x?.type,
+    sizeField,
   );
 
   // Extract color configuration
@@ -1338,6 +1374,59 @@ export function transformVegaLiteToLineChartProps(
   const annotations = extractAnnotations(spec);
   const colorFillBars = extractColorFillBars(spec, colorMap, isDarkTheme);
 
+  // Convert rule marks in layered specs to reference line series
+  // Each horizontal rule becomes a 2-point line at constant y spanning the data x-range
+  if (spec.layer && Array.isArray(spec.layer) && lineChartData.length > 0) {
+    const allXValues = lineChartData.flatMap(series => series.data.map(p => p.x));
+    const xMin = allXValues.length > 0 ? allXValues.reduce((a, b) => (a < b ? a : b)) : 0;
+    const xMax = allXValues.length > 0 ? allXValues.reduce((a, b) => (a > b ? a : b)) : 0;
+
+    spec.layer.forEach((layer, layerIndex) => {
+      const layerMark = getMarkType(layer.mark);
+      if (layerMark !== 'rule') {
+        return;
+      }
+
+      const ruleEncoding = layer.encoding || {};
+      const yDatum = ruleEncoding.y?.datum ?? ruleEncoding.y?.value;
+      if (yDatum === undefined) {
+        return;
+      }
+
+      const ruleMarkProps = getMarkProperties(layer.mark);
+      const ruleColor = ruleMarkProps.color || '#d62728';
+
+      // Find companion text annotation for legend name
+      const textLayer = spec.layer!.find(l => {
+        const m = getMarkType(l.mark);
+        return m === 'text' && l.encoding?.y &&
+          ((l.encoding.y.datum ?? l.encoding.y.value) === yDatum);
+      });
+      const ruleLegend = textLayer
+        ? String(textLayer.encoding?.text?.datum || textLayer.encoding?.text?.value || `y=${yDatum}`)
+        : `y=${yDatum}`;
+
+      const ruleLineOptions: Partial<LineChartLineOptions> = {};
+      if (ruleMarkProps.strokeDash) {
+        ruleLineOptions.strokeDasharray = ruleMarkProps.strokeDash.join(' ');
+      }
+      if (ruleMarkProps.strokeWidth) {
+        ruleLineOptions.strokeWidth = ruleMarkProps.strokeWidth;
+      }
+
+      lineChartData.push({
+        legend: ruleLegend,
+        data: [
+          { x: xMin as number | Date, y: yDatum as number },
+          { x: xMax as number | Date, y: yDatum as number },
+        ],
+        color: ruleColor,
+        hideNonActiveDots: true,
+        ...(Object.keys(ruleLineOptions).length > 0 && { lineOptions: ruleLineOptions }),
+      });
+    });
+  }
+
   // Check for log scale on Y-axis
   const yAxisType = extractYAxisType(encoding);
 
@@ -1364,7 +1453,7 @@ export function transformVegaLiteToLineChartProps(
     ...(yMaxValue !== undefined && { yMaxValue }),
     ...(annotations.length > 0 && { annotations }),
     ...(colorFillBars.length > 0 && { colorFillBars }),
-    ...(yAxisType && { yAxisType }),
+    ...(yAxisType && { yScaleType: yAxisType }),
     ...categoryOrderProps,
     hideLegend: encoding.color?.legend?.disable ?? false,
   };
@@ -1607,6 +1696,13 @@ export function transformVegaLiteToVerticalBarChartProps(
         barData.push({ x: xKey, y: totalCount, legend, color });
       });
     } else {
+    // When a fixed color is specified (color.value or mark.color) without a color field,
+    // use a single legend name so all bars share the same color and legend entry
+    const hasFixedColor = !colorField && (colorValue || markProps.color);
+
+    // Create value formatter for bar data labels
+    const yFormatter = createValueFormatter(encoding.y?.axis?.format);
+
     // Use raw data (normal numeric y values)
     dataValues.forEach(row => {
       const xValue = row[xField];
@@ -1617,7 +1713,9 @@ export function transformVegaLiteToVerticalBarChartProps(
         return;
       }
 
-      const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : String(xValue);
+      const legend = colorField && row[colorField] !== undefined
+        ? String(row[colorField])
+        : hasFixedColor ? 'Bar' : String(xValue);
 
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
@@ -1634,6 +1732,7 @@ export function transformVegaLiteToVerticalBarChartProps(
         y: yValue,
         legend,
         color,
+        ...(yFormatter && { yAxisCalloutData: yFormatter(yValue), barLabel: yFormatter(yValue) }),
       });
     });
     }
@@ -1665,7 +1764,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
-    ...(yAxisType && { yAxisType }),
+    ...(yAxisType && { yScaleType: yAxisType }),
     ...categoryOrderProps,
   };
 
@@ -1698,13 +1797,15 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Initialize transformation context (skip warnings as we handle layered spec differently)
   const { unitSpecs } = initializeTransformContext(spec);
 
-  // Separate bar and line specs from layered specifications
+  // Separate bar, line, and rule specs from layered specifications
   const barSpecs = unitSpecs.filter(s => getMarkType(s.mark) === 'bar');
 
   const lineSpecs = unitSpecs.filter(s => {
     const mark = getMarkType(s.mark);
     return mark === 'line' || mark === 'point';
   });
+
+  const ruleSpecs = unitSpecs.filter(s => getMarkType(s.mark) === 'rule');
 
   // Use bar specs if available, otherwise fall back to first unit spec
   const primarySpec = barSpecs.length > 0 ? barSpecs[0] : unitSpecs[0];
@@ -1805,7 +1906,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     const yValue = row[yField!];
     const stackValue = colorField ? row[colorField] : 'Bar'; // Default legend if no color field
 
-    if (xValue === undefined || yValue === undefined || typeof yValue !== 'number') {
+    if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number') {
       return;
     }
 
@@ -1830,10 +1931,12 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     const color =
       resolveColor(legend, colorIndex.get(legend)!, colorValue as string | undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
 
+    const stackYFormatter = createValueFormatter(encoding.y?.axis?.format);
     mapXToDataPoints[xKey].chartData.push({
       legend,
       data: yValue,
       color,
+      ...(stackYFormatter && { yAxisCalloutData: stackYFormatter(yValue), barLabel: stackYFormatter(yValue) }),
     });
   });
   }
@@ -1862,7 +1965,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       const xValue = row[lineXField];
       const yValue = row[lineYField];
 
-      if (xValue === undefined || yValue === undefined) {
+      if (isInvalidValue(xValue) || isInvalidValue(yValue)) {
         return;
       }
 
@@ -1917,6 +2020,51 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     });
   });
 
+  // Process rule specs as horizontal reference lines
+  // Each rule with a constant y-value becomes a flat line across all x-axis points
+  ruleSpecs.forEach((ruleSpec, ruleIndex) => {
+    const ruleEncoding = ruleSpec.encoding || {};
+    const ruleMarkProps = getMarkProperties(ruleSpec.mark);
+    const yDatum = ruleEncoding.y?.datum ?? ruleEncoding.y?.value;
+
+    if (yDatum !== undefined) {
+      const ruleLegend = `Reference_${ruleIndex}`;
+      const ruleColor = ruleMarkProps.color || '#d62728';
+
+      if (!colorIndex.has(ruleLegend)) {
+        colorIndex.set(ruleLegend, currentColorIndex++);
+      }
+
+      const lineOptions: Partial<LineChartLineOptions> = {};
+      if (ruleMarkProps.strokeDash) {
+        lineOptions.strokeDasharray = ruleMarkProps.strokeDash.join(' ');
+      }
+      if (ruleMarkProps.strokeWidth) {
+        lineOptions.strokeWidth = ruleMarkProps.strokeWidth;
+      }
+
+      // Look for companion text annotation at the same y-value
+      const textSpec = unitSpecs.find((s, i) => {
+        return getMarkType(s.mark) === 'text' && s.encoding?.y &&
+          ((s.encoding.y.datum ?? s.encoding.y.value) === yDatum);
+      });
+      const ruleText = textSpec
+        ? String(textSpec.encoding?.text?.datum || textSpec.encoding?.text?.value || yDatum)
+        : String(yDatum);
+
+      // Add the constant y-value line to every x-axis point
+      Object.keys(mapXToDataPoints).forEach(xKey => {
+        mapXToDataPoints[xKey].lineData!.push({
+          y: yDatum as number,
+          legend: ruleText,
+          color: ruleColor,
+          ...(Object.keys(lineOptions).length > 0 && { lineOptions }),
+          useSecondaryYScale: false,
+        });
+      });
+    }
+  });
+
   const chartData = Object.values(mapXToDataPoints);
   const titles = getVegaLiteTitles(spec);
 
@@ -1924,15 +2072,34 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   const hasSecondaryYAxis = chartData.some(point => point.lineData?.some(line => line.useSecondaryYScale));
 
   // Extract secondary Y-axis properties from line layers
-  let secondaryYAxisProps = {};
+  let secondaryYAxisProps: Record<string, unknown> = {};
   if (hasSecondaryYAxis && lineSpecs.length > 0) {
     const lineSpec = lineSpecs[0];
     const lineEncoding = lineSpec.encoding || {};
     const lineYAxis = lineEncoding.y?.axis;
 
     if (lineYAxis?.title) {
-      secondaryYAxisProps = {
-        secondaryYAxistitle: lineYAxis.title,
+      secondaryYAxisProps.secondaryYAxistitle = lineYAxis.title;
+    }
+
+    // Compute secondary Y scale domain from line data values
+    const allLineYValues: number[] = [];
+    chartData.forEach(point => {
+      point.lineData?.forEach(line => {
+        if (line.useSecondaryYScale && typeof line.y === 'number') {
+          allLineYValues.push(line.y);
+        }
+      });
+    });
+
+    if (allLineYValues.length > 0) {
+      // Use explicit domain from line encoding if available, otherwise compute from data
+      const lineDomain = lineEncoding.y?.scale?.domain;
+      const secYMin = Array.isArray(lineDomain) ? (lineDomain[0] as number) : d3Min(allLineYValues) ?? 0;
+      const secYMax = Array.isArray(lineDomain) ? (lineDomain[1] as number) : d3Max(allLineYValues) ?? 0;
+      secondaryYAxisProps.secondaryYScaleOptions = {
+        yMinValue: secYMin,
+        yMaxValue: secYMax,
       };
     }
   }
@@ -1967,7 +2134,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
-    ...(yAxisType && { yAxisType }),
+    ...(yAxisType && { yScaleType: yAxisType }),
     ...secondaryYAxisProps,
     ...categoryOrderProps,
   };
@@ -2011,7 +2178,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     const yValue = row[yField];
     const groupValue = row[colorField];
 
-    if (xValue === undefined || yValue === undefined || typeof yValue !== 'number' || groupValue === undefined) {
+    if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number' || isInvalidValue(groupValue)) {
       return;
     }
 
@@ -2061,7 +2228,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
-    ...(yAxisType && { yAxisType }),
+    ...(yAxisType && { yScaleType: yAxisType }),
   };
 }
 
@@ -2162,7 +2329,7 @@ export function transformVegaLiteToHorizontalBarChartProps(
       const xValue = row[xField];
       const yValue = row[yField];
 
-      if (xValue === undefined || yValue === undefined || typeof xValue !== 'number') {
+      if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof xValue !== 'number') {
         return;
       }
 
@@ -2392,7 +2559,7 @@ export function transformVegaLiteToScatterChartProps(
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
-    ...(yAxisType && { yAxisType }),
+    ...(yAxisType && { yScaleType: yAxisType }),
     // For nominal y-axis, provide tick values and labels
     ...(yIsNominal && yOrdinalLabels.length > 0 && {
       yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
@@ -2530,7 +2697,7 @@ export function transformVegaLiteToHeatMapChartProps(
     const yValue = row[yField];
     const colorValue = row[colorField];
 
-    if (xValue === undefined || yValue === undefined || colorValue === undefined) {
+    if (isInvalidValue(xValue) || isInvalidValue(yValue) || isInvalidValue(colorValue)) {
       return;
     }
 
@@ -2568,9 +2735,11 @@ export function transformVegaLiteToHeatMapChartProps(
 
   // Build a map of existing data points for quick lookup
   const dataPointMap = new Map<string, number>();
+  const rectTextMap = new Map<string, number | string>();
   heatmapDataPoints.forEach(point => {
     const key = `${String(point.x)}|${String(point.y)}`;
     dataPointMap.set(key, point.value);
+    rectTextMap.set(key, point.rectText);
   });
 
   // Generate complete grid - fill missing cells with 0
@@ -2604,7 +2773,7 @@ export function transformVegaLiteToHeatMapChartProps(
         x: xVal,
         y: yVal,
         value,
-        rectText: value,
+        rectText: rectTextMap.get(key) ?? value,
       });
     });
   });
