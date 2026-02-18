@@ -6,7 +6,7 @@ describe('partitionAvatarGroupItems', () => {
     const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
 
     expect(inlineItems).toEqual([6, 7, 8, 9]);
-    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5]);
+    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 
   it('provides all the items to the overflow array when using the pie layout', () => {
@@ -22,7 +22,7 @@ describe('partitionAvatarGroupItems', () => {
     const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
 
     expect(inlineItems).toEqual([6, 7, 8, 9]);
-    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5]);
+    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 
   it('partitions the items in the correct order for the pie layout', () => {
@@ -62,6 +62,6 @@ describe('partitionAvatarGroupItems', () => {
     const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items, maxInlineItems: 8 });
 
     expect(inlineItems).toEqual([3, 4, 5, 6, 7, 8, 9]);
-    expect(overflowItems).toEqual([0, 1, 2]);
+    expect(overflowItems).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });

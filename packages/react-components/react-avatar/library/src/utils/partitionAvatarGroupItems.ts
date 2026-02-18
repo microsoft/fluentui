@@ -30,11 +30,11 @@ export const partitionAvatarGroupItems = <T>(
   }
 
   const maxInlineItems = options.maxInlineItems ?? 5;
-  const inlineCount = -(maxInlineItems - (items.length > maxInlineItems ? 1 : 0));
-  const overflowItems = items.slice(0, inlineCount);
+  const hasOverflow = items.length > maxInlineItems;
+  const inlineCount = -(maxInlineItems - (hasOverflow ? 1 : 0));
 
   return {
     inlineItems: items.slice(inlineCount),
-    overflowItems: overflowItems.length > 0 ? overflowItems : undefined,
+    overflowItems: hasOverflow ? items : undefined,
   };
 };
