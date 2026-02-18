@@ -1659,10 +1659,13 @@ export function transformVegaLiteToVerticalBarChartProps(
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
+  // When there's no color field, all bars share a single legend
+  const useSingleLegendForAggregate = !colorField;
+
   if (aggregatedData) {
     // Use aggregated data
     aggregatedData.forEach(({ category, value }) => {
-      const legend = String(category);
+      const legend = useSingleLegendForAggregate ? 'Bar' : String(category);
 
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
@@ -1696,9 +1699,9 @@ export function transformVegaLiteToVerticalBarChartProps(
         barData.push({ x: xKey, y: totalCount, legend, color });
       });
     } else {
-    // When a fixed color is specified (color.value or mark.color) without a color field,
-    // use a single legend name so all bars share the same color and legend entry
-    const hasFixedColor = !colorField && (colorValue || markProps.color);
+    // When there's no color field encoding, use a single legend name for all bars
+    // This ensures: uniform bar color, single legend entry, no tooltip duplication
+    const useSingleLegend = !colorField;
 
     // Create value formatter for bar data labels
     const yFormatter = createValueFormatter(encoding.y?.axis?.format);
@@ -1715,7 +1718,7 @@ export function transformVegaLiteToVerticalBarChartProps(
 
       const legend = colorField && row[colorField] !== undefined
         ? String(row[colorField])
-        : hasFixedColor ? 'Bar' : String(xValue);
+        : useSingleLegend ? 'Bar' : String(xValue);
 
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
