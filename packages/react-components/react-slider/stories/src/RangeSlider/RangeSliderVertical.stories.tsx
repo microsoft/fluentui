@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Label, useId } from '@fluentui/react-components';
-import { RangeSlider } from '@fluentui/react-slider';
+import { Label, RangeSlider, useId } from '@fluentui/react-components';
 
 export const Vertical = (): JSXElement => {
   const labelId = useId('rangeslider-vertical-label-');

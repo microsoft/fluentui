@@ -1,8 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { Button, Label, useId } from '@fluentui/react-components';
-import { RangeSlider } from '@fluentui/react-slider';
-import type { RangeSliderProps } from '@fluentui/react-slider';
+import type { JSXElement, RangeSliderProps } from '@fluentui/react-components';
+import { Button, Label, RangeSlider, useId } from '@fluentui/react-components';
 
 const initialValue: RangeSliderProps['value'] = { start: 25, end: 75 };
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import { RangeSlider } from '@fluentui/react-slider';
+import { RangeSlider } from '@fluentui/react-components';
 
 import descriptionMd from './RangeSliderDescription.md';
 import bestPracticesMd from './RangeSliderBestPractices.md';

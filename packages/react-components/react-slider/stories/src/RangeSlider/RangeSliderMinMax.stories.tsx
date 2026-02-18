@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Label, makeStyles, useId } from '@fluentui/react-components';
-import { RangeSlider } from '@fluentui/react-slider';
+import { Label, makeStyles, RangeSlider, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   wrapper: {
