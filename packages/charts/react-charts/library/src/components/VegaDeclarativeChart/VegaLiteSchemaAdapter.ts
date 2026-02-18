@@ -1755,6 +1755,10 @@ export function transformVegaLiteToVerticalBarChartProps(
   const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
   const yAxisType = extractYAxisType(encoding);
 
+  // Compute truncation based on number of unique x-axis categories
+  const uniqueXCount = new Set(barData.map(d => String(d.x))).size;
+  const barTruncateChars = uniqueXCount > 20 ? 6 : uniqueXCount > 10 ? 10 : DEFAULT_TRUNCATE_CHARS;
+
   const result: VerticalBarChartProps = {
     data: barData,
     chartTitle: titles.chartTitle,
@@ -1764,11 +1768,14 @@ export function transformVegaLiteToVerticalBarChartProps(
     roundCorners: true,
     wrapXAxisLables: typeof barData[0]?.x === 'string',
     hideTickOverlap: true,
+    noOfCharsToTruncate: barTruncateChars,
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
     ...(yAxisType && { yScaleType: yAxisType }),
     ...categoryOrderProps,
+    // Hide legend for single-series bar charts (no color encoding) to avoid showing "Bar" legend
+    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
   };
 
   if (tickConfig.tickValues) {
@@ -2571,6 +2578,7 @@ export function transformVegaLiteToScatterChartProps(
       yMaxValue: yOrdinalLabels.length - 0.5,
     }),
     ...categoryOrderProps,
+    hideLegend: encoding.color?.legend?.disable ?? false,
   };
 
   if (annotations.length > 0) {
