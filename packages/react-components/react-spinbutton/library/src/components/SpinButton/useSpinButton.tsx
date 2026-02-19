@@ -190,6 +190,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
 
+    if (e.currentTarget.readOnly) {
+      return;
+    }
+
     if (e.key === ArrowUp) {
       stepValue(e, 'up', textValue);
       nextKeyboardSpinState = 'up';
@@ -308,6 +312,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronUp16Regular />,
         disabled:
+          nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
           internalState.current.atBound === 'max' ||
           internalState.current.atBound === 'both',
@@ -321,6 +326,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronDown16Regular />,
         disabled:
+          nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
           internalState.current.atBound === 'min' ||
           internalState.current.atBound === 'both',

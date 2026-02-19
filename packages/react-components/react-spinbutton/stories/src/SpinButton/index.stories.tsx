@@ -13,6 +13,7 @@ export { Step } from './SpinButtonStep.stories';
 export { Size } from './SpinButtonSize.stories';
 export { Appearance } from './SpinButtonAppearance.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
+export { ReadOnly } from './SpinButtonReadOnly.stories';
 
 const meta: Meta = {
   title: 'Components/SpinButton',
