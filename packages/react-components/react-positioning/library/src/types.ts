@@ -24,6 +24,24 @@ export interface PositionManager {
   dispose: () => void;
 }
 
+/**
+ * Placement values computed by floating-ui.
+ * This is a union of all possible placement strings that can be returned.
+ */
+export type PositioningPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end';
+
 export interface UsePositioningReturn {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)

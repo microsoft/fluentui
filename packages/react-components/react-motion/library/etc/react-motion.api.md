@@ -11,6 +11,13 @@ import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
+export type AnimationHandle = Pick<Animation, 'cancel' | 'finish' | 'pause' | 'play' | 'playbackRate' | 'reverse'> & {
+    setMotionEndCallbacks: (onfinish: () => void, oncancel: () => void) => void;
+    isRunning: () => boolean;
+    dispose: () => void;
+};
+
+// @public (undocumented)
 export type AtomMotion = AtomCore & {
     reducedMotion?: Partial<AtomCore>;
 };
@@ -178,6 +185,14 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: JSXElement;
     }>;
 };
+
+// @public
+export function useAnimateAtoms(): (element: HTMLElement, value: AtomMotion | AtomMotion[], options: {
+    isReducedMotion: boolean;
+}) => AnimationHandle;
+
+// @public (undocumented)
+export function useIsReducedMotion(): () => boolean;
 
 // @public (undocumented)
 export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;

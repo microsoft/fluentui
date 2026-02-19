@@ -3,6 +3,7 @@
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useSlideAnimation } from '@fluentui/react-positioning';
 import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -66,6 +67,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const mountNode = useMenuContext_unstable(context => context.mountNode);
 
+  const slideRef = useSlideAnimation({ distance: '10px' });
+
   const rootProps = slot.always(
     getIntrinsicElementProps('div', {
       role: 'presentation',
@@ -74,7 +77,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
       // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef) as React.Ref<HTMLDivElement>,
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef, slideRef) as React.Ref<HTMLDivElement>,
     }),
     { elementType: 'div' },
   );

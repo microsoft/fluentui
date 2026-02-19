@@ -221,7 +221,10 @@ function useAnimateAtomsInTestEnvironment() {
 }
 
 /**
- * @internal
+ * A React hook that returns a function to animate an element using the Web Animations API (WAAPI).
+ * Handles reduced motion preferences automatically when the `isReducedMotion` option is passed.
+ *
+ * @returns A function that takes an element, motion atoms, and options, and returns an AnimationHandle.
  */
 export function useAnimateAtoms(): (
   element: HTMLElement,

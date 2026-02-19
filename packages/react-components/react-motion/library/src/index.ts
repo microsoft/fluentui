@@ -23,7 +23,11 @@ export {
   type PresenceGroupChildContextValue,
 } from './contexts/PresenceGroupChildContext';
 
+export { useAnimateAtoms } from './hooks/useAnimateAtoms';
+export { useIsReducedMotion } from './hooks/useIsReducedMotion';
+
 export type {
+  AnimationHandle,
   AtomMotion,
   AtomMotionFn,
   PresenceMotion,
