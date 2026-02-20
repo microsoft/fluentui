@@ -1,0 +1,153 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Accessibility/Notification Best Practices" />
+
+# Notification Best Practices
+
+## Using DOM-based live regions
+
+There are functionally three ways to create a live region in the DOM:
+
+1. **Use `aria-live="assertive"` or `aria-live="polite"`**
+   Using `aria-live` to designate an element as a live region is the most common way to do so. In theory, the difference between `assertive` and `polite` affects how where notification text is inserted in the screen reader's speech queue. However, in practice this is not consistent between operating systems and screen readers. Generally use `aria-live="assertive"` when the notification is likely more important than a user's current interaction, and use `aria-live="polite"` when the notification is less important than what the user is currently doing.
+2. **Use `role="alert"`**
+   The `alert` approach is best used for error messages such as form errors or high-importance toasts. Some screen readers say "alert" or a similar word before the text of the live region element. It is the only live region that consistently gets announced when inserted into the DOM, rather than only on subsequent child mutations.
+3. ** Use `role="status"`**
+   This is largely equivalent to using `aria-live="polite"`. It is possible that some screen readers may announce it slightly differently, such as saying "status" before the message. This does not currently happen in any screen reader as of writing, however.
+
+All these attributes will designate an element as a live region, and screen reader notifications will be triggered by any change to its children. For this reason, it is extremely important to never use live region attributes on an element that will have frequent mutations. Generally elements that have a lot of child content also should not be live regions.
+
+In general, live regions should be:
+
+- short -- in both text content and number & complexity of child nodes
+- stable -- only mutating infrequently when a user-relevant event occurs
+- avoid conflicts with user events -- live regions should not be designed to fire at the same time as a focus change or user input event, since doing so will conflict with screen reader announcements of those events.
+
+## Using Fluent's `useAnnounce` hook
+
+There are multiple advantages to using the built-in Fluent `AriaLiveAnnouncer` + `useAnnounce` hook to handle live regions instead of building your own in the DOM:
+
+1. We use the new `document.ariaNotify` API in browsers where it is supported, with a fallback to a DOM-based live region in browsers without support. The `ariaNotify` API has several advantages, including better support for announcements when a modal is open, better performance in apps with a very large & complex DOM, better observability and debugging support, and it easier to unit test.
+2. You can call it once at exactly the time the announcement is desired, instead of trying to manage text (and removing text) in a rendered live region node.
+3. You can call `announce()` at any time, even when the component is first mounted. You do not need to manually ensure an empty live region node exists in the DOM first, before inserting the desired announcement text into it.
+4. You sidestep the problem of unintentional other updates to children of a rendered live region node causing the live region to announce again.
+
+While it is possible to directly use `ariaNotify` without using the Fluent Announce utility, we recommend waiting until the API is more stable than at the time of writing. Fluent has been working with both the spec and browser implementors, which is why we have it implemented in its early stages. It would also be necessary to include a polyfill until browser support meets the needs of your site or app.
+
+### Step 1: ensure an `AriaLiveAnnouncer` or custom implementation exists
+
+The `useAnnounce` hook's `announce()` function looks for the closest `AnnounceContext`, which is where the actual live region implementation exists. Ideally the `AriaLiveAnnouncer` or custom `AnnounceContext` should be added once at the root of the application.
+
+There are a couple cases where one might add an additional nested `AriaLiveAnnouncer`:
+
+- Your team's UI may be used in any of several places, and you can't guarantee the wrapping app has its own `AriaLiveAnnouncer`
+- You have UI rendered within an iframe
+
+It would usually look something like this, in the same place other top-level providers are defined:
+
+```tsx
+<FluentProvider theme={webLightTheme}>
+  <AriaLiveAnnouncer>{...children}</AriaLiveAnnouncer>
+</FluentProvider>
+```
+
+### Step 2: Import `useAnnounce` and call `announce()` when desired
+
+At the component level, import and call `useAnnounce` to get the `announce` function, and call `announce` where desired.
+
+For example, this is how you would fire an announcement in response to an attachment uploading:
+
+In the imports section:
+
+```tsx
+import { useAnnounce } from '@fluentui/react-components';
+```
+
+And within the component function:
+
+```tsx
+const { announce } = useAnnounce();
+
+onLoad = attachment => {
+  announce(`finished uploading ${attachment.name}`);
+
+  // other onLoad logic
+};
+```
+
+## Common mistakes
+
+### 1. Localization
+
+Since the text of screen reader announcements is often either not displayed visually, or slightly different than the text displayed visually, it is easy to forget and not catch when it isn't localized. Ensure any strings used in live region messages are pulled from imported localized strings (whether using Fluent's `useAnnounce` or custom live regions).
+
+### 2. Wrapping large regions in a live region node
+
+A common example of this is putting `aria-live` on an element that wraps an entire chat message list, or a table whose cells can frequently update.
+
+Never wrap a large amount of content, and especially complex DOM hierarchy in a live region node.
+
+### 3. Using `aria-relevant` or `aria-atomic`
+
+These attributes do not have consistent cross-browser, cross-screen-reader, and cross-platform support and should not be used. Instead, ensure the text of any live region message is specifically tailored to the update that needs to be conveyed. Never wrap a large amount of content with multiple possible types of DOM updates in a live region and expect `aria-relevant` or `aria-atomic` to prevent all the problems that come with that approach.
+
+### 4. Putting an editable form field or contenteditable element in a live region
+
+User-editable fields like inputs, checkboxes, selects, dropdowns, and contenteditable elements should never be live regions, or be inside live regions. When this happens, every user interaction can cause the live region to fire in some browsers and screen readers, causing the form field or editable region to be effectively unusable for screen reader users.
+
+### 5. Inserting a live region node into the DOM with child content, and expecting that child content to be read
+
+This applies to custom DOM-based live regions, not to the Fluent announce utility.
+
+When making custom live region nodes, any approach other than `role="alert"` _must_ exist in the DOM before text is inserted in order to work as expected. Live region nodes read updates, not text on insertion. In the past, this has worked in Narrator, but not in any other screen reader.
+
+Only `role="alert"` will read its content when it is first inserted into the DOM. However, `role="alert"` should only be used for errors and alerts, since it is sometimes announced differently by screen readers than other live regions (e.g. by playing a sound or saying "alert" before the text of the message).
+
+### 6. Calling `announce()` or updating a live region inside a `useEffect` that runs more than intended
+
+One common cause of screen reader announcements running repeatedly when not intended is triggering them within a `useEffect` that has dependencies that update outside of the intended announcement trigger.
+
+For example, here is a `useEffect` that both calls `announce` and an optional callback function in response to a loading state change, and accidentally triggers announcements even outside of the loading changes:
+
+```tsx
+useEffect(() => {
+  if (!loading) {
+    announce('loading complete');
+    props.onLoad?.();
+  }
+}, [loading, props.onLoad]);
+```
+
+The issue is that if the `props.onLoad` function isn't wrapped in something like `useCallback` or `useMemo` (or is, but one of those dependencies changes), the "loading complete" message will fire again even though the loading state did not change.
+
+### 7. Calling `announce` or triggering a live region in response to user text input
+
+The issue with this is that the announcement will conflict with the screen reader's default keyboard echo as the user types. In the worst case, this can make the text input unusable, since the user may not be able to hear themselves typing. Alternatively, they may hear themselves type, but entirely miss the announcement. This applies to both text inputs, textareas, and contenteditable regions.
+
+Instead, use the Fluent `useTypingAnnounce` hook, which will both batch and debounce any `typingAnnounce` calls and fire a single announcement 0.5s after the user ceases typing.
+
+Here is an example of using `useTypingAnnounce` to give the user a warning about approaching or exceeding the character limit on a text field:
+
+```tsx
+const announceId = useId('typing-announce');
+
+const onChange = event => {
+  const charCount = event.target.value.length;
+  const isOverlimit = charCount > 20;
+  setExceededLimit(isOverlimit);
+
+  if (charCount > 15 && charCount <= 20) {
+    typingAnnounce(`${20 - charCount} characters remaining`, {
+      // setting the same batchId allows multiple messages to be batched,
+      // so only the last typingAnnounce call's message is actually announced
+      batchId: announceId,
+    });
+  }
+
+  if (isOverlimit) {
+    typingAnnounce('You have reached the maximum character limit', {
+      batchId: announceId,
+    });
+  }
+};
+```
