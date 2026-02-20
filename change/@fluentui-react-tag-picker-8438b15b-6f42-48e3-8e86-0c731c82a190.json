@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add disableAutoFocus prop to TagPicker and deprecate on TagPickerList",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
