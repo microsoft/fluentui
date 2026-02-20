@@ -210,7 +210,49 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
       throw new Error('Unable to find cached CSF files in Storybook store');
     }
 
-    return Object.values(storyStore.cachedCSFFiles);
+    // Extract __docgenInfo inside browser context before serialization.
+    // Function-type components cannot be JSON-serialized by page.evaluate(),
+    // so we extract the serializable props data here.
+    return Object.values(storyStore.cachedCSFFiles).map(item => {
+      const component = item.meta?.component;
+      const serializedComponent = serializeComponent(component);
+
+      const subcomponents = item.meta?.subcomponents;
+      const serializedSubcomponents = subcomponents
+        ? Object.fromEntries(Object.entries(subcomponents).map(([name, sub]) => [name, serializeComponent(sub, name)]))
+        : undefined;
+
+      return {
+        ...item,
+        meta: {
+          ...item.meta,
+          component: serializedComponent,
+          subcomponents: serializedSubcomponents ?? item.meta?.subcomponents,
+        },
+      };
+    });
+
+    function serializeComponent(component: any, fallbackName?: string) {
+      if (!component) {
+        return component;
+      }
+
+      const docgenInfo = component.__docgenInfo;
+      if (!docgenInfo) {
+        // For object-type components without __docgenInfo, return as-is
+        // (they may still serialize correctly if they're plain objects)
+        if (typeof component !== 'function') {
+          return component;
+        }
+        return undefined;
+      }
+
+      return {
+        displayName:
+          component.displayName ?? (typeof component === 'function' ? component.name : undefined) ?? fallbackName,
+        __docgenInfo: docgenInfo,
+      };
+    }
   });
 
   await page.close();
