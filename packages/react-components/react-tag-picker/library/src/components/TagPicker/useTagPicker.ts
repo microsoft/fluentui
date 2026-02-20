@@ -29,7 +29,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false } = props;
+  const { positioning, size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -66,6 +66,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
       } as TagPickerOnOpenChangeData),
     ),
     activeDescendantController,
+    disableAutoFocus,
     editable: true,
     multiselect: true,
     size: 'medium',
