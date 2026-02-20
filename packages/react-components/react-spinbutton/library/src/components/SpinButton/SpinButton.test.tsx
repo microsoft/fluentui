@@ -59,6 +59,25 @@ describe('SpinButton', () => {
     expect(decrementButton.disabled).toEqual(true);
   });
 
+  it('can be read-only', () => {
+    const { getAllByRole } = render(<SpinButton readOnly={true} defaultValue={1} />);
+
+    const spinButtonInput = getSpinButtonInput();
+
+    expect(spinButtonInput.readOnly).toEqual(true);
+    expect(spinButtonInput.value).toEqual('1');
+
+    const [incrementButton, decrementButton] = getAllByRole('button') as HTMLButtonElement[];
+    expect(incrementButton.disabled).toEqual(true);
+    expect(decrementButton.disabled).toEqual(true);
+
+    // Try to change the value via keyboard
+    fireEvent.keyDown(spinButtonInput, { key: ArrowUp });
+
+    // Spin button input should not change value when readOnly is true
+    expect(spinButtonInput.value).toEqual('1');
+  });
+
   describe('displayValue', () => {
     it('does not render `displayValue` when uncontrolled', () => {
       render(<SpinButton defaultValue={1} displayValue="$1.00" onChange={jest.fn()} />);
