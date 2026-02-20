@@ -26,6 +26,9 @@ const options = [
 export const Filtering = (): JSXElement => {
   const [query, setQuery] = React.useState<string>('');
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  // disable auto focus when no query is present (e.g. opened by keyboard)
+  // enable auto focus when query is present (e.g. opened by typing)
+  const disableAutoFocus = query.length === 0;
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     if (data.value === 'no-matches') {
       return;
@@ -52,7 +55,7 @@ export const Filtering = (): JSXElement => {
   });
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions} disableAutoFocus={disableAutoFocus}>
         <TagPickerControl>
           <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
@@ -80,6 +83,8 @@ Filtering.parameters = {
     description: {
       story: `
 \`TagPicker\` can take advantage of the provided \`useTagPickerFilter\` hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.
+
+\`disableAutoFocus\` is used here to control whether the first option is automatically focused when the popover opens. When the user opens the popover via keyboard (no query), auto focus is disabled to avoid jumping to the first option. When the user types a query, auto focus is enabled so the first matching option is highlighted.
 `,
     },
   },
