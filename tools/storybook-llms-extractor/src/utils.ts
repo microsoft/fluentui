@@ -210,67 +210,46 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
       throw new Error('Unable to find cached CSF files in Storybook store');
     }
 
-    // Extract __docgenInfo inside browser context before serialization.
-    // Function-type components cannot be JSON-serialized by page.evaluate(),
-    // so we extract the serializable props data here.
-    return Object.values(storyStore.cachedCSFFiles).map(item => {
-      const component = item.meta?.component;
-      const serializedComponent = serializeComponent(component);
-
-      const subcomponents = item.meta?.subcomponents;
-      const serializedSubcomponents = subcomponents
-        ? Object.fromEntries(
-            Object.entries(subcomponents)
-              .map(([name, sub]) => [name, serializeComponent(sub, name)] as const)
-              .filter((entry): entry is [string, StorybookComponent] => Boolean(entry[1])),
-          )
-        : undefined;
-
-      return {
-        ...item,
-        meta: {
-          ...item.meta,
-          component: serializedComponent,
-          subcomponents: serializedSubcomponents ?? item.meta?.subcomponents,
+    // Picks only serializable fields before returning across the browser → Node boundary.
+    // cachedCSFFiles may contain functions (React components, story functions, decorators, etc.)
+    // that would cause structured-clone to fail.
+    const serializeCSFFile = (item: StorybookStoreItem): StorybookStoreItem => ({
+      meta: {
+        id: item.meta.id,
+        title: item.meta.title,
+        parameters: {
+          fileName: item.meta.parameters.fileName,
+          docs: item.meta.parameters.docs ? { description: item.meta.parameters.docs.description } : undefined,
         },
-      };
+        component: item.meta.component
+          ? { displayName: item.meta.component.displayName, __docgenInfo: item.meta.component.__docgenInfo }
+          : undefined,
+        subcomponents: item.meta.subcomponents
+          ? Object.fromEntries(
+              Object.entries(item.meta.subcomponents).map(([key, comp]) => [
+                key,
+                { displayName: comp.displayName, __docgenInfo: comp.__docgenInfo },
+              ]),
+            )
+          : undefined,
+      },
+      stories: Object.fromEntries(
+        Object.entries(item.stories).map(([key, story]) => [
+          key,
+          {
+            id: story.id,
+            name: story.name,
+            parameters: {
+              docs: story.parameters.docs,
+              fullSource: story.parameters.fullSource,
+              docsOnly: story.parameters.docsOnly,
+            },
+          },
+        ]),
+      ),
     });
 
-    type RuntimeComponent =
-      | StorybookComponent
-      | (Function & {
-          __docgenInfo?: StorybookComponent['__docgenInfo'];
-          displayName?: string;
-          name?: string;
-        });
-
-    function serializeComponent(
-      component: RuntimeComponent | undefined,
-      fallbackName?: string,
-    ): StorybookComponent | undefined {
-      if (!component) {
-        return undefined;
-      }
-
-      const docgenInfo = component.__docgenInfo;
-      if (!docgenInfo) {
-        // For object-type components without __docgenInfo, return as-is
-        // (they may still serialize correctly if they're plain objects)
-        if (typeof component !== 'function') {
-          return component;
-        }
-        return undefined;
-      }
-
-      return {
-        displayName:
-          component.displayName ??
-          (typeof component === 'function' ? component.name : undefined) ??
-          fallbackName ??
-          'UnknownComponent',
-        __docgenInfo: docgenInfo,
-      };
-    }
+    return Object.values(storyStore.cachedCSFFiles).map(serializeCSFFile);
   });
 
   await page.close();
