@@ -219,7 +219,11 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
 
       const subcomponents = item.meta?.subcomponents;
       const serializedSubcomponents = subcomponents
-        ? Object.fromEntries(Object.entries(subcomponents).map(([name, sub]) => [name, serializeComponent(sub, name)]))
+        ? Object.fromEntries(
+            Object.entries(subcomponents)
+              .map(([name, sub]) => [name, serializeComponent(sub, name)] as const)
+              .filter((entry): entry is [string, StorybookComponent] => Boolean(entry[1])),
+          )
         : undefined;
 
       return {
@@ -232,9 +236,20 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
       };
     });
 
-    function serializeComponent(component: any, fallbackName?: string) {
+    type RuntimeComponent =
+      | StorybookComponent
+      | (Function & {
+          __docgenInfo?: StorybookComponent['__docgenInfo'];
+          displayName?: string;
+          name?: string;
+        });
+
+    function serializeComponent(
+      component: RuntimeComponent | undefined,
+      fallbackName?: string,
+    ): StorybookComponent | undefined {
       if (!component) {
-        return component;
+        return undefined;
       }
 
       const docgenInfo = component.__docgenInfo;
@@ -249,7 +264,10 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
 
       return {
         displayName:
-          component.displayName ?? (typeof component === 'function' ? component.name : undefined) ?? fallbackName,
+          component.displayName ??
+          (typeof component === 'function' ? component.name : undefined) ??
+          fallbackName ??
+          'UnknownComponent',
         __docgenInfo: docgenInfo,
       };
     }
