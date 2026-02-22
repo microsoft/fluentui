@@ -102,7 +102,7 @@ function getVegaConcatGridProperties(spec: VegaLiteSpec): {
 } {
   if (isHConcatSpec(spec)) {
     return {
-      templateRows: '1fr',
+      templateRows: 'auto',
       templateColumns: `repeat(${spec.hconcat.length}, 1fr)`,
       isHorizontal: true,
       specs: spec.hconcat,
@@ -111,7 +111,7 @@ function getVegaConcatGridProperties(spec: VegaLiteSpec): {
 
   if (isVConcatSpec(spec)) {
     return {
-      templateRows: `repeat(${spec.vconcat.length}, 1fr)`,
+      templateRows: `repeat(${spec.vconcat.length}, auto)`,
       templateColumns: '1fr',
       isHorizontal: false,
       specs: spec.vconcat,
@@ -213,6 +213,11 @@ function renderSingleChart(
 
   const { transformer, renderer: ChartRenderer } = chartConfig;
   const chartProps = transformer(spec, colorMap, isDarkTheme) as Record<string, unknown>;
+
+  // For hconcat/vconcat sub-charts, hide per-chart legends (shared legend rendered separately)
+  if ((spec as Record<string, unknown>)._hideLegend) {
+    chartProps.hideLegend = true;
+  }
 
   return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} {...interactiveCommonProps} />;
 }
@@ -416,6 +421,8 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
           >
             {gridProps.specs.map((subSpec: VegaLiteSpec, index: number) => {
               // Merge shared data and encoding from parent spec into each subplot
+              // Hide legends on all sub-charts except the last one (which shows the shared legend)
+              const isLastChart = index === gridProps.specs.length - 1;
               const mergedSpec = {
                 ...subSpec,
                 data: subSpec.data || vegaLiteSpec.data,
@@ -423,6 +430,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                   ...(vegaLiteSpec.encoding || {}),
                   ...(subSpec.encoding || {}),
                 },
+                ...(!isLastChart && { _hideLegend: true }),
               };
 
               const cellRow = gridProps.isHorizontal ? 1 : index + 1;
@@ -437,7 +445,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                     gridColumnStart: cellColumn,
                     gridColumnEnd: cellColumn + 1,
                     minWidth: 0,
-                    minHeight: 0,
+                    minHeight: 200,
                     overflow: 'hidden',
                   }}
                 >

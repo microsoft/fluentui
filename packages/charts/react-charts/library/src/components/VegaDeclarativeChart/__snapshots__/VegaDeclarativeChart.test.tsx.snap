@@ -37,6 +37,63 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(42.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  Jan
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(9.999999999999998,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  Feb
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-22.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  Mar
+                </text>
+              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -503,7 +560,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1l_"
+          id="tooltip__r_1k_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1k_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1k_"
           style="opacity: 0;"
         />
       </div>
@@ -549,6 +616,63 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(42.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-01-01
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(9.999999999999998,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-01-02
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-22.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-01-03
+                </text>
+              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -879,7 +1003,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1r_"
+          id="tooltip__r_1q_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1q_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1q_"
           style="opacity: 0;"
         />
       </div>
@@ -925,6 +1059,63 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(42.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  A
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(9.999999999999998,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  B
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-22.57142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  C
+                </text>
+              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -1255,7 +1446,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1o_"
+          id="tooltip__r_1n_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1n_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1n_"
           style="opacity: 0;"
         />
       </div>
@@ -1301,6 +1502,120 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 d="M72.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(68.875,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-01
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(50.125,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-02
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(31.375,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-03
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(12.625,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-04
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-6.125,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-05
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-24.875,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  2024-06
+                </text>
+              </g>
             </g>
             <rect
               class="fui-cart_svgTooltip"
@@ -1310,9 +1625,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_20_"
+              aria-describedby="tooltip-_r_1v_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_1v_"
+              id="tooltip-host_r_1u_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -1736,9 +2051,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_22_"
+              aria-describedby="tooltip-_r_21_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_21_"
+              id="tooltip-host_r_20_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -1808,7 +2123,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1u_"
+          id="tooltip__r_1t_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1t_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_1t_"
           style="opacity: 0;"
         />
       </div>
@@ -1843,7 +2168,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="A, 28."
                   class="fui-donut-arc__root"
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
-                  id="_Pie__r_2t_A28"
+                  id="_Pie__r_2s_A28"
                   opacity="1"
                   role="img"
                   style="fill: #637cef; cursor: default;"
@@ -1855,7 +2180,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="B, 55."
                   class="fui-donut-arc__root"
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
-                  id="_Pie__r_2t_B55"
+                  id="_Pie__r_2s_B55"
                   opacity="1"
                   role="img"
                   style="fill: #e3008c; cursor: default;"
@@ -1867,7 +2192,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_2u_"
+          id="callout_r_2t_"
         />
         <div
           class="fui-donut__legendContainer"
@@ -2327,7 +2652,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_31_"
+          id="tooltip__r_30_"
           style="opacity: 0;"
         />
       </div>
@@ -2382,9 +2707,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_35_"
+              aria-describedby="tooltip-_r_34_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_34_"
+              id="tooltip-host_r_33_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -2778,9 +3103,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_37_"
+              aria-describedby="tooltip-_r_36_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_36_"
+              id="tooltip-host_r_35_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -2795,7 +3120,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_33_"
+          id="tooltip__r_32_"
           style="opacity: 0;"
         />
       </div>
@@ -2932,7 +3257,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3f_"
+          id="tooltip__r_3e_"
           style="opacity: 0;"
         />
       </div>
@@ -2978,6 +3303,44 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(38.49999999999999,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  A
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(-18.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="6"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  y="16"
+                >
+                  B
+                </text>
+              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -3287,7 +3650,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3o_"
+          id="tooltip__r_3n_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_3n_"
+          style="opacity: 0;"
+        />
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_3n_"
           style="opacity: 0;"
         />
       </div>
@@ -3342,9 +3715,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_4t_"
+              aria-describedby="tooltip-_r_4s_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4s_"
+              id="tooltip-host_r_4r_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -3738,9 +4111,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_4v_"
+              aria-describedby="tooltip-_r_4u_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4u_"
+              id="tooltip-host_r_4t_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -3755,7 +4128,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4r_"
+          id="tooltip__r_4q_"
           style="opacity: 0;"
         />
       </div>
@@ -3810,9 +4183,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_53_"
+              aria-describedby="tooltip-_r_52_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_52_"
+              id="tooltip-host_r_51_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -4206,9 +4579,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_55_"
+              aria-describedby="tooltip-_r_54_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_54_"
+              id="tooltip-host_r_53_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4223,7 +4596,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_51_"
+          id="tooltip__r_50_"
           style="opacity: 0;"
         />
       </div>
@@ -4427,7 +4800,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4p_"
+          id="tooltip__r_4o_"
           style="opacity: 0;"
         />
       </div>
@@ -4539,9 +4912,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4e_"
+              aria-describedby="tooltip-_r_4d_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4d_"
+              id="tooltip-host_r_4c_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -4663,7 +5036,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             </g>
             <g>
               <line
-                id="verticalLine_r_4a_"
+                id="verticalLine_r_49_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -4696,9 +5069,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4g_"
+              aria-describedby="tooltip-_r_4f_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4f_"
+              id="tooltip-host_r_4e_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -5012,7 +5385,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_3u_"
+                id="verticalLine_r_3t_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5358,7 +5731,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_44_"
+                id="verticalLine_r_43_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"

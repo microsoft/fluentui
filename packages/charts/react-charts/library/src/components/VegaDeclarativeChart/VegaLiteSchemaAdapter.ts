@@ -227,7 +227,285 @@ function applyTransforms(
       const asFields = (transform.as as [string, string]) || ['key', 'value'];
       result = applyFoldTransform(result, foldFields, asFields);
     }
-    // Additional transforms can be added here (filter, calculate, aggregate, etc.)
+
+    // Handle filter transform
+    if ('filter' in transform) {
+      const filterExpr = transform.filter;
+      if (typeof filterExpr === 'string') {
+        result = result.filter(row => {
+          try {
+            const datum = row;
+            // eslint-disable-next-line no-new-func
+            return new Function('datum', `return ${filterExpr}`)(datum);
+          } catch {
+            return true;
+          }
+        });
+      }
+    }
+
+    // Handle calculate transform
+    if ('calculate' in transform && 'as' in transform) {
+      const expr = transform.calculate as string;
+      const asField = transform.as as string;
+      result = result.map(row => {
+        try {
+          const datum = row;
+          // eslint-disable-next-line no-new-func
+          const value = new Function('datum', `return ${expr}`)(datum);
+          return { ...row, [asField]: value };
+        } catch {
+          return row;
+        }
+      });
+    }
+
+    // Handle aggregate transform
+    if ('aggregate' in transform && Array.isArray(transform.aggregate)) {
+      const aggSpecs = transform.aggregate as Array<{ op: string; field?: string; as: string }>;
+      const groupby = (transform.groupby as string[]) || [];
+      const groups = new Map<string, Array<Record<string, unknown>>>();
+
+      result.forEach(row => {
+        const key = groupby.map(g => String(row[g])).join('|');
+        if (!groups.has(key)) { groups.set(key, []); }
+        groups.get(key)!.push(row);
+      });
+
+      result = Array.from(groups.entries()).map(([key, rows]) => {
+        const baseRow: Record<string, unknown> = {};
+        groupby.forEach((g, i) => { baseRow[g] = rows[0][g]; });
+
+        aggSpecs.forEach(spec => {
+          const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
+          switch (spec.op) {
+            case 'count': baseRow[spec.as] = rows.length; break;
+            case 'sum': baseRow[spec.as] = d3Sum(values); break;
+            case 'mean': case 'average': baseRow[spec.as] = d3Mean(values) ?? 0; break;
+            case 'min': baseRow[spec.as] = d3Min(values) ?? 0; break;
+            case 'max': baseRow[spec.as] = d3Max(values) ?? 0; break;
+            default: baseRow[spec.as] = rows.length;
+          }
+        });
+        return baseRow;
+      });
+    }
+
+    // Handle window transform
+    if ('window' in transform && Array.isArray(transform.window)) {
+      const windowOps = transform.window as Array<{ op: string; field?: string; as: string }>;
+      const sortFields = (transform.sort as Array<{ field: string; order?: string }>) || [];
+      const groupby = (transform.groupby as string[]) || [];
+
+      // Group data
+      const groups = new Map<string, Array<Record<string, unknown>>>();
+      result.forEach(row => {
+        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        if (!groups.has(key)) { groups.set(key, []); }
+        groups.get(key)!.push(row);
+      });
+
+      const newResult: Array<Record<string, unknown>> = [];
+      groups.forEach(rows => {
+        // Sort within group
+        if (sortFields.length > 0) {
+          rows.sort((a, b) => {
+            for (const sf of sortFields) {
+              const va = Number(a[sf.field]) || 0;
+              const vb = Number(b[sf.field]) || 0;
+              const cmp = sf.order === 'descending' ? vb - va : va - vb;
+              if (cmp !== 0) { return cmp; }
+            }
+            return 0;
+          });
+        }
+
+        let runningSum = 0;
+        rows.forEach((row, idx) => {
+          const newRow = { ...row };
+          windowOps.forEach(op => {
+            switch (op.op) {
+              case 'sum': runningSum += Number(row[op.field!]) || 0; newRow[op.as] = runningSum; break;
+              case 'rank': newRow[op.as] = idx + 1; break;
+              case 'row_number': newRow[op.as] = idx + 1; break;
+              case 'count': newRow[op.as] = idx + 1; break;
+              default: newRow[op.as] = idx + 1;
+            }
+          });
+          newResult.push(newRow);
+        });
+      });
+      result = newResult;
+    }
+
+    // Handle joinaggregate transform
+    if ('joinaggregate' in transform && Array.isArray(transform.joinaggregate)) {
+      const aggSpecs = transform.joinaggregate as Array<{ op: string; field?: string; as: string }>;
+      const groupby = (transform.groupby as string[]) || [];
+
+      // Compute aggregates
+      const groups = new Map<string, Array<Record<string, unknown>>>();
+      result.forEach(row => {
+        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        if (!groups.has(key)) { groups.set(key, []); }
+        groups.get(key)!.push(row);
+      });
+
+      const aggResults = new Map<string, Record<string, number>>();
+      groups.forEach((rows, key) => {
+        const aggs: Record<string, number> = {};
+        aggSpecs.forEach(spec => {
+          const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
+          switch (spec.op) {
+            case 'mean': case 'average': aggs[spec.as] = d3Mean(values) ?? 0; break;
+            case 'sum': aggs[spec.as] = d3Sum(values); break;
+            case 'count': aggs[spec.as] = rows.length; break;
+            case 'min': aggs[spec.as] = d3Min(values) ?? 0; break;
+            case 'max': aggs[spec.as] = d3Max(values) ?? 0; break;
+            default: aggs[spec.as] = rows.length;
+          }
+        });
+        aggResults.set(key, aggs);
+      });
+
+      // Join back: add aggregate values to each row
+      result = result.map(row => {
+        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        return { ...row, ...(aggResults.get(key) || {}) };
+      });
+    }
+
+    // Handle regression transform (simple linear regression)
+    if ('regression' in transform && 'on' in transform) {
+      const yField = transform.regression as string;
+      const xField = transform.on as string;
+      const points = result
+        .map(r => ({ x: Number(r[xField]), y: Number(r[yField]) }))
+        .filter(p => !isNaN(p.x) && !isNaN(p.y));
+      if (points.length >= 2) {
+        const n = points.length;
+        const sumX = d3Sum(points.map(p => p.x));
+        const sumY = d3Sum(points.map(p => p.y));
+        const sumXY = d3Sum(points.map(p => p.x * p.y));
+        const sumX2 = d3Sum(points.map(p => p.x * p.x));
+        const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+        const intercept = (sumY - slope * sumX) / n;
+        const xMin = d3Min(points.map(p => p.x)) ?? 0;
+        const xMax = d3Max(points.map(p => p.x)) ?? 0;
+        result = [
+          { [xField]: xMin, [yField]: slope * xMin + intercept },
+          { [xField]: xMax, [yField]: slope * xMax + intercept },
+        ];
+      }
+    }
+
+    // Handle loess transform (simplified: moving average approximation)
+    if ('loess' in transform && 'on' in transform) {
+      const yField = transform.loess as string;
+      const xField = transform.on as string;
+      const sorted = [...result]
+        .filter(r => !isNaN(Number(r[xField])) && !isNaN(Number(r[yField])))
+        .sort((a, b) => Number(a[xField]) - Number(b[xField]));
+      const windowSize = Math.max(3, Math.floor(sorted.length / 4));
+      result = sorted.map((row, i) => {
+        const start = Math.max(0, i - Math.floor(windowSize / 2));
+        const end = Math.min(sorted.length, start + windowSize);
+        const windowSlice = sorted.slice(start, end);
+        const avgY = d3Mean(windowSlice.map(r => Number(r[yField]))) ?? Number(row[yField]);
+        return { [xField]: row[xField], [yField]: avgY };
+      });
+    }
+
+    // Handle density transform (simplified: histogram-based density estimation)
+    if ('density' in transform) {
+      const field = transform.density as string;
+      const groupby = (transform.groupby as string[]) || [];
+      const groups = new Map<string, number[]>();
+
+      result.forEach(row => {
+        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        if (!groups.has(key)) { groups.set(key, []); }
+        groups.get(key)!.push(Number(row[field]));
+      });
+
+      const densityResult: Array<Record<string, unknown>> = [];
+      groups.forEach((values, key) => {
+        const min = d3Min(values) ?? 0;
+        const max = d3Max(values) ?? 0;
+        const range = max - min || 1;
+        const bins = 20;
+        const bandwidth = range / bins;
+        const groupFields: Record<string, unknown> = {};
+        if (groupby.length > 0) {
+          const sampleRow = result.find(r => groupby.map(g => String(r[g])).join('|') === key);
+          groupby.forEach(g => { groupFields[g] = sampleRow?.[g]; });
+        }
+        for (let i = 0; i <= bins; i++) {
+          const x = min + (i / bins) * range;
+          const count = values.filter(v => Math.abs(v - x) < bandwidth).length;
+          const density = count / (values.length * bandwidth);
+          densityResult.push({ value: x, density, ...groupFields });
+        }
+      });
+      result = densityResult;
+    }
+
+    // Handle quantile transform
+    if ('quantile' in transform) {
+      const field = transform.quantile as string;
+      const probs = (transform.probs as number[]) || [0.25, 0.5, 0.75];
+      const values = result.map(r => Number(r[field])).filter(v => !isNaN(v)).sort((a, b) => a - b);
+      if (values.length > 0) {
+        result = probs.map(p => {
+          const idx = Math.min(Math.floor(p * values.length), values.length - 1);
+          return { prob: String(p), value: values[idx] };
+        });
+      }
+    }
+
+    // Handle impute transform (fill missing values)
+    if ('impute' in transform && 'key' in transform) {
+      const field = transform.impute as string;
+      const keyField = transform.key as string;
+      const method = (transform.method as string) || 'value';
+      const fillValue = transform.value ?? 0;
+
+      const existingKeys = new Set(result.map(r => r[keyField]));
+      const allKeyValues = result.map(r => Number(r[keyField])).filter(v => !isNaN(v));
+      if (allKeyValues.length > 0) {
+        const minKey = d3Min(allKeyValues) ?? 0;
+        const maxKey = d3Max(allKeyValues) ?? 0;
+        for (let k = minKey; k <= maxKey; k++) {
+          if (!existingKeys.has(k)) {
+            const imputed: Record<string, unknown> = { [keyField]: k };
+            imputed[field] = method === 'value' ? fillValue : 0;
+            result.push(imputed);
+          }
+        }
+        result.sort((a, b) => Number(a[keyField]) - Number(b[keyField]));
+      }
+    }
+
+    // Handle lookup transform (join with secondary dataset)
+    if ('lookup' in transform && 'from' in transform) {
+      const lookupField = transform.lookup as string;
+      const fromSpec = transform.from as { data?: { values?: Array<Record<string, unknown>> }; key?: string; fields?: string[] };
+      if (fromSpec.data?.values && fromSpec.key && fromSpec.fields) {
+        const lookupMap = new Map<string, Record<string, unknown>>();
+        fromSpec.data.values.forEach(row => {
+          lookupMap.set(String(row[fromSpec.key!]), row);
+        });
+        result = result.map(row => {
+          const lookupRow = lookupMap.get(String(row[lookupField]));
+          if (lookupRow) {
+            const extra: Record<string, unknown> = {};
+            fromSpec.fields!.forEach(f => { extra[f] = lookupRow[f]; });
+            return { ...row, ...extra };
+          }
+          return row;
+        });
+      }
+    }
   }
 
   return result;
@@ -704,6 +982,44 @@ function extractYAxisType(encoding: VegaLiteEncoding): 'log' | undefined {
 }
 
 /**
+ * Extracts y-axis min/max considering both scale.domain and scale.zero.
+ * When scale.zero is false and no explicit domain, yMinValue is computed from data.
+ */
+function extractYMinMax(
+  encoding: VegaLiteEncoding,
+  dataValues: Array<Record<string, unknown>>,
+): { yMinValue?: number; yMaxValue?: number } {
+  const yScale = encoding?.y?.scale;
+  const domain = yScale?.domain;
+
+  // Explicit domain takes priority
+  if (Array.isArray(domain)) {
+    return {
+      yMinValue: domain[0] as number,
+      yMaxValue: domain[1] as number,
+    };
+  }
+
+  // When zero is explicitly false, compute min from data so y-axis doesn't start at 0
+  if (yScale?.zero === false) {
+    const yField = encoding?.y?.field;
+    if (yField) {
+      const yValues = dataValues
+        .map(row => Number(row[yField]))
+        .filter(v => !isNaN(v));
+      if (yValues.length > 0) {
+        const dataMin = d3Min(yValues) ?? 0;
+        const dataMax = d3Max(yValues) ?? 0;
+        const padding = (dataMax - dataMin) * 0.05;
+        return { yMinValue: dataMin - padding };
+      }
+    }
+  }
+
+  return {};
+}
+
+/**
  * Creates a value formatter from a d3-format specifier string.
  * Returns undefined if no format is specified or if the format is invalid.
  */
@@ -806,6 +1122,77 @@ function initializeTransformContext(spec: VegaLiteSpec) {
   let dataValues = applyTransforms(rawDataValues, spec.transform);
   dataValues = applyTransforms(dataValues, primarySpec.transform);
   const encoding = primarySpec.encoding || {};
+
+  // Handle conditional color encoding — evaluate test expressions and materialize color values
+  const colorEnc = encoding.color as Record<string, unknown> | undefined;
+  if (colorEnc?.condition && typeof (colorEnc.condition as Record<string, unknown>)?.test === 'string') {
+    const condition = colorEnc.condition as { test: string; value: string };
+    const elseValue = colorEnc.value as string || '#999';
+    const colorField = '__conditional_color__';
+
+    dataValues.forEach(row => {
+      try {
+        const datum = row;
+        // eslint-disable-next-line no-new-func
+        const result = new Function('datum', `return ${condition.test}`)(datum);
+        row[colorField] = result ? condition.value : elseValue;
+      } catch {
+        row[colorField] = elseValue;
+      }
+    });
+
+    // Replace conditional color with a field-based color encoding using the materialized values
+    (encoding as Record<string, unknown>).color = {
+      field: colorField,
+      type: 'nominal',
+      scale: { domain: [condition.value, elseValue], range: [condition.value, elseValue] },
+      legend: null,
+    };
+  }
+
+  // Handle timeUnit on x/y encodings — aggregate data by time unit
+  if (encoding.x?.timeUnit && encoding.x?.field) {
+    const field = encoding.x.field;
+    const unit = encoding.x.timeUnit as string;
+    const yField = encoding.y?.field;
+    const yAgg = encoding.y?.aggregate || (yField ? 'mean' : 'count');
+
+    const groups = new Map<string, Array<Record<string, unknown>>>();
+    dataValues.forEach(row => {
+      const dateVal = new Date(row[field] as string | number);
+      if (isNaN(dateVal.getTime())) { return; }
+      let key: string;
+      switch (unit) {
+        case 'year': key = String(dateVal.getFullYear()); break;
+        case 'quarter': key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`; break;
+        case 'month': key = dateVal.toLocaleString('en', { month: 'short' }); break;
+        case 'day': key = String(dateVal.getDate()); break;
+        case 'hours': key = String(dateVal.getHours()); break;
+        default: key = String(dateVal);
+      }
+      if (!groups.has(key)) { groups.set(key, []); }
+      groups.get(key)!.push(row);
+    });
+
+    dataValues = Array.from(groups.entries()).map(([key, rows]) => {
+      const result: Record<string, unknown> = { [field]: key };
+      if (yField && yAgg !== 'count') {
+        const vals = rows.map(r => Number(r[yField])).filter(v => !isNaN(v));
+        result[yField] = yAgg === 'sum' ? d3Sum(vals) : (d3Mean(vals) ?? 0);
+      } else {
+        result[yField || '__count'] = rows.length;
+      }
+      return result;
+    });
+
+    // Switch x from temporal to ordinal since we've aggregated
+    encoding.x.type = 'ordinal';
+    delete encoding.x.timeUnit;
+    if (encoding.y?.aggregate) {
+      delete encoding.y.aggregate;
+    }
+  }
+
   const markProps = getMarkProperties(primarySpec.mark);
 
   return {
@@ -963,7 +1350,8 @@ function groupDataBySeries(
   isYTemporal: boolean,
   xType?: VegaLiteType,
   sizeField?: string | undefined,
-): { seriesMap: Map<string, LineChartDataPoint[]>; ordinalMapping?: Map<string, number>; ordinalLabels?: string[] } {
+  yType?: VegaLiteType,
+): { seriesMap: Map<string, LineChartDataPoint[]>; ordinalMapping?: Map<string, number>; ordinalLabels?: string[]; yOrdinalLabels?: string[] } {
   const seriesMap = new Map<string, LineChartDataPoint[]>();
 
   if (!xField || !yField) {
@@ -974,6 +1362,11 @@ function groupDataBySeries(
   const isXOrdinal = xType === 'ordinal' || xType === 'nominal';
   const ordinalMapping = isXOrdinal ? new Map<string, number>() : undefined;
   const ordinalLabels: string[] = [];
+
+  // Check if y-axis is ordinal/nominal (categorical)
+  const isYOrdinal = yType === 'ordinal' || yType === 'nominal';
+  const yOrdinalMapping = isYOrdinal ? new Map<string, number>() : undefined;
+  const yOrdinalLabels: string[] = [];
 
   dataValues.forEach(row => {
     const xValue = parseValue(row[xField], isXTemporal);
@@ -1017,14 +1410,31 @@ function groupDataBySeries(
 
     const markerSize = sizeField && row[sizeField] !== undefined ? Number(row[sizeField]) : undefined;
 
+    // Handle y-value: numeric or ordinal mapping
+    let numericY: number;
+    if (isYOrdinal && typeof yValue === 'string') {
+      if (!yOrdinalMapping!.has(yValue)) {
+        yOrdinalMapping!.set(yValue, yOrdinalMapping!.size);
+        yOrdinalLabels.push(yValue);
+      }
+      numericY = yOrdinalMapping!.get(yValue)!;
+    } else {
+      numericY = typeof yValue === 'number' ? yValue : 0;
+    }
+
     seriesMap.get(seriesName)!.push({
       x: numericX,
-      y: yValue as number,
+      y: numericY,
       ...(markerSize !== undefined && !isNaN(markerSize) && { markerSize }),
     });
   });
 
-  return { seriesMap, ordinalMapping, ordinalLabels: ordinalLabels.length > 0 ? ordinalLabels : undefined };
+  return {
+    seriesMap,
+    ordinalMapping,
+    ordinalLabels: ordinalLabels.length > 0 ? ordinalLabels : undefined,
+    yOrdinalLabels: yOrdinalLabels.length > 0 ? yOrdinalLabels : undefined,
+  };
 }
 
 /**
@@ -1242,8 +1652,18 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
     return { type: 'area', mark: markType };
   }
 
-  if (markType === 'point' || markType === 'circle' || markType === 'square') {
+  if (markType === 'point' || markType === 'circle' || markType === 'square' || markType === 'tick') {
     return { type: 'scatter', mark: markType };
+  }
+
+  // Trail marks rendered as line charts (size encoding as markerSize)
+  if (markType === 'trail') {
+    return { type: 'line', mark: 'line' };
+  }
+
+  // Error bar/band marks rendered as line charts
+  if (markType === 'errorbar' || markType === 'errorband') {
+    return { type: 'line', mark: 'line' };
   }
 
   return { type: 'line', mark: markType || 'line' };
@@ -1306,7 +1726,7 @@ export function transformVegaLiteToLineChartProps(
   const isYTemporal = encoding.y?.type === 'temporal';
 
   // Group data into series
-  const { seriesMap, ordinalLabels } = groupDataBySeries(
+  const { seriesMap, ordinalLabels, yOrdinalLabels } = groupDataBySeries(
     dataValues,
     xField,
     yField,
@@ -1315,6 +1735,7 @@ export function transformVegaLiteToLineChartProps(
     isYTemporal,
     encoding.x?.type,
     sizeField,
+    encoding.y?.type,
   );
 
   // Extract color configuration
@@ -1367,8 +1788,7 @@ export function transformVegaLiteToLineChartProps(
   const yAxisTickCount = encoding.y?.axis?.tickCount;
 
   // Extract domain/range for min/max values
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const { yMinValue, yMaxValue } = extractYMinMax(encoding, dataValues);
 
   // Extract annotations and color fill bars from layers
   const annotations = extractAnnotations(spec);
@@ -1454,6 +1874,13 @@ export function transformVegaLiteToLineChartProps(
     ...(annotations.length > 0 && { annotations }),
     ...(colorFillBars.length > 0 && { colorFillBars }),
     ...(yAxisType && { yScaleType: yAxisType }),
+    // For nominal y-axis, provide tick values and labels
+    ...(yOrdinalLabels && yOrdinalLabels.length > 0 && {
+      yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
+      yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
+      yMinValue: -0.5,
+      yMaxValue: yOrdinalLabels.length - 0.5,
+    }),
     ...categoryOrderProps,
     hideLegend: encoding.color?.legend?.disable ?? false,
   };
@@ -1751,8 +2178,7 @@ export function transformVegaLiteToVerticalBarChartProps(
 
   // Extract y-axis formatting and scale props
   const yAxisTickFormat = encoding.y?.axis?.format;
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const { yMinValue, yMaxValue } = extractYMinMax(encoding, dataValues);
   const yAxisType = extractYAxisType(encoding);
 
   // Compute truncation based on number of unique x-axis categories
@@ -1769,6 +2195,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     wrapXAxisLables: typeof barData[0]?.x === 'string',
     hideTickOverlap: true,
     noOfCharsToTruncate: barTruncateChars,
+    xAxis: { tickLayout: 'auto' },
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
@@ -2119,8 +2546,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Extract y-axis formatting and domain props
   const yAxisTickFormat = encoding.y?.axis?.format;
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const { yMinValue, yMaxValue } = extractYMinMax(encoding, dataValues);
 
   // Extract axis category ordering
   const categoryOrderProps = extractAxisCategoryOrderProps(encoding);
@@ -2141,6 +2567,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     noOfCharsToTruncate: DEFAULT_TRUNCATE_CHARS,
     showYAxisLablesTooltip: true,
     wrapXAxisLables: typeof chartData[0]?.xAxisPoint === 'string',
+    xAxis: { tickLayout: 'auto' },
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
@@ -2225,8 +2652,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
 
   // Extract y-axis formatting and scale props
   const yAxisTickFormat = encoding.y?.axis?.format;
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const { yMinValue, yMaxValue } = extractYMinMax(encoding, dataValues);
   const yAxisType = extractYAxisType(encoding);
 
   return {
@@ -2343,7 +2769,8 @@ export function transformVegaLiteToHorizontalBarChartProps(
         return;
       }
 
-      const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : String(yValue);
+      // When no color field, use single legend to avoid tooltip duplication with y-axis labels
+      const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : !colorField ? 'Bar' : String(yValue);
 
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
@@ -2370,6 +2797,8 @@ export function transformVegaLiteToHorizontalBarChartProps(
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
+    // Hide legend for single-series horizontal bars (no color encoding)
+    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
   };
 
   if (annotations.length > 0) {
@@ -2552,8 +2981,7 @@ export function transformVegaLiteToScatterChartProps(
 
   // Extract y-axis formatting and domain props
   const yAxisTickFormat = encoding.y?.axis?.format;
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
+  const { yMinValue, yMaxValue } = extractYMinMax(encoding, dataValues);
 
   // Extract axis category ordering
   const categoryOrderProps = extractAxisCategoryOrderProps(encoding);

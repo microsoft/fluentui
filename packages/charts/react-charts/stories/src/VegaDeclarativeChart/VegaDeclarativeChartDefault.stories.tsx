@@ -1066,16 +1066,25 @@ export const Default = (): React.ReactElement => {
     parseError = e.message;
   }
 
-  // Generate options from available schemas
+  // Generate options from available schemas (deduplicated by key)
   const currentOptions = React.useMemo(() => {
     const schemas = showMore ? [...DEFAULT_SCHEMAS, ...loadedSchemas.current] : DEFAULT_SCHEMAS;
-    return schemas.map(item => {
-      const text = item.key
-        .split(/[-_]/)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-      return { key: item.key, text, category: 'All' };
-    });
+    const seen = new Set<string>();
+    return schemas
+      .filter(item => {
+        if (seen.has(item.key)) {
+          return false;
+        }
+        seen.add(item.key);
+        return true;
+      })
+      .map(item => {
+        const text = item.key
+          .split(/[-_]/)
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+        return { key: item.key, text, category: 'All' };
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showMore, loadedSchemasCount]);
 
