@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { PresenceComponentProps, PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { JSXElement, SlotComponentType } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -110,6 +111,12 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   size?: PopoverSize;
 
   /**
+   * Slot for the surface motion animation.
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   */
+  surfaceMotion?: PresenceMotionSlotProps<{ mainAxis: number }>;
+
+  /**
    * Should trap focus
    *
    * @default false
@@ -197,6 +204,15 @@ export type PopoverState = Pick<
     size: NonNullable<PopoverProps['size']>;
 
     /**
+     * Slot for the surface motion animation.
+     */
+    surfaceMotion: SlotComponentType<
+      Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
+        mainAxis: number;
+      }
+    >;
+
+    /**
      * Callback to toggle the open state of the Popover
      */
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -208,7 +224,7 @@ export type PopoverState = Pick<
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 
-export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'size'>;
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'size' | 'surfaceMotion'>;
 
 /**
  * Data attached to open/close events

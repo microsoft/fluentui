@@ -15,12 +15,15 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PresenceComponentProps } from '@fluentui/react-motion';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -56,6 +59,9 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     closeOnIframeFocus?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
+    surfaceMotion?: PresenceMotionSlotProps<{
+        mainAxis: number;
+    }>;
     trapFocus?: boolean;
     legacyTrapFocus?: boolean;
     inertTrapFocus?: boolean;
@@ -78,6 +84,9 @@ export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOp
     setContextTarget: SetVirtualMouseTarget;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     size: NonNullable<PopoverProps['size']>;
+    surfaceMotion: SlotComponentType<Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
+        mainAxis: number;
+    }>;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
 };
