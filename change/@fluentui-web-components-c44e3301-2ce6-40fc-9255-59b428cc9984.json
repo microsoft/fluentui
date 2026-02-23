@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[fix]: menu-items programmatically added to menu-list do not  properly get assigned data indent.",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

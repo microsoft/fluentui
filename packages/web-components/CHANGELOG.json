@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 23 Feb 2026 04:08:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.6",
+      "version": "3.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "zoghadya@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7a60597b731d7f3836ac34a75e97a125cfef9b2a",
+            "comment": "fix(web-components): prevent double tab open on Ctrl+click in BaseAnchor by calling e.preventDefault() when opening in a new tab"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "45e7e0a973ef86223690dfd98f6564f61d93c960",
+            "comment": "[fix]: menu-items programmatically added to menu-list do not  properly get assigned data indent."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Feb 2026 04:07:51 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.5",
       "version": "3.0.0-rc.5",
