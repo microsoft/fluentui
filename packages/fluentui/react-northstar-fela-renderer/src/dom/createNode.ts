@@ -8,7 +8,7 @@ export function createNode(
   styleNodeAttributes: FelaRendererStyleNodeAttributes,
 ): HTMLStyleElement {
   const head = targetDocument.head;
-  const { type, media, support } = attributes;
+  const { type, media, support, container } = attributes;
 
   const node = targetDocument.createElement('style');
 
@@ -17,6 +17,9 @@ export function createNode(
 
   if (support) {
     node.setAttribute('data-fela-support', 'true');
+  }
+  if (container) {
+    node.setAttribute('data-fela-container', 'true');
   }
 
   if (media) {

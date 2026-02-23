@@ -9,12 +9,16 @@ import {
 
 import type { FelaRenderer, FelaRendererRuleChange } from '../types';
 
+function generateCSSContainerRule(container: string, cssRules: string): string {
+  return `@container ${container}{${cssRules}}`;
+}
+
 export function insertRule(
-  { selector, declaration, support, media, pseudo }: FelaRendererRuleChange,
+  { selector, declaration, support, media, container, pseudo }: FelaRendererRuleChange,
   renderer: FelaRenderer,
   node: HTMLStyleElement,
 ) {
-  const nodeReference = media + support;
+  const nodeReference = media + support + container;
 
   try {
     const score = getRuleScore(renderer.ruleOrder, pseudo);
@@ -48,6 +52,9 @@ export function insertRule(
     if (support.length > 0) {
       const cssSupportRule = generateCSSSupportRule(support, cssRule);
       node.sheet!.insertRule(cssSupportRule, index);
+    } else if (container.length > 0) {
+      const cssContainerRule = generateCSSContainerRule(container, cssRule);
+      node.sheet!.insertRule(cssContainerRule, index);
     } else {
       node.sheet!.insertRule(cssRule, index);
     }
