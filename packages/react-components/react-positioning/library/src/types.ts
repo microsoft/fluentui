@@ -235,6 +235,7 @@ export interface PositioningOptions {
   /**
    * Called when a position update has finished. Multiple position updates can happen in a single render,
    * since positioning happens outside of the React lifecycle.
+   * The event's `detail.placement` indicates the final computed placement after middleware adjustments.
    *
    * It's also possible to listen to the custom DOM event `fui-positioningend`
    */
