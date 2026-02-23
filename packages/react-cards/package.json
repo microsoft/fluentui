@@ -20,7 +20,7 @@
     "@fluentui/react": "^8.125.5",
     "@fluentui/foundation-legacy": "^8.6.5",
     "@fluentui/set-version": "^8.2.24",
-    "@microsoft/load-themed-styles": "^1.10.26",
+    "@microsoft/load-themed-styles": "1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
