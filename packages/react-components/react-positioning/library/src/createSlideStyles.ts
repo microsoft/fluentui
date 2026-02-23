@@ -6,6 +6,8 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * Creates animation styles so that positioned elements slide in from the main axis
  * @param mainAxis - distance than the element sides for
  * @returns Griffel styles to spread to a slot
+ *
+ * @deprecated TODO me
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
   // With 'accumulate' animation composition, these opacity keyframes are added onto the default opacity of 1.

@@ -32,7 +32,7 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
-// @public
+// @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
 // @public
