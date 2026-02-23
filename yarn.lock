@@ -2179,13 +2179,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ctrl/tinycolor@npm:^3.3.4":
-  version: 3.6.1
-  resolution: "@ctrl/tinycolor@npm:3.6.1"
-  checksum: 10c0/444d81612cd8c5c802a3d1253df83d5f77d3db87f351861655683a4743990e6b38976bf2e4129591c5a258607b63574b3c7bed702cf6a0eb7912222edf4570e9
-  languageName: node
-  linkType: hard
-
 "@custom-elements-manifest/analyzer@npm:0.10.10":
   version: 0.10.10
   resolution: "@custom-elements-manifest/analyzer@npm:0.10.10"
@@ -2866,7 +2859,7 @@ __metadata:
   resolution: "@fluentui/chart-web-components@workspace:packages/charts/chart-web-components"
   dependencies:
     "@fluentui/tokens": "npm:^1.0.0-alpha.23"
-    "@fluentui/web-components": "npm:^3.0.0-rc.5"
+    "@fluentui/web-components": "npm:^3.0.0-rc.6"
     "@microsoft/fast-element": "npm:2.0.0"
     "@microsoft/fast-web-utilities": "npm:^6.0.0"
     "@storybook/html": "npm:9.1.17"
@@ -3409,7 +3402,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/monaco-editor@workspace:packages/monaco-editor"
   dependencies:
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     monaco-editor: "npm:0.33.0"
     tslib: "npm:^2.1.0"
   languageName: unknown
@@ -3429,7 +3422,7 @@ __metadata:
     "@fluentui/react-theme": "npm:*"
     "@fluentui/scripts-perf-test-flamegrill": "npm:*"
     "@griffel/core": "npm:^1.16.0"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -3443,7 +3436,7 @@ __metadata:
     "@fluentui/example-data": "npm:*"
     "@fluentui/react": "npm:*"
     "@fluentui/scripts-perf-test-flamegrill": "npm:*"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -3477,7 +3470,7 @@ __metadata:
     "@fluentui/react-monaco-editor": "npm:*"
     "@fluentui/set-version": "npm:*"
     "@fluentui/theme-samples": "npm:*"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -3542,7 +3535,7 @@ __metadata:
     "@fluentui/theme": "npm:*"
     "@fluentui/theme-samples": "npm:*"
     "@fluentui/utilities": "npm:*"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -3826,7 +3819,7 @@ __metadata:
     "@fluentui/foundation-legacy": "npm:^8.6.4"
     "@fluentui/react": "npm:^8.125.4"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -3858,9 +3851,9 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.1"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
-    embla-carousel: "npm:^8.5.1"
-    embla-carousel-autoplay: "npm:^8.5.1"
-    embla-carousel-fade: "npm:^8.5.1"
+    embla-carousel: "npm:8.5.1"
+    embla-carousel-autoplay: "npm:8.5.1"
+    embla-carousel-fade: "npm:8.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -3877,7 +3870,7 @@ __metadata:
     "@fluentui/react-focus": "npm:^8.10.4"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme-samples": "npm:^8.7.223"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/d3-array": "npm:^3.0.0"
     "@types/d3-axis": "npm:^3.0.0"
     "@types/d3-color": "npm:^3.0.0"
@@ -4004,7 +3997,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-color-picker@workspace:packages/react-components/react-color-picker/library"
   dependencies:
-    "@ctrl/tinycolor": "npm:^3.3.4"
+    "@ctrl/tinycolor": "npm:3.3.4"
     "@fluentui/react-context-selector": "npm:^9.2.14"
     "@fluentui/react-jsx-runtime": "npm:^9.4.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.1"
@@ -4346,7 +4339,7 @@ __metadata:
     "@fluentui/react-monaco-editor": "npm:^1.8.6"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme": "npm:^2.7.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/color-check": "npm:0.0.0"
     "@types/react-custom-scrollbars": "npm:^4.0.5"
     color-check: "npm:0.0.2"
@@ -4418,7 +4411,7 @@ __metadata:
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/theme-samples": "npm:^8.7.223"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/d3-fetch": "npm:^3.0.1"
     "@types/d3-format": "npm:^3.0.0"
     d3-fetch: "npm:3.0.1"
@@ -4445,7 +4438,7 @@ __metadata:
     "@fluentui/style-utilities": "npm:^8.14.0"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/deep-assign": "npm:^0.1.1"
     "@types/prop-types": "npm:15.7.1"
     deep-assign: "npm:^2.0.0"
@@ -4591,7 +4584,7 @@ __metadata:
     "@fluentui/react-icon-provider": "npm:^1.4.4"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
@@ -4955,7 +4948,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-migration-v8-v9@workspace:packages/react-components/react-migration-v8-v9/library"
   dependencies:
-    "@ctrl/tinycolor": "npm:^3.3.4"
+    "@ctrl/tinycolor": "npm:3.3.4"
     "@fluentui/fluent2-theme": "npm:^8.107.151"
     "@fluentui/react": "npm:^8.125.4"
     "@fluentui/react-components": "npm:^9.73.0"
@@ -4980,7 +4973,7 @@ __metadata:
     "@fluentui/react": "npm:^8.125.4"
     "@fluentui/react-charting": "npm:^5.25.6"
     "@fluentui/react-hooks": "npm:^8.10.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/react-syntax-highlighter": "npm:^10.2.1"
     raw-loader: "npm:4.0.2"
     react-syntax-highlighter: "npm:^10.1.3"
@@ -5279,7 +5272,7 @@ __metadata:
   resolution: "@fluentui/react-positioning@workspace:packages/react-components/react-positioning/library"
   dependencies:
     "@floating-ui/devtools": "npm:^0.2.3"
-    "@floating-ui/dom": "npm:^1.6.12"
+    "@floating-ui/dom": "npm:1.6.12"
     "@fluentui/react-shared-contexts": "npm:^9.26.1"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.1"
@@ -6160,7 +6153,7 @@ __metadata:
     "@fluentui/style-utilities": "npm:^8.14.0"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -6409,7 +6402,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/ssr-tests@workspace:apps/ssr-tests"
   dependencies:
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     "@types/mocha": "npm:10.0.10"
     mocha: "npm:11.2.2"
     tslib: "npm:^2.1.0"
@@ -6470,7 +6463,7 @@ __metadata:
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
@@ -6555,7 +6548,7 @@ __metadata:
     "@fluentui/react-docsite-components": "npm:*"
     "@fluentui/scheme-utilities": "npm:*"
     "@fluentui/set-version": "npm:*"
-    "@microsoft/load-themed-styles": "npm:^1.10.26"
+    "@microsoft/load-themed-styles": "npm:1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -6745,7 +6738,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.5, @fluentui/web-components@workspace:packages/web-components":
+"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.6, @fluentui/web-components@workspace:packages/web-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/web-components@workspace:packages/web-components"
   dependencies:
@@ -7755,13 +7748,6 @@ __metadata:
   version: 1.10.26
   resolution: "@microsoft/load-themed-styles@npm:1.10.26"
   checksum: 10c0/9fcb5cfda5209f6b410592e5041134c37eb450dcc44ab25e1a872af7b24d43bb1322868f4886dc48b6c5ffd991bfa5805aac364ad5de2cce3d63768396dcc04a
-  languageName: node
-  linkType: hard
-
-"@microsoft/load-themed-styles@npm:^1.10.26":
-  version: 1.10.295
-  resolution: "@microsoft/load-themed-styles@npm:1.10.295"
-  checksum: 10c0/a58222292f793b5b2346065f5b2ca7649320c4007cf6d931e354608d952d8cb053f11e6a6a6151e7ab5c9a809ad4c3899d4f3ebbd3cdcc3f33919676f53a81e9
   languageName: node
   linkType: hard
 
@@ -9543,15 +9529,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/helpers@npm:^0.5.1, @swc/helpers@npm:~0.5.1":
-  version: 0.5.18
-  resolution: "@swc/helpers@npm:0.5.18"
-  dependencies:
-    tslib: "npm:^2.8.0"
-  checksum: 10c0/cb32d72e32f775c30287bffbcf61c89ea3a963608cb3a4a675a3f9af545b8b3ab0bc9930432a5520a7307daaa87538158e253584ae1cf39f3e7e6e83408a2d51
-  languageName: node
-  linkType: hard
-
 "@swc/jest@npm:0.2.38":
   version: 0.2.38
   resolution: "@swc/jest@npm:0.2.38"
@@ -10304,7 +10281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.6, @types/estree@npm:^1.0.8":
+"@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.6":
   version: 1.0.8
   resolution: "@types/estree@npm:1.0.8"
   checksum: 10c0/39d34d1afaa338ab9763f37ad6066e3f349444f9052b9676a7cc0252ef9485a41c6d81c9c4e0d26e9077993354edf25efc853f3224dd4b447175ef62bdcc86a5
@@ -12346,15 +12323,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-import-phases@npm:^1.0.3":
-  version: 1.0.4
-  resolution: "acorn-import-phases@npm:1.0.4"
-  peerDependencies:
-    acorn: ^8.14.0
-  checksum: 10c0/338eb46fc1aed5544f628344cb9af189450b401d152ceadbf1f5746901a5d923016cd0e7740d5606062d374fdf6941c29bb515d2bd133c4f4242d5d4cd73a3c7
-  languageName: node
-  linkType: hard
-
 "acorn-jsx@npm:^5.0.0, acorn-jsx@npm:^5.3.2":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
@@ -13779,7 +13747,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.16.1, browserslist@npm:^4.24.0, browserslist@npm:^4.24.2, browserslist@npm:^4.25.2, browserslist@npm:^4.26.3, browserslist@npm:^4.28.1":
+"browserslist@npm:^4.16.1, browserslist@npm:^4.24.0, browserslist@npm:^4.24.2, browserslist@npm:^4.25.2, browserslist@npm:^4.26.3":
   version: 4.28.1
   resolution: "browserslist@npm:4.28.1"
   dependencies:
@@ -15573,16 +15541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-array@npm:1 - 2, d3-array@npm:2":
-  version: 2.12.1
-  resolution: "d3-array@npm:2.12.1"
-  dependencies:
-    internmap: "npm:^1.0.0"
-  checksum: 10c0/7eca10427a9f113a4ca6a0f7301127cab26043fd5e362631ef5a0edd1c4b2dd70c56ed317566700c31e4a6d88b55f3951aaba192291817f243b730cb2352882e
-  languageName: node
-  linkType: hard
-
-"d3-array@npm:2 - 3, d3-array@npm:2.10.0 - 3, d3-array@npm:3.2.4, d3-array@npm:^3.0.0":
+"d3-array@npm:3.2.4":
   version: 3.2.4
   resolution: "d3-array@npm:3.2.4"
   dependencies:
@@ -15591,7 +15550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-axis@npm:3.0.0, d3-axis@npm:^3.0.0":
+"d3-axis@npm:3.0.0":
   version: 3.0.0
   resolution: "d3-axis@npm:3.0.0"
   checksum: 10c0/a271e70ba1966daa5aaf6a7f959ceca3e12997b43297e757c7b945db2e1ead3c6ee226f2abcfa22abbd4e2e28bd2b71a0911794c4e5b911bbba271328a582c78
@@ -15635,13 +15594,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-format@npm:1 - 3, d3-format@npm:^3.0.0":
-  version: 3.1.2
-  resolution: "d3-format@npm:3.1.2"
-  checksum: 10c0/0de452ae07585238e7f01607a7e0066665c34609652188b6ac7dc9f424f69465a425e07d16d79bd0e5955202ac7f241c66d0c76f68a79fc6f4857c94cf420652
-  languageName: node
-  linkType: hard
-
 "d3-format@npm:3.1.0":
   version: 3.1.0
   resolution: "d3-format@npm:3.1.0"
@@ -15649,7 +15601,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-hierarchy@npm:3.1.2, d3-hierarchy@npm:^3.0.0":
+"d3-hierarchy@npm:3.1.2":
   version: 3.1.2
   resolution: "d3-hierarchy@npm:3.1.2"
   checksum: 10c0/6dcdb480539644aa7fc0d72dfc7b03f99dfbcdf02714044e8c708577e0d5981deb9d3e99bbbb2d26422b55bcc342ac89a0fa2ea6c9d7302e2fc0951dd96f89cf
@@ -15665,13 +15617,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-path@npm:1":
-  version: 1.0.7
-  resolution: "d3-path@npm:1.0.7"
-  checksum: 10c0/b3fe6e813f2d9249913baf0030294a73061860cbf5d4f81f64748e03e9e12468d93c35d1f9d40147a52e431c2c1e9a994fd21137696274204c5da228c6d7cc51
-  languageName: node
-  linkType: hard
-
 "d3-path@npm:^3.1.0":
   version: 3.1.0
   resolution: "d3-path@npm:3.1.0"
@@ -15679,7 +15624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-sankey@npm:0.12.3, d3-sankey@npm:^0.12.3":
+"d3-sankey@npm:0.12.3":
   version: 0.12.3
   resolution: "d3-sankey@npm:0.12.3"
   dependencies:
@@ -15689,7 +15634,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-scale@npm:4.0.2, d3-scale@npm:^4.0.0":
+"d3-scale@npm:4.0.2":
   version: 4.0.2
   resolution: "d3-scale@npm:4.0.2"
   dependencies:
@@ -15702,14 +15647,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-selection@npm:3.0.0, d3-selection@npm:^3.0.0":
+"d3-selection@npm:3.0.0":
   version: 3.0.0
   resolution: "d3-selection@npm:3.0.0"
   checksum: 10c0/e59096bbe8f0cb0daa1001d9bdd6dbc93a688019abc97d1d8b37f85cd3c286a6875b22adea0931b0c88410d025563e1643019161a883c516acf50c190a11b56b
   languageName: node
   linkType: hard
 
-"d3-shape@npm:3.2.0, d3-shape@npm:^3.0.0":
+"d3-shape@npm:3.2.0":
   version: 3.2.0
   resolution: "d3-shape@npm:3.2.0"
   dependencies:
@@ -15718,16 +15663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-shape@npm:^1.2.0":
-  version: 1.3.7
-  resolution: "d3-shape@npm:1.3.7"
-  dependencies:
-    d3-path: "npm:1"
-  checksum: 10c0/548057ce59959815decb449f15632b08e2a1bdce208f9a37b5f98ec7629dda986c2356bc7582308405ce68aedae7d47b324df41507404df42afaf352907577ae
-  languageName: node
-  linkType: hard
-
-"d3-time-format@npm:2 - 4, d3-time-format@npm:3.0.0, d3-time-format@npm:^3.0.0":
+"d3-time-format@npm:3.0.0":
   version: 3.0.0
   resolution: "d3-time-format@npm:3.0.0"
   dependencies:
@@ -15736,16 +15672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-time@npm:1 - 2":
-  version: 2.1.1
-  resolution: "d3-time@npm:2.1.1"
-  dependencies:
-    d3-array: "npm:2"
-  checksum: 10c0/4a01770a857bc37d2bafb8f00250e0e6a1fcc8051aea93e5eed168d8ee93e92da508a75ab5e42fc5472aa37e2a83aac68afaf3f12d9167c184ce781faadf5682
-  languageName: node
-  linkType: hard
-
-"d3-time@npm:2.1.1 - 3, d3-time@npm:3.1.0, d3-time@npm:^3.0.0":
+"d3-time@npm:3.1.0":
   version: 3.1.0
   resolution: "d3-time@npm:3.1.0"
   dependencies:
@@ -16689,15 +16616,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"embla-carousel-autoplay@npm:^8.5.1":
-  version: 8.6.0
-  resolution: "embla-carousel-autoplay@npm:8.6.0"
-  peerDependencies:
-    embla-carousel: 8.6.0
-  checksum: 10c0/d7e5cb79c1474b3d27621302e63dedf783a281ae0464b21b87183d58103f938d22be9f6a4735de4b1b19806606006da43f6151497df91c3edbbc99a4dae4a94f
-  languageName: node
-  linkType: hard
-
 "embla-carousel-fade@npm:8.5.1":
   version: 8.5.1
   resolution: "embla-carousel-fade@npm:8.5.1"
@@ -16707,26 +16625,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"embla-carousel-fade@npm:^8.5.1":
-  version: 8.6.0
-  resolution: "embla-carousel-fade@npm:8.6.0"
-  peerDependencies:
-    embla-carousel: 8.6.0
-  checksum: 10c0/00b44b6bd8df7d6854c7ca00e46a25996d58904c790043067e85210b29972fe0a602f0d36e98a27043fd92c229d9f46069be178b8462b7fcedfe13b14d3009b5
-  languageName: node
-  linkType: hard
-
 "embla-carousel@npm:8.5.1":
   version: 8.5.1
   resolution: "embla-carousel@npm:8.5.1"
   checksum: 10c0/457f3ae6f13a55504a61b4cb57529fbc33102a921cbb2f234d6b53709ded03b8cf46fb7a1c95d51d9f37a2348013c6a4479705367b0b75bfb83862f52dd23d7f
-  languageName: node
-  linkType: hard
-
-"embla-carousel@npm:^8.5.1":
-  version: 8.6.0
-  resolution: "embla-carousel@npm:8.6.0"
-  checksum: 10c0/f4c598e7be28b70340d31ffd2bebb2472db370b0c81d9b089bf9555cf618695f35dc4a0694565c994c9ab972731123063f945aa09ff485df0df761d79c6a08ef
   languageName: node
   linkType: hard
 
@@ -16815,7 +16717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.0.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.17.0, enhanced-resolve@npm:^5.17.1, enhanced-resolve@npm:^5.17.4, enhanced-resolve@npm:^5.7.0, enhanced-resolve@npm:^5.8.3":
+"enhanced-resolve@npm:^5.0.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.17.0, enhanced-resolve@npm:^5.17.1, enhanced-resolve@npm:^5.7.0, enhanced-resolve@npm:^5.8.3":
   version: 5.18.4
   resolution: "enhanced-resolve@npm:5.18.4"
   dependencies:
@@ -17015,13 +16917,6 @@ __metadata:
   version: 1.7.0
   resolution: "es-module-lexer@npm:1.7.0"
   checksum: 10c0/4c935affcbfeba7fb4533e1da10fa8568043df1e3574b869385980de9e2d475ddc36769891936dbb07036edb3c3786a8b78ccf44964cd130dedc1f2c984b6c7b
-  languageName: node
-  linkType: hard
-
-"es-module-lexer@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "es-module-lexer@npm:2.0.0"
-  checksum: 10c0/ae78dbbd43035a4b972c46cfb6877e374ea290adfc62bc2f5a083fea242c0b2baaab25c5886af86be55f092f4a326741cb94334cd3c478c383fdc8a9ec5ff817
   languageName: node
   linkType: hard
 
@@ -20721,7 +20616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"internmap@npm:1 - 2, internmap@npm:^1.0.0":
+"internmap@npm:1 - 2":
   version: 1.0.1
   resolution: "internmap@npm:1.0.1"
   checksum: 10c0/60942be815ca19da643b6d4f23bd0bf4e8c97abbd080fb963fe67583b60bdfb3530448ad4486bae40810e92317bded9995cc31411218acc750d72cd4e8646eee
@@ -23100,7 +22995,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loader-runner@npm:^4.2.0, loader-runner@npm:^4.3.1":
+"loader-runner@npm:^4.2.0":
   version: 4.3.1
   resolution: "loader-runner@npm:4.3.1"
   checksum: 10c0/a523b6329f114e0a98317158e30a7dfce044b731521be5399464010472a93a15ece44757d1eaed1d8845019869c5390218bc1c7c3110f4eeaef5157394486eac
@@ -23282,13 +23177,6 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^4.17.10, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5, lodash@npm:~4.17.15":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
   languageName: node
   linkType: hard
 
@@ -28736,7 +28624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^4.0.0, schema-utils@npm:^4.2.0, schema-utils@npm:^4.3.0, schema-utils@npm:^4.3.2, schema-utils@npm:^4.3.3":
+"schema-utils@npm:^4.0.0, schema-utils@npm:^4.2.0, schema-utils@npm:^4.3.0, schema-utils@npm:^4.3.2":
   version: 4.3.3
   resolution: "schema-utils@npm:4.3.3"
   dependencies:
@@ -30308,7 +30196,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tapable@npm:^2.0.0, tapable@npm:^2.1.1, tapable@npm:^2.2.0, tapable@npm:^2.2.1, tapable@npm:^2.3.0":
+"tapable@npm:^2.0.0, tapable@npm:^2.1.1, tapable@npm:^2.2.0, tapable@npm:^2.2.1":
   version: 2.3.0
   resolution: "tapable@npm:2.3.0"
   checksum: 10c0/cb9d67cc2c6a74dedc812ef3085d9d681edd2c1fa18e4aef57a3c0605fdbe44e6b8ea00bd9ef21bc74dd45314e39d31227aa031ebf2f5e38164df514136f2681
@@ -30414,7 +30302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser-webpack-plugin@npm:^5.3.1, terser-webpack-plugin@npm:^5.3.11, terser-webpack-plugin@npm:^5.3.16":
+"terser-webpack-plugin@npm:^5.3.1, terser-webpack-plugin@npm:^5.3.11":
   version: 5.3.16
   resolution: "terser-webpack-plugin@npm:5.3.16"
   dependencies:
@@ -30988,17 +30876,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.8.1, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.5.0, tslib@npm:^2.6.2, tslib@npm:^2.8.0, tslib@npm:^2.8.1":
+"tslib@npm:2.8.1":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^1.10.0, tslib@npm:^1.9.0":
-  version: 1.14.1
-  resolution: "tslib@npm:1.14.1"
-  checksum: 10c0/69ae09c49eea644bc5ebe1bca4fa4cc2c82b7b3e02f43b84bd891504edf66dbc6b2ec0eef31a957042de2269139e4acff911e6d186a258fb14069cd7f6febce2
   languageName: node
   linkType: hard
 
@@ -32164,7 +32045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"watchpack@npm:^2.4.1, watchpack@npm:^2.4.4":
+"watchpack@npm:^2.4.1":
   version: 2.5.1
   resolution: "watchpack@npm:2.5.1"
   dependencies:
@@ -32399,7 +32280,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.0.0, webpack-sources@npm:^3.2.3, webpack-sources@npm:^3.3.3":
+"webpack-sources@npm:^3.0.0, webpack-sources@npm:^3.2.3":
   version: 3.3.3
   resolution: "webpack-sources@npm:3.3.3"
   checksum: 10c0/ab732f6933b513ba4d505130418995ddef6df988421fccf3289e53583c6a39e205c4a0739cee98950964552d3006604912679c736031337fb4a9d78d8576ed40
@@ -32410,44 +32291,6 @@ __metadata:
   version: 0.6.2
   resolution: "webpack-virtual-modules@npm:0.6.2"
   checksum: 10c0/5ffbddf0e84bf1562ff86cf6fcf039c74edf09d78358a6904a09bbd4484e8bb6812dc385fe14330b715031892dcd8423f7a88278b57c9f5002c84c2860179add
-  languageName: node
-  linkType: hard
-
-"webpack@npm:5, webpack@npm:^5, webpack@npm:^5.1.0, webpack@npm:^5.94.0":
-  version: 5.104.1
-  resolution: "webpack@npm:5.104.1"
-  dependencies:
-    "@types/eslint-scope": "npm:^3.7.7"
-    "@types/estree": "npm:^1.0.8"
-    "@types/json-schema": "npm:^7.0.15"
-    "@webassemblyjs/ast": "npm:^1.14.1"
-    "@webassemblyjs/wasm-edit": "npm:^1.14.1"
-    "@webassemblyjs/wasm-parser": "npm:^1.14.1"
-    acorn: "npm:^8.15.0"
-    acorn-import-phases: "npm:^1.0.3"
-    browserslist: "npm:^4.28.1"
-    chrome-trace-event: "npm:^1.0.2"
-    enhanced-resolve: "npm:^5.17.4"
-    es-module-lexer: "npm:^2.0.0"
-    eslint-scope: "npm:5.1.1"
-    events: "npm:^3.2.0"
-    glob-to-regexp: "npm:^0.4.1"
-    graceful-fs: "npm:^4.2.11"
-    json-parse-even-better-errors: "npm:^2.3.1"
-    loader-runner: "npm:^4.3.1"
-    mime-types: "npm:^2.1.27"
-    neo-async: "npm:^2.6.2"
-    schema-utils: "npm:^4.3.3"
-    tapable: "npm:^2.3.0"
-    terser-webpack-plugin: "npm:^5.3.16"
-    watchpack: "npm:^2.4.4"
-    webpack-sources: "npm:^3.3.3"
-  peerDependenciesMeta:
-    webpack-cli:
-      optional: true
-  bin:
-    webpack: bin/webpack.js
-  checksum: 10c0/ea78c57f80bbd7684f4f1bb38a18408ab0ef4c5b962e25ad382c595d10b9e9701e077f5248a8cef5f127a55902698664c18837e64243bb972fbecf4e5d9aaab0
   languageName: node
   linkType: hard
 

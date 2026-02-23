@@ -36,7 +36,7 @@
     "@fluentui/style-utilities": "^8.14.0",
     "@fluentui/theme": "^2.7.2",
     "@fluentui/utilities": "^8.17.2",
-    "@microsoft/load-themed-styles": "^1.10.26",
+    "@microsoft/load-themed-styles": "1.10.26",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
