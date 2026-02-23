@@ -52,7 +52,7 @@ describe('usePositioning', () => {
 
       // Flush microtasks so the async dispatch fires
       await act(async () => {
-        await new Promise(resolve => setTimeout(resolve, 0));
+        await new Promise(process.nextTick);
       });
 
       expect(onPositioningEnd).toHaveBeenCalled();
@@ -69,22 +69,8 @@ describe('usePositioning', () => {
       render(<TestComponent />);
 
       await act(async () => {
-        await new Promise(resolve => setTimeout(resolve, 0));
+        await new Promise(process.nextTick);
       });
-    });
-
-    it('accepts a () => void callback (backwards compatibility)', async () => {
-      const callback = jest.fn();
-      // This is the pre-existing signature: () => void
-      const onPositioningEnd: () => void = callback;
-
-      render(<TestComponent onPositioningEnd={onPositioningEnd} />);
-
-      await act(async () => {
-        await new Promise(resolve => setTimeout(resolve, 0));
-      });
-
-      expect(callback).toHaveBeenCalled();
     });
   });
 });

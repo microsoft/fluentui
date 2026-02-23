@@ -18,7 +18,7 @@ const computePositionMock = computePosition as jest.MockedFunction<typeof comput
  */
 const flushMicrotasks = async () => {
   for (let i = 0; i < 5; i++) {
-    await new Promise<void>(resolve => setTimeout(resolve, 0));
+    await new Promise(process.nextTick);
   }
 };
 

@@ -141,7 +141,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
               // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
               // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
               // types into the public API surface.
-              placement: computedPlacement as PositioningPlacement,
+              placement: computedPlacement satisfies PositioningPlacement,
             },
           }),
         );
