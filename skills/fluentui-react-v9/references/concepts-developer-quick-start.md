@@ -1,0 +1,25 @@
+## Install
+
+Fluent UI should be installed as a `dependency` of your app.
+
+## Setup
+
+Fluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.
+
+Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
+
+### React 18
+
+### React 17
+
+## Usage
+
+That's it. You can now use Fluent UI components in your app.
+
+### Strict mode
+
+We are aware of some strict mode bugs when using Fluent UI v9 in React 18. These bugs only show up in strict mode, and they will not stop the rest of your app from running. You can [track the bugs on Github](https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22) and learn how they will affect your application.
+
+#### SSR with Next.js
+
+To avoid strict mode hydration issues, you can disable strict mode in your Next.js app by adding the following configuration to your `next.config.js` file:

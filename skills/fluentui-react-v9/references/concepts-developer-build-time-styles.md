@@ -1,0 +1,66 @@
+## Optimize runtime cost of styles
+
+Fluent UI uses the open source [Griffel.js](https://griffel.js.org/) CSS-in-JS styling engine. Make sure to take a look at the following docs to get started with styling in Fluent UI:
+
+- [Quick start](?path=/docs/concepts-developer-quick-start--docs)
+- [Styling components](?path=/story/concepts-developer-styling-components--docs)
+
+While there is nothing wrong with the associated runtime costs of a CSS-in-JS engine, larger and more complex applications might want to optimize for performance. In Fluent UI, the expensive runtime work only happens on the first render of the component. This one-time work can be further optimized at build time by pre-computing and transforming styles. You can refer to the of this page for more details about what the build time optimization does.
+
+## Setup build time style transforms
+
+- For application developers please use the
+- For library developers please use the
+
+### Webpack loader
+
+In your Webpack config, simply add the `@griffel/webpack-loader` to the list of rules.
+
+> ℹ️ **Note**: A chain of webpack loaders is executed in reverse order [https://webpack.js.org/concepts/loaders/#loader-features](https://webpack.js.org/concepts/loaders/#loader-features)
+
+#### Typescript (and additional compilation) support
+
+The Webpack loader . For typescript it's necessary to install `@babel/preset-typescript` and configure it in the [babelOptions](https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings) of the loader. Similarly any other language features that might be required can also be configured here. While the order of loaders will ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other modules that are not transpiled. Any additional language features can also be configured in the same way.
+
+### Babel preset
+
+The Babel preset is used internally by the Webpack loader.
+
+> For applications using is encouraged and recommended
+
+However, library devs which might prefer to not bundle their code should use our Babel preset.
+
+Simply create a Babel configuration file such as `.babelrc.json` and add the preset.
+
+#### Typescript (and additional transpilation) support
+
+#### Importing from a third party package
+
+If Griffel is re-exported from a third party package, it's necessary to configure the preset to use a different module source. By default, the preset is hard coded to handle imports from `@fluentui/react-components`.
+
+### What is being optimized
+
+> ⚠️ Style resolution only needs to happen on the initial render of a component. Therefore,without build time optimization the performance is comparable with the 2nd and consecutive renders. It is perfectly reasonable to follow the quickstart guide and introduce build time optimization if/when it is required.
+
+Let's start with a simple example:
+
+What's happening in that example?
+
+1.  Invocation of makeStyles creates a styling hook that will be used inside a component
+2.  The `useStyles` hook call resolves styles which are injected into the document.
+
+You can look at the image below which describes what work is done during style resolution.
+
+> 💡 NOTE: this work only happens once, during first render.
+
+The final result before the CSS rules are inserted into DOM can be compiled ahead of time during build time through the methods described above. Once the styles of our simple example are transformed at build time the resulting bundle contains a result similar to what is in our diagram. The actual runtime code of `makeStyles` is completely stripped from the bundle and replaced with a lightweight function (`__styles`) that simply concatenates the CSS classes and inserts them to DOM.
+
+**Result of ahead of time compilation:**
+
+### Build time style evaluation
+
+Let's consider the following scenario:
+
+It's perfectly fine, and even recommended to reuse common tokens and create style helpers across an application. It's one of the main benefits of using CSS-in-JS. However, this means that the build time transforms which are described above are not trivial to compute because code needs to be evaluated to know what styles to transform. In the example above, in order to transform the `styles.ts` file, the code needs to be executed/evaluated by importing the extra modules that it depends on (`constants.ts` and `common.ts`).
+
+Griffel uses [style evaluation from Linaria](https://github.com/callstack/linaria). The build-time evaluation happens as a part of the Babel transforms in Griffel. All styles that require evaluation will be batched and done in single evaluation context. **Linaria's Babel config is separate to any config used by the application**. Therefore, additional language features may require extra configuration. How to do this configuration is described in the sections above. One common language feature that will require extra configuration is Typescript.
