@@ -47,17 +47,17 @@ export function insertRule(
       }
     }
 
-    const cssRule = generateCSSRule(selector, declaration);
+    let cssRule = generateCSSRule(selector, declaration);
 
     if (support.length > 0) {
-      const cssSupportRule = generateCSSSupportRule(support, cssRule);
-      node.sheet!.insertRule(cssSupportRule, index);
-    } else if (container.length > 0) {
-      const cssContainerRule = generateCSSContainerRule(container, cssRule);
-      node.sheet!.insertRule(cssContainerRule, index);
-    } else {
-      node.sheet!.insertRule(cssRule, index);
+      cssRule = generateCSSSupportRule(support, cssRule);
     }
+
+    if (container.length > 0) {
+      cssRule = generateCSSContainerRule(container, cssRule);
+    }
+
+    node.sheet!.insertRule(cssRule, index);
 
     if (score === 0) {
       renderer.scoreIndex[nodeReference] = index;

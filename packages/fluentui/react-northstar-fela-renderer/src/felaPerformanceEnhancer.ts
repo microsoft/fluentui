@@ -110,7 +110,12 @@ export function felaPerformanceEnhancer(renderer: EnahncedFelaRenderer) {
           const combinedMediaQuery = generateCombinedMediaQuery(media, property.slice(6).trim());
           classNames += renderer._renderStyleToClassNames(value as any, pseudo, combinedMediaQuery, support, container);
         } else if (isContainerQuery(property)) {
-          const combinedContainerQuery = generateCombinedMediaQuery(container, property.slice(10).trim());
+          if (container.length !== 0) {
+            // eslint-disable-next-line no-console
+            console.warn('You have nested container queries in your style object. This is not supported by Fela.');
+            continue;
+          }
+          const combinedContainerQuery = property.slice(10).trim();
           classNames += renderer._renderStyleToClassNames(value as any, pseudo, media, support, combinedContainerQuery);
         } else if (isSupport(property)) {
           const combinedSupport = generateCombinedMediaQuery(support, property.slice(9).trim());
