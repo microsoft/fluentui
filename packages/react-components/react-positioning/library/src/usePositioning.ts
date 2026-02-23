@@ -131,6 +131,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const onPositioningEnd = useEventCallback((e: OnPositioningEndEvent) => options.onPositioningEnd?.(e));
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
+      // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
       containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
       container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
       containerRef.current = container;
