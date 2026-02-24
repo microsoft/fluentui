@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
-import type { PositioningProps } from '@fluentui/react-positioning';
-import { slideDirectionVarX, slideDirectionVarY } from './MenuSurfaceMotion';
+import type { PositioningProps } from './types';
+import { POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y } from './constants';
 
 /**
  * Returns the slide direction unit vectors for a given Floating UI placement.
@@ -62,8 +62,8 @@ export function usePositioningSlideDirection(
 
     const { x, y } = getPlacementSlideDirections(placement);
 
-    element.style.setProperty(slideDirectionVarX, `${x}px`);
-    element.style.setProperty(slideDirectionVarY, `${y}px`);
+    element.style.setProperty(POSITIONING_SLIDE_DIRECTION_VAR_X, `${x}px`);
+    element.style.setProperty(POSITIONING_SLIDE_DIRECTION_VAR_Y, `${y}px`);
   });
 
   // Register the CSS custom properties so they can be interpolated during animations.
@@ -78,13 +78,13 @@ export function usePositioningSlideDirection(
 
     try {
       registerProperty({
-        name: slideDirectionVarX,
+        name: POSITIONING_SLIDE_DIRECTION_VAR_X,
         syntax: '<length>',
         inherits: false,
         initialValue: '0px',
       });
       registerProperty({
-        name: slideDirectionVarY,
+        name: POSITIONING_SLIDE_DIRECTION_VAR_Y,
         syntax: '<length>',
         inherits: false,
         initialValue: '0px',

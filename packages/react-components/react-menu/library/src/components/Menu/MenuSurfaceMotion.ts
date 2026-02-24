@@ -1,19 +1,9 @@
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
-
-/**
- * CSS custom properties that encode the slide direction for the menu enter animation.
- * They are set at runtime by `usePositioningSlideDirection` based on the Floating UI
- * placement (e.g. "top", "bottom-start", etc.) and registered via the CSS Houdini
- * `registerProperty()` API so the browser can interpolate them as `<length>` values
- * during the Web Animations API keyframes.
- *
- * Values are signed vectors (e.g. `0px`, `1px`, `-1px`) that represent the axis
- * and direction the menu should slide *from* when entering.
- * The `mainAxis` multiplier scales these offsets to the desired travel distance.
- */
-export const slideDirectionVarX = '--fui-positioning-slide-direction-x';
-export const slideDirectionVarY = '--fui-positioning-slide-direction-y';
+import {
+  POSITIONING_SLIDE_DIRECTION_VAR_X as slideDirectionVarX,
+  POSITIONING_SLIDE_DIRECTION_VAR_Y as slideDirectionVarY,
+} from '@fluentui/react-positioning';
 
 // Shared timing constants for the enter animation.
 const duration = motionTokens.durationSlower;

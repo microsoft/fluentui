@@ -6,6 +6,7 @@ import {
   usePositioningMouseTarget,
   usePositioning,
   useSafeZoneArea,
+  usePositioningSlideDirection,
   type PositioningShorthandValue,
 } from '@fluentui/react-positioning';
 import { presenceMotionSlot } from '@fluentui/react-motion';
@@ -28,7 +29,6 @@ import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, use
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 import { MenuSurfaceMotion } from './MenuSurfaceMotion';
-import { usePositioningSlideDirection } from './usePositioningSlideDirection';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions

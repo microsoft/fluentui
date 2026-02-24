@@ -15,6 +15,7 @@ import {
   resolvePositioningShorthand,
   mergeArrowOffset,
   usePositioningMouseTarget,
+  usePositioningSlideDirection,
 } from '@fluentui/react-positioning';
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
@@ -28,7 +29,6 @@ import type {
 import { popoverSurfaceBorderRadius } from './constants';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
-import { usePositioningSlideDirection } from './usePositioningSlideDirection';
 
 /**
  * Create the state required to render Popover.

@@ -67,6 +67,12 @@ export type OffsetShorthand = number;
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
+// @public
+export const POSITIONING_SLIDE_DIRECTION_VAR_X = "--fui-positioning-slide-direction-x";
+
+// @public (undocumented)
+export const POSITIONING_SLIDE_DIRECTION_VAR_Y = "--fui-positioning-slide-direction-y";
+
 // @public (undocumented)
 export type PositioningBoundary = PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
@@ -135,6 +141,9 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 
 // @internal
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+
+// @public
+export function usePositioningSlideDirection(options: UsePositioningSlideDirectionOptions): NonNullable<PositioningProps['onPositioningEnd']>;
 
 // @public (undocumented)
 export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: UseSafeZoneOptions): {

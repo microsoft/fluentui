@@ -1,8 +1,6 @@
 import { getPlacementSlideDirections, usePositioningSlideDirection } from './usePositioningSlideDirection';
 import { renderHook, act } from '@testing-library/react-hooks';
-import type { PositioningProps } from '@fluentui/react-positioning';
-
-type SlideDirectionEvent = Parameters<NonNullable<PositioningProps['onPositioningEnd']>>[0];
+import type { OnPositioningEndEvent } from './types';
 
 describe('getPlacementSlideDirections', () => {
   it('returns { x: 0, y: 1 } for "top" placement (slides down from top)', () => {
@@ -54,7 +52,7 @@ describe('usePositioningSlideDirection', () => {
     const setPropertySpy = jest.spyOn(element.style, 'setProperty');
 
     act(() => {
-      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
+      const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
         detail: { placement: 'bottom' },
       });
       Object.defineProperty(event, 'target', { value: element });
@@ -77,7 +75,7 @@ describe('usePositioningSlideDirection', () => {
     const setPropertySpy = jest.spyOn(element.style, 'setProperty');
 
     act(() => {
-      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
+      const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
         detail: { placement: 'right-start' },
       });
       Object.defineProperty(event, 'target', { value: element });
@@ -102,7 +100,7 @@ describe('usePositioningSlideDirection', () => {
     const element = document.createElement('div');
 
     act(() => {
-      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
+      const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
         detail: { placement: 'top' },
       });
       // CustomEvent doesn't set target automatically, so we dispatch it from element
