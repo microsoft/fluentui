@@ -27,9 +27,8 @@ export const usePopoverSurface_unstable = (
 ): PopoverSurfaceState => {
   const size = usePopoverContext_unstable(context => context.size);
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const state = usePopoverSurfaceBase_unstable(props, ref);
-
-  state.root.ref = useMergedRefs(state.root.ref, useMotionForwardedRef());
+  const motionForwardedRef = useMotionForwardedRef();
+  const state = usePopoverSurfaceBase_unstable(props, useMergedRefs(ref, motionForwardedRef));
 
   return {
     appearance,
