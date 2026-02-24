@@ -1,6 +1,3 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
 import * as React from 'react';
 import { MotionRefForwarder } from '@fluentui/react-motion';
 import { MenuProvider } from '../../contexts/menuContext';
