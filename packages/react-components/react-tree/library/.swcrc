@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/swcrc",
   "exclude": [
     "/testing",
     "/**/*.cy.ts",
@@ -25,9 +24,16 @@
         "runtime": "classic",
         "useSpread": true
       }
-    },
-    "target": "es2019"
+    }
   },
   "minify": false,
-  "sourceMaps": true
+  "sourceMaps": true,
+  "env": {
+    "targets": {
+      "chrome": "115",
+      "edge": "115",
+      "firefox": "116",
+      "safari": "16"
+    }
+  }
 }
