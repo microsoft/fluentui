@@ -21,7 +21,7 @@ export function useMotionForwardedRef(): React.Ref<HTMLElement> | undefined {
  *
  * @internal
  */
-export const MotionRefForwarder = React.forwardRef<HTMLElement, { children: React.ReactElement }>((props, ref) => {
+export const MotionRefForwarder = React.forwardRef<HTMLElement, { children?: React.ReactElement }>((props, ref) => {
   return <MotionRefForwarderContext.Provider value={ref}>{props.children}</MotionRefForwarderContext.Provider>;
 });
 
