@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix props extraction for function-type components by extracting __docgenInfo before page.evaluate() serialization",
+  "comment": "fix: extract only serializable component props before page.evaluate",
   "packageName": "@fluentui/storybook-llms-extractor",
   "email": "colin.kwon@kakaostyle.com",
   "dependentChangeType": "patch"
