@@ -21,8 +21,7 @@ module.exports = {
   moduleNameMapper: {
     '^d3-scale$': '<rootDir>/../../../../node_modules/d3-scale/dist/d3-scale.js',
     '^d3-shape$': '<rootDir>/../../../../node_modules/d3-shape/dist/d3-shape.js',
-    // d3-path v3 (with Path constructor) is nested under d3-shape due to d3-path v1 being hoisted for d3-sankey
-    '^d3-path$': '<rootDir>/../../../../node_modules/d3-shape/node_modules/d3-path/dist/d3-path.js',
+    '^d3-path$': '<rootDir>/../../../../node_modules/d3-path/dist/d3-path.js',
     '^d3-array$': '<rootDir>/../../../../node_modules/d3-array/dist/d3-array.js',
     '^d3-axis$': '<rootDir>/../../../../node_modules/d3-axis/dist/d3-axis.js',
     '^d3-selection$': '<rootDir>/../../../../node_modules/d3-selection/dist/d3-selection.js',

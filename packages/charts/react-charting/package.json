@@ -14,14 +14,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "test": "cross-env TZ=UTC just-scripts test",
-    "clean": "just-scripts clean",
+    "build": "yarn run -T just-scripts build",
+    "test": "yarn run -T cross-env TZ=UTC yarn run -T just-scripts test",
+    "clean": "yarn run -T just-scripts clean",
     "codepen": "node ../../../scripts/executors/src/local-codepen.js",
-    "start": "just-scripts dev:storybook",
-    "start:legacy": "just-scripts dev",
-    "start-test": "just-scripts jest-watch",
-    "update-snapshots": "cross-env TZ=UTC just-scripts jest -u",
+    "start": "yarn run -T just-scripts dev:storybook",
+    "start:legacy": "yarn run -T just-scripts dev",
+    "start-test": "yarn run -T just-scripts jest-watch",
+    "update-snapshots": "yarn run -T cross-env TZ=UTC yarn run -T just-scripts jest -u",
     "test:tz": "node ./scripts/run-tests-in-timezone.js"
   },
   "devDependencies": {

@@ -15,14 +15,14 @@
   ],
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint",
+    "start-test": "yarn run -T just-scripts jest-watch",
+    "test": "yarn run -T just-scripts test",
+    "update-snapshots": "yarn run -T just-scripts jest -u"
   },
   "dependencies": {
     "@fluentui/merge-styles": "^8.6.14",

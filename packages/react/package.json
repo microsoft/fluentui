@@ -15,16 +15,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "clean": "just-scripts clean",
+    "build": "yarn run -T just-scripts build",
+    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max-old-space-size=3072 yarn run -T just-scripts storybook:build",
+    "clean": "yarn run -T just-scripts clean",
     "codepen": "node ../../scripts/executors/src/local-codepen.js",
     "e2e": "nx run react-examples:e2e --verbose",
     "e2e:local": "nx run react-examples:e2e:local",
-    "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
+    "start": "yarn run -T cross-env NODE_OPTIONS=--max-old-space-size=3072 yarn run -T just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
-    "mf": "just-scripts mf",
-    "verify-packaging": "just-scripts verify-packaging"
+    "mf": "yarn run -T just-scripts mf",
+    "verify-packaging": "yarn run -T just-scripts verify-packaging"
   },
   "devDependencies": {
     "office-ui-fabric-core": "^11.0.0"

@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build"
+    "build": "yarn run -T just-scripts build"
   },
   "dependencies": {
     "@fluentui/foundation-legacy": "^8.6.4",

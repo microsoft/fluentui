@@ -21,8 +21,8 @@
     "lib-commonjs"
   ],
   "scripts": {
-    "build": "just-scripts build",
-    "verify-packaging": "just-scripts verify-packaging"
+    "build": "yarn run -T just-scripts build",
+    "verify-packaging": "yarn run -T just-scripts verify-packaging"
   },
   "dependencies": {
     "@fluentui/dom-utilities": "^2.3.10",

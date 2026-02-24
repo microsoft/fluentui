@@ -12,13 +12,13 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
-    "prebundle": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
+    "prebundle": "yarn run -T just-scripts build",
+    "bundle": "yarn run -T just-scripts bundle",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "start": "yarn run -T just-scripts dev",
     "type-check": "tsc -p . --noEmit --baseUrl ."
   },
   "license": "MIT",

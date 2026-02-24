@@ -14,12 +14,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "start-test": "just-scripts jest-watch"
+    "build": "yarn run -T just-scripts build",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "start-test": "yarn run -T just-scripts jest-watch"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
