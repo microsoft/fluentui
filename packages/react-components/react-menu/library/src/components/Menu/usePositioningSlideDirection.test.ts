@@ -1,5 +1,8 @@
 import { getPlacementSlideDirections, usePositioningSlideDirection } from './usePositioningSlideDirection';
 import { renderHook, act } from '@testing-library/react-hooks';
+import type { PositioningProps } from '@fluentui/react-positioning';
+
+type SlideDirectionEvent = Parameters<NonNullable<PositioningProps['onPositioningEnd']>>[0];
 
 describe('getPlacementSlideDirections', () => {
   it('returns { x: 0, y: 1 } for "top" placement (slides down from top)', () => {
@@ -51,11 +54,11 @@ describe('usePositioningSlideDirection', () => {
     const setPropertySpy = jest.spyOn(element.style, 'setProperty');
 
     act(() => {
-      const event = new CustomEvent('positioningend', {
+      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
         detail: { placement: 'bottom' },
       });
       Object.defineProperty(event, 'target', { value: element });
-      result.current(event as any);
+      result.current(event);
     });
 
     // For 'bottom' placement, direction is { x: 0, y: -1 }
@@ -74,11 +77,11 @@ describe('usePositioningSlideDirection', () => {
     const setPropertySpy = jest.spyOn(element.style, 'setProperty');
 
     act(() => {
-      const event = new CustomEvent('positioningend', {
+      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
         detail: { placement: 'right-start' },
       });
       Object.defineProperty(event, 'target', { value: element });
-      result.current(event as any);
+      result.current(event);
     });
 
     // For 'right' placement, direction is { x: -1, y: 0 }
@@ -99,12 +102,12 @@ describe('usePositioningSlideDirection', () => {
     const element = document.createElement('div');
 
     act(() => {
-      const event = new CustomEvent('positioningend', {
+      const event: SlideDirectionEvent = new CustomEvent('positioningend', {
         detail: { placement: 'top' },
       });
       // CustomEvent doesn't set target automatically, so we dispatch it from element
       Object.defineProperty(event, 'target', { value: element });
-      result.current(event as any);
+      result.current(event);
     });
 
     expect(originalCallback).toHaveBeenCalledTimes(1);
@@ -114,7 +117,7 @@ describe('usePositioningSlideDirection', () => {
     const registerProperty = jest.fn();
     const mockWindow = {
       CSS: { registerProperty },
-    } as any;
+    } as unknown as Window & typeof globalThis;
 
     renderHook(() =>
       usePositioningSlideDirection({
@@ -143,7 +146,7 @@ describe('usePositioningSlideDirection', () => {
     });
     const mockWindow = {
       CSS: { registerProperty },
-    } as any;
+    } as unknown as Window & typeof globalThis;
 
     // Should not throw
     expect(() => {
