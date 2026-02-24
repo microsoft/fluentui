@@ -59,9 +59,9 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     closeOnIframeFocus?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    surfaceMotion?: PresenceMotionSlotProps<{
+    surfaceMotion?: Slot<PresenceMotionSlotProps<{
         mainAxis: number;
-    }>;
+    }>>;
     trapFocus?: boolean;
     legacyTrapFocus?: boolean;
     inertTrapFocus?: boolean;

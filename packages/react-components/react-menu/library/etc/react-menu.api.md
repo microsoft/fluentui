@@ -352,9 +352,9 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
     closeOnScroll?: boolean;
-    surfaceMotion?: PresenceMotionSlotProps<{
+    surfaceMotion?: Slot<PresenceMotionSlotProps<{
         mainAxis: number;
-    }>;
+    }>>;
 };
 
 // @public (undocumented)
