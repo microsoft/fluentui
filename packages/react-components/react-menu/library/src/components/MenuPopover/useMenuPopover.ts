@@ -75,7 +75,12 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
       // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef, useMotionForwardedRef()) as React.Ref<HTMLDivElement>,
+      ref: useMergedRefs(
+        ref,
+        popoverRef,
+        mouseOverListenerCallbackRef,
+        useMotionForwardedRef(),
+      ) as React.Ref<HTMLDivElement>,
     }),
     { elementType: 'div' },
   );

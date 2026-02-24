@@ -1,6 +1,14 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, createPresenceComponent, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import {
+  Button,
+  createPresenceComponent,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
 import { fadeAtom, blurAtom } from '@fluentui/react-motion-components-preview';
 
 const FadeInBlurOut = createPresenceComponent({

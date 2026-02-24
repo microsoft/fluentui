@@ -16,9 +16,7 @@ export const renderMenu_unstable = (state: MenuState, contextValues: MenuContext
       {state.menuTrigger}
       {state.menuPopover && (
         <state.surfaceMotion>
-          <MotionRefForwarder>
-            {state.menuPopover as React.ReactElement}
-          </MotionRefForwarder>
+          <MotionRefForwarder>{state.menuPopover as React.ReactElement}</MotionRefForwarder>
         </state.surfaceMotion>
       )}
     </MenuProvider>
