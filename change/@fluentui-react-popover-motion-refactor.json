@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: add surfaceMotion with slide direction, extract PopoverSurfaceMotion and usePositioningSlideDirection",
-  "packageName": "@fluentui/react-popover",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
