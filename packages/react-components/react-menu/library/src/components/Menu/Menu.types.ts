@@ -3,7 +3,7 @@ import type { PresenceComponentProps, PresenceMotionSlotProps } from '@fluentui/
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { ComponentProps, ComponentState, JSXElement, SlotComponentType } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
 
@@ -95,7 +95,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Slot for the surface motion animation.
      * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
      */
-    surfaceMotion?: PresenceMotionSlotProps<{ mainAxis: number }>;
+    surfaceMotion?: Slot<PresenceMotionSlotProps<{ mainAxis: number }>>;
   };
 
 export type MenuState = ComponentState<MenuSlots> &

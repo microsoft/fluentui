@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PresenceComponentProps, PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { JSXElement, SlotComponentType } from '@fluentui/react-utilities';
+import type { JSXElement, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -114,7 +114,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Slot for the surface motion animation.
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    */
-  surfaceMotion?: PresenceMotionSlotProps<{ mainAxis: number }>;
+  surfaceMotion?: Slot<PresenceMotionSlotProps<{ mainAxis: number }>>;
 
   /**
    * Should trap focus
