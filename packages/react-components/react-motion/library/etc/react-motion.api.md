@@ -85,7 +85,7 @@ export type MotionParam = boolean | number | string;
 
 // @internal
 export const MotionRefForwarder: React_2.ForwardRefExoticComponent<{
-    children: React_2.ReactElement;
+    children?: React_2.ReactElement;
 } & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
