@@ -15,10 +15,13 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PresenceComponentProps } from '@fluentui/react-motion';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
@@ -349,6 +352,9 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
     closeOnScroll?: boolean;
+    surfaceMotion?: PresenceMotionSlotProps<{
+        mainAxis: number;
+    }>;
 };
 
 // @public (undocumented)
@@ -390,6 +396,9 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
     safeZone?: React_2.ReactElement | null;
+    surfaceMotion: SlotComponentType<Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
+        mainAxis: number;
+    }>;
 };
 
 // @public

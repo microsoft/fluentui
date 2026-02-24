@@ -1,4 +1,8 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import * as React from 'react';
+import { MotionRefForwarder } from '@fluentui/react-motion';
 import { MenuProvider } from '../../contexts/menuContext';
 import type { MenuContextValues, MenuState } from './Menu.types';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -10,7 +14,13 @@ export const renderMenu_unstable = (state: MenuState, contextValues: MenuContext
   return (
     <MenuProvider value={contextValues.menu}>
       {state.menuTrigger}
-      {state.open && state.menuPopover}
+      {state.menuPopover && (
+        <state.surfaceMotion>
+          <MotionRefForwarder>
+            {state.menuPopover as React.ReactElement}
+          </MotionRefForwarder>
+        </state.surfaceMotion>
+      )}
     </MenuProvider>
   );
 };

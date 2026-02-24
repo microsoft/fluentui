@@ -8,6 +8,7 @@ import {
   useSafeZoneArea,
   type PositioningShorthandValue,
 } from '@fluentui/react-positioning';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
   useControllableState,
   useId,
@@ -26,6 +27,8 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import { MenuSurfaceMotion } from './MenuSurfaceMotion';
+import { usePositioningSlideDirection } from './usePositioningSlideDirection';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -63,15 +66,23 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
   } = props;
 
   const { targetDocument } = useFluent();
+  const targetWindow = targetDocument?.defaultView;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
+
+  const resolvedPositioning = resolvePositioningShorthand(props.positioning);
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetWindow,
+    onPositioningEnd: resolvedPositioning.onPositioningEnd,
+  });
 
   const positioningOptions = {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
-    ...resolvePositioningShorthand(props.positioning),
+    ...resolvedPositioning,
+    onPositioningEnd: handlePositionEnd,
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -188,6 +199,15 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     onCheckedValueChange,
     persistOnItemClick,
     safeZone: safeZoneHandle.elementToRender,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: MenuSurfaceMotion,
+      defaultProps: {
+        visible: open,
+        appear: true,
+        unmountOnExit: true,
+        mainAxis: 10,
+      },
+    }),
   };
 };
 
