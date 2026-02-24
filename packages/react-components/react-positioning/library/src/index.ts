@@ -1,5 +1,6 @@
 export { createVirtualElementFromClick } from './createVirtualElementFromClick';
 export { createArrowHeightStyles, createArrowStyles } from './createArrowStyles';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { createSlideStyles } from './createSlideStyles';
 export type { CreateArrowStylesOptions } from './createArrowStyles';
 
