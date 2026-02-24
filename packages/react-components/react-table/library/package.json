@@ -18,12 +18,12 @@
     "@fluentui/react-checkbox": "^9.5.14",
     "@fluentui/react-context-selector": "^9.2.14",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-radio": "^9.5.14",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.1",
-    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

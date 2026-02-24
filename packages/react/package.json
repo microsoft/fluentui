@@ -15,24 +15,24 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "clean": "just-scripts clean",
+    "build": "yarn run -T just-scripts build",
+    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max-old-space-size=3072 yarn run -T just-scripts storybook:build",
+    "clean": "yarn run -T just-scripts clean",
     "codepen": "node ../../scripts/executors/src/local-codepen.js",
-    "e2e": "yarn nx run react-examples:e2e --verbose",
-    "e2e:local": "yarn nx run react-examples:e2e:local",
-    "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
+    "e2e": "nx run react-examples:e2e --verbose",
+    "e2e:local": "nx run react-examples:e2e:local",
+    "start": "yarn run -T cross-env NODE_OPTIONS=--max-old-space-size=3072 yarn run -T just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
-    "mf": "just-scripts mf",
-    "verify-packaging": "just-scripts verify-packaging"
+    "mf": "yarn run -T just-scripts mf",
+    "verify-packaging": "yarn run -T just-scripts verify-packaging"
   },
   "devDependencies": {
     "office-ui-fabric-core": "^11.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.6.11",
-    "@fluentui/foundation-legacy": "^8.6.4",
     "@fluentui/font-icons-mdl2": "^8.5.71",
+    "@fluentui/foundation-legacy": "^8.6.4",
     "@fluentui/merge-styles": "^8.6.14",
     "@fluentui/react-focus": "^8.10.4",
     "@fluentui/react-hooks": "^8.10.2",
@@ -42,7 +42,7 @@
     "@fluentui/style-utilities": "^8.14.0",
     "@fluentui/theme": "^2.7.2",
     "@fluentui/utilities": "^8.17.2",
-    "@microsoft/load-themed-styles": "^1.10.26",
+    "@microsoft/load-themed-styles": "1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

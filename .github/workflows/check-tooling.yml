@@ -11,6 +11,7 @@ env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
   NX_VERBOSE_LOGGING: true
+  YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:
   check-tools:
@@ -28,7 +29,7 @@ jobs:
         with:
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - run: yarn nx run scripts-executors:test -t 'smoke test'
 

@@ -14,15 +14,15 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.24",
     "@fluentui/react-icons-mdl2": "^1.4.4",
+    "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

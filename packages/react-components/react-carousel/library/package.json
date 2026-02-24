@@ -22,17 +22,17 @@
     "@fluentui/react-button": "^9.8.1",
     "@fluentui/react-context-selector": "^9.2.14",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-tooltip": "^9.9.1",
     "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-tooltip": "^9.9.1",
     "@fluentui/react-utilities": "^9.26.1",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
-    "embla-carousel": "^8.5.1",
-    "embla-carousel-autoplay": "^8.5.1",
-    "embla-carousel-fade": "^8.5.1"
+    "embla-carousel": "8.5.1",
+    "embla-carousel-autoplay": "8.5.1",
+    "embla-carousel-fade": "8.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

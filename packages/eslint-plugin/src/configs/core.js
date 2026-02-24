@@ -199,7 +199,6 @@ const typeAwareRules = {
 module.exports = defineConfig(
   globalIgnores(IGNORES),
   ...airbnbConfig.configs.base.legacy,
-  importPlugin.flatConfigs.typescript,
   prettierConfig,
   {
     plugins: {

@@ -5,14 +5,14 @@
   "private": true,
   "scripts": {
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "bundle": "just-scripts bundle",
-    "test-ssr": "just-scripts test"
+    "bundle": "yarn run -T just-scripts bundle",
+    "test-ssr": "yarn run -T just-scripts test"
   },
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/load-themed-styles": "1.10.26",
     "@types/mocha": "10.0.10",
-    "mocha": "11.2.2",
-    "@microsoft/load-themed-styles": "^1.10.26"
+    "mocha": "11.2.2"
   },
   "dependencies": {
     "tslib": "^2.1.0"

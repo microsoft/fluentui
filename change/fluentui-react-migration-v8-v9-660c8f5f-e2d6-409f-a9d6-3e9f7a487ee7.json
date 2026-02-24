@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: sort package.json dependencies (Yarn Modern normalization)",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

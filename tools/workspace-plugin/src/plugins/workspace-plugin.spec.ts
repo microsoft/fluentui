@@ -77,7 +77,7 @@ describe(`workspace-plugin`, () => {
         "metadata": Object {
           "description": "Runs ESLint on project",
           "help": Object {
-            "command": "yarn eslint --help",
+            "command": "yarn run -T eslint --help",
             "example": Object {
               "options": Object {
                 "max-warnings": 0,
@@ -89,7 +89,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
-          "command": "yarn eslint src",
+          "command": "yarn run -T eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
@@ -101,7 +101,7 @@ describe(`workspace-plugin`, () => {
     expect(targets?.test).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn jest",
+        "command": "yarn run -T jest",
         "inputs": Array [
           "default",
           "^production",
@@ -115,7 +115,7 @@ describe(`workspace-plugin`, () => {
         "metadata": Object {
           "description": "Run Jest Tests",
           "help": Object {
-            "command": "yarn jest --help",
+            "command": "yarn run -T jest --help",
             "example": Object {
               "options": Object {
                 "coverage": true,
@@ -140,7 +140,7 @@ describe(`workspace-plugin`, () => {
     expect(targets?.['bundle-size']).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn monosize measure",
+        "command": "yarn run -T monosize measure",
         "inputs": Array [
           "{workspaceRoot}/monosize.config.mjs",
           "{projectRoot}/monosize.config.mjs",
@@ -155,7 +155,7 @@ describe(`workspace-plugin`, () => {
         ],
         "metadata": Object {
           "help": Object {
-            "command": "yarn monosize measure --help",
+            "command": "yarn run -T monosize measure --help",
             "example": Object {},
           },
           "technologies": Array [
@@ -257,7 +257,7 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
           Object {
             "cache": true,
-            "command": "yarn rit --project-id ci --react 17 --run type-check --verbose",
+            "command": "yarn run -T rit --project-id ci --react 17 --run type-check --verbose",
             "dependsOn": Array [
               "react-integration-testing--17--prepare",
             ],
@@ -271,7 +271,7 @@ describe(`workspace-plugin`, () => {
             "metadata": Object {
               "description": "Run react integration tests against React 17",
               "help": Object {
-                "command": "yarn rit --help",
+                "command": "yarn run -T rit --help",
                 "example": Object {},
               },
               "technologies": Array [
@@ -287,7 +287,7 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17--prepare']).toMatchInlineSnapshot(`
           Object {
             "cache": true,
-            "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose",
+            "command": "yarn run -T rit --prepare-only --no-install --project-id ci --react 17 --verbose",
             "dependsOn": Array [],
             "inputs": Array [
               "default",
@@ -299,7 +299,7 @@ describe(`workspace-plugin`, () => {
             "metadata": Object {
               "description": "Run react integration tests against React 17",
               "help": Object {
-                "command": "yarn rit --help",
+                "command": "yarn run -T rit --help",
                 "example": Object {},
               },
               "technologies": Array [
@@ -378,7 +378,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--e2e'].command).toMatchInlineSnapshot(
-          `"yarn rit --project-id ci --react 17 --run e2e --verbose"`,
+          `"yarn run -T rit --project-id ci --react 17 --run e2e --verbose"`,
         );
         expect(targets['react-integration-testing--17--prepare']).toBeDefined();
       });
@@ -404,7 +404,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--test'].command).toMatchInlineSnapshot(
-          `"yarn rit --project-id ci --react 17 --run test --verbose"`,
+          `"yarn run -T rit --project-id ci --react 17 --run test --verbose"`,
         );
         expect(targets['react-integration-testing--17--prepare']).toBeDefined();
       });
@@ -563,7 +563,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run proj:build --help",
+                          "command": "yarn run -T nx run proj:build --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -616,7 +616,7 @@ describe(`workspace-plugin`, () => {
                       "metadata": Object {
                         "description": "Format code with prettier",
                         "help": Object {
-                          "command": "yarn prettier --help",
+                          "command": "yarn run -T prettier --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -642,7 +642,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run proj:generate-api --help",
+                          "command": "yarn run -T nx run proj:generate-api --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -680,7 +680,7 @@ describe(`workspace-plugin`, () => {
                       "metadata": Object {
                         "description": "Run react integration tests against React 17, 18",
                         "help": Object {
-                          "command": "yarn rit --help",
+                          "command": "yarn run -T rit --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -776,7 +776,7 @@ describe(`workspace-plugin`, () => {
       expect(targets?.storybook).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "yarn storybook dev",
+          "command": "yarn run -T storybook dev",
           "inputs": Array [
             "production",
             "{workspaceRoot}/.storybook/**",
@@ -789,7 +789,7 @@ describe(`workspace-plugin`, () => {
           ],
           "metadata": Object {
             "help": Object {
-              "command": "yarn storybook dev --help",
+              "command": "yarn run -T storybook dev --help",
               "example": Object {},
             },
             "technologies": Array [
@@ -804,10 +804,10 @@ describe(`workspace-plugin`, () => {
       expect(targets?.['test-ssr']).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "yarn test-ssr \\"./src/**/*.stories.tsx\\"",
+          "command": "yarn run -T test-ssr \\"./src/**/*.stories.tsx\\"",
           "metadata": Object {
             "help": Object {
-              "command": "yarn test-ssr --help",
+              "command": "yarn run -T test-ssr --help",
               "example": Object {},
             },
             "technologies": Array [

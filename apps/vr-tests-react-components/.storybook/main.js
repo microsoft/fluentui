@@ -1,5 +1,3 @@
-// @ts-check
-
 const path = require('path');
 
 const { registerTsPaths, registerRules, rules, loadWorkspaceAddon } = require('@fluentui/scripts-storybook');

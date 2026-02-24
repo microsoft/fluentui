@@ -20,9 +20,10 @@ export interface TempPaths {
 }
 
 /**
- * Prepare a temp directory which contains folders used for the test, and a `.yarnrc` file.
- * The `.yarnrc` contains a custom `cache-folder` under the parent temp directory to avoid race
- * conditions with multiple tests modifying the global cache.
+ * Prepare a temp directory which contains folders used for the test, and a `.yarnrc.yml` file.
+ * The `.yarnrc.yml` contains a custom `cacheFolder` under the parent temp directory to avoid race
+ * conditions with multiple tests modifying the global cache, and sets `nodeLinker: node-modules`
+ * to ensure compatibility with projects that expect a traditional `node_modules` layout.
  * @param prefix Prefix to use in the directory name
  */
 export function prepareTempDirs(prefix: string): TempPaths {
@@ -34,8 +35,16 @@ export function prepareTempDirs(prefix: string): TempPaths {
   const yarnCache = path.join(root, 'yarn-cache');
   fs.mkdirSync(yarnCache);
 
-  // Putting this in the parent folder ensures that running yarn in any child folder uses it
-  fs.writeFileSync(path.join(root, '.yarnrc'), `cache-folder "${yarnCache}"`);
+  // Putting this in the parent folder ensures that running yarn in any child folder uses it.
+  // Yarn Modern (v4+) ignores .yarnrc and only reads .yarnrc.yml.
+  fs.writeFileSync(
+    path.join(root, '.yarnrc.yml'),
+    [`nodeLinker: node-modules`, `cacheFolder: "${yarnCache}"`, `enableGlobalCache: false`, ``].join('\n'),
+  );
+
+  // Create a minimal package.json in the test app directory for Yarn Modern compatibility
+  // Yarn Modern requires a package.json to exist before running yarn add
+  fs.writeFileSync(path.join(testApp, 'package.json'), JSON.stringify({ name: 'test-app', version: '1.0.0' }, null, 2));
 
   return { root, testApp, yarnCache };
 }
