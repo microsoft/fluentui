@@ -18,6 +18,7 @@ function getEsmOnlyPackagesToCjsMapping() {
     'd3-interpolate',
     'd3-color',
     'd3-shape',
+    'd3-path',
     'd3-axis',
     'd3-array',
     'd3-time',
@@ -39,10 +40,6 @@ function getEsmOnlyPackagesToCjsMapping() {
     acc[`^${lib}$`] = createD3LibMappingToCommonJs(lib);
     return acc;
   }, {});
-
-  // d3-path needs special handling: d3-shape@3.x requires d3-path@3.x (which exports `Path` constructor),
-  // but the hoisted root d3-path is v1.x (from d3-sankey -> d3-shape@^1). Map to the nested v3 copy.
-  cjsPathsToEsmOnlyPackages['^d3-path$'] = workspaceRootNodeModules + '/d3-shape/node_modules/d3-path/dist/d3-path.js';
 
   return cjsPathsToEsmOnlyPackages;
 }

@@ -5,11 +5,11 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build-storybook": "storybook build -o dist/storybook",
-    "clean": "just-scripts clean",
+    "clean": "yarn run -T just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
-    "lint": "just-scripts lint",
+    "lint": "yarn run -T just-scripts lint",
     "start": "storybook dev",
-    "test": "just-scripts test",
+    "test": "yarn run -T just-scripts test",
     "type-check": "tsc -p . --noEmit --baseUrl .",
     "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
   },

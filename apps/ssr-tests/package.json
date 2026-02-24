@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "bundle": "just-scripts bundle",
-    "test-ssr": "just-scripts test"
+    "bundle": "yarn run -T just-scripts bundle",
+    "test-ssr": "yarn run -T just-scripts test"
   },
   "license": "MIT",
   "devDependencies": {

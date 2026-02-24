@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build"
+    "build": "yarn run -T just-scripts build"
   },
   "dependencies": {
     "@fluentui/react": "^8.125.5",
