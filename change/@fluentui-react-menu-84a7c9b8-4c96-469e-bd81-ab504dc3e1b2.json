@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "refactor: migrate slide animation from CSS to motion components with surfaceMotion slot",
+  "packageName": "@fluentui/react-menu",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
