@@ -11,7 +11,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -75,7 +75,9 @@ export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<P
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = {
+    components: Record<string, never>;
+} & Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PositioningVirtualElement | undefined;

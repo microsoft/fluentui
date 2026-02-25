@@ -9,6 +9,13 @@ import type {
 import type { PortalProps } from '@fluentui/react-portal';
 
 /**
+ * Empty slots record required by assertSlots() in renderPopover.
+ * Popover doesn't use traditional slots (e.g. root), but assertSlots is needed
+ * so the @nx/workspace-no-missing-jsx-pragma lint rule recognizes the JSX pragma as required.
+ */
+export type PopoverSlots = {};
+
+/**
  * Determines popover padding and arrow size
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
@@ -157,7 +164,8 @@ export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
 /**
  * Popover State
  */
-export type PopoverState = Pick<
+// components is required by assertSlots() which iterates Object.keys(state.components) at runtime in dev mode.
+export type PopoverState = { components: Record<string, never> } & Pick<
   PopoverProps,
   | 'appearance'
   | 'mountNode'
@@ -224,7 +232,7 @@ export type PopoverState = Pick<
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 
-export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'size' | 'surfaceMotion'>;
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'components' | 'size' | 'surfaceMotion'>;
 
 /**
  * Data attached to open/close events

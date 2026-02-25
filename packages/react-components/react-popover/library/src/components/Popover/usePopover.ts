@@ -62,6 +62,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   return {
+    components: {}, // Required by assertSlots() in renderPopover (see PopoverState type)
     appearance,
     size,
     ...state,
