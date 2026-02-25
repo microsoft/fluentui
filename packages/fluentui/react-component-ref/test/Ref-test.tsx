@@ -61,15 +61,18 @@ describe('Ref', () => {
     });
 
     it('passes an updated node', () => {
+      const ComponentA = () => <div />;
+      const ComponentB = () => <button />;
+
       const innerRef = jest.fn();
       const wrapper = mount(
         <Ref innerRef={innerRef}>
-          <div />
+          <ComponentA />
         </Ref>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
-      wrapper.setProps({ children: <button /> });
+      wrapper.setProps({ children: <ComponentB /> });
 
       expect(innerRef).toHaveBeenCalledTimes(2);
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
@@ -110,36 +113,62 @@ describe('Ref', () => {
     });
 
     it('resolves once on node/ref change', () => {
+      const ComponentA = () => <div />;
+      const ComponentB = () => <span />;
+
       const initialRef = jest.fn();
       const updatedRef = jest.fn();
+
       const wrapper = mount(
         <Ref innerRef={initialRef}>
-          <div />
+          <ComponentA />
         </Ref>,
       );
 
       expect(initialRef).toHaveBeenCalledTimes(1);
       expect(updatedRef).not.toHaveBeenCalled();
 
+      // ---
+
       jest.resetAllMocks();
-      wrapper.setProps({ children: <span />, innerRef: updatedRef });
+
+      wrapper.setProps({ children: <ComponentB />, innerRef: updatedRef });
 
       expect(initialRef).not.toHaveBeenCalled();
       expect(updatedRef).toHaveBeenCalledTimes(1);
     });
 
     it('always returns "null" for react-test-renderer', () => {
+      const Component = () => <div />;
       const innerRef = jest.fn();
-      const ref = jest.fn();
 
       create(
         <Ref innerRef={innerRef}>
-          <div ref={ref} />
+          <Component />
         </Ref>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(null);
-      expect(ref).toHaveBeenCalledWith(null);
+    });
+
+    it('handles unmount', () => {
+      const Component = () => <div />;
+      const innerRef = jest.fn();
+
+      const wrapper = mount(
+        <Ref innerRef={innerRef}>
+          <Component />
+        </Ref>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
+
+      // ---
+
+      jest.resetAllMocks();
+      wrapper.unmount();
+
+      expect(innerRef).toHaveBeenCalledWith(null);
     });
   });
 
@@ -201,6 +230,65 @@ describe('Ref', () => {
     });
   });
 
+  describe('kind="forward" (plain element)', () => {
+    it('applies refs', () => {
+      const innerRef = jest.fn();
+      const elRef = jest.fn();
+
+      mount(
+        <Ref innerRef={innerRef}>
+          <button ref={elRef} />
+        </Ref>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
+      expect(elRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
+    });
+
+    it('passes an updated node', () => {
+      const innerRef = jest.fn();
+
+      mount(
+        <Ref innerRef={innerRef}>
+          <button />
+        </Ref>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
+
+      // ---
+
+      jest.resetAllMocks();
+
+      mount(
+        <Ref innerRef={innerRef}>
+          <div />
+        </Ref>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
+    });
+
+    it('handles unmount', () => {
+      const innerRef = jest.fn();
+
+      const wrapper = mount(
+        <Ref innerRef={innerRef}>
+          <button />
+        </Ref>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
+
+      // ---
+
+      jest.resetAllMocks();
+      wrapper.unmount();
+
+      expect(innerRef).toHaveBeenCalledWith(null);
+    });
+  });
+
   describe('kind="self"', () => {
     it('works with "forwardRef" API', () => {
       const forwardedRef = React.createRef<HTMLButtonElement>();
@@ -239,7 +327,10 @@ describe('Ref', () => {
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
       expect(outerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
 
+      // ---
+
       jest.resetAllMocks();
+
       wrapper.setProps({
         children: (
           <Ref innerRef={innerRef}>

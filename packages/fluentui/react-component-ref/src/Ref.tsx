@@ -16,7 +16,7 @@ export interface RefProps {
 }
 
 export interface RefState {
-  kind: 'self' | 'forward' | 'find' | null;
+  kind: 'self' | 'direct' | 'find' | null;
 }
 
 // ========================================================
@@ -51,7 +51,7 @@ function isFiberRef(node: Element | Fiber | Text | null): boolean {
 
 export class Ref extends React.Component<RefProps, RefState> {
   nodeForFind?: Node | null;
-  nodeForForward?: Node | null;
+  nodeForDirect?: Node | null;
 
   state = { kind: null };
 
@@ -62,20 +62,20 @@ export class Ref extends React.Component<RefProps, RefState> {
       return { kind: 'self' };
     }
 
-    if (ReactIs.isForwardRef(child)) {
-      return { kind: 'forward' };
+    if (typeof child.type === 'string' || ReactIs.isForwardRef(child)) {
+      return { kind: 'direct' };
     }
 
     return { kind: 'find' };
   }
 
-  handleForwardRefOverride = (node: HTMLElement) => {
+  handleRefOverride = (node: HTMLElement) => {
     const { children, innerRef } = this.props;
 
     handleRef((children as React.ReactElement & { ref: React.Ref<any> }).ref, node);
     handleRef(innerRef, node);
 
-    this.nodeForForward = node;
+    this.nodeForDirect = node;
   };
 
   handleSelfOverride = (node: HTMLElement) => {
@@ -101,9 +101,9 @@ export class Ref extends React.Component<RefProps, RefState> {
   }
 
   componentDidUpdate(prevProps: RefProps) {
-    if (this.state.kind === 'forward') {
+    if (this.state.kind === 'direct') {
       if (prevProps.innerRef !== this.props.innerRef) {
-        handleRef(this.props.innerRef, this.nodeForForward);
+        handleRef(this.props.innerRef, this.nodeForDirect);
       }
     } else if (this.state.kind === 'find') {
       let currentNode = ReactDOM.findDOMNode(this);
@@ -142,9 +142,9 @@ export class Ref extends React.Component<RefProps, RefState> {
       return childWithProps;
     }
 
-    if (this.state.kind === 'forward') {
+    if (this.state.kind === 'direct') {
       return React.cloneElement(childWithProps, {
-        ref: this.handleForwardRefOverride,
+        ref: this.handleRefOverride,
       });
     }
 
