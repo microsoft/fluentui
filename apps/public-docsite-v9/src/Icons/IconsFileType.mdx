@@ -1,0 +1,142 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs/blocks';
+import { FileTypeExample, FileTypeSizes } from './IconsFileTypeExample.stories';
+
+<Meta title="Icons/Filetype Icons" />
+
+<h1 class="sbdocs-title">Filetype Icons</h1>
+
+The `@fluentui/react-file-type-icons` package provides a collection of icons specifically designed to represent file types. These icons are perfect for file browsers, document lists, and any interface where you need to visually represent different file formats.
+
+## Getting Started
+
+### Installation
+
+First, install the package if you haven't already:
+
+```bash
+npm install @fluentui/react-file-type-icons
+```
+
+### Initialize Icons
+
+To make all file type icons available in your application, call the `initializeFileTypeIcons` function:
+
+```tsx
+import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
+
+// Register icons and pull the fonts from the default Microsoft Fluent CDN:
+initializeFileTypeIcons();
+```
+
+### Custom CDN Location
+
+If you need to host the icon fonts on your own CDN or server, you can specify a custom path:
+
+```tsx
+import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
+
+// Register icons and pull the fonts from a different CDN or folder path:
+initializeFileTypeIcons('https://my.cdn.com/path/to/icons/');
+```
+
+> **⚠️ Warning:** Proceed carefully if you override the default CDN location. The contents must match the registered file type icons and supported extensions. Do not use the deprecated `item-types-fluent` icon set.
+
+## Usage in Code
+
+### Basic Usage with Icon Component
+
+If you're using Fluent UI React, use the `Icon` component with `getFileTypeIconProps`:
+
+```tsx
+import { Icon } from '@fluentui/react/lib/Icon';
+import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
+
+// Render a Word document icon
+<Icon {...getFileTypeIconProps({ extension: 'docx', size: 16 })} />
+
+// Render a PDF icon
+<Icon {...getFileTypeIconProps({ extension: 'pdf', size: 20 })} />
+
+// Render an Excel icon
+<Icon {...getFileTypeIconProps({ extension: 'xlsx', size: 24 })} />
+```
+
+### Available Sizes
+
+File type icons support multiple size options:
+
+- `16` - Small icons
+- `20` - Medium icons
+- `24` - Large icons
+- `32` - Extra large icons
+- `40` - Extra extra large icons
+- `48` - Maximum size icons
+- `64` - Oversized icons
+- `96` - Jumbo icons
+
+### Supported File Extensions
+
+The package includes icons for a wide variety of file types, including:
+
+- **Documents**: `docx`, `doc`, `pdf`, `txt`, `rtf`
+- **Spreadsheets**: `xlsx`, `xls`, `csv`
+- **Presentations**: `pptx`, `ppt`
+- **Images**: `png`, `jpg`, `jpeg`, `gif`, `svg`, `bmp`
+- **Code**: `js`, `ts`, `tsx`, `jsx`, `html`, `css`, `json`, `xml`
+- **Archives**: `zip`, `rar`, `7z`, `tar`, `gz`
+- **Media**: `mp3`, `mp4`, `avi`, `mov`, `wav`
+- **And many more...**
+
+### Generic File Icon
+
+If you don't specify an extension or use an unsupported extension, a generic file icon will be displayed:
+
+```tsx
+<Icon {...getFileTypeIconProps({ size: 20 })} />
+```
+
+## Integration with Fluent UI React
+
+File type icons integrate seamlessly with Fluent UI React components. They follow the same styling patterns and can be customized using the standard Fluent UI theming system.
+
+## Examples
+
+### Common File Types
+
+<Canvas>
+  <FileTypeExample />
+</Canvas>
+
+<Source
+  language="tsx"
+  code={`
+import { Icon } from '@fluentui/react/lib/Icon';
+import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
+
+const documentExtensions = ['docx', 'pdf', 'txt', 'rtf'];
+
+return (
+
+{' '}
+
+<div>
+  {documentExtensions.map(ext => (
+    <div key={ext}>
+      <Icon {...getFileTypeIconProps({ extension: ext, size: 48 })} />
+      <div>.{ext}</div>
+    </div>
+  ))}
+</div>
+); `} />
+
+### Icon Sizes
+
+<Canvas>
+  <FileTypeSizes />
+</Canvas>
+
+## Related Resources
+
+- [GitHub Repository](https://github.com/microsoft/fluentui)
+- [Fluent UI React Icons Package](https://www.npmjs.com/package/@fluentui/react-icons)
+- [File Type Icons Package](https://www.npmjs.com/package/@fluentui/react-file-type-icons)
