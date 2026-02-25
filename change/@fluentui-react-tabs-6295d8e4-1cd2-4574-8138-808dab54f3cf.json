@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: tabster attributes should be overridable on Tabs",
+  "packageName": "@fluentui/react-tabs",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
