@@ -2,6 +2,33 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 25 Feb 2026 13:32:23 GMT",
+      "tag": "@fluentui/react-motion_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "019b0e71ea99a047874cbf7b7729451e3431ca0c",
+            "comment": "feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:32 GMT",
       "tag": "@fluentui/react-motion_v9.11.6",
       "version": "9.11.6",

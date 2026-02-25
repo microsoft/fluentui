@@ -2,6 +2,41 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 25 Feb 2026 13:32:24 GMT",
+      "tag": "@fluentui/react-positioning_v9.21.0",
+      "version": "9.21.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "cbf0ef209ac4a8398a2b3ab65cf866761725f782",
+            "comment": "feat(react-positioning): add placement to onPositioningEnd event"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:36 GMT",
       "tag": "@fluentui/react-positioning_v9.20.12",
       "version": "9.20.12",

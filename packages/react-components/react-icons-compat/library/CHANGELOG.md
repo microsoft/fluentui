@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-icons-compat
 
-This log was last generated on Thu, 12 Feb 2026 10:46:15 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 13:32:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.18)
+
+Wed, 25 Feb 2026 13:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.17..@fluentui/react-icons-compat_v0.2.18)
+
+### Patches
+
+- fix: add missing "use client" directive to getWindow utility files ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
 
 ## [0.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.17)
 

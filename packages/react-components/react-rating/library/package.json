@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-rating",
-  "version": "9.3.14",
+  "version": "9.3.15",
   "description": "Rating component for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,12 +12,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.4.0",
+    "@fluentui/react-jsx-runtime": "^9.4.1",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-shared-contexts": "^9.26.1",
+    "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-tabster": "^9.26.12",
-    "@fluentui/react-utilities": "^9.26.1",
+    "@fluentui/react-tabster": "^9.26.13",
+    "@fluentui/react-utilities": "^9.26.2",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

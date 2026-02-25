@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add setTheme export",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}

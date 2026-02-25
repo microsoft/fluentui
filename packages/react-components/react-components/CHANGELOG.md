@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 12 Feb 2026 10:46:10 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 13:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.1)
+
+Wed, 25 Feb 2026 13:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.0..@fluentui/react-components_v9.73.1)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat(react-positioning): add placement to onPositioningEnd event ([PR #35773](https://github.com/microsoft/fluentui/pull/35773) by robertpenner@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: add disableAutoFocus prop to TagPicker and deprecate on TagPickerList ([PR #35768](https://github.com/microsoft/fluentui/pull/35768) by bsunderhus@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+  - refactor: use shared MotionRefForwarder from react-motion ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: add missing "use client" directive to getWindow utility files ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - refactor: use shared MotionRefForwarder from react-motion ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: fix read-only functionality ([PR #35761](https://github.com/microsoft/fluentui/pull/35761) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: tabster attributes should be overridable on Tabs ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by olfedias@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
 
 ## [9.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.0)
 

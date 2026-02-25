@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding",
-  "packageName": "@fluentui/react-motion",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

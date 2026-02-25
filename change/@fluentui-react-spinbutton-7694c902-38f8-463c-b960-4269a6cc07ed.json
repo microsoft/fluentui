@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix read-only functionality",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

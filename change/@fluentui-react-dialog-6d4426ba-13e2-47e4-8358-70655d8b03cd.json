@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: use shared MotionRefForwarder from react-motion",
-  "packageName": "@fluentui/react-dialog",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

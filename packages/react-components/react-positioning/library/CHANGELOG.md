@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 22 Jan 2026 17:06:36 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 13:32:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.21.0)
+
+Wed, 25 Feb 2026 13:32:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.12..@fluentui/react-positioning_v9.21.0)
+
+### Minor changes
+
+- feat(react-positioning): add placement to onPositioningEnd event ([PR #35773](https://github.com/microsoft/fluentui/pull/35773) by robertpenner@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+### Patches
+
+- fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
 
 ## [9.20.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.12)
 
