@@ -353,8 +353,19 @@ const useMenuOpenState = (
     if (open) {
       focusFirst();
     } else {
+      // Skip the initial render — focus should only be restored when the menu
+      // transitions from open → closed, not on mount.
       if (!firstMount) {
-        if (targetDocument?.activeElement === targetDocument?.body) {
+        if (
+          // Focus landed on <body> after the popover was removed from the DOM,
+          // meaning the user's focus has nowhere meaningful to go.
+          targetDocument?.activeElement === targetDocument?.body ||
+          // The surfaceMotion presence component delays unmounting the popover
+          // (e.g. during an exit animation), so focus may still be inside the
+          // popover even though `open` is already false. Proactively move it
+          // to the trigger before the DOM element is eventually removed.
+          state.menuPopoverRef.current?.contains(targetDocument?.activeElement ?? null)
+        ) {
           // We know that React effects are sync so we focus the trigger here
           // after any event handler (event handlers will update state and re-render).
           // Since the browser only performs the default behaviour for the Tab key once
