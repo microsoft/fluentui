@@ -1,5 +1,42 @@
 import * as React from 'react';
 
+/**
+ * Physical placement of a positioned element relative to its target, as computed by Floating UI.
+ * This is a Fluent-owned equivalent of Floating UI's `Placement` type, avoiding a transitive
+ * dependency on `@floating-ui/dom` in the public API surface.
+ */
+export type PositioningPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+
+/**
+ * Detail payload of the positioning end event, providing the final computed placement
+ * after all middleware (flip, shift, etc.) have run.
+ */
+export type OnPositioningEndEventDetail = {
+  /**
+   * The computed placement of the positioned element. May differ from the requested
+   * placement if flip or other middleware adjusted it.
+   */
+  placement: PositioningPlacement;
+};
+
+/**
+ * Custom DOM event dispatched on the positioned container element when a
+ * positioning update completes. Carries placement information in `event.detail`.
+ */
+export type OnPositioningEndEvent = CustomEvent<OnPositioningEndEventDetail>;
+
 export type PositioningRect = {
   width: number;
   height: number;
@@ -198,10 +235,11 @@ export interface PositioningOptions {
   /**
    * Called when a position update has finished. Multiple position updates can happen in a single render,
    * since positioning happens outside of the React lifecycle.
+   * The event's `detail.placement` indicates the final computed placement after middleware adjustments.
    *
    * It's also possible to listen to the custom DOM event `fui-positioningend`
    */
-  onPositioningEnd?: () => void;
+  onPositioningEnd?: (e: OnPositioningEndEvent) => void;
 
   /**
    * Disables the resize observer that updates position on target or dimension change

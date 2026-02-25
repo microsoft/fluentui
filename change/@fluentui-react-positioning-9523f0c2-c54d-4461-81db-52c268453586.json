@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-positioning): add placement to onPositioningEnd event",
+  "packageName": "@fluentui/react-positioning",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

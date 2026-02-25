@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Wed, 25 Feb 2026 04:09:17 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.65",
+      "version": "0.0.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.7",
+            "commit": "7cbc248724854d89b0576ff2b7c94b664a31af96"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Feb 2026 04:08:21 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.64",
       "version": "0.0.64",

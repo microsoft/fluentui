@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 25 Feb 2026 04:09:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.7",
+      "version": "3.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cbc248724854d89b0576ff2b7c94b664a31af96",
+            "comment": "fix: add setTheme export"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Feb 2026 04:08:20 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.6",
       "version": "3.0.0-rc.6",

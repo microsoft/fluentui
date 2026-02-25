@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 23 Feb 2026 04:08:20 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 04:09:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.7)
+
+Wed, 25 Feb 2026 04:09:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.6..@fluentui/web-components_v3.0.0-rc.7)
+
+### Changes
+
+- fix: add setTheme export ([PR #35778](https://github.com/microsoft/fluentui/pull/35778) by rupertdavid@microsoft.com)
 
 ## [3.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.6)
 

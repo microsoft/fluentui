@@ -438,10 +438,14 @@ body ul li {
 
 h1.fluent {
   font-weight: 700;
-  font-size: 40px;
+  font-size: 40px !important;
   font-family: 'Segoe UI';
   line-height: 48px;
   letter-spacing: -0.16px;
+}
+
+h1.fluent p {
+  font-size: 40px !important;
 }
 
 h1.fluent .fluent-version {
