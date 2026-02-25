@@ -71,6 +71,55 @@ exports[`felaRenderer basic styles are rendered 1`] = `
 <div class=\\"a\\"></div>"
 `;
 
+exports[`felaRenderer combined media, supports, and container query styles are rendered 1`] = `
+".a {
+  background-color: white;
+}
+.c {
+  background-color: blue;
+}
+@supports (display: grid) {
+  .b {
+    background-color: lightblue;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .d {
+    background-color: darkblue;
+  }
+}
+
+
+<div class=\\"a b c d\\"></div>"
+`;
+
+exports[`felaRenderer container query styles are rendered 1`] = `
+".a {
+  color: red;
+}
+.b {
+  color: blue;
+}
+
+
+<div class=\\"a b\\"></div>"
+`;
+
+exports[`felaRenderer container query with pseudo selector styles are rendered 1`] = `
+".a {
+  color: red;
+}
+.b {
+  color: blue;
+}
+.c:hover {
+  color: green;
+}
+
+
+<div class=\\"a b c\\"></div>"
+`;
+
 exports[`felaRenderer keyframe colors are rendered 1`] = `
 "@-webkit-keyframes k1 {
   from {
@@ -134,6 +183,20 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 
 
 <div class=\\"a\\"></div>"
+`;
+
+exports[`felaRenderer media query styles are rendered 1`] = `
+".a {
+  color: red;
+}
+@media screen and (min-width: 1024px) {
+  .b {
+    color: blue;
+  }
+}
+
+
+<div class=\\"a b\\"></div>"
 `;
 
 exports[`felaRenderer prefixes required styles 1`] = `
@@ -215,4 +278,18 @@ exports[`felaRenderer styles are expanded to longhand values 1`] = `
 
 
 <div class=\\"a b c d e f g h\\"></div>"
+`;
+
+exports[`felaRenderer supports query styles are rendered 1`] = `
+".a {
+  color: red;
+}
+@supports (display: grid) {
+  .b {
+    color: blue;
+  }
+}
+
+
+<div class=\\"a b\\"></div>"
 `;

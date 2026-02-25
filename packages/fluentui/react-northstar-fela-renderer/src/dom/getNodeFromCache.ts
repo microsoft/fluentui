@@ -2,8 +2,8 @@ import { FelaRenderer, StyleNodeAttributes } from '../types';
 import { createNode } from './createNode';
 import { queryNode } from './queryNode';
 
-function getReference({ type, media = '', support = '' }: StyleNodeAttributes): string {
-  return type + media + support;
+function getReference({ type, media = '', support = '', container = '' }: StyleNodeAttributes): string {
+  return type + media + support + container;
 }
 
 export function getNodeFromCache(

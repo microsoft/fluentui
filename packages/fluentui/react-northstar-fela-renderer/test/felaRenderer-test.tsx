@@ -145,6 +145,85 @@ describe('felaRenderer', () => {
     expect(snapshot).toMatchSnapshot();
   });
 
+  test('media query styles are rendered', () => {
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          color: 'red',
+          '@media screen and (min-width: 1024px)': {
+            color: 'blue',
+          },
+        }}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
+  test('supports query styles are rendered', () => {
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          color: 'red',
+          '@supports (display: grid)': {
+            color: 'blue',
+          },
+        }}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
+  test('container query styles are rendered', () => {
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          color: 'red',
+          '@container sidebar (min-width: 800px)': {
+            color: 'blue',
+          },
+        }}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
+  test('container query with pseudo selector styles are rendered', () => {
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          color: 'red',
+          '@container sidebar (min-width: 800px)': {
+            color: 'blue',
+            ':hover': {
+              color: 'green',
+            },
+          },
+        }}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
+  test('combined media, supports, and container query styles are rendered', () => {
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          backgroundColor: 'white',
+          '@supports (display: grid)': {
+            backgroundColor: 'lightblue',
+          },
+          '@container sidebar (min-width: 800px)': {
+            backgroundColor: 'blue',
+          },
+          '@media screen and (min-width: 1300px)': {
+            backgroundColor: 'darkblue',
+          },
+        }}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
   test('prefixes required styles', () => {
     const snapshot = createSnapshot(
       <FelaComponent

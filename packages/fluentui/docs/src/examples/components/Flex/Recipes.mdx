@@ -63,3 +63,33 @@ This approach introduces unnecessary nesting level - it is possible to achieve t
 </ExampleSnippet>
 
 Note that `Flex.Item` doesn't result in any additional DOM element rendered - its sole purpose is just to pass style props to its child. Please, consider to review set of examples on this page - as there might be an example that suits your needs.
+
+### Using media, container, and feature queries
+
+The `Flex` component supports CSS at-rules such as `@media`, `@container`, and `@supports` within the `styles` prop. This allows you to create responsive layouts that adapt based on viewport size, container dimensions, or browser feature support. In the example below, the box changes its background color depending on which conditions are met — try resizing your browser window or the container to see the different states.
+
+<ExampleSnippet>
+  <Flex style={{width:'100%', containerType: 'inline-size', containerName:'sidebar' }}>
+      <Flex
+        styles={{
+          width: '100%',
+          minHeight: '200px',
+          backgroundColor: 'white',
+          transition: 'background-color 0.3s ease',
+
+          [`@supports (display: grid)`]: {
+            backgroundColor: 'lightblue',
+          },
+
+          [`@container sidebar (min-width: 800px)`]: {
+            backgroundColor: 'blue',
+          },
+
+          [`@media screen and (min-width: 1300px)`]: {
+            backgroundColor: 'darkblue',
+          },
+        }}
+      />
+
+  </Flex>
+</ExampleSnippet>

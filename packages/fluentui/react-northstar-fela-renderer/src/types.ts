@@ -6,6 +6,7 @@ import type { IRenderer } from 'fela';
 export type StyleNodeAttributes = {
   media?: string;
   support?: string;
+  container?: string;
 
   type: 'KEYFRAME' | 'RULE' | 'CLEAR';
 };
@@ -51,6 +52,7 @@ export type FelaRendererRuleChange = {
   pseudo: string;
   media: string;
   support: string;
+  container: string;
 };
 
 export type FelaRendererChange =

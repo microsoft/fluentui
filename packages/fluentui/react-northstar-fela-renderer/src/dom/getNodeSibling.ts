@@ -4,7 +4,7 @@ import { SortMediaQueryFn, StyleNodeAttributes } from '../types';
 
 export function getNodeSibling(
   nodes: HTMLStyleElement[],
-  { type, media, support }: StyleNodeAttributes,
+  { type, media, support, container }: StyleNodeAttributes,
   sortMediaQuery: SortMediaQueryFn,
 ): HTMLElement | undefined {
   switch (type) {
@@ -20,6 +20,10 @@ export function getNodeSibling(
         const insertMedia = sorted[index];
 
         if (insertMedia) {
+          if (insertMedia === media && container) {
+            // container
+            return nodes.find(el => el.media === sorted[sorted.indexOf(media) + 2]);
+          }
           if (insertMedia === media && support) {
             // support
             return nodes.find(el => el.media === sorted[sorted.indexOf(media) + 2]);
@@ -30,18 +34,33 @@ export function getNodeSibling(
         const sorted = filteredNodes.sort(sortMediaQuery);
         const insertMedia = sorted[0];
 
-        if (!support) {
-          // if we insert the plain RULE node while there's already a support RULE node
-          // make sure to insert before
-          const supportNode = nodes.find(
+        if (!support && !container) {
+          // if we insert the plain RULE node while there's already a support or container RULE node
+          // make sure to insert before (whichever comes first in DOM order)
+          const firstSpecialNode = nodes.find(
             el =>
-              el.getAttribute('data-fela-support') !== undefined &&
+              (el.getAttribute('data-fela-support') === 'true' || el.getAttribute('data-fela-container') === 'true') &&
               el.media === '' &&
               el.getAttribute('data-fela-type') === 'RULE',
           );
 
-          if (supportNode) {
-            return supportNode;
+          if (firstSpecialNode) {
+            return firstSpecialNode;
+          }
+        }
+
+        if (support && !container) {
+          // if we insert a support RULE node while there's already a container RULE node
+          // make sure to insert before
+          const containerNode = nodes.find(
+            el =>
+              el.getAttribute('data-fela-container') === 'true' &&
+              el.media === '' &&
+              el.getAttribute('data-fela-type') === 'RULE',
+          );
+
+          if (containerNode) {
+            return containerNode;
           }
         }
 
