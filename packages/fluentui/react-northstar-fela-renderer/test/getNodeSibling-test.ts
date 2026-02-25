@@ -27,7 +27,7 @@ const sortMediaQuery: SortMediaQueryFn = (a, b) => a.localeCompare(b);
 describe('getNodeSibling', () => {
   describe('KEYFRAME_TYPE', () => {
     test('returns the first node', () => {
-      const nodes = [createMockNode(), createMockNode()];
+      const nodes = [createMockNode(), createMockNode({ media: '(min-width: 300px)' })];
       const result = getNodeSibling(nodes, { type: KEYFRAME_TYPE }, sortMediaQuery);
 
       expect(result).toBe(nodes[0]);
