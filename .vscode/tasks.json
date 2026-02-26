@@ -50,6 +50,20 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Storybook FileTypeIcon stories",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "./node_modules/storybook/bin/index.cjs",
+        "dev",
+        "-c",
+        "packages/react-file-type-icons/stories/.storybook",
+        "-p",
+        "6011"
+      ],
+      "isBackground": true
     }
   ]
 }
