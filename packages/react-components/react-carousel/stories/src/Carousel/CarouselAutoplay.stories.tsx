@@ -86,7 +86,7 @@ const useClasses = makeStyles({
   },
   field: {
     flex: 1,
-    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
+    gridTemplateColumns: 'minmax(140px, max-content) 1fr',
   },
   dropdown: {
     maxWidth: 'max-content',
