@@ -4,7 +4,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
 
-import type { CardProps, CardState } from './Card.types';
+import type { CardBaseProps, CardBaseState, CardProps, CardState } from './Card.types';
 import { useCardSelectable } from './useCardSelectable';
 import { cardContextDefaultValue } from './CardContext';
 
@@ -70,16 +70,18 @@ const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...
 };
 
 /**
- * Create the state required to render Card.
+ * Create the base state required to render Card, without design props.
  *
- * The returned state can be modified with hooks such as useCardStyles_unstable,
- * before being passed to renderCard_unstable.
+ * Extracts ARIA attributes, keyboard/focus handling, selectable logic, and slot
+ * structure. Design props (`appearance`, `orientation`, `size`) are intentionally
+ * excluded — compose this hook with those values in `useCard_unstable` or your
+ * own styled hook.
  *
- * @param props - props from this instance of Card
+ * @param props - props from this instance of Card (design props omitted)
  * @param ref - reference to the root element of Card
  */
-export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  const { appearance = 'filled', orientation = 'vertical', size = 'medium', disabled = false, ...restProps } = props;
+export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDivElement>): CardBaseState => {
+  const { disabled = false, ...restProps } = props;
 
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
@@ -107,9 +109,6 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
   }
 
   return {
-    appearance,
-    orientation,
-    size,
     interactive,
     selectable,
     selectFocused,
@@ -139,5 +138,25 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
 
     floatingAction: floatingActionSlot,
     checkbox: checkboxSlot,
+  };
+};
+
+/**
+ * Create the state required to render Card.
+ *
+ * The returned state can be modified with hooks such as useCardStyles_unstable,
+ * before being passed to renderCard_unstable.
+ *
+ * @param props - props from this instance of Card
+ * @param ref - reference to the root element of Card
+ */
+export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium' } = props;
+
+  return {
+    ...useCardBase_unstable(props, ref),
+    appearance,
+    orientation,
+    size,
   };
 };

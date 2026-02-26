@@ -5,8 +5,9 @@ export {
   renderCard_unstable,
   useCardStyles_unstable,
   useCard_unstable,
+  useCardBase_unstable,
 } from './Card';
-export type { CardProps, CardSlots, CardState, CardOnSelectionChangeEvent } from './Card';
+export type { CardBaseProps, CardBaseState, CardProps, CardSlots, CardState, CardOnSelectionChangeEvent } from './Card';
 export {
   CardFooter,
   cardFooterClassNames,
