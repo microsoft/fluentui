@@ -1,6 +1,5 @@
 export type {
   SkeletonItemProps,
-  SkeletonItemSize,
   SkeletonItemSlots,
   SkeletonItemState,
 } from './components/SkeletonItem/index';
