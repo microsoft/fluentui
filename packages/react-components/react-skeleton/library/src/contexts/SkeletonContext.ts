@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import type { SkeletonItemSize } from '../components/SkeletonItem/SkeletonItem.types';
+import type { SkeletonItemSize } from '../components/Skeleton/Skeleton.types';
 
 const SkeletonContext = React.createContext<SkeletonContextValue | undefined>(undefined);
 

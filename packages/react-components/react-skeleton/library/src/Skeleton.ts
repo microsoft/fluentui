@@ -1,4 +1,4 @@
-export type { SkeletonContextValues, SkeletonProps, SkeletonSlots, SkeletonState } from './components/Skeleton/index';
+export type { SkeletonContextValues, SkeletonItemSize, SkeletonProps, SkeletonSlots, SkeletonState } from './components/Skeleton/index';
 export {
   Skeleton,
   renderSkeleton_unstable,

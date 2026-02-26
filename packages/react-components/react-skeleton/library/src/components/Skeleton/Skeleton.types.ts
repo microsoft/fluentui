@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { SkeletonItemSize } from '../SkeletonItem/SkeletonItem.types';
 import { SkeletonContextValue } from '../../contexts/index';
 
 export type SkeletonSlots = {
@@ -9,6 +8,11 @@ export type SkeletonSlots = {
    */
   root: NonNullable<Slot<'div', 'span'>>;
 };
+
+/**
+ * Sizes for the SkeletonItem
+ */
+export type SkeletonItemSize = 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * Skeleton Props
