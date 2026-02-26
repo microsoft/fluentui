@@ -631,3 +631,18 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
     extensions: ['zip'],
   },
 };
+
+export const FileIconTypeToIconNameMap: { [key: number]: string } = Object.keys(FileTypeIconMap).reduce(
+  (accumulator, iconName) => {
+    const types = FileTypeIconMap[iconName].types;
+
+    if (types) {
+      for (let i = 0; i < types.length; i++) {
+        accumulator[types[i]] = iconName;
+      }
+    }
+
+    return accumulator;
+  },
+  {} as { [key: number]: string },
+);

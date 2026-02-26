@@ -1,9 +1,8 @@
-import { FileTypeIconMap } from './FileTypeIconMap';
+import { FileTypeIconMap, FileIconTypeToIconNameMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
 import { ICON_SIZES } from './initializeFileTypeIcons';
 
 let _extensionToIconName: { [key: string]: string };
-let _typeToIconName: { [key: number]: string };
 
 const GENERIC_FILE = 'genericfile';
 
@@ -129,23 +128,7 @@ export function getFileTypeIconNameFromExtensionOrType(
     extension = (lastDotIndex >= 0 ? extension.substring(lastDotIndex + 1) : extension).toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
   } else if (type) {
-    if (!_typeToIconName) {
-      _typeToIconName = {};
-
-      for (const iconName in FileTypeIconMap) {
-        if (FileTypeIconMap.hasOwnProperty(iconName)) {
-          const types = FileTypeIconMap[iconName].types;
-
-          if (types) {
-            for (let i = 0; i < types.length; i++) {
-              _typeToIconName[types[i]] = iconName;
-            }
-          }
-        }
-      }
-    }
-
-    return _typeToIconName[type] || GENERIC_FILE;
+    return FileIconTypeToIconNameMap[type] || GENERIC_FILE;
   }
 
   return GENERIC_FILE;
