@@ -46,11 +46,9 @@ export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & Pick<SkeletonProps, 'size' | 'shape'> & {
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
-    size?: SkeletonItemSize;
-    shape?: 'circle' | 'square' | 'rectangle';
 };
 
 // @public (undocumented)
