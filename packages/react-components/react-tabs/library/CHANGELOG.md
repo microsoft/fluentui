@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 13:32:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.11.2)
+
+Wed, 25 Feb 2026 13:32:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.11.1..@fluentui/react-tabs_v9.11.2)
+
+### Patches
+
+- fix: tabster attributes should be overridable on Tabs ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.15 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-tabster to v9.26.13 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.11.1)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.11.0..@fluentui/react-tabs_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.11.0)
+
+Thu, 22 Jan 2026 17:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.10.8..@fluentui/react-tabs_v9.11.0)
+
+### Minor changes
+
+- feat: add base hooks for tabs components ([PR #35638](https://github.com/microsoft/fluentui/pull/35638) by dmytrokirpa@microsoft.com)
+- refactor(react-tabs): separate focus behavior from base hook ([PR #35675](https://github.com/microsoft/fluentui/pull/35675) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.14 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.10.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.10.8)
 

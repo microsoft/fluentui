@@ -59,4 +59,8 @@ export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<Acc
   openItems?: Value | Value[];
 };
 
+export type AccordionBaseProps<Value = AccordionItemValue> = Omit<AccordionProps<Value>, 'navigation'>;
+
 export type AccordionState<Value = AccordionItemValue> = ComponentState<AccordionSlots> & AccordionContextValue<Value>;
+
+export type AccordionBaseState<Value = AccordionItemValue> = Omit<AccordionState<Value>, 'navigation'>;

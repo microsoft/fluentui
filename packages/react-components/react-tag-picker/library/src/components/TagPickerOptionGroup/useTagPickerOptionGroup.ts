@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { TagPickerOptionGroupProps, TagPickerOptionGroupState } from './TagPickerOptionGroup.types';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';

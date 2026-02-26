@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 Jan 2026 14:47:16 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jan 2026 05:18:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.6)
+
+Tue, 27 Jan 2026 05:18:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.5..@fluentui/react-charting_v5.25.6)
+
+### Patches
+
+- support chart title from plotly schema ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by anushgupta@microsoft.com)
+- feat(react-charting): Add prop to regulate removal of default annotation styling ([PR #35647](https://github.com/microsoft/fluentui/pull/35647) by 120183316+srmukher@users.noreply.github.com)
+- feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space ([PR #35605](https://github.com/microsoft/fluentui/pull/35605) by kumarkshitij@microsoft.com)
+- feat: add PolarChart ([PR #35651](https://github.com/microsoft/fluentui/pull/35651) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react-focus to v8.10.4 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+- Bump @fluentui/theme-samples to v8.7.223 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+- Bump @fluentui/react to v8.125.4 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
 
 ## [5.25.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.5)
 

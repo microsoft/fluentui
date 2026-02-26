@@ -167,11 +167,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'make',
       'manifest',
       'master',
-      'md',
-      'markdn',
-      'markdown',
-      'mdown',
-      'mkdn',
       'ml',
       'mli',
       'mll',
@@ -443,12 +438,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spo: {
     extensions: ['aspx'],
   },
+  spocampaign: {},
   sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
+    extensions: ['epub', 'gdoc', 'odt', 'md', 'markdn', 'markdown', 'mdown', 'mkdn', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
   playlist: {},

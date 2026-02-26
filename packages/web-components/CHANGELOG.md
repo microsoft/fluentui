@@ -1,8 +1,45 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 14 Jan 2026 04:07:26 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 04:09:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.7)
+
+Wed, 25 Feb 2026 04:09:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.6..@fluentui/web-components_v3.0.0-rc.7)
+
+### Changes
+
+- fix: add setTheme export ([PR #35778](https://github.com/microsoft/fluentui/pull/35778) by rupertdavid@microsoft.com)
+
+## [3.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.6)
+
+Mon, 23 Feb 2026 04:08:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.5..@fluentui/web-components_v3.0.0-rc.6)
+
+### Changes
+
+- fix(web-components): prevent double tab open on Ctrl+click in BaseAnchor by calling e.preventDefault() when opening in a new tab ([PR #35745](https://github.com/microsoft/fluentui/pull/35745) by zoghadya@microsoft.com)
+- [fix]: menu-items programmatically added to menu-list do not  properly get assigned data indent. ([PR #35765](https://github.com/microsoft/fluentui/pull/35765) by jes@microsoft.com)
+
+## [3.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.5)
+
+Wed, 04 Feb 2026 04:08:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.4..@fluentui/web-components_v3.0.0-rc.5)
+
+### Changes
+
+- fix: remove extraneous closing parentheses in avatar CSS ([PR #35716](https://github.com/microsoft/fluentui/pull/35716) by 198982749+Copilot@users.noreply.github.com)
+
+## [3.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.4)
+
+Fri, 23 Jan 2026 04:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.3..@fluentui/web-components_v3.0.0-rc.4)
+
+### Changes
+
+- Update CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
 
 ## [3.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.3)
 

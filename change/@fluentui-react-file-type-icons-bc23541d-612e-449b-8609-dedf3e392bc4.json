@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updating .md filetype to use rich text document icon",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

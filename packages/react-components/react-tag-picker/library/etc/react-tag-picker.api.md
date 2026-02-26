@@ -173,7 +173,9 @@ export const TagPickerList: ForwardRefComponent<TagPickerListProps>;
 export const tagPickerListClassNames: SlotClassNames<TagPickerListSlots>;
 
 // @public
-export type TagPickerListProps = ComponentProps<TagPickerListSlots>;
+export type TagPickerListProps = ComponentProps<TagPickerListSlots> & {
+    disableAutoFocus?: boolean;
+};
 
 // @public (undocumented)
 export type TagPickerListSlots = {
@@ -236,7 +238,7 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;
 
 // @public
-export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'disableAutoFocus'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:01 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "a618d375761972f620d686e9c8259d63a23ad7f8",
+            "comment": "adding filetypeicon for campaign item"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.14.0",
+            "commit": "ac121640c52fc058f59c2ed650692489732596e7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Dec 2025 06:27:57 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.15.3",
       "version": "8.15.3",

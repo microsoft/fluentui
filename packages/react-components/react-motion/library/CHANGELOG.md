@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Feb 2026 13:32:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.12.0)
+
+Wed, 25 Feb 2026 13:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.11.6..@fluentui/react-motion_v9.12.0)
+
+### Minor changes
+
+- feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.6)
+
+Thu, 22 Jan 2026 17:06:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.11.5..@fluentui/react-motion_v9.11.6)
+
+### Patches
+
+- fix: cleanup animation handle on unmounted component ([PR #35617](https://github.com/microsoft/fluentui/pull/35617) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.5)
 

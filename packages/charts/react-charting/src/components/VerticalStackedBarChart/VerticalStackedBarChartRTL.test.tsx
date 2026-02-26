@@ -705,8 +705,9 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
       expect(bars).toHaveLength(8);
       fireEvent.mouseOver(bars[0]);
       // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(3);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Janu...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(3);
+      expect(tickLabels[0].textContent).toEqual('Janu...');
     },
   );
 

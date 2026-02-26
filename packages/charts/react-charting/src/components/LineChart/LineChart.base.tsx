@@ -39,7 +39,6 @@ import {
   ChartTypes,
   getXAxisType,
   XAxisTypes,
-  tooltipOfAxislabels,
   Points,
   pointTypes,
   getTypeOfAxis,
@@ -200,7 +199,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _renderedColorFillBars: JSXElement[];
   private _colorFillBars: IColorFillBarsProps[];
-  private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
 
@@ -245,7 +243,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._borderId = getId('borderID');
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
-    this._tooltipId = getId('LineChartTooltipId_');
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
@@ -1468,27 +1465,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           {pointsForLine}
         </g>,
       );
-    }
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(this._xAxisScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return lines;
   }

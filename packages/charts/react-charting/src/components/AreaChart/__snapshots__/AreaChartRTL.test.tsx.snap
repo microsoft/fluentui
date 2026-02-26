@@ -15,12 +15,13 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -31,7 +32,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -44,7 +45,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -71,7 +72,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -199,7 +200,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -813,7 +814,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1154,12 +1155,13 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -1170,7 +1172,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1183,7 +1185,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1210,7 +1212,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -1338,7 +1340,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1952,7 +1954,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6150,12 +6152,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -6166,7 +6169,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6179,7 +6182,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -6206,7 +6209,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -6334,7 +6337,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -6463,7 +6466,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementSecondarychart_6"
+            id="yAxisGElementSecondarychart_5"
             text-anchor="start"
             transform="translate(610, 0)"
           >
@@ -7078,7 +7081,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -9760,12 +9763,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -9776,7 +9780,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -9789,7 +9793,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -9816,7 +9820,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -9944,7 +9948,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -10558,7 +10562,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10912,12 +10916,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
-      id="chart_9"
+      id="chart_8"
     >
       <div
-        id="defaultTabbableElement_10"
+        id="defaultTabbableElement_9"
       />
       <div
         class=
@@ -10928,7 +10933,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             {
               position: relative;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -10941,7 +10946,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -10968,7 +10973,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_9"
+            id="xAxisGElementchart_8"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -11096,7 +11101,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_9"
+            id="yAxisGElementchart_8"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -11710,7 +11715,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone13"
+                  data-focuszone-id="FocusZone12"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -12052,12 +12057,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -12068,7 +12074,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -12081,7 +12087,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -12108,7 +12114,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -12236,7 +12242,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -12850,7 +12856,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -13191,12 +13197,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -13207,7 +13214,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             position: relative;
           }
-      data-focuszone-id="FocusZone9"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -13220,7 +13227,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -13247,7 +13254,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -13375,7 +13382,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -13989,7 +13996,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

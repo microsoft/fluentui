@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext as baseCreateContext } from '@fluentui/react-context-selector';
 import { canUseDOM } from '@fluentui/react-utilities';

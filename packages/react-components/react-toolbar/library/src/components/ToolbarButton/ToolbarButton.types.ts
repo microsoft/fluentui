@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
 /**
@@ -11,9 +11,13 @@ export type ToolbarButtonProps = ComponentProps<ButtonSlots> &
     vertical?: boolean;
   };
 
+export type ToolbarButtonBaseProps = DistributiveOmit<ToolbarButtonProps, 'appearance'>;
+
 /**
  * State used in rendering ToolbarButton
  */
 export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> &
   ButtonState &
   Required<Pick<ToolbarButtonProps, 'vertical'>>;
+
+export type ToolbarButtonBaseState = DistributiveOmit<ToolbarButtonState, 'appearance' | 'size' | 'shape'>;

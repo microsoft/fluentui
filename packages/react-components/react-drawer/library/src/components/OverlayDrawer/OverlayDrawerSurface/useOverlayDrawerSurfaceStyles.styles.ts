@@ -29,7 +29,7 @@ const useBackdropStyles = makeStyles({
 export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
-  const { isNestedDialog, backdrop, open, unmountOnClose } = state;
+  const { treatBackdropAsNested, backdrop, open, unmountOnClose } = state;
 
   const backdropResetStyles = useBackdropResetStyles();
   const backdropStyles = useBackdropStyles();
@@ -39,7 +39,7 @@ export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState
   if (backdrop) {
     backdrop.className = mergeClasses(
       backdropResetStyles,
-      isNestedDialog && backdropStyles.nested,
+      treatBackdropAsNested && backdropStyles.nested,
       mountedAndClosed && backdropStyles.drawerHidden,
       backdrop.className,
     );

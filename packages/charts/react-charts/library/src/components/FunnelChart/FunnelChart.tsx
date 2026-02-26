@@ -476,7 +476,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
         height={height}
         className={classes.chart}
         {...arrowAttributes}
-        role={'img'}
+        role={'region'}
         aria-label={props.chartTitle}
       >
         {!props.hideLegend && props.chartTitle && (

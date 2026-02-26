@@ -4,12 +4,31 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
-import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
+import { useMenuItemBase_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox_unstable = (
+  props: MenuItemCheckboxProps,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
+): MenuItemCheckboxState => {
+  const state = useMenuItemCheckboxBase_unstable(props, ref);
+
+  // Set default checkmark icon
+  if (state.checkmark) {
+    state.checkmark.children ??= <Checkmark16Filled />;
+  }
+
+  return state;
+};
+
+/**
+ * Base hook for MenuItemCheckbox component, produces state required to render the component
+ *
+ * @internal
+ */
+export const useMenuItemCheckboxBase_unstable = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<ARIAButtonElement<'div'>>,
 ): MenuItemCheckboxState => {
@@ -22,14 +41,13 @@ export const useMenuItemCheckbox_unstable = (
   });
 
   const state: MenuItemCheckboxState = {
-    ...useMenuItem_unstable(
+    ...useMenuItemBase_unstable(
       {
         role: 'menuitemcheckbox',
         persistOnClick: true,
         ...props,
         'aria-checked': checked,
         checkmark: slot.optional(props.checkmark, {
-          defaultProps: { children: <Checkmark16Filled /> },
           renderByDefault: true,
           elementType: 'span',
         }),
