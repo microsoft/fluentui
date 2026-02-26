@@ -1,17 +1,19 @@
 /* eslint-disable @fluentui/no-restricted-imports */
 import type { Meta } from '@storybook/react';
-import { FileTypeIcon } from '@fluentui/react-file-type-icons';
+import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons';
 
 import descriptionMd from './FileTypeIconDescription.md';
 import bestPracticesMd from './FileTypeIconBestPractices.md';
 
 export { Default } from './FileTypeIconDefault.stories';
+export { Playground } from './FileTypeIconPlayground.stories';
 export { CommonFileTypes } from './FileTypeIconCommon.stories';
 export { UrlAndHtml } from './FileTypeIconUrlAndHtml.stories';
 export { EdgeCases } from './FileTypeIconEdgeCases.stories';
+export { V8ToV9Migration } from './FileTypeIconMigration.stories';
 
 export default {
-  title: 'Icons/Filetype Icons',
+  title: 'Icons/FileTypeIcon',
   component: FileTypeIcon,
   parameters: {
     docs: {
@@ -39,7 +41,17 @@ export default {
     },
     type: {
       control: { type: 'select' },
-      options: ['folder', 'genericFile', 'sharedFolder', 'listItem', 'docset'],
+      options: ['none', 'folder', 'genericFile', 'sharedFolder', 'listItem', 'docset', 'list', 'stream'],
+      mapping: {
+        none: undefined,
+        folder: FileIconType.folder,
+        genericFile: FileIconType.genericFile,
+        sharedFolder: FileIconType.sharedFolder,
+        listItem: FileIconType.listItem,
+        docset: FileIconType.docset,
+        list: FileIconType.list,
+        stream: FileIconType.stream,
+      },
       description: 'Special icon type (alternative to extension)',
       table: {
         type: { summary: 'FileIconType' },
