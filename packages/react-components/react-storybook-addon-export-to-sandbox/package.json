@@ -18,7 +18,7 @@
     "dedent": "^1.2.0"
   },
   "peerDependencies": {
-    "@storybook/react": "^9.1.16"
+    "@storybook/react": "^9.1.17"
   },
   "beachball": {
     "disallowedChangeTypes": [

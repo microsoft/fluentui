@@ -2,6 +2,27 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:10 GMT",
+      "tag": "@fluentui/react-overflow_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.3.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:33 GMT",
       "tag": "@fluentui/react-overflow_v9.6.7",
       "version": "9.6.7",

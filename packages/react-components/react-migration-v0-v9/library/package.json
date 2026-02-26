@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-migration-v0-v9",
-  "version": "9.6.19",
+  "version": "9.6.20",
   "description": "Migration shim components and methods for hybrid v0/v9 applications building on Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,11 +12,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-aria": "^9.17.8",
-    "@fluentui/react-components": "^9.72.11",
+    "@fluentui/react-aria": "^9.17.9",
+    "@fluentui/react-components": "^9.73.0",
     "@fluentui/react-context-selector": "^9.2.14",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.3.5",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",

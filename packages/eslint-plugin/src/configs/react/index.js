@@ -6,6 +6,7 @@ const reactCompilerPlugin = require('eslint-plugin-react-compiler');
 const { __internal } = require('../../internal');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
 const { defineConfig } = require('eslint/config');
+const { testFiles } = require('../../utils/configHelpers');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -105,7 +106,7 @@ module.exports = defineConfig(
   },
 
   {
-    files: ['**/*.test.{ts,tsx}'],
+    files: [...testFiles],
     rules: {
       'react-compiler/react-compiler': 'off',
       '@fluentui/react-components/enforce-use-client': 'off',

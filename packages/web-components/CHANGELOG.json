@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 17 Feb 2026 04:07:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.5",
+      "version": "3.0.0-rc.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2b0d32457b4ab696d0135d68a88da6e47a0e2aaf",
+            "comment": "chore: bump storybook to mitigate CVE"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Feb 2026 04:08:37 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.5",
       "version": "3.0.0-rc.5",

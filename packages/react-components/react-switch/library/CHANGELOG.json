@@ -2,6 +2,39 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:11 GMT",
+      "tag": "@fluentui/react-switch_v9.5.3",
+      "version": "9.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4a303837f102daa3a83eb61a507fc2a62a5f0f32",
+            "comment": "refactor: add base state hooks for Switch component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.4.14",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.3.14",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:40 GMT",
       "tag": "@fluentui/react-switch_v9.5.2",
       "version": "9.5.2",

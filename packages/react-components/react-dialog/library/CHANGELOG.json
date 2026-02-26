@@ -2,6 +2,33 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:14 GMT",
+      "tag": "@fluentui/react-dialog_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "feat: add appearance to backdrop slot"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.17.9",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:52 GMT",
       "tag": "@fluentui/react-dialog_v9.16.6",
       "version": "9.16.6",

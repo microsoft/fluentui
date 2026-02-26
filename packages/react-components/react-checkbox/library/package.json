@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.5.13",
+  "version": "9.5.14",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,10 +12,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-field": "^9.4.13",
+    "@fluentui/react-field": "^9.4.14",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.3.5",
-    "@fluentui/react-label": "^9.3.13",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
+    "@fluentui/react-label": "^9.3.14",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",

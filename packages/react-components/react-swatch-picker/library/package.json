@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-swatch-picker",
-  "version": "9.4.13",
+  "version": "9.4.14",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,9 +13,9 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-context-selector": "^9.2.14",
-    "@fluentui/react-field": "^9.4.13",
+    "@fluentui/react-field": "^9.4.14",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.3.5",
+    "@fluentui/react-jsx-runtime": "^9.4.0",
     "@fluentui/react-shared-contexts": "^9.26.1",
     "@fluentui/react-tabster": "^9.26.12",
     "@fluentui/react-theme": "^9.2.1",

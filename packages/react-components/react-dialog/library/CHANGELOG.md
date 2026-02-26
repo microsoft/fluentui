@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 22 Jan 2026 17:06:52 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Feb 2026 10:46:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.17.0)
+
+Thu, 12 Feb 2026 10:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.16.6..@fluentui/react-dialog_v9.17.0)
+
+### Minor changes
+
+- feat: add appearance to backdrop slot ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-aria to v9.17.9 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
 
 ## [9.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.16.6)
 
