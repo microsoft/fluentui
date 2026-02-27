@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -28,7 +28,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 /**
  * Popover Props
  */
-export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
+export type PopoverProps = ComponentProps<Partial<PopoverSlots>> & Pick<PortalProps, 'mountNode'> & {
   /**
    * A popover can appear styled with brand or inverted.
    * When not specified, the default style is used.
@@ -121,12 +121,6 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * @default medium
    */
   size?: PopoverSize;
-
-  /**
-   * Slot for the surface motion animation.
-   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
-   */
-  surfaceMotion?: PopoverSlots['surfaceMotion'];
 
   /**
    * Should trap focus

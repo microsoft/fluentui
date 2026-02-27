@@ -15,13 +15,11 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
-import type { PresenceComponentProps } from '@fluentui/react-motion';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
@@ -352,16 +350,15 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
     closeOnScroll?: boolean;
-    surfaceMotion?: Slot<PresenceMotionSlotProps<{
-        mainAxis: number;
-    }>>;
 };
 
 // @public (undocumented)
 export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
-export type MenuSlots = {};
+export type MenuSlots = {
+    surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
 
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -381,7 +378,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -396,9 +393,6 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
     safeZone?: React_2.ReactElement | null;
-    surfaceMotion: SlotComponentType<Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
-        mainAxis: number;
-    }>;
 };
 
 // @public

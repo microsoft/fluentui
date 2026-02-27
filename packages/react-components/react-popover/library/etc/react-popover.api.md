@@ -15,7 +15,6 @@ import { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
-import type { PresenceComponentProps } from '@fluentui/react-motion';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -23,7 +22,6 @@ import * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SlotComponentType } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -44,7 +42,7 @@ export const Popover: React_2.FC<PopoverProps>;
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
 
 // @public
-export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
+export type PopoverProps = ComponentProps<Partial<PopoverSlots>> & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'brand' | 'inverted';
     children: [JSXElement, JSXElement] | JSXElement;
     closeOnScroll?: boolean;
@@ -59,9 +57,6 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     closeOnIframeFocus?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    surfaceMotion?: Slot<PresenceMotionSlotProps<{
-        mainAxis: number;
-    }>>;
     trapFocus?: boolean;
     legacyTrapFocus?: boolean;
     inertTrapFocus?: boolean;
@@ -75,9 +70,7 @@ export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<P
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = {
-    components: Record<string, never>;
-} & Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = ComponentState<InternalPopoverSlots> & Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PositioningVirtualElement | undefined;
@@ -86,9 +79,6 @@ export type PopoverState = {
     setContextTarget: SetVirtualMouseTarget;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     size: NonNullable<PopoverProps['size']>;
-    surfaceMotion: SlotComponentType<Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
-        mainAxis: number;
-    }>;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
 };

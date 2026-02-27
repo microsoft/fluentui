@@ -22,7 +22,7 @@ export type InternalMenuSlots = {
 /**
  * Extends and drills down Menulist props to simplify API
  */
-export type MenuProps = ComponentProps<MenuSlots> &
+export type MenuProps = ComponentProps<Partial<MenuSlots>> &
   Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
