@@ -30,8 +30,8 @@ export function getPlacementSlideDirections(placement: string): { x: number; y: 
 }
 
 type UsePositioningSlideDirectionOptions = {
-  /** The target window for CSS.registerProperty. */
-  targetWindow: (Window & typeof globalThis) | null | undefined;
+  /** The target document for CSS.registerProperty. */
+  targetDocument: Document | undefined;
   /** The user's original onPositioningEnd callback, if any. */
   onPositioningEnd?: PositioningProps['onPositioningEnd'];
 };
@@ -48,7 +48,7 @@ type UsePositioningSlideDirectionOptions = {
 export function usePositioningSlideDirection(
   options: UsePositioningSlideDirectionOptions,
 ): NonNullable<PositioningProps['onPositioningEnd']> {
-  const { targetWindow, onPositioningEnd } = options;
+  const { targetDocument, onPositioningEnd } = options;
 
   const handlePositionEnd: NonNullable<PositioningProps['onPositioningEnd']> = useEventCallback(e => {
     onPositioningEnd?.(e);
@@ -71,7 +71,7 @@ export function usePositioningSlideDirection(
   // properties are already registered.
   React.useEffect(() => {
     const registerProperty =
-      targetWindow?.CSS?.registerProperty ??
+      targetDocument?.defaultView?.CSS?.registerProperty ??
       (() => {
         // No-op if registerProperty is not supported
       });
@@ -92,7 +92,7 @@ export function usePositioningSlideDirection(
     } catch (e) {
       // Ignore errors from registerProperty, which can occur if the properties are already registered
     }
-  }, [targetWindow]);
+  }, [targetDocument]);
 
   return handlePositionEnd;
 }

@@ -44,7 +44,7 @@ describe('usePositioningSlideDirection', () => {
   it('sets CSS custom properties on the positioned element', () => {
     const { result } = renderHook(() =>
       usePositioningSlideDirection({
-        targetWindow: window,
+        targetDocument: document,
       }),
     );
 
@@ -67,7 +67,7 @@ describe('usePositioningSlideDirection', () => {
   it('sets CSS custom properties for "right" placement', () => {
     const { result } = renderHook(() =>
       usePositioningSlideDirection({
-        targetWindow: window,
+        targetDocument: document,
       }),
     );
 
@@ -92,7 +92,7 @@ describe('usePositioningSlideDirection', () => {
 
     const { result } = renderHook(() =>
       usePositioningSlideDirection({
-        targetWindow: window,
+        targetDocument: document,
         onPositioningEnd: originalCallback,
       }),
     );
@@ -113,13 +113,13 @@ describe('usePositioningSlideDirection', () => {
 
   it('calls CSS.registerProperty on mount', () => {
     const registerProperty = jest.fn();
-    const mockWindow = {
-      CSS: { registerProperty },
-    } as unknown as Window & typeof globalThis;
+    const mockDocument = {
+      defaultView: { CSS: { registerProperty } },
+    } as unknown as Document;
 
     renderHook(() =>
       usePositioningSlideDirection({
-        targetWindow: mockWindow,
+        targetDocument: mockDocument,
       }),
     );
 
@@ -142,15 +142,15 @@ describe('usePositioningSlideDirection', () => {
     const registerProperty = jest.fn().mockImplementation(() => {
       throw new Error('Property already registered');
     });
-    const mockWindow = {
-      CSS: { registerProperty },
-    } as unknown as Window & typeof globalThis;
+    const mockDocument = {
+      defaultView: { CSS: { registerProperty } },
+    } as unknown as Document;
 
     // Should not throw
     expect(() => {
       renderHook(() =>
         usePositioningSlideDirection({
-          targetWindow: mockWindow,
+          targetDocument: mockDocument,
         }),
       );
     }).not.toThrow();
