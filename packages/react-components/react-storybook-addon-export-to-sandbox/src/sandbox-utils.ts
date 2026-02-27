@@ -14,7 +14,9 @@ export function addHiddenInput(form: HTMLFormElement, name: string, value: strin
 }
 
 export function prepareSandboxContainers(context: StoryContext) {
-  const docsSelector = `#anchor--${context.id} .docs-story`;
+  // Support both SB9 (#anchor--{id}) and SB10 (#anchor--primary--{id}) anchor ID formats
+  // See: https://github.com/storybookjs/storybook/pull/33384
+  const docsSelector = `#anchor--${context.id} .docs-story, #anchor--primary--${context.id} .docs-story`;
   const rootElements = document.querySelectorAll(docsSelector);
 
   if (!rootElements.length) {
