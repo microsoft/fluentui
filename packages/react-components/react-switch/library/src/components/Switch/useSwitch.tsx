@@ -71,11 +71,10 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
     },
     elementType: 'input',
   });
-  input.onChange = mergeCallbacks(input.onChange, ev => {
+  input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
+  input.onClick = mergeCallbacks(input.onClick, ev => {
     if (disabledFocusable) {
       ev.preventDefault();
-    } else {
-      onChange?.(ev, { checked: ev.currentTarget.checked });
     }
   });
   input.onKeyDown = mergeCallbacks(input.onKeyDown, ev => {

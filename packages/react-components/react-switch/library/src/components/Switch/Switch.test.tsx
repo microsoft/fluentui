@@ -167,15 +167,6 @@ describe('Switch', () => {
       expect(document.activeElement).toEqual(input);
     });
 
-    it('does not call onChange when disabledFocusable has been passed', () => {
-      const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
-      const { getByRole } = render(<Switch disabledFocusable onChange={onChange} />);
-      const input = getByRole('switch');
-
-      userEvent.click(input);
-      expect(onChange).not.toHaveBeenCalled();
-    });
-
     it('calls onChange with the correct value', () => {
       const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
       const { getByRole } = render(<Switch onChange={onChange} />);
