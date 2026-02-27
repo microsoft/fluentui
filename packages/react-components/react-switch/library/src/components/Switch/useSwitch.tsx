@@ -38,8 +38,15 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { checked, defaultChecked, disabled, disabledFocusable = false, labelPosition = 'after', onChange, required } =
-    props;
+  const {
+    checked,
+    defaultChecked,
+    disabled,
+    disabledFocusable = false,
+    labelPosition = 'after',
+    onChange,
+    required,
+  } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,

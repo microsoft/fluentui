@@ -95,7 +95,8 @@ export type SwitchBaseProps = Omit<SwitchProps, 'size'>;
 /**
  * State used in rendering Switch
  */
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'disabledFocusable' | 'labelPosition' | 'size'>>;
+export type SwitchState = ComponentState<SwitchSlots> &
+  Required<Pick<SwitchProps, 'disabledFocusable' | 'labelPosition' | 'size'>>;
 
 /**
  * Switch base state, excluding design-related state like size
