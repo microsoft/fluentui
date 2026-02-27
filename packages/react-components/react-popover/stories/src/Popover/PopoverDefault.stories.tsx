@@ -21,14 +21,7 @@ const ExampleContent = () => {
 };
 
 export const Default = (props: PopoverProps): JSXElement => (
-  <Popover
-    {...props}
-    positioning={
-      {
-        // position: 'after'
-      }
-    }
-  >
+  <Popover {...props}>
     <PopoverTrigger disableButtonEnhancement>
       <Button>Popover trigger</Button>
     </PopoverTrigger>
