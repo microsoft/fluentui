@@ -52,9 +52,8 @@ export type SwitchProps = Omit<
   checked?: boolean;
 
   /**
-   * Whether the switch should be disabled and focusable. This is used in scenarios where it is important to keep a
-   * consistent tab order for screen reader and keyboard users. The primary example of this pattern is when the
-   * disabled switch is in a list or a form and is seldom used for standalone switches.
+   * When set, allows the Switch to be focusable even when it has been disabled. This is used in scenarios where it is
+   * important to keep a consistent tab order for screen reader and keyboard users.
    *
    * @default false
    */

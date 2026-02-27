@@ -78,6 +78,11 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
       onChange?.(ev, { checked: ev.currentTarget.checked });
     }
   });
+  input.onKeyDown = mergeCallbacks(input.onKeyDown, ev => {
+    if (disabledFocusable && (ev.key === ' ' || ev.key === 'Enter')) {
+      ev.preventDefault();
+    }
+  });
   const label = slot.optional(props.label, {
     defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required, size: 'medium' },
     elementType: Label,

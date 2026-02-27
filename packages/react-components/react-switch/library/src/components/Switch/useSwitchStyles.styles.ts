@@ -115,7 +115,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Disabled (both checked and unchecked)
-  ':disabled': {
+  ':disabled, &[aria-disabled="true"]': {
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
@@ -129,7 +129,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and unchecked
-  ':enabled:not(:checked)': {
+  ':enabled:not(:checked):not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       color: tokens.colorNeutralStrokeAccessible,
       borderColor: tokens.colorNeutralStrokeAccessible,
@@ -155,7 +155,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and checked
-  ':enabled:checked': {
+  ':enabled:checked:not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
       color: tokens.colorNeutralForegroundInverted,
@@ -177,67 +177,15 @@ const useInputBaseClassName = makeResetStyles({
     },
   },
 
-  // DisabledFocusable (both checked and unchecked) - must come after :enabled: blocks to override them
-  '[aria-disabled="true"]': {
-    cursor: 'default',
-
-    [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-
-  // DisabledFocusable and unchecked
-  // Uses :not(:checked) to match specificity of :enabled:not(:checked) and override it
-  '[aria-disabled="true"]:not(:checked)': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-      borderColor: tokens.colorNeutralStrokeDisabled,
-    },
-
-    [`& ~ .${switchClassNames.label}`]: {
-      cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    ':hover, :hover:active': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        borderColor: tokens.colorNeutralStrokeDisabled,
-      },
-    },
-  },
-
-  // DisabledFocusable and checked
-  // Uses :checked to match specificity of :enabled:checked and override it
-  '[aria-disabled="true"]:checked': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
-      borderColor: tokens.colorTransparentStrokeDisabled,
-    },
-
-    [`& ~ .${switchClassNames.label}`]: {
-      cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    ':hover, :hover:active': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorNeutralBackgroundDisabled,
-        borderColor: tokens.colorTransparentStrokeDisabled,
-      },
-    },
-  },
-
   // Disabled and unchecked
-  ':disabled:not(:checked)': {
+  ':disabled:not(:checked), &[aria-disabled="true"]:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
       borderColor: tokens.colorNeutralStrokeDisabled,
     },
   },
 
   // Disabled and checked
-  ':disabled:checked': {
+  ':disabled:checked, &[aria-disabled="true"]:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       borderColor: tokens.colorTransparentStrokeDisabled,
@@ -245,7 +193,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   '@media (forced-colors: active)': {
-    ':disabled': {
+    ':disabled, &[aria-disabled="true"]': {
       [`& ~ .${switchClassNames.indicator}`]: {
         color: 'GrayText',
         borderColor: 'GrayText',
@@ -261,7 +209,7 @@ const useInputBaseClassName = makeResetStyles({
     ':hover:active': {
       color: 'CanvasText',
     },
-    ':enabled:checked': {
+    ':enabled:checked:not([aria-disabled="true"])': {
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: 'Highlight',
@@ -277,44 +225,6 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: 'Highlight',
         color: 'Canvas',
-      },
-    },
-    // DisabledFocusable forced-colors: must come after :enabled:checked to override Highlight styles
-    // Use :not(:checked) and :checked variants to match the specificity of :enabled:not(:checked) and :enabled:checked
-    '[aria-disabled="true"]:not(:checked)': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        color: 'GrayText',
-        borderColor: 'GrayText',
-      },
-
-      [`& ~ .${switchClassNames.label}`]: {
-        color: 'GrayText',
-      },
-
-      ':hover, :hover:active': {
-        [`& ~ .${switchClassNames.indicator}`]: {
-          color: 'GrayText',
-          borderColor: 'GrayText',
-        },
-      },
-    },
-    '[aria-disabled="true"]:checked': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: 'ButtonFace',
-        color: 'GrayText',
-        borderColor: 'GrayText',
-      },
-
-      [`& ~ .${switchClassNames.label}`]: {
-        color: 'GrayText',
-      },
-
-      ':hover, :hover:active': {
-        [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: 'ButtonFace',
-          color: 'GrayText',
-          borderColor: 'GrayText',
-        },
       },
     },
   },
