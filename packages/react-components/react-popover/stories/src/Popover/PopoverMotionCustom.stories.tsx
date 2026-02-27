@@ -11,7 +11,7 @@ const FadeInBlurOut = createPresenceComponent({
 export const MotionCustom = (): JSXElement => (
   <Popover
     surfaceMotion={{
-      children: (_, { mainAxis: _mainAxis, ...motionProps }) => <FadeInBlurOut {...motionProps} />,
+      children: (_, motionProps) => <FadeInBlurOut {...motionProps} />,
     }}
   >
     <PopoverTrigger disableButtonEnhancement>

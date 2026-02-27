@@ -14,23 +14,23 @@ const easing = motionTokens.curveDecelerateMid;
  *
  * Enter-only animation combining a fade and a direction-aware slide.
  * The slide reads CSS variables set by `usePositioningSlideDirection` and scales
- * them by `mainAxis` pixels. There is no exit animation; the surface unmounts immediately.
+ * them by `distance` pixels. There is no exit animation; the surface unmounts immediately.
  *
- * @param mainAxis - Travel distance (px) for the enter slide. Defaults to `10`.
+ * @param distance - Travel distance (px) for the enter slide. Defaults to `10`.
  */
-export const MenuSurfaceMotion = createPresenceComponent<{ mainAxis: number }>(({ mainAxis = 10 }) => ({
+export const MenuSurfaceMotion = createPresenceComponent(({ distance = 10 }: { distance?: number }) => ({
   enter: [
     fadeAtom({ duration, easing, direction: 'enter' }),
     {
       // slideAtom produces translate keyframes from `outX`/`outY` → `0px`.
       // The `outX`/`outY` values read the positioning-provided CSS variables and scale
-      // them by `mainAxis` so the surface slides in from the correct direction.
+      // them by `distance` so the surface slides in from the correct direction.
       ...slideAtom({
         duration,
         easing,
         direction: 'enter',
-        outX: `calc(var(${slideDirectionVarX}, 0px) * ${mainAxis})`,
-        outY: `calc(var(${slideDirectionVarY}, 0px) * ${mainAxis})`,
+        outX: `calc(var(${slideDirectionVarX}, 0px) * ${distance})`,
+        outY: `calc(var(${slideDirectionVarY}, 0px) * ${distance})`,
       }),
       // 'accumulate' compositing adds this effect's transform on top of the element's
       // existing transform, preserving any transform applied by the positioning engine.
