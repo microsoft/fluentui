@@ -5,13 +5,13 @@ import * as React from 'react';
 import { assertSlots, type JSXElement } from '@fluentui/react-utilities';
 import { MotionRefForwarder } from '@fluentui/react-motion';
 import { PopoverContext } from '../../popoverContext';
-import type { PopoverSlots, PopoverState } from './Popover.types';
+import type { InternalPopoverSlots, PopoverState } from './Popover.types';
 
 /**
  * Render the final JSX of Popover
  */
 export const renderPopover_unstable = (state: PopoverState): JSXElement => {
-  assertSlots<PopoverSlots>(state);
+  assertSlots<InternalPopoverSlots>(state);
 
   const {
     appearance,

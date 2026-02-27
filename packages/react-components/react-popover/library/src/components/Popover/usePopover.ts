@@ -44,10 +44,9 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const withArrow = props.withArrow && !positioning.coverTarget;
 
   const { targetDocument } = useFluent();
-  const targetWindow = targetDocument?.defaultView;
 
   const handlePositionEnd = usePositioningSlideDirection({
-    targetWindow,
+    targetDocument,
     onPositioningEnd: positioning.onPositioningEnd,
   });
 
@@ -62,7 +61,9 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   return {
-    components: {}, // Required by assertSlots() in renderPopover (see PopoverState type)
+    components: {
+      surfaceMotion: PopoverSurfaceMotion,
+    },
     appearance,
     size,
     ...state,

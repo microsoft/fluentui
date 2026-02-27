@@ -66,13 +66,12 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
   } = props;
 
   const { targetDocument } = useFluent();
-  const targetWindow = targetDocument?.defaultView;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const resolvedPositioning = resolvePositioningShorthand(props.positioning);
   const handlePositionEnd = usePositioningSlideDirection({
-    targetWindow,
+    targetDocument,
     onPositioningEnd: resolvedPositioning.onPositioningEnd,
   });
 
@@ -191,7 +190,9 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     mountNode,
     triggerRef,
     menuPopoverRef,
-    components: {},
+    components: {
+      surfaceMotion: MenuSurfaceMotion,
+    },
     openOnContext,
     open,
     setOpen,

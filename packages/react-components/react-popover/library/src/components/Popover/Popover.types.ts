@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { PresenceComponentProps, PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { JSXElement, Slot, SlotComponentType } from '@fluentui/react-utilities';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -8,12 +8,17 @@ import type {
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 
-/**
- * Empty slots record required by assertSlots() in renderPopover.
- * Popover doesn't use traditional slots (e.g. root), but assertSlots is needed
- * so the @nx/workspace-no-missing-jsx-pragma lint rule recognizes the JSX pragma as required.
- */
-export type PopoverSlots = {};
+export type PopoverSlots = {
+  /**
+   * Slot for the surface motion animation.
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   */
+  surfaceMotion: Slot<PresenceMotionSlotProps<{ mainAxis: number }>>;
+};
+
+export type InternalPopoverSlots = {
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps<{ mainAxis: number }>>>;
+};
 
 /**
  * Determines popover padding and arrow size
@@ -121,7 +126,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Slot for the surface motion animation.
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    */
-  surfaceMotion?: Slot<PresenceMotionSlotProps<{ mainAxis: number }>>;
+  surfaceMotion?: PopoverSlots['surfaceMotion'];
 
   /**
    * Should trap focus
@@ -164,18 +169,18 @@ export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
 /**
  * Popover State
  */
-// components is required by assertSlots() which iterates Object.keys(state.components) at runtime in dev mode.
-export type PopoverState = { components: Record<string, never> } & Pick<
-  PopoverProps,
-  | 'appearance'
-  | 'mountNode'
-  | 'onOpenChange'
-  | 'openOnContext'
-  | 'openOnHover'
-  | 'trapFocus'
-  | 'withArrow'
-  | 'inertTrapFocus'
-> &
+export type PopoverState = ComponentState<InternalPopoverSlots> &
+  Pick<
+    PopoverProps,
+    | 'appearance'
+    | 'mountNode'
+    | 'onOpenChange'
+    | 'openOnContext'
+    | 'openOnHover'
+    | 'trapFocus'
+    | 'withArrow'
+    | 'inertTrapFocus'
+  > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
     /**
@@ -212,15 +217,6 @@ export type PopoverState = { components: Record<string, never> } & Pick<
     size: NonNullable<PopoverProps['size']>;
 
     /**
-     * Slot for the surface motion animation.
-     */
-    surfaceMotion: SlotComponentType<
-      Pick<PresenceComponentProps, 'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'> & {
-        mainAxis: number;
-      }
-    >;
-
-    /**
      * Callback to toggle the open state of the Popover
      */
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -233,6 +229,7 @@ export type PopoverState = { components: Record<string, never> } & Pick<
   };
 
 export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'components' | 'size' | 'surfaceMotion'>;
+
 
 /**
  * Data attached to open/close events
