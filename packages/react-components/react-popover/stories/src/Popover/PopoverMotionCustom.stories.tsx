@@ -10,14 +10,7 @@ const FadeInBlurOut = createPresenceComponent({
 
 export const MotionCustom = (): JSXElement => (
   <Popover
-    surfaceMotion={{
-      // The children render function replaces the default PopoverSurfaceMotion component.
-      // The first argument is the default component (ignored here since we're replacing it).
-      // The second argument contains the resolved slot props:
-      //   - motionProps: visible, appear, unmountOnExit, children (the popover surface), and event callbacks
-      //   - mainAxis: a popover-specific slide distance param unused by the custom motion, so it is discarded
-      children: (_, { mainAxis: _mainAxis, ...motionProps }) => <FadeInBlurOut {...motionProps} />,
-    }}
+    surfaceMotion={FadeInBlurOut}
   >
     <PopoverTrigger disableButtonEnhancement>
       <Button>Open popover</Button>
