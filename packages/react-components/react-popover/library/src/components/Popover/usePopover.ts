@@ -73,7 +73,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
         visible: state.open,
         appear: true,
         unmountOnExit: true,
-        mainAxis: 10,
       },
     }),
   };

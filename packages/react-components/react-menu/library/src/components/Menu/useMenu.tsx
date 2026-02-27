@@ -206,7 +206,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
         visible: open,
         appear: true,
         unmountOnExit: true,
-        mainAxis: 10,
       },
     }),
   };

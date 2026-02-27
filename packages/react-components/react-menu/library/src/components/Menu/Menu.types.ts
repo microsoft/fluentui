@@ -12,11 +12,11 @@ export type MenuSlots = {
    * Slot for the surface motion animation.
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    */
-  surfaceMotion: Slot<PresenceMotionSlotProps<{ mainAxis: number }>>;
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
 };
 
 export type InternalMenuSlots = {
-  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps<{ mainAxis: number }>>>;
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
 };
 
 /**
