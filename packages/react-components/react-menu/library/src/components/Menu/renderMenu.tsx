@@ -19,7 +19,11 @@ export const renderMenu_unstable = (state: MenuState, contextValues: MenuContext
       {state.menuTrigger}
       {state.menuPopover && (
         <state.surfaceMotion>
-          <MotionRefForwarder>{state.menuPopover as React.ReactElement}</MotionRefForwarder>
+          <MotionRefForwarder>
+            {/* Casting here as content should be equivalent to <MenuPopover /> */}
+            {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
+            {state.menuPopover as React.ReactElement}
+          </MotionRefForwarder>
         </state.surfaceMotion>
       )}
     </MenuProvider>
