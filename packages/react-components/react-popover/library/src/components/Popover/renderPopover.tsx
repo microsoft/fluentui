@@ -11,10 +11,6 @@ import type { PopoverSlots, PopoverState } from './Popover.types';
  * Render the final JSX of Popover
  */
 export const renderPopover_unstable = (state: PopoverState): JSXElement => {
-  // assertSlots is a no-op here (PopoverSlots is empty), but is required to satisfy the
-  // @nx/workspace-no-missing-jsx-pragma lint rule that checks for assertSlots when the JSX pragma is present.
-  // The @fluentui/react-jsx-runtime pragma is needed because <state.surfaceMotion> is a SlotComponentType
-  // created by presenceMotionSlot() which requires the custom JSX runtime to resolve SLOT_ELEMENT_TYPE_SYMBOL.
   assertSlots<PopoverSlots>(state);
 
   const {
