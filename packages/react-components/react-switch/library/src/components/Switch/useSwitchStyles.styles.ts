@@ -177,6 +177,58 @@ const useInputBaseClassName = makeResetStyles({
     },
   },
 
+  // DisabledFocusable (both checked and unchecked) - must come after :enabled: blocks to override them
+  '[aria-disabled="true"]': {
+    cursor: 'default',
+
+    [`& ~ .${switchClassNames.indicator}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+  },
+
+  // DisabledFocusable and unchecked
+  // Uses :not(:checked) to match specificity of :enabled:not(:checked) and override it
+  '[aria-disabled="true"]:not(:checked)': {
+    [`& ~ .${switchClassNames.indicator}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+      borderColor: tokens.colorNeutralStrokeDisabled,
+    },
+
+    [`& ~ .${switchClassNames.label}`]: {
+      cursor: 'default',
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+
+    ':hover, :hover:active': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+        borderColor: tokens.colorNeutralStrokeDisabled,
+      },
+    },
+  },
+
+  // DisabledFocusable and checked
+  // Uses :checked to match specificity of :enabled:checked and override it
+  '[aria-disabled="true"]:checked': {
+    [`& ~ .${switchClassNames.indicator}`]: {
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
+      borderColor: tokens.colorTransparentStrokeDisabled,
+    },
+
+    [`& ~ .${switchClassNames.label}`]: {
+      cursor: 'default',
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+
+    ':hover, :hover:active': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        backgroundColor: tokens.colorNeutralBackgroundDisabled,
+        borderColor: tokens.colorTransparentStrokeDisabled,
+      },
+    },
+  },
+
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
@@ -225,6 +277,44 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: 'Highlight',
         color: 'Canvas',
+      },
+    },
+    // DisabledFocusable forced-colors: must come after :enabled:checked to override Highlight styles
+    // Use :not(:checked) and :checked variants to match the specificity of :enabled:not(:checked) and :enabled:checked
+    '[aria-disabled="true"]:not(:checked)': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        color: 'GrayText',
+        borderColor: 'GrayText',
+      },
+
+      [`& ~ .${switchClassNames.label}`]: {
+        color: 'GrayText',
+      },
+
+      ':hover, :hover:active': {
+        [`& ~ .${switchClassNames.indicator}`]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+        },
+      },
+    },
+    '[aria-disabled="true"]:checked': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        backgroundColor: 'ButtonFace',
+        color: 'GrayText',
+        borderColor: 'GrayText',
+      },
+
+      [`& ~ .${switchClassNames.label}`]: {
+        color: 'GrayText',
+      },
+
+      ':hover, :hover:active': {
+        [`& ~ .${switchClassNames.indicator}`]: {
+          backgroundColor: 'ButtonFace',
+          color: 'GrayText',
+          borderColor: 'GrayText',
+        },
       },
     },
   },

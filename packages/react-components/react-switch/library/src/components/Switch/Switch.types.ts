@@ -52,6 +52,15 @@ export type SwitchProps = Omit<
   checked?: boolean;
 
   /**
+   * Whether the switch should be disabled and focusable. This is used in scenarios where it is important to keep a
+   * consistent tab order for screen reader and keyboard users. The primary example of this pattern is when the
+   * disabled switch is in a list or a form and is seldom used for standalone switches.
+   *
+   * @default false
+   */
+  disabledFocusable?: boolean;
+
+  /**
    * Defines whether the Switch is initially in a checked state or not when rendered.
    *
    * @default false
@@ -87,7 +96,7 @@ export type SwitchBaseProps = Omit<SwitchProps, 'size'>;
 /**
  * State used in rendering Switch
  */
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'disabledFocusable' | 'labelPosition' | 'size'>>;
 
 /**
  * Switch base state, excluding design-related state like size
