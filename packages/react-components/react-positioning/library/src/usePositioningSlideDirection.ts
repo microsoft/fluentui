@@ -41,7 +41,7 @@ type UsePositioningSlideDirectionOptions = {
  *
  * It wraps the `onPositioningEnd` callback to set `--fui-positioning-slide-direction-x` and
  * `--fui-positioning-slide-direction-y` CSS custom properties on the positioned element,
- * and registers them via `CSS.registerProperty` for smooth animation interpolation.
+ * and registers them via `CSS.registerProperty` to avoid properties propagation down to a DOM tree.
  *
  * @returns The wrapped `onPositioningEnd` handler to pass to the positioning config.
  */
