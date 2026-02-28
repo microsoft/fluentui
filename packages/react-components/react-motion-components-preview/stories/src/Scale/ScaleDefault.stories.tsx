@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, Switch, Text } from '@fluentui/react-components';
 import { Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -11,16 +11,12 @@ const useClasses = makeStyles({
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: '20px',
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
     gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
     padding: '10px',
   },
   field: {
@@ -42,16 +38,23 @@ export const Default = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
+      <Card className={classes.controls}>
         <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
-      </div>
+      </Card>
 
       <Scale visible={visible}>
-        <div className={classes.card}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" style={{ margin: 0 }} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </Scale>
     </div>
   );

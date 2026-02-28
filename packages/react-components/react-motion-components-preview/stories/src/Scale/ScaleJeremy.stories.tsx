@@ -1,9 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Card, CardHeader, Field, makeStyles, Switch, Text } from '@fluentui/react-components';
-import { ScaleSnappy } from '@fluentui/react-motion-components-preview';
+import { ScaleJeremy } from '@fluentui/react-motion-components-preview';
 
-import description from './ScaleSnappy.stories.md';
+import description from './ScaleJeremy.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -34,7 +34,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Snappy = (): JSXElement => {
+export const Jeremy = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
@@ -46,7 +46,7 @@ export const Snappy = (): JSXElement => {
         </Field>
       </Card>
 
-      <ScaleSnappy visible={visible}>
+      <ScaleJeremy visible={visible}>
         <Card className={classes.card}>
           <CardHeader
             header={
@@ -57,12 +57,12 @@ export const Snappy = (): JSXElement => {
           />
           <LoremIpsum />
         </Card>
-      </ScaleSnappy>
+      </ScaleJeremy>
     </div>
   );
 };
 
-Snappy.parameters = {
+Jeremy.parameters = {
   docs: {
     description: {
       story: description,

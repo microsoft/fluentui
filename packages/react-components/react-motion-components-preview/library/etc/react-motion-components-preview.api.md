@@ -88,6 +88,9 @@ export const Scale: PresenceComponent<ScaleParams>;
 export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
 
 // @public (undocumented)
+export const ScaleJeremy: PresenceComponent<    {}>;
+
+// @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
     outScale?: number;
     inScale?: number;
