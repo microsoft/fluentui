@@ -2276,6 +2276,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
   const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
+
   return {
     data: chartData,
     secondaryYAxistitle:
@@ -2297,6 +2299,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
     ...getAxisTickProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
