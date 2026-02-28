@@ -2,6 +2,7 @@ import { Ref } from 'react';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Chart, ChartProps } from '../../types/DataPoint';
+import { ChartAnnotation } from '../../types/ChartAnnotation';
 
 export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoint';
 
@@ -119,6 +120,11 @@ export interface SankeyChartProps {
      */
     mode: 'none' | 'min-width';
   };
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: ChartAnnotation[];
 }
 
 /**

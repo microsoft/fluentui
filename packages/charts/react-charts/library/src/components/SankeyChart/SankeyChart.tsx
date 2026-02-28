@@ -16,6 +16,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
 import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
+import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -1177,6 +1178,15 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               }
             })}
           </svg>
+          {props.annotations && props.annotations.length > 0 && (
+            <ChartAnnotationLayer
+              annotations={props.annotations}
+              context={{
+                plotRect: { x: 0, y: 0, width, height },
+                svgRect: { width, height },
+              }}
+            />
+          )}
         </div>
         {calloutProps.isPopoverOpen && <ChartPopover {...calloutProps} />}
         <div id={_labelTooltipId} className={classes.toolTip} style={{ opacity: 0 }} ref={_tooltip} />
