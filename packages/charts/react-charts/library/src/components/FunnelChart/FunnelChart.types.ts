@@ -3,6 +3,7 @@ import type { TitleStyles } from '../../utilities/Common.styles';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
 import { Chart } from '../../types/index';
+import { ChartAnnotation } from '../../types/ChartAnnotation';
 
 /**
  * Data point for funnel chart
@@ -98,6 +99,11 @@ export interface FunnelChartProps {
    * @defaultvalue 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: ChartAnnotation[];
 }
 
 /**

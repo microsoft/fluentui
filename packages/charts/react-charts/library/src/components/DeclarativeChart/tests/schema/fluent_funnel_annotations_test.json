@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "type": "funnel",
+      "y": ["Leads", "Qualified", "Proposals", "Negotiations", "Closed"],
+      "x": [1000, 750, 500, 250, 100],
+      "marker": {
+        "color": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+      }
+    }
+  ],
+  "layout": {
+    "title": "Sales Funnel with Annotations",
+    "width": 500,
+    "height": 400,
+    "annotations": [
+      {
+        "text": "Top of Funnel",
+        "x": 0.5,
+        "y": 0.95,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": false,
+        "font": { "size": 12, "color": "#333333" }
+      }
+    ]
+  }
+}

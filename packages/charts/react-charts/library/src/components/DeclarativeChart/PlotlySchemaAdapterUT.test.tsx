@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  transformPlotlyJsonToFunnelChartProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
@@ -1225,5 +1226,58 @@ describe('resolveXAxisPoint', () => {
     expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
     expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
     expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
+  });
+});
+
+describe('transformPlotlyJsonToFunnelChartProps annotations', () => {
+  const mockColorMap = { current: new Map<string, string>() };
+
+  it('should include annotations when layout.annotations is provided', () => {
+    const input: PlotlySchema = {
+      data: [
+        {
+          type: 'funnel',
+          y: ['Leads', 'Qualified', 'Closed'],
+          x: [100, 50, 25],
+        },
+      ],
+      layout: {
+        annotations: [
+          {
+            text: 'Test Funnel Annotation',
+            x: 0.5,
+            y: 0.5,
+            xref: 'paper',
+            yref: 'paper',
+            showarrow: false,
+          },
+        ],
+      },
+    };
+
+    const result = transformPlotlyJsonToFunnelChartProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(1);
+    expect(result.annotations![0].text).toBe('Test Funnel Annotation');
+  });
+
+  it('should not include annotations when layout.annotations is empty', () => {
+    const input: PlotlySchema = {
+      data: [
+        {
+          type: 'funnel',
+          y: ['Leads', 'Qualified', 'Closed'],
+          x: [100, 50, 25],
+        },
+      ],
+      layout: {
+        annotations: [],
+      },
+    };
+
+    const result = transformPlotlyJsonToFunnelChartProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeUndefined();
   });
 });
