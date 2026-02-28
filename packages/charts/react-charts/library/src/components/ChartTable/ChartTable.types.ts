@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import { Chart } from './index';
+import { ChartAnnotation } from '../../types/ChartAnnotation';
 
 /**
  * Chart Table properties
@@ -54,6 +55,11 @@ export interface ChartTableProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.Ref<Chart>;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: ChartAnnotation[];
 }
 
 /**

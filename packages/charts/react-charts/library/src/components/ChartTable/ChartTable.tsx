@@ -10,6 +10,7 @@ import { resolveCSSVariables } from '../../utilities/utilities';
 import { ChartTitle } from '../../utilities/index';
 import { useImageExport } from '../../utilities/hooks';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -103,7 +104,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
           _rootElem.current = el;
         }}
         className={classes.root as string}
-        style={{ height: `${totalHeight}px`, overflow: 'hidden' }}
+        style={{ height: `${totalHeight}px`, overflow: 'hidden', position: 'relative' }}
       >
         <svg width={svgWidth} height={`${totalHeight}px`}>
           {chartTitle && (
@@ -176,6 +177,15 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
             </div>
           </foreignObject>
         </svg>
+        {props.annotations && props.annotations.length > 0 && (
+          <ChartAnnotationLayer
+            annotations={props.annotations}
+            context={{
+              plotRect: { x: 0, y: 0, width: typeof width === 'number' ? width : 800, height: totalHeight },
+              svgRect: { width: typeof width === 'number' ? width : 800, height: totalHeight },
+            }}
+          />
+        )}
       </div>
     );
   },

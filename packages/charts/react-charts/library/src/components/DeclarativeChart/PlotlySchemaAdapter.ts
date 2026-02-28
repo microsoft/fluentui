@@ -3010,6 +3010,7 @@ export const transformPlotlyJsonToChartTableProps = (
   };
 
   const { chartTitle, titleStyles } = getTitles(input.layout);
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
 
   return {
     headers: normalizeHeaders(tableData.header?.values ?? [], header),
@@ -3019,6 +3020,7 @@ export const transformPlotlyJsonToChartTableProps = (
     styles,
     chartTitle,
     ...(titleStyles ? { titleStyles } : {}),
+    ...(annotations ? { annotations } : {}),
   } as ChartTableProps;
 };
 

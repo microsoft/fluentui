@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  transformPlotlyJsonToChartTableProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
@@ -1225,5 +1226,72 @@ describe('resolveXAxisPoint', () => {
     expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
     expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
     expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
+  });
+});
+
+describe('transformPlotlyJsonToChartTableProps annotations', () => {
+  const mockColorMap = { current: new Map<string, string>() };
+
+  it('should include annotations when layout.annotations is provided', () => {
+    const input = {
+      data: [
+        {
+          type: 'table' as const,
+          header: {
+            values: ['Col1', 'Col2'],
+          },
+          cells: {
+            values: [
+              ['A', 'B'],
+              [1, 2],
+            ],
+          },
+        },
+      ],
+      layout: {
+        annotations: [
+          {
+            text: 'Test Table Annotation',
+            x: 0.5,
+            y: 0.5,
+            xref: 'paper',
+            yref: 'paper',
+            showarrow: false,
+          },
+        ],
+      },
+    } as PlotlySchema;
+
+    const result = transformPlotlyJsonToChartTableProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(1);
+    expect(result.annotations![0].text).toBe('Test Table Annotation');
+  });
+
+  it('should not include annotations when layout.annotations is empty', () => {
+    const input = {
+      data: [
+        {
+          type: 'table' as const,
+          header: {
+            values: ['Col1', 'Col2'],
+          },
+          cells: {
+            values: [
+              ['A', 'B'],
+              [1, 2],
+            ],
+          },
+        },
+      ],
+      layout: {
+        annotations: [] as unknown[],
+      },
+    } as PlotlySchema;
+
+    const result = transformPlotlyJsonToChartTableProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeUndefined();
   });
 });
