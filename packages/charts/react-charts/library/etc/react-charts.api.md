@@ -190,8 +190,17 @@ export const BREAKPOINTS: {
     fontSize: number;
 }[];
 
+// @public
+export const calcAnnotationPosition: (value: number, position: "inner" | "outer" | "arc", minValue: number, maxValue: number, innerRadius: number, outerRadius: number, radialOffset?: number) => {
+    x: number;
+    y: number;
+};
+
 // @public (undocumented)
 export const calcNeedleRotation: (chartValue: number, minValue: number, maxValue: number) => number;
+
+// @public
+export const calcValueToAngle: (value: number, minValue: number, maxValue: number) => number;
 
 // @public
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
@@ -896,12 +905,57 @@ export interface GanttChartStyles extends CartesianChartStyles {
 export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 
 // @public
+export interface GaugeChartAnnotation {
+    ariaLabel?: string;
+    arrow?: GaugeChartAnnotationArrow;
+    coordinates: GaugeChartAnnotationCoordinate;
+    id?: string;
+    style?: GaugeChartAnnotationStyle;
+    text: string;
+}
+
+// @public
+export interface GaugeChartAnnotationArrow {
+    color?: string;
+    headSize?: number;
+    headStyle?: number;
+    show?: boolean;
+    tailOffsetX?: number;
+    tailOffsetY?: number;
+    width?: number;
+}
+
+// @public
+export interface GaugeChartAnnotationCoordinate {
+    position?: GaugeChartAnnotationPosition;
+    radialOffset?: number;
+    value: number;
+}
+
+// @public
+export type GaugeChartAnnotationPosition = 'inner' | 'outer' | 'arc';
+
+// @public
+export interface GaugeChartAnnotationStyle {
+    backgroundColor?: string;
+    borderColor?: string;
+    borderRadius?: number;
+    borderWidth?: number;
+    className?: string;
+    fontSize?: string;
+    fontWeight?: React_2.CSSProperties['fontWeight'];
+    padding?: string;
+    textColor?: string;
+}
+
+// @public
 export interface GaugeChartProps {
+    annotations?: GaugeChartAnnotation[];
     calloutProps?: Partial<ChartPopoverProps>;
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
-    componentRef?: React.Ref<Chart>;
+    componentRef?: React_2.Ref<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -912,6 +966,7 @@ export interface GaugeChartProps {
     legendProps?: Partial<LegendsProps>;
     maxValue?: number;
     minValue?: number;
+    onRenderAnnotation?: (annotation: GaugeChartAnnotation, defaultRender: (annotation: GaugeChartAnnotation) => React_2.ReactNode) => React_2.ReactNode;
     roundCorners?: boolean;
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
@@ -932,6 +987,8 @@ export interface GaugeChartSegment {
 
 // @public
 export interface GaugeChartStyles {
+    annotationContainer?: string;
+    annotationText?: string;
     calloutBlockContainer?: string;
     calloutContentRoot?: string;
     calloutContentX?: string;
@@ -960,6 +1017,9 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 
 // @public (undocumented)
 export type GaugeValueFormat = 'percentage' | 'fraction';
+
+// @public
+export const getArrowHeadPath: (headStyle: number, headSize: number, width: number) => string;
 
 // @public (undocumented)
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string), forCallout?: boolean) => string;
@@ -1621,6 +1681,9 @@ export interface RefArrayData {
     // (undocumented)
     refElement?: SVGGElement;
 }
+
+// @public
+export const renderAnnotationArrow: (startX: number, startY: number, endX: number, endY: number, arrow: GaugeChartAnnotationArrow, uniqueId: string) => React_2.ReactNode;
 
 // @public (undocumented)
 export interface ResolvedAnnotationPosition {

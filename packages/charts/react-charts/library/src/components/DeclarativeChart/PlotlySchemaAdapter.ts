@@ -37,7 +37,7 @@ import { LineChartProps } from '../LineChart/index';
 import { AreaChartProps } from '../AreaChart/index';
 import { HeatMapChartProps } from '../HeatMapChart/index';
 import { DataVizPalette, getColorFromToken } from '../../utilities/colors';
-import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
+import { GaugeChartProps, GaugeChartSegment, GaugeChartAnnotation } from '../GaugeChart/index';
 import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
@@ -2721,6 +2721,86 @@ export const transformPlotlyJsonToSankeyProps = (
   } as SankeyChartProps;
 };
 
+/**
+ * Transforms Plotly annotations to GaugeChartAnnotation format.
+ * Plotly uses paper coordinates (0-1) where:
+ * - x: 0=left, 0.5=center, 1=right (maps to gauge minValue-maxValue)
+ * - y: 0=bottom, 1=top (used to determine inner/outer/arc positioning)
+ */
+const transformPlotlyAnnotationsToGaugeAnnotations = (
+  annotations: Partial<Annotations>[] | undefined,
+  minValue: number,
+  maxValue: number,
+): GaugeChartAnnotation[] => {
+  if (!annotations || annotations.length === 0) {
+    return [];
+  }
+
+  return annotations.map((annotation, index): GaugeChartAnnotation => {
+    // Map x coordinate (0-1) to gauge value (minValue-maxValue)
+    const x = typeof annotation.x === 'number' ? annotation.x : 0.5;
+    const y = typeof annotation.y === 'number' ? annotation.y : 0.5;
+    const gaugeValue = minValue + x * (maxValue - minValue);
+
+    // Determine position based on y coordinate
+    // y < 0.3: below gauge (outer-bottom)
+    // y > 0.6: above gauge arc (outer-top)
+    // 0.3 <= y <= 0.6: on the arc area
+    let position: 'inner' | 'outer' | 'arc' = 'outer';
+    let radialOffset = 0;
+    if (y >= 0.3 && y <= 0.6) {
+      position = 'arc';
+    } else if (y < 0.15) {
+      position = 'outer';
+      radialOffset = 20; // Further outside for bottom annotations
+    }
+
+    // Clean text content - replace <br> with spaces and strip HTML tags
+    const cleanedText = (annotation.text || '')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/<[^>]*>/g, '')
+      .trim();
+
+    // Transform arrow properties from Plotly
+    const arrowConfig =
+      annotation.showarrow === true
+        ? {
+            show: true,
+            headStyle: typeof annotation.arrowhead === 'number' ? annotation.arrowhead : 2,
+            color: annotation.arrowcolor?.toString() || '#333333',
+            width: typeof annotation.arrowwidth === 'number' ? annotation.arrowwidth : 1,
+            headSize: typeof annotation.arrowsize === 'number' ? annotation.arrowsize : 1,
+            // Convert Plotly ax/ay (pixel offsets) to tailOffsetX/tailOffsetY
+            // In Plotly, ax/ay define offset from arrow tip to tail/text position
+            // Plotly y-axis goes up, SVG y-axis goes down, so we DON'T negate ay
+            // (Plotly ay=-40 means text is 40px below tip in visual space, same in SVG)
+            tailOffsetX: typeof annotation.ax === 'number' ? annotation.ax : 0,
+            tailOffsetY: typeof annotation.ay === 'number' ? annotation.ay : 40,
+          }
+        : undefined;
+
+    return {
+      id: `plotly-annotation-${index}`,
+      text: cleanedText,
+      coordinates: {
+        value: gaugeValue,
+        position,
+        radialOffset,
+      },
+      style: {
+        textColor: annotation.font?.color?.toString(),
+        fontSize: annotation.font?.size ? `${annotation.font.size}px` : undefined,
+        fontWeight: annotation.font?.family?.includes('Bold') ? 'bold' : undefined,
+        backgroundColor: annotation.bgcolor?.toString(),
+        borderColor: annotation.bordercolor?.toString(),
+        borderWidth: annotation.borderwidth,
+      },
+      arrow: arrowConfig,
+      ariaLabel: cleanedText,
+    };
+  });
+};
+
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -2824,6 +2904,17 @@ export const transformPlotlyJsonToGaugeProps = (
 
   const { chartTitle, titleStyles } = getTitles(input.layout);
 
+  // Get min/max values for annotation transformation
+  const gaugeMinValue = typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : 0;
+  const gaugeMaxValue = typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : 100;
+
+  // Transform Plotly annotations to GaugeChartAnnotation format
+  const annotations = transformPlotlyAnnotationsToGaugeAnnotations(
+    input.layout?.annotations,
+    gaugeMinValue,
+    gaugeMaxValue,
+  );
+
   return {
     segments,
     chartValue: firstData.value ?? 0,
@@ -2841,6 +2932,7 @@ export const transformPlotlyJsonToGaugeProps = (
     styles,
     roundCorners: true,
     ...(titleStyles ? { titleStyles } : {}),
+    ...(annotations.length > 0 ? { annotations } : {}),
   } as GaugeChartProps;
 };
 
