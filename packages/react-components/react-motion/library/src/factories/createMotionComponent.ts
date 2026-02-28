@@ -17,7 +17,7 @@ import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
 
 export type MotionComponentProps = {
-  children: JSXElement;
+  children?: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
