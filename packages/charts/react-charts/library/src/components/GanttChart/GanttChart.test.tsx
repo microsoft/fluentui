@@ -8,6 +8,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { GanttChart } from './index';
 import { ganttData, ganttDataWithLongY, ganttDataWithNumericY } from '../../utilities/test-data';
 import { GanttChartDataPoint } from '../../types/index';
+import { GanttChartAnnotation } from './GanttChart.types';
 
 expect.extend(toHaveNoViolations);
 
@@ -282,5 +283,118 @@ describe('GanttChart interaction and accessibility tests', () => {
     const results = await axe(container);
     jest.useFakeTimers();
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('GanttChart annotation tests', () => {
+  const sampleAnnotations: GanttChartAnnotation[] = [
+    {
+      text: 'Milestone 1',
+      taskIndex: 0,
+      date: new Date('2024-01-15'),
+      position: 'above',
+      id: 'ann-1',
+      ariaLabel: 'First milestone marker',
+    },
+    {
+      text: 'Deadline',
+      taskIndex: 1,
+      date: new Date('2024-01-20'),
+      position: 'below',
+      style: {
+        textColor: 'red',
+        fontSize: 14,
+      },
+      id: 'ann-2',
+    },
+  ];
+
+  const annotationWithArrow: GanttChartAnnotation[] = [
+    {
+      text: 'Critical Point',
+      taskIndex: 0,
+      date: new Date('2024-01-10'),
+      position: 'above',
+      arrow: {
+        show: true,
+        color: '#FF0000',
+        width: 2,
+        headSize: 8,
+        headStyle: 'triangle',
+      },
+      id: 'ann-arrow',
+    },
+  ];
+
+  it('should render annotation with text', () => {
+    const { container } = render(<GanttChart data={ganttData} ganttAnnotations={sampleAnnotations} />);
+    const textElements = container.querySelectorAll('text');
+    const annotationTexts = Array.from(textElements).filter(
+      el => el.textContent === 'Milestone 1' || el.textContent === 'Deadline',
+    );
+    expect(annotationTexts.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('should render annotation with arrow', () => {
+    const { container } = render(<GanttChart data={ganttData} ganttAnnotations={annotationWithArrow} />);
+    // Check for arrow elements (line and polygon)
+    const lines = container.querySelectorAll('line');
+    const polygons = container.querySelectorAll('polygon');
+    expect(lines.length).toBeGreaterThanOrEqual(1);
+    expect(polygons.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('should render annotation with custom styling', () => {
+    const styledAnnotations: GanttChartAnnotation[] = [
+      {
+        text: 'Styled Note',
+        taskIndex: 0,
+        date: new Date('2024-01-12'),
+        position: 'on',
+        style: {
+          textColor: 'blue',
+          fontSize: 16,
+          fontWeight: 'bold',
+        },
+        id: 'styled-ann',
+      },
+    ];
+    const { container } = render(<GanttChart data={ganttData} ganttAnnotations={styledAnnotations} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render multiple annotations', () => {
+    const multipleAnnotations: GanttChartAnnotation[] = [
+      {
+        text: 'Note 1',
+        taskIndex: 0,
+        date: new Date('2024-01-05'),
+        id: 'multi-1',
+      },
+      {
+        text: 'Note 2',
+        taskIndex: 1,
+        date: new Date('2024-01-10'),
+        id: 'multi-2',
+      },
+      {
+        text: 'Note 3',
+        taskIndex: 2,
+        date: new Date('2024-01-15'),
+        id: 'multi-3',
+      },
+    ];
+    const { container } = render(<GanttChart data={ganttData} ganttAnnotations={multipleAnnotations} />);
+    const textElements = container.querySelectorAll('text');
+    const annotationTexts = Array.from(textElements).filter(el =>
+      ['Note 1', 'Note 2', 'Note 3'].includes(el.textContent || ''),
+    );
+    expect(annotationTexts.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('should apply aria-label to annotations for accessibility', () => {
+    const { container } = render(<GanttChart data={ganttData} ganttAnnotations={sampleAnnotations} />);
+    const annotationWithAria = container.querySelector('[aria-label="First milestone marker"]');
+    expect(annotationWithAria).not.toBeNull();
   });
 });
