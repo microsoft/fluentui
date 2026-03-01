@@ -12,7 +12,9 @@ import {
 } from '@fluentui/chart-utilities';
 import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useIsDarkTheme, useColorMapping } from './DeclarativeChartHooks';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, webLightTheme } from '@fluentui/tokens';
+import * as d3Color from 'd3-color';
 
 import {
   correctYearMonth,
@@ -94,12 +96,7 @@ export interface Schema {
    * Plotly schema represented as JSON object
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plotlySchema?: any;
-
-  /**
-   * Selected legends (used for multi-select legend interaction)
-   */
-  selectedLegends?: string[];
+  plotlySchema: any;
 }
 
 /**
@@ -140,6 +137,10 @@ export interface IDeclarativeChart {
   exportAsImage: (opts?: ImageExportOptions) => Promise<string>;
 }
 
+const useColorMapping = () => {
+  const colorMap = React.useRef(new Map<string, string>());
+  return colorMap;
+};
 
 function renderChart<TProps>(
   Renderer: React.ComponentType<TProps>,
@@ -334,6 +335,18 @@ const chartMap: ChartTypeMap = {
   },
 };
 
+const useIsDarkTheme = (): boolean => {
+  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+
+  // Get background and foreground colors
+  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+
+  const isDarkTheme = backgroundColor.l < foregroundColor.l;
+
+  return isDarkTheme;
+};
 
 /**
  * DeclarativeChart component.
@@ -343,7 +356,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >(({ colorwayType = 'default', ...props }, forwardedRef) => {
-  // Default Plotly adapter path
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
