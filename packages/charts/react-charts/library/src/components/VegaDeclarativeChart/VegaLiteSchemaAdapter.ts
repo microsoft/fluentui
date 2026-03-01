@@ -1712,7 +1712,7 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
     }
 
     if (hasColorEncoding) {
-      const hasXOffset = !!(encoding as Record<string, unknown>)?.xOffset;
+      const hasXOffset = !!encoding?.xOffset;
       if (hasXOffset) {
         return { type: 'grouped-bar', mark: markType };
       }

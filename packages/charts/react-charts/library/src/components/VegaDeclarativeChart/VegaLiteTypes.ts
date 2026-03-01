@@ -31,7 +31,7 @@ export type VegaLiteType = 'quantitative' | 'temporal' | 'ordinal' | 'nominal' |
 /**
  * Vega-Lite mark types
  */
-export type VegaLiteMark = 'line' | 'point' | 'circle' | 'square' | 'bar' | 'area' | 'rect' | 'rule' | 'text';
+export type VegaLiteMark = 'line' | 'point' | 'circle' | 'square' | 'bar' | 'area' | 'rect' | 'rule' | 'text' | 'arc';
 
 /**
  * Vega-Lite scale type
@@ -105,7 +105,7 @@ export interface VegaLiteScale {
   /**
    * Domain values [min, max]
    */
-  domain?: [number | string, number | string];
+  domain?: (number | string)[];
 
   /**
    * Range values [min, max]
@@ -466,6 +466,17 @@ export interface VegaLiteEncoding {
    * Text encoding for text marks
    */
   text?: VegaLiteTextEncoding;
+
+  /**
+   * xOffset encoding for grouped bar charts
+   */
+  xOffset?: VegaLitePositionEncoding;
+
+  /**
+   * Tooltip encoding (single field or array of fields)
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tooltip?: any;
 }
 
 /**
