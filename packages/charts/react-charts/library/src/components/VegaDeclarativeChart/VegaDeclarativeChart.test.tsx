@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
-import type { VegaDeclarativeChartProps } from './VegaDeclarativeChart';
+import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // Suppress console warnings for cleaner test output
@@ -23,7 +23,7 @@ beforeEach(() => {
 
 describe('VegaDeclarativeChart - Basic Rendering', () => {
   it('renders with basic line chart spec', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'line',
       data: {
         values: [
@@ -43,7 +43,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders vertical bar chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'bar',
       data: {
         values: [
@@ -63,7 +63,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders stacked bar chart with color encoding', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'bar',
       data: {
         values: [
@@ -85,7 +85,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders horizontal bar chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'bar',
       data: {
         values: [
@@ -117,7 +117,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
 
   it('handles legend selection', () => {
     const onSchemaChange = jest.fn();
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'line',
       data: {
         values: [
@@ -137,7 +137,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders area chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'area',
       data: {
         values: [
@@ -157,7 +157,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders scatter chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'point',
       data: {
         values: [
@@ -178,7 +178,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders donut chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'arc',
       data: {
         values: [
@@ -198,7 +198,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
   });
 
   it('renders heatmap chart', () => {
-    const spec = {
+    const spec: VegaLiteSpec = {
       mark: 'rect',
       data: {
         values: [
@@ -229,7 +229,7 @@ describe('VegaDeclarativeChart - Basic Rendering', () => {
 describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
   describe('Bar + Line Combinations', () => {
     it('should render bar chart with single line overlay', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -273,7 +273,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
     });
 
     it('should render simple bar+line without color encoding', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -307,7 +307,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
     });
 
     it('should render bar+line with temporal x-axis', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -342,7 +342,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
     });
 
     it('should render the actual line_bar_combo schema from schemas folder', () => {
-      const lineBarComboSpec = {
+      const lineBarComboSpec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -396,7 +396,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
 
   describe('Chart Type Detection for Bar+Line', () => {
     it('should detect bar+line combo and use stacked-bar type', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -426,7 +426,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
 
   describe('Error Cases', () => {
     it('should handle bar layer without color encoding gracefully', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -467,7 +467,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
 describe('VegaDeclarativeChart - Chart Type Detection', () => {
   describe('Grouped Bar Charts', () => {
     it('should detect grouped bar chart with xOffset encoding', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
           values: [
@@ -496,7 +496,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     });
 
     it('should detect stacked bar chart without xOffset', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
           values: [
@@ -525,7 +525,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
 
   describe('Donut Charts', () => {
     it('should render donut chart with innerRadius', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: { type: 'arc' as const, innerRadius: 50 },
         data: {
           values: [
@@ -551,7 +551,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     });
 
     it('should render pie chart without innerRadius', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'arc' as const,
         data: {
           values: [
@@ -576,7 +576,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
 
   describe('Heatmap Charts', () => {
     it('should render heatmap with rect mark and x/y/color encodings', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'rect' as const,
         data: {
           values: [
@@ -607,7 +607,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
 
   describe('Snapshots for Chart Type Detection', () => {
     it('should match snapshot for grouped bar chart', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
           values: [
@@ -629,7 +629,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     });
 
     it('should match snapshot for donut chart with innerRadius', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: { type: 'arc' as const, innerRadius: 50 },
         data: {
           values: [
@@ -649,7 +649,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     });
 
     it('should match snapshot for heatmap chart', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'rect' as const,
         data: {
           values: [
@@ -677,7 +677,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
 
 describe('VegaDeclarativeChart - Financial Ratios Heatmap', () => {
   it('should render financial ratios heatmap without errors', () => {
-    const financialRatiosSpec = {
+    const financialRatiosSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       description: 'Financial ratios comparison',
       data: {
@@ -740,7 +740,7 @@ describe('VegaDeclarativeChart - Financial Ratios Heatmap', () => {
 describe('VegaDeclarativeChart - Issue Fixes', () => {
   describe('Issue 1: Heatmap Chart Not Rendering', () => {
     it('should render simple heatmap chart', () => {
-      const heatmapSpec = {
+      const heatmapSpec: VegaLiteSpec = {
         mark: 'rect' as const,
         data: {
           values: [
@@ -774,7 +774,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
     });
 
     it('should match snapshot for heatmap', () => {
-      const heatmapSpec = {
+      const heatmapSpec: VegaLiteSpec = {
         mark: 'rect' as const,
         data: {
           values: [
@@ -797,7 +797,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
 
   describe('Issue 2: Line+Bar Combo (Now Supported!)', () => {
     it('should render line+bar combo with both bars and lines', () => {
-      const comboSpec = {
+      const comboSpec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -835,7 +835,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
     });
 
     it('should match snapshot for line+bar combo', () => {
-      const comboSpec = {
+      const comboSpec: VegaLiteSpec = {
         layer: [
           {
             mark: 'bar',
@@ -868,7 +868,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
 
   describe('Heatmap Detection Edge Cases', () => {
     it('should NOT detect heatmap when color is not quantitative', () => {
-      const spec = {
+      const spec: VegaLiteSpec = {
         mark: 'rect' as const,
         data: { values: [{ x: 'A', y: 'B', cat: 'C1' }] },
         encoding: {
@@ -892,7 +892,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
 
 describe('VegaDeclarativeChart - Scatter Charts', () => {
   it('should render scatter chart with basic point encoding', () => {
-    const scatterSpec = {
+    const scatterSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       data: {
         values: [
@@ -925,7 +925,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
   });
 
   it('should render scatter chart with size encoding', () => {
-    const scatterSpec = {
+    const scatterSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       data: {
         values: [
@@ -958,7 +958,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
   });
 
   it('should render scatter chart from actual bmi_scatter.json schema', () => {
-    const bmiScatterSpec = {
+    const bmiScatterSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       description: 'BMI distribution analysis',
       data: {
@@ -1011,7 +1011,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
   });
 
   it('should detect scatter chart type from point mark', () => {
-    const scatterSpec = {
+    const scatterSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       data: { values: [{ x: 1, y: 2 }] },
       mark: 'point',
@@ -1032,7 +1032,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
 
 describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   it('should render heatmap with rect marks and quantitative color', () => {
-    const heatmapSpec = {
+    const heatmapSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       data: {
         values: [
@@ -1067,7 +1067,7 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 
   it('should render heatmap from actual air_quality_heatmap.json schema', () => {
-    const airQualitySpec = {
+    const airQualitySpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       description: 'Air quality index by location',
       data: {
@@ -1123,7 +1123,7 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 
   it('should render heatmap from actual attendance_heatmap.json schema', () => {
-    const attendanceSpec = {
+    const attendanceSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       description: 'Class attendance patterns',
       data: {
@@ -1179,7 +1179,7 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 
   it('should detect heatmap chart type from rect mark with quantitative color', () => {
-    const heatmapSpec = {
+    const heatmapSpec: VegaLiteSpec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
       data: { values: [{ x: 'A', y: 'B', value: 10 }] },
       mark: 'rect',
@@ -1199,7 +1199,7 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 
   it('renders hconcat donut charts with shared legend outside the grid', () => {
-    const hconcatSpec = {
+    const hconcatSpec: VegaLiteSpec = {
       title: 'Test HConcat',
       hconcat: [
         {
