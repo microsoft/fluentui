@@ -15,8 +15,10 @@ import {
   transformVegaLiteToPolarChartProps,
   getChartType,
   getMarkType,
+  getVegaLiteLegendsProps,
 } from './VegaLiteSchemaAdapter';
 import type { VegaLiteUnitSpec, VegaLiteSpec } from './VegaLiteTypes';
+import { Legends } from '../Legends/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { LineChart } from '../LineChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
@@ -406,68 +408,76 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       if (isHConcatSpec(vegaLiteSpec) || isVConcatSpec(vegaLiteSpec)) {
         const gridProps = getVegaConcatGridProperties(vegaLiteSpec);
 
+        // Build shared legend from the first sub-chart's color encoding
+        const firstSubSpec = {
+          ...gridProps.specs[0],
+          data: gridProps.specs[0].data || vegaLiteSpec.data,
+          encoding: {
+            ...(vegaLiteSpec.encoding || {}),
+            ...(gridProps.specs[0].encoding || {}),
+          },
+        };
+        const sharedLegendProps = getVegaLiteLegendsProps(firstSubSpec, colorMap, isDarkTheme);
+
         return (
-          <div
-            ref={forwardedRef}
-            className={props.className}
-            style={{
-              ...props.style,
-              display: 'grid',
-              gridTemplateRows: gridProps.templateRows,
-              gridTemplateColumns: gridProps.templateColumns,
-              gap: '16px',
-            }}
-          >
-            {gridProps.specs.map((subSpec: VegaLiteSpec, index: number) => {
-              // Merge shared data and encoding from parent spec into each subplot
-              // Hide legends on all sub-charts except the last one (which shows the shared legend)
-              const isLastChart = index === gridProps.specs.length - 1;
+          <div ref={forwardedRef} className={props.className} style={props.style}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateRows: gridProps.templateRows,
+                gridTemplateColumns: gridProps.templateColumns,
+                gap: '16px',
+              }}
+            >
+              {gridProps.specs.map((subSpec: VegaLiteSpec, index: number) => {
+                // Compute default height for sub-charts
+                const defaultSubHeight = typeof vegaLiteSpec.height === 'number'
+                  ? vegaLiteSpec.height
+                  : typeof subSpec.height === 'number'
+                    ? subSpec.height
+                    : 300;
 
-              // Compute default height for sub-charts to prevent ResponsiveContainer
-              // from expanding to 100% of an unconstrained parent
-              const defaultSubHeight = typeof vegaLiteSpec.height === 'number'
-                ? vegaLiteSpec.height
-                : typeof subSpec.height === 'number'
-                  ? subSpec.height
-                  : 300;
+                const mergedSpec = {
+                  ...subSpec,
+                  data: subSpec.data || vegaLiteSpec.data,
+                  encoding: {
+                    ...(vegaLiteSpec.encoding || {}),
+                    ...(subSpec.encoding || {}),
+                  },
+                  height: typeof subSpec.height === 'number' ? subSpec.height : defaultSubHeight,
+                  // Hide legends on ALL sub-charts — shared legend is rendered below
+                  _hideLegend: true,
+                };
 
-              const mergedSpec = {
-                ...subSpec,
-                data: subSpec.data || vegaLiteSpec.data,
-                encoding: {
-                  ...(vegaLiteSpec.encoding || {}),
-                  ...(subSpec.encoding || {}),
-                },
-                // Ensure each sub-chart has an explicit height
-                height: typeof subSpec.height === 'number' ? subSpec.height : defaultSubHeight,
-                ...(!isLastChart && { _hideLegend: true }),
-              };
+                const cellRow = gridProps.isHorizontal ? 1 : index + 1;
+                const cellColumn = gridProps.isHorizontal ? index + 1 : 1;
 
-              const cellRow = gridProps.isHorizontal ? 1 : index + 1;
-              const cellColumn = gridProps.isHorizontal ? index + 1 : 1;
-
-              return (
-                <div
-                  key={`chart_${index}`}
-                  style={{
-                    gridRowStart: cellRow,
-                    gridRowEnd: cellRow + 1,
-                    gridColumnStart: cellColumn,
-                    gridColumnEnd: cellColumn + 1,
-                    minWidth: 0,
-                  }}
-                >
-                  {renderSingleChart(
-                    mergedSpec,
-                    colorMap,
-                    isDarkTheme,
-                    chartRef,
-                    multiSelectLegendProps,
-                    interactiveCommonProps,
-                  )}
-                </div>
-              );
-            })}
+                return (
+                  <div
+                    key={`chart_${index}`}
+                    style={{
+                      gridRowStart: cellRow,
+                      gridRowEnd: cellRow + 1,
+                      gridColumnStart: cellColumn,
+                      gridColumnEnd: cellColumn + 1,
+                      minWidth: 0,
+                    }}
+                  >
+                    {renderSingleChart(
+                      mergedSpec,
+                      colorMap,
+                      isDarkTheme,
+                      chartRef,
+                      multiSelectLegendProps,
+                      interactiveCommonProps,
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            {sharedLegendProps.legends.length > 0 && (
+              <Legends {...sharedLegendProps} />
+            )}
           </div>
         );
       }
