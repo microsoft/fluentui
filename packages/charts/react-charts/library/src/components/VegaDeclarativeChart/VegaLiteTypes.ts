@@ -116,6 +116,16 @@ export interface VegaLiteScale {
    * Color scheme name (e.g., 'category10', 'tableau10')
    */
   scheme?: string;
+
+  /**
+   * Whether scale domain should include zero
+   */
+  zero?: boolean;
+
+  /**
+   * Whether to reverse the scale
+   */
+  reverse?: boolean;
 }
 
 /**
@@ -241,6 +251,11 @@ export interface VegaLitePositionEncoding {
    * Axis title (shorthand alternative to axis.title)
    */
   title?: string;
+
+  /**
+   * Time unit for temporal fields (e.g., 'yearmonth', 'month', 'day')
+   */
+  timeUnit?: string;
 }
 
 /**
@@ -391,6 +406,11 @@ export interface VegaLiteTextEncoding {
    * Fixed text value
    */
   value?: string;
+
+  /**
+   * Datum value for text encoding
+   */
+  datum?: string | number;
 }
 
 /**

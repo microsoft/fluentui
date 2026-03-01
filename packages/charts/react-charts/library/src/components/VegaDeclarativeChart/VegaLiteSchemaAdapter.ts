@@ -754,10 +754,9 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
             textColor: markColor,
             borderColor: markColor,
             borderWidth: markStrokeWidth,
-            ...(markStrokeDash &&
-              Array.isArray(markStrokeDash) && {
-                borderRadius: 0, // Indicate dashed style
-              }),
+            ...(markStrokeDash && Array.isArray(markStrokeDash)
+              ? { borderRadius: 0 } // Indicate dashed style
+              : {}),
           },
         });
       }
@@ -2443,7 +2442,6 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     });
   } else {
     // Check if y values are actually numeric; if not, fall back to count aggregation
-    const yType = encoding.y?.type;
     const firstYValue = dataValues.find(r => r[yField!] !== undefined)?.[yField!];
     const yIsNumeric = typeof firstYValue === 'number';
 
@@ -3399,7 +3397,7 @@ export function transformVegaLiteToHeatMapChartProps(
   heatmapDataPoints.forEach(point => {
     const key = `${String(point.x)}|${String(point.y)}`;
     dataPointMap.set(key, point.value);
-    rectTextMap.set(key, point.rectText);
+    rectTextMap.set(key, point.rectText ?? point.value);
   });
 
   // Generate complete grid - fill missing cells with 0
@@ -3481,7 +3479,7 @@ export function transformVegaLiteToHeatMapChartProps(
       const schemeColors = getSequentialSchemeColors(colorScheme, steps);
       if (schemeColors) {
         const isReversed =
-          encoding.color?.sort === 'descending' || (encoding.color?.scale as Record<string, unknown>)?.reverse === true;
+          (encoding.color as Record<string, unknown>)?.sort === 'descending' || encoding.color?.scale?.reverse === true;
         rangeValues = isReversed ? schemeColors.reverse() : schemeColors;
       }
     }
@@ -3733,7 +3731,7 @@ export function transformVegaLiteToPolarChartProps(
   const mark = primarySpec.mark;
   const markType = typeof mark === 'string' ? mark : mark?.type;
   // Arc marks with theta+radius should be treated as area polar (radial/rose charts)
-  const isAreaMark = markType === 'area' || markType === 'arc';
+  const isAreaMark = markType === 'area' || (markType as string) === 'arc';
   const isLineMark = markType === 'line';
 
   // Extract color configuration

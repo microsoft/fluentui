@@ -82,14 +82,14 @@ export interface VegaDeclarativeChartProps {
  * Check if spec is a horizontal concatenation
  */
 function isHConcatSpec(spec: VegaLiteSpec): boolean {
-  return spec.hconcat && Array.isArray(spec.hconcat) && spec.hconcat.length > 0;
+  return !!spec.hconcat && Array.isArray(spec.hconcat) && spec.hconcat.length > 0;
 }
 
 /**
  * Check if spec is a vertical concatenation
  */
 function isVConcatSpec(spec: VegaLiteSpec): boolean {
-  return spec.vconcat && Array.isArray(spec.vconcat) && spec.vconcat.length > 0;
+  return !!spec.vconcat && Array.isArray(spec.vconcat) && spec.vconcat.length > 0;
 }
 
 /**
@@ -104,18 +104,18 @@ function getVegaConcatGridProperties(spec: VegaLiteSpec): {
   if (isHConcatSpec(spec)) {
     return {
       templateRows: 'auto',
-      templateColumns: `repeat(${spec.hconcat.length}, 1fr)`,
+      templateColumns: `repeat(${spec.hconcat!.length}, 1fr)`,
       isHorizontal: true,
-      specs: spec.hconcat,
+      specs: spec.hconcat!,
     };
   }
 
   if (isVConcatSpec(spec)) {
     return {
-      templateRows: `repeat(${spec.vconcat.length}, auto)`,
+      templateRows: `repeat(${spec.vconcat!.length}, auto)`,
       templateColumns: '1fr',
       isHorizontal: false,
-      specs: spec.vconcat,
+      specs: spec.vconcat!,
     };
   }
 
@@ -201,8 +201,6 @@ function renderSingleChart(
   spec: VegaLiteSpec,
   colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme: boolean,
-  chartRef: React.RefObject<Chart | null>,
-  multiSelectLegendProps: MultiSelectLegendProps,
   interactiveCommonProps: { componentRef: React.RefObject<Chart | null>; legendProps: MultiSelectLegendProps },
 ): React.ReactElement {
   const chartType = getChartType(spec);
@@ -220,14 +218,8 @@ function renderSingleChart(
     chartProps.hideLegend = true;
   }
 
-  return (
-    <ChartRenderer
-      {...chartProps}
-      legendProps={multiSelectLegendProps}
-      componentRef={chartRef}
-      {...interactiveCommonProps}
-    />
-  );
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <ChartRenderer {...(chartProps as any)} {...interactiveCommonProps} />;
 }
 
 /**
@@ -474,8 +466,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                       mergedSpec,
                       colorMap,
                       isDarkTheme,
-                      chartRef,
-                      multiSelectLegendProps,
                       interactiveCommonProps,
                     )}
                   </div>
@@ -507,8 +497,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
         vegaLiteSpec,
         colorMap,
         isDarkTheme,
-        chartRef,
-        multiSelectLegendProps,
         interactiveCommonProps,
       );
 
