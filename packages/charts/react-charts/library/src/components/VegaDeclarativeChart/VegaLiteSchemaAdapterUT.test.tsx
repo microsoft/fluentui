@@ -973,11 +973,7 @@ describe('VegaLiteSchemaAdapter', () => {
       const spec2: VegaLiteSpec = {
         ...spec1,
         data: {
-          values: [
-            ...spec1.data!.values!,
-            { x: 1, y: 15, series: 'B' },
-            { x: 2, y: 25, series: 'B' },
-          ],
+          values: [...spec1.data!.values!, { x: 1, y: 15, series: 'B' }, { x: 2, y: 25, series: 'B' }],
         },
       };
 
@@ -1462,5 +1458,4 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(pointB?.y).toBe(20); // (15 + 25) / 2
     });
   });
-
 });

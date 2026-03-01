@@ -268,23 +268,39 @@ function applyTransforms(
 
       result.forEach(row => {
         const key = groupby.map(g => String(row[g])).join('|');
-        if (!groups.has(key)) { groups.set(key, []); }
+        if (!groups.has(key)) {
+          groups.set(key, []);
+        }
         groups.get(key)!.push(row);
       });
 
       result = Array.from(groups.entries()).map(([key, rows]) => {
         const baseRow: Record<string, unknown> = {};
-        groupby.forEach((g, i) => { baseRow[g] = rows[0][g]; });
+        groupby.forEach((g, i) => {
+          baseRow[g] = rows[0][g];
+        });
 
         aggSpecs.forEach(spec => {
           const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
           switch (spec.op) {
-            case 'count': baseRow[spec.as] = rows.length; break;
-            case 'sum': baseRow[spec.as] = d3Sum(values); break;
-            case 'mean': case 'average': baseRow[spec.as] = d3Mean(values) ?? 0; break;
-            case 'min': baseRow[spec.as] = d3Min(values) ?? 0; break;
-            case 'max': baseRow[spec.as] = d3Max(values) ?? 0; break;
-            default: baseRow[spec.as] = rows.length;
+            case 'count':
+              baseRow[spec.as] = rows.length;
+              break;
+            case 'sum':
+              baseRow[spec.as] = d3Sum(values);
+              break;
+            case 'mean':
+            case 'average':
+              baseRow[spec.as] = d3Mean(values) ?? 0;
+              break;
+            case 'min':
+              baseRow[spec.as] = d3Min(values) ?? 0;
+              break;
+            case 'max':
+              baseRow[spec.as] = d3Max(values) ?? 0;
+              break;
+            default:
+              baseRow[spec.as] = rows.length;
           }
         });
         return baseRow;
@@ -301,7 +317,9 @@ function applyTransforms(
       const groups = new Map<string, Array<Record<string, unknown>>>();
       result.forEach(row => {
         const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
-        if (!groups.has(key)) { groups.set(key, []); }
+        if (!groups.has(key)) {
+          groups.set(key, []);
+        }
         groups.get(key)!.push(row);
       });
 
@@ -314,7 +332,9 @@ function applyTransforms(
               const va = Number(a[sf.field]) || 0;
               const vb = Number(b[sf.field]) || 0;
               const cmp = sf.order === 'descending' ? vb - va : va - vb;
-              if (cmp !== 0) { return cmp; }
+              if (cmp !== 0) {
+                return cmp;
+              }
             }
             return 0;
           });
@@ -325,11 +345,21 @@ function applyTransforms(
           const newRow = { ...row };
           windowOps.forEach(op => {
             switch (op.op) {
-              case 'sum': runningSum += Number(row[op.field!]) || 0; newRow[op.as] = runningSum; break;
-              case 'rank': newRow[op.as] = idx + 1; break;
-              case 'row_number': newRow[op.as] = idx + 1; break;
-              case 'count': newRow[op.as] = idx + 1; break;
-              default: newRow[op.as] = idx + 1;
+              case 'sum':
+                runningSum += Number(row[op.field!]) || 0;
+                newRow[op.as] = runningSum;
+                break;
+              case 'rank':
+                newRow[op.as] = idx + 1;
+                break;
+              case 'row_number':
+                newRow[op.as] = idx + 1;
+                break;
+              case 'count':
+                newRow[op.as] = idx + 1;
+                break;
+              default:
+                newRow[op.as] = idx + 1;
             }
           });
           newResult.push(newRow);
@@ -347,7 +377,9 @@ function applyTransforms(
       const groups = new Map<string, Array<Record<string, unknown>>>();
       result.forEach(row => {
         const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
-        if (!groups.has(key)) { groups.set(key, []); }
+        if (!groups.has(key)) {
+          groups.set(key, []);
+        }
         groups.get(key)!.push(row);
       });
 
@@ -357,12 +389,24 @@ function applyTransforms(
         aggSpecs.forEach(spec => {
           const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
           switch (spec.op) {
-            case 'mean': case 'average': aggs[spec.as] = d3Mean(values) ?? 0; break;
-            case 'sum': aggs[spec.as] = d3Sum(values); break;
-            case 'count': aggs[spec.as] = rows.length; break;
-            case 'min': aggs[spec.as] = d3Min(values) ?? 0; break;
-            case 'max': aggs[spec.as] = d3Max(values) ?? 0; break;
-            default: aggs[spec.as] = rows.length;
+            case 'mean':
+            case 'average':
+              aggs[spec.as] = d3Mean(values) ?? 0;
+              break;
+            case 'sum':
+              aggs[spec.as] = d3Sum(values);
+              break;
+            case 'count':
+              aggs[spec.as] = rows.length;
+              break;
+            case 'min':
+              aggs[spec.as] = d3Min(values) ?? 0;
+              break;
+            case 'max':
+              aggs[spec.as] = d3Max(values) ?? 0;
+              break;
+            default:
+              aggs[spec.as] = rows.length;
           }
         });
         aggResults.set(key, aggs);
@@ -424,7 +468,9 @@ function applyTransforms(
 
       result.forEach(row => {
         const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
-        if (!groups.has(key)) { groups.set(key, []); }
+        if (!groups.has(key)) {
+          groups.set(key, []);
+        }
         groups.get(key)!.push(Number(row[field]));
       });
 
@@ -438,7 +484,9 @@ function applyTransforms(
         const groupFields: Record<string, unknown> = {};
         if (groupby.length > 0) {
           const sampleRow = result.find(r => groupby.map(g => String(r[g])).join('|') === key);
-          groupby.forEach(g => { groupFields[g] = sampleRow?.[g]; });
+          groupby.forEach(g => {
+            groupFields[g] = sampleRow?.[g];
+          });
         }
         for (let i = 0; i <= bins; i++) {
           const x = min + (i / bins) * range;
@@ -454,7 +502,10 @@ function applyTransforms(
     if ('quantile' in transform) {
       const field = transform.quantile as string;
       const probs = (transform.probs as number[]) || [0.25, 0.5, 0.75];
-      const values = result.map(r => Number(r[field])).filter(v => !isNaN(v)).sort((a, b) => a - b);
+      const values = result
+        .map(r => Number(r[field]))
+        .filter(v => !isNaN(v))
+        .sort((a, b) => a - b);
       if (values.length > 0) {
         result = probs.map(p => {
           const idx = Math.min(Math.floor(p * values.length), values.length - 1);
@@ -489,7 +540,11 @@ function applyTransforms(
     // Handle lookup transform (join with secondary dataset)
     if ('lookup' in transform && 'from' in transform) {
       const lookupField = transform.lookup as string;
-      const fromSpec = transform.from as { data?: { values?: Array<Record<string, unknown>> }; key?: string; fields?: string[] };
+      const fromSpec = transform.from as {
+        data?: { values?: Array<Record<string, unknown>> };
+        key?: string;
+        fields?: string[];
+      };
       if (fromSpec.data?.values && fromSpec.key && fromSpec.fields) {
         const lookupMap = new Map<string, Record<string, unknown>>();
         fromSpec.data.values.forEach(row => {
@@ -499,7 +554,9 @@ function applyTransforms(
           const lookupRow = lookupMap.get(String(row[lookupField]));
           if (lookupRow) {
             const extra: Record<string, unknown> = {};
-            fromSpec.fields!.forEach(f => { extra[f] = lookupRow[f]; });
+            fromSpec.fields!.forEach(f => {
+              extra[f] = lookupRow[f];
+            });
             return { ...row, ...extra };
           }
           return row;
@@ -667,17 +724,19 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
     if (mark === 'rule') {
       const markColor = typeof layer.mark === 'object' ? layer.mark.color : '#000';
       const markStrokeWidth = typeof layer.mark === 'object' ? layer.mark.strokeWidth || 1 : 1;
-      const markStrokeDash = typeof layer.mark === 'object' ? (layer.mark as Record<string, unknown>).strokeDash : undefined;
+      const markStrokeDash =
+        typeof layer.mark === 'object' ? (layer.mark as Record<string, unknown>).strokeDash : undefined;
 
       // Horizontal rule (y value constant)
       if (encoding.y && (encoding.y.value !== undefined || encoding.y.datum !== undefined)) {
         const yValue = encoding.y.value ?? encoding.y.datum;
         // Look for a companion text annotation at the same y-value
         const companionText = spec.layer?.find((l, i) => {
-          if (i === index) { return false; }
+          if (i === index) {
+            return false;
+          }
           const m = getMarkType(l.mark);
-          return m === 'text' && l.encoding?.y &&
-            ((l.encoding.y.datum ?? l.encoding.y.value) === yValue);
+          return m === 'text' && l.encoding?.y && (l.encoding.y.datum ?? l.encoding.y.value) === yValue;
         });
         const ruleText = companionText
           ? String(companionText.encoding?.text?.datum || companionText.encoding?.text?.value || yValue)
@@ -695,9 +754,10 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
             textColor: markColor,
             borderColor: markColor,
             borderWidth: markStrokeWidth,
-            ...(markStrokeDash && Array.isArray(markStrokeDash) && {
-              borderRadius: 0, // Indicate dashed style
-            }),
+            ...(markStrokeDash &&
+              Array.isArray(markStrokeDash) && {
+                borderRadius: 0, // Indicate dashed style
+              }),
           },
         });
       }
@@ -728,11 +788,7 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
 /**
  * Extracts color fill bars (background regions) from rect marks with x/x2 or y/y2 encodings
  */
-function extractColorFillBars(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): ColorFillBarsProps[] {
+function extractColorFillBars(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): ColorFillBarsProps[] {
   const colorFillBars: ColorFillBarsProps[] = [];
 
   if (!spec.layer || !Array.isArray(spec.layer)) {
@@ -1004,9 +1060,7 @@ function extractYMinMax(
   if (yScale?.zero === false) {
     const yField = encoding?.y?.field;
     if (yField) {
-      const yValues = dataValues
-        .map(row => Number(row[yField]))
-        .filter(v => !isNaN(v));
+      const yValues = dataValues.map(row => Number(row[yField])).filter(v => !isNaN(v));
       if (yValues.length > 0) {
         const dataMin = d3Min(yValues) ?? 0;
         const dataMax = d3Max(yValues) ?? 0;
@@ -1127,7 +1181,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
   const colorEnc = encoding.color as Record<string, unknown> | undefined;
   if (colorEnc?.condition && typeof (colorEnc.condition as Record<string, unknown>)?.test === 'string') {
     const condition = colorEnc.condition as { test: string; value: string };
-    const elseValue = colorEnc.value as string || '#999';
+    const elseValue = (colorEnc.value as string) || '#999';
     const colorField = '__conditional_color__';
 
     dataValues.forEach(row => {
@@ -1160,17 +1214,32 @@ function initializeTransformContext(spec: VegaLiteSpec) {
     const groups = new Map<string, Array<Record<string, unknown>>>();
     dataValues.forEach(row => {
       const dateVal = new Date(row[field] as string | number);
-      if (isNaN(dateVal.getTime())) { return; }
+      if (isNaN(dateVal.getTime())) {
+        return;
+      }
       let key: string;
       switch (unit) {
-        case 'year': key = String(dateVal.getFullYear()); break;
-        case 'quarter': key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`; break;
-        case 'month': key = dateVal.toLocaleString('en', { month: 'short' }); break;
-        case 'day': key = String(dateVal.getDate()); break;
-        case 'hours': key = String(dateVal.getHours()); break;
-        default: key = String(dateVal);
+        case 'year':
+          key = String(dateVal.getFullYear());
+          break;
+        case 'quarter':
+          key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`;
+          break;
+        case 'month':
+          key = dateVal.toLocaleString('en', { month: 'short' });
+          break;
+        case 'day':
+          key = String(dateVal.getDate());
+          break;
+        case 'hours':
+          key = String(dateVal.getHours());
+          break;
+        default:
+          key = String(dateVal);
       }
-      if (!groups.has(key)) { groups.set(key, []); }
+      if (!groups.has(key)) {
+        groups.set(key, []);
+      }
       groups.get(key)!.push(row);
     });
 
@@ -1178,7 +1247,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
       const result: Record<string, unknown> = { [field]: key };
       if (yField && yAgg !== 'count') {
         const vals = rows.map(r => Number(r[yField])).filter(v => !isNaN(v));
-        result[yField] = yAgg === 'sum' ? d3Sum(vals) : (d3Mean(vals) ?? 0);
+        result[yField] = yAgg === 'sum' ? d3Sum(vals) : d3Mean(vals) ?? 0;
       } else {
         result[yField || '__count'] = rows.length;
       }
@@ -1351,7 +1420,12 @@ function groupDataBySeries(
   xType?: VegaLiteType,
   sizeField?: string | undefined,
   yType?: VegaLiteType,
-): { seriesMap: Map<string, LineChartDataPoint[]>; ordinalMapping?: Map<string, number>; ordinalLabels?: string[]; yOrdinalLabels?: string[] } {
+): {
+  seriesMap: Map<string, LineChartDataPoint[]>;
+  ordinalMapping?: Map<string, number>;
+  ordinalLabels?: string[];
+  yOrdinalLabels?: string[];
+} {
   const seriesMap = new Map<string, LineChartDataPoint[]>();
 
   if (!xField || !yField) {
@@ -1521,7 +1595,12 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
       if (encoding.y.type === 'quantitative') {
         if (typeof sample === 'string' && !isFinite(Number(sample))) {
           encoding.y.type = 'nominal';
-        } else if (typeof sample === 'object' && sample !== null && !Array.isArray(sample) && !(sample instanceof Date)) {
+        } else if (
+          typeof sample === 'object' &&
+          sample !== null &&
+          !Array.isArray(sample) &&
+          !(sample instanceof Date)
+        ) {
           // Try to extract a numeric value from the object
           const numericKeys = Object.keys(sample as Record<string, unknown>).filter(
             k => typeof (sample as Record<string, unknown>)[k] === 'number',
@@ -1554,7 +1633,18 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
 }
 
 export type ChartTypeResult = {
-  type: 'line' | 'bar' | 'stacked-bar' | 'grouped-bar' | 'horizontal-bar' | 'area' | 'scatter' | 'donut' | 'heatmap' | 'histogram' | 'polar';
+  type:
+    | 'line'
+    | 'bar'
+    | 'stacked-bar'
+    | 'grouped-bar'
+    | 'horizontal-bar'
+    | 'area'
+    | 'scatter'
+    | 'donut'
+    | 'heatmap'
+    | 'histogram'
+    | 'polar';
   mark: string;
 };
 
@@ -1605,12 +1695,7 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
   }
 
   // Rect marks for heatmaps (quantitative or nominal color)
-  if (
-    markType === 'rect' &&
-    encoding?.x?.field &&
-    encoding?.y?.field &&
-    encoding?.color?.field
-  ) {
+  if (markType === 'rect' && encoding?.x?.field && encoding?.y?.field && encoding?.color?.field) {
     return { type: 'heatmap', mark: markType };
   }
 
@@ -1747,8 +1832,19 @@ export function transformVegaLiteToLineChartProps(
   let currentColorIndex = 0;
 
   seriesMap.forEach((dataPoints, seriesName) => {
-    if (!colorIndex.has(seriesName)) { colorIndex.set(seriesName, currentColorIndex++); }
-    const color = resolveColor(seriesName, colorIndex.get(seriesName)!, undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+    if (!colorIndex.has(seriesName)) {
+      colorIndex.set(seriesName, currentColorIndex++);
+    }
+    const color = resolveColor(
+      seriesName,
+      colorIndex.get(seriesName)!,
+      undefined,
+      markProps.color,
+      colorMap,
+      colorScheme,
+      colorRange,
+      isDarkTheme,
+    );
 
     const curveOption = mapInterpolateToCurve(markProps.interpolate);
 
@@ -1819,8 +1915,7 @@ export function transformVegaLiteToLineChartProps(
       // Find companion text annotation for legend name
       const textLayer = spec.layer!.find(l => {
         const m = getMarkType(l.mark);
-        return m === 'text' && l.encoding?.y &&
-          ((l.encoding.y.datum ?? l.encoding.y.value) === yDatum);
+        return m === 'text' && l.encoding?.y && (l.encoding.y.datum ?? l.encoding.y.value) === yDatum;
       });
       const ruleLegend = textLayer
         ? String(textLayer.encoding?.text?.datum || textLayer.encoding?.text?.value || `y=${yDatum}`)
@@ -1875,12 +1970,13 @@ export function transformVegaLiteToLineChartProps(
     ...(colorFillBars.length > 0 && { colorFillBars }),
     ...(yAxisType && { yScaleType: yAxisType }),
     // For nominal y-axis, provide tick values and labels
-    ...(yOrdinalLabels && yOrdinalLabels.length > 0 && {
-      yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
-      yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
-      yMinValue: -0.5,
-      yMaxValue: yOrdinalLabels.length - 0.5,
-    }),
+    ...(yOrdinalLabels &&
+      yOrdinalLabels.length > 0 && {
+        yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
+        yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
+        yMinValue: -0.5,
+        yMaxValue: yOrdinalLabels.length - 0.5,
+      }),
     ...categoryOrderProps,
     hideLegend: encoding.color?.legend?.disable ?? false,
   };
@@ -2098,7 +2194,16 @@ export function transformVegaLiteToVerticalBarChartProps(
         colorIndex.set(legend, currentColorIndex++);
       }
 
-      const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+      const color = resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        colorValue,
+        markProps.color,
+        colorMap,
+        colorScheme,
+        colorRange,
+        isDarkTheme,
+      );
 
       barData.push({
         x: category,
@@ -2122,49 +2227,70 @@ export function transformVegaLiteToVerticalBarChartProps(
         if (!colorIndex.has(legend)) {
           colorIndex.set(legend, currentColorIndex++);
         }
-        const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+        const color = resolveColor(
+          legend,
+          colorIndex.get(legend)!,
+          colorValue,
+          markProps.color,
+          colorMap,
+          colorScheme,
+          colorRange,
+          isDarkTheme,
+        );
         barData.push({ x: xKey, y: totalCount, legend, color });
       });
     } else {
-    // When there's no color field encoding, use a single legend name for all bars
-    // This ensures: uniform bar color, single legend entry, no tooltip duplication
-    const useSingleLegend = !colorField;
+      // When there's no color field encoding, use a single legend name for all bars
+      // This ensures: uniform bar color, single legend entry, no tooltip duplication
+      const useSingleLegend = !colorField;
 
-    // Create value formatter for bar data labels
-    const yFormatter = createValueFormatter(encoding.y?.axis?.format);
+      // Create value formatter for bar data labels
+      const yFormatter = createValueFormatter(encoding.y?.axis?.format);
 
-    // Use raw data (normal numeric y values)
-    dataValues.forEach(row => {
-      const xValue = row[xField];
-      const yValue = row[yField];
+      // Use raw data (normal numeric y values)
+      dataValues.forEach(row => {
+        const xValue = row[xField];
+        const yValue = row[yField];
 
-      // Use chart-utilities validation
-      if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number') {
-        return;
-      }
+        // Use chart-utilities validation
+        if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number') {
+          return;
+        }
 
-      const legend = colorField && row[colorField] !== undefined
-        ? String(row[colorField])
-        : useSingleLegend ? 'Bar' : String(xValue);
+        const legend =
+          colorField && row[colorField] !== undefined
+            ? String(row[colorField])
+            : useSingleLegend
+            ? 'Bar'
+            : String(xValue);
 
-      if (!colorIndex.has(legend)) {
-        colorIndex.set(legend, currentColorIndex++);
-      }
+        if (!colorIndex.has(legend)) {
+          colorIndex.set(legend, currentColorIndex++);
+        }
 
-      const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+        const color = resolveColor(
+          legend,
+          colorIndex.get(legend)!,
+          colorValue,
+          markProps.color,
+          colorMap,
+          colorScheme,
+          colorRange,
+          isDarkTheme,
+        );
 
-      // For bar charts, x-axis values are treated as categories (even if numeric)
-      // Convert to string to ensure consistent categorical positioning
-      const xCategory = typeof xValue === 'number' ? String(xValue) : (xValue as string);
+        // For bar charts, x-axis values are treated as categories (even if numeric)
+        // Convert to string to ensure consistent categorical positioning
+        const xCategory = typeof xValue === 'number' ? String(xValue) : (xValue as string);
 
-      barData.push({
-        x: xCategory,
-        y: yValue,
-        legend,
-        color,
-        ...(yFormatter && { yAxisCalloutData: yFormatter(yValue), barLabel: yFormatter(yValue) }),
+        barData.push({
+          x: xCategory,
+          y: yValue,
+          legend,
+          color,
+          ...(yFormatter && { yAxisCalloutData: yFormatter(yValue), barLabel: yFormatter(yValue) }),
+        });
       });
-    });
     }
   }
 
@@ -2202,7 +2328,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     ...(yAxisType && { yScaleType: yAxisType }),
     ...categoryOrderProps,
     // Hide legend for single-series bar charts (no color encoding) to avoid showing "Bar" legend
-    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
+    hideLegend: !colorField ? true : encoding.color?.legend?.disable ?? false,
   };
 
   if (tickConfig.tickValues) {
@@ -2298,8 +2424,16 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         colorIndex.set(legend, currentColorIndex++);
       }
 
-      const color =
-        resolveColor(legend, colorIndex.get(legend)!, colorValue as string | undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+      const color = resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        colorValue as string | undefined,
+        markProps.color,
+        colorMap,
+        colorScheme,
+        colorRange,
+        isDarkTheme,
+      );
 
       mapXToDataPoints[xKey].chartData.push({
         legend,
@@ -2308,75 +2442,91 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       });
     });
   } else {
-  // Check if y values are actually numeric; if not, fall back to count aggregation
-  const yType = encoding.y?.type;
-  const firstYValue = dataValues.find(r => r[yField!] !== undefined)?.[yField!];
-  const yIsNumeric = typeof firstYValue === 'number';
+    // Check if y values are actually numeric; if not, fall back to count aggregation
+    const yType = encoding.y?.type;
+    const firstYValue = dataValues.find(r => r[yField!] !== undefined)?.[yField!];
+    const yIsNumeric = typeof firstYValue === 'number';
 
-  if (!yIsNumeric && yField) {
-    // y values are non-numeric (e.g., strings after auto-correction from quantitative to nominal)
-    // Fall back to count aggregation: count rows per x category and color
-    const counts = countByCategory(dataValues, xField, colorField, 'Bar');
-    counts.forEach((legendMap, xKey) => {
-      mapXToDataPoints[xKey] = {
-        xAxisPoint: xKey,
-        chartData: [],
-        lineData: [],
-      };
-      legendMap.forEach((count, legend) => {
+    if (!yIsNumeric && yField) {
+      // y values are non-numeric (e.g., strings after auto-correction from quantitative to nominal)
+      // Fall back to count aggregation: count rows per x category and color
+      const counts = countByCategory(dataValues, xField, colorField, 'Bar');
+      counts.forEach((legendMap, xKey) => {
+        mapXToDataPoints[xKey] = {
+          xAxisPoint: xKey,
+          chartData: [],
+          lineData: [],
+        };
+        legendMap.forEach((count, legend) => {
+          if (!colorIndex.has(legend)) {
+            colorIndex.set(legend, currentColorIndex++);
+          }
+          const color = resolveColor(
+            legend,
+            colorIndex.get(legend)!,
+            colorValue as string | undefined,
+            markProps.color,
+            colorMap,
+            colorScheme,
+            colorRange,
+            isDarkTheme,
+          );
+          mapXToDataPoints[xKey].chartData.push({
+            legend,
+            data: count,
+            color,
+          });
+        });
+      });
+    } else {
+      // Process bar data (normal numeric y values)
+      dataValues.forEach(row => {
+        const xValue = row[xField];
+        const yValue = row[yField!];
+        const stackValue = colorField ? row[colorField] : 'Bar'; // Default legend if no color field
+
+        if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number') {
+          return;
+        }
+
+        const xKey = String(xValue);
+        const legend = stackValue !== undefined ? String(stackValue) : 'Bar';
+
+        if (!mapXToDataPoints[xKey]) {
+          // For bar charts, x-axis values are treated as categories (even if numeric)
+          const xCategory = typeof xValue === 'number' ? String(xValue) : (xValue as string);
+          mapXToDataPoints[xKey] = {
+            xAxisPoint: xCategory,
+            chartData: [],
+            lineData: [],
+          };
+        }
+
         if (!colorIndex.has(legend)) {
           colorIndex.set(legend, currentColorIndex++);
         }
-        const color =
-          resolveColor(legend, colorIndex.get(legend)!, colorValue as string | undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+
+        // Use static color if provided, otherwise use color scheme/scale
+        const color = resolveColor(
+          legend,
+          colorIndex.get(legend)!,
+          colorValue as string | undefined,
+          markProps.color,
+          colorMap,
+          colorScheme,
+          colorRange,
+          isDarkTheme,
+        );
+
+        const stackYFormatter = createValueFormatter(encoding.y?.axis?.format);
         mapXToDataPoints[xKey].chartData.push({
           legend,
-          data: count,
+          data: yValue,
           color,
+          ...(stackYFormatter && { yAxisCalloutData: stackYFormatter(yValue), barLabel: stackYFormatter(yValue) }),
         });
       });
-    });
-  } else {
-  // Process bar data (normal numeric y values)
-  dataValues.forEach(row => {
-    const xValue = row[xField];
-    const yValue = row[yField!];
-    const stackValue = colorField ? row[colorField] : 'Bar'; // Default legend if no color field
-
-    if (isInvalidValue(xValue) || isInvalidValue(yValue) || typeof yValue !== 'number') {
-      return;
     }
-
-    const xKey = String(xValue);
-    const legend = stackValue !== undefined ? String(stackValue) : 'Bar';
-
-    if (!mapXToDataPoints[xKey]) {
-      // For bar charts, x-axis values are treated as categories (even if numeric)
-      const xCategory = typeof xValue === 'number' ? String(xValue) : (xValue as string);
-      mapXToDataPoints[xKey] = {
-        xAxisPoint: xCategory,
-        chartData: [],
-        lineData: [],
-      };
-    }
-
-    if (!colorIndex.has(legend)) {
-      colorIndex.set(legend, currentColorIndex++);
-    }
-
-    // Use static color if provided, otherwise use color scheme/scale
-    const color =
-      resolveColor(legend, colorIndex.get(legend)!, colorValue as string | undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
-
-    const stackYFormatter = createValueFormatter(encoding.y?.axis?.format);
-    mapXToDataPoints[xKey].chartData.push({
-      legend,
-      data: yValue,
-      color,
-      ...(stackYFormatter && { yAxisCalloutData: stackYFormatter(yValue), barLabel: stackYFormatter(yValue) }),
-    });
-  });
-  }
   } // end else (non-aggregate)
 
   // Process line data from additional layers (if any)
@@ -2428,7 +2578,16 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         lineColor = lineMarkProps.color;
       } else {
         // Use lineLegend for consistent color assignment
-        lineColor = resolveColor(lineLegend, colorIndex.get(lineLegend)!, undefined, undefined, colorMap, undefined, undefined, isDarkTheme);
+        lineColor = resolveColor(
+          lineLegend,
+          colorIndex.get(lineLegend)!,
+          undefined,
+          undefined,
+          colorMap,
+          undefined,
+          undefined,
+          isDarkTheme,
+        );
       }
 
       // Determine if this line should use secondary Y-axis
@@ -2482,8 +2641,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
       // Look for companion text annotation at the same y-value
       const textSpec = unitSpecs.find((s, i) => {
-        return getMarkType(s.mark) === 'text' && s.encoding?.y &&
-          ((s.encoding.y.datum ?? s.encoding.y.value) === yDatum);
+        return getMarkType(s.mark) === 'text' && s.encoding?.y && (s.encoding.y.datum ?? s.encoding.y.value) === yDatum;
       });
       const ruleText = textSpec
         ? String(textSpec.encoding?.text?.datum || textSpec.encoding?.text?.value || yDatum)
@@ -2639,7 +2797,16 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
       key: legend,
       data: groupedData[name][legend],
       legend,
-      color: resolveColor(legend, colorIndex.get(legend)!, undefined, undefined, colorMap, colorScheme, colorRange, isDarkTheme),
+      color: resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        undefined,
+        undefined,
+        colorMap,
+        colorScheme,
+        colorRange,
+        isDarkTheme,
+      ),
     }));
 
     return {
@@ -2717,7 +2884,16 @@ export function transformVegaLiteToHorizontalBarChartProps(
         colorIndex.set(legend, currentColorIndex++);
       }
 
-      const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, undefined, undefined, isDarkTheme);
+      const color = resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        colorValue,
+        markProps.color,
+        colorMap,
+        undefined,
+        undefined,
+        isDarkTheme,
+      );
 
       barData.push({
         x: value,
@@ -2756,7 +2932,16 @@ export function transformVegaLiteToHorizontalBarChartProps(
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
       }
-      const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, undefined, undefined, isDarkTheme);
+      const color = resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        colorValue,
+        markProps.color,
+        colorMap,
+        undefined,
+        undefined,
+        isDarkTheme,
+      );
       barData.push({ x: xNumeric, y: yValue as number | string, legend, color });
     });
   } else if (xField && yField) {
@@ -2770,13 +2955,23 @@ export function transformVegaLiteToHorizontalBarChartProps(
       }
 
       // When no color field, use single legend to avoid tooltip duplication with y-axis labels
-      const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : !colorField ? 'Bar' : String(yValue);
+      const legend =
+        colorField && row[colorField] !== undefined ? String(row[colorField]) : !colorField ? 'Bar' : String(yValue);
 
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
       }
 
-      const color = resolveColor(legend, colorIndex.get(legend)!, colorValue, markProps.color, colorMap, undefined, undefined, isDarkTheme);
+      const color = resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        colorValue,
+        markProps.color,
+        colorMap,
+        undefined,
+        undefined,
+        isDarkTheme,
+      );
 
       barData.push({
         x: xValue,
@@ -2798,7 +2993,7 @@ export function transformVegaLiteToHorizontalBarChartProps(
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
     // Hide legend for single-series horizontal bars (no color encoding)
-    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
+    hideLegend: !colorField ? true : encoding.color?.legend?.disable ?? false,
   };
 
   if (annotations.length > 0) {
@@ -2864,8 +3059,8 @@ export function transformVegaLiteToAreaChartProps(
   return {
     ...lineChartProps,
     mode,
-  // Cast needed: AreaChartProps and LineChartProps share the same base but have
-  // incompatible style types. The spread is safe because styles are not set here.
+    // Cast needed: AreaChartProps and LineChartProps share the same base but have
+    // incompatible style types. The spread is safe because styles are not set here.
   } as AreaChartProps;
 }
 
@@ -2934,7 +3129,9 @@ export function transformVegaLiteToScatterChartProps(
   let currentColorIndex = 0;
 
   const chartData: LineChartPoints[] = seriesNames.map((seriesName, index) => {
-    if (!colorIndex.has(seriesName)) { colorIndex.set(seriesName, currentColorIndex++); }
+    if (!colorIndex.has(seriesName)) {
+      colorIndex.set(seriesName, currentColorIndex++);
+    }
     const seriesData = groupedData[seriesName];
 
     const points: ScatterChartDataPoint[] = seriesData.map(row => {
@@ -2962,7 +3159,19 @@ export function transformVegaLiteToScatterChartProps(
       colorField && encoding.color?.scale?.range && Array.isArray(encoding.color.scale.range)
         ? encoding.color.scale.range[index]
         : markProps.color;
-    const color = typeof colorValue === 'string' ? colorValue : resolveColor(seriesName, colorIndex.get(seriesName)!, undefined, undefined, colorMap, undefined, undefined, isDarkTheme);
+    const color =
+      typeof colorValue === 'string'
+        ? colorValue
+        : resolveColor(
+            seriesName,
+            colorIndex.get(seriesName)!,
+            undefined,
+            undefined,
+            colorMap,
+            undefined,
+            undefined,
+            isDarkTheme,
+          );
 
     return {
       legend: seriesName,
@@ -2999,12 +3208,13 @@ export function transformVegaLiteToScatterChartProps(
     ...(yMaxValue !== undefined && { yMaxValue }),
     ...(yAxisType && { yScaleType: yAxisType }),
     // For nominal y-axis, provide tick values and labels
-    ...(yIsNominal && yOrdinalLabels.length > 0 && {
-      yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
-      yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
-      yMinValue: -0.5,
-      yMaxValue: yOrdinalLabels.length - 0.5,
-    }),
+    ...(yIsNominal &&
+      yOrdinalLabels.length > 0 && {
+        yAxisTickValues: Array.from({ length: yOrdinalLabels.length }, (_, i) => i),
+        yAxisTickFormat: (val: number) => yOrdinalLabels[val] ?? String(val),
+        yMinValue: -0.5,
+        yMaxValue: yOrdinalLabels.length - 0.5,
+      }),
     ...categoryOrderProps,
     hideLegend: encoding.color?.legend?.disable ?? false,
   };
@@ -3079,7 +3289,16 @@ export function transformVegaLiteToDonutChartProps(
     chartData.push({
       legend,
       data: value,
-      color: resolveColor(legend, colorIndex.get(legend)!, undefined, undefined, colorMap, colorScheme, colorRange, isDarkTheme),
+      color: resolveColor(
+        legend,
+        colorIndex.get(legend)!,
+        undefined,
+        undefined,
+        colorMap,
+        colorScheme,
+        colorRange,
+        isDarkTheme,
+      ),
     });
   });
 
@@ -3127,7 +3346,9 @@ export function transformVegaLiteToHeatMapChartProps(
   let maxValue = Number.NEGATIVE_INFINITY;
 
   // Check if color values are nominal (strings) rather than quantitative (numbers)
-  const isNominalColor = encoding.color?.type === 'nominal' || encoding.color?.type === 'ordinal' ||
+  const isNominalColor =
+    encoding.color?.type === 'nominal' ||
+    encoding.color?.type === 'ordinal' ||
     dataValues.some(row => row[colorField] !== undefined && typeof row[colorField] !== 'number');
   const nominalColorMap = new Map<string, number>();
 
@@ -3255,14 +3476,12 @@ export function transformVegaLiteToHeatMapChartProps(
     }
 
     if (customRange && customRange.length > 0) {
-      rangeValues = customRange.length >= steps
-        ? customRange.slice(0, steps)
-        : customRange;
+      rangeValues = customRange.length >= steps ? customRange.slice(0, steps) : customRange;
     } else if (colorScheme) {
       const schemeColors = getSequentialSchemeColors(colorScheme, steps);
       if (schemeColors) {
-        const isReversed = encoding.color?.sort === 'descending' ||
-          (encoding.color?.scale as Record<string, unknown>)?.reverse === true;
+        const isReversed =
+          encoding.color?.sort === 'descending' || (encoding.color?.scale as Record<string, unknown>)?.reverse === true;
         rangeValues = isReversed ? schemeColors.reverse() : schemeColors;
       }
     }
@@ -3567,7 +3786,16 @@ export function transformVegaLiteToPolarChartProps(
   const polarData: (AreaPolarSeries | LinePolarSeries | ScatterPolarSeries)[] = [];
 
   seriesMap.forEach((dataPoints, seriesName) => {
-    const color = resolveColor(seriesName, colorIndex.get(seriesName)!, undefined, markProps.color, colorMap, colorScheme, colorRange, isDarkTheme);
+    const color = resolveColor(
+      seriesName,
+      colorIndex.get(seriesName)!,
+      undefined,
+      markProps.color,
+      colorMap,
+      colorScheme,
+      colorRange,
+      isDarkTheme,
+    );
     const curveOption = mapInterpolateToCurve(markProps.interpolate);
 
     // Build line options with curve, strokeDash, and strokeWidth

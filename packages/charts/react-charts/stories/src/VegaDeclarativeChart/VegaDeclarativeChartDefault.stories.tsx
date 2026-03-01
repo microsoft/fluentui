@@ -876,16 +876,113 @@ function categorizeSchemas(): Map<string, string[]> {
 
     // Categorization logic based on schema name patterns
     const categoryKeywords: [string, string[]][] = [
-      ['Financial', ['stock', 'portfolio', 'profit', 'revenue', 'cashflow', 'budget', 'expense', 'roi', 'financial', 'dividend']],
-      ['E-Commerce', ['orders', 'conversion', 'product', 'inventory', 'customer', 'price', 'seasonal', 'category', 'shipping', 'discount', 'sales', 'market']],
-      ['Marketing', ['campaign', 'engagement', 'social', 'ad', 'ctr', 'channel', 'influencer', 'viral', 'sentiment', 'impression', 'lead']],
-      ['Healthcare', ['patient', 'age', 'disease', 'treatment', 'hospital', 'bmi', 'recovery', 'medication', 'symptom', 'health']],
-      ['Education', ['test', 'grade', 'course', 'student', 'attendance', 'study', 'graduation', 'skill', 'learning', 'dropout']],
-      ['Manufacturing', ['production', 'defect', 'machine', 'downtime', 'quality', 'shift', 'turnover', 'supply', 'efficiency', 'maintenance']],
-      ['Climate', ['temperature', 'precipitation', 'co2', 'renewable', 'air', 'weather', 'sea', 'biodiversity', 'energy', 'climate']],
-      ['Technology', ['api', 'error', 'server', 'deployment', 'user_sessions', 'bug', 'performance', 'code', 'bandwidth', 'system', 'website', 'log_scale']],
+      [
+        'Financial',
+        ['stock', 'portfolio', 'profit', 'revenue', 'cashflow', 'budget', 'expense', 'roi', 'financial', 'dividend'],
+      ],
+      [
+        'E-Commerce',
+        [
+          'orders',
+          'conversion',
+          'product',
+          'inventory',
+          'customer',
+          'price',
+          'seasonal',
+          'category',
+          'shipping',
+          'discount',
+          'sales',
+          'market',
+        ],
+      ],
+      [
+        'Marketing',
+        [
+          'campaign',
+          'engagement',
+          'social',
+          'ad',
+          'ctr',
+          'channel',
+          'influencer',
+          'viral',
+          'sentiment',
+          'impression',
+          'lead',
+        ],
+      ],
+      [
+        'Healthcare',
+        ['patient', 'age', 'disease', 'treatment', 'hospital', 'bmi', 'recovery', 'medication', 'symptom', 'health'],
+      ],
+      [
+        'Education',
+        ['test', 'grade', 'course', 'student', 'attendance', 'study', 'graduation', 'skill', 'learning', 'dropout'],
+      ],
+      [
+        'Manufacturing',
+        [
+          'production',
+          'defect',
+          'machine',
+          'downtime',
+          'quality',
+          'shift',
+          'turnover',
+          'supply',
+          'efficiency',
+          'maintenance',
+        ],
+      ],
+      [
+        'Climate',
+        [
+          'temperature',
+          'precipitation',
+          'co2',
+          'renewable',
+          'air',
+          'weather',
+          'sea',
+          'biodiversity',
+          'energy',
+          'climate',
+        ],
+      ],
+      [
+        'Technology',
+        [
+          'api',
+          'error',
+          'server',
+          'deployment',
+          'user_sessions',
+          'bug',
+          'performance',
+          'code',
+          'bandwidth',
+          'system',
+          'website',
+          'log_scale',
+        ],
+      ],
       ['Sports', ['player', 'team', 'game', 'season', 'attendance_bar', 'league', 'streaming', 'genre', 'tournament']],
-      ['Basic Charts', ['linechart', 'areachart', 'barchart', 'scatterchart', 'donutchart', 'heatmapchart', 'grouped_bar', 'stacked_bar', 'line_bar_combo']],
+      [
+        'Basic Charts',
+        [
+          'linechart',
+          'areachart',
+          'barchart',
+          'scatterchart',
+          'donutchart',
+          'heatmapchart',
+          'grouped_bar',
+          'stacked_bar',
+          'line_bar_combo',
+        ],
+      ],
     ];
 
     for (const [cat, keywords] of categoryKeywords) {
@@ -1216,7 +1313,17 @@ export const Default = (): React.ReactElement => {
 
         <div>
           <Field label="Chart Preview">
-            <ErrorBoundary key={parsedSchema ? JSON.stringify(parsedSchema).length + '-' + (parsedSchema.title || parsedSchema.data?.values?.length || '') + '-' + JSON.stringify(parsedSchema).substring(50, 200) : 'empty'}>
+            <ErrorBoundary
+              key={
+                parsedSchema
+                  ? JSON.stringify(parsedSchema).length +
+                    '-' +
+                    (parsedSchema.title || parsedSchema.data?.values?.length || '') +
+                    '-' +
+                    JSON.stringify(parsedSchema).substring(50, 200)
+                  : 'empty'
+              }
+            >
               {parsedSchema ? (
                 <div style={{ width: `${width}px`, height: `${height}px` }}>
                   <VegaDeclarativeChart

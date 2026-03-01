@@ -387,4 +387,3 @@ export function isStandardVegaScheme(range: string[] | undefined): VegaColorSche
 
   return undefined;
 }
-

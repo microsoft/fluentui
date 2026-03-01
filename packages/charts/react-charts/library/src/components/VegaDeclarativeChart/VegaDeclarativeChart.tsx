@@ -78,7 +78,6 @@ export interface VegaDeclarativeChartProps {
   style?: React.CSSProperties;
 }
 
-
 /**
  * Check if spec is a horizontal concatenation
  */
@@ -221,7 +220,14 @@ function renderSingleChart(
     chartProps.hideLegend = true;
   }
 
-  return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} componentRef={chartRef} {...interactiveCommonProps} />;
+  return (
+    <ChartRenderer
+      {...chartProps}
+      legendProps={multiSelectLegendProps}
+      componentRef={chartRef}
+      {...interactiveCommonProps}
+    />
+  );
 }
 
 /**
@@ -431,9 +437,10 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
             >
               {gridProps.specs.map((subSpec: VegaLiteSpec, index: number) => {
                 // Compute default height for sub-charts
-                const defaultSubHeight = typeof vegaLiteSpec.height === 'number'
-                  ? vegaLiteSpec.height
-                  : typeof subSpec.height === 'number'
+                const defaultSubHeight =
+                  typeof vegaLiteSpec.height === 'number'
+                    ? vegaLiteSpec.height
+                    : typeof subSpec.height === 'number'
                     ? subSpec.height
                     : 300;
 
@@ -475,9 +482,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                 );
               })}
             </div>
-            {sharedLegendProps.legends.length > 0 && (
-              <Legends {...sharedLegendProps} {...multiSelectLegendProps} />
-            )}
+            {sharedLegendProps.legends.length > 0 && <Legends {...sharedLegendProps} {...multiSelectLegendProps} />}
           </div>
         );
       }

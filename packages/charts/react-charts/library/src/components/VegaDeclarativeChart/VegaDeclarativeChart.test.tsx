@@ -1203,7 +1203,12 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
       title: 'Test HConcat',
       hconcat: [
         {
-          data: { values: [{ metric: 'A', value: 10 }, { metric: 'B', value: 20 }] },
+          data: {
+            values: [
+              { metric: 'A', value: 10 },
+              { metric: 'B', value: 20 },
+            ],
+          },
           mark: { type: 'arc', innerRadius: 30 },
           encoding: {
             theta: { field: 'value', type: 'quantitative' },
@@ -1211,7 +1216,12 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
           },
         },
         {
-          data: { values: [{ metric: 'A', value: 15 }, { metric: 'B', value: 25 }] },
+          data: {
+            values: [
+              { metric: 'A', value: 15 },
+              { metric: 'B', value: 25 },
+            ],
+          },
           mark: { type: 'arc', innerRadius: 30 },
           encoding: {
             theta: { field: 'value', type: 'quantitative' },
