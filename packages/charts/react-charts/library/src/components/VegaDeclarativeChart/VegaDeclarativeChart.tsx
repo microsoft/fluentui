@@ -30,7 +30,7 @@ import { ScatterChart } from '../ScatterChart/index';
 import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { PolarChart } from '../PolarChart/index';
-import { useIsDarkTheme, useColorMapping } from '../DeclarativeChart/DeclarativeChartHooks';
+import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
 import type { Chart } from '../../types/index';
 
 // Re-export the typed VegaLiteSpec for public API
