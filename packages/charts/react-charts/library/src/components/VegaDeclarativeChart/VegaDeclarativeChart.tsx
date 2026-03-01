@@ -462,12 +462,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                       minWidth: 0,
                     }}
                   >
-                    {renderSingleChart(
-                      mergedSpec,
-                      colorMap,
-                      isDarkTheme,
-                      interactiveCommonProps,
-                    )}
+                    {renderSingleChart(mergedSpec, colorMap, isDarkTheme, interactiveCommonProps)}
                   </div>
                 );
               })}
@@ -493,12 +488,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       }
 
       // Render single chart
-      const chartComponent = renderSingleChart(
-        vegaLiteSpec,
-        colorMap,
-        isDarkTheme,
-        interactiveCommonProps,
-      );
+      const chartComponent = renderSingleChart(vegaLiteSpec, colorMap, isDarkTheme, interactiveCommonProps);
 
       return (
         <div ref={forwardedRef} className={props.className} style={props.style}>
