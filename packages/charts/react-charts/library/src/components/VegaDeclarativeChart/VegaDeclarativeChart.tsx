@@ -476,7 +476,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
               })}
             </div>
             {sharedLegendProps.legends.length > 0 && (
-              <Legends {...sharedLegendProps} />
+              <Legends {...sharedLegendProps} {...multiSelectLegendProps} />
             )}
           </div>
         );
