@@ -1779,8 +1779,7 @@ export interface ScatterPolarSeries extends DataSeries {
 
 // @public
 export interface Schema {
-    plotlySchema?: any;
-    selectedLegends?: string[];
+    plotlySchema: any;
 }
 
 // @public (undocumented)
