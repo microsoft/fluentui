@@ -1197,4 +1197,40 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
     const { container } = render(<VegaDeclarativeChart {...props} />);
     expect(container.querySelector('svg')).toBeInTheDocument();
   });
+
+  it('renders hconcat donut charts with shared legend outside the grid', () => {
+    const hconcatSpec = {
+      title: 'Test HConcat',
+      hconcat: [
+        {
+          data: { values: [{ metric: 'A', value: 10 }, { metric: 'B', value: 20 }] },
+          mark: { type: 'arc', innerRadius: 30 },
+          encoding: {
+            theta: { field: 'value', type: 'quantitative' },
+            color: { field: 'metric', type: 'nominal' },
+          },
+        },
+        {
+          data: { values: [{ metric: 'A', value: 15 }, { metric: 'B', value: 25 }] },
+          mark: { type: 'arc', innerRadius: 30 },
+          encoding: {
+            theta: { field: 'value', type: 'quantitative' },
+            color: { field: 'metric', type: 'nominal' },
+          },
+        },
+      ],
+    };
+
+    const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: hconcatSpec }} />);
+
+    // Should render 2 donut charts (SVGs)
+    const svgs = container.querySelectorAll('svg');
+    expect(svgs.length).toBeGreaterThanOrEqual(2);
+
+    // Should render shared legend with buttons for A and B
+    const legendButtons = container.querySelectorAll('button');
+    const legendTexts = Array.from(legendButtons).map(btn => btn.textContent);
+    expect(legendTexts).toContain('A');
+    expect(legendTexts).toContain('B');
+  });
 });
