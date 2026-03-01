@@ -423,6 +423,15 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
               // Merge shared data and encoding from parent spec into each subplot
               // Hide legends on all sub-charts except the last one (which shows the shared legend)
               const isLastChart = index === gridProps.specs.length - 1;
+
+              // Compute default height for sub-charts to prevent ResponsiveContainer
+              // from expanding to 100% of an unconstrained parent
+              const defaultSubHeight = typeof vegaLiteSpec.height === 'number'
+                ? vegaLiteSpec.height
+                : typeof subSpec.height === 'number'
+                  ? subSpec.height
+                  : 300;
+
               const mergedSpec = {
                 ...subSpec,
                 data: subSpec.data || vegaLiteSpec.data,
@@ -430,6 +439,8 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                   ...(vegaLiteSpec.encoding || {}),
                   ...(subSpec.encoding || {}),
                 },
+                // Ensure each sub-chart has an explicit height
+                height: typeof subSpec.height === 'number' ? subSpec.height : defaultSubHeight,
                 ...(!isLastChart && { _hideLegend: true }),
               };
 
@@ -445,7 +456,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                     gridColumnStart: cellColumn,
                     gridColumnEnd: cellColumn + 1,
                     minWidth: 0,
-                    minHeight: 200,
                     overflow: 'hidden',
                   }}
                 >
