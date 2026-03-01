@@ -1847,7 +1847,55 @@ export interface VegaDeclarativeChartProps {
 }
 
 // @public
-export type VegaLiteSpec = any;
+export interface VegaLiteSpec {
+    $schema?: string;
+    autosize?: string | {
+        type?: string;
+        contains?: string;
+    };
+    background?: string;
+    config?: Record<string, unknown>;
+    data?: VegaLiteData;
+    description?: string;
+    encoding?: VegaLiteEncoding;
+    facet?: Record<string, unknown>;
+    hconcat?: VegaLiteSpec[];
+    height?: number | 'container';
+    layer?: VegaLiteUnitSpec[];
+    mark?: VegaLiteMarkDef;
+    padding?: number | {
+        top?: number;
+        bottom?: number;
+        left?: number;
+        right?: number;
+    };
+    repeat?: Record<string, unknown>;
+    resolve?: {
+        scale?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+        axis?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+        };
+        legend?: {
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+    };
+    selection?: Record<string, unknown>;
+    title?: string | VegaLiteTitleParams;
+    transform?: Array<Record<string, unknown>>;
+    vconcat?: VegaLiteSpec[];
+    width?: number | 'container';
+}
 
 // @public
 export interface VegaSchema {
