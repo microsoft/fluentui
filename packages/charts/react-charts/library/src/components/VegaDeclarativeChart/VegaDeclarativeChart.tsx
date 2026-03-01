@@ -416,7 +416,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
               gridTemplateRows: gridProps.templateRows,
               gridTemplateColumns: gridProps.templateColumns,
               gap: '16px',
-              overflow: 'hidden',
             }}
           >
             {gridProps.specs.map((subSpec: VegaLiteSpec, index: number) => {
@@ -456,7 +455,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                     gridColumnStart: cellColumn,
                     gridColumnEnd: cellColumn + 1,
                     minWidth: 0,
-                    overflow: 'hidden',
                   }}
                 >
                   {renderSingleChart(
