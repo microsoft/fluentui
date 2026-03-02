@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add onNavigateDate callback to CalendarYear decade selector",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
