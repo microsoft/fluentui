@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  transformPlotlyJsonToPolarChartProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
@@ -1225,5 +1226,39 @@ describe('resolveXAxisPoint', () => {
     expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
     expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
     expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
+  });
+});
+
+describe('transformPlotlyJsonToPolarChartProps', () => {
+  test('Should return polar chart props with annotations', () => {
+    const plotlySchema = require('./tests/schema/fluent_polarchart_annotations_test.json');
+    const result = transformPlotlyJsonToPolarChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations?.length).toBe(3);
+    expect(result).toMatchSnapshot();
+  });
+
+  test('Should return polar chart props without annotations when layout has no annotations', () => {
+    const plotlySchema = {
+      data: [
+        {
+          type: 'scatterpolar' as const,
+          r: [85, 92, 78],
+          theta: ['A', 'B', 'C'],
+          name: 'Test Series',
+        },
+      ],
+      layout: {
+        title: 'Test Polar Chart',
+      },
+    };
+    const result = transformPlotlyJsonToPolarChartProps(
+      plotlySchema as PlotlySchema,
+      false,
+      { current: colorMap },
+      'default',
+      true,
+    );
+    expect(result.annotations).toBeUndefined();
   });
 });
