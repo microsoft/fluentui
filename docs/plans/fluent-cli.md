@@ -226,9 +226,7 @@ Skills are the authoritative migration source for this project.
 
 ### 7.1 Location
 
-`skills/<skill-name>.md` at the **repo root**. Versioned with the codebase. Distributed via the `npx skills add` tooling (external).
-
-> Note: `packages/react-components/react-components-agent-skills/` exists as an empty placeholder — it is **not used** for this project.
+`skills/<skill-name>/SKILL.md` at the **repo root**. Versioned with the codebase. Distributed via the `npx skills add` tooling (external).
 
 ### 7.2 Skill Inventory (MVP)
 
