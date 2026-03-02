@@ -530,7 +530,7 @@ describe('VegaLiteSchemaAdapter', () => {
         expect(result.data).toBeDefined();
 
         // Type should be auto-corrected to nominal
-        expect(spec.encoding.x?.type).toBe('nominal');
+        expect(spec.encoding!.x?.type).toBe('nominal');
       });
 
       test('Should throw error for temporal encoding with invalid date strings', () => {
@@ -613,10 +613,10 @@ describe('VegaLiteSchemaAdapter', () => {
         // Bar charts with quantitative axes render by converting x to categorical strings
         const result = transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }, false);
         expect(result.data).toHaveLength(2);
-        expect(result.data[0].x).toBe('1');
-        expect(result.data[0].y).toBe(28);
-        expect(result.data[1].x).toBe('2');
-        expect(result.data[1].y).toBe(55);
+        expect(result.data![0].x).toBe('1');
+        expect(result.data![0].y).toBe(28);
+        expect(result.data![1].x).toBe('2');
+        expect(result.data![1].y).toBe(55);
       });
 
       test('Should accept bar chart with nominal x-axis', () => {
@@ -1384,9 +1384,9 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(props.data).toHaveLength(3);
 
       // Find data points by category
-      const pointA = props.data.find(d => d.x === 'A');
-      const pointB = props.data.find(d => d.x === 'B');
-      const pointC = props.data.find(d => d.x === 'C');
+      const pointA = props.data!.find(d => d.x === 'A');
+      const pointB = props.data!.find(d => d.x === 'B');
+      const pointC = props.data!.find(d => d.x === 'C');
 
       expect(pointA?.y).toBe(3); // 'A' appears 3 times
       expect(pointB?.y).toBe(2); // 'B' appears 2 times
@@ -1420,9 +1420,9 @@ describe('VegaLiteSchemaAdapter', () => {
       // Should aggregate sums per category
       expect(props.data).toHaveLength(3);
 
-      const pointA = props.data.find(d => d.x === 'A');
-      const pointB = props.data.find(d => d.x === 'B');
-      const pointC = props.data.find(d => d.x === 'C');
+      const pointA = props.data!.find(d => d.x === 'A');
+      const pointB = props.data!.find(d => d.x === 'B');
+      const pointC = props.data!.find(d => d.x === 'C');
 
       expect(pointA?.y).toBe(35); // 10 + 20 + 5
       expect(pointB?.y).toBe(40); // 15 + 25
@@ -1451,8 +1451,8 @@ describe('VegaLiteSchemaAdapter', () => {
 
       expect(props.data).toHaveLength(2);
 
-      const pointA = props.data.find(d => d.x === 'A');
-      const pointB = props.data.find(d => d.x === 'B');
+      const pointA = props.data!.find(d => d.x === 'A');
+      const pointB = props.data!.find(d => d.x === 'B');
 
       expect(pointA?.y).toBe(20); // (10 + 20 + 30) / 3
       expect(pointB?.y).toBe(20); // (15 + 25) / 2
