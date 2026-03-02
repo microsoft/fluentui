@@ -12,6 +12,28 @@ describe('SwatchPicker', () => {
     displayName: 'SwatchPicker',
   });
 
+  it('renders with focusMode="tab" without arrow navigation attributes', () => {
+    const result = render(
+      <SwatchPicker focusMode="tab">
+        <ColorSwatch color="#f09" value="#f09" />
+        <ColorSwatch color="#0f0" value="#0f0" />
+      </SwatchPicker>,
+    );
+    const root = result.container.firstChild as HTMLElement;
+    expect(root.getAttribute('data-tabster')).toBeNull();
+  });
+
+  it('renders with focusMode="arrow" with arrow navigation attributes', () => {
+    const result = render(
+      <SwatchPicker focusMode="arrow">
+        <ColorSwatch color="#f09" value="#f09" />
+        <ColorSwatch color="#0f0" value="#0f0" />
+      </SwatchPicker>,
+    );
+    const root = result.container.firstChild as HTMLElement;
+    expect(root.getAttribute('data-tabster')).not.toBeNull();
+  });
+
   it('renders with swatches', () => {
     const result = render(
       <SwatchPicker>
