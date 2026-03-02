@@ -21,11 +21,6 @@ const {
 
 const getPercent = (value: number, min: number, max: number) => (max === min ? 0 : ((value - min) / (max - min)) * 100);
 
-const toTuple = (value?: RangeSliderValue): [number, number] | undefined =>
-  value ? [value.start, value.end] : undefined;
-
-const toRangeValue = (start: number, end: number): RangeSliderValue => ({ start, end });
-
 export const useRangeSliderState_unstable = (state: RangeSliderState, props: RangeSliderProps): RangeSliderState => {
   'use no memo';
 
@@ -35,32 +30,38 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   const stepValue = step && step > 0 ? step : 1;
   const rangeSpan = max - min;
 
-  const [currentValues, setCurrentValues] = useControllableState<[number, number]>({
-    state: toTuple(props.value),
-    defaultState: toTuple(props.defaultValue),
-    initialState: [min, Math.min(min + 10, max)],
+  // Default offset between start/end thumbs so the initial range has a visible selection
+  const defaultRangeOffset = rangeSpan * 0.1;
+
+  const [currentValues, setCurrentValues] = useControllableState<RangeSliderValue>({
+    state: props.value,
+    defaultState: props.defaultValue,
+    initialState: { start: min, end: Math.min(min + defaultRangeOffset, max) },
   });
 
   // Ensure values are properly ordered and clamped
-  const [rawStart, rawEnd] = currentValues;
+  const { start: rawStart, end: rawEnd } = currentValues;
   const lowerValue = clamp(Math.min(rawStart, rawEnd), min, max);
   const upperValue = clamp(Math.max(rawStart, rawEnd), min, max);
 
-  state.value = toRangeValue(lowerValue, upperValue);
+  state.value = { start: lowerValue, end: upperValue };
 
   // Refs for pointer tracking and position calculation
   const activeDragThumb = React.useRef<'start' | 'end' | null>(null);
+  const [activeThumb, setActiveThumb] = React.useState<'start' | 'end'>('start');
   const rootRef = React.useRef<HTMLDivElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
+  const startInputRef = React.useRef<HTMLInputElement>(null);
+  const endInputRef = React.useRef<HTMLInputElement>(null);
 
   // Shared update function for pointer and input handlers.
   const updateValues = useEventCallback((start: number, end: number, event?: React.SyntheticEvent | Event) => {
-    setCurrentValues([start, end]);
+    setCurrentValues({ start, end });
     if (event) {
       props.onChange?.(event, {
         type: 'change',
         event: event as React.ChangeEvent<HTMLInputElement>,
-        value: toRangeValue(start, end),
+        value: { start, end },
       });
     }
   });
@@ -90,11 +91,11 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   };
 
   // Apply snapped value to the appropriate thumb
-  const applyValueToThumb = (thumb: 'start' | 'end', value: number) => {
+  const applyValueToThumb = (thumb: 'start' | 'end', value: number, event?: React.SyntheticEvent | Event) => {
     const snapped = snapToStep(value);
     const newStart = thumb === 'start' ? Math.min(snapped, upperValue) : lowerValue;
     const newEnd = thumb === 'end' ? Math.max(snapped, lowerValue) : upperValue;
-    updateValues(newStart, newEnd);
+    updateValues(newStart, newEnd, event);
   };
 
   // Pointer handlers for rail click and drag
@@ -108,13 +109,21 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       return;
     }
 
-    // Determine closest thumb based on distance
-    const thumb = Math.abs(value - lowerValue) <= Math.abs(value - upperValue) ? 'start' : 'end';
+    // Determine closest thumb based on distance; when equal (thumbs overlap), prefer the last-used thumb
+    const distStart = Math.abs(value - lowerValue);
+    const distEnd = Math.abs(value - upperValue);
+    const thumb = distStart < distEnd ? 'start' : distEnd < distStart ? 'end' : activeThumb;
     activeDragThumb.current = thumb;
+    setActiveThumb(thumb);
 
     ev.preventDefault();
     ev.currentTarget.setPointerCapture(ev.pointerId);
-    applyValueToThumb(thumb, value);
+    applyValueToThumb(thumb, value, ev);
+
+    // Focus the corresponding input programmatically since pointerEvents: 'none'
+    // on the input prevents it from receiving click-focus naturally.
+    const inputRef = thumb === 'start' ? startInputRef : endInputRef;
+    inputRef.current?.focus();
   });
 
   const handlePointerMove = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
@@ -128,7 +137,7 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
     }
 
     ev.preventDefault();
-    applyValueToThumb(activeDragThumb.current, value);
+    applyValueToThumb(activeDragThumb.current, value, ev);
   });
 
   const handlePointerUp = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
@@ -143,6 +152,8 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
   state.rail.ref = useMergedRefs(state.rail.ref, railRef);
+  state.startInput.ref = useMergedRefs(state.startInput.ref, startInputRef);
+  state.endInput.ref = useMergedRefs(state.endInput.ref, endInputRef);
   state.root.style = {
     [rangeSliderDirectionVar]: vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [rangeSliderLowerProgressVar]: `${getPercent(lowerValue, min, max)}%`,
@@ -167,6 +178,9 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       updateValues(Math.min(Number(ev.currentTarget.value), upperValue), upperValue, ev);
     }
   });
+  state.startInput.onFocus = mergeCallbacks(state.startInput.onFocus, () => {
+    setActiveThumb('start');
+  });
 
   state.endInput.value = upperValue;
   state.endInput.min = lowerValue;
@@ -178,6 +192,11 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       updateValues(lowerValue, Math.max(Number(ev.currentTarget.value), lowerValue), ev);
     }
   });
+  state.endInput.onFocus = mergeCallbacks(state.endInput.onFocus, () => {
+    setActiveThumb('end');
+  });
+
+  state.activeThumb = activeThumb;
 
   return state;
 };

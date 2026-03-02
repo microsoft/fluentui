@@ -123,4 +123,11 @@ export type RangeSliderProps = Omit<
 export type RangeSliderState = ComponentState<RangeSliderSlots> &
   Pick<RangeSliderProps, 'disabled' | 'size' | 'vertical'> & {
     value: RangeSliderValue;
+
+    /**
+     * Tracks which thumb was last interacted with. When thumbs overlap,
+     * this determines which thumb is visually elevated and receives pointer events.
+     * @default 'start'
+     */
+    activeThumb: 'start' | 'end';
   };

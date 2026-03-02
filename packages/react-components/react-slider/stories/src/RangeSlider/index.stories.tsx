@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { RangeSlider } from '@fluentui/react-components';
 
@@ -29,10 +29,10 @@ export default {
     Story => (
       <div
         style={{
-          // These stories use grid layout due to Safari bug noted in PR https://github.com/microsoft/fluentui/pull/21479
-          display: 'grid',
-          gridTemplateRows: 'repeat(1fr)',
-          justifyItems: 'start',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          alignItems: 'start',
           padding: 20,
         }}
       >
@@ -40,4 +40,4 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof RangeSlider>;
+} satisfies Meta<typeof RangeSlider>;

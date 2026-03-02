@@ -36,6 +36,7 @@ export const useRangeSlider_unstable = (props: RangeSliderProps, ref: React.Ref<
     disabled,
     size,
     vertical,
+    activeThumb: 'start',
     value: { start: 0, end: 0 },
     components: {
       root: 'div',

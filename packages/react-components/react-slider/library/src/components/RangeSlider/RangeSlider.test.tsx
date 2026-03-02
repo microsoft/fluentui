@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { RangeSlider } from './RangeSlider';
@@ -176,5 +176,49 @@ describe('RangeSlider', () => {
     expect(sliders[0].id).not.toEqual(sliders[1].id);
     expect(sliders[0].id).toContain('rangeslider-start-');
     expect(sliders[1].id).toContain('rangeslider-end-');
+  });
+
+  // Overlapping thumbs – last-used thumb tracking
+  describe('overlapping thumbs', () => {
+    it('elevates the end thumb when it receives focus while overlapping', () => {
+      const { container } = render(<RangeSlider defaultValue={{ start: 50, end: 50 }} min={0} max={100} />);
+      const sliders = screen.getAllByRole('slider');
+
+      // Capture baseline classes before any interaction
+      const endThumb = container.querySelectorAll('[class*="RangeSlider__endThumb"]')[0] as HTMLElement;
+      const baselineClasses = endThumb.className;
+
+      // Focus the end input so it becomes the last-active thumb
+      fireEvent.focus(sliders[1]);
+
+      // The end thumb should gain an additional elevated class
+      expect(endThumb.className).not.toBe(baselineClasses);
+      expect(endThumb.className.split(' ').length).toBeGreaterThan(baselineClasses.split(' ').length);
+    });
+
+    it('elevates the start thumb when it receives focus while overlapping', () => {
+      const { container } = render(<RangeSlider defaultValue={{ start: 50, end: 50 }} min={0} max={100} />);
+      const sliders = screen.getAllByRole('slider');
+
+      // Focus end then start so start is the last-active thumb
+      fireEvent.focus(sliders[1]);
+      fireEvent.focus(sliders[0]);
+
+      const startThumb = container.querySelectorAll('[class*="RangeSlider__startThumb"]')[0] as HTMLElement;
+      const endThumb = container.querySelectorAll('[class*="RangeSlider__endThumb"]')[0] as HTMLElement;
+
+      // Only start thumb should have the extra elevated class
+      expect(startThumb.className.split(' ').length).toBeGreaterThan(endThumb.className.split(' ').length);
+    });
+
+    it('does not add elevated class when thumbs do not overlap', () => {
+      const { container } = render(<RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} />);
+
+      const startThumb = container.querySelectorAll('[class*="RangeSlider__startThumb"]')[0] as HTMLElement;
+      const endThumb = container.querySelectorAll('[class*="RangeSlider__endThumb"]')[0] as HTMLElement;
+
+      // Both thumbs should have the same number of classes (no elevation applied)
+      expect(startThumb.className.split(' ').length).toBe(endThumb.className.split(' ').length);
+    });
   });
 });

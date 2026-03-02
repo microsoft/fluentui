@@ -235,6 +235,9 @@ const useThumbStyles = makeStyles({
       outlineOffset: { top: '0px', bottom: '0px', left: '0px', right: '0px' },
     },
   }),
+  activeThumb: {
+    zIndex: 1,
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -254,6 +257,9 @@ const useInputStyles = makeStyles({
     WebkitAppearance: 'none',
     opacity: 0,
     cursor: 'pointer',
+    // Prevent native range input from intercepting pointer events (touch/click);
+    // all pointer interaction is handled by the root's custom pointer handlers.
+    pointerEvents: 'none',
   },
   vertical: {
     '-webkit-appearance': 'slider-vertical',
@@ -282,6 +288,8 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
 
+  const thumbsOverlap = state.value.start === state.value.end;
+
   state.root.className = mergeClasses(
     rangeSliderClassNames.root,
     rootStyles.root,
@@ -304,6 +312,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     state.vertical ? thumbStyles.startVertical : thumbStyles.startHorizontal,
     state.vertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
     state.disabled && thumbStyles.disabled,
+    thumbsOverlap && state.activeThumb === 'start' && thumbStyles.activeThumb,
     state.startThumb.className,
   );
 
@@ -313,6 +322,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     state.vertical ? thumbStyles.endVertical : thumbStyles.endHorizontal,
     state.vertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
     state.disabled && thumbStyles.disabled,
+    thumbsOverlap && state.activeThumb === 'end' && thumbStyles.activeThumb,
     state.endThumb.className,
   );
 
