@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Skeleton } from './Skeleton';
 import { useSkeletonItem_unstable } from '../SkeletonItem/useSkeletonItem';
 import { SkeletonContextProvider } from '../../contexts/SkeletonContext';
