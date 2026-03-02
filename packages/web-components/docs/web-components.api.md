@@ -2402,6 +2402,7 @@ export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaSt
 // @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
+    ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
     // @internal (undocumented)
