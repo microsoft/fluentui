@@ -14,7 +14,7 @@ export function addHiddenInput(form: HTMLFormElement, name: string, value: strin
 }
 
 export function prepareSandboxContainers(context: StoryContext) {
-  // Support anchor ID formats for our Storybook major versions range. 
+  // Support anchor ID formats for our Storybook major versions range.
   // 10< `#anchor--{id}`
   // >=10 `#anchor--primary--{id}`
   // See: https://github.com/storybookjs/storybook/pull/33384
