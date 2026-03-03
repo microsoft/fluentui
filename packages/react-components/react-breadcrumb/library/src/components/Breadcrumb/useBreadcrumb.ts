@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
+import type { BreadcrumbBaseProps, BreadcrumbBaseState, BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
@@ -15,7 +15,27 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { focusMode = 'tab', size = 'medium', list, ...rest } = props;
+  const { size = 'medium', ...breadcrumbProps } = props;
+  const state = useBreadcrumbBase_unstable(breadcrumbProps, ref);
+
+  return {
+    ...state,
+    size,
+  };
+};
+
+/**
+ * Base hook for Breadcrumb component, which manages state related to slots structure, ARIA attributes,
+ * and keyboard navigation without design props.
+ *
+ * @param props - props from this instance of Breadcrumb
+ * @param ref - reference to root HTMLElement of Breadcrumb
+ */
+export const useBreadcrumbBase_unstable = (
+  props: BreadcrumbBaseProps,
+  ref: React.Ref<HTMLElement>,
+): BreadcrumbBaseState => {
+  const { focusMode = 'tab', list, ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
@@ -38,6 +58,5 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       { elementType: 'nav' },
     ),
     list: slot.optional(list, { renderByDefault: true, defaultProps: { role: 'list' }, elementType: 'ol' }),
-    size,
   };
 };
