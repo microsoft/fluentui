@@ -1,11 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
-
-export default {
-  title: 'Icon/FileTypeIcon',
-  component: FileTypeIcon,
-} satisfies Meta<typeof FileTypeIcon>;
 
 export const CustomBaseUrl = () => (
   <div>

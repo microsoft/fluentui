@@ -1,11 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
 import { FileTypeIcon, getFileTypeIconAsUrl, getFileTypeIconProps } from '@fluentui/react-file-type-icons';
-
-export default {
-  title: 'Icon/FileTypeIcon',
-  component: FileTypeIcon,
-} satisfies Meta<typeof FileTypeIcon>;
 
 export const V8UtilityInterop = () => {
   const iconProps = getFileTypeIconProps({ extension: 'docx', size: 16, imageFileType: 'svg' });
