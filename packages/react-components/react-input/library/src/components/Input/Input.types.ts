@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -107,9 +107,20 @@ export type InputProps = Omit<
 };
 
 /**
+ * Input props without design-specific props (appearance, size).
+ * Use this when building a base input that is unstyled or uses a custom design system.
+ */
+export type InputBaseProps = DistributiveOmit<InputProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering Input.
  */
 export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
+
+/**
+ * Input state without design-specific state (appearance, size).
+ */
+export type InputBaseState = DistributiveOmit<InputState, 'appearance' | 'size'>;
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.
