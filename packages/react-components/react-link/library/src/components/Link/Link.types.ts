@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 
 export type LinkSlots = {
@@ -36,7 +36,18 @@ export type LinkProps = ComponentProps<LinkSlots> & {
   inline?: boolean;
 };
 
+/**
+ * Link props without design-specific props (appearance).
+ * Use this when building a base link that is unstyled or uses a custom design system.
+ */
+export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
+
 export type LinkState = ComponentState<LinkSlots> &
   Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
     backgroundAppearance?: BackgroundAppearanceContextValue;
   };
+
+/**
+ * Link state without design-specific state (appearance, backgroundAppearance).
+ */
+export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance'>;
