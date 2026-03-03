@@ -2,6 +2,55 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 13:16:20 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "d3e7fed616613980fda89b0ef0edaa2aa1524651",
+            "comment": "docs: update README"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "f2c58787676fe66aab2b541a1c23722387a1072c",
+            "comment": "fix: support granular lib imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "fdf868257db1b8d090d36475485991c6e6142079",
+            "comment": "chore: bump typescript-eslint"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "835625e357d7fcf2f1deba1d8039637f262745e4",
+            "comment": "feat: add enforce-use-client workspace rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Nov 2025 14:46:59 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.1.4",
       "version": "0.1.4",
