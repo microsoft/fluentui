@@ -1836,6 +1836,74 @@ export interface SparklineStyles {
 export const Textbox: React_2.FunctionComponent<TextboxProps>;
 
 // @public
+export const VegaDeclarativeChart: React_2.ForwardRefExoticComponent<VegaDeclarativeChartProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface VegaDeclarativeChartProps {
+    chartSchema: VegaSchema;
+    className?: string;
+    onSchemaChange?: (newSchema: VegaSchema) => void;
+    style?: React_2.CSSProperties;
+}
+
+// @public
+export interface VegaLiteSpec {
+    $schema?: string;
+    autosize?: string | {
+        type?: string;
+        contains?: string;
+    };
+    background?: string;
+    config?: Record<string, unknown>;
+    data?: VegaLiteData;
+    description?: string;
+    encoding?: VegaLiteEncoding;
+    facet?: Record<string, unknown>;
+    hconcat?: VegaLiteSpec[];
+    height?: number | 'container';
+    layer?: VegaLiteUnitSpec[];
+    mark?: VegaLiteMarkDef;
+    padding?: number | {
+        top?: number;
+        bottom?: number;
+        left?: number;
+        right?: number;
+    };
+    repeat?: Record<string, unknown>;
+    resolve?: {
+        scale?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+        axis?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+        };
+        legend?: {
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+    };
+    selection?: Record<string, unknown>;
+    title?: string | VegaLiteTitleParams;
+    transform?: Array<Record<string, unknown>>;
+    vconcat?: VegaLiteSpec[];
+    width?: number | 'container';
+}
+
+// @public
+export interface VegaSchema {
+    selectedLegends?: string[];
+    vegaLiteSpec: VegaLiteSpec;
+}
+
+// @public
 export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 
 // @public (undocumented)

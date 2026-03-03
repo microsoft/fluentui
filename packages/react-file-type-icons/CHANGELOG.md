@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 27 Jan 2026 05:19:01 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Feb 2026 18:07:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.17.0)
+
+Thu, 26 Feb 2026 18:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.16.0..@fluentui/react-file-type-icons_v8.17.0)
+
+### Minor changes
+
+- Updating .md filetype to use rich text document icon ([PR #35740](https://github.com/microsoft/fluentui/pull/35740) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.0 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
 
 ## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.16.0)
 

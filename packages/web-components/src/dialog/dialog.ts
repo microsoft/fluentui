@@ -32,6 +32,13 @@ export class Dialog extends FASTElement {
 
   /**
    * @public
+   * The label of the dialog
+   */
+  @attr({ attribute: 'aria-label' })
+  public ariaLabel!: string | null;
+
+  /**
+   * @public
    * The type of the dialog modal
    */
   @attr

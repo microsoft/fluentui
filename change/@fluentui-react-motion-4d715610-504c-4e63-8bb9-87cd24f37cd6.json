@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: make children optional in MotionRefForwarder to resolve type issue",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

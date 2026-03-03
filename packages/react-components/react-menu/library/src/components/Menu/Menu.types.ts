@@ -1,17 +1,28 @@
 import * as React from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { ComponentProps, ComponentState, JSXElement } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
 
-export type MenuSlots = {};
+export type MenuSlots = {
+  /**
+   * Slot for the surface motion animation.
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   */
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
+
+export type InternalMenuSlots = {
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+};
 
 /**
  * Extends and drills down Menulist props to simplify API
  */
-export type MenuProps = ComponentProps<MenuSlots> &
+export type MenuProps = ComponentProps<Partial<MenuSlots>> &
   Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
@@ -91,7 +102,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
     closeOnScroll?: boolean;
   };
 
-export type MenuState = ComponentState<MenuSlots> &
+export type MenuState = ComponentState<InternalMenuSlots> &
   Required<
     Pick<
       MenuProps,

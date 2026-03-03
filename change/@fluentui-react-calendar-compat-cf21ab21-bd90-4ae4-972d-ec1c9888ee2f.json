@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent calendar-compat from crashing when value is undefined",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

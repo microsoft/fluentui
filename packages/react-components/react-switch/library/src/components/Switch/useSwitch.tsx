@@ -38,12 +38,20 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
+  const {
+    checked,
+    defaultChecked,
+    disabled,
+    disabledFocusable = false,
+    labelPosition = 'after',
+    onChange,
+    required,
+  } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
+    excludedPropNames: ['checked', 'defaultChecked', 'onChange', 'disabledFocusable'],
   });
 
   const id = useId('switch-', nativeProps.primary.id);
@@ -57,15 +65,36 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
     elementType: 'div',
   });
   const input = slot.always(props.input, {
-    defaultProps: { checked, defaultChecked, id, ref, role: 'switch', type: 'checkbox', ...nativeProps.primary },
+    defaultProps: {
+      checked,
+      defaultChecked,
+      id,
+      ref,
+      role: 'switch',
+      type: 'checkbox',
+      ...nativeProps.primary,
+      disabled: disabled && !disabledFocusable,
+      ...(disabledFocusable && { 'aria-disabled': true }),
+    },
     elementType: 'input',
   });
   input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
+  input.onClick = mergeCallbacks(input.onClick, ev => {
+    if (disabledFocusable) {
+      ev.preventDefault();
+    }
+  });
+  input.onKeyDown = mergeCallbacks(input.onKeyDown, ev => {
+    if (disabledFocusable && (ev.key === ' ' || ev.key === 'Enter')) {
+      ev.preventDefault();
+    }
+  });
   const label = slot.optional(props.label, {
-    defaultProps: { disabled, htmlFor: id, required, size: 'medium' },
+    defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required, size: 'medium' },
     elementType: Label,
   });
   return {
+    disabledFocusable,
     labelPosition,
     components: { root: 'div', indicator: 'div', input: 'input', label: Label },
 

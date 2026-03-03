@@ -21,8 +21,21 @@ export function useMotionForwardedRef(): React.Ref<HTMLElement> | undefined {
  *
  * @internal
  */
-export const MotionRefForwarder = React.forwardRef<HTMLElement, { children: React.ReactElement }>((props, ref) => {
+export const MotionRefForwarder = React.forwardRef<HTMLElement, { children?: React.ReactElement }>((props, ref) => {
   return <MotionRefForwarderContext.Provider value={ref}>{props.children}</MotionRefForwarderContext.Provider>;
 });
 
 MotionRefForwarder.displayName = 'MotionRefForwarder';
+
+/**
+ * Resets the MotionRefForwarder context to `undefined` for its children.
+ * Render this in components that consume `useMotionForwardedRef()` and render
+ * arbitrary user content, to prevent the context from leaking to descendants.
+ *
+ * @internal
+ */
+export const MotionRefForwarderReset: React.FC<{ children: React.ReactElement }> = props => {
+  return <MotionRefForwarderContext.Provider value={undefined}>{props.children}</MotionRefForwarderContext.Provider>;
+};
+
+MotionRefForwarderReset.displayName = 'MotionRefForwarderReset';

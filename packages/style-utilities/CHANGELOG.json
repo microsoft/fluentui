@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 26 Feb 2026 18:07:04 GMT",
+      "tag": "@fluentui/style-utilities_v8.15.0",
+      "version": "8.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "75fd73137fdf2f00e679c23568cad3d876a00799",
+            "comment": "fabric-cdn url update to latest"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:05 GMT",
       "tag": "@fluentui/style-utilities_v8.14.0",
       "version": "8.14.0",

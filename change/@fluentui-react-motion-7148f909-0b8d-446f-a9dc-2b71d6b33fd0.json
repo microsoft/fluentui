@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add MotionRefForwarderReset to prevent context leaking to descendants",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
