@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type BadgeSlots = {
   root: Slot<'div'>;
@@ -41,3 +41,7 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
 
 export type BadgeState = ComponentState<BadgeSlots> &
   Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size'>>;
+
+export type BadgeBaseProps = DistributiveOmit<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+
+export type BadgeBaseState = DistributiveOmit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState, BadgeSlots } from '../Badge/Badge.types';
 
 export type PresenceBadgeStatus =
@@ -30,3 +30,7 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | '
 export type PresenceBadgeState = ComponentState<BadgeSlots> &
   BadgeState &
   Required<Pick<PresenceBadgeProps, 'status' | 'outOfOffice'>>;
+
+export type PresenceBadgeBaseProps = DistributiveOmit<PresenceBadgeProps, 'size'>;
+
+export type PresenceBadgeBaseState = DistributiveOmit<PresenceBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

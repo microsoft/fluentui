@@ -2,8 +2,13 @@
 
 import * as React from 'react';
 import type { BadgeState } from '../Badge/index';
-import { useBadge_unstable } from '../Badge/index';
-import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+import { useBadgeBase_unstable } from '../Badge/index';
+import type {
+  CounterBadgeBaseProps,
+  CounterBadgeBaseState,
+  CounterBadgeProps,
+  CounterBadgeState,
+} from './CounterBadge.types';
 
 /**
  * Returns the props and state required to render the component
@@ -12,16 +17,42 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
   const {
     shape = 'circular',
     appearance = 'filled',
+    color = 'brand',
+    size = 'medium',
+    ...counterBadgeProps
+  } = props;
+
+  const state = useCounterBadgeBase_unstable(counterBadgeProps, ref);
+
+  return {
+    ...state,
+    shape,
+    appearance,
+    color,
+    size,
+  };
+};
+
+/**
+ * Base hook for CounterBadge component, which manages state related to slots structure and counter logic.
+ *
+ * @param props - User provided props to the CounterBadge component.
+ * @param ref - User provided ref to be passed to the CounterBadge component.
+ */
+export const useCounterBadgeBase_unstable = (
+  props: CounterBadgeBaseProps,
+  ref: React.Ref<HTMLElement>,
+): CounterBadgeBaseState => {
+  const {
     showZero = false,
     overflowCount = 99,
     count = 0,
     dot = false,
+    ...badgeProps
   } = props;
 
-  const state: CounterBadgeState = {
-    ...(useBadge_unstable(props, ref) as Pick<CounterBadgeState, keyof BadgeState>),
-    shape,
-    appearance,
+  const state: CounterBadgeBaseState = {
+    ...(useBadgeBase_unstable(badgeProps, ref) as Pick<CounterBadgeBaseState, keyof Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>>),
     showZero,
     count,
     dot,
