@@ -1,4 +1,4 @@
-import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
   root: Slot<'img'>;
@@ -41,5 +41,16 @@ export type ImageProps = ComponentProps<ImageSlots> & {
   shape?: 'square' | 'circular' | 'rounded';
 };
 
+/**
+ * Image props without design-specific props (shape, shadow, bordered, fit).
+ * Use this when building a base image that is unstyled or uses a custom design system.
+ */
+export type ImageBaseProps = DistributiveOmit<ImageProps, 'shape' | 'shadow' | 'bordered' | 'fit'>;
+
 export type ImageState = ComponentState<ImageSlots> &
   Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
+
+/**
+ * Image state without design-specific state (shape, shadow, bordered, fit).
+ */
+export type ImageBaseState = DistributiveOmit<ImageState, 'shape' | 'shadow' | 'bordered' | 'fit'>;
