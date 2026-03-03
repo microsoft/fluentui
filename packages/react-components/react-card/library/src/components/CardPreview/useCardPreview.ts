@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
-import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
+import type { CardPreviewBaseProps, CardPreviewBaseState, CardPreviewProps, CardPreviewState } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
 
@@ -16,6 +16,21 @@ import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
  * @param ref - reference to root HTMLElement of CardPreview
  */
 export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<HTMLElement>): CardPreviewState => {
+  return useCardPreviewBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for CardPreview component, which manages state related to slots structure
+ * and the card's selectable accessibility label.
+ * Note: CardPreview has no design props, so this is equivalent to useCardPreview_unstable.
+ *
+ * @param props - props from this instance of CardPreview
+ * @param ref - reference to root HTMLElement of CardPreview
+ */
+export const useCardPreviewBase_unstable = (
+  props: CardPreviewBaseProps,
+  ref: React.Ref<HTMLElement>,
+): CardPreviewBaseState => {
   const { logo } = props;
 
   const {
