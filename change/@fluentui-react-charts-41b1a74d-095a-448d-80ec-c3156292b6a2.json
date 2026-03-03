@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "(feat): Add support for vega based schema",
-  "packageName": "@fluentui/react-charts",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

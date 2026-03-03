@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 25 Feb 2026 13:32:24 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.22.0)
+
+Tue, 03 Mar 2026 09:43:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.21.0..@fluentui/react-positioning_v9.22.0)
+
+### Minor changes
+
+- refactor: deprecate createSlideStyles ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
 
 ## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.21.0)
 

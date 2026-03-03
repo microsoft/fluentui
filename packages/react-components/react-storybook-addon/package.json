@@ -14,9 +14,9 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.17.10",
     "@fluentui/react-button": "^9.8.2",
-    "@fluentui/react-menu": "^9.21.2",
+    "@fluentui/react-menu": "^9.22.0",
     "@fluentui/react-label": "^9.3.15",
-    "@fluentui/react-switch": "^9.5.4",
+    "@fluentui/react-switch": "^9.6.0",
     "@fluentui/react-text": "^9.6.15",
     "@fluentui/react-link": "^9.7.4",
     "@fluentui/react-provider": "^9.22.15",
@@ -25,7 +25,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-spinner": "^9.7.15",
-    "@fluentui/react-toast": "^9.7.13",
+    "@fluentui/react-toast": "^9.7.14",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

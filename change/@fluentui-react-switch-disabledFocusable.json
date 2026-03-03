@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add disabledFocusable prop to Switch component",
-  "packageName": "@fluentui/react-switch",
-  "email": "copilot@microsoft.com",
-  "dependentChangeType": "patch"
-}

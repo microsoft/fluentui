@@ -2,6 +2,21 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:41 GMT",
+      "tag": "@fluentui/react-switch_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f9a6d8435efa5aff110f335d10e2fc51656167ee",
+            "comment": "feat: add disabledFocusable prop to Switch component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-switch_v9.5.4",
       "version": "9.5.4",
