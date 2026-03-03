@@ -7,6 +7,6 @@ export {
 } from './Persona';
 export type { PersonaProps, PersonaSlots, PersonaState } from './Persona';
 
-// Experimental APIs - will be uncommented in experimental branch
-// export { usePersonaBase_unstable } from './components/Persona/usePersona';
-// export type { PersonaBaseProps, PersonaBaseState } from './components/Persona/Persona.types';
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { usePersonaBase_unstable } from './Persona';
+// export type { PersonaBaseProps, PersonaBaseState } from './Persona';
