@@ -4,7 +4,7 @@ import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 import descriptionMd from './FileTypeIconDescription.md';
 
 export default {
-  title: 'Compat Components/FileTypeIcon',
+  title: 'Icon/FileTypeIcon',
   component: FileTypeIcon,
   parameters: {
     docs: {

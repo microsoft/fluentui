@@ -30,6 +30,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // TODO: Remove this workaround once the stories are fixed or we have a better way to
     // decide which stories to include/exclude in docs mode.
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
+    '../../../packages/react-components/react-nav/stories/src/FileTypeIcon/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

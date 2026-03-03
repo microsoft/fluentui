@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 
 export default {
-  title: 'Compat Components/FileTypeIcon',
+  title: 'Icon/FileTypeIcon',
   component: FileTypeIcon,
 } satisfies Meta<typeof FileTypeIcon>;
 
