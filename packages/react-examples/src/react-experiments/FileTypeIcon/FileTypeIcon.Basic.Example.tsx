@@ -39,14 +39,14 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ extension: 'url', size: 96 })} />
         <h3>Size 16 docset icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.docset, size: 16, imageFileType: 'png' })} />
-        <h3>Size 20 folder icon as .svg</h3>
-        <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 20, imageFileType: 'svg' })} />
+        <h3>Size 20 shared folder icon as .svg</h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 20, imageFileType: 'svg' })} />
         <h3>Size 40 genericfile icon as .png</h3>
         <Icon {...getFileTypeIconProps({ size: 40, imageFileType: 'png' })} />
         <h3>Size 48 listitem icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, imageFileType: 'svg' })} />
-        <h3>Size 64 sharedfolder icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 64, imageFileType: 'png' })} />
+        <h3>Size 64 folder icon as .png</h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 64, imageFileType: 'png' })} />
         <h3>Size 64 linkedfolder icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.linkedFolder, size: 64, imageFileType: 'png' })} />
       </div>

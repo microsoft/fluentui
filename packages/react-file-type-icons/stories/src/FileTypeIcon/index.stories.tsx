@@ -9,7 +9,7 @@ export { CustomBaseUrl } from './FileTypeIconCustomBaseUrl.stories';
 export { V8UtilityInterop } from './FileTypeIconV8UtilityInterop.stories';
 
 export default {
-  title: 'Components/FileTypeIcon',
+  title: 'Icons/FileTypeIcon',
   component: FileTypeIcon,
   parameters: {
     docs: {
