@@ -12,7 +12,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
+import type { InfoButtonBaseProps, InfoButtonBaseState, InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
 
 const infoButtonIconMap = {
@@ -37,13 +37,46 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLButtonElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLButtonElement>): InfoButtonState => {
-  const { size = 'medium', inline = true, popover, info, ...rest } = props;
+  const { size = 'medium', ...baseProps } = props;
+
+  const state = useInfoButtonBase_unstable(
+    {
+      ...baseProps,
+      root: {
+        children: infoButtonIconMap[size],
+        ...baseProps.root,
+      },
+      popover: {
+        size: popoverSizeMap[size],
+        ...baseProps.popover,
+      },
+    },
+    ref,
+  );
+
+  return {
+    size,
+    ...state,
+  };
+};
+
+/**
+ * Base hook for InfoButton component, which manages state related to ARIA, slot structure, popover open state,
+ * and focus behavior. This hook excludes design-specific props (size).
+ *
+ * @param props - User provided props to the InfoButton component.
+ * @param ref - User provided ref to be passed to the InfoButton component.
+ */
+export const useInfoButtonBase_unstable = (
+  props: InfoButtonBaseProps,
+  ref: React.Ref<HTMLButtonElement>,
+): InfoButtonBaseState => {
+  const { inline = true, popover, info, ...rest } = props;
 
   const rootRef = useMergedRefs(ref);
 
-  const state: InfoButtonState = {
+  const state: InfoButtonBaseState = {
     inline,
-    size,
 
     components: {
       root: 'button',
@@ -53,7 +86,6 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
     root: slot.always(
       getIntrinsicElementProps('button', {
-        children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
         ...rest,
@@ -65,7 +97,6 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       defaultProps: {
         inline,
         positioning: 'above-start',
-        size: popoverSizeMap[size],
         withArrow: true,
       },
       elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
