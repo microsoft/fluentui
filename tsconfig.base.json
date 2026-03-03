@@ -17,6 +17,7 @@
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
       "@fluentui/chart-utilities": ["packages/charts/chart-utilities/src/index.ts"],
+      "@fluentui/cli": ["tools/cli/src/index.ts"],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
