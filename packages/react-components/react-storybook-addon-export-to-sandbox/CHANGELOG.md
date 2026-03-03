@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Tue, 04 Nov 2025 14:47:01 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 13:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.0)
+
+Tue, 03 Mar 2026 13:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.1.3..@fluentui/react-storybook-addon-export-to-sandbox_v0.2.0)
+
+### Minor changes
+
+- add withExportToSandboxButton decorator export and fix default story missing export button ([PR #35677](https://github.com/microsoft/fluentui/pull/35677) by dmytrokirpa@microsoft.com)
+- feat: upgrade to storybook 9 ([PR #35459](https://github.com/microsoft/fluentui/pull/35459) by dmytrokirpa@microsoft.com)
+- BREAKING: upgrade storybook to v8 ([PR #35279](https://github.com/microsoft/fluentui/pull/35279) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- chore: bump storybook to mitigate CVE ([PR #35748](https://github.com/microsoft/fluentui/pull/35748) by martinhochel@microsoft.com)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.1.3)
 

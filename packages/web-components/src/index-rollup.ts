@@ -42,3 +42,4 @@ import './toggle-button/define.js';
 import './tooltip/define.js';
 import './tree/define.js';
 import './tree-item/define.js';
+export { setTheme } from './theme/set-theme.js';

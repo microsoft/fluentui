@@ -83,6 +83,16 @@ export type MotionImperativeRef = {
 // @public
 export type MotionParam = boolean | number | string;
 
+// @internal
+export const MotionRefForwarder: React_2.ForwardRefExoticComponent<{
+    children?: React_2.ReactElement;
+} & React_2.RefAttributes<HTMLElement>>;
+
+// @internal
+export const MotionRefForwarderReset: React_2.FC<{
+    children: React_2.ReactElement;
+}>;
+
 // @public (undocumented)
 export const motionTokens: {
     curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
@@ -178,6 +188,9 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: JSXElement;
     }>;
 };
+
+// @internal
+export function useMotionForwardedRef(): React_2.Ref<HTMLElement> | undefined;
 
 // @public (undocumented)
 export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;

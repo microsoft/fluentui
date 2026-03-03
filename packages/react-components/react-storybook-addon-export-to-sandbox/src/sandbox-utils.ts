@@ -14,7 +14,11 @@ export function addHiddenInput(form: HTMLFormElement, name: string, value: strin
 }
 
 export function prepareSandboxContainers(context: StoryContext) {
-  const docsSelector = `#anchor--${context.id} .docs-story`;
+  // Support anchor ID formats for our Storybook major versions range.
+  // 10< `#anchor--{id}`
+  // >=10 `#anchor--primary--{id}`
+  // See: https://github.com/storybookjs/storybook/pull/33384
+  const docsSelector = `#anchor--${context.id} .docs-story, #anchor--primary--${context.id} .docs-story`;
   const rootElements = document.querySelectorAll(docsSelector);
 
   if (!rootElements.length) {

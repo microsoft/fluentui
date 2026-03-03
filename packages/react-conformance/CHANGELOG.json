@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 13:16:22 GMT",
+      "tag": "@fluentui/react-conformance_v0.20.1",
+      "version": "0.20.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Nov 2025 14:47:00 GMT",
       "tag": "@fluentui/react-conformance_v0.20.1",
       "version": "0.20.1",

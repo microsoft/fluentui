@@ -170,6 +170,34 @@ describe('generate-llms-docs', () => {
       `);
     });
 
+    it('should extract props from function-type component with serialized __docgenInfo', () => {
+      const content = generateFullFileContentFromStory(storybookStoreItems[3]);
+      const markdown = content.join('\n');
+      expect(markdown).toContain('# Components/Badge');
+      expect(markdown).toContain('A badge is a visual decoration for UI elements.');
+      expect(markdown).toContain('## Props');
+      expect(markdown).toContain('| `appearance` |');
+      expect(markdown).toContain('| `color` |');
+      expect(markdown).toContain('| `shape` |');
+      expect(markdown).toContain('| `size` |');
+      expect(markdown).toContain('## Subcomponents');
+      expect(markdown).toContain('### CounterBadge');
+      expect(markdown).toContain('| `count` |');
+      expect(markdown).toContain('| `overflowCount` |');
+      expect(markdown).toContain('### Default');
+    });
+
+    it('should generate content without props when component is not specified in meta', () => {
+      const content = generateFullFileContentFromStory(storybookStoreItems[4]);
+      const markdown = content.join('\n');
+      expect(markdown).toContain('# Components/Toast');
+      expect(markdown).toContain(
+        'Toasts are rendered as a separate surface that can be dismissed by user action or a application timeout.',
+      );
+      expect(markdown).not.toContain('## Props');
+      expect(markdown).toContain('### Default');
+    });
+
     it('should generate full file content from component story', () => {
       const content = generateFullFileContentFromStory(storybookStoreItems[2]);
       expect(content.join('\n')).toMatchInlineSnapshot(`
@@ -780,6 +808,8 @@ describe('generate-llms-docs', () => {
         - [Concepts/Introduction](https://react.fluentui.dev/llms/concepts-introduction.txt)
         - [Concepts/Developer/Quick Start](https://react.fluentui.dev/llms/concepts-developer-quick-start.txt)
         - [Components/Accordion](https://react.fluentui.dev/llms/components-accordion.txt): An accordion allows users to toggle the display of content by expanding or collapsing sections.
+        - [Components/Badge](https://react.fluentui.dev/llms/components-badge.txt): A badge is a visual decoration for UI elements.
+        - [Components/Toast](https://react.fluentui.dev/llms/components-toast.txt): A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by user action or a application timeout.
 
         ## Optional
 

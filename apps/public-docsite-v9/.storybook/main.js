@@ -30,8 +30,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // TODO: Remove this workaround once the stories are fixed or we have a better way to
     // decide which stories to include/exclude in docs mode.
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
-    // Ensure branch-local FileTypeIcon docs are visible in the full v9 docsite navigation.
-    '../../../packages/react-components/react-file-type-icons/stories/src/FileTypeIcon/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
@@ -44,13 +42,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
     registerRules({ rules: [rules.scssRule], config: localConfig });
-
-    localConfig.resolve = localConfig.resolve || {};
-    localConfig.resolve.alias = {
-      ...(localConfig.resolve.alias || {}),
-      '@fluentui/set-version': path.resolve(__dirname, './mocks/set-version.js'),
-      '@fluentui/set-version$': path.resolve(__dirname, './mocks/set-version.js'),
-    };
 
     return localConfig;
   },

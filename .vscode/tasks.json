@@ -52,18 +52,19 @@
       }
     },
     {
-      "label": "Storybook react-file-type-icons docs",
+      "label": "Storybook v9 docsite",
       "type": "shell",
-      "command": "node",
-      "args": [
-        "./node_modules/storybook/bin/index.cjs",
-        "dev",
-        "-c",
-        "packages/react-components/react-file-type-icons/stories/.storybook",
-        "-p",
-        "6013"
-      ],
-      "isBackground": true
+      "command": "yarn",
+      "args": ["workspace", "@fluentui/public-docsite-v9", "start"],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Build react-file-type-icons",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["nx", "run", "react-file-type-icons:build", "--outputStyle=stream", "--skip-nx-cache"],
+      "isBackground": false
     }
   ]
 }

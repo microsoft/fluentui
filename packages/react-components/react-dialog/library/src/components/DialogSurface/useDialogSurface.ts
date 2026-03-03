@@ -15,7 +15,7 @@ import * as React from 'react';
 import { useDialogContext_unstable, useDialogBackdropContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 import { DialogBackdropMotion } from '../DialogBackdropMotion';
-import { useMotionForwardedRef } from '../MotionRefForwarder';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**

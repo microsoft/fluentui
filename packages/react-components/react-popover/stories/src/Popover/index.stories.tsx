@@ -8,6 +8,8 @@ export { WithArrow } from './PopoverWithArrow.stories';
 export { WithArrowAutosize } from './PopoverWithArrowAutosize.stories';
 export { TrappingFocus } from './PopoverTrappingFocus.stories';
 export { ControllingOpenAndClose } from './PopoverControllingOpenAndClose.stories';
+export { MotionCustom } from './PopoverMotionCustom.stories';
+export { MotionDisabled } from './PopoverMotionDisabled.stories';
 export { NestedPopovers } from './PopoverNestedPopovers.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { CustomTrigger } from './PopoverCustomTrigger.stories';

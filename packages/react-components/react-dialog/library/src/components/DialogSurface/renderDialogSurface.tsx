@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import { MotionRefForwarderReset } from '@fluentui/react-motion';
 import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -27,9 +28,11 @@ export const renderDialogSurface_unstable = (
             <state.backdrop />
           </state.backdropMotion>
         )}
-      <DialogSurfaceProvider value={contextValues.dialogSurface}>
-        <state.root />
-      </DialogSurfaceProvider>
+      <MotionRefForwarderReset>
+        <DialogSurfaceProvider value={contextValues.dialogSurface}>
+          <state.root />
+        </DialogSurfaceProvider>
+      </MotionRefForwarderReset>
     </Portal>
   );
 };

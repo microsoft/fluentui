@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(web-components): prevent double tab open on Ctrl+click in BaseAnchor by calling e.preventDefault() when opening in a new tab",
-  "packageName": "@fluentui/web-components",
-  "email": "zoghadya@microsoft.com",
-  "dependentChangeType": "none"
-}

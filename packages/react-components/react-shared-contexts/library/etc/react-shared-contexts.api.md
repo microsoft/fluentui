@@ -97,7 +97,6 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;
     useFieldStyles_unstable: CustomStyleHook;
-    useFileTypeIconStyles_unstable: CustomStyleHook;
     useFlatTreeStyles_unstable: CustomStyleHook;
     useImageStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;
@@ -295,7 +294,6 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;
     useFieldStyles_unstable: CustomStyleHook;
-    useFileTypeIconStyles_unstable: CustomStyleHook;
     useFlatTreeStyles_unstable: CustomStyleHook;
     useImageStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;
@@ -493,7 +491,6 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;
     useFieldStyles_unstable: CustomStyleHook;
-    useFileTypeIconStyles_unstable: CustomStyleHook;
     useFlatTreeStyles_unstable: CustomStyleHook;
     useImageStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;

@@ -1863,15 +1863,6 @@
     "@babel/runtime" "^7.10.4"
     react-is "^17.0.2"
 
-"@fluentui/react-file-type-icons@^8.16.0":
-  version "8.16.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-file-type-icons/-/react-file-type-icons-8.16.0.tgz#f1734ec0ebe51504906c3f454a0c87bef8d0d439"
-  integrity sha512-8rouTQWDt+8tT2DT/S4ItkBaSaKj1KJ7q66VTw6RIW2QNcVpEaopGfOYQooVbs0u01xjxFd54SG7vRsXH391mw==
-  dependencies:
-    "@fluentui/set-version" "^8.2.24"
-    "@fluentui/style-utilities" "^8.14.0"
-    tslib "^2.1.0"
-
 "@fluentui/react-icons-northstar@*", "@fluentui/react-icons-northstar@0.66.5", "@fluentui/react-icons-northstar@^0.66.5":
   version "0.66.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons-northstar/-/react-icons-northstar-0.66.5.tgz#a33765f1c3ac98e1901d9b208d78f42d1ad23cb5"

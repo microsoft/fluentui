@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "",
+    "allowJs": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["static-assets", "environment"],
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["*.js"]
+}

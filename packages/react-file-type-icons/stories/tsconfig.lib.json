@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2019", "dom"],
+    "outDir": "../../../dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": true,
+    "types": ["static-assets", "environment"],
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

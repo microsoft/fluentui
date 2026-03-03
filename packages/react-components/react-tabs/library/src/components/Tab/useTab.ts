@@ -34,8 +34,8 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     components: { ...state.components, contentReservedSpace: 'span' },
     root: {
-      ...state.root,
       ...focusAttributes,
+      ...state.root,
     },
     contentReservedSpace: slot.optional(contentReservedSpace, {
       renderByDefault: !state.selected && !state.iconOnly && reserveSelectedTabSpace,
