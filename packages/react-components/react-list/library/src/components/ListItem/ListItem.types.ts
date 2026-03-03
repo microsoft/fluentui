@@ -29,3 +29,15 @@ export type ListItemState = ComponentState<ListItemSlots> & {
   navigable: boolean;
   disabled?: boolean;
 };
+
+/**
+ * ListItem props type alias for the base hook.
+ * ListItem has no design-specific props, so ListItemBaseProps is equivalent to ListItemProps.
+ */
+export type ListItemBaseProps = ListItemProps;
+
+/**
+ * ListItem state type alias for the base hook.
+ * ListItem has no design-specific state, so ListItemBaseState is equivalent to ListItemState.
+ */
+export type ListItemBaseState = ListItemState;

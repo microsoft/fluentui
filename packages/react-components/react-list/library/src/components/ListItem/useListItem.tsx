@@ -20,7 +20,7 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { ListItemProps, ListItemState } from './ListItem.types';
+import type { ListItemBaseProps, ListItemBaseState, ListItemProps, ListItemState } from './ListItem.types';
 import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -45,6 +45,21 @@ export const useListItem_unstable = (
   props: ListItemProps,
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
+  return useListItemBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for ListItem component, which manages state related to ARIA, keyboard handling,
+ * selection, focus management, and slot structure. ListItem has no design-specific props,
+ * so this hook contains the full component logic.
+ *
+ * @param props - User provided props to the ListItem component.
+ * @param ref - User provided ref to be passed to the ListItem component.
+ */
+export const useListItemBase_unstable = (
+  props: ListItemBaseProps,
+  ref: React.Ref<HTMLLIElement | HTMLDivElement>,
+): ListItemBaseState => {
   const id = useId('listItem');
   const { value = id, onKeyDown, onClick, tabIndex, role, onAction, disabledSelection } = props;
 

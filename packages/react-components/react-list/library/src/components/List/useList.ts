@@ -9,7 +9,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
-import { ListProps, ListState } from './List.types';
+import { ListBaseProps, ListBaseState, ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 import {
   calculateListItemRoleForListRole,
@@ -34,6 +34,21 @@ export const useList_unstable = (
   props: ListProps,
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
 ): ListState => {
+  return useListBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for List component, which manages state related to ARIA, keyboard navigation,
+ * selection, and slot structure. List has no design-specific props, so this hook contains
+ * the full component logic.
+ *
+ * @param props - User provided props to the List component.
+ * @param ref - User provided ref to be passed to the List component.
+ */
+export const useListBase_unstable = (
+  props: ListBaseProps,
+  ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
+): ListBaseState => {
   const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
