@@ -223,13 +223,7 @@ const useThumbStyles = makeStyles({
     transform: 'translateY(50%)',
     bottom: `var(${endThumbPositionVar})`,
   },
-  focusIndicatorHorizontal: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: {
-      outlineOffset: { top: '0px', bottom: '0px', left: '0px', right: '0px' },
-    },
-  }),
-  focusIndicatorVertical: createFocusOutlineStyle({
+  focusIndicator: createFocusOutlineStyle({
     selector: 'focus-within',
     style: {
       outlineOffset: { top: '0px', bottom: '0px', left: '0px', right: '0px' },
@@ -310,7 +304,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     rangeSliderClassNames.startThumb,
     thumbStyles.thumbBase,
     state.vertical ? thumbStyles.startVertical : thumbStyles.startHorizontal,
-    state.vertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
+    thumbStyles.focusIndicator,
     state.disabled && thumbStyles.disabled,
     thumbsOverlap && state.activeThumb === 'start' && thumbStyles.activeThumb,
     state.startThumb.className,
@@ -320,7 +314,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     rangeSliderClassNames.endThumb,
     thumbStyles.thumbBase,
     state.vertical ? thumbStyles.endVertical : thumbStyles.endHorizontal,
-    state.vertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
+    thumbStyles.focusIndicator,
     state.disabled && thumbStyles.disabled,
     thumbsOverlap && state.activeThumb === 'end' && thumbStyles.activeThumb,
     state.endThumb.className,

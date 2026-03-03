@@ -3,6 +3,7 @@
 import * as React from 'react';
 import {
   clamp,
+  getPercent,
   mergeCallbacks,
   useControllableState,
   useEventCallback,
@@ -18,8 +19,6 @@ const {
   rangeSliderUpperProgressVar,
   rangeSliderStepsPercentVar,
 } = rangeSliderCSSVars;
-
-const getPercent = (value: number, min: number, max: number) => (max === min ? 0 : ((value - min) / (max - min)) * 100);
 
 export const useRangeSliderState_unstable = (state: RangeSliderState, props: RangeSliderProps): RangeSliderState => {
   'use no memo';
