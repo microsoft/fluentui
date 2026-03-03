@@ -5,7 +5,8 @@
     "allowJs": true,
     "checkJs": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment"],
+    "ignoreDeprecations": "6.0"
   },
   "include": ["*.js"]
 }

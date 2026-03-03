@@ -9,7 +9,15 @@ export default {
 
 export const CustomBaseUrl = () => (
   <div>
-    <FileTypeIcon extension="docx" size={24} baseUrl="https://res.cdn.office.net/files/fabric-cdn-prod_20250805.001/assets/item-types/" />
-    <FileTypeIcon type={FileIconType.folder} size={24} baseUrl="https://res.cdn.office.net/files/fabric-cdn-prod_20250805.001/assets/item-types/" />
+    <FileTypeIcon
+      extension="docx"
+      size={24}
+      baseUrl="https://res.cdn.office.net/files/fabric-cdn-prod_20250805.001/assets/item-types/"
+    />
+    <FileTypeIcon
+      type={FileIconType.folder}
+      size={24}
+      baseUrl="https://res.cdn.office.net/files/fabric-cdn-prod_20250805.001/assets/item-types/"
+    />
   </div>
 );
