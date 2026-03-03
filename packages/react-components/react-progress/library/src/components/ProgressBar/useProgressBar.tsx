@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
-import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+import type { ProgressBarBaseProps, ProgressBarBaseState, ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
 /**
  * Create the state required to render ProgressBar.
@@ -24,6 +24,31 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     shape = 'rounded',
     thickness = 'medium',
   } = props;
+
+  const state = useProgressBarBase_unstable(props, ref);
+
+  return {
+    ...state,
+    color,
+    shape,
+    thickness,
+  };
+};
+
+/**
+ * Base hook for ProgressBar component. Manages state related to ARIA progressbar attributes
+ * (role, aria-valuemin, aria-valuemax, aria-valuenow) and field context integration —
+ * without design props (shape, thickness, color).
+ *
+ * @param props - props from this instance of ProgressBar (without shape, thickness, color)
+ * @param ref - reference to root HTMLElement of ProgressBar
+ */
+export const useProgressBarBase_unstable = (
+  props: ProgressBarBaseProps,
+  ref: React.Ref<HTMLElement>,
+): ProgressBarBaseState => {
+  const field = useFieldContext_unstable();
+
   const max = clampMax(props.max ?? 1);
   const value = clampValue(props.value, max);
 
@@ -49,16 +74,12 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
       .join(' ');
   }
   const bar = slot.always(props.bar, { elementType: 'div' });
-  const state: ProgressBarState = {
-    color,
+
+  return {
     max,
-    shape,
-    thickness,
     value,
     components: { root: 'div', bar: 'div' },
     root,
     bar,
   };
-
-  return state;
 };
