@@ -1,5 +1,5 @@
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { NavDensity } from '../Nav/Nav.types';
 import type { NavCategoryItemContextValue } from '../NavCategoryItemContext';
 
@@ -36,6 +36,11 @@ export type NavCategoryItemSlots = {
 export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>;
 
 /**
+ * NavCategoryItem base props — same as NavCategoryItemProps (no design-only props at this level).
+ */
+export type NavCategoryItemBaseProps = NavCategoryItemProps;
+
+/**
  * State used in rendering NavCategoryItem
  */
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
@@ -51,3 +56,8 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
      */
     density: NavDensity;
   };
+
+/**
+ * NavCategoryItem base state — excludes density design prop.
+ */
+export type NavCategoryItemBaseState = DistributiveOmit<NavCategoryItemState, 'density'>;

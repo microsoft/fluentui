@@ -1,8 +1,27 @@
-export { Nav, renderNav_unstable, useNav_unstable, useNavStyles_unstable, navClassNames } from './components/Nav/index';
-export type { NavProps, NavSlots, NavState, NavDensity, OnNavItemSelectData } from './components/Nav/index';
+export {
+  Nav,
+  renderNav_unstable,
+  useNav_unstable,
+  useNavStyles_unstable,
+  navClassNames,
+} from './components/Nav/index';
+export type {
+  NavProps,
+  NavSlots,
+  NavState,
+  NavDensity,
+  OnNavItemSelectData,
+} from './components/Nav/index';
 
-export { NavCategory, renderNavCategory_unstable, useNavCategory_unstable } from './components/NavCategory/index';
-export type { NavCategoryProps, NavCategoryState } from './components/NavCategory/index';
+export {
+  NavCategory,
+  renderNavCategory_unstable,
+  useNavCategory_unstable,
+} from './components/NavCategory/index';
+export type {
+  NavCategoryProps,
+  NavCategoryState,
+} from './components/NavCategory/index';
 
 export {
   NavCategoryItem,
@@ -131,3 +150,11 @@ export { NavCategoryItemProvider, useNavCategoryItemContext_unstable } from './c
 export { useNavCategoryItemContextValues_unstable } from './components/useNavCategoryItemContextValues_unstable';
 
 export { useNavContextValues_unstable } from './components/useNavContextValues';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useNavBase_unstable } from './components/Nav/index';
+// export type { NavBaseProps, NavBaseState } from './components/Nav/index';
+// export { useNavCategoryBase_unstable } from './components/NavCategory/index';
+// export type { NavCategoryBaseProps, NavCategoryBaseState } from './components/NavCategory/index';
+// export { useNavCategoryItemBase_unstable } from './components/NavCategoryItem/index';
+// export type { NavCategoryItemBaseProps, NavCategoryItemBaseState } from './components/NavCategoryItem/index';

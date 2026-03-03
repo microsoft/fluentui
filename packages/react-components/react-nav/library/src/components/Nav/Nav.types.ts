@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  EventData,
+  EventHandler,
+  Slot,
+} from '@fluentui/react-utilities';
 import type { NavContextValue, NavItemValue } from '../NavContext.types';
 
 export type NavSlots = {
@@ -98,6 +105,16 @@ export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButton
 };
 
 /**
+ * Nav base props — excludes design/density props.
+ */
+export type NavBaseProps = DistributiveOmit<NavProps, 'density'>;
+
+/**
  * State used in rendering Nav
  */
 export type NavState = ComponentState<NavSlots> & NavContextValue;
+
+/**
+ * Nav base state — excludes design/density props.
+ */
+export type NavBaseState = DistributiveOmit<NavState, 'density'>;

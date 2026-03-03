@@ -5,7 +5,12 @@ import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from
 import { ChevronDown20Regular } from '@fluentui/react-icons';
 import { createPresenceComponentVariant, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 
-import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import type {
+  NavCategoryItemBaseProps,
+  NavCategoryItemBaseState,
+  NavCategoryItemProps,
+  NavCategoryItemState,
+} from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
 import { Rotate } from '@fluentui/react-motion-components-preview';
@@ -31,11 +36,31 @@ export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
+  const { density = 'medium' } = useNavContext_unstable();
+  const state = useNavCategoryItemBase_unstable(props, ref);
+
+  return {
+    ...state,
+    density,
+  };
+};
+
+/**
+ * Base hook for NavCategoryItem component. Manages state related to ARIA attributes,
+ * keyboard interaction, and slot structure — without density design prop.
+ *
+ * @param props - props from this instance of NavCategoryItem
+ * @param ref - reference to root HTMLButtonElement of NavCategoryItem
+ */
+export const useNavCategoryItemBase_unstable = (
+  props: NavCategoryItemBaseProps,
+  ref: React.Ref<HTMLButtonElement>,
+): NavCategoryItemBaseState => {
   const { onClick, expandIcon, icon } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
-  const { onRequestNavCategoryItemToggle, selectedCategoryValue, density = 'medium' } = useNavContext_unstable();
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event =>
@@ -84,6 +109,5 @@ export const useNavCategoryItem_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    density,
   };
 };
