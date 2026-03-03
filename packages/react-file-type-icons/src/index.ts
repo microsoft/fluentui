@@ -2,10 +2,10 @@ export { initializeFileTypeIcons } from './initializeFileTypeIcons';
 
 export { FileTypeIcon } from './FileTypeIcon';
 export {
-	fileTypeIconClassNames,
-	renderFileTypeIcon_unstable,
-	useFileTypeIconStyles_unstable,
-	useFileTypeIcon_unstable,
+  fileTypeIconClassNames,
+  renderFileTypeIcon_unstable,
+  useFileTypeIconStyles_unstable,
+  useFileTypeIcon_unstable,
 } from './FileTypeIcon';
 
 export { getFileTypeIconProps } from './getFileTypeIconProps';
