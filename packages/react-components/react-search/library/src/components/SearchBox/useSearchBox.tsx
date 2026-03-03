@@ -12,7 +12,7 @@ import {
 import { useInput_unstable } from '@fluentui/react-input';
 import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
-import type { SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox.types';
+import type { SearchBoxBaseProps, SearchBoxBaseState, SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox.types';
 
 /**
  * Create the state required to render SearchBox.
@@ -24,17 +24,29 @@ import type { SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLInputElement>): SearchBoxState => {
-  const {
-    size = 'medium',
-    disabled = false,
-    root,
-    contentBefore,
-    dismiss,
-    contentAfter,
-    value,
-    defaultValue,
-    ...inputProps
-  } = props;
+  const { size = 'medium', appearance = 'outline', ...baseProps } = props;
+  const state = useSearchBoxBase_unstable(baseProps, ref);
+
+  return {
+    ...state,
+    size,
+    appearance,
+  };
+};
+
+/**
+ * Base hook for SearchBox component. Manages state related to controlled/uncontrolled
+ * value, focus tracking, dismiss button click handling, search icon slot, and
+ * input type="search" — without design props (size, appearance).
+ *
+ * @param props - props from this instance of SearchBox (without size, appearance)
+ * @param ref - reference to root HTMLElement of SearchBox
+ */
+export const useSearchBoxBase_unstable = (
+  props: SearchBoxBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): SearchBoxBaseState => {
+  const { disabled = false, root, contentBefore, dismiss, contentAfter, value, defaultValue, ...inputProps } = props;
 
   const searchBoxRootRef = React.useRef<HTMLDivElement>(null);
   const searchBoxRef = React.useRef<HTMLInputElement>(null);
@@ -76,7 +88,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     {
       type: 'search',
       disabled,
-      size,
       value: internalValue,
       root: slot.always<ExtractSlotProps<SearchBoxSlots['root']>>(
         {
@@ -110,7 +121,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     useMergedRefs(searchBoxRef, ref),
   );
 
-  const state: SearchBoxState = {
+  const state: SearchBoxBaseState = {
     ...inputState,
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -129,7 +140,6 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     }),
     disabled,
     focused,
-    size,
   };
 
   if (state.dismiss) {
