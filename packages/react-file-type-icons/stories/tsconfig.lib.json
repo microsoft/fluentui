@@ -5,8 +5,7 @@
     "outDir": "../../../dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
-    "types": ["static-assets", "environment"],
-    "ignoreDeprecations": "6.0"
+    "types": ["static-assets", "environment"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

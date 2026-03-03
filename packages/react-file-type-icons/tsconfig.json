@@ -14,8 +14,7 @@
     "preserveConstEnums": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"],
-    "isolatedModules": true,
-    "ignoreDeprecations": "6.0"
+    "isolatedModules": true
   },
   "include": ["src"]
 }
