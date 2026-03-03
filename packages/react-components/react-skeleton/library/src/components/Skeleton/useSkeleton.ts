@@ -24,7 +24,7 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
     ...baseProps
   } = props;
 
-  const baseState = useSkeletonBase_unstable(baseProps, ref);
+  const baseState = useSkeletonBase_unstable(baseProps, ref as React.Ref<HTMLDivElement>);
 
   return {
     ...baseState,
@@ -41,13 +41,13 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
  * @param props - User provided props to the Skeleton component.
  * @param ref - User provided ref to be passed to the Skeleton component.
  */
-export const useSkeletonBase_unstable = (props: SkeletonBaseProps, ref?: React.Ref<HTMLElement>): SkeletonBaseState => {
+export const useSkeletonBase_unstable = (
+  props: SkeletonBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): SkeletonBaseState => {
   const root = slot.always(
     getIntrinsicElementProps('div', {
-      // FIXME:
-      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: ref as React.Ref<HTMLDivElement>,
+      ref,
       role: 'progressbar',
       'aria-busy': true,
       ...props,

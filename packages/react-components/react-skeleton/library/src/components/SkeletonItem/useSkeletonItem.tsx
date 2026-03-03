@@ -34,7 +34,7 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
     ...baseProps
   } = props;
 
-  const baseState = useSkeletonItemBase_unstable(baseProps, ref);
+  const baseState = useSkeletonItemBase_unstable(baseProps, ref as React.Ref<HTMLDivElement>);
 
   return {
     ...baseState,
@@ -53,14 +53,11 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
  */
 export const useSkeletonItemBase_unstable = (
   props: SkeletonItemBaseProps,
-  ref?: React.Ref<HTMLElement>,
+  ref?: React.Ref<HTMLDivElement>,
 ): SkeletonItemBaseState => {
   const root = slot.always(
     getIntrinsicElementProps('div', {
-      // FIXME:
-      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: ref as React.Ref<HTMLDivElement>,
+      ref,
       ...props,
     }),
     { elementType: 'div' },
