@@ -64,6 +64,13 @@
         "6011"
       ],
       "isBackground": true
+    },
+    {
+      "label": "Build react-file-type-icons",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["nx", "run", "react-file-type-icons:build", "--outputStyle=stream", "--skip-nx-cache"],
+      "isBackground": false
     }
   ]
 }

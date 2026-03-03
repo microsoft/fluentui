@@ -1,5 +1,19 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
+import descriptionMd from './FileTypeIconDescription.md';
+
+export default {
+  title: 'Compat Components/FileTypeIcon',
+  component: FileTypeIcon,
+  parameters: {
+    docs: {
+      description: {
+        component: descriptionMd,
+      },
+    },
+  },
+} satisfies Meta<typeof FileTypeIcon>;
 
 export const Default = () => (
   <div>

@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   ...rootMain,
-  stories: [...rootMain.stories, '../src/**/*.mdx', '../src/**/index.stories.@(ts|tsx)'],
+  stories: [...rootMain.stories, '../src/**/*.mdx', '../src/**/*.stories.@(ts|tsx)'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };

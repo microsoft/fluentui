@@ -21,7 +21,7 @@ describe('FileTypeIcon', () => {
 
   it('applies the component static class name', () => {
     const { getByRole } = render(<FileTypeIcon extension="docx" />);
-    expect(getByRole('img').className.includes(fileTypeIconClassNames.root)).toBe(true);
+    expect(getByRole('img').className.indexOf(fileTypeIconClassNames.root) >= 0).toBe(true);
   });
 
   it('uses shared resolver output for icon name and URL', () => {
@@ -60,9 +60,15 @@ describe('FileTypeIcon', () => {
     expect(getByRole('img').getAttribute('src')).toBe(expectedUrl);
   });
 
+  it('supports v9-style invocation for non-extension campaign type mapping', () => {
+    const { getByRole } = render(<FileTypeIcon type={FileIconType.campaign} size={24} imageFileType="svg" />);
+    expect(getByRole('img').getAttribute('data-icon-name')).toContain('spocampaign24_svg');
+  });
+
   it('falls back to genericfile icon for unknown extension', () => {
     const { getByRole } = render(<FileTypeIcon extension="unknown-extension" />);
-    expect(getByRole('img').getAttribute('data-icon-name')?.startsWith('genericfile')).toBe(true);
+    const iconName = getByRole('img').getAttribute('data-icon-name') || '';
+    expect(iconName.slice(0, 'genericfile'.length)).toBe('genericfile');
   });
 
   it('forwards refs to the root img element', () => {
