@@ -7,6 +7,10 @@ import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
 export const Default = (): JSXElement => {
+  const showAlert = (name: string) => {
+    alert(`Item ${name} activated`);
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -17,6 +21,7 @@ export const Default = (): JSXElement => {
           {items.map(name => (
             <MenuGridItem
               key={name}
+              onClick={() => showAlert(name)}
               aria-label={name}
               icon={
                 <Button
