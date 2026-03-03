@@ -2,6 +2,39 @@
   "name": "@fluentui/react-nav",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:43 GMT",
+      "tag": "@fluentui/react-nav_v9.3.20",
+      "version": "9.3.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-drawer to v9.11.5",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-motion to v9.13.0",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.2",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-tooltip to v9.9.3",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:23 GMT",
       "tag": "@fluentui/react-nav_v9.3.19",
       "version": "9.3.19",

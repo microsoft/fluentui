@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.0)
+
+Tue, 03 Mar 2026 09:43:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.13.2..@fluentui/react-popover_v9.14.0)
+
+### Minor changes
+
+- refactor: migrate slide animation from CSS to motion components with surfaceMotion slot ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- Bump @fluentui/react-motion to v9.13.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.2 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-positioning to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.13.2)
 

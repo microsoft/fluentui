@@ -2,6 +2,29 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:40 GMT",
+      "tag": "@fluentui/react-motion_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "fix: make children optional in MotionRefForwarder to resolve type issue"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "015419bb3fa5f37fdf8025dc7bafbdcd5f71b4de",
+            "comment": "fix: add MotionRefForwarderReset to prevent context leaking to descendants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:23 GMT",
       "tag": "@fluentui/react-motion_v9.12.0",
       "version": "9.12.0",

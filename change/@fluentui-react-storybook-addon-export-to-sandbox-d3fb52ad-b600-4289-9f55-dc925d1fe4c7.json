@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "chore: bump storybook to mitigate CVE",
+  "comment": "fix: button selector issue to support SB 10",
   "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
-  "email": "martinhochel@microsoft.com",
+  "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
 }

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}

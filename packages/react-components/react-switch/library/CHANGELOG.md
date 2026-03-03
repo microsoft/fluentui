@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.6.0)
+
+Tue, 03 Mar 2026 09:43:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.5.4..@fluentui/react-switch_v9.6.0)
+
+### Minor changes
+
+- feat: add disabledFocusable prop to Switch component ([PR #35799](https://github.com/microsoft/fluentui/pull/35799) by copilot@microsoft.com)
 
 ## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.4)
 

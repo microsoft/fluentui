@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.13)
+
+Tue, 03 Mar 2026 09:43:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.12..@fluentui/react-charts_v9.3.13)
+
+### Patches
+
+- (feat): Add support for vega based schema ([PR #35546](https://github.com/microsoft/fluentui/pull/35546) by atisjai@microsoft.com)
+- Bump @fluentui/react-popover to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-tooltip to v9.9.3 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
 
 ## [9.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.12)
 
