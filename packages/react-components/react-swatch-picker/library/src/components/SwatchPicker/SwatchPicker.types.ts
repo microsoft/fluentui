@@ -23,6 +23,19 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   defaultSelectedValue?: string;
 
   /**
+   * Sets the focus behavior for the SwatchPicker.
+   *
+   * `arrow`
+   * This behavior will cycle through all elements inside of the SwatchPicker when pressing the Arrow key.
+   *
+   * `tab`
+   * This behavior will cycle through all elements inside of the SwatchPicker when pressing the Tab key.
+   *
+   * @default 'arrow'
+   */
+  focusMode?: 'arrow' | 'tab';
+
+  /**
    * Whether SwatchPicker is row or grid
    */
   layout?: 'row' | 'grid';
