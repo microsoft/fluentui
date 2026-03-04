@@ -98,7 +98,7 @@
       "hidden": true
     },
     "cli-command": {
-      "implementation": "./src/generators/cli-command/index.ts",
+      "implementation": "./src/generators/cli-command/generator",
       "schema": "./src/generators/cli-command/schema.json",
       "description": "Create a new CLI command for @fluentui/cli"
     }

@@ -1,7 +1,7 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree } from '@nx/devkit';
 
-import generator from './index';
+import generator from './generator';
 import { CliCommandGeneratorSchema } from './schema';
 
 describe('cli-command generator', () => {
@@ -31,7 +31,8 @@ describe('cli-command generator', () => {
   });
 
   it('should generate command files', async () => {
-    await generator(tree, { name: 'analyze', description: 'Analyze bundles' });
+    const options: CliCommandGeneratorSchema = { name: 'analyze', description: 'Analyze bundles' };
+    await generator(tree, options);
 
     expect(tree.exists('tools/cli/src/commands/analyze/index.ts')).toBeTruthy();
     expect(tree.exists('tools/cli/src/commands/analyze/handler.ts')).toBeTruthy();
@@ -39,7 +40,8 @@ describe('cli-command generator', () => {
   });
 
   it('should generate CommandModule with correct name and description', async () => {
-    await generator(tree, { name: 'analyze', description: 'Analyze bundles' });
+    const options: CliCommandGeneratorSchema = { name: 'analyze', description: 'Analyze bundles' };
+    await generator(tree, options);
 
     const content = tree.read('tools/cli/src/commands/analyze/index.ts', 'utf-8')!;
 
@@ -49,7 +51,8 @@ describe('cli-command generator', () => {
   });
 
   it('should generate handler with placeholder implementation', async () => {
-    await generator(tree, { name: 'analyze' });
+    const options: CliCommandGeneratorSchema = { name: 'analyze', description: 'Analyze bundles' };
+    await generator(tree, options);
 
     const content = tree.read('tools/cli/src/commands/analyze/handler.ts', 'utf-8')!;
 
@@ -58,7 +61,8 @@ describe('cli-command generator', () => {
   });
 
   it('should register command in cli.ts', async () => {
-    await generator(tree, { name: 'analyze' });
+    const options: CliCommandGeneratorSchema = { name: 'analyze', description: 'Analyze bundles' };
+    await generator(tree, options);
 
     const content = tree.read('tools/cli/src/cli.ts', 'utf-8')!;
 
@@ -67,7 +71,8 @@ describe('cli-command generator', () => {
   });
 
   it('should use default description when not provided', async () => {
-    await generator(tree, { name: 'analyze' });
+    const options: CliCommandGeneratorSchema = { name: 'analyze' };
+    await generator(tree, options);
 
     const content = tree.read('tools/cli/src/commands/analyze/index.ts', 'utf-8')!;
 
