@@ -14,6 +14,10 @@
     "dist"
   ],
   "dependencies": {
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.33"
   }
 }
