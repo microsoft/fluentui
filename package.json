@@ -334,6 +334,7 @@
     "packages": [
       "apps/*",
       "packages/*",
+      "packages/react-file-type-icons/*",
       "packages/react-components/*",
       "packages/react-components/*/*",
       "packages/charts/*",
