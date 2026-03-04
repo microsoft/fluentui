@@ -99,4 +99,3 @@ describe('cli-command generator', () => {
     expect(importMatches).toHaveLength(1);
   });
 });
-

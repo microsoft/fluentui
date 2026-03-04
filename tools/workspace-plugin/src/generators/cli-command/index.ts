@@ -68,7 +68,7 @@ function registerCommand(tree: Tree, options: NormalizedSchema) {
 
   // Add import after the last existing command import
   const importStatement = `import ${importName} from '${importPath}';\n`;
-  const lastImportIndex = content.lastIndexOf("import ");
+  const lastImportIndex = content.lastIndexOf('import ');
   const lastImportEnd = content.indexOf('\n', lastImportIndex) + 1;
   const withImport = content.slice(0, lastImportEnd) + importStatement + content.slice(lastImportEnd);
 
@@ -80,4 +80,3 @@ function registerCommand(tree: Tree, options: NormalizedSchema) {
 
   tree.write(cliPath, withCommand);
 }
-
