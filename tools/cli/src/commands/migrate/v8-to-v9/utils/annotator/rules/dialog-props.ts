@@ -38,7 +38,12 @@ export function detectDialogProps(sourceFile: SourceFile): AnnotationResult[] {
           });
           break;
         case 'isBlocking':
-          results.push({ action: 'auto', codemod: 'dialog-props', payload: 'isBlocking=true → modalType="alert"', line });
+          results.push({
+            action: 'auto',
+            codemod: 'dialog-props',
+            payload: 'isBlocking=true → modalType="alert"',
+            line,
+          });
           break;
         case 'dialogContentProps':
           results.push({

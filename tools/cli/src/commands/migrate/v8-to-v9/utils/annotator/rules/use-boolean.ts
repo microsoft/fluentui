@@ -6,11 +6,13 @@ export function detectUseBoolean(sourceFile: SourceFile): AnnotationResult[] {
   const results: AnnotationResult[] = [];
 
   // Check if useBoolean is imported from @fluentui/react
-  const hasUseBooleanImport = sourceFile.getImportDeclarations().some(
-    decl =>
-      decl.getModuleSpecifierValue() === '@fluentui/react' &&
-      decl.getNamedImports().some(s => s.getName() === 'useBoolean'),
-  );
+  const hasUseBooleanImport = sourceFile
+    .getImportDeclarations()
+    .some(
+      decl =>
+        decl.getModuleSpecifierValue() === '@fluentui/react' &&
+        decl.getNamedImports().some(s => s.getName() === 'useBoolean'),
+    );
   if (!hasUseBooleanImport) return results;
 
   sourceFile.forEachDescendant((node: Node) => {
@@ -42,7 +44,11 @@ export function isInFunctionComponent(node: Node): boolean {
   let current: Node | undefined = node.getParent();
   while (current) {
     const kind = current.getKind();
-    if (kind === SyntaxKind.ArrowFunction || kind === SyntaxKind.FunctionDeclaration || kind === SyntaxKind.FunctionExpression) {
+    if (
+      kind === SyntaxKind.ArrowFunction ||
+      kind === SyntaxKind.FunctionDeclaration ||
+      kind === SyntaxKind.FunctionExpression
+    ) {
       return true;
     }
     if (kind === SyntaxKind.ClassDeclaration || kind === SyntaxKind.ClassExpression) {

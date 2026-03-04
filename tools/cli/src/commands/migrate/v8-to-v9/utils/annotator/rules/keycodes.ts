@@ -24,11 +24,13 @@ const KNOWN_KEYCODES: Record<string, string> = {
 export function detectKeyCodes(sourceFile: SourceFile): AnnotationResult[] {
   const results: AnnotationResult[] = [];
 
-  const hasKeyCodesImport = sourceFile.getImportDeclarations().some(
-    decl =>
-      decl.getModuleSpecifierValue() === '@fluentui/react' &&
-      decl.getNamedImports().some(s => s.getName() === 'KeyCodes'),
-  );
+  const hasKeyCodesImport = sourceFile
+    .getImportDeclarations()
+    .some(
+      decl =>
+        decl.getModuleSpecifierValue() === '@fluentui/react' &&
+        decl.getNamedImports().some(s => s.getName() === 'KeyCodes'),
+    );
   if (!hasKeyCodesImport) return results;
 
   sourceFile.forEachDescendant((node: Node) => {

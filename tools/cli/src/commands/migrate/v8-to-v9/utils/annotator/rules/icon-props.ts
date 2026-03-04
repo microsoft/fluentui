@@ -61,13 +61,11 @@ export function detectIconProps(sourceFile: SourceFile): AnnotationResult[] {
       const line = attr.getStartLineNumber();
 
       // Try to extract iconName value
-      const iconNameLiteral = attr
-        .getDescendantsOfKind(SyntaxKind.StringLiteral)
-        .find(s => {
-          const parent = s.getParent();
-          const grandparent = parent?.getParent();
-          return grandparent?.getKind() === SyntaxKind.ObjectLiteralExpression;
-        });
+      const iconNameLiteral = attr.getDescendantsOfKind(SyntaxKind.StringLiteral).find(s => {
+        const parent = s.getParent();
+        const grandparent = parent?.getParent();
+        return grandparent?.getKind() === SyntaxKind.ObjectLiteralExpression;
+      });
 
       const iconName = iconNameLiteral?.getLiteralValue();
 

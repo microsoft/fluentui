@@ -6,11 +6,13 @@ import { isInFunctionComponent } from './use-boolean';
 export function detectGetId(sourceFile: SourceFile): AnnotationResult[] {
   const results: AnnotationResult[] = [];
 
-  const hasGetIdImport = sourceFile.getImportDeclarations().some(
-    decl =>
-      decl.getModuleSpecifierValue() === '@fluentui/react' &&
-      decl.getNamedImports().some(s => s.getName() === 'getId'),
-  );
+  const hasGetIdImport = sourceFile
+    .getImportDeclarations()
+    .some(
+      decl =>
+        decl.getModuleSpecifierValue() === '@fluentui/react' &&
+        decl.getNamedImports().some(s => s.getName() === 'getId'),
+    );
   if (!hasGetIdImport) return results;
 
   sourceFile.forEachDescendant((node: Node) => {
