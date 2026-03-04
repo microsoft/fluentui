@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 25 Feb 2026 13:32:23 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.13.0)
+
+Tue, 03 Mar 2026 09:43:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.12.0..@fluentui/react-motion_v9.13.0)
+
+### Minor changes
+
+- fix: make children optional in MotionRefForwarder to resolve type issue ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix: add MotionRefForwarderReset to prevent context leaking to descendants ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.12.0)
 

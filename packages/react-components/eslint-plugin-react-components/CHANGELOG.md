@@ -1,8 +1,23 @@
 # Change Log - @fluentui/eslint-plugin-react-components
 
-This log was last generated on Tue, 04 Nov 2025 14:46:59 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 13:16:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.2.0)
+
+Tue, 03 Mar 2026 13:16:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin-react-components_v0.1.4..@fluentui/eslint-plugin-react-components_v0.2.0)
+
+### Minor changes
+
+- feat: add enforce-use-client workspace rule ([PR #35504](https://github.com/microsoft/fluentui/pull/35504) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: support granular lib imports ([PR #35618](https://github.com/microsoft/fluentui/pull/35618) by vgenaev@gmail.com)
+- chore: bump typescript-eslint ([PR #35278](https://github.com/microsoft/fluentui/pull/35278) by vgenaev@gmail.com)
+- fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.1.4)
 

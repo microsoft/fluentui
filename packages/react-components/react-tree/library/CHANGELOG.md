@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.12)
+
+Tue, 03 Mar 2026 09:43:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.15.11..@fluentui/react-tree_v9.15.12)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.10.2 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.2 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-motion to v9.13.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
 
 ## [9.15.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.11)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:41 GMT",
+      "tag": "@fluentui/react-positioning_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: deprecate createSlideStyles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:24 GMT",
       "tag": "@fluentui/react-positioning_v9.21.0",
       "version": "9.21.0",

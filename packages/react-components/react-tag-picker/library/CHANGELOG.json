@@ -2,6 +2,33 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:43 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.16.17",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.7.17",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.22.0",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:26 GMT",
       "tag": "@fluentui/react-tag-picker_v9.8.0",
       "version": "9.8.0",

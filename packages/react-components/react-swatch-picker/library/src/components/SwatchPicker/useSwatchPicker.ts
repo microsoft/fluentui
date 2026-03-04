@@ -24,7 +24,16 @@ export const useSwatchPicker_unstable = (
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props);
 
-  const { layout, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
+  const {
+    focusMode = 'arrow',
+    layout,
+    onSelectionChange,
+    size = 'medium',
+    shape,
+    spacing = 'medium',
+    style,
+    ...rest
+  } = props;
 
   const isGrid = layout === 'grid';
   const focusAttributes = useArrowNavigationGroup({
@@ -59,7 +68,7 @@ export const useSwatchPicker_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         role,
-        ...focusAttributes,
+        ...(focusMode === 'arrow' ? focusAttributes : {}),
         ...rest,
       }),
       { elementType: 'div' },

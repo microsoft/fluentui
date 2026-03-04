@@ -2,6 +2,79 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:39 GMT",
+      "tag": "@fluentui/react-components_v9.73.2",
+      "version": "9.73.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "015419bb3fa5f37fdf8025dc7bafbdcd5f71b4de",
+            "comment": "fix: reset MotionRefForwarder context in renderDialogSurface to prevent child components from corrupting Dialog's motion ref"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "015419bb3fa5f37fdf8025dc7bafbdcd5f71b4de",
+            "comment": "fix: add MotionRefForwarderReset to prevent context leaking to descendants"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "4e21b54d65b4951c8cba94f8a15d16568400b43c",
+            "comment": "fix: prevent calendar-compat from crashing when value is undefined"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "26229a953219cf4ec5b4c9f7aeb37070e2cf38db",
+            "comment": "(feat): Add support for vega based schema"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: migrate slide animation from CSS to motion components with surfaceMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "fix: make children optional in MotionRefForwarder to resolve type issue"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: migrate slide animation from CSS to motion components with surfaceMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: deprecate createSlideStyles"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f9a6d8435efa5aff110f335d10e2fc51656167ee",
+            "comment": "feat: add disabledFocusable prop to Switch component"
+          }
+        ],
+        "none": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "e20285c6647bb91dc502946a5225b39d9c555e22",
+            "comment": "Add autoplayInterval control to Autoplay story example"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:21 GMT",
       "tag": "@fluentui/react-components_v9.73.1",
       "version": "9.73.1",
