@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 
-export const CustomBaseUrl = () => (
+export const CustomBaseUrl = (): React.ReactElement => (
   <div>
     <FileTypeIcon
       extension="docx"

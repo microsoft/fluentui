@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 
-export const ByFileIconType = () => (
+export const ByFileIconType = (): React.ReactElement => (
   <div>
     <FileTypeIcon type={FileIconType.folder} size={20} />
     <FileTypeIcon type={FileIconType.sharedFolder} size={24} />
