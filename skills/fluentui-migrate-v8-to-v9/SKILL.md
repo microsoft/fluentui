@@ -38,19 +38,20 @@ After completing a migration session, report using this structure:
 2. In a monorepo or if multiple `tsconfig.json` files exist, ask the user: _"Which directory or package should I migrate? (e.g., `packages/my-app/src`)"_
 3. If no tsconfig exists, default to searching from the repo root (`.`) and adjust from there
 
-Replace `<SOURCE_ROOT>` in the commands below with the path you identified:
+Replace `<SOURCE_ROOT>` in the commands below with the path you identified.
+
+**Check for existing migration annotations:**
 
 ```sh
-# All files importing from @fluentui/react — adjust path to your repo layout
-grep -rl "@fluentui/react" <SOURCE_ROOT> --include="*.tsx" --include="*.ts"
-
-# Tally component usage to prioritize
-grep -rh "from '@fluentui/react'" <SOURCE_ROOT> --include="*.tsx" --include="*.ts" | sort | uniq -c | sort -rn
+grep -rl "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
 ```
 
-Identify which components are used and how many times. Migrate high-count simple components first.
+- If annotations are found → proceed to Step 3 (annotations are the work queue).
+- If nothing is found → tell the user:
 
-Skip files that import **only** from `@fluentui/react-components` — they are already migrated.
+  > "No migration annotations found. Please run `npx @fluentui/cli migrate v8-to-v9 --path <SOURCE_ROOT>` first, then re-invoke the skill."
+
+  Stop until the user confirms the CLI has been run.
 
 ### Setup Boundary
 
@@ -65,13 +66,13 @@ If either condition is unmet, report what's needed and stop until the user confi
 
 ### Agent Execution Contract
 
-**Phase order:** assess (+ tsc baseline) → plan → mechanical pass → semantic pass → validate → report (Output Template above)
+**Phase order:** check for annotations (+ tsc baseline) → if missing, ask user to run CLI → process annotations (`auto` → `scaffold` → `manual` → `no-equivalent`) → validate → report (Output Template above)
 
 **Baseline TypeScript check before starting:** run the repo's TypeScript check command (`tsc --noEmit` or the equivalent in `package.json` scripts) before any changes and record the error count. In the Validation step, report TypeScript as ✅ if post-migration error count ≤ baseline — do not block on pre-existing errors.
 
 **Behavior-preserving default:** when uncertain, preserve existing behavior. Never silently drop functionality.
 
-**Confidence threshold:** if you are less than ~80% confident in a mapping, add an inline comment and flag it — do not skip it silently:
+**Confidence threshold for `manual` annotations:** if you are less than ~80% confident in a mapping, add an inline comment and flag it — do not skip it silently:
 
 ```tsx
 // MIGRATION ASSUMPTION: GroupedList mapped to Tree (expand/collapse usage detected). Verify if tabular layout was intended.
@@ -79,9 +80,9 @@ If either condition is unmet, report what's needed and stop until the user confi
 
 **Stop and escalate when:**
 
-- TypeScript errors remain after mechanical pass that you cannot resolve
-- A component has no known v9 equivalent and no clear workaround
-- More than 2 unresolved 1→many mappings in the same file (see Ambiguity Resolution below)
+- TypeScript errors remain after processing annotations that you cannot resolve
+- A `no-equivalent` annotation has no clear workaround from the component mapping table
+- More than 2 unresolved `manual` annotations in the same file
 
 In those cases: commit what's done, fill in the Output Template with status ⚠️ or ❌, list the blockers, and wait for user input.
 
@@ -113,88 +114,55 @@ import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 </FluentProvider>;
 ```
 
-### Step 3 — Migrate (file by file)
+### Step 3 — Migrate (annotation-driven)
 
-**Recommended order within a file:**
+Process the `@fluent-migrate:` annotations as a work queue. Get all annotations:
 
-#### Pass 1 — Mechanical (safe to automate)
+```sh
+grep -rn "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
 
-1. Update import statements (`@fluentui/react` → `@fluentui/react-components`)
-2. Rename components per the mapping table below (1→1 renames only; defer 1→many to Pass 2)
-3. Apply universal prop renames (applies to every component):
-   - `componentRef` → `ref`
-   - `ariaLabel` → `aria-label`
-   - `ariaHidden` → `aria-hidden`
-   - `ariaDescribedBy` → `aria-describedby`
-   - `ariaLabelledBy` → `aria-labelledby`
-   - Remove `styles` prop → replace with `makeStyles` + `className`
-   - Combine class names with `mergeClasses(s.a, s.b, extra)` (replaces `cx` / `mergeStyles` for className composition)
-   - Remove `theme` prop → handled by `FluentProvider`
-4. Apply component-specific prop changes (see reference files below)
+Work through them in this order, removing each annotation comment after applying the change:
 
-#### Pass 2 — Semantic (requires judgment)
+#### 1. `auto` annotations — apply mechanically, no questions
 
-5. Replace v8-only utility imports (no v9 equivalent — remove the import and use the native alternative):
-   - `useBoolean` → `React.useState<boolean>(false)` (`const [open, setOpen] = React.useState(false)`)
-   - `KeyCodes.enter` / `KeyCodes.escape` → `event.key === 'Enter'` / `event.key === 'Escape'`
-   - `NeutralColors.xxx` / `SharedColors.xxx` → `tokens.colorXxx` inside `makeStyles`
-   - `mergeStyleSets` / `concatStyleSets` → `makeStyles` + `mergeClasses`
-   - `getRTL()` / `rtl` on ThemeProvider → `dir="rtl"` prop on `FluentProvider`
-   - `getTheme()` → use `tokens` in `makeStyles`; `createTheme()` → `createLightTheme(brandVariants)`
-   - `getId('prefix')` → `useId('prefix')` from `@fluentui/react-components` (hook — call inside component)
-6. Extract `label` props from form controls (TextField, SpinButton, Slider, ChoiceGroup):
-   - **Preferred:** wrap the control in `<Field>` — it handles label, `required`, `validationMessage`, and `validationState` via context without any `useId` wiring:
-     ```tsx
-     import { Field, Input } from '@fluentui/react-components';
-     <Field label="Email" required validationState="error" validationMessage="Required">
-       <Input />
-     </Field>;
-     ```
-   - **Alternative (manual):** separate `<Label htmlFor={id}>` + `useId` from `@fluentui/react-components`
-7. Migrate `iconProps={{ iconName: 'X' }}` → `icon={<XRegular />}` (see [icons.md](references/icons.md))
-8. Resolve 1→many mappings and architectural changes (ContextualMenu→Menu JSX, Stack→makeStyles, etc.) — see Ambiguity Resolution below
+```sh
+grep -rn "@fluent-migrate:auto" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
 
-**Recommended migration order across files:**
+Each annotation encodes exactly what to do in its payload. Apply the transformation on the line below the comment and remove the annotation. No user questions needed.
 
-1. Simple renames with no API change (Separator→Divider, Toggle→Switch, Shimmer→Skeleton, etc.)
-2. Components with prop renames only (Button, Checkbox, Tabs/Pivot, Input/TextField)
-3. Components requiring label extraction (SpinButton, ChoiceGroup→RadioGroup, Slider)
-4. Architectural changes (ContextualMenu→Menu JSX children, Stack→makeStyles, ThemeProvider→FluentProvider)
+#### 2. `scaffold` annotations — generate boilerplate with TODO placeholders
 
-### Codemod Guidance
+```sh
+grep -rn "@fluent-migrate:scaffold" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
 
-**Safe to automate (Pass 1):**
+Generate the appropriate boilerplate skeleton with `// TODO:` placeholders. Do **not** fill in semantic values (style values, layout intent, etc.). Remove the annotation on completion.
 
-- Import path: `@fluentui/react` → `@fluentui/react-components`
-- Universal prop renames (`componentRef→ref`, `ariaLabel→aria-label`, etc.)
-- 1→1 component renames: Separator→Divider, Toggle→Switch, Shimmer→Skeleton, Label→Label, Icon→SVG import, Fabric→FluentProvider, Layer→Portal, Overlay→Portal
-- Shim swaps: `import { XShim as X } from '@fluentui/react-migration-v8-v9'`
+#### 3. `manual` annotations — read context, apply or ask
 
-**Manual only (Pass 2 — requires understanding intent):**
+```sh
+grep -rn "@fluent-migrate:manual" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
 
-- 1→many mappings: GroupedList, DetailsList, Popup (see Ambiguity Resolution below)
-- `styles` prop → `makeStyles` (must understand what styles were doing)
-- `Stack`/`StackItem` → flexbox via `makeStyles` (layout intent must be preserved)
-- `ContextualMenu` / `CommandBar` data-driven → JSX (tree structure must be reconstructed)
-- Icon name string → SVG component import (names don't always match 1:1; use the icons reference)
-- Any `onRender*` callback → slot (render logic must be understood)
+Read the surrounding code context to determine intent. The annotation's `note` field lists choices. Apply if confident (>80%), using the component mapping table and per-component references below as reference. If ambiguous, log an assumption comment or ask the user before applying. Remove the annotation on completion.
 
-### Ambiguity Resolution Rules
+#### 4. `no-equivalent` annotations — surface to user
 
-For **1→many mappings**, resolve in this order:
+```sh
+grep -rn "@fluent-migrate:no-equivalent" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
 
-1. Check the component's reference file — it usually identifies the right target based on usage pattern
-2. Use surrounding code context:
-   - Tabular data with columns → `DataGrid` (selection/sort) or `Table` (read-only)
-   - Nested items with expand/collapse → `Tree`
-   - Flat scrollable list → `List`
-   - Non-modal overlay → `Popover`; modal/blocking → `Dialog`
-3. If still ambiguous after steps 1–2, log an assumption comment:
-   ```tsx
-   // MIGRATION ASSUMPTION: GroupedList mapped to Tree (expand/collapse pattern detected). Verify intent.
-   ```
+Do not attempt migration. Report each one to the user with the recommended alternative from the deprecation table below. Wait for user direction before proceeding. Remove the annotation only after the user provides a resolution.
 
-**Escalation trigger:** more than 2 unresolved 1→many mappings in the same file → stop, report status ⚠️, and ask the user before continuing.
+#### Verify zero annotations remain
+
+```sh
+grep -r "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Should return nothing. Any remaining annotations are blockers — include them in the Output Template as unresolved deltas, then proceed to Step 4.
 
 ### Step 4 — Validate
 
