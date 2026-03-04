@@ -19,8 +19,8 @@ const nonJsExtensions = [
   prettierSupportedFileExtensionsByContext.others,
 ].flat();
 
-// https://www.npmjs.com/package/lint-staged
+// https://github.com/usmanyunusov/nano-staged
 module.exports = {
   [`**/*.{${nonJsExtensions}}`]: [commands.format],
-  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [/* commands.format, */ commands.lint],
+  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
 };
