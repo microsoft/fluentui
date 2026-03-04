@@ -25,8 +25,8 @@ v8 applies theme values as a JS object on React context. v9 applies theme values
 | Default light | `webLightTheme`          |
 | Default dark  | `webDarkTheme`           |
 | High contrast | `teamsHighContrastTheme` |
-| Teams light   | `teamsDarkTheme`         |
-| Teams dark    | `teamsLightTheme`        |
+| Teams light   | `teamsLightTheme`        |
+| Teams dark    | `teamsDarkTheme`         |
 
 All built-in themes are exported from `@fluentui/react-components`.
 
@@ -136,6 +136,31 @@ For styles that depend on **numeric or string values** (e.g., dynamic width), us
 const useStyles = makeStyles({ root: { display: 'flex' } });
 const s = useStyles();
 <div className={s.root} style={{ width: `${dynamicWidth}px` }} />;
+```
+
+## Nested FluentProvider (Token Overrides)
+
+Multiple `FluentProvider` instances can be nested. The inner provider overrides only the tokens it specifies — useful for dark sections, compact density, or brand color changes within a subtree:
+
+```tsx
+import { FluentProvider, webLightTheme, webDarkTheme } from '@fluentui/react-components';
+
+// Dark sidebar inside a light-theme app
+<FluentProvider theme={webLightTheme}>
+  <main>{/* light theme */}</main>
+  <FluentProvider theme={webDarkTheme}>
+    <aside>{/* dark theme — only this subtree */}</aside>
+  </FluentProvider>
+</FluentProvider>;
+```
+
+To override individual tokens without switching the whole theme, pass a partial token object:
+
+```tsx
+// Override just the brand color in one subtree
+<FluentProvider theme={{ colorBrandBackground: '#e00000' }}>
+  <Button appearance="primary">Red brand button</Button>
+</FluentProvider>
 ```
 
 ## Component `styles` Prop → className

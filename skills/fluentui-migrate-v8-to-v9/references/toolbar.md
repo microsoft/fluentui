@@ -127,6 +127,31 @@ import { ExportRegular } from '@fluentui/react-icons';
 </Menu>;
 ```
 
+## Radio Group (Mutually Exclusive Toggle Items)
+
+v8 used `checked` items inside a data-driven CommandBar with manual mutual-exclusion logic. v9 provides `ToolbarRadioGroup` + `ToolbarRadioButton`:
+
+```tsx
+import { Toolbar, ToolbarRadioGroup, ToolbarRadioButton } from '@fluentui/react-components';
+import { AlignLeftRegular, AlignCenterRegular, AlignRightRegular } from '@fluentui/react-icons';
+
+const [align, setAlign] = React.useState('left');
+
+<Toolbar checkedValues={{ align: [align] }} onCheckedValueChange={(_, data) => setAlign(data.checkedItems[0])}>
+  <ToolbarRadioGroup>
+    <ToolbarRadioButton name="align" value="left" icon={<AlignLeftRegular />}>
+      Left
+    </ToolbarRadioButton>
+    <ToolbarRadioButton name="align" value="center" icon={<AlignCenterRegular />}>
+      Center
+    </ToolbarRadioButton>
+    <ToolbarRadioButton name="align" value="right" icon={<AlignRightRegular />}>
+      Right
+    </ToolbarRadioButton>
+  </ToolbarRadioGroup>
+</Toolbar>;
+```
+
 ## Overflow Handling
 
 v8 `CommandBar` handles overflow automatically via the `overflowItems` array.

@@ -84,6 +84,38 @@ import { Button } from '@fluentui/react-components';
 supports `href`, `target`, `rel`). Use `Link` for inline prose links; use `Button as="a"` when the
 design needs a button shape that navigates.
 
+### Button with dropdown menu (`menuProps`)
+
+```tsx
+// v8 — button that opens a dropdown via menuProps
+import { DefaultButton } from '@fluentui/react';
+<DefaultButton
+  text="Options"
+  menuProps={{
+    items: [
+      { key: 'edit', text: 'Edit', onClick: handleEdit },
+      { key: 'delete', text: 'Delete', onClick: handleDelete },
+    ],
+  }}
+/>;
+
+// v9 — MenuButton inside Menu
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuButton } from '@fluentui/react-components';
+<Menu>
+  <MenuTrigger disableButtonEnhancement>
+    <MenuButton>Options</MenuButton>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem onClick={handleEdit}>Edit</MenuItem>
+      <MenuItem onClick={handleDelete}>Delete</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>;
+```
+
+For a primary-styled dropdown button: `<MenuButton appearance="primary">`.
+
 ### SplitButton
 
 ```tsx
