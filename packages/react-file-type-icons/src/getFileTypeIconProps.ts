@@ -108,7 +108,8 @@ export function getFileTypeIconSuffix(
   imageFileType: ImageFileType = 'svg',
   win?: Window,
 ): string {
-  const resolvedWindow = win ?? (typeof window !== 'undefined' ? window : undefined);
+  const resolvedWindow =
+    win ?? (typeof globalThis !== 'undefined' && 'window' in globalThis ? globalThis.window : undefined);
   const devicePixelRatio: number = resolvedWindow?.devicePixelRatio ?? 1;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
