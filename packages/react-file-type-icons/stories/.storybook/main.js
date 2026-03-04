@@ -7,7 +7,7 @@ module.exports = {
   addons: [...rootMain.addons],
   /**
    * @param {import('webpack').Configuration} config
-    * @param {any} options
+   * @param {any} options
    */
   webpackFinal: (config, options) => {
     const localConfig = /** @type {import('webpack').Configuration} */ (rootMain.webpackFinal(config, options));
