@@ -108,9 +108,8 @@ export function getFileTypeIconSuffix(
   imageFileType: ImageFileType = 'svg',
   win?: Window,
 ): string {
-  // eslint-disable-next-line no-restricted-globals
-  win ??= window;
-  const devicePixelRatio: number = win.devicePixelRatio;
+  const resolvedWindow = win ?? (typeof window !== 'undefined' ? window : undefined);
+  const devicePixelRatio: number = resolvedWindow?.devicePixelRatio ?? 1;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.
