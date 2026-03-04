@@ -69,6 +69,7 @@ export type RangeSliderSlots = {
 // @public (undocumented)
 export type RangeSliderState = ComponentState<RangeSliderSlots> & Pick<RangeSliderProps, 'disabled' | 'size' | 'vertical'> & {
     value: RangeSliderValue;
+    activeThumb: 'start' | 'end';
 };
 
 // @public (undocumented)
