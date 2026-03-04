@@ -2,4 +2,6 @@
 
 // @ts-check
 
-console.log('TODO');
+const { main } = require('../dist/src/cli');
+
+main(process.argv.slice(2));
