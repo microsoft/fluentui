@@ -1,0 +1,19 @@
+{
+  "name": "@fluentui/cli",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "fluentui-cli": "./bin/fluentui-cli.js"
+  },
+  "files": [
+    "*.md",
+    "bin",
+    "dist"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.5.1"
+  }
+}
