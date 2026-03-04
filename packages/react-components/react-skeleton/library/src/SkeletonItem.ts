@@ -1,9 +1,4 @@
-export type {
-  SkeletonItemProps,
-  SkeletonItemSize,
-  SkeletonItemSlots,
-  SkeletonItemState,
-} from './components/SkeletonItem/index';
+export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './components/SkeletonItem/index';
 export {
   SkeletonItem,
   renderSkeletonItem_unstable,
