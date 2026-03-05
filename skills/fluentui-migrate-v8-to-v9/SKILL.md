@@ -5,23 +5,79 @@ description: 'Guides migration from Fluent UI React v8 (@fluentui/react) to v9 (
 
 # Fluent UI v8 → v9 Migration
 
+## Agent Output Template
+
+After completing a migration session, report using this structure:
+
+```
+### Migration Report
+
+**Scope:** 12 files, 4 component types migrated
+**Assumptions logged:** 2 (see inline `// MIGRATION ASSUMPTION:` comments)
+**Unresolved deltas:** none  (e.g. "GroupedList in DataView.tsx — awaiting user direction")
+**Shims still in place:** none  (e.g. "PrimaryButtonShim → src/Header.tsx")
+**Shim removal plan:** n/a  (e.g. "replace with Button appearance=primary once v8 deps removed")
+**Reference precedence used:** none  (e.g. "Dialog: used references/dialog.md over SKILL.md table")
+**Validation evidence:**
+  - TypeScript check (yarn tsc --noEmit): ✅  (e.g. ❌ 3 errors — baseline was 1)
+  - lint: ✅  (e.g. ⏭️ skipped — no linter found)
+  - tests: ✅  (e.g. ❌ 2 failing)
+  - No remaining @fluentui/react imports: ✅  (e.g. ❌ 3 remaining)
+**Final status:** ✅ Complete  (e.g. ⚠️ Partial — see unresolved deltas | ❌ Blocked: tsc errors)
+```
+
+---
+
 ## Migration Workflow
 
 ### Step 1 — Assess
 
-Find all files using v8:
+**Determine project root and source directory:**
+
+1. Locate `package.json` to identify the **project root** — it is the source of truth. If multiple `package.json` files exist (monorepo), ask: _"Which package should I migrate? (e.g., `packages/my-app`)"_ — do not proceed until confirmed.
+2. Once the project root is confirmed, check `tsconfig.json` for `include` or `rootDir` to narrow down the **source directory** (e.g., `src/`, `app/`, `lib/`).
+3. If no `tsconfig.json` exists, treat the project root as the source root.
+
+Use `<PROJECT_ROOT>` for the package root and `<SOURCE_ROOT>` for the narrowed source directory in the commands below.
+
+**Check for existing migration annotations:**
+
+First check for `.fluent-migrate/metadata.json` — written by the CLI after annotating, it lists annotated files deterministically. The CLI writes it to the same directory passed as `--path`, so look in `<SOURCE_ROOT>`:
 
 ```sh
-# All files importing from @fluentui/react
-grep -rl "@fluentui/react" src/ --include="*.tsx" --include="*.ts"
-
-# Tally component usage to prioritize
-grep -rh "from '@fluentui/react'" src/ | sort | uniq -c | sort -rn
+cat <SOURCE_ROOT>/.fluent-migrate/metadata.json
 ```
 
-Identify which components are used and how many times. Migrate high-count simple components first.
+- If `metadata.json` exists, use the `annotatedFiles` list as your work queue. **Paths are relative to the directory that contains `.fluent-migrate/`** (i.e. relative to `<SOURCE_ROOT>`). Resolve each path against `<SOURCE_ROOT>` before opening. Skip the grep scan.
+- If it does not exist, scan for annotations:
 
-### Step 2 — Setup
+```sh
+grep -rl "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+- If annotations are found → proceed to Step 3 (annotations are the work queue).
+- If nothing is found → tell the user:
+
+  > "No migration annotations found. Please run `npx @fluentui/cli migrate v8-to-v9 --path <SOURCE_ROOT>` first, then re-invoke the skill."
+  >
+  > Tip: add `--dry-run` to preview which files would be annotated without writing any changes.
+
+  Stop until the user confirms the CLI has been run.
+
+### Setup Boundary
+
+**Agents do not run installs.** Read `package.json` and report what's missing; the user installs.
+
+Ready-to-proceed conditions (verify before starting Step 3):
+
+- `@fluentui/react-components` is present in `package.json` dependencies
+- A `FluentProvider` wrapper exists somewhere in the codebase (or the user has confirmed they will add one)
+
+If either condition is unmet, report what's needed and stop until the user confirms setup is complete.
+
+### Step 2 — User Setup (reference only)
+
+> **Agent note:** do not execute these commands. Report which packages are missing from `package.json` and wait for the user to confirm installation is complete before proceeding to Step 3.
 
 ```sh
 npm install @fluentui/react-components @fluentui/react-icons
@@ -47,64 +103,226 @@ import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 </FluentProvider>;
 ```
 
-### Step 3 — Migrate (file by file)
+### Step 3 — Migrate (annotation-driven)
 
-**Recommended order within a file:**
+**Before starting:** run the repo's TypeScript check command (`tsc --noEmit` or the `package.json` scripts equivalent) and record the error count as your baseline. After migration, TypeScript is ✅ if error count ≤ baseline — do not block on pre-existing errors.
 
-1. Update import statements (`@fluentui/react` → `@fluentui/react-components`)
-2. Rename components per the mapping table below
-3. Apply universal prop renames (applies to every component):
-   - `componentRef` → `ref`
-   - `ariaLabel` → `aria-label`
-   - `ariaHidden` → `aria-hidden`
-   - `ariaDescribedBy` → `aria-describedby`
-   - `ariaLabelledBy` → `aria-labelledby`
-   - Remove `styles` prop → replace with `makeStyles` + `className`
-   - Combine class names with `mergeClasses(s.a, s.b, extra)` (replaces `cx` / `mergeStyles` for className composition)
-   - Remove `theme` prop → handled by `FluentProvider`
-4. Apply component-specific prop changes (see reference files below)
-5. Replace v8-only utility imports (no v9 equivalent — remove the import and use the native alternative):
-   - `useBoolean` → `React.useState<boolean>(false)` (`const [open, setOpen] = React.useState(false)`)
-   - `KeyCodes.enter` / `KeyCodes.escape` → `event.key === 'Enter'` / `event.key === 'Escape'`
-   - `NeutralColors.xxx` / `SharedColors.xxx` → `tokens.colorXxx` inside `makeStyles`
-   - `mergeStyleSets` / `concatStyleSets` → `makeStyles` + `mergeClasses`
-   - `getRTL()` / `rtl` on ThemeProvider → `dir="rtl"` prop on `FluentProvider`
-   - `getTheme()` → use `tokens` in `makeStyles`; `createTheme()` → `createLightTheme(brandVariants)`
-   - `getId('prefix')` → `useId('prefix')` from `@fluentui/react-components` (hook — call inside component)
-6. Extract `label` props from form controls (TextField, SpinButton, Slider, ChoiceGroup):
-   - **Preferred:** wrap the control in `<Field>` — it handles label, `required`, `validationMessage`, and `validationState` via context without any `useId` wiring:
-     ```tsx
-     import { Field, Input } from '@fluentui/react-components';
-     <Field label="Email" required validationState="error" validationMessage="Required">
-       <Input />
-     </Field>;
-     ```
-   - **Alternative (manual):** separate `<Label htmlFor={id}>` + `useId` from `@fluentui/react-components`
-7. Migrate `iconProps={{ iconName: 'X' }}` → `icon={<XRegular />}` (see [icons.md](references/icons.md))
+**Behavior-preserving default:** when uncertain, preserve existing behavior. Never silently drop functionality.
 
-**Recommended migration order across files:**
+**Stop and escalate when:**
 
-1. Simple renames with no API change (Separator→Divider, Toggle→Switch, Shimmer→Skeleton, etc.)
-2. Components with prop renames only (Button, Checkbox, Tabs/Pivot, Input/TextField)
-3. Components requiring label extraction (SpinButton, ChoiceGroup→RadioGroup, Slider)
-4. Architectural changes (ContextualMenu→Menu JSX children, Stack→makeStyles, ThemeProvider→FluentProvider)
+- TypeScript errors remain after processing annotations that you cannot resolve
+- A `no-equivalent` annotation has no clear workaround from the component mapping table
+- More than 2 unresolved `manual` annotations in the same file
 
-### Step 4 — Verify
+In those cases: commit what's done, fill in the Output Template with status ⚠️ or ❌, list the blockers, and wait for user input.
 
-```sh
-# After each file or batch — catch type errors early:
-npx tsc --noEmit
+#### Annotation format
 
-# Confirm no v8 imports remain:
-grep -r "from '@fluentui/react'" src/ --include="*.tsx" --include="*.ts"
-# Should only show @fluentui/react-components imports
+Every annotation written by the CLI has this structure:
+
+```
+// @fluent-migrate:<action> | <codemod> | <payload> | <note>
 ```
 
-**Visual / runtime checks (open the app after each batch):**
+Inside JSX (where a line comment is a syntax error):
 
-- **Unstyled components** (raw HTML with no Fluent design) → `FluentProvider` is missing or the component is rendered outside it
+```tsx
+{
+  /* @fluent-migrate:<action> | <codemod> | <payload> | <note> */
+}
+```
+
+Fields:
+
+- `action` — `auto`, `scaffold`, `manual`, or `no-equivalent`
+- `codemod` — identifies the transformation rule (see Codemod → Reference Index)
+- `payload` — machine-readable hint (e.g. `Toggle → Switch`, `@fluentui/react → @fluentui/react-components`)
+- `note` — optional human-readable context; may reference a file (e.g. `see references/dialog.md`)
+
+The annotation always sits on the line **above** the node it describes.
+
+---
+
+Process the `@fluent-migrate:` annotations as a work queue. If `.fluent-migrate/metadata.json` exists, open each file it lists directly. Otherwise, get all annotations with:
+
+```sh
+grep -rn "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Work through them in this order, removing each annotation comment after applying the change:
+
+#### 1. `auto` annotations — apply mechanically, no questions
+
+```sh
+grep -rn "@fluent-migrate:auto" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Each annotation encodes exactly what to do in its payload. Apply the transformation on the line below the comment and remove the annotation. No user questions needed.
+
+#### 2. `scaffold` annotations — generate boilerplate with TODO placeholders
+
+```sh
+grep -rn "@fluent-migrate:scaffold" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+The annotation `payload` specifies the target structure (e.g. `TextField.label → <Field label="..."><Input /></Field>`). Apply the transformation mechanically using the payload as the template. Add `// TODO:` placeholders only for values you cannot infer from surrounding context (e.g. specific style token values). Remove the annotation on completion.
+
+#### 3. `manual` annotations — read context, apply or ask
+
+```sh
+grep -rn "@fluent-migrate:manual" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Read the surrounding code context to determine intent. The annotation's `note` field lists choices. Apply if confident (>80%), using the component mapping table and per-component references below as reference. If ambiguous, log an assumption comment or ask the user before applying. Remove the annotation on completion.
+
+#### 4. `no-equivalent` annotations — surface to user
+
+```sh
+grep -rn "@fluent-migrate:no-equivalent" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Do not attempt migration. Report each one to the user with the recommended alternative. Wait for user direction before proceeding. Remove the annotation only after the user provides a resolution.
+
+All `no-equivalent` annotations use `codemod: no-equivalent`. The `note` field always contains the specific guidance. Two common sub-cases:
+
+- **Component-level** (`payload` is a component name, e.g. `ActivityItem`, `Stack` in JSX) → the `note` is the deprecation table entry; the deprecation table below lists recommended alternatives.
+- **Prop- or specifier-level** (`payload` is a prop name or import specifier name, e.g. `onText`, `offText`) → follow the `note` directly (e.g. "remove the prop or build a custom wrapper", "remove this import specifier").
+
+#### Verify zero annotations remain
+
+```sh
+grep -r "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+Should return nothing. Any remaining annotations are blockers — include them in the Output Template as unresolved deltas, then proceed to Step 4.
+
+#### Cross-check remaining v8 imports against the component mapping table
+
+The CLI annotates JSX usages it knows about, but does not annotate every component. After clearing all annotations, scan for any `@fluentui/react` imports that survived the import-path change:
+
+```sh
+grep -rn "from '@fluentui/react'" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+For each surviving named import, look it up in the **Component Mapping** table below. If the v9 equivalent has a different name or a structural API change, apply that migration now before moving to Step 4.
+
+### Codemod → Reference Index
+
+When processing an annotation, use the `codemod` field to load the right reference before applying the change. For codemods marked "— see inline" below, follow the inline instructions in this section.
+
+| `codemod`            | Reference                                                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `button-variants`    | [references/button.md](references/button.md)                                                                         |
+| `component-rename`   | Component mapping table (this file); for `manual` annotations also load the ref named in the annotation's note field |
+| `dialog-props`       | [references/dialog.md](references/dialog.md)                                                                         |
+| `enum-to-string`     | — see inline                                                                                                         |
+| `get-id`             | — see inline                                                                                                         |
+| `icon-props`         | [references/icons.md](references/icons.md)                                                                           |
+| `import-paths`       | — see inline                                                                                                         |
+| `keycodes`           | — see inline                                                                                                         |
+| `label-extraction`   | [references/input.md](references/input.md), [references/label.md](references/label.md)                               |
+| `no-equivalent`      | Deprecation table (this file) — surface to user, do not migrate                                                      |
+| `progress-bar-props` | [references/progressbar.md](references/progressbar.md)                                                               |
+| `prop-rename`        | — see inline                                                                                                         |
+| `remove-theme-prop`  | [references/theme.md](references/theme.md)                                                                           |
+| `styles-prop`        | [references/theme.md](references/theme.md)                                                                           |
+| `toggle-props`       | [references/switch.md](references/switch.md)                                                                         |
+| `use-boolean`        | — see inline                                                                                                         |
+
+#### `enum-to-string`
+
+Replace the enum member access with the string literal from the payload. Remove the migrated enum from the `@fluentui/react` import.
+
+```tsx
+// annotation payload: MessageBarType.error → "error"
+intent={MessageBarType.error}  →  intent="error"
+```
+
+#### `get-id`
+
+Replace `getId(prefix?)` with the `useId(prefix?)` hook from `@fluentui/react-components`, called at the top level of the function component.
+
+```tsx
+// before
+const id = getId('field');
+
+// after
+import { useId } from '@fluentui/react-components';
+const id = useId('field');
+```
+
+For `manual` annotations (outside a function component), restructure the class before converting.
+
+#### `import-paths`
+
+- `payload: @fluentui/react → @fluentui/react-components` (action: `auto`) — change the module specifier. Keep named imports that have v9 equivalents; specifiers with a `no-equivalent` annotation are handled separately.
+- `payload: @fluentui/react → remove (side-effect import)` (action: `auto`) — delete the entire import statement.
+- `payload: <Component> → <compat-package>` (action: `manual`) — the named import must move to a separate compat package. Remove the specifier from the `@fluentui/react` import and add a new import using the exact compat export name: `CalendarCompat` from `@fluentui/react-calendar-compat`, `DatePickerCompat` from `@fluentui/react-datepicker-compat`, `TimePickerCompat` from `@fluentui/react-timepicker-compat`. If `@fluentui/react-components` is also needed, keep both import lines.
+
+#### `keycodes`
+
+Replace `KeyCodes.X` with the string literal from the payload. Rewrite surrounding key-event checks from `event.which`/`event.keyCode` to `event.key`. Remove `KeyCodes` from the `@fluentui/react` import.
+
+```tsx
+// before
+if (event.which === KeyCodes.enter)
+// after
+if (event.key === 'Enter')
+```
+
+#### `prop-rename`
+
+Rename the JSX prop as specified in the payload (`oldProp → newProp`). Common cases: `ariaLabel → aria-label`, `componentRef → ref`.
+
+```tsx
+// annotation payload: componentRef → ref
+<Dialog componentRef={myRef}  →  <Dialog ref={myRef}
+```
+
+#### `use-boolean`
+
+Replace `useBoolean(initial)` with `useState(initial)` and expand the three tuple helpers inline.
+
+```tsx
+// before
+const [isOpen, { setTrue: openDialog, setFalse: closeDialog, toggle: toggleDialog }] = useBoolean(false);
+
+// after
+const [isOpen, setIsOpen] = useState(false);
+const openDialog = () => setIsOpen(true);
+const closeDialog = () => setIsOpen(false);
+const toggleDialog = () => setIsOpen(prev => !prev);
+```
+
+Remove `useBoolean` from the `@fluentui/react` import; add `useState` from `react`. For `manual` annotations (outside a function component), restructure before converting.
+
+---
+
+### Step 4 — Validate
+
+Run the host repo's own commands. Do not assume `npx tsc` or `npm test` — check `package.json` scripts first.
+
+**Checklist (all must pass before reporting ✅ Complete):**
+
+- [ ] **TypeScript** — TypeScript check command from `package.json` scripts (or `tsc --noEmit` if none) exits with error count ≤ baseline
+- [ ] **Lint** — repo linter (eslint/biome/etc.) exits 0; if no linter found, mark ⏭️ skipped
+- [ ] **Tests** — repo test command passes; if no test command found, mark ⏭️ skipped
+- [ ] **No remaining v8 imports** — `grep -r "from '@fluentui/react'" <SOURCE_ROOT> --include="*.tsx" --include="*.ts"` returns nothing (only `@fluentui/react-components` imports remain)
+- [ ] **Shims tracked** — every `*Shim` import still in the codebase is listed in the Output Template
+- [ ] **Accessibility parity** — icon-only buttons have `aria-label`; all form controls have labels via `<Field>` or `<Label>`
+- [ ] **No `styles` prop remaining** — `grep -r "styles={" <SOURCE_ROOT> --include="*.tsx"` returns nothing Fluent-related
+
+**Go / No-go:**
+
+- All ✅ → fill Output Template with status ✅ Complete
+- Any ❌ → fill Output Template with status ❌ Blocked, list each failure
+
+**Visual / runtime checks (open the app after migration):**
+
+- **Unstyled components** → `FluentProvider` is missing or the component is rendered outside it
 - **v9 components inside a v8 Callout / Panel / Modal have no styles** → add `PortalCompatProvider` (see Troubleshooting)
-- **Icon-only buttons have no accessible name** → add `aria-label` to every button that has only an `icon` slot and no visible text
+- **Icon-only buttons have no accessible name** → add `aria-label`
 - **Form controls have no visible label** → label extraction step was missed; wrap with `<Field label="...">`
 - **Console warnings about unknown props** → a v8 prop (e.g. `text`, `iconProps`, `componentRef`) was not removed
 
@@ -177,71 +395,74 @@ Rule of thumb: add `disableButtonEnhancement` when the trigger child is a Fluent
 
 ## Component Mapping
 
-| v8                                | v9                                | Notes                                                                                                                    |
-| --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `ActionButton`                    | `Button`                          | `appearance="transparent"`                                                                                               |
-| `Breadcrumb`                      | `Breadcrumb`                      | New package                                                                                                              |
-| `Calendar`                        | `CalendarCompat`                  | `@fluentui/react-calendar-compat`                                                                                        |
-| `Callout`                         | `Popover`                         | Composable trigger/surface; `target` ref → `PopoverTrigger` — see [callout.md](references/callout.md)                    |
-| `Checkbox`                        | `Checkbox`                        | API mostly same                                                                                                          |
-| `ChoiceGroup`                     | `RadioGroup`                      | Renamed; options array → `Radio` children                                                                                |
-| `Coachmark`                       | `TeachingPopover`                 |                                                                                                                          |
-| `CommandBar` / `CommandBarButton` | `Toolbar`                         | Data-driven → JSX children — see [toolbar.md](references/toolbar.md)                                                     |
-| `CommandButton`                   | `MenuButton`                      |                                                                                                                          |
-| `CompoundButton`                  | `CompoundButton`                  | New package                                                                                                              |
-| `ComboBox`                        | `Combobox`                        | options array → `Option` children — see [dropdown.md](references/dropdown.md)                                            |
-| `ContextualMenu`                  | `Menu`                            | Data-driven → JSX children — see [menu.md](references/menu.md)                                                           |
-| `DatePicker`                      | `DatePickerCompat`                | `@fluentui/react-datepicker-compat`                                                                                      |
-| `DefaultButton`                   | `Button`                          |                                                                                                                          |
-| `DetailsList`                     | `DataGrid`                        | columns/selection/sort API restructured — see [datagrid.md](references/datagrid.md)                                      |
-| `Dialog`                          | `Dialog`                          | Composable children; `hidden` → `open` (inverted) — see [dialog.md](references/dialog.md)                                |
-| `DocumentCard`                    | `Card`                            |                                                                                                                          |
-| `Dropdown`                        | `Dropdown`                        | options array → `Option` children — see [dropdown.md](references/dropdown.md)                                            |
-| `Fabric`                          | `FluentProvider`                  |                                                                                                                          |
-| `Facepile`                        | `AvatarGroup`                     | personas array → children                                                                                                |
-| `FocusTrapZone` / `FocusZone`     | Tabster                           | https://tabster.io                                                                                                       |
-| `GroupedList`                     | `Tree`                            |                                                                                                                          |
-| `Icon`                            | `@fluentui/react-icons`           | SVG components                                                                                                           |
-| `IconButton`                      | `Button`                          | Use `icon` slot only, no text                                                                                            |
-| `Image`                           | `Image`                           | New package                                                                                                              |
-| `Label`                           | `Label`                           | New package                                                                                                              |
-| `Layer`                           | `Portal`                          |                                                                                                                          |
-| `Link`                            | `Link`                            | Better accessibility                                                                                                     |
-| `List`                            | `List`                            | Performance improvements                                                                                                 |
-| `MessageBar`                      | `MessageBar`                      | Composable children; `messageBarType` → `intent` — see [messagebar.md](references/messagebar.md)                         |
-| `Modal`                           | `Dialog`                          | `isOpen` → `open`; `isBlocking` → `modalType` — see [dialog.md](references/dialog.md)                                    |
-| `Nav`                             | `Nav`                             | New package                                                                                                              |
-| `OverflowSet`                     | `Overflow`                        |                                                                                                                          |
-| `Overlay`                         | `Portal`                          |                                                                                                                          |
-| `Panel`                           | `OverlayDrawer`                   | `isOpen`/`type`/`onRenderFooterContent` restructured — see [drawer.md](references/drawer.md)                             |
-| `PeoplePicker`                    | `TagPicker`                       |                                                                                                                          |
-| `Persona`                         | `Persona`                         | New package                                                                                                              |
-| `Pivot` / `PivotItem`             | `TabList` / `Tab`                 | Content moves outside TabList — see [tabs.md](references/tabs.md)                                                        |
-| `PrimaryButton`                   | `Button`                          | `appearance="primary"`                                                                                                   |
-| `ProgressIndicator`               | `ProgressBar`                     | `percentComplete` → `value`; label → `<Field>` — see [progressbar.md](references/progressbar.md)                         |
-| `Rating`                          | `Rating`                          |                                                                                                                          |
-| `SearchBox`                       | `SearchBox`                       | New package                                                                                                              |
-| `Separator`                       | `Divider`                         |                                                                                                                          |
-| `Shimmer`                         | `Skeleton`                        |                                                                                                                          |
-| `Slider`                          | `Slider`                          | New package; label extraction, `onChange` type change — see [slider.md](references/slider.md)                            |
-| `SpinButton`                      | `SpinButton`                      | New package; label extraction, `onChange` type change — see [spinbutton.md](references/spinbutton.md)                    |
-| `Spinner`                         | `Spinner`                         | `SpinnerSize` enum → string `size`; `labelPosition` renamed — see [spinner.md](references/spinner.md)                    |
-| `SplitButton`                     | `SplitButton` with `Menu` trigger |                                                                                                                          |
-| `Stack` / `StackItem`             | `makeStyles` + flexbox            | No v9 equivalent — see [stack.md](references/stack.md)                                                                   |
-| `SwatchColorPicker`               | `SwatchPicker`                    |                                                                                                                          |
-| `TagPicker`                       | `TagPicker`                       | New package                                                                                                              |
-| `TeachingBubble`                  | `TeachingPopover`                 |                                                                                                                          |
-| `Text`                            | `Text`                            | New package                                                                                                              |
-| `TextField`                       | `Input` / `Textarea`              | multiline → Textarea — see [input.md](references/input.md)                                                               |
-| `ThemeProvider`                   | `FluentProvider`                  | see [theme.md](references/theme.md)                                                                                      |
-| `TimePicker`                      | `TimePickerCompat`                | `@fluentui/react-timepicker-compat`                                                                                      |
-| `Toggle`                          | `Switch`                          |                                                                                                                          |
-| `ToggleButton`                    | `ToggleButton`                    | New package                                                                                                              |
-| `Tooltip`                         | `Tooltip`                         | Children = trigger; `directionalHint` → `positioning`; `relationship` required — see [tooltip.md](references/tooltip.md) |
+| v8                                | v9                                                         | Notes                                                                                                                                             |
+| --------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ActionButton`                    | `Button`                                                   | `appearance="transparent"`                                                                                                                        |
+| `Breadcrumb`                      | `Breadcrumb`                                               | `items` array → declarative `BreadcrumbItem`/`BreadcrumbButton`/`BreadcrumbLink` children — see [breadcrumb.md](references/breadcrumb.md)         |
+| `Calendar`                        | `CalendarCompat`                                           | `@fluentui/react-calendar-compat`                                                                                                                 |
+| `Callout`                         | `Popover`                                                  | Composable trigger/surface; `target` ref → `PopoverTrigger` — see [callout.md](references/callout.md)                                             |
+| `Checkbox`                        | `Checkbox`                                                 | `indeterminate` → `checked="mixed"`; `CheckboxShim` available — see [checkbox.md](references/checkbox.md)                                         |
+| `ChoiceGroup`                     | `RadioGroup`                                               | Renamed; options array → `Radio` children                                                                                                         |
+| `Coachmark`                       | `TeachingPopover`                                          | Composable trigger/surface/header/body/footer — see [teachingpopover.md](references/teachingpopover.md)                                           |
+| `CommandBar` / `CommandBarButton` | `Toolbar`                                                  | Data-driven → JSX children — see [toolbar.md](references/toolbar.md)                                                                              |
+| `CommandButton`                   | `MenuButton`                                               |                                                                                                                                                   |
+| `CompoundButton`                  | `CompoundButton`                                           | New package                                                                                                                                       |
+| `ColorPicker`                     | `ColorPicker`                                              | New v9 API; `IColor` → `HSV`, `onChange` → `onColorChange` — see [colorpicker.md](references/colorpicker.md)                                      |
+| `ComboBox`                        | `Combobox`                                                 | options array → `Option` children — see [dropdown.md](references/dropdown.md)                                                                     |
+| `ContextualMenu`                  | `Menu`                                                     | Data-driven → JSX children — see [menu.md](references/menu.md)                                                                                    |
+| `DatePicker`                      | `DatePickerCompat`                                         | `@fluentui/react-datepicker-compat`                                                                                                               |
+| `DefaultButton`                   | `Button`                                                   |                                                                                                                                                   |
+| `DetailsList`                     | `DataGrid` / `Table`                                       | Read-only/simple tabular → `Table`+`TableHeader`+`TableRow`+`TableCell`; selection+sort → `DataGrid` — see [datagrid.md](references/datagrid.md)  |
+| `Dialog`                          | `Dialog`                                                   | Composable children; `hidden` → `open` (inverted) — see [dialog.md](references/dialog.md)                                                         |
+| `DocumentCard`                    | `Card`                                                     | `DocumentCard*` → `Card`/`CardHeader`/`CardFooter`/`CardPreview` — see [card.md](references/card.md)                                              |
+| `Dropdown`                        | `Dropdown`                                                 | options array → `Option` children — see [dropdown.md](references/dropdown.md)                                                                     |
+| `Fabric`                          | `FluentProvider`                                           |                                                                                                                                                   |
+| `Facepile`                        | `AvatarGroup`                                              | personas array → children                                                                                                                         |
+| `FocusTrapZone`                   | `Dialog` / `Popover trapFocus` / `@fluentui/react-tabster` | Built-in v9 components handle trapping; for custom traps: `import { useFocusFinders } from '@fluentui/react-tabster'`                             |
+| `FocusZone`                       | `@fluentui/react-tabster`                                  | Arrow-key navigation: `useMergedTabsterAttributes_unstable` or use components that handle it natively (TabList, Menu, etc.)                       |
+| `GroupedList`                     | `Tree` / `List` / `DataGrid`                               | Depends on usage (expand/collapse → Tree; flat list → List; tabular → DataGrid) — see [tree.md](references/tree.md)                               |
+| `Icon`                            | `@fluentui/react-icons`                                    | SVG components                                                                                                                                    |
+| `IconButton`                      | `Button`                                                   | Use `icon` slot only, no text                                                                                                                     |
+| `Image`                           | `Image`                                                    | `imageFit` → `fit`; no wrapper div; `shouldFadeIn` removed — see [image.md](references/image.md)                                                  |
+| `Label`                           | `Label`                                                    | Custom required indicator; prefer `<Field>` for form controls — see [label.md](references/label.md)                                               |
+| `Layer`                           | `Portal`                                                   |                                                                                                                                                   |
+| `Link`                            | `Link`                                                     | `inline` prop for prose context; `appearance="subtle"`; `disabledFocusable` — see [link.md](references/link.md)                                   |
+| `List`                            | `List`                                                     | `items`+`onRenderCell` → `<ListItem>` children; `navigationMode`/`selectionMode` added — see [list.md](references/list.md)                        |
+| `MessageBar`                      | `MessageBar`                                               | Composable children; `messageBarType` → `intent` — see [messagebar.md](references/messagebar.md)                                                  |
+| `Modal`                           | `Dialog`                                                   | `isOpen` → `open`; `isBlocking` → `modalType` — see [dialog.md](references/dialog.md)                                                             |
+| `Nav`                             | `Nav`                                                      | `groups` array → declarative `NavItem`/`NavCategory` children; `NavDrawer` for side panels — see [nav.md](references/nav.md)                      |
+| `OverflowSet`                     | `Overflow`                                                 | Hook-based; `onRenderItem`/`onRenderOverflowButton` → `OverflowItem` + `useOverflowMenu` — see [overflow.md](references/overflow.md)              |
+| `Overlay`                         | `Portal`                                                   |                                                                                                                                                   |
+| `Panel`                           | `OverlayDrawer`                                            | `isOpen`/`type`/`onRenderFooterContent` restructured — see [drawer.md](references/drawer.md)                                                      |
+| `Popup`                           | `Popover` / `Dialog`                                       | Non-modal overlay → `Popover`; blocking/modal behavior → `Dialog`                                                                                 |
+| `PeoplePicker`                    | `TagPicker`                                                | `onResolveSuggestions` → filter `<TagPickerOption>` children; composable structure — see [tagpicker.md](references/tagpicker.md)                  |
+| `Persona`                         | `Persona`                                                  | Slot-based; flat image/initials props → `avatar` slot; `PersonaPresence` enum → string status — see [persona.md](references/persona.md)           |
+| `Pivot` / `PivotItem`             | `TabList` / `Tab`                                          | Content moves outside TabList — see [tabs.md](references/tabs.md)                                                                                 |
+| `PrimaryButton`                   | `Button`                                                   | `appearance="primary"`                                                                                                                            |
+| `ProgressIndicator`               | `ProgressBar`                                              | `percentComplete` → `value`; label → `<Field>` — see [progressbar.md](references/progressbar.md)                                                  |
+| `Rating`                          | `Rating`                                                   | `rating` → `value`; `readOnly` → `RatingDisplay`; `icon` string → `iconFilled`/`iconOutline` components — see [rating.md](references/rating.md)   |
+| `SearchBox`                       | `SearchBox`                                                | `onSearch` → `onKeyDown`; `onClear` → `onChange` with `''`; `underlined` → `appearance="underline"` — see [searchbox.md](references/searchbox.md) |
+| `Separator`                       | `Divider`                                                  | Simple rename; new `appearance`/`inset` props — see [separator.md](references/separator.md)                                                       |
+| `Shimmer`                         | `Skeleton`                                                 | `isDataLoaded` removed; `shimmerElements` → `<SkeletonItem>` children — see [skeleton.md](references/skeleton.md)                                 |
+| `Slider`                          | `Slider`                                                   | New package; label extraction, `onChange` type change — see [slider.md](references/slider.md)                                                     |
+| `SpinButton`                      | `SpinButton`                                               | New package; label extraction, `onChange` type change — see [spinbutton.md](references/spinbutton.md)                                             |
+| `Spinner`                         | `Spinner`                                                  | `SpinnerSize` enum → string `size`; `labelPosition` renamed — see [spinner.md](references/spinner.md)                                             |
+| `SplitButton`                     | `SplitButton` with `Menu` trigger                          |                                                                                                                                                   |
+| `Stack` / `StackItem`             | `makeStyles` + flexbox                                     | No v9 equivalent — see [stack.md](references/stack.md)                                                                                            |
+| `SwatchColorPicker`               | `SwatchPicker`                                             | `colorCells` array → `<ColorSwatch>` children; `onChange` → `onSelectionChange` — see [swatchpicker.md](references/swatchpicker.md)               |
+| `TagPicker`                       | `TagPicker`                                                | `onResolveSuggestions` → filter `<TagPickerOption>` children — see [tagpicker.md](references/tagpicker.md)                                        |
+| `TeachingBubble`                  | `TeachingPopover`                                          | Composable trigger/surface/header/body/footer — see [teachingpopover.md](references/teachingpopover.md)                                           |
+| `Text`                            | `Text`                                                     | `variant` → `size`+`weight`; `nowrap` → `wrap={false}`; use presets (`Body1`, `Title2`, etc.) — see [text.md](references/text.md)                 |
+| `TextField`                       | `Input` / `Textarea`                                       | multiline → Textarea — see [input.md](references/input.md)                                                                                        |
+| `ThemeProvider`                   | `FluentProvider`                                           | see [theme.md](references/theme.md)                                                                                                               |
+| `TimePicker`                      | `TimePickerCompat`                                         | `@fluentui/react-timepicker-compat`                                                                                                               |
+| `Toggle`                          | `Switch`                                                   | `onText`/`offText` removed; `onChange` type changed; `inlineLabel` → `labelPosition` — see [switch.md](references/switch.md)                      |
+| `ToggleButton`                    | `ToggleButton`                                             | New package                                                                                                                                       |
+| `Tooltip`                         | `Tooltip`                                                  | Children = trigger; `directionalHint` → `positioning`; `relationship` required — see [tooltip.md](references/tooltip.md)                          |
 
 ### New in v9 (no v8 equivalent)
 
-`Accordion`, `Avatar`, `AvatarGroup`, `Badge` / `CounterBadge` / `PresenceBadge`, `Carousel`, `Drawer`, `InfoLabel`, `Popover`, `ProgressBar`, `Skeleton`, `Switch`, `SwatchPicker`, `Toast` / `Toaster`, `TeachingPopover`, `TabList`
+`Accordion`, `Avatar`, `AvatarGroup`, `Badge` / `CounterBadge` / `PresenceBadge`, `Carousel`, `Drawer`, `InfoLabel`, `Popover`, `Toast` / `Toaster`, `TabList`
 
 #### Toast / Toaster (quick start)
 
@@ -267,9 +488,37 @@ dispatchToast(
 
 `intent` values: `"info"` (default) | `"success"` | `"warning"` | `"error"`.
 
+#### InfoLabel (quick start)
+
+`InfoLabel` combines a `Label` with an info icon that shows a `Tooltip`. Use it to replace the v8 pattern of `TooltipHost` wrapping an info icon placed beside a `Label`:
+
+```tsx
+// v8 — manual pattern: label + TooltipHost + info icon
+import { Label, TooltipHost } from '@fluentui/react';
+<TooltipHost content="This field is required for billing.">
+  <Label htmlFor="field">
+    Invoice number <Icon iconName="Info" />
+  </Label>
+</TooltipHost>;
+
+// v9 — InfoLabel (built-in)
+import { InfoLabel } from '@fluentui/react-components';
+<InfoLabel info="This field is required for billing." htmlFor="field">
+  Invoice number
+</InfoLabel>;
+```
+
 ### Deprecated with no v9 equivalent
 
-`ActivityItem`, `Announced`, `HoverCard`, `MarqueeSelection`, `Pickers`, `ResizeGroup`, `ScrollablePane`
+| v8                                                                | Recommended alternative                                                                                                                                               |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ActivityItem`                                                    | Build with `Avatar` + `Text` + `makeStyles` flexbox layout                                                                                                            |
+| `Announced`                                                       | Use a visually-hidden live region: `<div role="status" aria-live="polite" aria-atomic="true">...</div>`                                                               |
+| `HoverCard`                                                       | Use `<Popover>` with `onMouseEnter`/`onMouseLeave` on the trigger (or `openOnHover` prop if available)                                                                |
+| `MarqueeSelection`                                                | Use browser selection APIs or a custom `onPointerDown`/`onPointerMove` drag-select implementation                                                                     |
+| `NormalPeoplePicker` / `ListPeoplePicker` / `CompactPeoplePicker` | Use `TagPicker` (multi-select) or `Combobox`/`Dropdown` (single/multi-select) — see [tagpicker.md](references/tagpicker.md) and [dropdown.md](references/dropdown.md) |
+| `ResizeGroup`                                                     | Use the `Overflow` component (`<Overflow>` + `<OverflowItem>`) — see [overflow.md](references/overflow.md)                                                            |
+| `ScrollablePane`                                                  | Use `overflow: auto` on a CSS container + `position: sticky` for sticky headers; no FluentUI wrapper needed                                                           |
 
 ---
 
@@ -383,6 +632,8 @@ const brandVariants = createBrandVariants(myV8Palette);
 
 ## Per-Component Detail References
 
+> **Reference Precedence Rule:** per-component files in `references/` are more specific than this file. When they conflict, trust the reference file.
+
 Load the relevant file when doing detailed migration work on a specific component:
 
 - **Icons** (`iconProps` → `@fluentui/react-icons`, name mapping) → [references/icons.md](references/icons.md)
@@ -407,3 +658,26 @@ Load the relevant file when doing detailed migration work on a specific componen
 - **ProgressIndicator → ProgressBar** (`percentComplete` → `value`, label → `<Field>`) → [references/progressbar.md](references/progressbar.md)
 - **Callout → Popover** (composable trigger/surface, `directionalHint` → `positioning`, `trapFocus`) → [references/callout.md](references/callout.md)
 - **CommandBar → Toolbar** (data-driven → JSX children, overflow with `Overflow`/`OverflowItem`) → [references/toolbar.md](references/toolbar.md)
+- **ColorPicker** (`IColor` → `HSV`, `onChange` → `onColorChange`, sub-component renames) → [references/colorpicker.md](references/colorpicker.md)
+- **Keytips** (now in `@fluentui/react-keytips` contrib, `KeytipLayer` → `Keytips`, `useKeytipRef` changes) → [references/keytips.md](references/keytips.md)
+- **Card / CardHeader / CardFooter / CardPreview** → [references/card.md](references/card.md)
+- **Image** → [references/image.md](references/image.md)
+- **Label** → [references/label.md](references/label.md)
+- **Textarea** (`TextField multiline` → `Textarea`) → [references/textarea.md](references/textarea.md)
+- **Separator → Divider** → [references/separator.md](references/separator.md)
+- **Charts** (`@fluentui/react-charting` → `@fluentui/react-charts`, native v9 + FluentProvider) → [references/charts.md](references/charts.md)
+- **Link** (`inline` prop for prose, `appearance="subtle"`, `disabledFocusable`) → [references/link.md](references/link.md)
+- **SearchBox** (`onSearch` → `onKeyDown`, `onClear` → `onChange` with `''`, `underlined` → `appearance`) → [references/searchbox.md](references/searchbox.md)
+- **Persona** (slot-based; `imageUrl`/`imageInitials`/`presence` → slots; size/presence enum → string) → [references/persona.md](references/persona.md)
+- **Nav** (`groups` array → `NavItem`/`NavCategory` JSX; `NavDrawer` for side panels) → [references/nav.md](references/nav.md)
+- **OverflowSet → Overflow** (hook-based; `onRenderItem` → `OverflowItem`; `useOverflowMenu`) → [references/overflow.md](references/overflow.md)
+- **GroupedList → Tree / List / DataGrid** (choose target by usage; `items`+`groups` → declarative `TreeItem` children) → [references/tree.md](references/tree.md)
+- **TagPicker / PeoplePicker** (`onResolveSuggestions` → filter `TagPickerOption` children; composable structure) → [references/tagpicker.md](references/tagpicker.md)
+- **Toggle → Switch** (`onText`/`offText` removed; `onChange` type changed; `inlineLabel` → `labelPosition`) → [references/switch.md](references/switch.md)
+- **Shimmer → Skeleton** (`isDataLoaded` removed; `shimmerElements` → `<SkeletonItem>` JSX) → [references/skeleton.md](references/skeleton.md)
+- **TeachingBubble / Coachmark → TeachingPopover** (composable; multi-step carousel support) → [references/teachingpopover.md](references/teachingpopover.md)
+- **Rating** (`rating` → `value`; `readOnly` → `RatingDisplay`; `icon` string → component type; half-star `step`) → [references/rating.md](references/rating.md)
+- **Breadcrumb** (`items` array → `BreadcrumbItem`/`BreadcrumbButton`/`BreadcrumbLink` JSX; overflow via `Overflow`) → [references/breadcrumb.md](references/breadcrumb.md)
+- **Text** (`variant` → `size`+`weight`; `nowrap` → `wrap={false}`; use presets `Body1`, `Title2`, etc.) → [references/text.md](references/text.md)
+- **List** (`items`+`onRenderCell` → `<ListItem>` children; `navigationMode`; `selectionMode`; `onAction`) → [references/list.md](references/list.md)
+- **SwatchColorPicker → SwatchPicker** (`colorCells` → `<ColorSwatch>` children; `onChange` → `onSelectionChange`; `ImageSwatch`/`EmptySwatch`) → [references/swatchpicker.md](references/swatchpicker.md)

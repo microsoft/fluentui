@@ -11,8 +11,9 @@ entirely — the trigger/surface relationship is established by co-location in J
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8
 import { Callout, DirectionalHint } from '@fluentui/react';
 
 const targetRef = React.useRef<HTMLButtonElement>(null);
@@ -36,8 +37,9 @@ const [isVisible, setIsVisible] = React.useState(false);
 </>;
 ```
 
+### After
+
 ```tsx
-// v9
 import { Popover, PopoverTrigger, PopoverSurface, Button } from '@fluentui/react-components';
 
 <Popover withArrow positioning="below-start">

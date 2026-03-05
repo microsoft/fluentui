@@ -11,8 +11,9 @@ pattern from `@fluentui/react-components`.
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — CommandBar
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -28,8 +29,9 @@ const farItems: ICommandBarItemProps[] = [
 <CommandBar items={items} farItems={farItems} />;
 ```
 
+### After
+
 ```tsx
-// v9 — Toolbar
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components';
 import { AddRegular, EditRegular, DeleteRegular, InfoRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-components';
@@ -125,6 +127,31 @@ import { ExportRegular } from '@fluentui/react-icons';
     </MenuList>
   </MenuPopover>
 </Menu>;
+```
+
+## Radio Group (Mutually Exclusive Toggle Items)
+
+v8 used `checked` items inside a data-driven CommandBar with manual mutual-exclusion logic. v9 provides `ToolbarRadioGroup` + `ToolbarRadioButton`:
+
+```tsx
+import { Toolbar, ToolbarRadioGroup, ToolbarRadioButton } from '@fluentui/react-components';
+import { AlignLeftRegular, AlignCenterRegular, AlignRightRegular } from '@fluentui/react-icons';
+
+const [align, setAlign] = React.useState('left');
+
+<Toolbar checkedValues={{ align: [align] }} onCheckedValueChange={(_, data) => setAlign(data.checkedItems[0])}>
+  <ToolbarRadioGroup>
+    <ToolbarRadioButton name="align" value="left" icon={<AlignLeftRegular />}>
+      Left
+    </ToolbarRadioButton>
+    <ToolbarRadioButton name="align" value="center" icon={<AlignCenterRegular />}>
+      Center
+    </ToolbarRadioButton>
+    <ToolbarRadioButton name="align" value="right" icon={<AlignRightRegular />}>
+      Right
+    </ToolbarRadioButton>
+  </ToolbarRadioGroup>
+</Toolbar>;
 ```
 
 ## Overflow Handling

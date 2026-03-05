@@ -8,15 +8,17 @@
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8
 import { Spinner, SpinnerSize } from '@fluentui/react';
 
 <Spinner size={SpinnerSize.large} label="Loading..." labelPosition="right" />;
 ```
 
+### After
+
 ```tsx
-// v9
 import { Spinner } from '@fluentui/react-components';
 
 <Spinner size="large" label="Loading..." labelPosition="after" />;

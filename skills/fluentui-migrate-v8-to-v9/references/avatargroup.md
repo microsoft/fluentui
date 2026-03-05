@@ -14,8 +14,9 @@ Use `partitionAvatarGroupItems` to split a list into inline vs overflow items ba
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8
 import { Facepile, IFacepilePersona } from '@fluentui/react';
 import { facepilePersonas } from '@fluentui/example-data';
 import { PersonaSize } from '@fluentui/react/lib/Persona';
@@ -26,8 +27,9 @@ const overflowPersonas = facepilePersonas.slice(3);
 <Facepile personaSize={PersonaSize.size32} personas={personas} overflowPersonas={overflowPersonas} />;
 ```
 
+### After
+
 ```tsx
-// v9
 import {
   AvatarGroup,
   AvatarGroupItem,

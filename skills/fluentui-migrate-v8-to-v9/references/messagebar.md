@@ -8,8 +8,9 @@ v9 `MessageBar` is **composable**: content is structured via `MessageBarBody`, `
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8
 import { MessageBar, MessageBarType, MessageBarButton } from '@fluentui/react';
 
 <MessageBar
@@ -27,8 +28,9 @@ import { MessageBar, MessageBarType, MessageBarButton } from '@fluentui/react';
 </MessageBar>;
 ```
 
+### After
+
 ```tsx
-// v9
 import { MessageBar, MessageBarBody, MessageBarTitle, MessageBarActions, Button } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 

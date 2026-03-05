@@ -58,11 +58,15 @@ const onChange = (_: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeDa
 
 v8 had a `showValue` prop. In v9, render the value yourself:
 
-```tsx
-// v8
-<Slider label="Volume" showValue value={value} min={0} max={100} />;
+**Before:**
 
-// v9 — embed value in the label slot
+```tsx
+<Slider label="Volume" showValue value={value} min={0} max={100} />
+```
+
+**After:**
+
+```tsx
 import { Field, Slider } from '@fluentui/react-components';
 
 const [value, setValue] = React.useState(20);
@@ -74,21 +78,29 @@ const [value, setValue] = React.useState(20);
 
 ### With Step
 
-```tsx
-// v8 — snapToStep was a separate optional prop
-<Slider min={0} max={100} step={10} snapToStep />
+**Before:**
 
-// v9 — always snaps to step (snapToStep removed)
+```tsx
+<Slider min={0} max={100} step={10} snapToStep />
+```
+
+**After:**
+
+```tsx
 <Slider min={0} max={100} step={10} />
 ```
 
 ### Vertical Slider
 
-```tsx
-// v8
-<Slider vertical label="Height" min={0} max={100} />;
+**Before:**
 
-// v9 — same prop
+```tsx
+<Slider vertical label="Height" min={0} max={100} />
+```
+
+**After:**
+
+```tsx
 import { Field, Slider } from '@fluentui/react-components';
 
 <Field label="Height">

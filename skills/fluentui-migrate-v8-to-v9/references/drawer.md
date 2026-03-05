@@ -12,8 +12,9 @@ The v9 package exports two variants:
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — Panel
 import { Panel, PanelType, PrimaryButton, DefaultButton } from '@fluentui/react';
 
 <Panel
@@ -36,8 +37,9 @@ import { Panel, PanelType, PrimaryButton, DefaultButton } from '@fluentui/react'
 </Panel>;
 ```
 
+### After
+
 ```tsx
-// v9 — OverlayDrawer
 import {
   OverlayDrawer,
   DrawerHeader,

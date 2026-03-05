@@ -8,8 +8,9 @@ In v9, the child of `Tooltip` **is** the trigger and **must** be able to accept 
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8
 import { Tooltip, DirectionalHint } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react';
 
@@ -18,8 +19,9 @@ import { DefaultButton } from '@fluentui/react';
 </Tooltip>;
 ```
 
+### After
+
 ```tsx
-// v9
 import { Tooltip, Button } from '@fluentui/react-components';
 
 <Tooltip content="This button deletes the item" relationship="description" positioning="below">

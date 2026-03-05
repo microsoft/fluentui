@@ -60,12 +60,16 @@ const labelId = useId('label');
 
 ### Controlled (selectedKey → value)
 
+**Before:**
+
 ```tsx
-// v8
 const [selected, setSelected] = React.useState('A');
 <ChoiceGroup selectedKey={selected} options={options} onChange={(_, option) => option && setSelected(option.key)} />;
+```
 
-// v9
+**After:**
+
+```tsx
 const [selected, setSelected] = React.useState('A');
 <RadioGroup value={selected} onChange={(_, data) => setSelected(data.value)}>
   <Radio value="A" label="Option A" />
@@ -77,24 +81,32 @@ const [selected, setSelected] = React.useState('A');
 
 v9 accepts direct JSX instead of `onRenderField` callbacks:
 
+**Before:**
+
 ```tsx
-// v8 — onRenderField callback
 { key: 'A', text: 'With icon', onRenderField: (props, render) => (
   <div style={{ display: 'flex', gap: 5 }}>
     {render!(props)}
     <CatIcon />
   </div>
 )}
+```
 
-// v9 — customize the label slot directly
+**After:**
+
+```tsx
 import { AnimalCat24Regular } from '@fluentui/react-icons';
 
 <Radio
   value="A"
   label={{
-    children: <><AnimalCat24Regular /> With icon</>,
+    children: (
+      <>
+        <AnimalCat24Regular /> With icon
+      </>
+    ),
   }}
-/>
+/>;
 ```
 
 ## ChoiceGroup → RadioGroup Prop Mapping

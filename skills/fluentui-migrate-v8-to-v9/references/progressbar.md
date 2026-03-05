@@ -31,11 +31,15 @@ import { Field, ProgressBar } from '@fluentui/react-components';
 
 ### Indeterminate progress
 
-```tsx
-// v8 — omit percentComplete
-<ProgressIndicator label="Loading" />;
+**Before:**
 
-// v9 — omit value
+```tsx
+<ProgressIndicator label="Loading" />
+```
+
+**After:**
+
+```tsx
 import { Field, ProgressBar } from '@fluentui/react-components';
 
 <Field label="Loading">
@@ -45,11 +49,15 @@ import { Field, ProgressBar } from '@fluentui/react-components';
 
 ### Without label (aria-label only)
 
-```tsx
-// v8
-<ProgressIndicator percentComplete={0.5} ariaLabel="Upload progress" />;
+**Before:**
 
-// v9
+```tsx
+<ProgressIndicator percentComplete={0.5} ariaLabel="Upload progress" />
+```
+
+**After:**
+
+```tsx
 import { ProgressBar } from '@fluentui/react-components';
 
 <ProgressBar value={0.5} aria-label="Upload progress" />;
