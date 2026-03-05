@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
@@ -8,11 +8,12 @@ import type { ImageBaseProps, ImageBaseState, ImageProps, ImageState } from './I
  * Given user props, returns state and render function for an Image.
  */
 export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
-  const { bordered = false, fit = 'default', shadow = false, shape = 'square', ...imageProps } = props;
+  const { bordered = false, block = false, fit = 'default', shadow = false, shape = 'square', ...imageProps } = props;
   const state = useImageBase_unstable(imageProps, ref);
 
   return {
     bordered,
+    block,
     fit,
     shadow,
     shape,
@@ -28,17 +29,14 @@ export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageEle
  * @param ref - User provided ref to be passed to the Image component.
  */
 export const useImageBase_unstable = (props: ImageBaseProps, ref: React.Ref<HTMLImageElement>): ImageBaseState => {
-  const { block = false, ...imageProps } = props;
-
   return {
-    block,
     components: {
       root: 'img',
     },
     root: slot.always(
       getIntrinsicElementProps('img', {
         ref,
-        ...imageProps,
+        ...props,
       }),
       { elementType: 'img' },
     ),

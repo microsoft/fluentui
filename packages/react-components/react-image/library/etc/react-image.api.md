@@ -16,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
+// @public
+export type ImageBaseProps = ComponentProps<ImageSlots>;
+
+// @public
+export type ImageBaseState = ComponentState<ImageSlots>;
+
 // @public (undocumented)
 export const imageClassNames: SlotClassNames<ImageSlots>;
 
@@ -37,10 +43,13 @@ export type ImageSlots = {
 export type ImageState = ComponentState<ImageSlots> & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
 
 // @public
-export const renderImage_unstable: (state: ImageState) => JSXElement;
+export const renderImage_unstable: (state: ImageBaseState) => JSXElement;
 
 // @public
 export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
+
+// @public
+export const useImageBase_unstable: (props: ImageBaseProps, ref: React_2.Ref<HTMLImageElement>) => ImageBaseState;
 
 // @public (undocumented)
 export const useImageStyles_unstable: (state: ImageState) => ImageState;
