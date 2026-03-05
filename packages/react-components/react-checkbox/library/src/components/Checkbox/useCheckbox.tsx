@@ -55,7 +55,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   }
 
   if (state.indicator) {
-    state.indicator.children = checkmarkIcon;
+    state.indicator.children ??= checkmarkIcon;
   }
 
   return {
@@ -94,14 +94,6 @@ export const useCheckboxBase_unstable = (
 
   const mixed = checked === 'mixed';
   const id = useId('checkbox-', nativeProps.primary.id);
-
-  // Use medium size as default for icon selection in base hook
-  let checkmarkIcon;
-  if (mixed) {
-    checkmarkIcon = <Square12Filled />;
-  } else if (checked) {
-    checkmarkIcon = <Checkmark12Filled />;
-  }
 
   const state: CheckboxBaseState = {
     checked,
@@ -143,7 +135,6 @@ export const useCheckboxBase_unstable = (
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
-        children: checkmarkIcon,
       },
       elementType: 'div',
     }),
