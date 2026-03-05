@@ -12,7 +12,13 @@ import {
 import { useInput_unstable } from '@fluentui/react-input';
 import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
-import type { SearchBoxBaseProps, SearchBoxBaseState, SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox.types';
+import type {
+  SearchBoxBaseProps,
+  SearchBoxBaseState,
+  SearchBoxSlots,
+  SearchBoxProps,
+  SearchBoxState,
+} from './SearchBox.types';
 
 /**
  * Create the state required to render SearchBox.
