@@ -42,10 +42,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   const state = useInfoButtonBase_unstable(
     {
       ...baseProps,
-      root: {
-        children: infoButtonIconMap[size],
-        ...baseProps.root,
-      },
+      children: baseProps.children ?? infoButtonIconMap[size],
       popover: {
         size: popoverSizeMap[size],
         ...baseProps.popover,
