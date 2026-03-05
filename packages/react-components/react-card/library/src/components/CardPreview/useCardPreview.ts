@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
-import type { CardPreviewBaseProps, CardPreviewBaseState, CardPreviewProps, CardPreviewState } from './CardPreview.types';
+import type {
+  CardPreviewBaseProps,
+  CardPreviewBaseState,
+  CardPreviewProps,
+  CardPreviewState,
+} from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
 

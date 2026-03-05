@@ -23,11 +23,7 @@ export {
   useCardHeaderStyles_unstable,
   useCardHeader_unstable,
 } from './CardHeader';
-export type {
-  CardHeaderProps,
-  CardHeaderSlots,
-  CardHeaderState,
-} from './CardHeader';
+export type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './CardHeader';
 export {
   CardPreview,
   cardPreviewClassNames,
@@ -35,11 +31,7 @@ export {
   useCardPreviewStyles_unstable,
   useCardPreview_unstable,
 } from './CardPreview';
-export type {
-  CardPreviewProps,
-  CardPreviewSlots,
-  CardPreviewState,
-} from './CardPreview';
+export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './CardPreview';
 export { CardProvider, useCardContext_unstable } from './Card';
 export type { CardContextValue } from './Card';
 
