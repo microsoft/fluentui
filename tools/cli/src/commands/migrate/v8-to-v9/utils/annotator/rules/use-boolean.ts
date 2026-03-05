@@ -13,13 +13,19 @@ export function detectUseBoolean(sourceFile: SourceFile): AnnotationResult[] {
         decl.getModuleSpecifierValue() === '@fluentui/react' &&
         decl.getNamedImports().some(s => s.getName() === 'useBoolean'),
     );
-  if (!hasUseBooleanImport) return results;
+  if (!hasUseBooleanImport) {
+    return results;
+  }
 
   sourceFile.forEachDescendant((node: Node) => {
-    if (node.getKind() !== SyntaxKind.CallExpression) return;
+    if (node.getKind() !== SyntaxKind.CallExpression) {
+      return;
+    }
 
     const expr = node.getFirstChild();
-    if (expr?.getText() !== 'useBoolean') return;
+    if (expr?.getText() !== 'useBoolean') {
+      return;
+    }
 
     const line = node.getStartLineNumber();
 

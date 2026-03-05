@@ -15,7 +15,7 @@ const command: CommandModule<{}, V8ToV9Args> = {
         demandOption: true,
         describe: 'Source root to annotate (e.g. src/, app/, packages/my-app/src)',
       })
-      .option('dry-run', {
+      .option('dryRun', {
         type: 'boolean',
         default: false,
         describe: 'Preview annotations without writing files',

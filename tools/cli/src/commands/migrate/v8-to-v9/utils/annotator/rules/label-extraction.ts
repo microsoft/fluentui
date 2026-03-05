@@ -1,13 +1,11 @@
 import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
-import { getFluentImportNames } from './utils';
 
 const LABEL_COMPONENTS = new Set(['TextField', 'SpinButton', 'Slider', 'ChoiceGroup']);
 
-export function detectLabelExtraction(sourceFile: SourceFile): AnnotationResult[] {
+export function detectLabelExtraction(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
-  const fluentNames = getFluentImportNames(sourceFile);
 
   sourceFile.forEachDescendant((node: Node) => {
     if (node.getKind() !== SyntaxKind.JsxOpeningElement && node.getKind() !== SyntaxKind.JsxSelfClosingElement) {
@@ -15,7 +13,9 @@ export function detectLabelExtraction(sourceFile: SourceFile): AnnotationResult[
     }
 
     const tagName = node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-    if (!fluentNames.has(tagName) || !LABEL_COMPONENTS.has(tagName)) return;
+    if (!fluentNames.has(tagName) || !LABEL_COMPONENTS.has(tagName)) {
+      return;
+    }
 
     for (const attr of node.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
       const propName = attr.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';

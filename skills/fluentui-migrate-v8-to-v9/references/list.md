@@ -39,12 +39,16 @@ v9 `List` + `ListItem` replaces v8 `List`. The v9 component adds first-class key
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — data-driven
 import { List } from '@fluentui/react';
 <List items={contacts} onRenderCell={item => <div onClick={() => openContact(item)}>{item?.name}</div>} />;
+```
 
-// v9 — declarative + keyboard-accessible
+### After
+
+```tsx
 import { List, ListItem } from '@fluentui/react-components';
 <List navigationMode="items">
   {contacts.map(contact => (

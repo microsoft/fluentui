@@ -1,12 +1,10 @@
 import { handler } from '../handler';
 import * as annotator from '../utils/annotator';
-import * as writer from '../utils/annotator/writer';
 
 jest.mock('../utils/annotator');
-jest.mock('../utils/annotator/writer');
 
 const mockAnalyzeFiles = annotator.analyzeFiles as jest.MockedFunction<typeof annotator.analyzeFiles>;
-const mockWriteAnnotations = writer.writeAnnotations as jest.MockedFunction<typeof writer.writeAnnotations>;
+const mockWriteAnnotations = annotator.writeAnnotations as jest.MockedFunction<typeof annotator.writeAnnotations>;
 
 describe('migrate v8-to-v9 handler', () => {
   let logSpy: jest.SpyInstance;
@@ -30,7 +28,7 @@ describe('migrate v8-to-v9 handler', () => {
     expect(mockWriteAnnotations).toHaveBeenCalled();
   });
 
-  it('skips writeAnnotations in dry-run mode', async () => {
+  it('skips writeAnnotations in dryRun mode', async () => {
     mockAnalyzeFiles.mockResolvedValue([]);
 
     await handler({ path: 'src/', dryRun: true, _: [], $0: 'fluentui-cli' });
@@ -59,7 +57,7 @@ describe('migrate v8-to-v9 handler', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('manual'));
   });
 
-  it('prints [dry-run] preview without writing', async () => {
+  it('prints [dryRun] preview without writing', async () => {
     mockAnalyzeFiles.mockResolvedValue([
       {
         filePath: 'src/Button.tsx',
@@ -70,7 +68,7 @@ describe('migrate v8-to-v9 handler', () => {
 
     await handler({ path: 'src/', dryRun: true, _: [], $0: 'fluentui-cli' });
 
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[dry-run]'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[dryRun]'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('@fluentui/react-components'));
     expect(mockWriteAnnotations).not.toHaveBeenCalled();
   });

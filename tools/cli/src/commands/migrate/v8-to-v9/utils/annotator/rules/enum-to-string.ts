@@ -33,13 +33,17 @@ export function detectEnumToString(sourceFile: SourceFile): AnnotationResult[] {
   const results: AnnotationResult[] = [];
 
   sourceFile.forEachDescendant((node: Node) => {
-    if (node.getKind() !== SyntaxKind.PropertyAccessExpression) return;
+    if (node.getKind() !== SyntaxKind.PropertyAccessExpression) {
+      return;
+    }
 
     const children = node.getChildren();
     const left = children[0]?.getText() ?? '';
     const right = children[children.length - 1]?.getText() ?? '';
 
-    if (!KNOWN_ENUM_MEMBERS[left]) return;
+    if (!KNOWN_ENUM_MEMBERS[left]) {
+      return;
+    }
 
     const stringValue = KNOWN_ENUM_MEMBERS[left][right];
     const line = node.getStartLineNumber();

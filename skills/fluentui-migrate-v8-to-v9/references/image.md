@@ -41,12 +41,16 @@ The boolean style props from v8 (`isCenter`, `isCoverContain`, `isLandscape`, `i
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Image, ImageFit } from '@fluentui/react';
 <Image src={imgSrc} imageFit={ImageFit.cover} width={200} height={150} shouldFadeIn />;
+```
 
-// v9
+### After
+
+```tsx
 import { Image, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

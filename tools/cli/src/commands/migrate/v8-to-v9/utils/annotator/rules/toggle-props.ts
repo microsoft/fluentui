@@ -1,11 +1,9 @@
 import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
-import { getFluentImportNames } from './utils';
 
-export function detectToggleProps(sourceFile: SourceFile): AnnotationResult[] {
+export function detectToggleProps(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
-  const fluentNames = getFluentImportNames(sourceFile);
 
   sourceFile.forEachDescendant((node: Node) => {
     if (node.getKind() !== SyntaxKind.JsxOpeningElement && node.getKind() !== SyntaxKind.JsxSelfClosingElement) {
@@ -13,7 +11,9 @@ export function detectToggleProps(sourceFile: SourceFile): AnnotationResult[] {
     }
 
     const tagName = node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-    if (!fluentNames.has(tagName) || tagName !== 'Toggle') return;
+    if (!fluentNames.has(tagName) || tagName !== 'Toggle') {
+      return;
+    }
 
     for (const attr of node.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
       const propName = attr.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';

@@ -16,14 +16,18 @@ This is a straightforward rename. `Separator` (v8) → `Divider` (v9). The core 
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Separator } from '@fluentui/react';
 <Separator vertical alignContent="end">
   Label
 </Separator>;
+```
 
-// v9
+### After
+
+```tsx
 import { Divider } from '@fluentui/react-components';
 <Divider vertical alignContent="end">
   Label

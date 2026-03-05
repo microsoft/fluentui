@@ -61,14 +61,18 @@ Prefer presets over manual `size`/`weight` when matching the Fluent design syste
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Text } from '@fluentui/react';
 <Text variant="xxLarge" block nowrap>
   Heading
 </Text>;
+```
 
-// v9 — using size/weight
+### After
+
+```tsx
 import { Text } from '@fluentui/react-components';
 <Text size={700} weight="semibold" block wrap={false}>
   Heading

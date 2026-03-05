@@ -18,12 +18,16 @@
 
 ### PrimaryButton
 
+**Before:**
+
 ```tsx
-// v8
 import { PrimaryButton } from '@fluentui/react';
 <PrimaryButton text="Submit" onClick={handleSubmit} />;
+```
 
-// v9
+**After:**
+
+```tsx
 import { Button } from '@fluentui/react-components';
 <Button appearance="primary" onClick={handleSubmit}>
   Submit
@@ -32,12 +36,16 @@ import { Button } from '@fluentui/react-components';
 
 ### ActionButton with icon
 
+**Before:**
+
 ```tsx
-// v8
 import { ActionButton } from '@fluentui/react';
 <ActionButton iconProps={{ iconName: 'Add' }}>Add item</ActionButton>;
+```
 
-// v9
+**After:**
+
+```tsx
 import { Button } from '@fluentui/react-components';
 import { AddRegular } from '@fluentui/react-icons';
 <Button appearance="transparent" icon={<AddRegular />}>
@@ -47,12 +55,16 @@ import { AddRegular } from '@fluentui/react-icons';
 
 ### IconButton
 
+**Before:**
+
 ```tsx
-// v8
 import { IconButton } from '@fluentui/react';
 <IconButton iconProps={{ iconName: 'Settings' }} title="Settings" />;
+```
 
-// v9
+**After:**
+
+```tsx
 import { Button } from '@fluentui/react-components';
 import { SettingsRegular } from '@fluentui/react-icons';
 <Button icon={<SettingsRegular />} aria-label="Settings" />;
@@ -60,14 +72,18 @@ import { SettingsRegular } from '@fluentui/react-icons';
 
 ### Button with href (navigation)
 
+**Before:**
+
 ```tsx
-// v8 — button that navigates via href
 import { DefaultButton, PrimaryButton } from '@fluentui/react';
 <DefaultButton href="/dashboard" target="_blank">
   Go to dashboard
 </DefaultButton>;
+```
 
-// v9 option A — use Link for inline text-style navigation
+**After:**
+
+```tsx
 import { Link } from '@fluentui/react-components';
 <Link href="/dashboard" target="_blank">
   Go to dashboard
@@ -86,8 +102,9 @@ design needs a button shape that navigates.
 
 ### Button with dropdown menu (`menuProps`)
 
+**Before:**
+
 ```tsx
-// v8 — button that opens a dropdown via menuProps
 import { DefaultButton } from '@fluentui/react';
 <DefaultButton
   text="Options"
@@ -98,8 +115,11 @@ import { DefaultButton } from '@fluentui/react';
     ],
   }}
 />;
+```
 
-// v9 — MenuButton inside Menu
+**After:**
+
+```tsx
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuButton } from '@fluentui/react-components';
 <Menu>
   <MenuTrigger disableButtonEnhancement>
@@ -118,23 +138,25 @@ For a primary-styled dropdown button: `<MenuButton appearance="primary">`.
 
 ### SplitButton
 
+**Before:**
+
 ```tsx
-// v8
 import { DefaultButton } from '@fluentui/react';
 <DefaultButton split menuProps={{ items: [...] }}>Action</DefaultButton>
+```
 
-// v9
+**After:**
+
+```tsx
 import { SplitButton, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 <Menu positioning="below-end">
-  <MenuTrigger>
-    {(triggerProps) => <SplitButton menuButton={triggerProps}>Action</SplitButton>}
-  </MenuTrigger>
+  <MenuTrigger>{triggerProps => <SplitButton menuButton={triggerProps}>Action</SplitButton>}</MenuTrigger>
   <MenuPopover>
     <MenuList>
       <MenuItem>Option 1</MenuItem>
     </MenuList>
   </MenuPopover>
-</Menu>
+</Menu>;
 ```
 
 ## Button Shims (Incremental Migration)

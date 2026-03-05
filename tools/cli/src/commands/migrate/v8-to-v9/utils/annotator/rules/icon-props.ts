@@ -1,7 +1,6 @@
 import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
-import { getFluentImportNames } from './utils';
 
 // Known icon names that have a direct @fluentui/react-icons equivalent (subset)
 const KNOWN_ICONS = new Set([
@@ -42,9 +41,8 @@ const KNOWN_ICONS = new Set([
   'Close',
 ]);
 
-export function detectIconProps(sourceFile: SourceFile): AnnotationResult[] {
+export function detectIconProps(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
-  const fluentNames = getFluentImportNames(sourceFile);
 
   sourceFile.forEachDescendant((node: Node) => {
     if (node.getKind() !== SyntaxKind.JsxOpeningElement && node.getKind() !== SyntaxKind.JsxSelfClosingElement) {
@@ -52,11 +50,15 @@ export function detectIconProps(sourceFile: SourceFile): AnnotationResult[] {
     }
 
     const tagName = node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-    if (!fluentNames.has(tagName)) return;
+    if (!fluentNames.has(tagName)) {
+      return;
+    }
 
     for (const attr of node.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
       const propName = attr.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-      if (propName !== 'iconProps') continue;
+      if (propName !== 'iconProps') {
+        continue;
+      }
 
       const line = attr.getStartLineNumber();
 

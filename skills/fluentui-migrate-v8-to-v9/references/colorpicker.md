@@ -48,12 +48,16 @@ v9 ships a new `ColorPicker` in `@fluentui/react-components` with a revised API.
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { ColorPicker } from '@fluentui/react';
 <ColorPicker color={color} onChange={(_, c) => setColor(c)} />;
+```
 
-// v9
+### After
+
+```tsx
 import { ColorPicker } from '@fluentui/react-components';
 <ColorPicker color={hsv} onColorChange={(_, data) => setHsv(data.color)} />;
 ```

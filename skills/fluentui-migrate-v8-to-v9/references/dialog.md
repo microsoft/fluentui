@@ -182,15 +182,19 @@ import {
 
 ## v8 DialogFooter → DialogActions
 
+**Before:**
+
 ```tsx
-// v8
 import { DialogFooter } from '@fluentui/react';
 <DialogFooter>
   <PrimaryButton text="OK" />
   <DefaultButton text="Cancel" />
 </DialogFooter>;
+```
 
-// v9
+**After:**
+
+```tsx
 import { DialogActions } from '@fluentui/react-components';
 <DialogActions>
   <Button appearance="primary">OK</Button>

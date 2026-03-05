@@ -15,12 +15,16 @@ v9 `Label` is a near drop-in replacement. The main addition is support for a **c
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Label } from '@fluentui/react';
 <Label required>Email</Label>;
+```
 
-// v9
+### After
+
+```tsx
 import { Label } from '@fluentui/react-components';
 <Label required>Email</Label>;
 // Custom required indicator:

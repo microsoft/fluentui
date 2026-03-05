@@ -2,7 +2,7 @@ import * as fs from 'fs/promises';
 import * as os from 'os';
 import * as path from 'path';
 import { analyzeFiles } from '../utils/annotator';
-import { writeAnnotations } from '../utils/annotator/writer';
+import { writeAnnotations } from '../utils/annotator';
 import { handler } from '../handler';
 
 const FIXTURES_DIR = path.join(__dirname, 'fixtures');
@@ -48,6 +48,7 @@ describe('migrate v8-to-v9 — integration', () => {
       const results = await analyzeFiles(tmpDir);
 
       expect(results).toHaveLength(1);
+      expect(results[0].filePath).toContain('import-paths.tsx');
       const importAnnotations = results[0].annotations.filter(a => a.codemod === 'import-paths');
       expect(importAnnotations.length).toBeGreaterThan(0);
       expect(importAnnotations[0].action).toBe('auto');
@@ -62,10 +63,14 @@ describe('migrate v8-to-v9 — integration', () => {
       expect(results).toHaveLength(1);
       const variants = results[0].annotations.filter(a => a.codemod === 'button-variants');
       expect(variants.length).toBe(4);
-      expect(variants.some(a => a.payload.includes('PrimaryButton'))).toBe(true);
-      expect(variants.some(a => a.payload.includes('DefaultButton'))).toBe(true);
-      expect(variants.some(a => a.payload.includes('ActionButton'))).toBe(true);
-      expect(variants.some(a => a.payload.includes('IconButton'))).toBe(true);
+      expect(variants.map(a => a.payload)).toMatchInlineSnapshot(`
+        Array [
+          "PrimaryButton → Button appearance=\\"primary\\"",
+          "DefaultButton → Button",
+          "ActionButton → Button appearance=\\"transparent\\"",
+          "IconButton → Button (icon-only)",
+        ]
+      `);
       expect(variants.every(a => a.action === 'auto')).toBe(true);
     });
 
@@ -86,8 +91,9 @@ describe('migrate v8-to-v9 — integration', () => {
       const results = await analyzeFiles(tmpDir);
 
       expect(results).toHaveLength(1);
-      const noEquiv = results[0].annotations.filter(a => a.action === 'no-equivalent');
+      const noEquiv = results[0].annotations.filter(a => a.codemod === 'no-equivalent');
       expect(noEquiv.length).toBeGreaterThanOrEqual(2);
+      expect(noEquiv.every(a => a.action === 'no-equivalent')).toBe(true);
     });
 
     it('detects prop-rename annotations for legacy ARIA props', async () => {
@@ -98,8 +104,8 @@ describe('migrate v8-to-v9 — integration', () => {
       expect(results).toHaveLength(1);
       const propAnnotations = results[0].annotations.filter(a => a.codemod === 'prop-rename');
       expect(propAnnotations.length).toBeGreaterThanOrEqual(2);
-      expect(propAnnotations.some(a => a.payload.includes('ariaLabel'))).toBe(true);
-      expect(propAnnotations.some(a => a.payload.includes('componentRef'))).toBe(true);
+      expect(propAnnotations.some(a => a.payload === 'ariaLabel → aria-label')).toBe(true);
+      expect(propAnnotations.some(a => a.payload === 'componentRef → ref')).toBe(true);
     });
 
     it('detects icon-props annotation with auto action for a known icon name', async () => {
@@ -250,6 +256,18 @@ describe('migrate v8-to-v9 — integration', () => {
         "
       `);
     });
+
+    it('writes metadata.json listing annotated file paths when projectRoot is provided', async () => {
+      await copyFixture(tmpDir, 'import-paths.tsx');
+
+      const results = await analyzeFiles(tmpDir);
+      await writeAnnotations(results, tmpDir);
+
+      const metaContent = await fs.readFile(path.join(tmpDir, '.fluent-migrate', 'metadata.json'), 'utf8');
+      const meta = JSON.parse(metaContent);
+      expect(meta.version).toBe(1);
+      expect(meta.annotatedFiles).toEqual(['import-paths.tsx']);
+    });
   });
 
   // ── handler end-to-end ───────────────────────────────────────────────────────
@@ -269,7 +287,7 @@ describe('migrate v8-to-v9 — integration', () => {
       logSpy.mockRestore();
     });
 
-    it('dry-run does not modify files', async () => {
+    it('dryRun does not modify files', async () => {
       const filePath = await copyFixture(tmpDir, 'import-paths.tsx');
       const original = await fs.readFile(filePath, 'utf8');
 
@@ -279,12 +297,12 @@ describe('migrate v8-to-v9 — integration', () => {
       expect(after).toBe(original);
     });
 
-    it('dry-run prints [dry-run] header and lists files that would be annotated', async () => {
+    it('dryRun prints [dryRun] header and lists files that would be annotated', async () => {
       await copyFixture(tmpDir, 'import-paths.tsx');
 
       await handler({ path: tmpDir, dryRun: true, _: [], $0: 'fluentui-cli' });
 
-      expect(logs.some(l => l.includes('[dry-run]'))).toBe(true);
+      expect(logs.some(l => l.includes('[dryRun]'))).toBe(true);
       expect(logs.some(l => l.includes('import-paths.tsx'))).toBe(true);
     });
 
@@ -294,7 +312,7 @@ describe('migrate v8-to-v9 — integration', () => {
       await handler({ path: tmpDir, dryRun: false, _: [], $0: 'fluentui-cli' });
 
       const content = await fs.readFile(filePath, 'utf8');
-      expect(content).toContain('// @fluent-migrate:');
+      expect(content).toContain('// @fluent-migrate:auto | import-paths |');
       expect(logs.some(l => l.includes('Annotated'))).toBe(true);
     });
 
@@ -312,6 +330,17 @@ describe('migrate v8-to-v9 — integration', () => {
       await handler({ path: tmpDir, dryRun: false, _: [], $0: 'fluentui-cli' });
 
       expect(logs.some(l => l.includes('Annotated 0 files'))).toBe(true);
+    });
+
+    it('write mode emits .fluent-migrate/metadata.json', async () => {
+      await copyFixture(tmpDir, 'import-paths.tsx');
+
+      await handler({ path: tmpDir, dryRun: false, _: [], $0: 'fluentui-cli' });
+
+      const metaPath = path.join(tmpDir, '.fluent-migrate', 'metadata.json');
+      const meta = JSON.parse(await fs.readFile(metaPath, 'utf8'));
+      expect(meta.version).toBe(1);
+      expect(meta.annotatedFiles).toContain('import-paths.tsx');
     });
   });
 });

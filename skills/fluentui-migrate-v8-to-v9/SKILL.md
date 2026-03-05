@@ -12,18 +12,18 @@ After completing a migration session, report using this structure:
 ```
 ### Migration Report
 
-**Scope:** <files changed> files, <components migrated> component types migrated
-**Assumptions logged:** <count> (see inline `// MIGRATION ASSUMPTION:` comments)
-**Unresolved deltas:** <list or "none">
-**Shims still in place:** <list ShimComponent → target file — or "none">
-**Shim removal plan:** <for each shim: target v9 component when ready to replace — or "n/a">
-**Reference precedence used:** <component: decision made — or "none">
+**Scope:** 12 files, 4 component types migrated
+**Assumptions logged:** 2 (see inline `// MIGRATION ASSUMPTION:` comments)
+**Unresolved deltas:** none  (e.g. "GroupedList in DataView.tsx — awaiting user direction")
+**Shims still in place:** none  (e.g. "PrimaryButtonShim → src/Header.tsx")
+**Shim removal plan:** n/a  (e.g. "replace with Button appearance=primary once v8 deps removed")
+**Reference precedence used:** none  (e.g. "Dialog: used references/dialog.md over SKILL.md table")
 **Validation evidence:**
-  - TypeScript check (<command used>): ✅ / ❌ <error count> (baseline was <baseline count>)
-  - lint: ✅ / ❌ / ⏭️ skipped (no linter found)
-  - tests: ✅ / ❌ / ⏭️ skipped (no test command found)
-  - No remaining @fluentui/react imports: ✅ / ❌ <count remaining>
-**Final status:** ✅ Complete / ⚠️ Partial (see unresolved deltas) / ❌ Blocked (<reason>)
+  - TypeScript check (yarn tsc --noEmit): ✅  (e.g. ❌ 3 errors — baseline was 1)
+  - lint: ✅  (e.g. ⏭️ skipped — no linter found)
+  - tests: ✅  (e.g. ❌ 2 failing)
+  - No remaining @fluentui/react imports: ✅  (e.g. ❌ 3 remaining)
+**Final status:** ✅ Complete  (e.g. ⚠️ Partial — see unresolved deltas | ❌ Blocked: tsc errors)
 ```
 
 ---
@@ -32,15 +32,24 @@ After completing a migration session, report using this structure:
 
 ### Step 1 — Assess
 
-**Determine source root first:**
+**Determine project root and source directory:**
 
-1. Check `tsconfig.json` for `include` or `rootDir` to identify the source root (e.g., `src/`, `app/`, `lib/`)
-2. In a monorepo or if multiple `tsconfig.json` files exist, ask the user: _"Which directory or package should I migrate? (e.g., `packages/my-app/src`)"_
-3. If no tsconfig exists, default to searching from the repo root (`.`) and adjust from there
+1. Locate `package.json` to identify the **project root** — it is the source of truth. If multiple `package.json` files exist (monorepo), ask: _"Which package should I migrate? (e.g., `packages/my-app`)"_ — do not proceed until confirmed.
+2. Once the project root is confirmed, check `tsconfig.json` for `include` or `rootDir` to narrow down the **source directory** (e.g., `src/`, `app/`, `lib/`).
+3. If no `tsconfig.json` exists, treat the project root as the source root.
 
-Replace `<SOURCE_ROOT>` in the commands below with the path you identified.
+Use `<PROJECT_ROOT>` for the package root and `<SOURCE_ROOT>` for the narrowed source directory in the commands below.
 
 **Check for existing migration annotations:**
+
+First check for `.fluent-migrate/metadata.json` — written by the CLI after annotating, it lists annotated files deterministically:
+
+```sh
+cat <PROJECT_ROOT>/.fluent-migrate/metadata.json
+```
+
+- If `metadata.json` exists, use the `annotatedFiles` list directly as your work queue. Skip the grep scan.
+- If it does not exist, scan for annotations:
 
 ```sh
 grep -rl "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
@@ -63,28 +72,6 @@ Ready-to-proceed conditions (verify before starting Step 3):
 - A `FluentProvider` wrapper exists somewhere in the codebase (or the user has confirmed they will add one)
 
 If either condition is unmet, report what's needed and stop until the user confirms setup is complete.
-
-### Agent Execution Contract
-
-**Phase order:** check for annotations (+ tsc baseline) → if missing, ask user to run CLI → process annotations (`auto` → `scaffold` → `manual` → `no-equivalent`) → validate → report (Output Template above)
-
-**Baseline TypeScript check before starting:** run the repo's TypeScript check command (`tsc --noEmit` or the equivalent in `package.json` scripts) before any changes and record the error count. In the Validation step, report TypeScript as ✅ if post-migration error count ≤ baseline — do not block on pre-existing errors.
-
-**Behavior-preserving default:** when uncertain, preserve existing behavior. Never silently drop functionality.
-
-**Confidence threshold for `manual` annotations:** if you are less than ~80% confident in a mapping, add an inline comment and flag it — do not skip it silently:
-
-```tsx
-// MIGRATION ASSUMPTION: GroupedList mapped to Tree (expand/collapse usage detected). Verify if tabular layout was intended.
-```
-
-**Stop and escalate when:**
-
-- TypeScript errors remain after processing annotations that you cannot resolve
-- A `no-equivalent` annotation has no clear workaround from the component mapping table
-- More than 2 unresolved `manual` annotations in the same file
-
-In those cases: commit what's done, fill in the Output Template with status ⚠️ or ❌, list the blockers, and wait for user input.
 
 ### Step 2 — User Setup (reference only)
 
@@ -116,7 +103,19 @@ import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 
 ### Step 3 — Migrate (annotation-driven)
 
-Process the `@fluent-migrate:` annotations as a work queue. Get all annotations:
+**Before starting:** run the repo's TypeScript check command (`tsc --noEmit` or the `package.json` scripts equivalent) and record the error count as your baseline. After migration, TypeScript is ✅ if error count ≤ baseline — do not block on pre-existing errors.
+
+**Behavior-preserving default:** when uncertain, preserve existing behavior. Never silently drop functionality.
+
+**Stop and escalate when:**
+
+- TypeScript errors remain after processing annotations that you cannot resolve
+- A `no-equivalent` annotation has no clear workaround from the component mapping table
+- More than 2 unresolved `manual` annotations in the same file
+
+In those cases: commit what's done, fill in the Output Template with status ⚠️ or ❌, list the blockers, and wait for user input.
+
+Process the `@fluent-migrate:` annotations as a work queue. If `.fluent-migrate/metadata.json` exists, open each file it lists directly. Otherwise, get all annotations with:
 
 ```sh
 grep -rn "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"

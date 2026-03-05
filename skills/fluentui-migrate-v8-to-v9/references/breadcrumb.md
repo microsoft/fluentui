@@ -52,8 +52,9 @@ import {
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — data-driven
 import { Breadcrumb } from '@fluentui/react';
 <Breadcrumb
   items={[
@@ -62,8 +63,11 @@ import { Breadcrumb } from '@fluentui/react';
     { text: 'Components', key: 'components', isCurrentItem: true },
   ]}
 />;
+```
 
-// v9 — declarative
+### After
+
+```tsx
 import {
   Breadcrumb,
   BreadcrumbItem,

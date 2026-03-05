@@ -32,8 +32,9 @@ v9 `SearchBox` is in `@fluentui/react-components`. The API is similar to v9 `Inp
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { SearchBox } from '@fluentui/react';
 <SearchBox
   placeholder="Search"
@@ -42,8 +43,11 @@ import { SearchBox } from '@fluentui/react';
   onSearch={v => doSearch(v)}
   onClear={() => setQuery('')}
 />;
+```
 
-// v9
+### After
+
+```tsx
 import { SearchBox } from '@fluentui/react-components';
 <SearchBox
   placeholder="Search"

@@ -44,11 +44,15 @@ const errorId = useId('email-error');
 
 ### Multiline TextField → Textarea
 
-```tsx
-// v8
-<TextField multiline rows={4} label="Description" />;
+**Before:**
 
-// v9
+```tsx
+<TextField multiline rows={4} label="Description" />
+```
+
+**After:**
+
+```tsx
 import { Field, Textarea } from '@fluentui/react-components';
 
 <Field label="Description">
@@ -58,11 +62,15 @@ import { Field, Textarea } from '@fluentui/react-components';
 
 ### Prefix / Suffix
 
-```tsx
-// v8
-<TextField prefix="https://" suffix=".com" />;
+**Before:**
 
-// v9
+```tsx
+<TextField prefix="https://" suffix=".com" />
+```
+
+**After:**
+
+```tsx
 import { Input } from '@fluentui/react-components';
 <Input contentBefore="https://" contentAfter=".com" />;
 // Note: contentBefore/contentAfter accept ReactNode (slot), not just strings
@@ -70,12 +78,16 @@ import { Input } from '@fluentui/react-components';
 
 ### Underlined / Borderless appearance
 
+**Before:**
+
 ```tsx
-// v8
 <TextField underlined />
 <TextField borderless />
+```
 
-// v9
+**After:**
+
+```tsx
 <Input appearance="underline" />
 <Input appearance="filled-lighter" />
 ```

@@ -1,7 +1,6 @@
 import type { CommandHandler } from '../../../utils/types';
-import { analyzeFiles } from './utils/annotator';
-import { writeAnnotations } from './utils/annotator/writer';
-import type { FileAnalysis } from './utils/annotator/types';
+import { analyzeFiles, writeAnnotations } from './utils/annotator';
+import type { FileAnalysis } from './utils/annotator';
 
 interface V8ToV9Args {
   path: string;
@@ -16,7 +15,7 @@ export const handler: CommandHandler<V8ToV9Args> = async argv => {
     return;
   }
 
-  const { filesChanged } = await writeAnnotations(results);
+  const { filesChanged } = await writeAnnotations(results, argv.path);
   printSummary(results, filesChanged);
 };
 
@@ -24,10 +23,15 @@ function countByAction(results: FileAnalysis[]) {
   const counts = { auto: 0, scaffold: 0, manual: 0, noEquivalent: 0 };
   for (const file of results) {
     for (const a of file.annotations) {
-      if (a.action === 'auto') counts.auto++;
-      else if (a.action === 'scaffold') counts.scaffold++;
-      else if (a.action === 'manual') counts.manual++;
-      else if (a.action === 'no-equivalent') counts.noEquivalent++;
+      if (a.action === 'auto') {
+        counts.auto++;
+      } else if (a.action === 'scaffold') {
+        counts.scaffold++;
+      } else if (a.action === 'manual') {
+        counts.manual++;
+      } else if (a.action === 'no-equivalent') {
+        counts.noEquivalent++;
+      }
     }
   }
   return counts;
@@ -69,7 +73,7 @@ function printDryRunReport(results: FileAnalysis[]): void {
   const counts = countByAction(results);
   const deps = collectDeps(results);
 
-  console.log('\n[dry-run] No files were modified.\n');
+  console.log('\n[dryRun] No files were modified.\n');
   console.log(`Would annotate ${results.length} files`);
   console.log(`  auto          ${counts.auto.toString().padStart(4)}  (safe to apply mechanically)`);
   console.log(`  scaffold      ${counts.scaffold.toString().padStart(4)}  (boilerplate needed)`);

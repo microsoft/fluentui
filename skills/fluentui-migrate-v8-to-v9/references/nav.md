@@ -64,8 +64,9 @@ import {
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — data-driven groups
 import { Nav } from '@fluentui/react';
 
 <Nav
@@ -85,8 +86,11 @@ import { Nav } from '@fluentui/react';
     },
   ]}
 />;
+```
 
-// v9 — declarative JSX
+### After
+
+```tsx
 import { Nav, NavItem, NavCategory, NavCategoryItem, NavSubItemGroup, NavSubItem } from '@fluentui/react-components';
 import { HomeRegular, SettingsRegular } from '@fluentui/react-icons';
 

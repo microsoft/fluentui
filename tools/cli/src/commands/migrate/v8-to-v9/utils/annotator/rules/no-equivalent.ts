@@ -1,7 +1,7 @@
 import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
-import { getFluentImportNames, isJsxChild } from './utils';
+import { isJsxChild } from './utils';
 
 const DEPRECATED_COMPONENTS: Record<string, string> = {
   ActivityItem: 'build with Avatar + Text + makeStyles flexbox — see SKILL.md deprecation list',
@@ -12,9 +12,8 @@ const DEPRECATED_COMPONENTS: Record<string, string> = {
   Announced: 'use a visually-hidden live region: <div role="status" aria-live="polite">',
 };
 
-export function detectNoEquivalent(sourceFile: SourceFile): AnnotationResult[] {
+export function detectNoEquivalent(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
-  const fluentNames = getFluentImportNames(sourceFile);
 
   sourceFile.forEachDescendant((node: Node) => {
     if (node.getKind() !== SyntaxKind.JsxOpeningElement && node.getKind() !== SyntaxKind.JsxSelfClosingElement) {
@@ -22,7 +21,9 @@ export function detectNoEquivalent(sourceFile: SourceFile): AnnotationResult[] {
     }
 
     const tagName = node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-    if (!fluentNames.has(tagName) || !DEPRECATED_COMPONENTS[tagName]) return;
+    if (!fluentNames.has(tagName) || !DEPRECATED_COMPONENTS[tagName]) {
+      return;
+    }
 
     results.push({
       action: 'no-equivalent',

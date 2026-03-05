@@ -51,8 +51,9 @@ v9 `Persona` uses a slot-based API. Text lines are slots (`primaryText`, `second
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react';
 <Persona
   text="Alice Northwood"
@@ -61,8 +62,11 @@ import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react';
   size={PersonaSize.size48}
   presence={PersonaPresence.online}
 />;
+```
 
-// v9
+### After
+
+```tsx
 import { Persona } from '@fluentui/react-components';
 <Persona
   name="Alice Northwood"

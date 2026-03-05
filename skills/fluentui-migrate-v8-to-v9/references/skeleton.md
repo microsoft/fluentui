@@ -32,8 +32,9 @@
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — data-gated with isDataLoaded
 import { Shimmer, ShimmerElementType } from '@fluentui/react';
 
 <Shimmer
@@ -46,8 +47,11 @@ import { Shimmer, ShimmerElementType } from '@fluentui/react';
 >
   <MyContent />
 </Shimmer>;
+```
 
-// v9 — conditional render
+### After
+
+```tsx
 import { Skeleton, SkeletonItem, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

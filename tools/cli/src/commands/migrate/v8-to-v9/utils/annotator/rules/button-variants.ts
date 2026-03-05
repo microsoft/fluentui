@@ -1,7 +1,7 @@
 import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
-import { getFluentImportNames, isJsxChild } from './utils';
+import { isJsxChild } from './utils';
 
 const BUTTON_VARIANTS: Record<string, string> = {
   PrimaryButton: 'Button appearance="primary"',
@@ -11,9 +11,8 @@ const BUTTON_VARIANTS: Record<string, string> = {
   CompoundButton: 'CompoundButton',
 };
 
-export function detectButtonVariants(sourceFile: SourceFile): AnnotationResult[] {
+export function detectButtonVariants(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
-  const fluentNames = getFluentImportNames(sourceFile);
 
   sourceFile.forEachDescendant((node: Node) => {
     if (node.getKind() !== SyntaxKind.JsxOpeningElement && node.getKind() !== SyntaxKind.JsxSelfClosingElement) {
@@ -21,7 +20,9 @@ export function detectButtonVariants(sourceFile: SourceFile): AnnotationResult[]
     }
 
     const tagName = node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ?? '';
-    if (!fluentNames.has(tagName) || !BUTTON_VARIANTS[tagName]) return;
+    if (!fluentNames.has(tagName) || !BUTTON_VARIANTS[tagName]) {
+      return;
+    }
 
     const line = node.getStartLineNumber();
     const insideJsx = isJsxChild(node);

@@ -53,8 +53,9 @@ v8 `DocumentCard` and its variants map to v9's composable `Card` family in `@flu
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { DocumentCard, DocumentCardPreview, DocumentCardTitle, DocumentCardActivity } from '@fluentui/react';
 
 <DocumentCard onClick={handleClick}>
@@ -62,8 +63,11 @@ import { DocumentCard, DocumentCardPreview, DocumentCardTitle, DocumentCardActiv
   <DocumentCardTitle title="Report.pdf" />
   <DocumentCardActivity activity="Modified Jan 1" people={[{ name: 'Alice', profileImageSrc: avatarSrc }]} />
 </DocumentCard>;
+```
 
-// v9
+### After
+
+```tsx
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 <Card onClick={handleClick}>

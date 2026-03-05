@@ -11,8 +11,9 @@ pattern from `@fluentui/react-components`.
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — CommandBar
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -28,8 +29,9 @@ const farItems: ICommandBarItemProps[] = [
 <CommandBar items={items} farItems={farItems} />;
 ```
 
+### After
+
 ```tsx
-// v9 — Toolbar
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components';
 import { AddRegular, EditRegular, DeleteRegular, InfoRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-components';

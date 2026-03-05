@@ -37,8 +37,9 @@ v9 `Rating` has a cleaner API. The main differences are the `value` prop rename,
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Rating, RatingSize } from '@fluentui/react';
 <Rating
   rating={value}
@@ -47,8 +48,11 @@ import { Rating, RatingSize } from '@fluentui/react';
   onChange={(_, v) => setValue(v ?? 0)}
   ariaLabelFormat="{0} of {1} stars"
 />;
+```
 
-// v9
+### After
+
+```tsx
 import { Rating } from '@fluentui/react-components';
 <Rating
   value={value}

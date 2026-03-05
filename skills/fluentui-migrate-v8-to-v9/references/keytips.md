@@ -58,12 +58,16 @@ v9 components do **not** have a `keytipProps` prop — keytips are attached via 
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — keytipProps on the component
 import { DefaultButton } from '@fluentui/react';
 <DefaultButton keytipProps={{ content: 'B', keySequences: ['b'] }}>Action</DefaultButton>;
+```
 
-// v9 — useKeytipRef hook
+### After
+
+```tsx
 import { Button } from '@fluentui/react-components';
 import { Keytips, useKeytipRef } from '@fluentui/react-keytips';
 

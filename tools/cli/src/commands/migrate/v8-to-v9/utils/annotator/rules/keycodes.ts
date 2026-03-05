@@ -31,16 +31,22 @@ export function detectKeyCodes(sourceFile: SourceFile): AnnotationResult[] {
         decl.getModuleSpecifierValue() === '@fluentui/react' &&
         decl.getNamedImports().some(s => s.getName() === 'KeyCodes'),
     );
-  if (!hasKeyCodesImport) return results;
+  if (!hasKeyCodesImport) {
+    return results;
+  }
 
   sourceFile.forEachDescendant((node: Node) => {
-    if (node.getKind() !== SyntaxKind.PropertyAccessExpression) return;
+    if (node.getKind() !== SyntaxKind.PropertyAccessExpression) {
+      return;
+    }
 
     const children = node.getChildren();
     const left = children[0]?.getText() ?? '';
     const right = children[children.length - 1]?.getText() ?? '';
 
-    if (left !== 'KeyCodes') return;
+    if (left !== 'KeyCodes') {
+      return;
+    }
 
     const line = node.getStartLineNumber();
     const keyValue = KNOWN_KEYCODES[right];

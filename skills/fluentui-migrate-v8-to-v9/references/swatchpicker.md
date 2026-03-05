@@ -42,8 +42,9 @@ import { SwatchPicker, SwatchPickerRow, ColorSwatch, ImageSwatch, EmptySwatch } 
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — data-driven array
 import { SwatchColorPicker } from '@fluentui/react';
 
 <SwatchColorPicker
@@ -57,8 +58,11 @@ import { SwatchColorPicker } from '@fluentui/react';
     { id: 'yellow', label: 'Yellow', color: '#fce100' },
   ]}
 />;
+```
 
-// v9 — declarative children
+### After
+
+```tsx
 import { SwatchPicker, SwatchPickerRow, ColorSwatch } from '@fluentui/react-components';
 
 <SwatchPicker selectedValue={selected} onSelectionChange={(_, data) => setSelected(data.selectedValue)}>

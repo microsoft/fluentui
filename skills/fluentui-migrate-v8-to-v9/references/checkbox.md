@@ -32,8 +32,9 @@ import { Checkbox } from '@fluentui/react-components';
 
 ### Controlled Indeterminate
 
+**Before:**
+
 ```tsx
-// v8
 const [checked, setChecked] = React.useState(false);
 const [indeterminate, setIndeterminate] = React.useState(true);
 
@@ -45,8 +46,11 @@ const [indeterminate, setIndeterminate] = React.useState(true);
     setChecked(data.checked);
   }}
 />;
+```
 
-// v9
+**After:**
+
+```tsx
 const [checked, setChecked] = React.useState<boolean | 'mixed'>('mixed');
 
 <Checkbox checked={checked} onChange={(_, data) => setChecked(data.checked)} />;
@@ -54,11 +58,15 @@ const [checked, setChecked] = React.useState<boolean | 'mixed'>('mixed');
 
 ### Label Position
 
-```tsx
-// v8 — boxSide: 'end' puts the checkbox on the right
-<Checkbox label="Label on left" boxSide="end" />
+**Before:**
 
-// v9 — labelPosition: 'before' puts label on the left (checkbox on right)
+```tsx
+<Checkbox label="Label on left" boxSide="end" />
+```
+
+**After:**
+
+```tsx
 <Checkbox label="Label on left" labelPosition="before" />
 ```
 

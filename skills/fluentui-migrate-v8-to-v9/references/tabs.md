@@ -8,8 +8,9 @@ In v9 (`TabList`), `Tab` children are the **label only**. Tab content lives **ou
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — content inside PivotItem
 import { Pivot, PivotItem } from '@fluentui/react';
 
 <Pivot>
@@ -25,8 +26,9 @@ import { Pivot, PivotItem } from '@fluentui/react';
 </Pivot>;
 ```
 
+### After
+
 ```tsx
-// v9 — content is separate, driven by state
 import * as React from 'react';
 import { TabList, Tab } from '@fluentui/react-components';
 import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';

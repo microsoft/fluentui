@@ -29,13 +29,17 @@ v9 `Link` is a near drop-in replacement with improved accessibility and an `inli
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Link } from '@fluentui/react';
 <Link href="/docs">Read the docs</Link>;
 <Link onClick={handleClick}>Click me</Link>;
+```
 
-// v9
+### After
+
+```tsx
 import { Link } from '@fluentui/react-components';
 <Link href="/docs">Read the docs</Link>;
 <Link onClick={handleClick}>Click me</Link>;

@@ -13,13 +13,19 @@ export function detectGetId(sourceFile: SourceFile): AnnotationResult[] {
         decl.getModuleSpecifierValue() === '@fluentui/react' &&
         decl.getNamedImports().some(s => s.getName() === 'getId'),
     );
-  if (!hasGetIdImport) return results;
+  if (!hasGetIdImport) {
+    return results;
+  }
 
   sourceFile.forEachDescendant((node: Node) => {
-    if (node.getKind() !== SyntaxKind.CallExpression) return;
+    if (node.getKind() !== SyntaxKind.CallExpression) {
+      return;
+    }
 
     const expr = node.getFirstChild();
-    if (expr?.getText() !== 'getId') return;
+    if (expr?.getText() !== 'getId') {
+      return;
+    }
 
     const line = node.getStartLineNumber();
     const insideComponent = isInFunctionComponent(node);

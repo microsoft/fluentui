@@ -8,8 +8,9 @@ In v9 menus are **declarative**: compose JSX children under `Menu`.
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — data-driven
 import { ContextualMenu, ContextualMenuItemType } from '@fluentui/react';
 
 <ContextualMenu
@@ -30,8 +31,9 @@ import { ContextualMenu, ContextualMenuItemType } from '@fluentui/react';
 />;
 ```
 
+### After
+
 ```tsx
-// v9 — declarative
 import {
   Menu,
   MenuTrigger,

@@ -39,8 +39,9 @@ Both v8 components map to v9 `TeachingPopover`. It uses the same composable trig
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — TeachingBubble
 import { TeachingBubble } from '@fluentui/react';
 <TeachingBubble
   target="#my-button"
@@ -51,8 +52,11 @@ import { TeachingBubble } from '@fluentui/react';
 >
   Here's how to use this new feature.
 </TeachingBubble>;
+```
 
-// v9 — TeachingPopover
+### After
+
+```tsx
 import {
   TeachingPopover,
   TeachingPopoverTrigger,

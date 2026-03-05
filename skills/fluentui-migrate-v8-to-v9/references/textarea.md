@@ -35,8 +35,9 @@ Wrap `Textarea` in `<Field>` to get a label, validation message, and required in
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { TextField } from '@fluentui/react';
 <TextField
   label="Comments"
@@ -46,8 +47,11 @@ import { TextField } from '@fluentui/react';
   value={value}
   onChange={(_, v) => setValue(v ?? '')}
 />;
+```
 
-// v9
+### After
+
+```tsx
 import { Field, Textarea } from '@fluentui/react-components';
 <Field label="Comments" required validationState={error ? 'error' : 'none'} validationMessage={error}>
   <Textarea value={value} onChange={(_, data) => setValue(data.value)} resize="vertical" />

@@ -15,8 +15,9 @@ Key shifts:
 
 ## Before / After Example
 
+### Before
+
 ```tsx
-// v8 — DetailsList
 import { DetailsList, IColumn, SelectionMode, Selection } from '@fluentui/react';
 
 interface Item {
@@ -55,8 +56,9 @@ const selection = new Selection();
 />;
 ```
 
+### After
+
 ```tsx
-// v9 — DataGrid
 import {
   DataGrid,
   DataGridHeader,

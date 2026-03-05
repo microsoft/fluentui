@@ -27,14 +27,18 @@
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8
 import { Toggle } from '@fluentui/react';
 const [on, setOn] = React.useState(false);
 
 <Toggle label="Wi-Fi" onText="On" offText="Off" checked={on} onChange={(_, checked) => setOn(checked ?? false)} />;
+```
 
-// v9
+### After
+
+```tsx
 import { Switch } from '@fluentui/react-components';
 const [on, setOn] = React.useState(false);
 

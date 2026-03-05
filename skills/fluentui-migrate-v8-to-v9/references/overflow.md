@@ -45,8 +45,9 @@ v8 `OverflowSet` used render callbacks (`onRenderItem`, `onRenderOverflowButton`
 
 ## Before / After
 
+### Before
+
 ```tsx
-// v8 — render callbacks
 import { OverflowSet } from '@fluentui/react';
 
 <OverflowSet
@@ -58,8 +59,11 @@ import { OverflowSet } from '@fluentui/react';
   onRenderItem={item => <CommandBarButton text={item.name} onClick={item.onClick} />}
   onRenderOverflowButton={items => <CommandBarButton menuProps={{ items }} text="..." />}
 />;
+```
 
-// v9 — hook-based composition
+### After
+
+```tsx
 import {
   Overflow,
   OverflowItem,
