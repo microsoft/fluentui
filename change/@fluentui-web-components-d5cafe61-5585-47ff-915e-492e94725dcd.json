@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update option selected condition to check for elementInternals before setting form value and ariaSelected",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

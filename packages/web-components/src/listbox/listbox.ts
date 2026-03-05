@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
@@ -22,15 +22,28 @@ import { uniqueId } from '../utils/unique-id.js';
  */
 export class Listbox extends FASTElement {
   /**
-   * Sets the listbox ID to a unique value if one is not provided.
+   * A reference to the default slot element.
    *
-   * @override
-   * @public
-   * @remarks
-   * HTML Attribute: `id`
+   * @internal
    */
-  @attr({ attribute: 'id', mode: 'fromView' })
-  public override id: string = uniqueId('listbox-');
+  @observable
+  public defaultSlot!: HTMLSlotElement;
+
+  /**
+   * Calls the `slotchangeHandler` when the `defaultSlot` element is assigned
+   * via the `ref` directive in the template.
+   *
+   * @internal
+   * @remarks
+   * This is needed for scenarios where the slot element is already present
+   * when the component is connected, such as when the instance is hydrating in
+   * a declarative Shadow DOM environment. In this case, the `slotchange` event
+   * doesn't fire during initialization, so the `slotchangeHandler` needs to be
+   * called manually to populate the options.
+   */
+  protected defaultSlotChanged() {
+    this.slotchangeHandler();
+  }
 
   /**
    * Indicates whether the listbox allows multiple selection.
@@ -165,6 +178,15 @@ export class Listbox extends FASTElement {
     this.elementInternals.role = 'listbox';
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    // The listbox needs to have an id for the dropdown to reference via
+    // `aria-controls`. If an id is not present on connection, a unique one is
+    // generated and assigned to the element.
+    this.id = this.id || uniqueId('listbox-');
+  }
+
   /**
    * Handles observable subscriptions for the listbox.
    *
@@ -215,10 +237,9 @@ export class Listbox extends FASTElement {
    * @param e - The slotchange event
    * @public
    */
-  public slotchangeHandler(e: Event): void {
-    const target = e.target as HTMLSlotElement;
+  public slotchangeHandler(e?: Event): void {
     waitForConnectedDescendants(this, () => {
-      const options = target
+      const options = this.defaultSlot
         .assignedElements()
         .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
 
