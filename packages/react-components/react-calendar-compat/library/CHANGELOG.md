@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.3.20)
+
+Tue, 03 Mar 2026 09:43:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.3.19..@fluentui/react-calendar-compat_v0.3.20)
+
+### Patches
+
+- fix: prevent calendar-compat from crashing when value is undefined ([PR #35798](https://github.com/microsoft/fluentui/pull/35798) by vgenaev@gmail.com)
 
 ## [0.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.3.19)
 

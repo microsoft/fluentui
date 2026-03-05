@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 25 Feb 2026 04:09:17 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 04:07:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.8)
+
+Tue, 03 Mar 2026 04:07:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.7..@fluentui/web-components_v3.0.0-rc.8)
+
+### Changes
+
+- fix: reflect ariaLabel on dialog ([PR #35806](https://github.com/microsoft/fluentui/pull/35806) by rupertdavid@microsoft.com)
 
 ## [3.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.7)
 

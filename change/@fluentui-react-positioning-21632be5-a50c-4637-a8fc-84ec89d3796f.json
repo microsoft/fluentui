@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor: deprecate createSlideStyles",
-  "packageName": "@fluentui/react-positioning",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

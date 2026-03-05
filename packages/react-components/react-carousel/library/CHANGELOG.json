@@ -2,6 +2,29 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 09:43:42 GMT",
+      "tag": "@fluentui/react-carousel_v9.9.4",
+      "version": "9.9.4",
+      "comments": {
+        "none": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "e20285c6647bb91dc502946a5225b39d9c555e22",
+            "comment": "Add autoplayInterval control to Autoplay story example"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tooltip to v9.9.3",
+            "commit": "81e1556b008bfbd07fe427d89af6142459d74c6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-carousel_v9.9.3",
       "version": "9.9.3",

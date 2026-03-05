@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 25 Feb 2026 13:32:21 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.2)
+
+Tue, 03 Mar 2026 09:43:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.1..@fluentui/react-components_v9.73.2)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - refactor: migrate slide animation from CSS to motion components with surfaceMotion slot ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: make children optional in MotionRefForwarder to resolve type issue ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-popover`
+  - refactor: migrate slide animation from CSS to motion components with surfaceMotion slot ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-positioning`
+  - refactor: deprecate createSlideStyles ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: add disabledFocusable prop to Switch component ([PR #35799](https://github.com/microsoft/fluentui/pull/35799) by copilot@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix: reset MotionRefForwarder context in renderDialogSurface to prevent child components from corrupting Dialog's motion ref ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: add MotionRefForwarderReset to prevent context leaking to descendants ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: prevent calendar-compat from crashing when value is undefined ([PR #35798](https://github.com/microsoft/fluentui/pull/35798) by vgenaev@gmail.com)
+- `@fluentui/react-charts`
+  - (feat): Add support for vega based schema ([PR #35546](https://github.com/microsoft/fluentui/pull/35546) by atisjai@microsoft.com)
 
 ## [9.73.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.1)
 

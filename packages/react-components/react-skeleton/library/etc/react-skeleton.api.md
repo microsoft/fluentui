@@ -33,6 +33,10 @@ export interface SkeletonContextValue {
     animation?: 'wave' | 'pulse';
     // (undocumented)
     appearance?: 'opaque' | 'translucent';
+    // (undocumented)
+    shape?: 'circle' | 'square' | 'rectangle';
+    // (undocumented)
+    size?: SkeletonItemSize;
 }
 
 // @public (undocumented)
@@ -42,11 +46,9 @@ export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & Pick<SkeletonProps, 'size' | 'shape'> & {
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
-    size?: SkeletonItemSize;
-    shape?: 'circle' | 'square' | 'rectangle';
 };
 
 // @public (undocumented)
@@ -62,6 +64,8 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
     width?: number | string;
+    size?: SkeletonItemSize;
+    shape?: 'circle' | 'square' | 'rectangle';
 };
 
 // @public (undocumented)
@@ -70,7 +74,7 @@ export type SkeletonSlots = {
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>> & Pick<SkeletonProps, 'size' | 'shape'>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
