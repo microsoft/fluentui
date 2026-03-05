@@ -1,0 +1,5569 @@
+{
+  "@fluentui/react-components": {
+    "components": {
+      "FluentProvider": {
+        "props": {
+          "theme": {
+            "values": ["webLightTheme", "AzureLightTheme", "AzureDarkTheme", "theme"],
+            "count": 84
+          },
+          "className": {
+            "values": ["sb-unstyled"],
+            "count": 1
+          },
+          "style": {
+            "values": [
+              "{ backgroundColor: 'transparent' }",
+              "{ flex: 1, height: '100%', paddingTop: 20 }",
+              "{ flex: 1, height: '100%', paddingTop: 20, paddingLeft: 20 }"
+            ],
+            "count": 73
+          },
+          "customStyleHooks_unstable": {
+            "values": ["customStyleHooks"],
+            "count": 1
+          }
+        },
+        "count": 86
+      },
+      "Accordion": {
+        "props": {},
+        "count": 3
+      },
+      "AccordionHeader": {
+        "props": {},
+        "count": 9
+      },
+      "AccordionItem": {
+        "props": {
+          "value": {
+            "values": ["1", "2", "3"],
+            "count": 9
+          }
+        },
+        "count": 9
+      },
+      "AccordionPanel": {
+        "props": {},
+        "count": 9
+      },
+      "Label": {
+        "props": {
+          "htmlFor": {
+            "values": ["inputId", "id", "emailId", "passId", "sliderId", "spinId"],
+            "count": 13
+          },
+          "size": {
+            "values": ["props.size"],
+            "count": 2
+          },
+          "disabled": {
+            "values": ["props.disabled"],
+            "count": 2
+          },
+          "required": {
+            "values": ["true"],
+            "count": 2
+          },
+          "id": {
+            "values": ["labelId"],
+            "count": 1
+          }
+        },
+        "count": 18
+      },
+      "Avatar": {
+        "props": {
+          "name": {
+            "values": [
+              "Lydia Bauer",
+              "Amanda Brady",
+              "Henry Brill",
+              "Robin Counts",
+              "Tim Deboer",
+              "Cameron Evans",
+              "Wanda Howard",
+              "Mona Kane",
+              "Allan Munger",
+              "Erik Nason",
+              "Daisy Phillips",
+              "Kevin Sturgis",
+              "Elliot Woodward",
+              "item.author.label",
+              "option",
+              "props.name",
+              "Čestmír Ondřej",
+              "Maxim Tobiáš",
+              "Kristina Ctibor",
+              "E+D HR",
+              "user.name",
+              "Ashley McCarthy",
+              "John Doe"
+            ],
+            "count": 48
+          },
+          "badge": {
+            "values": [
+              "{ status: 'available' }",
+              "{ status: 'busy' }",
+              "{ status: 'out-of-office' }",
+              "{ status: 'away' }",
+              "{ status: 'offline' }",
+              "{ status: 'do-not-disturb' }",
+              "{ status: 'blocked' }",
+              "{ status: 'available', outOfOffice: true }",
+              "{ status: 'busy', outOfOffice: true }",
+              "{ status: 'out-of-office', outOfOffice: true }",
+              "{ status: 'away', outOfOffice: true }",
+              "{ status: 'offline', outOfOffice: true }",
+              "{ status: 'do-not-disturb', outOfOffice: true }",
+              "{ status: 'blocked', outOfOffice: true }",
+              "{ status: item.author.status }",
+              "{\n                          status: item.author.status as PresenceBadgeStatus,\n                        }",
+              "{ status: user.status }"
+            ],
+            "count": 41
+          },
+          "aria-label": {
+            "values": ["item.author.label"],
+            "count": 4
+          },
+          "aria-hidden": {
+            "values": ["true"],
+            "count": 10
+          },
+          "color": {
+            "values": ["colorful", "brown"],
+            "count": 10
+          },
+          "shape": {
+            "values": ["square"],
+            "count": 1
+          },
+          "role": {
+            "values": ["button"],
+            "count": 1
+          },
+          "tabIndex": {
+            "values": ["0"],
+            "count": 1
+          },
+          "className": {
+            "values": ["styles.icon"],
+            "count": 2
+          },
+          "icon": {
+            "values": ["<CalendarRegular />"],
+            "count": 2
+          },
+          "initials": {
+            "values": ["JD"],
+            "count": 2
+          },
+          "size": {
+            "values": ["48"],
+            "count": 2
+          }
+        },
+        "count": 54
+      },
+      "AvatarGroup": {
+        "props": {},
+        "count": 2
+      },
+      "AvatarGroupItem": {
+        "props": {
+          "name": {
+            "values": ["name"],
+            "count": 4
+          },
+          "key": {
+            "values": ["name"],
+            "count": 4
+          }
+        },
+        "count": 4
+      },
+      "AvatarGroupPopover": {
+        "props": {},
+        "count": 2
+      },
+      "Badge": {
+        "props": {
+          "shape": {
+            "values": ["square", "rounded", "circular", "shape"],
+            "count": 24
+          },
+          "appearance": {
+            "values": ["appearance", "filled", "outline", "tint", "ghost"],
+            "count": 20
+          },
+          "size": {
+            "values": ["size", "small", "large", "extra-large", "tiny", "extra-small"],
+            "count": 19
+          },
+          "color": {
+            "values": [
+              "color",
+              "important",
+              "brand",
+              "danger",
+              "warning",
+              "success",
+              "informative",
+              "subtle",
+              "severe"
+            ],
+            "count": 20
+          },
+          "iconPosition": {
+            "values": ["iconPosition"],
+            "count": 2
+          },
+          "icon": {
+            "values": ["<CircleRegular />"],
+            "count": 38
+          }
+        },
+        "count": 47
+      },
+      "Breadcrumb": {
+        "props": {
+          "aria-label": {
+            "values": ["Breadcrumb default example"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "BreadcrumbItem": {
+        "props": {},
+        "count": 12
+      },
+      "BreadcrumbDivider": {
+        "props": {},
+        "count": 9
+      },
+      "BreadcrumbButton": {
+        "props": {
+          "href": {
+            "values": ["path"],
+            "count": 12
+          },
+          "icon": {
+            "values": ["<CalendarMonth />"],
+            "count": 3
+          },
+          "current": {
+            "values": ["true"],
+            "count": 3
+          }
+        },
+        "count": 12
+      },
+      "Button": {
+        "props": {
+          "icon": {
+            "values": [
+              "<CalendarMonthRegular />",
+              "<CalendarMonth />",
+              "<ArrowReplyRegular fontSize={16} />",
+              "<ShareRegular fontSize={16} />",
+              "<Dismiss24Regular />",
+              "<TextBoldRegular />",
+              "<TextUnderlineRegular />",
+              "<TextItalicRegular />",
+              "<TextAlignLeftRegular />",
+              "<TextAlignCenterRegular />",
+              "<TextAlignRightRegular />",
+              "<CopyRegular />",
+              "<CutRegular />",
+              "<ClipboardPasteRegular />",
+              "<MoreHorizontal20Filled />",
+              "open ? <CaretDownFilled /> : <CaretRightFilled />",
+              "<DismissFilled aria-label=\"Enter by voice\" />",
+              "<FilterFilled />",
+              "<MoreHorizontalFilled />",
+              "<MoreHorizontal24Regular />",
+              "<MoreHorizontal20Regular />",
+              "<DismissRegular />",
+              "{\n        className: styles.buttonIcon,\n        children: <EmojiSmileSlightRegular fontSize={16} />,\n      }",
+              "<MoreHorizontalRegular />",
+              "<DismissIcon />",
+              "icon"
+            ],
+            "count": 42
+          },
+          "appearance": {
+            "values": ["primary", "outline", "subtle", "transparent", "secondary"],
+            "count": 69
+          },
+          "onClick": {
+            "values": [
+              "() => setIsOpen(true)",
+              "() => setIsOpen(false)",
+              "notify",
+              "onClick",
+              "onCloseDialog",
+              "() => {\n            setCurrentButton('Button 1');\n          }",
+              "() => {\n            setCurrentButton('Button 2');\n          }",
+              "() => setShowInput(false)",
+              "() => setShowInput(true)",
+              "() => setRunning(true)",
+              "onClose",
+              "() => {\n          setWidth(100);\n          bodyRef.current?.resetAfterColumnIndex(0);\n          headerRef.current?.resetAfterIndex(0);\n        }",
+              "() => setOpen((isOpen) => !isOpen)",
+              "() => alert('Dismiss button clicked')",
+              "scrollToIndex",
+              "addRow",
+              "removeRow",
+              "() => {\n              setCurrentButton('Button 1');\n            }",
+              "() => {\n              setCurrentButton('Button 2');\n            }",
+              "enterKeytipMode",
+              "exitKeytipMode"
+            ],
+            "count": 41
+          },
+          "aria-label": {
+            "values": [
+              "Close",
+              "Bold",
+              "Underline",
+              "Italic",
+              "Align Left",
+              "Align Center",
+              "Align Right",
+              "Copy",
+              "Cut",
+              "Paste",
+              "More items",
+              "Filter",
+              "More actions",
+              "Go to meeting",
+              "More options",
+              "Smile",
+              "more"
+            ],
+            "count": 26
+          },
+          "type": {
+            "values": ["submit"],
+            "count": 1
+          },
+          "ref": {
+            "values": [
+              "dialogBtn",
+              "disabledButton",
+              "normalButton",
+              "offsetButton",
+              "dialogButton",
+              "dialogInnerButton",
+              "firstButton",
+              "secondButton",
+              "thirdButton",
+              "mergedRefs",
+              "btnRef",
+              "btnRefSecond",
+              "ref",
+              "disabledKeytipTarget",
+              "keytipTarget",
+              "keytipMenu"
+            ],
+            "count": 28
+          },
+          "disabled": {
+            "values": ["true", "running"],
+            "count": 3
+          },
+          "className": {
+            "values": [
+              "mergeClasses(\n                    styles.moreActionsBtn,\n                    menuOpen && styles.moreActionsBtnVisible\n                  )",
+              "mergeClasses(styles.noPadding, styles.image)",
+              "mergeClasses(styles.noPadding, styles.title)",
+              "styles.button",
+              "styles.dismissButton",
+              "my-style-from-outside-react"
+            ],
+            "count": 13
+          },
+          "size": {
+            "values": ["small"],
+            "count": 5
+          },
+          "id": {
+            "values": ["id"],
+            "count": 1
+          }
+        },
+        "count": 191
+      },
+      "Body1": {
+        "props": {},
+        "count": 3
+      },
+      "Caption1": {
+        "props": {
+          "className": {
+            "values": ["styles.caption", "styles.location", "styles.description"],
+            "count": 7
+          },
+          "tabIndex": {
+            "values": ["0"],
+            "count": 2
+          }
+        },
+        "count": 10
+      },
+      "Card": {
+        "props": {
+          "className": {
+            "values": ["styles.card"],
+            "count": 2
+          }
+        },
+        "count": 3
+      },
+      "CardPreview": {
+        "props": {
+          "logo": {
+            "values": [
+              "<img\n                src={resolveAsset('docx.png')}\n                alt=\"Microsoft Word document\"\n              />"
+            ],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "CardFooter": {
+        "props": {},
+        "count": 2
+      },
+      "CardHeader": {
+        "props": {
+          "image": {
+            "values": [
+              "<img\n                src={resolveAsset('avatar_elvia.svg')}\n                alt=\"Elvia Atkins avatar picture\"\n              />"
+            ],
+            "count": 2
+          },
+          "header": {
+            "values": [
+              "<Body1>\n                <b>Elvia Atkins</b> mentioned you\n              </Body1>",
+              "<Text as=\"h5\" weight=\"semibold\" style={{ margin: 0 }}>\n                      App Name\n                    </Text>"
+            ],
+            "count": 3
+          },
+          "description": {
+            "values": ["<Caption1>5h ago · About us - Overview</Caption1>", "<Caption1>Developer</Caption1>"],
+            "count": 3
+          },
+          "action": {
+            "values": [
+              "<Button\n                      appearance=\"transparent\"\n                      icon={<MoreHorizontal20Regular />}\n                      aria-label=\"More options\"\n                    />"
+            ],
+            "count": 1
+          }
+        },
+        "count": 3
+      },
+      "Checkbox": {
+        "props": {
+          "checked": {
+            "values": [
+              "option1 && option2 && option3\n              ? true\n              : !(option1 || option2 || option3)\n              ? false\n              : 'mixed'",
+              "option1",
+              "option2",
+              "option3",
+              "fluentProviderEnabled"
+            ],
+            "count": 13
+          },
+          "onChange": {
+            "values": [
+              "(_ev, data) => {\n            setOption1(!!data.checked);\n            setOption2(!!data.checked);\n            setOption3(!!data.checked);\n          }",
+              "() => setOption1((checked) => !checked)",
+              "() => setOption2((checked) => !checked)",
+              "() => setOption3((checked) => !checked)",
+              "() => setFluentProviderEnabled(!fluentProviderEnabled)"
+            ],
+            "count": 13
+          },
+          "label": {
+            "values": [
+              "All options",
+              "Option 1",
+              "Option 2",
+              "Option 3",
+              "remember email",
+              "Checkbox",
+              "Use standard FluentProvider"
+            ],
+            "count": 16
+          },
+          "ref": {
+            "values": ["checkBoxRef"],
+            "count": 2
+          }
+        },
+        "count": 16
+      },
+      "Combobox": {
+        "props": {
+          "aria-labelledby": {
+            "values": ["comboId", "labelledBy"],
+            "count": 4
+          },
+          "placeholder": {
+            "values": ["Select an animal", "Select one or more animals", "Select a number"],
+            "count": 5
+          },
+          "multiselect": {
+            "values": ["true"],
+            "count": 1
+          },
+          "onOptionSelect": {
+            "values": [
+              "onSelect",
+              "(_, data) => {\n          if (data.optionValue) {\n            selectedIndex.current = parseInt(data.optionValue, 10);\n          }\n        }"
+            ],
+            "count": 2
+          },
+          "id": {
+            "values": ["`${comboId}`"],
+            "count": 1
+          },
+          "positioning": {
+            "values": ["{ autoSize: 'width' }"],
+            "count": 1
+          },
+          "listbox": {
+            "values": ["{ ref: mergedRefs, className: styles.listbox }"],
+            "count": 1
+          },
+          "onOpenChange": {
+            "values": [
+              "(e, data) => {\n          clearScrollTimer();\n          if (data.open) {\n            setScrollTimer(() => {\n              mergedRefs.current?.scrollTo({\n                top: (itemHeight + rowGap) * selectedIndex.current,\n              });\n            }, 0);\n          }\n        }"
+            ],
+            "count": 1
+          },
+          "inlinePopup": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 5
+      },
+      "Option": {
+        "props": {
+          "key": {
+            "values": ["option", "`item-${index}`"],
+            "count": 9
+          },
+          "disabled": {
+            "values": ["option === 'Ferret'"],
+            "count": 8
+          },
+          "className": {
+            "values": ["styles.option"],
+            "count": 1
+          },
+          "aria-posinset": {
+            "values": ["index"],
+            "count": 1
+          },
+          "aria-setsize": {
+            "values": ["options.length"],
+            "count": 1
+          },
+          "value": {
+            "values": ["index.toString()"],
+            "count": 1
+          },
+          "data-testid": {
+            "values": ["`option-${index}`"],
+            "count": 1
+          }
+        },
+        "count": 9
+      },
+      "DataGridBody": {
+        "props": {},
+        "count": 3
+      },
+      "DataGridRow": {
+        "props": {
+          "selectionCell": {
+            "values": [
+              "{\n                checkboxIndicator: { 'aria-label': 'Select all rows' },\n              }",
+              "{\n                  checkboxIndicator: { 'aria-label': 'Select row' },\n                }"
+            ],
+            "count": 6
+          },
+          "key": {
+            "values": ["rowId"],
+            "count": 3
+          }
+        },
+        "count": 6
+      },
+      "DataGrid": {
+        "props": {
+          "items": {
+            "values": ["items"],
+            "count": 3
+          },
+          "columns": {
+            "values": ["columns", "gridColumns"],
+            "count": 3
+          },
+          "sortable": {
+            "values": ["true"],
+            "count": 3
+          },
+          "selectionMode": {
+            "values": ["multiselect"],
+            "count": 3
+          },
+          "getRowId": {
+            "values": ["(item) => item.file.label"],
+            "count": 3
+          },
+          "focusMode": {
+            "values": ["composite"],
+            "count": 3
+          },
+          "style": {
+            "values": ["{ minWidth: '550px' }"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "DataGridHeader": {
+        "props": {
+          "className": {
+            "values": ["styles.tableHeader"],
+            "count": 2
+          }
+        },
+        "count": 5
+      },
+      "DataGridHeaderCell": {
+        "props": {},
+        "count": 3
+      },
+      "DataGridCell": {
+        "props": {},
+        "count": 3
+      },
+      "TableCellLayout": {
+        "props": {
+          "media": {
+            "values": [
+              "item.file.icon",
+              "<Avatar\n              aria-label={item.author.label}\n              name={item.author.label}\n              badge={{ status: item.author.status }}\n            />",
+              "item.lastUpdate.icon",
+              "<Avatar\n                        aria-label={item.author.label}\n                        name={item.author.label}\n                        badge={{\n                          status: item.author.status as PresenceBadgeStatus,\n                        }}\n                      />",
+              "<Avatar badge={{ status: item.author.status }} />",
+              "<CalendarClock16Regular />"
+            ],
+            "count": 26
+          },
+          "truncate": {
+            "values": ["true"],
+            "count": 2
+          },
+          "title": {
+            "values": ["item[`column${index}`]"],
+            "count": 2
+          }
+        },
+        "count": 28
+      },
+      "createTableColumn": {
+        "props": {},
+        "count": 0
+      },
+      "Dialog": {
+        "props": {
+          "modalType": {
+            "values": ["modalType", "modal"],
+            "count": 2
+          }
+        },
+        "count": 7
+      },
+      "DialogTrigger": {
+        "props": {
+          "disableButtonEnhancement": {
+            "values": ["true"],
+            "count": 16
+          }
+        },
+        "count": 20
+      },
+      "DialogSurface": {
+        "props": {
+          "ref": {
+            "values": ["ref"],
+            "count": 1
+          },
+          "style": {
+            "values": ["{\n            ...style,\n            ...draggableStyle,\n          }"],
+            "count": 1
+          },
+          "className": {
+            "values": [
+              "mergeClasses(\n            'fui-DraggableDialogSurface',\n            styles.root,\n            className\n          )"
+            ],
+            "count": 1
+          },
+          "mountNode": {
+            "values": ["mountNode"],
+            "count": 1
+          }
+        },
+        "count": 7
+      },
+      "DialogBody": {
+        "props": {},
+        "count": 10
+      },
+      "DialogTitle": {
+        "props": {},
+        "count": 10
+      },
+      "DialogContent": {
+        "props": {},
+        "count": 12
+      },
+      "DialogActions": {
+        "props": {},
+        "count": 10
+      },
+      "Divider": {
+        "props": {},
+        "count": 4
+      },
+      "DrawerBody": {
+        "props": {
+          "tabIndex": {
+            "values": ["0"],
+            "count": 1
+          },
+          "role": {
+            "values": ["group"],
+            "count": 1
+          },
+          "aria-label": {
+            "values": ["Example scrolling content"],
+            "count": 1
+          }
+        },
+        "count": 3
+      },
+      "DrawerHeader": {
+        "props": {},
+        "count": 3
+      },
+      "DrawerHeaderTitle": {
+        "props": {
+          "action": {
+            "values": [
+              "<Button\n                  appearance=\"subtle\"\n                  aria-label=\"Close\"\n                  icon={<Dismiss24Regular />}\n                  onClick={() => setIsOpen(false)}\n                />",
+              "<Button\n            appearance=\"subtle\"\n            aria-label=\"Close\"\n            icon={<DismissRegular />}\n            onClick={onClose}\n          />"
+            ],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "OverlayDrawer": {
+        "props": {
+          "open": {
+            "values": ["isOpen"],
+            "count": 2
+          },
+          "onOpenChange": {
+            "values": ["(_, { open }) => setIsOpen(open)"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "Dropdown": {
+        "props": {
+          "aria-labelledby": {
+            "values": ["dropdownId", "comboId"],
+            "count": 4
+          },
+          "placeholder": {
+            "values": ["Select an animal"],
+            "count": 4
+          },
+          "multiselect": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 4
+      },
+      "Field": {
+        "props": {
+          "label": {
+            "values": [
+              "Example field",
+              "Favorite Fruit",
+              "Textarea with placeholder",
+              "Select Employees",
+              "Default Textarea",
+              "Margin",
+              "X",
+              "Y"
+            ],
+            "count": 12
+          },
+          "validationState": {
+            "values": ["success", "none"],
+            "count": 6
+          },
+          "validationMessage": {
+            "values": ["This is a success message.", "Opaque Appearance", "Translucent Appearance"],
+            "count": 6
+          },
+          "style": {
+            "values": ["{ maxWidth: 400 }"],
+            "count": 1
+          },
+          "className": {
+            "values": ["styles.pane"],
+            "count": 2
+          }
+        },
+        "count": 18
+      },
+      "Input": {
+        "props": {
+          "id": {
+            "values": ["inputId", "emailId", "passId"],
+            "count": 5
+          },
+          "name": {
+            "values": ["email", "password"],
+            "count": 2
+          },
+          "placeholder": {
+            "values": ["Enter a valid email", "Placeholder text", "Type a message..."],
+            "count": 3
+          },
+          "required": {
+            "values": ["true"],
+            "count": 2
+          },
+          "type": {
+            "values": ["password", "number"],
+            "count": 4
+          },
+          "className": {
+            "values": ["styles.input"],
+            "count": 1
+          },
+          "autoFocus": {
+            "values": ["true"],
+            "count": 1
+          },
+          "onChange": {
+            "values": [
+              "({ target }) => setMargin(Number(target.value))",
+              "onFieldChange('x')",
+              "onFieldChange('y')",
+              "onChangeGoToIndex"
+            ],
+            "count": 6
+          },
+          "value": {
+            "values": ["margin.toString()", "position.x.toString()", "position.y.toString()"],
+            "count": 3
+          },
+          "appearance": {
+            "values": ["outline"],
+            "count": 1
+          },
+          "defaultValue": {
+            "values": ["'0'"],
+            "count": 3
+          }
+        },
+        "count": 16
+      },
+      "InfoLabel": {
+        "props": {
+          "info": {
+            "values": [
+              "<>\n            This is example information for an InfoLabel.{' '}\n            <Link href=\"https://react.fluentui.dev\">Learn more</Link>\n          </>"
+            ],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "Link": {
+        "props": {
+          "href": {
+            "values": [
+              "https://react.fluentui.dev",
+              "https://www.bing.com",
+              "https://bing.com",
+              "`mailto:${props.email}`"
+            ],
+            "count": 10
+          },
+          "ref": {
+            "values": ["linkRef"],
+            "count": 2
+          },
+          "target": {
+            "values": ["_blank"],
+            "count": 2
+          }
+        },
+        "count": 15
+      },
+      "Menu": {
+        "props": {
+          "positioning": {
+            "values": ["below-end", "{ autoSize: true }"],
+            "count": 9
+          },
+          "key": {
+            "values": ["keytipProps.id"],
+            "count": 2
+          },
+          "openOnContext": {
+            "values": ["true"],
+            "count": 1
+          },
+          "open": {
+            "values": ["menuOpen"],
+            "count": 1
+          },
+          "onOpenChange": {
+            "values": ["(_, data) => setMenuOpen(data.open)"],
+            "count": 1
+          },
+          "hasIcons": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 39
+      },
+      "MenuTrigger": {
+        "props": {
+          "disableButtonEnhancement": {
+            "values": ["true"],
+            "count": 32
+          }
+        },
+        "count": 39
+      },
+      "MenuList": {
+        "props": {},
+        "count": 36
+      },
+      "MenuItem": {
+        "props": {
+          "disabled": {
+            "values": ["true"],
+            "count": 6
+          },
+          "onClick": {
+            "values": ["onClick"],
+            "count": 20
+          },
+          "icon": {
+            "values": ["<Cut20Regular />", "<ClipboardPaste20Regular />", "<Edit20Regular />"],
+            "count": 9
+          },
+          "ref": {
+            "values": [
+              "menuItemA",
+              "menuItemB",
+              "firstMenuItemRef",
+              "secondMenuItemRef",
+              "mergedRefs",
+              "keytipMenuEnabled",
+              "keytipMenuDisabled",
+              "keytipRef"
+            ],
+            "count": 13
+          },
+          "id": {
+            "values": ["keytipProps.id", "id"],
+            "count": 4
+          }
+        },
+        "count": 86
+      },
+      "MenuPopover": {
+        "props": {},
+        "count": 38
+      },
+      "MessageBar": {
+        "props": {
+          "key": {
+            "values": ["intent"],
+            "count": 2
+          },
+          "intent": {
+            "values": ["intent"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "MessageBarTitle": {
+        "props": {},
+        "count": 2
+      },
+      "MessageBarBody": {
+        "props": {},
+        "count": 2
+      },
+      "MenuButton": {
+        "props": {
+          "ref": {
+            "values": ["ref", "menuRef"],
+            "count": 2
+          },
+          "icon": {
+            "values": ["<CalendarMonthRegular />"],
+            "count": 5
+          },
+          "appearance": {
+            "values": ["primary", "outline", "subtle", "transparent"],
+            "count": 4
+          }
+        },
+        "count": 7
+      },
+      "Overflow": {
+        "props": {
+          "minimumVisible": {
+            "values": ["1"],
+            "count": 3
+          }
+        },
+        "count": 7
+      },
+      "OverflowItem": {
+        "props": {
+          "key": {
+            "values": ["i", "id"],
+            "count": 5
+          },
+          "id": {
+            "values": ["i", "keytipProps.id", "id", "1"],
+            "count": 8
+          }
+        },
+        "count": 8
+      },
+      "Persona": {
+        "props": {
+          "name": {
+            "values": ["Kevin Sturgis"],
+            "count": 2
+          },
+          "secondaryText": {
+            "values": ["Available"],
+            "count": 2
+          },
+          "presence": {
+            "values": ["{ status: 'available' }"],
+            "count": 2
+          },
+          "avatar": {
+            "values": [
+              "{\n            image: {\n              src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',\n            },\n          }"
+            ],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "Radio": {
+        "props": {
+          "value": {
+            "values": ["apple", "pear", "banana", "orange", "px", "viewport"],
+            "count": 16
+          },
+          "label": {
+            "values": ["Apple", "Pear", "Banana", "Orange", "px", "viewport"],
+            "count": 16
+          }
+        },
+        "count": 16
+      },
+      "RadioGroup": {
+        "props": {
+          "layout": {
+            "values": ["horizontal"],
+            "count": 2
+          },
+          "onChange": {
+            "values": ["(_, data) => {\n            setUnit(data.value as 'px' | 'viewport');\n          }"],
+            "count": 1
+          },
+          "value": {
+            "values": ["unit"],
+            "count": 1
+          },
+          "aria-labelledby": {
+            "values": ["labelId"],
+            "count": 1
+          }
+        },
+        "count": 5
+      },
+      "Select": {
+        "props": {
+          "id": {
+            "values": ["selectId"],
+            "count": 4
+          }
+        },
+        "count": 4
+      },
+      "Skeleton": {
+        "props": {
+          "aria-label": {
+            "values": ["Loading Content"],
+            "count": 4
+          },
+          "appearance": {
+            "values": ["translucent"],
+            "count": 2
+          },
+          "style": {
+            "values": ["{ width: '100%' }", "{ width: 80 }"],
+            "count": 2
+          }
+        },
+        "count": 6
+      },
+      "SkeletonItem": {
+        "props": {
+          "shape": {
+            "values": ["rectangle"],
+            "count": 2
+          },
+          "animation": {
+            "values": ["pulse"],
+            "count": 2
+          },
+          "appearance": {
+            "values": ["translucent"],
+            "count": 2
+          }
+        },
+        "count": 6
+      },
+      "Slider": {
+        "props": {
+          "defaultValue": {
+            "values": ["20", "10", "30"],
+            "count": 5
+          },
+          "id": {
+            "values": ["id", "sliderId"],
+            "count": 5
+          }
+        },
+        "count": 5
+      },
+      "SpinButton": {
+        "props": {
+          "defaultValue": {
+            "values": ["10", "20", "38"],
+            "count": 5
+          },
+          "min": {
+            "values": ["0", "20", "30"],
+            "count": 5
+          },
+          "max": {
+            "values": ["20", "30", "40"],
+            "count": 5
+          },
+          "id": {
+            "values": ["spinId"],
+            "count": 3
+          }
+        },
+        "count": 5
+      },
+      "Switch": {
+        "props": {
+          "label": {
+            "values": ["This is a switch", "A", "B", "C", "D", "E", "Toggle animation"],
+            "count": 11
+          },
+          "defaultChecked": {
+            "values": ["true"],
+            "count": 1
+          },
+          "ref": {
+            "values": ["switchRef"],
+            "count": 2
+          },
+          "onChange": {
+            "values": ["(e, data) => setRunning(data.checked)"],
+            "count": 2
+          },
+          "checked": {
+            "values": ["running"],
+            "count": 2
+          }
+        },
+        "count": 11
+      },
+      "TableBody": {
+        "props": {},
+        "count": 2
+      },
+      "TableCell": {
+        "props": {},
+        "count": 8
+      },
+      "TableRow": {
+        "props": {
+          "key": {
+            "values": ["item.file.label"],
+            "count": 2
+          }
+        },
+        "count": 4
+      },
+      "Table": {
+        "props": {
+          "arial-label": {
+            "values": ["Default table"],
+            "count": 2
+          },
+          "style": {
+            "values": ["{ minWidth: '510px' }"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "TableHeader": {
+        "props": {},
+        "count": 2
+      },
+      "TableHeaderCell": {
+        "props": {
+          "key": {
+            "values": ["column.columnKey"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "TabList": {
+        "props": {
+          "defaultSelectedValue": {
+            "values": ["tab2"],
+            "count": 2
+          },
+          "onTabSelect": {
+            "values": ["onTabSelect"],
+            "count": 3
+          },
+          "selectTabOnFocus": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 8
+      },
+      "Tab": {
+        "props": {
+          "value": {
+            "values": [
+              "tab1",
+              "tab2",
+              "tab3",
+              "tab4",
+              "1",
+              "2",
+              "3",
+              "all",
+              "missed",
+              "incoming",
+              "voicemail",
+              "Home",
+              "View",
+              "Help"
+            ],
+            "count": 24
+          },
+          "id": {
+            "values": ["1", "2", "3", "Home", "View", "Help"],
+            "count": 8
+          },
+          "ref": {
+            "values": [
+              "refFirstTab",
+              "refSecondTab",
+              "refThirdTab",
+              "homeButtonKeytipRef",
+              "valueButtonKeytipRef",
+              "helpButtonKeytipRef"
+            ],
+            "count": 8
+          }
+        },
+        "count": 24
+      },
+      "Text": {
+        "props": {
+          "as": {
+            "values": ["h5"],
+            "count": 1
+          },
+          "weight": {
+            "values": ["semibold"],
+            "count": 1
+          },
+          "style": {
+            "values": ["{ margin: 0 }"],
+            "count": 1
+          },
+          "aria-live": {
+            "values": ["polite"],
+            "count": 2
+          }
+        },
+        "count": 7
+      },
+      "Textarea": {
+        "props": {
+          "placeholder": {
+            "values": ["type here...", "Type something"],
+            "count": 4
+          },
+          "className": {
+            "values": ["styles.textArea"],
+            "count": 2
+          }
+        },
+        "count": 5
+      },
+      "Toast": {
+        "props": {},
+        "count": 1
+      },
+      "ToastTitle": {
+        "props": {
+          "action": {
+            "values": ["<Link>Undo</Link>"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "ToastBody": {
+        "props": {
+          "subtitle": {
+            "values": ["Subtitle"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "ToastFooter": {
+        "props": {},
+        "count": 1
+      },
+      "Toaster": {
+        "props": {
+          "toasterId": {
+            "values": ["toasterId"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "Toolbar": {
+        "props": {
+          "aria-label": {
+            "values": [
+              "Small",
+              "toolbarLables.leftActionsAriaLabel",
+              "toolbarLables.rightActionsAriaLabel",
+              "toolbarLabels.brandAriaLabel",
+              "toolbarLabels.actionsAriaLabel"
+            ],
+            "count": 6
+          },
+          "size": {
+            "values": ["small", "medium"],
+            "count": 6
+          },
+          "style": {
+            "values": ["{\n          border: '2px solid black',\n          borderRadius: '8px',\n        }"],
+            "count": 2
+          },
+          "className": {
+            "values": ["styles.brandToolbar"],
+            "count": 1
+          }
+        },
+        "count": 9
+      },
+      "ToolbarButton": {
+        "props": {
+          "aria-label": {
+            "values": [
+              "Increase Font Size",
+              "Decrease Font Size",
+              "Reset Font Size",
+              "`${overflowCount} more tabs`",
+              "toolbarLabels.arrowBackAriaLabel",
+              "toolbarLabels.dismissAriaLabel"
+            ],
+            "count": 9
+          },
+          "appearance": {
+            "values": ["primary", "transparent"],
+            "count": 13
+          },
+          "icon": {
+            "values": [
+              "<FontIncrease24Regular />",
+              "<FontDecrease24Regular />",
+              "<TextFont24Regular />",
+              "<CursorClickRegular />",
+              "<ClipboardCheckmarkRegular />",
+              "<CloudSyncRegular />",
+              "<MoreHorizontalRegular />",
+              "<ArrowLeftRegular />",
+              "<DismissRegular />"
+            ],
+            "count": 18
+          },
+          "ref": {
+            "values": ["mergedRefs"],
+            "count": 3
+          },
+          "key": {
+            "values": ["clipboard", "cloud", "more-menu"],
+            "count": 7
+          },
+          "as": {
+            "values": ["button"],
+            "count": 2
+          },
+          "onClick": {
+            "values": ["onArrowBackClick", "onDismissClick"],
+            "count": 2
+          }
+        },
+        "count": 20
+      },
+      "Tooltip": {
+        "props": {
+          "content": {
+            "values": [
+              "This is the description of the button",
+              "5 tasks for people to follow up on",
+              "2 files",
+              "8 tasks for people to follow up on",
+              "Hello, world!",
+              "Hello world!",
+              "caption",
+              "title"
+            ],
+            "count": 21
+          },
+          "relationship": {
+            "values": ["description", "label"],
+            "count": 21
+          },
+          "visible": {
+            "values": ["titleHasEllipsis && isVisibleTooltip"],
+            "count": 1
+          },
+          "onVisibleChange": {
+            "values": ["handleTooltipVisibleChange"],
+            "count": 1
+          }
+        },
+        "count": 21
+      },
+      "Tree": {
+        "props": {
+          "aria-label": {
+            "values": ["Default"],
+            "count": 2
+          }
+        },
+        "count": 8
+      },
+      "TreeItem": {
+        "props": {
+          "itemType": {
+            "values": ["branch", "leaf"],
+            "count": 16
+          }
+        },
+        "count": 16
+      },
+      "TreeItemLayout": {
+        "props": {},
+        "count": 16
+      },
+      "SwatchPicker": {
+        "props": {
+          "aria-label": {
+            "values": ["SwatchPicker default"],
+            "count": 1
+          },
+          "selectedValue": {
+            "values": ["selectedValue"],
+            "count": 1
+          },
+          "onSelectionChange": {
+            "values": ["handleSelect"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "ColorSwatch": {
+        "props": {
+          "color": {
+            "values": ["#FF1921", "#FF7A00", "#90D057", "#00B053", "#00AFED", "#006EBD", "#011F5E", "#712F9E"],
+            "count": 8
+          },
+          "value": {
+            "values": ["FF1921", "FF7A00", "90D057", "00B053", "00AFED", "006EBD", "011F5E", "712F9E"],
+            "count": 8
+          },
+          "aria-label": {
+            "values": ["red", "orange", "light green", "green", "light blue", "blue", "dark blue", "purple"],
+            "count": 8
+          },
+          "disabled": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 8
+      },
+      "InteractionTag": {
+        "props": {
+          "appearance": {
+            "values": ["outline", "brand"],
+            "count": 6
+          },
+          "shape": {
+            "values": ["circular"],
+            "count": 12
+          },
+          "size": {
+            "values": ["small"],
+            "count": 12
+          }
+        },
+        "count": 15
+      },
+      "InteractionTagPrimary": {
+        "props": {
+          "icon": {
+            "values": ["<CalendarMonth />", "<CheckmarkCircleRegular />", "<AttachRegular />"],
+            "count": 15
+          },
+          "hasSecondaryAction": {
+            "values": ["true"],
+            "count": 3
+          },
+          "aria-label": {
+            "values": ["5 tasks for people to follow up on", "2 files", "8 tasks for people to follow up on"],
+            "count": 12
+          }
+        },
+        "count": 15
+      },
+      "InteractionTagSecondary": {
+        "props": {
+          "aria-label": {
+            "values": ["remove"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "TagPicker": {
+        "props": {
+          "onOptionSelect": {
+            "values": ["onOptionSelect"],
+            "count": 1
+          },
+          "selectedOptions": {
+            "values": ["selectedOptions"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "TagPickerControl": {
+        "props": {},
+        "count": 1
+      },
+      "TagPickerGroup": {
+        "props": {
+          "aria-label": {
+            "values": ["Selected Employees"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "TagPickerInput": {
+        "props": {
+          "aria-label": {
+            "values": ["Select Employees"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "TagPickerList": {
+        "props": {},
+        "count": 1
+      },
+      "TagPickerOption": {
+        "props": {
+          "secondaryContent": {
+            "values": ["Microsoft FTE"],
+            "count": 1
+          },
+          "media": {
+            "values": [
+              "<Avatar\n                        shape=\"square\"\n                        aria-hidden\n                        name={option}\n                        color=\"colorful\"\n                      />"
+            ],
+            "count": 1
+          },
+          "value": {
+            "values": ["option", "no-options"],
+            "count": 2
+          },
+          "key": {
+            "values": ["option"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "Tag": {
+        "props": {
+          "key": {
+            "values": ["option"],
+            "count": 1
+          },
+          "shape": {
+            "values": ["rounded", "circular"],
+            "count": 3
+          },
+          "media": {
+            "values": ["<Avatar aria-hidden name={option} color=\"colorful\" />"],
+            "count": 1
+          },
+          "value": {
+            "values": ["option"],
+            "count": 1
+          },
+          "className": {
+            "values": ["mergeClasses(styles.missedTag, styles.tag)"],
+            "count": 2
+          },
+          "size": {
+            "values": ["small"],
+            "count": 2
+          }
+        },
+        "count": 3
+      },
+      "SplitButton": {
+        "props": {
+          "menuButton": {
+            "values": [
+              "triggerProps",
+              "{\n              ...triggerProps,\n              // @ts-expect-error ref exists\n              ref: useMergedRefs(splitButton, triggerProps.ref),\n            }",
+              "{\n                  ...triggerProps,\n                  // @ts-expect-error ref does not exist on triggerProps type\n                  ref: mergeCallbacks(triggerProps.ref, keytipRef),\n                }",
+              "{\n              ...triggerProps,\n              ref: useMergedRefs(triggerProps.ref, keytipRef),\n            }"
+            ],
+            "count": 8
+          },
+          "primaryActionButton": {
+            "values": ["primaryActionButtonProps"],
+            "count": 5
+          },
+          "appearance": {
+            "values": ["primary", "outline", "subtle", "transparent"],
+            "count": 5
+          },
+          "ref": {
+            "values": ["mergedRefs", "ref"],
+            "count": 2
+          },
+          "icon": {
+            "values": ["icon", "<MailRegular />"],
+            "count": 2
+          }
+        },
+        "count": 8
+      },
+      "MenuItemLink": {
+        "props": {
+          "href": {
+            "values": ["https://www.microsoft.com"],
+            "count": 4
+          },
+          "target": {
+            "values": ["_blank"],
+            "count": 1
+          }
+        },
+        "count": 4
+      },
+      "MenuGroup": {
+        "props": {},
+        "count": 2
+      },
+      "MenuGroupHeader": {
+        "props": {},
+        "count": 2
+      },
+      "MenuDivider": {
+        "props": {},
+        "count": 1
+      },
+      "CompoundButton": {
+        "props": {
+          "ref": {
+            "values": ["compoundButton"],
+            "count": 1
+          },
+          "icon": {
+            "values": ["<CalendarMonthRegular />"],
+            "count": 1
+          },
+          "secondaryContent": {
+            "values": ["Keytips"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "RendererProvider": {
+        "props": {
+          "renderer": {
+            "values": ["renderer"],
+            "count": 2
+          },
+          "targetDocument": {
+            "values": ["targetDocument"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "PortalMountNodeProvider": {
+        "props": {
+          "value": {
+            "values": ["root"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "Body1Stronger": {
+        "props": {},
+        "count": 2
+      },
+      "Caption1Stronger": {
+        "props": {},
+        "count": 2
+      },
+      "Image": {
+        "props": {
+          "src": {
+            "values": ["https://placehold.co/130x70"],
+            "count": 6
+          },
+          "alt": {
+            "values": ["Meeting recording"],
+            "count": 6
+          }
+        },
+        "count": 6
+      },
+      "Title2": {
+        "props": {
+          "className": {
+            "values": ["styles.h2"],
+            "count": 1
+          },
+          "as": {
+            "values": ["h2"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "Drawer": {
+        "props": {
+          "type": {
+            "values": ["overlay"],
+            "count": 1
+          },
+          "position": {
+            "values": ["position"],
+            "count": 1
+          },
+          "size": {
+            "values": ["size"],
+            "count": 1
+          },
+          "open": {
+            "values": ["isOpen"],
+            "count": 1
+          },
+          "onOpenChange": {
+            "values": ["(_, { open }) => setIsOpen(open)"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "DrawerFooter": {
+        "props": {},
+        "count": 1
+      },
+      "AvatarFluent": {
+        "props": {
+          "className": {
+            "values": ["v9ClassName"],
+            "count": 1
+          },
+          "name": {
+            "values": ["user?.displayName"],
+            "count": 1
+          },
+          "size": {
+            "values": ["20"],
+            "count": 1
+          },
+          "image": {
+            "values": ["{\n          src: avatarUrl ?? user?.avatarUrl,\n        }"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "TableCellActions": {
+        "props": {},
+        "count": 4
+      },
+      "TableRowIdContextProvider": {
+        "props": {
+          "value": {
+            "values": ["row.rowId"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "ColumnIdContextProvider": {
+        "props": {
+          "value": {
+            "values": ["columnDef?.columnId", "column.columnId"],
+            "count": 2
+          },
+          "key": {
+            "values": ["columnDef?.columnId"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "TabListProvider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.tabList"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "Portal": {
+        "props": {
+          "mountNode": {
+            "values": ["{\n          className: classes.portal,\n          ...state.mountNode,\n        }"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {
+      "useId": {
+        "props": {
+          "arg0": {
+            "values": [
+              "'combo-default'",
+              "'dropdown-default'",
+              "'input'",
+              "'toaster'",
+              "'spin-button'",
+              "'slider-default'",
+              "'select-default'",
+              "'window'",
+              "'label-'",
+              "'draggable-dialog-'",
+              "'keytip-'",
+              "'combobox'"
+            ],
+            "count": 17
+          },
+          "arg1": {
+            "values": ["shadowDOMAPI?.windowId", "`keytip-${id}`"],
+            "count": 2
+          }
+        },
+        "count": 21
+      },
+      "useIsOverflowItemVisible": {
+        "props": {
+          "arg0": {
+            "values": ["id", "keytipProps.id"],
+            "count": 7
+          }
+        },
+        "count": 7
+      },
+      "useOverflowMenu": {
+        "props": {},
+        "count": 4
+      },
+      "useToastController": {
+        "props": {
+          "arg0": {
+            "values": ["toasterId"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useFluent": {
+        "props": {},
+        "count": 31
+      },
+      "useFocusFinders": {
+        "props": {},
+        "count": 2
+      },
+      "useMergedRefs": {
+        "props": {
+          "arg0": {
+            "values": [
+              "splitButton",
+              "ref",
+              "navWrapperRef",
+              "handle.elementRef",
+              "state.body.ref",
+              "baseState.root.ref",
+              "props.bodyRef",
+              "props.headerRef",
+              "state.content.ref",
+              "triggerProps.ref",
+              "scrollRef"
+            ],
+            "count": 23
+          },
+          "arg1": {
+            "values": [
+              "triggerProps.ref",
+              "keytipRef",
+              "menuRef",
+              "sideWrapperRef",
+              "elementRef",
+              "triggerRef as React.MutableRefObject<HTMLDivElement | null>",
+              "setupScrollRef",
+              "innerBodyRef",
+              "innerHeaderRef",
+              "forwardedRef",
+              "containerRef",
+              "useFocusVisible<HTMLDivElement>({ targetDocument })"
+            ],
+            "count": 21
+          },
+          "arg2": {
+            "values": ["footerWrapperRef"],
+            "count": 1
+          }
+        },
+        "count": 23
+      },
+      "useTableRowStyles_unstable": {
+        "props": {
+          "noNativeElements": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableRow_unstable": {
+        "props": {
+          "arg1": {
+            "values": ["React.createRef()"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableCell_unstable": {
+        "props": {
+          "arg1": {
+            "values": ["React.createRef()"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableHeader_unstable": {
+        "props": {
+          "arg1": {
+            "values": ["React.createRef()"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableHeaderCell_unstable": {
+        "props": {
+          "arg1": {
+            "values": ["React.createRef()"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableCellStyles_unstable": {
+        "props": {
+          "noNativeElements": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableHeaderStyles_unstable": {
+        "props": {
+          "noNativeElements": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTableHeaderCellStyles_unstable": {
+        "props": {
+          "noNativeElements": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useEventCallback": {
+        "props": {
+          "arg0": {
+            "values": [
+              "(data: TreeGridRowOnOpenChangeData & { index: number }) => {\n      const row = data.event.currentTarget;\n      if (isHTMLElement(row)) {\n        const id = row.dataset.itemId;\n        if (id) {\n          setOpenItems((prev) => {\n            const next = new Map(prev);\n            if (data.open) {\n              next.set(id, data.index);\n            } else {\n              next.delete(id);\n            }\n            return next;\n          });\n        }\n      }\n    }",
+              "(event: KeyboardEvent) => {\n    if (!isSupportedKey(growDirection, event.key)) {\n      return;\n    }\n\n    const currentValue = getCurrentValue();\n\n    const multiplier = multipliers[growDirection][event.key] ?? 1;\n    const directionMultiplier =\n      dir === 'rtl' && ['start', 'end'].includes(growDirection) ? -1 : 1;\n    const offset =\n      multiplier * unitHandle.getOffsetStep() * directionMultiplier;\n\n    onValueChange(event, {\n      event,\n      value: unitHandle.roundValue(currentValue + offset),\n      type: EVENTS.keyboard,\n      unit: unitHandle.name,\n    });\n  }",
+              "(event: NativeTouchOrMouseEvent) => {\n      const { clientX, clientY } = getEventClientCoords(event);\n      const deltaCoords = [\n        clientX - dragStartOriginCoords.current.clientX,\n        clientY - dragStartOriginCoords.current.clientY,\n      ];\n\n      let newValue = startValue.current;\n\n      switch (growDirection) {\n        case 'end':\n          newValue += unitHandle.fromPxToValue(\n            deltaCoords[0] * (dir === 'rtl' ? -1 : 1)\n          );\n          break;\n        case 'start':\n          newValue -= unitHandle.fromPxToValue(\n            deltaCoords[0] * (dir === 'rtl' ? -1 : 1)\n          );\n          break;\n        case 'up':\n          newValue -= unitHandle.fromPxToValue(deltaCoords[1]);\n          break;\n        case 'down':\n          newValue += unitHandle.fromPxToValue(deltaCoords[1]);\n          break;\n      }\n\n      onValueChange(event, {\n        value: unitHandle.roundValue(newValue),\n        unit: unitHandle.name,\n        ...(isTouchEvent(event)\n          ? { event, type: EVENTS.touch }\n          : { event, type: EVENTS.mouse }),\n      });\n    }",
+              "(event: NativeTouchOrMouseEvent) => {\n    if (targetWindow) {\n      rafIdRef.current = targetWindow.requestAnimationFrame(() =>\n        recalculatePosition(event)\n      );\n    }\n  }",
+              "(event: NativeTouchOrMouseEvent) => {\n    if (isMouseEvent(event)) {\n      targetDocument?.removeEventListener('mouseup', onDragEnd);\n      targetDocument?.removeEventListener('mousemove', onDrag);\n    }\n\n    if (isTouchEvent(event)) {\n      targetDocument?.removeEventListener('touchend', onDragEnd);\n      targetDocument?.removeEventListener('touchmove', onDrag);\n    }\n\n    // Heads up!\n    //\n    // To keep the order of events, we need to cancel the animation frame i.e. the order should be always:\n    // - onChange\n    // - onDragEnd\n\n    if (targetWindow && rafIdRef.current) {\n      targetWindow.cancelAnimationFrame(rafIdRef.current);\n    }\n\n    recalculatePosition(event);\n    params.onDragEnd?.(\n      event,\n      isTouchEvent(event)\n        ? { event, type: EVENTS.touch, unit: unitHandle.name }\n        : { event, type: EVENTS.mouse, unit: unitHandle.name }\n    );\n  }",
+              "(event: NativeTouchOrMouseEvent) => {\n    dragStartOriginCoords.current = getEventClientCoords(event);\n    // As we start dragging, save the current value otherwise the value increases,\n    // the delta compounds and the element grows/shrinks too fast.\n    startValue.current = getCurrentValue();\n\n    if (event.defaultPrevented) {\n      return;\n    }\n\n    if (isMouseEvent(event)) {\n      // ignore other buttons than primary mouse button\n      if (event.target !== event.currentTarget || event.button !== 0) {\n        return;\n      }\n      targetDocument?.addEventListener('mouseup', onDragEnd);\n      targetDocument?.addEventListener('mousemove', onDrag);\n    }\n\n    if (isTouchEvent(event)) {\n      targetDocument?.addEventListener('touchend', onDragEnd);\n      targetDocument?.addEventListener('touchmove', onDrag);\n    }\n\n    params.onDragStart?.(\n      event,\n      isTouchEvent(event)\n        ? { event, type: EVENTS.touch, unit: unitHandle.name }\n        : { event, type: EVENTS.mouse, unit: unitHandle.name }\n    );\n  }",
+              "(e, data) => {\n    onDragStart?.(e, {\n      ...data,\n      value: currentValue.current,\n    } as ResizeHandleUpdateEventData);\n  }",
+              "(e, data) => {\n    onDragEnd?.(e, {\n      ...data,\n      value: currentValue.current,\n    } as ResizeHandleUpdateEventData);\n  }",
+              "onPositionChange",
+              "(event: React.KeyboardEvent<HTMLDivElement>) => {\n    props.onKeyDown?.(event);\n    if (!isHTMLElement(event.target)) {\n      return;\n    }\n    // TreeGridRow\n    if (event.target.role === 'row') {\n      handleTreeGridRowKeyDown(event);\n      return;\n    }\n    const row = event.target.closest<HTMLElement>('[role=row]');\n    if (!row) {\n      return;\n    }\n    // TreeGridInteraction\n    if (event.target.role === 'group') {\n      handleTreeGridInteractionCellKeyDown(event, row);\n      return;\n    }\n    const wrapper = event.target.closest<HTMLDivElement>(\n      '[role=row],[role=group],[role=rowheader],[role=gridcell]'\n    );\n    // if the target is inside a TreeGridInteraction,\n    // keydown should be handled by the interaction cell\n    if (wrapper?.role === 'group') {\n      return;\n    }\n    // TreeGridCell\n    handleTreeGridCellKeyDown(event, row);\n  }",
+              "(event: React.KeyboardEvent<HTMLDivElement>) => {\n        props.onKeyDown?.(event);\n        if (event.target !== event.currentTarget) return;\n        switch (event.key) {\n          case Enter: {\n            return event.currentTarget.click();\n          }\n          case ArrowRight: {\n            if (open === false) {\n              requestOpenChange({ open: true, event, type: 'keydown' });\n            }\n            return;\n          }\n          case ArrowLeft: {\n            if (open === true) {\n              requestOpenChange({ open: false, event, type: 'keydown' });\n            }\n            return;\n          }\n        }\n      }",
+              "(event: React.MouseEvent<HTMLDivElement>) => {\n        props.onClick?.(event);\n        let element = event.target as HTMLElement | SVGElement | null;\n        while (element && element !== event.currentTarget) {\n          if (element.tabIndex >= 0) return;\n          element = element.parentElement;\n        }\n        requestOpenChange({ open: !open, event, type: 'click' });\n      }"
+            ],
+            "count": 12
+          }
+        },
+        "count": 12
+      },
+      "useScrollbarWidth": {
+        "props": {
+          "targetDocument": {
+            "values": ["targetDocument"],
+            "count": 6
+          }
+        },
+        "count": 6
+      },
+      "useBadgeStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDialogBodyStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDialogSurfaceStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useArrowNavigationGroup": {
+        "props": {
+          "axis": {
+            "values": ["'vertical'", "'horizontal'"],
+            "count": 2
+          },
+          "memorizeCurrent": {
+            "values": ["true"],
+            "count": 2
+          },
+          "unstable_hasDefault": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "useFocusableGroup": {
+        "props": {
+          "ignoreDefaultKeydown": {
+            "values": ["{ Enter: true }"],
+            "count": 3
+          },
+          "tabBehavior": {
+            "values": ["'limited-trap-focus'"],
+            "count": 4
+          }
+        },
+        "count": 6
+      },
+      "usePopoverContext_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["(context) => context.setOpen", "(context) => context.triggerRef"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useIsomorphicLayoutEffect": {
+        "props": {
+          "arg0": {
+            "values": ["() => {\n    callbackRef.current = fn;\n  }"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["[fn]"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridContextValues_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useDataGridStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useDataGrid_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useBaseState": {
+        "props": {
+          "'aria-rowcount'": {
+            "values": ["props.items.length"],
+            "count": 2
+          },
+          "containerWidthOffset": {
+            "values": ["containerWidthOffset"],
+            "count": 2
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 6
+          },
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "'aria-rowindex'": {
+            "values": ["rowIndex"],
+            "count": 2
+          },
+          "'aria-colindex'": {
+            "values": ["colIndex"],
+            "count": 2
+          },
+          "'aria-colcount'": {
+            "values": ["columns.length"],
+            "count": 1
+          }
+        },
+        "count": 6
+      },
+      "useDataGridBody_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useDataGridBodyBase_unstable": {
+        "props": {
+          "children": {
+            "values": ["renderRowWithUnknown", "() => null"],
+            "count": 2
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useDataGridBodyStyles_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useDataGridBodyStylesBase_unstable": {
+        "props": {
+          "renderRow": {
+            "values": ["() => null"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useDataGridHeader_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useDataGridHeaderStyles_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useDataGridHeaderStylesBase_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridRowStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state as unknown as DataGridRowState"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridRowStylesBase_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridRow_unstable": {
+        "props": {
+          "children": {
+            "values": ["() => null"],
+            "count": 1
+          },
+          "'aria-rowindex'": {
+            "values": ["1"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridContext_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["(cxt) => cxt.columns", "(ctx) => ctx.columns"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useDataGridCellStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridCell_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useDataGridHeaderCell_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useDataGridHeaderCellStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useAnimationFrame": {
+        "props": {},
+        "count": 1
+      },
+      "useFluentProviderContextValues_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useTab_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useIsSSR": {
+        "props": {},
+        "count": 1
+      },
+      "useTimeout": {
+        "props": {},
+        "count": 3
+      },
+      "useFocusVisible": {
+        "props": {
+          "targetDocument": {
+            "values": ["targetDocument"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useButton_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useButtonStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useMenuButton_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useMenuButtonStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useToggleButtonStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["state"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useToggleButton_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["props"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "types": {
+      "AvatarGroupProps": {
+        "count": 1
+      },
+      "ComboboxProps": {
+        "count": 2
+      },
+      "PresenceBadgeStatus": {
+        "count": 8
+      },
+      "TableColumnDefinition": {
+        "count": 12
+      },
+      "JSXElement": {
+        "count": 46
+      },
+      "DropdownProps": {
+        "count": 1
+      },
+      "FieldProps": {
+        "count": 1
+      },
+      "InfoLabelProps": {
+        "count": 1
+      },
+      "InputProps": {
+        "count": 1
+      },
+      "MessageBarIntent": {
+        "count": 1
+      },
+      "OverflowItemProps": {
+        "count": 1
+      },
+      "PersonaProps": {
+        "count": 1
+      },
+      "RadioGroupProps": {
+        "count": 1
+      },
+      "SelectProps": {
+        "count": 1
+      },
+      "SkeletonProps": {
+        "count": 1
+      },
+      "SwatchPickerOnSelectEventHandler": {
+        "count": 1
+      },
+      "TagPickerProps": {
+        "count": 1
+      },
+      "MenuButtonProps": {
+        "count": 4
+      },
+      "SelectTabData": {
+        "count": 3
+      },
+      "SelectTabEvent": {
+        "count": 3
+      },
+      "TabValue": {
+        "count": 3
+      },
+      "Slot": {
+        "count": 11
+      },
+      "HeadlessFlatTreeItemProps": {
+        "count": 1
+      },
+      "ForwardRefComponent": {
+        "count": 14
+      },
+      "BrandVariants": {
+        "count": 7
+      },
+      "ColorTokens": {
+        "count": 1
+      },
+      "Theme": {
+        "count": 6
+      },
+      "BadgeState": {
+        "count": 2
+      },
+      "ButtonState": {
+        "count": 2
+      },
+      "CardFooterState": {
+        "count": 2
+      },
+      "CardHeaderState": {
+        "count": 2
+      },
+      "CardState": {
+        "count": 2
+      },
+      "DialogBodyState": {
+        "count": 2
+      },
+      "DialogSurfaceState": {
+        "count": 2
+      },
+      "DrawerBodyState": {
+        "count": 2
+      },
+      "DrawerFooterState": {
+        "count": 2
+      },
+      "DrawerHeaderNavigationState": {
+        "count": 2
+      },
+      "DrawerHeaderState": {
+        "count": 2
+      },
+      "DrawerHeaderTitleState": {
+        "count": 2
+      },
+      "DrawerState": {
+        "count": 2
+      },
+      "FluentProviderProps": {
+        "count": 3
+      },
+      "InputState": {
+        "count": 2
+      },
+      "InlineDrawerState": {
+        "count": 2
+      },
+      "OverlayDrawerState": {
+        "count": 2
+      },
+      "DrawerProps": {
+        "count": 1
+      },
+      "AvatarProps": {
+        "count": 1
+      },
+      "PartialTheme": {
+        "count": 3
+      },
+      "TabListProps": {
+        "count": 1
+      },
+      "GriffelStyle": {
+        "count": 3
+      },
+      "ButtonProps": {
+        "count": 1
+      },
+      "BadgeProps": {
+        "count": 1
+      },
+      "DialogProps": {
+        "count": 2
+      },
+      "ComponentProps": {
+        "count": 10
+      },
+      "ComponentState": {
+        "count": 6
+      },
+      "SlotClassNames": {
+        "count": 6
+      },
+      "TooltipProps": {
+        "count": 1
+      },
+      "DataGridProps": {
+        "count": 2
+      },
+      "DataGridState": {
+        "count": 1
+      },
+      "DataGridContextValues": {
+        "count": 2
+      },
+      "TableRowData": {
+        "count": 4
+      },
+      "DataGridBodyProps": {
+        "count": 2
+      },
+      "DataGridBodySlots": {
+        "count": 2
+      },
+      "DataGridBodyState": {
+        "count": 2
+      },
+      "DataGridHeaderProps": {
+        "count": 2
+      },
+      "DataGridHeaderState": {
+        "count": 2
+      },
+      "DataGridRowProps": {
+        "count": 3
+      },
+      "DataGridRowState": {
+        "count": 4
+      },
+      "DataGridContextValue": {
+        "count": 2
+      },
+      "DataGridCellProps": {
+        "count": 2
+      },
+      "DataGridCellState": {
+        "count": 1
+      },
+      "DataGridHeaderCellProps": {
+        "count": 2
+      },
+      "DataGridHeaderCellState": {
+        "count": 1
+      },
+      "DataGridRowSlots": {
+        "count": 1
+      },
+      "DialogSurfaceProps": {
+        "count": 1
+      },
+      "FluentProviderState": {
+        "count": 4
+      },
+      "TabListContextValue": {
+        "count": 1
+      },
+      "TabSlots": {
+        "count": 1
+      },
+      "TabProps": {
+        "count": 1
+      },
+      "TabState": {
+        "count": 2
+      },
+      "PositioningProps": {
+        "count": 1
+      },
+      "PortalProps": {
+        "count": 1
+      },
+      "SplitButtonProps": {
+        "count": 1
+      },
+      "FluentProviderContextValues": {
+        "count": 1
+      },
+      "FluentProviderSlots": {
+        "count": 2
+      }
+    },
+    "others": {
+      "webLightTheme": {
+        "count": 6
+      },
+      "makeStyles": {
+        "count": 93
+      },
+      "shorthands": {
+        "count": 19
+      },
+      "tokens": {
+        "count": 32
+      },
+      "partitionAvatarGroupItems": {
+        "count": 1
+      },
+      "Card": {
+        "count": 1
+      },
+      "CardFooter": {
+        "count": 1
+      },
+      "CardHeader": {
+        "count": 1
+      },
+      "CardPreview": {
+        "count": 1
+      },
+      "FluentProvider": {
+        "count": 2
+      },
+      "Dialog": {
+        "count": 1
+      },
+      "DialogTrigger": {
+        "count": 1
+      },
+      "DialogSurface": {
+        "count": 1
+      },
+      "DialogTitle": {
+        "count": 1
+      },
+      "DialogBody": {
+        "count": 1
+      },
+      "DialogActions": {
+        "count": 1
+      },
+      "DialogContent": {
+        "count": 1
+      },
+      "Button": {
+        "count": 3
+      },
+      "mergeClasses": {
+        "count": 42
+      },
+      "Switch": {
+        "count": 1
+      },
+      "Tab": {
+        "count": 1
+      },
+      "TabList": {
+        "count": 1
+      },
+      "Link": {
+        "count": 1
+      },
+      "Toaster": {
+        "count": 1
+      },
+      "Toast": {
+        "count": 1
+      },
+      "ToastTitle": {
+        "count": 1
+      },
+      "ToastBody": {
+        "count": 1
+      },
+      "ToastFooter": {
+        "count": 1
+      },
+      "Tree": {
+        "count": 1
+      },
+      "TreeItem": {
+        "count": 1
+      },
+      "TreeItemLayout": {
+        "count": 1
+      },
+      "teamsLightV21Theme": {
+        "count": 1
+      },
+      "makeResetStyles": {
+        "count": 3
+      },
+      "PortalMountNodeProvider": {
+        "count": 1
+      },
+      "Avatar": {
+        "count": 1
+      },
+      "createDOMRenderer": {
+        "count": 1
+      },
+      "mergeCallbacks": {
+        "count": 1
+      },
+      "createCSSRuleFromTheme": {
+        "count": 1
+      },
+      "createDarkTheme": {
+        "count": 2
+      },
+      "createLightTheme": {
+        "count": 1
+      },
+      "assertSlots": {
+        "count": 6
+      },
+      "getIntrinsicElementProps": {
+        "count": 6
+      },
+      "slot": {
+        "count": 12
+      },
+      "getPartitionedNativeProps": {
+        "count": 3
+      },
+      "createFocusOutlineStyle": {
+        "count": 2
+      },
+      "typographyStyles": {
+        "count": 1
+      },
+      "createCustomFocusIndicatorStyle": {
+        "count": 1
+      },
+      "renderDataGrid_unstable": {
+        "count": 2
+      },
+      "getSlots": {
+        "count": 3
+      },
+      "TableRowIdContextProvider": {
+        "count": 2
+      },
+      "renderDataGridHeader_unstable": {
+        "count": 1
+      },
+      "renderDataGridRow_unstable": {
+        "count": 1
+      },
+      "DataGridProps": {
+        "count": 1
+      },
+      "DataGridState": {
+        "count": 1
+      },
+      "ColumnIdContextProvider": {
+        "count": 2
+      },
+      "renderDataGridCell_unstable": {
+        "count": 1
+      },
+      "renderDataGridHeaderCell_unstable": {
+        "count": 1
+      },
+      "renderFluentProvider_unstable": {
+        "count": 1
+      },
+      "resolvePositioningShorthand": {
+        "count": 1
+      },
+      "renderButton_unstable": {
+        "count": 1
+      },
+      "ButtonProps": {
+        "count": 1
+      },
+      "renderMenuButton_unstable": {
+        "count": 1
+      },
+      "MenuButtonProps": {
+        "count": 1
+      },
+      "ToggleButtonProps": {
+        "count": 1
+      },
+      "renderToggleButton_unstable": {
+        "count": 1
+      }
+    },
+    "count": 1219
+  },
+  "@fluentui/react-icons": {
+    "components": {
+      "InfoFilled": {
+        "props": {
+          "className": {
+            "values": ["styles.nativePropsIcon"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "CalendarMonthRegular": {
+        "props": {},
+        "count": 10
+      },
+      "ArrowReplyRegular": {
+        "props": {
+          "fontSize": {
+            "values": ["16"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "ShareRegular": {
+        "props": {
+          "fontSize": {
+            "values": ["16"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "DocumentRegular": {
+        "props": {},
+        "count": 7
+      },
+      "EditRegular": {
+        "props": {},
+        "count": 7
+      },
+      "FolderRegular": {
+        "props": {},
+        "count": 8
+      },
+      "OpenRegular": {
+        "props": {},
+        "count": 14
+      },
+      "VideoRegular": {
+        "props": {},
+        "count": 7
+      },
+      "DocumentPdfRegular": {
+        "props": {},
+        "count": 7
+      },
+      "PeopleRegular": {
+        "props": {},
+        "count": 8
+      },
+      "Dismiss24Regular": {
+        "props": {},
+        "count": 2
+      },
+      "FontIncrease24Regular": {
+        "props": {},
+        "count": 2
+      },
+      "FontDecrease24Regular": {
+        "props": {},
+        "count": 2
+      },
+      "TextFont24Regular": {
+        "props": {},
+        "count": 2
+      },
+      "CheckmarkCircle20Filled": {
+        "props": {
+          "color": {
+            "values": ["#6bb700"],
+            "count": 19
+          }
+        },
+        "count": 19
+      },
+      "ErrorCircle20Filled": {
+        "props": {
+          "color": {
+            "values": ["#fce100"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "TextBoldRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextUnderlineRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextItalicRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextAlignLeftRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextAlignCenterRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextAlignRightRegular": {
+        "props": {},
+        "count": 1
+      },
+      "CopyRegular": {
+        "props": {},
+        "count": 1
+      },
+      "CutRegular": {
+        "props": {},
+        "count": 1
+      },
+      "ClipboardPasteRegular": {
+        "props": {},
+        "count": 1
+      },
+      "DismissCircle20Filled": {
+        "props": {
+          "color": {
+            "values": ["#c50f1f"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "Cut20Regular": {
+        "props": {},
+        "count": 3
+      },
+      "ClipboardPaste20Regular": {
+        "props": {},
+        "count": 3
+      },
+      "Edit20Regular": {
+        "props": {},
+        "count": 3
+      },
+      "MoreHorizontal20Filled": {
+        "props": {},
+        "count": 2
+      },
+      "DismissFilled": {
+        "props": {
+          "aria-label": {
+            "values": ["Enter by voice"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "CaretDownFilled": {
+        "props": {
+          "aria-hidden": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "CaretRightFilled": {
+        "props": {
+          "aria-hidden": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "FilterFilled": {
+        "props": {},
+        "count": 1
+      },
+      "MoreHorizontalFilled": {
+        "props": {},
+        "count": 1
+      },
+      "ChevronDownRegular": {
+        "props": {
+          "aria-hidden": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "ChevronRightRegular": {
+        "props": {
+          "aria-hidden": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "MoreHorizontal24Regular": {
+        "props": {},
+        "count": 1
+      },
+      "CheckmarkCircleRegular": {
+        "props": {},
+        "count": 4
+      },
+      "AttachRegular": {
+        "props": {},
+        "count": 8
+      },
+      "CalendarRegular": {
+        "props": {},
+        "count": 2
+      },
+      "MoreHorizontal20Regular": {
+        "props": {},
+        "count": 1
+      },
+      "DismissRegular": {
+        "props": {},
+        "count": 2
+      },
+      "EmojiSmileSlightRegular": {
+        "props": {
+          "fontSize": {
+            "values": ["16"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "Question20Regular": {
+        "props": {},
+        "count": 2
+      },
+      "CursorClickRegular": {
+        "props": {},
+        "count": 2
+      },
+      "ClipboardCheckmarkRegular": {
+        "props": {},
+        "count": 2
+      },
+      "CloudSyncRegular": {
+        "props": {},
+        "count": 2
+      },
+      "MoreHorizontalRegular": {
+        "props": {},
+        "count": 8
+      },
+      "WindowRegular": {
+        "props": {
+          "fontSize": {
+            "values": ["20"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "CalendarClock16Regular": {
+        "props": {},
+        "count": 2
+      },
+      "CircleRegular": {
+        "props": {},
+        "count": 38
+      },
+      "Circle16Regular": {
+        "props": {},
+        "count": 1
+      },
+      "CheckmarkCircle16Regular": {
+        "props": {},
+        "count": 1
+      },
+      "Eye16Filled": {
+        "props": {},
+        "count": 1
+      },
+      "Warning16Filled": {
+        "props": {},
+        "count": 1
+      },
+      "Flag16Filled": {
+        "props": {},
+        "count": 1
+      },
+      "Clock16Regular": {
+        "props": {},
+        "count": 1
+      },
+      "ImportantFilled": {
+        "props": {},
+        "count": 1
+      },
+      "AlertUrgentFilled": {
+        "props": {},
+        "count": 1
+      },
+      "MentionFilled": {
+        "props": {},
+        "count": 1
+      },
+      "PeopleFilled": {
+        "props": {},
+        "count": 1
+      },
+      "ArrowLeftRegular": {
+        "props": {},
+        "count": 1
+      },
+      "SettingsRegular": {
+        "props": {},
+        "count": 3
+      },
+      "PersonCallRegular": {
+        "props": {},
+        "count": 1
+      },
+      "HeadsetRegular": {
+        "props": {},
+        "count": 1
+      },
+      "PeopleCallRegular": {
+        "props": {},
+        "count": 1
+      },
+      "FlagRegular": {
+        "props": {},
+        "count": 2
+      },
+      "MailRegular": {
+        "props": {},
+        "count": 2
+      },
+      "DeleteRegular": {
+        "props": {},
+        "count": 1
+      },
+      "ArchiveRegular": {
+        "props": {},
+        "count": 1
+      },
+      "DocumentAddRegular": {
+        "props": {},
+        "count": 1
+      },
+      "ShieldKeyholeRegular": {
+        "props": {},
+        "count": 1
+      },
+      "PinRegular": {
+        "props": {},
+        "count": 1
+      },
+      "FlashRegular": {
+        "props": {},
+        "count": 1
+      },
+      "MailUnreadRegular": {
+        "props": {},
+        "count": 1
+      },
+      "ZoomInRegular": {
+        "props": {},
+        "count": 1
+      },
+      "ArrowSyncRegular": {
+        "props": {},
+        "count": 1
+      },
+      "LayoutCellFourRegular": {
+        "props": {},
+        "count": 1
+      },
+      "TextDensityRegular": {
+        "props": {},
+        "count": 1
+      },
+      "IconDirectionContextProvider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.iconDirection"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "InfoFilled": {
+        "count": 1
+      },
+      "CalendarMonthFilled": {
+        "count": 3
+      },
+      "CalendarMonthRegular": {
+        "count": 6
+      },
+      "bundleIcon": {
+        "count": 8
+      },
+      "ArrowReplyRegular": {
+        "count": 1
+      },
+      "ShareRegular": {
+        "count": 1
+      },
+      "FolderRegular": {
+        "count": 8
+      },
+      "EditRegular": {
+        "count": 7
+      },
+      "OpenRegular": {
+        "count": 7
+      },
+      "DocumentRegular": {
+        "count": 7
+      },
+      "PeopleRegular": {
+        "count": 8
+      },
+      "DocumentPdfRegular": {
+        "count": 7
+      },
+      "VideoRegular": {
+        "count": 7
+      },
+      "Dismiss24Regular": {
+        "count": 1
+      },
+      "FontIncrease24Regular": {
+        "count": 1
+      },
+      "FontDecrease24Regular": {
+        "count": 1
+      },
+      "TextFont24Regular": {
+        "count": 1
+      },
+      "CheckmarkCircle20Filled": {
+        "count": 3
+      },
+      "ErrorCircle20Filled": {
+        "count": 2
+      },
+      "ClipboardPaste20Regular": {
+        "count": 1
+      },
+      "ClipboardPasteRegular": {
+        "count": 1
+      },
+      "CopyRegular": {
+        "count": 1
+      },
+      "Cut20Regular": {
+        "count": 1
+      },
+      "CutRegular": {
+        "count": 1
+      },
+      "DismissCircle20Filled": {
+        "count": 1
+      },
+      "Edit20Regular": {
+        "count": 1
+      },
+      "TextAlignCenterRegular": {
+        "count": 1
+      },
+      "TextAlignLeftRegular": {
+        "count": 1
+      },
+      "TextAlignRightRegular": {
+        "count": 1
+      },
+      "TextBoldRegular": {
+        "count": 1
+      },
+      "TextItalicRegular": {
+        "count": 1
+      },
+      "TextUnderlineRegular": {
+        "count": 1
+      },
+      "MoreHorizontal20Filled": {
+        "count": 2
+      },
+      "CaretRightFilled": {
+        "count": 2
+      },
+      "CaretDownFilled": {
+        "count": 2
+      },
+      "MoreHorizontalFilled": {
+        "count": 1
+      },
+      "FilterFilled": {
+        "count": 1
+      },
+      "DismissFilled": {
+        "count": 2
+      },
+      "ChevronRightRegular": {
+        "count": 1
+      },
+      "ChevronDownRegular": {
+        "count": 1
+      },
+      "MoreHorizontal24Regular": {
+        "count": 1
+      },
+      "CalendarRegular": {
+        "count": 5
+      },
+      "CheckmarkCircleRegular": {
+        "count": 2
+      },
+      "AttachRegular": {
+        "count": 2
+      },
+      "MoreHorizontal20Regular": {
+        "count": 1
+      },
+      "DismissRegular": {
+        "count": 3
+      },
+      "EmojiSmileSlightRegular": {
+        "count": 2
+      },
+      "Question20Regular": {
+        "count": 2
+      },
+      "CursorClickRegular": {
+        "count": 2
+      },
+      "ClipboardCheckmarkRegular": {
+        "count": 2
+      },
+      "CloudSyncRegular": {
+        "count": 2
+      },
+      "MoreHorizontalRegular": {
+        "count": 8
+      },
+      "WindowRegular": {
+        "count": 3
+      },
+      "CalendarClock16Regular": {
+        "count": 2
+      },
+      "CalendarFilled": {
+        "count": 3
+      },
+      "CircleRegular": {
+        "count": 2
+      },
+      "CheckmarkCircle16Regular": {
+        "count": 1
+      },
+      "Circle16Regular": {
+        "count": 1
+      },
+      "Clock16Regular": {
+        "count": 1
+      },
+      "Eye16Filled": {
+        "count": 1
+      },
+      "Flag16Filled": {
+        "count": 1
+      },
+      "Warning16Filled": {
+        "count": 1
+      },
+      "AlertUrgentFilled": {
+        "count": 1
+      },
+      "ImportantFilled": {
+        "count": 1
+      },
+      "MentionFilled": {
+        "count": 1
+      },
+      "PeopleFilled": {
+        "count": 1
+      },
+      "ArrowLeftRegular": {
+        "count": 1
+      },
+      "SettingsRegular": {
+        "count": 3
+      },
+      "PersonCallRegular": {
+        "count": 1
+      },
+      "PeopleCallRegular": {
+        "count": 1
+      },
+      "FlagRegular": {
+        "count": 2
+      },
+      "HeadsetRegular": {
+        "count": 1
+      },
+      "MailRegular": {
+        "count": 2
+      },
+      "DeleteRegular": {
+        "count": 1
+      },
+      "ArchiveRegular": {
+        "count": 1
+      },
+      "DocumentAddRegular": {
+        "count": 1
+      },
+      "ShieldKeyholeRegular": {
+        "count": 1
+      },
+      "PinRegular": {
+        "count": 1
+      },
+      "FlashRegular": {
+        "count": 1
+      },
+      "MailUnreadRegular": {
+        "count": 1
+      },
+      "ZoomInRegular": {
+        "count": 1
+      },
+      "ArrowSyncRegular": {
+        "count": 1
+      },
+      "LayoutCellFourRegular": {
+        "count": 1
+      },
+      "TextDensityRegular": {
+        "count": 1
+      },
+      "IconDirectionContextProvider": {
+        "count": 1
+      }
+    },
+    "count": 180
+  },
+  "@fluentui-contrib/azure-theme": {
+    "components": {},
+    "hooks": {},
+    "types": {},
+    "others": {
+      "AzureLightTheme": {
+        "count": 38
+      },
+      "AzureDarkTheme": {
+        "count": 38
+      }
+    },
+    "count": 76
+  },
+  "tabster": {
+    "components": {},
+    "hooks": {},
+    "types": {},
+    "others": {
+      "getShadowDOMAPI": {
+        "count": 1
+      }
+    },
+    "count": 1
+  },
+  "@fluentui-contrib/react-cap-theme": {
+    "components": {
+      "CAPThemeProvider": {
+        "props": {
+          "theme": {
+            "values": [
+              "{ ...teamsLightV21Theme, ...CAP_THEME_TEAMS }",
+              "{ ...CAP_THEME_ONE_DRIVE }",
+              "{ ...CAP_THEME_SHAREPOINT }",
+              "config.theme"
+            ],
+            "count": 4
+          }
+        },
+        "count": 4
+      },
+      "Button": {
+        "props": {
+          "id": {
+            "values": [
+              "stateId(appearance, 'default')",
+              "stateId(appearance, 'hover')",
+              "stateId(appearance, 'active')",
+              "stateId(appearance, 'focus')",
+              "stateId(appearance, 'disabled')"
+            ],
+            "count": 5
+          },
+          "icon": {
+            "values": ["<CalendarMonth />"],
+            "count": 5
+          },
+          "appearance": {
+            "values": ["appearance"],
+            "count": 5
+          },
+          "disabled": {
+            "values": ["true"],
+            "count": 1
+          },
+          "disabledFocusable": {
+            "values": ["disabledFocusable"],
+            "count": 1
+          }
+        },
+        "count": 5
+      }
+    },
+    "hooks": {},
+    "types": {
+      "ButtonProps": {
+        "count": 1
+      }
+    },
+    "others": {
+      "CAP_THEME_ONE_DRIVE": {
+        "count": 1
+      },
+      "CAP_THEME_SHAREPOINT": {
+        "count": 1
+      },
+      "CAP_THEME_TEAMS": {
+        "count": 1
+      }
+    },
+    "count": 6
+  },
+  "@fluentui-contrib/react-gamepad-navigation": {
+    "components": {},
+    "hooks": {
+      "useGamepadNavigationGroup": {
+        "props": {
+          "focusFirstElement": {
+            "values": ["true"],
+            "count": 3
+          }
+        },
+        "count": 3
+      }
+    },
+    "types": {},
+    "others": {},
+    "count": 3
+  },
+  "@fluentui/keyboard-keys": {
+    "components": {},
+    "hooks": {},
+    "types": {},
+    "others": {
+      "Tab": {
+        "count": 1
+      },
+      "ArrowLeft": {
+        "count": 4
+      },
+      "Enter": {
+        "count": 3
+      },
+      "Space": {
+        "count": 1
+      },
+      "ArrowUp": {
+        "count": 2
+      },
+      "ArrowDown": {
+        "count": 2
+      },
+      "ArrowRight": {
+        "count": 3
+      },
+      "Shift": {
+        "count": 1
+      }
+    },
+    "count": 17
+  },
+  "@fluentui-contrib/react-keytips": {
+    "components": {
+      "Keytips": {
+        "props": {},
+        "count": 2
+      }
+    },
+    "hooks": {
+      "useKeytipRef": {
+        "props": {
+          "keySequences": {
+            "values": [
+              "['1d']",
+              "['1d', '1']",
+              "['1d', '2']",
+              "['1b']",
+              "['1b', 'e']",
+              "['1b', 'f']",
+              "['1a']",
+              "['1c']",
+              "['1e']",
+              "['2ee']",
+              "['4dl']",
+              "['4dl', '1a']",
+              "['gg1']",
+              "['gg2']",
+              "[startSequence, 'gg3']",
+              "!isVisible\n        ? ['r', ...keytipProps.keySequences]\n        : keytipProps.keySequences",
+              "['r']",
+              "['b1']",
+              "['b2']",
+              "['b3']",
+              "['b1', '1']",
+              "['b1', '2']",
+              "['b1', '3']",
+              "['b2', '1']",
+              "['b3', '1']",
+              "['h']",
+              "['v']",
+              "['e']",
+              "[...overflowSequence, ...keytipProps.keySequences.slice(-1)]"
+            ],
+            "count": 29
+          },
+          "content": {
+            "values": [
+              "'1D'",
+              "'1'",
+              "'2'",
+              "'1B'",
+              "'E'",
+              "'F'",
+              "'1A'",
+              "'1C'",
+              "'1E'",
+              "'2EE'",
+              "'4DL'",
+              "'GG1'",
+              "'GG2'",
+              "'GG3'",
+              "'R'",
+              "'B1'",
+              "'B2'",
+              "'B3'",
+              "'3'",
+              "'H'",
+              "'V'"
+            ],
+            "count": 27
+          },
+          "onExecute": {
+            "values": ["onExecute", "() => alert('Item A')", "() => alert('Item B')", "btnExecute"],
+            "count": 26
+          },
+          "positioning": {
+            "values": ["{ offset: { crossAxis: -50, mainAxis: 5 } }"],
+            "count": 1
+          },
+          "dynamic": {
+            "values": ["true"],
+            "count": 2
+          },
+          "overflowSequence": {
+            "values": ["!isVisible ? ['r'] : []", "!isVisible ? ['h', '00'] : []"],
+            "count": 2
+          },
+          "hasMenu": {
+            "values": ["true"],
+            "count": 4
+          },
+          "arg0": {
+            "values": ["keytipProps", "overflowKeytipProps", "keytipsMap.newMail"],
+            "count": 4
+          }
+        },
+        "count": 35
+      }
+    },
+    "types": {
+      "ExecuteKeytipEventHandler": {
+        "count": 6
+      },
+      "KeytipProps": {
+        "count": 5
+      }
+    },
+    "others": {},
+    "count": 20
+  },
+  "@fluentui/react-utilities": {
+    "components": {
+      "applyTriggerPropsToChildren": {
+        "props": {},
+        "count": 0
+      },
+      "getTriggerChild": {
+        "props": {},
+        "count": 0
+      }
+    },
+    "hooks": {
+      "usePrevious": {
+        "props": {
+          "arg0": {
+            "values": ["keytip"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useControllableState": {
+        "props": {
+          "state": {
+            "values": ["props.open", "visible"],
+            "count": 2
+          },
+          "initialState": {
+            "values": ["false"],
+            "count": 2
+          },
+          "defaultState": {
+            "values": ["props.defaultOpen"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "useEventCallback": {
+        "props": {
+          "arg0": {
+            "values": [
+              "(data: TreeGridRowOnOpenChangeData) => {\n      props.onOpenChange?.(data.event, data);\n      setOpen(data.open);\n    }",
+              "(event: React.MouseEvent) => {\n    child?.props.onClick?.(event);\n    if (!event.isDefaultPrevented()) {\n      requestOpenChange({ open: !open, event, type: 'click' });\n    }\n  }"
+            ],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useTimeout": {
+        "props": {},
+        "count": 4
+      },
+      "useIsomorphicLayoutEffect": {
+        "props": {
+          "arg0": {
+            "values": [
+              "() => {\n    if (virtualizerContext.contextIndex + virtualizerLength < numItems) {\n      // Avoid re-rendering/re-calculating when the end index has already been reached\n      handleScrollResize(container);\n    }\n  }",
+              "() => {\n    if (!win) {\n      return;\n    }\n\n    observer.current = new win.IntersectionObserver(callback, {\n      ...observerInit,\n      rootMargin: getRTLRootMargin(\n        ltrRootMargin.current,\n        observerInit?.root,\n        win\n      ),\n    });\n\n    // If we have an instance of IO and a list with elements, observer the elements\n    if (observer.current && observerList && observerList.length > 0) {\n      observerList.forEach((element) => {\n        observer.current?.observe(element);\n      });\n    }\n\n    // clean up previous elements being listened to\n    return () => {\n      if (observer.current) {\n        observer.current.disconnect();\n      }\n    };\n  }"
+            ],
+            "count": 2
+          },
+          "arg1": {
+            "values": [
+              "[\n    handleScrollResize,\n    numItems,\n    virtualizerContext.contextIndex,\n    virtualizerLength,\n  ]",
+              "[observerList, observerInit, callback, win]"
+            ],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "useMergedRefs": {
+        "props": {
+          "arg0": {
+            "values": ["container", "props.scrollViewRef", "React.useRef<VirtualizerDataRef>(null)"],
+            "count": 4
+          },
+          "arg1": {
+            "values": ["useResizeObserverRef_unstable(resizeCallback)", "scrollRef", "imperativeVirtualizerRef"],
+            "count": 4
+          },
+          "arg2": {
+            "values": ["paginationRef"],
+            "count": 2
+          },
+          "arg3": {
+            "values": ["localScrollRef"],
+            "count": 1
+          }
+        },
+        "count": 4
+      },
+      "useAnimationFrame": {
+        "props": {},
+        "count": 2
+      }
+    },
+    "types": {
+      "EventData": {
+        "count": 4
+      },
+      "EventHandler": {
+        "count": 8
+      },
+      "NativeTouchOrMouseEvent": {
+        "count": 1
+      },
+      "JSXElement": {
+        "count": 4
+      },
+      "ForwardRefComponent": {
+        "count": 1
+      },
+      "FluentTriggerComponent": {
+        "count": 1
+      },
+      "TriggerProps": {
+        "count": 1
+      },
+      "SlotClassNames": {
+        "count": 3
+      },
+      "ComponentProps": {
+        "count": 3
+      },
+      "ComponentState": {
+        "count": 3
+      },
+      "Slot": {
+        "count": 2
+      }
+    },
+    "others": {
+      "isHTMLElement": {
+        "count": 2
+      },
+      "getEventClientCoords": {
+        "count": 1
+      },
+      "isMouseEvent": {
+        "count": 1
+      },
+      "isTouchEvent": {
+        "count": 1
+      },
+      "assertSlots": {
+        "count": 4
+      },
+      "slot": {
+        "count": 3
+      }
+    },
+    "count": 60
+  },
+  "@fluentui-contrib/react-resize-handle": {
+    "components": {},
+    "hooks": {
+      "useResizeHandle": {
+        "props": {
+          "variableName": {
+            "values": ["NAV_SIZE_CSS_VAR", "SIDE_SIZE_CSS_VAR", "FOOTER_SIZE_CSS_VAR"],
+            "count": 3
+          },
+          "growDirection": {
+            "values": ["'end'", "'start'", "'up'"],
+            "count": 3
+          },
+          "relative": {
+            "values": ["true"],
+            "count": 1
+          },
+          "unit": {
+            "values": ["unit"],
+            "count": 3
+          },
+          "onChange": {
+            "values": ["handleChange"],
+            "count": 1
+          },
+          "onChangeRejected": {
+            "values": ["handleChangeRejected"],
+            "count": 1
+          },
+          "onDragStart": {
+            "values": ["handleDragStart"],
+            "count": 1
+          },
+          "onDragEnd": {
+            "values": ["handleDragEnd"],
+            "count": 1
+          }
+        },
+        "count": 3
+      }
+    },
+    "types": {},
+    "others": {
+      "UseResizeHandleParams": {
+        "count": 1
+      }
+    },
+    "count": 2
+  },
+  "@griffel/shadow-dom": {
+    "components": {},
+    "hooks": {},
+    "types": {},
+    "others": {
+      "createShadowDOMRenderer": {
+        "count": 1
+      }
+    },
+    "count": 1
+  },
+  "@fluentui-contrib/react-tree-grid": {
+    "components": {
+      "TreeGrid": {
+        "props": {
+          "className": {
+            "values": ["styles.grid"],
+            "count": 1
+          },
+          "aria-label": {
+            "values": ["All calls", "All meetings", "All e-mails"],
+            "count": 5
+          },
+          "ref": {
+            "values": ["ref"],
+            "count": 1
+          }
+        },
+        "count": 6
+      },
+      "TreeGridCell": {
+        "props": {
+          "className": {
+            "values": [
+              "mergeClasses(styles.cell, styles.historyRowHeader)",
+              "styles.cell",
+              "styles.descriptionCell",
+              "tableCellStyle",
+              "mergeClasses(styles.header, styles.container)",
+              "styles.thumbnail"
+            ],
+            "count": 50
+          },
+          "header": {
+            "values": ["true"],
+            "count": 16
+          },
+          "aria-colspan": {
+            "values": ["3", "5", "4"],
+            "count": 4
+          },
+          "aria-label": {
+            "values": ["`${props.header}. ${props.location}`"],
+            "count": 2
+          }
+        },
+        "count": 59
+      },
+      "TreeGridInteraction": {
+        "props": {
+          "className": {
+            "values": ["styles.input"],
+            "count": 1
+          },
+          "aria-label": {
+            "values": ["TreeGrid interactive filter input", "TreeGrid interactive tablist"],
+            "count": 2
+          },
+          "aria-roledescription": {
+            "values": ["interactive content"],
+            "count": 2
+          },
+          "aria-description": {
+            "values": ["interact with Enter, then leave with Escape"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "TreeGridRowTrigger": {
+        "props": {},
+        "count": 1
+      },
+      "TreeGridRow": {
+        "props": {
+          "open": {
+            "values": ["open", "openItems.get(item.value) !== undefined"],
+            "count": 4
+          },
+          "onOpenChange": {
+            "values": [
+              "(_, data) => setOpen(data.open)",
+              "handleOpenChange",
+              "(ev, data) =>\n        requestOpenChange({ ...data, index: props.index })"
+            ],
+            "count": 4
+          },
+          "className": {
+            "values": [
+              "mergeClasses(styles.row, styles.historyRow)",
+              "mergeClasses(styles.row)",
+              "tableRowStyle",
+              "styles.sectionItem",
+              "styles.section"
+            ],
+            "count": 6
+          },
+          "subtree": {
+            "values": [
+              "{ children: props.children }",
+              "<>\n            <TreeGridRow>\n              <TreeGridCell className={styles.cell} header>\n                Monthly townhall, 10:00 AM to 11:00 AM\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Chat with participants</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Menu>\n                  <MenuTrigger disableButtonEnhancement>\n                    <Button>More Actions</Button>\n                  </MenuTrigger>\n\n                  <MenuPopover>\n                    <MenuList>\n                      <MenuItem>New </MenuItem>\n                      <MenuItem>New Window</MenuItem>\n                      <MenuItem disabled>Open File</MenuItem>\n                      <MenuItem>Open Folder</MenuItem>\n                    </MenuList>\n                  </MenuPopover>\n                </Menu>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Agenda and notes</Button>\n              </TreeGridCell>\n            </TreeGridRow>\n            <TreeGridRow>\n              <TreeGridCell className={styles.cell} header>\n                Planning for next quarter, 11:00 AM to 12:00 PM\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Chat with participants</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>View recap</Button>\n              </TreeGridCell>\n            </TreeGridRow>\n          </>",
+              "<>\n            <TreeGridRow>\n              <TreeGridCell className={styles.cell} header>\n                Weekly summary #2, 2:30 PM to 3:30 PM\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Chat with participants</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>View recap</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Agenda and notes</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>4 tasks</Button>\n              </TreeGridCell>\n            </TreeGridRow>\n            <TreeGridRow>\n              <TreeGridCell className={styles.cell} header>\n                Mandatory training #1, 9:00 AM to 10:00 AM\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Chat with participants</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>View recap</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Agenda and notes</Button>\n              </TreeGridCell>\n            </TreeGridRow>\n            <TreeGridRow>\n              <TreeGridCell className={styles.cell} header>\n                Meeting with John, 10:15 AM to 11:15 AM\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Chat with participants</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>View recap</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Agenda and notes</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>2 tasks</Button>\n              </TreeGridCell>\n              <TreeGridCell className={styles.cell}>\n                <Button>Transcript</Button>\n              </TreeGridCell>\n            </TreeGridRow>\n          </>",
+              "props.replies",
+              "<>{props.children}</>",
+              "true"
+            ],
+            "count": 6
+          },
+          "aria-description": {
+            "values": [
+              "has contextual menu",
+              "`Created by: ${props.owner}. ${\n        props.status ? `Meeting status: ${props.status}` : ''\n      }`"
+            ],
+            "count": 3
+          },
+          "data-item-id": {
+            "values": ["item.value"],
+            "count": 1
+          },
+          "aria-level": {
+            "values": ["1"],
+            "count": 1
+          },
+          "style": {
+            "values": ["props.style"],
+            "count": 2
+          },
+          "data-item-parent-id": {
+            "values": ["item.parentValue"],
+            "count": 1
+          }
+        },
+        "count": 15
+      },
+      "TreeGridRowProvider": {
+        "props": {
+          "value": {
+            "values": [
+              "{\n        open: !!openItems.get(item.parentValue),\n        level: 1,\n        requestOpenChange,\n      }"
+            ],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {
+      "useTreeGridRowContext": {
+        "props": {},
+        "count": 1
+      }
+    },
+    "types": {},
+    "others": {
+      "TreeGrid": {
+        "count": 7
+      },
+      "TreeGridCell": {
+        "count": 6
+      },
+      "TreeGridInteraction": {
+        "count": 1
+      },
+      "TreeGridRow": {
+        "count": 6
+      },
+      "TreeGridRowTrigger": {
+        "count": 1
+      },
+      "TreeGridRowOnOpenChangeData": {
+        "count": 3
+      },
+      "TreeGridProps": {
+        "count": 2
+      },
+      "TreeGridRowProvider": {
+        "count": 1
+      }
+    },
+    "count": 28
+  },
+  "@fluentui/react": {
+    "components": {},
+    "hooks": {},
+    "types": {
+      "IColor": {
+        "count": 1
+      }
+    },
+    "others": {
+      "getColorFromString": {
+        "count": 1
+      },
+      "updateA": {
+        "count": 1
+      }
+    },
+    "count": 3
+  },
+  "@fluentui/scheme-utilities": {
+    "components": {},
+    "hooks": {},
+    "types": {
+      "VariantThemeType": {
+        "count": 1
+      }
+    },
+    "others": {},
+    "count": 1
+  },
+  "@fluentui/react-migration-v8-v9": {
+    "components": {},
+    "hooks": {},
+    "types": {
+      "AlphaColors": {
+        "count": 1
+      },
+      "Greys": {
+        "count": 1
+      }
+    },
+    "others": {
+      "black": {
+        "count": 1
+      },
+      "white": {
+        "count": 1
+      },
+      "grey": {
+        "count": 1
+      },
+      "whiteAlpha": {
+        "count": 1
+      },
+      "blackAlpha": {
+        "count": 1
+      }
+    },
+    "count": 7
+  },
+  "@fluentui-contrib/houdini-utils": {
+    "components": {},
+    "hooks": {},
+    "types": {
+      "PaintWorkletGeometry": {
+        "count": 3
+      }
+    },
+    "others": {
+      "blobify": {
+        "count": 3
+      },
+      "registerPaintWorklet": {
+        "count": 3
+      },
+      "PaintWorklet": {
+        "count": 3
+      },
+      "hasHoudini": {
+        "count": 1
+      },
+      "fallbackPaintAnimation": {
+        "count": 2
+      }
+    },
+    "count": 15
+  },
+  "@fluentui-contrib/react-chat": {
+    "components": {
+      "ChatMessage": {
+        "props": {
+          "avatar": {
+            "values": [
+              "<Avatar name={user.name} badge={{ status: user.status }} />",
+              "<Avatar name=\"Ashley McCarthy\" badge={{ status: 'available' }} />"
+            ],
+            "count": 4
+          },
+          "onKeyDown": {
+            "values": ["handleMessageKeyDown"],
+            "count": 1
+          },
+          "decoration": {
+            "values": ["important", "urgent", "mention", "mentionEveryone"],
+            "count": 4
+          },
+          "details": {
+            "values": ["Edited"],
+            "count": 1
+          },
+          "author": {
+            "values": ["Ashley McCarthy"],
+            "count": 1
+          },
+          "decorationLabel": {
+            "values": ["important!"],
+            "count": 1
+          },
+          "decorationIcon": {
+            "values": ["<Question20Regular />"],
+            "count": 1
+          },
+          "timestamp": {
+            "values": ["8:00 AM"],
+            "count": 1
+          },
+          "reactions": {
+            "values": ["<Reactions />"],
+            "count": 1
+          },
+          "body": {
+            "values": ["Message body"],
+            "count": 1
+          }
+        },
+        "count": 14
+      },
+      "ChatMyMessage": {
+        "props": {
+          "onKeyDown": {
+            "values": ["handleMessageKeyDown"],
+            "count": 1
+          },
+          "decoration": {
+            "values": ["important", "urgent"],
+            "count": 2
+          },
+          "details": {
+            "values": ["Edited"],
+            "count": 1
+          },
+          "author": {
+            "values": ["Ashley McCarthy"],
+            "count": 1
+          },
+          "decorationLabel": {
+            "values": ["important!"],
+            "count": 1
+          },
+          "decorationIcon": {
+            "values": ["<Question20Regular />"],
+            "count": 1
+          },
+          "timestamp": {
+            "values": ["8:00 AM"],
+            "count": 1
+          },
+          "reactions": {
+            "values": ["<Reactions />"],
+            "count": 1
+          },
+          "body": {
+            "values": ["Message body"],
+            "count": 1
+          },
+          "status": {
+            "values": ["failed", "sending", "received", "read", "blocked", "scheduled"],
+            "count": 6
+          }
+        },
+        "count": 17
+      },
+      "Chat": {
+        "props": {
+          "role": {
+            "values": ["application"],
+            "count": 1
+          }
+        },
+        "count": 9
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "Chat": {
+        "count": 10
+      },
+      "ChatMessage": {
+        "count": 6
+      },
+      "ChatMyMessage": {
+        "count": 7
+      }
+    },
+    "count": 23
+  },
+  "@fluentui-contrib/react-contextual-pane": {
+    "components": {
+      "Footer": {
+        "props": {
+          "toolbarLables": {
+            "values": [
+              "{\n            leftActionsAriaLabel:\n              'Left actions ( should be translated string )',\n            rightActionsAriaLabel:\n              'Right actions ( should be translated string )',\n          }"
+            ],
+            "count": 4
+          },
+          "leftActions": {
+            "values": [
+              "<ToolbarButton\n              appearance=\"transparent\"\n              icon={<CursorClickRegular />}\n            />"
+            ],
+            "count": 2
+          },
+          "rightActions": {
+            "values": [
+              "[\n            <ToolbarButton\n              appearance=\"transparent\"\n              key=\"clipboard\"\n              icon={<ClipboardCheckmarkRegular />}\n            />,\n            <ToolbarButton\n              appearance=\"transparent\"\n              key=\"cloud\"\n              icon={<CloudSyncRegular />}\n            />,\n          ]"
+            ],
+            "count": 2
+          }
+        },
+        "count": 4
+      },
+      "Header": {
+        "props": {
+          "primaryAction": {
+            "values": [
+              "<ToolbarButton\n            key=\"more-menu\"\n            appearance=\"transparent\"\n            icon={<MoreHorizontalRegular />}\n          />",
+              "props.primaryAction && (\n            <ToolbarButton\n              appearance=\"transparent\"\n              key=\"more-menu\"\n              icon={<MoreHorizontalRegular />}\n            />\n          )"
+            ],
+            "count": 3
+          },
+          "secondaryAction": {
+            "values": [
+              "<Avatar\n            avatarUrl=\"https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg\"\n            key=\"avatar\"\n            users={[\n              {\n                id: 'avatar-Id-0',\n                displayName: 'Katri Athokas',\n                avatarUrl:\n                  'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',\n              },\n            ]}\n            aria-hidden={true}\n          />",
+              "props.secondaryAction && (\n            <Avatar\n              avatarUrl=\"https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg\"\n              key=\"avatar\"\n              users={[\n                {\n                  id: 'avatar-Id-0',\n                  displayName: 'Katri Athokas',\n                  avatarUrl:\n                    'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',\n                },\n              ]}\n              aria-hidden={true}\n            />\n          )"
+            ],
+            "count": 3
+          },
+          "caption": {
+            "values": ["This is a title", "Copilot", "props.caption", "This is a very very long long long title"],
+            "count": 5
+          },
+          "brandIcon": {
+            "values": ["<WindowRegular fontSize={20} />", "props.brandIcon ? <WindowRegular fontSize={20} /> : null"],
+            "count": 3
+          },
+          "hasArrowBack": {
+            "values": ["props.hasArrowBack"],
+            "count": 2
+          }
+        },
+        "count": 5
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {},
+    "count": 9
+  },
+  "@fluentui-contrib/react-data-grid-react-window": {
+    "components": {
+      "DataGridRow": {
+        "props": {
+          "key": {
+            "values": ["rowId"],
+            "count": 4
+          },
+          "style": {
+            "values": ["style"],
+            "count": 4
+          }
+        },
+        "count": 8
+      },
+      "DataGridCell": {
+        "props": {
+          "focusMode": {
+            "values": ["group"],
+            "count": 3
+          }
+        },
+        "count": 4
+      },
+      "DataGrid": {
+        "props": {
+          "items": {
+            "values": ["items", "items.slice(0, 8)"],
+            "count": 4
+          },
+          "columns": {
+            "values": ["columns"],
+            "count": 4
+          },
+          "focusMode": {
+            "values": ["cell"],
+            "count": 4
+          },
+          "sortable": {
+            "values": ["true"],
+            "count": 4
+          },
+          "selectionMode": {
+            "values": ["multiselect"],
+            "count": 4
+          },
+          "className": {
+            "values": ["styles.grid"],
+            "count": 1
+          },
+          "style": {
+            "values": [
+              "{\n          '--scrollbar-width': `${scrollbarWidth}px`,\n          '--header-height': `${HEADER_HEIGHT}px`,\n        } as React.CSSProperties"
+            ],
+            "count": 1
+          },
+          "resizableColumns": {
+            "values": ["true"],
+            "count": 1
+          },
+          "resizableColumnsOptions": {
+            "values": ["{ autoFitColumns: false }"],
+            "count": 1
+          }
+        },
+        "count": 4
+      },
+      "DataGridHeader": {
+        "props": {
+          "style": {
+            "values": ["{ paddingRight: scrollbarWidth }"],
+            "count": 3
+          },
+          "className": {
+            "values": ["styles.header"],
+            "count": 1
+          }
+        },
+        "count": 4
+      },
+      "DataGridHeaderCell": {
+        "props": {},
+        "count": 4
+      },
+      "DataGridBody": {
+        "props": {
+          "itemSize": {
+            "values": ["50"],
+            "count": 4
+          },
+          "height": {
+            "values": ["400", "height - HEADER_HEIGHT"],
+            "count": 4
+          },
+          "listProps": {
+            "values": ["listProps", "{\n              className: styles.list,\n            }"],
+            "count": 2
+          }
+        },
+        "count": 4
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "DataGridBody": {
+        "count": 4
+      },
+      "DataGrid": {
+        "count": 5
+      },
+      "DataGridRow": {
+        "count": 4
+      },
+      "DataGridHeader": {
+        "count": 4
+      },
+      "DataGridCell": {
+        "count": 4
+      },
+      "DataGridHeaderCell": {
+        "count": 4
+      },
+      "RowRenderer": {
+        "count": 4
+      }
+    },
+    "count": 29
+  },
+  "@fluentui-contrib/react-data-grid-react-window-grid": {
+    "components": {
+      "DataGridCell": {
+        "props": {
+          "style": {
+            "values": ["{ ...style, boxSizing: 'border-box' }"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "DataGrid": {
+        "props": {
+          "noNativeElements": {
+            "values": ["true"],
+            "count": 2
+          },
+          "sortable": {
+            "values": ["true"],
+            "count": 2
+          },
+          "items": {
+            "values": ["items"],
+            "count": 2
+          },
+          "columns": {
+            "values": ["columns"],
+            "count": 2
+          },
+          "size": {
+            "values": ["'medium'"],
+            "count": 2
+          },
+          "bodyRef": {
+            "values": ["bodyRef"],
+            "count": 2
+          },
+          "headerRef": {
+            "values": ["headerRef"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "DataGridHeaderRow": {
+        "props": {
+          "itemSize": {
+            "values": ["columnWidth"],
+            "count": 2
+          },
+          "height": {
+            "values": ["42"],
+            "count": 2
+          },
+          "width": {
+            "values": ["1000"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "DataGridHeaderCell": {
+        "props": {
+          "className": {
+            "values": ["styles.headerCell"],
+            "count": 2
+          },
+          "as": {
+            "values": ["div"],
+            "count": 2
+          },
+          "style": {
+            "values": ["style"],
+            "count": 2
+          }
+        },
+        "count": 2
+      },
+      "DataGridBody": {
+        "props": {
+          "rowHeight": {
+            "values": ["() => ROW_HEIGHT", "(index) => ROW_HEIGHT"],
+            "count": 2
+          },
+          "height": {
+            "values": ["500"],
+            "count": 2
+          },
+          "width": {
+            "values": ["1000"],
+            "count": 2
+          },
+          "columnWidth": {
+            "values": ["columnWidth"],
+            "count": 2
+          },
+          "gridProps": {
+            "values": ["gridProps"],
+            "count": 1
+          }
+        },
+        "count": 2
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "DataGrid": {
+        "count": 3
+      },
+      "DataGridBody": {
+        "count": 2
+      },
+      "DataGridCell": {
+        "count": 2
+      },
+      "CellRenderer": {
+        "count": 2
+      },
+      "DataGridHeaderRow": {
+        "count": 2
+      },
+      "DataGridHeaderCell": {
+        "count": 2
+      }
+    },
+    "count": 13
+  },
+  "@fluentui-contrib/react-draggable-dialog": {
+    "components": {
+      "DraggableDialog": {
+        "props": {
+          "open": {
+            "values": ["open"],
+            "count": 1
+          },
+          "modalType": {
+            "values": ["non-modal"],
+            "count": 2
+          },
+          "boundary": {
+            "values": ["boundaryRef", "null"],
+            "count": 2
+          },
+          "margin": {
+            "values": ["margin", "16"],
+            "count": 3
+          },
+          "position": {
+            "values": ["position"],
+            "count": 1
+          },
+          "onPositionChange": {
+            "values": ["onPositionChange"],
+            "count": 1
+          }
+        },
+        "count": 5
+      },
+      "DraggableDialogSurface": {
+        "props": {
+          "className": {
+            "values": ["styles.dialog", "contentStyles.surface"],
+            "count": 2
+          }
+        },
+        "count": 5
+      },
+      "DraggableDialogHandle": {
+        "props": {
+          "className": {
+            "values": ["styles.handle", "contentStyles.handle"],
+            "count": 2
+          }
+        },
+        "count": 5
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "DraggableDialog": {
+        "count": 6
+      },
+      "DraggableDialogSurface": {
+        "count": 5
+      },
+      "DraggableDialogHandle": {
+        "count": 5
+      },
+      "DraggableDialogPosition": {
+        "count": 1
+      }
+    },
+    "count": 17
+  },
+  "@fluentui/react-tabster": {
+    "components": {},
+    "hooks": {
+      "useArrowNavigationGroup": {
+        "props": {
+          "axis": {
+            "values": ["axis", "'vertical'"],
+            "count": 2
+          },
+          "circular": {
+            "values": ["circular"],
+            "count": 1
+          },
+          "memorizeCurrent": {
+            "values": ["memorizeCurrent", "true"],
+            "count": 2
+          },
+          "tabbable": {
+            "values": ["tabbable"],
+            "count": 1
+          },
+          "ignoreDefaultKeydown": {
+            "values": ["ignoreDefaultKeydown"],
+            "count": 1
+          },
+          "unstable_hasDefault": {
+            "values": ["unstable_hasDefault"],
+            "count": 1
+          }
+        },
+        "count": 2
+      },
+      "useFocusableGroup": {
+        "props": {
+          "tabBehavior": {
+            "values": ["tabBehavior"],
+            "count": 1
+          },
+          "ignoreDefaultKeydown": {
+            "values": ["ignoreDefaultKeydown"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useFocusFinders": {
+        "props": {},
+        "count": 1
+      },
+      "useMergedTabsterAttributes_unstable": {
+        "props": {
+          "arg0": {
+            "values": [
+              "groupperDOMAttribute",
+              "useArrowNavigationGroup({\n            axis: 'vertical',\n            memorizeCurrent: true,\n          })",
+              "useFocusableGroup({\n        tabBehavior: 'limited-trap-focus',\n      })",
+              "useArrowNavigationGroup({\n        axis: 'horizontal',\n        memorizeCurrent: true,\n      })"
+            ],
+            "count": 4
+          },
+          "arg1": {
+            "values": [
+              "moverDOMAttribute",
+              "props as TabsterDOMAttribute",
+              "props as unknown as TabsterDOMAttribute",
+              "useFocusableGroup({\n        tabBehavior: 'limited-trap-focus',\n        ignoreDefaultKeydown: { Enter: true },\n      })"
+            ],
+            "count": 4
+          },
+          "arg2": {
+            "values": ["props as TabsterDOMAttribute"],
+            "count": 1
+          }
+        },
+        "count": 4
+      }
+    },
+    "types": {
+      "TabsterDOMAttribute": {
+        "count": 4
+      },
+      "UseArrowNavigationGroupOptions": {
+        "count": 1
+      },
+      "UseFocusableGroupOptions": {
+        "count": 1
+      }
+    },
+    "others": {
+      "MoverMoveFocusEvent": {
+        "count": 2
+      },
+      "MoverKeys": {
+        "count": 2
+      },
+      "GroupperMoveFocusActions": {
+        "count": 1
+      },
+      "GroupperMoveFocusEvent": {
+        "count": 1
+      }
+    },
+    "count": 20
+  },
+  "@fluentui-contrib/react-headless-provider": {
+    "components": {
+      "HeadlessFluentProvider": {
+        "props": {
+          "targetDocument": {
+            "values": ["targetDocument"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "HeadlessFluentProvider": {
+        "count": 2
+      }
+    },
+    "count": 2
+  },
+  "@fluentui-contrib/react-interactive-tab": {
+    "components": {
+      "InteractiveTab": {
+        "props": {
+          "key": {
+            "values": ["tab.value"],
+            "count": 1
+          },
+          "button": {
+            "values": ["{ className: styles.interactiveTab }"],
+            "count": 1
+          },
+          "value": {
+            "values": ["tab.value"],
+            "count": 1
+          },
+          "contentAfter": {
+            "values": [
+              "<Button\n                appearance=\"subtle\"\n                className={styles.dismissButton}\n                icon={<DismissIcon />}\n                size=\"small\"\n                onClick={() => alert('Dismiss button clicked')}\n              />"
+            ],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {},
+    "count": 2
+  },
+  "@fluentui/react-shared-contexts": {
+    "components": {
+      "Provider_unstable": {
+        "props": {
+          "value": {
+            "values": ["{ dir: 'ltr', targetDocument: document }"],
+            "count": 3
+          }
+        },
+        "count": 3
+      },
+      "Provider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.provider"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "CustomStyleHooksProvider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.customStyleHooks_unstable as Required<CustomStyleHooksContextValue>"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "TooltipVisibilityProvider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.tooltip"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "OverridesProvider": {
+        "props": {
+          "value": {
+            "values": ["contextValues.overrides_unstable"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {
+      "useFluent_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useFluent": {
+        "props": {},
+        "count": 6
+      },
+      "useOverrides_unstable": {
+        "props": {},
+        "count": 0
+      },
+      "useOverrides": {
+        "props": {},
+        "count": 2
+      },
+      "useCustomStyleHook_unstable": {
+        "props": {
+          "arg0": {
+            "values": [
+              "'useVirtualizerStyles_unstable'",
+              "'useVirtualizerScrollViewStyles_unstable'",
+              "'useVirtualizerScrollViewDynamicStyles_unstable'"
+            ],
+            "count": 3
+          }
+        },
+        "count": 3
+      }
+    },
+    "types": {
+      "CustomStyleHooksContextValue_unstable": {
+        "count": 2
+      }
+    },
+    "others": {
+      "Provider_unstable": {
+        "count": 2
+      },
+      "CustomStyleHooksContext_unstable": {
+        "count": 2
+      },
+      "OverridesProvider_unstable": {
+        "count": 1
+      },
+      "TooltipVisibilityProvider_unstable": {
+        "count": 1
+      },
+      "CustomStyleHooksProvider_unstable": {
+        "count": 1
+      },
+      "CustomStyleHooksContextValue_unstable": {
+        "count": 1
+      }
+    },
+    "count": 21
+  },
+  "@fluentui-contrib/react-shadow": {
+    "components": {},
+    "hooks": {},
+    "types": {},
+    "others": {
+      "root": {
+        "count": 3
+      },
+      "createRoot": {
+        "count": 1
+      }
+    },
+    "count": 4
+  },
+  "@fluentui-contrib/react-themeless-provider": {
+    "components": {
+      "ThemelessFluentProvider": {
+        "props": {},
+        "count": 1
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "createCSSStyleSheetFromTheme": {
+        "count": 1
+      }
+    },
+    "count": 3
+  },
+  "@fluentui-contrib/react-virtualizer": {
+    "components": {
+      "Virtualizer": {
+        "props": {
+          "numItems": {
+            "values": ["childLength"],
+            "count": 8
+          },
+          "virtualizerLength": {
+            "values": ["virtualizerLength"],
+            "count": 8
+          },
+          "bufferItems": {
+            "values": ["bufferItems"],
+            "count": 8
+          },
+          "bufferSize": {
+            "values": ["bufferSize"],
+            "count": 8
+          },
+          "itemSize": {
+            "values": ["25", "100", "smallSize", "itemWidth", "itemSize"],
+            "count": 8
+          },
+          "containerSizeRef": {
+            "values": ["containerSizeRef"],
+            "count": 8
+          },
+          "getItemSize": {
+            "values": ["getSizeForIndex"],
+            "count": 1
+          },
+          "virtualizerContext": {
+            "values": ["contextState"],
+            "count": 1
+          },
+          "updateScrollPosition": {
+            "values": ["updateScrollPosition"],
+            "count": 1
+          },
+          "gap": {
+            "values": ["20"],
+            "count": 1
+          },
+          "axis": {
+            "values": ["'horizontal'"],
+            "count": 3
+          },
+          "key": {
+            "values": ["`virtualizer-container-${index}`"],
+            "count": 1
+          },
+          "reversed": {
+            "values": ["true"],
+            "count": 3
+          }
+        },
+        "count": 8
+      },
+      "VirtualizerContextProvider": {
+        "props": {
+          "value": {
+            "values": ["contextState"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "VirtualizerScrollView": {
+        "props": {
+          "numItems": {
+            "values": ["childLength"],
+            "count": 3
+          },
+          "itemSize": {
+            "values": ["100"],
+            "count": 3
+          },
+          "container": {
+            "values": [
+              "{\n        role: 'list',\n        'aria-label': `Virtualized list with ${childLength} children`,\n        tabIndex: 0,\n        style: { maxHeight: '80vh' },\n      }",
+              "{\n          role: 'list',\n          'aria-label': `Virtualized list with ${childLength} children`,\n          tabIndex: 0,\n          style: { maxHeight: '80vh' },\n        }",
+              "{\n        role: 'list',\n        'aria-label': `Virtualized list with ${childLength} children`,\n        tabIndex: 0,\n        className: styles.container,\n      }"
+            ],
+            "count": 3
+          },
+          "imperativeRef": {
+            "values": ["scrollRef"],
+            "count": 1
+          },
+          "axis": {
+            "values": ["'horizontal'"],
+            "count": 1
+          },
+          "enablePagination": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 3
+      },
+      "VirtualizerScrollViewDynamic": {
+        "props": {
+          "numItems": {
+            "values": ["childLength"],
+            "count": 6
+          },
+          "itemSize": {
+            "values": [
+              "minHeight",
+              "baseHeight + bottomCalcDisplayHeight",
+              "minHeight + maxHeightMod / 2.0",
+              "100",
+              "minHeight + maxHeightIncrease / 2"
+            ],
+            "count": 6
+          },
+          "container": {
+            "values": [
+              "{\n        role: 'list',\n        'aria-label': `Virtualized list with ${childLength} children`,\n        tabIndex: 0,\n        style: {\n          maxHeight: '80vh',\n          gap: '20px',\n        },\n      }",
+              "{\n          role: 'list',\n          className: styles.container,\n          style: {\n            maxHeight: '80vh',\n          },\n        }",
+              "{\n        role: 'list',\n        'aria-label': `Virtualized list with ${childLength} children`,\n        tabIndex: 0,\n        style: { maxHeight: '80vh' },\n      }",
+              "{\n          role: 'list',\n          'aria-label': `Virtualized list with ${childLength} children`,\n          tabIndex: 0,\n          style: { maxHeight: '80vh' },\n        }"
+            ],
+            "count": 6
+          },
+          "bufferItems": {
+            "values": ["1"],
+            "count": 3
+          },
+          "bufferSize": {
+            "values": ["minHeight / 2.0", "30"],
+            "count": 3
+          },
+          "gap": {
+            "values": ["20"],
+            "count": 1
+          },
+          "imperativeRef": {
+            "values": ["virtualizerScrollRef", "scrollRef"],
+            "count": 2
+          },
+          "imperativeVirtualizerRef": {
+            "values": ["virtualizerRef", "sizeRef"],
+            "count": 2
+          },
+          "enableScrollAnchor": {
+            "values": ["true"],
+            "count": 1
+          },
+          "getItemSize": {
+            "values": ["getItemSizeCallback"],
+            "count": 3
+          },
+          "enableScrollLoad": {
+            "values": ["true"],
+            "count": 1
+          },
+          "enablePagination": {
+            "values": ["true"],
+            "count": 1
+          }
+        },
+        "count": 6
+      }
+    },
+    "hooks": {
+      "useStaticVirtualizerMeasure": {
+        "props": {
+          "defaultItemSize": {
+            "values": ["25", "100", "itemWidth", "itemSize"],
+            "count": 7
+          },
+          "direction": {
+            "values": ["'horizontal'"],
+            "count": 3
+          }
+        },
+        "count": 7
+      },
+      "useDynamicVirtualizerMeasure": {
+        "props": {
+          "defaultItemSize": {
+            "values": ["100"],
+            "count": 1
+          },
+          "getItemSize": {
+            "values": ["getSizeForIndex"],
+            "count": 1
+          },
+          "numItems": {
+            "values": ["childLength"],
+            "count": 1
+          },
+          "virtualizerContext": {
+            "values": ["contextState"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "types": {
+      "DynamicVirtualizerContextProps": {
+        "count": 1
+      },
+      "ScrollToInterface": {
+        "count": 3
+      },
+      "VirtualizerDataRef": {
+        "count": 2
+      }
+    },
+    "others": {
+      "VirtualizerContextProvider": {
+        "count": 1
+      }
+    },
+    "count": 32
+  },
+  "@fluentui-contrib/teams-components": {
+    "components": {
+      "Button": {
+        "props": {
+          "icon": {
+            "values": ["{ children: <CalendarIcon /> }", "<CalendarIcon />"],
+            "count": 6
+          },
+          "appearance": {
+            "values": ["transparent", "primary"],
+            "count": 6
+          },
+          "title": {
+            "values": ["Calendar"],
+            "count": 3
+          }
+        },
+        "count": 9
+      },
+      "MenuButton": {
+        "props": {
+          "icon": {
+            "values": ["{ children: <CalendarIcon /> }", "<CalendarIcon />"],
+            "count": 6
+          },
+          "appearance": {
+            "values": ["transparent", "primary"],
+            "count": 6
+          },
+          "title": {
+            "values": ["Calendar"],
+            "count": 3
+          }
+        },
+        "count": 9
+      },
+      "ToggleButton": {
+        "props": {
+          "onClick": {
+            "values": [
+              "createOnClick(1)",
+              "createOnClick(2)",
+              "createOnClick(4)",
+              "createOnClick(5)",
+              "createOnClick(7)",
+              "createOnClick(8)",
+              "createOnClick(3)",
+              "createOnClick(6)",
+              "createOnClick(9)"
+            ],
+            "count": 9
+          },
+          "checked": {
+            "values": [
+              "isChecked(1)",
+              "isChecked(2)",
+              "isChecked(4)",
+              "isChecked(5)",
+              "isChecked(7)",
+              "isChecked(8)",
+              "isChecked(3)",
+              "isChecked(6)",
+              "isChecked(9)"
+            ],
+            "count": 9
+          },
+          "icon": {
+            "values": ["{ children: <CalendarIcon /> }", "<CalendarIcon />"],
+            "count": 6
+          },
+          "appearance": {
+            "values": ["transparent", "primary"],
+            "count": 6
+          },
+          "title": {
+            "values": ["Calendar"],
+            "count": 3
+          }
+        },
+        "count": 9
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {},
+    "count": 6
+  },
+  "@fluentui/react-jsx-runtime": {
+    "components": {
+      "createElement": {
+        "props": {},
+        "count": 0
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "Fragment": {
+        "count": 2
+      }
+    },
+    "count": 16
+  },
+  "@fluentui/react-tabs": {
+    "components": {},
+    "hooks": {
+      "useTabButtonStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["tabState"],
+            "count": 1
+          },
+          "arg1": {
+            "values": ["state.button"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTabContentStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["tabState"],
+            "count": 1
+          }
+        },
+        "count": 1
+      },
+      "useTabIndicatorStyles_unstable": {
+        "props": {
+          "arg0": {
+            "values": ["tabState"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "types": {},
+    "others": {},
+    "count": 3
+  },
+  "@fluentui/react-positioning": {
+    "components": {},
+    "hooks": {
+      "usePositioning": {
+        "props": {
+          "arg0": {
+            "values": ["positioningOptions"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "types": {},
+    "others": {
+      "createSlideStyles": {
+        "count": 1
+      }
+    },
+    "count": 2
+  },
+  "@griffel/react": {
+    "components": {
+      "TextDirectionProvider": {
+        "props": {
+          "dir": {
+            "values": ["contextValues.textDirection"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "hooks": {},
+    "types": {},
+    "others": {
+      "makeStyles": {
+        "count": 3
+      },
+      "mergeClasses": {
+        "count": 3
+      }
+    },
+    "count": 7
+  },
+  "@fluentui/react-aria": {
+    "components": {},
+    "hooks": {
+      "useARIAButtonProps": {
+        "props": {
+          "arg0": {
+            "values": ["child?.type === 'button' || child?.type === 'a' ? child.type : 'div'"],
+            "count": 1
+          },
+          "type": {
+            "values": ["'button'"],
+            "count": 1
+          }
+        },
+        "count": 1
+      }
+    },
+    "types": {},
+    "others": {},
+    "count": 1
+  }
+}
