@@ -5,11 +5,7 @@ export {
   useBreadcrumbStyles_unstable,
   breadcrumbClassNames,
 } from './Breadcrumb';
-export type {
-  BreadcrumbSlots,
-  BreadcrumbProps,
-  BreadcrumbState,
-} from './Breadcrumb';
+export type { BreadcrumbSlots, BreadcrumbProps, BreadcrumbState } from './Breadcrumb';
 export {
   BreadcrumbDivider,
   breadcrumbDividerClassNames,
@@ -17,11 +13,7 @@ export {
   useBreadcrumbDividerStyles_unstable,
   useBreadcrumbDivider_unstable,
 } from './BreadcrumbDivider';
-export type {
-  BreadcrumbDividerProps,
-  BreadcrumbDividerSlots,
-  BreadcrumbDividerState,
-} from './BreadcrumbDivider';
+export type { BreadcrumbDividerProps, BreadcrumbDividerSlots, BreadcrumbDividerState } from './BreadcrumbDivider';
 export {
   BreadcrumbItem,
   breadcrumbItemClassNames,
@@ -29,11 +21,7 @@ export {
   useBreadcrumbItemStyles_unstable,
   useBreadcrumbItem_unstable,
 } from './BreadcrumbItem';
-export type {
-  BreadcrumbItemProps,
-  BreadcrumbItemSlots,
-  BreadcrumbItemState,
-} from './BreadcrumbItem';
+export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
 export {
   partitionBreadcrumbItems,
   truncateBreadcrumbLongName,
@@ -48,11 +36,7 @@ export {
   useBreadcrumbButtonStyles_unstable,
   useBreadcrumbButton_unstable,
 } from './BreadcrumbButton';
-export type {
-  BreadcrumbButtonProps,
-  BreadcrumbButtonSlots,
-  BreadcrumbButtonState,
-} from './BreadcrumbButton';
+export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton';
 export { BreadcrumbProvider, useBreadcrumbContext_unstable } from './Breadcrumb';
 export type { BreadcrumbContextValues } from './Breadcrumb';
 
