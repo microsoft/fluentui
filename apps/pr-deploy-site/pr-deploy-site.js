@@ -110,8 +110,8 @@ function main() {
  * @param {string} urlPath
  */
 function updatePrOrBranchLink(urlPath) {
-  // location.pathname will be like /pull/17568/ or /heads/master/
-  var hrefMatch = urlPath.match(/^\/(pull|heads)\/([^/]+)/);
+  // location.pathname will be like /pr-preview/pr-17568/ or /pull/17568/ or /heads/master/
+  var hrefMatch = urlPath.match(/^\/(pull|heads)\/([^/]+)/) || urlPath.match(/\/pr-preview\/pr-(\d+)/);
   if (!hrefMatch) {
     return;
   }
@@ -122,6 +122,15 @@ function updatePrOrBranchLink(urlPath) {
   }
 
   var repoUrl = 'https://github.com/microsoft/fluentui';
+
+  // Match from /pr-preview/pr-NUMBER/ pattern (only capture group is the PR number)
+  if (hrefMatch.length === 2) {
+    var prNumber = hrefMatch[1];
+    link.textContent = 'PR #' + prNumber;
+    link.href = repoUrl + '/pull/' + prNumber;
+    return;
+  }
+
   var type = hrefMatch[1];
   var value = hrefMatch[2];
 

@@ -7,11 +7,15 @@ on:
       - master
   workflow_dispatch:
 
+concurrency:
+  group: gh-pages-production
+  cancel-in-progress: false
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      artifact_id: ${{ steps.artifact_upload.outputs.artifact_id }}
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
@@ -55,28 +59,28 @@ jobs:
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
 
-      - name: Upload Pages Artifact
+      - name: Deploy to gh-pages branch
         if: steps.affected_storybooks_count.outputs.value > 0
-        id: artifact_upload
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: needs.build.outputs.artifact_id
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
+          # Fetch gh-pages branch or create orphan if it doesn't exist
+          if git fetch origin gh-pages:gh-pages 2>/dev/null; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf . 2>/dev/null || true
+          fi
 
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+          # Remove production files but preserve pr-preview/ and .git/
+          find . -maxdepth 1 ! -name '.git' ! -name 'pr-preview' ! -name '.' -exec rm -rf {} +
 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # Copy new production files
+          git checkout ${{ github.sha }} -- _pages/
+          cp -R _pages/* .
+          rm -rf _pages
+
+          git add -A
+          git diff --staged --quiet || git commit -m "Deploy docsite from ${GITHUB_SHA::7}"
+          git push origin gh-pages
