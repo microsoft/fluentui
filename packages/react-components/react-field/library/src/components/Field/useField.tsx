@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 
@@ -46,11 +46,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
  * @param ref - Ref to the root
  */
 export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTMLDivElement>): FieldBaseState => {
-  const {
-    children,
-    required = false,
-    validationState = props.validationMessage ? 'error' : 'none',
-  } = props;
+  const { children, required = false, validationState = props.validationMessage ? 'error' : 'none' } = props;
 
   const baseId = useId('field-');
   const generatedControlId = baseId + '__control';
