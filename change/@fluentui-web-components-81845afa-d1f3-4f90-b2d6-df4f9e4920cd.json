@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: change tabindex logic for button and switch, remove automatic assignment of false for button disabled attr",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

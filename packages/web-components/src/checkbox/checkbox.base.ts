@@ -45,21 +45,26 @@ export class BaseCheckbox extends FASTElement {
   @observable
   public disabled?: boolean;
 
+  private setTabIndex(): void {
+    if (this.disabled) {
+      this.removeAttribute('tabindex');
+      return;
+    }
+
+    // If author sets tabindex to a non-positive value, the component should
+    // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+    // tabindex to a positive number. See details:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+  }
+
   /**
    * Toggles the disabled state when the user changes the `disabled` property.
    *
    * @internal
    */
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    if (this.disabled) {
-      this.removeAttribute('tabindex');
-    } else {
-      // If author sets tabindex to a non-positive value, the component should
-      // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
-      // tabindex to a positive number. See details:
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
-      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-    }
+    this.setTabIndex();
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
     toggleState(this.elementInternals, 'disabled', this.disabled);
   }
@@ -353,6 +358,7 @@ export class BaseCheckbox extends FASTElement {
     super.connectedCallback();
 
     this.disabled = !!this.disabledAttribute;
+    this.setTabIndex();
     this.setAriaChecked();
     this.setValidity();
   }
