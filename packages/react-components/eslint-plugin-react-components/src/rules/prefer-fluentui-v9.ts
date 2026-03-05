@@ -1,4 +1,4 @@
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, type TSESTree } from '@typescript-eslint/utils';
 
 import { createRule } from './utils/create-rule';
 
@@ -25,49 +25,79 @@ export const rule = createRule<Options, MessageIds>({
   },
   defaultOptions: [],
   create(context) {
-    return {
-      ImportDeclaration(node) {
-        const source = node.source.value;
-        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/');
+    /**
+     * Reports a migration warning for a given component name and AST node.
+     */
+    function reportIfMigration(componentName: string, node: TSESTree.Node) {
+      if (!componentName) {
+        return;
+      }
 
-        if (!isFluentV8Import) {
+      if (componentName === 'Icon') {
+        context.report({ node, messageId: 'replaceIconWithJsx' });
+        return;
+      }
+
+      if (componentName === 'Stack') {
+        context.report({ node, messageId: 'replaceStackWithFlex' });
+        return;
+      }
+
+      if (componentName === 'FocusTrapZone' || componentName === 'FocusZone') {
+        context.report({ node, messageId: 'replaceFocusZoneWithTabster', data: { fluent8: componentName } });
+        return;
+      }
+
+      if (!isMigration(componentName)) {
+        return;
+      }
+
+      const migration = MIGRATIONS[componentName];
+      context.report({
+        node,
+        messageId: 'replaceFluent8With9',
+        data: {
+          fluent8: componentName,
+          fluent9: migration.import,
+          package: migration.package,
+        },
+      });
+    }
+
+    return {
+      /**
+       * Matches static imports from '@fluentui/react'.
+       * Example: import { Button } from '@fluentui/react';
+       */
+      ImportDeclaration(node) {
+        if (!isFluentV8Import(node.source.value)) {
           return;
         }
-
         for (const specifier of node.specifiers) {
           if (
             specifier.type === AST_NODE_TYPES.ImportSpecifier &&
             specifier.imported.type === AST_NODE_TYPES.Identifier
           ) {
-            const name = specifier.imported.name;
-
-            switch (name) {
-              case 'Icon':
-                context.report({ node, messageId: 'replaceIconWithJsx' });
-                break;
-              case 'Stack':
-                context.report({ node, messageId: 'replaceStackWithFlex' });
-                break;
-              case 'FocusTrapZone':
-              case 'FocusZone':
-                context.report({ node, messageId: 'replaceFocusZoneWithTabster', data: { fluent8: name } });
-                break;
-              default:
-                if (isMigration(name)) {
-                  const migration = MIGRATIONS[name];
-
-                  context.report({
-                    node,
-                    messageId: 'replaceFluent8With9',
-                    data: {
-                      fluent8: name,
-                      fluent9: migration.import,
-                      package: migration.package,
-                    },
-                  });
-                }
-            }
+            reportIfMigration(specifier.imported.name, node);
           }
+        }
+      },
+      /**
+       * Matches dynamic imports from '@fluentui/react'.
+       * Examples:
+       * - import('@fluentui/react').then(m => ({ default: m.Button }))
+       * - import('@fluentui/react').then(({ Button }) => ({ default: Button }))
+       * - async () => { const m = await import('@fluentui/react'); return { default: m.Button }; }
+       * - function hello() { import('@fluentui/react').then(m => window.v8 = m); }
+       */
+      ImportExpression(node) {
+        if (node.source.type !== AST_NODE_TYPES.Literal || !isFluentV8Import(node.source.value as string)) {
+          return;
+        }
+
+        const components = extractComponentsFromImport(node);
+        for (const comp of components) {
+          reportIfMigration(comp, node);
         }
       },
     };
@@ -148,4 +178,199 @@ const MIGRATIONS = {
  * @param name - The name of the component.
  * @returns True if the component is in the MIGRATIONS list, false otherwise.
  */
-const isMigration = (name: string): name is keyof typeof MIGRATIONS => name in MIGRATIONS;
+function isMigration(name: string): name is keyof typeof MIGRATIONS {
+  return name in MIGRATIONS;
+}
+
+/**
+ * Extracts component names from a dynamic import expression by traversing up the AST.
+ * Handles patterns like:
+ * - import('@fluentui/react').then(m => ({ default: m.Button }))
+ * - import('@fluentui/react').then(({ Button }) => ({ default: Button }))
+ * - const m = await import('@fluentui/react'); return { default: m.Button };
+ * - import('@fluentui/react').then(m => window.v8 = m);
+ */
+function extractComponentsFromImport(importNode: TSESTree.ImportExpression): string[] {
+  const components: string[] = [];
+  const parent = importNode.parent;
+
+  if (!parent) {
+    return components;
+  }
+
+  // Handle: const m = await import('@fluentui/react')
+  if (
+    parent.type === AST_NODE_TYPES.AwaitExpression &&
+    parent.parent?.type === AST_NODE_TYPES.VariableDeclarator &&
+    parent.parent.id.type === AST_NODE_TYPES.Identifier
+  ) {
+    const varName = parent.parent.id.name;
+    const foundComponents = findComponentUsagesInScope(parent.parent, varName);
+    return foundComponents;
+  }
+
+  // Handle: const { Button } = await import('@fluentui/react')
+  if (
+    parent.type === AST_NODE_TYPES.AwaitExpression &&
+    parent.parent?.type === AST_NODE_TYPES.VariableDeclarator &&
+    parent.parent.id.type === AST_NODE_TYPES.ObjectPattern
+  ) {
+    for (const prop of parent.parent.id.properties) {
+      if (
+        prop.type === AST_NODE_TYPES.Property &&
+        prop.key.type === AST_NODE_TYPES.Identifier &&
+        isMigration(prop.key.name)
+      ) {
+        components.push(prop.key.name);
+      }
+    }
+    return components;
+  }
+
+  // Handle: import('@fluentui/react').then(...)
+  if (
+    parent.type === AST_NODE_TYPES.MemberExpression &&
+    parent.property.type === AST_NODE_TYPES.Identifier &&
+    parent.property.name === 'then' &&
+    parent.parent?.type === AST_NODE_TYPES.CallExpression
+  ) {
+    const callExpr = parent.parent;
+    const thenArg = callExpr.arguments[0];
+
+    if (
+      thenArg &&
+      (thenArg.type === AST_NODE_TYPES.ArrowFunctionExpression || thenArg.type === AST_NODE_TYPES.FunctionExpression)
+    ) {
+      const param = thenArg.params[0];
+
+      // Handle: .then(({ Button }) => ...)
+      if (param && param.type === AST_NODE_TYPES.ObjectPattern) {
+        for (const prop of param.properties) {
+          if (
+            prop.type === AST_NODE_TYPES.Property &&
+            prop.key.type === AST_NODE_TYPES.Identifier &&
+            isMigration(prop.key.name)
+          ) {
+            components.push(prop.key.name);
+          }
+        }
+      }
+      // Handle: .then(m => ...)
+      else if (param && param.type === AST_NODE_TYPES.Identifier) {
+        const paramName = param.name;
+        const foundComponents = findComponentUsagesInFunction(thenArg, paramName);
+        components.push(...foundComponents);
+      }
+    }
+  }
+
+  return components;
+}
+
+/**
+ * Finds component usages within a function body by looking for member access patterns like `m.Button`.
+ */
+function findComponentUsagesInFunction(
+  fn: TSESTree.ArrowFunctionExpression | TSESTree.FunctionExpression,
+  varName: string,
+): string[] {
+  const components: string[] = [];
+
+  function traverse(node: TSESTree.Node | null | undefined): void {
+    if (!node) {
+      return;
+    }
+
+    // Look for m.Component patterns
+    if (
+      node.type === AST_NODE_TYPES.MemberExpression &&
+      node.object.type === AST_NODE_TYPES.Identifier &&
+      node.object.name === varName &&
+      node.property.type === AST_NODE_TYPES.Identifier &&
+      isMigration(node.property.name)
+    ) {
+      components.push(node.property.name);
+    }
+
+    // Recursively traverse child nodes (skip 'parent' to avoid circular references)
+    for (const key in node) {
+      if (key === 'parent') {
+        continue;
+      }
+      const value = (node as unknown as Record<string, unknown>)[key];
+      if (value && typeof value === 'object') {
+        if (Array.isArray(value)) {
+          value.forEach(traverse);
+        } else if ('type' in value) {
+          traverse(value as TSESTree.Node);
+        }
+      }
+    }
+  }
+
+  traverse(fn.body);
+  return components;
+}
+
+/**
+ * Finds component usages in the scope after a variable declaration.
+ * Used for async/await patterns like: const m = await import(...); return { default: m.Button };
+ */
+function findComponentUsagesInScope(declarator: TSESTree.VariableDeclarator, varName: string): string[] {
+  const components: string[] = [];
+  let currentNode: TSESTree.Node | undefined = declarator.parent;
+
+  // Find the containing block statement
+  while (currentNode && currentNode.type !== AST_NODE_TYPES.BlockStatement) {
+    currentNode = currentNode.parent;
+  }
+
+  if (!currentNode || currentNode.type !== AST_NODE_TYPES.BlockStatement) {
+    return components;
+  }
+
+  // Traverse the block statement to find usages
+  function traverse(node: TSESTree.Node | null | undefined): void {
+    if (!node) {
+      return;
+    }
+
+    // Look for m.Component patterns
+    if (
+      node.type === AST_NODE_TYPES.MemberExpression &&
+      node.object.type === AST_NODE_TYPES.Identifier &&
+      node.object.name === varName &&
+      node.property.type === AST_NODE_TYPES.Identifier &&
+      isMigration(node.property.name)
+    ) {
+      components.push(node.property.name);
+    }
+
+    // Recursively traverse child nodes (skip 'parent' to avoid circular references)
+    for (const key in node) {
+      if (key === 'parent') {
+        continue;
+      }
+      const value = (node as unknown as Record<string, unknown>)[key];
+      if (value && typeof value === 'object') {
+        if (Array.isArray(value)) {
+          value.forEach(traverse);
+        } else if ('type' in value) {
+          traverse(value as TSESTree.Node);
+        }
+      }
+    }
+  }
+
+  traverse(currentNode);
+  return components;
+}
+
+/**
+ * Checks if the import source is from Fluent UI v8.
+ * @param source - The import source string.
+ * @returns True if the source is from Fluent UI v8, false otherwise.
+ */
+function isFluentV8Import(source: string) {
+  return source === '@fluentui/react' || source.startsWith('@fluentui/react/');
+}
