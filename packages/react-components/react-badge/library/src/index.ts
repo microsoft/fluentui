@@ -1,10 +1,4 @@
-export {
-  Badge,
-  badgeClassNames,
-  renderBadge_unstable,
-  useBadgeStyles_unstable,
-  useBadge_unstable,
-} from './Badge';
+export { Badge, badgeClassNames, renderBadge_unstable, useBadgeStyles_unstable, useBadge_unstable } from './Badge';
 export type { BadgeProps, BadgeSlots, BadgeState } from './Badge';
 export {
   PresenceBadge,
@@ -23,21 +17,14 @@ export {
   presenceOfflineRegular,
   presenceUnknownRegular,
 } from './PresenceBadge';
-export type {
-  PresenceBadgeProps,
-  PresenceBadgeState,
-  PresenceBadgeStatus,
-} from './PresenceBadge';
+export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge';
 export {
   CounterBadge,
   counterBadgeClassNames,
   useCounterBadgeStyles_unstable,
   useCounterBadge_unstable,
 } from './CounterBadge';
-export type {
-  CounterBadgeProps,
-  CounterBadgeState,
-} from './CounterBadge';
+export type { CounterBadgeProps, CounterBadgeState } from './CounterBadge';
 
 // Experimental APIs - will be uncommented in the experimental release branch
 // export { useBadgeBase_unstable } from './Badge';

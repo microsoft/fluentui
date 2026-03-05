@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
@@ -8,13 +8,7 @@ import type { BadgeBaseProps, BadgeBaseState, BadgeProps, BadgeState } from './B
  * Returns the props and state required to render the component
  */
 export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
-  const {
-    shape = 'circular',
-    size = 'medium',
-    appearance = 'filled',
-    color = 'brand',
-    ...badgeProps
-  } = props;
+  const { shape = 'circular', size = 'medium', appearance = 'filled', color = 'brand', ...badgeProps } = props;
 
   const state = useBadgeBase_unstable(badgeProps, ref);
 

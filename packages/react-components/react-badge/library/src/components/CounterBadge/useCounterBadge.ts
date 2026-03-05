@@ -14,13 +14,7 @@ import type {
  * Returns the props and state required to render the component
  */
 export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Ref<HTMLElement>): CounterBadgeState => {
-  const {
-    shape = 'circular',
-    appearance = 'filled',
-    color = 'brand',
-    size = 'medium',
-    ...counterBadgeProps
-  } = props;
+  const { shape = 'circular', appearance = 'filled', color = 'brand', size = 'medium', ...counterBadgeProps } = props;
 
   const state = useCounterBadgeBase_unstable(counterBadgeProps, ref);
 
@@ -43,16 +37,13 @@ export const useCounterBadgeBase_unstable = (
   props: CounterBadgeBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CounterBadgeBaseState => {
-  const {
-    showZero = false,
-    overflowCount = 99,
-    count = 0,
-    dot = false,
-    ...badgeProps
-  } = props;
+  const { showZero = false, overflowCount = 99, count = 0, dot = false, ...badgeProps } = props;
 
   const state: CounterBadgeBaseState = {
-    ...(useBadgeBase_unstable(badgeProps, ref) as Pick<CounterBadgeBaseState, keyof Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>>),
+    ...(useBadgeBase_unstable(badgeProps, ref) as Pick<
+      CounterBadgeBaseState,
+      keyof Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>
+    >),
     showZero,
     count,
     dot,
