@@ -4,9 +4,6 @@ export {
   renderInput_unstable,
   useInputStyles_unstable,
   useInput_unstable,
+  useInputBase_unstable,
 } from './Input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from './Input';
-
-// Experimental APIs - will be uncommented in the experimental release branch
-// export { useInputBase_unstable } from './Input';
-// export type { InputBaseProps, InputBaseState } from './Input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState, InputBaseProps, InputBaseState } from './Input';
