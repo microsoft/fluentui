@@ -3,7 +3,12 @@
 import * as React from 'react';
 import { useNavContext_unstable } from '../NavContext';
 
-import type { NavCategoryBaseProps, NavCategoryBaseState, NavCategoryProps, NavCategoryState } from './NavCategory.types';
+import type {
+  NavCategoryBaseProps,
+  NavCategoryBaseState,
+  NavCategoryProps,
+  NavCategoryState,
+} from './NavCategory.types';
 
 /**
  * Create the state required to render NavCategory.
