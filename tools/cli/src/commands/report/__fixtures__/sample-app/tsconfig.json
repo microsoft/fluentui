@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@sample/azure-theme": ["packages/azure-theme/src/index.ts"]
+    },
+    "typeRoots": []
+  },
+  "include": ["src/**/*"]
+}
