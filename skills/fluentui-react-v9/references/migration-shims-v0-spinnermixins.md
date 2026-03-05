@@ -1,0 +1,108 @@
+# Migration Shims/V0/SpinnerMixins
+
+The Spinner Mixin adds styles to match `@fluentui/react-northstar` [Loader](https://fluentsite.z22.web.core.windows.net/0.65.0/components/loader/definition).
+
+## Examples
+
+### Inline
+
+```tsx
+(): JSXElement => {
+  const styles = useStyles();
+  return (
+    <Provider theme={teamsTheme} className={styles.root}>
+      <div>
+        <h3>v0</h3>
+        <div>
+          <Loader inline />
+          <Loader inline />
+        </div>
+      </div>
+
+      <div>
+        <h3>V9 With mixin</h3>
+        <div>
+          <Spinner className={styles.inline} />
+          <Spinner className={styles.inline} />
+        </div>
+      </div>
+    </Provider>
+  );
+};
+```
+
+### Label
+
+```tsx
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
+
+import { Loader, Provider, teamsTheme } from '@fluentui/react-northstar';
+import { makeStyles, Spinner } from '@fluentui/react-components';
+import { spinner } from '@fluentui/react-migration-v0-v9';
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+  inline: {
+    ...spinner.v0Inline(),
+  },
+  label: {
+    ...spinner.v0SpinnerLabelStyle(),
+  },
+});
+
+export const Inline = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <Provider theme={teamsTheme} className={styles.root}>
+      <div>
+        <h3>v0</h3>
+        <div>
+          <Loader inline />
+          <Loader inline />
+        </div>
+      </div>
+
+      <div>
+        <h3>V9 With mixin</h3>
+        <div>
+          <Spinner className={styles.inline} />
+          <Spinner className={styles.inline} />
+        </div>
+      </div>
+    </Provider>
+  );
+};
+
+export const Label = (): JSXElement => {
+  const styles = useStyles();
+
+  return (
+    <Provider theme={teamsTheme} className={styles.root}>
+      <div>
+        <h3>v0</h3>
+        <Loader label="Loading..." />
+      </div>
+
+      <div>
+        <h3>V9 With mixin</h3>
+        <Spinner className={styles.label} labelPosition="below" label="Loading..." />
+      </div>
+    </Provider>
+  );
+};
+
+export default {
+  title: 'Migration Shims/V0/SpinnerMixins',
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
+};
+```
