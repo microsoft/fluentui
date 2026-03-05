@@ -3040,6 +3040,12 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    defaultSlot: HTMLSlotElement;
+    // @internal
+    protected defaultSlotChanged(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -3048,8 +3054,6 @@ export class Listbox extends FASTElement {
     get enabledOptions(): DropdownOption[];
     // @internal
     handleChange(source: any, propertyName?: string): void;
-    // @override
-    id: string;
     multiple?: boolean;
     multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
     options: DropdownOption[];
@@ -3059,7 +3063,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
-    slotchangeHandler(e: Event): void;
+    slotchangeHandler(e?: Event): void;
 }
 
 // @public
