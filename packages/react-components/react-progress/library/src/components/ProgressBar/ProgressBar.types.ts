@@ -54,7 +54,7 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
 /**
  * ProgressBar base props — excludes design props (shape, thickness, color).
  */
-export type ProgressBarBaseProps = DistributiveOmit<ProgressBarProps, 'shape' | 'thickness' | 'color'>;
+export type ProgressBarBaseProps = Omit<ProgressBarProps, 'shape' | 'thickness' | 'color'>;
 
 /**
  * State used in rendering ProgressBar
