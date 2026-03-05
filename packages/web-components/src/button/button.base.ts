@@ -42,21 +42,23 @@ export class BaseButton extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  disabled = false;
+  disabled!: boolean;
 
-  protected disabledChanged() {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
+  private setTabIndex(): void {
     if (this.disabled) {
       this.removeAttribute('tabindex');
-    } else {
-      // If author sets tabindex to a non-positive value, the component should
-      // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
-      // tabindex to a positive number. See details:
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
-      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+      return;
     }
+
+    // If author sets tabindex to a non-positive value, the component should
+    // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+    // tabindex to a positive number. See details:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+  }
+
+  protected disabledChanged() {
+    this.setTabIndex();
   }
 
   /**
@@ -262,7 +264,7 @@ export class BaseButton extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
-    this.disabledChanged();
+    this.setTabIndex();
   }
 
   constructor() {
