@@ -4,7 +4,12 @@ import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
-import type { ProgressBarBaseProps, ProgressBarBaseState, ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+import type {
+  ProgressBarBaseProps,
+  ProgressBarBaseState,
+  ProgressBarProps,
+  ProgressBarState,
+} from './ProgressBar.types';
 
 /**
  * Create the state required to render ProgressBar.
