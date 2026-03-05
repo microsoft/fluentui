@@ -1,5 +1,3 @@
-import type { SourceFile } from 'ts-morph';
-
 export type AnnotationAction = 'auto' | 'scaffold' | 'manual' | 'no-equivalent';
 
 export interface Annotation {
@@ -26,9 +24,4 @@ export interface FileAnalysis {
   filePath: string;
   annotations: AnnotationResult[];
   missingDeps: Array<{ name: string; reason: string }>;
-}
-
-export interface AnnotationRule {
-  name: string;
-  detect(sourceFile: SourceFile): AnnotationResult[];
 }

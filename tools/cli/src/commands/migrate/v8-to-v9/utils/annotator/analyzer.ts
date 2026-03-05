@@ -1,3 +1,4 @@
+import * as fs from 'fs/promises';
 import * as glob from 'fast-glob';
 import * as path from 'path';
 import { Project } from 'ts-morph';
@@ -57,11 +58,42 @@ const DEP_REQUIREMENTS: Array<{ name: string; reason: string; triggerCodemod: st
 ];
 
 /**
- * Pure detection engine — no file I/O.
+ * Walk up from dir to find the nearest package.json and return its combined dependency names.
+ * Returns an empty set if no package.json is found.
+ */
+async function getInstalledPackages(startDir: string): Promise<Set<string>> {
+  let dir = path.resolve(startDir);
+  while (true) {
+    try {
+      const raw = await fs.readFile(path.join(dir, 'package.json'), 'utf8');
+      const pkg = JSON.parse(raw) as {
+        dependencies?: Record<string, string>;
+        devDependencies?: Record<string, string>;
+        peerDependencies?: Record<string, string>;
+      };
+      return new Set([
+        ...Object.keys(pkg.dependencies ?? {}),
+        ...Object.keys(pkg.devDependencies ?? {}),
+        ...Object.keys(pkg.peerDependencies ?? {}),
+      ]);
+    } catch {
+      const parent = path.dirname(dir);
+      if (parent === dir) {
+        break;
+      } // reached filesystem root
+      dir = parent;
+    }
+  }
+  return new Set<string>();
+}
+
+/**
+ * Pure detection engine — no file I/O beyond reading package.json for dep filtering.
  * Both migrate and dryRun call this.
  */
 export async function analyzeFiles(sourcePath: string): Promise<FileAnalysis[]> {
   const absoluteSource = path.resolve(sourcePath);
+  const installedPackages = await getInstalledPackages(absoluteSource);
 
   const filePaths = await glob.glob(['**/*.ts', '**/*.tsx'], {
     cwd: absoluteSource,
@@ -86,11 +118,11 @@ export async function analyzeFiles(sourcePath: string): Promise<FileAnalysis[]> 
       continue;
     }
 
-    // Determine which deps are needed based on detected codemods
+    // Determine which deps are needed based on detected codemods, filtered by what's already installed
     const detectedCodemods = new Set(annotations.map(a => a.codemod));
-    const missingDeps = DEP_REQUIREMENTS.filter(dep => detectedCodemods.has(dep.triggerCodemod)).map(
-      ({ name, reason }) => ({ name, reason }),
-    );
+    const missingDeps = DEP_REQUIREMENTS.filter(
+      dep => detectedCodemods.has(dep.triggerCodemod) && !installedPackages.has(dep.name),
+    ).map(({ name, reason }) => ({ name, reason }));
 
     results.push({
       filePath: sourceFile.getFilePath(),

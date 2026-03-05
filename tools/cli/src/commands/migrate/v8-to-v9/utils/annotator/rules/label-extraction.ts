@@ -2,7 +2,13 @@ import type { SourceFile, Node } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 import type { AnnotationResult } from '../types';
 
-const LABEL_COMPONENTS = new Set(['TextField', 'SpinButton', 'Slider', 'ChoiceGroup']);
+const LABEL_COMPONENTS = new Set(['TextField', 'SpinButton', 'Slider', 'ChoiceGroup', 'Spinner', 'ProgressIndicator']);
+
+/** Maps v8 component names to their v9 equivalents for use in scaffold payloads. */
+const V9_NAME: Record<string, string> = {
+  TextField: 'Input',
+  ProgressIndicator: 'ProgressBar',
+};
 
 export function detectLabelExtraction(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
@@ -26,7 +32,7 @@ export function detectLabelExtraction(sourceFile: SourceFile, fluentNames: Set<s
           results.push({
             action: 'scaffold',
             codemod: 'label-extraction',
-            payload: `${tagName}.label → <Field label="..."><${tagName === 'TextField' ? 'Input' : tagName} /></Field>`,
+            payload: `${tagName}.label → <Field label="..."><${V9_NAME[tagName] ?? tagName} /></Field>`,
             note: 'also move: required, errorMessage→validationMessage, description→hint',
             line,
           });

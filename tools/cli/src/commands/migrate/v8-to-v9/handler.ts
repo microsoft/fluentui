@@ -1,3 +1,4 @@
+import * as fs from 'fs/promises';
 import type { CommandHandler } from '../../../utils/types';
 import { analyzeFiles, writeAnnotations } from './utils/annotator';
 import type { FileAnalysis } from './utils/annotator';
@@ -8,6 +9,17 @@ interface V8ToV9Args {
 }
 
 export const handler: CommandHandler<V8ToV9Args> = async argv => {
+  let stat: Awaited<ReturnType<typeof fs.stat>>;
+  try {
+    stat = await fs.stat(argv.path);
+  } catch {
+    throw new Error(`Error: --path does not exist: ${argv.path}`);
+  }
+
+  if (!stat.isDirectory()) {
+    throw new Error(`Error: --path must be a directory, got a file: ${argv.path}`);
+  }
+
   const results = await analyzeFiles(argv.path);
 
   if (argv.dryRun) {
@@ -55,7 +67,7 @@ function printSummary(results: FileAnalysis[], filesChanged: number): void {
   const counts = countByAction(results);
   const deps = collectDeps(results);
 
-  console.log(`\nAnnotated ${filesChanged} files`);
+  console.log(`\nAnnotated ${filesChanged} ${filesChanged === 1 ? 'file' : 'files'}`);
   console.log(`  auto          ${counts.auto.toString().padStart(4)}  (safe to apply mechanically)`);
   console.log(`  scaffold      ${counts.scaffold.toString().padStart(4)}  (boilerplate needed)`);
   console.log(`  manual        ${counts.manual.toString().padStart(4)}  (requires judgment)`);

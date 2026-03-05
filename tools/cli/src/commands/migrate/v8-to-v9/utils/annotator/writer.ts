@@ -6,6 +6,29 @@ const ANNOTATION_TAG = '@fluent-migrate:';
 const METADATA_DIR = '.fluent-migrate';
 const METADATA_FILE = 'metadata.json';
 
+/**
+ * Searches backward from targetLine through consecutive annotation comment lines to detect
+ * whether an identical comment already exists. This handles the case where multiple
+ * annotations target the same original source line — a simple one-line-above check
+ * would miss duplicates that were inserted in previous runs.
+ */
+function annotationAlreadyPresent(lines: string[], targetLine: number, comment: string): boolean {
+  const commentTrimmed = comment.trim();
+  let i = targetLine - 1;
+  while (i >= 0) {
+    const lineTrimmed = lines[i].trim();
+    if (lineTrimmed === commentTrimmed) {
+      return true;
+    }
+    // Stop at the first line that is not a fluent-migrate annotation comment
+    if (!lineTrimmed.startsWith('// @fluent-migrate:') && !lineTrimmed.startsWith('{/* @fluent-migrate:')) {
+      break;
+    }
+    i--;
+  }
+  return false;
+}
+
 function formatAnnotation(a: AnnotationResult): string {
   const parts = [a.action, a.codemod, a.payload];
   if (a.note) {
@@ -17,7 +40,8 @@ function formatAnnotation(a: AnnotationResult): string {
 
 /**
  * Inserts @fluent-migrate: comments into source files based on FileAnalysis results.
- * Idempotent: skips if an identical comment already exists on the line above the target.
+ * Idempotent: skips if an identical comment already exists in the annotation block above the target.
+ * Handles multiple annotations targeting the same source line by tracking per-line insertion offsets.
  *
  * When `projectRoot` is provided, writes `.fluent-migrate/metadata.json` listing
  * all annotated file paths so the skill can locate them without re-scanning.
@@ -37,18 +61,22 @@ export async function writeAnnotations(
     const content = await fs.readFile(file.filePath, 'utf8');
     const lines = content.split('\n');
 
-    // Sort annotations by line descending so insertions don't shift line numbers
+    // Sort annotations by line descending so insertions at higher lines don't shift lower ones.
     const sorted = [...file.annotations].sort((a, b) => b.line - a.line);
 
     let changed = false;
+    // Track how many annotations have been inserted for each original source line so that
+    // subsequent insertions at the same line land after the already-inserted ones.
+    const sameLineInsertions = new Map<number, number>();
 
     for (const annotation of sorted) {
-      const targetLine = annotation.line - 1; // convert to 0-based
+      const existingInsertions = sameLineInsertions.get(annotation.line) ?? 0;
+      // Offset targetLine by the number of annotations already inserted at this original line
+      const targetLine = annotation.line - 1 + existingInsertions; // convert to 0-based + offset
       const comment = formatAnnotation(annotation);
 
-      // Check if an identical annotation already exists on the line above (trimmed to ignore indent)
-      const lineAbove = lines[targetLine - 1]?.trim();
-      if (lineAbove === comment.trim()) {
+      // Search backward through the annotation block above the target for an identical comment
+      if (annotationAlreadyPresent(lines, targetLine, comment)) {
         continue;
       }
 
@@ -56,6 +84,7 @@ export async function writeAnnotations(
       const indent = lines[targetLine]?.match(/^(\s*)/)?.[1] ?? '';
 
       lines.splice(targetLine, 0, `${indent}${comment}`);
+      sameLineInsertions.set(annotation.line, existingInsertions + 1);
       changed = true;
     }
 

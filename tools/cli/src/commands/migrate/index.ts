@@ -14,15 +14,6 @@ const command: CommandModule = {
         type: 'boolean',
         description: 'List all available migrations',
       })
-      .check(argv => {
-        if (argv.list) {
-          return true;
-        }
-        if (!argv.migration) {
-          throw new Error(`No migration specified. Run --list to see available migrations.`);
-        }
-        return true;
-      })
       .version(false)
       .help(),
   handler: argv => {

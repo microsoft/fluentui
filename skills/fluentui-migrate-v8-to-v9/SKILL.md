@@ -42,13 +42,13 @@ Use `<PROJECT_ROOT>` for the package root and `<SOURCE_ROOT>` for the narrowed s
 
 **Check for existing migration annotations:**
 
-First check for `.fluent-migrate/metadata.json` — written by the CLI after annotating, it lists annotated files deterministically:
+First check for `.fluent-migrate/metadata.json` — written by the CLI after annotating, it lists annotated files deterministically. The CLI writes it to the same directory passed as `--path`, so look in `<SOURCE_ROOT>`:
 
 ```sh
-cat <PROJECT_ROOT>/.fluent-migrate/metadata.json
+cat <SOURCE_ROOT>/.fluent-migrate/metadata.json
 ```
 
-- If `metadata.json` exists, use the `annotatedFiles` list directly as your work queue. Skip the grep scan.
+- If `metadata.json` exists, use the `annotatedFiles` list as your work queue. **Paths are relative to the directory that contains `.fluent-migrate/`** (i.e. relative to `<SOURCE_ROOT>`). Resolve each path against `<SOURCE_ROOT>` before opening. Skip the grep scan.
 - If it does not exist, scan for annotations:
 
 ```sh
@@ -59,6 +59,8 @@ grep -rl "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
 - If nothing is found → tell the user:
 
   > "No migration annotations found. Please run `npx @fluentui/cli migrate v8-to-v9 --path <SOURCE_ROOT>` first, then re-invoke the skill."
+  >
+  > Tip: add `--dry-run` to preview which files would be annotated without writing any changes.
 
   Stop until the user confirms the CLI has been run.
 
@@ -115,6 +117,33 @@ import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 
 In those cases: commit what's done, fill in the Output Template with status ⚠️ or ❌, list the blockers, and wait for user input.
 
+#### Annotation format
+
+Every annotation written by the CLI has this structure:
+
+```
+// @fluent-migrate:<action> | <codemod> | <payload> | <note>
+```
+
+Inside JSX (where a line comment is a syntax error):
+
+```tsx
+{
+  /* @fluent-migrate:<action> | <codemod> | <payload> | <note> */
+}
+```
+
+Fields:
+
+- `action` — `auto`, `scaffold`, `manual`, or `no-equivalent`
+- `codemod` — identifies the transformation rule (see Codemod → Reference Index)
+- `payload` — machine-readable hint (e.g. `Toggle → Switch`, `@fluentui/react → @fluentui/react-components`)
+- `note` — optional human-readable context; may reference a file (e.g. `see references/dialog.md`)
+
+The annotation always sits on the line **above** the node it describes.
+
+---
+
 Process the `@fluent-migrate:` annotations as a work queue. If `.fluent-migrate/metadata.json` exists, open each file it lists directly. Otherwise, get all annotations with:
 
 ```sh
@@ -137,7 +166,7 @@ Each annotation encodes exactly what to do in its payload. Apply the transformat
 grep -rn "@fluent-migrate:scaffold" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
 ```
 
-Generate the appropriate boilerplate skeleton with `// TODO:` placeholders. Do **not** fill in semantic values (style values, layout intent, etc.). Remove the annotation on completion.
+The annotation `payload` specifies the target structure (e.g. `TextField.label → <Field label="..."><Input /></Field>`). Apply the transformation mechanically using the payload as the template. Add `// TODO:` placeholders only for values you cannot infer from surrounding context (e.g. specific style token values). Remove the annotation on completion.
 
 #### 3. `manual` annotations — read context, apply or ask
 
@@ -153,7 +182,12 @@ Read the surrounding code context to determine intent. The annotation's `note` f
 grep -rn "@fluent-migrate:no-equivalent" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
 ```
 
-Do not attempt migration. Report each one to the user with the recommended alternative from the deprecation table below. Wait for user direction before proceeding. Remove the annotation only after the user provides a resolution.
+Do not attempt migration. Report each one to the user with the recommended alternative. Wait for user direction before proceeding. Remove the annotation only after the user provides a resolution.
+
+All `no-equivalent` annotations use `codemod: no-equivalent`. The `note` field always contains the specific guidance. Two common sub-cases:
+
+- **Component-level** (`payload` is a component name, e.g. `ActivityItem`, `Stack` in JSX) → the `note` is the deprecation table entry; the deprecation table below lists recommended alternatives.
+- **Prop- or specifier-level** (`payload` is a prop name or import specifier name, e.g. `onText`, `offText`) → follow the `note` directly (e.g. "remove the prop or build a custom wrapper", "remove this import specifier").
 
 #### Verify zero annotations remain
 
@@ -162,6 +196,108 @@ grep -r "@fluent-migrate:" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
 ```
 
 Should return nothing. Any remaining annotations are blockers — include them in the Output Template as unresolved deltas, then proceed to Step 4.
+
+#### Cross-check remaining v8 imports against the component mapping table
+
+The CLI annotates JSX usages it knows about, but does not annotate every component. After clearing all annotations, scan for any `@fluentui/react` imports that survived the import-path change:
+
+```sh
+grep -rn "from '@fluentui/react'" <SOURCE_ROOT> --include="*.ts" --include="*.tsx"
+```
+
+For each surviving named import, look it up in the **Component Mapping** table below. If the v9 equivalent has a different name or a structural API change, apply that migration now before moving to Step 4.
+
+### Codemod → Reference Index
+
+When processing an annotation, use the `codemod` field to load the right reference before applying the change. For codemods marked "— see inline" below, follow the inline instructions in this section.
+
+| `codemod`            | Reference                                                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `button-variants`    | [references/button.md](references/button.md)                                                                         |
+| `component-rename`   | Component mapping table (this file); for `manual` annotations also load the ref named in the annotation's note field |
+| `dialog-props`       | [references/dialog.md](references/dialog.md)                                                                         |
+| `enum-to-string`     | — see inline                                                                                                         |
+| `get-id`             | — see inline                                                                                                         |
+| `icon-props`         | [references/icons.md](references/icons.md)                                                                           |
+| `import-paths`       | — see inline                                                                                                         |
+| `keycodes`           | — see inline                                                                                                         |
+| `label-extraction`   | [references/input.md](references/input.md), [references/label.md](references/label.md)                               |
+| `no-equivalent`      | Deprecation table (this file) — surface to user, do not migrate                                                      |
+| `progress-bar-props` | [references/progressbar.md](references/progressbar.md)                                                               |
+| `prop-rename`        | — see inline                                                                                                         |
+| `remove-theme-prop`  | [references/theme.md](references/theme.md)                                                                           |
+| `styles-prop`        | [references/theme.md](references/theme.md)                                                                           |
+| `toggle-props`       | [references/switch.md](references/switch.md)                                                                         |
+| `use-boolean`        | — see inline                                                                                                         |
+
+#### `enum-to-string`
+
+Replace the enum member access with the string literal from the payload. Remove the migrated enum from the `@fluentui/react` import.
+
+```tsx
+// annotation payload: MessageBarType.error → "error"
+intent={MessageBarType.error}  →  intent="error"
+```
+
+#### `get-id`
+
+Replace `getId(prefix?)` with the `useId(prefix?)` hook from `@fluentui/react-components`, called at the top level of the function component.
+
+```tsx
+// before
+const id = getId('field');
+
+// after
+import { useId } from '@fluentui/react-components';
+const id = useId('field');
+```
+
+For `manual` annotations (outside a function component), restructure the class before converting.
+
+#### `import-paths`
+
+- `payload: @fluentui/react → @fluentui/react-components` (action: `auto`) — change the module specifier. Keep named imports that have v9 equivalents; specifiers with a `no-equivalent` annotation are handled separately.
+- `payload: @fluentui/react → remove (side-effect import)` (action: `auto`) — delete the entire import statement.
+- `payload: <Component> → <compat-package>` (action: `manual`) — the named import must move to a separate compat package. Remove the specifier from the `@fluentui/react` import and add a new import using the exact compat export name: `CalendarCompat` from `@fluentui/react-calendar-compat`, `DatePickerCompat` from `@fluentui/react-datepicker-compat`, `TimePickerCompat` from `@fluentui/react-timepicker-compat`. If `@fluentui/react-components` is also needed, keep both import lines.
+
+#### `keycodes`
+
+Replace `KeyCodes.X` with the string literal from the payload. Rewrite surrounding key-event checks from `event.which`/`event.keyCode` to `event.key`. Remove `KeyCodes` from the `@fluentui/react` import.
+
+```tsx
+// before
+if (event.which === KeyCodes.enter)
+// after
+if (event.key === 'Enter')
+```
+
+#### `prop-rename`
+
+Rename the JSX prop as specified in the payload (`oldProp → newProp`). Common cases: `ariaLabel → aria-label`, `componentRef → ref`.
+
+```tsx
+// annotation payload: componentRef → ref
+<Dialog componentRef={myRef}  →  <Dialog ref={myRef}
+```
+
+#### `use-boolean`
+
+Replace `useBoolean(initial)` with `useState(initial)` and expand the three tuple helpers inline.
+
+```tsx
+// before
+const [isOpen, { setTrue: openDialog, setFalse: closeDialog, toggle: toggleDialog }] = useBoolean(false);
+
+// after
+const [isOpen, setIsOpen] = useState(false);
+const openDialog = () => setIsOpen(true);
+const closeDialog = () => setIsOpen(false);
+const toggleDialog = () => setIsOpen(prev => !prev);
+```
+
+Remove `useBoolean` from the `@fluentui/react` import; add `useState` from `react`. For `manual` annotations (outside a function component), restructure before converting.
+
+---
 
 ### Step 4 — Validate
 
@@ -265,7 +401,7 @@ Rule of thumb: add `disableButtonEnhancement` when the trigger child is a Fluent
 | `Breadcrumb`                      | `Breadcrumb`                                               | `items` array → declarative `BreadcrumbItem`/`BreadcrumbButton`/`BreadcrumbLink` children — see [breadcrumb.md](references/breadcrumb.md)         |
 | `Calendar`                        | `CalendarCompat`                                           | `@fluentui/react-calendar-compat`                                                                                                                 |
 | `Callout`                         | `Popover`                                                  | Composable trigger/surface; `target` ref → `PopoverTrigger` — see [callout.md](references/callout.md)                                             |
-| `Checkbox`                        | `Checkbox`                                                 | API mostly same                                                                                                                                   |
+| `Checkbox`                        | `Checkbox`                                                 | `indeterminate` → `checked="mixed"`; `CheckboxShim` available — see [checkbox.md](references/checkbox.md)                                         |
 | `ChoiceGroup`                     | `RadioGroup`                                               | Renamed; options array → `Radio` children                                                                                                         |
 | `Coachmark`                       | `TeachingPopover`                                          | Composable trigger/surface/header/body/footer — see [teachingpopover.md](references/teachingpopover.md)                                           |
 | `CommandBar` / `CommandBarButton` | `Toolbar`                                                  | Data-driven → JSX children — see [toolbar.md](references/toolbar.md)                                                                              |
@@ -374,15 +510,15 @@ import { InfoLabel } from '@fluentui/react-components';
 
 ### Deprecated with no v9 equivalent
 
-| v8                 | Recommended alternative                                                                                          |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `ActivityItem`     | Build with `Avatar` + `Text` + `makeStyles` flexbox layout                                                       |
-| `Announced`        | Use a visually-hidden live region: `<div role="status" aria-live="polite" aria-atomic="true">...</div>`          |
-| `HoverCard`        | Use `<Popover>` with `onMouseEnter`/`onMouseLeave` on the trigger (or `openOnHover` prop if available)           |
-| `MarqueeSelection` | Use browser selection APIs or a custom `onPointerDown`/`onPointerMove` drag-select implementation                |
-| `Pickers`          | Use `TagPicker` (multi-select) or `Combobox`/`Dropdown` (single/multi-select) — see tagpicker.md and dropdown.md |
-| `ResizeGroup`      | Use the `Overflow` component (`<Overflow>` + `<OverflowItem>`) — see [overflow.md](references/overflow.md)       |
-| `ScrollablePane`   | Use `overflow: auto` on a CSS container + `position: sticky` for sticky headers; no FluentUI wrapper needed      |
+| v8                                                                | Recommended alternative                                                                                                                                               |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ActivityItem`                                                    | Build with `Avatar` + `Text` + `makeStyles` flexbox layout                                                                                                            |
+| `Announced`                                                       | Use a visually-hidden live region: `<div role="status" aria-live="polite" aria-atomic="true">...</div>`                                                               |
+| `HoverCard`                                                       | Use `<Popover>` with `onMouseEnter`/`onMouseLeave` on the trigger (or `openOnHover` prop if available)                                                                |
+| `MarqueeSelection`                                                | Use browser selection APIs or a custom `onPointerDown`/`onPointerMove` drag-select implementation                                                                     |
+| `NormalPeoplePicker` / `ListPeoplePicker` / `CompactPeoplePicker` | Use `TagPicker` (multi-select) or `Combobox`/`Dropdown` (single/multi-select) — see [tagpicker.md](references/tagpicker.md) and [dropdown.md](references/dropdown.md) |
+| `ResizeGroup`                                                     | Use the `Overflow` component (`<Overflow>` + `<OverflowItem>`) — see [overflow.md](references/overflow.md)                                                            |
+| `ScrollablePane`                                                  | Use `overflow: auto` on a CSS container + `position: sticky` for sticky headers; no FluentUI wrapper needed                                                           |
 
 ---
 

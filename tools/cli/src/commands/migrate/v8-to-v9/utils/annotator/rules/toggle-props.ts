@@ -40,8 +40,9 @@ export function detectToggleProps(sourceFile: SourceFile, fluentNames: Set<strin
         case 'offText':
           results.push({
             action: 'no-equivalent',
-            codemod: 'toggle-props',
-            payload: `${propName} | v9 Switch has no on/off labels — remove or build custom wrapper`,
+            codemod: 'no-equivalent',
+            payload: propName,
+            note: 'v9 Switch has no on/off labels — remove the prop or build a custom wrapper',
             line,
           });
           break;

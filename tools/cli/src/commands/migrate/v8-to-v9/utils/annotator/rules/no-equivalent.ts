@@ -10,7 +10,12 @@ const DEPRECATED_COMPONENTS: Record<string, string> = {
   ResizeGroup: 'use Overflow component (<Overflow> + <OverflowItem>)',
   ScrollablePane: 'use overflow: auto on a CSS container + position: sticky for sticky headers',
   Announced: 'use a visually-hidden live region: <div role="status" aria-live="polite">',
+  Stack: 'replace with makeStyles + flexbox layout — see references/stack.md',
+  StackItem: 'replace with makeStyles + flexbox layout — see references/stack.md',
 };
+
+/** Exported so import-paths can suppress the auto annotation for deprecated-component imports. */
+export const DEPRECATED_COMPONENT_NAMES = new Set(Object.keys(DEPRECATED_COMPONENTS));
 
 export function detectNoEquivalent(sourceFile: SourceFile, fluentNames: Set<string>): AnnotationResult[] {
   const results: AnnotationResult[] = [];
@@ -28,7 +33,8 @@ export function detectNoEquivalent(sourceFile: SourceFile, fluentNames: Set<stri
     results.push({
       action: 'no-equivalent',
       codemod: 'no-equivalent',
-      payload: `${tagName} | ${DEPRECATED_COMPONENTS[tagName]}`,
+      payload: tagName,
+      note: DEPRECATED_COMPONENTS[tagName],
       line: node.getStartLineNumber(),
       insideJsx: isJsxChild(node),
     });

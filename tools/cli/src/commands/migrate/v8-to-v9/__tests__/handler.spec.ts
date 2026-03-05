@@ -1,17 +1,22 @@
 import { handler } from '../handler';
 import * as annotator from '../utils/annotator';
+import * as fs from 'fs/promises';
 
 jest.mock('../utils/annotator');
+jest.mock('fs/promises');
 
 const mockAnalyzeFiles = annotator.analyzeFiles as jest.MockedFunction<typeof annotator.analyzeFiles>;
 const mockWriteAnnotations = annotator.writeAnnotations as jest.MockedFunction<typeof annotator.writeAnnotations>;
+const mockStat = fs.stat as jest.MockedFunction<typeof fs.stat>;
 
 describe('migrate v8-to-v9 handler', () => {
   let logSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    logSpy = jest.spyOn(console, 'log').mockImplementation();
     jest.clearAllMocks();
+    logSpy = jest.spyOn(console, 'log').mockImplementation();
+    // Default: path exists and is a directory
+    mockStat.mockResolvedValue({ isDirectory: () => true } as Awaited<ReturnType<typeof fs.stat>>);
   });
 
   afterEach(() => {
@@ -25,7 +30,7 @@ describe('migrate v8-to-v9 handler', () => {
     await handler({ path: 'src/', dryRun: false, _: [], $0: 'fluentui-cli' });
 
     expect(mockAnalyzeFiles).toHaveBeenCalledWith('src/');
-    expect(mockWriteAnnotations).toHaveBeenCalled();
+    expect(mockWriteAnnotations).toHaveBeenCalledWith(expect.any(Array), 'src/');
   });
 
   it('skips writeAnnotations in dryRun mode', async () => {
@@ -52,7 +57,7 @@ describe('migrate v8-to-v9 handler', () => {
 
     await handler({ path: 'src/', dryRun: false, _: [], $0: 'fluentui-cli' });
 
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Annotated 1 files'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Annotated 1 file'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('auto'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('manual'));
   });
@@ -71,5 +76,26 @@ describe('migrate v8-to-v9 handler', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[dryRun]'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('@fluentui/react-components'));
     expect(mockWriteAnnotations).not.toHaveBeenCalled();
+  });
+
+  it('errors and skips analysis when --path does not exist', async () => {
+    mockStat.mockRejectedValue(Object.assign(new Error('ENOENT'), { code: 'ENOENT' }));
+
+    await expect(handler({ path: 'nonexistent/', dryRun: false, _: [], $0: 'fluentui-cli' })).rejects.toThrow(
+      'Error: --path does not exist: nonexistent/',
+    );
+
+    expect(mockAnalyzeFiles).not.toHaveBeenCalled();
+    expect(mockWriteAnnotations).not.toHaveBeenCalled();
+  });
+
+  it('errors and skips analysis when --path is a file', async () => {
+    mockStat.mockResolvedValue({ isDirectory: () => false } as Awaited<ReturnType<typeof fs.stat>>);
+
+    await expect(handler({ path: 'src/Button.tsx', dryRun: false, _: [], $0: 'fluentui-cli' })).rejects.toThrow(
+      'Error: --path must be a directory, got a file: src/Button.tsx',
+    );
+
+    expect(mockAnalyzeFiles).not.toHaveBeenCalled();
   });
 });
