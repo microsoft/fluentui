@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Reorder event handling for Escape key",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "85318654+JakubWieclaw@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
