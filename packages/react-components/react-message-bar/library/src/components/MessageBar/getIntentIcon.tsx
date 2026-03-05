@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MessageBarProps } from './MessageBar.types';
-import { CheckmarkCircleFilled, InfoFilled, WarningFilled, DismissCircleFilled } from '@fluentui/react-icons';
+import { CheckmarkCircleFilled, InfoFilled, WarningFilled, DiamondDismissFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 export function getIntentIcon(intent: MessageBarProps['intent']): JSXElement | null {
@@ -10,7 +10,7 @@ export function getIntentIcon(intent: MessageBarProps['intent']): JSXElement | n
     case 'warning':
       return <WarningFilled />;
     case 'error':
-      return <DismissCircleFilled />;
+      return <DiamondDismissFilled />;
     case 'success':
       return <CheckmarkCircleFilled />;
 
