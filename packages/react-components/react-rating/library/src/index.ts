@@ -6,13 +6,7 @@ export {
   useRating_unstable,
   useRatingContextValues,
 } from './Rating';
-export type {
-  RatingProps,
-  RatingSlots,
-  RatingState,
-  RatingOnChangeEventData,
-  RatingContextValues,
-} from './Rating';
+export type { RatingProps, RatingSlots, RatingState, RatingOnChangeEventData, RatingContextValues } from './Rating';
 export {
   RatingItem,
   ratingItemClassNames,
@@ -20,11 +14,7 @@ export {
   useRatingItemStyles_unstable,
   useRatingItem_unstable,
 } from './RatingItem';
-export type {
-  RatingItemProps,
-  RatingItemSlots,
-  RatingItemState,
-} from './RatingItem';
+export type { RatingItemProps, RatingItemSlots, RatingItemState } from './RatingItem';
 export { RatingItemProvider, useRatingItemContextValue_unstable } from './contexts/index';
 export {
   RatingDisplay,
