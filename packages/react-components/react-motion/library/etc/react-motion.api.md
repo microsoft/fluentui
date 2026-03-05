@@ -83,12 +83,12 @@ export type MotionImperativeRef = {
 // @public
 export type MotionParam = boolean | number | string;
 
-// @internal
+// @public
 export const MotionRefForwarder: React_2.ForwardRefExoticComponent<{
     children?: React_2.ReactElement;
 } & React_2.RefAttributes<HTMLElement>>;
 
-// @internal
+// @public
 export const MotionRefForwarderReset: React_2.FC<{
     children: React_2.ReactElement;
 }>;
@@ -189,7 +189,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
     }>;
 };
 
-// @internal
+// @public
 export function useMotionForwardedRef(): React_2.Ref<HTMLElement> | undefined;
 
 // @public (undocumented)
