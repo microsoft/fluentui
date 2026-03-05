@@ -1,4 +1,3 @@
-import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape'> & {
@@ -51,6 +50,6 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> &
   Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
 
-export type CounterBadgeBaseProps = DistributiveOmit<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+export type CounterBadgeBaseProps = Omit<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
 
-export type CounterBadgeBaseState = DistributiveOmit<CounterBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
+export type CounterBadgeBaseState = Omit<CounterBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

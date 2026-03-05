@@ -14,7 +14,7 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable, useBadgeBase_unstable } from '../Badge/index';
+import { useBadgeBase_unstable } from '../Badge/index';
 import type {
   PresenceBadgeBaseProps,
   PresenceBadgeBaseState,
@@ -61,33 +61,23 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const { size = 'medium', status = 'available', outOfOffice = false } = props;
-
-  const statusText = DEFAULT_STRINGS[status];
-  const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+  const { size = 'medium', status = 'available', outOfOffice = false, ...baseProps } = props;
 
   const IconElement = iconMap(status, outOfOffice, size);
 
   const state: PresenceBadgeState = {
-    ...useBadge_unstable(
-      {
-        'aria-label': statusText + oofText,
-        role: 'img',
-        ...props,
-        size,
-        icon: slot.optional(props.icon, {
-          defaultProps: {
-            children: IconElement ? <IconElement /> : null,
-          },
-          renderByDefault: true,
-          elementType: 'span',
-        }),
-      },
-      ref,
-    ),
+    ...usePresenceBadgeBase_unstable(baseProps, ref),
+    appearance: 'filled',
+    color: 'brand',
+    shape: 'circular',
+    size,
     status,
     outOfOffice,
   };
+
+  if (state.icon) {
+    state.icon.children ??= <IconElement />;
+  }
 
   return state;
 };
@@ -109,10 +99,6 @@ export const usePresenceBadgeBase_unstable = (
   const statusText = DEFAULT_STRINGS[status];
   const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
 
-  // Default to 'medium' size for icon selection when no size design prop is available
-  const iconSize = 'medium';
-  const IconElement = iconMap(status, outOfOffice, iconSize);
-
   const state: PresenceBadgeBaseState = {
     ...useBadgeBase_unstable(
       {
@@ -120,14 +106,11 @@ export const usePresenceBadgeBase_unstable = (
         role: 'img',
         ...props,
         icon: slot.optional(props.icon, {
-          defaultProps: {
-            children: IconElement ? <IconElement /> : null,
-          },
           renderByDefault: true,
           elementType: 'span',
         }),
       },
-      ref,
+      ref as React.Ref<HTMLDivElement>,
     ),
     status,
     outOfOffice,

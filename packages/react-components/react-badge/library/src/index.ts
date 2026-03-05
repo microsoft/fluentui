@@ -4,13 +4,15 @@ export {
   renderBadge_unstable,
   useBadgeStyles_unstable,
   useBadge_unstable,
+  useBadgeBase_unstable,
 } from './Badge';
-export type { BadgeProps, BadgeSlots, BadgeState } from './Badge';
+export type { BadgeProps, BadgeSlots, BadgeState, BadgeBaseProps, BadgeBaseState } from './Badge';
 export {
   PresenceBadge,
   presenceBadgeClassNames,
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  usePresenceBadgeBase_unstable,
   presenceAwayRegular,
   presenceAwayFilled,
   presenceAvailableRegular,
@@ -27,22 +29,19 @@ export type {
   PresenceBadgeProps,
   PresenceBadgeState,
   PresenceBadgeStatus,
+  PresenceBadgeBaseProps,
+  PresenceBadgeBaseState,
 } from './PresenceBadge';
 export {
   CounterBadge,
   counterBadgeClassNames,
   useCounterBadgeStyles_unstable,
   useCounterBadge_unstable,
+  useCounterBadgeBase_unstable,
 } from './CounterBadge';
 export type {
   CounterBadgeProps,
   CounterBadgeState,
+  CounterBadgeBaseProps,
+  CounterBadgeBaseState,
 } from './CounterBadge';
-
-// Experimental APIs - will be uncommented in the experimental release branch
-// export { useBadgeBase_unstable } from './Badge';
-// export type { BadgeBaseProps, BadgeBaseState } from './Badge';
-// export { usePresenceBadgeBase_unstable } from './PresenceBadge';
-// export type { PresenceBadgeBaseProps, PresenceBadgeBaseState } from './PresenceBadge';
-// export { useCounterBadgeBase_unstable } from './CounterBadge';
-// export type { CounterBadgeBaseProps, CounterBadgeBaseState } from './CounterBadge';

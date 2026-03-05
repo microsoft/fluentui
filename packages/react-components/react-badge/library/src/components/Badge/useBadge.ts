@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
@@ -8,15 +8,9 @@ import type { BadgeBaseProps, BadgeBaseState, BadgeProps, BadgeState } from './B
  * Returns the props and state required to render the component
  */
 export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeState => {
-  const {
-    shape = 'circular',
-    size = 'medium',
-    appearance = 'filled',
-    color = 'brand',
-    ...badgeProps
-  } = props;
+  const { shape = 'circular', size = 'medium', appearance = 'filled', color = 'brand', ...badgeProps } = props;
 
-  const state = useBadgeBase_unstable(badgeProps, ref);
+  const state = useBadgeBase_unstable(badgeProps, ref as React.Ref<HTMLDivElement>);
 
   return {
     ...state,
@@ -33,7 +27,7 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
  * @param props - User provided props to the Badge component.
  * @param ref - User provided ref to be passed to the Badge component.
  */
-export const useBadgeBase_unstable = (props: BadgeBaseProps, ref: React.Ref<HTMLElement>): BadgeBaseState => {
+export const useBadgeBase_unstable = (props: BadgeBaseProps, ref: React.Ref<HTMLDivElement>): BadgeBaseState => {
   const { iconPosition = 'before' } = props;
 
   return {
@@ -44,10 +38,7 @@ export const useBadgeBase_unstable = (props: BadgeBaseProps, ref: React.Ref<HTML
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         ...props,
       }),
       { elementType: 'div' },
