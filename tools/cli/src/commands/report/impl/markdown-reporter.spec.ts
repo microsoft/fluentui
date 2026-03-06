@@ -26,7 +26,7 @@ describe('markdown-reporter', () => {
             useId: { props: { arg0: { values: ["'my-id'"], count: 1 } }, count: 1 },
           },
           types: {
-            ButtonProps: { count: 2 },
+            ButtonProps: { count: 2, typeofCount: 0, props: {} },
           },
           others: {
             tokens: { count: 3 },
@@ -59,9 +59,9 @@ describe('markdown-reporter', () => {
     expect(output).toContain('| `useId` | 1 |');
     expect(output).not.toContain("'my-id'");
 
-    // Types section
+    // Types section — now includes typeof count and type args
     expect(output).toContain('### Types');
-    expect(output).toContain('| `ButtonProps` | 2 |');
+    expect(output).toContain('| `ButtonProps` | 2 | 0 | 0 |');
 
     // Others section
     expect(output).toContain('### Other Exports');

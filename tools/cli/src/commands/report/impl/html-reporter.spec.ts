@@ -19,7 +19,7 @@ describe('html-reporter', () => {
           hooks: {
             useId: { props: { arg0: { values: ["'my-id'"], count: 2 } }, count: 2 },
           },
-          types: { ButtonProps: { count: 1 } },
+          types: { ButtonProps: { count: 1, typeofCount: 0, props: {} } },
           others: { tokens: { props: {}, count: 3 } },
           unknowns: {},
           count: 11,
@@ -41,7 +41,7 @@ describe('html-reporter', () => {
         '@fluentui/react-components': {
           components: { Button: { props: {}, count: 2 } },
           hooks: { useId: { props: {}, count: 1 } },
-          types: { ButtonProps: { count: 1 } },
+          types: { ButtonProps: { count: 1, typeofCount: 0, props: {} } },
           others: { tokens: { props: {}, count: 1 } },
           unknowns: {},
           count: 5,

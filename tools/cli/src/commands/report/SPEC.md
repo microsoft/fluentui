@@ -120,6 +120,16 @@ interface Metadata {
     types: {
       [symbolName: string]: {
         count: number;
+        // How many usages are typeof references (e.g., typeof Button)
+        typeofCount: number;
+        // Generic type arguments — captured like component/hook props
+        // e.g., ColumnDef<{name: string}> → typeArg0: {name: string}
+        props: {
+          [propName: string]: {
+            values: /* value used */ Set<string>;
+            count: number;
+          };
+        };
       };
     };
     // rest of symbols that don't fall into previous category

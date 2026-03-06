@@ -1,4 +1,4 @@
-import type { Metadata, PackageUsageData, AstParser, LongReportOutput } from './types';
+import type { Metadata, PackageUsageData, AstParser, LongReportOutput, TypeUsage } from './types';
 import { isReportablePackageForLong, getGitRoot } from './package-resolver';
 import { discoverSourceFiles, filterSourceFiles } from './file-discovery';
 import { TsMorphAstParser } from './ast-parser';
@@ -82,7 +82,7 @@ export function collectLongReportData(
         if (importDecl.isTypeOnly) {
           // Explicit `import type` always goes to types
           if (!pkgData.types[name]) {
-            pkgData.types[name] = { count: 0 };
+            pkgData.types[name] = { count: 0, typeofCount: 0, props: {} };
           }
           pkgData.types[name].count++;
           continue;
@@ -104,7 +104,7 @@ export function collectLongReportData(
             break;
           case 'type':
             if (!pkgData.types[name]) {
-              pkgData.types[name] = { count: 0 };
+              pkgData.types[name] = { count: 0, typeofCount: 0, props: {} };
             }
             pkgData.types[name].count++;
             break;
@@ -231,24 +231,28 @@ export function collectLongReportData(
       const pkgData = metadata[moduleSpec];
 
       if (usage.kind === 'typeof') {
-        // typeof references go to types
+        // typeof references go to types with typeofCount tracking
         if (!pkgData.types[usage.symbolName]) {
-          pkgData.types[usage.symbolName] = { count: 0 };
+          pkgData.types[usage.symbolName] = { count: 0, typeofCount: 0, props: {} };
         }
         pkgData.types[usage.symbolName].count++;
+        pkgData.types[usage.symbolName].typeofCount++;
       } else if (usage.kind === 'generic' && usage.typeArgs) {
-        // Generic type params — ensure the type exists and capture params under props
+        // Generic type params — ensure the type exists and capture args as props
         if (!pkgData.types[usage.symbolName]) {
-          pkgData.types[usage.symbolName] = { count: 0 };
+          pkgData.types[usage.symbolName] = { count: 0, typeofCount: 0, props: {} };
         }
-        // Store generic type args as a special "typeArgs" prop
-        const typeEntry = pkgData.types[usage.symbolName] as any;
-        if (!typeEntry.typeArgs) {
-          typeEntry.typeArgs = [];
-        }
-        for (const arg of usage.typeArgs) {
-          if (!typeEntry.typeArgs.includes(arg)) {
-            typeEntry.typeArgs.push(arg);
+
+        const typeEntry: TypeUsage = pkgData.types[usage.symbolName];
+        for (let i = 0; i < usage.typeArgs.length; i++) {
+          const propName = `typeArg${i}`;
+          if (!typeEntry.props[propName]) {
+            typeEntry.props[propName] = { values: [], count: 0 };
+          }
+          typeEntry.props[propName].count++;
+          const argValue = usage.typeArgs[i];
+          if (!typeEntry.props[propName].values.includes(argValue)) {
+            typeEntry.props[propName].values.push(argValue);
           }
         }
       }
