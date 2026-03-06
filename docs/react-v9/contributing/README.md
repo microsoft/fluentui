@@ -1,6 +1,8 @@
 # Contributing to Fluent UI React v9
 
-This directory contains documentation on best practices and guidelines for contributing to Fluent UI React v9. These resources are designed to help developers understand the development workflow, component implementation process, coding standards, and other important aspects of contributing to the project.
+This directory contains documentation on best practices and guidelines for contributing to Fluent UI React v9. These
+resources are designed to help developers understand the development workflow, component implementation process, coding
+standards, and other important aspects of contributing to the project.
 
 ## Development Setup & Workflow
 
