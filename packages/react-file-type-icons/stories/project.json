@@ -1,0 +1,8 @@
+{
+  "name": "react-file-type-icons-stories",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-file-type-icons/stories/src",
+  "tags": ["v8", "vNext", "compat", "type:stories"]
+}

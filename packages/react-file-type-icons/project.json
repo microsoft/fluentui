@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-file-type-icons/src",
-  "tags": ["v8"],
+  "tags": ["v8", "vNext", "compat"],
   "implicitDependencies": [],
   "targets": {
     "test": {

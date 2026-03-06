@@ -32,6 +32,19 @@ import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
 <Icon {...getFileTypeIconProps({ extension: 'docx', size: 16 })} />;
 ```
 
+## FileTypeIcon component (v9-style)
+
+This package also exports a `FileTypeIcon` React component that can be used directly without separately composing icon props.
+
+```tsx
+import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons';
+
+<FileTypeIcon extension="docx" size={20} />;
+<FileTypeIcon type={FileIconType.folder} imageFileType="png" size={32} />;
+```
+
+`FileTypeIcon` resolves icons through the same shared extension/type logic as `getFileTypeIconProps` to keep v8 and component-based usage in sync.
+
 ## Notes
 
 See [GitHub](https://github.com/microsoft/fluentui) for more details on the Fluent UI React project and packages within.
