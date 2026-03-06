@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type ProgressBarSlots = {
   /**
@@ -47,8 +47,18 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
 };
 
 /**
+ * ProgressBar base props — excludes design props (shape, thickness, color).
+ */
+export type ProgressBarBaseProps = DistributiveOmit<ProgressBarProps, 'shape' | 'thickness' | 'color'>;
+
+/**
  * State used in rendering ProgressBar
  */
 export type ProgressBarState = ComponentState<Required<ProgressBarSlots>> &
   Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> &
   Pick<ProgressBarProps, 'value' | 'color'>;
+
+/**
+ * ProgressBar base state — excludes design props (shape, thickness, color).
+ */
+export type ProgressBarBaseState = DistributiveOmit<ProgressBarState, 'shape' | 'thickness' | 'color'>;
