@@ -1,61 +1,19 @@
 import type { CommandModule } from 'yargs';
+import infoCommand from './commands/info';
+import usageCommand from './commands/usage';
 
-import type { ReportArgs } from './impl/types';
-
-const command: CommandModule<{}, ReportArgs> = {
+const command: CommandModule = {
   command: 'report',
-  describe: 'Generate reports',
+  describe: 'Generate reports (info for issue reporting, usage for codebase analysis)',
   builder: yargs =>
     yargs
-      .option('type', {
-        alias: 't',
-        type: 'string',
-        choices: ['short', 'long'] as const,
-        default: 'short' as const,
-        describe: 'Report type: "short" for issue reporting, "long" for codebase analysis',
-      })
-      .option('path', {
-        alias: 'p',
-        type: 'string',
-        describe: 'Root path for file traversal (only valid with --type long)',
-      })
-      .option('reporter', {
-        alias: 'r',
-        type: 'string',
-        choices: ['json', 'markdown', 'html'] as const,
-        default: 'json' as const,
-        describe: 'Output format for long report (only valid with --type long)',
-      })
-      .option('include', {
-        type: 'array',
-        string: true,
-        describe: 'Glob patterns to include files (only valid with --type long)',
-      })
-      .option('exclude', {
-        type: 'array',
-        string: true,
-        describe: 'Glob patterns to exclude files (only valid with --type long)',
-      })
-      .check(argv => {
-        if (argv.path && argv.type !== 'long') {
-          throw new Error('--path can only be used with --type long');
-        }
-        if (argv.reporter !== 'json' && argv.type !== 'long') {
-          throw new Error('--reporter can only be used with --type long');
-        }
-        if (argv.include && argv.type !== 'long') {
-          throw new Error('--include can only be used with --type long');
-        }
-        if (argv.exclude && argv.type !== 'long') {
-          throw new Error('--exclude can only be used with --type long');
-        }
-        return true;
-      })
+      .command(infoCommand)
+      .command(usageCommand)
+      .demandCommand(1, 'Please specify a subcommand: info or usage')
       .version(false)
       .help(),
-  handler: async argv => {
-    const { handler } = await import('./handler');
-    return handler(argv);
+  handler: () => {
+    // yargs handles routing to subcommands; this is never reached due to demandCommand
   },
 };
 

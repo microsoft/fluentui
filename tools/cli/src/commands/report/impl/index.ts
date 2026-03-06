@@ -1,5 +1,6 @@
 export type {
-  ReportArgs,
+  InfoArgs,
+  UsageArgs,
   SystemInfo,
   ResolvedPackage,
   DuplicatePackage,
