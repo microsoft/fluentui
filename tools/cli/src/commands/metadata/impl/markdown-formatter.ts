@@ -90,7 +90,7 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
   // External References
   if (externalReferences && Object.keys(externalReferences).length > 0) {
     const totalSymbols = Object.values(externalReferences).reduce(
-      (sum, pkg) => sum + Object.keys(pkg.symbols).length,
+      (sum, extPkg) => sum + Object.keys(extPkg.symbols).length,
       0,
     );
 
