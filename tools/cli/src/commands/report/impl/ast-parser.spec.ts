@@ -84,10 +84,10 @@ describe('TsMorphAstParser', () => {
       const buttonUsages = usages.filter(u => u.componentName === 'Button');
       expect(buttonUsages.length).toBeGreaterThanOrEqual(2);
 
-      const primaryButton = buttonUsages.find(u => u.props['appearance'] === 'primary');
+      const primaryButton = buttonUsages.find(u => u.props.appearance === 'primary');
       expect(primaryButton).toBeDefined();
       expect(primaryButton!.moduleSpecifier).toBe('@fluentui/react-components');
-      expect(primaryButton!.props['size']).toBe('medium');
+      expect(primaryButton!.props.size).toBe('medium');
     });
 
     it('should detect Input component with props', () => {
@@ -96,8 +96,8 @@ describe('TsMorphAstParser', () => {
 
       const inputUsages = usages.filter(u => u.componentName === 'Input');
       expect(inputUsages).toHaveLength(1);
-      expect(inputUsages[0].props['placeholder']).toBe('Search...');
-      expect(inputUsages[0].props['appearance']).toBe('outline');
+      expect(inputUsages[0].props.placeholder).toBe('Search...');
+      expect(inputUsages[0].props.appearance).toBe('outline');
     });
 
     it('should detect components from mixed-imports.tsx', () => {
@@ -110,8 +110,8 @@ describe('TsMorphAstParser', () => {
 
       const tooltip = usages.find(u => u.componentName === 'Tooltip');
       expect(tooltip).toBeDefined();
-      expect(tooltip!.props['content']).toBe('App wrapper');
-      expect(tooltip!.props['relationship']).toBe('description');
+      expect(tooltip!.props.content).toBe('App wrapper');
+      expect(tooltip!.props.relationship).toBe('description');
     });
 
     it('should return empty array for file without JSX', () => {
@@ -299,15 +299,15 @@ describe('TsMorphAstParser', () => {
 
       // First call: useArrowNavigationGroup({ axis: 'vertical', memorizeCurrent: true, unstable_hasDefault: true })
       const firstCall = navCalls[0];
-      expect(firstCall.args['axis']).toBe("'vertical'");
-      expect(firstCall.args['memorizeCurrent']).toBe('true');
-      expect(firstCall.args['unstable_hasDefault']).toBe('true');
+      expect(firstCall.args.axis).toBe("'vertical'");
+      expect(firstCall.args.memorizeCurrent).toBe('true');
+      expect(firstCall.args.unstable_hasDefault).toBe('true');
 
       // Second call: useArrowNavigationGroup({ axis: 'horizontal', circular })
       const secondCall = navCalls[1];
-      expect(secondCall.args['axis']).toBe("'horizontal'");
+      expect(secondCall.args.axis).toBe("'horizontal'");
       // Shorthand property: value is the variable name (can't statically resolve)
-      expect(secondCall.args['circular']).toBe('circular');
+      expect(secondCall.args.circular).toBe('circular');
     });
 
     it('should not return resolved .d.ts files from getSourceFiles', () => {

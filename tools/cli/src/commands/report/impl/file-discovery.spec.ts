@@ -113,7 +113,7 @@ describe('file-discovery', () => {
     });
 
     it('should include only files matching include patterns', () => {
-      mockGlobSync.mockReturnValueOnce(['src/components/Button.tsx', 'src/components/Input.tsx'] as any);
+      mockGlobSync.mockReturnValueOnce(['src/components/Button.tsx', 'src/components/Input.tsx']);
 
       const result = filterSourceFiles(files, ROOT, ['src/components/**']);
 
@@ -126,7 +126,7 @@ describe('file-discovery', () => {
     });
 
     it('should support multiple include patterns', () => {
-      mockGlobSync.mockReturnValueOnce(['src/App.tsx', 'src/components/Button.tsx', 'src/components/Input.tsx'] as any);
+      mockGlobSync.mockReturnValueOnce(['src/App.tsx', 'src/components/Button.tsx', 'src/components/Input.tsx']);
 
       const result = filterSourceFiles(files, ROOT, ['src/App.tsx', 'src/components/**']);
 
@@ -134,7 +134,7 @@ describe('file-discovery', () => {
     });
 
     it('should exclude files matching exclude patterns', () => {
-      mockGlobSync.mockReturnValueOnce(['test/App.test.tsx', 'test/utils.test.ts'] as any);
+      mockGlobSync.mockReturnValueOnce(['test/App.test.tsx', 'test/utils.test.ts']);
 
       const result = filterSourceFiles(files, ROOT, undefined, ['test/**']);
 
@@ -143,7 +143,7 @@ describe('file-discovery', () => {
     });
 
     it('should support wildcard exclude patterns', () => {
-      mockGlobSync.mockReturnValueOnce(['test/App.test.tsx', 'test/utils.test.ts'] as any);
+      mockGlobSync.mockReturnValueOnce(['test/App.test.tsx', 'test/utils.test.ts']);
 
       const result = filterSourceFiles(files, ROOT, undefined, ['**/*.test.*']);
 
@@ -158,9 +158,9 @@ describe('file-discovery', () => {
         'src/utils.ts',
         'src/components/Button.tsx',
         'src/components/Input.tsx',
-      ] as any);
+      ]);
       // exclude call
-      mockGlobSync.mockReturnValueOnce(['src/utils.ts'] as any);
+      mockGlobSync.mockReturnValueOnce(['src/utils.ts']);
 
       const result = filterSourceFiles(files, ROOT, ['src/**'], ['src/utils.ts']);
 
@@ -169,7 +169,7 @@ describe('file-discovery', () => {
     });
 
     it('should return empty when include matches nothing from discovered files', () => {
-      mockGlobSync.mockReturnValueOnce([] as any);
+      mockGlobSync.mockReturnValueOnce([]);
 
       const result = filterSourceFiles(files, ROOT, ['nonexistent/**']);
 
@@ -182,7 +182,7 @@ describe('file-discovery', () => {
         'src/components/Button.tsx',
         'src/components/Input.tsx',
         'test/App.test.tsx',
-      ] as any);
+      ]);
 
       const result = filterSourceFiles(files, ROOT, ['**/*.tsx']);
 

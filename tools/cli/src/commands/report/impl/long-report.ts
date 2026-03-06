@@ -218,7 +218,9 @@ export function collectLongReportData(
       >;
       if (!category[usage.functionName]) {
         if (targetCategory === 'unknowns') {
-          (pkgData.unknowns as Record<string, any>)[usage.functionName] = {
+          (pkgData.unknowns as Record<string, { props: Record<string, never>; count: number; description: string }>)[
+            usage.functionName
+          ] = {
             props: {},
             count: 0,
             description: astParser.describeUnknownSymbol(usage.functionName),

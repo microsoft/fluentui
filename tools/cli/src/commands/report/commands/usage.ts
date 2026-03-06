@@ -20,13 +20,13 @@ const usageCommand: CommandModule<{}, UsageArgs> = {
         describe: 'Output format',
       })
       .option('include', {
-        type: 'array',
-        string: true,
+        type: 'string',
+        array: true,
         describe: 'Glob patterns to include files',
       })
       .option('exclude', {
-        type: 'array',
-        string: true,
+        type: 'string',
+        array: true,
         describe: 'Glob patterns to exclude files',
       })
       .version(false)

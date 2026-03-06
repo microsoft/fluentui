@@ -100,7 +100,7 @@ describe('package-resolver', () => {
       mockExistsSync.mockImplementation((p: fs.PathLike) => {
         return String(p).endsWith('yarn.lock');
       });
-      mockExecSync.mockReturnValue('1.22.19\n' as any);
+      mockExecSync.mockReturnValue('1.22.19\n');
 
       const info = getSystemInfo('/mock/root');
 
@@ -113,7 +113,7 @@ describe('package-resolver', () => {
       mockExistsSync.mockImplementation((p: fs.PathLike) => {
         return String(p).endsWith('package-lock.json');
       });
-      mockExecSync.mockReturnValue('10.0.0\n' as any);
+      mockExecSync.mockReturnValue('10.0.0\n');
 
       const info = getSystemInfo('/mock/root');
 
@@ -166,7 +166,7 @@ describe('package-resolver', () => {
 
   describe('resolvePackageVersions', () => {
     it('should resolve installed versions from node_modules', () => {
-      mockReadFileSync.mockImplementation((p: any) => {
+      mockReadFileSync.mockImplementation((p: fs.PathOrFileDescriptor) => {
         const filePath = String(p);
         if (filePath.includes('@fluentui/react-components')) {
           return JSON.stringify({ version: '9.50.0' });
@@ -189,7 +189,7 @@ describe('package-resolver', () => {
   describe('findDuplicatePackages', () => {
     it('should detect duplicate packages with different versions', () => {
       // Top-level version
-      mockReadFileSync.mockImplementation((p: any) => {
+      mockReadFileSync.mockImplementation((p: fs.PathOrFileDescriptor) => {
         const filePath = String(p);
         if (filePath === path.join('/mock/root', 'node_modules', '@fluentui/react-icons', 'package.json')) {
           return JSON.stringify({ version: '2.0.200' });
@@ -206,15 +206,15 @@ describe('package-resolver', () => {
         return filePath.includes('node_modules');
       });
 
-      mockReaddirSync.mockImplementation((p: any) => {
+      mockReaddirSync.mockImplementation((p: fs.PathLike) => {
         const dirPath = String(p);
         if (dirPath === path.join('/mock/root', 'node_modules')) {
-          return ['some-package', '@fluentui'] as any;
+          return ['some-package', '@fluentui'] as unknown as ReturnType<typeof fs.readdirSync>;
         }
         if (dirPath.endsWith('@fluentui')) {
-          return ['react-icons'] as any;
+          return ['react-icons'] as unknown as ReturnType<typeof fs.readdirSync>;
         }
-        return [] as any;
+        return [] as unknown as ReturnType<typeof fs.readdirSync>;
       });
 
       const duplicates = findDuplicatePackages(['@fluentui/react-icons'], '/mock/root');
@@ -225,7 +225,7 @@ describe('package-resolver', () => {
     });
 
     it('should return empty array when no duplicates', () => {
-      mockReadFileSync.mockImplementation((p: any) => {
+      mockReadFileSync.mockImplementation((p: fs.PathOrFileDescriptor) => {
         const filePath = String(p);
         if (filePath === path.join('/mock/root', 'node_modules', 'react', 'package.json')) {
           return JSON.stringify({ version: '18.2.0' });
@@ -241,7 +241,7 @@ describe('package-resolver', () => {
         return false;
       });
 
-      mockReaddirSync.mockReturnValue([] as any);
+      mockReaddirSync.mockReturnValue([] as unknown as ReturnType<typeof fs.readdirSync>);
 
       const duplicates = findDuplicatePackages(['react'], '/mock/root');
 
@@ -251,7 +251,7 @@ describe('package-resolver', () => {
 
   describe('getGitRoot', () => {
     it('should return trimmed git root path', () => {
-      mockExecSync.mockReturnValue('/Users/test/project\n' as any);
+      mockExecSync.mockReturnValue('/Users/test/project\n');
 
       const root = getGitRoot();
 
