@@ -148,6 +148,21 @@ describe('parseDtsEntry', () => {
   describe('importedPackages', () => {
     it('should track imported package specifiers', () => {
       expect(result.importedPackages.has('react')).toBe(true);
+      expect(result.importedPackages.has('@sample/utilities')).toBe(true);
+    });
+  });
+
+  describe('importedSymbols', () => {
+    it('should track named imports per package', () => {
+      expect(result.importedSymbols.has('@sample/utilities')).toBe(true);
+      const symbols = result.importedSymbols.get('@sample/utilities')!;
+      expect(symbols.has('Slot')).toBe(true);
+      expect(symbols.has('SlotClassNames')).toBe(true);
+    });
+
+    it('should not track namespace imports as named symbols', () => {
+      // `import * as React from 'react'` should not produce named import entries
+      expect(result.importedSymbols.has('react')).toBe(false);
     });
   });
 

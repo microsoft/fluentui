@@ -1,4 +1,6 @@
 import * as React from 'react';
+import type { Slot } from '@sample/utilities';
+import type { SlotClassNames } from '@sample/utilities';
 
 /**
  * Props for the SampleButton component.
@@ -33,9 +35,9 @@ export declare interface SampleButtonState {
  */
 export declare type SampleButtonSlots = {
   /** Root element of the button. */
-  root: HTMLButtonElement;
+  root: Slot<HTMLButtonElement>;
   /** Optional icon slot. */
-  icon?: HTMLSpanElement;
+  icon?: Slot<HTMLSpanElement>;
 };
 
 /**
@@ -45,7 +47,7 @@ export declare const SampleButton: React.ForwardRefExoticComponent<
   SampleButtonProps & React.RefAttributes<HTMLButtonElement>
 >;
 
-export declare const sampleButtonClassNames: Record<string, string>;
+export declare const sampleButtonClassNames: SlotClassNames<SampleButtonSlots>;
 
 /**
  * Hook to create SampleButton state.

@@ -33,11 +33,21 @@ export interface MetadataOutput {
     types: Record<string, TypeDoc>;
     others: Record<string, OtherDoc>;
   };
+  /** External symbols referenced in this package's public API, grouped by source package. */
+  externalReferences?: Record<string, ExternalPackageRef>;
 }
 
 export interface PackageInfo {
   name: string;
   version: string;
+}
+
+/** References to external symbols from a single dependency package. */
+export interface ExternalPackageRef {
+  /** Logical path to the dependency's metadata file (e.g. `@fluentui/react-utilities/metadata.json`). */
+  metadataRef: string;
+  /** Map of symbol name → $ref pointer or inline type fallback. */
+  symbols: Record<string, RefOrInline>;
 }
 
 export interface CategoryLegendEntry {

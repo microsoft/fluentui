@@ -56,6 +56,8 @@ export interface ParseResult {
   others: Record<string, OtherDoc>;
   /** Package specifiers imported by this .d.ts (for cross-package resolution). */
   importedPackages: Set<string>;
+  /** Named imports grouped by package specifier (e.g. `'@fluentui/react-utilities' → Set('Slot', 'ComponentProps')`). */
+  importedSymbols: Map<string, Set<string>>;
 }
 
 /**
@@ -80,13 +82,38 @@ export function parseDtsEntry(entryPath: string): ParseResult {
     types: {},
     others: {},
     importedPackages: new Set(),
+    importedSymbols: new Map(),
   };
 
-  // Collect imported package specifiers
+  // Collect imported package specifiers and named imports
   for (const imp of sourceFile.getImportDeclarations()) {
     const specifier = imp.getModuleSpecifierValue();
-    if (!specifier.startsWith('.') && !specifier.startsWith('/')) {
-      result.importedPackages.add(specifier);
+    if (specifier.startsWith('.') || specifier.startsWith('/')) {
+      continue;
+    }
+
+    result.importedPackages.add(specifier);
+
+    // Track individual named imports
+    const namedImports = imp.getNamedImports();
+    if (namedImports.length > 0) {
+      if (!result.importedSymbols.has(specifier)) {
+        result.importedSymbols.set(specifier, new Set());
+      }
+      const symbolSet = result.importedSymbols.get(specifier)!;
+      for (const named of namedImports) {
+        // Use the alias if present, otherwise the original name
+        symbolSet.add(named.getAliasNode()?.getText() ?? named.getName());
+      }
+    }
+
+    // Track default imports
+    const defaultImport = imp.getDefaultImport();
+    if (defaultImport) {
+      if (!result.importedSymbols.has(specifier)) {
+        result.importedSymbols.set(specifier, new Set());
+      }
+      result.importedSymbols.get(specifier)!.add(defaultImport.getText());
     }
   }
 

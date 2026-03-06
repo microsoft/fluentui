@@ -47,6 +47,38 @@ describe('metadata handler', () => {
     expect(output).toContain('SampleButton');
   });
 
+  it('should include externalReferences for named imports used in API surface', async () => {
+    await handler({ _: ['metadata'], $0: 'fluentui-cli', entry: SAMPLE_DTS, reporter: 'json' });
+
+    const output = JSON.parse(logSpy.mock.calls[0][0]);
+
+    // The fixture imports Slot and SlotClassNames from @sample/utilities
+    // Both are used in type signatures (SampleButtonSlots uses Slot, sampleButtonClassNames uses SlotClassNames)
+    expect(output.externalReferences).toBeDefined();
+    expect(output.externalReferences['@sample/utilities']).toBeDefined();
+
+    const utilsRef = output.externalReferences['@sample/utilities'];
+    expect(utilsRef.metadataRef).toBe('@sample/utilities/metadata.json');
+    expect(utilsRef.symbols).toHaveProperty('Slot');
+    expect(utilsRef.symbols).toHaveProperty('SlotClassNames');
+  });
+
+  it('should include external references in markdown output', async () => {
+    await handler({ _: ['metadata'], $0: 'fluentui-cli', entry: SAMPLE_DTS, reporter: 'markdown' });
+
+    const output: string = logSpy.mock.calls[0][0];
+    expect(output).toContain('External References');
+    expect(output).toContain('@sample/utilities');
+  });
+
+  it('should include external references in HTML output', async () => {
+    await handler({ _: ['metadata'], $0: 'fluentui-cli', entry: SAMPLE_DTS, reporter: 'html' });
+
+    const output: string = logSpy.mock.calls[0][0];
+    expect(output).toContain('External References');
+    expect(output).toContain('@sample/utilities');
+  });
+
   it('should write to file when --output is specified', async () => {
     const tmpOutput = path.join(FIXTURES_DIR, '__test-output__.json');
 

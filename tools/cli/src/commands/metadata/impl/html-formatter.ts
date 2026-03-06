@@ -7,6 +7,7 @@ import type {
   MemberDoc,
   ParameterDoc,
   BaseSymbolDoc,
+  ExternalPackageRef,
 } from './types';
 import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
 
@@ -14,7 +15,7 @@ import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
  * Format MetadataOutput as a self-contained HTML document.
  */
 export function formatMetadataAsHtml(data: MetadataOutput): string {
-  const { package: pkg, legend, categories } = data;
+  const { package: pkg, legend, categories, externalReferences } = data;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,7 @@ ${renderComponents(categories.components)}
 ${renderHooks(categories.hooks)}
 ${renderTypes(categories.types)}
 ${renderOthers(categories.others)}
+${renderExternalReferences(externalReferences)}
 </main>
 </body>
 </html>`;
@@ -172,6 +174,46 @@ ${other.parameters && other.parameters.length > 0 ? renderParametersTable(other.
 ${other.returnType ? `<p><strong>Returns:</strong> <code>${esc(other.returnType)}</code></p>` : ''}
 ${renderTagsBadges(other.tags)}
 </div>`;
+}
+
+function renderExternalReferences(externalReferences?: Record<string, ExternalPackageRef>): string {
+  if (!externalReferences || Object.keys(externalReferences).length === 0) {
+    return '';
+  }
+
+  const totalSymbols = Object.values(externalReferences).reduce((sum, pkg) => sum + Object.keys(pkg.symbols).length, 0);
+
+  const packages = Object.entries(externalReferences)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([pkgSpec, pkgRef]) => {
+      const symbolRows = Object.entries(pkgRef.symbols)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([name, ref]) => {
+          const refDisplay =
+            '$ref' in ref
+              ? `<code class="cross-ref" title="${esc(ref.$ref)}">${esc(ref.$ref)}</code>`
+              : `<code>${esc(ref.inline)}</code>`;
+          return `<tr><td><code>${esc(name)}</code></td><td>${refDisplay}</td></tr>`;
+        })
+        .join('\n');
+
+      return `<div class="ext-package">
+<h4><code>${esc(pkgSpec)}</code> <span class="count">(${Object.keys(pkgRef.symbols).length} symbols)</span></h4>
+<p class="metadata-ref">metadata: <code>${esc(pkgRef.metadataRef)}</code></p>
+<table>
+<thead><tr><th>Symbol</th><th>Reference</th></tr></thead>
+<tbody>${symbolRows}</tbody>
+</table>
+</div>`;
+    })
+    .join('\n');
+
+  return `<section id="cat-external-refs">
+<details><summary><h2 style="display:inline">External References</h2> <span class="count">(${totalSymbols} symbols from ${
+    Object.keys(externalReferences).length
+  } packages)</span></summary>
+${packages}
+</details></section>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -320,5 +362,8 @@ details.symbol-props summary { font-weight: 600; }
 .annotation-group.annotation-internal { border-left-color: #7c3aed; }
 .annotation-group.annotation-preview { border-left-color: #2563eb; }
 .annotation-heading { font-size: .95em; color: var(--muted); margin: .5rem 0; }
+.ext-package { margin: .75rem 0; }
+.ext-package h4 { margin: .5rem 0; }
+.metadata-ref { font-size: .85em; color: var(--muted); margin: .25rem 0; }
 </style>`;
 }

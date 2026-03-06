@@ -8,6 +8,7 @@ import type {
   ParameterDoc,
   RefOrInline,
   BaseSymbolDoc,
+  ExternalPackageRef,
 } from './types';
 import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
 
@@ -15,7 +16,7 @@ import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
  * Format MetadataOutput as a structured Markdown document.
  */
 export function formatMetadataAsMarkdown(data: MetadataOutput): string {
-  const { package: pkg, legend, categories } = data;
+  const { package: pkg, legend, categories, externalReferences } = data;
   const lines: string[] = [];
 
   lines.push(`# API Metadata: \`${pkg.name}\` v${pkg.version}`);
@@ -82,6 +83,39 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
     lines.push(`<summary><h2>Others (${Object.keys(categories.others).length})</h2></summary>`);
     lines.push('');
     lines.push(...formatAnnotationGroups(groups, formatOther));
+    lines.push('</details>');
+    lines.push('');
+  }
+
+  // External References
+  if (externalReferences && Object.keys(externalReferences).length > 0) {
+    const totalSymbols = Object.values(externalReferences).reduce(
+      (sum, pkg) => sum + Object.keys(pkg.symbols).length,
+      0,
+    );
+
+    lines.push('<details>');
+    lines.push(
+      `<summary><h2>External References (${totalSymbols} symbols from ${
+        Object.keys(externalReferences).length
+      } packages)</h2></summary>`,
+    );
+    lines.push('');
+
+    for (const [pkgSpec, pkgRef] of Object.entries(externalReferences).sort(([a], [b]) => a.localeCompare(b))) {
+      lines.push(`### \`${pkgSpec}\``);
+      lines.push('');
+      lines.push(`*metadata:* \`${pkgRef.metadataRef}\``);
+      lines.push('');
+      lines.push('| Symbol | Reference |');
+      lines.push('| ------ | --------- |');
+      for (const [name, ref] of Object.entries(pkgRef.symbols).sort(([a], [b]) => a.localeCompare(b))) {
+        const refDisplay = '$ref' in ref ? `\`${ref.$ref}\`` : `\`${ref.inline}\``;
+        lines.push(`| \`${name}\` | ${refDisplay} |`);
+      }
+      lines.push('');
+    }
+
     lines.push('</details>');
     lines.push('');
   }
