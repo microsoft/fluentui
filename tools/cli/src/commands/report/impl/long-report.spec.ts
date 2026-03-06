@@ -465,7 +465,7 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     expect(pkg.types['ColumnDef']).toBeDefined();
-    expect(pkg.types['ColumnDef'].count).toBe(1); // from import type
+    expect(pkg.types['ColumnDef'].count).toBe(3); // 1 from import type + 2 from generic usages
     expect(pkg.types['ColumnDef'].typeofCount).toBe(0);
     expect(pkg.types['ColumnDef'].props['typeArg0']).toBeDefined();
     expect(pkg.types['ColumnDef'].props['typeArg0'].count).toBe(2);
