@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
+import type {
+  BreadcrumbDividerBaseProps,
+  BreadcrumbDividerBaseState,
+  BreadcrumbDividerProps,
+  BreadcrumbDividerState,
+} from './BreadcrumbDivider.types';
 import { ChevronRightRegular, ChevronLeftRegular } from '@fluentui/react-icons';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -21,6 +26,25 @@ export const useBreadcrumbDivider_unstable = (
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerState => {
   const { size } = useBreadcrumbContext_unstable();
+  const state = useBreadcrumbDividerBase_unstable(props, ref);
+
+  return {
+    ...state,
+    size,
+  };
+};
+
+/**
+ * Base hook for BreadcrumbDivider component, which manages state related to slots structure and ARIA attributes
+ * without design props. Note: size is provided via BreadcrumbContext in the full hook.
+ *
+ * @param props - props from this instance of BreadcrumbDivider
+ * @param ref - reference to root HTMLElement of BreadcrumbDivider
+ */
+export const useBreadcrumbDividerBase_unstable = (
+  props: BreadcrumbDividerBaseProps,
+  ref: React.Ref<HTMLLIElement>,
+): BreadcrumbDividerBaseState => {
   const { dir } = useFluent();
   const icon = getDividerIcon(dir);
 
@@ -37,7 +61,6 @@ export const useBreadcrumbDivider_unstable = (
       }),
       { elementType: 'li' },
     ),
-    size,
   };
 };
 

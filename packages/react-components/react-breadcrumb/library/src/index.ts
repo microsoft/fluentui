@@ -39,3 +39,13 @@ export {
 export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton';
 export { BreadcrumbProvider, useBreadcrumbContext_unstable } from './Breadcrumb';
 export type { BreadcrumbContextValues } from './Breadcrumb';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useBreadcrumbBase_unstable } from './Breadcrumb';
+// export type { BreadcrumbBaseProps, BreadcrumbBaseState } from './Breadcrumb';
+// export { useBreadcrumbDividerBase_unstable } from './BreadcrumbDivider';
+// export type { BreadcrumbDividerBaseProps, BreadcrumbDividerBaseState } from './BreadcrumbDivider';
+// export { useBreadcrumbItemBase_unstable } from './BreadcrumbItem';
+// export type { BreadcrumbItemBaseProps, BreadcrumbItemBaseState } from './BreadcrumbItem';
+// export { useBreadcrumbButtonBase_unstable } from './BreadcrumbButton';
+// export type { BreadcrumbButtonBaseProps, BreadcrumbButtonBaseState } from './BreadcrumbButton';
