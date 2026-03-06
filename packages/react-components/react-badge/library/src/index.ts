@@ -25,3 +25,11 @@ export {
   useCounterBadge_unstable,
 } from './CounterBadge';
 export type { CounterBadgeProps, CounterBadgeState } from './CounterBadge';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useBadgeBase_unstable } from './Badge';
+// export type { BadgeBaseProps, BadgeBaseState } from './Badge';
+// export { usePresenceBadgeBase_unstable } from './PresenceBadge';
+// export type { PresenceBadgeBaseProps, PresenceBadgeBaseState } from './PresenceBadge';
+// export { useCounterBadgeBase_unstable } from './CounterBadge';
+// export type { CounterBadgeBaseProps, CounterBadgeBaseState } from './CounterBadge';

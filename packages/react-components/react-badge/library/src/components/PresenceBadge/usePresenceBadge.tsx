@@ -14,8 +14,13 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable } from '../Badge/index';
-import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
+import { useBadge_unstable, useBadgeBase_unstable } from '../Badge/index';
+import type {
+  PresenceBadgeBaseProps,
+  PresenceBadgeBaseState,
+  PresenceBadgeProps,
+  PresenceBadgeState,
+} from './PresenceBadge.types';
 
 const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, size: PresenceBadgeState['size']) => {
   switch (status) {
@@ -70,6 +75,50 @@ export const usePresenceBadge_unstable = (
         role: 'img',
         ...props,
         size,
+        icon: slot.optional(props.icon, {
+          defaultProps: {
+            children: IconElement ? <IconElement /> : null,
+          },
+          renderByDefault: true,
+          elementType: 'span',
+        }),
+      },
+      ref,
+    ),
+    status,
+    outOfOffice,
+  };
+
+  return state;
+};
+
+/**
+ * Base hook for PresenceBadge component, which manages state related to presence status and ARIA attributes.
+ * Note: size is excluded from BaseProps as it is a design prop; icon selection uses the 'medium' size default.
+ * To render size-specific icons, use the full usePresenceBadge_unstable hook.
+ *
+ * @param props - User provided props to the PresenceBadge component.
+ * @param ref - User provided ref to be passed to the PresenceBadge component.
+ */
+export const usePresenceBadgeBase_unstable = (
+  props: PresenceBadgeBaseProps,
+  ref: React.Ref<HTMLElement>,
+): PresenceBadgeBaseState => {
+  const { status = 'available', outOfOffice = false } = props;
+
+  const statusText = DEFAULT_STRINGS[status];
+  const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+
+  // Default to 'medium' size for icon selection when no size design prop is available
+  const iconSize = 'medium';
+  const IconElement = iconMap(status, outOfOffice, iconSize);
+
+  const state: PresenceBadgeBaseState = {
+    ...useBadgeBase_unstable(
+      {
+        'aria-label': statusText + oofText,
+        role: 'img',
+        ...props,
         icon: slot.optional(props.icon, {
           defaultProps: {
             children: IconElement ? <IconElement /> : null,
