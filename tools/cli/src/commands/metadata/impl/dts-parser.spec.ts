@@ -130,6 +130,10 @@ describe('parseDtsEntry', () => {
 
     it('should detect renderSampleButton_unstable as other (function)', () => {
       expect(result.others).toHaveProperty('renderSampleButton_unstable');
+      expect(result.others.renderSampleButton_unstable.kind).toBe('function');
+      expect(result.others.renderSampleButton_unstable.parameters).toBeDefined();
+      expect(result.others.renderSampleButton_unstable.parameters!.length).toBeGreaterThan(0);
+      expect(result.others.renderSampleButton_unstable.returnType).toBeDefined();
     });
 
     it('should extract render function description', () => {

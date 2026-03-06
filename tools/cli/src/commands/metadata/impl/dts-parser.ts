@@ -237,7 +237,7 @@ function buildOtherDoc(
 ): OtherDoc {
   let kind: OtherDoc['kind'] = 'unknown';
   if (Node.isVariableDeclaration(decl)) {
-    kind = 'variable';
+    kind = isFunctionTypedVariable(decl) ? 'function' : 'variable';
   } else if (Node.isFunctionDeclaration(decl)) {
     kind = 'function';
   } else if (Node.isClassDeclaration(decl)) {
@@ -253,6 +253,19 @@ function buildOtherDoc(
   }
 
   return doc;
+}
+
+/**
+ * Checks whether a VariableDeclaration holds a function-typed value
+ * by inspecting its type for call signatures.
+ */
+function isFunctionTypedVariable(decl: VariableDeclaration): boolean {
+  try {
+    const type = decl.getType();
+    return type.getCallSignatures().length > 0;
+  } catch {
+    return false;
+  }
 }
 
 // ============================================================================
