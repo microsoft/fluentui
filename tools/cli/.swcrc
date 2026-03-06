@@ -20,6 +20,7 @@
   "sourceMaps": true,
   "exclude": [
     "jest.config.ts",
+    "__fixtures__",
     ".*\\.spec.tsx?$",
     ".*\\.test.tsx?$",
     "./src/jest-setup.ts$",
