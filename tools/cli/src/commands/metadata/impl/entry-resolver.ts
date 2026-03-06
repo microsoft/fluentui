@@ -17,12 +17,41 @@ export function resolveEntry(entryOverride?: string, cwd: string = process.cwd()
     if (!fs.existsSync(resolved)) {
       throw new Error(`Entry file not found: ${resolved}`);
     }
+
+    // If the override points to a directory, resolve its package.json types field
+    if (fs.statSync(resolved).isDirectory()) {
+      return resolveFromPackageJson(resolved);
+    }
+
     return resolved;
   }
 
+  return resolveFromPackageJson(cwd);
+}
+
+/**
+ * Read package name and version from the closest package.json.
+ */
+export function readPackageInfo(cwd: string = process.cwd()): { name: string; version: string } {
   const packageJsonPath = findClosestPackageJson(cwd);
   if (!packageJsonPath) {
-    throw new Error(`Could not find package.json from ${cwd}`);
+    return { name: 'unknown', version: '0.0.0' };
+  }
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  return {
+    name: packageJson.name ?? 'unknown',
+    version: packageJson.version ?? '0.0.0',
+  };
+}
+
+/**
+ * Resolve the .d.ts entry from the closest package.json in `startDir`.
+ */
+function resolveFromPackageJson(startDir: string): string {
+  const packageJsonPath = findClosestPackageJson(startDir);
+  if (!packageJsonPath) {
+    throw new Error(`Could not find package.json from ${startDir}`);
   }
 
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
@@ -43,22 +72,6 @@ export function resolveEntry(entryOverride?: string, cwd: string = process.cwd()
   }
 
   return resolved;
-}
-
-/**
- * Read package name and version from the closest package.json.
- */
-export function readPackageInfo(cwd: string = process.cwd()): { name: string; version: string } {
-  const packageJsonPath = findClosestPackageJson(cwd);
-  if (!packageJsonPath) {
-    return { name: 'unknown', version: '0.0.0' };
-  }
-
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-  return {
-    name: packageJson.name ?? 'unknown',
-    version: packageJson.version ?? '0.0.0',
-  };
 }
 
 /**

@@ -20,6 +20,12 @@ describe('resolveEntry', () => {
     expect(result).toBe(entryPath);
   });
 
+  it('should resolve from package.json when entry override is a directory', () => {
+    const result = resolveEntry(FIXTURES_DIR);
+
+    expect(result).toBe(path.join(FIXTURES_DIR, 'sample-button.d.ts'));
+  });
+
   it('should throw when explicit entry does not exist', () => {
     expect(() => resolveEntry('/nonexistent/file.d.ts')).toThrow('Entry file not found');
   });
