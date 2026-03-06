@@ -9,7 +9,7 @@ import {
   useControllableState,
   useId,
 } from '@fluentui/react-utilities';
-import type { RatingProps, RatingState } from './Rating.types';
+import type { RatingBaseProps, RatingBaseState, RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
@@ -23,16 +23,33 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of Rating
  */
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
+  const { color = 'neutral', size = 'extra-large', ...baseProps } = props;
+  const state = useRatingBase_unstable(baseProps, ref);
+
+  return {
+    ...state,
+    color,
+    size,
+  };
+};
+
+/**
+ * Base hook for Rating component. Manages state related to controlled/uncontrolled
+ * rating value, hover state, radiogroup ARIA role, and keyboard/mouse interaction —
+ * without design props (color, size).
+ *
+ * @param props - props from this instance of Rating (without color, size)
+ * @param ref - reference to root HTMLElement of Rating
+ */
+export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HTMLDivElement>): RatingBaseState => {
   const generatedName = useId('rating-');
   const {
-    color = 'neutral',
     iconFilled = StarFilled,
     iconOutline = StarRegular,
     max = 5,
     name = generatedName,
     onChange,
     step = 1,
-    size = 'extra-large',
     itemLabel,
   } = props;
 
@@ -52,13 +69,11 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
   }, [max]);
 
-  const state: RatingState = {
-    color,
+  const state: RatingBaseState = {
     iconFilled,
     iconOutline,
     name,
     step,
-    size,
     itemLabel,
     value,
     hoveredValue,

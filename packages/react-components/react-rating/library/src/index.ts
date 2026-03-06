@@ -30,3 +30,11 @@ export type {
   RatingDisplayState,
   RatingDisplayContextValues,
 } from './RatingDisplay';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useRatingBase_unstable } from './Rating';
+// export type { RatingBaseProps, RatingBaseState } from './Rating';
+// export { useRatingItemBase_unstable } from './RatingItem';
+// export type { RatingItemBaseProps, RatingItemBaseState } from './RatingItem';
+// export { useRatingDisplayBase_unstable } from './RatingDisplay';
+// export type { RatingDisplayBaseProps, RatingDisplayBaseState } from './RatingDisplay';
