@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base state hooks for MessageBar components",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "copilot@github.com",
+  "dependentChangeType": "patch"
+}

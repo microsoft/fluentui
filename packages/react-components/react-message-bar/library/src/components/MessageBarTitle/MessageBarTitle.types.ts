@@ -10,6 +10,16 @@ export type MessageBarTitleSlots = {
 export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;
 
 /**
+ * MessageBarTitle base props
+ */
+export type MessageBarTitleBaseProps = MessageBarTitleProps;
+
+/**
  * State used in rendering MessageBarTitle
  */
 export type MessageBarTitleState = ComponentState<MessageBarTitleSlots>;
+
+/**
+ * MessageBarTitle base state
+ */
+export type MessageBarTitleBaseState = MessageBarTitleState;

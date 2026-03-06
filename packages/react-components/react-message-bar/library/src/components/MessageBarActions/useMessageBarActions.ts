@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import type { MessageBarActionsProps, MessageBarActionsState } from './MessageBarActions.types';
+import type {
+  MessageBarActionsProps,
+  MessageBarActionsState,
+  MessageBarActionsBaseProps,
+  MessageBarActionsBaseState,
+} from './MessageBarActions.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';
 
 /**
@@ -18,6 +23,19 @@ export const useMessageBarActions_unstable = (
   props: MessageBarActionsProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarActionsState => {
+  return useMessageBarActionsBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for MessageBarActions component, manages state and structure common to all variants of MessageBarActions
+ *
+ * @param props - base props from this instance of MessageBarActions
+ * @param ref - reference to root HTMLElement of MessageBarActions
+ */
+export const useMessageBarActionsBase_unstable = (
+  props: MessageBarActionsBaseProps,
+  ref?: React.Ref<HTMLDivElement>,
+): MessageBarActionsBaseState => {
   const { layout = 'singleline', actionsRef } = useMessageBarContext();
   return {
     components: {

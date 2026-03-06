@@ -1,4 +1,6 @@
 export type {
+  MessageBarBaseProps,
+  MessageBarBaseState,
   MessageBarContextValues,
   MessageBarIntent,
   MessageBarProps,
@@ -9,6 +11,7 @@ export {
   MessageBar,
   messageBarClassNames,
   renderMessageBar_unstable,
+  useMessageBarBase_unstable,
   useMessageBarContextValue_unstable,
   useMessageBarStyles_unstable,
   useMessageBar_unstable,

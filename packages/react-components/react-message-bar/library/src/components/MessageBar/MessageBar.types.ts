@@ -10,7 +10,7 @@ export type MessageBarSlots = {
    * over this element
    *
    * NOTE: If you are using this slot, this probably means that you are using the MessageBar without
-   * actions, this is not recommended from an accesibility point of view
+   * actions, this is not recommended from an accessibility point of view
    */
   bottomReflowSpacer?: Slot<'div'>;
 };
@@ -36,11 +36,16 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> &
      */
     politeness?: 'assertive' | 'polite';
     /**
-     * Use squal for page level messages and rounded for component level messages
+     * Use square for page level messages and rounded for component level messages
      * @default rounded
      */
     shape?: 'square' | 'rounded';
   };
+
+/**
+ * MessageBar base props, excluding design-related props like intent and shape
+ */
+export type MessageBarBaseProps = Omit<MessageBarProps, 'transitionClassName' | 'shape'>;
 
 /**
  * State used in rendering MessageBar
@@ -53,3 +58,8 @@ export type MessageBarState = ComponentState<MessageBarSlots> &
      */
     transitionClassName: string;
   };
+
+/**
+ * MessageBar base state, excluding design-related state like intent and shape
+ */
+export type MessageBarBaseState = Omit<MessageBarState, 'transitionClassName' | 'shape'>;

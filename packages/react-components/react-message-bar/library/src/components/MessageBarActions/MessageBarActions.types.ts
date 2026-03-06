@@ -20,6 +20,11 @@ export type MessageBarActionsContextValues = {
 export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
 /**
+ * MessageBarActions base props
+ */
+export type MessageBarActionsBaseProps = MessageBarActionsProps;
+
+/**
  * State used in rendering MessageBarActions
  */
 export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> &
@@ -29,3 +34,8 @@ export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> &
      */
     hasActions: boolean;
   };
+
+/**
+ * MessageBarActions base state
+ */
+export type MessageBarActionsBaseState = MessageBarActionsState;

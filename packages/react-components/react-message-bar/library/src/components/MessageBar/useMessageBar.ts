@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
-import type { MessageBarProps, MessageBarState } from './MessageBar.types';
+import type { MessageBarProps, MessageBarState, MessageBarBaseProps, MessageBarBaseState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
 import { useMessageBarReflow } from './useMessageBarReflow';
 import { useMessageBarTransitionContext } from '../../contexts/messageBarTransitionContext';
@@ -19,15 +19,46 @@ import { useMotionForwardedRef } from '@fluentui/react-motion';
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
-  const { layout = 'auto', intent = 'info', politeness, shape = 'rounded' } = props;
-  const computedPoliteness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
-  const autoReflow = layout === 'auto';
-  const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
-  const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
+  'use no memo';
+
+  const { shape = 'rounded', ...restProps } = props;
+
+  const baseState = useMessageBarBase_unstable(restProps, ref);
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
   const motionRef = useMotionForwardedRef();
+
+  baseState.root.ref = useMergedRefs(baseState.root.ref, nodeRef, motionRef);
+
+  return {
+    ...baseState,
+    icon: slot.optional(props.icon, {
+      renderByDefault: true,
+      elementType: 'div',
+      defaultProps: { children: getIntentIcon(baseState.intent) },
+    }),
+    shape,
+    transitionClassName,
+  };
+};
+
+/**
+ * Base hook for MessageBar component, manages state and structure common to all variants of MessageBar
+ *
+ * @param props - base props from this instance of MessageBar
+ * @param ref - reference to root HTMLElement of MessageBar
+ */
+export const useMessageBarBase_unstable = (
+  props: MessageBarBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): MessageBarBaseState => {
+  const { layout = 'auto', politeness, bottomReflowSpacer, icon, intent = 'info', ...rest } = props;
+  const autoReflow = layout === 'auto';
+  const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
+
+  const computedPoliteness = politeness ?? (intent === 'info' ? 'polite' : 'assertive');
+  const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
 
   const actionsRef = React.useRef<HTMLDivElement | null>(null);
   const bodyRef = React.useRef<HTMLDivElement | null>(null);
@@ -49,30 +80,25 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       bottomReflowSpacer: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, reflowRef, nodeRef, motionRef),
+      {
+        ref: useMergedRefs(ref, reflowRef),
         role: 'group',
         'aria-labelledby': titleId,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-
-    icon: slot.optional(props.icon, {
-      renderByDefault: true,
+    icon: slot.optional(icon, {
       elementType: 'div',
-      defaultProps: { children: getIntentIcon(intent) },
     }),
-    bottomReflowSpacer: slot.optional(props.bottomReflowSpacer, {
+    bottomReflowSpacer: slot.optional(bottomReflowSpacer, {
       renderByDefault: computedLayout === 'multiline',
       elementType: 'div',
     }),
     layout: computedLayout,
     intent,
-    transitionClassName,
     actionsRef,
     bodyRef,
     titleId,
-    shape,
   };
 };

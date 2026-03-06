@@ -1,4 +1,6 @@
 export type {
+  MessageBarActionsBaseProps,
+  MessageBarActionsBaseState,
   MessageBarActionsContextValues,
   MessageBarActionsProps,
   MessageBarActionsSlots,
@@ -8,6 +10,7 @@ export {
   MessageBarActions,
   messageBarActionsClassNames,
   renderMessageBarActions_unstable,
+  useMessageBarActionsBase_unstable,
   useMessageBarActionsContextValue_unstable,
   useMessageBarActionsStyles_unstable,
   useMessageBarActions_unstable,
