@@ -244,6 +244,7 @@ export function collectLongReportData(
         }
 
         const typeEntry: TypeUsage = pkgData.types[usage.symbolName];
+        typeEntry.count++;
         for (let i = 0; i < usage.typeArgs.length; i++) {
           const propName = `typeArg${i}`;
           if (!typeEntry.props[propName]) {
