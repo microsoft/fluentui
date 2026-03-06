@@ -1,4 +1,13 @@
-import type { MetadataOutput, ComponentDoc, HookDoc, TypeDoc, OtherDoc, MemberDoc, ParameterDoc } from './types';
+import type {
+  MetadataOutput,
+  ComponentDoc,
+  HookDoc,
+  TypeDoc,
+  OtherDoc,
+  MemberDoc,
+  ParameterDoc,
+  RefOrInline,
+} from './types';
 
 /**
  * Format MetadataOutput as a structured Markdown document.
@@ -33,38 +42,50 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
 
   // Components
   if (Object.keys(categories.components).length > 0) {
-    lines.push('## Components');
+    lines.push('<details>');
+    lines.push(`<summary><h2>Components (${Object.keys(categories.components).length})</h2></summary>`);
     lines.push('');
     for (const comp of Object.values(categories.components).sort(sortByName)) {
       lines.push(...formatComponent(comp));
     }
+    lines.push('</details>');
+    lines.push('');
   }
 
   // Hooks
   if (Object.keys(categories.hooks).length > 0) {
-    lines.push('## Hooks');
+    lines.push('<details>');
+    lines.push(`<summary><h2>Hooks (${Object.keys(categories.hooks).length})</h2></summary>`);
     lines.push('');
     for (const hook of Object.values(categories.hooks).sort(sortByName)) {
       lines.push(...formatHook(hook));
     }
+    lines.push('</details>');
+    lines.push('');
   }
 
   // Types
   if (Object.keys(categories.types).length > 0) {
-    lines.push('## Types');
+    lines.push('<details>');
+    lines.push(`<summary><h2>Types (${Object.keys(categories.types).length})</h2></summary>`);
     lines.push('');
     for (const type of Object.values(categories.types).sort(sortByName)) {
       lines.push(...formatType(type));
     }
+    lines.push('</details>');
+    lines.push('');
   }
 
   // Others
   if (Object.keys(categories.others).length > 0) {
-    lines.push('## Others');
+    lines.push('<details>');
+    lines.push(`<summary><h2>Others (${Object.keys(categories.others).length})</h2></summary>`);
     lines.push('');
     for (const other of Object.values(categories.others).sort(sortByName)) {
       lines.push(...formatOther(other));
     }
+    lines.push('</details>');
+    lines.push('');
   }
 
   return lines.join('\n');
@@ -84,8 +105,7 @@ function formatComponent(comp: ComponentDoc): string[] {
   }
   lines.push(`**Type:** \`${comp.typeSignature}\``);
   if (comp.propsType) {
-    const ref = '$ref' in comp.propsType ? comp.propsType.$ref : comp.propsType.inline;
-    lines.push(`**Props:** \`${ref}\``);
+    lines.push(`**Props:** ${formatRef(comp.propsType)}`);
   }
   lines.push(...formatTags(comp.tags));
   lines.push('');
@@ -192,6 +212,35 @@ function formatTags(tags: Record<string, string>): string[] {
     return [];
   }
   return ['', ...entries.map(([key, val]) => `> @${key}${val ? ` ${val}` : ''}`)];
+}
+
+/**
+ * Format a $ref or inline type for Markdown.
+ * Local refs become anchor links; cross-package refs are shown as code.
+ */
+function formatRef(ref: RefOrInline): string {
+  if ('inline' in ref) {
+    return `\`${ref.inline}\``;
+  }
+
+  const refValue = ref.$ref;
+  // Local ref: #/categories/<category>/<symbolName> → link to heading anchor
+  if (refValue.startsWith('#/')) {
+    const symbolName = refValue.split('/').pop()!;
+    // GitHub-style heading anchor: lowercase, spaces→hyphens
+    const anchor = symbolName.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+    return `[\`${symbolName}\`](#${anchor})`;
+  }
+
+  // Cross-package ref
+  const hashIdx = refValue.indexOf('#/');
+  if (hashIdx > 0) {
+    const pkgName = refValue.substring(0, hashIdx);
+    const symbolName = refValue.split('/').pop()!;
+    return `\`${pkgName}\` → \`${symbolName}\``;
+  }
+
+  return `\`${refValue}\``;
 }
 
 function sortByName(a: { name: string }, b: { name: string }): number {
