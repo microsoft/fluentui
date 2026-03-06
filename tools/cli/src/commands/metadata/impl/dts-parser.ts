@@ -556,7 +556,11 @@ function extractTypeAliasMembers(decl: TypeAliasDeclaration, members: Record<str
     members[name] = {
       name,
       type: propDecl.getType().getText(propDecl),
-      required: !('hasQuestionToken' in propDecl && (propDecl as any).hasQuestionToken()),
+      required: !(
+        'hasQuestionToken' in propDecl &&
+        typeof propDecl.hasQuestionToken === 'function' &&
+        propDecl.hasQuestionToken()
+      ),
       description: jsDocDescription,
       ...(defaultValue !== undefined ? { defaultValue } : {}),
     };

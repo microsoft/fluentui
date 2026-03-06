@@ -67,7 +67,7 @@ export interface BaseSymbolDoc {
   description: string;
   /** Full type signature text. */
   typeSignature: string;
-  /** JSDoc tags extracted from the declaration (e.g. @internal, @deprecated). */
+  /** JSDoc tags extracted from the declaration (e.g. internal, deprecated). */
   tags: Record<string, string>;
 }
 
