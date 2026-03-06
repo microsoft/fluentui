@@ -2,6 +2,7 @@ import yargs from 'yargs';
 
 import migrateCommand from './commands/migrate';
 import reportCommand from './commands/report';
+import metadataCommand from './commands/metadata';
 
 const BANNER = `
   ███████╗██╗     ██╗   ██╗███████╗███╗   ██╗████████╗  ██╗   ██╗██╗
@@ -19,6 +20,7 @@ export async function main(argv: string[]): Promise<void> {
     .usage(`${BANNER}\n  $0 <command> [options]`)
     .command(migrateCommand)
     .command(reportCommand)
+    .command(metadataCommand)
     .demandCommand(1, 'You need to specify a command to run.')
     .help()
     .strict()
