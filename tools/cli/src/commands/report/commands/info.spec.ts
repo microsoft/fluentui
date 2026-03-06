@@ -7,12 +7,21 @@ describe('report info command', () => {
     jest.clearAllMocks();
   });
 
-  it('should call runShortReport', async () => {
+  it('should call runShortReport with no output', async () => {
     const infoCommand = (await import('./info')).default;
 
     await (infoCommand.handler as Function)({ _: ['report', 'info'], $0: 'fluentui-cli' });
 
     const { runShortReport } = require('../impl/short-report');
-    expect(runShortReport).toHaveBeenCalledTimes(1);
+    expect(runShortReport).toHaveBeenCalledWith(undefined);
+  });
+
+  it('should pass output to runShortReport', async () => {
+    const infoCommand = (await import('./info')).default;
+
+    await (infoCommand.handler as Function)({ _: ['report', 'info'], $0: 'fluentui-cli', output: 'info.txt' });
+
+    const { runShortReport } = require('../impl/short-report');
+    expect(runShortReport).toHaveBeenCalledWith('info.txt');
   });
 });

@@ -4,10 +4,12 @@
 
 /**
  * Parsed CLI arguments for the `report info` subcommand.
- * No flags — produces a quick package/environment summary.
  */
 
-export interface InfoArgs {}
+export interface InfoArgs {
+  /** Output file path. Defaults to stdout. */
+  output?: string;
+}
 
 /**
  * Parsed CLI arguments for the `report usage` subcommand.
@@ -21,6 +23,8 @@ export interface UsageArgs {
   include?: string[];
   /** Glob patterns to exclude. Matching files are skipped. */
   exclude?: string[];
+  /** Output file path. Defaults to stdout. */
+  output?: string;
 }
 
 /**

@@ -1,3 +1,6 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
 import type { ShortReportData } from './types';
 import {
   getSystemInfo,
@@ -68,10 +71,20 @@ export function formatShortReport(data: ShortReportData): string {
 }
 
 /**
- * Run the short report: collect data and print to stdout.
+ * Run the short report: collect data and print to stdout or write to file.
+ *
+ * @param output - Output file path. When provided, writes to file instead of stdout.
  */
-export async function runShortReport(): Promise<void> {
+export async function runShortReport(output?: string): Promise<void> {
   const data = collectShortReportData();
-  const output = formatShortReport(data);
-  console.log(output);
+  const formatted = formatShortReport(data);
+
+  if (output) {
+    const outputPath = path.resolve(output);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, formatted, 'utf-8');
+    console.log(`Report written to ${outputPath}`);
+  } else {
+    console.log(formatted);
+  }
 }

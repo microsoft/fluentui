@@ -357,22 +357,34 @@ function findTsConfig(rootPath: string): string | undefined {
  * @param reporter - Output format: 'json' (default), 'markdown', or 'html'.
  * @param include - Glob patterns to include.
  * @param exclude - Glob patterns to exclude.
+ * @param output - Output file path. When provided, writes to file instead of stdout.
  */
 export async function runLongReport(
   rootPath?: string,
   reporter: 'json' | 'markdown' | 'html' = 'json',
   include?: string[],
   exclude?: string[],
+  output?: string,
 ): Promise<void> {
   const reportData = collectLongReportData(rootPath, undefined, include, exclude);
 
+  let formatted: string;
   if (reporter === 'markdown') {
     const { formatMetadataAsMarkdown } = await import('./markdown-reporter');
-    console.log(formatMetadataAsMarkdown(reportData));
+    formatted = formatMetadataAsMarkdown(reportData);
   } else if (reporter === 'html') {
     const { formatMetadataAsHtml } = await import('./html-reporter');
-    console.log(formatMetadataAsHtml(reportData));
+    formatted = formatMetadataAsHtml(reportData);
   } else {
-    console.log(JSON.stringify(reportData, null, 2));
+    formatted = JSON.stringify(reportData, null, 2);
+  }
+
+  if (output) {
+    const outputPath = path.resolve(output);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, formatted, 'utf-8');
+    console.log(`Report written to ${outputPath}`);
+  } else {
+    console.log(formatted);
   }
 }

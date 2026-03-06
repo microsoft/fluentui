@@ -17,7 +17,7 @@ describe('report usage command', () => {
     });
 
     const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined);
+    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, undefined);
   });
 
   it('should pass path and reporter to runLongReport', async () => {
@@ -31,7 +31,7 @@ describe('report usage command', () => {
     });
 
     const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith('/some/path', 'markdown', undefined, undefined);
+    expect(runLongReport).toHaveBeenCalledWith('/some/path', 'markdown', undefined, undefined, undefined);
   });
 
   it('should pass html reporter to runLongReport', async () => {
@@ -44,7 +44,7 @@ describe('report usage command', () => {
     });
 
     const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'html', undefined, undefined);
+    expect(runLongReport).toHaveBeenCalledWith(undefined, 'html', undefined, undefined, undefined);
   });
 
   it('should pass include and exclude to runLongReport', async () => {
@@ -59,6 +59,20 @@ describe('report usage command', () => {
     });
 
     const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', ['src/**'], ['**/*.test.*']);
+    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', ['src/**'], ['**/*.test.*'], undefined);
+  });
+
+  it('should pass output to runLongReport', async () => {
+    const usageCommand = (await import('./usage')).default;
+
+    await (usageCommand.handler as Function)({
+      _: ['report', 'usage'],
+      $0: 'fluentui-cli',
+      reporter: 'json',
+      output: 'report.json',
+    });
+
+    const { runLongReport } = require('../impl/long-report');
+    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, 'report.json');
   });
 });

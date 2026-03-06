@@ -29,11 +29,16 @@ const usageCommand: CommandModule<{}, UsageArgs> = {
         array: true,
         describe: 'Glob patterns to exclude files',
       })
+      .option('output', {
+        alias: 'o',
+        type: 'string',
+        describe: 'Output file path (default: stdout)',
+      })
       .version(false)
       .help(),
   handler: async argv => {
     const { runLongReport } = await import('../impl/long-report');
-    return runLongReport(argv.path, argv.reporter, argv.include, argv.exclude);
+    return runLongReport(argv.path, argv.reporter, argv.include, argv.exclude, argv.output);
   },
 };
 
