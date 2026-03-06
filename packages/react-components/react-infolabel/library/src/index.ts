@@ -15,3 +15,9 @@ export {
   useInfoButton_unstable,
 } from './InfoButton';
 export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from './InfoButton';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useInfoLabelBase_unstable } from './InfoLabel';
+// export type { InfoLabelBaseProps, InfoLabelBaseState } from './InfoLabel';
+// export { useInfoButtonBase_unstable } from './InfoButton';
+// export type { InfoButtonBaseProps, InfoButtonBaseState } from './InfoButton';
