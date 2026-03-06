@@ -3,17 +3,23 @@
 // ============================================================================
 
 /**
- * Parsed CLI arguments for the `report` command.
+ * Parsed CLI arguments for the `report info` subcommand.
+ * No flags — produces a quick package/environment summary.
  */
-export interface ReportArgs {
-  type: 'short' | 'long';
-  /** Root path for file traversal (long report only). Defaults to git root. */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface InfoArgs {}
+
+/**
+ * Parsed CLI arguments for the `report usage` subcommand.
+ */
+export interface UsageArgs {
+  /** Root path for file traversal. Defaults to git root. */
   path?: string;
-  /** Output format for long report. Defaults to 'json'. */
+  /** Output format. Defaults to 'json'. */
   reporter?: 'json' | 'markdown' | 'html';
-  /** Glob patterns to include (long report only). Only matching files are analyzed. */
+  /** Glob patterns to include. Only matching files are analyzed. */
   include?: string[];
-  /** Glob patterns to exclude (long report only). Matching files are skipped. */
+  /** Glob patterns to exclude. Matching files are skipped. */
   exclude?: string[];
 }
 

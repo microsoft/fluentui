@@ -2,20 +2,29 @@
 
 Command `report`
 
-**Flags:**
+Has two subcommands:
 
-- `--path`: root of project where traversal should start with
+- `report info` — quick package & environment summary for issue reporting (no flags)
+- `report usage` — deep codebase usage analysis of Fluent UI APIs
+
+Running `report` without a subcommand shows help.
+
+## `report usage` flags
+
+- `--path`, `-p`: root of project where traversal should start with
   - @default `<git-root>`
-- `--type`: `'short' | 'long'`
-  - @default `short`
+- `--reporter`, `-r`: output format (`'json' | 'markdown' | 'html'`)
+  - @default `json`
+- `--include`: glob patterns to include files
+- `--exclude`: glob patterns to exclude files
 
-## --path
+### --path
 
 Should traverse `.ts` and `.tsx` files in project.
 
 **NOTE:** skips gitignored files
 
-## --type `short`
+## `report info`
 
 This flag will provide only simple installed packages report which can be used for issue reporting.
 
@@ -78,7 +87,7 @@ react         : 5.7.3
 ---------------------------------------
 ```
 
-## --type `long`
+## `report usage`
 
 Comprehensive parser of codebase analysis that will gather all Fluent scoped and Fluent related packages for sake of getting metrics of usage of our apis in user codebase.
 
