@@ -1,5 +1,5 @@
 import React from 'react';
-import { FluentProvider, webLightTheme, Tooltip, useToastController } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme, Tooltip, useToastController } from '@proj/react-components';
 import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useArrowNavigationGroup, useId } from '@fluentui/react-components';
+import { useArrowNavigationGroup, useId } from '@proj/react-components';
 
 const circular = true;
 

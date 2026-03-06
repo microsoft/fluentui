@@ -10,7 +10,7 @@ import type {
 
 jest.mock('./package-resolver', () => ({
   getGitRoot: jest.fn().mockReturnValue('/mock/root'),
-  isReportablePackageForLong: jest.requireActual('./package-resolver').isReportablePackageForLong,
+  isReportablePackageForLong: jest.fn().mockReturnValue(true),
 }));
 
 jest.mock('./file-discovery', () => ({
@@ -73,7 +73,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button', 'Input'],
             isTypeOnly: false,
           },
@@ -84,17 +84,17 @@ describe('long-report', () => {
           {
             componentName: 'Button',
             props: { appearance: 'primary', size: 'medium' },
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
           {
             componentName: 'Button',
             props: { appearance: 'secondary' },
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
           {
             componentName: 'Input',
             props: { placeholder: 'Search...' },
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
         ],
       },
@@ -103,9 +103,9 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    expect(result.packages['@fluentui/react-components']).toBeDefined();
+    expect(result.packages['@proj/react-components']).toBeDefined();
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.components.Button.count).toBe(2);
     expect(pkg.components.Button.props.appearance.values).toEqual(['primary', 'secondary']);
     expect(pkg.components.Button.props.appearance.count).toBe(2);
@@ -117,7 +117,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['useId', 'useToastController'],
             isTypeOnly: false,
           },
@@ -129,12 +129,12 @@ describe('long-report', () => {
           {
             functionName: 'useId',
             args: { arg0: "'my-id'" },
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
           {
             functionName: 'useToastController',
             args: {},
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
         ],
       },
@@ -142,7 +142,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.hooks.useId.count).toBe(1);
     expect(pkg.hooks.useId.props.arg0.values).toEqual(["'my-id'"]);
     expect(pkg.hooks.useToastController.count).toBe(1);
@@ -153,7 +153,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/types.ts': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['ButtonProps', 'InputProps'],
             isTypeOnly: true,
           },
@@ -165,7 +165,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ButtonProps.count).toBe(1);
     expect(pkg.types.ButtonProps.typeofCount).toBe(0);
     expect(pkg.types.ButtonProps.props).toEqual({});
@@ -178,7 +178,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['tokens', 'webLightTheme'],
             isTypeOnly: false,
           },
@@ -190,12 +190,15 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.others.tokens.count).toBe(1);
     expect(pkg.others.webLightTheme.count).toBe(1);
   });
 
   it('should skip non-reportable packages', () => {
+    const { isReportablePackageForLong } = require('./package-resolver');
+    isReportablePackageForLong.mockImplementation((name: string) => name !== 'lodash');
+
     const parser = createMockParser(
       {
         '/mock/root/src/App.tsx': [
@@ -213,6 +216,8 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     expect(result.packages.lodash).toBeUndefined();
+
+    isReportablePackageForLong.mockReturnValue(true);
   });
 
   it('should return empty metadata when no files are found', () => {
@@ -281,7 +286,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -297,7 +302,7 @@ describe('long-report', () => {
           {
             componentName: 'Button',
             props: { appearance: 'primary' },
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
         ],
       },
@@ -306,12 +311,15 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    expect(result.packages['@fluentui/react-components']).toBeDefined();
+    expect(result.packages['@proj/react-components']).toBeDefined();
     expect(result.packages['@griffel/react']).toBeDefined();
     expect(result.packages['@griffel/react'].others.makeStyles.count).toBe(1);
   });
 
-  it('should exclude react and typescript imports from long report', () => {
+  it('should exclude non-reportable packages from long report', () => {
+    const { isReportablePackageForLong } = require('./package-resolver');
+    isReportablePackageForLong.mockImplementation((name: string) => name !== 'react');
+
     const parser = createMockParser(
       {
         '/mock/root/src/App.tsx': [
@@ -321,7 +329,7 @@ describe('long-report', () => {
             isTypeOnly: false,
           },
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -334,7 +342,9 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     expect(result.packages.react).toBeUndefined();
-    expect(result.packages['@fluentui/react-components']).toBeDefined();
+    expect(result.packages['@proj/react-components']).toBeDefined();
+
+    isReportablePackageForLong.mockReturnValue(true);
   });
 
   it('should classify PascalCase non-component symbols as "others" via classifySymbol', () => {
@@ -342,7 +352,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['AzureLightTheme', 'tokens'],
             isTypeOnly: false,
           },
@@ -355,7 +365,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.others.AzureLightTheme.count).toBe(1);
     expect(pkg.others.tokens.count).toBe(1);
     expect(pkg.components.AzureLightTheme).toBeUndefined();
@@ -366,7 +376,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['ButtonProps', 'Button'],
             isTypeOnly: false,
           },
@@ -379,7 +389,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ButtonProps.count).toBe(1);
     expect(pkg.types.ButtonProps.typeofCount).toBe(0);
     expect(pkg.types.ButtonProps.props).toEqual({});
@@ -392,7 +402,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -403,14 +413,14 @@ describe('long-report', () => {
       { Button: 'component' },
       {
         '/mock/root/src/App.tsx': [
-          { symbolName: 'Button', moduleSpecifier: '@fluentui/react-components', kind: 'typeof' as const },
+          { symbolName: 'Button', moduleSpecifier: '@proj/react-components', kind: 'typeof' as const },
         ],
       },
     );
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.Button).toBeDefined();
     expect(pkg.types.Button.count).toBe(1);
     expect(pkg.types.Button.typeofCount).toBe(1);
@@ -422,7 +432,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -433,13 +443,13 @@ describe('long-report', () => {
       { Button: 'component' },
       {},
       {
-        '/mock/root/src/App.tsx': [{ symbolName: 'Button', moduleSpecifier: '@fluentui/react-components' }],
+        '/mock/root/src/App.tsx': [{ symbolName: 'Button', moduleSpecifier: '@proj/react-components' }],
       },
     );
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.components.Button.count).toBe(1);
   });
 
@@ -448,7 +458,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['ColumnDef'],
             isTypeOnly: true,
           },
@@ -461,13 +471,13 @@ describe('long-report', () => {
         '/mock/root/src/App.tsx': [
           {
             symbolName: 'ColumnDef',
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             kind: 'generic' as const,
             typeArgs: ['{ name: string; age: number }'],
           },
           {
             symbolName: 'ColumnDef',
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             kind: 'generic' as const,
             typeArgs: ['{ id: number; price: number }'],
           },
@@ -477,7 +487,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ColumnDef).toBeDefined();
     expect(pkg.types.ColumnDef.count).toBe(3); // 1 from import type + 2 from generic usages
     expect(pkg.types.ColumnDef.typeofCount).toBe(0);
@@ -494,14 +504,14 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
         ],
         '/mock/root/src/types.ts': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -512,7 +522,7 @@ describe('long-report', () => {
           {
             componentName: 'Button',
             props: {},
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
         ],
       },
@@ -532,7 +542,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     // Button has JSX usage (count > 0) so should be in components, NOT in others
     expect(pkg.components.Button).toBeDefined();
     expect(pkg.components.Button.count).toBe(1);
@@ -544,7 +554,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['SomeConstant', 'CustomProps'],
             isTypeOnly: false,
           },
@@ -557,7 +567,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     expect(pkg.unknowns.SomeConstant).toBeDefined();
     expect(pkg.unknowns.SomeConstant.count).toBe(1);
     expect(pkg.unknowns.SomeConstant.description).toBe('PascalCase symbol — could be a component, constant, or type');
@@ -570,7 +580,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },
@@ -581,7 +591,7 @@ describe('long-report', () => {
           {
             componentName: 'Button',
             props: {},
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
           },
         ],
       },
@@ -591,7 +601,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    const pkg = result.packages['@fluentui/react-components'];
+    const pkg = result.packages['@proj/react-components'];
     // Button has JSX usage, so it should be in components and removed from unknowns
     expect(pkg.components.Button).toBeDefined();
     expect(pkg.components.Button.count).toBe(1);
@@ -603,7 +613,7 @@ describe('long-report', () => {
       {
         '/mock/root/src/App.tsx': [
           {
-            moduleSpecifier: '@fluentui/react-components',
+            moduleSpecifier: '@proj/react-components',
             namedImports: ['Button'],
             isTypeOnly: false,
           },

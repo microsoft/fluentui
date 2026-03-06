@@ -1,5 +1,5 @@
-import type { ButtonProps, InputProps } from '@fluentui/react-components';
-import type { FluentIcon } from '@fluentui/react-icons';
+import type { ButtonProps, InputProps } from '@proj/react-components';
+import type { FluentIcon } from '@proj/react-icons';
 
 export type CustomButtonProps = ButtonProps & {
   tooltip?: string;

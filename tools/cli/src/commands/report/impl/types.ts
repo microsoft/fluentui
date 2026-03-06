@@ -140,7 +140,7 @@ export interface PackageUsageData {
 
 /**
  * Full metadata structure produced by the long report.
- * Keys are package import specifiers (e.g. `@fluentui/react-components`).
+ * Keys are package import specifiers (e.g. `@proj/react-components`).
  */
 export type Metadata = Record<string, PackageUsageData>;
 
