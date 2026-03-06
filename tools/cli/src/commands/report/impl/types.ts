@@ -6,7 +6,7 @@
  * Parsed CLI arguments for the `report info` subcommand.
  * No flags — produces a quick package/environment summary.
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 export interface InfoArgs {}
 
 /**

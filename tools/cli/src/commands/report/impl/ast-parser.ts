@@ -55,7 +55,7 @@ export class TsMorphAstParser implements AstParser {
   /** The original user source file paths (excludes resolved dependencies). */
   private userFilePaths = new Set<string>();
 
-  createProject(filePaths: string[], tsConfigPath?: string, rootPath?: string): void {
+  public createProject(filePaths: string[], tsConfigPath?: string, rootPath?: string): void {
     if (tsConfigPath) {
       this.project = new Project({ tsConfigFilePath: tsConfigPath, skipAddingFilesFromTsConfig: true });
     } else {
@@ -82,16 +82,16 @@ export class TsMorphAstParser implements AstParser {
     this.classificationCache.clear();
   }
 
-  getSourceFiles(): string[] {
-    this.ensureProject();
+  public getSourceFiles(): string[] {
+    this._ensureProject();
     // Only return user source files, not resolved library dependencies
     return this.project!.getSourceFiles()
       .map(sf => sf.getFilePath())
       .filter(fp => this.userFilePaths.has(fp));
   }
 
-  getImportDeclarations(filePath: string): ImportInfo[] {
-    const sourceFile = this.getSourceFile(filePath);
+  public getImportDeclarations(filePath: string): ImportInfo[] {
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
       return [];
     }
@@ -111,13 +111,13 @@ export class TsMorphAstParser implements AstParser {
     });
   }
 
-  getJsxElementUsages(filePath: string): JsxUsageInfo[] {
-    const sourceFile = this.getSourceFile(filePath);
+  public getJsxElementUsages(filePath: string): JsxUsageInfo[] {
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
       return [];
     }
 
-    const importMap = this.buildImportMap(sourceFile);
+    const importMap = this._buildImportMap(sourceFile);
     const usages: JsxUsageInfo[] = [];
 
     // Collect JSX opening elements and self-closing elements
@@ -130,7 +130,7 @@ export class TsMorphAstParser implements AstParser {
 
       // Only track components that come from tracked imports (PascalCase)
       if (moduleSpecifier && /^[A-Z]/.test(tagName)) {
-        const props = this.extractJsxProps(element);
+        const props = this._extractJsxProps(element);
         usages.push({ componentName: tagName, props, moduleSpecifier });
       }
     }
@@ -138,13 +138,13 @@ export class TsMorphAstParser implements AstParser {
     return usages;
   }
 
-  getCallExpressionUsages(filePath: string): CallUsageInfo[] {
-    const sourceFile = this.getSourceFile(filePath);
+  public getCallExpressionUsages(filePath: string): CallUsageInfo[] {
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
       return [];
     }
 
-    const importMap = this.buildImportMap(sourceFile);
+    const importMap = this._buildImportMap(sourceFile);
     const usages: CallUsageInfo[] = [];
 
     const callExpressions = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
@@ -155,7 +155,7 @@ export class TsMorphAstParser implements AstParser {
       const moduleSpecifier = importMap.get(functionName);
 
       if (moduleSpecifier) {
-        const args = this.extractCallArgs(call);
+        const args = this._extractCallArgs(call);
         usages.push({ functionName, args, moduleSpecifier });
       }
     }
@@ -163,13 +163,13 @@ export class TsMorphAstParser implements AstParser {
     return usages;
   }
 
-  getTypeReferenceUsages(filePath: string): TypeRefUsageInfo[] {
-    const sourceFile = this.getSourceFile(filePath);
+  public getTypeReferenceUsages(filePath: string): TypeRefUsageInfo[] {
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
       return [];
     }
 
-    const importMap = this.buildImportMap(sourceFile);
+    const importMap = this._buildImportMap(sourceFile);
     const usages: TypeRefUsageInfo[] = [];
 
     // Track typeof X in type positions (TypeQuery nodes)
@@ -198,13 +198,13 @@ export class TsMorphAstParser implements AstParser {
     return usages;
   }
 
-  getValueReferenceUsages(filePath: string): Array<{ symbolName: string; moduleSpecifier: string }> {
-    const sourceFile = this.getSourceFile(filePath);
+  public getValueReferenceUsages(filePath: string): Array<{ symbolName: string; moduleSpecifier: string }> {
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
       return [];
     }
 
-    const importMap = this.buildImportMap(sourceFile);
+    const importMap = this._buildImportMap(sourceFile);
     const usages: Array<{ symbolName: string; moduleSpecifier: string }> = [];
 
     const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
@@ -258,7 +258,7 @@ export class TsMorphAstParser implements AstParser {
     return usages;
   }
 
-  classifySymbol(filePath: string, symbolName: string, moduleSpecifier: string): SymbolClassification {
+  public classifySymbol(filePath: string, symbolName: string, moduleSpecifier: string): SymbolClassification {
     // Check cache first for consistency across files
     const cacheKey = `${moduleSpecifier}::${symbolName}`;
     const cached = this.classificationCache.get(cacheKey);
@@ -272,9 +272,9 @@ export class TsMorphAstParser implements AstParser {
       return 'hook';
     }
 
-    const sourceFile = this.getSourceFile(filePath);
+    const sourceFile = this._getSourceFile(filePath);
     if (!sourceFile) {
-      const result = this.fallbackClassify(symbolName);
+      const result = this._fallbackClassify(symbolName);
       this.classificationCache.set(cacheKey, result);
       return result;
     }
@@ -282,7 +282,7 @@ export class TsMorphAstParser implements AstParser {
     // Find the import declaration that imports this symbol from the given module
     const importDecl = sourceFile.getImportDeclarations().find(d => d.getModuleSpecifierValue() === moduleSpecifier);
     if (!importDecl) {
-      const result = this.fallbackClassify(symbolName);
+      const result = this._fallbackClassify(symbolName);
       this.classificationCache.set(cacheKey, result);
       return result;
     }
@@ -297,20 +297,20 @@ export class TsMorphAstParser implements AstParser {
       if (!namedImport) {
         const defaultImport = importDecl.getDefaultImport();
         if (defaultImport && defaultImport.getText() === symbolName) {
-          const result = this.classifyFromNode(defaultImport, symbolName);
+          const result = this._classifyFromNode(defaultImport, symbolName);
           this.classificationCache.set(cacheKey, result);
           return result;
         }
-        const result = this.fallbackClassify(symbolName);
+        const result = this._fallbackClassify(symbolName);
         this.classificationCache.set(cacheKey, result);
         return result;
       }
 
-      const result = this.classifyFromNode(namedImport, symbolName);
+      const result = this._classifyFromNode(namedImport, symbolName);
       this.classificationCache.set(cacheKey, result);
       return result;
     } catch {
-      const result = this.fallbackClassify(symbolName);
+      const result = this._fallbackClassify(symbolName);
       this.classificationCache.set(cacheKey, result);
       return result;
     }
@@ -320,7 +320,7 @@ export class TsMorphAstParser implements AstParser {
    * Generate a description for an unknown symbol based on naming conventions.
    * Used when .d.ts resolution failed and the symbol is classified as 'unknown'.
    */
-  describeUnknownSymbol(symbolName: string): string {
+  public describeUnknownSymbol(symbolName: string): string {
     if (/^use[A-Z]/.test(symbolName)) {
       return 'Likely a React hook (use* naming convention)';
     }
@@ -347,11 +347,11 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Classify a symbol by resolving its declaration from an AST node.
    */
-  private classifyFromNode(node: Node, symbolName: string): SymbolClassification {
+  private _classifyFromNode(node: Node, symbolName: string): SymbolClassification {
     try {
       const symbol = node.getSymbol();
       if (!symbol) {
-        return this.fallbackClassify(symbolName);
+        return this._fallbackClassify(symbolName);
       }
 
       // Follow aliases to the actual declaration
@@ -359,7 +359,7 @@ export class TsMorphAstParser implements AstParser {
       const declarations = aliased.getDeclarations();
 
       if (declarations.length === 0) {
-        return this.fallbackClassify(symbolName);
+        return this._fallbackClassify(symbolName);
       }
 
       // Only classify from .d.ts declarations.
@@ -367,19 +367,19 @@ export class TsMorphAstParser implements AstParser {
       // in symlinked node_modules), treat as unknown — we only trust type declarations.
       const dtsDeclarations = declarations.filter(d => d.getSourceFile().getFilePath().endsWith('.d.ts'));
       if (dtsDeclarations.length === 0) {
-        return this.fallbackClassify(symbolName);
+        return this._fallbackClassify(symbolName);
       }
 
-      return this.classifyFromDeclarations(dtsDeclarations, symbolName);
+      return this._classifyFromDeclarations(dtsDeclarations, symbolName);
     } catch {
-      return this.fallbackClassify(symbolName);
+      return this._fallbackClassify(symbolName);
     }
   }
 
   /**
    * Classify a symbol from its resolved declarations.
    */
-  private classifyFromDeclarations(
+  private _classifyFromDeclarations(
     declarations: ReadonlyArray<import('ts-morph').Node>,
     symbolName: string,
   ): SymbolClassification {
@@ -391,7 +391,7 @@ export class TsMorphAstParser implements AstParser {
 
       // Function declaration: check return type
       if (Node.isFunctionDeclaration(decl)) {
-        if (this.returnsJsx(decl.getReturnType().getText())) {
+        if (this._returnsJsx(decl.getReturnType().getText())) {
           return 'component';
         }
         continue;
@@ -401,13 +401,13 @@ export class TsMorphAstParser implements AstParser {
       if (Node.isVariableDeclaration(decl)) {
         const typeText = decl.getType().getText();
         // Check for React.FC, React.ForwardRefExoticComponent, etc.
-        if (this.isReactComponentType(typeText)) {
+        if (this._isReactComponentType(typeText)) {
           return 'component';
         }
         // Check if the initializer is an arrow function that returns JSX
         const init = decl.getInitializer();
         if (init && (Node.isArrowFunction(init) || Node.isFunctionExpression(init))) {
-          if (this.returnsJsx(init.getReturnType().getText())) {
+          if (this._returnsJsx(init.getReturnType().getText())) {
             return 'component';
           }
         }
@@ -417,7 +417,7 @@ export class TsMorphAstParser implements AstParser {
       // Class declaration: check for render() method
       if (Node.isClassDeclaration(decl)) {
         const renderMethod = decl.getMethod('render');
-        if (renderMethod && this.returnsJsx(renderMethod.getReturnType().getText())) {
+        if (renderMethod && this._returnsJsx(renderMethod.getReturnType().getText())) {
           return 'component';
         }
         continue;
@@ -435,7 +435,7 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Check if a return type text indicates JSX.
    */
-  private returnsJsx(returnTypeText: string): boolean {
+  private _returnsJsx(returnTypeText: string): boolean {
     for (const jsxType of JSX_TYPE_NAMES) {
       if (returnTypeText.includes(jsxType)) {
         return true;
@@ -447,7 +447,7 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Check if a type text indicates a React component type (FC, ForwardRefExoticComponent, etc.).
    */
-  private isReactComponentType(typeText: string): boolean {
+  private _isReactComponentType(typeText: string): boolean {
     const componentTypePatterns = [
       'React.FC',
       'React.FunctionComponent',
@@ -463,25 +463,25 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Fallback when type resolution is unavailable — returns 'unknown'.
    */
-  private fallbackClassify(_name: string): SymbolClassification {
+  private _fallbackClassify(_name: string): SymbolClassification {
     return 'unknown';
   }
 
-  private ensureProject(): void {
+  private _ensureProject(): void {
     if (!this.project) {
       throw new Error('AstParser: call createProject() before using the parser');
     }
   }
 
-  private getSourceFile(filePath: string): SourceFile | undefined {
-    this.ensureProject();
+  private _getSourceFile(filePath: string): SourceFile | undefined {
+    this._ensureProject();
     return this.project!.getSourceFile(filePath);
   }
 
   /**
    * Build a map from imported identifier name to its module specifier.
    */
-  private buildImportMap(sourceFile: SourceFile): Map<string, string> {
+  private _buildImportMap(sourceFile: SourceFile): Map<string, string> {
     const map = new Map<string, string>();
 
     for (const decl of sourceFile.getImportDeclarations()) {
@@ -504,7 +504,7 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Extract props from a JSX element as key-value pairs.
    */
-  private extractJsxProps(element: JsxOpeningElement | JsxSelfClosingElement): Record<string, string | undefined> {
+  private _extractJsxProps(element: JsxOpeningElement | JsxSelfClosingElement): Record<string, string | undefined> {
     const props: Record<string, string | undefined> = {};
 
     for (const attr of element.getAttributes()) {
@@ -532,7 +532,7 @@ export class TsMorphAstParser implements AstParser {
    * Extract call expression arguments as a simplified record.
    * For object literal arguments, extracts property names and their values.
    */
-  private extractCallArgs(call: import('ts-morph').CallExpression): Record<string, string | undefined> {
+  private _extractCallArgs(call: import('ts-morph').CallExpression): Record<string, string | undefined> {
     const args: Record<string, string | undefined> = {};
     const callArgs = call.getArguments();
 

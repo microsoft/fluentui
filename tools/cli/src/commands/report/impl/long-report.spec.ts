@@ -44,14 +44,24 @@ function createMockParser(
         return classifications[symbolName];
       }
       // Default fallback
-      if (/^use[A-Z]/.test(symbolName)) return 'hook';
-      if (/^[A-Z]/.test(symbolName)) return 'component';
+      if (/^use[A-Z]/.test(symbolName)) {
+        return 'hook';
+      }
+      if (/^[A-Z]/.test(symbolName)) {
+        return 'component';
+      }
       return 'other';
     }),
     describeUnknownSymbol: jest.fn((symbolName: string) => {
-      if (/^use[A-Z]/.test(symbolName)) return 'Likely a React hook (use* naming convention)';
-      if (/Props$/.test(symbolName)) return 'Likely a type/interface (*Props naming convention)';
-      if (/^[A-Z]/.test(symbolName)) return 'PascalCase symbol — could be a component, constant, or type';
+      if (/^use[A-Z]/.test(symbolName)) {
+        return 'Likely a React hook (use* naming convention)';
+      }
+      if (/Props$/.test(symbolName)) {
+        return 'Likely a type/interface (*Props naming convention)';
+      }
+      if (/^[A-Z]/.test(symbolName)) {
+        return 'PascalCase symbol — could be a component, constant, or type';
+      }
       return 'Unresolved symbol — .d.ts not available';
     }),
   };
@@ -96,10 +106,10 @@ describe('long-report', () => {
     expect(result.packages['@fluentui/react-components']).toBeDefined();
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.components['Button'].count).toBe(2);
-    expect(pkg.components['Button'].props['appearance'].values).toEqual(['primary', 'secondary']);
-    expect(pkg.components['Button'].props['appearance'].count).toBe(2);
-    expect(pkg.components['Input'].count).toBe(1);
+    expect(pkg.components.Button.count).toBe(2);
+    expect(pkg.components.Button.props.appearance.values).toEqual(['primary', 'secondary']);
+    expect(pkg.components.Button.props.appearance.count).toBe(2);
+    expect(pkg.components.Input.count).toBe(1);
   });
 
   it('should collect metadata for hook usages', () => {
@@ -133,9 +143,9 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.hooks['useId'].count).toBe(1);
-    expect(pkg.hooks['useId'].props['arg0'].values).toEqual(["'my-id'"]);
-    expect(pkg.hooks['useToastController'].count).toBe(1);
+    expect(pkg.hooks.useId.count).toBe(1);
+    expect(pkg.hooks.useId.props.arg0.values).toEqual(["'my-id'"]);
+    expect(pkg.hooks.useToastController.count).toBe(1);
   });
 
   it('should collect metadata for type-only imports', () => {
@@ -156,11 +166,11 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.types['ButtonProps'].count).toBe(1);
-    expect(pkg.types['ButtonProps'].typeofCount).toBe(0);
-    expect(pkg.types['ButtonProps'].props).toEqual({});
-    expect(pkg.types['InputProps'].count).toBe(1);
-    expect(pkg.types['InputProps'].typeofCount).toBe(0);
+    expect(pkg.types.ButtonProps.count).toBe(1);
+    expect(pkg.types.ButtonProps.typeofCount).toBe(0);
+    expect(pkg.types.ButtonProps.props).toEqual({});
+    expect(pkg.types.InputProps.count).toBe(1);
+    expect(pkg.types.InputProps.typeofCount).toBe(0);
   });
 
   it('should track "other" symbols (non-component, non-hook, non-type)', () => {
@@ -181,8 +191,8 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.others['tokens'].count).toBe(1);
-    expect(pkg.others['webLightTheme'].count).toBe(1);
+    expect(pkg.others.tokens.count).toBe(1);
+    expect(pkg.others.webLightTheme.count).toBe(1);
   });
 
   it('should skip non-reportable packages', () => {
@@ -202,7 +212,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    expect(result.packages['lodash']).toBeUndefined();
+    expect(result.packages.lodash).toBeUndefined();
   });
 
   it('should return empty metadata when no files are found', () => {
@@ -298,7 +308,7 @@ describe('long-report', () => {
 
     expect(result.packages['@fluentui/react-components']).toBeDefined();
     expect(result.packages['@griffel/react']).toBeDefined();
-    expect(result.packages['@griffel/react'].others['makeStyles'].count).toBe(1);
+    expect(result.packages['@griffel/react'].others.makeStyles.count).toBe(1);
   });
 
   it('should exclude react and typescript imports from long report', () => {
@@ -323,7 +333,7 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root', parser);
 
-    expect(result.packages['react']).toBeUndefined();
+    expect(result.packages.react).toBeUndefined();
     expect(result.packages['@fluentui/react-components']).toBeDefined();
   });
 
@@ -346,9 +356,9 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.others['AzureLightTheme'].count).toBe(1);
-    expect(pkg.others['tokens'].count).toBe(1);
-    expect(pkg.components['AzureLightTheme']).toBeUndefined();
+    expect(pkg.others.AzureLightTheme.count).toBe(1);
+    expect(pkg.others.tokens.count).toBe(1);
+    expect(pkg.components.AzureLightTheme).toBeUndefined();
   });
 
   it('should classify pure types (interfaces) without import type keyword', () => {
@@ -370,11 +380,11 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.types['ButtonProps'].count).toBe(1);
-    expect(pkg.types['ButtonProps'].typeofCount).toBe(0);
-    expect(pkg.types['ButtonProps'].props).toEqual({});
-    expect(pkg.components['Button']).toBeDefined();
-    expect(pkg.others['ButtonProps']).toBeUndefined();
+    expect(pkg.types.ButtonProps.count).toBe(1);
+    expect(pkg.types.ButtonProps.typeofCount).toBe(0);
+    expect(pkg.types.ButtonProps.props).toEqual({});
+    expect(pkg.components.Button).toBeDefined();
+    expect(pkg.others.ButtonProps).toBeUndefined();
   });
 
   it('should track typeof as type usage with typeofCount', () => {
@@ -401,10 +411,10 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.types['Button']).toBeDefined();
-    expect(pkg.types['Button'].count).toBe(1);
-    expect(pkg.types['Button'].typeofCount).toBe(1);
-    expect(pkg.types['Button'].props).toEqual({});
+    expect(pkg.types.Button).toBeDefined();
+    expect(pkg.types.Button.count).toBe(1);
+    expect(pkg.types.Button.typeofCount).toBe(1);
+    expect(pkg.types.Button.props).toEqual({});
   });
 
   it('should track component value references', () => {
@@ -430,7 +440,7 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.components['Button'].count).toBe(1);
+    expect(pkg.components.Button.count).toBe(1);
   });
 
   it('should capture generic type arguments as props', () => {
@@ -468,12 +478,12 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.types['ColumnDef']).toBeDefined();
-    expect(pkg.types['ColumnDef'].count).toBe(3); // 1 from import type + 2 from generic usages
-    expect(pkg.types['ColumnDef'].typeofCount).toBe(0);
-    expect(pkg.types['ColumnDef'].props['typeArg0']).toBeDefined();
-    expect(pkg.types['ColumnDef'].props['typeArg0'].count).toBe(2);
-    expect(pkg.types['ColumnDef'].props['typeArg0'].values).toEqual([
+    expect(pkg.types.ColumnDef).toBeDefined();
+    expect(pkg.types.ColumnDef.count).toBe(3); // 1 from import type + 2 from generic usages
+    expect(pkg.types.ColumnDef.typeofCount).toBe(0);
+    expect(pkg.types.ColumnDef.props.typeArg0).toBeDefined();
+    expect(pkg.types.ColumnDef.props.typeArg0.count).toBe(2);
+    expect(pkg.types.ColumnDef.props.typeArg0.values).toEqual([
       '{ name: string; age: number }',
       '{ id: number; price: number }',
     ]);
@@ -524,9 +534,9 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     // Button has JSX usage (count > 0) so should be in components, NOT in others
-    expect(pkg.components['Button']).toBeDefined();
-    expect(pkg.components['Button'].count).toBe(1);
-    expect(pkg.others['Button']).toBeUndefined();
+    expect(pkg.components.Button).toBeDefined();
+    expect(pkg.components.Button.count).toBe(1);
+    expect(pkg.others.Button).toBeUndefined();
   });
 
   it('should track unknown symbols with descriptions', () => {
@@ -548,13 +558,11 @@ describe('long-report', () => {
     const result = collectLongReportData('/mock/root', parser);
 
     const pkg = result.packages['@fluentui/react-components'];
-    expect(pkg.unknowns['SomeConstant']).toBeDefined();
-    expect(pkg.unknowns['SomeConstant'].count).toBe(1);
-    expect(pkg.unknowns['SomeConstant'].description).toBe(
-      'PascalCase symbol — could be a component, constant, or type',
-    );
-    expect(pkg.unknowns['CustomProps']).toBeDefined();
-    expect(pkg.unknowns['CustomProps'].description).toBe('Likely a type/interface (*Props naming convention)');
+    expect(pkg.unknowns.SomeConstant).toBeDefined();
+    expect(pkg.unknowns.SomeConstant.count).toBe(1);
+    expect(pkg.unknowns.SomeConstant.description).toBe('PascalCase symbol — could be a component, constant, or type');
+    expect(pkg.unknowns.CustomProps).toBeDefined();
+    expect(pkg.unknowns.CustomProps.description).toBe('Likely a type/interface (*Props naming convention)');
   });
 
   it('should deduplicate unknowns when symbol is also categorized elsewhere', () => {
@@ -585,9 +593,9 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     // Button has JSX usage, so it should be in components and removed from unknowns
-    expect(pkg.components['Button']).toBeDefined();
-    expect(pkg.components['Button'].count).toBe(1);
-    expect(pkg.unknowns['Button']).toBeUndefined();
+    expect(pkg.components.Button).toBeDefined();
+    expect(pkg.components.Button.count).toBe(1);
+    expect(pkg.unknowns.Button).toBeUndefined();
   });
 
   it('should include fileMap with relative paths', () => {
