@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 /**
  * Card selected event type
@@ -136,6 +136,12 @@ export type CardProps = ComponentProps<CardSlots> & {
 };
 
 /**
+ * Card base component props — excludes purely visual design props.
+ * Use with `useCardBase_unstable` to implement a custom styled Card.
+ */
+export type CardBaseProps = DistributiveOmit<CardProps, 'appearance' | 'orientation' | 'size'>;
+
+/**
  * State used in rendering Card.
  */
 export type CardState = ComponentState<CardSlots> &
@@ -178,3 +184,8 @@ export type CardState = ComponentState<CardSlots> &
       disabled: boolean;
     }
   >;
+
+/**
+ * State returned by `useCardBase_unstable` — excludes purely visual design state.
+ */
+export type CardBaseState = DistributiveOmit<CardState, 'appearance' | 'orientation' | 'size'>;
