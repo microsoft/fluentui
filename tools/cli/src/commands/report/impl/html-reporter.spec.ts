@@ -1,7 +1,7 @@
 import { formatMetadataAsHtml } from './html-reporter';
-import type { LongReportOutput } from './types';
+import type { UsageReportOutput } from './types';
 
-const TEST_LEGEND: LongReportOutput['legend'] = {
+const TEST_LEGEND: UsageReportOutput['legend'] = {
   components: { name: 'Components', description: 'React components (JSX elements).' },
   hooks: { name: 'Hooks', description: 'React hooks (use* naming convention).' },
   types: { name: 'Types', description: 'TypeScript interfaces, type aliases, and enums.' },
@@ -11,7 +11,7 @@ const TEST_LEGEND: LongReportOutput['legend'] = {
 
 describe('html-reporter', () => {
   it('should produce a valid HTML document', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
@@ -47,7 +47,7 @@ describe('html-reporter', () => {
   });
 
   it('should render summary table with correct counts', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -72,7 +72,7 @@ describe('html-reporter', () => {
   });
 
   it('should render component prop details with values', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -106,7 +106,7 @@ describe('html-reporter', () => {
   });
 
   it('should render hook argument details', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -132,7 +132,7 @@ describe('html-reporter', () => {
   });
 
   it('should not render prop details when props are empty', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -157,7 +157,7 @@ describe('html-reporter', () => {
   });
 
   it('should render unknowns with descriptions', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -193,7 +193,7 @@ describe('html-reporter', () => {
   });
 
   it('should render file map section with file paths', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
@@ -216,7 +216,7 @@ describe('html-reporter', () => {
   });
 
   it('should escape HTML special characters', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -245,7 +245,7 @@ describe('html-reporter', () => {
   });
 
   it('should show dash for props with no values', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -273,7 +273,7 @@ describe('html-reporter', () => {
   });
 
   it('should render multiple packages as separate sections', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {

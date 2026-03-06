@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
-import type { ShortReportData } from './types';
+import type { InfoReportData } from './types';
 import {
   getSystemInfo,
   getMatchingPackages,
@@ -14,7 +14,7 @@ import {
  * Generate the short report data by reading system info and installed packages.
  * Always operates from the git root directory.
  */
-export function collectShortReportData(): ShortReportData {
+export function collectInfoReportData(): InfoReportData {
   const rootDir = getGitRoot();
   const system = getSystemInfo(rootDir);
   const matchingNames = getMatchingPackages(rootDir);
@@ -27,7 +27,7 @@ export function collectShortReportData(): ShortReportData {
 /**
  * Format the short report data into a human-readable string.
  */
-export function formatShortReport(data: ShortReportData): string {
+export function formatInfoReport(data: InfoReportData): string {
   const lines: string[] = [];
 
   lines.push('FluentCLI   Report complete - copy this into the issue template');
@@ -75,9 +75,9 @@ export function formatShortReport(data: ShortReportData): string {
  *
  * @param output - Output file path. When provided, writes to file instead of stdout.
  */
-export async function runShortReport(output?: string): Promise<void> {
-  const data = collectShortReportData();
-  const formatted = formatShortReport(data);
+export async function runInfoReport(output?: string): Promise<void> {
+  const data = collectInfoReportData();
+  const formatted = formatInfoReport(data);
 
   if (output) {
     const outputPath = path.resolve(output);

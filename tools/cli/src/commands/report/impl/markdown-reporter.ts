@@ -1,5 +1,5 @@
 import type {
-  LongReportOutput,
+  UsageReportOutput,
   ComponentUsage,
   HookUsage,
   FunctionUsage,
@@ -8,11 +8,11 @@ import type {
 } from './types';
 
 /**
- * Format LongReportOutput as a structured Markdown report.
+ * Format UsageReportOutput as a structured Markdown report.
  * Markdown output is intentionally concise — no prop details.
  * Use the HTML reporter for comprehensive prop analysis.
  */
-export function formatMetadataAsMarkdown(data: LongReportOutput): string {
+export function formatMetadataAsMarkdown(data: UsageReportOutput): string {
   const { legend, fileMap, packages: metadata } = data;
   const lines: string[] = [];
 

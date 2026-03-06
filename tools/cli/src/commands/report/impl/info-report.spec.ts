@@ -1,5 +1,5 @@
-import { formatShortReport, collectShortReportData } from './short-report';
-import type { ShortReportData } from './types';
+import { formatInfoReport, collectInfoReportData } from './info-report';
+import type { InfoReportData } from './types';
 
 jest.mock('./package-resolver', () => ({
   getGitRoot: jest.fn().mockReturnValue('/mock/root'),
@@ -22,10 +22,10 @@ jest.mock('./package-resolver', () => ({
   findDuplicatePackages: jest.fn().mockReturnValue([{ name: '@proj/react-icons', versions: ['2.0.200', '2.0.195'] }]),
 }));
 
-describe('short-report', () => {
-  describe('collectShortReportData', () => {
+describe('info-report', () => {
+  describe('collectInfoReportData', () => {
     it('should collect system info, packages, and duplicates', () => {
-      const data = collectShortReportData();
+      const data = collectInfoReportData();
 
       expect(data.system.node).toBe('22.21.1');
       expect(data.system.os).toBe('darwin-arm64');
@@ -36,9 +36,9 @@ describe('short-report', () => {
     });
   });
 
-  describe('formatShortReport', () => {
+  describe('formatInfoReport', () => {
     it('should produce formatted output matching the SPEC', () => {
-      const data: ShortReportData = {
+      const data: InfoReportData = {
         system: {
           node: '22.21.1',
           os: 'darwin-arm64',
@@ -54,7 +54,7 @@ describe('short-report', () => {
         duplicates: [{ name: '@proj/react-icons', versions: ['2.0.195', '2.0.200'] }],
       };
 
-      const output = formatShortReport(data);
+      const output = formatInfoReport(data);
 
       expect(output).toContain('FluentCLI   Report complete');
       expect(output).toContain('Node           : 22.21.1');
@@ -68,7 +68,7 @@ describe('short-report', () => {
     });
 
     it('should omit duplicates section when none found', () => {
-      const data: ShortReportData = {
+      const data: InfoReportData = {
         system: {
           node: '22.0.0',
           os: 'linux-x64',
@@ -79,14 +79,14 @@ describe('short-report', () => {
         duplicates: [],
       };
 
-      const output = formatShortReport(data);
+      const output = formatInfoReport(data);
 
       expect(output).not.toContain('Duplicates');
       expect(output).toContain('react');
     });
 
     it('should omit packages section when none found', () => {
-      const data: ShortReportData = {
+      const data: InfoReportData = {
         system: {
           node: '22.0.0',
           os: 'linux-x64',
@@ -97,7 +97,7 @@ describe('short-report', () => {
         duplicates: [],
       };
 
-      const output = formatShortReport(data);
+      const output = formatInfoReport(data);
 
       expect(output).not.toContain('Packages:');
     });

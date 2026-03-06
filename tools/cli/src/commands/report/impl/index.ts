@@ -4,7 +4,7 @@ export type {
   SystemInfo,
   ResolvedPackage,
   DuplicatePackage,
-  ShortReportData,
+  InfoReportData,
   PropUsage,
   ComponentUsage,
   HookUsage,

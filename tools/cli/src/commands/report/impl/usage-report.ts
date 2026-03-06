@@ -1,4 +1,4 @@
-import type { Metadata, PackageUsageData, AstParser, LongReportOutput, TypeUsage, CategoryLegendEntry } from './types';
+import type { Metadata, PackageUsageData, AstParser, UsageReportOutput, TypeUsage, CategoryLegendEntry } from './types';
 import { isReportablePackageForLong, getGitRoot } from './package-resolver';
 import { discoverSourceFiles, filterSourceFiles } from './file-discovery';
 import { TsMorphAstParser } from './ast-parser';
@@ -58,12 +58,12 @@ function createEmptyPackageUsageData(): PackageUsageData {
  * @param include - Glob patterns to include.
  * @param exclude - Glob patterns to exclude.
  */
-export function collectLongReportData(
+export function collectUsageReportData(
   rootPath?: string,
   parser?: AstParser,
   include?: string[],
   exclude?: string[],
-): LongReportOutput {
+): UsageReportOutput {
   const resolvedRoot = rootPath ?? getGitRoot();
   const astParser = parser ?? new TsMorphAstParser();
 
@@ -359,14 +359,14 @@ function findTsConfig(rootPath: string): string | undefined {
  * @param exclude - Glob patterns to exclude.
  * @param output - Output file path. When provided, writes to file instead of stdout.
  */
-export async function runLongReport(
+export async function runUsageReport(
   rootPath?: string,
   reporter: 'json' | 'markdown' | 'html' = 'json',
   include?: string[],
   exclude?: string[],
   output?: string,
 ): Promise<void> {
-  const reportData = collectLongReportData(rootPath, undefined, include, exclude);
+  const reportData = collectUsageReportData(rootPath, undefined, include, exclude);
 
   let formatted: string;
   if (reporter === 'markdown') {

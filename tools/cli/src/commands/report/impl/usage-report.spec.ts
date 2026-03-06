@@ -1,4 +1,4 @@
-import { collectLongReportData } from './long-report';
+import { collectUsageReportData } from './usage-report';
 import type {
   AstParser,
   ImportInfo,
@@ -67,7 +67,7 @@ function createMockParser(
   };
 }
 
-describe('long-report', () => {
+describe('usage-report', () => {
   it('should collect metadata for component usages', () => {
     const parser = createMockParser(
       {
@@ -101,7 +101,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     expect(result.packages['@proj/react-components']).toBeDefined();
 
@@ -140,7 +140,7 @@ describe('long-report', () => {
       },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.hooks.useId.count).toBe(1);
@@ -163,7 +163,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ButtonProps.count).toBe(1);
@@ -188,7 +188,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.others.tokens.count).toBe(1);
@@ -213,7 +213,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     expect(result.packages.lodash).toBeUndefined();
 
@@ -224,7 +224,7 @@ describe('long-report', () => {
     const { discoverSourceFiles } = require('./file-discovery');
     discoverSourceFiles.mockReturnValueOnce([]);
 
-    const result = collectLongReportData('/mock/root');
+    const result = collectUsageReportData('/mock/root');
 
     expect(result.fileMap).toEqual([]);
     expect(result.packages).toEqual({});
@@ -237,7 +237,7 @@ describe('long-report', () => {
     const { filterSourceFiles } = require('./file-discovery');
     const parser = createMockParser({ '/mock/root/src/App.tsx': [] }, {}, {});
 
-    collectLongReportData('/mock/root', parser, ['src/**'], ['**/*.test.*']);
+    collectUsageReportData('/mock/root', parser, ['src/**'], ['**/*.test.*']);
 
     expect(filterSourceFiles).toHaveBeenCalledWith(
       ['/mock/root/src/App.tsx', '/mock/root/src/types.ts'],
@@ -253,7 +253,7 @@ describe('long-report', () => {
 
     const parser = createMockParser({ '/mock/root/src/App.tsx': [] }, {}, {});
 
-    collectLongReportData('/mock/root', parser);
+    collectUsageReportData('/mock/root', parser);
 
     expect(parser.createProject).toHaveBeenCalledWith(expect.any(Array), '/mock/root/tsconfig.json', '/mock/root');
 
@@ -266,7 +266,7 @@ describe('long-report', () => {
 
     const parser = createMockParser({ '/mock/root/src/App.tsx': [] }, {}, {});
 
-    collectLongReportData('/mock/root', parser);
+    collectUsageReportData('/mock/root', parser);
 
     expect(parser.createProject).toHaveBeenCalledWith(expect.any(Array), '/mock/root/tsconfig.base.json', '/mock/root');
 
@@ -276,7 +276,7 @@ describe('long-report', () => {
   it('should pass undefined tsconfig when none found', () => {
     const parser = createMockParser({ '/mock/root/src/App.tsx': [] }, {}, {});
 
-    collectLongReportData('/mock/root', parser);
+    collectUsageReportData('/mock/root', parser);
 
     expect(parser.createProject).toHaveBeenCalledWith(expect.any(Array), undefined, '/mock/root');
   });
@@ -309,7 +309,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     expect(result.packages['@proj/react-components']).toBeDefined();
     expect(result.packages['@griffel/react']).toBeDefined();
@@ -339,7 +339,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     expect(result.packages.react).toBeUndefined();
     expect(result.packages['@proj/react-components']).toBeDefined();
@@ -363,7 +363,7 @@ describe('long-report', () => {
       { AzureLightTheme: 'other', tokens: 'other' },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.others.AzureLightTheme.count).toBe(1);
@@ -387,7 +387,7 @@ describe('long-report', () => {
       { ButtonProps: 'type', Button: 'component' },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ButtonProps.count).toBe(1);
@@ -418,7 +418,7 @@ describe('long-report', () => {
       },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.Button).toBeDefined();
@@ -447,7 +447,7 @@ describe('long-report', () => {
       },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.components.Button.count).toBe(1);
@@ -485,7 +485,7 @@ describe('long-report', () => {
       },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.types.ColumnDef).toBeDefined();
@@ -540,7 +540,7 @@ describe('long-report', () => {
       return 'other';
     });
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     // Button has JSX usage (count > 0) so should be in components, NOT in others
@@ -565,7 +565,7 @@ describe('long-report', () => {
       { SomeConstant: 'unknown', CustomProps: 'unknown' },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     expect(pkg.unknowns.SomeConstant).toBeDefined();
@@ -599,7 +599,7 @@ describe('long-report', () => {
       { Button: 'unknown' },
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     const pkg = result.packages['@proj/react-components'];
     // Button has JSX usage, so it should be in components and removed from unknowns
@@ -623,7 +623,7 @@ describe('long-report', () => {
       {},
     );
 
-    const result = collectLongReportData('/mock/root', parser);
+    const result = collectUsageReportData('/mock/root', parser);
 
     expect(result.fileMap).toEqual(['src/App.tsx', 'src/types.ts']);
   });

@@ -37,8 +37,8 @@ const usageCommand: CommandModule<{}, UsageArgs> = {
       .version(false)
       .help(),
   handler: async argv => {
-    const { runLongReport } = await import('../impl/long-report');
-    return runLongReport(argv.path, argv.reporter, argv.include, argv.exclude, argv.output);
+    const { runUsageReport } = await import('../impl/usage-report');
+    return runUsageReport(argv.path, argv.reporter, argv.include, argv.exclude, argv.output);
   },
 };
 
