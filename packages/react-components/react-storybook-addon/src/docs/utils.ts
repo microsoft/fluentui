@@ -7,6 +7,7 @@ const docsDefaults = {
   tableOfContents: true,
   dirSwitcher: true,
   themePicker: true,
+  styleModePicker: true,
   argTable: {
     slotsApi: true,
     nativePropsApi: true,
@@ -46,6 +47,7 @@ export function getDocsPageConfig(context: DocsContextProps): {
   tableOfContents: boolean;
   dirSwitcher: boolean;
   themePicker: boolean;
+  styleModePicker: boolean;
   copyAsMarkdown: boolean;
   argTable: {
     slotsApi: boolean;
@@ -66,6 +68,7 @@ export function getDocsPageConfig(context: DocsContextProps): {
       tableOfContents: docsConfig.tableOfContents !== false,
       dirSwitcher: docsConfig.dirSwitcher !== false,
       themePicker: docsConfig.themePicker !== false,
+      styleModePicker: docsConfig.styleModePicker !== false,
       argTable: getArgTableConfig(docsConfig.argTable),
     };
   }
