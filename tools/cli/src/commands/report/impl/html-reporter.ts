@@ -5,7 +5,7 @@ import type {
   HookUsage,
   FunctionUsage,
   PropUsage,
-  SymbolUsage,
+  TypeUsage,
   UnknownSymbolUsage,
 } from './types';
 
@@ -113,7 +113,7 @@ function renderPackageSection(name: string, pkg: Metadata[string]): string {
     sections.push(renderHooksSection(pkg.hooks));
   }
   if (Object.keys(pkg.types).length > 0) {
-    sections.push(renderSimpleSymbolsSection('Types', pkg.types));
+    sections.push(renderTypesSection(pkg.types));
   }
   if (Object.keys(pkg.others).length > 0) {
     sections.push(renderFunctionsSection('Other Exports', pkg.others));
@@ -234,20 +234,32 @@ function renderPropDetailsBlock(
 }
 
 // ---------------------------------------------------------------------------
-// Simple symbol tables (types, others)
+// Types — overview table with typeof count + per-type generic arg details
 // ---------------------------------------------------------------------------
 
-function renderSimpleSymbolsSection(title: string, symbols: Record<string, SymbolUsage>): string {
-  const rows = Object.entries(symbols)
-    .sort(([, a], [, b]) => b.count - a.count)
-    .map(([name, usage]) => `<tr><td><code>${esc(name)}</code></td><td>${usage.count}</td></tr>`);
+function renderTypesSection(types: Record<string, TypeUsage>): string {
+  const sorted = Object.entries(types).sort(([, a], [, b]) => b.count - a.count);
+
+  const overviewRows = sorted.map(
+    ([name, usage]) =>
+      `<tr><td><code>${esc(name)}</code></td><td>${usage.count}</td><td>${usage.typeofCount}</td><td>${
+        Object.keys(usage.props).length
+      }</td></tr>`,
+  );
+
+  const argDetails = sorted
+    .filter(([, usage]) => Object.keys(usage.props).length > 0)
+    .map(([name, usage]) => renderPropDetailsBlock(name, 'function', usage.props));
 
   return `<div class="category">
-<h3>${esc(title)}</h3>
+<h3>Types</h3>
 <table>
-<thead><tr><th>Symbol</th><th>Usages</th></tr></thead>
-<tbody>${rows.join('\n')}</tbody>
+<thead><tr><th>Symbol</th><th>Usages</th><th>typeof</th><th>Type Args</th></tr></thead>
+<tbody>${overviewRows.join('\n')}</tbody>
 </table>
+${
+  argDetails.length > 0 ? `<div class="prop-details"><h4>Generic Type Arguments</h4>${argDetails.join('\n')}</div>` : ''
+}
 </div>`;
 }
 

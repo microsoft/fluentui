@@ -151,6 +151,17 @@ describe('TsMorphAstParser', () => {
       expect(typeofButton!.moduleSpecifier).toBe('@fluentui/react-components');
     });
 
+    it('should detect generic type references with type arguments', () => {
+      const filePath = path.join(FIXTURES_DIR, 'type-refs.tsx');
+      const usages = parser.getTypeReferenceUsages(filePath);
+
+      const genericUsages = usages.filter(u => u.symbolName === 'ColumnDef' && u.kind === 'generic');
+      expect(genericUsages).toHaveLength(2);
+      expect(genericUsages[0].moduleSpecifier).toBe('@fluentui/react-components');
+      expect(genericUsages[0].typeArgs).toBeDefined();
+      expect(genericUsages[0].typeArgs!.length).toBe(1);
+    });
+
     it('should return empty for file without type references', () => {
       const filePath = path.join(FIXTURES_DIR, 'type-imports.ts');
       const usages = parser.getTypeReferenceUsages(filePath);

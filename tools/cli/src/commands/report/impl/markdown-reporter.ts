@@ -3,7 +3,7 @@ import type {
   ComponentUsage,
   HookUsage,
   FunctionUsage,
-  SymbolUsage,
+  TypeUsage,
   UnknownSymbolUsage,
 } from './types';
 
@@ -67,7 +67,7 @@ export function formatMetadataAsMarkdown(data: LongReportOutput): string {
     }
 
     if (Object.keys(pkg.types).length > 0) {
-      lines.push(...formatSymbolsWithCount('Types', pkg.types));
+      lines.push(...formatTypesSection(pkg.types));
     }
 
     if (Object.keys(pkg.others).length > 0) {
@@ -84,7 +84,7 @@ export function formatMetadataAsMarkdown(data: LongReportOutput): string {
 
 function formatSymbolsWithCount(
   title: string,
-  symbols: Record<string, ComponentUsage | HookUsage | FunctionUsage | SymbolUsage>,
+  symbols: Record<string, ComponentUsage | HookUsage | FunctionUsage>,
 ): string[] {
   const lines: string[] = [];
   lines.push(`### ${title}`);
@@ -94,6 +94,20 @@ function formatSymbolsWithCount(
 
   for (const [name, usage] of Object.entries(symbols).sort(([, a], [, b]) => b.count - a.count)) {
     lines.push(`| \`${name}\` | ${usage.count} |`);
+  }
+  lines.push('');
+  return lines;
+}
+
+function formatTypesSection(types: Record<string, TypeUsage>): string[] {
+  const lines: string[] = [];
+  lines.push('### Types');
+  lines.push('');
+  lines.push('| Symbol | Usages | typeof | Type Args |');
+  lines.push('| ------ | ------ | ------ | --------- |');
+
+  for (const [name, usage] of Object.entries(types).sort(([, a], [, b]) => b.count - a.count)) {
+    lines.push(`| \`${name}\` | ${usage.count} | ${usage.typeofCount} | ${Object.keys(usage.props).length} |`);
   }
   lines.push('');
   return lines;

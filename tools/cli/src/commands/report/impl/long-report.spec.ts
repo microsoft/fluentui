@@ -157,7 +157,10 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     expect(pkg.types['ButtonProps'].count).toBe(1);
+    expect(pkg.types['ButtonProps'].typeofCount).toBe(0);
+    expect(pkg.types['ButtonProps'].props).toEqual({});
     expect(pkg.types['InputProps'].count).toBe(1);
+    expect(pkg.types['InputProps'].typeofCount).toBe(0);
   });
 
   it('should track "other" symbols (non-component, non-hook, non-type)', () => {
@@ -364,11 +367,13 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     expect(pkg.types['ButtonProps'].count).toBe(1);
+    expect(pkg.types['ButtonProps'].typeofCount).toBe(0);
+    expect(pkg.types['ButtonProps'].props).toEqual({});
     expect(pkg.components['Button']).toBeDefined();
     expect(pkg.others['ButtonProps']).toBeUndefined();
   });
 
-  it('should track typeof as type usage', () => {
+  it('should track typeof as type usage with typeofCount', () => {
     const parser = createMockParser(
       {
         '/mock/root/src/App.tsx': [
@@ -394,6 +399,8 @@ describe('long-report', () => {
     const pkg = result.packages['@fluentui/react-components'];
     expect(pkg.types['Button']).toBeDefined();
     expect(pkg.types['Button'].count).toBe(1);
+    expect(pkg.types['Button'].typeofCount).toBe(1);
+    expect(pkg.types['Button'].props).toEqual({});
   });
 
   it('should track component value references', () => {
@@ -420,6 +427,52 @@ describe('long-report', () => {
 
     const pkg = result.packages['@fluentui/react-components'];
     expect(pkg.components['Button'].count).toBe(1);
+  });
+
+  it('should capture generic type arguments as props', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            moduleSpecifier: '@fluentui/react-components',
+            namedImports: ['ColumnDef'],
+            isTypeOnly: true,
+          },
+        ],
+      },
+      {},
+      {},
+      { ColumnDef: 'type' },
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            symbolName: 'ColumnDef',
+            moduleSpecifier: '@fluentui/react-components',
+            kind: 'generic' as const,
+            typeArgs: ['{ name: string; age: number }'],
+          },
+          {
+            symbolName: 'ColumnDef',
+            moduleSpecifier: '@fluentui/react-components',
+            kind: 'generic' as const,
+            typeArgs: ['{ id: number; price: number }'],
+          },
+        ],
+      },
+    );
+
+    const result = collectLongReportData('/mock/root', parser);
+
+    const pkg = result.packages['@fluentui/react-components'];
+    expect(pkg.types['ColumnDef']).toBeDefined();
+    expect(pkg.types['ColumnDef'].count).toBe(1); // from import type
+    expect(pkg.types['ColumnDef'].typeofCount).toBe(0);
+    expect(pkg.types['ColumnDef'].props['typeArg0']).toBeDefined();
+    expect(pkg.types['ColumnDef'].props['typeArg0'].count).toBe(2);
+    expect(pkg.types['ColumnDef'].props['typeArg0'].values).toEqual([
+      '{ name: string; age: number }',
+      '{ id: number; price: number }',
+    ]);
   });
 
   it('should deduplicate symbols in both components and others', () => {

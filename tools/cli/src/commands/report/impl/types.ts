@@ -88,6 +88,20 @@ export interface SymbolUsage {
 }
 
 /**
+ * Type usage — tracks count, typeof references, and generic type arguments.
+ * Richer than SymbolUsage: distinguishes `typeof X` from standard annotations
+ * and captures generic type params (e.g., `DataGridProps<{hello: 'world'}>`)
+ * similarly to how component/hook props are captured.
+ */
+export interface TypeUsage {
+  count: number;
+  /** Number of typeof references (e.g., `typeof Button`). */
+  typeofCount: number;
+  /** Generic type argument usage — captured like component/hook props. */
+  props: Record<string, PropUsage>;
+}
+
+/**
  * Function/utility usage — tracks count and call arguments.
  */
 export interface FunctionUsage {
@@ -112,7 +126,7 @@ export interface UnknownSymbolUsage {
 export interface PackageUsageData {
   components: Record<string, ComponentUsage>;
   hooks: Record<string, HookUsage>;
-  types: Record<string, SymbolUsage>;
+  types: Record<string, TypeUsage>;
   others: Record<string, FunctionUsage>;
   unknowns: Record<string, UnknownSymbolUsage>;
   count: number;
