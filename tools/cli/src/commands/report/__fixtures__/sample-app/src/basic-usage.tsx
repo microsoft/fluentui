@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Input, makeStyles, tokens } from '@fluentui/react-components';
-import { useId } from '@fluentui/react-components';
-import { SearchRegular } from '@fluentui/react-icons';
+import { Button, Input, makeStyles, tokens } from '@proj/react-components';
+import { useId } from '@proj/react-components';
+import { SearchRegular } from '@proj/react-icons';
 
 const useStyles = makeStyles({
   root: {

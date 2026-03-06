@@ -1,6 +1,6 @@
 import React from 'react';
 import { AzureLightTheme } from '@sample/azure-theme';
-import { FluentProvider } from '@fluentui/react-components';
+import { FluentProvider } from '@proj/react-components';
 
 export const ThemedApp = () => (
   <FluentProvider theme={AzureLightTheme}>

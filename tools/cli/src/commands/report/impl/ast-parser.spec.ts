@@ -46,7 +46,7 @@ describe('TsMorphAstParser', () => {
       const filePath = path.join(FIXTURES_DIR, 'basic-usage.tsx');
       const imports = parser.getImportDeclarations(filePath);
 
-      const fluentImport = imports.find(i => i.moduleSpecifier === '@fluentui/react-components' && !i.isTypeOnly);
+      const fluentImport = imports.find(i => i.moduleSpecifier === '@proj/react-components' && !i.isTypeOnly);
       expect(fluentImport).toBeDefined();
       expect(fluentImport!.namedImports).toEqual(expect.arrayContaining(['Button', 'Input', 'makeStyles', 'tokens']));
     });
@@ -55,17 +55,17 @@ describe('TsMorphAstParser', () => {
       const filePath = path.join(FIXTURES_DIR, 'type-imports.ts');
       const imports = parser.getImportDeclarations(filePath);
 
-      const typeImport = imports.find(i => i.moduleSpecifier === '@fluentui/react-components');
+      const typeImport = imports.find(i => i.moduleSpecifier === '@proj/react-components');
       expect(typeImport).toBeDefined();
       expect(typeImport!.isTypeOnly).toBe(true);
       expect(typeImport!.namedImports).toEqual(expect.arrayContaining(['ButtonProps', 'InputProps']));
     });
 
-    it('should extract imports from @fluentui/react-icons', () => {
+    it('should extract imports from @proj/react-icons', () => {
       const filePath = path.join(FIXTURES_DIR, 'basic-usage.tsx');
       const imports = parser.getImportDeclarations(filePath);
 
-      const iconsImport = imports.find(i => i.moduleSpecifier === '@fluentui/react-icons');
+      const iconsImport = imports.find(i => i.moduleSpecifier === '@proj/react-icons');
       expect(iconsImport).toBeDefined();
       expect(iconsImport!.namedImports).toContain('SearchRegular');
     });
@@ -86,7 +86,7 @@ describe('TsMorphAstParser', () => {
 
       const primaryButton = buttonUsages.find(u => u.props.appearance === 'primary');
       expect(primaryButton).toBeDefined();
-      expect(primaryButton!.moduleSpecifier).toBe('@fluentui/react-components');
+      expect(primaryButton!.moduleSpecifier).toBe('@proj/react-components');
       expect(primaryButton!.props.size).toBe('medium');
     });
 
@@ -106,7 +106,7 @@ describe('TsMorphAstParser', () => {
 
       const fluentProvider = usages.find(u => u.componentName === 'FluentProvider');
       expect(fluentProvider).toBeDefined();
-      expect(fluentProvider!.moduleSpecifier).toBe('@fluentui/react-components');
+      expect(fluentProvider!.moduleSpecifier).toBe('@proj/react-components');
 
       const tooltip = usages.find(u => u.componentName === 'Tooltip');
       expect(tooltip).toBeDefined();
@@ -128,7 +128,7 @@ describe('TsMorphAstParser', () => {
 
       const useIdCall = calls.find(c => c.functionName === 'useId');
       expect(useIdCall).toBeDefined();
-      expect(useIdCall!.moduleSpecifier).toBe('@fluentui/react-components');
+      expect(useIdCall!.moduleSpecifier).toBe('@proj/react-components');
     });
 
     it('should detect function calls in mixed-imports.tsx', () => {
@@ -148,7 +148,7 @@ describe('TsMorphAstParser', () => {
 
       const typeofButton = usages.find(u => u.symbolName === 'Button' && u.kind === 'typeof');
       expect(typeofButton).toBeDefined();
-      expect(typeofButton!.moduleSpecifier).toBe('@fluentui/react-components');
+      expect(typeofButton!.moduleSpecifier).toBe('@proj/react-components');
     });
 
     it('should detect generic type references with type arguments', () => {
@@ -157,7 +157,7 @@ describe('TsMorphAstParser', () => {
 
       const genericUsages = usages.filter(u => u.symbolName === 'ColumnDef' && u.kind === 'generic');
       expect(genericUsages).toHaveLength(2);
-      expect(genericUsages[0].moduleSpecifier).toBe('@fluentui/react-components');
+      expect(genericUsages[0].moduleSpecifier).toBe('@proj/react-components');
       expect(genericUsages[0].typeArgs).toBeDefined();
       expect(genericUsages[0].typeArgs!.length).toBe(1);
     });
@@ -180,7 +180,7 @@ describe('TsMorphAstParser', () => {
       // Button is used as a value in `component: Button`
       const buttonRef = usages.find(u => u.symbolName === 'Button');
       expect(buttonRef).toBeDefined();
-      expect(buttonRef!.moduleSpecifier).toBe('@fluentui/react-components');
+      expect(buttonRef!.moduleSpecifier).toBe('@proj/react-components');
     });
 
     it('should not include JSX tag names in value references', () => {
@@ -199,33 +199,33 @@ describe('TsMorphAstParser', () => {
     it('should classify function components returning JSX as "component"', () => {
       const filePath = path.join(FIXTURES_DIR, 'basic-usage.tsx');
 
-      expect(parser.classifySymbol(filePath, 'Button', '@fluentui/react-components')).toBe('component');
-      expect(parser.classifySymbol(filePath, 'Input', '@fluentui/react-components')).toBe('component');
+      expect(parser.classifySymbol(filePath, 'Button', '@proj/react-components')).toBe('component');
+      expect(parser.classifySymbol(filePath, 'Input', '@proj/react-components')).toBe('component');
     });
 
     it('should classify hooks as "hook"', () => {
       const filePath = path.join(FIXTURES_DIR, 'basic-usage.tsx');
 
-      expect(parser.classifySymbol(filePath, 'useId', '@fluentui/react-components')).toBe('hook');
+      expect(parser.classifySymbol(filePath, 'useId', '@proj/react-components')).toBe('hook');
     });
 
     it('should classify interfaces/types as "type"', () => {
       const filePath = path.join(FIXTURES_DIR, 'type-imports.ts');
 
-      expect(parser.classifySymbol(filePath, 'ButtonProps', '@fluentui/react-components')).toBe('type');
-      expect(parser.classifySymbol(filePath, 'InputProps', '@fluentui/react-components')).toBe('type');
+      expect(parser.classifySymbol(filePath, 'ButtonProps', '@proj/react-components')).toBe('type');
+      expect(parser.classifySymbol(filePath, 'InputProps', '@proj/react-components')).toBe('type');
     });
 
     it('should classify constants as "other" even if PascalCase', () => {
       const filePath = path.join(FIXTURES_DIR, 'mixed-imports.tsx');
 
-      expect(parser.classifySymbol(filePath, 'webLightTheme', '@fluentui/react-components')).toBe('other');
+      expect(parser.classifySymbol(filePath, 'webLightTheme', '@proj/react-components')).toBe('other');
     });
 
     it('should classify hooks from mixed imports correctly', () => {
       const filePath = path.join(FIXTURES_DIR, 'mixed-imports.tsx');
 
-      expect(parser.classifySymbol(filePath, 'useToastController', '@fluentui/react-components')).toBe('hook');
+      expect(parser.classifySymbol(filePath, 'useToastController', '@proj/react-components')).toBe('hook');
     });
 
     it('should fall back to "unknown" for unresolvable symbols', () => {
@@ -337,7 +337,7 @@ describe('TsMorphAstParser', () => {
       const filePath = path.join(FIXTURES_DIR, 'path-alias-imports.tsx');
 
       // FluentProvider comes from node_modules .d.ts — should resolve as component
-      const result = aliasParser.classifySymbol(filePath, 'FluentProvider', '@fluentui/react-components');
+      const result = aliasParser.classifySymbol(filePath, 'FluentProvider', '@proj/react-components');
       expect(result).toBe('component');
     });
   });

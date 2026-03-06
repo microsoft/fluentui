@@ -15,7 +15,7 @@ describe('markdown-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Button: {
               props: {
@@ -59,7 +59,7 @@ describe('markdown-reporter', () => {
 
     // Summary table
     expect(output).toContain('## Summary');
-    expect(output).toContain('| `@fluentui/react-components` | 2 | 1 | 1 | 2 | 0 | 12 |');
+    expect(output).toContain('| `@proj/react-components` | 2 | 1 | 1 | 2 | 0 | 12 |');
 
     // Components section — just symbol + count, no props
     expect(output).toContain('### Components');
@@ -133,7 +133,7 @@ describe('markdown-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Tooltip: { props: {}, count: 1 },
             Button: { props: {}, count: 10 },
@@ -171,7 +171,7 @@ describe('markdown-reporter', () => {
           unknowns: {},
           count: 1,
         },
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: { Button: { props: {}, count: 1 } },
           hooks: {},
           types: {},
@@ -184,10 +184,10 @@ describe('markdown-reporter', () => {
 
     const output = formatMetadataAsMarkdown(reportData);
 
-    const fluentIdx = output.indexOf('## `@fluentui/react-components`');
+    const projIdx = output.indexOf('## `@proj/react-components`');
     const griffelIdx = output.indexOf('## `@griffel/react`');
 
-    expect(fluentIdx).toBeLessThan(griffelIdx);
+    expect(griffelIdx).toBeLessThan(projIdx);
   });
 
   it('should render unknowns section with descriptions', () => {
@@ -195,7 +195,7 @@ describe('markdown-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {},
           hooks: {},
           types: {},

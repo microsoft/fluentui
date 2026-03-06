@@ -1,5 +1,5 @@
-import { Button, FluentProvider } from '@fluentui/react-components';
-import type { ButtonProps, ColumnDef } from '@fluentui/react-components';
+import { Button, FluentProvider } from '@proj/react-components';
+import type { ButtonProps, ColumnDef } from '@proj/react-components';
 
 type MyButtonProps = ButtonProps & {
   tooltip?: string;

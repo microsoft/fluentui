@@ -15,7 +15,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Button: {
               props: {
@@ -51,7 +51,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: { Button: { props: {}, count: 2 } },
           hooks: { useId: { props: {}, count: 1 } },
           types: { ButtonProps: { count: 1, typeofCount: 0, props: {} } },
@@ -64,8 +64,8 @@ describe('html-reporter', () => {
 
     const output = formatMetadataAsHtml(reportData);
 
-    expect(output).toContain('<a href="#pkg--fluentui-react-components"><code>@fluentui/react-components</code></a>');
-    expect(output).toContain('id="pkg--fluentui-react-components"');
+    expect(output).toContain('<a href="#pkg--proj-react-components"><code>@proj/react-components</code></a>');
+    expect(output).toContain('id="pkg--proj-react-components"');
     // Components: 1, Hooks: 1, Types: 1, Others: 1, Unknowns: 0, Total: 5
     expect(output).toContain('<td>1</td>');
     expect(output).toContain('<td>5</td>');
@@ -76,7 +76,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Button: {
               props: {
@@ -110,7 +110,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {},
           hooks: {
             useId: { props: { arg0: { values: ["'my-id'"], count: 1 } }, count: 1 },
@@ -136,7 +136,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Divider: { props: {}, count: 2 },
           },
@@ -161,7 +161,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {},
           hooks: {},
           types: {},
@@ -197,7 +197,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: { Button: { props: {}, count: 1 } },
           hooks: {},
           types: {},
@@ -220,7 +220,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Button: {
               props: {
@@ -249,7 +249,7 @@ describe('html-reporter', () => {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: {
             Button: {
               props: {
@@ -285,7 +285,7 @@ describe('html-reporter', () => {
           unknowns: {},
           count: 1,
         },
-        '@fluentui/react-components': {
+        '@proj/react-components': {
           components: { Button: { props: {}, count: 1 } },
           hooks: {},
           types: {},
@@ -298,7 +298,7 @@ describe('html-reporter', () => {
 
     const output = formatMetadataAsHtml(reportData);
 
-    expect(output).toContain('<code>@fluentui/react-components</code>');
+    expect(output).toContain('<code>@proj/react-components</code>');
     expect(output).toContain('<code>@griffel/react</code>');
     expect(output).toContain('<code>makeStyles</code>');
   });
