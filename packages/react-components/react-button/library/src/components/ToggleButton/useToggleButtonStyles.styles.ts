@@ -142,6 +142,12 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
+  tint: {
+    /* Styles provided by custom hooks */
+  },
+  outlineColor: {
+    /* Styles provided by custom hooks */
+  },
 });
 
 const useRootDisabledStyles = makeStyles({
@@ -209,6 +215,12 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
+  },
+  tint: {
+    /* Styles provided by custom hooks */
+  },
+  outlineColor: {
+    /* Styles provided by custom hooks */
   },
 });
 
