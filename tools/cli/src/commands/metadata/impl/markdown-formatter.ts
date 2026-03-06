@@ -7,7 +7,9 @@ import type {
   MemberDoc,
   ParameterDoc,
   RefOrInline,
+  BaseSymbolDoc,
 } from './types';
+import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
 
 /**
  * Format MetadataOutput as a structured Markdown document.
@@ -42,48 +44,44 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
 
   // Components
   if (Object.keys(categories.components).length > 0) {
+    const groups = groupByAnnotation(Object.values(categories.components));
     lines.push('<details>');
     lines.push(`<summary><h2>Components (${Object.keys(categories.components).length})</h2></summary>`);
     lines.push('');
-    for (const comp of Object.values(categories.components).sort(sortByName)) {
-      lines.push(...formatComponent(comp));
-    }
+    lines.push(...formatAnnotationGroups(groups, formatComponent));
     lines.push('</details>');
     lines.push('');
   }
 
   // Hooks
   if (Object.keys(categories.hooks).length > 0) {
+    const groups = groupByAnnotation(Object.values(categories.hooks));
     lines.push('<details>');
     lines.push(`<summary><h2>Hooks (${Object.keys(categories.hooks).length})</h2></summary>`);
     lines.push('');
-    for (const hook of Object.values(categories.hooks).sort(sortByName)) {
-      lines.push(...formatHook(hook));
-    }
+    lines.push(...formatAnnotationGroups(groups, formatHook));
     lines.push('</details>');
     lines.push('');
   }
 
   // Types
   if (Object.keys(categories.types).length > 0) {
+    const groups = groupByAnnotation(Object.values(categories.types));
     lines.push('<details>');
     lines.push(`<summary><h2>Types (${Object.keys(categories.types).length})</h2></summary>`);
     lines.push('');
-    for (const type of Object.values(categories.types).sort(sortByName)) {
-      lines.push(...formatType(type));
-    }
+    lines.push(...formatAnnotationGroups(groups, formatType));
     lines.push('</details>');
     lines.push('');
   }
 
   // Others
   if (Object.keys(categories.others).length > 0) {
+    const groups = groupByAnnotation(Object.values(categories.others));
     lines.push('<details>');
     lines.push(`<summary><h2>Others (${Object.keys(categories.others).length})</h2></summary>`);
     lines.push('');
-    for (const other of Object.values(categories.others).sort(sortByName)) {
-      lines.push(...formatOther(other));
-    }
+    lines.push(...formatAnnotationGroups(groups, formatOther));
     lines.push('</details>');
     lines.push('');
   }
@@ -94,6 +92,29 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
 // ---------------------------------------------------------------------------
 // Section formatters
 // ---------------------------------------------------------------------------
+
+/**
+ * Render annotation sub-groups within a category.
+ * When there's only one group (all stable), no sub-heading is emitted.
+ */
+function formatAnnotationGroups<T extends BaseSymbolDoc>(
+  groups: AnnotationGroup<T>[],
+  renderItem: (item: T) => string[],
+): string[] {
+  if (groups.length === 1 && groups[0].key === 'stable') {
+    return groups[0].items.flatMap(renderItem);
+  }
+
+  const lines: string[] = [];
+  for (const g of groups) {
+    lines.push(`#### ${g.label} (${g.items.length})`);
+    lines.push('');
+    for (const item of g.items) {
+      lines.push(...renderItem(item));
+    }
+  }
+  return lines;
+}
 
 function formatComponent(comp: ComponentDoc): string[] {
   const lines: string[] = [];
@@ -241,8 +262,4 @@ function formatRef(ref: RefOrInline): string {
   }
 
   return `\`${refValue}\``;
-}
-
-function sortByName(a: { name: string }, b: { name: string }): number {
-  return a.name.localeCompare(b.name);
 }

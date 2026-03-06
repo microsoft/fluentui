@@ -1,4 +1,14 @@
-import type { MetadataOutput, ComponentDoc, HookDoc, TypeDoc, OtherDoc, MemberDoc, ParameterDoc } from './types';
+import type {
+  MetadataOutput,
+  ComponentDoc,
+  HookDoc,
+  TypeDoc,
+  OtherDoc,
+  MemberDoc,
+  ParameterDoc,
+  BaseSymbolDoc,
+} from './types';
+import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
 
 /**
  * Format MetadataOutput as a self-contained HTML document.
@@ -64,37 +74,47 @@ function renderSummary(categories: MetadataOutput['categories']): string {
 }
 
 function renderComponents(components: Record<string, ComponentDoc>): string {
-  const sorted = Object.values(components).sort(sortByName);
-  if (sorted.length === 0) {
+  const all = Object.values(components);
+  if (all.length === 0) {
     return '';
   }
 
-  const items = sorted.map(comp => {
-    const propsRef = comp.propsType ? `<p><strong>Props:</strong> ${renderRef(comp.propsType)}</p>` : '';
+  const groups = groupByAnnotation(all);
 
-    return `<div class="symbol" id="${toAnchor(comp.name)}">
+  return `<section id="cat-components">
+<details><summary><h2 style="display:inline">Components</h2> <span class="count">(${all.length})</span></summary>
+${renderAnnotationGroups(groups, renderComponentItem)}
+</details></section>`;
+}
+
+function renderComponentItem(comp: ComponentDoc): string {
+  const propsRef = comp.propsType ? `<p><strong>Props:</strong> ${renderRef(comp.propsType)}</p>` : '';
+
+  return `<div class="symbol" id="${toAnchor(comp.name)}">
 <h3><code>${esc(comp.name)}</code></h3>
 ${comp.description ? `<p>${esc(comp.description)}</p>` : ''}
 <p><strong>Type:</strong> <code>${esc(comp.typeSignature)}</code></p>
 ${propsRef}
 ${renderTagsBadges(comp.tags)}
 </div>`;
-  });
-
-  return `<section id="cat-components">
-<details><summary><h2 style="display:inline">Components</h2> <span class="count">(${sorted.length})</span></summary>
-${items.join('\n')}
-</details></section>`;
 }
 
 function renderHooks(hooks: Record<string, HookDoc>): string {
-  const sorted = Object.values(hooks).sort(sortByName);
-  if (sorted.length === 0) {
+  const all = Object.values(hooks);
+  if (all.length === 0) {
     return '';
   }
 
-  const items = sorted.map(hook => {
-    return `<div class="symbol" id="${toAnchor(hook.name)}">
+  const groups = groupByAnnotation(all);
+
+  return `<section id="cat-hooks">
+<details><summary><h2 style="display:inline">Hooks</h2> <span class="count">(${all.length})</span></summary>
+${renderAnnotationGroups(groups, renderHookItem)}
+</details></section>`;
+}
+
+function renderHookItem(hook: HookDoc): string {
+  return `<div class="symbol" id="${toAnchor(hook.name)}">
 <h3><code>${esc(hook.name)}</code></h3>
 ${hook.description ? `<p>${esc(hook.description)}</p>` : ''}
 <p><strong>Signature:</strong> <code>${esc(hook.typeSignature)}</code></p>
@@ -102,45 +122,49 @@ ${hook.parameters.length > 0 ? renderParametersTable(hook.parameters) : ''}
 <p><strong>Returns:</strong> <code>${esc(hook.returnType)}</code></p>
 ${renderTagsBadges(hook.tags)}
 </div>`;
-  });
-
-  return `<section id="cat-hooks">
-<details><summary><h2 style="display:inline">Hooks</h2> <span class="count">(${sorted.length})</span></summary>
-${items.join('\n')}
-</details></section>`;
 }
 
 function renderTypes(types: Record<string, TypeDoc>): string {
-  const sorted = Object.values(types).sort(sortByName);
-  if (sorted.length === 0) {
+  const all = Object.values(types);
+  if (all.length === 0) {
     return '';
   }
 
-  const items = sorted.map(type => {
-    const memberEntries = Object.values(type.members);
-    return `<div class="symbol" id="${toAnchor(type.name)}">
+  const groups = groupByAnnotation(all);
+
+  return `<section id="cat-types">
+<details><summary><h2 style="display:inline">Types</h2> <span class="count">(${all.length})</span></summary>
+${renderAnnotationGroups(groups, renderTypeItem)}
+</details></section>`;
+}
+
+function renderTypeItem(type: TypeDoc): string {
+  const memberEntries = Object.values(type.members);
+  return `<div class="symbol" id="${toAnchor(type.name)}">
 <h3><code>${esc(type.name)}</code> <span class="kind">${esc(type.kind)}</span></h3>
 ${type.description ? `<p>${esc(type.description)}</p>` : ''}
 <p><strong>Type:</strong> <code>${esc(type.typeSignature)}</code></p>
 ${memberEntries.length > 0 ? renderMembersTable(memberEntries) : ''}
 ${renderTagsBadges(type.tags)}
 </div>`;
-  });
-
-  return `<section id="cat-types">
-<details><summary><h2 style="display:inline">Types</h2> <span class="count">(${sorted.length})</span></summary>
-${items.join('\n')}
-</details></section>`;
 }
 
 function renderOthers(others: Record<string, OtherDoc>): string {
-  const sorted = Object.values(others).sort(sortByName);
-  if (sorted.length === 0) {
+  const all = Object.values(others);
+  if (all.length === 0) {
     return '';
   }
 
-  const items = sorted.map(other => {
-    return `<div class="symbol" id="${toAnchor(other.name)}">
+  const groups = groupByAnnotation(all);
+
+  return `<section id="cat-others">
+<details><summary><h2 style="display:inline">Others</h2> <span class="count">(${all.length})</span></summary>
+${renderAnnotationGroups(groups, renderOtherItem)}
+</details></section>`;
+}
+
+function renderOtherItem(other: OtherDoc): string {
+  return `<div class="symbol" id="${toAnchor(other.name)}">
 <h3><code>${esc(other.name)}</code> <span class="kind">${esc(other.kind)}</span></h3>
 ${other.description ? `<p>${esc(other.description)}</p>` : ''}
 <p><strong>Type:</strong> <code>${esc(other.typeSignature)}</code></p>
@@ -148,12 +172,30 @@ ${other.parameters && other.parameters.length > 0 ? renderParametersTable(other.
 ${other.returnType ? `<p><strong>Returns:</strong> <code>${esc(other.returnType)}</code></p>` : ''}
 ${renderTagsBadges(other.tags)}
 </div>`;
-  });
+}
 
-  return `<section id="cat-others">
-<details><summary><h2 style="display:inline">Others</h2> <span class="count">(${sorted.length})</span></summary>
-${items.join('\n')}
-</details></section>`;
+// ---------------------------------------------------------------------------
+// Annotation sub-group renderer
+// ---------------------------------------------------------------------------
+
+function renderAnnotationGroups<T extends BaseSymbolDoc>(
+  groups: AnnotationGroup<T>[],
+  renderItem: (item: T) => string,
+): string {
+  // When there's only one group (all stable), skip the sub-group wrapper
+  if (groups.length === 1 && groups[0].key === 'stable') {
+    return groups[0].items.map(renderItem).join('\n');
+  }
+
+  return groups
+    .map(g => {
+      const items = g.items.map(renderItem).join('\n');
+      return `<div class="annotation-group annotation-${g.key}">
+<h4 class="annotation-heading">${esc(g.label)} <span class="count">(${g.items.length})</span></h4>
+${items}
+</div>`;
+    })
+    .join('\n');
 }
 
 // ---------------------------------------------------------------------------
@@ -242,10 +284,6 @@ function toAnchor(name: string): string {
   return 'sym-' + name.replace(/[^a-zA-Z0-9_-]/g, '-');
 }
 
-function sortByName(a: { name: string }, b: { name: string }): number {
-  return a.name.localeCompare(b.name);
-}
-
 function renderStyles(): string {
   return `<style>
 :root { --bg: #fff; --fg: #1a1a1a; --muted: #6b7280; --border: #e5e7eb; --accent: #0078d4; --accent-light: #e8f4fd; --code-bg: #f3f4f6; --section-bg: #fafafa; }
@@ -277,5 +315,10 @@ a.ref-link code { background: var(--accent-light); border: 1px solid var(--borde
 details > summary { cursor: pointer; padding: .3rem 0; }
 details > summary:hover { opacity: .8; }
 details.symbol-props summary { font-weight: 600; }
+.annotation-group { margin: .75rem 0; padding-left: .5rem; border-left: 3px solid var(--border); }
+.annotation-group.annotation-deprecated { border-left-color: #d97706; }
+.annotation-group.annotation-internal { border-left-color: #7c3aed; }
+.annotation-group.annotation-preview { border-left-color: #2563eb; }
+.annotation-heading { font-size: .95em; color: var(--muted); margin: .5rem 0; }
 </style>`;
 }
