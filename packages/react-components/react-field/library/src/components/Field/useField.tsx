@@ -1,9 +1,11 @@
+'use client';
+
 import * as React from 'react';
 
 import { CheckmarkCircle12Filled, DiamondDismiss12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import type { FieldProps, FieldState } from './Field.types';
+import type { FieldBaseProps, FieldBaseState, FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <DiamondDismiss12Filled />,
@@ -22,13 +24,29 @@ const validationMessageIcons = {
  * @param ref - Ref to the root
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const {
-    children,
-    orientation = 'vertical',
-    required = false,
-    validationState = props.validationMessage ? 'error' : 'none',
-    size = 'medium',
-  } = props;
+  const { orientation = 'vertical', size = 'medium', ...fieldProps } = props;
+  const state = useFieldBase_unstable(fieldProps, ref);
+
+  // Merge the size design prop into the label slot (which already has htmlFor, id, required)
+  const label = state.label ? { ...state.label, size } : state.label;
+
+  return {
+    ...state,
+    label,
+    orientation,
+    size,
+  };
+};
+
+/**
+ * Base hook for Field component, which manages state related to validation, ARIA attributes,
+ * ID generation, and slot structure without design props.
+ *
+ * @param props - Props passed to this field
+ * @param ref - Ref to the root
+ */
+export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTMLDivElement>): FieldBaseState => {
+  const { children, required = false, validationState = props.validationMessage ? 'error' : 'none' } = props;
 
   const baseId = useId('field-');
   const generatedControlId = baseId + '__control';
@@ -37,7 +55,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     elementType: 'div',
   });
   const label = slot.optional(props.label, {
-    defaultProps: { htmlFor: generatedControlId, id: baseId + '__label', required, size },
+    defaultProps: { htmlFor: generatedControlId, id: baseId + '__label', required },
     elementType: Label,
   });
   const validationMessage = slot.optional(props.validationMessage, {
@@ -58,9 +76,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   return {
     children,
     generatedControlId,
-    orientation,
     required,
-    size,
     validationState,
     components: { root: 'div', label: Label, validationMessage: 'div', validationMessageIcon: 'span', hint: 'div' },
     root,

@@ -14,3 +14,7 @@ export {
   useFieldControlProps_unstable,
 } from './contexts/index';
 export type { FieldControlPropsOptions } from './contexts/index';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useFieldBase_unstable } from './Field';
+// export type { FieldBaseProps, FieldBaseState } from './Field';
