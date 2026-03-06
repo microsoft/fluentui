@@ -74,8 +74,8 @@ report/
 │   ├── ast-parser.ts          # ts-morph AST parser (symbol classification, JSX/call/type-ref extraction)
 │   ├── file-discovery.ts      # Source file traversal (respects .gitignore)
 │   ├── package-resolver.ts    # Package version resolution and reportable-package filtering
-│   ├── long-report.ts         # Core analysis engine — collects metadata from AST parser
-│   ├── short-report.ts        # Package/system info collection and formatting
+│   ├── usage-report.ts         # Core analysis engine — collects metadata from AST parser
+│   ├── info-report.ts          # Package/system info collection and formatting
 │   ├── markdown-reporter.ts   # Markdown output formatter
 │   ├── html-reporter.ts       # HTML output formatter
 │   └── index.ts               # Barrel exports
@@ -102,4 +102,4 @@ report/
 yarn nx run cli:test
 ```
 
-Tests use a fixture-based approach with a `__fixtures__/sample-app/` containing mock `node_modules` with `.d.ts` declarations. The `long-report.spec.ts` uses a mock `AstParser` for isolated unit testing.
+Tests use a fixture-based approach with a `__fixtures__/sample-app/` containing mock `_mock_node_modules` with `.d.ts` declarations. The `usage-report.spec.ts` uses a mock `AstParser` for isolated unit testing.

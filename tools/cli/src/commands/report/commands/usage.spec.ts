@@ -1,5 +1,5 @@
-jest.mock('../impl/long-report', () => ({
-  runLongReport: jest.fn().mockResolvedValue(undefined),
+jest.mock('../impl/usage-report', () => ({
+  runUsageReport: jest.fn().mockResolvedValue(undefined),
 }));
 
 describe('report usage command', () => {
@@ -7,7 +7,7 @@ describe('report usage command', () => {
     jest.clearAllMocks();
   });
 
-  it('should call runLongReport with default args', async () => {
+  it('should call runUsageReport with default args', async () => {
     const usageCommand = (await import('./usage')).default;
 
     await (usageCommand.handler as Function)({
@@ -16,11 +16,11 @@ describe('report usage command', () => {
       reporter: 'json',
     });
 
-    const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, undefined);
+    const { runUsageReport } = require('../impl/usage-report');
+    expect(runUsageReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, undefined);
   });
 
-  it('should pass path and reporter to runLongReport', async () => {
+  it('should pass path and reporter to runUsageReport', async () => {
     const usageCommand = (await import('./usage')).default;
 
     await (usageCommand.handler as Function)({
@@ -30,11 +30,11 @@ describe('report usage command', () => {
       reporter: 'markdown',
     });
 
-    const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith('/some/path', 'markdown', undefined, undefined, undefined);
+    const { runUsageReport } = require('../impl/usage-report');
+    expect(runUsageReport).toHaveBeenCalledWith('/some/path', 'markdown', undefined, undefined, undefined);
   });
 
-  it('should pass html reporter to runLongReport', async () => {
+  it('should pass html reporter to runUsageReport', async () => {
     const usageCommand = (await import('./usage')).default;
 
     await (usageCommand.handler as Function)({
@@ -43,11 +43,11 @@ describe('report usage command', () => {
       reporter: 'html',
     });
 
-    const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'html', undefined, undefined, undefined);
+    const { runUsageReport } = require('../impl/usage-report');
+    expect(runUsageReport).toHaveBeenCalledWith(undefined, 'html', undefined, undefined, undefined);
   });
 
-  it('should pass include and exclude to runLongReport', async () => {
+  it('should pass include and exclude to runUsageReport', async () => {
     const usageCommand = (await import('./usage')).default;
 
     await (usageCommand.handler as Function)({
@@ -58,11 +58,11 @@ describe('report usage command', () => {
       exclude: ['**/*.test.*'],
     });
 
-    const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', ['src/**'], ['**/*.test.*'], undefined);
+    const { runUsageReport } = require('../impl/usage-report');
+    expect(runUsageReport).toHaveBeenCalledWith(undefined, 'json', ['src/**'], ['**/*.test.*'], undefined);
   });
 
-  it('should pass output to runLongReport', async () => {
+  it('should pass output to runUsageReport', async () => {
     const usageCommand = (await import('./usage')).default;
 
     await (usageCommand.handler as Function)({
@@ -72,7 +72,7 @@ describe('report usage command', () => {
       output: 'report.json',
     });
 
-    const { runLongReport } = require('../impl/long-report');
-    expect(runLongReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, 'report.json');
+    const { runUsageReport } = require('../impl/usage-report');
+    expect(runUsageReport).toHaveBeenCalledWith(undefined, 'json', undefined, undefined, 'report.json');
   });
 });

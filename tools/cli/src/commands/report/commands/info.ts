@@ -15,8 +15,8 @@ const infoCommand: CommandModule<{}, InfoArgs> = {
       .version(false)
       .help(),
   handler: async argv => {
-    const { runShortReport } = await import('../impl/short-report');
-    return runShortReport(argv.output);
+    const { runInfoReport } = await import('../impl/info-report');
+    return runInfoReport(argv.output);
   },
 };
 

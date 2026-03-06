@@ -56,7 +56,7 @@ export interface DuplicatePackage {
 /**
  * Data collected for the short report output.
  */
-export interface ShortReportData {
+export interface InfoReportData {
   system: SystemInfo;
   packages: ResolvedPackage[];
   duplicates: DuplicatePackage[];
@@ -161,7 +161,7 @@ export interface CategoryLegendEntry {
 /**
  * Complete long report output including the file map and per-package metadata.
  */
-export interface LongReportOutput {
+export interface UsageReportOutput {
   /** Describes each category used in the report. */
   legend: Record<string, CategoryLegendEntry>;
   /** Relative paths of all source files analyzed. */

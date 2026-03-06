@@ -1,5 +1,5 @@
 import type {
-  LongReportOutput,
+  UsageReportOutput,
   Metadata,
   CategoryLegendEntry,
   ComponentUsage,
@@ -11,10 +11,10 @@ import type {
 } from './types';
 
 /**
- * Format LongReportOutput as a self-contained HTML report.
+ * Format UsageReportOutput as a self-contained HTML report.
  * HTML provides comprehensive prop/argument detail that markdown intentionally omits.
  */
-export function formatMetadataAsHtml(data: LongReportOutput): string {
+export function formatMetadataAsHtml(data: UsageReportOutput): string {
   const { legend, fileMap, packages: metadata } = data;
   const packageNames = Object.keys(metadata).sort();
 

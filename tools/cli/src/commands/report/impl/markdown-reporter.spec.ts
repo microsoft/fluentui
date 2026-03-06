@@ -1,7 +1,7 @@
 import { formatMetadataAsMarkdown } from './markdown-reporter';
-import type { LongReportOutput } from './types';
+import type { UsageReportOutput } from './types';
 
-const TEST_LEGEND: LongReportOutput['legend'] = {
+const TEST_LEGEND: UsageReportOutput['legend'] = {
   components: { name: 'Components', description: 'React components (JSX elements).' },
   hooks: { name: 'Hooks', description: 'React hooks (use* naming convention).' },
   types: { name: 'Types', description: 'TypeScript interfaces, type aliases, and enums.' },
@@ -11,7 +11,7 @@ const TEST_LEGEND: LongReportOutput['legend'] = {
 
 describe('markdown-reporter', () => {
   it('should produce a report with summary table and per-package sections', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
@@ -90,7 +90,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should include files analyzed count', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts', 'src/helpers.ts'],
       packages: {},
@@ -102,7 +102,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should handle package with only others', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -129,7 +129,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should sort symbols by usage count descending', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -159,7 +159,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should handle multiple packages sorted alphabetically', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
@@ -191,7 +191,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should render unknowns section with descriptions', () => {
-    const reportData: LongReportOutput = {
+    const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
