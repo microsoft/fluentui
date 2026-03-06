@@ -1,9 +1,18 @@
 import { formatMetadataAsHtml } from './html-reporter';
 import type { LongReportOutput } from './types';
 
+const TEST_LEGEND: LongReportOutput['legend'] = {
+  components: { name: 'Components', description: 'React components (JSX elements).' },
+  hooks: { name: 'Hooks', description: 'React hooks (use* naming convention).' },
+  types: { name: 'Types', description: 'TypeScript interfaces, type aliases, and enums.' },
+  others: { name: 'Other Exports', description: 'Value exports that are not components or hooks.' },
+  unknowns: { name: 'Unknowns', description: 'Symbols whose .d.ts declarations could not be resolved.' },
+};
+
 describe('html-reporter', () => {
   it('should produce a valid HTML document', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
         '@fluentui/react-components': {
@@ -32,10 +41,14 @@ describe('html-reporter', () => {
     expect(output).toContain('<!DOCTYPE html>');
     expect(output).toContain('<title>Fluent UI Usage Report</title>');
     expect(output).toContain('</html>');
+    expect(output).toContain('Legend');
+    expect(output).toContain('<strong>Components</strong>');
+    expect(output).toContain('<strong>Types</strong>');
   });
 
   it('should render summary table with correct counts', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -60,6 +73,7 @@ describe('html-reporter', () => {
 
   it('should render component prop details with values', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -93,6 +107,7 @@ describe('html-reporter', () => {
 
   it('should render hook argument details', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -118,6 +133,7 @@ describe('html-reporter', () => {
 
   it('should not render prop details when props are empty', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -142,6 +158,7 @@ describe('html-reporter', () => {
 
   it('should render unknowns with descriptions', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -169,7 +186,7 @@ describe('html-reporter', () => {
   });
 
   it('should handle empty metadata', () => {
-    const output = formatMetadataAsHtml({ fileMap: [], packages: {} });
+    const output = formatMetadataAsHtml({ legend: TEST_LEGEND, fileMap: [], packages: {} });
 
     expect(output).toContain('<!DOCTYPE html>');
     expect(output).toContain('No Fluent UI package usage found.');
@@ -177,6 +194,7 @@ describe('html-reporter', () => {
 
   it('should render file map section with file paths', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
         '@fluentui/react-components': {
@@ -199,6 +217,7 @@ describe('html-reporter', () => {
 
   it('should escape HTML special characters', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -227,6 +246,7 @@ describe('html-reporter', () => {
 
   it('should show dash for props with no values', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -254,6 +274,7 @@ describe('html-reporter', () => {
 
   it('should render multiple packages as separate sections', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@griffel/react': {

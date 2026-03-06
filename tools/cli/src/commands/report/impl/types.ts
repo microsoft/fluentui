@@ -139,9 +139,21 @@ export interface PackageUsageData {
 export type Metadata = Record<string, PackageUsageData>;
 
 /**
+ * Describes a single report category in the legend.
+ */
+export interface CategoryLegendEntry {
+  /** Human-readable category name. */
+  name: string;
+  /** Short description of what the category contains. */
+  description: string;
+}
+
+/**
  * Complete long report output including the file map and per-package metadata.
  */
 export interface LongReportOutput {
+  /** Describes each category used in the report. */
+  legend: Record<string, CategoryLegendEntry>;
   /** Relative paths of all source files analyzed. */
   fileMap: string[];
   /** Per-package usage metadata. */

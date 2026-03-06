@@ -1,6 +1,7 @@
 import type {
   LongReportOutput,
   Metadata,
+  CategoryLegendEntry,
   ComponentUsage,
   HookUsage,
   FunctionUsage,
@@ -14,7 +15,7 @@ import type {
  * HTML provides comprehensive prop/argument detail that markdown intentionally omits.
  */
 export function formatMetadataAsHtml(data: LongReportOutput): string {
-  const { fileMap, packages: metadata } = data;
+  const { legend, fileMap, packages: metadata } = data;
   const packageNames = Object.keys(metadata).sort();
 
   return `<!DOCTYPE html>
@@ -31,7 +32,7 @@ ${renderStyles()}
 ${
   packageNames.length === 0 && fileMap.length === 0
     ? '<p class="empty">No Fluent UI package usage found.</p>'
-    : renderBody(metadata, packageNames, fileMap)
+    : renderBody(legend, metadata, packageNames, fileMap)
 }
 </main>
 </body>
@@ -42,12 +43,36 @@ ${
 // Top-level sections
 // ---------------------------------------------------------------------------
 
-function renderBody(metadata: Metadata, packageNames: string[], fileMap: string[]): string {
+function renderBody(
+  legend: Record<string, CategoryLegendEntry>,
+  metadata: Metadata,
+  packageNames: string[],
+  fileMap: string[],
+): string {
   return [
+    renderLegend(legend),
     renderFileMap(fileMap),
     renderSummaryTable(metadata, packageNames),
     ...packageNames.map(name => renderPackageSection(name, metadata[name])),
   ].join('\n');
+}
+
+function renderLegend(legend: Record<string, CategoryLegendEntry>): string {
+  const rows = Object.values(legend)
+    .map(entry => `<tr><td><strong>${esc(entry.name)}</strong></td><td>${esc(entry.description)}</td></tr>`)
+    .join('\n');
+
+  return `<section class="legend">
+<details open>
+<summary><h2 style="display:inline">Legend</h2></summary>
+<table>
+<thead><tr><th>Category</th><th>Description</th></tr></thead>
+<tbody>
+${rows}
+</tbody>
+</table>
+</details>
+</section>`;
 }
 
 function renderFileMap(fileMap: string[]): string {

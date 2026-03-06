@@ -1,4 +1,4 @@
-import type { Metadata, PackageUsageData, AstParser, LongReportOutput, TypeUsage } from './types';
+import type { Metadata, PackageUsageData, AstParser, LongReportOutput, TypeUsage, CategoryLegendEntry } from './types';
 import { isReportablePackageForLong, getGitRoot } from './package-resolver';
 import { discoverSourceFiles, filterSourceFiles } from './file-discovery';
 import { TsMorphAstParser } from './ast-parser';
@@ -8,6 +8,33 @@ import * as path from 'node:path';
 
 /** tsconfig file names to probe, in priority order. */
 const TSCONFIG_CANDIDATES = ['tsconfig.json', 'tsconfig.base.json'];
+
+/** Category legend included in every long report output. */
+const CATEGORY_LEGEND: Record<string, CategoryLegendEntry> = {
+  components: {
+    name: 'Components',
+    description: 'React components (JSX elements). Tracks per-component prop usage with values.',
+  },
+  hooks: {
+    name: 'Hooks',
+    description: 'React hooks (use* naming convention). Tracks call-site argument usage with values.',
+  },
+  types: {
+    name: 'Types',
+    description:
+      'TypeScript interfaces, type aliases, and enums. Distinguishes typeof references from standard annotations and captures generic type arguments.',
+  },
+  others: {
+    name: 'Other Exports',
+    description:
+      'Value exports that are not components or hooks (constants, utility functions, theme objects). Tracks call-site argument usage when invoked.',
+  },
+  unknowns: {
+    name: 'Unknowns',
+    description:
+      'Symbols whose .d.ts declarations could not be resolved. Install types or add declarations to improve classification.',
+  },
+};
 
 /**
  * Create an empty PackageUsageData entry.
@@ -44,7 +71,7 @@ export function collectLongReportData(
   let filePaths = discoverSourceFiles(resolvedRoot);
   filePaths = filterSourceFiles(filePaths, resolvedRoot, include, exclude);
   if (filePaths.length === 0) {
-    return { fileMap: [], packages: {} };
+    return { legend: CATEGORY_LEGEND, fileMap: [], packages: {} };
   }
 
   // Build relative fileMap for output
@@ -304,7 +331,7 @@ export function collectLongReportData(
     }
   }
 
-  return { fileMap, packages: metadata };
+  return { legend: CATEGORY_LEGEND, fileMap, packages: metadata };
 }
 
 /**
