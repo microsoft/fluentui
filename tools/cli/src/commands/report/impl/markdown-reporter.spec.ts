@@ -38,8 +38,8 @@ describe('markdown-reporter', () => {
             ButtonProps: { count: 2, typeofCount: 0, props: {} },
           },
           others: {
-            tokens: { count: 3 },
-            webLightTheme: { count: 1 },
+            tokens: { props: {}, count: 3 },
+            webLightTheme: { props: {}, count: 1 },
           },
           unknowns: {},
           count: 12,
@@ -111,7 +111,7 @@ describe('markdown-reporter', () => {
           hooks: {},
           types: {},
           others: {
-            makeStyles: { count: 5 },
+            makeStyles: { props: {}, count: 5 },
           },
           unknowns: {},
           count: 5,
