@@ -56,6 +56,9 @@ export interface FluentStoryContext extends StoryContext {
 export function parameters(options?: FluentParameters): FluentParameters;
 
 // @public (undocumented)
+export const STYLE_MODE_ID: "cap_style_mode";
+
+// @public (undocumented)
 export const THEME_ID: "storybook_fluentui-react-addon_theme";
 
 // @public (undocumented)

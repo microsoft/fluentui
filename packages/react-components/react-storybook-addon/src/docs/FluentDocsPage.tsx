@@ -19,11 +19,12 @@ import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { DIR_ID, THEME_ID } from '../constants';
+import { DIR_ID, STYLE_MODE_ID, THEME_ID } from '../constants';
 import { themes } from '../theme';
 
 import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
+import { StyleModePicker } from './StyleModePicker';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
@@ -343,6 +344,7 @@ export const FluentDocsPage = (): JSXElement => {
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
+  const styleMode = (primaryStoryContext.globals?.[STYLE_MODE_ID] as string) ?? 'fluent';
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
   const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
@@ -369,6 +371,7 @@ export const FluentDocsPage = (): JSXElement => {
     tableOfContents: showTableOfContents,
     dirSwitcher: showDirSwitcher,
     themePicker: showThemePicker,
+    styleModePicker: showStyleModePicker,
     copyAsMarkdown: showCopyAsMarkdown,
     argTable,
   } = docsPageConfig;
@@ -390,10 +393,11 @@ export const FluentDocsPage = (): JSXElement => {
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
+          {(showThemePicker || showDirSwitcher || showStyleModePicker || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
               {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
+              {showStyleModePicker && <StyleModePicker styleMode={styleMode} />}
               {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>
           )}
