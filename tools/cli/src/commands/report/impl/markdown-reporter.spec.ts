@@ -1,9 +1,18 @@
 import { formatMetadataAsMarkdown } from './markdown-reporter';
 import type { LongReportOutput } from './types';
 
+const TEST_LEGEND: LongReportOutput['legend'] = {
+  components: { name: 'Components', description: 'React components (JSX elements).' },
+  hooks: { name: 'Hooks', description: 'React hooks (use* naming convention).' },
+  types: { name: 'Types', description: 'TypeScript interfaces, type aliases, and enums.' },
+  others: { name: 'Other Exports', description: 'Value exports that are not components or hooks.' },
+  unknowns: { name: 'Unknowns', description: 'Symbols whose .d.ts declarations could not be resolved.' },
+};
+
 describe('markdown-reporter', () => {
   it('should produce a report with summary table and per-package sections', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts'],
       packages: {
         '@fluentui/react-components': {
@@ -43,6 +52,11 @@ describe('markdown-reporter', () => {
     // Title
     expect(output).toContain('# Fluent UI Codebase Usage Report');
 
+    // Legend
+    expect(output).toContain('## Legend');
+    expect(output).toContain('| **Components** |');
+    expect(output).toContain('| **Types** |');
+
     // Summary table
     expect(output).toContain('## Summary');
     expect(output).toContain('| `@fluentui/react-components` | 2 | 1 | 1 | 2 | 0 | 12 |');
@@ -69,7 +83,7 @@ describe('markdown-reporter', () => {
   });
 
   it('should handle empty metadata', () => {
-    const output = formatMetadataAsMarkdown({ fileMap: [], packages: {} });
+    const output = formatMetadataAsMarkdown({ legend: TEST_LEGEND, fileMap: [], packages: {} });
 
     expect(output).toContain('# Fluent UI Codebase Usage Report');
     expect(output).toContain('No Fluent UI package usage found.');
@@ -77,6 +91,7 @@ describe('markdown-reporter', () => {
 
   it('should include files analyzed count', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx', 'src/utils.ts', 'src/helpers.ts'],
       packages: {},
     };
@@ -88,6 +103,7 @@ describe('markdown-reporter', () => {
 
   it('should handle package with only others', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@griffel/react': {
@@ -114,6 +130,7 @@ describe('markdown-reporter', () => {
 
   it('should sort symbols by usage count descending', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {
@@ -143,6 +160,7 @@ describe('markdown-reporter', () => {
 
   it('should handle multiple packages sorted alphabetically', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@griffel/react': {
@@ -174,6 +192,7 @@ describe('markdown-reporter', () => {
 
   it('should render unknowns section with descriptions', () => {
     const reportData: LongReportOutput = {
+      legend: TEST_LEGEND,
       fileMap: ['src/App.tsx'],
       packages: {
         '@fluentui/react-components': {

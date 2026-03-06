@@ -211,7 +211,11 @@ describe('long-report', () => {
 
     const result = collectLongReportData('/mock/root');
 
-    expect(result).toEqual({ fileMap: [], packages: {} });
+    expect(result.fileMap).toEqual([]);
+    expect(result.packages).toEqual({});
+    expect(result.legend).toBeDefined();
+    expect(result.legend.components).toBeDefined();
+    expect(result.legend.types).toBeDefined();
   });
 
   it('should pass include/exclude to filterSourceFiles', () => {

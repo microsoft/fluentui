@@ -13,10 +13,20 @@ import type {
  * Use the HTML reporter for comprehensive prop analysis.
  */
 export function formatMetadataAsMarkdown(data: LongReportOutput): string {
-  const { fileMap, packages: metadata } = data;
+  const { legend, fileMap, packages: metadata } = data;
   const lines: string[] = [];
 
   lines.push('# Fluent UI Codebase Usage Report');
+  lines.push('');
+
+  // Legend
+  lines.push('## Legend');
+  lines.push('');
+  lines.push('| Category | Description |');
+  lines.push('| -------- | ----------- |');
+  for (const entry of Object.values(legend)) {
+    lines.push(`| **${entry.name}** | ${entry.description} |`);
+  }
   lines.push('');
 
   // File map
