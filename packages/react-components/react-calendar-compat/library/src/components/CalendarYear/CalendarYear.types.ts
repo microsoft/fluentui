@@ -68,6 +68,12 @@ export interface CalendarYearProps {
   onSelectYear?: (year: number) => void;
 
   /**
+   * Callback action when the decade is navigated
+   * @param year - The year at the start of the new decade range being navigated to
+   */
+  onNavigateDate?: (year: number) => void;
+
+  /**
    * Callback action when the header is selected
    */
   onHeaderSelect?: (focus: boolean) => void;
