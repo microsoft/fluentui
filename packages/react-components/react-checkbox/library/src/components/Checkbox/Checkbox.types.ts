@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type CheckboxSlots = {
   /**
@@ -100,3 +100,7 @@ export interface CheckboxOnChangeData {
  */
 export type CheckboxState = ComponentState<CheckboxSlots> &
   Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
+
+export type CheckboxBaseProps = DistributiveOmit<CheckboxProps, 'shape' | 'size'>;
+
+export type CheckboxBaseState = DistributiveOmit<CheckboxState, 'shape' | 'size'>;
