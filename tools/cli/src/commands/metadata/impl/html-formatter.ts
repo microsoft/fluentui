@@ -46,13 +46,15 @@ function renderLegend(legend: MetadataOutput['legend']): string {
 
 function renderSummary(categories: MetadataOutput['categories']): string {
   const counts = [
-    ['Components', Object.keys(categories.components).length],
-    ['Hooks', Object.keys(categories.hooks).length],
-    ['Types', Object.keys(categories.types).length],
-    ['Others', Object.keys(categories.others).length],
+    ['Components', 'cat-components', Object.keys(categories.components).length],
+    ['Hooks', 'cat-hooks', Object.keys(categories.hooks).length],
+    ['Types', 'cat-types', Object.keys(categories.types).length],
+    ['Others', 'cat-others', Object.keys(categories.others).length],
   ] as const;
 
-  const rows = counts.map(([name, count]) => `<tr><td>${name}</td><td>${count}</td></tr>`).join('\n');
+  const rows = counts
+    .map(([name, anchor, count]) => `<tr><td><a href="#${anchor}">${name}</a></td><td>${count}</td></tr>`)
+    .join('\n');
 
   return `<section class="summary">
 <h2>Summary</h2>
@@ -68,11 +70,7 @@ function renderComponents(components: Record<string, ComponentDoc>): string {
   }
 
   const items = sorted.map(comp => {
-    const propsRef = comp.propsType
-      ? `<p><strong>Props:</strong> <code>${esc(
-          '$ref' in comp.propsType ? comp.propsType.$ref : comp.propsType.inline,
-        )}</code></p>`
-      : '';
+    const propsRef = comp.propsType ? `<p><strong>Props:</strong> ${renderRef(comp.propsType)}</p>` : '';
 
     return `<div class="symbol" id="${toAnchor(comp.name)}">
 <h3><code>${esc(comp.name)}</code></h3>
@@ -83,7 +81,10 @@ ${renderTagsBadges(comp.tags)}
 </div>`;
   });
 
-  return `<section><h2>Components</h2>${items.join('\n')}</section>`;
+  return `<section id="cat-components">
+<details><summary><h2 style="display:inline">Components</h2> <span class="count">(${sorted.length})</span></summary>
+${items.join('\n')}
+</details></section>`;
 }
 
 function renderHooks(hooks: Record<string, HookDoc>): string {
@@ -103,7 +104,10 @@ ${renderTagsBadges(hook.tags)}
 </div>`;
   });
 
-  return `<section><h2>Hooks</h2>${items.join('\n')}</section>`;
+  return `<section id="cat-hooks">
+<details><summary><h2 style="display:inline">Hooks</h2> <span class="count">(${sorted.length})</span></summary>
+${items.join('\n')}
+</details></section>`;
 }
 
 function renderTypes(types: Record<string, TypeDoc>): string {
@@ -123,7 +127,10 @@ ${renderTagsBadges(type.tags)}
 </div>`;
   });
 
-  return `<section><h2>Types</h2>${items.join('\n')}</section>`;
+  return `<section id="cat-types">
+<details><summary><h2 style="display:inline">Types</h2> <span class="count">(${sorted.length})</span></summary>
+${items.join('\n')}
+</details></section>`;
 }
 
 function renderOthers(others: Record<string, OtherDoc>): string {
@@ -143,7 +150,10 @@ ${renderTagsBadges(other.tags)}
 </div>`;
   });
 
-  return `<section><h2>Others</h2>${items.join('\n')}</section>`;
+  return `<section id="cat-others">
+<details><summary><h2 style="display:inline">Others</h2> <span class="count">(${sorted.length})</span></summary>
+${items.join('\n')}
+</details></section>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -177,7 +187,7 @@ function renderMembersTable(members: MemberDoc[]): string {
     )
     .join('\n');
 
-  return `<details open><summary><strong>Members</strong> (${members.length})</summary>
+  return `<details><summary><strong>Members</strong> (${members.length})</summary>
 <table class="members">
 <thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead>
 <tbody>${rows}</tbody></table></details>`;
@@ -190,6 +200,34 @@ function renderTagsBadges(tags: Record<string, string>): string {
   }
   const badges = entries.map(([key, val]) => `<span class="tag">@${esc(key)}${val ? ` ${esc(val)}` : ''}</span>`);
   return `<div class="tags">${badges.join(' ')}</div>`;
+}
+
+/**
+ * Render a $ref or inline type as HTML.
+ * Local refs (e.g. `#/categories/types/ButtonProps`) become clickable anchor links.
+ * Cross-package refs (e.g. `@fluentui/react-utilities#/...`) are shown as non-linked code.
+ */
+function renderRef(ref: { $ref: string } | { inline: string }): string {
+  if ('inline' in ref) {
+    return `<code>${esc(ref.inline)}</code>`;
+  }
+
+  const refValue = ref.$ref;
+  // Local ref: #/categories/<category>/<symbolName>
+  if (refValue.startsWith('#/')) {
+    const symbolName = refValue.split('/').pop()!;
+    return `<a href="#${toAnchor(symbolName)}" class="ref-link"><code>${esc(symbolName)}</code></a>`;
+  }
+
+  // Cross-package ref: @scope/pkg#/categories/<category>/<symbolName>
+  const hashIdx = refValue.indexOf('#/');
+  if (hashIdx > 0) {
+    const pkgName = refValue.substring(0, hashIdx);
+    const symbolName = refValue.split('/').pop()!;
+    return `<code class="cross-ref" title="${esc(refValue)}">${esc(pkgName)} → ${esc(symbolName)}</code>`;
+  }
+
+  return `<code>${esc(refValue)}</code>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -215,6 +253,7 @@ function renderStyles(): string {
   :root { --bg: #1e1e1e; --fg: #d4d4d4; --muted: #9ca3af; --border: #374151; --accent: #4fc3f7; --accent-light: #1e3a4d; --code-bg: #2d2d2d; --section-bg: #252525; }
 }
 *, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; margin: 0; padding: 2rem; }
 main { max-width: 960px; margin: 0 auto; }
 h1 { border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
@@ -228,6 +267,15 @@ th { background: var(--section-bg); font-weight: 600; }
 .kind { font-size: .8em; color: var(--muted); font-style: italic; }
 .tags { margin-top: .5rem; }
 .tag { display: inline-block; background: var(--accent-light); border: 1px solid var(--border); border-radius: 10px; padding: .1em .6em; font-size: .8em; margin-right: .3rem; }
-details summary { cursor: pointer; font-weight: 600; }
+.count { font-size: .85em; color: var(--muted); font-weight: normal; }
+.summary a { color: var(--accent); text-decoration: none; }
+.summary a:hover { text-decoration: underline; }
+a.ref-link { color: var(--accent); text-decoration: none; }
+a.ref-link:hover { text-decoration: underline; }
+a.ref-link code { background: var(--accent-light); border: 1px solid var(--border); }
+.cross-ref { border: 1px dashed var(--border); font-style: italic; }
+details > summary { cursor: pointer; padding: .3rem 0; }
+details > summary:hover { opacity: .8; }
+details.symbol-props summary { font-weight: 600; }
 </style>`;
 }

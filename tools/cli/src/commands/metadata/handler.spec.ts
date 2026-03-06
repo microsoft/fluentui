@@ -35,7 +35,7 @@ describe('metadata handler', () => {
 
     const output: string = logSpy.mock.calls[0][0];
     expect(output).toContain('# API Metadata:');
-    expect(output).toContain('## Components');
+    expect(output).toContain('Components (');
     expect(output).toContain('SampleButton');
   });
 
