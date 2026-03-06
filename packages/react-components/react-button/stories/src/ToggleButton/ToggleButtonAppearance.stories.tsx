@@ -9,6 +9,8 @@ const useStyles = makeStyles({
   wrapper: {
     columnGap: '15px',
     display: 'flex',
+    flexWrap: 'wrap',
+    rowGap: '15px',
     minWidth: 'min-content',
   },
 });
@@ -58,6 +60,12 @@ export const Appearance = (): JSXElement => {
       <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
         Transparent
       </ToggleButton>
+      <ToggleButton appearance="tint" icon={<CalendarMonth />}>
+        Tint
+      </ToggleButton>
+      <ToggleButton appearance="outlineColor" icon={<CalendarMonth />}>
+        Outline Color
+      </ToggleButton>
     </div>
   );
 };
@@ -70,7 +78,9 @@ Appearance.parameters = {
         '- `primary`: emphasizes the toggle button as a primary action.\n' +
         '- `outline`: removes background styling.\n' +
         '- `subtle`: minimizes emphasis to blend into the background until hovered or focused\n' +
-        '- `transparent`: removes background and border styling.\n',
+        '- `transparent`: removes background and border styling.\n' +
+        '- `tint`: applies a tinted background with brand colors.\n' +
+        '- `outlineColor`: applies a colored outline with brand colors.\n',
     },
   },
 };

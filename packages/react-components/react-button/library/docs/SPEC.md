@@ -45,6 +45,8 @@ The `Button` component has several apparance variants depending on where it's be
 - appearance="primary": The `Button` is styled to emphasize that it represents the primary action.
 - appearance="subtle": The `Button` is styled to blend into its background to become less emphasized.
 - appearance="transparent": The `Button` is styled such that it has no background or border styling and is just emphasized through its content styling.
+- appearance="tint": The `Button` is styled with a tinted background using brand colors.
+- appearance="outlineColor": The `Button` is styled with a colored outline using brand colors.
 
 ### Icon
 

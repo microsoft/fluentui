@@ -26,10 +26,12 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
    * - 'outline': Removes background styling.
    * - 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
    * - 'transparent': Removes background and border styling.
+   * - 'tint': Applies a tinted background with brand colors.
+   * - 'outlineColor': Applies a colored outline with brand colors.
    *
    * @default 'secondary'
    */
-  appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
+  appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent' | 'tint' | 'outlineColor';
 
   /**
    * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
