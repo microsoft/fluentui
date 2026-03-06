@@ -10,7 +10,7 @@ import {
   EventHandler,
 } from '@fluentui/react-utilities';
 
-import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';
+import type { NavBaseProps, NavBaseState, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
 /**
@@ -57,11 +57,27 @@ const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemVal
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
+  const { density = 'medium', ...baseProps } = props;
+  const state = useNavBase_unstable(baseProps, ref);
+
+  return {
+    ...state,
+    density,
+  };
+};
+
+/**
+ * Base hook for Nav component. Manages state related to selection, open categories,
+ * slot structure, and nav item registration — without density/design props.
+ *
+ * @param props - props from this instance of Nav (without density)
+ * @param ref - reference to root HTMLDivElement of Nav
+ */
+export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivElement>): NavBaseState => {
   const {
     onNavItemSelect,
     onNavCategoryItemToggle,
     multiple = true,
-    density = 'medium',
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
@@ -166,7 +182,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     multiple,
-    density,
     tabbable: false,
   };
 };
