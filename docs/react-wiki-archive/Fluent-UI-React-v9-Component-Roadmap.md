@@ -12,7 +12,7 @@ For the general component lifecycle please read: [Component Lifecycle](https://d
 
 This is on the roadmap, but the team is not actively working on the component yet.
 
-### 🔍 Reseach
+### 🔍 Research
 
 1. A scaffolded/prototyped component within the defined feature scope
 2. Relative high confidence estimation on when the component will reach the next phase on a quarter boundary

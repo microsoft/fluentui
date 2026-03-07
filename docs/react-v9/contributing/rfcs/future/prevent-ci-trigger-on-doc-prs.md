@@ -10,7 +10,7 @@ The purpose of this RFC is to find a solution to avoid unnecessary GitHub checks
 
 ## Problem statement
 
-Whenever someone creates a PR, independently of the content, the CI is triggered and added as a check for a successfull PR. This, along with Screener and CodeSandbox, is consuming unnecessary resources on our pipeline for, essentially, no reason.
+Whenever someone creates a PR, independently of the content, the CI is triggered and added as a check for a successful PR. This, along with Screener and CodeSandbox, is consuming unnecessary resources on our pipeline for, essentially, no reason.
 
 Apart from this, other PRs that actually need CI checks, will be delayed due to the lack of parallelism in our pipeline.
 By avoiding these checks, we can prevent a wasteful CI pipeline and accelerate work in PRs that bring value to our users.
