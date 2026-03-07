@@ -8,10 +8,11 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselProps, CarouselState } from './Carousel.types';
-import type { CarouselContextValue } from '../CarouselContext.types';
+import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 import { useEmblaCarousel } from '../useEmblaCarousel';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 
@@ -41,6 +42,12 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   } = props;
 
   const { dir } = useFluent();
+
+  const onCarouselIndexChange: EventHandler<CarouselIndexChangeData> = useEventCallback((event, data) => {
+    onActiveIndexChange?.(event, data);
+    updateAnnouncement(data.index);
+  });
+
   const { activeIndex, carouselApi, containerRef, viewportRef, subscribeForValues, enableAutoplay, resetAutoplay } =
     useEmblaCarousel({
       align,
@@ -52,28 +59,26 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       watchDrag: draggable,
       containScroll: whitespace ? false : 'keepSnaps',
       motion,
-      onDragIndexChange: onActiveIndexChange,
+      onDragIndexChange: onCarouselIndexChange,
       onAutoplayIndexChange: onActiveIndexChange,
       autoplayInterval,
     });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
     const foundIndex = carouselApi.scrollToElement(element, jump);
-    onActiveIndexChange?.(event, { event, type: 'focus', index: foundIndex });
+    onCarouselIndexChange?.(event, { event, type: 'focus', index: foundIndex });
 
     return foundIndex;
   });
 
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
     carouselApi.scrollToIndex(index, jump);
-
-    onActiveIndexChange?.(event, { event, type: 'click', index });
+    onCarouselIndexChange?.(event, { event, type: 'click', index });
   });
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const nextPageIndex = carouselApi.scrollInDirection(direction);
-    onActiveIndexChange?.(event, { event, type: 'click', index: nextPageIndex });
-
+    onCarouselIndexChange?.(event, { event, type: 'click', index: nextPageIndex });
     return nextPageIndex;
   });
 
@@ -86,13 +91,13 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const { announce } = useAnnounce();
 
-  const updateAnnouncement = useEventCallback(() => {
+  const updateAnnouncement = useEventCallback((newIndex: number) => {
     if (totalNavLength.current <= 0 || !announcement) {
       // Ignore announcements until slides discovered
       return;
     }
 
-    const announcementText = announcement(activeIndex, totalNavLength.current, navGroupRef.current);
+    const announcementText = announcement(newIndex, totalNavLength.current, navGroupRef.current);
 
     if (announcementText !== announcementTextRef.current) {
       announcementTextRef.current = announcementText;
@@ -110,13 +115,9 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       }
       totalNavLength.current = data.navItemsCount;
       navGroupRef.current = data.groupIndexList;
-      updateAnnouncement();
+      updateAnnouncement(data.activeIndex);
     });
   }, [subscribeForValues, updateAnnouncement, announcement]);
-
-  useIsomorphicLayoutEffect(() => {
-    updateAnnouncement();
-  }, [activeIndex, updateAnnouncement]);
 
   return {
     components: {
