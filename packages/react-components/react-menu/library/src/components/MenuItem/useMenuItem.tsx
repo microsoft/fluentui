@@ -61,10 +61,11 @@ export const useMenuItemBase_unstable = (
 ): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
+  const openOnContext = useMenuContext_unstable(context => context.openOnContext);
   const {
     as = 'div',
     disabled = false,
-    hasSubmenu = isSubmenuTrigger,
+    hasSubmenu = isSubmenuTrigger && !openOnContext,
     persistOnClick = persistOnClickContext,
     content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
     ...rest
