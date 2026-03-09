@@ -37,6 +37,27 @@ import type { Chart } from '../../types/index';
 export type { VegaLiteSpec } from './VegaLiteTypes';
 
 /**
+ * Maximum allowed nesting depth for incoming JSON specs.
+ * Matches the Plotly adapter's MAX_DEPTH to prevent stack overflow / memory exhaustion.
+ */
+const MAX_DEPTH = 15;
+
+/**
+ * Validates that a JSON value does not exceed the maximum nesting depth.
+ * Throws if the depth limit is exceeded (same behavior as Plotly's sanitizeJson).
+ */
+function validateJsonDepth(value: unknown, depth: number = 0): void {
+  if (depth > MAX_DEPTH) {
+    throw new Error('VegaDeclarativeChart: Maximum JSON depth exceeded');
+  }
+  if (value !== null && typeof value === 'object') {
+    for (const key of Object.keys(value as Record<string, unknown>)) {
+      validateJsonDepth((value as Record<string, unknown>)[key], depth + 1);
+    }
+  }
+}
+
+/**
  * Schema for VegaDeclarativeChart component
  */
 export interface VegaSchema {
@@ -372,6 +393,9 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     if (!vegaLiteSpec) {
       throw new Error('VegaDeclarativeChart: vegaLiteSpec is required in chartSchema');
     }
+
+    // Guard against excessively deep JSON specs that could cause stack overflow / memory exhaustion
+    validateJsonDepth(vegaLiteSpec);
 
     const colorMap = useColorMapping();
     const isDarkTheme = useIsDarkTheme();
