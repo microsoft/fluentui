@@ -81,6 +81,20 @@ describe('parseDtsEntry', () => {
       expect(result.types).toHaveProperty('SampleButtonSize');
     });
 
+    it('should not extract string prototype members for string literal union types', () => {
+      const type = result.types.SampleButtonSize;
+      expect(Object.keys(type.members)).toHaveLength(0);
+    });
+
+    it('should strip inline JSDoc from type alias type signatures', () => {
+      const type = result.types.SampleStateOptions;
+      expect(type).toBeDefined();
+      expect(type.typeSignature).not.toContain('/**');
+      expect(type.typeSignature).not.toContain('*/');
+      expect(type.typeSignature).toContain('defaultState');
+      expect(type.typeSignature).toContain('state');
+    });
+
     it('should detect ButtonVariant as an enum', () => {
       expect(result.types).toHaveProperty('ButtonVariant');
       expect(result.types.ButtonVariant.kind).toBe('enum');
@@ -91,6 +105,15 @@ describe('parseDtsEntry', () => {
       expect(props.members).toHaveProperty('appearance');
       expect(props.members).toHaveProperty('disabled');
       expect(props.members).toHaveProperty('size');
+    });
+
+    it('should extract interface method signatures as members', () => {
+      const methods = result.types.SampleSelectionMethods;
+      expect(methods).toBeDefined();
+      expect(methods.members).toHaveProperty('selectItem');
+      expect(methods.members).toHaveProperty('isSelected');
+      expect(methods.members.selectItem.type).toContain('void');
+      expect(methods.members.isSelected.type).toContain('boolean');
     });
 
     it('should extract member types', () => {
@@ -136,6 +159,15 @@ describe('parseDtsEntry', () => {
       expect(result.others.renderSampleButton_unstable.returnType).toBeDefined();
     });
 
+    it('should rename __0 destructured params to arg0', () => {
+      const fn = result.others.getPartitionedProps;
+      expect(fn).toBeDefined();
+      expect(fn.kind).toBe('function');
+      expect(fn.parameters).toBeDefined();
+      expect(fn.parameters![0].name).toBe('arg0');
+      expect(fn.parameters![0].name).not.toContain('__');
+    });
+
     it('should extract render function description', () => {
       expect(result.others.renderSampleButton_unstable.description).toContain('Renders SampleButton');
     });
@@ -177,6 +209,37 @@ describe('parseDtsEntry', () => {
       for (const name of Object.keys(result.others)) {
         expect(result.types).not.toHaveProperty(name);
       }
+    });
+
+    it('should classify camelCase function returning ReactElement as other, not component', () => {
+      expect(result.others).toHaveProperty('getTriggerChild');
+      expect(result.others.getTriggerChild.kind).toBe('function');
+      expect(result.components).not.toHaveProperty('getTriggerChild');
+    });
+
+    it('should classify PascalCase function returning JSX as component', () => {
+      expect(result.components).toHaveProperty('PascalCaseComponent');
+      expect(result.others).not.toHaveProperty('PascalCaseComponent');
+    });
+
+    it('should produce full type signature for function declarations, not typeof', () => {
+      const hook = result.hooks.useToggleState;
+      expect(hook.typeSignature).not.toContain('typeof');
+      expect(hook.typeSignature).toContain('function useToggleState');
+    });
+
+    it('should produce full type signature for other function declarations', () => {
+      const fn = result.others.getTriggerChild;
+      expect(fn.typeSignature).not.toContain('typeof');
+      expect(fn.typeSignature).toContain('function getTriggerChild');
+    });
+
+    it('should strip inline JSDoc from function declaration type signatures', () => {
+      const fn = result.others.isHTMLElement;
+      expect(fn).toBeDefined();
+      expect(fn.typeSignature).not.toContain('/**');
+      expect(fn.typeSignature).not.toContain('*/');
+      expect(fn.typeSignature).toContain('constructorName');
     });
   });
 });

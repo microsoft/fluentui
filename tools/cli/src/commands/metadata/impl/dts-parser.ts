@@ -177,18 +177,21 @@ function classifyDeclaration(name: string, decl: ExportedDeclarations): SymbolCl
     }
   }
 
-  if (Node.isFunctionDeclaration(decl)) {
-    const returnType = safeGetReturnTypeText(decl);
-    if (returnsJsx(returnType)) {
-      return 'component';
+  // PascalCase function/variable returning JSX → component
+  // camelCase functions returning ReactElement (e.g. getTriggerChild) are utilities, not components
+  if (/^[A-Z]/.test(name)) {
+    if (Node.isFunctionDeclaration(decl)) {
+      const returnType = safeGetReturnTypeText(decl);
+      if (returnsJsx(returnType)) {
+        return 'component';
+      }
     }
-  }
 
-  // PascalCase + returns JSX → component
-  if (/^[A-Z]/.test(name) && Node.isVariableDeclaration(decl)) {
-    const typeText = getTypeText(decl);
-    if (returnsJsx(typeText)) {
-      return 'component';
+    if (Node.isVariableDeclaration(decl)) {
+      const typeText = getTypeText(decl);
+      if (returnsJsx(typeText)) {
+        return 'component';
+      }
     }
   }
 
@@ -407,32 +410,48 @@ function getJsDocTarget(decl: ExportedDeclarations): Node {
 
 function getTypeText(decl: ExportedDeclarations): string {
   try {
+    let text = '';
+
     if (Node.isVariableDeclaration(decl)) {
-      return decl.getType().getText(decl);
-    }
-    if (Node.isFunctionDeclaration(decl)) {
-      return decl.getType().getText(decl);
-    }
-    if (Node.isTypeAliasDeclaration(decl)) {
-      return decl.getTypeNode()?.getText() ?? decl.getType().getText(decl);
-    }
-    if (Node.isInterfaceDeclaration(decl)) {
+      // Prefer the explicit type annotation (e.g. `unique symbol`, `typeof React.useEffect`)
+      // over the resolved type which often produces unhelpful `typeof varName`.
+      text = decl.getTypeNode()?.getText() ?? decl.getType().getText(decl);
+    } else if (Node.isFunctionDeclaration(decl)) {
+      // decl.getType().getText() returns "typeof funcName" for function declarations.
+      // Use the declaration text stripped of 'export'/'declare' keywords for a full signature.
+      text = decl.getText().trim();
+      text = text.replace(/^export\s+/, '').replace(/^declare\s+/, '');
+    } else if (Node.isTypeAliasDeclaration(decl)) {
+      text = decl.getTypeNode()?.getText() ?? decl.getType().getText(decl);
+    } else if (Node.isInterfaceDeclaration(decl)) {
       // For interfaces, show the heritage and structure
       const heritageText = decl
         .getExtends()
         .map(e => e.getText())
         .join(' & ');
       const membersPreview = decl.getMembers().length > 0 ? '{ ... }' : '{}';
-      return heritageText ? `${heritageText} & ${membersPreview}` : membersPreview;
-    }
-    if (Node.isEnumDeclaration(decl)) {
+      text = heritageText ? `${heritageText} & ${membersPreview}` : membersPreview;
+    } else if (Node.isEnumDeclaration(decl)) {
       const members = decl.getMembers().map(m => m.getName());
-      return `enum { ${members.join(', ')} }`;
+      text = `enum { ${members.join(', ')} }`;
+    } else {
+      text = decl.getType().getText(decl);
     }
-    return decl.getType().getText(decl);
+
+    return stripJsDocComments(text);
   } catch {
     return '';
   }
+}
+
+/**
+ * Strip block comments (including JSDoc) from type text and normalize whitespace.
+ * Type annotations in .d.ts files can contain inline JSDoc on object members.
+ */
+function stripJsDocComments(text: string): string {
+  text = text.replace(/\/\*[\s\S]*?\*\//g, '');
+  text = text.replace(/\s+/g, ' ').trim();
+  return text;
 }
 
 function safeGetReturnTypeText(decl: FunctionDeclaration): string {
@@ -483,14 +502,17 @@ function extractParameters(decl: ExportedDeclarations, jsdocTags: Record<string,
       const type = decl.getType();
       const callSigs = type.getCallSignatures();
       if (callSigs.length > 0) {
-        for (const param of callSigs[0].getParameters()) {
+        for (let i = 0; i < callSigs[0].getParameters().length; i++) {
+          const param = callSigs[0].getParameters()[i];
           const paramDecl = param.getDeclarations()[0];
-          const name = param.getName();
+          const rawName = param.getName();
+          // TypeScript uses __0, __1 etc. for destructured parameters; use arg0, arg1 instead
+          const name = /^__\d+$/.test(rawName) ? `arg${rawName.slice(2)}` : rawName;
           params.push({
             name,
             type: paramDecl ? paramDecl.getType().getText(paramDecl) : param.getDeclaredType().getText(),
             required: paramDecl ? !Node.isParameterDeclaration(paramDecl) || !paramDecl.isOptional() : true,
-            description: paramDescriptions.get(name) ?? '',
+            description: paramDescriptions.get(rawName) ?? paramDescriptions.get(name) ?? '',
           });
         }
       }
@@ -538,11 +560,63 @@ function extractInterfaceMembers(decl: InterfaceDeclaration, members: Record<str
       ...(defaultValue !== undefined ? { defaultValue } : {}),
     };
   }
+
+  for (const method of decl.getMethods()) {
+    const name = method.getName();
+    const jsDocDescription = extractPropertyJsDoc(method);
+    const params = method
+      .getParameters()
+      .map(p => p.getText())
+      .join(', ');
+    const returnType = method.getReturnTypeNode()?.getText() ?? '';
+    const typeSignature = `(${params}) => ${returnType}`;
+
+    members[name] = {
+      name,
+      type: stripJsDocComments(typeSignature),
+      required: !method.hasQuestionToken(),
+      description: jsDocDescription,
+    };
+  }
 }
 
 function extractTypeAliasMembers(decl: TypeAliasDeclaration, members: Record<string, MemberDoc>): void {
-  // Try to resolve the type to its properties
   const type = decl.getType();
+
+  // Skip member extraction for primitive, literal, and non-object types.
+  // e.g. `type SelectionMode = 'single' | 'multiselect'` would incorrectly
+  // yield String.prototype members (toString, charAt, …) via getProperties().
+  if (type.isUnion()) {
+    const allPrimitive = type
+      .getUnionTypes()
+      .every(
+        t =>
+          t.isStringLiteral() ||
+          t.isNumberLiteral() ||
+          t.isBooleanLiteral() ||
+          t.isString() ||
+          t.isNumber() ||
+          t.isBoolean() ||
+          t.isUndefined() ||
+          t.isNull(),
+      );
+    if (allPrimitive) {
+      return;
+    }
+  }
+  if (
+    type.isStringLiteral() ||
+    type.isNumberLiteral() ||
+    type.isBooleanLiteral() ||
+    type.isString() ||
+    type.isNumber() ||
+    type.isBoolean() ||
+    type.isUndefined() ||
+    type.isNull()
+  ) {
+    return;
+  }
+
   for (const prop of type.getProperties()) {
     const propDecl = prop.getDeclarations()[0];
     if (!propDecl) {

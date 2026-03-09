@@ -231,9 +231,9 @@ function formatOther(other: OtherDoc): string[] {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function formatParametersTable(params: ParameterDoc[]): string[] {
+function formatParametersTable(params: ParameterDoc[], title: string = 'Arguments'): string[] {
   const lines: string[] = [];
-  lines.push('**Parameters:**');
+  lines.push(`**${title}:**`);
   lines.push('');
   lines.push('| Name | Type | Required | Description |');
   lines.push('| ---- | ---- | -------- | ----------- |');

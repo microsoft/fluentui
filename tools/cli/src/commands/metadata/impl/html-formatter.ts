@@ -120,7 +120,7 @@ function renderHookItem(hook: HookDoc): string {
 <h3><code>${esc(hook.name)}</code></h3>
 ${hook.description ? `<p>${esc(hook.description)}</p>` : ''}
 <p><strong>Signature:</strong> <code>${esc(hook.typeSignature)}</code></p>
-${hook.parameters.length > 0 ? renderParametersTable(hook.parameters) : ''}
+${hook.parameters.length > 0 ? renderParametersTable(hook.parameters, 'Arguments') : ''}
 <p><strong>Returns:</strong> <code>${esc(hook.returnType)}</code></p>
 ${renderTagsBadges(hook.tags)}
 </div>`;
@@ -170,7 +170,7 @@ function renderOtherItem(other: OtherDoc): string {
 <h3><code>${esc(other.name)}</code> <span class="kind">${esc(other.kind)}</span></h3>
 ${other.description ? `<p>${esc(other.description)}</p>` : ''}
 <p><strong>Type:</strong> <code>${esc(other.typeSignature)}</code></p>
-${other.parameters && other.parameters.length > 0 ? renderParametersTable(other.parameters) : ''}
+${other.parameters && other.parameters.length > 0 ? renderParametersTable(other.parameters, 'Arguments') : ''}
 ${other.returnType ? `<p><strong>Returns:</strong> <code>${esc(other.returnType)}</code></p>` : ''}
 ${renderTagsBadges(other.tags)}
 </div>`;
@@ -244,7 +244,7 @@ ${items}
 // Shared renderers
 // ---------------------------------------------------------------------------
 
-function renderParametersTable(params: ParameterDoc[]): string {
+function renderParametersTable(params: ParameterDoc[], title: string): string {
   const rows = params
     .map(
       p =>
@@ -254,7 +254,8 @@ function renderParametersTable(params: ParameterDoc[]): string {
     )
     .join('\n');
 
-  return `<table class="params">
+  return `<p><strong>${esc(title)}:</strong></p>
+<table class="params">
 <thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
 <tbody>${rows}</tbody></table>`;
 }

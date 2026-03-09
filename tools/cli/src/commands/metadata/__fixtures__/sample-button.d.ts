@@ -49,6 +49,14 @@ export declare const SampleButton: React.ForwardRefExoticComponent<
 
 export declare const sampleButtonClassNames: SlotClassNames<SampleButtonSlots>;
 
+export declare const getPartitionedProps: ({
+  props,
+  excluded,
+}: {
+  props: SampleButtonProps;
+  excluded?: string[];
+}) => Record<string, unknown>;
+
 /**
  * Hook to create SampleButton state.
  * @param props - User provided props to the SampleButton component.
@@ -75,9 +83,29 @@ export declare interface SampleButtonContextValue {
 }
 
 /**
+ * Selection methods interface with method signatures.
+ */
+export declare interface SampleSelectionMethods {
+  selectItem(id: string): void;
+  isSelected(id: string): boolean;
+}
+
+/**
  * Size options for the button.
  */
 export declare type SampleButtonSize = 'small' | 'medium' | 'large';
+
+/**
+ * Options for controllable state.
+ */
+export declare type SampleStateOptions = {
+  /**
+   * User-provided default state.
+   */
+  defaultState?: string;
+  /** Current state value. */
+  state: string | undefined;
+};
 
 /**
  * @deprecated Use SampleButtonSize instead.
@@ -88,5 +116,29 @@ export declare enum ButtonVariant {
 }
 
 export declare function useToggleState(props: SampleButtonProps): SampleButtonState;
+
+/**
+ * Gets the trigger child from children.
+ * @internal
+ */
+export declare function getTriggerChild(children: React.ReactNode): React.ReactElement | null;
+
+/**
+ * A PascalCase function component declared with `function` keyword.
+ */
+export declare function PascalCaseComponent(props: { label: string }): JSX.Element;
+
+/**
+ * Checks if an element is an HTML element.
+ */
+export declare function isHTMLElement(
+  element?: unknown,
+  options?: {
+    /**
+     * Can be used to provide a custom constructor name.
+     */
+    constructorName?: string;
+  },
+): boolean;
 
 export {};
