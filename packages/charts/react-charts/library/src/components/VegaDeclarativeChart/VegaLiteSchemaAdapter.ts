@@ -11,6 +11,7 @@ import type {
   VegaLiteSort,
   VegaLiteTitleParams,
 } from './VegaLiteTypes';
+import { safeEvaluateExpression } from './safeExpressionEvaluator';
 import type { LineChartProps } from '../LineChart/index';
 import type { VerticalBarChartProps } from '../VerticalBarChart/index';
 import type { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -234,9 +235,7 @@ function applyTransforms(
       if (typeof filterExpr === 'string') {
         result = result.filter(row => {
           try {
-            const datum = row;
-            // eslint-disable-next-line no-new-func
-            return new Function('datum', `return ${filterExpr}`)(datum);
+            return safeEvaluateExpression(filterExpr, row as Record<string, unknown>);
           } catch {
             return true;
           }
@@ -250,9 +249,7 @@ function applyTransforms(
       const asField = transform.as as string;
       result = result.map(row => {
         try {
-          const datum = row;
-          // eslint-disable-next-line no-new-func
-          const value = new Function('datum', `return ${expr}`)(datum);
+          const value = safeEvaluateExpression(expr, row as Record<string, unknown>);
           return { ...row, [asField]: value };
         } catch {
           return row;
@@ -1185,9 +1182,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
     dataValues.forEach(row => {
       try {
-        const datum = row;
-        // eslint-disable-next-line no-new-func
-        const result = new Function('datum', `return ${condition.test}`)(datum);
+        const result = safeEvaluateExpression(condition.test, row as Record<string, unknown>);
         row[colorField] = result ? condition.value : elseValue;
       } catch {
         row[colorField] = elseValue;
