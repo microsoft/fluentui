@@ -22,7 +22,9 @@ import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
 
 /**
- * @internal A private symbol to store the motion definition on the component for variants.
+ * A private symbol to store the motion definition on the component for variants.
+ *
+ * @internal
  */
 export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 
