@@ -50,15 +50,11 @@ describe('VegaLiteExpressionEvaluator', () => {
 
     it('evaluates ternary expressions', () => {
       expect(safeEvaluateExpression("datum.x > 0 ? 'positive' : 'non-positive'", { x: 5 })).toBe('positive');
-      expect(safeEvaluateExpression("datum.x > 0 ? 'positive' : 'non-positive'", { x: -1 })).toBe(
-        'non-positive',
-      );
+      expect(safeEvaluateExpression("datum.x > 0 ? 'positive' : 'non-positive'", { x: -1 })).toBe('non-positive');
     });
 
     it('evaluates string concatenation', () => {
-      expect(safeEvaluateExpression("datum.first + ' ' + datum.last", { first: 'John', last: 'Doe' })).toBe(
-        'John Doe',
-      );
+      expect(safeEvaluateExpression("datum.first + ' ' + datum.last", { first: 'John', last: 'Doe' })).toBe('John Doe');
     });
 
     it('evaluates numeric literals', () => {
@@ -199,9 +195,7 @@ describe('VegaLiteExpressionEvaluator', () => {
     });
 
     it('rejects prototype chain traversal', () => {
-      expect(() =>
-        safeEvaluateExpression("(0)['constructor']['constructor']('return globalThis')()", {}),
-      ).toThrow();
+      expect(() => safeEvaluateExpression("(0)['constructor']['constructor']('return globalThis')()", {})).toThrow();
     });
 
     it('rejects calling non-function values', () => {

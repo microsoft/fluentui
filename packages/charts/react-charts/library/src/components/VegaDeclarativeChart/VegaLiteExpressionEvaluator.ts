@@ -79,11 +79,7 @@ const SAFE_CONSTANTS: Record<string, unknown> = {
 };
 
 // Set of all allowed top-level identifiers
-const ALLOWED_IDENTIFIERS = new Set([
-  'datum',
-  ...Object.keys(SAFE_FUNCTIONS),
-  ...Object.keys(SAFE_CONSTANTS),
-]);
+const ALLOWED_IDENTIFIERS = new Set(['datum', ...Object.keys(SAFE_FUNCTIONS), ...Object.keys(SAFE_CONSTANTS)]);
 
 // ---------------------------------------------------------------------------
 // Tokenizer
@@ -258,7 +254,9 @@ class ExpressionParser {
   private expect(type: string): Token {
     const token = this.peek();
     if (token.type !== type) {
-      throw new Error(`Safe expression evaluator: expected '${type}' but got '${token.type}' at position ${token.start}`);
+      throw new Error(
+        `Safe expression evaluator: expected '${type}' but got '${token.type}' at position ${token.start}`,
+      );
     }
     return this.advance();
   }
@@ -266,7 +264,9 @@ class ExpressionParser {
   parse(): unknown {
     const result = this.parseExpression();
     if (this.peek().type !== 'eof') {
-      throw new Error(`Safe expression evaluator: unexpected token '${this.peek().type}' at position ${this.peek().start}`);
+      throw new Error(
+        `Safe expression evaluator: unexpected token '${this.peek().type}' at position ${this.peek().start}`,
+      );
     }
     return result;
   }
@@ -496,9 +496,7 @@ class ExpressionParser {
       }
 
       default:
-        throw new Error(
-          `Safe expression evaluator: unexpected token '${token.type}' at position ${token.start}`,
-        );
+        throw new Error(`Safe expression evaluator: unexpected token '${token.type}' at position ${token.start}`);
     }
   }
 }
