@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Marker size issue in scatter chart and line chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "yushsingla@microsoft.com",
+  "dependentChangeType": "patch"
+}
