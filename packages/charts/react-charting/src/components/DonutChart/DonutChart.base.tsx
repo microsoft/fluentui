@@ -79,6 +79,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return { ...widthState, ...heightState };
   }
 
+  private static _computeTitleHeight(props: Readonly<Pick<IDonutChartProps, 'data' | 'titleStyles'>>): number {
+    return props.data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
+  }
+
   constructor(props: IDonutChartProps) {
     super(props);
 
@@ -271,16 +281,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: false,
     });
   };
-
-  private static _computeTitleHeight(props: Readonly<Pick<IDonutChartProps, 'data' | 'titleStyles'>>): number {
-    return props.data?.chartTitle
-      ? Math.max(
-          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
-            CHART_TITLE_PADDING,
-          36,
-        )
-      : 0;
-  }
 
   private _elevateToMinimums(data: IChartDataPoint[]) {
     let sumOfData = 0;
