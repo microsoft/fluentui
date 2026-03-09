@@ -520,10 +520,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
       const lines: JSXElement[] = [];
-      // Collect all borders, lines, and points separately to ensure markers render on top of all lines
-      const allBorders: JSXElement[] = [];
-      const allLines: JSXElement[] = [];
-      const allPoints: JSXElement[] = [];
       if (isSelectedLegend) {
         _points = selectedLegendPoints;
       } else {
@@ -556,7 +552,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               secondaryYScaleType: props.secondaryYScaleType,
             })
           : 0;
-
         if (_points[i].data.length === 1) {
           const {
             x: x1,
@@ -854,13 +849,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     <circle
                       id={circleId}
                       key={circleId}
-                      r={
-                        currentMarkerSize
-                          ? maxMarkerSize < extraMaxPixels
-                            ? currentMarkerSize
-                            : (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
-                          : 4
-                      }
+                      r={calculateMarkerRadius({
+                        pointMarkerSize: currentMarkerSize,
+                        minMarkerSize: 0,
+                        maxMarkerSize,
+                        extraMaxPixels,
+                        isContinuousXY: true,
+                        isActive: activePoint === circleId,
+                      })}
                       cx={xPoint1}
                       cy={yPoint1}
                       tabIndex={isLegendSelected ? 0 : undefined}
@@ -921,7 +917,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         x={xPoint1}
                         y={
                           yPoint1 +
-                          Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 4, 4) +
+                          calculateMarkerRadius({
+                            pointMarkerSize: currentMarkerSize,
+                            minMarkerSize: 0,
+                            maxMarkerSize,
+                            extraMaxPixels,
+                            isContinuousXY: true,
+                          }) +
                           12
                         }
                         className={classes.markerLabel}
@@ -1013,13 +1015,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         <circle
                           id={lastCircleId}
                           key={lastCircleId}
-                          r={
-                            currentMarkerSize
-                              ? maxMarkerSize < extraMaxPixels
-                                ? currentMarkerSize
-                                : (currentMarkerSize * extraMaxPixels) / maxMarkerSize
-                              : 4
-                          }
+                          r={calculateMarkerRadius({
+                            pointMarkerSize: currentMarkerSize,
+                            minMarkerSize: 0,
+                            maxMarkerSize,
+                            extraMaxPixels,
+                            isContinuousXY: true,
+                            isActive: activePoint === lastCircleId,
+                          })}
                           cx={xPoint2}
                           cy={yPoint2}
                           tabIndex={isLegendSelected ? 0 : undefined}
@@ -1080,10 +1083,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             x={xPoint2}
                             y={
                               yPoint2 +
-                              Math.max(
-                                currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 4,
-                                4,
-                              ) +
+                              calculateMarkerRadius({
+                                pointMarkerSize: currentMarkerSize,
+                                minMarkerSize: 0,
+                                maxMarkerSize,
+                                extraMaxPixels,
+                                isContinuousXY: true,
+                              }) +
                               12
                             }
                             className={classes.markerLabel}
@@ -1346,23 +1352,18 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           );
         }
 
-        // Collect borders, lines, and points separately
-        allBorders.push(...bordersForLine);
-        allLines.push(...linesForLine);
-        allPoints.push(...pointsForLine);
+        lines.push(
+          <g
+            key={`line_${i}`}
+            role="region"
+            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
+          >
+            {bordersForLine}
+            {linesForLine}
+            {pointsForLine}
+          </g>,
+        );
       }
-
-      // Render all borders first, then all lines, then all points (markers)
-      // This ensures markers from all series appear on top of all lines
-      lines.push(
-        <g key="all-borders">{allBorders}</g>,
-        <g key="all-lines" role="region" aria-label="Line chart lines">
-          {allLines}
-        </g>,
-        <g key="all-points" role="list" aria-label="Data points">
-          {allPoints}
-        </g>,
-      );
       return lines;
     }
 
