@@ -69,7 +69,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
     let heightState: { _height: number } | undefined;
     if (nextProps.height && nextProps.height !== prevState._height) {
-      heightState = { _height: nextProps.height - LEGEND_CONTAINER_HEIGHT };
+      // When a chart title is present and the legend is visible, the legend is pushed down by titleHeight
+      // (via a positive marginTop). We must subtract titleHeight from the available chart height to
+      // prevent an infinite growth loop when the chart is used inside a ResponsiveContainer.
+      const titleHeight = !nextProps.hideLegend ? DonutChartBase._computeTitleHeight(nextProps) : 0;
+      heightState = { _height: nextProps.height - LEGEND_CONTAINER_HEIGHT - titleHeight };
     }
 
     return { ...widthState, ...heightState };
@@ -104,7 +108,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   public componentDidMount(): void {
     if (this._rootElem) {
-      const titleHeight = this._getTitleHeight();
+      const titleHeight = DonutChartBase._computeTitleHeight(this.props);
       this.setState({
         _width: this._rootElem.offsetWidth,
         _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT - titleHeight,
@@ -133,7 +137,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
-    const titleHeight = this._getTitleHeight();
+    const titleHeight = DonutChartBase._computeTitleHeight(this.props);
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points);
@@ -268,11 +272,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   };
 
-  private _getTitleHeight(): number {
-    const { data } = this.props;
-    return data?.chartTitle
+  private static _computeTitleHeight(props: Readonly<Pick<IDonutChartProps, 'data' | 'titleStyles'>>): number {
+    return props.data?.chartTitle
       ? Math.max(
-          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
             CHART_TITLE_PADDING,
           36,
         )

@@ -24,6 +24,22 @@ import { useImageExport } from '../../utilities/hooks';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
+/**
+ * Returns the height reserved for the chart title element (at the top of the SVG).
+ * This matches the calculation used in the render method and is kept as a standalone
+ * function so that `_fitParentContainer` can reference it without depending on the
+ * `titleHeight` constant that is defined later in the render closure.
+ */
+function getChartTitleHeight(props: DonutChartProps): number {
+  return props.data?.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        36,
+      )
+    : 0;
+}
+
 // Create a DonutChart variant which uses these default styles and this styled subcomponent.
 /**
  * Donutchart component.
@@ -280,11 +296,18 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = legendContainer.current && getComputedStyle(legendContainer.current);
+        // Compute titleHeight here so we can correct for the SVG height formula.
+        // The SVG is rendered at (_height + titleHeight/2) and the legend has marginTop of -titleHeight.
+        // These don't fully cancel: the net effect adds titleHeight/2 to each measurement cycle,
+        // causing an infinite growth loop when used with ResponsiveContainer. Adding titleHeight/2
+        // to legendContainerHeight corrects the discrepancy and stabilizes the height calculation.
+        const chartTitleHeight = getChartTitleHeight(props);
         legendContainerHeight =
           ((legendContainer.current && legendContainer.current.getBoundingClientRect().height) ||
             MIN_LEGEND_CONTAINER_HEIGHT) +
           parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
-          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0') +
+          chartTitleHeight / 2;
       }
       if (props.parentRef || _rootElem.current) {
         const container = props.parentRef ? props.parentRef : _rootElem.current!;
@@ -311,13 +334,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
-    const titleHeight = data?.chartTitle
-      ? Math.max(
-          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
-            CHART_TITLE_PADDING,
-          36,
-        )
-      : 0;
+    const titleHeight = getChartTitleHeight(props);
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
