@@ -138,6 +138,46 @@ test.describe('TextArea', () => {
       await expect(element).not.toHaveAttribute('auto-resize');
     });
 
+    test('should place the auto-sizer element inside the root element when `field-sizing: content` is not supported', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+
+      // Mock CSS.supports to simulate a browser that doesn't support `field-sizing: content` (e.g. Firefox)
+      // and restore it after to avoid affecting subsequent tests
+      await page.evaluate(() => {
+        const originalSupports = CSS.supports.bind(CSS);
+        (window as Window & { __originalCSSSupports?: typeof CSS.supports }).__originalCSSSupports = originalSupports;
+        CSS.supports = (property: string, value?: string) => {
+          if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
+            return false;
+          }
+          return originalSupports(property, value as string);
+        };
+      });
+
+      try {
+        await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
+
+        const autoSizerIsInsideRoot = await element.evaluate((node: TextArea) => {
+          const root = node.shadowRoot?.querySelector('.root');
+          return root?.contains(node.autoSizerEl) ?? false;
+        });
+
+        expect(autoSizerIsInsideRoot).toBe(true);
+      } finally {
+        // Restore the original CSS.supports to avoid affecting other tests
+        await page.evaluate(() => {
+          const w = window as Window & { __originalCSSSupports?: typeof CSS.supports };
+          if (w.__originalCSSSupports) {
+            CSS.supports = w.__originalCSSSupports;
+            delete w.__originalCSSSupports;
+          }
+        });
+      }
+    });
+
     test('should toggle block attribute', async ({ fastPage }) => {
       const { element } = fastPage;
 
