@@ -162,7 +162,7 @@ test.describe('TextArea', () => {
 
         const autoSizerIsInsideRoot = await element.evaluate((node: TextArea) => {
           const root = node.shadowRoot?.querySelector('.root');
-          return root?.contains(node.autoSizerEl) ?? false;
+          return root?.contains(node.autoSizerEl ?? null) ?? false;
         });
 
         expect(autoSizerIsInsideRoot).toBe(true);
