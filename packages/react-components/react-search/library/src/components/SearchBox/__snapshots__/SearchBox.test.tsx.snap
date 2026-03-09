@@ -25,6 +25,7 @@ exports[`SearchBox renders a default state 1`] = `
     </span>
     <input
       class="fui-Input__input fui-SearchBox__input"
+      size="1"
       type="search"
       value=""
     />
