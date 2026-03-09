@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { OnPositioningEndEvent } from './types';
 import { PositioningProps } from './types';
 
 describe('PositioningProps', () => {
@@ -20,5 +21,33 @@ describe('PositioningProps', () => {
 
     // assertion is useless, we just want typescript to check the positioning props
     expect(props).toBeTruthy;
+  });
+
+  it('accepts () => void for onPositioningEnd (backwards compatibility)', () => {
+    // The signature changed from () => void to (e: OnPositioningEndEvent) => void.
+    // TypeScript's function parameter compatibility ensures () => void still works.
+    const callback: () => void = () => {
+      /* noop */
+    };
+
+    const props: PositioningProps = {
+      onPositioningEnd: callback,
+    };
+
+    expect(props.onPositioningEnd).toBeDefined();
+  });
+
+  it('accepts (e: OnPositioningEndEvent) => void for onPositioningEnd', () => {
+    const callback = (e: OnPositioningEndEvent) => {
+      // Access detail.placement to verify the type shape
+      const _placement: string = e.detail.placement;
+      _placement;
+    };
+
+    const props: PositioningProps = {
+      onPositioningEnd: callback,
+    };
+
+    expect(props.onPositioningEnd).toBeDefined();
   });
 });

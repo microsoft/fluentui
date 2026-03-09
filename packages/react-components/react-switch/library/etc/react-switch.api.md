@@ -33,6 +33,7 @@ export type SwitchOnChangeData = {
 // @public
 export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
     checked?: boolean;
+    disabledFocusable?: boolean;
     defaultChecked?: boolean;
     labelPosition?: 'above' | 'after' | 'before';
     size?: 'small' | 'medium';
@@ -48,7 +49,7 @@ export type SwitchSlots = {
 };
 
 // @public
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'disabledFocusable' | 'labelPosition' | 'size'>>;
 
 // @public
 export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;

@@ -170,6 +170,9 @@ export class BaseAnchor extends FASTElement {
   public clickHandler(e: PointerEvent): boolean {
     if (this.href) {
       const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      if (newTab) {
+        e.preventDefault();
+      }
       this.handleNavigation(newTab);
     }
 

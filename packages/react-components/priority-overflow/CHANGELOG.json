@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Thu, 12 Feb 2026 10:46:12 GMT",
+      "tag": "@fluentui/priority-overflow_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:07:00 GMT",
       "tag": "@fluentui/priority-overflow_v9.2.1",
       "version": "9.2.1",

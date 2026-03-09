@@ -1,0 +1,340 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`VegaLiteSchemaAdapter getVegaLiteLegendsProps Should generate legends for multi-series chart 1`] = `
+Object {
+  "canSelectMultipleLegends": true,
+  "centerLegends": true,
+  "enabledWrapLines": true,
+  "legends": Array [
+    Object {
+      "color": "#637cef",
+      "title": "Alpha",
+    },
+    Object {
+      "color": "#e3008c",
+      "title": "Beta",
+    },
+    Object {
+      "color": "#2aa0a4",
+      "title": "Gamma",
+    },
+  ],
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteLegendsProps Should return empty legends when no color encoding 1`] = `
+Object {
+  "canSelectMultipleLegends": true,
+  "centerLegends": true,
+  "enabledWrapLines": true,
+  "legends": Array [],
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should extract chart and axis titles 1`] = `
+Object {
+  "chartTitle": "Sales Over Time",
+  "xAxisTitle": "Month",
+  "yAxisTitle": "Sales ($)",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should handle object-form title 1`] = `
+Object {
+  "chartTitle": "Main Title",
+  "xAxisTitle": undefined,
+  "yAxisTitle": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should return empty titles for minimal spec 1`] = `
+Object {
+  "chartTitle": undefined,
+  "xAxisTitle": undefined,
+  "yAxisTitle": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should extract axis titles and formats 1`] = `
+Object {
+  "chartTitle": "X Axis",
+  "data": Object {
+    "chartTitle": "Chart with Formats",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 100,
+          },
+          Object {
+            "x": 2,
+            "y": 200,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "default",
+      },
+    ],
+  },
+  "height": 400,
+  "hideLegend": false,
+  "tickFormat": ".0f",
+  "width": 800,
+  "yAxisTickCount": 5,
+  "yAxisTickFormat": ".2f",
+  "yAxisTitle": "Y Axis",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should handle interpolation mapping 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+        },
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should handle y-axis domain/range 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 50,
+          },
+          Object {
+            "x": 2,
+            "y": 150,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+  "yMaxValue": 200,
+  "yMinValue": 0,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should hide legend when disabled 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": true,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform basic line chart with quantitative axes 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+          Object {
+            "x": 4,
+            "y": 91,
+          },
+          Object {
+            "x": 5,
+            "y": 81,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform layered spec with line and point marks 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+        ],
+        "hideNonActiveDots": false,
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform line chart with temporal x-axis 1`] = `
+Object {
+  "chartTitle": "Date",
+  "data": Object {
+    "chartTitle": "Time Series Chart",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 2024-01-01T00:00:00.000Z,
+            "y": 100,
+          },
+          Object {
+            "x": 2024-02-01T00:00:00.000Z,
+            "y": 150,
+          },
+          Object {
+            "x": 2024-03-01T00:00:00.000Z,
+            "y": 120,
+          },
+          Object {
+            "x": 2024-04-01T00:00:00.000Z,
+            "y": 180,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+  "yAxisTitle": "Value",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform multi-series chart with color encoding 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 35,
+          },
+          Object {
+            "x": 2,
+            "y": 60,
+          },
+          Object {
+            "x": 3,
+            "y": 50,
+          },
+        ],
+        "hideNonActiveDots": true,
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;

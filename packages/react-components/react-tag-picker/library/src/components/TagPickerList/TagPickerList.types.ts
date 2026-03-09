@@ -9,7 +9,13 @@ export type TagPickerListSlots = {
 /**
  * TagPickerList Props
  */
-export type TagPickerListProps = ComponentProps<TagPickerListSlots>;
+export type TagPickerListProps = ComponentProps<TagPickerListSlots> & {
+  /**
+   * @deprecated TagPickerList is always rendered within a TagPicker which manages active descendant focus.
+   * This prop has no effect.
+   */
+  disableAutoFocus?: boolean;
+};
 
 /**
  * State used in rendering TagPickerList

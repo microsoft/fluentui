@@ -1,8 +1,139 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 30 Jan 2026 12:55:50 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 09:43:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.2)
+
+Tue, 03 Mar 2026 09:43:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.1..@fluentui/react-components_v9.73.2)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - refactor: migrate slide animation from CSS to motion components with surfaceMotion slot ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: make children optional in MotionRefForwarder to resolve type issue ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-popover`
+  - refactor: migrate slide animation from CSS to motion components with surfaceMotion slot ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-positioning`
+  - refactor: deprecate createSlideStyles ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: add disabledFocusable prop to Switch component ([PR #35799](https://github.com/microsoft/fluentui/pull/35799) by copilot@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix: reset MotionRefForwarder context in renderDialogSurface to prevent child components from corrupting Dialog's motion ref ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: add MotionRefForwarderReset to prevent context leaking to descendants ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: prevent calendar-compat from crashing when value is undefined ([PR #35798](https://github.com/microsoft/fluentui/pull/35798) by vgenaev@gmail.com)
+- `@fluentui/react-charts`
+  - (feat): Add support for vega based schema ([PR #35546](https://github.com/microsoft/fluentui/pull/35546) by atisjai@microsoft.com)
+
+## [9.73.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.1)
+
+Wed, 25 Feb 2026 13:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.0..@fluentui/react-components_v9.73.1)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat(react-positioning): add placement to onPositioningEnd event ([PR #35773](https://github.com/microsoft/fluentui/pull/35773) by robertpenner@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: add disableAutoFocus prop to TagPicker and deprecate on TagPickerList ([PR #35768](https://github.com/microsoft/fluentui/pull/35768) by bsunderhus@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+  - refactor: use shared MotionRefForwarder from react-motion ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: add missing "use client" directive to getWindow utility files ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - refactor: use shared MotionRefForwarder from react-motion ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: fix read-only functionality ([PR #35761](https://github.com/microsoft/fluentui/pull/35761) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: tabster attributes should be overridable on Tabs ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by olfedias@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+
+## [9.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.0)
+
+Thu, 12 Feb 2026 10:46:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.11..@fluentui/react-components_v9.73.0)
+
+### Minor changes
+
+- `@fluentui/react-overflow`
+  - feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: add base hook for Persona component ([PR #35697](https://github.com/microsoft/fluentui/pull/35697) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - feat: add base hooks for Accordion components ([PR #35682](https://github.com/microsoft/fluentui/pull/35682) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: add base hooks for Avatar component ([PR #35696](https://github.com/microsoft/fluentui/pull/35696) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat: add DialogBackdropProvider to react-dialog ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: add appearance to backdrop slot ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic ([PR #35711](https://github.com/microsoft/fluentui/pull/35711) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: prevent XSS theme vulnerability during SSR ([PR #35717](https://github.com/microsoft/fluentui/pull/35717) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - refactor: add base state hooks for Switch component ([PR #35720](https://github.com/microsoft/fluentui/pull/35720) by copilot@github.com)
+- `@fluentui/react-table`
+  - fix: single-select Table radio header should be fully hidden, not just 0 opacity ([PR #35707](https://github.com/microsoft/fluentui/pull/35707) by sarah.higley@microsoft.com)
+- `@fluentui/react-button`
+  - fix: prevent custom props from leaking to the DOM  ([PR #35689](https://github.com/microsoft/fluentui/pull/35689) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: prevent custom props from leaking to the DOM ([PR #35689](https://github.com/microsoft/fluentui/pull/35689) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - A11y fix: updated focus-visible outline data ([PR #35718](https://github.com/microsoft/fluentui/pull/35718) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-drawer`
+  - fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer' ([PR #35692](https://github.com/microsoft/fluentui/pull/35692) by vgenaev@gmail.com)
+- `@fluentui/react-nav`
+  - fix: update NavSubItemGroup motion handling and fix styles ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by dmytrokirpa@microsoft.com)
 
 ## [9.72.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.11)
 

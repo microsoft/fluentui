@@ -15,6 +15,7 @@ import {
   resolvePositioningShorthand,
   mergeArrowOffset,
   usePositioningMouseTarget,
+  usePositioningSlideDirection,
 } from '@fluentui/react-positioning';
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
@@ -26,6 +27,8 @@ import type {
   PopoverState,
 } from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
 
 /**
  * Create the state required to render Popover.
@@ -40,19 +43,38 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const positioning = resolvePositioningShorthand(props.positioning);
   const withArrow = props.withArrow && !positioning.coverTarget;
 
+  const { targetDocument } = useFluent();
+
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetDocument,
+    onPositioningEnd: positioning.onPositioningEnd,
+  });
+
   const state = usePopoverBase_unstable({
     ...props,
     positioning: {
       ...positioning,
+      onPositioningEnd: handlePositionEnd,
       // Update the offset with the arrow size only when it's available
       ...(withArrow ? { offset: mergeArrowOffset(positioning.offset, arrowHeights[size]) } : {}),
     },
   });
 
   return {
+    components: {
+      surfaceMotion: PopoverSurfaceMotion,
+    },
     appearance,
     size,
     ...state,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: PopoverSurfaceMotion,
+      defaultProps: {
+        visible: state.open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
   };
 };
 

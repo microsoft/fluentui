@@ -2402,6 +2402,7 @@ export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaSt
 // @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
+    ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
     // @internal (undocumented)
@@ -3543,9 +3544,7 @@ export const roleForMenuItem: {
     [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
 };
 
-// Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
@@ -4319,9 +4318,7 @@ export const TextWeight: {
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
 
-// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export type Theme = Record<string, string | number>;
 
 // @public

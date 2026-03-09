@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 26 Feb 2026 18:07:04 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.17.0",
+      "version": "8.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "75fd73137fdf2f00e679c23568cad3d876a00799",
+            "comment": "Updating .md filetype to use rich text document icon"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.0",
+            "commit": "cbf6cd22febb874c8e360def57b140ea42291902"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:01 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.16.0",
       "version": "8.16.0",
