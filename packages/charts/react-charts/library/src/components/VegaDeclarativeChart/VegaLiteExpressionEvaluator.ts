@@ -241,6 +241,16 @@ class ExpressionParser {
     this.context = context;
   }
 
+  public parse(): unknown {
+    const result = this.parseExpression();
+    if (this.peek().type !== 'eof') {
+      throw new Error(
+        `Safe expression evaluator: unexpected token '${this.peek().type}' at position ${this.peek().start}`,
+      );
+    }
+    return result;
+  }
+
   private peek(): Token {
     return this.tokens[this.pos];
   }
@@ -259,16 +269,6 @@ class ExpressionParser {
       );
     }
     return this.advance();
-  }
-
-  parse(): unknown {
-    const result = this.parseExpression();
-    if (this.peek().type !== 'eof') {
-      throw new Error(
-        `Safe expression evaluator: unexpected token '${this.peek().type}' at position ${this.peek().start}`,
-      );
-    }
-    return result;
   }
 
   private parseExpression(): unknown {
