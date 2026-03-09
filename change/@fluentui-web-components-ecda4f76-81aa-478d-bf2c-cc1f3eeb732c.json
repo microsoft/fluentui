@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix(web-components): TextArea auto-resize moves instead of grows in Firefox",
+  "type": "prerelease",
+  "comment": "fix(web-components): resolve auto-resize issues for TextArea in Firefox",
   "packageName": "@fluentui/web-components",
   "email": "198982749+Copilot@users.noreply.github.com",
   "dependentChangeType": "patch"
