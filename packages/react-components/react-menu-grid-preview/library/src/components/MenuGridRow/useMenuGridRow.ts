@@ -36,7 +36,9 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
   const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     let element = event.target as HTMLElement | null;
     while (element && element !== event.currentTarget) {
-      if (element.tabIndex >= 0) return;
+      if (element.tabIndex >= 0) {
+        return;
+      }
       element = element.parentElement;
     }
     props.onClick?.(event);
