@@ -27,7 +27,6 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
       (event.key === Enter || event.key === Space) &&
       event.target === event.currentTarget
     ) {
-      // event.preventDefault();
       event.currentTarget.click();
     }
   });
@@ -35,9 +34,12 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
   const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onKeyDownToClick));
 
   const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) {
-      props.onClick?.(event);
+    let element = event.target as HTMLElement | null;
+    while (element && element !== event.currentTarget) {
+      if (element.tabIndex >= 0) return;
+      element = element.parentElement;
     }
+    props.onClick?.(event);
   });
 
   return {
