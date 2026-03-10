@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
+import { CheckmarkCircle12Filled, DiamondDismiss12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
-  error: <ErrorCircle12Filled />,
+  error: <DiamondDismiss12Filled />,
   warning: <Warning12Filled />,
   success: <CheckmarkCircle12Filled />,
   none: undefined,

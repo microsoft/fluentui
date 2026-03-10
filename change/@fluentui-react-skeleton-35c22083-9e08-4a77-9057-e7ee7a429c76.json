@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-skeleton): Add size and shape props to Skeleton component",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}

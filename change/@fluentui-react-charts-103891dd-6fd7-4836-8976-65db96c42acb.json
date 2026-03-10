@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Replace unsafe expression evaluation with safe recursive-descent parser",
+  "packageName": "@fluentui/react-charts",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
