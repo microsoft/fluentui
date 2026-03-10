@@ -286,6 +286,14 @@ export interface VegaLiteColorEncoding {
    * Fixed color value
    */
   value?: string;
+
+  /**
+   * Conditional color encoding with a test expression
+   */
+  condition?: {
+    test: string;
+    value: string;
+  };
 }
 
 /**

@@ -35,13 +35,13 @@ interface Token {
 // and thus blocked automatically without maintaining a blocklist.
 // ---------------------------------------------------------------------------
 const hasOwn = (obj: unknown, prop: string): boolean =>
-  obj != null && typeof obj === 'object' && Object.prototype.hasOwnProperty.call(obj, prop);
+  obj !== null && obj !== undefined && typeof obj === 'object' && Object.prototype.hasOwnProperty.call(obj, prop);
 
 // ---------------------------------------------------------------------------
 // Whitelisted built-in functions (mirrors the Vega expression function set)
 // ---------------------------------------------------------------------------
 const SAFE_FUNCTIONS: Record<string, (...args: unknown[]) => unknown> = {
-  isValid: (x: unknown) => x != null && (typeof x !== 'number' || !isNaN(x as number)),
+  isValid: (x: unknown) => x !== null && x !== undefined && (typeof x !== 'number' || !isNaN(x as number)),
   isDate: (x: unknown) => x instanceof Date,
   isNumber: (x: unknown) => typeof x === 'number' && !isNaN(x as number),
   isString: (x: unknown) => typeof x === 'string',
@@ -56,7 +56,7 @@ const SAFE_FUNCTIONS: Record<string, (...args: unknown[]) => unknown> = {
   sqrt: (x: unknown) => Math.sqrt(x as number),
   log: (x: unknown) => Math.log(x as number),
   exp: (x: unknown) => Math.exp(x as number),
-  pow: (x: unknown, y: unknown) => Math.pow(x as number, y as number),
+  pow: (x: unknown, y: unknown) => (x as number) ** (y as number),
   min: (...args: unknown[]) => Math.min(...(args as number[])),
   max: (...args: unknown[]) => Math.max(...(args as number[])),
   length: (x: unknown) => (typeof x === 'string' || Array.isArray(x) ? (x as string | unknown[]).length : 0),
@@ -74,8 +74,8 @@ const SAFE_CONSTANTS: Record<string, unknown> = {
   SQRT2: Math.SQRT2,
   LN2: Math.LN2,
   LN10: Math.LN10,
-  NaN: NaN,
-  Infinity: Infinity,
+  NaN,
+  Infinity,
 };
 
 // Set of all allowed top-level identifiers
@@ -242,86 +242,86 @@ class ExpressionParser {
   }
 
   public parse(): unknown {
-    const result = this.parseExpression();
-    if (this.peek().type !== 'eof') {
+    const result = this._parseExpression();
+    if (this._peek().type !== 'eof') {
       throw new Error(
-        `Safe expression evaluator: unexpected token '${this.peek().type}' at position ${this.peek().start}`,
+        `Safe expression evaluator: unexpected token '${this._peek().type}' at position ${this._peek().start}`,
       );
     }
     return result;
   }
 
-  private peek(): Token {
+  private _peek(): Token {
     return this.tokens[this.pos];
   }
 
-  private advance(): Token {
+  private _advance(): Token {
     const token = this.tokens[this.pos];
     this.pos++;
     return token;
   }
 
-  private expect(type: string): Token {
-    const token = this.peek();
+  private _expect(type: string): Token {
+    const token = this._peek();
     if (token.type !== type) {
       throw new Error(
         `Safe expression evaluator: expected '${type}' but got '${token.type}' at position ${token.start}`,
       );
     }
-    return this.advance();
+    return this._advance();
   }
 
-  private parseExpression(): unknown {
-    return this.parseTernary();
+  private _parseExpression(): unknown {
+    return this._parseTernary();
   }
 
-  private parseTernary(): unknown {
-    const condition = this.parseOr();
-    if (this.peek().type === '?') {
-      this.advance();
-      const trueVal = this.parseExpression();
-      this.expect(':');
-      const falseVal = this.parseExpression();
+  private _parseTernary(): unknown {
+    const condition = this._parseOr();
+    if (this._peek().type === '?') {
+      this._advance();
+      const trueVal = this._parseExpression();
+      this._expect(':');
+      const falseVal = this._parseExpression();
       return condition ? trueVal : falseVal;
     }
     return condition;
   }
 
-  private parseOr(): unknown {
-    let left = this.parseAnd();
-    while (this.peek().type === '||') {
-      this.advance();
-      const right = this.parseAnd();
+  private _parseOr(): unknown {
+    let left = this._parseAnd();
+    while (this._peek().type === '||') {
+      this._advance();
+      const right = this._parseAnd();
       left = left || right;
     }
     return left;
   }
 
-  private parseAnd(): unknown {
-    let left = this.parseEquality();
-    while (this.peek().type === '&&') {
-      this.advance();
-      const right = this.parseEquality();
+  private _parseAnd(): unknown {
+    let left = this._parseEquality();
+    while (this._peek().type === '&&') {
+      this._advance();
+      const right = this._parseEquality();
       left = left && right;
     }
     return left;
   }
 
-  private parseEquality(): unknown {
-    let left = this.parseComparison();
-    while (['==', '===', '!=', '!=='].includes(this.peek().type)) {
-      const op = this.advance().type;
-      const right = this.parseComparison();
+  private _parseEquality(): unknown {
+    let left = this._parseComparison();
+    while (['==', '===', '!=', '!=='].includes(this._peek().type)) {
+      const op = this._advance().type;
+      const right = this._parseComparison();
       switch (op) {
-        // eslint-disable-next-line eqeqeq
         case '==':
+          // eslint-disable-next-line eqeqeq
           left = left == right;
           break;
         case '===':
           left = left === right;
           break;
-        // eslint-disable-next-line eqeqeq
         case '!=':
+          // eslint-disable-next-line eqeqeq
           left = left != right;
           break;
         case '!==':
@@ -332,11 +332,11 @@ class ExpressionParser {
     return left;
   }
 
-  private parseComparison(): unknown {
-    let left = this.parseAdditive();
-    while (['<', '>', '<=', '>='].includes(this.peek().type)) {
-      const op = this.advance().type;
-      const right = this.parseAdditive();
+  private _parseComparison(): unknown {
+    let left = this._parseAdditive();
+    while (['<', '>', '<=', '>='].includes(this._peek().type)) {
+      const op = this._advance().type;
+      const right = this._parseAdditive();
       switch (op) {
         case '<':
           left = (left as number) < (right as number);
@@ -355,11 +355,11 @@ class ExpressionParser {
     return left;
   }
 
-  private parseAdditive(): unknown {
-    let left = this.parseMultiplicative();
-    while (['+', '-'].includes(this.peek().type)) {
-      const op = this.advance().type;
-      const right = this.parseMultiplicative();
+  private _parseAdditive(): unknown {
+    let left = this._parseMultiplicative();
+    while (['+', '-'].includes(this._peek().type)) {
+      const op = this._advance().type;
+      const right = this._parseMultiplicative();
       if (op === '+') {
         left =
           typeof left === 'string' || typeof right === 'string'
@@ -372,11 +372,11 @@ class ExpressionParser {
     return left;
   }
 
-  private parseMultiplicative(): unknown {
-    let left = this.parseUnary();
-    while (['*', '/', '%'].includes(this.peek().type)) {
-      const op = this.advance().type;
-      const right = this.parseUnary();
+  private _parseMultiplicative(): unknown {
+    let left = this._parseUnary();
+    while (['*', '/', '%'].includes(this._peek().type)) {
+      const op = this._advance().type;
+      const right = this._parseUnary();
       switch (op) {
         case '*':
           left = (left as number) * (right as number);
@@ -392,30 +392,30 @@ class ExpressionParser {
     return left;
   }
 
-  private parseUnary(): unknown {
-    if (this.peek().type === '!') {
-      this.advance();
-      return !this.parseUnary();
+  private _parseUnary(): unknown {
+    if (this._peek().type === '!') {
+      this._advance();
+      return !this._parseUnary();
     }
-    if (this.peek().type === '-') {
-      this.advance();
-      return -(this.parseUnary() as number);
+    if (this._peek().type === '-') {
+      this._advance();
+      return -(this._parseUnary() as number);
     }
-    if (this.peek().type === '+') {
-      this.advance();
-      return +(this.parseUnary() as number);
+    if (this._peek().type === '+') {
+      this._advance();
+      return +(this._parseUnary() as number);
     }
-    return this.parsePostfix();
+    return this._parsePostfix();
   }
 
-  private parsePostfix(): unknown {
-    let value = this.parsePrimary();
+  private _parsePostfix(): unknown {
+    let value = this._parsePrimary();
 
     while (true) {
-      if (this.peek().type === '.') {
+      if (this._peek().type === '.') {
         // Property access: obj.prop — only own properties allowed
-        this.advance();
-        const prop = this.expect('ident');
+        this._advance();
+        const prop = this._expect('ident');
         const propName = prop.value as string;
 
         if (hasOwn(value, propName)) {
@@ -423,11 +423,11 @@ class ExpressionParser {
         } else {
           value = undefined;
         }
-      } else if (this.peek().type === '[') {
+      } else if (this._peek().type === '[') {
         // Bracket access: obj['prop'] or obj[expr] — only own properties allowed
-        this.advance();
-        const index = this.parseExpression();
-        this.expect(']');
+        this._advance();
+        const index = this._parseExpression();
+        this._expect(']');
 
         const key = String(index);
         if (hasOwn(value, key)) {
@@ -435,21 +435,21 @@ class ExpressionParser {
         } else {
           value = undefined;
         }
-      } else if (this.peek().type === '(') {
+      } else if (this._peek().type === '(') {
         // Function call — only safe built-in functions are callable
         if (typeof value !== 'function') {
           throw new Error('Safe expression evaluator: function calls are only allowed for built-in functions');
         }
-        this.advance();
+        this._advance();
         const args: unknown[] = [];
-        if (this.peek().type !== ')') {
-          args.push(this.parseExpression());
-          while (this.peek().type === ',') {
-            this.advance();
-            args.push(this.parseExpression());
+        if (this._peek().type !== ')') {
+          args.push(this._parseExpression());
+          while (this._peek().type === ',') {
+            this._advance();
+            args.push(this._parseExpression());
           }
         }
-        this.expect(')');
+        this._expect(')');
         value = (value as (...a: unknown[]) => unknown)(...args);
       } else {
         break;
@@ -459,15 +459,15 @@ class ExpressionParser {
     return value;
   }
 
-  private parsePrimary(): unknown {
-    const token = this.peek();
+  private _parsePrimary(): unknown {
+    const token = this._peek();
 
     switch (token.type) {
       case 'number':
       case 'string':
       case 'boolean':
       case 'null':
-        this.advance();
+        this._advance();
         return token.value;
 
       case 'ident': {
@@ -475,7 +475,7 @@ class ExpressionParser {
         if (!ALLOWED_IDENTIFIERS.has(name)) {
           throw new Error(`Safe expression evaluator: unknown identifier '${name}'`);
         }
-        this.advance();
+        this._advance();
         if (name === 'datum') {
           return this.context.datum;
         }
@@ -489,9 +489,9 @@ class ExpressionParser {
       }
 
       case '(': {
-        this.advance();
-        const result = this.parseExpression();
-        this.expect(')');
+        this._advance();
+        const result = this._parseExpression();
+        this._expect(')');
         return result;
       }
 
