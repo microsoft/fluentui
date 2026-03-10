@@ -1553,6 +1553,7 @@ describe('isSafeUrl', () => {
   });
 
   test('Should block javascript: protocol', () => {
+    // eslint-disable-next-line no-script-url
     expect(utils.isSafeUrl('javascript:alert(1)')).toBe(false);
   });
 
