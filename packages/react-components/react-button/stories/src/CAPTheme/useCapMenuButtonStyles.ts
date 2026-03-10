@@ -13,6 +13,7 @@ const useMenuIconStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase200,
     height: '16px',
+    lineHeight: tokens.lineHeightBase200,
     width: '16px',
   },
   medium: {
@@ -28,15 +29,12 @@ const useMenuIconStyles = makeStyles({
     width: '20px',
   },
 
-  notIconOnly: {
+  noIconOnly: {
     marginLeft: tokens.spacingHorizontalSNudge,
   },
 });
 
-export const useCapMenuButtonStyles = (state: MenuButtonState): void => {
-  // Apply base button CAP overrides (borderRadius, colors, sizes, etc.)
-  useCapButtonStyles({ ...state, iconPosition: 'before' });
-
+export const useCapMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
   const menuIconStyles = useMenuIconStyles();
 
   if (state.menuIcon) {
@@ -44,7 +42,10 @@ export const useCapMenuButtonStyles = (state: MenuButtonState): void => {
       state.menuIcon.className,
       menuIconStyles.base,
       menuIconStyles[state.size],
-      !state.iconOnly && menuIconStyles.notIconOnly,
+      !state.iconOnly && menuIconStyles.noIconOnly,
     );
   }
+
+  useCapButtonStyles({ ...state, iconPosition: 'before' });
+  return state;
 };

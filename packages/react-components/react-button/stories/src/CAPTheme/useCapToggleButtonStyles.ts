@@ -5,8 +5,8 @@ import { toggleButtonClassNames } from '@fluentui/react-components';
 import type { ToggleButtonState } from '@fluentui/react-components';
 import { useCapButtonStyles } from './useCapButtonStyles';
 
-const displayInline = { display: 'inline' } as const;
-const displayNone = { display: 'none' } as const;
+const displayInline = { display: 'inline' };
+const displayNone = { display: 'none' };
 
 const useRootCheckedStyles = makeStyles({
   base: {
@@ -14,8 +14,28 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Hover,
     },
   },
+  outline: {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    color: tokens.colorNeutralForeground3Selected,
+  },
 
-  // Appearance variations
+  primary: {
+    [`:hover .${iconFilledClassName}`]: {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+  tint: {
+    backgroundColor: tokens.colorBrandBackground2Pressed,
+    color: tokens.colorCompoundBrandForeground1Pressed,
+    ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+  },
+  outlineColor: {
+    backgroundColor: tokens.colorBrandBackground2Pressed,
+    color: tokens.colorCompoundBrandForeground1Pressed,
+    ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+  },
   secondary: {
     backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.borderColor(tokens.colorNeutralBackground3Hover),
@@ -30,15 +50,6 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
-  outline: {
-    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    color: tokens.colorNeutralForeground3Selected,
-  },
-  primary: {
-    [`:hover .${iconFilledClassName}`]: {
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-  },
   subtle: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
     color: tokens.colorNeutralForeground3Selected,
@@ -48,18 +59,6 @@ const useRootCheckedStyles = makeStyles({
   },
   transparent: {
     color: tokens.colorCompoundBrandForeground1Pressed,
-  },
-  tint: {
-    backgroundColor: tokens.colorBrandBackground2Pressed,
-    color: tokens.colorCompoundBrandForeground1Pressed,
-    ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
-  },
-  outlineColor: {
-    backgroundColor: tokens.colorBrandBackground2Pressed,
-    color: tokens.colorCompoundBrandForeground1Pressed,
-    ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
   },
 });
 
@@ -80,6 +79,11 @@ const useRootCheckedDisabledStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
+  secondary: {},
+  primary: {},
+  outline: {},
+  transparent: {},
+  subtle: {},
   tint: {
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
   },
@@ -94,39 +98,33 @@ const useIconCheckedStyles = makeStyles({
   },
 });
 
-type AppearanceKey = 'outline' | 'primary' | 'secondary' | 'subtle' | 'transparent' | 'tint' | 'outlineColor';
+export const useCapToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
+  'use no memo';
 
-export const useCapToggleButtonStyles = (state: ToggleButtonState): void => {
   const rootCheckedStyles = useRootCheckedStyles();
-  const rootCheckedDisabledStyles = useRootCheckedDisabledStyles();
   const iconCheckedStyles = useIconCheckedStyles();
-
+  const checkedDisabledStyles = useRootCheckedDisabledStyles();
   const { appearance, checked, disabled, disabledFocusable } = state;
+  const showAsDisabled = disabled || disabledFocusable;
 
-  // Apply base CAP button styles first
   useCapButtonStyles(state);
 
-  // Then layer on toggle-specific checked styles
   state.root.className = mergeClasses(
     state.root.className,
-
-    // Checked styles
-    checked && rootCheckedStyles.base,
-    appearance && checked && rootCheckedStyles[appearance as AppearanceKey],
-
-    // Checked + disabled styles
-    checked && (disabled || disabledFocusable) && rootCheckedDisabledStyles.base,
-    appearance &&
-      checked &&
-      (disabled || disabledFocusable) &&
-      (appearance === 'tint' || appearance === 'outlineColor') &&
-      rootCheckedDisabledStyles[appearance],
+    toggleButtonClassNames.root,
+    checked && !showAsDisabled && rootCheckedStyles.base,
+    checked && !showAsDisabled && rootCheckedStyles[appearance],
+    checked && showAsDisabled && checkedDisabledStyles.base,
+    checked && showAsDisabled && checkedDisabledStyles[appearance],
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
       state.icon.className,
+      toggleButtonClassNames.icon,
       checked && appearance === 'outline' && iconCheckedStyles.outline,
     );
   }
+
+  return state;
 };
