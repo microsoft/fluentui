@@ -8,7 +8,7 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       position: 'relative',
       borderRightWidth: 0,
-      '::after': {
+      ':after': {
         content: '""',
         borderRight: `${tokens.strokeWidthThin} solid`,
         borderRightColor: 'inherit',
@@ -17,6 +17,11 @@ const useRootStyles = makeStyles({
         opacity: 0.3,
         position: 'absolute',
         right: 0,
+      },
+      '@media (forced-colors: active)': {
+        ':after': { borderRightColor: 'inherit' },
+        ':hover:after': { borderRightColor: 'inherit' },
+        ':active:after': { borderRightColor: 'inherit' },
       },
     },
   },
@@ -32,7 +37,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active,:active:focus-visible': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStrokeOnBrand2Pressed,
       },
@@ -49,7 +54,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active,:active:focus-visible': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStroke4Pressed,
       },
@@ -66,7 +71,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active,:active:focus-visible': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
@@ -83,24 +88,21 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active,:active:focus-visible': {
+    ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
     },
   },
+  outline: {},
+  tint: {},
+  outlineColor: {},
 });
-
-type AppearanceKey = 'primary' | 'secondary' | 'subtle' | 'transparent';
 
 export const useCapSplitButtonStyles = (state: SplitButtonState): void => {
   const rootStyles = useRootStyles();
 
   const { appearance } = state;
 
-  state.root.className = mergeClasses(
-    state.root.className,
-    rootStyles.base,
-    appearance && appearance in rootStyles && rootStyles[appearance as AppearanceKey],
-  );
+  state.root.className = mergeClasses(state.root.className, rootStyles.base, rootStyles[appearance]);
 };

@@ -32,6 +32,8 @@ const capFocusIndicator = {
   `,
 };
 
+// Shape styles: only restyle borderRadius + focus indicator per shape.
+// circular and square keep their original Fluent radii — only rounded gets the CAP radius.
 const useShapeStyles = makeStyles({
   rounded: {
     borderRadius: tokens.borderRadius2XLarge,
@@ -40,18 +42,8 @@ const useShapeStyles = makeStyles({
       ...capFocusIndicator,
     }),
   },
-  circular: {
-    ...createCustomFocusIndicatorStyle({
-      borderRadius: tokens.borderRadiusCircular,
-      ...capFocusIndicator,
-    }),
-  },
-  square: {
-    ...createCustomFocusIndicatorStyle({
-      borderRadius: tokens.borderRadiusNone,
-      ...capFocusIndicator,
-    }),
-  },
+  circular: {},
+  square: {},
 });
 
 const useAppearanceStyles = makeStyles({
@@ -72,20 +64,14 @@ const useAppearanceStyles = makeStyles({
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackground,
     ...shorthands.borderColor(tokens.colorBrandBackground),
-    color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
       ...shorthands.borderColor(tokens.colorBrandBackgroundHover),
-      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
       ...shorthands.borderColor(tokens.colorBrandBackgroundPressed),
-      color: tokens.colorNeutralForegroundOnBrand,
     },
   },
   secondary: {
@@ -314,9 +300,7 @@ const useIconSizeStyles = makeStyles({
   },
 });
 
-type AppearanceKey = 'outline' | 'primary' | 'secondary' | 'subtle' | 'transparent' | 'tint' | 'outlineColor';
-
-export const useCapButtonStyles = (state: ButtonState): void => {
+export const useCapButtonStyles = (state: ButtonState): ButtonState => {
   const baseStyles = useBaseStyles();
   const shapeStyles = useShapeStyles();
   const appearanceStyles = useAppearanceStyles();
@@ -338,7 +322,7 @@ export const useCapButtonStyles = (state: ButtonState): void => {
     shapeStyles[shape],
 
     // Appearance overrides
-    appearance && appearanceStyles[appearance as AppearanceKey],
+    appearance && appearanceStyles[appearance],
 
     // Size overrides
     sizeStyles[size],
@@ -346,7 +330,7 @@ export const useCapButtonStyles = (state: ButtonState): void => {
     size === 'small' && sizeSmallShapeStyles[shape],
 
     // Disabled appearance overrides
-    appearance && (disabled || disabledFocusable) && disabledStyles[appearance as AppearanceKey],
+    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
 
     // Icon-only size overrides
     iconOnly && iconOnlyStyles[size],
@@ -355,4 +339,5 @@ export const useCapButtonStyles = (state: ButtonState): void => {
   if (state.icon) {
     state.icon.className = mergeClasses(state.icon.className, iconSizeStyles[size]);
   }
+  return state;
 };
