@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(charts): block unsafe urls in chart click-to-navigate handlers",
+  "packageName": "@fluentui/react-charts",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
