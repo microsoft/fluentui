@@ -2650,3 +2650,10 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
   return text.slice(0, lo) + '...';
 };
+
+export function isSafeUrl(href: string): boolean {
+  if (/^[a-z][a-z0-9+.-]*:/i.test(href)) {
+    return /^https?:/i.test(href);
+  }
+  return true;
+}

@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject, getNextGradient, isSafeUrl } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
@@ -508,7 +508,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   };
 
   private _redirectToUrl(href: string | undefined): void {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   }
 
   private _closeCallout = () => {
