@@ -13,6 +13,7 @@ const mount = (element: JSXElement) => {
 };
 
 const menuSelector = '[role="menu"]';
+const menuItemSelector = '[role="menuitem"]';
 const menuGridItemSelector = '[role="row"]';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
@@ -164,6 +165,44 @@ describe('More complex menus', () => {
       .realPress('ArrowRight')
       .focused()
       .should('have.text', 'Remove Sophia Martinez');
+  });
+});
+
+const WithSubmenuInsideMenuExample = () => {
+  return (
+    <Menu defaultOpen>
+      <MenuTrigger disableButtonEnhancement>
+        <button>Open</button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuGrid>
+          {items.map(name => (
+            <MenuGridItem key={name} firstSubAction={<Submenu />}>
+              {name}
+            </MenuGridItem>
+          ))}
+        </MenuGrid>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+describe('With MenuList submenus inside outer Menu', () => {
+  it('should open submenu on trigger hover', () => {
+    mount(<WithSubmenuInsideMenuExample />);
+    cy.get('button').contains('More actions').first().realHover();
+    cy.get(menuSelector).should('have.length', 1);
+  });
+
+  it('should keep submenu open when mouse moves from trigger to submenu items', () => {
+    mount(<WithSubmenuInsideMenuExample />);
+    cy.clock();
+    cy.get('button').contains('More actions').first().realHover();
+    cy.tick(500);
+    cy.get(menuSelector).should('have.length', 1);
+    cy.get(menuItemSelector).first().realHover();
+    cy.tick(600);
+    cy.get(menuSelector).should('have.length', 1);
   });
 });
 
