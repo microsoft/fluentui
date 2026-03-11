@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { FadeRelaxed } from '@fluentui/react-motion-components-preview';
 
 import description from './FadeRelaxed.stories.md';
@@ -13,7 +13,9 @@ const useClasses = makeStyles({
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: '20px',
+    maxHeight: '300px',
+    overflow: 'hidden',
   },
   controls: {
     display: 'flex',
@@ -51,9 +53,16 @@ export const Relaxed = (): JSXElement => {
       </div>
 
       <FadeRelaxed visible={visible}>
-        <div className={classes.card}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" style={{ margin: 0 }} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </FadeRelaxed>
     </div>
   );
