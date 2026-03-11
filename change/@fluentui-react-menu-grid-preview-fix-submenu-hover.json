@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
