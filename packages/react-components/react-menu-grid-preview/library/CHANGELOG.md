@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Wed, 11 Mar 2026 09:22:21 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 12:58:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.1)
+
+Wed, 11 Mar 2026 12:58:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.0..@fluentui/react-menu-grid-preview_v0.3.1)
+
+### Patches
+
+- fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover ([PR #35862](https://github.com/microsoft/fluentui/pull/35862) by bernardo.sunderhus@gmail.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.0)
 

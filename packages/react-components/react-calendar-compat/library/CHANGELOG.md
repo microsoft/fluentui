@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Wed, 11 Mar 2026 09:22:18 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 12:58:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.4.0)
+
+Wed, 11 Mar 2026 12:58:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.3.21..@fluentui/react-calendar-compat_v0.4.0)
+
+### Minor changes
+
+- feat: add onNavigateDate callback to CalendarYear decade selector ([PR #35804](https://github.com/microsoft/fluentui/pull/35804) by 198982749+Copilot@users.noreply.github.com)
 
 ## [0.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.3.21)
 

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 11 Mar 2026 09:22:18 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 12:58:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.3)
+
+Wed, 11 Mar 2026 12:58:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.3..@fluentui/react-components_v9.73.3)
+
+### Minor changes
+
+- `@fluentui/react-calendar-compat`
+  - feat: add onNavigateDate callback to CalendarYear decade selector ([PR #35804](https://github.com/microsoft/fluentui/pull/35804) by 198982749+Copilot@users.noreply.github.com)
+
+### Patches
+
+- `@fluentui/react-menu-grid-preview`
+  - fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover ([PR #35862](https://github.com/microsoft/fluentui/pull/35862) by bernardo.sunderhus@gmail.com)
 
 ## [9.73.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.3)
 
