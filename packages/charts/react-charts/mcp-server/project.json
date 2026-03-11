@@ -1,0 +1,8 @@
+{
+  "name": "react-charts-mcp-server",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/charts/react-charts/mcp-server/src",
+  "tags": ["platform:node", "charting"],
+  "implicitDependencies": ["react-charts"]
+}

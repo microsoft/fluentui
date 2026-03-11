@@ -1,0 +1,27 @@
+{
+  "name": "@fluentui/react-charts-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server exposing tools for Fluent UI React Charts",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "react-charts-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -w -p tsconfig.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.4.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  }
+}
