@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import { Card, CardHeader, makeStyles, Button, Text } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
@@ -18,17 +18,12 @@ const useClasses = makeStyles({
     gap: '10px',
   },
   card: {
-    width: '200px',
-    height: '150px',
-    padding: '20px',
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
-    fontSize: tokens.fontSizeBase300,
-    textAlign: 'center',
+    alignItems: 'center',
+    width: '200px',
+    height: '100px',
+    padding: '20px',
   },
   controls: {
     display: 'flex',
@@ -62,16 +57,12 @@ export const Radius = (): JSXElement => {
       <div className={classes.container}>
         {blurRadiusOptions.map((option, index) => (
           <div key={option.value} className={classes.example}>
-            <h4>{option.label}</h4>
+            {/* <h4>{option.label}</h4> */}
             <Button onClick={() => toggleSingle(index)}>{visibleStates[index] ? 'Hide' : 'Show'}</Button>
             <Blur visible={visibleStates[index]} outRadius={option.value}>
-              <div className={classes.card}>
-                <div>
-                  Blur radius: {option.value}
-                  <br />
-                  Sample content with various text and elements.
-                </div>
-              </div>
+              <Card className={classes.card}>
+                <CardHeader header={<Text weight="semibold">Blur radius: {option.value}</Text>} />
+              </Card>
             </Blur>
           </div>
         ))}
