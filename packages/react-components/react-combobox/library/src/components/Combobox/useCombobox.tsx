@@ -118,6 +118,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
   };
 
+  // When pre-rendering the listbox for focus (hasFocus=true but open=false), hide it from AT.
+  // This prevents screen readers (e.g. Narrator) from announcing the listbox content
+  // when the combobox is focused but the dropdown is not open, which caused the selected value
+  // to be read twice.
+  if (state.listbox && !open) {
+    state.listbox['aria-hidden'] = 'true';
+  }
+
   const { targetDocument } = useFluent();
 
   useOnClickOutside({

@@ -79,6 +79,9 @@ describe('Combobox', () => {
     const listbox = result.container.querySelector('[role="listbox"]');
     expect(listbox).not.toBeNull();
     expect(window.getComputedStyle(listbox!).display).toEqual('none');
+    // The listbox should be aria-hidden when pre-rendered but the dropdown is not open,
+    // to prevent screen readers from announcing the listbox content (e.g. double reading the selected value).
+    expect(listbox).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('renders the popup under document.body by default', () => {

@@ -127,6 +127,13 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     ...baseState,
   };
 
+  // When pre-rendering the listbox for focus (hasFocus=true but open=false), hide it from AT.
+  // This prevents screen readers (e.g. Narrator) from announcing the listbox content
+  // when the dropdown is focused but not open, which caused the selected value to be read twice.
+  if (state.listbox && !open) {
+    state.listbox['aria-hidden'] = 'true';
+  }
+
   const onClearButtonClick = useEventCallback(
     mergeCallbacks(state.clearButton?.onClick, (ev: React.MouseEvent<HTMLButtonElement>) => {
       clearSelection(ev);
