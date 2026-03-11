@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.21)
+
+Wed, 11 Mar 2026 09:22:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.20..@fluentui/react-message-bar_v9.6.21)
+
+### Patches
+
+- Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
 
 ## [9.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.20)
 

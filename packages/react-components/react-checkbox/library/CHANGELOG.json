@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:22 GMT",
+      "tag": "@fluentui/react-checkbox_v9.5.16",
+      "version": "9.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-checkbox_v9.5.15",
       "version": "9.5.15",

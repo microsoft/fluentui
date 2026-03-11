@@ -2,6 +2,21 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:20 GMT",
+      "tag": "@fluentui/react-field_v9.4.16",
+      "version": "9.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-field",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-field_v9.4.15",
       "version": "9.4.15",

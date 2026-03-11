@@ -2,6 +2,27 @@
   "name": "@fluentui/react-swatch-picker",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:22 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "3f14e213637ad8b64495aa760d3a6b4b78d2415b",
+            "comment": "feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-swatch-picker_v9.4.15",
       "version": "9.4.15",

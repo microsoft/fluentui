@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart",
-  "packageName": "@fluentui/react-charts",
-  "email": "copilot@microsoft.com",
-  "dependentChangeType": "patch"
-}

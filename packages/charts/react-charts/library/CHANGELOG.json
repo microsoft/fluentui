@@ -2,6 +2,39 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:19 GMT",
+      "tag": "@fluentui/react-charts_v9.3.14",
+      "version": "9.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bd7fdfb3ed559bd2a2c8cdb36ba53829303a13ed",
+            "comment": "Replace unsafe expression evaluation with safe recursive-descent parser"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b10b744fcc9443059ab9ea27534cd76776f04abb",
+            "comment": "fix(charts): block unsafe urls in chart click-to-navigate handlers"
+          },
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2f037abe0ee131efaf68504d37ac9eadc000f6ea",
+            "comment": "Marker size issue in scatter chart and line chart"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "040150f9b6103861438c6e2238a33560c0f638c1",
+            "comment": "Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:42 GMT",
       "tag": "@fluentui/react-charts_v9.3.13",
       "version": "9.3.13",

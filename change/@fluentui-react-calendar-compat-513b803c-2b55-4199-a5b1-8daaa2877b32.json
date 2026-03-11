@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-calendar-compat): added navigation to the next date when date is on row edge",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}

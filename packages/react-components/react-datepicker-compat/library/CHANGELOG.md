@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.6.26)
+
+Wed, 11 Mar 2026 09:22:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.6.25..@fluentui/react-datepicker-compat_v0.6.26)
+
+### Patches
+
+- fix: reorder event handling for Escape key ([PR #35839](https://github.com/microsoft/fluentui/pull/35839) by 85318654+JakubWieclaw@users.noreply.github.com)
+- Bump @fluentui/react-calendar-compat to v0.3.21 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
+- Bump @fluentui/react-field to v9.4.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
+- Bump @fluentui/react-input to v9.7.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [0.6.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.6.25)
 

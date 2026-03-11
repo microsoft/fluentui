@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.0)
+
+Wed, 11 Mar 2026 09:22:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.11..@fluentui/react-menu-grid-preview_v0.3.0)
+
+### Minor changes
+
+- Proper onClick handling for MenuGridRow ([PR #35795](https://github.com/microsoft/fluentui/pull/35795) by adam.samec@gmail.com)
+- Bump @fluentui/react-table to v9.19.11 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.11)
 

@@ -2,6 +2,89 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:18 GMT",
+      "tag": "@fluentui/react-components_v9.73.3",
+      "version": "9.73.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0fbdec76bdcfd6ef4727c52edb9e0a71ada8b823",
+            "comment": "feat(react-calendar-compat): added navigation to the next date when date is on row edge"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bd7fdfb3ed559bd2a2c8cdb36ba53829303a13ed",
+            "comment": "Replace unsafe expression evaluation with safe recursive-descent parser"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b10b744fcc9443059ab9ea27534cd76776f04abb",
+            "comment": "fix(charts): block unsafe urls in chart click-to-navigate handlers"
+          },
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2f037abe0ee131efaf68504d37ac9eadc000f6ea",
+            "comment": "Marker size issue in scatter chart and line chart"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "040150f9b6103861438c6e2238a33560c0f638c1",
+            "comment": "Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart"
+          },
+          {
+            "author": "85318654+JakubWieclaw@users.noreply.github.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "490829c876d1c628aeabc30354c2f94243bea02f",
+            "comment": "fix: reorder event handling for Escape key"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-field",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-toast",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          }
+        ],
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "80f357995c67265a761717b3ea4bd4ca300dc220",
+            "comment": "Proper onClick handling for MenuGridRow"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "ace36179073ac4600a3635304a0941bd7dcda21d",
+            "comment": "feat(react-skeleton): Add size and shape props to Skeleton component"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "3f14e213637ad8b64495aa760d3a6b4b78d2415b",
+            "comment": "feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:39 GMT",
       "tag": "@fluentui/react-components_v9.73.2",
       "version": "9.73.2",

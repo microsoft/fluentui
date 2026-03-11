@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons",
-  "packageName": "@fluentui/react-toast",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

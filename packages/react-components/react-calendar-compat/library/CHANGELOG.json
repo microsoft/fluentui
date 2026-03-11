@@ -2,6 +2,21 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:18 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.3.21",
+      "version": "0.3.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0fbdec76bdcfd6ef4727c52edb9e0a71ada8b823",
+            "comment": "feat(react-calendar-compat): added navigation to the next date when date is on row edge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:42 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.3.20",
       "version": "0.3.20",
