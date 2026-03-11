@@ -14,10 +14,11 @@ type UseButtonTriggerSlotOptions = {
 };
 
 /**
- * @internal
  * useButtonTriggerSlot returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
+ *
+ * @internal
  */
 export function useButtonTriggerSlot(
   triggerFromProps: NonNullable<Slot<'button'>>,

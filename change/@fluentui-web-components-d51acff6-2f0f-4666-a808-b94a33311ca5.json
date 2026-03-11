@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: enforce jsdoc/empty-tags rule and fix all violations",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
