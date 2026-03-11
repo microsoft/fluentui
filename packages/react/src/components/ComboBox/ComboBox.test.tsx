@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../common/isConformant';
@@ -556,12 +556,16 @@ describe('ComboBox', () => {
     // componentDidUpdate was calling _onFocus() (and thus input.select()) on every render
     // while the combobox was focused. This caused screen readers (e.g. Narrator) to
     // announce the selected value twice.
-    const { getByRole, getByText } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
     const combobox = getByRole('combobox') as HTMLInputElement;
+
+    // Spy before any interaction to capture all select() calls
     const selectSpy = jest.spyOn(combobox, 'select');
 
-    // 1. Open the combobox with keyboard (sets _focusInputAfterClose = true)
-    userEvent.tab();
+    // 1. Focus the combobox and open it with keyboard (sets _focusInputAfterClose = true)
+    act(() => {
+      combobox.focus();
+    });
     userEvent.keyboard('{enter}');
 
     // 2. Select an option to close the dropdown
@@ -569,11 +573,15 @@ describe('ComboBox', () => {
     selectSpy.mockClear();
 
     // 3. Navigate away
-    fireEvent.blur(combobox);
+    act(() => {
+      fireEvent.blur(combobox);
+    });
     selectSpy.mockClear();
 
     // 4. Navigate back
-    fireEvent.focus(combobox);
+    act(() => {
+      fireEvent.focus(combobox);
+    });
 
     // select() should be called at most once (from _onFocus via the focus handler),
     // NOT a second time from componentDidUpdate.
