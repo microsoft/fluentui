@@ -12,8 +12,8 @@ const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
+const gridSelector = '[role="grid"]';
 const menuSelector = '[role="menu"]';
-const menuItemSelector = '[role="menuitem"]';
 const menuGridItemSelector = '[role="row"]';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
@@ -170,7 +170,7 @@ describe('More complex menus', () => {
 
 const WithSubmenuInsideMenuExample = () => {
   return (
-    <Menu defaultOpen>
+    <Menu open>
       <MenuTrigger disableButtonEnhancement>
         <button>Open</button>
       </MenuTrigger>
@@ -190,19 +190,41 @@ const WithSubmenuInsideMenuExample = () => {
 describe('With MenuList submenus inside outer Menu', () => {
   it('should open submenu on trigger hover', () => {
     mount(<WithSubmenuInsideMenuExample />);
-    cy.get('button').contains('More actions').first().realHover();
+    // trigger('mousemove') instead of realHover: the trigger button is inside a portal and may
+    // not be reachable by real CDP mouse events in the headless test viewport. A synthetic
+    // mousemove fires useMenuTrigger.onMouseMove, which schedules open after hoverDelay (500ms).
+    cy.get('button').contains('More actions').first().trigger('mousemove');
     cy.get(menuSelector).should('have.length', 1);
   });
 
-  it('should keep submenu open when mouse moves from trigger to submenu items', () => {
+  it('should keep submenu open when mouse moves from trigger to submenu popover', () => {
     mount(<WithSubmenuInsideMenuExample />);
-    cy.clock();
-    cy.get('button').contains('More actions').first().realHover();
-    cy.tick(500);
+
+    // Open the submenu - real timers so requestAnimationFrame runs and popoverRef is set.
+    cy.get('button').contains('More actions').first().trigger('mousemove');
     cy.get(menuSelector).should('have.length', 1);
-    cy.get(menuItemSelector).first().realHover();
-    cy.tick(600);
-    cy.get(menuSelector).should('have.length', 1);
+
+    // Install clock AFTER submenu is fully rendered, following the safeZone test pattern in
+    // react-menu. Installing it earlier freezes requestAnimationFrame, leaving popoverRef null.
+    cy.clock(0).then(() => {
+      // Simulate mouse crossing the outer MenuPopover area (going from trigger toward submenu).
+      // mouseover on [role="grid"] bubbles to the outer MenuPopover where
+      // mouseOverListenerCallbackRef fires dispatchMenuEnterEvent. The submenu's
+      // useOnMenuMouseEnter listener sees the target is outside the submenu's popover and
+      // schedules a close timeout (hoverDelay = 500ms, frozen by cy.clock).
+      cy.get(gridSelector).trigger('mouseover');
+
+      // Simulate mouse entering the submenu. mouseover on [role="menu"] bubbles to the
+      // submenu's MenuPopover and triggers MenuPopover.onMouseEnter. Because the submenu has
+      // isSubmenu=true (thanks to MenuListContext provided by MenuGrid), onMouseEnter calls
+      // setOpen(open: true) → clearOpenTimeout(), cancelling the scheduled close.
+      cy.get(menuSelector).trigger('mouseover');
+
+      // Advance past the close delay (hoverDelay = 500ms)
+      cy.tick(600);
+
+      cy.get(menuSelector).should('have.length', 1);
+    });
   });
 });
 
