@@ -1,48 +1,43 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Card, CardHeader, makeStyles, Button, Text } from '@fluentui/react-components';
+import { Card, CardFooter, CardHeader, makeStyles, Button, Text } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px',
-    padding: '20px',
-  },
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '10px',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '40px',
+    padding: '10px',
   },
   card: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '200px',
-    height: '100px',
+    // width: '200px',
+    // height: '100px',
     padding: '20px',
   },
   controls: {
     display: 'flex',
     justifyContent: 'center',
-    // gap: '20px',
-    // marginBottom: '20px',
+    marginTop: '20px',
   },
 });
 
-const blurRadiusOptions = [
-  { label: 'Small (5px)', value: '5px' },
-  { label: 'Medium (20px)', value: '20px' },
-  { label: 'Large (50px)', value: '50px' },
-  { label: 'Extra Large (100px)', value: '100px' },
+const blurRadiusCombinations = [
+  // Top row: outRadius 5px, inRadius 0px (default)
+  { outRadius: '5px', inRadius: '0px' },
+  { outRadius: '10px', inRadius: '0px' },
+  // Bottom row: outRadius 20px, with inRadius values
+  { outRadius: '10px', inRadius: '1px' },
+  { outRadius: '10px', inRadius: '2px' },
 ];
 
 export const Radius = (): JSXElement => {
   const classes = useClasses();
-  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(blurRadiusOptions.map(() => true));
+  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(blurRadiusCombinations.map(() => true));
 
   const toggleAll = () => {
     setVisibleStates(prev => prev.map(state => !state));
@@ -55,21 +50,51 @@ export const Radius = (): JSXElement => {
   return (
     <>
       <div className={classes.container}>
-        {blurRadiusOptions.map((option, index) => (
-          <div key={option.value} className={classes.example}>
-            {/* <h4>{option.label}</h4> */}
-            <Button onClick={() => toggleSingle(index)}>{visibleStates[index] ? 'Hide' : 'Show'}</Button>
-            <Blur visible={visibleStates[index]} outRadius={option.value}>
-              <Card className={classes.card}>
-                <CardHeader header={<Text weight="semibold">Blur radius: {option.value}</Text>} />
-              </Card>
-            </Blur>
-          </div>
-        ))}
+        {blurRadiusCombinations.map((option, index) => {
+          const isVisible = visibleStates[index];
+          const outRadiusCell = <td style={{ fontWeight: isVisible ? 'normal' : 'bold' }}>{option.outRadius}</td>;
+          const inRadiusCell = <td style={{ fontWeight: isVisible ? 'bold' : 'normal' }}>{option.inRadius}</td>;
+          const cardHeader = (
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">outRadius</th>
+                  <th scope="col">inRadius</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {outRadiusCell}
+                  {inRadiusCell}
+                </tr>
+              </tbody>
+            </table>
+          );
+          return (
+            <Card key={index} className={classes.card}>
+              <CardHeader header={cardHeader} />
+              <Blur
+                visible={visibleStates[index]}
+                outRadius={option.outRadius}
+                inRadius={option.inRadius}
+                animateOpacity={false}
+              >
+                <div>Lorem ipsum dolor sit amet</div>
+              </Blur>
+              <CardFooter>
+                <Button appearance="primary" onClick={() => toggleSingle(index)}>
+                  {visibleStates[index] ? 'Hide' : 'Show'}
+                </Button>
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
 
       <div className={classes.controls}>
-        <Button onClick={toggleAll}>Toggle All</Button>
+        <Button appearance="secondary" onClick={toggleAll}>
+          Toggle All
+        </Button>
       </div>
     </>
   );
