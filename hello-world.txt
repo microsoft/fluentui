@@ -1,0 +1,2 @@
+Hello World!
+This is a trial commit by arpitamandalgit on branch users/arpitamandalgit/track-faulty-commit
