@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use require for package.json to fix API Extractor build",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
