@@ -32,8 +32,9 @@ const useClasses = makeStyles({
   },
   controls: {
     display: 'flex',
-    gap: '10px',
-    marginBottom: '20px',
+    justifyContent: 'center',
+    // gap: '20px',
+    // marginBottom: '20px',
   },
 });
 
@@ -58,10 +59,6 @@ export const Radius = (): JSXElement => {
 
   return (
     <>
-      <div className={classes.controls}>
-        <Button onClick={toggleAll}>Toggle All</Button>
-      </div>
-
       <div className={classes.container}>
         {blurRadiusOptions.map((option, index) => (
           <div key={option.value} className={classes.example}>
@@ -78,6 +75,10 @@ export const Radius = (): JSXElement => {
             </Blur>
           </div>
         ))}
+      </div>
+
+      <div className={classes.controls}>
+        <Button onClick={toggleAll}>Toggle All</Button>
       </div>
     </>
   );
