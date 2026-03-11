@@ -1,6 +1,8 @@
 import type { ESLint } from 'eslint';
 
-import { name, version } from '../package.json';
+// Use require to avoid leaking package.json types into declarations,
+// which causes API Extractor to fail resolving '../package.json'.
+const { name, version } = require('../package.json') as { name: string; version: string };
 import { RULE_NAME as enforceUseClientName, rule as enforceUseClient } from './rules/enforce-use-client';
 import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9';
 
@@ -17,7 +19,10 @@ const recommendedRules = {
   // Add rules to the recommended config here in the future
 };
 
-export const configs = {
+export const configs: {
+  recommended: { plugins: string[]; rules: {} };
+  'flat/recommended': { plugins: Record<string, ESLint.Plugin>; rules: {} };
+} = {
   recommended: {
     plugins: [name],
     rules: recommendedRules,
