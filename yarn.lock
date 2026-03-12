@@ -1882,15 +1882,6 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
-"@fluentui/react-motion-components-preview@^0.14.2":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-motion-components-preview/-/react-motion-components-preview-0.14.2.tgz#9fd0ae8bd27bd43423ca4d9eca6b913d01ecdfbf"
-  integrity sha512-QbdbgzcM02AvYCN4PbBMZCw10vMh9AvPK8kK2kbMdNWXolbRau2ndNVfXpXvZxY9KZFc2lJlYUBLWJTLDINQXA==
-  dependencies:
-    "@fluentui/react-motion" "*"
-    "@fluentui/react-utilities" "*"
-    "@swc/helpers" "^0.5.1"
-
 "@fluentui/react-northstar-fela-renderer@^0.66.5":
   version "0.66.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-northstar-fela-renderer/-/react-northstar-fela-renderer-0.66.5.tgz#ceffe843a535886f318ae42012e8bb0c800c3e83"
