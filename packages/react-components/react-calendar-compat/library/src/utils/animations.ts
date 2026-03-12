@@ -5,15 +5,15 @@ import { motionTokens } from '@fluentui/react-motion';
 /** @deprecated Slide animations now use motion components. Use motionTokens.curveDecelerateMax instead. */
 export const EASING_FUNCTION_1 = motionTokens.curveDecelerateMax;
 
-// Used in header fade animations (CalendarDay, CalendarPicker currentItemButton)
-export const EASING_FUNCTION_2 = 'cubic-bezier(.1,.25,.75,.9)'; // No exact motion token equivalent
+/** @deprecated Fade animations now use Fade.In motion component. No exact motion token equivalent. */
+export const EASING_FUNCTION_2 = 'cubic-bezier(.1,.25,.75,.9)';
 
 // === DURATIONS ===
 
 /** @deprecated No longer used internally. */
 export const DURATION_1 = `${motionTokens.durationFast}ms`;
 
-// Used in header fade animations (CalendarDay, CalendarPicker currentItemButton)
+/** @deprecated Fade animations now use Fade.In motion component with motionTokens.durationGentle. */
 export const DURATION_2 = `${motionTokens.durationGentle}ms`;
 
 /** @deprecated Slide animations now use motion components with motionTokens.durationSlower. */
@@ -24,7 +24,7 @@ export const DURATION_4 = `${motionTokens.durationUltraSlow}ms`;
 
 // === FADE ANIMATIONS ===
 
-// Used in header fade animations (CalendarDay, CalendarPicker currentItemButton)
+/** @deprecated Fade animations now use Fade.In motion component. */
 export const FADE_IN = {
   from: {
     opacity: 0,

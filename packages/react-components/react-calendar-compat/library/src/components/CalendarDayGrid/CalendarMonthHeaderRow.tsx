@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
+import { motionTokens } from '@fluentui/react-motion';
+import { Fade } from '@fluentui/react-motion-components-preview';
 import { DAYS_IN_WEEK } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
 import type { DayInfo } from './CalendarDayGrid';
@@ -41,16 +43,17 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHea
         const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
         const label = strings.days[i];
         return (
-          <th
-            className={mergeClasses(classNames.dayCell, classNames.weekDayLabelCell)}
-            scope="col"
-            key={dayLabels[i] + ' ' + index}
-            title={label}
-            aria-label={label}
-            tabIndex={allFocusable ? 0 : undefined}
-          >
-            {dayLabels[i]}
-          </th>
+          <Fade.In key={dayLabels[i] + ' ' + index} duration={motionTokens.durationGentle}>
+            <th
+              className={mergeClasses(classNames.dayCell, classNames.weekDayLabelCell)}
+              scope="col"
+              title={label}
+              aria-label={label}
+              tabIndex={allFocusable ? 0 : undefined}
+            >
+              {dayLabels[i]}
+            </th>
+          </Fade.In>
         );
       })}
     </tr>
