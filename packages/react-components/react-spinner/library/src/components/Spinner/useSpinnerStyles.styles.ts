@@ -14,6 +14,13 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
 };
 
 /**
+ * @internal Class names for the tail arc span elements (replacing ::before/::after).
+ */
+export const spinnerTailArcClassNames = {
+  arc: 'fui-Spinner__spinnerTailArc',
+};
+
+/**
  * CSS variables used internally by Spinner
  */
 const vars = {
@@ -58,11 +65,10 @@ const useSpinnerBaseClassName = makeResetStyles({
   // CSS rotation animation removed — now handled by SpinnerRotation motion component in renderSpinner
 });
 
-// The spinner tail is rendered using two 135deg arc segments, behind a 105deg arc mask.
+// The spinner tail uses a 105deg arc mask with two arc segment child spans (replacing ::before/::after).
 // The segments are rotated out from behind the mask to expand the visible arc from
 // 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
-// The spinner root 360deg rotation is handled by SpinnerRotation (WAAPI). The tail arc
-// animation is CSS-based here; ::before/::after use `animation: inherit` to sync with the tail.
+// All animations (tail rotation + arc expand/collapse) are handled by WAAPI motion components.
 const useSpinnerTailBaseClassName = makeResetStyles({
   position: 'absolute',
   display: 'block',
@@ -70,44 +76,27 @@ const useSpinnerTailBaseClassName = makeResetStyles({
   height: '100%',
   maskImage: 'conic-gradient(transparent 105deg, white 105deg)',
 
-  '&::before, &::after': {
-    content: '""',
-    position: 'absolute',
-    display: 'block',
-    width: '100%',
-    height: '100%',
-    animation: 'inherit',
-    backgroundImage: 'conic-gradient(currentcolor 135deg, transparent 135deg)',
-  },
+  // CSS animations removed — now handled by SpinnerTailMotion in renderSpinner
 
-  animationDuration: '1.5s',
-  animationIterationCount: 'infinite',
-  animationTimingFunction: tokens.curveEasyEase,
-  animationName: {
-    '0%': { transform: 'rotate(-135deg)' },
-    '50%': { transform: 'rotate(0deg)' },
-    '100%': { transform: 'rotate(225deg)' },
-  },
-  '&::before': {
-    animationName: {
-      '0%': { transform: 'rotate(0deg)' },
-      '50%': { transform: 'rotate(105deg)' },
-      '100%': { transform: 'rotate(0deg)' },
-    },
-  },
-  '&::after': {
-    animationName: {
-      '0%': { transform: 'rotate(0deg)' },
-      '50%': { transform: 'rotate(225deg)' },
-      '100%': { transform: 'rotate(0deg)' },
-    },
-  },
   '@media screen and (prefers-reduced-motion: reduce)': {
-    animationIterationCount: '0',
+    // Show a static arc directly on the tail element
     backgroundImage: 'conic-gradient(transparent 120deg, currentcolor 360deg)',
-    '&::before, &::after': {
-      content: 'none',
-    },
+  },
+});
+
+// Styles for the arc span elements (replacing the ::before/::after pseudo-elements).
+// Both arc elements share identical base styles; their different rotation animations
+// are handled by SpinnerArcStartMotion and SpinnerArcEndMotion respectively.
+const useSpinnerTailArcBaseClassName = makeResetStyles({
+  position: 'absolute',
+  display: 'block',
+  width: '100%',
+  height: '100%',
+  backgroundImage: 'conic-gradient(currentcolor 135deg, transparent 135deg)',
+
+  '@media screen and (prefers-reduced-motion: reduce)': {
+    // Hide arc elements in reduced motion — static arc is shown on the tail container
+    display: 'none',
   },
 });
 
@@ -119,12 +108,13 @@ const useSpinnerStyles = makeStyles({
 
   rtlTail: {
     maskImage: 'conic-gradient(white 255deg, transparent 255deg)',
-    '&::before, &::after': {
-      backgroundImage: 'conic-gradient(transparent 225deg, currentcolor 225deg)',
-    },
     '@media screen and (prefers-reduced-motion: reduce)': {
       backgroundImage: 'conic-gradient(currentcolor 0deg, transparent 240deg)',
     },
+  },
+
+  rtlTailArc: {
+    backgroundImage: 'conic-gradient(transparent 225deg, currentcolor 225deg)',
   },
 
   'extra-tiny': {
@@ -228,6 +218,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   const spinnerBaseClassName = useSpinnerBaseClassName();
   const spinnerStyles = useSpinnerStyles();
   const spinnerTailBaseClassName = useSpinnerTailBaseClassName();
+  const spinnerTailArcBaseClassName = useSpinnerTailArcBaseClassName();
   const labelStyles = useLabelStyles();
 
   state.root.className = mergeClasses(
@@ -253,6 +244,11 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       state.spinnerTail.className,
     );
   }
+
+  // Set arc element classNames for use in renderSpinner
+  state.tailArcClassName = mergeClasses(spinnerTailArcClassNames.arc, spinnerTailArcBaseClassName);
+  state.tailArcRtlClassName = dir === 'rtl' ? spinnerStyles.rtlTailArc : undefined;
+
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
