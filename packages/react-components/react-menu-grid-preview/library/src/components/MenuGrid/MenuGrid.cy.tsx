@@ -242,6 +242,12 @@ describe('With MenuList submenus', () => {
     cy.get(menuGridItemSelector).eq(1).should('be.focused');
   });
 
+  it('should not open a submenu trigger with ArrowRight', () => {
+    mount(<WithSubmenuExample />);
+    cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('ArrowRight');
+    cy.get(menuSelector).should('have.length', 0);
+  });
+
   it('should open a submenu trigger with Enter', () => {
     mount(<WithSubmenuExample />);
     cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('Enter');

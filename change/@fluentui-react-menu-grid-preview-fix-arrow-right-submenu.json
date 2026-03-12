@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation)",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
