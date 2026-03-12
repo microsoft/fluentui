@@ -14,8 +14,7 @@
     "dev": "tsc -w -p tsconfig.json"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0",
-    "zod": "^3.22.0"
+    "@modelcontextprotocol/sdk": "^1.0.0"
   },
   "devDependencies": {
     "typescript": "~5.4.0"
