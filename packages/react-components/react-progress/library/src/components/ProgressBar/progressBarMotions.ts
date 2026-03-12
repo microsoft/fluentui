@@ -7,7 +7,7 @@ import { createMotionComponent, motionTokens } from '@fluentui/react-motion';
  * In reduced motion mode, the bar pulses opacity instead of sliding.
  */
 export const ProgressBarIndeterminate = createMotionComponent({
-  keyframes: [{ left: '-33%' }, { left: '100%' }],
+  keyframes: [{ translate: '-100%' }, { translate: '300%' }],
   duration: 3000,
   iterations: Infinity,
   easing: motionTokens.curveLinear,
