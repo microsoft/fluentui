@@ -1,5 +1,9 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerListChartsTool } from './listCharts.js';
+import { registerScopeRegressionTool } from './scopeRegression.js';
+import { registerSearchCommitsTool } from './searchCommits.js';
+import { registerGetCommitDetailsTool } from './getCommitDetails.js';
+import { registerFindCulpritTool } from './findCulprit.js';
 
 /**
  * Central registry for all MCP tools.
@@ -10,8 +14,12 @@ import { registerListChartsTool } from './listCharts.js';
  * 3. Import and call it here
  */
 export function registerTools(server: McpServer): void {
+  // Reference tool
   registerListChartsTool(server);
 
-  // Add new tools here:
-  // registerMyNewTool(server);
+  // Smart bisect pipeline tools
+  registerScopeRegressionTool(server);    // Phase 1: Scoping
+  registerSearchCommitsTool(server);       // Phase 2: Narrowing
+  registerGetCommitDetailsTool(server);    // Phase 2/3: Inspection
+  registerFindCulpritTool(server);         // Phase 2/4: Reverse culprit search
 }

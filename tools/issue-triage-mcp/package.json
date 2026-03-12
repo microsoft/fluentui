@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/issue-triage-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that triages issues by narrowing down files and folders in the FluentUI repo",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "issue-triage-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -w -p tsconfig.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.4.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  }
+}
