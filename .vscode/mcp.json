@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "react-charts": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["packages/charts/react-charts/mcp-server/dist/index.js"]
+    }
+  }
+}

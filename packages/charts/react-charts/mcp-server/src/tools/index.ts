@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerListChartsTool } from './listCharts.js';
+import { registerScoreCommitsTool } from './scoreCommits.js';
 
 /**
  * Central registry for all MCP tools.
@@ -12,6 +13,6 @@ import { registerListChartsTool } from './listCharts.js';
 export function registerTools(server: McpServer): void {
   registerListChartsTool(server);
 
+  registerScoreCommitsTool(server);
   // Add new tools here:
-  // registerMyNewTool(server);
 }
