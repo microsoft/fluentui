@@ -22,22 +22,22 @@ The server will:
 
 ## Issue categories supported
 
-| Category               | Example keywords                                    |
-| ---------------------- | --------------------------------------------------- |
-| Performance            | slow, lag, memory leak, re-render, infinite loop    |
-| Layout / Alignment     | alignment, overflow, margin, gap, z-index, sticky   |
-| Visual / Styling       | color, dark mode, theme, token, CSS, high contrast  |
-| Localization / i18n    | translation, i18n, RTL, aria-label, locale          |
-| Accessibility          | a11y, aria, screen reader, focus, keyboard, WCAG    |
-| Interaction / Events   | click, hover, event not firing, callback, dismiss   |
-| State / Logic          | crash, undefined, state not updating, blank screen  |
-| Animation / Transition | fade, slide, prefers-reduced-motion, keyframe       |
-| Responsive / Mobile    | breakpoint, mobile, viewport, touch, cross-browser  |
-| Testing                | jest, snapshot, storybook, visual regression, flaky |
-| Build / TypeScript     | type error, cannot find module, circular dependency |
-| Popover / Overlay      | popup, portal, tooltip, positioning, collision      |
-| Form / Input           | validation, controlled, required, placeholder       |
-| Data Display           | table, tree, virtualizer, sorting, row selection    |
+| Category | Example keywords |
+|---|---|
+| Performance | slow, lag, memory leak, re-render, infinite loop |
+| Layout / Alignment | alignment, overflow, margin, gap, z-index, sticky |
+| Visual / Styling | color, dark mode, theme, token, CSS, high contrast |
+| Localization / i18n | translation, i18n, RTL, aria-label, locale |
+| Accessibility | a11y, aria, screen reader, focus, keyboard, WCAG |
+| Interaction / Events | click, hover, event not firing, callback, dismiss |
+| State / Logic | crash, undefined, state not updating, blank screen |
+| Animation / Transition | fade, slide, prefers-reduced-motion, keyframe |
+| Responsive / Mobile | breakpoint, mobile, viewport, touch, cross-browser |
+| Testing | jest, snapshot, storybook, visual regression, flaky |
+| Build / TypeScript | type error, cannot find module, circular dependency |
+| Popover / Overlay | popup, portal, tooltip, positioning, collision |
+| Form / Input | validation, controlled, required, placeholder |
+| Data Display | table, tree, virtualizer, sorting, row selection |
 
 ---
 

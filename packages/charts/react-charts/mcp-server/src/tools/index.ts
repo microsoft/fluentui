@@ -18,8 +18,8 @@ export function registerTools(server: McpServer): void {
   registerListChartsTool(server);
 
   // Smart bisect pipeline tools
-  registerScopeRegressionTool(server); // Phase 1: Scoping
-  registerSearchCommitsTool(server); // Phase 2: Narrowing
-  registerGetCommitDetailsTool(server); // Phase 2/3: Inspection
-  registerFindCulpritTool(server); // Phase 2/4: Reverse culprit search
+  registerScopeRegressionTool(server);    // Phase 1: Scoping
+  registerSearchCommitsTool(server);       // Phase 2: Narrowing
+  registerGetCommitDetailsTool(server);    // Phase 2/3: Inspection
+  registerFindCulpritTool(server);         // Phase 2/4: Reverse culprit search
 }

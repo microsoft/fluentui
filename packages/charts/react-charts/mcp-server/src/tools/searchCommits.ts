@@ -3,10 +3,7 @@ import { z } from 'zod';
 import { execGit } from '../utils/git.js';
 
 const InputSchema = z.object({
-  keyword: z
-    .string()
-    .optional()
-    .describe('Search commit messages for this keyword (e.g. "fix", "regression", "revert")'),
+  keyword: z.string().optional().describe('Search commit messages for this keyword (e.g. "fix", "regression", "revert")'),
   path: z.string().optional().describe('Limit to commits touching this file or directory path'),
   author: z.string().optional().describe('Filter by commit author name or email'),
   sinceDate: z.string().optional().describe('Start date (ISO format, e.g. "2025-06-01")'),

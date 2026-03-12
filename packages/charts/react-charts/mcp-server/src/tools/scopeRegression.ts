@@ -4,10 +4,7 @@ import { execGit } from '../utils/git.js';
 
 const InputSchema = z.object({
   component: z.string().describe('Chart component name, e.g. "DonutChart", "LineChart", "ScatterChart"'),
-  sinceDate: z
-    .string()
-    .optional()
-    .describe('Start date for search window (ISO format, e.g. "2025-06-01"). Defaults to 6 months ago.'),
+  sinceDate: z.string().optional().describe('Start date for search window (ISO format, e.g. "2025-06-01"). Defaults to 6 months ago.'),
   untilDate: z.string().optional().describe('End date for search window (ISO format). Defaults to now.'),
 });
 

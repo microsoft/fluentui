@@ -65,7 +65,15 @@ export const ISSUE_CATEGORIES: IssueCategory[] = [
       'apps/perf-test-react-components',
       'apps/perf-test',
     ],
-    fileGlobs: ['*.perf.ts', '*.perf.tsx', 'use*.ts', 'use*.tsx', '*.memo.*', 'virtualizer*', 'Virtualizer*'],
+    fileGlobs: [
+      '*.perf.ts',
+      '*.perf.tsx',
+      'use*.ts',
+      'use*.tsx',
+      '*.memo.*',
+      'virtualizer*',
+      'Virtualizer*',
+    ],
     notes: [
       'Check for missing React.memo / useMemo / useCallback wrappers.',
       'Look for components that trigger expensive re-renders on every keystroke or scroll.',
@@ -248,7 +256,10 @@ export const ISSUE_CATEGORIES: IssueCategory[] = [
       'flip',
       'direction',
     ],
-    folders: ['packages/react-components/react-utilities/src', 'packages/react-components/react-aria/src'],
+    folders: [
+      'packages/react-components/react-utilities/src',
+      'packages/react-components/react-aria/src',
+    ],
     fileGlobs: [
       '*.types.ts',
       '*Slots.ts',
@@ -450,7 +461,15 @@ export const ISSUE_CATEGORIES: IssueCategory[] = [
       'conditional',
     ],
     folders: ['packages/react-components/react-utilities/src', 'packages/react-components/react-shared-contexts/src'],
-    fileGlobs: ['use*.ts', 'use*.tsx', '*.context.ts', '*.context.tsx', '*Provider*', '*Reducer*', '*.state.ts'],
+    fileGlobs: [
+      'use*.ts',
+      'use*.tsx',
+      '*.context.ts',
+      '*.context.tsx',
+      '*Provider*',
+      '*Reducer*',
+      '*.state.ts',
+    ],
     notes: [
       'Start from the component hook (useComponentName.ts) — that is where all state logic lives.',
       'Controlled/uncontrolled helpers are in packages/react-components/react-utilities/src/utils/useControllableState.ts.',

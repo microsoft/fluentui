@@ -256,7 +256,7 @@ function applyKeywordOverrides(
       reason: 'Focus-visible ring CSS class injection',
     });
     investigationSteps.push(
-      'Focus rings are applied via the .fui-FluentProvider__focusVisible CSS class — verify it is present on the root <body> or provider element.',
+      "Focus rings are applied via the .fui-FluentProvider__focusVisible CSS class — verify it is present on the root <body> or provider element.",
     );
   }
 
@@ -285,9 +285,9 @@ function applyKeywordOverrides(
   // ── Memory leak ────────────────────────────────────────────────────────────
   if (/memory.?leak|leak|not.?clean|cleanup|unmount/.test(lower)) {
     investigationSteps.push(
-      'Return a cleanup function from every useEffect that adds event listeners or starts timers.',
-      'Check for missing AbortController teardown in async effects.',
-      'Zustand/Context stores: ensure subscriptions are removed on component unmount.',
+      "Return a cleanup function from every useEffect that adds event listeners or starts timers.",
+      "Check for missing AbortController teardown in async effects.",
+      "Zustand/Context stores: ensure subscriptions are removed on component unmount.",
     );
   }
 
@@ -409,10 +409,11 @@ function formatResult(result: TriageResult, repoRoot: string): string {
     }
   }
 
-  if (result.primaryFiles.length === 0 && result.primaryFolders.length === 0) {
-    lines.push(
-      `\n---\n_No specific files or folders could be identified. Try including the component name or a more specific description of the symptom._`,
-    );
+  if (
+    result.primaryFiles.length === 0 &&
+    result.primaryFolders.length === 0
+  ) {
+    lines.push(`\n---\n_No specific files or folders could be identified. Try including the component name or a more specific description of the symptom._`);
   }
 
   return lines.join('\n');
@@ -423,10 +424,12 @@ function formatResult(result: TriageResult, repoRoot: string): string {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const inputSchema = {
-  description: z
-    .string()
-    .describe('Free-text description of the issue. Include component names, symptoms, and reproduction steps.'),
-  repoRoot: z.string().optional().describe('Path to the repository root (default: ".")'),
+  description: z.string().describe(
+    'Free-text description of the issue. Include component names, symptoms, and reproduction steps.',
+  ),
+  repoRoot: z.string().optional().describe(
+    'Path to the repository root (default: ".")',
+  ),
 };
 
 export function registerTriageIssueTool(server: McpServer): void {
@@ -438,18 +441,16 @@ export function registerTriageIssueTool(server: McpServer): void {
         'Given a description of a bug, performance problem, UI issue, or any other problem in the FluentUI repository, returns a structured list of files, folders, and investigation steps that are most likely relevant to diagnosing and fixing the issue.',
       inputSchema,
     },
-    args => {
+    (args) => {
       const description = args.description ?? '';
       const repoRoot = args.repoRoot ?? '.';
 
       if (description.length < 5) {
         return {
-          content: [
-            {
-              type: 'text' as const,
-              text: 'Error: `description` is required and must be at least 5 characters.',
-            },
-          ],
+          content: [{
+            type: 'text' as const,
+            text: 'Error: `description` is required and must be at least 5 characters.',
+          }],
         };
       }
 

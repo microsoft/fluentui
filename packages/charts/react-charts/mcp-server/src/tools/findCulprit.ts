@@ -4,10 +4,7 @@ import { execGit } from '../utils/git.js';
 
 const InputSchema = z.object({
   fixCommit: z.string().describe('The commit hash that fixed the regression'),
-  searchDepth: z
-    .number()
-    .optional()
-    .describe('How many commits back to search for the introducing commit (default: 50)'),
+  searchDepth: z.number().optional().describe('How many commits back to search for the introducing commit (default: 50)'),
 });
 
 /**
@@ -35,19 +32,12 @@ export function registerFindCulpritTool(server: McpServer): void {
       const fixSubject = await execGit(['show', '--no-patch', '--format=%s', fixCommit]);
 
       // Step 3: For each file in the fix, find recent commits that touched it before the fix
-      const candidateMap = new Map<
-        string,
-        { hash: string; date: string; subject: string; files: string[]; score: number }
-      >();
+      const candidateMap = new Map<string, { hash: string; date: string; subject: string; files: string[]; score: number }>();
 
       for (const file of files) {
         const logOutput = await execGit([
-          'log',
-          `--max-count=${depth}`,
-          '--format=%H|%ai|%s',
-          `${fixCommit}~1`,
-          '--',
-          file,
+          'log', `--max-count=${depth}`, '--format=%H|%ai|%s',
+          `${fixCommit}~1`, '--', file,
         ]);
 
         const logLines = logOutput.trim().split('\n').filter(Boolean);
