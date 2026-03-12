@@ -2,7 +2,6 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -173,10 +172,7 @@ const useWeekRowStyles = makeStyles({
 const useWeekDayLabelCellStyles = makeStyles({
   base: {
     userSelect: 'none',
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
+    // CSS fade animation removed - now handled by Fade.In motion component in CalendarMonthHeaderRow
   },
 });
 

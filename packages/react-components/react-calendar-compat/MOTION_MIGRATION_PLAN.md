@@ -5,7 +5,7 @@
 Migration of Calendar animations from CSS keyframe animations to Fluent UI v9 motion components.
 
 **Last Updated:** January 2026
-**Status:** Phase 2 complete (all animations migrated to motion components)
+**Status:** Phase 3 complete (all animations migrated to motion components)
 
 ---
 
@@ -28,6 +28,13 @@ Migration of Calendar animations from CSS keyframe animations to Fluent UI v9 mo
 - ✅ Removed CSS fade animations from `useCalendarDayStyles.styles.ts`
 - ✅ Removed CSS fade animations from `useCalendarPickerStyles.styles.ts`
 - ✅ Marked animation constants as `@deprecated` in `animations.ts`
+
+### Completed (Phase 3: Final Cleanup)
+
+- ✅ Migrated `CalendarDayGrid` weekDayLabelCell fade to `Fade.In` motion component in `CalendarMonthHeaderRow.tsx`
+- ✅ Removed CSS fade animation from `useCalendarDayGridStyles.styles.ts`
+- ✅ Marked remaining constants (`FADE_IN`, `DURATION_2`, `EASING_FUNCTION_2`) as `@deprecated`
+- ✅ All animation constants in `animations.ts` are now deprecated
 
 ---
 
@@ -98,6 +105,7 @@ All CSS animations have been migrated to motion components:
 | `CalendarDay.tsx`                    | ✅     | Added `HeaderFade` for header                          |
 | `useCalendarDayStyles.styles.ts`     | ✅     | Removed CSS fade animation                             |
 | `animations.ts`                      | ✅     | All exports marked `@deprecated`                       |
+| `CalendarMonthHeaderRow.tsx`         | ✅     | Wrapped `<th>` with `Fade.In` motion component         |
 
 ---
 
