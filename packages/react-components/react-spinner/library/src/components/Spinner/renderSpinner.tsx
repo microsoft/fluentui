@@ -4,6 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
+import { SpinnerRotation } from './spinnerMotions';
 
 /**
  * Render the final JSX of Spinner
@@ -17,7 +18,9 @@ export const renderSpinner_unstable = (state: SpinnerState): JSXElement => {
         <state.label />
       )}
       {state.spinner && shouldRenderSpinner && (
-        <state.spinner>{state.spinnerTail && <state.spinnerTail />}</state.spinner>
+        <SpinnerRotation>
+          <state.spinner>{state.spinnerTail && <state.spinnerTail />}</state.spinner>
+        </SpinnerRotation>
       )}
       {state.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
         <state.label />
