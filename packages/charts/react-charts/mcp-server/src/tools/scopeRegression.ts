@@ -56,8 +56,10 @@ export function registerScopeRegressionTool(server: McpServer): void {
         `### Commits touching shared utilities (since ${since})`,
         sharedLog.trim() || '_No commits found_',
         '',
-        '### Suggested next step',
-        'Use `search_commits` or `get_commit_details` to inspect suspect commits from the lists above.',
+        '### Suggested next steps',
+        '1. Use `search_commits` to narrow down suspect commits from the lists above.',
+        '2. Use `get_commit_details` to inspect individual commits.',
+        '3. Use `prepare_regression_test` with the suspect SHAs to get a validation plan, then run it with parallel sub-agents and call `analyze_regression_results`.',
       ].join('\n');
 
       return { content: [{ type: 'text' as const, text: result }] };

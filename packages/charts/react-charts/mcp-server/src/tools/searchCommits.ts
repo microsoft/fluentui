@@ -51,16 +51,19 @@ export function registerSearchCommitsTool(server: McpServer): void {
       for (const line of lines) {
         const [hash, date, authorName, ...msgParts] = line.split('|');
         const message = msgParts.join('|');
-        const shortHash = hash.slice(0, 10);
-
         // Get file count changed
         const statOutput = await execGit(['diff-tree', '--no-commit-id', '--name-only', '-r', hash]);
         const filesChanged = statOutput.trim().split('\n').filter(Boolean).length;
 
-        results.push(`- \`${shortHash}\` ${date.slice(0, 10)} (${filesChanged} files) — ${message}`);
+        results.push(`- \`${hash}\` ${date.slice(0, 10)} (${filesChanged} files) — ${message}`);
       }
 
-      results.push('', '### Next step', 'Use `get_commit_details` on suspect commits to see full diffs.');
+      results.push(
+        '',
+        '### Next steps',
+        '- Use `get_commit_details` on suspect commits to see full diffs.',
+        '- Use `prepare_regression_test` with the suspect SHAs to generate a validation plan, then dispatch parallel sub-agents and call `analyze_regression_results`.',
+      );
 
       return { content: [{ type: 'text' as const, text: results.join('\n') }] };
     },

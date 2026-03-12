@@ -64,7 +64,7 @@ export function registerFindCulpritTool(server: McpServer): void {
 
       // Step 5: Format output
       const result = [
-        `## Culprit search for fix: \`${fixCommit.slice(0, 10)}\``,
+        `## Culprit search for fix: \`${fixCommit}\``,
         `**Fix subject:** ${fixSubject.trim()}`,
         `**Fix date:** ${fixDate.trim().slice(0, 10)}`,
         `**Files in fix:** ${files.length}`,
@@ -75,14 +75,15 @@ export function registerFindCulpritTool(server: McpServer): void {
         ...candidates.map((c, i) => {
           const overlapPct = Math.round((c.files.length / files.length) * 100);
           return [
-            `**${i + 1}. \`${c.hash.slice(0, 10)}\`** — ${c.subject}`,
+            `**${i + 1}. \`${c.hash}\`** — ${c.subject}`,
             `   Date: ${c.date} | Overlap: ${c.files.length}/${files.length} files (${overlapPct}%)`,
             `   Matching files: ${c.files.map(f => f.split('/').pop()).join(', ')}`,
           ].join('\n');
         }),
         '',
-        '### Next step',
-        'Use `get_commit_details` on the top suspects to inspect their diffs and determine the true culprit.',
+        '### Next steps',
+        '- Use `get_commit_details` on the top suspects to inspect their diffs.',
+        '- Use `prepare_regression_test` with the suspect SHAs to generate a validation plan, then dispatch parallel sub-agents and call `analyze_regression_results`.',
       ].join('\n');
 
       return { content: [{ type: 'text' as const, text: result }] };
