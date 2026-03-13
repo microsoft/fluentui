@@ -16,6 +16,10 @@ Parse these from the arguments string before starting.
 
 ---
 
+**STRICT RULE — Use only `react-charts-mcp` tools:** Throughout this entire investigation, you MUST use **only** the MCP tools provided by `react-charts-mcp` (`scope_regression`, `search_commits`, `fetch_commits_for_regression`, `get_commit_details`, `prepare_regression_test`, `analyze_regression_results`, `find_culprit`) for all commit discovery, diff inspection, and analysis. **Do NOT** fall back to raw git commands (`git log`, `git show`, `git blame`, `git diff`, `git log -S`, etc.) or bash-based alternatives at any point. The only permitted shell commands are those explicitly output by `prepare_regression_test` (worktree creation, dependency install, build, and test execution in Step 5) and worktree cleanup. If an MCP tool returns limited or no results, retry with different parameters (broader keywords, different paths, wider date ranges) rather than switching to git commands.
+
+---
+
 **IMPORTANT — Step announcements:** Before executing each step, you MUST print a visible banner to the user so they can track progress. Use this exact format:
 
 ```
