@@ -90,8 +90,9 @@ export const badgeBaseStyles = css.partial`
 `;
 
 /**
- * @public
  * The badge's size styles
+ *
+ * @public
  */
 export const badgeSizeStyles = css.partial`
   :host([size='tiny']) {

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:21 GMT",
+      "tag": "@fluentui/react-message-bar_v9.6.21",
+      "version": "9.6.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-message-bar_v9.6.20",
       "version": "9.6.20",

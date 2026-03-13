@@ -22,8 +22,11 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The validation state of the progress bar
-   * @public
+   * The validation state of the progress bar
+   *
    * HTML Attribute: `validation-state`
+   *
+   * @public
    */
   @attr({ attribute: 'validation-state' })
   public validationState: ProgressBarValidationState | null = null;
@@ -42,8 +45,11 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The value of the progress
-   * @internal
+   * The value of the progress
+   *
    * HTML Attribute: `value`
+   *
+   * @internal
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number;
@@ -60,8 +66,11 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The minimum value
-   * @internal
+   * The minimum value
+   *
    * HTML Attribute: `min`
+   *
+   * @internal
    */
   @attr({ converter: nullableNumberConverter })
   public min?: number;
@@ -79,8 +88,11 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The maximum value
-   * @internal
+   * The maximum value
+   *
    * HTML Attribute: `max`
+   *
+   * @internal
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;

@@ -59,6 +59,7 @@ import {
   calcBandwidth,
   calcRequiredWidth,
   sortAxisCategories,
+  isSafeUrl,
 } from '../../utilities/index';
 import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
@@ -309,7 +310,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void => {
     props.onBarClick?.(mouseEvent, data);
-    props.href ? (window.location.href = props.href) : '';
+    if (props.href && isSafeUrl(props.href)) {
+      window.location.href = props.href;
+    }
   };
 
   function _adjustProps(): void {
@@ -1095,6 +1098,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                   z
                 `}
                 fill={startColor}
+                opacity={shouldHighlight ? 1 : 0.1}
                 rx={props.roundCorners ? 3 : 0}
                 ref={e => {
                   ref.refElement = e;
