@@ -1,12 +1,5 @@
 import * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  DistributiveOmit,
-  EventData,
-  EventHandler,
-  Slot,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingSlots = {
@@ -82,7 +75,7 @@ export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDi
 /**
  * Rating base props — excludes design props (color, size).
  */
-export type RatingBaseProps = DistributiveOmit<RatingProps, 'color' | 'size'>;
+export type RatingBaseProps = Omit<RatingProps, 'color' | 'size'>;
 
 /**
  * State used in rendering Rating
@@ -96,7 +89,7 @@ export type RatingState = ComponentState<RatingSlots> &
 /**
  * Rating base state — excludes design props (color, size).
  */
-export type RatingBaseState = DistributiveOmit<RatingState, 'color' | 'size'>;
+export type RatingBaseState = Omit<RatingState, 'color' | 'size'>;
 
 export type RatingContextValues = {
   ratingItem: RatingItemContextValue;

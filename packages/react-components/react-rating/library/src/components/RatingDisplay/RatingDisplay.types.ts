@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingDisplaySlots = {
@@ -52,7 +52,7 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
 /**
  * RatingDisplay base props — excludes design props (color, size).
  */
-export type RatingDisplayBaseProps = DistributiveOmit<RatingDisplayProps, 'color' | 'size'>;
+export type RatingDisplayBaseProps = Omit<RatingDisplayProps, 'color' | 'size'>;
 
 /**
  * State used in rendering RatingDisplay
@@ -64,6 +64,6 @@ export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
 /**
  * RatingDisplay base state — excludes design props (color, size).
  */
-export type RatingDisplayBaseState = DistributiveOmit<RatingDisplayState, 'color' | 'size'>;
+export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size'>;
 
 export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };

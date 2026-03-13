@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { RatingState } from '../Rating/Rating.types';
 import { RatingDisplayState } from '../RatingDisplay/RatingDisplay.types';
 
@@ -54,7 +54,7 @@ export type RatingItemState = ComponentState<RatingItemSlots> &
 /**
  * RatingItem base state — excludes design props (color, size) from context.
  */
-export type RatingItemBaseState = DistributiveOmit<RatingItemState, 'color' | 'size'>;
+export type RatingItemBaseState = Omit<RatingItemState, 'color' | 'size'>;
 
 export type RatingItemContextValue = Partial<Pick<RatingState, 'name' | 'hoveredValue' | 'value'>> &
   Pick<RatingState, 'color' | 'iconFilled' | 'iconOutline' | 'itemLabel' | 'step' | 'size'> &

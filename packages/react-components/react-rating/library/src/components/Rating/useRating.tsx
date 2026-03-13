@@ -23,8 +23,21 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of Rating
  */
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
-  const { color = 'neutral', size = 'extra-large', ...baseProps } = props;
-  const state = useRatingBase_unstable(baseProps, ref);
+  const {
+    color = 'neutral',
+    size = 'extra-large',
+    iconFilled = StarFilled,
+    iconOutline = StarRegular,
+    ...baseProps
+  } = props;
+  const state = useRatingBase_unstable(
+    {
+      iconFilled,
+      iconOutline,
+      ...baseProps,
+    },
+    ref,
+  );
 
   return {
     ...state,
@@ -44,8 +57,8 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HTMLDivElement>): RatingBaseState => {
   const generatedName = useId('rating-');
   const {
-    iconFilled = StarFilled,
-    iconOutline = StarRegular,
+    iconFilled = 'span',
+    iconOutline = 'span',
     max = 5,
     name = generatedName,
     onChange,
