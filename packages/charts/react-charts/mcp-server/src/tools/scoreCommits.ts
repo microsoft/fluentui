@@ -91,26 +91,20 @@ function computeRecencyScores(commits: CommitMeta[]): Map<string, number> {
 
 // ─── Register MCP Tool ────────────────────────────────────────────────────────
 
-const inputSchema = {
-  description: z.string().describe('A plain-language description of the bug or regression to investigate'),
-  repo: z.string().describe('GitHub repository in owner/repo format, e.g. "microsoft/fluentui"'),
-  scope_filter: z.array(z.string()).describe('List of file paths to scope the commit search to'),
-};
-
 export function registerScoreCommitsTool(server: McpServer): void {
-  // Cast to avoid TS2589: MCP SDK's Zod overload creates type instantiation too deep for the compiler to resolve
-  const tool = server.tool.bind(server) as (
-    name: string,
-    description: string,
-    schema: typeof inputSchema,
-    handler: (args: { description: string; repo: string; scope_filter: string[] }) => Promise<unknown>,
-  ) => void;
-
-  tool(
+  server.tool(
     'fetch_commits_for_regression',
     'Fetches all commits from GitHub for a set of files, retrieves their diffs, and returns them for the LLM to score each commit and identify the top 5 culprit candidates.',
-    inputSchema,
-    async ({ description, repo, scope_filter }) => {
+    {
+      description: z.string(),
+      repo: z.string(),
+      scope_filter: z.array(z.string()),
+    } as any,
+    async (args: any) => {
+      const description: string = args.description;
+      const repo: string = args.repo;
+      const scope_filter: string[] = args.scope_filter;
+
       const github_token = process.env['GITHUB_TOKEN'] || undefined;
 
       // Step 1: Fetch commit metadata (one API call per file, parallel)

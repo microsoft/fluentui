@@ -2,12 +2,6 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { execGit } from '../utils/git.js';
 
-const InputSchema = z.object({
-  component: z.string().describe('Chart component name, e.g. "DonutChart", "LineChart", "ScatterChart"'),
-  sinceDate: z.string().optional().describe('Start date for search window (ISO format, e.g. "2025-06-01"). Defaults to 6 months ago.'),
-  untilDate: z.string().optional().describe('End date for search window (ISO format). Defaults to now.'),
-});
-
 /**
  * Phase 1 — Scoping: identifies relevant files and recent commits for a given chart component.
  */
@@ -15,8 +9,16 @@ export function registerScopeRegressionTool(server: McpServer): void {
   server.tool(
     'scope_regression',
     'Phase 1: Given a chart component name, finds all source files and recent commits touching that component. Use this to scope which files and commits are relevant to a reported regression.',
-    InputSchema.shape,
-    async ({ component, sinceDate, untilDate }) => {
+    {
+      component: z.string(),
+      sinceDate: z.string().optional(),
+      untilDate: z.string().optional(),
+    } as any,
+    async (args: any) => {
+      const component: string = args.component;
+      const sinceDate: string | undefined = args.sinceDate;
+      const untilDate: string | undefined = args.untilDate;
+
       const componentPath = resolveComponentPath(component);
 
       // Find all source files for this component

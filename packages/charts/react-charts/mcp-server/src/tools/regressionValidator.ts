@@ -4,21 +4,6 @@ import { execGit, getRepoRoot, worktreeBasePath } from '../utils/git.js';
 
 // ── Tool 1: prepare_regression_test ──────────────────────────────────────────
 
-const PrepareInputSchema = z.object({
-  commits: z.array(z.string()).describe(
-    'Suspect commit SHAs from Phase 2 (chronological order, oldest first). Short or full SHAs accepted.',
-  ),
-  testCommand: z.string().optional().describe(
-    'Shell command that exits 0 if the bug is absent, non-zero if the bug is present. ' +
-    'Example: "yarn nx run react-charts:test --testPathPattern=DonutChart". ' +
-    'If omitted, you MUST generate a minimal test script from the bug description. ' +
-    'Write it as a file (e.g., regression-test.js) into each worktree and run it with node. ' +
-    'Do NOT rely on tests added by the fix commit — they won\'t exist on older suspects.',
-  ),
-  packageName: z.string().describe('Nx package to build before testing (e.g., "react-charts").'),
-  repoRoot: z.string().optional().describe('Absolute path to repo root. Defaults to REPO_ROOT env or cwd.'),
-});
-
 export function registerPrepareRegressionTestTool(server: McpServer): void {
   server.tool(
     'prepare_regression_test',
@@ -32,8 +17,18 @@ export function registerPrepareRegressionTestTool(server: McpServer): void {
       'Write the script to a temp file in each worktree (e.g., `regression-test.js`) before running it. ' +
       'The test should NOT rely on any test that was added as part of the fix — it must work against ' +
       'older commits where the fix does not exist.',
-    PrepareInputSchema.shape,
-    async ({ commits, testCommand, packageName, repoRoot: repoRootParam }) => {
+    {
+      commits: z.array(z.string()),
+      testCommand: z.string().optional(),
+      packageName: z.string(),
+      repoRoot: z.string().optional(),
+    } as any,
+    async (args: any) => {
+      const commits: string[] = args.commits;
+      const testCommand: string | undefined = args.testCommand;
+      const packageName: string = args.packageName;
+      const repoRootParam: string | undefined = args.repoRoot;
+
       const repoRoot = repoRootParam || getRepoRoot();
 
       if (commits.length === 0) {
@@ -135,32 +130,32 @@ export function registerPrepareRegressionTestTool(server: McpServer): void {
 
 // ── Tool 2: analyze_regression_results ───────────────────────────────────────
 
-const AnalyzeInputSchema = z.object({
-  results: z.array(z.object({
-    sha: z.string().describe('Full commit SHA'),
-    status: z.enum(['pass', 'fail', 'error']).describe('Test outcome: pass = bug absent, fail = bug present, error = could not determine'),
-    error: z.string().optional().describe('Error details if status is "error"'),
-  })).describe('Test results in chronological order (oldest commit first, matching the order from prepare_regression_test).'),
-});
-
 export function registerAnalyzeRegressionResultsTool(server: McpServer): void {
   server.tool(
     'analyze_regression_results',
     'Phase 3 — Step 2: Analyzes the pass/fail results from sub-agent test runs. ' +
       'Finds the PASS→FAIL transition to identify the guilty commit. ' +
       'Call this after all parallel sub-agents have reported their results.',
-    AnalyzeInputSchema.shape,
-    async ({ results }) => {
+    {
+      results: z.array(z.object({
+        sha: z.string(),
+        status: z.enum(['pass', 'fail', 'error']),
+        error: z.string().optional(),
+      })),
+    } as any,
+    async (args: any) => {
+      const results = args.results;
+
       if (results.length === 0) {
         return { content: [{ type: 'text' as const, text: JSON.stringify({ success: false, error: 'No results provided.' }) }] };
       }
 
-      const passed = results.filter(r => r.status === 'pass').length;
-      const failed = results.filter(r => r.status === 'fail').length;
-      const errored = results.filter(r => r.status === 'error').length;
+      const passed = results.filter((r: any) => r.status === 'pass').length;
+      const failed = results.filter((r: any) => r.status === 'fail').length;
+      const errored = results.filter((r: any) => r.status === 'error').length;
 
       // Find PASS→FAIL transitions (skip "error" results)
-      const definitive = results.filter(r => r.status === 'pass' || r.status === 'fail');
+      const definitive = results.filter((r: any) => r.status === 'pass' || r.status === 'fail');
       const transitions: Array<{ from: string; to: string; index: number }> = [];
 
       for (let i = 1; i < definitive.length; i++) {
@@ -222,7 +217,7 @@ export function registerAnalyzeRegressionResultsTool(server: McpServer): void {
         `| **Total** | **${results.length}** |`,
         '',
         '### Per-commit results',
-        ...results.map(r => {
+        ...results.map((r: any) => {
           const icon = r.status === 'pass' ? 'PASS' : r.status === 'fail' ? 'FAIL' : 'ERROR';
           return `- \`${r.sha.slice(0, 10)}\` — **${icon}**${r.error ? ` (${r.error})` : ''}`;
         }),

@@ -2,11 +2,6 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { execGit } from '../utils/git.js';
 
-const InputSchema = z.object({
-  fixCommit: z.string().describe('The commit hash that fixed the regression'),
-  searchDepth: z.number().optional().describe('How many commits back to search for the introducing commit (default: 50)'),
-});
-
 /**
  * Phase 2/4 — Given a fix commit, reverse-engineers which earlier commit likely introduced the regression
  * by analyzing which files the fix touches and finding earlier commits that modified the same lines.
@@ -15,9 +10,15 @@ export function registerFindCulpritTool(server: McpServer): void {
   server.tool(
     'find_culprit',
     'Phase 2/4: Given a fix commit, identifies candidate commits that likely introduced the regression by finding earlier commits that touched the same files and similar code regions.',
-    InputSchema.shape,
-    async ({ fixCommit, searchDepth }) => {
-      const depth = searchDepth ?? 50;
+    {
+      fixCommit: z.string(),
+      searchDepth: z.number().optional(),
+    } as any,
+    async (args: any) => {
+      const fixCommit: string = args.fixCommit;
+      const searchDepth: number = args.searchDepth ?? 50;
+
+      const depth = searchDepth;
 
       // Step 1: Get the files changed in the fix commit
       const fixFiles = await execGit(['diff-tree', '--no-commit-id', '--name-only', '-r', fixCommit]);

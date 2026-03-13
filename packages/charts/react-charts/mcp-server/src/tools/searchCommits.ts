@@ -2,15 +2,6 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { execGit } from '../utils/git.js';
 
-const InputSchema = z.object({
-  keyword: z.string().optional().describe('Search commit messages for this keyword (e.g. "fix", "regression", "revert")'),
-  path: z.string().optional().describe('Limit to commits touching this file or directory path'),
-  author: z.string().optional().describe('Filter by commit author name or email'),
-  sinceDate: z.string().optional().describe('Start date (ISO format, e.g. "2025-06-01")'),
-  untilDate: z.string().optional().describe('End date (ISO format)'),
-  maxCount: z.number().optional().describe('Max number of commits to return (default: 30)'),
-});
-
 /**
  * Phase 2 support — search and filter commits to narrow down regression candidates.
  */
@@ -18,28 +9,42 @@ export function registerSearchCommitsTool(server: McpServer): void {
   server.tool(
     'search_commits',
     'Phase 2: Search commit history with filters (keyword, path, author, date range). Returns commit hashes, messages, dates, and changed file counts to help narrow down regression candidates.',
-    InputSchema.shape,
-    async ({ keyword, path, author, sinceDate, untilDate, maxCount }) => {
-      const limit = maxCount ?? 30;
-      const args = ['log', `--max-count=${limit}`, '--format=%H|%ai|%an|%s'];
+    {
+      keyword: z.string().optional(),
+      path: z.string().optional(),
+      author: z.string().optional(),
+      sinceDate: z.string().optional(),
+      untilDate: z.string().optional(),
+      maxCount: z.number().optional(),
+    } as any,
+    async (args: any) => {
+      const keyword: string | undefined = args.keyword;
+      const path: string | undefined = args.path;
+      const author: string | undefined = args.author;
+      const sinceDate: string | undefined = args.sinceDate;
+      const untilDate: string | undefined = args.untilDate;
+      const maxCount: number = args.maxCount ?? 30;
+
+      const limit = maxCount;
+      const gitArgs = ['log', `--max-count=${limit}`, '--format=%H|%ai|%an|%s'];
 
       if (keyword) {
-        args.push(`--grep=${keyword}`, '-i');
+        gitArgs.push(`--grep=${keyword}`, '-i');
       }
       if (author) {
-        args.push(`--author=${author}`);
+        gitArgs.push(`--author=${author}`);
       }
       if (sinceDate) {
-        args.push('--since', sinceDate);
+        gitArgs.push('--since', sinceDate);
       }
       if (untilDate) {
-        args.push('--until', untilDate);
+        gitArgs.push('--until', untilDate);
       }
       if (path) {
-        args.push('--', path);
+        gitArgs.push('--', path);
       }
 
-      const log = await execGit(args);
+      const log = await execGit(gitArgs);
       const lines = log.trim().split('\n').filter(Boolean);
 
       if (lines.length === 0) {
