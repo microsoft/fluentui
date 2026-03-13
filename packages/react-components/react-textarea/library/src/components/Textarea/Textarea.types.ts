@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TextareaSlots = {
   /**
@@ -67,7 +67,7 @@ export type TextareaProps = Omit<
  * Textarea base props, excluding design-related props like appearance and size.
  * Note: resize is kept as it is a structural/behavioral prop.
  */
-export type TextareaBaseProps = DistributiveOmit<TextareaProps, 'appearance' | 'size'>;
+export type TextareaBaseProps = Omit<TextareaProps, 'appearance' | 'size'>;
 
 /**
  * State used in rendering Textarea
@@ -78,7 +78,7 @@ export type TextareaState = ComponentState<TextareaSlots> &
 /**
  * Textarea base state, excluding design-related state like appearance and size.
  */
-export type TextareaBaseState = DistributiveOmit<TextareaState, 'appearance' | 'size'>;
+export type TextareaBaseState = Omit<TextareaState, 'appearance' | 'size'>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
