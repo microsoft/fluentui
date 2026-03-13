@@ -15,7 +15,29 @@ Parse these from the arguments string before starting.
 
 ---
 
+**IMPORTANT — Step announcements:** Before executing each step, you MUST print a visible banner to the user so they can track progress. Use this exact format:
+
+```
+---
+## [Step N/8] Step Title
+---
+```
+
+For example, before starting Step 1, output:
+
+```
+---
+## [Step 1/8] Scoping the regression
+---
+```
+
+This ensures the user always knows which phase of the investigation is currently running.
+
+---
+
 ## Step 1 — Scope the regression
+
+> **Announce:** `## [Step 1/8] Scoping the regression`
 
 Call `scope_regression` to identify relevant source files and recent commits.
 
@@ -25,6 +47,8 @@ Call `scope_regression` to identify relevant source files and recent commits.
 Save the returned file paths and commit list — you will need them in subsequent steps.
 
 ## Step 2 — Search commits by keyword
+
+> **Announce:** `## [Step 2/8] Searching commits by keyword`
 
 Call `search_commits` using keywords extracted from the bug description, combined with file paths from Step 1.
 
@@ -36,6 +60,8 @@ Merge results with the commit list from Step 1 to build a combined suspect list.
 
 ## Step 3 — Fetch diffs and score commits
 
+> **Announce:** `## [Step 3/8] Fetching diffs and scoring commits`
+
 Call `fetch_commits_for_regression` to retrieve diffs and rank commits by regression likelihood.
 
 - `description`: the full bug description
@@ -46,6 +72,8 @@ Review the returned scored commits. Identify the top 3-5 candidates.
 
 ## Step 4 — Inspect suspect commits
 
+> **Announce:** `## [Step 4/8] Inspecting suspect commits`
+
 For each of the top 3-5 candidates, call `get_commit_details`:
 
 1. First pass: call with `statsOnly: true` to get a quick overview of each commit.
@@ -54,6 +82,8 @@ For each of the top 3-5 candidates, call `get_commit_details`:
 Summarize what each suspect commit changed and why it might cause the regression.
 
 ## Step 5 — Prepare regression validation
+
+> **Announce:** `## [Step 5/8] Preparing regression validation`
 
 Call `prepare_regression_test` to generate a test plan for the suspect SHAs.
 
@@ -71,6 +101,8 @@ Execute the test plan commands. Use parallel sub-agents (via the Agent tool) for
 
 ## Step 6 — Analyze test results
 
+> **Announce:** `## [Step 6/8] Analyzing test results`
+
 Call `analyze_regression_results` with the pass/fail outcomes from Step 5.
 
 - `results`: array of `{ sha, status, error? }` objects where `status` is `"pass"`, `"fail"`, or `"error"`
@@ -78,6 +110,8 @@ Call `analyze_regression_results` with the pass/fail outcomes from Step 5.
 The tool will identify the PASS to FAIL transition point — this is the culprit commit.
 
 ## Step 7 — Cross-validate (if applicable)
+
+> **Announce:** `## [Step 7/8] Cross-validating with fix commit` (or `## [Step 7/8] Cross-validation — skipped (no fix commit)` if not applicable)
 
 If a fix commit is known (from the bug report or conversation), call `find_culprit` to cross-check.
 
@@ -89,6 +123,8 @@ Compare the result with the culprit identified in Step 6. If they match, confide
 If no fix commit is available, skip this step.
 
 ## Step 8 — Generate HTML report
+
+> **Announce:** `## [Step 8/8] Generating HTML report`
 
 Write a file called `regression-report.html` in the repository root with the following sections:
 
