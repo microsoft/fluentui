@@ -1,6 +1,7 @@
 ---
 name: investigate-regression
 description: Investigate a regression bug in react-charts by scoping, searching, scoring, testing, and reporting the culprit commit. Trigger on phrases like "investigate regression", "find culprit", "regression bug", "faulty PR", "bisect".
+user-invocable: true
 ---
 
 # Investigate Regression
