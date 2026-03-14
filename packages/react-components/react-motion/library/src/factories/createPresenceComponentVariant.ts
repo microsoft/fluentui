@@ -2,11 +2,11 @@ import type { MotionParam, PresenceMotionFn } from '../types';
 import { PRESENCE_MOTION_DEFINITION, createPresenceComponent, PresenceComponent } from './createPresenceComponent';
 
 /**
- * @internal
- *
  * Create a variant function that wraps a presence function to customize it.
  * The new presence function has the supplied variant params as defaults,
  * but these can still be overridden by runtime params when the new function is called.
+ *
+ * @internal
  */
 export function createPresenceFnVariant<MotionParams extends Record<string, MotionParam> = {}>(
   presenceFn: PresenceMotionFn<MotionParams>,

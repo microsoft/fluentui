@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "copilot@github.com",
+  "dependentChangeType": "patch"
+}

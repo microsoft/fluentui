@@ -1,7 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { Enter, Space } from '@fluentui/keyboard-keys';
+import {
+  useMergedRefs,
+  useEventCallback,
+  mergeCallbacks,
+  getIntrinsicElementProps,
+  slot,
+} from '@fluentui/react-utilities';
 
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
 import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
@@ -14,6 +21,29 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
   const validateNestingRef = useValidateNesting('MenuGridRow');
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
+  const onKeyDownToClick = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (
+      !event.isDefaultPrevented() &&
+      (event.key === Enter || event.key === Space) &&
+      event.target === event.currentTarget
+    ) {
+      event.currentTarget.click();
+    }
+  });
+
+  const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onKeyDownToClick));
+
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    let element = event.target as HTMLElement | null;
+    while (element && element !== event.currentTarget) {
+      if (element.tabIndex >= 0) {
+        return;
+      }
+      element = element.parentElement;
+    }
+    props.onClick?.(event);
+  });
+
   return {
     components: {
       root: 'div',
@@ -25,6 +55,8 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
         tabIndex: 0,
         ...tableRowTabsterAttribute,
         ...props,
+        onKeyDown,
+        onClick,
       }),
       { elementType: 'div' },
     ),
