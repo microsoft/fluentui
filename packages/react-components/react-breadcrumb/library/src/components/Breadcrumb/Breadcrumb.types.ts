@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Data shared between breadcrumb components
@@ -47,6 +47,6 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
  */
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'size'>>;
 
-export type BreadcrumbBaseProps = DistributiveOmit<BreadcrumbProps, 'size'>;
+export type BreadcrumbBaseProps = Omit<BreadcrumbProps, 'size'>;
 
-export type BreadcrumbBaseState = DistributiveOmit<BreadcrumbState, 'size'>;
+export type BreadcrumbBaseState = Omit<BreadcrumbState, 'size'>;

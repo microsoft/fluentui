@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Omit } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
@@ -25,6 +25,6 @@ export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'> &
   Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
 
-export type BreadcrumbButtonBaseProps = DistributiveOmit<BreadcrumbButtonProps, 'size'>;
+export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 
-export type BreadcrumbButtonBaseState = DistributiveOmit<BreadcrumbButtonState, 'size'>;
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'size'>;

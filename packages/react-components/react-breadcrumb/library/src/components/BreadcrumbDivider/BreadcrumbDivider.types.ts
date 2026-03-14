@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
 export type BreadcrumbDividerSlots = {
@@ -23,4 +23,4 @@ export type BreadcrumbDividerBaseProps = BreadcrumbDividerProps;
 /**
  * BreadcrumbDivider base state (excludes size, which is a design prop injected from context)
  */
-export type BreadcrumbDividerBaseState = DistributiveOmit<BreadcrumbDividerState, 'size'>;
+export type BreadcrumbDividerBaseState = Omit<BreadcrumbDividerState, 'size'>;

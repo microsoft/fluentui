@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
@@ -18,9 +18,9 @@ export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required
 /**
  * BreadcrumbItem base props (same as BreadcrumbItemProps since size is passed through context, not as a design prop)
  */
-export type BreadcrumbItemBaseProps = DistributiveOmit<BreadcrumbItemProps, 'size'>;
+export type BreadcrumbItemBaseProps = Omit<BreadcrumbItemProps, 'size'>;
 
 /**
  * BreadcrumbItem base state (excludes size, which is a design prop injected from context)
  */
-export type BreadcrumbItemBaseState = DistributiveOmit<BreadcrumbItemState, 'size'>;
+export type BreadcrumbItemBaseState = Omit<BreadcrumbItemState, 'size'>;

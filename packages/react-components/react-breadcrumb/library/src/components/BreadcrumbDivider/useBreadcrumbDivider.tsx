@@ -27,9 +27,14 @@ export const useBreadcrumbDivider_unstable = (
 ): BreadcrumbDividerState => {
   const { size } = useBreadcrumbContext_unstable();
   const state = useBreadcrumbDividerBase_unstable(props, ref);
+  const { dir } = useFluent();
 
   return {
     ...state,
+    root: {
+      ...state.root,
+      children: getDividerIcon(dir),
+    },
     size,
   };
 };
@@ -45,9 +50,6 @@ export const useBreadcrumbDividerBase_unstable = (
   props: BreadcrumbDividerBaseProps,
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerBaseState => {
-  const { dir } = useFluent();
-  const icon = getDividerIcon(dir);
-
   return {
     components: {
       root: 'li',
@@ -56,7 +58,6 @@ export const useBreadcrumbDividerBase_unstable = (
       getIntrinsicElementProps('li', {
         ref,
         'aria-hidden': true,
-        children: icon,
         ...props,
       }),
       { elementType: 'li' },
