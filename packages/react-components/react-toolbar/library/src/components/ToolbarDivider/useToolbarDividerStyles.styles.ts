@@ -22,13 +22,16 @@ const useBaseStyles = makeStyles({
 export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): ToolbarDividerState => {
   'use no memo';
 
+  const userClassName = state.root.className;
+  state.root.className = undefined;
   useDividerStyles_unstable(state);
   const { vertical } = state;
   const toolbarDividerStyles = useBaseStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     toolbarDividerStyles.root,
     !vertical && toolbarDividerStyles.vertical,
-    state.root.className,
+    userClassName,
   );
   return state;
 };

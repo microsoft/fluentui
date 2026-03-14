@@ -210,4 +210,16 @@ describe('ToolbarDivider', () => {
     cy.get(button).eq(0).type('{leftarrow}');
     cy.get(button).eq(2).should('be.focused');
   });
+
+  it('should render with inline-flex display in a horizontal toolbar', () => {
+    mount(
+      <Toolbar>
+        <ToolbarButton>Item 1</ToolbarButton>
+        <ToolbarDivider />
+        <ToolbarButton>Item 2</ToolbarButton>
+      </Toolbar>,
+    );
+
+    cy.get('.fui-Divider').should('have.css', 'display', 'inline-flex');
+  });
 });
