@@ -5,8 +5,6 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
-// Note: FADE_IN, DURATION_2, EASING_FUNCTION_2 animations removed - now handled by HeaderFade motion component
-
 /**
  * @internal
  */
@@ -65,7 +63,6 @@ const useMonthAndYearStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-  // CSS animation removed - now handled by HeaderFade motion component
   headerIsClickable: {
     '&:hover': {
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
@@ -162,7 +159,6 @@ export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): Cal
     monthAndYear: mergeClasses(
       calendarDayClassNames.monthAndYear,
       monthAndYearStyles.base,
-      // CSS animation removed - now handled by HeaderFade motion component
       headerIsClickable && monthAndYearStyles.headerIsClickable,
     ),
     monthComponents: mergeClasses(calendarDayClassNames.monthComponents, monthComponentsStyles.base),

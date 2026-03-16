@@ -7,8 +7,6 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 
-// Note: DURATION_3, EASING_FUNCTION_1, and SLIDE_* animations removed - now handled by motion components (DirectionalSlide)
-
 /**
  * @internal
  */
@@ -166,13 +164,11 @@ const useWeekRowStyles = makeStyles({
       zIndex: 1,
     },
   },
-  // CSS slide animations removed - now handled by motion components (DirectionalSlide)
 });
 
 const useWeekDayLabelCellStyles = makeStyles({
   base: {
     userSelect: 'none',
-    // CSS fade animation removed - now handled by Fade.In motion component in CalendarMonthHeaderRow
   },
 });
 
@@ -288,7 +284,6 @@ const useFirstTransitionWeekStyles = makeStyles({
     position: 'absolute',
     width: 0,
   },
-  // CSS animations removed - now handled by motion components (DirectionalSlide)
 });
 
 const useLastTransitionWeekStyles = makeStyles({
@@ -300,7 +295,6 @@ const useLastTransitionWeekStyles = makeStyles({
     position: 'absolute',
     width: 0,
   },
-  // CSS animations removed - now handled by motion components (DirectionalSlide)
 });
 
 const useDayMarkerStyles = makeStyles({
@@ -366,7 +360,6 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const cornerBorderAndRadiusStyles = useCornerBorderAndRadiusStyles();
   const dayTodayMarkerStyles = useDayTodayMarkerStyles();
 
-  // Note: animateBackwards and animationDirection no longer used here - handled by motion components
   const { lightenDaysOutsideNavigatedMonth, showWeekNumbers } = props;
 
   return {
@@ -384,11 +377,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     ),
     daySelected: mergeClasses(calendarDayGridClassNames.daySelected, daySelectedStyles.base),
     daySingleSelected: mergeClasses(calendarDayGridClassNames.daySingleSelected, daySingleSelectedStyles.base),
-    weekRow: mergeClasses(
-      calendarDayGridClassNames.weekRow,
-      weekRowStyles.base,
-      // CSS animations removed - now handled by motion components (DirectionalSlide)
-    ),
+    weekRow: mergeClasses(calendarDayGridClassNames.weekRow, weekRowStyles.base),
     weekDayLabelCell: mergeClasses(calendarDayGridClassNames.weekDayLabelCell, weekDayLabelCellStyles.base),
     weekNumberCell: mergeClasses(calendarDayGridClassNames.weekNumberCell, weekNumberCellStyles.base),
     dayOutsideBounds: mergeClasses(calendarDayGridClassNames.dayOutsideBounds, dayOutsideBoundsStyles.base),
@@ -398,16 +387,8 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     ),
     dayButton: mergeClasses(calendarDayGridClassNames.dayButton, dayButtonStyles.base),
     dayIsToday: mergeClasses(calendarDayGridClassNames.dayIsToday, dayIsTodayStyles.base),
-    firstTransitionWeek: mergeClasses(
-      calendarDayGridClassNames.firstTransitionWeek,
-      firstTransitionWeekStyles.base,
-      // CSS animations removed - now handled by motion components (DirectionalSlide)
-    ),
-    lastTransitionWeek: mergeClasses(
-      calendarDayGridClassNames.lastTransitionWeek,
-      lastTransitionWeekStyles.base,
-      // CSS animations removed - now handled by motion components (DirectionalSlide)
-    ),
+    firstTransitionWeek: mergeClasses(calendarDayGridClassNames.firstTransitionWeek, firstTransitionWeekStyles.base),
+    lastTransitionWeek: mergeClasses(calendarDayGridClassNames.lastTransitionWeek, lastTransitionWeekStyles.base),
     dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
     dayTodayMarker: mergeClasses(calendarDayGridClassNames.dayTodayMarker, dayTodayMarkerStyles.base),
   };

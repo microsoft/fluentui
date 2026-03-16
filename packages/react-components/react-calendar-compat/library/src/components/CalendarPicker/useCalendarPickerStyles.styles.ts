@@ -2,11 +2,8 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-// CSS animations (DURATION_2, EASING_FUNCTION_2, FADE_IN) removed - now handled by HeaderFade motion component
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
-
-// Note: DURATION_3, EASING_FUNCTION_1, and SLIDE_* animations removed - now handled by motion components (DirectionalSlide)
 
 /**
  * @internal
@@ -60,7 +57,6 @@ const useCurrentItemButtonStyles = makeStyles({
     padding: '0 4px 0 10px',
     textAlign: 'left',
   },
-  // CSS animation removed - now handled by HeaderFade motion component
   hasHeaderClickCallback: {
     // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
@@ -131,7 +127,6 @@ const useButtonRowStyles = makeStyles({
       marginBottom: 0,
     },
   },
-  // CSS slide animations removed - now handled by motion components (DirectionalSlide)
 });
 
 const useItemButtonStyles = makeStyles({
@@ -272,7 +267,6 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
   const selectedStyles = useSelectedStyles();
   const disabledStyles = useDisabledStyles();
 
-  // Note: animateBackwards and animationDirection no longer used - handled by motion components
   const { className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
 
   return {
@@ -281,7 +275,6 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     currentItemButton: mergeClasses(
       calendarPickerClassNames.currentItemButton,
       currentItemButtonStyles.base,
-      // CSS animation removed - now handled by HeaderFade motion component
       hasHeaderClickCallback && currentItemButtonStyles.hasHeaderClickCallback,
     ),
     navigationButtonsContainer: mergeClasses(
@@ -290,11 +283,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     ),
     navigationButton: mergeClasses(calendarPickerClassNames.navigationButton, navigationButtonStyles.base),
     gridContainer: mergeClasses(calendarPickerClassNames.gridContainer, gridContainerStyles.base),
-    buttonRow: mergeClasses(
-      calendarPickerClassNames.buttonRow,
-      buttonRowStyles.base,
-      // CSS animations removed - now handled by motion components (DirectionalSlide)
-    ),
+    buttonRow: mergeClasses(calendarPickerClassNames.buttonRow, buttonRowStyles.base),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
     current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
