@@ -6,20 +6,14 @@ import { Pie } from './Pie/index';
 import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/DonutChart.tsx
-import { convertToLocaleString } from '../../utilities/locale-util';
-import { getNextGradient } from '../../utilities/index';
-=======
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   areArraysEqual,
-  getColorFromToken,
-  getNextColor,
+  getNextGradient,
   MIN_DONUT_RADIUS,
   ChartTitle,
   CHART_TITLE_PADDING,
 } from '../../utilities/index';
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/DonutChart.tsx
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -52,13 +46,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [legend, setLegend] = React.useState<string | undefined>('');
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/DonutChart.tsx
-    const [activeLegend, setActiveLegend] = React.useState<string>('');
-    const [color, setColor] = React.useState<string | [string, string] | undefined>('');
-=======
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
-    const [color, setColor] = React.useState<string | undefined>('');
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/DonutChart.tsx
+    const [color, setColor] = React.useState<string | [string, string] | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -111,34 +100,25 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       });
       return elevatedData;
     }
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/DonutChart.tsx
-
-    function _createLegends(chartData: ChartDataPoint[]): JSX.Element {
-=======
     function _createLegends(chartData: ChartDataPoint[]): JSXElement {
       if (props.order === 'sorted') {
         chartData.sort((a: ChartDataPoint, b: ChartDataPoint) => {
           return b.data! - a.data!;
         });
       }
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/DonutChart.tsx
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const useGradient = Array.isArray(point.color);
         // mapping data to the format Legends component needs
         const pointLegend: Legend = {
           title: point.legend!,
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/DonutChart.tsx
           color: useGradient ? point.color![0] : (point.color as string),
           action: () => {
-            if (selectedLegend === point.legend) {
-              setSelectedLegend('');
+            if (selectedLegends.includes(point.legend!)) {
+              setSelectedLegends(selectedLegends.filter(legend => legend !== point.legend!));
             } else {
-              setSelectedLegend(point.legend!);
+              setSelectedLegends([...selectedLegends, point.legend!]);
             }
           },
-=======
-          color,
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/DonutChart.tsx
           hoverAction: () => {
             _handleChartMouseLeave();
             setActiveLegend(point.legend!);
@@ -353,13 +333,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/DonutChart.tsx
-    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
-    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
-    const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
-    const focusAttributes = useFocusableGroup();
-
-=======
     const titleHeight = data?.chartTitle
       ? Math.max(
           (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
@@ -368,11 +341,10 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         )
       : 0;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
-    const chartData = _elevateToMinimums(points);
+    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/DonutChart.tsx
     return !_isChartEmpty() ? (
       <div
         className={classes.root}

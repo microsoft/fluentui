@@ -4,12 +4,8 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Pie/Pie.tsx
 import { pie as d3Pie, PieArcDatum } from 'd3-shape';
-=======
 import type { JSXElement } from '@fluentui/react-utilities';
-import { pie as d3Pie } from 'd3-shape';
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Pie/Pie.tsx
 import { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import { ChartDataPoint } from '../index';
@@ -60,13 +56,8 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       return totalValue;
     }
 
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Pie/Pie.tsx
-    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
-=======
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSXElement {
-      const color = d && d.data && d.data.color;
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Pie/Pie.tsx
+    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSXElement {
       return (
         <Arc
           key={i}
