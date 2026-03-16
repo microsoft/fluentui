@@ -6,12 +6,9 @@ import { useArcStyles } from './useArcStyles.styles';
 import { ChartDataPoint } from '../index';
 import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Arc/Arc.tsx
 import { formatValueWithSIPrefix, useRtl } from '../../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
-=======
-import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Arc/Arc.tsx
+import { formatScientificLimitWidth } from '../../../utilities/index';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
 /**
@@ -110,26 +107,6 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
 
     const { href, focusedArcId, activeArc } = props;
     //TO DO 'replace' is throwing error
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Arc/Arc.tsx
-    const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
-    const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
-
-    // check if gradient ([string, string]) or color (string) is provided
-    const useGradient = Array.isArray(props.color);
-    const clipId = useId('Arc_clip') + (useGradient ? `${props.color[0]}_${props.color[1]}` : (props.color as string));
-
-    const fill = useGradient
-      ? `conic-gradient(
-      from ${props.data?.startAngle}rad,
-      ${props.color[0]},
-      ${props.color[1]} ${props.data!.endAngle - props.data!.startAngle}rad
-    )`
-      : (props.color as string);
-
-    const pathData = arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;
-    const focusPathData = arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;
-
-=======
     const id =
       props.uniqText! +
       (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
@@ -138,51 +115,45 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       activeArc && activeArc.length > 0 ? (activeArc.includes(props.data?.data.legend!) ? 1 : 0.1) : 1;
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Arc/Arc.tsx
+
+    // check if gradient ([string, string]) or color (string) is provided
+    const useGradient = Array.isArray(props.color);
+    const clipId = useId('Arc_clip') + (useGradient ? `${props.color[0]}_${props.color[1]}` : (props.color as string));
+
+    const fill = useGradient
+      ? `conic-gradient(
+          from ${((props.data?.startAngle ?? 0) * 180) / Math.PI - 90}deg,
+          ${props.color[0]} 0%,
+          ${props.color[1]} ${((props.data!.endAngle - props.data!.startAngle) / (2 * Math.PI)) * 100}%
+        )`
+      : (props.color as string);
+
+    const pathData = arc.cornerRadius(cornerRadius)({
+      ...props.data!,
+      innerRadius: props.innerRadius,
+      outerRadius: props.outerRadius,
+    })!;
+    const focusPathData = arc.cornerRadius(cornerRadius)({
+      ...props.focusData!,
+      innerRadius: props.innerRadius,
+      outerRadius: props.outerRadius,
+    })!;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Arc/Arc.tsx
           <path id={id + 'focusRing'} d={focusPathData} className={classes.focusRing} />
-=======
-          <path
-            id={id + 'focusRing'}
-            d={
-              arc.cornerRadius(cornerRadius)({
-                ...props.data!,
-                innerRadius: props.innerRadius,
-                outerRadius: props.outerRadius,
-              })!
-            }
-            className={classes.focusRing}
-          />
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Arc/Arc.tsx
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Arc/Arc.tsx
           d={pathData}
-          style={{ fill: 'transparent', cursor: href ? 'pointer' : 'default' }}
-          onFocus={_onFocus.bind(this, props.data!.data, id)}
-          data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
-          onMouseOver={_hoverOn.bind(this, props.data!.data)}
-          onMouseMove={_hoverOn.bind(this, props.data!.data)}
-=======
-          d={
-            arc.cornerRadius(cornerRadius)({
-              ...props.data!,
-              innerRadius: props.innerRadius,
-              outerRadius: props.outerRadius,
-            })!
-          }
           className={classes.root}
-          style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
+          style={{ fill: useGradient ? 'transparent' : props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
+          data-is-focusable={_shouldHighlightArc(props.data!.data.legend!) || activeArc?.length === 0}
           onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseMove={event => _hoverOn(props.data!.data, event, targetElement)}
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Arc/Arc.tsx
           onMouseLeave={_hoverOff}
           tabIndex={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0 ? 0 : undefined}
           onBlur={_onBlur}
@@ -191,22 +162,27 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           aria-label={_getAriaLabel()}
           role="img"
         />
-        {/* clipping mask  */}
-        <clipPath id={clipId}>
-          <path d={pathData} />
-        </clipPath>
-        {/* div to attach conic-gradient fill to */}
-        <foreignObject x="-50%" y="-50%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
-          <div
-            className={classes.root}
-            style={{
-              width: '100%',
-              height: '100%',
-              background: fill,
-              opacity,
-            }}
-          />
-        </foreignObject>
+        {/* Gradient rendering when useGradient is true */}
+        {useGradient && (
+          <>
+            {/* clipping mask */}
+            <clipPath id={clipId}>
+              <path d={pathData} />
+            </clipPath>
+            {/* div to attach conic-gradient fill to */}
+            <foreignObject x="-50%" y="-50%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
+              <div
+                className={classes.root}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: fill,
+                  opacity,
+                }}
+              />
+            </foreignObject>
+          </>
+        )}
         {_renderArcLabel(classes.arcLabel)}
       </g>
     );
