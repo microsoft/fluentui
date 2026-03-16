@@ -133,6 +133,64 @@ describe('createMotionComponent', () => {
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
   });
 
+  it('replays animation when replayKey changes', () => {
+    const TestAtom = createMotionComponent(motion);
+    const { animateMock, ElementMock } = createElementMock();
+
+    const { rerender } = render(
+      <TestAtom replayKey="a">
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    expect(animateMock).toHaveBeenCalledTimes(1);
+
+    // Same replayKey — no replay
+    rerender(
+      <TestAtom replayKey="a">
+        <ElementMock />
+      </TestAtom>,
+    );
+    expect(animateMock).toHaveBeenCalledTimes(1);
+
+    // Changed replayKey — animation replays
+    rerender(
+      <TestAtom replayKey="b">
+        <ElementMock />
+      </TestAtom>,
+    );
+    expect(animateMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not remount the child element when replayKey changes', () => {
+    const TestAtom = createMotionComponent(motion);
+    const { ElementMock } = createElementMock();
+    let mountCount = 0;
+
+    const TrackedChild = React.forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
+      React.useEffect(() => {
+        mountCount++;
+      }, []);
+      return <ElementMock ref={ref} />;
+    });
+
+    const { rerender } = render(
+      <TestAtom replayKey="a">
+        <TrackedChild />
+      </TestAtom>,
+    );
+
+    expect(mountCount).toBe(1);
+
+    rerender(
+      <TestAtom replayKey="b">
+        <TrackedChild />
+      </TestAtom>,
+    );
+
+    expect(mountCount).toBe(1); // child was not remounted
+  });
+
   it('finishes motion when wrapped in motion context with skip behaviour', async () => {
     const TestAtom = createMotionComponent(motion);
     const onMotionStart = jest.fn();

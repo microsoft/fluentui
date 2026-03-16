@@ -51,6 +51,29 @@ export type MotionComponentProps = {
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionStart?: (ev: null) => void;
+
+  /**
+   * When this value changes, the animation replays from the start on the same DOM element,
+   * cancelling any in-progress animation, without remounting the component or its children.
+   *
+   * **Why not just use a React `key`?** Changing a React `key` forces a full unmount and
+   * remount of the subtree: DOM nodes are destroyed and recreated, focus is lost, and any
+   * child state is reset. `replayKey` avoids all of that — only the animation effect reruns
+   * while the DOM and component state remain intact.
+   *
+   * Use this when you want to retrigger a motion in response to a state change (e.g. a user
+   * action or a data update) while preserving DOM continuity. It is the declarative equivalent
+   * of calling `imperativeRef.current.play()` but driven by a prop rather than a ref call.
+   *
+   * @example
+   * // Replay a Fade.In each time the user clicks "Refresh"
+   * const [replayKey, setReplayKey] = React.useState(0);
+   * <Fade.In replayKey={replayKey}>
+   *   <div>Content</div>
+   * </Fade.In>
+   * <button onClick={() => setReplayKey(k => k + 1)}>Refresh</button>
+   */
+  replayKey?: string | number;
 };
 
 export type MotionComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
@@ -76,6 +99,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       onMotionFinish: onMotionFinishProp,
       onMotionStart: onMotionStartProp,
       onMotionCancel: onMotionCancelProp,
+      replayKey,
       ..._rest
     } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
@@ -128,7 +152,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally included to replay the animation
+    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel, replayKey]);
 
     return child;
   };
