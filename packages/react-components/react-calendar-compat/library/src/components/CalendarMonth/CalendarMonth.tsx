@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { DirectionalSlide, HeaderFade } from '../../utils/calendarMotions';
+import { DirectionalSlide } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
@@ -212,11 +212,9 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           tabIndex={!!onUserHeaderSelect || !yearPickerHidden ? 0 : -1}
           type="button"
         >
-          <HeaderFade navigationKey={yearString}>
-            <span aria-live="polite" aria-atomic="true">
-              {yearString}
-            </span>
-          </HeaderFade>
+          <span aria-live="polite" aria-atomic="true">
+            {yearString}
+          </span>
         </button>
         <div className={classNames.navigationButtonsContainer}>
           <button
@@ -257,7 +255,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           const rowKey = 'monthRow_' + rowNum + navigatedDate.getFullYear();
           return (
             <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
-              <div key={rowKey} role="row" className={classNames.buttonRow}>
+              <div role="row" className={classNames.buttonRow}>
                 {monthsForRow.map((month: string, index: number) => {
                   const monthIndex = rowNum * MONTHS_PER_ROW + index;
                   const indexedMonth = setMonth(navigatedDate, monthIndex);

@@ -5,7 +5,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
-import { DirectionalSlide, HeaderFade } from '../../utils/calendarMotions';
+import { DirectionalSlide } from '../../utils/calendarMotions';
 import type {
   CalendarYearStrings,
   CalendarYearProps,
@@ -180,7 +180,7 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
         const rowKey = 'yearPickerRow_' + index + '_' + fromYear;
         return (
           <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
-            <div key={rowKey} role="row" className={classNames.buttonRow}>
+            <div role="row" className={classNames.buttonRow}>
               {cellRow}
             </div>
           </DirectionalSlide>
@@ -322,22 +322,18 @@ const CalendarYearTitle: React.FunctionComponent<CalendarYearHeaderProps> = prop
         role="button"
         type="button"
       >
-        <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
-          <span aria-live="assertive" aria-atomic="true">
-            {onRenderYear(fromYear)} - {onRenderYear(toYear)}
-          </span>
-        </HeaderFade>
+        <span aria-live="assertive" aria-atomic="true">
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        </span>
       </button>
     );
   }
 
   return (
     <div className={classNames.current}>
-      <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
-        <span>
-          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
-        </span>
-      </HeaderFade>
+      <span>
+        {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+      </span>
     </div>
   );
 };
