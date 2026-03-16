@@ -6,7 +6,7 @@ import {
   ChartProps,
   DataVizGradientPalette,
   getGradientFromToken,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const HorizontalBarAbsoluteScale = (): JSXElement => {

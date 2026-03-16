@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart } from '@fluentui/react-charts-preview';
+import { HorizontalBarChart } from '@fluentui/react-charts';
 
 export const HorizontalBarCustomGradient = () => {
   const data = [

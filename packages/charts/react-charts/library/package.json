@@ -17,7 +17,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-<<<<<<< HEAD:packages/charts/react-charts-preview/library/package.json
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
@@ -28,8 +27,6 @@
     "update-snapshots": "jest -u",
     "type-check": "just-scripts type-check"
   },
-=======
->>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/package.json
   "syncpack": {
     "dependencyTypes": []
   },

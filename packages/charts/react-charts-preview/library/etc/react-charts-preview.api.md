@@ -304,35 +304,35 @@ export interface DataPoint {
     y: number;
 }
 
-// @public (undocumented)
-export const DataVizGradientPalette: {
-    gradient1: string;
-    gradient2: string;
-    gradient3: string;
-    gradient4: string;
-    gradient5: string;
-    gradient6: string;
-    gradient7: string;
-    gradient8: string;
-    gradient9: string;
-    gradient10: string;
-    gradient1Ext: string;
-    gradient2Ext: string;
-    gradient3Ext: string;
-    gradient4Ext: string;
-    gradient5Ext: string;
-    gradient6Ext: string;
-    gradient7Ext: string;
-    gradient8Ext: string;
-    gradient9Ext: string;
-    gradient10Ext: string;
-    success: string;
-    highSuccess: string;
-    warning: string;
-    error: string;
-    highError: string;
-    disabled: string;
-};
+// @public (undocumented) - MOVED TO react-charts.api.md
+// export const DataVizGradientPalette: {
+//     gradient1: string;
+//     gradient2: string;
+//     gradient3: string;
+//     gradient4: string;
+//     gradient5: string;
+//     gradient6: string;
+//     gradient7: string;
+//     gradient8: string;
+//     gradient9: string;
+//     gradient10: string;
+//     gradient1Ext: string;
+//     gradient2Ext: string;
+//     gradient3Ext: string;
+//     gradient4Ext: string;
+//     gradient5Ext: string;
+//     gradient6Ext: string;
+//     gradient7Ext: string;
+//     gradient8Ext: string;
+//     gradient9Ext: string;
+//     gradient10Ext: string;
+//     success: string;
+//     highSuccess: string;
+//     warning: string;
+//     error: string;
+//     highError: string;
+//     disabled: string;
+// };
 
 // @public (undocumented)
 export const DataVizPalette: {
@@ -433,8 +433,8 @@ export interface EventsAnnotationProps {
 // @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
-// @public (undocumented)
-export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+// @public (undocumented) - MOVED TO react-charts.api.md
+// export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;

@@ -709,6 +709,36 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
+// @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
+
 // @public
 export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 
@@ -969,6 +999,9 @@ export const getColorContrast: (c1: string, c2: string) => number;
 
 // @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
 export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;

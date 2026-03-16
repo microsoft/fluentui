@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  HorizontalBarChart,
-  ChartProps,
-  DataVizGradientPalette,
-  getGradientFromToken,
-} from '@fluentui/react-charts-preview';
+import { HorizontalBarChart, ChartProps, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 
 export const HorizontalBarBenchmark = (): JSXElement => {
