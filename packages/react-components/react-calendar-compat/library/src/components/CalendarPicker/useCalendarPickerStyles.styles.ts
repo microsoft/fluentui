@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
@@ -281,9 +283,9 @@ const useDisabledStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the CalendarPicker slots based on the state
+ *
+ * @internal
  */
 export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps): CalendarPickerStyles => {
   'use no memo';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useRefEffect } from './useRefEffect';
 import type { RefCallback } from './useRefEffect';
 
@@ -19,7 +19,7 @@ describe('useRefEffect', () => {
 
     // Mount the test component
     // This should set ref.current to the <div />, and call the callback
-    const wrapper = mount(<TestComponent as="div" />);
+    const wrapper = render(<TestComponent as="div" />);
     const divEle = ref!.current;
 
     expect(ref!.current).toBeInstanceOf(HTMLDivElement);
@@ -29,7 +29,7 @@ describe('useRefEffect', () => {
 
     // Re-render as a <span /> to cause the ref to change
     // This should update ref.current, call cleanup for the old <div />, and callback for the new <span />
-    wrapper.setProps({ as: 'span' });
+    wrapper.rerender(<TestComponent as="span" />);
     const spanEle = ref!.current;
 
     expect(ref!.current).not.toBe(divEle);
@@ -41,7 +41,7 @@ describe('useRefEffect', () => {
 
     // Re-render without changing the type
     // This should not cause the ref to change, nor the callback to be called
-    wrapper.setProps({});
+    wrapper.rerender(<TestComponent as="span" />);
 
     expect(ref!.current).toBe(spanEle);
     expect(log).not.toHaveBeenCalled();

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -42,7 +48,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
       roundCorners: false,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -82,34 +88,34 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IVerticalBarChartDataPoint[] = [
       {
         x: 'Simple Text',
         y: 1000,
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         x: 'Showing all text here',
         y: 5000,
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         x: 'Large data, showing all text by tooltip',
         y: 3000,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         x: 'Data',
         y: 2000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color4),
       },
     ];
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -236,7 +242,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

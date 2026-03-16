@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';

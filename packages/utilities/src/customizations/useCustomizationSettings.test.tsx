@@ -1,18 +1,17 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
+import { act, render } from '@testing-library/react';
 import { Customizations } from './Customizations';
 import { CustomizerContext } from './CustomizerContext';
 import { useCustomizationSettings } from './useCustomizationSettings';
 import type { ISettings } from './Customizations';
 
 describe('useCustomizatioSettings', () => {
-  let wrapper: ReactWrapper | undefined;
+  let component: ReturnType<typeof render> | undefined;
 
   afterEach(() => {
-    ReactTestUtils.act(() => {
-      wrapper?.unmount();
-      wrapper = undefined;
+    act(() => {
+      component?.unmount();
+      component = undefined;
     });
     Customizations.reset();
   });
@@ -28,7 +27,9 @@ describe('useCustomizatioSettings', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    act(() => {
+      component = render(<TestComponent />);
+    });
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ a: 'a' });
   });
@@ -44,10 +45,14 @@ describe('useCustomizatioSettings', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
-    ReactTestUtils.act(() => {
+    act(() => {
+      component = render(<TestComponent />);
+    });
+
+    act(() => {
       Customizations.applySettings({ a: 'aa' });
     });
+
     expect(settingsStates.length).toBe(2);
     expect(settingsStates[0]).toEqual({ a: 'a' });
     expect(settingsStates[1]).toEqual({ a: 'aa' });
@@ -63,7 +68,9 @@ describe('useCustomizatioSettings', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    act(() => {
+      component = render(<TestComponent />);
+    });
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ a: undefined });
   });
@@ -79,16 +86,24 @@ describe('useCustomizatioSettings', () => {
     };
 
     const newContext = { customizations: { settings: { theme: { color: 'red' } }, scopedSettings: {} } };
-    wrapper = mount(
-      <CustomizerContext.Provider value={newContext}>
-        <TestComponent />
-      </CustomizerContext.Provider>,
-    );
+    act(() => {
+      component = render(
+        <CustomizerContext.Provider value={newContext}>
+          <TestComponent />
+        </CustomizerContext.Provider>,
+      );
+    });
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ theme: { color: 'red' } });
 
     const updatedContext = { customizations: { settings: { theme: { color: 'green' } }, scopedSettings: {} } };
-    wrapper.setProps({ value: updatedContext });
+    act(() => {
+      component!.rerender(
+        <CustomizerContext.Provider value={updatedContext}>
+          <TestComponent />
+        </CustomizerContext.Provider>,
+      );
+    });
 
     expect(settingsStates.length).toBe(2);
     expect(settingsStates[1]).toEqual({ theme: { color: 'green' } });
@@ -106,13 +121,15 @@ describe('useCustomizatioSettings', () => {
     };
 
     const newContext = { customizations: { settings: { a: 'aa' }, scopedSettings: {}, inCustomizerContext: true } };
-    wrapper = mount(
-      <CustomizerContext.Provider value={newContext}>
-        <TestComponent />
-      </CustomizerContext.Provider>,
-    );
+    act(() => {
+      component = render(
+        <CustomizerContext.Provider value={newContext}>
+          <TestComponent />
+        </CustomizerContext.Provider>,
+      );
+    });
 
-    ReactTestUtils.act(() => {
+    act(() => {
       Customizations.applySettings({ a: 'aaa' });
     });
 

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { resetIds } from '../../Utilities';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
@@ -18,7 +17,7 @@ describe('TeachingBubble', () => {
   });
 
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
-    const component = mount(
+    const { container } = render(
       <TeachingBubble
         isWide={true}
         calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
@@ -28,11 +27,11 @@ describe('TeachingBubble', () => {
       </TeachingBubble>,
     );
 
-    expect(component.find(TeachingBubbleContent).find('div#content').length).toBe(1);
+    expect(getBySelector(container, 'div#content')).toBeTruthy();
   });
 
   it('renders TeachingBubble using a <p> for the child content if the child is a string', () => {
-    const component = mount(
+    const { container } = render(
       <TeachingBubble
         isWide={true}
         calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
@@ -42,32 +41,29 @@ describe('TeachingBubble', () => {
       </TeachingBubble>,
     );
 
-    expect(component.find(TeachingBubbleContent).find('p#content').length).toBe(1);
+    expect(getBySelector(container, 'p#content')).toBeTruthy();
   });
 
   it('renders TeachingBubble with provided aria-describedby and aria-labelledby', () => {
-    const component = mount(
+    const { baseElement } = render(
       <TeachingBubble headline="Test Title" ariaDescribedBy="content" ariaLabelledBy="title">
         Test Content
       </TeachingBubble>,
     );
 
-    expect(component.find('div[aria-describedby="content"]').length).toBe(1);
-    expect(component.find('div[aria-labelledby="title"]').length).toBe(1);
-    expect(component.find('p[id="content"]').length).toBe(1);
-    expect(component.find('p[id="title"]').length).toBe(1);
+    expect(getBySelector(baseElement, 'div[aria-describedby="content"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'div[aria-labelledby="title"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'p[id="content"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'p[id="title"]')).toBeTruthy();
   });
 
   it('renders TeachingBubbleContent with generated aria-describedby and aria-labelledby', () => {
-    const component = renderer.create(
-      <TeachingBubbleContent headline="Test Title">Test Content</TeachingBubbleContent>,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<TeachingBubbleContent headline="Test Title">Test Content</TeachingBubbleContent>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubble correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <TeachingBubble
         isWide={true}
         calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
@@ -77,22 +73,20 @@ describe('TeachingBubble', () => {
         Test Content
       </TeachingBubble>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent headline="Test Title" ariaDescribedBy="content" ariaLabelledBy="title">
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with buttons correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         headline="Test Title"
         hasCloseButton={true}
@@ -104,12 +98,11 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with image correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         headline="Test Title"
         illustrationImage={{ src: 'test image url' }}
@@ -119,12 +112,11 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with condensed headline correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         hasCondensedHeadline={true}
         headline="Test Title"
@@ -134,12 +126,11 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with small headline correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         hasSmallHeadline={true}
         headline="Test Title"
@@ -149,22 +140,20 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with custom footer text', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent footerContent="1 of 2" ariaDescribedBy="content" ariaLabelledBy="title">
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders TeachingBubbleContent with calloutProps that deal with styles', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         calloutProps={{ beakWidth: 50, calloutWidth: 100 }}
         ariaDescribedBy="content"
@@ -173,8 +162,7 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -187,7 +175,7 @@ describe('TeachingBubble', () => {
   });
 
   it('merges callout classNames', () => {
-    ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
+    render(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {
       const callout = document.querySelector('.ms-Callout') as HTMLElement;
       expect(callout).toBeTruthy();

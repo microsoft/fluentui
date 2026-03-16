@@ -1,5 +1,7 @@
+'use client';
+
 import { Escape } from '@fluentui/keyboard-keys';
-import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
   useEventCallback,
   useMergedRefs,
@@ -10,10 +12,10 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useDialogContext_unstable } from '../../contexts';
+import { useDialogContext_unstable, useDialogBackdropContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 import { DialogBackdropMotion } from '../DialogBackdropMotion';
-import { useMotionForwardedRef } from '../MotionRefForwarder';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
@@ -33,12 +35,15 @@ export const useDialogSurface_unstable = (
 
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
+  const backdropOverride = useDialogBackdropContext_unstable();
+  const treatBackdropAsNested = backdropOverride ?? isNestedDialog;
 
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
   const open = useDialogContext_unstable(ctx => ctx.open);
+  const unmountOnClose = useDialogContext_unstable(ctx => ctx.unmountOnClose);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -75,44 +80,52 @@ export const useDialogSurface_unstable = (
     },
     elementType: 'div',
   });
+
+  const backdropAppearance = backdrop?.appearance;
+
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
+    // remove backdrop.appearance so it is not passed to the DOM
+    delete backdrop.appearance;
   }
 
   const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
 
   useIsomorphicLayoutEffect(() => {
+    if (!open) {
+      enableBodyScroll();
+      return;
+    }
+
     if (isNestedDialog || modalType === 'non-modal') {
       return;
     }
 
     disableBodyScroll();
 
-    return () => {
-      enableBodyScroll();
-    };
-  }, [enableBodyScroll, isNestedDialog, disableBodyScroll, modalType]);
+    return () => enableBodyScroll();
+  }, [open, modalType, isNestedDialog, disableBodyScroll, enableBodyScroll]);
 
   return {
     components: {
       backdrop: 'div',
       root: 'div',
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      backdropMotion: DialogBackdropMotion as React.FC<PresenceMotionSlotProps>,
+      backdropMotion: DialogBackdropMotion,
     },
     open,
     backdrop,
     isNestedDialog,
+    treatBackdropAsNested,
+    backdropAppearance,
+    unmountOnClose,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-        'aria-modal': modalType !== 'non-modal',
         role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+        'aria-modal': modalType !== 'non-modal',
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+        'aria-hidden': !unmountOnClose && !open ? true : undefined,
         ...props,
         ...modalAttributes,
         onKeyDown: handleKeyDown,
@@ -126,7 +139,7 @@ export const useDialogSurface_unstable = (
     backdropMotion: presenceMotionSlot(props.backdropMotion, {
       elementType: DialogBackdropMotion,
       defaultProps: {
-        appear: true,
+        appear: unmountOnClose,
         visible: open,
       },
     }),

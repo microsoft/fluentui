@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import {
@@ -8,10 +10,12 @@ import {
 
 import { useOverlayDrawerSurfaceStyles_unstable } from './useOverlayDrawerSurfaceStyles.styles';
 import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
- * @internal
  * OverlayDrawerSurface is a proxy for DialogSurface as is only meant to be used internally for Drawer.
+ *
+ * @internal
  */
 export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps> = React.forwardRef((props, ref) => {
   const dialogSurfaceState = useDialogSurface_unstable(
@@ -30,6 +34,7 @@ export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
 
   useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
+  useCustomStyleHook_unstable('useOverlayDrawerSurfaceStyles_unstable')(dialogSurfaceState);
 
   return renderDialogSurface_unstable(dialogSurfaceState, dialogSurfaceContextValues);
 });

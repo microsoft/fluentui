@@ -1,0 +1,122 @@
+'use client';
+
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import * as React from 'react';
+<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Pie/Pie.tsx
+import { pie as d3Pie, PieArcDatum } from 'd3-shape';
+=======
+import type { JSXElement } from '@fluentui/react-utilities';
+import { pie as d3Pie } from 'd3-shape';
+>>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Pie/Pie.tsx
+import { PieProps } from './index';
+import { Arc } from '../Arc/index';
+import { ChartDataPoint } from '../index';
+import { usePieStyles } from './usePieStyles.styles';
+import { wrapTextInsideDonut } from '../../../utilities/index';
+const TEXT_PADDING: number = 5;
+
+// Create a Pie within Donut Chart variant which uses these default styles and this styled subcomponent.
+/**
+ * Pie component within Donut Chart.
+ * {@docCategory PieDonutChart}
+ */
+export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
+  (props, forwardedRef) => {
+    React.useEffect(() => {
+      wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
+    }, []);
+
+    let _totalValue: number;
+    const classes = usePieStyles(props);
+    const pieForFocusRing = d3Pie()
+      .sort(null)
+      .value((d: any) => d.data)
+      .padAngle(0);
+
+    function _focusCallback(
+      data: ChartDataPoint,
+      id: string,
+      e: React.FocusEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.onFocusCallback!(data, id, e, targetElement);
+    }
+
+    function _hoverCallback(
+      data: ChartDataPoint,
+      e: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.hoverOnCallback!(data, e, targetElement);
+    }
+
+    function _computeTotalValue() {
+      let totalValue = 0;
+      props.data.forEach((arc: ChartDataPoint) => {
+        totalValue += arc.data!;
+      });
+      return totalValue;
+    }
+
+<<<<<<< HEAD:packages/charts/react-charts-preview/library/src/components/DonutChart/Pie/Pie.tsx
+    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
+=======
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSXElement {
+      const color = d && d.data && d.data.color;
+>>>>>>> ec5736348028dcf9a0fbebb818a79242d23b4e1c:packages/charts/react-charts/library/src/components/DonutChart/Pie/Pie.tsx
+      return (
+        <Arc
+          key={i}
+          data={d}
+          focusData={focusData}
+          innerRadius={props.innerRadius}
+          outerRadius={props.outerRadius}
+          color={d.data.color!}
+          onFocusCallback={_focusCallback}
+          hoverOnCallback={_hoverCallback}
+          onBlurCallback={props.onBlurCallback}
+          hoverLeaveCallback={props.hoverLeaveCallback}
+          uniqText={props.uniqText}
+          activeArc={props.activeArc}
+          href={href}
+          calloutId={props.calloutId}
+          valueInsideDonut={props.valueInsideDonut}
+          focusedArcId={props.focusedArcId}
+          showLabelsInPercent={props.showLabelsInPercent}
+          totalValue={_totalValue}
+          hideLabels={props.hideLabels}
+        />
+      );
+    }
+
+    const { data } = props;
+
+    // Filter out data points with value 0 to avoid gaps in the donut chart
+    const filteredData = data.filter((d: ChartDataPoint) => d.data !== 0);
+
+    const focusData = pieForFocusRing(filteredData.map(d => d.data!));
+
+    const piechart = d3Pie<ChartDataPoint>()
+      .sort(null)
+      .value((d: any) => d.data)
+      .padAngle(0.02)(filteredData);
+    const translate = `translate(${props.width / 2}, ${props.height / 2})`;
+
+    _totalValue = _computeTotalValue();
+
+    return (
+      <g transform={translate}>
+        {piechart.map((d: PieArcDatum<ChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {props.valueInsideDonut && (
+          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
+            {props.valueInsideDonut}
+          </text>
+        )}
+      </g>
+    );
+  },
+);
+Pie.displayName = 'Pie';

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverFooterSlots, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -48,7 +50,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFooterState) => {
+export const useTeachingPopoverFooterStyles_unstable = (
+  state: TeachingPopoverFooterState,
+): TeachingPopoverFooterState => {
   'use no memo';
 
   const styles = useStyles();

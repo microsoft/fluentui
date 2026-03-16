@@ -1,3 +1,5 @@
+'use client';
+
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -104,7 +106,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
+export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderState => {
   'use no memo';
 
   const styles = useStyles();

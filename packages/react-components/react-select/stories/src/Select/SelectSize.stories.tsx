@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Select, useId } from '@fluentui/react-components';
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const selectId = useId();
 
   return (

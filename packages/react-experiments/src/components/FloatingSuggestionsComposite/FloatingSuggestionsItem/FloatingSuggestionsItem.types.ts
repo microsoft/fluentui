@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ITheme, IStyle } from '@fluentui/style-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IFloatingSuggestionItemProps<T> {
   item: T;
@@ -17,7 +18,7 @@ export interface IFloatingSuggestionItemProps<T> {
   key?: string;
   id?: string;
   theme?: ITheme;
-  onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
+  onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSXElement;
 }
 
 export type IFloatingSuggestionItem<T> = Omit<

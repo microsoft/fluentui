@@ -2,10 +2,15 @@ import { GlobalSettings, warn } from '@fluentui/utilities';
 import { fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
 import type { IRawStyle, IFontFace } from '@fluentui/merge-styles';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IIconSubset {
   fontFace?: IFontFace;
   icons: {
-    [key: string]: string | JSX.Element;
+    [key: string]:
+      | string
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      | JSXElement;
   };
 
   style?: IRawStyle;

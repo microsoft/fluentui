@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuDivider renders a default state 1`] = `
 <div
-  aria-hidden={true}
-  className="fui-MenuDivider"
+  aria-hidden="true"
+  class="fui-MenuDivider"
   role="presentation"
 >
   Default MenuDivider

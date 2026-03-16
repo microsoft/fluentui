@@ -3,7 +3,7 @@ import * as React from 'react';
 /**
  * A callback ref function that also has a .current member for the ref's current value.
  */
-export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
+export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T | null>;
 
 /**
  * Creates a ref, and calls a callback whenever the ref changes to a non-null value. The callback can optionally return
@@ -31,6 +31,7 @@ export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
  */
 export function useRefEffect<T>(callback: (value: T) => (() => void) | void, initial: T | null = null): RefCallback<T> {
   type RefData = {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ref: ((value: T | null) => void) & React.MutableRefObject<T | null>;
     callback: (value: T) => (() => void) | void;
     cleanup?: (() => void) | void;

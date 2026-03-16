@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      aria-label="A complete chart with all props"
+      height="400"
+      role="img"
+      style="width: 600px; height: 400px; display: block;"
+      viewBox="0 0 600 400"
+      width="600"
+    >
+      <foreignobject
+        height="400"
+        width="600"
+        x="0"
+        y="0"
+      >
+        <div
+          aria-label="A complete chart with all props"
+          class=""
+          data-chart-annotation-only="true"
+          style="width: 600px; min-height: 400px; background-color: rgb(245, 245, 245); color: rgb(51, 51, 51); font-family: Arial, sans-serif; padding: 10px 15px 20px 25px;"
+        >
+          <span
+            aria-hidden="true"
+            class=""
+          >
+            Complete Chart
+          </span>
+          <div
+            class=""
+            role="presentation"
+            style="background-color: rgb(255, 255, 255);"
+          >
+            <div
+              class="fui-chartAnnotationLayer__root"
+              data-chart-annotation-layer="true"
+              role="presentation"
+            >
+              <svg
+                class="fui-chartAnnotationLayer__connectorLayer"
+                data-chart-annotation-svg="true"
+                height="100%"
+                preserveAspectRatio="none"
+                viewBox="0 0 600 400"
+                width="100%"
+              >
+                <foreignobject
+                  class="fui-chartAnnotationLayer__annotationForeignObject"
+                  data-annotation-key="annotation-1"
+                  height="60"
+                  width="180"
+                  x="210"
+                  y="170"
+                >
+                  <div
+                    class=""
+                    data-annotation-key="annotation-1"
+                  >
+                    <div
+                      aria-label="Test Annotation 1"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
+                      data-annotation-key="annotation-1"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="opacity: 1;"
+                      tabindex="0"
+                    >
+                      Test Annotation 1
+                    </div>
+                  </div>
+                </foreignobject>
+                <foreignobject
+                  class="fui-chartAnnotationLayer__annotationForeignObject"
+                  data-annotation-key="annotation-2"
+                  height="60"
+                  width="180"
+                  x="90"
+                  y="250"
+                >
+                  <div
+                    class=""
+                    data-annotation-key="annotation-2"
+                    style="background-color: rgba(255, 255, 255, 0.8);"
+                  >
+                    <div
+                      aria-label="Test Annotation 2"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
+                      data-annotation-key="annotation-2"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
+                    >
+                      Test Annotation 2
+                    </div>
+                  </div>
+                </foreignobject>
+              </svg>
+              <div
+                aria-hidden="true"
+                class="fui-chartAnnotationLayer__measurement"
+                data-annotation-key="annotation-1"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+              >
+                <div
+                  class="fui-chartAnnotationLayer__annotationContent"
+                  style="opacity: 1;"
+                >
+                  Test Annotation 1
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="fui-chartAnnotationLayer__measurement"
+                data-annotation-key="annotation-2"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
+              >
+                <div
+                  class="fui-chartAnnotationLayer__annotationContent"
+                  style="color: rgb(0, 0, 0); opacity: 1;"
+                >
+                  Test Annotation 2
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      height="400"
+      style="width: 600px; height: 400px; display: block;"
+      viewBox="0 0 600 400"
+      width="600"
+    >
+      <foreignobject
+        height="400"
+        width="600"
+        x="0"
+        y="0"
+      >
+        <div
+          class=""
+          data-chart-annotation-only="true"
+          style="width: 600px; min-height: 400px;"
+        >
+          <div
+            class=""
+            role="presentation"
+          >
+            <div
+              class="fui-chartAnnotationLayer__root"
+              data-chart-annotation-layer="true"
+              role="presentation"
+            >
+              <svg
+                class="fui-chartAnnotationLayer__connectorLayer"
+                data-chart-annotation-svg="true"
+                height="100%"
+                preserveAspectRatio="none"
+                viewBox="0 0 600 400"
+                width="100%"
+              >
+                <foreignobject
+                  class="fui-chartAnnotationLayer__annotationForeignObject"
+                  data-annotation-key="annotation-1"
+                  height="60"
+                  width="180"
+                  x="210"
+                  y="170"
+                >
+                  <div
+                    class=""
+                    data-annotation-key="annotation-1"
+                  >
+                    <div
+                      aria-label="Test Annotation 1"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
+                      data-annotation-key="annotation-1"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="opacity: 1;"
+                      tabindex="0"
+                    >
+                      Test Annotation 1
+                    </div>
+                  </div>
+                </foreignobject>
+                <foreignobject
+                  class="fui-chartAnnotationLayer__annotationForeignObject"
+                  data-annotation-key="annotation-2"
+                  height="60"
+                  width="180"
+                  x="90"
+                  y="250"
+                >
+                  <div
+                    class=""
+                    data-annotation-key="annotation-2"
+                    style="background-color: rgba(255, 255, 255, 0.8);"
+                  >
+                    <div
+                      aria-label="Test Annotation 2"
+                      class="fui-chartAnnotationLayer__annotationContent fui-chartAnnotationLayer__annotationContentInteractive"
+                      data-annotation-key="annotation-2"
+                      data-chart-annotation="true"
+                      role="note"
+                      style="color: rgb(0, 0, 0); opacity: 1;"
+                      tabindex="0"
+                    >
+                      Test Annotation 2
+                    </div>
+                  </div>
+                </foreignobject>
+              </svg>
+              <div
+                aria-hidden="true"
+                class="fui-chartAnnotationLayer__measurement"
+                data-annotation-key="annotation-1"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+              >
+                <div
+                  class="fui-chartAnnotationLayer__annotationContent"
+                  style="opacity: 1;"
+                >
+                  Test Annotation 1
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="fui-chartAnnotationLayer__measurement"
+                data-annotation-key="annotation-2"
+                data-chart-annotation-measurement="true"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
+              >
+                <div
+                  class="fui-chartAnnotationLayer__annotationContent"
+                  style="color: rgb(0, 0, 0); opacity: 1;"
+                >
+                  Test Annotation 2
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AnnotationOnlyChart Snapshots matches snapshot with empty annotations 1`] = `
+<div>
+  <div
+    data-chart-annotation-container="true"
+  >
+    <svg
+      height="650"
+      style="width: 100%; height: 650px; display: block;"
+      viewBox="0 0 400 650"
+      width="400"
+    >
+      <foreignobject
+        height="650"
+        width="400"
+        x="0"
+        y="0"
+      >
+        <div
+          class=""
+          data-chart-annotation-only="true"
+          style="width: 100%; min-height: 650px;"
+        >
+          <span
+            aria-hidden="true"
+            class=""
+          >
+            Empty Chart
+          </span>
+          <div
+            class=""
+            role="presentation"
+          />
+        </div>
+      </foreignobject>
+    </svg>
+  </div>
+</div>
+`;

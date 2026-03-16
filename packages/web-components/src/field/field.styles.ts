@@ -4,10 +4,10 @@ import {
   customErrorState,
   disabledState,
   focusVisibleState,
-  hasMessageState,
   patternMismatchState,
   rangeOverflowState,
   rangeUnderflowState,
+  requiredState,
   stepMismatchState,
   tooLongState,
   tooShortState,
@@ -18,6 +18,8 @@ import {
 import {
   borderRadiusMedium,
   colorNeutralForeground1,
+  colorNeutralForeground3,
+  colorPaletteRedForeground1,
   colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase200,
@@ -29,7 +31,7 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   spacingHorizontalM,
-  spacingHorizontalS,
+  spacingHorizontalXS,
   spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXXS,
@@ -51,7 +53,6 @@ export const styles = css`
     align-items: center;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    position: relative;
   }
 
   :has([slot='message']) {
@@ -91,26 +92,24 @@ export const styles = css`
     margin-block-start: ${spacingVerticalM};
   }
 
-  :host([label-position='below']:not(${hasMessageState})) {
-    grid-template-areas: 'input' 'label';
-  }
-
-  ::slotted([slot='label'])::after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
+  :host(${requiredState}) ::slotted([slot='label'])::after {
+    content: '*' / '';
+    color: ${colorPaletteRedForeground1};
+    margin-inline-start: ${spacingHorizontalXS};
   }
 
   ::slotted([slot='input']) {
     grid-area: input;
-    position: relative;
-    z-index: 1;
   }
 
   ::slotted([slot='message']) {
-    margin-block-start: ${spacingVerticalXXS};
+    color: ${colorNeutralForeground3};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
     grid-area: message;
+    line-height: ${lineHeightBase200};
+    margin-block-start: ${spacingVerticalXXS};
   }
 
   :host(${focusVisibleState}:focus-within) {
@@ -127,6 +126,7 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     grid-area: label;
     line-height: ${lineHeightBase300};
+    justify-self: stretch;
     user-select: none;
   }
 

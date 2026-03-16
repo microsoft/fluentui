@@ -3,6 +3,8 @@ import type { ISuggestionModel, ISuggestionItemProps } from '../../../Pickers';
 import type { IPersonaProps } from '../../../Persona';
 import type { IRefObject } from '../../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
@@ -11,7 +13,8 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
+
+  onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSXElement;
 
   /**
    * What should occur when a suggestion is clicked
@@ -84,7 +87,7 @@ export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>,
 }
 
 export interface ISuggestionsHeaderFooterProps {
-  renderItem: () => JSX.Element;
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   className?: string;
   ariaLabel?: string;
@@ -93,7 +96,8 @@ export interface ISuggestionsHeaderFooterProps {
 
 export interface ISuggestionsHeaderFooterItemProps {
   componentRef?: IRefObject<{}>;
-  renderItem: () => JSX.Element;
+
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   isSelected: boolean;
   id: string;

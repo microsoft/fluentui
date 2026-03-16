@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TreeChart, ITreeProps, ITreeState } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 const threeLayerChart = {
   name: 'Root Node',
@@ -92,7 +93,26 @@ export class TreeChartThreeLayerExample extends React.Component<{}, ITreeState> 
   constructor(props: ITreeProps) {
     super(props);
   }
-  public render(): JSX.Element {
+
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
+  public render(): JSXElement {
     return <div>{this._createTreeChart()}</div>;
   }
 
@@ -100,9 +120,9 @@ export class TreeChartThreeLayerExample extends React.Component<{}, ITreeState> 
     this.setState({ _layoutWidth: parseInt(e.target.value, 10) });
   };
 
-  private _createTreeChart(): JSX.Element {
+  private _createTreeChart(): JSXElement {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -114,7 +134,7 @@ export class TreeChartThreeLayerExample extends React.Component<{}, ITreeState> 
           aria-valuetext={`ChangeWidthSlider${this.state?._layoutWidth}`}
         />
         <TreeChart treeData={threeLayerChart} layoutWidth={this.state?._layoutWidth} />
-      </>
+      </div>
     );
   }
 }

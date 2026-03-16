@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { setRTL } from '../../../Utilities';
 import * as PersonaTypes from '../Persona.types';
 import { PersonaPresence } from './PersonaPresence';
@@ -11,88 +11,74 @@ describe('PersonaPresence', () => {
   });
 
   it('renders available', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.online} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.online} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders available + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.online} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.online} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders away', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.away} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.away} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders away + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.away} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.away} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders busy', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.busy} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.busy} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders busy + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.busy} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.busy} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders do not disturb', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.dnd} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.dnd} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders do not disturb + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.dnd} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.dnd} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders blocked', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders blocked + out of office', () => {
     // Blocked + out of office does not exist and is the same as regular blocked
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders offline', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.offline} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.offline} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders offline + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.offline} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.offline} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders none', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.none} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.none} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders none + out of office', () => {
-    const component = create(<PersonaPresence presence={PersonaTypes.PersonaPresence.none} isOutOfOffice />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaPresence presence={PersonaTypes.PersonaPresence.none} isOutOfOffice />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

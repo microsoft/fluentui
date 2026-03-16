@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { RatingItemState, RatingItemSlots } from './RatingItem.types';
 
 /**
  * Render the final JSX of RatingItem
  */
-export const renderRatingItem_unstable = (state: RatingItemState) => {
+export const renderRatingItem_unstable = (state: RatingItemState): JSXElement => {
   assertSlots<RatingItemSlots>(state);
 
   return (

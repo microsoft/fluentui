@@ -26,6 +26,7 @@ const PLANNER = 'planner';
 const PORTFOLIO = 'portfolio';
 const ALBUM = 'album';
 const LIST_FORM = 'listform';
+const CAMPAIGN = 'spocampaign';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -71,8 +72,8 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
   // Next, obtain the suffix using the icon size, user's device pixel ration, and
   // preference for svg or png
-  let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
   return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
@@ -167,6 +168,9 @@ export function getFileTypeIconNameFromExtensionOrType(
       case FileIconType.listForm:
         iconBaseName = LIST_FORM;
         break;
+      case FileIconType.campaign:
+        iconBaseName = CAMPAIGN;
+        break;
     }
   }
   return iconBaseName || GENERIC_FILE;
@@ -179,7 +183,7 @@ export function getFileTypeIconSuffix(
 ): string {
   // eslint-disable-next-line no-restricted-globals
   win ??= window;
-  let devicePixelRatio: number = win.devicePixelRatio;
+  const devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

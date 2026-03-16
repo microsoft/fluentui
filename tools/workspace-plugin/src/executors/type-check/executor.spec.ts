@@ -24,6 +24,8 @@ const mockContext: ExecutorContext = {
       },
     },
   },
+  nxJsonConfiguration: {},
+  projectGraph: { nodes: {}, dependencies: {} },
 };
 
 jest.mock('node:child_process');
@@ -48,7 +50,7 @@ jest.mock('@nx/devkit', () => {
 });
 
 describe('TypeCheck Executor', () => {
-  let loggerErrorSpy: jest.SpyInstance;
+  let loggerErrorSpy: jest.Spied<typeof logger.error>;
 
   beforeEach(() => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function

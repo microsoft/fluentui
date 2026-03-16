@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Listbox renders a default state 1`] = `
 <div>
   <div
-    aria-activedescendant="fluent-option1"
+    aria-activedescendant="fluent-option_r_0_"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -12,7 +12,7 @@ exports[`Listbox renders a default state 1`] = `
       aria-selected="false"
       class="fui-Option"
       data-activedescendant=""
-      id="fluent-option1"
+      id="fluent-option_r_0_"
       role="option"
     >
       <span
@@ -39,7 +39,7 @@ exports[`Listbox renders a default state 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option2"
+      id="fluent-option_r_1_"
       role="option"
     >
       <span
@@ -66,7 +66,7 @@ exports[`Listbox renders a default state 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option3"
+      id="fluent-option_r_2_"
       role="option"
     >
       <span
@@ -97,7 +97,7 @@ exports[`Listbox renders a default state 1`] = `
 exports[`Listbox renders with a selected option 1`] = `
 <div>
   <div
-    aria-activedescendant="fluent-option4"
+    aria-activedescendant="fluent-option_r_3_"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -106,7 +106,7 @@ exports[`Listbox renders with a selected option 1`] = `
       aria-selected="true"
       class="fui-Option"
       data-activedescendant=""
-      id="fluent-option4"
+      id="fluent-option_r_3_"
       role="option"
     >
       <span
@@ -133,7 +133,7 @@ exports[`Listbox renders with a selected option 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option5"
+      id="fluent-option_r_4_"
       role="option"
     >
       <span
@@ -160,7 +160,7 @@ exports[`Listbox renders with a selected option 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option6"
+      id="fluent-option_r_5_"
       role="option"
     >
       <span

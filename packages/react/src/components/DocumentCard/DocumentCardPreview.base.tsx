@@ -11,6 +11,8 @@ import type {
   IDocumentCardPreviewStyles,
 } from './DocumentCardPreview.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const DEFAULT_DISPLAY_COUNT = 3;
 const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>();
 
@@ -26,7 +28,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { previewImages, styles, theme, className } = this.props;
     let style: React.CSSProperties | undefined;
     let preview: React.ReactNode;

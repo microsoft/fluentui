@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
@@ -24,7 +25,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
     this._getCustomLocale();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -43,7 +44,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
     this.setState({ customLocale: locale });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
@@ -146,7 +147,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
     const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -184,14 +185,12 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             height={this.state.height}
             width={this.state.width}
             margins={margins}
-            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
-            rotateXAxisLables={true}
             timeFormatLocale={this.state.customLocale}
             enablePerfOptimization={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

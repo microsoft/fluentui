@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles } from '@fluentui/react-components';
 import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerControlled.md';
@@ -52,7 +53,7 @@ const ControlledSelection = () => {
   );
 };
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

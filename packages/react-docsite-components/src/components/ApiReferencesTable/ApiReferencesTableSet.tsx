@@ -39,7 +39,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     this._tableProps = _generateTableProps(props.jsonDocs);
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { className } = this.props;
     return (
       <Stack tokens={gapTokens.large} className={className}>
@@ -76,7 +76,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     return this.props.showAll || this.state.showSeeMore;
   }
 
-  private _renderFirst(): JSX.Element | undefined {
+  private _renderFirst(): React.ReactElement | undefined {
     if (this._tableProps.length >= 1) {
       const item = this._tableProps[0];
       return <ApiReferencesTable {...item} />;
@@ -84,7 +84,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     return undefined;
   }
 
-  private _renderEach(): JSX.Element | undefined {
+  private _renderEach(): React.ReactElement | undefined {
     if (this._tableProps.length > 1) {
       return (
         <Stack tokens={gapTokens.medium}>
@@ -125,7 +125,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     }
   };
 
-  private _onRenderText(): JSX.Element {
+  private _onRenderText(): React.ReactElement {
     return <Text variant="xLarge">See more</Text>;
   }
 
@@ -155,7 +155,7 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
       title: kind !== 'typeAlias' ? name + ' ' + kind : name,
       renderAs: kind,
       properties: members || [],
-      tokenResolver: tokenResolver,
+      tokenResolver,
     };
 
     if (kind === 'class') {

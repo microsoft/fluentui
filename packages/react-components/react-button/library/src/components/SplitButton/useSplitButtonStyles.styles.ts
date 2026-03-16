@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -63,7 +65,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStrokeOnBrand,
       },
@@ -80,7 +82,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${splitButtonClassNames.primaryActionButton}`]: {
           borderRightColor: 'Highlight',
         },
@@ -101,7 +103,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
@@ -118,7 +120,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
@@ -142,7 +144,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: tokens.colorNeutralStrokeDisabled,
       },
@@ -162,7 +164,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${splitButtonClassNames.primaryActionButton}`]: {
           borderRightColor: 'GrayText',
         },

@@ -10,6 +10,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: 'Single callout' },
@@ -37,11 +38,11 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
       selectedCallout: 'MultiCallout',
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'meta data 1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
       { legend: 'Meta data 2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
@@ -129,7 +130,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
           paddingBottom: '45px',
         },
         chartLabel: {
-          color: DefaultPalette.blueMid,
+          color: getColorFromToken(DataVizPalette.color1),
           ...DefaultFontStyles.large,
         },
         xAxisText: {
@@ -139,7 +140,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
     };
 
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
@@ -237,7 +238,6 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
             {...(this.state.selectedCallout === 'singleCallout' && {
               onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
                 return props ? (
@@ -257,7 +257,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
             useUTC={false}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

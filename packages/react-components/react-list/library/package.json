@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-list",
-  "version": "9.1.0",
+  "version": "9.6.11",
   "description": "React List v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,31 +17,23 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-provider": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
-  },
   "dependencies": {
-    "@fluentui/react-checkbox": "^9.3.0",
-    "@fluentui/react-context-selector": "^9.1.72",
-    "@fluentui/react-jsx-runtime": "^9.0.50",
+    "@fluentui/react-checkbox": "^9.5.16",
+    "@fluentui/react-context-selector": "^9.2.15",
+    "@fluentui/react-jsx-runtime": "^9.4.1",
     "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-tabster": "^9.24.0",
-    "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-utilities": "^9.18.20",
-    "@fluentui/react-shared-contexts": "^9.21.2",
-    "@griffel/react": "^1.5.22",
+    "@fluentui/react-tabster": "^9.26.13",
+    "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-utilities": "^9.26.2",
+    "@fluentui/react-shared-contexts": "^9.26.2",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

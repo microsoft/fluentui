@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   ExtractSlotProps,
@@ -32,9 +34,12 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
-  const rootProps = slot.always(getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest), {
-    elementType: 'div',
-  });
+  const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always(
+    getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest),
+    {
+      elementType: 'div',
+    },
+  );
   const focusableGroupAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
     ignoreDefaultKeydown: { Escape: true },
@@ -44,7 +49,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
       e.preventDefault();
       closeAllToasts();
     }
-    props.onKeyDown?.(e);
+    onKeyDownProp?.(e);
   });
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const focusManagementRef = useToasterFocusManagement_unstable(pauseAllToasts, playAllToasts);

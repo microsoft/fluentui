@@ -1,3 +1,5 @@
+'use client';
+
 import { OverflowGroupState } from '@fluentui/priority-overflow';
 import { useOverflowContext } from './overflowContext';
 

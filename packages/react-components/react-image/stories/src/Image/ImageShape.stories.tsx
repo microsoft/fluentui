@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 
-export const Shape = () => (
+export const Shape = (): JSXElement => (
   <div style={{ display: 'flex', gap: 8 }}>
     <Image
       alt="Allan's avatar"

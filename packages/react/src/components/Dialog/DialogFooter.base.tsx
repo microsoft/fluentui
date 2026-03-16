@@ -3,6 +3,8 @@ import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import type { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 import type { IProcessedStyleSet } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
 export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
@@ -14,7 +16,7 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, styles, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -29,7 +31,7 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
     );
   }
 
-  private _renderChildrenAsActions(): (JSX.Element | null)[] | null | undefined {
+  private _renderChildrenAsActions(): (JSXElement | null)[] | null | undefined {
     return React.Children.map(this.props.children, child =>
       child ? <span className={this._classNames.action}>{child}</span> : null,
     );

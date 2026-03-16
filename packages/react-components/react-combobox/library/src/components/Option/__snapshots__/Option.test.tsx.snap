@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Option renders a default multi-select state 1`] = `
 <div>
   <div
     aria-checked="false"
     class="fui-Option"
-    id="fluent-option1"
+    id="fluent-option_r_9_"
     role="menuitemcheckbox"
   >
     <span
@@ -22,7 +22,7 @@ exports[`Option renders a default single-select state 1`] = `
   <div
     aria-selected="false"
     class="fui-Option"
-    id="fluent-option1"
+    id="fluent-option_r_7_"
     role="option"
   >
     <span
@@ -54,7 +54,7 @@ exports[`Option renders a selected multi-select state 1`] = `
   <div
     aria-checked="true"
     class="fui-Option"
-    id="fluent-option1"
+    id="fluent-option_r_a_"
     role="menuitemcheckbox"
   >
     <span

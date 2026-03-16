@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useEventCallback,
@@ -27,6 +29,7 @@ import {
 } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
+import { useValidateNesting } from '../../utils/useValidateNesting';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -35,16 +38,45 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
  * Returns the props and state required to render the component
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
+  const { dir } = useFluent();
+  const state = useMenuItemBase_unstable(props, ref);
+
+  // Set default chevron icon
+  if (state.submenuIndicator) {
+    state.submenuIndicator.children ??= dir === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />;
+  }
+
+  return state;
+};
+
+/**
+ * Base hook for MenuItem component, produces state required to render the component.
+ * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon.
+ *
+ * @internal
+ */
+export const useMenuItemBase_unstable = (
+  props: MenuItemProps,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
+): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
-  const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
+  const {
+    as = 'div',
+    disabled = false,
+    hasSubmenu = isSubmenuTrigger,
+    persistOnClick = persistOnClickContext,
+    content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
+    ...rest
+  } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
-  const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
   const dismissedWithKeyboardRef = React.useRef(false);
+
+  const validateNestingRef = useValidateNesting(getValidateNestingComponentName(props.role));
 
   const state: MenuItemState = {
     hasSubmenu,
@@ -64,10 +96,10 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
         as,
         useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
-          ...props,
+          ...rest,
           disabled: false,
           disabledFocusable: disabled,
-          ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+          ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
           onKeyDown: useEventCallback(event => {
             props.onKeyDown?.(event);
             if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
@@ -106,9 +138,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     }),
     submenuIndicator: slot.optional(props.submenuIndicator, {
       renderByDefault: hasSubmenu,
-      defaultProps: {
-        children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
-      },
       elementType: 'span',
     }),
     content: slot.optional(props.content, {
@@ -150,4 +179,14 @@ const useIconAndCheckmarkAlignment = (options: { hasSubmenu: boolean }) => {
     hasIcons: hasIcons && !isSplitItemTrigger,
     hasCheckmarks: hasCheckmarks && !isSplitItemTrigger,
   };
+};
+
+const getValidateNestingComponentName = (role?: string) => {
+  switch (role) {
+    case 'menuitemcheckbox':
+      return 'MenuItemCheckbox';
+    case 'menuitemradio':
+      return 'MenuItemRadio';
+  }
+  return 'MenuItem';
 };

@@ -25,7 +25,7 @@ export type AccordionToggleData<Value = AccordionItemValue> = {
   openItems: Value[];
 };
 
-export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<AccordionSlots>, 'onToggle'> & {
   /**
    * Default value for the uncontrolled state of the panel.
    */
@@ -59,4 +59,8 @@ export type AccordionProps<Value = AccordionItemValue> = ComponentProps<Accordio
   openItems?: Value | Value[];
 };
 
+export type AccordionBaseProps<Value = AccordionItemValue> = Omit<AccordionProps<Value>, 'navigation'>;
+
 export type AccordionState<Value = AccordionItemValue> = ComponentState<AccordionSlots> & AccordionContextValue<Value>;
+
+export type AccordionBaseState<Value = AccordionItemValue> = Omit<AccordionState<Value>, 'navigation'>;

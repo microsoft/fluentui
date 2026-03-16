@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -47,14 +48,15 @@ const useStyles = makeStyles({
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
   const labelId = useId('type-label');
 
   const [isOpen, setIsOpen] = React.useState(false);
   const [type, setType] = React.useState<DrawerType>('overlay');
 
-  // Overlay Drawer will handle focus by default, but inline Drawers need manual focus restoration attributes, if applicable
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
   const restoreFocusTargetAttributes = useRestoreFocusTarget();
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 

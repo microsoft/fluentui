@@ -112,7 +112,8 @@ export type ComboboxBaseState = Required<
      * @deprecated - no longer used internally
      * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
      */
-    ignoreNextBlur: React.MutableRefObject<boolean>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ignoreNextBlur: React.MutableRefObject<boolean | null>;
 
     /**
      * @deprecated - no longer used internally

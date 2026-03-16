@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Controlled = (props: Partial<DropdownProps>) => {
+export const Controlled = (props: Partial<DropdownProps>): JSXElement => {
   const comboId = useId('combo-controlled');
   const styles = useStyles();
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['eatkins']);

@@ -131,7 +131,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
   };
 
   return (
-    <div style={{ maxWidth: 600 }}>
+    <div className="containerDiv" style={{ maxWidth: 600 }}>
       <HorizontalBarChart data={getData(theme?.isInverted ?? false)} />
     </div>
   );

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
-  createPresenceComponent,
+  createPresenceComponentVariant,
   Field,
   makeStyles,
   mergeClasses,
@@ -10,7 +11,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { createCollapsePresence } from '@fluentui/react-motion-components-preview';
+import { Collapse } from '@fluentui/react-motion-components-preview';
 
 import description from './CollapseCustomization.stories.md';
 
@@ -54,14 +55,12 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomCollapseVariant = createPresenceComponent(
-  createCollapsePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveEasyEaseMax,
-    exitDuration: motionTokens.durationNormal,
-    exitEasing: motionTokens.curveEasyEaseMax,
-  }),
-);
+const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
+  duration: motionTokens.durationSlow,
+  easing: motionTokens.curveEasyEaseMax,
+  exitDuration: motionTokens.durationNormal,
+  exitEasing: motionTokens.curveEasyEaseMax,
+});
 
 const LoremIpsum = () => (
   <>
@@ -71,9 +70,9 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Customization = () => {
+export const Customization = (): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);

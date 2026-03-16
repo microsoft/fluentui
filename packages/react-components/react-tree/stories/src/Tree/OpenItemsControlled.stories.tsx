@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Tree,
   TreeItemValue,
@@ -8,7 +9,7 @@ import {
   TreeOpenChangeEvent,
 } from '@fluentui/react-components';
 
-export const OpenItemsControlled = () => {
+export const OpenItemsControlled = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(data.openItems);

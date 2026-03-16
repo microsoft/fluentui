@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import type { RadioGroupContextValue } from '../RadioGroup';
@@ -14,7 +16,7 @@ export const RadioGroupProvider = RadioGroupContext.Provider;
 /**
  * Get the value of the RadioGroupContext.
  */
-export const useRadioGroupContextValue_unstable = () =>
+export const useRadioGroupContextValue_unstable = (): RadioGroupContextValue =>
   React.useContext(RadioGroupContext) || radioGroupContextDefaultValue;
 
 /**

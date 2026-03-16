@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
 import { useId } from './useId';
 import { validateHookValueNotChanged } from './testUtilities';
@@ -15,7 +15,7 @@ describe('useId', () => {
       id = useId('foo');
       return <div />;
     };
-    mount(<TestComponent />);
+    render(<TestComponent />);
     expect(id).toBeDefined();
     expect(id).toMatch(/^foo/);
   });

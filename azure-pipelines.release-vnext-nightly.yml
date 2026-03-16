@@ -1,6 +1,12 @@
 pr: none
 trigger: none
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 # Customize build number to include major version
 # Example: v9_20201022.1
 name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
@@ -56,6 +62,8 @@ extends:
                   artifactName: output
             steps:
               - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
               - script: |
                   git config user.name "Fluent UI Build"
@@ -75,7 +83,7 @@ extends:
                 # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
               - script: |
                   date=$(date +"%Y%m%d-%H%M")
-                  #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+                  # release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
                   yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
                   git add .
                   git commit -m "bump nightly versions"
@@ -83,21 +91,22 @@ extends:
                 displayName: 'Bump and commit nightly versions'
 
               - script: |
-                  yarn nx run react-components:build --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: build
 
               - script: |
-                  yarn nx run react-components:lint --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting" --nxBail
                 displayName: lint
 
               - script: |
-                  yarn nx run react-components:test --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: test
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
-                  git reset --hard origin/master
+                  yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
+                  git reset --hard origin/$(Build.SourceBranchName)
                 displayName: Publish changes and bump versions
+                condition: not(${{ parameters.dryRun }})
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

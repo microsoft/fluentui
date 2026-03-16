@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const ActiveAppearance = () => (
+export const ActiveAppearance = (): JSXElement => (
   <div style={{ display: 'flex', gap: '20px' }}>
     <Avatar active="active" activeAppearance="ring" name="Ring" />
     <Avatar active="active" activeAppearance="shadow" name="Shadow" />

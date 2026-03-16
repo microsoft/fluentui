@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<DropdownProps>) => {
+export const Default = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown-default');
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
   const styles = useStyles();

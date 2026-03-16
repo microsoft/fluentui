@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { MenuGroupContextValues, MenuGroupState } from './MenuGroup.types';
 

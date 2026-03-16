@@ -129,14 +129,19 @@ function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
     apiExtractorConfig.compiler = getTsConfigForApiExtractor({
       packageJson: parseJson(readFileSync(options.packageJsonPath, 'utf-8')),
       tsConfig: parseJson(readFileSync(options.tsConfigPathForCompilation, 'utf-8')),
+      apiExtractorConfig,
     });
 
     return apiExtractorConfig;
   }
 }
 
-function getTsConfigForApiExtractor(options: { tsConfig: TsConfig; packageJson: PackageJson }) {
-  const { packageJson, tsConfig } = options;
+function getTsConfigForApiExtractor(options: {
+  tsConfig: TsConfig;
+  packageJson: PackageJson;
+  apiExtractorConfig: IConfigFile;
+}) {
+  const { packageJson, tsConfig, apiExtractorConfig } = options;
 
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
@@ -160,10 +165,14 @@ function getTsConfigForApiExtractor(options: { tsConfig: TsConfig; packageJson: 
        */
       isolatedModules: false,
       /**
-       * TODO: make this configurable via schema api
-       * needs to be explicitly set to `false` so errors propagate to api-extractor
+       *
+       * Set to `false` by default so errors propagate to api-extractor
+       * support api-extractor.json compiler override if specified in user land, to allow exotic behaviors like using different major version of `@types/` packages
+       *
+       * TODO: make this configurable via schema api to take precedence over api-extractor compiler.skipLibCheck config
+       *
        */
-      skipLibCheck: false,
+      skipLibCheck: apiExtractorConfig.compiler?.skipLibCheck ?? false,
       /**
        * api-extractor introduced a "feature" which is actually a bug and makes using path aliases impossible
        * - with this api extractor change, user is forced to rely on yarn/npm "workspace" symlinks in order to determine that inner workspace package should not be bundled in type definition rollup/api.md

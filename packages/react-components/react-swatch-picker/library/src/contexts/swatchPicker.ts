@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
@@ -13,9 +15,10 @@ export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' 
   isGrid: boolean;
 
   /**
-   * @internal
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
+   *
+   * @internal
    */
   requestSelectionChange: (
     event: React.MouseEvent<HTMLButtonElement>,

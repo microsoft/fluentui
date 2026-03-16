@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup, Button } from '@fluentui/react-components';
 
-export const ControlledValue = () => {
+export const ControlledValue = (): JSXElement => {
   const [value, setValue] = React.useState('banana');
   return (
     <>
@@ -14,7 +15,7 @@ export const ControlledValue = () => {
           <Radio value="orange" label="Orange" />
         </RadioGroup>
       </Field>
-      <Button disabled={!value} onClick={() => setValue('')}>
+      <Button disabledFocusable={!value} onClick={() => setValue('')}>
         Clear selection
       </Button>
     </>

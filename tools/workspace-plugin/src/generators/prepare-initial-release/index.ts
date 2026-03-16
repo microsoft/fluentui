@@ -16,7 +16,7 @@ import {
   type ProjectConfiguration,
   type Tree,
   type ProjectGraph,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import * as tsquery from '@phenomnomnominal/tsquery';
 
 import { getProjectConfig, workspacePaths } from '../../utils';

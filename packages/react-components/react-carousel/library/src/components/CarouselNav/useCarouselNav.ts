@@ -1,3 +1,5 @@
+'use client';
+
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';

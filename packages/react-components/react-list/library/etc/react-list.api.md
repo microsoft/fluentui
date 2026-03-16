@@ -4,14 +4,13 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
@@ -34,6 +33,7 @@ export const listItemClassNames: SlotClassNames<ListItemSlots>;
 export type ListItemProps = ComponentProps<ListItemSlots> & {
     value?: ListItemValue;
     onAction?: EventHandler<ListItemActionEventData>;
+    disabledSelection?: boolean;
 };
 
 // @public (undocumented)
@@ -46,6 +46,7 @@ export type ListItemSlots = {
 export type ListItemState = ComponentState<ListItemSlots> & {
     selectable: boolean;
     navigable: boolean;
+    disabled?: boolean;
 };
 
 // @public
@@ -63,13 +64,13 @@ export type ListSlots = {
 };
 
 // @public
-export type ListState = ComponentState<ListSlots> & ListContextValue;
+export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
 
 // @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
+export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;

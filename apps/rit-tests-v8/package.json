@@ -1,0 +1,14 @@
+{
+  "name": "rit-tests-v8",
+  "description": "React Integration Tester application for problematic v8 scenarios",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@fluentui/react": "*",
+    "@fluentui/react-cards": "*",
+    "@fluentui/react-hooks": "*",
+    "@fluentui/react-examples": "*",
+    "@fluentui/font-icons-mdl2": "*",
+    "tslib": "^2.1.0"
+  }
+}

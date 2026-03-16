@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Field, makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 
@@ -20,7 +21,7 @@ const onFormatDate = (date?: Date): string => {
   return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
 };
 
-export const CustomDateFormatting = () => {
+export const CustomDateFormatting = (): JSXElement => {
   const styles = useStyles();
 
   const [value, setValue] = React.useState<Date | null | undefined>(null);

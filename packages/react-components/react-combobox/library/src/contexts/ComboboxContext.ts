@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from '@fluentui/react-context-selector';
 import { ComboboxState } from '../components/Combobox/Combobox.types';
 

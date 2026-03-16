@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -49,13 +50,20 @@ const useStyles = makeStyles({
   },
 });
 
-export const Pinned = () => {
+export const Pinned = (): JSXElement => {
   const styles = useStyles();
-
-  const [selected, setSelected] = React.useState<string>('6');
+  const [selected, setSelected] = React.useState<Set<string>>(() => new Set(['6']));
 
   const onSelect = (itemId: string) => {
-    setSelected(itemId);
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(itemId)) {
+        next.delete(itemId);
+      } else {
+        next.add(itemId);
+      }
+      return next;
+    });
   };
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
@@ -64,7 +72,7 @@ export const Pinned = () => {
     <Overflow>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         {itemIds.map(i => (
-          <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected === i} />
+          <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected.has(i)} />
         ))}
         <OverflowMenu itemIds={itemIds} onSelect={onSelect} />
       </div>
@@ -82,7 +90,7 @@ const OverflowSelectionItem: React.FC<{
   };
 
   return (
-    <OverflowItem id={props.id} priority={props.selected ? 1000 : undefined}>
+    <OverflowItem id={props.id} pinned={props.selected}>
       <Button
         aria-pressed={props.selected ? 'true' : 'false'}
         appearance={props.selected ? 'primary' : 'secondary'}
@@ -136,10 +144,11 @@ Pinned.parameters = {
   docs: {
     description: {
       story: [
-        'An item can be pinned (always visible) by setting it to be a higher priority that all other overflow items.',
-        'This can be useful when implementing selection scenarios where the selected item must always be visible.',
-        'Try selecting different items below to observe this effect. The pinned item will be overflowed if there',
-        'is no space left for any overflow item.',
+        'An item can be pinned (always visible) by setting the `pinned` prop on `OverflowItem`.',
+        'Pinned items will never overflow regardless of container size.',
+        'Multiple items can be pinned at the same time.',
+        'This is useful when implementing selection scenarios where selected items must always be visible.',
+        'Try selecting different items below to observe this effect.',
       ].join('\n'),
     },
   },

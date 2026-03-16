@@ -3,11 +3,12 @@
 import type { TeachingPopoverCarouselCardState } from './TeachingPopoverCarouselCard.types';
 import { TeachingPopoverCarouselCardSlots } from './TeachingPopoverCarouselCard.types';
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 /**
  * Render the final JSX of TeachingPopoverCarouselCard
  */
-export const renderTeachingPopoverCarouselCard_unstable = (state: TeachingPopoverCarouselCardState) => {
+export const renderTeachingPopoverCarouselCard_unstable = (state: TeachingPopoverCarouselCardState): JSXElement => {
   assertSlots<TeachingPopoverCarouselCardSlots>(state);
 
   return <state.root />;

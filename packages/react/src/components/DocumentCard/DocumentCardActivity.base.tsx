@@ -10,6 +10,8 @@ import type {
 } from './DocumentCardActivity.types';
 import type { IProcessedStyleSet } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>();
 
 /**
@@ -24,7 +26,7 @@ export class DocumentCardActivityBase extends React.Component<IDocumentCardActiv
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const { activity, people, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -57,7 +59,7 @@ export class DocumentCardActivityBase extends React.Component<IDocumentCardActiv
     );
   }
 
-  private _renderAvatar(person: IDocumentCardActivityPerson): JSX.Element {
+  private _renderAvatar(person: IDocumentCardActivityPerson): JSXElement {
     return (
       <div className={this._classNames.avatar}>
         <PersonaCoin

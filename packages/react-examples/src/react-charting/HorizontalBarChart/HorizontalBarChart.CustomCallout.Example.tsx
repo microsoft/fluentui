@@ -117,7 +117,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
   };
 
   return (
-    <div style={{ maxWidth: 600 }}>
+    <div className="containerDiv" style={{ maxWidth: 600 }}>
       <HorizontalBarChart
         data={getData(theme?.isInverted ?? false)}
         hideRatio={hideRatio}

@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -106,9 +108,9 @@ const useLiveRegionStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the Calendar slots based on the state
+ *
+ * @internal
  */
 export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarStyles => {
   'use no memo';

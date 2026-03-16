@@ -6,7 +6,7 @@ import type { DialogContextValue } from '../contexts/dialogContext';
  * Don't forget to call `jest.mock(**\/dialogContext.ts)` while using this
  * @param options Menu context values to set for testing
  */
-export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) => {
+export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}): void => {
   const mockContext: DialogContextValue = {
     open: false,
     modalType: 'modal',

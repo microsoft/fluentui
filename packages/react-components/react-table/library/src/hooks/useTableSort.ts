@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type {
@@ -9,7 +11,7 @@ import type {
   UseTableSortOptions,
 } from './types';
 
-const noop = () => undefined;
+const noop = (): void => undefined;
 
 export const defaultTableSortState: TableSortState<unknown> = {
   getSortDirection: () => 'ascending',
@@ -25,7 +27,7 @@ export function useTableSort<TItem>(options: UseTableSortOptions) {
 
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useTableSortState(tableState, options);
+  return (tableState: TableFeaturesState<TItem>): TableFeaturesState<TItem> => useTableSortState(tableState, options);
 }
 
 export function useTableSortState<TItem>(

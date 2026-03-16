@@ -16,7 +16,9 @@ interface SizeEnterAtomParams {
   duration: number;
   easing: string;
   element: HTMLElement;
-  fromSize?: string;
+  /** Size for the out state (collapsed). Defaults to '0'. */
+  outSize?: string;
+  delay?: number;
 }
 
 export const sizeEnterAtom = ({
@@ -24,18 +26,21 @@ export const sizeEnterAtom = ({
   duration,
   easing,
   element,
-  fromSize = '0',
+  outSize = '0',
+  delay = 0,
 }: SizeEnterAtomParams): AtomMotion => {
   const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
 
   return {
     keyframes: [
-      { [sizeName]: fromSize, [overflowName]: 'hidden' },
+      { [sizeName]: outSize, [overflowName]: 'hidden' },
       { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
       { [sizeName]: 'unset', [overflowName]: 'unset' },
     ],
     duration,
     easing,
+    delay,
+    fill: 'both',
   };
 };
 
@@ -49,19 +54,19 @@ export const sizeExitAtom = ({
   easing,
   element,
   delay = 0,
-  fromSize = '0',
+  outSize = '0',
 }: SizeExitAtomParams): AtomMotion => {
   const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
 
   return {
     keyframes: [
       { [sizeName]: toSize, [overflowName]: 'hidden' },
-      { [sizeName]: fromSize, [overflowName]: 'hidden' },
+      { [sizeName]: outSize, [overflowName]: 'hidden' },
     ],
     duration,
     easing,
-    fill: 'both',
     delay,
+    fill: 'both',
   };
 };
 
@@ -112,14 +117,11 @@ export const whitespaceAtom = ({
   const offset = direction === 'enter' ? 0 : 1;
   const keyframes = [{ [paddingStart]: '0', [paddingEnd]: '0', [marginStart]: '0', [marginEnd]: '0', offset }];
 
-  const atom: AtomMotion = {
+  return {
     keyframes,
     duration,
     easing,
     delay,
+    fill: 'both',
   };
-  if (direction === 'exit') {
-    atom.fill = 'forwards';
-  }
-  return atom;
 };

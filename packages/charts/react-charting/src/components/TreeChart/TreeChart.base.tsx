@@ -15,6 +15,7 @@ import {
   ITreeStyles,
 } from '../../index';
 import { IMargins } from '../../utilities/utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 
@@ -23,14 +24,17 @@ class StandardTree {
   public treeData: ITreeChartDataPoint;
   public styleClassNames: IProcessedStyleSet<ITreeStyles>;
 
-  private _nodeElements: JSX.Element[] = [];
-  private _linkElements: JSX.Element[] = [];
+  private _nodeElements: JSXElement[] = [];
+
+  private _linkElements: JSXElement[] = [];
 
   constructor(
     treeData: ITreeChartDataPoint,
     styleClassNames: IProcessedStyleSet<ITreeStyles>,
-    _nodeElements: JSX.Element[] = [],
-    _linkElements: JSX.Element[] = [],
+
+    _nodeElements: JSXElement[] = [],
+
+    _linkElements: JSXElement[] = [],
   ) {
     this.treeData = treeData;
     this.styleClassNames = styleClassNames;
@@ -240,8 +244,10 @@ class LayeredTree extends StandardTree {
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     styleClassNames: IProcessedStyleSet<ITreeStyles>,
-    _nodeElements: JSX.Element[] = [],
-    _linkElements: JSX.Element[] = [],
+
+    _nodeElements: JSXElement[] = [],
+
+    _linkElements: JSXElement[] = [],
     _treeTraversal: number | undefined,
   ) {
     super(treeData, styleClassNames, _nodeElements, _linkElements);
@@ -474,8 +480,10 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _margin: IMargins;
-  private _nodeElements: JSX.Element[] = [];
-  private _linkElements: JSX.Element[] = [];
+
+  private _nodeElements: JSXElement[] = [];
+
+  private _linkElements: JSXElement[] = [];
   private _treeTraversal: number | undefined;
 
   constructor(props: ITreeProps) {
@@ -498,7 +506,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { theme, className, styles } = this.props;
 
     // Get classNames to create component styling
@@ -531,9 +539,10 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       this.createTreeChart();
     }
   }
-  public createTreeChart() {
-    const nodeElements: JSX.Element[] = [];
-    const linkElements: JSX.Element[] = [];
+  public createTreeChart(): void {
+    const nodeElements: JSXElement[] = [];
+
+    const linkElements: JSXElement[] = [];
 
     // Instantiate inherited class and call createTree function for the object
     const treeObject = new LayeredTree(
@@ -550,7 +559,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     this._linkElements = linkElements;
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <FocusZone>
         <div className={this._classNames?.root}>

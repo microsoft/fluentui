@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, ButtonProps, mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
 import { useAttachmentActionStyles } from './AttachmentAction.styles';
@@ -10,7 +12,7 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
   const { className, disabled, disabledFocusable, children, onClick, onKeyUp, onKeyDown, ...rest } = props;
   const classes = useAttachmentActionStyles();
 
-  const handleClick = React.useCallback(
+  const handleClick = React.useCallback<React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement>>(
     e => {
       e.stopPropagation();
       e.preventDefault();
@@ -19,7 +21,7 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
     [onClick],
   );
 
-  const handleKeyUp = React.useCallback(
+  const handleKeyUp = React.useCallback<React.KeyboardEventHandler<HTMLAnchorElement & HTMLButtonElement>>(
     e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.stopPropagation();
@@ -29,7 +31,7 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
     [onKeyUp],
   );
 
-  const handleKeyDown = React.useCallback(
+  const handleKeyDown = React.useCallback<React.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement>>(
     e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.stopPropagation();

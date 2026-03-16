@@ -3,7 +3,6 @@ import { isConformant } from '@fluentui/react-conformance';
 import { render } from '@testing-library/react';
 import { Primitive } from './Primitive';
 
-// eslint-disable-next-line
 xdescribe('Primitive', () => {
   isConformant({
     Component: Primitive,

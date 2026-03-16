@@ -6,6 +6,7 @@ import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
 import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
@@ -33,7 +34,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       .padAngle(0);
   }
 
-  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
+  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSXElement => {
     let color = d && d.data && d.data.color;
     let nextColor = color;
 
@@ -71,10 +72,14 @@ export class Pie extends React.Component<IPieProps, {}> {
     );
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { pie, data } = this.props;
-    const focusData = this._pieForFocusRing(data);
-    const piechart = pie(data);
+
+    // Filter out data points with value 0 to avoid gaps in the donut chart
+    const filteredData = data.filter((d: IChartDataPoint) => d.data !== 0);
+
+    const focusData = this._pieForFocusRing(filteredData.map(d => d.data!));
+    const piechart = pie(filteredData);
     const translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
     const classNames = getClassNames(getStyles, {
       theme: this.props.theme!,

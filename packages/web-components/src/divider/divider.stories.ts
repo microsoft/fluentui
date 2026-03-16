@@ -21,7 +21,7 @@ export default {
   title: 'Components/Divider',
   render: renderComponent(dividerTemplate),
   args: {
-    slottedContent: () => 'Section One',
+    slottedContent: () => '',
   },
   argTypes: {
     alignContent: {

@@ -20,6 +20,8 @@ describe(`beachball configs`, () => {
         '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
+        '**/eslint.config.*',
+        '**/rit.config.js',
         '**/__fixtures__/**',
         '**/__mocks__/**',
         '**/docs/**',
@@ -80,13 +82,7 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/perf-test-react-components',
-        'apps/vr-tests-react-components',
-      ]),
-    );
+    expect(vNextConfig.scope).toEqual(expect.arrayContaining(excludedPackagesFromReleaseProcess));
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
@@ -100,6 +96,9 @@ describe(`beachball configs`, () => {
         include: includeScopes,
       },
     ]);
+
+    // Ensure that vNext config does not include "tools" packages
+    expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
@@ -117,41 +116,24 @@ describe(`beachball configs`, () => {
   it(`should generate tools release config`, () => {
     expect(toolsConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'packages/eslint-plugin',
-        'scripts/api-extractor',
-        'scripts/babel',
-        'scripts/beachball',
-        'scripts/cypress',
-        'scripts/dangerjs',
-        'scripts/executors',
-        'scripts/fluentui-publish',
-        'scripts/generators',
-        'scripts/github',
-        'scripts/gulp',
-        'scripts/jest',
-        'scripts/lint-staged',
-        'scripts/monorepo',
-        'scripts/package-manager',
-        'scripts/perf-test-flamegrill',
-        'scripts/prettier',
-        'scripts/projects-test',
-        'scripts/puppeteer',
-        'scripts/storybook',
-        'scripts/tasks',
-        'scripts/test-ssr',
-        'scripts/triage-bot',
-        'scripts/ts-node',
-        'scripts/update-release-notes',
-        'scripts/utils',
-        'scripts/webpack',
-        'tools/eslint-rules',
-        'tools/workspace-plugin',
+        'packages/react-components/babel-preset-storybook-full-source',
+        'packages/react-components/eslint-plugin-react-components',
+        'packages/react-components/react-conformance-griffel',
+        'packages/react-components/react-storybook-addon',
+        'packages/react-components/react-storybook-addon-export-to-sandbox',
+        'packages/react-conformance',
       ]),
     );
 
-    // Ensure that no v8/vNext packages are included in the tools release
-    expect(toolsConfig.scope.some(scope => scope.startsWith('packages/react'))).toBe(false);
+    // Ensure that no v8/vNext UI packages are included in the tools release
+    const nonToolsScopes = [
+      'packages/react-components/react-components',
+      'packages/react-components/react-text',
+      'packages/react-components/react-card',
+      'packages/react',
+    ];
+    const hasToolsTag = toolsConfig.scope.some(scope => nonToolsScopes.includes(scope));
+    expect(hasToolsTag).toBe(false);
 
     expect(toolsConfig.changelog).toEqual(sharedConfig.changelog);
   });

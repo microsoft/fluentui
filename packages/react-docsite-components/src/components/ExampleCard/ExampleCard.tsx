@@ -74,7 +74,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const {
       title,
       titleAs: TitleAs = 'h3',
@@ -185,7 +185,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     );
   }
 
-  private _getDosAndDonts(): JSX.Element | void {
+  private _getDosAndDonts(): React.ReactElement | undefined {
     const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (
@@ -205,7 +205,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
-    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent => {
+    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent<React.PropsWithChildren> => {
       // Generate a component which renders the children with the current
       return props => {
         const { children } = props;

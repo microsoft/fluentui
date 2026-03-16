@@ -14,8 +14,11 @@ import {
   ILegendsStyles,
   ILegendStyleProps,
   ILegendOverflowData,
+  ILegendContainer,
 } from './Legends.types';
 import { Shape } from './shape';
+import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -40,11 +43,12 @@ export interface ILegendState {
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
-export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+export class LegendsBase extends React.Component<ILegendsProps, ILegendState> implements ILegendContainer {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
   /** Boolean variable to check if one or more legends are selected */
   private _isLegendSelected = false;
+  private _rootElem: HTMLDivElement | null;
 
   public static getDerivedStateFromProps(newProps: ILegendsProps, prevState: ILegendState): ILegendState {
     const { selectedLegend, selectedLegends } = newProps;
@@ -95,7 +99,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -104,7 +108,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -118,6 +127,27 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       </div>
     );
   }
+
+  public toSVG = (
+    svgWidth: number,
+    isRTL: boolean = false,
+  ): {
+    node: SVGSVGElement | null;
+    width: number;
+    height: number;
+  } => {
+    return cloneLegendsToSVG(
+      this.props.legends,
+      svgWidth,
+      {
+        selectedLegends: this.state.selectedLegends,
+        centerLegends: !!this.props.centerLegends,
+        textClassName: this._classNames.text,
+        isRTL,
+      },
+      this._rootElem,
+    );
+  };
 
   private _generateData(): ILegendOverflowData {
     const { allowFocusOnLegends = true, shape } = this.props;
@@ -149,12 +179,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     return result;
   }
 
-  private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
+  private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSXElement => {
     const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
-        flexWrap: 'wrap',
+        flexWrap: this.props.enabledWrapLines ? 'wrap' : 'nowrap',
       },
     };
     return (
@@ -237,9 +267,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     legend.action?.();
   };
 
-  private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
+  private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSXElement => {
     const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
-    const overflowHoverCardLegends: JSX.Element[] = [];
+
+    const overflowHoverCardLegends: JSXElement[] = [];
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -315,7 +346,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         <div role="option">
           <div
             className={classNames.overflowIndicationTextStyle}
-            ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+            ref={(rootElem: HTMLDivElement) => {
+              this._hoverCardRef = rootElem;
+            }}
             {...(allowFocusOnLegends && {
               role: 'button',
               'aria-expanded': this.state.isHoverCardVisible,
@@ -401,7 +434,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={allowFocusOnLegends}
-        /* eslint-enable react/jsx-no-bind */
       >
         {shape}
         <div className={classNames.text}>{legend.title}</div>

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ButtonState } from '../Button';
@@ -20,7 +22,7 @@ export function useToggleState<
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
   const onToggleClick = React.useCallback(
-    ev => {
+    (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!disabled && !disabledFocusable) {
         if (ev.defaultPrevented) {
           return;

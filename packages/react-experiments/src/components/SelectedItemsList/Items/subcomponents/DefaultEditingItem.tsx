@@ -10,6 +10,7 @@ import type {
 } from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import type { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import type { EditingItemComponentProps } from '../EditableItem';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
@@ -83,10 +84,8 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
  * Wrapper around an item in a selection well that renders an item with a context menu for
  * replacing that item with another item.
  */
-export const DefaultEditingItemInner = <TItem extends any>(
-  props: IDefaultEditingItemInnerProps<TItem>,
-): JSX.Element => {
-  const editingInput = React.useRef<any>();
+export const DefaultEditingItemInner = <TItem extends any>(props: IDefaultEditingItemInnerProps<TItem>): JSXElement => {
+  const editingInput = React.useRef<any>(null);
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
   const [inputValue, setInputValue] = React.useState<string>('');
@@ -130,7 +129,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // We only want to run this once
 
-  const _renderEditingSuggestions = (): JSX.Element => {
+  const _renderEditingSuggestions = (): JSXElement => {
     const FloatingPicker = props.onRenderFloatingPicker;
     if (!FloatingPicker) {
       return <></>;
@@ -236,14 +235,14 @@ export const DefaultEditingItemInner = <TItem extends any>(
   );
 
   const _onSuggestionSelected = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (_: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
       onEditingComplete(item, itemProps.item);
     },
     [onEditingComplete, item],
   );
 
   const _onRemoveItem = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (_: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
       if (onRemoveItem) {
         onRemoveItem(itemProps.item);
       }
@@ -278,6 +277,6 @@ type EditingItemProps<T> = Pick<
 >;
 
 export const DefaultEditingItem =
-  <T extends any>(outerProps: EditingItemProps<T>) =>
-  (innerProps: EditingItemComponentProps<T>) =>
+  <T extends any>(outerProps: EditingItemProps<T>): ((innerProps: EditingItemComponentProps<T>) => JSXElement) =>
+  (innerProps: EditingItemComponentProps<T>): JSXElement =>
     <DefaultEditingItemInner {...outerProps} {...innerProps} />;

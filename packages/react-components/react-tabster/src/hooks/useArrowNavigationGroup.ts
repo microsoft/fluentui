@@ -1,3 +1,5 @@
+'use client';
+
 import { Types, getMover, MoverDirections } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
@@ -49,11 +51,8 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault,
   } = options;
-  const tabster = useTabster();
 
-  if (tabster) {
-    getMover(tabster);
-  }
+  useTabster(getMover);
 
   return useTabsterAttributes({
     mover: {

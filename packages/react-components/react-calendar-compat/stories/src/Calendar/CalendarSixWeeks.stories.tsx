@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar } from '@fluentui/react-calendar-compat';
 
-export const CalendarSixWeeks = () => {
+export const CalendarSixWeeks = (): JSXElement => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
-  const onSelectDate = React.useCallback((date: Date, _): void => {
+  const onSelectDate = React.useCallback((date: Date): void => {
     setSelectedDate(date);
   }, []);
 

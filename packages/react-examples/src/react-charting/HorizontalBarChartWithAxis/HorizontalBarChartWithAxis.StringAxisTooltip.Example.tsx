@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'expandYAxisLabels', text: 'Expand Y Axis Ticks' },
@@ -33,7 +34,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicStringAxisExample()}</div>;
   }
 
@@ -45,33 +46,33 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     this.setState({ roundCorners: checked });
   };
 
-  private _basicStringAxisExample(): JSX.Element {
+  private _basicStringAxisExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         y: 'String One',
         x: 1000,
-        color: getColorFromToken(DataVizPalette.color9),
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         y: 'String Two',
         x: 5000,
-        color: getColorFromToken(DataVizPalette.color10),
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         y: 'String Three',
         x: 3000,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         y: 'String Four',
         x: 2000,
-        color: getColorFromToken(DataVizPalette.color12),
+        color: getColorFromToken(DataVizPalette.color4),
       },
     ];
 
     const rootStyle = { width: '650px', height: '350px' };
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <ChoiceGroup
             options={options}
@@ -102,7 +103,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

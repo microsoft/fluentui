@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PersonaState, PersonaSlots } from './Persona.types';
 
 /**
  * Render the final JSX of Persona
  */
-export const renderPersona_unstable = (state: PersonaState) => {
+export const renderPersona_unstable = (state: PersonaState): JSXElement => {
   const { presenceOnly, textPosition } = state;
   assertSlots<PersonaSlots>(state);
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { JSXElement } from '@fluentui/react-components';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { createTheme, Theme as ThemeV8, ThemeProvider, initializeIcons } from '@fluentui/react';
 import {
@@ -65,7 +66,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Playground = () => {
+export const Playground = (): JSXElement => {
   const styles = useStyles();
 
   const defaultBrandVariantText = JSON.stringify(brandWeb, null, 4);

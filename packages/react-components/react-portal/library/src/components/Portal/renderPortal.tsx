@@ -8,7 +8,18 @@ import type { PortalState } from './Portal.types';
 export const renderPortal_unstable = (state: PortalState): React.ReactElement => {
   return (
     <span hidden ref={state.virtualParentRootRef}>
-      {state.mountNode && ReactDOM.createPortal(state.children, state.mountNode)}
+      {state.mountNode &&
+        ReactDOM.createPortal(
+          <>
+            {state.children}
+            {/* Heads up!
+             *  This node exists only to ensure that the portal is not empty as we rely on that in `usePortalMountNode`
+             *  hook for React 18+.
+             */}
+            <span hidden />
+          </>,
+          state.mountNode,
+        )}
     </span>
   );
 };

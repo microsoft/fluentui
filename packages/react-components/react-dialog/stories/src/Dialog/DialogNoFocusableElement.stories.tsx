@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 
 import story from './DialogNoFocusableElement.md';
 
-export const NoFocusableElement = () => {
+export const NoFocusableElement = (): JSXElement => {
   return (
     <>
       <Dialog>

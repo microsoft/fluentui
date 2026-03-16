@@ -29,6 +29,7 @@ import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from '@fluentui/react'
 import { lorem } from '@fluentui/example-data';
 import * as SignalStylesModule from '@fluentui/react-experiments/lib/components/signals/Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
+import type { JSXElement } from '@fluentui/utilities';
 
 const SignalStyles: any = SignalStylesModule;
 const SignalsExampleStyles: any = SignalsExampleStylesModule;
@@ -39,7 +40,7 @@ interface ISignalExampleProps {
   text?: string;
 }
 
-const SignalExample: React.FunctionComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
+const SignalExample: React.FunctionComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSXElement => {
   const { text = lorem(4) } = props;
 
   return (
@@ -65,7 +66,7 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
     };
   }
 
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const { fontSize, isDark } = this.state;
 
     return (

@@ -6,6 +6,6 @@ import type { Tablist } from './tablist.js';
  */
 export const template = html<Tablist>`
   <template role="tablist">
-    <slot name="tab" ${slotted('tabs')}></slot>
+    <slot name="tab" ${slotted('slottedTabs')}></slot>
   </template>
 `;

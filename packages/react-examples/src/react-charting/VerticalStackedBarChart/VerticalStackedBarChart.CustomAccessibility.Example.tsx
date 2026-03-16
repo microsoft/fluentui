@@ -7,8 +7,8 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IVerticalStackedBarState {
   width: number;
@@ -27,7 +27,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       barGapMax: 2,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -42,13 +42,13 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
     this.setState({ showLine: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
         data: 40,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 Metadata1 61%' },
@@ -56,7 +56,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata2',
         data: 5,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 Metadata2 8%' },
@@ -75,7 +75,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 30,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 Metadata1 33%' },
@@ -83,7 +83,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata2',
         data: 20,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '22%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 Metadata2 22%' },
@@ -102,7 +102,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 44,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '43%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 Metadata1 43%' },
@@ -110,7 +110,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata2',
         data: 28,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '27%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 Metadata2 27%' },
@@ -132,8 +132,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
 
         ...(showLine && {
           lineData: [
-            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 42, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) },
+            { y: 10, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color2) },
           ],
         }),
         stackCallOutAccessibilityData: {
@@ -146,7 +146,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) }],
         }),
         stackCallOutAccessibilityData: {
           ariaLabel: 'Bar stack series 2 of 3, 20 MetaDate1 33% MetaData2 22% MetaDate3 45% ' + 'Supported Builds 33',
@@ -157,8 +157,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 60, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) },
+            { y: 20, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color2) },
           ],
         }),
         stackCallOutAccessibilityData: {
@@ -174,7 +174,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -225,7 +225,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

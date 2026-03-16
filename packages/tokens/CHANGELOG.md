@@ -1,8 +1,26 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Mon, 16 Dec 2024 16:26:46 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jan 2026 17:06:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.23)
+
+Thu, 22 Jan 2026 17:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.22..@fluentui/tokens_v1.0.0-alpha.23)
+
+### Changes
+
+- chore(tokens): Add CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
+
+## [1.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.22)
+
+Wed, 30 Jul 2025 13:10:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.21..@fluentui/tokens_v1.0.0-alpha.22)
+
+### Changes
+
+- Brand ramp update ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
 
 ## [1.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.21)
 

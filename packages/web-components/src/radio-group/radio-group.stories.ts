@@ -252,20 +252,18 @@ export const Required: Story = {
     <form
       @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
       @submit="${story => story.radioGroup.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+      style="display: inline-flex; flex-direction: column; gap: 1rem; max-width: 400px;"
     >
       ${storyTemplate}
-      <br />
       <div>
         <fluent-button type="submit" appearance="primary">Submit</fluent-button>
-        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}> Reset </fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}>Reset</fluent-button>
       </div>
       <span id="success-message" hidden ${ref('successMessage')}> Form submitted successfully! </span>
     </form>
   `),
   args: {
+    orientation: RadioGroupOrientation.vertical,
     required: true,
-    messageSlottedContent: () => html`
-      <span slot="message" flag="${ValidationFlags.valueMissing}"> Please select a fruit. </span>
-    `,
   },
 };

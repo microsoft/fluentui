@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -33,7 +35,7 @@ interface CalendarYearGridCellProps extends CalendarYearProps {
 interface CalendarYearGridProps extends CalendarYearProps, CalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
-  componentRef?: React.RefObject<CalendarYearGridCell>;
+  componentRef?: React.RefObject<CalendarYearGridCell | null>;
 }
 
 interface CalendarYearGridCell {
@@ -113,6 +115,7 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
   } = props;
 
   const selectedCellRef = React.useRef<CalendarYearGridCell>(null);
+
   const currentCellRef = React.useRef<CalendarYearGridCell>(null);
 
   React.useImperativeHandle(
@@ -368,7 +371,7 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
   }
 }
 
-function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
+function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: CalendarYearProps) {
   const rangeYear = React.useMemo(() => {
     return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
   }, [navigatedYear, selectedYear]);
@@ -376,11 +379,15 @@ function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
   const [fromYear, setFromYear] = React.useState<number>(rangeYear);
 
   const onNavNext = () => {
-    setFromYear(year => year + CELL_COUNT);
+    const newFromYear = fromYear + CELL_COUNT;
+    setFromYear(newFromYear);
+    onNavigateDate?.(newFromYear);
   };
 
   const onNavPrevious = () => {
-    setFromYear(year => year - CELL_COUNT);
+    const newFromYear = fromYear - CELL_COUNT;
+    setFromYear(newFromYear);
+    onNavigateDate?.(newFromYear);
   };
 
   React.useEffect(() => {

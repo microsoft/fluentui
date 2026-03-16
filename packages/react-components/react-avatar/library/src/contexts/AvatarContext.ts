@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { AvatarShape, AvatarSize } from '../components/Avatar/Avatar.types';
 
@@ -21,4 +23,4 @@ export const AvatarContextProvider = avatarContext.Provider;
 /**
  * @internal
  */
-export const useAvatarContext = () => React.useContext(avatarContext) ?? avatarContextDefaultValue;
+export const useAvatarContext = (): AvatarContextValue => React.useContext(avatarContext) ?? avatarContextDefaultValue;

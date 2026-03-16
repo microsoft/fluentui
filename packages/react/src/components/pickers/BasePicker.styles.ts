@@ -164,6 +164,14 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
     screenReaderText: hiddenContentStyle,
     subComponentStyles: {
       label: {},
+      callout: {
+        // Picker suggestions already manage overflow and scrolling items into view
+        // for this to work at all screen sizes, we need Callout to not also have overflow
+        calloutMain: {
+          overflow: 'unset',
+          maxHeight: '100%',
+        },
+      },
     },
   };
 }

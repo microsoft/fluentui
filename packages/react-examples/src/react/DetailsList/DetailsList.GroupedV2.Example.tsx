@@ -52,7 +52,7 @@ const onRenderDetailsHeader = (props: IDetailsHeaderProps, _defaultRender?: IRen
 
 // export class DetailsListGroupedV2Example extends React.Component<{}, IDetailsListGroupedExampleState> {
 export const DetailsListGroupedV2Example: React.FC = () => {
-  const root = React.useRef<IDetailsList>(null);
+  const root = React.useRef<IDetailsList | null>(null);
   const [columns] = React.useState<IColumn[]>([
     { key: 'name', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'color', name: 'Color', fieldName: 'color', minWidth: 100, maxWidth: 200 },

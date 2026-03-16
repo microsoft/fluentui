@@ -1,4 +1,7 @@
+'use client';
+
 import * as React from 'react';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import { useEventCallback } from '@fluentui/react-utilities';
 import type { DataGridHeaderCellProps, DataGridHeaderCellState } from './DataGridHeaderCell.types';
 import { useTableHeaderCell_unstable } from '../TableHeaderCell/useTableHeaderCell';
@@ -42,6 +45,9 @@ export const useDataGridHeaderCell_unstable = (
     return ctx.columnSizing_unstable.getTableHeaderCellProps;
   });
 
+  const { focusMode = sortable ? 'none' : 'cell' } = props;
+  const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+
   // eslint-disable-next-line @typescript-eslint/no-deprecated -- prefer HTMLTableCellElement
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
     if (sortable) {
@@ -55,7 +61,8 @@ export const useDataGridHeaderCell_unstable = (
       sortable,
       sortDirection,
       as: 'div',
-      tabIndex: sortable ? undefined : 0,
+      tabIndex: focusMode !== 'none' ? 0 : undefined,
+      ...(focusMode === 'group' && focusableGroupAttr),
       ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
       ...props,
       onClick,

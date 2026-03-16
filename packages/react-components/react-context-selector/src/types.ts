@@ -23,10 +23,12 @@ export type ContextValue<Value> = {
   listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
 
   /** Holds an actual value of React's context that will be propagated down for computations. */
-  value: React.MutableRefObject<Value>;
+  value: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  React.MutableRefObject<Value>;
 
   /** A version field is used to sync a context value and consumers. */
-  version: React.MutableRefObject<ContextVersion>;
+  version: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  React.MutableRefObject<ContextVersion>;
 };
 
 /**

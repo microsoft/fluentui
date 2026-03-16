@@ -9,12 +9,16 @@ import type { ISettingsMap } from './warn/warn';
 import type { IRefObject } from './createRef';
 import type { IBaseProps } from './BaseComponent.types';
 
+import type { JSXElement } from './jsx';
+
 /**
  * BaseComponent class, which provides basic helpers for all components.
  *
- * @public
+ * BaseComponent class, which provides basic helpers for all components.
+ *
  * {@docCategory BaseComponent}
  *
+ * @public
  * @deprecated Do not use. We are moving away from class component.
  */
 export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {}> extends React.Component<
@@ -47,6 +51,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: TProps, context?: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -270,6 +275,6 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
  *
  * @public
  */
-export function nullRender(): JSX.Element | null {
+export function nullRender(): JSXElement | null {
   return null;
 }

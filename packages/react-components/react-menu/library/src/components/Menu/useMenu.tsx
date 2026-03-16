@@ -1,10 +1,15 @@
+'use client';
+
 import * as React from 'react';
 import {
+  resolvePositioningShorthand,
   usePositioningMouseTarget,
   usePositioning,
-  resolvePositioningShorthand,
-  PositioningShorthandValue,
+  useSafeZoneArea,
+  usePositioningSlideDirection,
+  type PositioningShorthandValue,
 } from '@fluentui/react-positioning';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
   useControllableState,
   useId,
@@ -14,13 +19,16 @@ import {
   elementContains,
   useTimeout,
   useFirstMount,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
+
 import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
-import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
+import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import { MenuSurfaceMotion } from './MenuSurfaceMotion';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -41,7 +49,7 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  *
  * @param props - props from this instance of Menu
  */
-export const useMenu_unstable = (props: MenuProps): MenuState => {
+export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -54,16 +62,26 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     openOnHover = isSubmenu,
     defaultCheckedValues,
     mountNode = null,
+    safeZone,
   } = props;
+
+  const { targetDocument } = useFluent();
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
-  const positioningState = {
+  const resolvedPositioning = resolvePositioningShorthand(props.positioning);
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetDocument,
+    onPositioningEnd: resolvedPositioning.onPositioningEnd,
+  });
+
+  const positioningOptions = {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
-    ...resolvePositioningShorthand(props.positioning),
+    ...resolvedPositioning,
+    onPositioningEnd: handlePositionEnd,
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -89,7 +107,52 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     menuPopover = children[0];
   }
 
-  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
+  const { targetRef, containerRef } = usePositioning(positioningOptions);
+
+  const enableSafeZone = safeZone && openOnHover;
+  const safeZoneDescriptorRef = React.useRef({
+    isInside: false,
+    mouseCoordinates: { x: 0, y: 0 },
+  });
+
+  const safeZoneHandle = useSafeZoneArea({
+    disabled: !enableSafeZone,
+    timeout: typeof safeZone === 'object' ? safeZone.timeout : 300,
+
+    onSafeZoneEnter: e => {
+      setOpen(e, { open: true, keyboard: false, type: 'menuSafeZoneMouseEnter', event: e });
+      safeZoneDescriptorRef.current.isInside = true;
+    },
+    onSafeZoneLeave: () => {
+      safeZoneDescriptorRef.current.isInside = false;
+    },
+    onSafeZoneMove: e => {
+      safeZoneDescriptorRef.current.mouseCoordinates = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+    },
+    onSafeZoneTimeout: () => {
+      const event = new CustomEvent(MENU_SAFEZONE_TIMEOUT_EVENT);
+
+      setOpen(event, { open: false, keyboard: false, type: 'menuSafeZoneTimeout', event });
+
+      if (safeZoneDescriptorRef.current.isInside && targetDocument) {
+        const elementsInPoint = targetDocument.elementsFromPoint(
+          safeZoneDescriptorRef.current.mouseCoordinates.x,
+          safeZoneDescriptorRef.current.mouseCoordinates.y,
+        );
+        const menuItemEl = elementsInPoint.find(el => {
+          return el.classList.contains(menuItemClassNames.root);
+        }) as HTMLElement | null;
+
+        menuItemEl?.dispatchEvent(event);
+      }
+    },
+  });
+
+  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef);
+  const menuPopoverRef = useMergedRefs(containerRef, safeZoneHandle.containerRef);
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
@@ -127,13 +190,24 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     mountNode,
     triggerRef,
     menuPopoverRef,
-    components: {},
+    components: {
+      surfaceMotion: MenuSurfaceMotion,
+    },
     openOnContext,
     open,
     setOpen,
     checkedValues,
     onCheckedValueChange,
     persistOnItemClick,
+    safeZone: safeZoneHandle.elementToRender,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: MenuSurfaceMotion,
+      defaultProps: {
+        visible: open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
   };
 };
 
@@ -208,16 +282,20 @@ const useMenuOpenState = (
 
   const [setOpenTimeout, clearOpenTimeout] = useTimeout();
 
-  const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
+  const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData & { ignoreHoverDelay?: boolean }) => {
     clearOpenTimeout();
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
       e.persist();
     }
 
-    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === 'mousemove' || e.type === MENU_ENTER_EVENT) {
+    const shouldUseDelay =
+      !data.ignoreHoverDelay &&
+      (e.type === 'mouseleave' || e.type === 'mouseover' || e.type === 'mousemove' || e.type === MENU_ENTER_EVENT);
+
+    if (shouldUseDelay) {
       if (state.triggerRef.current?.contains(e.target as HTMLElement)) {
-        enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
+        enteringTriggerRef.current = e.type === 'mouseover' || e.type === 'mousemove';
       }
 
       setOpenTimeout(() => trySetOpen(e, data), state.hoverDelay);
@@ -232,7 +310,8 @@ const useMenuOpenState = (
     element: targetDocument,
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ) as React.MutableRefObject<HTMLElement | null>[],
     callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
   });
 
@@ -244,7 +323,8 @@ const useMenuOpenState = (
     callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+    ) as React.MutableRefObject<HTMLElement | null>[],
     disabled: !open || !closeOnScroll,
   });
 
@@ -273,8 +353,19 @@ const useMenuOpenState = (
     if (open) {
       focusFirst();
     } else {
+      // Skip the initial render — focus should only be restored when the menu
+      // transitions from open → closed, not on mount.
       if (!firstMount) {
-        if (targetDocument?.activeElement === targetDocument?.body) {
+        if (
+          // Focus landed on <body> after the popover was removed from the DOM,
+          // meaning the user's focus has nowhere meaningful to go.
+          targetDocument?.activeElement === targetDocument?.body ||
+          // The surfaceMotion presence component delays unmounting the popover
+          // (e.g. during an exit animation), so focus may still be inside the
+          // popover even though `open` is already false. Proactively move it
+          // to the trigger before the DOM element is eventually removed.
+          state.menuPopoverRef.current?.contains(targetDocument?.activeElement ?? null)
+        ) {
           // We know that React effects are sync so we focus the trigger here
           // after any event handler (event handlers will update state and re-render).
           // Since the browser only performs the default behaviour for the Tab key once

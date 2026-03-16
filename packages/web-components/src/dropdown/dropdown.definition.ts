@@ -14,7 +14,4 @@ export const definition = Dropdown.compose({
   name: `${FluentDesignSystem.prefix}-dropdown`,
   template,
   styles,
-  shadowOptions: {
-    slotAssignment: 'manual',
-  },
 });

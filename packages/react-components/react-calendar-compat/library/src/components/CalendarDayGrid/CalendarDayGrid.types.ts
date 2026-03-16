@@ -19,7 +19,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<ICalendarDayGrid>;
+  componentRef?: React.RefObject<ICalendarDayGrid | null>;
 
   /**
    * Additional CSS class(es) to apply to the CalendarDayGrid.

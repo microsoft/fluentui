@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useControllableValue } from './useControllableValue';
 import { validateHookValueNotChanged } from './testUtilities';
 
@@ -14,16 +14,16 @@ describe('useControllableValue', () => {
       return <div />;
     };
 
-    const wrapper1 = mount(<TestComponent value={true} />);
+    const wrapper1 = render(<TestComponent value={true} />);
     expect(resultValue!).toBe(true);
 
-    wrapper1.setProps({ value: false });
+    wrapper1.rerender(<TestComponent value={false} />);
     expect(resultValue!).toBe(false);
 
-    const wrapper2 = mount(<TestComponent value={false} defaultValue={true} />);
+    const wrapper2 = render(<TestComponent value={false} defaultValue={true} />);
     expect(resultValue!).toBe(false);
 
-    wrapper2.setProps({ value: true });
+    wrapper2.rerender(<TestComponent value={true} />);
     expect(resultValue!).toBe(true);
   });
 
@@ -37,7 +37,7 @@ describe('useControllableValue', () => {
       return <div />;
     };
 
-    mount(<TestComponent defaultValue={true} />);
+    render(<TestComponent defaultValue={true} />);
     expect(resultValue!).toBe(true);
   });
 
@@ -51,10 +51,10 @@ describe('useControllableValue', () => {
       return <div />;
     };
 
-    const wrapper = mount(<TestComponent defaultValue={true} />);
+    const wrapper = render(<TestComponent defaultValue={true} />);
     expect(resultValue!).toBe(true);
 
-    wrapper.setProps({ defaultValue: false });
+    wrapper.rerender(<TestComponent defaultValue={false} />);
     expect(resultValue!).toBe(true);
   });
 

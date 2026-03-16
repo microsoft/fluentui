@@ -1,34 +1,18 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TooltipHost renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-TooltipHost
       {
         display: inline;
       }
-  onBlurCapture={[Function]}
-  onFocusCapture={[Function]}
-  onKeyDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
   role="none"
 >
   <div
-    hidden={true}
+    hidden=""
     id="tooltip0"
-    style={
-      Object {
-        "border": 0,
-        "height": 1,
-        "margin": -1,
-        "overflow": "hidden",
-        "padding": 0,
-        "position": "absolute",
-        "whiteSpace": "nowrap",
-        "width": 1,
-      }
-    }
+    style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
   />
 </div>
 `;

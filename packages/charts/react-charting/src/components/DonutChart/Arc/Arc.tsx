@@ -5,7 +5,8 @@ import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix } from '../../../utilities/index';
+import { formatScientificLimitWidth, isSafeUrl } from '../../../utilities/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -30,7 +31,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id =
@@ -117,7 +118,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   };
 
   private _redirectToUrl(href: string | undefined): void {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   }
 
   private _getAriaLabel = (): string => {
@@ -160,7 +163,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
       >
         {showLabelsInPercent
           ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-          : formatValueWithSIPrefix(arcValue)}
+          : formatScientificLimitWidth(arcValue)}
       </text>
     );
   };

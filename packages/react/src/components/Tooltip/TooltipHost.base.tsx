@@ -19,6 +19,8 @@ import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITo
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface ITooltipHostState {
   /** @deprecated No longer used internally */
   isAriaPlaceholderRendered: boolean;
@@ -31,9 +33,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   public static defaultProps = {
     delay: TooltipDelay.medium,
   };
-
   public static contextType = WindowContext;
   private static _currentVisibleTooltip: ITooltipHost | undefined;
+
+  public context: any;
 
   // The wrapping div that gets the hover events
   private _tooltipHost = React.createRef<HTMLDivElement>();
@@ -58,7 +61,8 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   }
 
   // Render
-  public render(): JSX.Element {
+
+  public render(): JSXElement {
     const {
       calloutProps,
       children,

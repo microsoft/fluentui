@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { RatingItemContextValue } from '../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
@@ -18,5 +20,5 @@ export const RatingItemProvider = RatingItemContext.Provider;
 /**
  * Get the value of the RatingContext.
  */
-export const useRatingItemContextValue_unstable = () =>
+export const useRatingItemContextValue_unstable = (): RatingItemContextValue =>
   React.useContext(RatingItemContext) || ratingItemContextDefaultValue;

@@ -10,6 +10,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 function sharedBeforeEach() {
   resetIds();
 }

@@ -7,12 +7,14 @@ import type { MenuContextValue } from '../contexts/menuContext';
  * Don't forget to call `jest.mock(**\/popupContext.ts)` while using this
  * @param options Menu context values to set for testing
  */
-export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
+export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}): void => {
   const mockContext: MenuContextValue = {
     open: false,
     setOpen: () => null,
-    triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
-    menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
     mountNode: null,
     openOnContext: false,
     openOnHover: false,

@@ -1,5 +1,5 @@
 import { renderTree_unstable } from '../../Tree';
 import type { FlatTreeContextValues, FlatTreeState } from './FlatTree.types';
-
-export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSX.Element =
+import type { JSXElement } from '@fluentui/react-utilities';
+export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement =
   renderTree_unstable;

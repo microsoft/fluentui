@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Table,
   TableBody,
@@ -50,7 +52,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -60,7 +62,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -128,7 +130,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumnsDisableAutoFit = () => {
+export const ResizableColumnsDisableAutoFit = (): JSXElement => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

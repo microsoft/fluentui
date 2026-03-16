@@ -173,13 +173,9 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
         "devDependencies": Object {
-          "@proj/eslint-plugin": "*",
           "@proj/react-components": "*",
           "@proj/react-one-compat": "*",
-          "@proj/react-storybook-addon": "*",
-          "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
-          "@proj/scripts-storybook": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -233,25 +229,20 @@ describe('split-library-in-two generator', () => {
         ],
       }
     `);
-    expect(readJson(tree, `${storiesConfig.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
-      Object {
-        "extends": Array [
-          "plugin:@fluentui/eslint-plugin/react",
-        ],
-        "root": true,
-        "rules": Object {
-          "import/no-extraneous-dependencies": Array [
-            "error",
-            Object {
-              "packageDir": Array [
-                ".",
-                "../../../../",
-              ],
-            },
-          ],
+    expect(tree.read(`${storiesConfig.root}/eslint.config.js`, 'utf-8')).toMatchInlineSnapshot(`
+      "// @ts-check
+
+      const fluentPlugin = require('@fluentui/eslint-plugin');
+
+      module.exports = [
+        ...fluentPlugin.configs['flat/react'],
+        {
+          rules: {},
         },
-      }
+      ];
+      "
     `);
+
     expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`
       "# @proj/react-hello-stories
 
@@ -263,7 +254,7 @@ describe('split-library-in-two generator', () => {
 
       \\\\\`\\\\\`\\\\\`js
       module.exports = {
-      stories: ['../packages/react-components/react-hello/stories/src/**/*.stories.mdx', '../packages/react-components/react-hello/stories/src/**/index.stories.@(ts|tsx)'],
+      stories: ['../packages/react-components/react-hello/stories/src/**/*.mdx', '../packages/react-components/react-hello/stories/src/**/index.stories.@(ts|tsx)'],
       }
       \\\\\`\\\\\`\\\\\`
 
@@ -298,7 +289,7 @@ describe('split-library-in-two generator', () => {
           ...rootMain,
           stories: [
             ...rootMain.stories,
-            '../src/**/*.stories.mdx',
+            '../src/**/*.mdx',
             '../src/**/index.stories.@(ts|tsx)',
           ],
           addons: [...rootMain.addons],
@@ -320,6 +311,8 @@ describe('split-library-in-two generator', () => {
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       "
     `);
   });
@@ -327,7 +320,7 @@ describe('split-library-in-two generator', () => {
 
 function setup(tree: Tree) {
   setupCodeowners(tree, { content: '' });
-  writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
+
   writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
   writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
 
@@ -432,7 +425,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
   module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
     ...rootMain,
-    stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
+    stories: [...rootMain.stories, '../stories/**/*.mdx', '../stories/**/index.stories.@(ts|tsx)'],
     addons: [...rootMain.addons],
     webpackFinal: (config, options) => {
       const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -452,6 +445,8 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       `,
       tsConfig: {
         extends: '../tsconfig.json',
@@ -535,7 +530,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
   tree.write(
     `${rootPath}/stories/index.stories.tsx`,
     stripIndents`
-    import { Meta } from '@storybook/react';
+    import { Meta } from '@storybook/react-webpack5';
     import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
     export { Default } from './Default.stories';

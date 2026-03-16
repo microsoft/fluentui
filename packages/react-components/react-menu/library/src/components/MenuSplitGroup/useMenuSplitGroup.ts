@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, getRTLSafeKey, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -19,7 +21,7 @@ export const useMenuSplitGroup_unstable = (
   props: MenuSplitGroupProps,
   ref: React.Ref<HTMLElement>,
 ): MenuSplitGroupState => {
-  const innerRef = React.useRef<HTMLDivElement>();
+  const innerRef = React.useRef<HTMLDivElement>(undefined);
   const { dir, targetDocument } = useFluent();
 
   const nextArrowKey = getRTLSafeKey(ArrowRight, dir);

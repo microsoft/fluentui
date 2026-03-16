@@ -24,7 +24,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<IPivot>;
+  componentRef?: React.RefObject<IPivot | null>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -58,7 +58,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
   /**
    * Callback for when the selected pivot item is changed.
    */
-  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
   /**
    * Link size (normal, large)

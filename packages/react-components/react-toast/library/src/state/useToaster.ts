@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isHTMLElement, useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -6,6 +8,7 @@ import type {
   CommonToastDetail,
   ShowToastEventDetail,
   Toast,
+  ToastId,
   ToastListenerMap,
   ToastPosition,
   ToasterId,
@@ -13,7 +16,16 @@ import type {
 } from './types';
 import { EVENTS } from './constants';
 
-export function useToaster<TElement extends HTMLElement = HTMLDivElement>(options: Partial<ToasterOptions> = {}) {
+export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
+  options: Partial<ToasterOptions> = {},
+): {
+  isToastVisible: (toastId: ToastId) => boolean;
+  toastsToRender: Map<ToastPosition, Toast[]>;
+  pauseAllToasts: () => void;
+  playAllToasts: () => void;
+  tryRestoreFocus: () => void;
+  closeAllToasts: () => void;
+} {
   const forceUpdate = useForceUpdate();
   const { toasterId: userToasterId, shortcuts } = options;
   // Currently the toaster options can never be changed at runtime

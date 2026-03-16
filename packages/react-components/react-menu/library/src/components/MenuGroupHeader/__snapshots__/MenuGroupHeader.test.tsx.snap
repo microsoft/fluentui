@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuGroupHeader renders a default state 1`] = `
 <div
-  className="fui-MenuGroupHeader"
+  class="fui-MenuGroupHeader"
   id=""
 >
   Default MenuGroupHeader

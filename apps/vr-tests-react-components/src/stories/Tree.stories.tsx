@@ -14,9 +14,9 @@ import {
 import { tokens } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   CaretDownRegular,
   CaretRightRegular,
@@ -33,6 +33,9 @@ import { Avatar } from '@fluentui/react-avatar';
 
 export default {
   title: 'Tree',
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tree>;
 
 export const Default = () => (
@@ -128,22 +131,7 @@ export const DefaultOpenTreeRTL = getStoryVariant(DefaultOpenTree, RTL);
 
 export const Appearance = () => {
   return (
-    <StoryWright
-      steps={new Steps()
-        .hover('#subtle-tree')
-        .snapshot('Subtle tree hover')
-        .mouseDown('#subtle-tree')
-        .snapshot('Subtle tree mousedown')
-        .hover('#subtle-alpha-tree')
-        .snapshot('Subtle alpha tree hover')
-        .mouseDown('#subtle-alpha-tree')
-        .snapshot('Subtle alpha tree mousedown')
-        .hover('#transparent-tree')
-        .snapshot('Transparent tree hover')
-        .mouseDown('#transparent-tree')
-        .snapshot('Transparent tree mousedown')
-        .end()}
-    >
+    <>
       <Tree id="subtle-tree" aria-label="Tree">
         <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle tree item</TreeItemLayout>
@@ -159,16 +147,87 @@ export const Appearance = () => {
           <TreeItemLayout>Transparent tree item</TreeItemLayout>
         </TreeItem>
       </Tree>
-    </StoryWright>
+    </>
   );
 };
 Appearance.storyName = 'appearance';
+Appearance.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .hover('#subtle-tree')
+      .snapshot('Subtle tree hover')
+      .mouseDown('#subtle-tree')
+      .snapshot('Subtle tree mousedown')
+      .hover('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree hover')
+      .mouseDown('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree mousedown')
+      .hover('#transparent-tree')
+      .snapshot('Transparent tree hover')
+      .mouseDown('#transparent-tree')
+      .snapshot('Transparent tree mousedown')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const AppearanceDarkMode = getStoryVariant(Appearance, DARK_MODE);
 
 export const AppearanceHighContrast = getStoryVariant(Appearance, HIGH_CONTRAST);
 
 export const AppearanceRTL = getStoryVariant(Appearance, RTL);
+
+export const AppearanceTreeItemPersonaLayout = () => {
+  return (
+    <>
+      <Tree id="subtle-tree" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+      <Tree id="subtle-alpha-tree" appearance="subtle-alpha" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle-alpha tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+      <Tree id="transparent-tree" appearance="transparent" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Transparent tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+AppearanceTreeItemPersonaLayout.storyName = 'appearancePersona';
+AppearanceTreeItemPersonaLayout.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .hover('#subtle-tree')
+      .snapshot('Subtle tree hover')
+      .mouseDown('#subtle-tree')
+      .snapshot('Subtle tree mousedown')
+      .hover('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree hover')
+      .mouseDown('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree mousedown')
+      .hover('#transparent-tree')
+      .snapshot('Transparent tree hover')
+      .mouseDown('#transparent-tree')
+      .snapshot('Transparent tree mousedown')
+      .end(),
+  },
+} satisfies StoryParameters;
+
+export const AppearancePersonaLayoutDarkMode = getStoryVariant(AppearanceTreeItemPersonaLayout, DARK_MODE);
+
+export const AppearancePersonaLayoutHighContrast = getStoryVariant(AppearanceTreeItemPersonaLayout, HIGH_CONTRAST);
+
+export const AppearancePersonaLayoutRTL = getStoryVariant(AppearanceTreeItemPersonaLayout, RTL);
 
 export const Size = () => {
   return (
@@ -185,6 +244,22 @@ export const Size = () => {
             </TreeItem>
             <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem value="2" itemType="branch">
+          <TreeItemPersonaLayout media={<Avatar name="Medium Tree" color="colorful" />}>
+            Medium size tree item
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
@@ -206,6 +281,22 @@ export const Size = () => {
           </Tree>
         </TreeItem>
       </Tree>
+      <TreeItem value="2" itemType="branch">
+        <TreeItemPersonaLayout media={<Avatar name="Small Tree" color="colorful" />}>
+          Small size tree item
+        </TreeItemPersonaLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
     </>
   );
 };
@@ -539,20 +630,26 @@ export const FlatTreeSingleSelection = () => {
   });
 
   return (
-    <StoryWright steps={new Steps().click('#2-1').snapshot('flat tree single selection selected 1').end()}>
-      <FlatTree selectionMode="single" {...flatTree.getTreeProps()} aria-label="Tree">
-        {Array.from(flatTree.items(), item => {
-          return (
-            <TreeItem {...item.getTreeItemProps()} key={item.value}>
-              <TreeItemLayout>{item.value}</TreeItemLayout>
-            </TreeItem>
-          );
-        })}
-      </FlatTree>
-    </StoryWright>
+    <FlatTree selectionMode="single" {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => {
+        return (
+          <TreeItem {...item.getTreeItemProps()} key={item.value}>
+            <TreeItemLayout>{item.value}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
+    </FlatTree>
   );
 };
 FlatTreeSingleSelection.storyName = 'flat tree single selection';
+FlatTreeSingleSelection.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .click(`#${CSS.escape('2-1')}`)
+      .snapshot('flat tree single selection selected 1')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const FlatTreeSingleSelectionDarkMode = getStoryVariant(FlatTreeSingleSelection, DARK_MODE);
 
@@ -567,20 +664,26 @@ export const FlatTreeMultiSelection = () => {
   });
 
   return (
-    <StoryWright steps={new Steps().click('#1-1').snapshot('flat tree multi selection selected 1-1').end()}>
-      <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
-        {Array.from(flatTree.items(), item => {
-          return (
-            <TreeItem {...item.getTreeItemProps()} key={item.value}>
-              <TreeItemLayout>{item.value}</TreeItemLayout>
-            </TreeItem>
-          );
-        })}
-      </FlatTree>
-    </StoryWright>
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => {
+        return (
+          <TreeItem {...item.getTreeItemProps()} key={item.value}>
+            <TreeItemLayout>{item.value}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
+    </FlatTree>
   );
 };
 FlatTreeMultiSelection.storyName = 'flat tree multi selection';
+FlatTreeMultiSelection.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .click(`#${CSS.escape('1-1')}`)
+      .snapshot('flat tree multi selection selected 1-1')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const FlatTreeMultiSelectionDarkMode = getStoryVariant(FlatTreeMultiSelection, DARK_MODE);
 

@@ -9,22 +9,22 @@ type SlotComponents<Slots extends SlotPropsRecord> = {
 };
 
 /**
- * @internal
  * Assertion method to ensure state slots properties are properly declared.
  * A properly declared slot must be declared by using the `slot` method.
  *
+ * @internal
  * @example
  * ```tsx
- * export const renderInput_unstable = (state: InputState) => {
-    assertSlots<InputSlots>(state);
-    return (
-      <state.root>
-        {state.contentBefore && <state.contentBefore />}
-        <state.input />
-        {state.contentAfter && <state.contentAfter />}
-      </state.root>
-    );
-  };
+ * export const renderInput_unstable  = (state: InputState): JSXElement => {
+ *     assertSlots<InputSlots>(state);
+ *     return (
+ *       <state.root>
+ *         {state.contentBefore && <state.contentBefore />}
+ *         <state.input />
+ *         {state.contentAfter && <state.contentAfter />}
+ *       </state.root>
+ *     );
+ *   };
  * ```
  */
 export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots> {
@@ -34,6 +34,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
    */
   if (process.env.NODE_ENV !== 'production') {
     const typedState = state as ComponentState<Slots>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     for (const slotName of Object.keys(typedState.components)) {
       const slotElement = typedState[slotName];
       if (slotElement === undefined) {
@@ -44,6 +45,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
       // FIXME: this slot will still fail to support child render function scenario
       if (!isSlot(slotElement)) {
         typedState[slotName as keyof ComponentState<Slots>] = slot.always(slotElement, {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           elementType: typedState.components[slotName] as React.ComponentType<{}>,
         }) as ComponentState<Slots>[keyof ComponentState<Slots>];
         // eslint-disable-next-line no-console
@@ -56,13 +58,17 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
         // This means a slot is being declared by using resolveShorthand on the state hook,
         // but the render method is using the new `assertSlots` method. That scenario can be solved by simply updating the slot element with the proper element type
         const { [SLOT_ELEMENT_TYPE_SYMBOL]: elementType } = slotElement;
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (elementType !== typedState.components[slotName]) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<{}>;
           // eslint-disable-next-line no-console
           console.warn(/** #__DE-INDENT__ */ `
             @fluentui/react-utilities [${assertSlots.name}]:
             "state.${slotName}" element type differs from "state.components.${slotName}",
-            ${elementType} !== ${typedState.components[slotName]}.
+            ${elementType} !== ${
+            typedState.components[slotName] /* eslint-disable-line @typescript-eslint/no-deprecated */
+          }.
             Be sure to create slots properly by using "slot.always" or "slot.optional" with the correct elementType.
           `);
         }

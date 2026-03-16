@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
   TreeItemPersonaLayoutContextValues,
@@ -15,7 +16,7 @@ import { ButtonContextProvider } from '@fluentui/react-button';
 export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
-) => {
+): JSXElement => {
   assertSlots<TreeItemPersonaLayoutSlots>(state);
 
   return (

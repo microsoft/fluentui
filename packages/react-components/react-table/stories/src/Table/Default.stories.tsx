@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -19,6 +20,7 @@ import {
   PresenceBadgeStatus,
   Avatar,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const items = [
   {
@@ -66,7 +68,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <Table arial-label="Default table" style={{ minWidth: '510px' }}>
       <TableHeader>

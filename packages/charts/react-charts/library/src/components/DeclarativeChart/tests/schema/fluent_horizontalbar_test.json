@@ -1,0 +1,87 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "uid": "2f399e",
+      "name": "Votes",
+      "type": "bar",
+      "x": [1659, 1067, 671, 597, 504, 418, 407, 390, 378, 274, 255, 243, 203, 169, 79, 65, 42, 35, 35, 25, 17, 11, 10],
+      "y": [
+        "Laravel",
+        "Symfony2",
+        "Nette",
+        "CodeIgniter",
+        "Yii 2",
+        "PHPixie",
+        "Yii 1",
+        "Zend Framework 2",
+        "Company Internal Framework",
+        "Zend Framework 1",
+        "CakePHP",
+        "No Framework",
+        "We use a CMS for everything",
+        "Phalcon",
+        "Slim",
+        "Silex",
+        "Simple MVC Framework",
+        "Typo 3",
+        "Kohana",
+        "FuelPHP",
+        "TYPO3 Flow",
+        "Drupal",
+        "Aura"
+      ],
+      "zmax": 1,
+      "zmin": 0,
+      "xbins": {
+        "end": 2499.5,
+        "size": 500,
+        "start": -500.5
+      },
+      "ybins": {
+        "end": 23.5,
+        "size": 1,
+        "start": -1.5
+      },
+      "opacity": 1,
+      "visible": true,
+      "autobinx": true,
+      "autobiny": true,
+      "contours": {
+        "end": 0.901,
+        "size": 0.1,
+        "start": 0.1,
+        "coloring": "fill",
+        "showlines": true
+      },
+      "showlegend": true,
+      "orientation": "h"
+    }
+  ],
+  "layout": {
+    "title": "PHP Framework Popularity at Work - SitePoint, 2015",
+    "width": 850,
+    "xaxis": {
+      "type": "linear",
+      "range": [-198.2562959184288, 1830.6731869091736],
+      "title": "Votes",
+      "autorange": false
+    },
+    "yaxis": {
+      "type": "category",
+      "range": [-3.301575351429676, 23.42061223132087],
+      "title": "Framework",
+      "autorange": false
+    },
+    "height": 742,
+    "margin": {
+      "l": 210,
+      "pad": 4
+    },
+    "barmode": "group",
+    "barnorm": "",
+    "autosize": true,
+    "showlegend": false
+  },
+  "frames": []
+}

@@ -12,6 +12,22 @@ test.describe('CounterBadge component', () => {
     tagName: 'fluent-counter-badge',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-counter-badge');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should display the count when then the `count` attribute is equal to the `overflow-count` attribute', async ({
     fastPage,
   }) => {
@@ -165,8 +181,6 @@ test.describe('CounterBadge component', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect.soft(element).toHaveCustomState(shape);
       });
     }
   });
@@ -181,8 +195,6 @@ test.describe('CounterBadge component', () => {
         await expect(element).toHaveAttribute('color', color);
 
         await expect(element).toHaveJSProperty('color', color);
-
-        await expect.soft(element).toHaveCustomState(color);
       });
     }
   });
@@ -197,8 +209,6 @@ test.describe('CounterBadge component', () => {
         await expect(element).toHaveAttribute('size', size);
 
         await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
   });
@@ -213,8 +223,6 @@ test.describe('CounterBadge component', () => {
         await expect(element).toHaveJSProperty('appearance', appearance);
 
         await expect(element).toHaveAttribute('appearance', appearance);
-
-        await expect(element).toHaveCustomState(appearance);
       });
     }
   });

@@ -13,31 +13,37 @@ export function addHiddenInput(form: HTMLFormElement, name: string, value: strin
   form.appendChild(input);
 }
 
-export function prepareSandboxContainer(context: StoryContext) {
-  const docsSelector = `#anchor--${context.id} .docs-story`;
-  const rootElement = document.querySelector(docsSelector);
+export function prepareSandboxContainers(context: StoryContext) {
+  // Support anchor ID formats for our Storybook major versions range.
+  // 10< `#anchor--{id}`
+  // >=10 `#anchor--primary--{id}`
+  // See: https://github.com/storybookjs/storybook/pull/33384
+  const docsSelector = `#anchor--${context.id} .docs-story, #anchor--primary--${context.id} .docs-story`;
+  const rootElements = document.querySelectorAll(docsSelector);
 
-  if (!rootElement) {
+  if (!rootElements.length) {
     throw new Error(`css selector: ${docsSelector}, doesn't exist `);
   }
 
-  const showCodeButton = rootElement.querySelector('.docblock-code-toggle');
-  const container = showCodeButton?.parentElement;
+  return Array.from(rootElements).map(rootElement => {
+    const showCodeButton = rootElement.querySelector('.docblock-code-toggle');
+    const container = showCodeButton?.parentElement;
 
-  if (!container) {
-    throw new Error(`css selector: '.docblock-code-toggle', doesn't exist `);
-  }
+    if (!container) {
+      throw new Error(`css selector: '.docblock-code-toggle', doesn't exist `);
+    }
 
-  const classList = (showCodeButton.classList.value + ' with-code-sandbox-button').split(' ');
+    const classList = (showCodeButton.classList.value + ' with-code-sandbox-button').split(' ');
 
-  // remove button if it already existed
-  const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
-  ourButtons.forEach(node => node.remove());
+    // remove button if it already existed
+    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
+    ourButtons.forEach(node => node.remove());
 
-  return {
-    container,
-    cssClasses: classList,
-  };
+    return {
+      container,
+      cssClasses: classList,
+    };
+  });
 }
 
 const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {} };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -27,9 +28,11 @@ import {
   MenuItem,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -39,7 +42,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -174,7 +177,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumns = () => {
+export const ResizableColumns = (): JSXElement => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
   return (
@@ -194,7 +197,11 @@ export const ResizableColumns = () => {
               dataGrid.resizableColumns ? (
                 <Menu openOnContext>
                   <MenuTrigger>
-                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    <DataGridHeaderCell
+                      ref={el => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
                       {renderHeaderCell()}
                     </DataGridHeaderCell>
                   </MenuTrigger>

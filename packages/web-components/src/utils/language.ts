@@ -6,6 +6,6 @@
  *
  * @public
  */
-export function getLanguage(rootNode: HTMLElement): Intl.BCP47LanguageTag {
+export function getLanguage(rootNode: HTMLElement): Intl.UnicodeBCP47LocaleIdentifier {
   return rootNode.closest<HTMLElement>('[lang]')?.lang ?? 'en';
 }

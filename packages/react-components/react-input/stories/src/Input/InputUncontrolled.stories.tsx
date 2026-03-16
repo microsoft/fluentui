@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
 
@@ -19,7 +20,7 @@ const onChange: InputProps['onChange'] = (ev, data) => {
   console.log(`New value: "${data.value}"`);
 };
 
-export const Uncontrolled = () => {
+export const Uncontrolled = (): JSXElement => {
   const inputId = useId('input');
   const styles = useStyles();
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
@@ -26,7 +28,7 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
-export function setTabsterDefault(element: Element, isDefault: boolean) {
+export function setTabsterDefault(element: Element, isDefault: boolean): void {
   const tabsterAttr = element.getAttribute('data-tabster');
 
   if (tabsterAttr) {
@@ -48,7 +50,19 @@ export function useEmblaCarousel(
     onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
     autoplayInterval?: number;
   },
-) {
+): {
+  activeIndex: number;
+  carouselApi: {
+    scrollToElement: (element: HTMLElement, jump?: boolean) => number;
+    scrollToIndex: (index: number, jump?: boolean) => void;
+    scrollInDirection: (dir: 'prev' | 'next') => number;
+  };
+  viewportRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
+  enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
+  resetAutoplay: () => void;
+} {
   const {
     align,
     autoplayInterval,
@@ -172,11 +186,14 @@ export function useEmblaCarousel(
     const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
     const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
     const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+    const canLoop = emblaApi.current?.internalEngine().slideLooper.canLoop();
+
     const data: CarouselUpdateData = {
       navItemsCount,
       activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
       groupIndexList,
       slideNodes: nodes,
+      canLoop,
     };
 
     updateIndex();
@@ -195,10 +212,8 @@ export function useEmblaCarousel(
     }
   });
 
-  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
-    let currentElement: HTMLDivElement | null = null;
-
+  const viewportRef: React.RefObject<HTMLDivElement | null> = React.useRef(null);
+  const containerRef: React.RefObject<HTMLDivElement | null> = React.useMemo(() => {
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -218,19 +233,22 @@ export function useEmblaCarousel(
 
     return {
       set current(newElement: HTMLDivElement | null) {
-        if (currentElement) {
-          emblaApi.current?.off('slidesInView', handleVisibilityChange);
-          emblaApi.current?.off('select', handleIndexChange);
-          emblaApi.current?.off('reInit', handleReinit);
-          emblaApi.current?.off('autoplay:select', handleIndexChange);
-          emblaApi.current?.destroy();
+        if (emblaApi.current) {
+          // Stop autoplay before reinitializing.
+          emblaApi.current.plugins?.().autoplay?.stop();
+          emblaApi.current.off('slidesInView', handleVisibilityChange);
+          emblaApi.current.off('select', handleIndexChange);
+          emblaApi.current.off('reInit', handleReinit);
+          emblaApi.current.off('autoplay:select', handleIndexChange);
+
+          emblaApi.current.destroy();
+          emblaApi.current = null;
         }
 
-        // Use direct viewport if available, else fallback to container (includes Carousel controls).
-        currentElement = viewportRef.current ?? newElement;
-        if (currentElement) {
-          emblaApi.current = EmblaCarousel(
-            currentElement,
+        if (newElement) {
+          const newEmblaApi = EmblaCarousel(
+            // Use direct viewport if available, else fallback to container (includes Carousel controls).
+            viewportRef.current ?? newElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
@@ -238,10 +256,12 @@ export function useEmblaCarousel(
             plugins,
           );
 
-          emblaApi.current?.on('reInit', handleReinit);
-          emblaApi.current?.on('slidesInView', handleVisibilityChange);
-          emblaApi.current?.on('select', handleIndexChange);
-          emblaApi.current?.on('autoplay:select', handleIndexChange);
+          newEmblaApi.on('reInit', handleReinit);
+          newEmblaApi.on('slidesInView', handleVisibilityChange);
+          newEmblaApi.on('select', handleIndexChange);
+          newEmblaApi.on('autoplay:select', handleIndexChange);
+
+          emblaApi.current = newEmblaApi;
         }
       },
     };
@@ -291,6 +311,8 @@ export function useEmblaCarousel(
       duration: motionDuration,
     };
 
+    // Stop autoplay before reinitializing.
+    emblaApi.current?.plugins?.().autoplay?.stop();
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,

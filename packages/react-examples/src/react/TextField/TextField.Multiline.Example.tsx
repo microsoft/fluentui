@@ -13,7 +13,7 @@ const columnProps: Partial<IStackProps> = {
 };
 
 export const TextFieldMultilineExample: React.FunctionComponent = () => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
 
   const onChange = (_: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {

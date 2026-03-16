@@ -5,15 +5,22 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
+import { ITitleStyles } from '../../utilities/Common.styles';
 import {
+  AxisCategoryOrder,
+  AxisProps,
+  AxisScaleType,
   IAccessibilityProps,
   IChart,
+  IChartAnnotation,
   IDataPoint,
+  IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
+  IScatterChartPoints,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -21,6 +28,7 @@ import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * Cartesian Chart style properties
@@ -76,6 +84,11 @@ export interface ICartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -154,9 +167,14 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: IStyle;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: IStyle;
 
   /**
    * Style for the chart Title.
@@ -177,6 +195,26 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**
@@ -184,6 +222,11 @@ export interface ICartesianChartStyles {
  * {@docCategory CartesianChart}
  */
 export interface ICartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
@@ -286,6 +329,11 @@ export interface ICartesianChartProps {
   yMaxValue?: number;
 
   /**
+   * minimum data value point in x-axis (for numeric x-axis)
+   */
+  xMinValue?: number;
+
+  /**
    * maximum data value point in x-axis
    */
   xMaxValue?: number;
@@ -309,6 +357,11 @@ export interface ICartesianChartProps {
    * @default 10
    */
   xAxistickSize?: number;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: IChartAnnotation[];
 
   /**
    * defines the space between the tick line and the data label
@@ -464,11 +517,94 @@ export interface ICartesianChartProps {
    * @default false
    */
   hideTickOverlap?: boolean;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
+
+  /**
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
+
+  /**
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }
 
 export interface IYValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -481,7 +617,7 @@ export interface IChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
@@ -521,7 +657,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element | null;
+
+  legendBars: JSXElement | null;
 
   /**
    * Callout props
@@ -621,6 +758,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   svgFocusZoneProps?: IFocusZoneProps;
 
   /**
+   * Annotations to render on top of the chart area.
+   */
+  annotations?: IChartAnnotation[];
+
+  /**
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
@@ -635,6 +777,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => IMargins;
+
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => IMargins;
 
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
@@ -663,8 +808,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Get the min and max values of the y-axis
    */
   getMinMaxOfYAxis: (
-    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    points:
+      | ILineChartPoints[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IVerticalBarChartDataPoint[]
+      | IDataPoint[]
+      | IScatterChartPoints[]
+      | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
 
   /**
@@ -678,6 +830,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
     roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -690,7 +843,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
       | IGroupedVerticalBarChartData[]
-      | IHeatMapChartDataPoint[],
+      | IHeatMapChartDataPoint[]
+      | IGanttChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,
@@ -698,7 +852,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**
@@ -708,11 +861,19 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
+    chartType?: ChartTypes,
   ) => ScaleBand<string>;
 
   /**
    * Callback to access the public methods and properties of the component.
    */
   ref?: IRefObject<IChart>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

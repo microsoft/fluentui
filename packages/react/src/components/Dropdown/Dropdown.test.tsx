@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
+import { act, fireEvent, render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -312,7 +312,9 @@ describe('Dropdown', () => {
 
       const { getByRole } = render(<Dropdown componentRef={dropdown} tabIndex={-1} options={DEFAULT_OPTIONS} />);
 
-      dropdown.current!.focus(false);
+      act(() => {
+        dropdown.current!.focus(false);
+      });
 
       const dropdownRoot = getByRole('combobox');
       expect(document.activeElement).toBe(dropdownRoot);
@@ -328,7 +330,9 @@ describe('Dropdown', () => {
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
       expect(titleElement?.textContent).toBe('');
 
-      dropdown.current!.focus(true);
+      act(() => {
+        dropdown.current!.focus(true);
+      });
       expect(document.activeElement).toBe(dropdownRoot);
       expect(titleElement?.textContent).toBe('');
     });
@@ -419,7 +423,9 @@ describe('Dropdown', () => {
       userEvent.click(getByRole('combobox'));
       expect(queryByRole('listbox')).toBeTruthy();
 
-      dropdown.current?.dismissMenu();
+      act(() => {
+        dropdown.current?.dismissMenu();
+      });
 
       expect(queryByRole('listbox')).toBeFalsy();
     });

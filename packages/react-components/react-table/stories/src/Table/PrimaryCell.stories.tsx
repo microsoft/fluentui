@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -25,6 +26,7 @@ import {
   TableCellActions,
   TableCellLayout,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -75,7 +77,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const PrimaryCell = () => {
+export const PrimaryCell = (): JSXElement => {
   return (
     <Table aria-label="Table with primary cell layout" style={{ minWidth: '500px' }}>
       <TableHeader>

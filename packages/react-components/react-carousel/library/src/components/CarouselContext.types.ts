@@ -3,6 +3,8 @@ import * as React from 'react';
 
 import type { CarouselUpdateData } from '../Carousel';
 
+export type CarouselAppearance = 'flat' | 'elevated';
+
 export type CarouselIndexChangeData = (
   | EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>>
   | EventData<'focus', React.FocusEvent>
@@ -17,6 +19,7 @@ export type CarouselIndexChangeData = (
 
 export type CarouselContextValue = {
   activeIndex: number;
+  appearance?: CarouselAppearance;
   circular: boolean;
   selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => number;
   selectPageByDirection: (
@@ -32,9 +35,9 @@ export type CarouselContextValue = {
   enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
   resetAutoplay: () => void;
   // Container with controls passed to carousel engine
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLDivElement | null>;
   // Viewport without controls used for interactive functionality (draggable, pause autoplay etc.)
-  viewportRef?: React.RefObject<HTMLDivElement>;
+  viewportRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 /**

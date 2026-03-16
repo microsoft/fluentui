@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 interface IVerticalBarState {}
 
@@ -7,36 +14,36 @@ export class VerticalBarChartDateAxisExample extends React.Component<{}, IVertic
   constructor(props: IVerticalBarChartProps) {
     super(props);
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._rotateLabelExample()}</div>;
   }
 
-  private _rotateLabelExample(): JSX.Element {
+  private _rotateLabelExample(): JSXElement {
     const points: IVerticalBarChartDataPoint[] = [
       {
         x: new Date('2018/01/01'),
         y: 3500,
-        color: '#627CEF',
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         x: new Date('2018/03/01'),
         y: 2500,
-        color: '#C19C00',
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         x: new Date('2018/07/01'),
         y: 1900,
-        color: '#E650AF',
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         x: new Date('2018/10/01'),
         y: 2800,
-        color: '#0E7878',
+        color: getColorFromToken(DataVizPalette.color4),
       },
       {
         x: new Date('2019/01/01'),
         y: 3800,
-        color: '#0E7878',
+        color: getColorFromToken(DataVizPalette.color5),
       },
     ];
     const timeFormat = '%m/%d';

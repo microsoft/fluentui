@@ -15,10 +15,24 @@ test.describe('Label', () => {
         await expect(element).toHaveAttribute('size', size);
 
         await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-label');
+    });
+
+    expect(hasError).toBe(false);
   });
 
   test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
@@ -31,8 +45,6 @@ test.describe('Label', () => {
         await expect(element).toHaveAttribute('weight', weight);
 
         await expect(element).toHaveJSProperty('weight', weight);
-
-        await expect(element).toHaveCustomState(weight);
       });
     }
   });
@@ -46,8 +58,6 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('disabled', true);
 
-    await expect(element).toHaveCustomState('disabled');
-
     await element.evaluate((node: Label) => {
       node.disabled = false;
     });
@@ -55,8 +65,6 @@ test.describe('Label', () => {
     await expect(element).not.toHaveAttribute('disabled');
 
     await expect(element).toHaveJSProperty('disabled', false);
-
-    await expect(element).not.toHaveCustomState('disabled');
   });
 
   test('should set the `required` property to match the `required` attribute', async ({ fastPage }) => {

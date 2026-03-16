@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithForm = () => {
+export const WithForm = (): JSXElement => {
   const styles = useStyles();
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();

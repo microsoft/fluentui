@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`composeComponentAs passes Base as defaultRender to DecoratorB through DecoratorA 1`] = `
 <div

@@ -3,6 +3,7 @@ import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresen
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const customCoinClass = mergeStyles({
   borderRadius: 20,
@@ -24,6 +25,7 @@ export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
         {...examplePersona}
         size={PersonaSize.size72}
         presence={PersonaPresence.online}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         onRenderCoin={_onRenderCoin}
         imageAlt="Ted Randall, status is available at 4 PM"
         imageUrl={TestImages.personaMale}
@@ -33,7 +35,7 @@ export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
   );
 };
 
-function _onRenderCoin(props: IPersonaProps): JSX.Element {
+function _onRenderCoin(props: IPersonaProps): JSXElement {
   const { coinSize, imageAlt, imageUrl } = props;
   return <img src={imageUrl} alt={imageAlt} width={coinSize} height={coinSize} className={customCoinClass} />;
 }

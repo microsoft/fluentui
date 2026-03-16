@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { Steps, type StoryParameters } from 'storywright';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
-import { propValues, useStyles } from './utils';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
+import { propValues, useStyles } from './utils';
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
   const styles = useStyles();
 
-  const badges = new Map<BadgeProps['color'], JSX.Element[]>();
+  const badges = new Map<BadgeProps['color'], JSXElement[]>();
   badges.set('brand', []);
   badges.set('danger', []);
   badges.set('severe', []);
@@ -77,6 +79,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
 
 export default {
   title: 'Badge Converged',
+  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Badge>;
 
 export const Filled = () => <BadgeAppearanceTemplate appearance={'filled'} />;

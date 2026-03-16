@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuList renders a default state 1`] = `
 <div
   aria-labelledby=""
-  className="fui-MenuList"
+  class="fui-MenuList"
   data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
   role="menu"
 >

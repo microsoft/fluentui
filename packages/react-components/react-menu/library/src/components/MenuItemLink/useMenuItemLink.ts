@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ExtractSlotProps, Slot, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
@@ -27,6 +29,7 @@ export const useMenuItemLink_unstable = (
   return {
     ...baseState,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...baseState.components,
       root: 'a',
     },

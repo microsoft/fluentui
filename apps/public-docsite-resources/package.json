@@ -5,6 +5,20 @@
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/AppDefinition": {
+      "types": "./lib/AppDefinition.d.ts",
+      "import": "./lib/AppDefinition.js",
+      "require": "./lib-commonjs/AppDefinition.js"
+    },
+    "./dist/api": "./dist/api",
+    "./dist/api/references": "./dist/api/references"
+  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
@@ -27,13 +41,6 @@
     "start": "just-scripts dev",
     "update-snapshots": "just-scripts jest -u"
   },
-  "devDependencies": {
-    "@fluentui/api-docs": "*",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@fluentui/react": "*",
     "@fluentui/react-charting": "*",
@@ -46,8 +53,8 @@
     "@fluentui/theme-samples": "*",
     "@fluentui/react-monaco-editor": "*",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0"
   }
 }

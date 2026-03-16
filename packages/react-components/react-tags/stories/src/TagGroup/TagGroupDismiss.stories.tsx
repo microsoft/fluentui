@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagGroup,
   Tag,
@@ -15,6 +16,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     rowGap: '10px',
+  },
+  tagGroup: {
+    flexWrap: 'wrap',
   },
   resetButton: {
     width: 'fit-content',
@@ -61,7 +65,11 @@ const DismissWithTags = () => {
   return (
     <>
       {visibleTags.length !== 0 && (
-        <TagGroup onDismiss={removeItem} aria-label="TagGroup example with dismissible Tags">
+        <TagGroup
+          className={styles.tagGroup}
+          onDismiss={removeItem}
+          aria-label="TagGroup example with dismissible Tags"
+        >
           {visibleTags.map((tag, index) => (
             <Tag
               dismissible
@@ -101,7 +109,7 @@ const DismissWithInteractionTags = () => {
   return (
     <>
       {visibleTags.length !== 0 && (
-        <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+        <TagGroup className={styles.tagGroup} onDismiss={removeItem} aria-label="Dismiss example">
           {visibleTags.map((tag, index) => (
             <InteractionTag value={tag.value} key={tag.value}>
               <InteractionTagPrimary hasSecondaryAction ref={index === 0 ? firstTagRef : null}>
@@ -125,7 +133,7 @@ const DismissWithInteractionTags = () => {
   );
 };
 
-export const Dismiss = () => {
+export const Dismiss = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.container}>

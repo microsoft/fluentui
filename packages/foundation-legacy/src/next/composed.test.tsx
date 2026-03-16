@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx withSlots */
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { composed, resolveSlots } from './composed';
 import { IComponentStyles } from '../IComponent';
 import { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
@@ -151,6 +151,6 @@ describe('composed', () => {
 
     const TestComponent = composed(options);
 
-    renderer.create(<TestComponent />);
+    render(<TestComponent />);
   });
 });

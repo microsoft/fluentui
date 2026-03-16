@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenuGridCell renders a default state 1`] = `
+<div
+  class="fui-MenuGridCell"
+  role="gridcell"
+>
+  Default MenuGridCell
+</div>
+`;

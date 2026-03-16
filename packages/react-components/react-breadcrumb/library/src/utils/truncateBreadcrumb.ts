@@ -7,7 +7,7 @@ const truncateBreadcrumb = (content: string, maxLength: number): string => {
     : content;
 };
 
-export const isTruncatableBreadcrumbContent = (content: string, maxLength: number) => {
+export const isTruncatableBreadcrumbContent = (content: string, maxLength: number): boolean => {
   return content.length > maxLength;
 };
 

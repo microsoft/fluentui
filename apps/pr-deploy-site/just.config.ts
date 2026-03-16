@@ -18,21 +18,23 @@ const instructions = copyInstructions.copyFilesToDestinationDirectory(
 // prevent scoped/partial builds from working. (Since the demo site has both v0 and v8 packages,
 // it would cause both of those dependency trees to get built every time.)
 const dependencies = [
-  '@fluentui/docs',
-  '@fluentui/perf-test-northstar',
+  // v8
   '@fluentui/public-docsite-resources',
   '@fluentui/public-docsite',
   '@fluentui/react',
+  '@fluentui/react-experiments',
+  '@fluentui/perf-test',
+  '@fluentui/theming-designer',
+  // v9
+  '@fluentui/public-docsite-v9',
+  '@fluentui/perf-test-react-components',
+  '@fluentui/theme-designer',
+  // web-components
+  '@fluentui/web-components',
+  // charting
   '@fluentui/react-charting',
   '@fluentui/chart-web-components',
   '@fluentui/chart-docsite',
-  '@fluentui/public-docsite-v9',
-  '@fluentui/react-experiments',
-  '@fluentui/web-components',
-  '@fluentui/perf-test',
-  '@fluentui/theming-designer',
-  '@fluentui/theme-designer',
-  '@fluentui/perf-test-react-components',
 ];
 
 const allPackages = getAllPackageInfo();
@@ -42,20 +44,10 @@ repoDeps.forEach(dep => {
   const packageDist = path.join(gitRoot, dep.packagePath, 'dist');
 
   if (fs.existsSync(packageDist)) {
-    if (dep.packageJson.name === '@fluentui/docs') {
-      instructions.push(...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'react-northstar')));
-      deployedPackages.add(dep.packageJson.name);
-    } else if (dep.packageJson.name === '@fluentui/perf-test-northstar') {
-      instructions.push(
-        ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'perf-test-northstar')),
-      );
-      deployedPackages.add(dep.packageJson.name);
-    } else {
-      instructions.push(
-        ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', path.basename(dep.packagePath))),
-      );
-      deployedPackages.add(dep.packageJson.name);
-    }
+    instructions.push(
+      ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', path.basename(dep.packagePath))),
+    );
+    deployedPackages.add(dep.packageJson.name);
   }
 });
 
@@ -64,15 +56,22 @@ repoDeps.forEach(dep => {
  */
 task('generate:js', () => {
   const jsContent = fs.readFileSync(path.join(__dirname, './pr-deploy-site.js'), 'utf-8');
+  const placeholder = '/* __PACKAGES_LIST_PLACEHOLDER__ */';
 
-  if (!jsContent.includes('var packages;')) {
-    console.error('pr-deploy-site.js must contain a line "var packages;" to replace with the actual packages');
+  if (!jsContent.includes(placeholder)) {
+    console.error(`pr-deploy-site.js must contain the placeholder "${placeholder}"`);
     process.exit(1);
   }
 
   fs.writeFileSync(
     path.join('dist', 'pr-deploy-site.js'),
-    jsContent.replace('var packages;', `var packages = ${JSON.stringify([...deployedPackages])};`),
+    jsContent.replace(
+      placeholder,
+      JSON.stringify([...deployedPackages], null, 2)
+        // remove the surrounding array brackets
+        .slice(1, -1)
+        .trim(),
+    ),
   );
 });
 

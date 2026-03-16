@@ -1,3 +1,5 @@
+'use client';
+
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
@@ -18,9 +20,14 @@ export const switchClassName = switchClassNames.root;
 
 // Thumb and track sizes used by the component.
 const spaceBetweenThumbAndTrack = 2;
-const trackHeight = 20;
-const trackWidth = 40;
-const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
+// Medium size dimensions
+const trackHeightMedium = 20;
+const trackWidthMedium = 40;
+const thumbSizeMedium = trackHeightMedium - spaceBetweenThumbAndTrack;
+// Small size dimensions (from design mockup)
+const trackHeightSmall = 16;
+const trackWidthSmall = 32;
+const thumbSizeSmall = trackHeightSmall - spaceBetweenThumbAndTrack;
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'flex-start',
@@ -44,14 +51,14 @@ const useIndicatorBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   fill: 'currentColor',
   flexShrink: 0,
-  fontSize: `${thumbSize}px`,
-  height: `${trackHeight}px`,
+  fontSize: `${thumbSizeMedium}px`,
+  height: `${trackHeightMedium}px`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   pointerEvents: 'none',
   transitionDuration: tokens.durationNormal,
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
-  width: `${trackWidth}px`,
+  width: `${trackWidthMedium}px`,
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
@@ -79,6 +86,11 @@ const useIndicatorStyles = makeStyles({
   labelAbove: {
     marginTop: 0,
   },
+  sizeSmall: {
+    fontSize: `${thumbSizeSmall}px`,
+    height: `${trackHeightSmall}px`,
+    width: `${trackWidthSmall}px`,
+  },
 });
 
 const useInputBaseClassName = makeResetStyles({
@@ -91,19 +103,19 @@ const useInputBaseClassName = makeResetStyles({
 
   // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
   // This is done so that clicking on that "empty space" still toggles the switch.
-  width: `calc(${trackWidth}px + 2 * ${tokens.spacingHorizontalS})`,
+  width: `calc(${trackWidthMedium}px + 2 * ${tokens.spacingHorizontalS})`,
 
   // Checked (both enabled and disabled)
   ':checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       '> *': {
-        transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
+        transform: `translateX(${trackWidthMedium - thumbSizeMedium - spaceBetweenThumbAndTrack}px)`,
       },
     },
   },
 
   // Disabled (both checked and unchecked)
-  ':disabled': {
+  ':disabled, &[aria-disabled="true"]': {
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
@@ -117,7 +129,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and unchecked
-  ':enabled:not(:checked)': {
+  ':enabled:not(:checked):not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       color: tokens.colorNeutralStrokeAccessible,
       borderColor: tokens.colorNeutralStrokeAccessible,
@@ -143,7 +155,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and checked
-  ':enabled:checked': {
+  ':enabled:checked:not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
       color: tokens.colorNeutralForegroundInverted,
@@ -166,14 +178,14 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Disabled and unchecked
-  ':disabled:not(:checked)': {
+  ':disabled:not(:checked), &[aria-disabled="true"]:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
       borderColor: tokens.colorNeutralStrokeDisabled,
     },
   },
 
   // Disabled and checked
-  ':disabled:checked': {
+  ':disabled:checked, &[aria-disabled="true"]:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       borderColor: tokens.colorTransparentStrokeDisabled,
@@ -181,7 +193,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   '@media (forced-colors: active)': {
-    ':disabled': {
+    ':disabled, &[aria-disabled="true"]': {
       [`& ~ .${switchClassNames.indicator}`]: {
         color: 'GrayText',
         borderColor: 'GrayText',
@@ -197,7 +209,7 @@ const useInputBaseClassName = makeResetStyles({
     ':hover:active': {
       color: 'CanvasText',
     },
-    ':enabled:checked': {
+    ':enabled:checked:not([aria-disabled="true"])': {
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: 'Highlight',
@@ -229,8 +241,18 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
+    height: `calc(${trackHeightMedium}px + ${tokens.spacingVerticalS})`,
     width: '100%',
+  },
+  sizeSmall: {
+    width: `calc(${trackWidthSmall}px + 2 * ${tokens.spacingHorizontalS})`,
+    ':checked': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        '> *': {
+          transform: `translateX(${trackWidthSmall - thumbSizeSmall - spaceBetweenThumbAndTrack}px)`,
+        },
+      },
+    },
   },
 });
 
@@ -241,9 +263,15 @@ const useLabelStyles = makeStyles({
 
     // Use a (negative) margin to account for the difference between the track's height and the label's line height.
     // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
-    marginBottom: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
-    marginTop: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${trackHeightMedium}px - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${trackHeightMedium}px - ${tokens.lineHeightBase300}) / 2)`,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+  },
+  sizeSmall: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    marginBottom: `calc((${trackHeightSmall}px - ${tokens.lineHeightBase200}) / 2)`,
+    marginTop: `calc((${trackHeightSmall}px - ${tokens.lineHeightBase200}) / 2)`,
   },
   above: {
     paddingTop: tokens.spacingVerticalXS,
@@ -272,7 +300,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const inputStyles = useInputStyles();
   const labelStyles = useLabelStyles();
 
-  const { label, labelPosition } = state;
+  const { label, labelPosition, size } = state;
 
   state.root.className = mergeClasses(
     switchClassNames.root,
@@ -285,6 +313,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     switchClassNames.indicator,
     indicatorBaseClassName,
     label && labelPosition === 'above' && indicatorStyles.labelAbove,
+    size === 'small' && indicatorStyles.sizeSmall,
     state.indicator.className,
   );
 
@@ -292,6 +321,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
     switchClassNames.input,
     inputBaseClassName,
     label && inputStyles[labelPosition],
+    size === 'small' && inputStyles.sizeSmall,
     state.input.className,
   );
 
@@ -300,6 +330,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
       switchClassNames.label,
       labelStyles.base,
       labelStyles[labelPosition],
+      size === 'small' && labelStyles.sizeSmall,
       state.label.className,
     );
   }

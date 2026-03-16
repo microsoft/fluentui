@@ -1,11 +1,12 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import { bundleIcon, ClipboardPasteRegular, ClipboardPasteFilled } from '@fluentui/react-icons';
 
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 
-export const AligningWithIcons = () => (
+export const AligningWithIcons = (): JSXElement => (
   <Menu hasIcons>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>

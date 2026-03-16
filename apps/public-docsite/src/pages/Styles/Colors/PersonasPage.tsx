@@ -6,9 +6,9 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 const personaColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-personas.json');
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 const personaGroupColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-persona-groups.json');
 
 export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = props => {

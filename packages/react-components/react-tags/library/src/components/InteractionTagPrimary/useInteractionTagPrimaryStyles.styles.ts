@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -58,10 +60,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -83,10 +82,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderTop: `${tokens.strokeWidthThin} solid`,
       borderLeft: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusCircular,
       borderBottomLeftRadius: tokens.borderRadiusCircular,
     },
@@ -190,7 +186,39 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  selected: {
+    background: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
 
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      color: tokens.colorNeutralForegroundOnBrand,
+      [`& .${iconFilledClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+      },
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      color: tokens.colorNeutralForegroundOnBrand,
+      [`& .${iconFilledClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+      },
+    },
+  },
   medium: {
     paddingRight: '7px',
   },
@@ -199,6 +227,25 @@ const useRootStyles = makeStyles({
   },
   'extra-small': {
     paddingRight: '5px',
+    position: 'relative',
+
+    // Increase clickable area to meet WCAG 2.2 AA
+    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 const useRootDisabledAppearances = makeStyles({
@@ -248,6 +295,11 @@ const useRootWithSecondaryActionStyles = makeStyles({
       borderTopRightRadius: tokens.borderRadiusNone,
       borderBottomRightRadius: tokens.borderRadiusNone,
     }),
+    '@media (forced-colors: active)': {
+      '::before': {
+        borderTopRightRadius: '0',
+      },
+    },
   },
   medium: {
     paddingRight: tokens.spacingHorizontalS,
@@ -279,7 +331,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
   const rootCircularContrastStyles = useRootCircularContrastStyles();
 
-  const { shape, size, appearance } = state;
+  const { disabled, shape, size, appearance, selected } = state;
 
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
@@ -288,7 +340,8 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
     shape === 'circular' && !state.hasSecondaryAction && rootCircularContrastStyles.withoutSecondaryAction,
 
-    state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
+    disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
+    selected && !disabled && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],

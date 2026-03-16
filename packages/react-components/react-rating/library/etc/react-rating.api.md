@@ -4,13 +4,12 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -118,13 +117,13 @@ export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProp
 };
 
 // @public
-export const renderRating_unstable: (state: RatingState, contextValues: RatingContextValues) => JSX.Element;
+export const renderRating_unstable: (state: RatingState, contextValues: RatingContextValues) => JSXElement;
 
 // @public
-export const renderRatingDisplay_unstable: (state: RatingDisplayState, contextValues: RatingDisplayContextValues) => JSX.Element;
+export const renderRatingDisplay_unstable: (state: RatingDisplayState, contextValues: RatingDisplayContextValues) => JSXElement;
 
 // @public
-export const renderRatingItem_unstable: (state: RatingItemState) => JSX.Element;
+export const renderRatingItem_unstable: (state: RatingItemState) => JSXElement;
 
 // @public
 export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;

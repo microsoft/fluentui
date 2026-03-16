@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import descriptionMd from './Description.md';
 
@@ -44,7 +45,7 @@ const mailIcon: IIconProps = { iconName: 'Mail' };
 const calendarIcon: IIconProps = { iconName: 'Calendar' };
 const shareIcon: IIconProps = { iconName: 'Share', style: { color: 'salmon' } };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const [selection, setSelection] = React.useState<{ [key: string]: boolean }>({});

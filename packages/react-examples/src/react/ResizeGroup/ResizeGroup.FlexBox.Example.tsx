@@ -2,6 +2,7 @@ import * as React from 'react';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
+import type { JSXElement } from '@fluentui/utilities';
 
 const leftRightBoxClassName = mergeStyles({
   display: 'flex',
@@ -38,8 +39,8 @@ const BoxWithLabel: React.FunctionComponent<IBoxWithLabelProps> = (props: IBoxWi
   <div className={getNumberedBoxClassName(props.backgroundColor)}>{props.label}</div>
 );
 
-function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
-  const result: JSX.Element[] = [];
+function renderBoxWithLabels(count: number, backgroundColor: string): JSXElement[] {
+  const result: JSXElement[] = [];
   for (let i = 1; i <= count; i += 1) {
     result.push(<BoxWithLabel label={`${i}`} backgroundColor={backgroundColor} key={`${backgroundColor}-${i}`} />);
   }

@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Badge renders a default state 1`] = `
 <div
-  className="fui-Badge"
+  class="fui-Badge"
 >
   Default Badge
 </div>

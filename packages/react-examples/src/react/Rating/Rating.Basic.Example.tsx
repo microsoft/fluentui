@@ -40,6 +40,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
       />
       Custom icons:
       <Rating
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         min={1}
         max={5}
         defaultRating={2.5}

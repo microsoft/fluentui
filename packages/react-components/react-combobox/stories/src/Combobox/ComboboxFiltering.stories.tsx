@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, ComboboxProps, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -27,7 +28,7 @@ const options = [
   { children: 'Lion', value: 'Lion' },
 ];
 
-export const Filtering = () => {
+export const Filtering = (): JSXElement => {
   const comboId = useId();
   const styles = useStyles();
 

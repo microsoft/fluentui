@@ -6,6 +6,8 @@ import type { IActivityItemProps } from './ActivityItem.types';
 import type { IActivityItemClassNames } from './ActivityItem.classNames';
 import type { IPersonaSharedProps, IPersonaCoinProps } from '../../Persona';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 type OptionalReactKey = { key?: React.Key };
 
 /**
@@ -16,7 +18,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     super(props);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
@@ -46,7 +48,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     );
   }
 
-  private _onRenderIcon = (props: IActivityItemProps): JSX.Element | React.ReactNode | null => {
+  private _onRenderIcon = (props: IActivityItemProps): JSXElement | React.ReactNode | null => {
     if (props.activityPersonas) {
       return this._onRenderPersonaArray(props);
     } else {
@@ -54,7 +56,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     }
   };
 
-  private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
+  private _onRenderActivityDescription = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -67,7 +69,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     return null;
   };
 
-  private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
+  private _onRenderComments = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -80,7 +82,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     return null;
   };
 
-  private _onRenderTimeStamp = (props: IActivityItemProps): JSX.Element | null => {
+  private _onRenderTimeStamp = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
     if (!props.isCompact && props.timeStamp) {
@@ -91,13 +93,14 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   };
 
   // If activityPersonas is an array of persona props, build the persona cluster element.
-  private _onRenderPersonaArray = (props: IActivityItemProps): JSX.Element | null => {
+
+  private _onRenderPersonaArray = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
-    let personaElement: JSX.Element | null = null;
+    let personaElement: JSXElement | null = null;
     const activityPersonas = props.activityPersonas as Array<IPersonaSharedProps & OptionalReactKey>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
-      const personaList: Array<JSX.Element> = [];
+      const personaList: Array<JSXElement> = [];
       const showSize16Personas = activityPersonas.length > 1 || props.isCompact;
       const personaLimit = props.isCompact ? 3 : 4;
       let style: React.CSSProperties | undefined = undefined;

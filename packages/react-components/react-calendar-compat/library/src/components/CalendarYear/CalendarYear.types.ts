@@ -44,7 +44,7 @@ export interface CalendarYearProps {
    * Optional callback to access the ICalendarYear interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<ICalendarYear>;
+  componentRef?: React.RefObject<ICalendarYear | null>;
 
   /**
    * Localized strings to use in the Calendar
@@ -66,6 +66,12 @@ export interface CalendarYearProps {
    * @param year - The year the user selected
    */
   onSelectYear?: (year: number) => void;
+
+  /**
+   * Callback action when the decade is navigated
+   * @param year - The year at the start of the new decade range being navigated to
+   */
+  onNavigateDate?: (year: number) => void;
 
   /**
    * Callback action when the header is selected

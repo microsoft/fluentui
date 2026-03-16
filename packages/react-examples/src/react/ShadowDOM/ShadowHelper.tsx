@@ -3,6 +3,7 @@ import { FocusRectsProvider, MergeStylesRootProvider, MergeStylesShadowRootProvi
 import root from 'react-shadow';
 
 export type ShadowProps = {
+  children?: React.ReactNode;
   window?: Window;
 };
 
@@ -11,7 +12,7 @@ export const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
   // a re-render.
   const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);
 
-  const ref = React.useRef<HTMLElement>(null);
+  const ref = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {
     if (ref.current) {

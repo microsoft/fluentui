@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/chart-web-components",
   "description": "A library of Fluent Chart Web Components",
-  "version": "0.0.4",
+  "version": "0.0.67",
   "author": {
     "name": "Microsoft"
   },
@@ -19,48 +19,20 @@
   "unpkg": "dist/chart-web-components.min.js",
   "files": [
     "*.md",
-    "dist/dts/",
     "dist/esm/",
     "dist/*.js",
     "dist/*.d.ts"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/dts/index.d.ts",
-      "default": "./dist/esm/index.js"
-    },
-    "./utilities.js": {
-      "types": "./dist/dts/utils/index.d.ts",
-      "default": "./dist/esm/utils/index.js"
-    },
-    "./*/define.js": {
-      "types": "./dist/dts/*/*.define.d.ts",
-      "default": "./dist/esm/*/*.define.js"
-    },
-    "./*/definition.js": {
-      "types": "./dist/dts/*/*.definition.d.ts",
-      "default": "./dist/esm/*/*.definition.js"
-    },
-    "./*/options.js": {
-      "types": "./dist/dts/*/*.options.d.ts",
-      "default": "./dist/esm/*/*.options.js"
-    },
-    "./*/styles.js": {
-      "types": "./dist/dts/*/*.styles.d.ts",
-      "default": "./dist/esm/*/*.styles.js"
-    },
-    "./*/template.js": {
-      "types": "./dist/dts/*/*.template.d.ts",
-      "default": "./dist/esm/*/*.template.js"
-    },
-    "./*/index.js": {
-      "types": "./dist/dts/*/index.d.ts",
-      "default": "./dist/esm/*/index.js"
-    },
-    "./*.js": {
-      "types": "./dist/dts/*/define.d.ts",
-      "default": "./dist/esm/*/define.js"
-    },
+    ".": "./dist/esm/index.js",
+    "./utilities.js": "./dist/esm/utils/index.js",
+    "./*/define.js": "./dist/esm/*/*.define.js",
+    "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/options.js": "./dist/esm/*/*.options.js",
+    "./*/styles.js": "./dist/esm/*/*.styles.js",
+    "./*/template.js": "./dist/esm/*/*.template.js",
+    "./*/index.js": "./dist/esm/*/index.js",
+    "./*.js": "./dist/esm/*/define.js",
     "./package.json": "./package.json"
   },
   "sideEffects": [
@@ -85,21 +57,20 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "e2e": "playwright test",
-    "test:dev": "playwright test"
+    "e2e": "node ./scripts/e2e.js",
+    "test:dev": "node ./scripts/e2e.js"
   },
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0",
-    "@fluentui/scripts-api-extractor": "*",
-    "@tensile-perf/web-components": "~0.2.0",
-    "@storybook/html": "7.6.20",
-    "@storybook/html-webpack5": "7.6.20",
+    "@tensile-perf/web-components": "~0.2.2",
+    "@storybook/html": "9.1.17",
+    "@storybook/html-vite": "9.1.17",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "^1.0.0-alpha.21",
-    "@fluentui/web-components": "^3.0.0-beta.80",
+    "@fluentui/tokens": "^1.0.0-alpha.23",
+    "@fluentui/web-components": "^3.0.0-rc.9",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",
     "d3-selection": "^3.0.0",

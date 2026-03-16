@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { safeSetTimeout } from './safeSetTimeout';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+
+import type { JSXElement } from './jsx';
 
 describe('safeSetTimeout', () => {
   let setTimeoutCalled = false;
@@ -12,7 +14,7 @@ describe('safeSetTimeout', () => {
       super(props);
     }
 
-    public render(): JSX.Element {
+    public render(): JSXElement {
       return <div>Hello</div>;
     }
 
@@ -31,21 +33,22 @@ describe('safeSetTimeout', () => {
   });
 
   it('can request animation frame', () => {
-    mount(<Foo />);
+    const { unmount } = render(<Foo />);
 
     expect(setTimeoutCalled).toEqual(false);
 
     jest.advanceTimersByTime(100);
 
     expect(setTimeoutCalled).toEqual(true);
+    unmount();
   });
 
   it('can cancel request animation frame', () => {
-    const wrapper = mount(<Foo />);
+    const { unmount } = render(<Foo />);
 
     expect(setTimeoutCalled).toEqual(false);
 
-    wrapper.unmount();
+    unmount();
 
     jest.advanceTimersByTime(100);
 

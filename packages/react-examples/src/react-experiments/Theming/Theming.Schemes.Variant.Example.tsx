@@ -23,6 +23,7 @@ import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@fluentui/s
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
+import type { JSXElement } from '@fluentui/utilities';
 
 // Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
 // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -64,7 +65,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
     topToggle: false,
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     return <Customizer settings={{ theme: schemeThemeVariants }}>{this._renderSchemedComponents()}</Customizer>;
   }
@@ -72,7 +73,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
   /**
    * Render various components only using scheme names (no Customizers.)
    */
-  private _renderSchemedComponents(): JSX.Element {
+  private _renderSchemedComponents(): JSXElement {
     const bodyScheme = this.state.bodyToggle ? 'soft' : 'neutral';
     const sideScheme = this.state.sideToggle ? 'neutral' : 'strong';
     const topScheme = this.state.topToggle ? 'strong' : 'soft';
@@ -88,7 +89,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
       <Stack horizontal tokens={stackTokens}>
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+            <Stack
+              styles={regionStyles}
+              tokens={stackTokens}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
+              padding={5}
+            >
               <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this._toggleSide} />
               <CollapsibleSectionRecursiveExample />
@@ -98,7 +104,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
           <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+              <Stack
+                styles={regionStyles}
+                tokens={stackTokens}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this._toggleTop} />
@@ -107,7 +118,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
               </Stack>
             </ThemeProvider>
             <ThemeProvider scheme={bodyScheme}>
-              <Stack styles={regionStyles} verticalFill={true} padding={5}>
+              <Stack
+                styles={regionStyles}
+                verticalFill={true}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{bodyCaption}</Text>
                   <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this._toggleBody} />
@@ -214,7 +230,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
     hideDialog: true,
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <br />

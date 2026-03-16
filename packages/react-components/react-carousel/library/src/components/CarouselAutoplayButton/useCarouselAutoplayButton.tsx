@@ -1,3 +1,5 @@
+'use client';
+
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
@@ -20,7 +22,7 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const { onCheckedChange, checked, defaultChecked } = props;
+  const { onCheckedChange, checked, defaultChecked, ...buttonProps } = props;
 
   const [autoplay, setAutoplay] = useControllableState({
     state: checked,
@@ -61,7 +63,7 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
-        ...props,
+        ...buttonProps,
         checked: autoplay,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },

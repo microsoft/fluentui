@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
@@ -27,7 +29,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false } = props;
+  const { positioning, size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -64,13 +66,13 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
       } as TagPickerOnOpenChangeData),
     ),
     activeDescendantController,
+    disableAutoFocus,
     editable: true,
     multiselect: true,
     size: 'medium',
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
-
   return {
     activeDescendantController,
     components: {},
@@ -98,7 +100,23 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
     selectedOptions: comboboxState.selectedOptions,
-    selectOption: comboboxState.selectOption,
+    selectOption: useEventCallback((event, data) => {
+      // if the option is already selected, invoke onOptionSelect callback with current selected values
+      // the combobox state would unselect the option, which is not the behavior expected
+      if (
+        comboboxState.selectedOptions.includes(data.value) &&
+        !elementContains(tagPickerGroupRef.current, event.target as Node)
+      ) {
+        props.onOptionSelect?.(event, {
+          selectedOptions: comboboxState.selectedOptions,
+          value: data.value,
+          type: event.type,
+          event,
+        } as TagPickerOnOptionSelectData);
+        return;
+      }
+      comboboxState.selectOption(event, data);
+    }),
     setHasFocus: comboboxState.setHasFocus,
     setOpen: comboboxState.setOpen,
     setValue: comboboxState.setValue,

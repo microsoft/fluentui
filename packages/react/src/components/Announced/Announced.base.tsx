@@ -2,6 +2,8 @@ import * as React from 'react';
 import { DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import type { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();
 
 /**
@@ -12,7 +14,7 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
     'aria-live': 'polite',
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { message, styles, as: Root = 'div', className } = this.props;
 
     const classNames = getClassNames(styles, { className });

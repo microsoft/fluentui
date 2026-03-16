@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -35,7 +37,16 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
 
   const styles = useStyles();
 
-  const { heading: root = {}, action, components } = state;
+  const {
+    heading: root = {},
+    action,
+    // We should not use components to pass along the base element type of a slot
+    // but there's no way to retrieve the element type of a slot from the slot definition
+    // right now without using SLOT_ELEMENT_TYPE_SYMBOL
+    // TODO: create a method to retrieve the element type of a slot
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    components,
+  } = state;
 
   useDialogTitleStyles_unstable({
     components: {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
@@ -12,7 +14,11 @@ import { TreeNavigationMode } from '../components/Tree/Tree.types';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
 
-export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
+export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
+  navigate: (data: TreeNavigationData_unstable) => void;
+  rootRef: React.RefCallback<HTMLElement>;
+  forceUpdateRovingTabIndex: () => void;
+} {
   'use no memo';
 
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
@@ -104,7 +110,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
   });
   return {
     navigate,
-    rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback),
+    rootRef: useMergedRefs<HTMLElement>(walkerRootRef, rootRefCallback),
     forceUpdateRovingTabIndex,
   } as const;
 }

@@ -1,13 +1,16 @@
+'use client';
+
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
 
 /**
- * @internal
  * This hook returns context selected value by selector.
  * It will only accept context created by `createContext`.
  * It will trigger re-render if only the selected value is referentially changed.
+ *
+ * @internal
  */
 export const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,

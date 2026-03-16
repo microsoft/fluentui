@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { TagGroup, Tag, InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const steps = new Steps().snapshot('default').end();
 
 export default {
   title: 'TagGroup Converged',
   component: TagGroup,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof TagGroup>;
 
 export const Default = () => (

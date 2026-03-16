@@ -5,20 +5,16 @@ import { collapsibleSectionStyles } from './CollapsibleSection.styles';
 import { createComponent } from '@fluentui/foundation-legacy';
 import type { ICollapsibleSectionProps } from './CollapsibleSection.types';
 
-export const CollapsibleSection: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(
-  CollapsibleSectionView,
-  {
+export const CollapsibleSection: React.FunctionComponent<React.PropsWithChildren<ICollapsibleSectionProps>> =
+  createComponent(CollapsibleSectionView, {
     displayName: 'CollapsibleSection',
     state: useCollapsibleSectionState,
     styles: collapsibleSectionStyles,
-  },
-);
+  });
 
 // TODO: This is only here for testing createComponent and should be removed before promoting to production
-export const CollapsibleSectionStateless: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(
-  CollapsibleSectionView,
-  {
+export const CollapsibleSectionStateless: React.FunctionComponent<React.PropsWithChildren<ICollapsibleSectionProps>> =
+  createComponent(CollapsibleSectionView, {
     displayName: 'CollapsibleSection',
     styles: collapsibleSectionStyles,
-  },
-);
+  });

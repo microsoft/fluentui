@@ -3,6 +3,7 @@ import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilitie
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IChart } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { ITitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Gauge Chart segment interface.
@@ -56,6 +57,11 @@ export enum GaugeChartVariant {
  * {@docCategory GaugeChart}
  */
 export interface IGaugeChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Width of the chart
    */
@@ -268,6 +274,11 @@ export interface IGaugeChartStyles {
   needle?: IStyle;
 
   /**
+   * Styles for SVG tooltip background
+   */
+  svgTooltip?: IStyle;
+
+  /**
    * Styles for the chart title
    */
   chartTitle?: IStyle;
@@ -331,4 +342,9 @@ export interface IGaugeChartStyles {
    * Styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
 }

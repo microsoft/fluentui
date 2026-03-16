@@ -88,7 +88,7 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
-  public createGenericSuggestion(itemToConvert: ISuggestionModel<T> | T) {
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T> | T): void {
     const itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
     this.currentSuggestion = itemToAdd;
   }

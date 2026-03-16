@@ -1,8 +1,304 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 13:16:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.6.0)
+
+Tue, 03 Mar 2026 13:16:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.5.1..@fluentui/react-storybook-addon_v0.6.0)
+
+### Minor changes
+
+- feat: upgrade to storybook 9 ([PR #35459](https://github.com/microsoft/fluentui/pull/35459) by dmytrokirpa@microsoft.com)
+- BREAKING: upgrade storybook to v8 ([PR #35279](https://github.com/microsoft/fluentui/pull/35279) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- chore: bump storybook to mitigate CVE ([PR #35748](https://github.com/microsoft/fluentui/pull/35748) by martinhochel@microsoft.com)
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.5.1)
+
+Tue, 04 Nov 2025 14:47:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.5.0..@fluentui/react-storybook-addon_v0.5.1)
+
+### Patches
+
+- fix: force release ([PR #35445](https://github.com/microsoft/fluentui/pull/35445) by dmytrokirpa@microsoft.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.5.0)
+
+Fri, 31 Oct 2025 16:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.6..@fluentui/react-storybook-addon_v0.5.0)
+
+### Minor changes
+
+- feat: add Copy as Markdown button to FluentDocsPage ([PR #35255](https://github.com/microsoft/fluentui/pull/35255) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.4 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-button to v9.6.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-menu to v9.20.3 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-label to v9.3.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-switch to v9.4.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-text to v9.6.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-link to v9.6.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-provider to v9.22.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-spinner to v9.7.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-toast to v9.7.6 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+
+## [0.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.6)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.5..@fluentui/react-storybook-addon_v0.4.6)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.3 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-button to v9.6.9 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-menu to v9.20.2 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-label to v9.3.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-switch to v9.4.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-text to v9.6.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-link to v9.6.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-provider to v9.22.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.5)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.4..@fluentui/react-storybook-addon_v0.4.5)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-button to v9.6.8 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-menu to v9.20.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-label to v9.3.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-switch to v9.4.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-text to v9.6.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-link to v9.6.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-provider to v9.22.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.4)
+
+Thu, 02 Oct 2025 15:12:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.3..@fluentui/react-storybook-addon_v0.4.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-button to v9.6.7 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-menu to v9.20.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-label to v9.3.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-switch to v9.4.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-text to v9.6.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-link to v9.6.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-provider to v9.22.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.3)
+
+Mon, 08 Sep 2025 12:50:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.2..@fluentui/react-storybook-addon_v0.4.3)
+
+### Patches
+
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.0 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-button to v9.6.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-menu to v9.19.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-label to v9.3.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-switch to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-text to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-link to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-provider to v9.22.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-utilities to v9.24.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.2)
+
+Thu, 21 Aug 2025 12:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.1..@fluentui/react-storybook-addon_v0.4.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-button to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-menu to v9.19.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-label to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-switch to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-text to v9.6.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-link to v9.6.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-provider to v9.22.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.1)
+
+Wed, 13 Aug 2025 12:49:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.0..@fluentui/react-storybook-addon_v0.4.1)
+
+### Patches
+
+- fix: resolve dissapearing Slot Info message on consecutive page re-renders ([PR #34958](https://github.com/microsoft/fluentui/pull/34958) by martinhochel@microsoft.com)
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.0)
+
+Thu, 07 Aug 2025 10:03:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.3.1..@fluentui/react-storybook-addon_v0.4.0)
+
+### Minor changes
+
+- feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default ([PR #34950](https://github.com/microsoft/fluentui/pull/34950) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.16.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-button to v9.6.4 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-menu to v9.19.4 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-label to v9.3.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-switch to v9.4.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-text to v9.6.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-link to v9.6.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-provider to v9.22.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+### Patches
+
+- feat: add custom addon-docs containers to preset ([PR #34938](https://github.com/microsoft/fluentui/pull/34938) by martinhochel@microsoft.com)
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.3.1)
+
+Wed, 30 Jul 2025 16:55:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.3.0..@fluentui/react-storybook-addon_v0.3.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.2 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.3.0)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.5..@fluentui/react-storybook-addon_v0.3.0)
+
+### Minor changes
+
+- Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+- Bump @fluentui/react-aria to v9.16.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-provider to v9.22.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.5)
+
+Mon, 28 Jul 2025 18:48:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.4..@fluentui/react-storybook-addon_v0.2.5)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-provider to v9.22.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.4)
+
+Thu, 17 Jul 2025 13:49:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.3..@fluentui/react-storybook-addon_v0.2.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-provider to v9.22.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.3)
+
+Fri, 27 Jun 2025 13:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.2..@fluentui/react-storybook-addon_v0.2.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.15.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-provider to v9.21.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.2)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.1..@fluentui/react-storybook-addon_v0.2.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.15.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-provider to v9.21.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.1)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.0..@fluentui/react-storybook-addon_v0.2.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.15.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-provider to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.1.2..@fluentui/react-storybook-addon_v0.2.0)
+
+### Minor changes
+
+- Bump @fluentui/react-aria to v9.15.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-provider to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.1.2)
+
+Fri, 06 Jun 2025 13:15:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.1.1..@fluentui/react-storybook-addon_v0.1.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-provider to v9.20.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.1.1)
+
+Wed, 14 May 2025 18:49:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.0.3..@fluentui/react-storybook-addon_v0.1.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-provider to v9.20.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+
+## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.0.3)
+
+Thu, 24 Apr 2025 09:59:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.0.2..@fluentui/react-storybook-addon_v0.0.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-provider to v9.20.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+
+## [0.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.0.2)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.0.1..@fluentui/react-storybook-addon_v0.0.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-provider to v9.20.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.0.1)
+
+Tue, 01 Apr 2025 15:08:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v9.0.0-rc.1..@fluentui/react-storybook-addon_v0.0.1)
+
+### Patches
+
+- feat: release to npm ([PR #33983](https://github.com/microsoft/fluentui/pull/33983) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.14.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
+- Bump @fluentui/react-provider to v9.20.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v9.0.0-rc.1)
 

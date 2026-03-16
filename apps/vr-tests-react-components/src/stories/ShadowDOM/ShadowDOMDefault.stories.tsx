@@ -5,7 +5,8 @@ import { Input } from '@fluentui/react-input';
 import * as React from 'react';
 
 import { ShadowRoot } from './utils';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 const useClasses = makeStyles({
   container: {
@@ -38,12 +39,15 @@ const ComponentSet: React.FC = () => {
 
 export default {
   title: 'Shadow DOM',
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const Default = () => (
-  <StoryWright steps={new Steps().snapshot('default').end()}>
-    <ShadowRoot>
-      <ComponentSet />
-    </ShadowRoot>
-  </StoryWright>
+  <ShadowRoot>
+    <ComponentSet />
+  </ShadowRoot>
 );
+
+Default.parameters = { storyWright: { steps: new Steps().snapshot('default').end() } } satisfies StoryParameters;

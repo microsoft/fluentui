@@ -8,4 +8,4 @@ The rating meter shows status of the current value within a few predefined range
 
 The segment sizes and colors can be customized by the product team to suit their needs.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

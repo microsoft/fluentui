@@ -15,10 +15,11 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate, IChart, SLink, SNode } from '../../types/IDataPoint';
+import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import {
   ISankeyChartAccessibilityProps,
   ISankeyChartData,
@@ -27,6 +28,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -105,7 +107,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -150,7 +152,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -191,7 +193,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: ISankeyChartData) {
+export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
@@ -362,18 +364,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -597,6 +597,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     className: string,
     containerWidth: number,
     containerHeight: number,
+    enableReflow: boolean | undefined,
   ) => ISankeyChartStyleProps;
   private readonly _computeClassNames: (
     styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
@@ -646,7 +647,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._chartId = getId('sankeyChart');
     this._emptyChartId = getId('_SankeyChart_empty');
     this._labelTooltipId = getId('tooltip');
-    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
+    const titleHeight = props.data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 36;
+    this._margins = { top: titleHeight, right: 48, bottom: 32, left: 48 };
     // We memo-ize creation so that we only create a new object when any of the fields change.
     this._computeClassNamesProps = memoizeFunction(
       (
@@ -655,12 +663,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className: string,
         containerWidth: number,
         containerHeight: number,
+        enableReflow: boolean | undefined,
       ): ISankeyChartStyleProps => ({
         theme: theme!,
         width: containerWidth,
         height: containerHeight,
         pathColor,
         className,
+        enableReflow,
       }),
     );
     // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
@@ -757,6 +767,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className!,
         state.containerWidth,
         state.containerHeight,
+        this.props.enableReflow,
       );
       const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 
@@ -840,7 +851,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         <div
           className={classNames.root}
           role={'presentation'}
-          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+          ref={(rootElem: HTMLDivElement) => {
+            this.chartContainer = rootElem;
+          }}
           onMouseLeave={this._onCloseCallout}
         >
           {/*
@@ -850,7 +863,17 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           in a non-sequential and erratic manner within a 2D grid.
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
-            <svg width={width} height={height} id={this._chartId}>
+            <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
+              {!this.props.hideLegend && this.props.data.chartTitle && (
+                <ChartTitle
+                  title={this.props.data.chartTitle}
+                  x={width / 2}
+                  maxWidth={width - 20}
+                  className={classNames.chartTitle}
+                  titleStyles={this.props.titleStyles}
+                  tooltipClassName={classNames.svgTooltip}
+                />
+              )}
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (
@@ -896,6 +919,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       />
     );
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return exportChartsAsImage([{ container: this.chartContainer }], undefined, this._isRtl, opts);
+  };
 
   private _computeNodeAttributes(
     nodes: SNode[],
@@ -996,7 +1023,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const nodeValues = valuesOfNodes(transformed.nodes);
     const linkValues = valuesOfLinks(transformed.links);
     adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-    adjustPadding(sankey, height - 6, nodesInColumn);
+    adjustPadding(sankey, containerHeight - this._margins.top! - this._margins.bottom!, nodesInColumn);
     // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
     // NOTE: The second call to `sankey` is required to allow links to be hoverable.
     // Without the second call, the links are not hoverable.
@@ -1268,7 +1295,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
       const selectedNode = state.selectedNode;
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 
@@ -1346,7 +1373,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       //Fixing tooltip position by attaching it to the element rather than page
       div.style('opacity', 0.9).style('color', this.props.theme!.palette.neutralPrimary);
       div
-        .html(text)
+        .text(text)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px');
     }

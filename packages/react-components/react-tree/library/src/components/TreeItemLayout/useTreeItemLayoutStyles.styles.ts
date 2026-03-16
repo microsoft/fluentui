@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -23,20 +25,20 @@ const useRootBaseStyles = makeResetStyles({
   minHeight: '32px',
   boxSizing: 'border-box',
   gridArea: 'layout',
-  ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
-    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
-    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
-    },
-  },
   ':hover': {
     color: tokens.colorNeutralForeground2Hover,
     backgroundColor: tokens.colorSubtleBackgroundHover,
     // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
       color: tokens.colorNeutralForeground3Hover,
+    },
+  },
+  ':active': {
+    color: tokens.colorNeutralForeground2Pressed,
+    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
+    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
+      color: tokens.colorNeutralForeground3Pressed,
     },
   },
 });

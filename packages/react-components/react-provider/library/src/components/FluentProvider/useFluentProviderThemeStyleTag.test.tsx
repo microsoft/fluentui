@@ -5,6 +5,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 
 jest.mock('@fluentui/react-theme');
+jest.mock('@fluentui/react-utilities', () => ({
+  ...jest.requireActual('@fluentui/react-utilities'),
+  ...jest.requireActual('../../testing/createUseIdMock').createUseIdMock(),
+}));
+
 const createDocumentMock = (): Document => {
   const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
   const body = document.createElement('body');

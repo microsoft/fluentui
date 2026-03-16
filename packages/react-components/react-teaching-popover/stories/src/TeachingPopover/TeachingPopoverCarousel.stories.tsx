@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Image } from '@fluentui/react-components';
 
 import {
@@ -21,7 +22,7 @@ const getAnnouncement = (newValue: string) => {
   return `Carousel slide ${newValue}`;
 };
 
-export const Carousel = () => (
+export const Carousel = (): JSXElement => (
   <TeachingPopover>
     <TeachingPopoverTrigger>
       <Button>TeachingPopover trigger</Button>

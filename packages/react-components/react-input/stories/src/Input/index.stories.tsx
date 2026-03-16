@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { Input } from '@fluentui/react-components';
 
 import descriptionMd from './InputDescription.md';

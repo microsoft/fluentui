@@ -48,6 +48,14 @@ describe('DateMath', () => {
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
+  it('can add negative days', () => {
+    const startDate = new Date(2016, Months.Feb, 28);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Feb, 23);
+
+    expect(result.getTime()).toEqual(expected.getTime());
+  });
+
   it('can add months', () => {
     const startDate = new Date(2015, Months.Dec, 31);
 
@@ -266,53 +274,68 @@ describe('DateMath', () => {
     expect(DateMath.compareDates(date1, date2)).toBe(false);
   });
 
-  it('can get date range array', () => {
+  describe('Date range array', () => {
     const date = new Date(2017, 2, 16);
 
-    // Date range: day
-    let dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
-    expect(dateRangeArray.length).toEqual(1);
-    expect(DateMath.compareDates(dateRangeArray[0], date)).toBe(true);
+    function createDaysRange(startDate: Date, numDays: number): Date[] {
+      return Array.from({ length: numDays }).map(
+        (_, i) => new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i),
+      );
+    }
 
-    // Date range: week
-    let expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 12 + i));
-    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-    Array(7).forEach((val: undefined, i: number) =>
-      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-    );
-
-    // Date range: work week
-    const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday];
-    expectedDates = [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)];
-    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
-    Array(4).forEach((val: undefined, i: number) =>
-      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-    );
-
-    // work week defaults
-    expectedDates = [
-      new Date(2017, 2, 13),
-      new Date(2017, 2, 14),
-      new Date(2017, 2, 15),
-      new Date(2017, 2, 16),
-      new Date(2017, 2, 17),
+    type TestData = { name: string; testItems: Date[]; expected: Date[] }[];
+    const testData: TestData = [
+      {
+        name: 'week',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday),
+        expected: createDaysRange(new Date(2017, 2, 12), 7),
+      },
+      {
+        name: 'work week',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.WorkWeek, DayOfWeek.Sunday, [
+          DayOfWeek.Monday,
+          DayOfWeek.Tuesday,
+          DayOfWeek.Thursday,
+          DayOfWeek.Friday,
+        ]),
+        expected: [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)],
+      },
+      {
+        name: 'work week defaults',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.WorkWeek, DayOfWeek.Sunday),
+        expected: createDaysRange(new Date(2017, 2, 13), 5),
+      },
+      {
+        name: 'month',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday),
+        expected: createDaysRange(new Date(2017, 2, 1), 31),
+      },
+      {
+        name: 'first day of week: Tuesday',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday),
+        expected: createDaysRange(new Date(2017, 2, 14), 7),
+      },
+      {
+        name: 'custom date range array',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, 5),
+        expected: createDaysRange(new Date(2017, 2, 16), 5),
+      },
+      {
+        name: 'reverse date range array',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, -5),
+        expected: createDaysRange(new Date(2017, 2, 12), 5),
+      },
     ];
-    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-    Array(4).forEach((val: undefined, i: number) =>
-      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-    );
 
-    // Date range: month
-    expectedDates = Array(31).map((val: undefined, i: number) => new Date(2017, 2, 1 + i));
-    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);
-    Array(31).forEach((val: undefined, i: number) =>
-      expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-    );
+    it('can get day', () => {
+      const dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
+      expect(dateRangeArray.length).toEqual(1);
+      expect(DateMath.compareDates(dateRangeArray[0], date)).toBe(true);
+    });
 
-    // First day of week: Tuesday
-    expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 14 + i));
-    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
-    Array(7).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    it.each(testData)(`can get %s`, ({ testItems, expected }) => {
+      expect(testItems).toEqual(expected);
+    });
   });
 
   // Generating week numbers array per month

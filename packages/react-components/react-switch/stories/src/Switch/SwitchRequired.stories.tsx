@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 
-export const Required = () => <Switch required label="Required" />;
+export const Required = (): JSXElement => <Switch required label="Required" />;
 Required.parameters = {
   docs: {
     description: {

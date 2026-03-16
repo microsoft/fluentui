@@ -1,12 +1,12 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { ColorSlider } from './ColorSlider';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/index';
 import { setWarningCallback } from '../../../Utilities';
 
 describe('ColorSlider', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReturnType<typeof render> | undefined;
 
   beforeAll(() => {
     // Prevent warn deprecations from failing test
@@ -27,13 +27,12 @@ describe('ColorSlider', () => {
   });
 
   it('renders hue slider correctly', () => {
-    component = renderer.create(<ColorSlider value={30} minValue={0} maxValue={MAX_COLOR_HUE} ariaLabel="Hue" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    component = render(<ColorSlider value={30} minValue={0} maxValue={MAX_COLOR_HUE} ariaLabel="Hue" />);
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders alpha slider correctly', () => {
-    component = renderer.create(
+    component = render(
       <ColorSlider
         isAlpha
         value={30}
@@ -43,7 +42,6 @@ describe('ColorSlider', () => {
         ariaLabel="Alpha"
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 });

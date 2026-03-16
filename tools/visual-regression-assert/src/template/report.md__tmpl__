@@ -1,0 +1,15 @@
+### Snapshot Comparison Report
+
+| File | Status | Details |
+| ---- | ------ | ------- |
+<%- changed %>
+
+
+<details>
+<summary>Unchanged Scenarios</summary>
+
+| File | Status | Details |
+| ---- | ------ | ------- |
+<%- unchanged %>
+
+</details>

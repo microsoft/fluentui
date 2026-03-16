@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import { createPriorityQueue, useTimeout } from '@fluentui/react-utilities';
@@ -86,7 +88,10 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
       }
     };
 
-    runCycle();
+    // Run the first cycle with a 0 timeout to ensure multiple messages in the same tick are handled
+    timeoutRef.current = setAnnounceTimeout(() => {
+      runCycle();
+    }, 0);
   }, [clearAnnounceTimeout, messageQueue, setAnnounceTimeout, targetDocument]);
 
   const announce: AriaLiveAnnounceFn = React.useCallback(

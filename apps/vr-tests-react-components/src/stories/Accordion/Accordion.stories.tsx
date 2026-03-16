@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import { CircleRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {
@@ -10,13 +11,14 @@ export default {
 
   decorators: [
     story => (
-      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-        <div className="testWrapper" style={{ width: '300px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Accordion>;
 
 export const Size = () => (

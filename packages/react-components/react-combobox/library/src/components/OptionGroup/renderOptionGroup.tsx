@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { OptionGroupState, OptionGroupSlots } from './OptionGroup.types';
 
 /**
  * Render the final JSX of OptionGroup
  */
-export const renderOptionGroup_unstable = (state: OptionGroupState) => {
+export const renderOptionGroup_unstable = (state: OptionGroupState): JSXElement => {
   assertSlots<OptionGroupSlots>(state);
 
   return (

@@ -24,7 +24,7 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked,
+      checked,
     };
   });
   let result: IOverflowData = {
@@ -61,6 +61,7 @@ const onRenderItem = (item: any) => (
 
 const onRenderOverflowButton = (overflowItems: any) => (
   <CommandBarButton
+    aria-label="more"
     styles={buttonStyles}
     menuIconProps={{ iconName: 'ChevronRight' }}
     menuProps={{ items: overflowItems!, directionalHint: DirectionalHint.rightCenter }}

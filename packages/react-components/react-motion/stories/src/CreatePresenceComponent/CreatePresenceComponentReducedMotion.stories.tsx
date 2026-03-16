@@ -10,6 +10,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentReducedMotion.stories.md';
 
@@ -89,9 +90,9 @@ const FadeAndScale = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentReducedMotion = () => {
+export const CreatePresenceComponentReducedMotion = (): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

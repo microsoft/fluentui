@@ -24,7 +24,7 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
     return '';
   }, []);
 
-  const onChange = React.useCallback((_, time: Date) => {
+  const onChange = React.useCallback((_: any, time: Date) => {
     console.log('Selected time: ', time);
     setCustomTimeString(time.toString());
   }, []);

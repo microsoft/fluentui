@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ActivityItem renders compact with a single persona correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -18,7 +18,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           align-items: center;
@@ -49,7 +49,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ActivityItem-personaContainer
           {
             display: inline-flex;
@@ -62,7 +62,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -78,17 +78,10 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
               width: 8px;
             }
         role="presentation"
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style="display: inline-block; width: 10px; min-width: 10px; overflow: visible;"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -101,7 +94,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #4F6BED;
@@ -133,7 +126,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           flex: 1;
@@ -147,7 +140,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -163,7 +156,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
 
 exports[`ActivityItem renders compact with an icon correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -179,7 +172,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           align-items: center;
@@ -210,8 +203,8 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -229,7 +222,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
     </i>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           flex: 1;
@@ -243,7 +236,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -259,7 +252,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
 
 exports[`ActivityItem renders compact with animation correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -278,7 +271,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           align-items: center;
@@ -309,7 +302,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ActivityItem-pulsingBeacon
           {
             animation-duration: .8s;
@@ -328,7 +321,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           }
     />
     <div
-      className=
+      class=
           ms-ActivityItem-personaContainer
           {
             display: inline-flex;
@@ -341,7 +334,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -357,17 +350,10 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
               width: 8px;
             }
         role="presentation"
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style="display: inline-block; width: 10px; min-width: 10px; overflow: visible;"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -380,7 +366,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #4F6BED;
@@ -412,7 +398,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           animation-duration: .5s;
@@ -429,7 +415,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -445,7 +431,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
 
 exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -461,7 +447,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           align-items: center;
@@ -492,7 +478,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ActivityItem-personaContainer
           {
             display: inline-flex;
@@ -505,7 +491,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -521,17 +507,10 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               width: 8px;
             }
         role="presentation"
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style="display: inline-block; width: 10px; min-width: 10px; overflow: visible;"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -544,7 +523,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #4F6BED;
@@ -574,7 +553,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -590,17 +569,10 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               width: 8px;
             }
         role="presentation"
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style="display: inline-block; width: 10px; min-width: 10px; overflow: visible;"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -612,7 +584,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-Image
                 ms-Persona-image
                 {
@@ -632,16 +604,11 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-            style={
-              Object {
-                "height": 16,
-                "width": 16,
-              }
-            }
+            style="width: 16px; height: 16px;"
           >
             <img
               alt=""
-              className=
+              class=
                   ms-Image-image
                   ms-Image-image--cover
                   ms-Image-image--portrait
@@ -654,15 +621,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                     opacity: 0;
                     width: 100%;
                   }
-              onError={[Function]}
-              onLoad={[Function]}
               src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
             />
           </div>
         </div>
       </div>
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -678,17 +643,10 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               width: 8px;
             }
         role="presentation"
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
+        style="display: inline-block; width: 10px; min-width: 10px; overflow: visible;"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -701,7 +659,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #D13438;
@@ -733,7 +691,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           flex: 1;
@@ -747,7 +705,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -763,7 +721,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
 
 exports[`ActivityItem renders with a single persona correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -779,7 +737,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           font-size: 16px;
@@ -789,7 +747,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ActivityItem-personaContainer
           {
             display: flex;
@@ -800,7 +758,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size32
             ms-ActivityItem-activityPersona
@@ -815,7 +773,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -828,7 +786,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #4F6BED;
@@ -860,7 +818,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           padding-bottom: 0;
@@ -870,7 +828,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -881,7 +839,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
       </span>
     </span>
     <div
-      className=
+      class=
           ms-ActivityItem-commentText
           {
             color: #323130;
@@ -892,7 +850,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
       </span>
     </div>
     <div
-      className=
+      class=
           ms-ActivityItem-timeStamp
           {
             -moz-osx-font-smoothing: grayscale;
@@ -911,7 +869,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
 
 exports[`ActivityItem renders with an icon correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -927,7 +885,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           font-size: 16px;
@@ -937,8 +895,8 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -956,7 +914,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
     </i>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           padding-bottom: 0;
@@ -966,7 +924,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -977,7 +935,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       </span>
     </span>
     <div
-      className=
+      class=
           ms-ActivityItem-commentText
           {
             color: #323130;
@@ -988,7 +946,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       </span>
     </div>
     <div
-      className=
+      class=
           ms-ActivityItem-timeStamp
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1007,7 +965,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
 
 exports[`ActivityItem renders with multiple personas correctly 1`] = `
 <div
-  className=
+  class=
       ms-ActivityItem
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1023,7 +981,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-ActivityItem-activityTypeIcon
         {
           font-size: 16px;
@@ -1033,7 +991,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ActivityItem-personaContainer
           {
             display: flex;
@@ -1044,7 +1002,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -1059,7 +1017,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -1072,7 +1030,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #4F6BED;
@@ -1102,7 +1060,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -1117,7 +1075,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -1129,7 +1087,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-Image
                 ms-Persona-image
                 {
@@ -1149,16 +1107,11 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-            style={
-              Object {
-                "height": 16,
-                "width": 16,
-              }
-            }
+            style="width: 16px; height: 16px;"
           >
             <img
               alt=""
-              className=
+              class=
                   ms-Image-image
                   ms-Image-image--cover
                   ms-Image-image--portrait
@@ -1171,15 +1124,13 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                     opacity: 0;
                     width: 100%;
                   }
-              onError={[Function]}
-              onLoad={[Function]}
               src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
             />
           </div>
         </div>
       </div>
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -1194,7 +1145,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -1207,7 +1158,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className=
+            class=
                 ms-Persona-initials
                 {
                   background-color: #D13438;
@@ -1237,7 +1188,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className=
+        class=
             ms-Persona-coin
             ms-Persona--size16
             ms-ActivityItem-activityPersona
@@ -1252,7 +1203,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-Persona-imageArea
               {
                 flex: 0 0 auto;
@@ -1264,7 +1215,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-Image
                 ms-Persona-image
                 {
@@ -1284,16 +1235,11 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-            style={
-              Object {
-                "height": 16,
-                "width": 16,
-              }
-            }
+            style="width: 16px; height: 16px;"
           >
             <img
               alt=""
-              className=
+              class=
                   ms-Image-image
                   ms-Image-image--cover
                   ms-Image-image--portrait
@@ -1306,8 +1252,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                     opacity: 0;
                     width: 100%;
                   }
-              onError={[Function]}
-              onLoad={[Function]}
               src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png"
             />
           </div>
@@ -1316,7 +1260,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ActivityItem-activityContent
         {
           padding-bottom: 0;
@@ -1326,7 +1270,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         }
   >
     <span
-      className=
+      class=
           ms-ActivityItem-activityText
           {
             display: inline;
@@ -1337,7 +1281,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
       </span>
     </span>
     <div
-      className=
+      class=
           ms-ActivityItem-commentText
           {
             color: #323130;
@@ -1348,7 +1292,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
       </span>
     </div>
     <div
-      className=
+      class=
           ms-ActivityItem-timeStamp
           {
             -moz-osx-font-smoothing: grayscale;

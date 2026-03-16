@@ -1,49 +1,43 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
-
 import { people } from '@fluentui/example-data';
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import { SelectedPeopleList, SelectedPersona, ItemWithContextMenu, TriggerOnContextMenu } from '../index';
 import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(<SelectedPeopleList ref={pickerRef} />);
-    expect(rendered.toJSON()).toMatchSnapshot();
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container } = render(<SelectedPeopleList ref={pickerRef} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders personas that are passed in', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container, getAllByText } = render(
       <SelectedPeopleList selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personANodes.length).toEqual(2);
-    expect(personBNodes.length).toEqual(2);
+    expect(getAllByText('Person A')).toHaveLength(2);
+    expect(getAllByText('Person B')).toHaveLength(2);
 
-    expect(rendered.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders personas that are passed in as default', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
+    const { container, getAllByText } = render(
       <SelectedPeopleList defaultSelectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
-    expect(personBNodes.length).toEqual(2);
-    expect(personANodes.length).toEqual(2);
+    expect(getAllByText('Person A')).toHaveLength(2);
+    expect(getAllByText('Person B')).toHaveLength(2);
 
-    expect(rendered.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('remove personas', () => {
     const onItemsRemoved = jest.fn();
-    const wrapper = mount(
+    const wrapper = render(
       <SelectedPeopleList
         key="normal"
         removeButtonAriaLabel="Remove"
@@ -52,7 +46,7 @@ describe('SelectedPeopleList', () => {
       />,
     );
 
-    wrapper.find('button.ms-PickerItem-removeButton').at(1).simulate('click');
+    fireEvent.click(wrapper.container.querySelectorAll('button.ms-PickerItem-removeButton')[1]);
 
     expect(onItemsRemoved).toHaveBeenCalledTimes(1);
   });
@@ -77,7 +71,7 @@ describe('SelectedPeopleList', () => {
     const removeItems = jest.fn();
     const _getCopyItemsText = jest.fn();
     const onItemsRemoved = jest.fn();
-    const wrapper = mount(
+    const wrapper = render(
       <SelectedPeopleList
         key="normal"
         removeButtonAriaLabel="Remove"
@@ -88,15 +82,15 @@ describe('SelectedPeopleList', () => {
     );
 
     // Simulate right click to get the context menu
-    wrapper.find('.ms-PickerPersona-container').simulate('contextmenu');
+    fireEvent.contextMenu(wrapper.container.querySelector('.ms-PickerPersona-container')!);
 
     // Remove and copy should show up in the menu
-    expect(wrapper.find('.ms-ContextualMenu-item')).toHaveLength(2);
-    expect(wrapper.find('.ms-ContextualMenu-item').at(0).text()).toEqual('Remove');
+    expect(wrapper.baseElement.querySelectorAll('.ms-ContextualMenu-item')).toHaveLength(2);
+    expect(wrapper.baseElement.querySelector('.ms-ContextualMenu-item')!.textContent).toEqual('Remove');
 
-    expect(wrapper.find('.ms-ContextualMenu-item').at(1).text()).toEqual('Copy');
+    expect(wrapper.baseElement.querySelectorAll('.ms-ContextualMenu-item')[1].textContent).toEqual('Copy');
 
-    wrapper.find('.ms-ContextualMenu-item').at(0).simulate('click');
+    fireEvent.click(wrapper.baseElement.querySelector('.ms-ContextualMenu-item')!);
     expect(removeItems).toHaveBeenCalledTimes(1);
   });
 });

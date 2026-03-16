@@ -28,3 +28,14 @@
 /**
  * Navigates to storybook story URL based on component name and story name
  */
+
+/**
+ * Press command fallback for Cypress 13 compatibility.
+ * Registers only on Cypress v13, where `cy.press` is not built-in.
+ */
+const CYPRESS_MAJOR_VERSION =
+  typeof Cypress !== 'undefined' && Cypress.version ? Number(String(Cypress.version).split('.')[0]) : undefined;
+
+if (CYPRESS_MAJOR_VERSION === 13) {
+  Cypress.Commands.add('press', /** @type {any} */ (require('cypress-real-events/commands/realPress').realPress));
+}

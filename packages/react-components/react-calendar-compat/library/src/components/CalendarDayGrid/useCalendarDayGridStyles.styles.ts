@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
@@ -160,7 +162,7 @@ const useDaySingleSelectedStyles = makeStyles({
     [`& > .${calendarDayGridClassNames.dayButton}`]: {
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
       borderRadius: tokens.borderRadiusMedium,
-      ...shorthands.border('1px', 'solid', tokens.colorBrandStroke1),
+      border: `1px solid ${tokens.colorBrandStroke1}`,
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
         ...shorthands.borderColor('Highlight'),
@@ -383,9 +385,9 @@ const useCornerBorderAndRadiusStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the CalendarDayGrid slots based on the state
+ *
+ * @internal
  */
 export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {
   'use no memo';

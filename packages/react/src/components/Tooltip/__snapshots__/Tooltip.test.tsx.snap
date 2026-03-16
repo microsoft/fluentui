@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Tooltip renders default Tooltip correctly 1`] = `
 <span
-  className="ms-layer"
+  class="ms-layer"
 >
   <div
-    className=
+    class=
         ms-Fabric
         ms-Layer-content
         {
@@ -26,46 +26,16 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
   >
     <div
-      className=
+      class=
           ms-Callout-container
           {
             position: relative;
           }
     >
       <div
-        className=
+        class=
             ms-Callout
             {
               -moz-osx-font-smoothing: grayscale;
@@ -88,17 +58,11 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
             &::-moz-focus-inner {
               border: 0px;
             }
-        style={
-          Object {
-            "filter": "opacity(0)",
-            "opacity": 0,
-            "pointerEvents": "none",
-          }
-        }
-        tabIndex={-1}
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
       >
         <div
-          className=
+          class=
               ms-Callout-main
               {
                 background-color: #ffffff;
@@ -108,16 +72,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 position: relative;
                 width: 100%;
               }
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={
-            Object {
-              "maxHeight": "100%",
-              "outline": "none",
-              "overflowY": undefined,
-            }
-          }
+          style="outline: none; max-height: 100%;"
         >
           <div>
             <div />

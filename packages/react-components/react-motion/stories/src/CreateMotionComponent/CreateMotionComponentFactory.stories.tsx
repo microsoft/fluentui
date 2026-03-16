@@ -1,5 +1,6 @@
 import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentFactory.stories.md';
 
@@ -51,7 +52,7 @@ const DropIn = createMotionComponent({
   },
 });
 
-export const CreateMotionComponentFactory = () => {
+export const CreateMotionComponentFactory = (): JSXElement => {
   const classes = useClasses();
 
   return (

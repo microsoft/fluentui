@@ -1,27 +1,28 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { loadTheme, createTheme } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { ThemeProvider } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'ThemeProvider with loadTheme',
-
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.testLoadTheme')
         .snapshot('global theme changed', { cropTo: '.testWrapper' })
         .click('.testLoadTheme') // set default theme back
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 };
 
 const LoadThemeTestButton: React.FunctionComponent<{
+  children?: React.ReactNode;
   buttonAs?: React.ElementType;
   buttonProps?: any;
 }> = props => {

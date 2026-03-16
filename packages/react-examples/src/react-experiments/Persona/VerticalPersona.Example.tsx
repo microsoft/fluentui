@@ -3,6 +3,7 @@ import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@fluentui/react-experiments/lib/common/TestImages';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { Persona } from '@fluentui/react-experiments';
+import type { JSXElement } from '@fluentui/utilities';
 
 const tokens = {
   sectionStack: {
@@ -18,15 +19,19 @@ const tokens = {
 
 const verticalPersonaStackClassName = mergeStyles({ display: 'flex', flexDirection: 'row' });
 
-const VerticalPersonaStack = (props: { children: JSX.Element[] }) => (
+const VerticalPersonaStack = (props: { children: JSXElement[] }) => (
   <div className={verticalPersonaStackClassName}>{props.children}</div>
 );
 
 export class VerticalPersonaExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack
+          tokens={tokens.headingStack}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          padding={8}
+        >
           <Stack tokens={tokens.personaCoinStack}>
             <Text>Basic Usage</Text>
             <VerticalPersonaStack>

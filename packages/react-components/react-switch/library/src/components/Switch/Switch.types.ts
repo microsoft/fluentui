@@ -39,7 +39,7 @@ export type SwitchOnChangeData = {
  */
 export type SwitchProps = Omit<
   ComponentProps<Partial<SwitchSlots>, 'input'>,
-  'checked' | 'defaultChecked' | 'onChange'
+  'checked' | 'defaultChecked' | 'onChange' | 'size'
 > & {
   /**
    * Defines the controlled checked state of the Switch.
@@ -50,6 +50,14 @@ export type SwitchProps = Omit<
    * @default false
    */
   checked?: boolean;
+
+  /**
+   * When set, allows the Switch to be focusable even when it has been disabled. This is used in scenarios where it is
+   * important to keep a consistent tab order for screen reader and keyboard users.
+   *
+   * @default false
+   */
+  disabledFocusable?: boolean;
 
   /**
    * Defines whether the Switch is initially in a checked state or not when rendered.
@@ -66,6 +74,13 @@ export type SwitchProps = Omit<
   labelPosition?: 'above' | 'after' | 'before';
 
   /**
+   * The size of the Switch.
+   *
+   *  @default 'medium'
+   */
+  size?: 'small' | 'medium';
+
+  /**
    * Callback to be called when the checked state value changes.
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
@@ -73,6 +88,17 @@ export type SwitchProps = Omit<
 };
 
 /**
+ * Switch base props, excluding design-related props like size
+ */
+export type SwitchBaseProps = Omit<SwitchProps, 'size'>;
+
+/**
  * State used in rendering Switch
  */
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;
+export type SwitchState = ComponentState<SwitchSlots> &
+  Required<Pick<SwitchProps, 'disabledFocusable' | 'labelPosition' | 'size'>>;
+
+/**
+ * Switch base state, excluding design-related state like size
+ */
+export type SwitchBaseState = Omit<SwitchState, 'size'>;

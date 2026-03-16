@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import createSvgIcon from './createSvgIcon';
 
 const testSvg = () => <svg />;
@@ -18,22 +18,18 @@ describe('createSvgIcon', () => {
   it('spreads unhandled props on the root element', () => {
     const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
-    const wrapper = mount(<TestIcon id="test-id" data-bar="data-test-value" />);
+    const wrapper = render(<TestIcon id="test-id" data-bar="data-test-value" />);
 
-    expect(wrapper.find('span').props()).toEqual(
-      expect.objectContaining({
-        id: 'test-id',
-        'data-bar': 'data-test-value',
-      }),
-    );
+    expect(wrapper.container.querySelector('span')?.getAttribute('data-bar')).toEqual('data-test-value');
+    expect(wrapper.container.querySelector('span')?.getAttribute('id')).toEqual('test-id');
   });
 
   it("merged user's className on the root element with the generated", () => {
     const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
-    const wrapper = mount(<TestIcon className="test-className" />);
+    const wrapper = render(<TestIcon className="test-className" />);
 
-    expect(wrapper.find('span').props().className!.includes('test-className')).toEqual(true);
+    expect(wrapper.container.querySelector('span')?.className!.includes('test-className')).toEqual(true);
   });
 
   it('provides all props on the svg function', () => {
@@ -46,8 +42,8 @@ describe('createSvgIcon', () => {
       displayName: 'BookIcon',
     });
 
-    const wrapper = mount(<BookIcon foo />);
+    const wrapper = render(<BookIcon foo />);
 
-    expect(wrapper.find('svg').prop('data-foo')).toEqual('true');
+    expect(wrapper.container.querySelector('svg')?.getAttribute('data-foo')).toEqual('true');
   });
 });

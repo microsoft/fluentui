@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { Decorator } from '@storybook/react';
+import type { Decorator } from '@storybook/react-webpack5';
 
-const StrictModeWrapper: React.FunctionComponent<{ strictMode: boolean }> = props => {
+const StrictModeWrapper: React.FunctionComponent<{ strictMode: boolean; children?: React.ReactNode }> = props => {
   return props.strictMode ? <React.StrictMode>{props.children}</React.StrictMode> : <>{props.children}</>;
 };
 

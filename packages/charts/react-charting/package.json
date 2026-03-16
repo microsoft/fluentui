@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.23.56",
+  "version": "5.25.7",
   "description": "React web charting controls for Microsoft fluentui system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,12 +15,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "lint": "just-scripts lint",
     "test": "cross-env TZ=UTC just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "codepen": "node ../../../scripts/executors/src/local-codepen.js",
-    "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
@@ -28,19 +25,12 @@
     "test:tz": "node ./scripts/run-tests-in-timezone.js"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react": "*",
-    "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*",
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^8.9.21",
-    "@fluentui/theme-samples": "^8.7.200",
+    "@fluentui/chart-utilities": "^1.1.38",
+    "@fluentui/react-focus": "^8.10.5",
+    "@fluentui/theme-samples": "^8.7.224",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "^3.0.0",
     "@types/d3-axis": "^3.0.0",
@@ -68,11 +58,11 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.122.11",
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@fluentui/react": "^8.125.5",
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

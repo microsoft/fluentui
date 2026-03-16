@@ -10,6 +10,22 @@ test.describe('Image', () => {
     `,
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-image');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `block` property to match the `block` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -19,8 +35,6 @@ test.describe('Image', () => {
 
     await expect(element).toHaveJSProperty('block', true);
 
-    await expect(element).toHaveCustomState('block');
-
     await element.evaluate((node: Image) => {
       node.block = false;
     });
@@ -28,8 +42,6 @@ test.describe('Image', () => {
     await expect(element).not.toHaveAttribute('block');
 
     await expect(element).not.toHaveJSProperty('block', true);
-
-    await expect(element).not.toHaveCustomState('block');
   });
 
   test('should set the `bordered` property to match the `bordered` attribute', async ({ fastPage }) => {
@@ -41,8 +53,6 @@ test.describe('Image', () => {
 
     await expect(element).toHaveJSProperty('bordered', true);
 
-    await expect(element).toHaveCustomState('bordered');
-
     await element.evaluate((node: Image) => {
       node.bordered = false;
     });
@@ -50,8 +60,6 @@ test.describe('Image', () => {
     await expect(element).not.toHaveAttribute('bordered');
 
     await expect(element).toHaveJSProperty('bordered', false);
-
-    await expect(element).not.toHaveCustomState('bordered');
   });
 
   test('should set the `shadow` property to match the `shadow` attribute', async ({ fastPage }) => {
@@ -63,8 +71,6 @@ test.describe('Image', () => {
 
     await expect(element).toHaveJSProperty('shadow', true);
 
-    await expect(element).toHaveCustomState('shadow');
-
     await element.evaluate((node: Image) => {
       node.shadow = false;
     });
@@ -72,8 +78,6 @@ test.describe('Image', () => {
     await expect(element).not.toHaveAttribute('shadow');
 
     await expect(element).toHaveJSProperty('shadow', false);
-
-    await expect(element).not.toHaveCustomState('shadow');
   });
 
   test('should set the `fit` property to match the `fit` attribute', async ({ fastPage }) => {
@@ -86,8 +90,6 @@ test.describe('Image', () => {
         await expect(element).toHaveAttribute('fit', fit);
 
         await expect(element).toHaveJSProperty('fit', fit);
-
-        await expect(element).toHaveCustomState(`fit-${fit}`);
       });
     }
   });
@@ -102,8 +104,6 @@ test.describe('Image', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect(element).toHaveCustomState(shape);
       });
     }
   });

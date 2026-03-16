@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "ES2016.Array.Include", "ES2015.Core"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"],
     "isolatedModules": true

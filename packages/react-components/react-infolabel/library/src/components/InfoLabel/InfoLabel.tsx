@@ -1,5 +1,8 @@
+'use client';
+
 import * as React from 'react';
 
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InfoLabelProps } from './InfoLabel.types';
 import { renderInfoLabel_unstable } from './renderInfoLabel';
@@ -13,6 +16,8 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((
   const state = useInfoLabel_unstable(props, ref);
 
   useInfoLabelStyles_unstable(state);
+  useCustomStyleHook_unstable('useInfoLabelStyles_unstable')(state);
+
   return renderInfoLabel_unstable(state);
 });
 

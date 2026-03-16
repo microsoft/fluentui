@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IconButton } from '@storybook/components';
-import { styled } from '@storybook/theming';
+import { IconButton } from 'storybook/internal/components';
+import { styled } from 'storybook/theming';
 
+import { JSXElement } from '@fluentui/react-utilities';
 import { DIR_ID } from '../constants';
 import { useGlobals } from '../hooks';
 
@@ -10,7 +11,7 @@ const Monospace = styled.span({
   letterSpacing: '-0.05em',
 });
 
-export const DirectionSwitch = () => {
+export const DirectionSwitch = (): JSXElement => {
   const [globals, updateGlobals] = useGlobals();
 
   const direction = globals[DIR_ID] ?? 'ltr';

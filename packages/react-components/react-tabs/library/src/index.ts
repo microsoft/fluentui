@@ -3,6 +3,8 @@ export {
   renderTab_unstable,
   Tab,
   tabClassNames,
+  tabReservedSpaceClassNames,
+  useTabAnimatedIndicatorStyles_unstable,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
   useTabIndicatorStyles_unstable,
@@ -31,3 +33,9 @@ export {
   useTabListStyles_unstable,
   useTabList_unstable,
 } from './TabList';
+
+// Experimental APIs - will be uncommented in experimental release
+// export type { TabBaseProps, TabBaseState } from './Tab';
+// export { useTabBase_unstable, useTabA11yBehavior_unstable } from './Tab';
+// export type { TabListBaseProps, TabListBaseState } from './TabList';
+// export { useTabListBase_unstable, useTabListA11yBehavior_unstable } from './TabList';

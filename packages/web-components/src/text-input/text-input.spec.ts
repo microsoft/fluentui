@@ -5,6 +5,22 @@ import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 test.describe('TextInput', () => {
   test.use({ tagName: 'fluent-text-input' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-text-input');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -131,40 +147,6 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('controlSize', 'small');
   });
 
-  test('should add a custom state matching the `size` attribute when provided', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { 'control-size': 'small' } });
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'small';
-    });
-
-    await expect(element).toHaveCustomState('small');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'medium';
-    });
-
-    await expect(element).not.toHaveCustomState('small');
-    await expect(element).toHaveCustomState('medium');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'large';
-    });
-
-    await expect(element).not.toHaveCustomState('medium');
-    await expect(element).toHaveCustomState('large');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('small');
-    await expect(element).not.toHaveCustomState('medium');
-    await expect(element).not.toHaveCustomState('large');
-  });
-
   test('should reflect `appearance` attribute values', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -191,45 +173,6 @@ test.describe('TextInput', () => {
     });
     await expect(element).toHaveAttribute('appearance', 'filled-lighter');
     await expect(element).toHaveJSProperty('appearance', 'filled-lighter');
-  });
-
-  test('should add a custom state matching the `appearance` attribute when provided', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'outline';
-    });
-
-    await expect(element).toHaveCustomState('outline');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'underline';
-    });
-
-    await expect(element).not.toHaveCustomState('outline');
-    await expect(element).toHaveCustomState('underline');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'filled-lighter';
-    });
-
-    await expect(element).not.toHaveCustomState('underline');
-    await expect(element).toHaveCustomState('filled-lighter');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'filled-darker';
-    });
-
-    await expect(element).not.toHaveCustomState('filled-lighter');
-    await expect(element).toHaveCustomState('filled-darker');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('outline');
-    await expect(element).not.toHaveCustomState('underline');
-    await expect(element).not.toHaveCustomState('filled-lighter');
   });
 
   test('should have an undefined `value` property when no `value` attribute is set', async ({ fastPage }) => {

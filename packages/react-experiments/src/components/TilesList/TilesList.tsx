@@ -16,6 +16,7 @@ import type {
 } from './TilesList.types';
 import type { IPageProps, IListOnRenderRootProps } from '@fluentui/react/lib/List';
 import type { IRenderFunction, IRectangle } from '@fluentui/react/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const TilesListStyles: any = TilesListStylesModule;
 
@@ -105,9 +106,9 @@ interface IPageSpecificationCache<TItem> {
  */
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
-  private listRef: React.RefObject<List>;
+  private listRef: React.RefObject<List | null>;
 
-  constructor(props: ITilesListProps<TItem>, context: any) {
+  constructor(props: ITilesListProps<TItem>, context?: any) {
     super(props, context);
 
     this.listRef = React.createRef();
@@ -131,7 +132,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { cells } = this.state;
 
     const {
@@ -210,7 +211,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return 0; // Stub
   }
 
-  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize, column: number): JSX.Element {
+  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize, column: number): JSXElement {
     if (item.grid.mode === TilesGridMode.none) {
       return (
         <div role="presentation" className={css(TilesListStyles.header)}>
@@ -258,7 +259,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onRenderListRoot = (
     props: IListOnRenderRootProps<TItem>,
     defaultRender?: IRenderFunction<IListOnRenderRootProps<TItem>>,
-  ): JSX.Element | null => {
+  ): JSXElement | null => {
     const { onRenderRoot } = this.props;
 
     if (!defaultRender) {
@@ -283,7 +284,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       }
     }
 
-    const baseOnRenderRoot = (baseProps: ITilesListRootProps<TItem>): JSX.Element | null => {
+    const baseOnRenderRoot = (baseProps: ITilesListRootProps<TItem>): JSXElement | null => {
       return defaultRender({
         ...props,
         divProps: {
@@ -299,7 +300,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return finalOnRenderRoot({
       surfaceElement: props.surfaceElement,
       divProps: props.divProps,
-      rowCount: rowCount,
+      rowCount,
       columnCount: maxColCount,
     });
   };
@@ -309,7 +310,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
    * By default, List provides no special formatting for a list page. For Tiles, the parent element
    * needs flexbox metadata and padding to support the alignment rules.
    */
-  private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element | null => {
+
+  private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSXElement | null => {
     if (!pageProps) {
       return null;
     }
@@ -414,7 +416,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
-        const renderedCell = (keyOffset: number = 0): JSX.Element => {
+        const renderedCell = (keyOffset: number = 0): JSXElement => {
           return (
             <div
               key={`${grid.key}-item-${cell.key}${keyOffset ? '-' + keyOffset : ''}`}
@@ -474,7 +476,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRowCells = [];
       }
 
-      const finalGrid: JSX.Element = (
+      const finalGrid: JSXElement = (
         <div
           key={grid.key}
           role="presentation"
@@ -694,12 +696,12 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const itemCount = i - (extraCells ? extraCells.length : 0) - startIndex;
 
     const pageSpecification: IPageSpecification<TItem> = {
-      itemCount: itemCount,
+      itemCount,
       data: {
         pageWidths: widths,
         rows: startCells,
-        extraCells: extraCells,
-        cellSizes: cellSizes,
+        extraCells,
+        cellSizes,
       },
     };
 
@@ -708,7 +710,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return pageSpecification;
   };
 
-  private _renderRow: IRenderFunction<ITilesListRowProps<TItem>> = (props: ITilesListRowProps<TItem>): JSX.Element => {
+  private _renderRow: IRenderFunction<ITilesListRowProps<TItem>> = (props: ITilesListRowProps<TItem>): JSXElement => {
     const { cellElements, divProps } = props;
 
     return (
@@ -789,10 +791,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         const grid: ITileGrid = {
           minRowHeight: item.minRowHeight,
-          spacing: spacing,
+          spacing,
           mode: item.mode,
           key: `grid-${item.key}`,
-          maxScaleFactor: maxScaleFactor,
+          maxScaleFactor,
           marginTop: item.isPlaceholder ? 0 : marginTop,
           marginBottom: item.isPlaceholder ? 0 : marginBottom,
           isPlaceholder: item.isPlaceholder,
@@ -818,10 +820,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             });
 
           cells.push({
-            aspectRatio: aspectRatio,
+            aspectRatio,
             content: gridItem.content,
             onRender,
-            grid: grid,
+            grid,
             key: gridItem.key,
             isPlaceholder: gridItem.isPlaceholder,
             desiredHeight: desiredSize ? desiredSize.height : undefined,

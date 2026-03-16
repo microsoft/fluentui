@@ -273,6 +273,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
 }
 
 export const CalendarDayGridBase: React.FunctionComponent<ICalendarDayGridProps> = props => {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const navigatedDayRef = React.useRef<HTMLTableCellElement>(null) as React.MutableRefObject<HTMLTableCellElement>;
 
   const activeDescendantId = useId();

@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IGroupedBarChartState {
   width: number;
@@ -29,7 +30,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -52,7 +53,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IGroupedVerticalBarChartData[] = [
       {
         name: 'Metadata info multi lines text Completed',
@@ -60,7 +61,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -71,7 +72,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 44000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '44%',
@@ -90,7 +91,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -101,7 +102,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 3000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
@@ -120,7 +121,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 14000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '13%',
@@ -131,7 +132,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 50000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '50%',
@@ -150,7 +151,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -161,7 +162,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 3000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
@@ -182,7 +183,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
       { key: 'StackCallout', text: 'Stack callout' },
     ];
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -221,6 +222,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
@@ -229,7 +231,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

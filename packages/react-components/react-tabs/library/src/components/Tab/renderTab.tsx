@@ -1,12 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TabState, TabInternalSlots } from './Tab.types';
 
 /**
  * Render the final JSX of Tab
  */
-export const renderTab_unstable = (state: TabState) => {
+export const renderTab_unstable = (state: TabState): JSXElement => {
   assertSlots<TabInternalSlots>(state);
 
   return (

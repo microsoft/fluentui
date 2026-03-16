@@ -2,13 +2,17 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { RatingDisplayState, RatingDisplaySlots, RatingDisplayContextValues } from './RatingDisplay.types';
 import { RatingItemProvider } from '../../contexts/RatingItemContext';
 
 /**
  * Render the final JSX of RatingDisplay
  */
-export const renderRatingDisplay_unstable = (state: RatingDisplayState, contextValues: RatingDisplayContextValues) => {
+export const renderRatingDisplay_unstable = (
+  state: RatingDisplayState,
+  contextValues: RatingDisplayContextValues,
+): JSXElement => {
   assertSlots<RatingDisplaySlots>(state);
 
   return (

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Add20Filled, Subtract20Filled } from '@fluentui/react-icons';
 import {
   Accordion,
@@ -8,7 +9,7 @@ import {
   AccordionToggleEventHandler,
 } from '@fluentui/react-components';
 
-export const ExpandIcon = () => {
+export const ExpandIcon = (): JSXElement => {
   const [openItem, setOpenItems] = React.useState(0);
   const handleToggle = React.useCallback<AccordionToggleEventHandler>((_, data) => {
     setOpenItems(data.value as number);

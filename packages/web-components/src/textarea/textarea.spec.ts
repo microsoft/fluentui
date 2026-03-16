@@ -8,6 +8,22 @@ test.describe('TextArea', () => {
     waitFor: ['fluent-label'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-textarea');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   // TODO: This should test 'elementInternals.role' as 'textbox' when Reference Target is widely supported.
   test('should not have a role on element internals', async ({ fastPage }) => {
     const { element } = fastPage;
@@ -94,16 +110,6 @@ test.describe('TextArea', () => {
   });
 
   test.describe('visual styles', () => {
-    test('should have default custom states', async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await expect(element).toHaveCustomState('outline');
-      await expect(element).not.toHaveCustomState('auto-resize');
-      await expect(element).not.toHaveCustomState('block');
-      await expect(element).not.toHaveCustomState('display-shadow');
-      await expect(element).not.toHaveCustomState('resize');
-    });
-
     test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
       const { element } = fastPage;
 
@@ -114,74 +120,76 @@ test.describe('TextArea', () => {
           await expect(element).toHaveJSProperty('appearance', appearance);
 
           await expect(element).toHaveAttribute('appearance', appearance);
-
-          await expect(element).toHaveCustomState(appearance);
         });
       }
     });
 
-    test('should toggle auto-resize state', async ({ fastPage }) => {
+    test('should toggle auto-resize attribute', async ({ fastPage }) => {
       const { element } = fastPage;
 
       await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
 
       await expect(element).toHaveJSProperty('autoResize', true);
 
-      await expect(element).toHaveCustomState('auto-resize');
-
       await element.evaluate((node: TextArea) => {
         node.autoResize = false;
       });
 
       await expect(element).not.toHaveAttribute('auto-resize');
-
-      await expect(element).not.toHaveCustomState('auto-resize');
     });
 
-    test('should toggle block state', async ({ fastPage }) => {
+    test('should place the auto-sizer element inside the root element when `field-sizing: content` is not supported', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+
+      // Mock CSS.supports to simulate a browser that doesn't support `field-sizing: content` (e.g. Firefox)
+      // and restore it after to avoid affecting subsequent tests
+      await page.evaluate(() => {
+        const originalSupports = CSS.supports.bind(CSS);
+        (window as Window & { __originalCSSSupports?: typeof CSS.supports }).__originalCSSSupports = originalSupports;
+        CSS.supports = (property: string, value?: string) => {
+          if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
+            return false;
+          }
+          return originalSupports(property, value as string);
+        };
+      });
+
+      try {
+        await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
+
+        const autoSizerIsInsideRoot = await element.evaluate((node: TextArea) => {
+          const root = node.shadowRoot?.querySelector('.root');
+          return root?.contains(node.autoSizerEl ?? null) ?? false;
+        });
+
+        expect(autoSizerIsInsideRoot).toBe(true);
+      } finally {
+        // Restore the original CSS.supports to avoid affecting other tests
+        await page.evaluate(() => {
+          const w = window as Window & { __originalCSSSupports?: typeof CSS.supports };
+          if (w.__originalCSSSupports) {
+            CSS.supports = w.__originalCSSSupports;
+            delete w.__originalCSSSupports;
+          }
+        });
+      }
+    });
+
+    test('should toggle block attribute', async ({ fastPage }) => {
       const { element } = fastPage;
 
       await fastPage.setTemplate({ attributes: { block: true } });
 
       await expect(element).toHaveJSProperty('block', true);
 
-      await expect(element).toHaveCustomState('block');
-
       await element.evaluate((node: TextArea) => {
         node.block = false;
       });
 
       await expect(element).not.toHaveAttribute('block');
-
-      await expect(element).not.toHaveCustomState('block');
-    });
-
-    test('should toggle display-shadow state', async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { 'display-shadow': true } });
-
-      // Expecting `false` because the default appearance, outline, shouldn’t have shadow
-      await expect(element).not.toHaveCustomState('display-shadow');
-
-      await element.evaluate((el: TextArea, appearance) => {
-        el.appearance = appearance;
-      }, TextAreaAppearance.filledDarker);
-
-      await expect(element).toHaveCustomState('display-shadow');
-
-      await element.evaluate((el: TextArea) => {
-        el.displayShadow = false;
-      });
-
-      await expect(element).not.toHaveCustomState('display-shadow');
-
-      await element.evaluate((el: TextArea, appearance: TextAreaAppearance) => {
-        el.displayShadow = true;
-        el.appearance = appearance;
-      }, TextAreaAppearance.filledLighter);
-
-      await expect(element).toHaveCustomState('display-shadow');
     });
 
     test('should set the `resize` property to match the `resize` attribute', async ({ fastPage }) => {
@@ -194,8 +202,6 @@ test.describe('TextArea', () => {
           await expect(element).toHaveJSProperty('resize', resize);
 
           await expect(element).toHaveAttribute('resize', resize);
-
-          await expect(element).toHaveCustomState(`resize-${resize}`);
         });
       }
     });
@@ -210,8 +216,6 @@ test.describe('TextArea', () => {
           await expect(element).toHaveJSProperty('size', size);
 
           await expect(element).toHaveAttribute('size', size);
-
-          await expect(element).toHaveCustomState(size);
         });
       }
     });

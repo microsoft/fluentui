@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
@@ -20,8 +23,7 @@ const useRootClassName = makeResetStyles({
   position: 'relative',
   ...typographyStyles.caption1Strong,
   height: '20px',
-  width: '20px',
-  minWidth: 'max-content',
+  minWidth: '20px',
   padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   borderRadius: tokens.borderRadiusCircular,
   // Use a transparent stroke (rather than no border) so the border is visible in high contrast
@@ -65,7 +67,7 @@ const useRootStyles = makeStyles({
     padding: 'unset',
   },
   small: {
-    width: '16px',
+    minWidth: '16px',
     height: '16px',
     padding: `0 calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
   },
@@ -73,12 +75,12 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   large: {
-    width: '24px',
+    minWidth: '24px',
     height: '24px',
     padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   },
   'extra-large': {
-    width: '32px',
+    minWidth: '32px',
     height: '32px',
     padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`,
   },
@@ -322,7 +324,8 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const iconStyles = useIconStyles();
   if (state.icon) {
     let iconPositionClass;
-    if (state.root.children) {
+    // Handle the edge case where children is 0 (a falsy value that should still render text and have margin)
+    if (React.Children.toArray(state.root.children).length > 0) {
       if (state.size === 'extra-large') {
         iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextXL : iconStyles.beforeTextXL;
       } else {

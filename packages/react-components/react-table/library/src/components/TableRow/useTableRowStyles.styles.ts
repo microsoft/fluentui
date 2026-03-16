@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
@@ -32,25 +34,20 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     boxSizing: 'border-box',
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
-      { selector: 'focus' },
-    ),
-  },
-
-  rootSubtleSelection: {
-    ...createCustomFocusIndicatorStyle(
       {
         [`& .${tableSelectionCellClassNames.root}`]: {
+          opacity: 1,
+        },
+        [`& .${tableCellActionsClassNames.root}`]: {
           opacity: 1,
         },
       },
       { selector: 'focus-within' },
     ),
-    ':hover': {
-      [`& .${tableSelectionCellClassNames.root}`]: {
-        opacity: 1,
-      },
-    },
+    ...createCustomFocusIndicatorStyle(
+      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
+      { selector: 'focus' },
+    ),
   },
 
   rootInteractive: {
@@ -68,11 +65,17 @@ const useStyles = makeStyles({
       [`& .${tableCellActionsClassNames.root}`]: {
         opacity: 1,
       },
+      [`& .${tableSelectionCellClassNames.root}`]: {
+        opacity: 1,
+      },
     },
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
+        opacity: 1,
+      },
+      [`& .${tableSelectionCellClassNames.root}`]: {
         opacity: 1,
       },
     },
@@ -122,9 +125,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
+
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
@@ -149,7 +150,6 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
-    styles.rootSubtleSelection,
     !state.isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,

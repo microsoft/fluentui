@@ -13,7 +13,7 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(
   eventName: string,
   callback: (ev: TEvent) => void,
   useCapture?: boolean,
-) {
+): void {
   // Use a ref for the callback to prevent repeatedly attaching/unattaching callbacks that are unstable across renders
   const callbackRef = React.useRef(callback);
   callbackRef.current = callback;

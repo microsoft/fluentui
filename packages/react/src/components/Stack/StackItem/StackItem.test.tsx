@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { getBySelector } from '../../../common/testUtilities';
 import { Stack } from '../Stack';
 
 describe('Stack Item', () => {
   it('allows className from child component to be rendered', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Stack>
         <div className="test" />
       </Stack>,
     );
 
-    expect(wrapper.find('div.test').length).toBe(1);
+    expect(getBySelector(container, 'div.test')).toBeTruthy();
   });
 
   it('can handle having a class in a child of an explicit Stack.Item component', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Stack>
         <Stack.Item>
           <div className="test" />
@@ -22,11 +23,11 @@ describe('Stack Item', () => {
       </Stack>,
     );
 
-    expect(wrapper.find('div.test').length).toBe(1);
+    expect(getBySelector(container, 'div.test')).toBeTruthy();
   });
 
   it('can handle not having a class', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Stack>
         <Stack.Item>
           <div />
@@ -34,12 +35,12 @@ describe('Stack Item', () => {
       </Stack>,
     );
 
-    expect(wrapper.find('.test').length).toBe(0);
+    expect(container.querySelector('.test')).toBeNull();
   });
 
   it('can handle having no children', () => {
     const createEmptyStackItem = () => {
-      mount(
+      render(
         <Stack>
           <Stack.Item />
         </Stack>,
@@ -53,7 +54,7 @@ describe('Stack Item', () => {
     const stackItemClassName = 'stackItemClass';
     const childClassName = 'childClass';
 
-    const wrapper = mount(
+    const { container } = render(
       <Stack>
         <Stack.Item className={stackItemClassName}>
           <span className={childClassName} />
@@ -61,12 +62,12 @@ describe('Stack Item', () => {
       </Stack>,
     );
 
-    const stackItem = wrapper.find('div').at(1);
-    const stackItemClass = stackItem.props().className;
-    const child = wrapper.find('span').at(0);
-    const childClass = child.props().className;
+    const stack = container.querySelectorAll('div')[1];
+    const stackClass = stack?.className;
+    const child = container.querySelector('span');
+    const childClass = child?.className;
 
-    expect(stackItemClass).toContain(stackItemClassName);
+    expect(stackClass).toContain(stackItemClassName);
     expect(childClass).toContain(childClassName);
   });
 });

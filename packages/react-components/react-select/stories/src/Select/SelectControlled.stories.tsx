@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Select, useId } from '@fluentui/react-components';
 import type { SelectProps } from '@fluentui/react-components';
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const selectId = useId();
   const [value, setValue] = React.useState('Red');
 

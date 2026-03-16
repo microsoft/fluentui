@@ -78,7 +78,7 @@ const getMoveDelta = (ev: React.KeyboardEvent<HTMLElement>): number => {
   return delta;
 };
 
-const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFocusTrapZone>) => {
+const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFocusTrapZone | null>) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
@@ -477,9 +477,11 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             shouldRestoreFocus={!disableRestoreFocus}
             // Modeless modals shouldn't hide siblings.
             // Popup will automatically handle this based on the aria-modal setting.
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             enableAriaHiddenSiblings={enableAriaHiddenSiblings}
             aria-modal={!isModeless}
             {...popupProps}

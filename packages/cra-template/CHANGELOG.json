@@ -2,6 +2,81 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:09 GMT",
+      "tag": "@fluentui/cra-template_v8.4.223",
+      "version": "8.4.223",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Dec 2025 06:27:47 GMT",
+      "tag": "@fluentui/cra-template_v8.4.223",
+      "version": "8.4.223",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/cra-template_v8.4.219",
+      "version": "8.4.219",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 07:21:44 GMT",
+      "tag": "@fluentui/cra-template_v8.4.218",
+      "version": "8.4.218",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/cra-template",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Apr 2025 07:20:23 GMT",
+      "tag": "@fluentui/cra-template_v8.4.204",
+      "version": "8.4.204",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 07:31:11 GMT",
       "tag": "@fluentui/cra-template_v8.4.163",
       "version": "8.4.163",

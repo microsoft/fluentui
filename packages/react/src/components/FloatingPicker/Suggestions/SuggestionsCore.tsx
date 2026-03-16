@@ -5,6 +5,8 @@ import * as stylesImport from './SuggestionsCore.scss';
 import type { ISuggestionItemProps, ISuggestionModel } from '../../../Pickers';
 import type { ISuggestionsCoreProps } from './Suggestions.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 /**
@@ -119,7 +121,7 @@ export class SuggestionsCore<T extends {}> extends React.Component<ISuggestionsC
     this.scrollSelected();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       onRenderSuggestion,
       suggestionsItemClassName,

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { TeachingPopoverTriggerProps } from './TeachingPopoverTrigger.types';

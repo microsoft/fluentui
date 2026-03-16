@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -11,7 +13,7 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const reservedSpaceClassNames = {
+export const tabReservedSpaceClassNames = {
   content: 'fui-Tab__content--reserved-space',
 };
 
@@ -178,6 +180,7 @@ const useRootStyles = makeStyles({
 const useCircularAppearanceStyles = makeStyles({
   base: {
     borderRadius: tokens.borderRadiusCircular,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
     },
@@ -185,12 +188,17 @@ const useCircularAppearanceStyles = makeStyles({
       color: 'inherit',
     },
   },
+  small: {
+    paddingBlock: `calc(${tokens.spacingVerticalXXS} - ${tokens.strokeWidthThin})`,
+  },
   medium: {
-    paddingBlock: `${tokens.spacingVerticalSNudge}`,
+    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - ${tokens.strokeWidthThin})`,
+  },
+  large: {
+    paddingBlock: `calc(${tokens.spacingVerticalS} - ${tokens.strokeWidthThin})`,
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForeground2,
     ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -201,6 +209,9 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
       color: tokens.colorNeutralForeground2Pressed,
+    },
+    '@media (forced-colors: active)': {
+      border: `solid ${tokens.strokeWidthThin} Canvas`,
     },
   },
   subtleSelected: {
@@ -217,11 +228,13 @@ const useCircularAppearanceStyles = makeStyles({
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
       color: tokens.colorBrandForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      border: `solid ${tokens.strokeWidthThin} Highlight`,
+    },
   },
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForegroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
   },
   subtleDisabledSelected: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -239,6 +252,21 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':enabled:hover': {
+        backgroundColor: 'Highlight',
+        forcedColorAdjust: 'none',
+        [`& .${tabClassNames.content}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.filled}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.regular}`]: {
+          color: 'HighlightText',
+        },
+      },
+    },
   },
   filledSelected: {
     backgroundColor: tokens.colorBrandBackground,
@@ -251,10 +279,21 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
     },
+    '@media (forced-colors: active)': {
+      ':enabled': {
+        backgroundColor: 'ButtonText',
+        [`& .${tabClassNames.content}`]: {
+          color: 'ButtonFace',
+          forcedColorAdjust: 'none',
+        },
+      },
+      [`:enabled .${tabClassNames.icon}`]: {
+        color: 'ButtonFace',
+      },
+    },
   },
   filledDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForegroundDisabled,
   },
   filledDisabledSelected: {
@@ -332,6 +371,14 @@ const usePendingIndicatorStyles = makeStyles({
     },
     ':active::before': {
       backgroundColor: tokens.colorTransparentStroke,
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'transparent',
+      },
+      ':active::before': {
+        backgroundColor: 'transparent',
+      },
     },
   },
   smallHorizontal: {
@@ -641,7 +688,9 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     circularStyles.base,
     focusStyles.circular,
     // sizes
+    size === 'small' && circularStyles.small,
     size === 'medium' && circularStyles.medium,
+    size === 'large' && circularStyles.large,
     // subtle-circular appearance
     isSubtleCircular && circularStyles.subtle,
     selected && isSubtleCircular && circularStyles.subtleSelected,
@@ -708,7 +757,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      reservedSpaceClassNames.content,
+      tabReservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

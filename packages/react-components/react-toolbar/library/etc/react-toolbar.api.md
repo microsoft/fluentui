@@ -4,27 +4,27 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DividerSlots } from '@fluentui/react-divider';
-import { DividerState } from '@fluentui/react-divider';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import type { DividerSlots } from '@fluentui/react-divider';
+import type { DividerState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { ToggleButtonProps } from '@fluentui/react-button';
-import { ToggleButtonState } from '@fluentui/react-button';
+import type { ToggleButtonProps } from '@fluentui/react-button';
+import type { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
-export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSX.Element;
+export const renderToolbar_unstable: (state: ToolbarState, contextValues: ToolbarContextValues) => JSXElement;
 
 // @public
-export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSX.Element;
+export const renderToolbarGroup_unstable: (state: ToolbarGroupState) => JSXElement;
 
 // @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
@@ -77,7 +77,9 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
 export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
 
 // @public
-export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
@@ -142,6 +144,12 @@ export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2
 
 // @public
 export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => void;
+
+// @public (undocumented)
+export const useToolbarContext_unstable: <T>(selector: ContextSelector<ToolbarContextValue, T>) => T;
+
+// @public (undocumented)
+export function useToolbarContextValues_unstable(state: ToolbarState): ToolbarContextValues;
 
 // @public
 export const useToolbarDivider_unstable: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;

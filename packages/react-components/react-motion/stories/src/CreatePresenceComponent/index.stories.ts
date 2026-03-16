@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import CreatePresenceComponentDescription from './CreatePresenceComponentDescription.md';
 import { CreatePresenceComponentDefault } from './CreatePresenceComponentDefault.stories';
@@ -6,6 +6,7 @@ import { CreatePresenceComponentDefault } from './CreatePresenceComponentDefault
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
 
 export { CreatePresenceComponentFactory as createPresenceComponent } from './CreatePresenceComponentFactory.stories';
+export { CreatePresenceComponentInAndOut as InAndOut } from './CreatePresenceComponentInAndOut.stories';
 
 export { CreatePresenceComponentAppear as appear } from './CreatePresenceComponentAppear.stories';
 export { CreatePresenceComponentReducedMotion as reducedMotion } from './CreatePresenceComponentReducedMotion.stories';

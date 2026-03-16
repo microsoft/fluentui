@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Button, Caption1, tokens, Checkbox, Text } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, Button, Caption1, tokens, Checkbox, Text, useId } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
@@ -54,27 +55,60 @@ const useStyles = makeStyles({
   },
 });
 
-export const SelectableIndicator = () => {
+export const SelectableIndicator = (): JSXElement => {
   const styles = useStyles();
+  const idPrefix = useId('card-title');
 
   const [selected1, setSelected1] = React.useState(false);
   const [selected2, setSelected2] = React.useState(false);
   const [selected3, setSelected3] = React.useState(false);
   const [selected4, setSelected4] = React.useState(false);
 
-  const setCheckboxState = React.useCallback(({ selected, checked }, setFn) => setFn(!!(selected || checked)), []);
+  const setCheckboxState = React.useCallback(
+    (
+      { selected, checked }: { selected?: boolean; checked?: boolean | 'mixed' },
+      setFn: React.Dispatch<React.SetStateAction<boolean>>,
+    ) => setFn(!!(selected || checked)),
+    [],
+  );
 
-  const onSelected1Change = React.useCallback((_, state) => setCheckboxState(state, setSelected1), [setCheckboxState]);
-  const onSelected2Change = React.useCallback((_, state) => setCheckboxState(state, setSelected2), [setCheckboxState]);
-  const onSelected3Change = React.useCallback((_, state) => setCheckboxState(state, setSelected3), [setCheckboxState]);
-  const onSelected4Change = React.useCallback((_, state) => setCheckboxState(state, setSelected4), [setCheckboxState]);
+  const onSelected1Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected1),
+    [setCheckboxState],
+  );
+  const onSelected2Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected2),
+    [setCheckboxState],
+  );
+  const onSelected3Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected3),
+    [setCheckboxState],
+  );
+  const onSelected4Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected4),
+    [setCheckboxState],
+  );
 
   return (
     <div className={styles.main}>
       <div className={styles.row}>
         <Card
           className={styles.card}
-          floatingAction={<Checkbox onChange={onSelected1Change} checked={selected1} />}
+          floatingAction={
+            <Checkbox aria-labelledby={`${idPrefix}-1`} onChange={onSelected1Change} checked={selected1} />
+          }
           selected={selected1}
           onSelectionChange={onSelected1Change}
         >
@@ -86,7 +120,11 @@ export const SelectableIndicator = () => {
           </CardPreview>
 
           <CardHeader
-            header={<Text weight="semibold">iOS App Prototype</Text>}
+            header={
+              <Text id={`${idPrefix}-1`} weight="semibold">
+                iOS App Prototype
+              </Text>
+            }
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
@@ -94,7 +132,9 @@ export const SelectableIndicator = () => {
 
         <Card
           className={styles.card}
-          floatingAction={<Checkbox onChange={onSelected2Change} checked={selected2} />}
+          floatingAction={
+            <Checkbox aria-labelledby={`${idPrefix}-2`} onChange={onSelected2Change} checked={selected2} />
+          }
           selected={selected2}
           onSelectionChange={onSelected2Change}
         >
@@ -106,7 +146,11 @@ export const SelectableIndicator = () => {
           </CardPreview>
 
           <CardHeader
-            header={<Text weight="semibold">iOS App Prototype</Text>}
+            header={
+              <Text id={`${idPrefix}-2`} weight="semibold">
+                iOS App Prototype
+              </Text>
+            }
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
@@ -118,11 +162,17 @@ export const SelectableIndicator = () => {
           className={styles.card}
           selected={selected3}
           onSelectionChange={onSelected3Change}
-          floatingAction={<Checkbox onChange={onSelected3Change} checked={selected3} />}
+          floatingAction={
+            <Checkbox aria-labelledby={`${idPrefix}-3`} onChange={onSelected3Change} checked={selected3} />
+          }
         >
           <CardHeader
             image={<img src={resolveAsset('docx.png')} alt="Microsoft Word Logo" />}
-            header={<Text weight="semibold">Secret Project Briefing</Text>}
+            header={
+              <Text id={`${idPrefix}-3`} weight="semibold">
+                Secret Project Briefing
+              </Text>
+            }
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
           />
         </Card>
@@ -131,11 +181,17 @@ export const SelectableIndicator = () => {
           className={styles.card}
           selected={selected4}
           onSelectionChange={onSelected4Change}
-          floatingAction={<Checkbox onChange={onSelected4Change} checked={selected4} />}
+          floatingAction={
+            <Checkbox aria-labelledby={`${idPrefix}-4`} onChange={onSelected4Change} checked={selected4} />
+          }
         >
           <CardHeader
             image={<img src={resolveAsset('xlsx.png')} alt="Microsoft Excel Logo" />}
-            header={<Text weight="semibold">Team Budget</Text>}
+            header={
+              <Text id={`${idPrefix}-4`} weight="semibold">
+                Team Budget
+              </Text>
+            }
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
           />
         </Card>
@@ -148,7 +204,8 @@ SelectableIndicator.parameters = {
   docs: {
     description: {
       story: `By default, selectable cards do not include any element to represent its selection state. For example,
-      checkboxes can be composed together as an additional element by using the \`floatingAction\` property.`,
+      checkboxes can be composed together as an additional element by using the \`floatingAction\` property.
+      When doing so, ensure the checkbox's accessible name matches the card's title.`,
     },
   },
 };

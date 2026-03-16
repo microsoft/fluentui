@@ -2,6 +2,7 @@ import { Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const names = [
   'Melda Bevel',
@@ -12,7 +13,7 @@ const names = [
   'Sonya Farner',
 ];
 
-export const SingleAction = () => {
+export const SingleAction = (): JSXElement => {
   return (
     <List navigationMode="items">
       {names.map(name => (

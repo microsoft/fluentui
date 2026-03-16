@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DatePicker, defaultDatePickerStrings } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
 import type { DatePickerProps, CalendarStrings } from '@fluentui/react-datepicker-compat';
@@ -35,7 +36,7 @@ const onFormatDate = (date?: Date) => {
   return !date ? '' : `${localizedStrings.months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 };
 
-export const Localized = (props: Partial<DatePickerProps>) => {
+export const Localized = (props: Partial<DatePickerProps>): JSXElement => {
   const styles = useStyles();
 
   return (

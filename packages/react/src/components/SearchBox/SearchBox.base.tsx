@@ -16,7 +16,7 @@ const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>
 
 const useComponentRef = (
   componentRef: React.Ref<ISearchBox> | undefined,
-  inputElementRef: React.RefObject<HTMLInputElement>,
+  inputElementRef: React.RefObject<HTMLInputElement | null>,
   hasFocus: boolean,
 ) => {
   React.useImperativeHandle(
@@ -63,7 +63,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
 
   const [hasFocus, setHasFocus] = React.useState(false);
 
-  const prevChangeTimestamp = React.useRef<number | undefined>();
+  const prevChangeTimestamp = React.useRef<number | undefined>(undefined);
   const [uncastValue, setValue] = useControllableValue(
     props.value,
     defaultValue,

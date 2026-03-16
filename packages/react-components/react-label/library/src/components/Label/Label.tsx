@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useLabel_unstable } from './useLabel';
 import { renderLabel_unstable } from './renderLabel';

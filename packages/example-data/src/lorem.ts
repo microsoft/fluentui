@@ -20,6 +20,6 @@ export function lorem(wordCount: number): string {
     .join(' ');
 }
 
-export const setControlledMode = (val: boolean) => {
+export const setControlledMode = (val: boolean): void => {
   controlledMode = val;
 };

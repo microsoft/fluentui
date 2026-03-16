@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-components';
 import type {
   ColorSwatchProps,
@@ -48,7 +49,7 @@ const images: ImageSwatchProps[] = [
 
 const items: SwatchProps[] = [...colors, ...images];
 
-export const SwatchPickerMixedSwatches = () => {
+export const SwatchPickerMixedSwatches = (): JSXElement => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedSwatch, setSelectedSwatch] = React.useState('#00B053');
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {

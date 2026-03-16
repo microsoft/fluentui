@@ -23,7 +23,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
-  const backupModelRef = React.useRef<IMonacoTextModel>();
+  const backupModelRef = React.useRef<IMonacoTextModel | undefined>(undefined);
   const modelRef = editorProps.modelRef || backupModelRef;
 
   // Load the globals before loading the editor (otherwise there will be an error executing the
@@ -38,7 +38,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
 
   // Store the latest onChange in a ref to ensure that we get the latest values
   // without forcing re-rendering
-  const onChangeRef = React.useRef<IEditorProps['onChange']>();
+  const onChangeRef = React.useRef<IEditorProps['onChange'] | undefined>(undefined);
   onChangeRef.current = (text: string) => {
     if (editorProps.onChange) {
       // If the consumer provided an additional onChange, call that too
@@ -153,11 +153,21 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
       require.ensure([], require => {
         // raw-loader 0.x exports a single string, and later versions export a default.
         // The package.json specifies 0.x, but handle either just in case.
-        const result: string | { default: string } = require('!raw-loader?esModule=false!@types/react/index.d.ts');
-        typescriptDefaults.addExtraLib(
-          typeof result === 'string' ? result : result.default,
-          `${typesPrefix}/react/index.d.ts`,
-        );
+        try {
+          // NOTE:
+          // This doesn't work starting @types/react@17.0.48 as the types package introduced Export Maps
+          // Only way to get around this is to use webpack `resolve.alias` mapping in user land
+          const result: string | { default: string } = require('!raw-loader?esModule=false!@types/react/index.d.ts');
+          typescriptDefaults.addExtraLib(
+            typeof result === 'string' ? result : result.default,
+            `${typesPrefix}/react/index.d.ts`,
+          );
+        } catch (err) {
+          /* eslint-disable no-console */
+          console.error('Failed to load @types/react.');
+          console.error(err);
+          /* eslint-enable no-console */
+        }
         resolve();
       }),
     ),

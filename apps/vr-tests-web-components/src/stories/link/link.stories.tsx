@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { LinkDefinition, FluentDesignSystem } from '@fluentui/web-components';
 
 LinkDefinition.define(FluentDesignSystem.registry);
@@ -20,14 +20,13 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={steps}>
-          <div className="testWrapper" style={{ width: '300px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '300px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps } },
 };
 
 export const Default = () => parse(`<fluent-link id="${linkId}">Default</fluent-link>`);
@@ -47,7 +46,7 @@ export const WithLongText = () =>
     </style>
     <p class="max-width">
     This paragraph contains a link which is very long.
-    <fluent-link href="#">Fluent links wrap correctly between lines when they are very long.</fluent-link> This is
+    <fluent-link id="${linkId}" href="#">Fluent links wrap correctly between lines when they are very long.</fluent-link> This is
     because they are inline elements.
     </p>
 `);

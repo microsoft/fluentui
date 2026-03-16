@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
-
 import { SelectedItemsList } from './SelectedItemsList';
-import { mount } from 'enzyme';
-import type { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
+import { render } from '@testing-library/react';
+import type { ISelectedItemProps } from './SelectedItemsList.types';
 
 export interface ISimple {
   key: string;
@@ -20,19 +18,17 @@ describe('SelectedItemsList', () => {
     const renderNothing = () => <></>;
 
     it('renders SelectedItemsList correctly when no specific render component is provided', () => {
-      const component = create(<SelectedItemsList onRenderItem={renderNothing} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SelectedItemsList onRenderItem={renderNothing} />);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders SelectedItemsList correctly', () => {
-      const component = create(<SelectedItemsList onRenderItem={basicItemRenderer} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SelectedItemsList onRenderItem={basicItemRenderer} />);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('render all items in selectedItemsList', () => {
-      const wrapper = mount<ISelectedItemsList<ISimple>>(
+      const wrapper = render(
         <SelectedItemsList
           onRenderItem={basicItemRenderer}
           selectedItems={[
@@ -41,16 +37,16 @@ describe('SelectedItemsList', () => {
           ]}
         />,
       );
-      expect(wrapper.exists()).toBeTruthy();
-      expect(wrapper.find('div').length).toEqual(2);
-      expect(wrapper.find('div').first().text()).toEqual('a');
-      expect(wrapper.find('div').last().text()).toEqual('b');
+      expect(wrapper.container).toBeTruthy();
+      expect(wrapper.container.querySelectorAll('div').length).toEqual(2);
+      expect(wrapper.container.querySelector('div')!.textContent).toEqual('a');
+      expect(wrapper.container.querySelectorAll('div')[1].textContent).toEqual('b');
     });
   });
 
   it('render between selected and default selected items in selectedItemsList', () => {
     const removeItems = jest.fn();
-    const wrapper = mount<ISelectedItemsList<ISimple>>(
+    const wrapper = render(
       <SelectedItemsList
         onRenderItem={basicItemRenderer}
         selectedItems={[
@@ -64,14 +60,14 @@ describe('SelectedItemsList', () => {
         onItemsRemoved={removeItems}
       />,
     );
-    expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('div').length).toEqual(2);
-    expect(wrapper.find('div').first().text()).toEqual('da');
-    expect(wrapper.find('div').last().text()).toEqual('db');
+    expect(wrapper.container).toBeTruthy();
+    expect(wrapper.container.querySelectorAll('div').length).toEqual(2);
+    expect(wrapper.container.querySelector('div')!.textContent).toEqual('da');
+    expect(wrapper.container.querySelectorAll('div')[1].textContent).toEqual('db');
   });
 
   it('renders items that are passed in as default', () => {
-    const wrapper = mount<ISelectedItemsList<ISimple>>(
+    const wrapper = render(
       <SelectedItemsList
         onRenderItem={basicItemRenderer}
         defaultSelectedItems={[
@@ -80,9 +76,9 @@ describe('SelectedItemsList', () => {
         ]}
       />,
     );
-    expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('div').length).toEqual(2);
-    expect(wrapper.find('div').first().text()).toEqual('Person A');
-    expect(wrapper.find('div').last().text()).toEqual('Person B');
+    expect(wrapper.container).toBeTruthy();
+    expect(wrapper.container.querySelectorAll('div').length).toEqual(2);
+    expect(wrapper.container.querySelector('div')!.textContent).toEqual('Person A');
+    expect(wrapper.container.querySelectorAll('div')[1].textContent).toEqual('Person B');
   });
 });

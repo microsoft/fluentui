@@ -110,11 +110,6 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
   culture?: string;
 
   /**
-   *@default false
-   *Used for showing complete y axis lables   */
-  showYAxisLables?: boolean;
-
-  /**
    * @default alphabetical
    * The prop used to decide order of string axis labels */
   sortOrder?: 'none' | 'alphabetical';
@@ -134,7 +129,7 @@ export interface IHeatMapChartStyles {
   root?: IStyle;
   text?: IStyle;
   subComponentStyles: {
-    cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-    calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+    cartesianStyles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+    calloutStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
   };
 }

@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MaskedTextField renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-TextField
       {
         -moz-osx-font-smoothing: grayscale;
@@ -24,10 +24,10 @@ exports[`MaskedTextField renders correctly 1`] = `
       }
 >
   <div
-    className="ms-TextField-wrapper"
+    class="ms-TextField-wrapper"
   >
     <label
-      className=
+      class=
           ms-Label
           {
             -moz-osx-font-smoothing: grayscale;
@@ -50,13 +50,13 @@ exports[`MaskedTextField renders correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="TextField0"
+      for="TextField0"
       id="TextFieldLabel2"
     >
       With input mask
     </label>
     <div
-      className=
+      class=
           ms-TextField-fieldGroup
           {
             align-items: stretch;
@@ -89,9 +89,9 @@ exports[`MaskedTextField renders correctly 1`] = `
           }
     >
       <input
-        aria-invalid={false}
+        aria-invalid="false"
         aria-labelledby="TextFieldLabel2"
-        className=
+        class=
             ms-TextField-field
             {
               -moz-osx-font-smoothing: grayscale;
@@ -157,14 +157,6 @@ exports[`MaskedTextField renders correctly 1`] = `
               color: GrayText;
             }
         id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onPaste={[Function]}
         type="text"
         value="mask: (___) ___ - ____"
       />

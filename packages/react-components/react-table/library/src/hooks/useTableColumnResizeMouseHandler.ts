@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TableColumnId, ColumnResizeState } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -10,7 +12,10 @@ import {
   useAnimationFrame,
 } from '@fluentui/react-utilities';
 
-export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
+export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState): {
+  getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
+  dragging: boolean;
+} {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);

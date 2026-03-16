@@ -9,7 +9,7 @@ import {
   packProjectPackages,
 } from '@fluentui/scripts-projects-test';
 
-const tsVersion = '3.9';
+const tsVersion = '5.4';
 const testName = 'ts-minbar-react-components';
 
 async function performTest() {
@@ -56,6 +56,7 @@ async function performTest() {
   try {
     await shEcho(`yarn tsc --noEmit`, tempPaths.testApp);
     logger(`✔️ Example project was successfully built with typescript@${tsVersion}`);
+    process.exit(0);
   } catch (e) {
     console.error(e);
 

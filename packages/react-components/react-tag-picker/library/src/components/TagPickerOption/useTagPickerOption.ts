@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { useOption_unstable } from '@fluentui/react-combobox';
@@ -19,6 +21,7 @@ export const useTagPickerOption_unstable = (
   const optionState = useOption_unstable(props, ref);
   const state: TagPickerOptionState = {
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...optionState.components,
       media: 'div',
       secondaryContent: 'span',

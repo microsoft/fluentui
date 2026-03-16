@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { setWarningCallback, resetIds } from '@fluentui/utilities';
 
 import { Pivot, PivotItem } from './index';
@@ -22,13 +22,12 @@ describe('Pivot', () => {
   });
 
   it('renders link Pivot correctly', () => {
-    const component = create(
+    const { container } = render(
       <Pivot>
         <PivotItem linkText="Test Link 1" />
         <PivotItem linkText="" />
       </Pivot>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

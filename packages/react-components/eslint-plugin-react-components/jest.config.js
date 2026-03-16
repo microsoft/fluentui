@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable */
 
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');

@@ -1,10 +1,24 @@
 import * as React from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
   SetVirtualMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
+
+export type PopoverSlots = {
+  /**
+   * Slot for the surface motion animation.
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   */
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
+
+export type InternalPopoverSlots = {
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+};
 
 /**
  * Determines popover padding and arrow size
@@ -14,159 +28,166 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 /**
  * Popover Props
  */
-export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
-  /**
-   * A popover can appear styled with brand or inverted.
-   * When not specified, the default style is used.
-   */
-  appearance?: 'brand' | 'inverted';
+export type PopoverProps = ComponentProps<Partial<PopoverSlots>> &
+  Pick<PortalProps, 'mountNode'> & {
+    /**
+     * A popover can appear styled with brand or inverted.
+     * When not specified, the default style is used.
+     */
+    appearance?: 'brand' | 'inverted';
 
-  /**
-   * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
-   * Alternatively can only contain `PopoverSurface` if using a custom `target`.
-   */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+    /**
+     * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
+     * Alternatively can only contain `PopoverSurface` if using a custom `target`.
+     */
+    children: [JSXElement, JSXElement] | JSXElement;
 
-  /**
-   * Close when scroll outside of it
-   *
-   * @default false
-   */
-  closeOnScroll?: boolean;
+    /**
+     * Close when scroll outside of it
+     *
+     * @default false
+     */
+    closeOnScroll?: boolean;
 
-  /**
-   * Used to set the initial open state of the Popover in uncontrolled mode
-   *
-   * @default false
-   */
-  defaultOpen?: boolean;
+    /**
+     * Used to set the initial open state of the Popover in uncontrolled mode
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
 
-  /**
-   * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
-   *
-   * @default false
-   */
-  inline?: boolean;
+    /**
+     * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
+     *
+     * @default false
+     */
+    inline?: boolean;
 
-  /**
-   * Sets the delay for closing popover on mouse leave
-   */
-  mouseLeaveDelay?: number;
+    /**
+     * Sets the delay for closing popover on mouse leave
+     */
+    mouseLeaveDelay?: number;
 
-  /**
-   * Display an arrow pointing to the target.
-   *
-   * @default false
-   */
-  withArrow?: boolean;
+    /**
+     * Display an arrow pointing to the target.
+     *
+     * @default false
+     */
+    withArrow?: boolean;
 
-  /**
-   * Call back when the component requests to change value
-   * The `open` value is used as a hint when directly controlling the component
-   */
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
-  onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
+    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
 
-  /**
-   * Controls the opening of the Popover
-   *
-   * @default false
-   */
-  open?: boolean;
+    /**
+     * Controls the opening of the Popover
+     *
+     * @default false
+     */
+    open?: boolean;
 
-  /**
-   * Flag to open the Popover as a context menu. Disables all other interactions
-   *
-   * @default false
-   */
-  openOnContext?: boolean;
+    /**
+     * Flag to open the Popover as a context menu. Disables all other interactions
+     *
+     * @default false
+     */
+    openOnContext?: boolean;
 
-  /**
-   * Flag to open the Popover by hovering the trigger
-   *
-   * @default false
-   */
-  openOnHover?: boolean;
+    /**
+     * Flag to open the Popover by hovering the trigger
+     *
+     * @default false
+     */
+    openOnHover?: boolean;
 
-  /**
-   * Flag to close the Popover when an iframe outside a PopoverSurface is focused
-   *
-   * @default true
-   */
-  closeOnIframeFocus?: boolean;
+    /**
+     * Flag to close the Popover when an iframe outside a PopoverSurface is focused
+     *
+     * @default true
+     */
+    closeOnIframeFocus?: boolean;
 
-  /**
-   * Configures the position of the Popover
-   */
-  positioning?: PositioningShorthand;
+    /**
+     * Configures the position of the Popover.
+     * Explore [Positioning docs](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs) for more options.
+     */
+    positioning?: PositioningShorthand;
 
-  /**
-   * Determines popover padding and arrow size
-   *
-   * @default medium
-   */
-  size?: PopoverSize;
+    /**
+     * Determines popover padding and arrow size
+     *
+     * @default medium
+     */
+    size?: PopoverSize;
 
-  /**
-   * Should trap focus
-   *
-   * @default false
-   */
-  trapFocus?: boolean;
+    /**
+     * Should trap focus
+     *
+     * @default false
+     */
+    trapFocus?: boolean;
 
-  /**
-   * Must be used with the `trapFocus` prop
-   * Enables older Fluent UI focus trap behavior where the user
-   * cannot tab into the window outside of the document. This is now
-   * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
-   * where the focus trap involves setting outside elements inert.
-   *
-   * @deprecated this behavior is default provided now, to opt-out of it in favor of standard behavior use the `inertTrapFocus` property
-   */
-  legacyTrapFocus?: boolean;
-  /**
-   * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
-   * where the focus trap involves setting outside elements inert,
-   * making navigation leak from the trapped area back to the browser toolbar and vice-versa.
-   *
-   * @default false
-   */
-  inertTrapFocus?: boolean;
+    /**
+     * Must be used with the `trapFocus` prop
+     * Enables older Fluent UI focus trap behavior where the user
+     * cannot tab into the window outside of the document. This is now
+     * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+     * where the focus trap involves setting outside elements inert.
+     *
+     * @deprecated this behavior is default provided now, to opt-out of it in favor of standard behavior use the `inertTrapFocus` property
+     */
+    legacyTrapFocus?: boolean;
+    /**
+     * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+     * where the focus trap involves setting outside elements inert,
+     * making navigation leak from the trapped area back to the browser toolbar and vice-versa.
+     *
+     * @default false
+     */
+    inertTrapFocus?: boolean;
 
-  /**
-   * By default Popover focuses the first focusable element in PopoverSurface on open.
-   * Specify `disableAutoFocus` to prevent this behavior.
-   *
-   * @default false
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_disableAutoFocus?: boolean;
-};
+    /**
+     * By default Popover focuses the first focusable element in PopoverSurface on open.
+     * Specify `disableAutoFocus` to prevent this behavior.
+     *
+     * @default false
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus?: boolean;
+  };
+
+export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
 
 /**
  * Popover State
  */
-export type PopoverState = Pick<
-  PopoverProps,
-  | 'appearance'
-  | 'mountNode'
-  | 'onOpenChange'
-  | 'openOnContext'
-  | 'openOnHover'
-  | 'trapFocus'
-  | 'withArrow'
-  | 'inertTrapFocus'
-> &
+export type PopoverState = ComponentState<InternalPopoverSlots> &
+  Pick<
+    PopoverProps,
+    | 'appearance'
+    | 'mountNode'
+    | 'onOpenChange'
+    | 'openOnContext'
+    | 'openOnHover'
+    | 'trapFocus'
+    | 'withArrow'
+    | 'inertTrapFocus'
+  > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
     /**
      * Ref of the pointing arrow
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement | null>;
 
     /**
      * Ref of the PopoverSurface
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     contentRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
@@ -198,8 +219,11 @@ export type PopoverState = Pick<
     /**
      * Ref of the PopoverTrigger
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
+
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'components' | 'size' | 'surfaceMotion'>;
 
 /**
  * Data attached to open/close events

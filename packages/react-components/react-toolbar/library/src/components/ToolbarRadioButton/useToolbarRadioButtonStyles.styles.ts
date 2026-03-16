@@ -1,11 +1,19 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 
 const useBaseStyles = makeStyles({
+  /* use subtle ToggleButton selected styles for Toolbar Radio selected state */
   selected: {
-    color: tokens.colorBrandForeground1,
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground2Selected,
+  },
+
+  iconSelected: {
+    color: tokens.colorNeutralForeground2BrandSelected,
   },
 });
 
@@ -15,10 +23,15 @@ const useBaseStyles = makeStyles({
 export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
   'use no memo';
 
-  useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 
-  state.root.className = mergeClasses(state.root.className, state.checked && toggleButtonStyles.selected);
+  state.root.className = mergeClasses(state.checked && toggleButtonStyles.selected, state.root.className);
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(state.checked && toggleButtonStyles.iconSelected, state.icon.className);
+  }
+
+  useToggleButtonStyles_unstable(state);
 
   return state;
 };

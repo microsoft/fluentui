@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Skeleton, SkeletonItem, makeStyles, Text, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -17,9 +18,9 @@ const useStyles = makeStyles({
   },
 });
 
-const SIZES = [8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
+const SIZES = [8, 12, 14, 16, 20, 22, 24, 28, 32, 36, 40, 48, 52, 56, 64, 72, 92, 96, 120, 128] as const;
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.wrapper}>

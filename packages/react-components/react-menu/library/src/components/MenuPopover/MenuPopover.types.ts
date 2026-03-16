@@ -1,5 +1,6 @@
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 export type MenuPopoverSlots = {
   root: Slot<'div'>;
@@ -20,4 +21,6 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> &
      * This option is disregarded for submenus
      */
     inline: boolean;
+
+    safeZone?: React.ReactElement | null;
   };

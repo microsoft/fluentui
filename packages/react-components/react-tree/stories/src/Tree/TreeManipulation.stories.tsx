@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -78,7 +79,7 @@ const CustomTreeItem = React.forwardRef(
   },
 );
 
-export const Manipulation = () => {
+export const Manipulation = (): JSXElement => {
   const [trees, setTrees] = React.useState(subtrees);
   const itemToFocusRef = React.useRef<HTMLDivElement>(null);
   const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();

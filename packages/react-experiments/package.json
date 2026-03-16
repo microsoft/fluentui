@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.14.197",
+  "version": "8.16.5",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,49 +15,37 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
-    "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u"
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "*",
-    "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
-    "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "*",
-    "react-hooks-testing-library": "^0.5.0",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "react-hooks-testing-library": "^0.5.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.122.11",
-    "@fluentui/theme": "^2.6.65",
+    "@fluentui/react": "^8.125.5",
+    "@fluentui/theme": "^2.7.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.25",
-    "@fluentui/foundation-legacy": "^8.4.24",
-    "@fluentui/font-icons-mdl2": "^8.5.58",
+    "@fluentui/foundation-legacy": "^8.6.5",
+    "@fluentui/font-icons-mdl2": "^8.5.72",
     "@fluentui/merge-styles": "^8.6.14",
-    "@fluentui/react-hooks": "^8.8.17",
+    "@fluentui/react-hooks": "^8.10.2",
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/style-utilities": "^8.11.7",
-    "@fluentui/utilities": "^8.15.20",
+    "@fluentui/style-utilities": "^8.15.0",
+    "@fluentui/utilities": "^8.17.2",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

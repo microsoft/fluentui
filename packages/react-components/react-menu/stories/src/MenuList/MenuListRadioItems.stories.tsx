@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { MenuList, MenuItemRadio, makeStyles, tokens } from '@fluentui/react-components';
 import {
@@ -28,7 +29,7 @@ const useMenuListContainerStyles = makeStyles({
   },
 });
 
-export const RadioItems = () => {
+export const RadioItems = (): JSXElement => {
   const styles = useMenuListContainerStyles();
   return (
     <div className={styles.container}>

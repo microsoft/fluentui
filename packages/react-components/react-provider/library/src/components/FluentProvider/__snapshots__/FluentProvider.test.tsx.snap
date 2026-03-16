@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`FluentProvider renders a default state 1`] = `
 <div
-  className="fui-FluentProvider fui-FluentProvider1"
+  class="fui-FluentProvider fui-FluentProvider1"
   dir="ltr"
 >
   Default FluentProvider

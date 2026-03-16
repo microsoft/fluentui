@@ -7,6 +7,8 @@ import { withResponsiveMode } from '../../ResponsiveMode';
 import type { IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import type { IDialogFooterProps } from './DialogFooter.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
 const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooterProps>).type;
@@ -32,7 +34,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
     });
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       showCloseButton,
       className,

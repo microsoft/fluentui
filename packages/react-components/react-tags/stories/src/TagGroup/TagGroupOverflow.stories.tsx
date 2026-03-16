@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagGroup,
   Tag,
@@ -142,7 +143,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithOverflow = () => {
+export const WithOverflow = (): JSXElement => {
   const styles = useStyles();
 
   return (

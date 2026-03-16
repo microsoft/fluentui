@@ -4,12 +4,11 @@ These design toolkits provide styles, controls and layout templates that enable 
 
 <ul className="md-list--flex">
   <li className="mdut--half">[Download Web toolkit (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
-  <li className="mdut--half">[Download Web toolkit (Figma)](https://aka.ms/FluentToolkits/Web/Figma)</li>
+  <li className="mdut--half">[Download Web toolkit (Figma)](https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web)</li>
   <li className="mdut--half">[Download iOS toolkit (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
-  <li className="mdut--half">[Download iOS toolkit (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
+  <li className="mdut--half">[Download iOS toolkit (Figma)](https://www.figma.com/community/file/836833645402438850/microsoft-fluent-2-ios)</li>
   <li className="mdut--half">[Download Android toolkit (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
-  <li className="mdut--half">[Download Android toolkit (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
-  <li className="mdut--half">[Download Windows toolkit (Figma)](https://aka.ms/figmatoolkit)</li>
+  <li className="mdut--half">[Download Android toolkit (Figma)](https://www.figma.com/community/file/836835062056249539/microsoft-fluent-android)</li>
 </ul>
 
 <!-- headings get auto-generated IDs usually, and this page has two "SharePoint Framework" headings -->

@@ -5,7 +5,11 @@ import type { IBaseButtonProps } from '@fluentui/react';
 
 import type { ButtonProps } from '@fluentui/react-components';
 
-export const shimButtonProps = (props: IBaseButtonProps & React.RefAttributes<HTMLButtonElement>): ButtonProps => {
+export const shimButtonProps = (
+  props: IBaseButtonProps &
+    // eslint-disable-next-line @typescript-eslint/no-restricted-types -- this is expected in order to be compatible with v8, as every v8 interface contains `React.RefAttributes` to accept ref as string
+    React.RefAttributes<HTMLButtonElement>,
+): ButtonProps => {
   //TODO: Icon shim. This still renders the v8 icon.
   const icon = props.onRenderIcon ? (
     props.onRenderIcon(props)

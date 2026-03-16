@@ -60,7 +60,7 @@ function normalizeOptions(schema: VerifyPackagingExecutorSchema, context: Execut
   const rootConfigFiles = [
     'just.config.[jt]s',
     'jest.config.[jt]s',
-    '.eslintrc.(js|json)',
+    'eslint.config.(js|cjs|mjs)',
     'project.json',
     '.babelrc.json',
     '.swcrc',

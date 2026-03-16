@@ -24,6 +24,8 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
  * A Switch Custom HTML Element.
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
  *
+ * @tag fluent-menu-item
+ *
  * @slot indicator - The checkbox or radio indicator
  * @slot start - Content which can be provided before the menu item content
  * @slot - The default slot for menu item content

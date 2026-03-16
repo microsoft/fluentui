@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "esnext",
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/index.stories.tsx"],
+  "files": ["../../node_modules/@types/webpack-env/index.d.ts"]
+}

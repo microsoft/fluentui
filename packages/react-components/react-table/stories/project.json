@@ -4,5 +4,6 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-table/stories/src",
-  "tags": ["vNext", "platform:web", "type:stories"]
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "targets": {}
 }

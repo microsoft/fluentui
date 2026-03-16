@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
@@ -38,6 +40,11 @@ const useRootStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
+  base: {
+    maxWidth: 'max-content',
+    maxHeight: 'max-content',
+  },
+
   vertical: {
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
@@ -134,6 +141,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
+      labelStyles.base,
       horizontal && labelStyles.horizontal,
       horizontal && size === 'small' && labelStyles.horizontalSmall,
       horizontal && size === 'large' && labelStyles.horizontalLarge,

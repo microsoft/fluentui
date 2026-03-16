@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, ProgressBar } from '@fluentui/react-components';
 
-export const Indeterminate = () => {
+export const Indeterminate = (): JSXElement => {
   return (
     <Field validationMessage="Indeterminate ProgressBar" validationState="none">
       <ProgressBar />

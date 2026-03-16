@@ -1,7 +1,9 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
+import { DIALOG_GAP, DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
 
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
   root: 'fui-DialogActions',
@@ -17,7 +19,7 @@ const useResetStyles = makeResetStyles({
   display: 'flex',
   gridRowStart: 3,
   gridRowEnd: 3,
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     flexDirection: 'column',
     justifySelf: 'stretch',
   },
@@ -28,7 +30,7 @@ const useStyles = makeStyles({
     justifySelf: 'end',
     gridColumnStart: 2,
     gridColumnEnd: 4,
-    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+    [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnStart: 1,
       gridRowStart: 4,
       gridRowEnd: 'auto',
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
     justifySelf: 'start',
     gridColumnStart: 1,
     gridColumnEnd: 2,
-    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+    [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnEnd: 4,
       gridRowStart: 3,
       gridRowEnd: 'auto',

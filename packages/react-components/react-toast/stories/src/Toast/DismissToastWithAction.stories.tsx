@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Link,
@@ -10,7 +11,7 @@ import {
   Toast,
 } from '@fluentui/react-components';
 
-export const DismissToastWithAction = () => {
+export const DismissToastWithAction = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>

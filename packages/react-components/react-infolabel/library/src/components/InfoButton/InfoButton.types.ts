@@ -18,7 +18,7 @@ export type InfoButtonSlots = {
 /**
  * InfoButton Props
  */
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'popover'> & {
   /**
    * Size of the InfoButton.
    *
@@ -32,6 +32,11 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
    * @default true
    */
   inline?: boolean;
+
+  /**
+   * The Popover element that wraps the info and root slots. Use this slot to pass props to the Popover.
+   */
+  popover?: InfoButtonSlots['popover'];
 };
 
 /**

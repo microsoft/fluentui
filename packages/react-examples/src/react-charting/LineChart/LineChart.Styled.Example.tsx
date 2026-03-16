@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   IChartProps,
   ILineChartPoints,
@@ -23,7 +24,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._styledExample()}</div>;
   }
 
@@ -34,7 +35,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _styledExample(): JSX.Element {
+  private _styledExample(): JSXElement {
     const points: ILineChartPoints[] = [
       {
         data: [
@@ -62,7 +63,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
       height: `${this.state.height}px`,
     };
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Styled">Change Width:</label>
         <input
           type="range"
@@ -115,7 +116,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             useUTC={false}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

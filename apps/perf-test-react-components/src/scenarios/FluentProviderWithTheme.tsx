@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-const LayoutShift: React.FunctionComponent = ({ children }) => {
+const LayoutShift: React.FunctionComponent<{ children?: React.ReactNode }> = ({ children }) => {
   // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     if (document.body) {

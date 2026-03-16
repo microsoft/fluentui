@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -119,16 +121,20 @@ const useStyles = makeStyles({
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
-
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+    },
+
+    '&:focus-within': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
   },
   underline: {

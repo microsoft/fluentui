@@ -7,13 +7,14 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
+export const renderSpinner_unstable: (state: SpinnerState) => JSXElement;
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;

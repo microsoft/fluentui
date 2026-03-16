@@ -1,11 +1,12 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { DefaultPalette } from '@fluentui/react';
 import { Button, makeStyles, Textarea, TextareaProps, RadioGroup, Radio } from '@fluentui/react-components';
 import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 const useStyles = makeStyles({
   root: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);

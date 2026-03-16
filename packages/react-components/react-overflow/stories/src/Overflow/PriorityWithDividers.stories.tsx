@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -58,7 +59,7 @@ const GROUPS = {
   FIVE: 5,
 };
 
-export const PriorityWithDividers = () => {
+export const PriorityWithDividers = (): JSXElement => {
   const styles = useStyles();
 
   return (

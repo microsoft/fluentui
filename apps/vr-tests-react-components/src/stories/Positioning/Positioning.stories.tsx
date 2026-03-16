@@ -1,15 +1,18 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import {
+  PositioningConfigurationProvider,
   usePositioning,
-  PositioningProps,
-  PositioningVirtualElement,
-  PositioningImperativeRef,
+  type PositioningProps,
+  type PositioningVirtualElement,
+  type PositioningImperativeRef,
   type PositioningRect,
+  type PositioningConfigurationFn,
 } from '@fluentui/react-positioning';
 import { useMergedRefs, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 import { Box, positions, useStyles } from './utils';
 import { getStoryVariant, RTL } from '../../utilities';
@@ -1025,6 +1028,49 @@ const BoundaryRect = () => {
   );
 };
 
+const ConfigurationProviderExample = () => {
+  const { containerRef, targetRef } = usePositioning({ position: 'after' });
+
+  return (
+    <div>
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef}>Container</Box>
+    </div>
+  );
+};
+
+const ConfigurationProvider = () => {
+  const styles = useStyles();
+  const configurationFn: PositioningConfigurationFn = React.useCallback(({ options }) => {
+    return {
+      ...options,
+      offset: { mainAxis: 20, crossAxis: 20 },
+    };
+  }, []);
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        flexDirection: 'column',
+
+        height: 400,
+        width: 400,
+        padding: '5px 50px',
+      }}
+    >
+      <ConfigurationProviderExample />
+
+      <PositioningConfigurationProvider value={configurationFn}>
+        <ConfigurationProviderExample />
+      </PositioningConfigurationProvider>
+    </div>
+  );
+};
+
 export default {
   title: 'Positioning',
 
@@ -1113,34 +1159,34 @@ export const AutoSizeOverflowPaddingRTL = getStoryVariant(_AutoSizeOverflowPaddi
 export const AutoSizeOverflowPaddingShorthand = () => <AutoSize overflowBoundaryPadding={10} />;
 AutoSizeOverflowPaddingShorthand.storyName = 'auto size overflow padding shorthand';
 
-export const AutoSizeWithAsyncContent = () => (
-  <StoryWright
-    steps={new Steps()
+export const _ConfigurationProvider = () => <ConfigurationProvider />;
+_ConfigurationProvider.storyName = 'configuration provider';
+
+export const AutoSizeWithAsyncContent = () => <AutoSizeAsyncContent />;
+AutoSizeWithAsyncContent.storyName = 'auto size with async content';
+AutoSizeWithAsyncContent.parameters = {
+  storyWright: {
+    steps: new Steps()
       .click('#load-content')
       .wait('#full-content')
       .snapshot('floating element is within the boundary')
-      .end()}
-  >
-    <AutoSizeAsyncContent />
-  </StoryWright>
-);
-AutoSizeWithAsyncContent.storyName = 'auto size with async content';
+      .end(),
+  },
+} satisfies StoryParameters;
 
-export const AutoSizeWithAsyncContentResetStylesOnUpdatePosition = () => (
-  <StoryWright
-    steps={new Steps()
+export const AutoSizeWithAsyncContentResetStylesOnUpdatePosition = () => <AutoSizeUpdatePosition />;
+AutoSizeWithAsyncContentResetStylesOnUpdatePosition.storyName =
+  'auto size with async content reset styles on updatePosition';
+AutoSizeWithAsyncContentResetStylesOnUpdatePosition.parameters = {
+  storyWright: {
+    steps: new Steps()
       .click('#load-content')
       .wait('#full-content')
       .wait(250) // let updatePosition finish
       .snapshot('floating element width fills boundary and overflows 10px because of overflow:clip')
-      .end()}
-  >
-    <AutoSizeUpdatePosition />
-  </StoryWright>
-);
-
-AutoSizeWithAsyncContentResetStylesOnUpdatePosition.storyName =
-  'auto size with async content reset styles on updatePosition';
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const _DisableTether = () => <DisableTether />;
 _DisableTether.storyName = 'disable tether';
@@ -1162,20 +1208,19 @@ TargetProperty.storyName = 'target property';
 export const _ImperativeTarget = () => <ImperativeTarget />;
 _ImperativeTarget.storyName = 'imperative target';
 
-export const _VisibilityModifiers = () => (
-  <StoryWright
-    steps={new Steps()
+export const _VisibilityModifiers = () => <VisibilityModifiers />;
+_VisibilityModifiers.storyName = 'visibility modifiers';
+_VisibilityModifiers.parameters = {
+  storyWright: {
+    steps: new Steps()
       .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
       .executeScript('document.querySelector("#scrollable-area").scrollTop = 80')
       .snapshot(`has "[data-popper-escaped]" when the popper escapes the reference element's boundary`)
       .executeScript('document.querySelector("#scrollable-area").scrollTop = 150')
       .snapshot('has "[data-popper-reference-hidden]" when the reference is hidden')
-      .end()}
-  >
-    <VisibilityModifiers />
-  </StoryWright>
-);
-_VisibilityModifiers.storyName = 'visibility modifiers';
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const _Arrow = () => <Arrow />;
 _Arrow.storyName = 'arrow';
@@ -1195,55 +1240,50 @@ DisableCssTransformWithPositionFixed.storyName = 'disable CSS transform with pos
 
 export const DisableCssTransformWithPositionFixedRTL = getStoryVariant(DisableCssTransformWithPositionFixed, RTL);
 
-export const MultipleScrollParents = () => (
-  <StoryWright steps={new Steps().click('#scroll').snapshot('container attached to target').end()}>
-    <MultiScrollParent />
-  </StoryWright>
-);
+export const MultipleScrollParents = () => <MultiScrollParent />;
 MultipleScrollParents.storyName = 'Multiple scroll parents';
+MultipleScrollParents.parameters = {
+  storyWright: { steps: new Steps().click('#scroll').snapshot('container attached to target').end() },
+} satisfies StoryParameters;
 
 export const _MatchTargetSize = () => <MatchTargetSize />;
 _MatchTargetSize.storyName = 'Match target size';
 
-export const PositioningEnd = () => (
-  <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end()}>
-    <PositioningEndEvent />
-  </StoryWright>
-);
+export const PositioningEnd = () => <PositioningEndEvent />;
 PositioningEnd.storyName = 'Positioning end';
+PositioningEnd.parameters = {
+  storyWright: { steps: new Steps().click('#target').snapshot('updated 2 times').end() },
+} satisfies StoryParameters;
 
-export const _TargetDisplayNone = () => (
-  <StoryWright steps={new Steps().click('#target').snapshot('target display: none').end()}>
-    <TargetDisplayNone />
-  </StoryWright>
-);
+export const _TargetDisplayNone = () => <TargetDisplayNone />;
 _TargetDisplayNone.storyName = 'Target display none';
+_TargetDisplayNone.parameters = {
+  storyWright: { steps: new Steps().click('#target').snapshot('target display: none').end() },
+} satisfies StoryParameters;
 
 export const _ShiftToCoverTargetWithAutoSize = () => <ShiftToCoverTargetWithAutoSize />;
 _ShiftToCoverTargetWithAutoSize.storyName = 'shiftToCoverTarget with autoSize';
 
-export const _ShiftToCoverTargetAsyncContent = () => (
-  <StoryWright
-    steps={new Steps()
-      .click('#load-content')
-      .wait('#full-content')
-      .snapshot('floating element is within the boundary')
-      .end()}
-  >
-    <ShiftToCoverTargetAsyncContent />
-  </StoryWright>
-);
+export const _ShiftToCoverTargetAsyncContent = () => <ShiftToCoverTargetAsyncContent />;
 _ShiftToCoverTargetAsyncContent.storyName = 'shiftToCoverTarget with autoSize and async content';
-
-export const _ShiftToCoverTargetHorizontal = () => (
-  <StoryWright
-    steps={new Steps()
+_ShiftToCoverTargetAsyncContent.parameters = {
+  storyWright: {
+    steps: new Steps()
       .click('#load-content')
       .wait('#full-content')
       .snapshot('floating element is within the boundary')
-      .end()}
-  >
-    <ShiftToCoverTargetAsyncContentHorizontal />
-  </StoryWright>
-);
+      .end(),
+  },
+} satisfies StoryParameters;
+
+export const _ShiftToCoverTargetHorizontal = () => <ShiftToCoverTargetAsyncContentHorizontal />;
 _ShiftToCoverTargetHorizontal.storyName = 'shiftToCoverTarget with autoSize and async content - horizontal';
+_ShiftToCoverTargetHorizontal.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .click('#load-content')
+      .wait('#full-content')
+      .snapshot('floating element is within the boundary')
+      .end(),
+  },
+} satisfies StoryParameters;

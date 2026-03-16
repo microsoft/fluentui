@@ -1,6 +1,7 @@
 import { debounce } from './debounce';
 
 describe('debounce', () => {
+  // eslint-disable-next-line no-promise-executor-return
   const tick = () => new Promise(res => setTimeout(res, 0));
 
   beforeAll(() => {

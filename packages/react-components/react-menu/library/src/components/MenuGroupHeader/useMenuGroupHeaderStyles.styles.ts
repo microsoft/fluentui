@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
+export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState): MenuGroupHeaderState => {
   'use no memo';
 
   const styles = useStyles();

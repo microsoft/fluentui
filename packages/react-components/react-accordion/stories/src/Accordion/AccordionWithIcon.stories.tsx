@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { RocketRegular } from '@fluentui/react-icons';
 
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
-export const WithIcon = () => (
+export const WithIcon = (): JSXElement => (
   <Accordion>
     <AccordionItem value="1">
       <AccordionHeader icon={<RocketRegular />}>Accordion Header 1</AccordionHeader>

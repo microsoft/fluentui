@@ -41,7 +41,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       outfile: cjsOutfile,
 
       // External dependencies should not be bundled
-      external: ['@griffel/core', '@griffel/react', 'react', 'react-dom', 'scheduler'],
+      external: ['@griffel/core', '@griffel/react', 'react', 'react-dom', 'react-dom/server', 'scheduler'],
       format: 'cjs',
       target: `node${NODE_MAJOR_VERSION}`,
       plugins: [pluginInstance],
@@ -55,7 +55,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       outfile: esmOutfile,
 
       inject: [
-        // @storybook/addon-actions has a condition based on "module", this works with Webpack, but it's not defined in
+        // storybook/actions has a condition based on "module", this works with Webpack, but it's not defined in
         // esbuild that causes ReferenceError.
         require.resolve('../shims/module'),
       ],

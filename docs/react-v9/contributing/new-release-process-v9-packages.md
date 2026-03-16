@@ -132,6 +132,9 @@ Following chapters describe required steps for each phase. All of them are gener
 
 > Following graph sums those steps as well https://github.com/microsoft/fluentui/blob/master/tools/workspace-plugin/src/generators/prepare-initial-release/README.md#v9-release-process-flow
 
+> [!TIP]
+> you can use `yarn generate` or Nx Console to navigate through the process.
+
 ## 1. Kick-off phase
 
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28474
@@ -153,15 +156,17 @@ This will do the usual scaffolding and adds `-preview` suffix to the package nam
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28505
 
 ```sh
-yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui/react-one-preview --phase=preview
+yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project react-one-preview --phase=preview
 ```
 
 ## 3. Stable phase
 
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28505
 
+You can use `yarn generate` or Nx Console to navigate through the process.
+
 ```sh
-yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui/react-one-preview --phase=stable
+yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project react-one-preview --phase=stable
 ```
 
 - TODO: deprecate all released `*-preview` package version on npm on CI during release

@@ -1,3 +1,5 @@
+'use client';
+
 import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
@@ -29,21 +31,22 @@ export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
-  const { navType = 'next' } = props;
+  const { navType = 'next', ...buttonProps } = props;
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
 
   const { dir } = useFluent();
-  const buttonRef = React.useRef<HTMLButtonElement>();
+  const buttonRef = React.useRef<HTMLButtonElement>(undefined);
   const circular = useCarouselContext(ctx => ctx.circular);
+  const [canLoop, setCanLoop] = React.useState(circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
   const resetAutoplay = useCarouselContext(ctx => ctx.resetAutoplay);
 
   const isTrailing = useCarouselContext(ctx => {
-    if (circular) {
+    if (circular && canLoop) {
       return false;
     }
 
@@ -85,6 +88,10 @@ export const useCarouselButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
+      if (data.canLoop !== undefined) {
+        // Only update canLoop if it has been defined by the carousel engine
+        setCanLoop(data.canLoop);
+      }
       setTotalSlides(data.navItemsCount);
     });
   }, [subscribeForValues]);
@@ -108,7 +115,7 @@ export const useCarouselButton_unstable = (
         tabIndex: isTrailing ? -1 : 0,
         'aria-disabled': isTrailing,
         appearance: 'subtle',
-        ...props,
+        ...buttonProps,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,

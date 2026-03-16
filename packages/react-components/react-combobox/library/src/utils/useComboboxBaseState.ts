@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
@@ -9,8 +11,9 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
 import { SelectionEvents } from './Selection.types';
 
 /**
- * @internal
  * State shared between Combobox and Dropdown components
+ *
+ * @internal
  */
 export const useComboboxBaseState = (
   props: ComboboxBaseProps & {

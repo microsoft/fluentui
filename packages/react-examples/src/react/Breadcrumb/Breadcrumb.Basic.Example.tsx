@@ -3,6 +3,7 @@ import { Breadcrumb, IBreadcrumbItem, IDividerAsProps } from '@fluentui/react/li
 import { Label, ILabelStyles } from '@fluentui/react/lib/Label';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { Icon } from '@fluentui/react/lib/Icon';
+import type { JSXElement } from '@fluentui/utilities';
 
 const labelStyles: Partial<ILabelStyles> = {
   root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } },
@@ -92,7 +93,7 @@ function _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBrea
   console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
 }
 
-function _getCustomDivider(dividerProps: IDividerAsProps): JSX.Element {
+function _getCustomDivider(dividerProps: IDividerAsProps): JSXElement {
   const tooltipText = dividerProps.item ? dividerProps.item.text : '';
   return (
     <TooltipHost content={`Show ${tooltipText} contents`} calloutProps={{ gapSpace: 0 }}>
@@ -103,6 +104,6 @@ function _getCustomDivider(dividerProps: IDividerAsProps): JSX.Element {
   );
 }
 
-function _getCustomOverflowIcon(): JSX.Element {
+function _getCustomOverflowIcon(): JSXElement {
   return <Icon iconName={'ChevronDown'} />;
 }

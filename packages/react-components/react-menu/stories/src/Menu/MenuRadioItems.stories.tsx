@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItemRadio, MenuPopover } from '@fluentui/react-components';
 import {
@@ -15,7 +16,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const RadioItems = () => {
+export const RadioItems = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

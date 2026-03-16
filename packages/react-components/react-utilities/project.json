@@ -4,5 +4,6 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-utilities/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {}
 }

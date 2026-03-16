@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AvatarGroup,
   AvatarGroupItem,
@@ -29,7 +30,7 @@ const names = [
   'Elliot Woodward',
 ];
 
-export const Indicator = () => {
+export const Indicator = (): JSXElement => {
   const styles = useStyles();
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 

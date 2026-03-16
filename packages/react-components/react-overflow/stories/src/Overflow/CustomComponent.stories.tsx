@@ -9,6 +9,7 @@ import {
   useIsOverflowItemVisible,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -51,7 +52,7 @@ const ItemVisibleCustomComponent: ForwardRefComponent<{
   return <Button ref={ref}>Item {props.appId}</Button>;
 });
 
-export const CustomComponent = () => {
+export const CustomComponent = (): JSXElement => {
   const styles = useStyles();
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());

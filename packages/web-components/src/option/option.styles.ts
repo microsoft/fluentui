@@ -41,7 +41,6 @@ export const styles = css`
     align-items: center;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-sizing: border-box;
     color: ${colorNeutralForeground2};
     column-gap: ${spacingHorizontalXS};
@@ -50,6 +49,7 @@ export const styles = css`
     grid-template-columns: auto auto 1fr;
     min-height: 32px;
     padding: ${spacingHorizontalSNudge};
+    text-align: start;
   }
 
   .content {
@@ -146,5 +146,11 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     grid-area: description;
     ${typographyCaption1Styles}
+  }
+
+  @media (forced-colors: active) {
+    :host(:disabled) {
+      color: GrayText;
+    }
   }
 `;

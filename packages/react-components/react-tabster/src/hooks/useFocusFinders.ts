@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Types as TabsterTypes } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -6,51 +8,63 @@ import { useTabster } from './useTabster';
 /**
  * Returns a set of helper functions that will traverse focusable elements in the context of a root DOM element
  */
-export const useFocusFinders = () => {
-  const tabster = useTabster();
+export const useFocusFinders = (): {
+  findAllFocusable: (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
+  findFirstFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
+  findLastFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
+  findNextFocusable: (
+    currentElement: HTMLElement | null,
+    options?: { container?: HTMLElement },
+  ) => HTMLElement | null | undefined;
+  findPrevFocusable: (
+    currentElement: HTMLElement | null,
+    options?: { container?: HTMLElement },
+  ) => HTMLElement | null | undefined;
+} => {
+  const tabsterRef = useTabster();
   const { targetDocument } = useFluent();
 
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
-    (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) =>
-      tabster?.focusable.findAll({ container, acceptCondition }) || [],
-    [tabster],
+    (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) =>
+      (container && tabsterRef.current?.focusable.findAll({ container, acceptCondition })) || [],
+    [tabsterRef],
   );
 
   const findFirstFocusable = React.useCallback(
-    (container: HTMLElement) => tabster?.focusable.findFirst({ container }),
-    [tabster],
+    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findFirst({ container }),
+    [tabsterRef],
   );
 
   const findLastFocusable = React.useCallback(
-    (container: HTMLElement) => tabster?.focusable.findLast({ container }),
-    [tabster],
+    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findLast({ container }),
+    [tabsterRef],
   );
 
   const findNextFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabster || !targetDocument) {
+    (currentElement: HTMLElement | null, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
+      if (!tabsterRef.current || !targetDocument || !currentElement) {
         return null;
       }
 
       const { container = targetDocument.body } = options;
 
-      return tabster.focusable.findNext({ currentElement, container });
+      return tabsterRef.current.focusable.findNext({ currentElement, container });
     },
-    [tabster, targetDocument],
+    [tabsterRef, targetDocument],
   );
 
   const findPrevFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabster || !targetDocument) {
+    (currentElement: HTMLElement | null, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
+      if (!tabsterRef.current || !targetDocument || !currentElement) {
         return null;
       }
 
       const { container = targetDocument.body } = options;
 
-      return tabster.focusable.findPrev({ currentElement, container });
+      return tabsterRef.current.focusable.findPrev({ currentElement, container });
     },
-    [tabster, targetDocument],
+    [tabsterRef, targetDocument],
   );
 
   return {

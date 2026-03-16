@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { styled } from '../../../Utilities';
 import { Suggestions } from './Suggestions';
@@ -58,19 +58,18 @@ function mockOnClick() {
 
 describe('Suggestions', () => {
   it('renders a list properly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Suggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions()}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('scrolls to selected index properly', () => {
-    const component = renderer.create(
+    const { container, rerender } = render(
       <Suggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
@@ -78,15 +77,14 @@ describe('Suggestions', () => {
       />,
     );
 
-    component.update(
+    rerender(
       <Suggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions(8)}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a list properly with CSS-in-JS styles', () => {
@@ -94,15 +92,14 @@ describe('Suggestions', () => {
       Suggestions,
       suggestionsStyles,
     );
-    const component = renderer.create(
+    const { container } = render(
       <StyledSuggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions()}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -125,7 +122,7 @@ describe('Suggestions', () => {
       suggestionsStyles,
     );
 
-    renderer.create(
+    render(
       <StyledSuggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
@@ -147,7 +144,7 @@ describe('Suggestions', () => {
       suggestionsStyles,
     );
 
-    renderer.create(
+    render(
       <StyledSuggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}

@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuItemSelectableState } from './types';
 import type { MenuItemState } from '../components/MenuItem/MenuItem.types';
@@ -20,7 +22,9 @@ const useStyles = makeStyles({
  *
  * @param state - should contain a `checkmark` slot
  */
-export const useCheckmarkStyles_unstable = (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => {
+export const useCheckmarkStyles_unstable = (
+  state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>,
+): void => {
   'use no memo';
 
   const styles = useStyles();

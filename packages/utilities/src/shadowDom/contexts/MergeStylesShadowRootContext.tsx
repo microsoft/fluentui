@@ -19,6 +19,7 @@ export const MergeStylesShadowRootContext = React.createContext<MergeStylesShado
 );
 
 export type MergeStylesShadowRootProviderProps = {
+  children?: React.ReactNode;
   /**
    * Shadow root for this context.
    */

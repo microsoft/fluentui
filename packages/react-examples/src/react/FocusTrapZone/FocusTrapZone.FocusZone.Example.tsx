@@ -22,7 +22,7 @@ const focusZoneStackStyles: Partial<IStackStyles> = {
 
 export const FocusTrapZoneFocusZoneExample: React.FunctionComponent = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
-  const toggle = React.useRef<IToggle>(null);
+  const toggle = React.useRef<IToggle | null>(null);
   return (
     <FocusTrapZone disabled={!useTrapZone} forceFocusInsideTrap focusPreviouslyFocusedInnerElement>
       <Stack tokens={stackTokens} horizontalAlign="start" styles={getTrapZoneStackStyles(useTrapZone)}>

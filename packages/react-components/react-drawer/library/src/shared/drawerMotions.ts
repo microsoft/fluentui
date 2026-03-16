@@ -4,6 +4,7 @@ import { ProviderContextValue_unstable as FluentProviderContextValue } from '@fl
 
 import type { DrawerBaseProps } from './DrawerBase.types';
 import { drawerCSSVars } from './useDrawerBaseStyles.styles';
+import { fadeAtom } from '@fluentui/react-motion-components-preview';
 
 export type DrawerMotionParams = Required<
   Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
@@ -24,7 +25,7 @@ export function getPositionTransform(
   position: DrawerBaseProps['position'],
   sizeVar: string,
   dir: FluentProviderContextValue['dir'],
-) {
+): string {
   const leftToRightTransform = `translate3d(var(${sizeVar}), 0, 0)`;
   const rightToLeftTransform = `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
   const bottomToTopTransform = `translate3d(0, var(${sizeVar}), 0)`;
@@ -57,7 +58,10 @@ export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({
       transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       opacity: 0,
     },
-    { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+    {
+      transform: 'translate3d(0, 0, 0)',
+      opacity: 1,
+    },
   ];
   const duration = durations[size];
 
@@ -115,19 +119,11 @@ export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>((
  * @internal
  */
 export const OverlaySurfaceBackdropMotion = createPresenceComponent(({ size }: OverlayDrawerSurfaceMotionParams) => {
-  const keyframes = [{ opacity: 0 }, { opacity: 1 }];
   const duration = durations[size];
+  const easing = motionTokens.curveLinear;
 
   return {
-    enter: {
-      keyframes,
-      easing: motionTokens.curveLinear,
-      duration,
-    },
-    exit: {
-      keyframes: [...keyframes].reverse(),
-      easing: motionTokens.curveLinear,
-      duration,
-    },
+    enter: fadeAtom({ direction: 'enter', duration, easing }),
+    exit: fadeAtom({ direction: 'exit', duration, easing }),
   };
 });

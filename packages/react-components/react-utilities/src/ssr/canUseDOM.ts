@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Verifies if an application can use DOM.
  */

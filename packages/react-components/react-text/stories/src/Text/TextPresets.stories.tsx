@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Body1,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Presets = () => {
+export const Presets = (): JSXElement => {
   const styles = useStyles();
 
   return (

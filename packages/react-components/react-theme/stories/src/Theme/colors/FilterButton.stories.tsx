@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Menu,
   MenuTrigger,
@@ -24,7 +25,7 @@ const tokensUseCase = {
   styles: ['inverted', 'static', 'transparent', 'alpha', 'link', 'accessible', 'subtle'],
 };
 
-export const TokensFilterButton = (props: FilterButtonInterface) => {
+export const TokensFilterButton = (props: FilterButtonInterface): JSXElement => {
   const { checkedValues, onChange } = props;
 
   return (
@@ -37,7 +38,7 @@ export const TokensFilterButton = (props: FilterButtonInterface) => {
         </MenuTrigger>
         <MenuPopover>
           {Object.entries(tokensUseCase).map(([key, useCases]) => (
-            <>
+            <React.Fragment key={key}>
               <MenuGroupHeader>{key.charAt(0).toUpperCase() + key.slice(1)}</MenuGroupHeader>
               <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
                 {useCases.map((useCase, index) => (
@@ -46,7 +47,7 @@ export const TokensFilterButton = (props: FilterButtonInterface) => {
                   </MenuItemRadio>
                 ))}
               </MenuList>
-            </>
+            </React.Fragment>
           ))}
         </MenuPopover>
       </Menu>

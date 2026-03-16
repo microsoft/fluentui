@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
@@ -20,10 +22,11 @@ type UseInputTriggerSlotOptions = {
 };
 
 /**
- * @internal
  * useInputTriggerSlot returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
+ *
+ * @internal
  */
 export function useInputTriggerSlot(
   triggerFromProps: NonNullable<Slot<'input'>>,

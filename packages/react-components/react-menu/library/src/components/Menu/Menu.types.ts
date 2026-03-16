@@ -1,17 +1,28 @@
 import * as React from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
 
-export type MenuSlots = {};
+export type MenuSlots = {
+  /**
+   * Slot for the surface motion animation.
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   */
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
+
+export type InternalMenuSlots = {
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+};
 
 /**
  * Extends and drills down Menulist props to simplify API
  */
-export type MenuProps = ComponentProps<MenuSlots> &
+export type MenuProps = ComponentProps<Partial<MenuSlots>> &
   Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
@@ -21,7 +32,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
      * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
 
     /**
      * Sets the delay for mouse open/close for the popover one mouse enter/leave
@@ -91,7 +102,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
     closeOnScroll?: boolean;
   };
 
-export type MenuState = ComponentState<MenuSlots> &
+export type MenuState = ComponentState<InternalMenuSlots> &
   Required<
     Pick<
       MenuProps,
@@ -127,7 +138,8 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the popup
      */
-    menuPopoverRef: React.MutableRefObject<HTMLElement>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    menuPopoverRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
      * Internal react node that just simplifies handling children
@@ -142,7 +154,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * Callback to open/close the popup
      */
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & { ignoreHoverDelay?: boolean }) => void;
 
     /**
      * Id for the MenuTrigger element for aria relationship
@@ -152,7 +164,8 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the MenuTrigger, used for popup positioning
      */
-    triggerRef: React.MutableRefObject<HTMLElement>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
      * Call back when the component requests to change value
@@ -167,6 +180,11 @@ export type MenuState = ComponentState<MenuSlots> &
      * the signature remains just to avoid breaking changes
      */
     defaultCheckedValues?: Record<string, string[]>;
+
+    /**
+     * An optional safe zone area to be rendered around the menu
+     */
+    safeZone?: React.ReactElement | null;
   };
 
 export type MenuContextValues = {
@@ -209,6 +227,14 @@ export type MenuOpenChangeData = {
   | {
       type: 'menuTriggerMouseEnter';
       event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuSafeZoneMouseEnter';
+      event: React.MouseEvent;
+    }
+  | {
+      type: 'menuSafeZoneTimeout';
+      event: Event;
     }
   | {
       type: 'menuTriggerMouseLeave';

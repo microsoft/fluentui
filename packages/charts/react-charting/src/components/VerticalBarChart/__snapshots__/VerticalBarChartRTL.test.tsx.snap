@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
@@ -15,12 +15,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -29,7 +30,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -44,7 +45,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -53,17 +54,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -71,7 +72,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -113,7 +114,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -200,8 +201,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -210,14 +211,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -259,7 +260,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -295,7 +296,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -346,11 +347,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -381,11 +385,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -416,11 +423,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -472,7 +482,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -804,12 +814,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -818,7 +829,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -833,7 +844,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -842,17 +853,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -860,7 +871,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -902,7 +913,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -989,8 +1000,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -999,14 +1010,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1048,7 +1059,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1084,7 +1095,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1135,11 +1146,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -1170,11 +1184,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -1205,11 +1222,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -1261,7 +1281,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1606,12 +1626,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_5"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_6"
       />
       <div
         class=
@@ -1620,7 +1641,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               outline: none;
             }
             {
-              overflow: auto;
+              position: relative;
             }
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
@@ -1635,7 +1656,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -1644,17 +1665,17 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -1662,7 +1683,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_5"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -1704,7 +1725,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -1791,8 +1812,8 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -1801,14 +1822,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_5"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -1850,7 +1871,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -1886,7 +1907,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -1937,11 +1958,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="56"
                 y="203.6"
               >
-                10.0k
+                10k
               </text>
             </g>
             <g>
@@ -1972,11 +1996,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="270.61538461538464"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
             <g>
@@ -2007,11 +2034,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="592.5384615384615"
                 y="108.80000000000001"
               >
-                30.0k
+                30k
               </text>
             </g>
           </g>
@@ -2063,7 +2093,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -2385,7 +2415,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty2"
+    id="_VBC_empty1"
     role="alert"
     style="opacity: 0;"
   />
@@ -2407,12 +2437,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -2421,13 +2452,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 bars. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2436,7 +2467,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2445,17 +2476,17 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -2463,19 +2494,19 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
           <path
             class="domain"
-            d="M279.5,6V0.5H391.5V6"
+            d="M56.5,6V0.5H614.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(287,0)"
+            transform="translate(56.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2493,7 +2524,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(335,0)"
+            transform="translate(163.80769230769232,0)"
           >
             <line
               stroke="currentColor"
@@ -2505,13 +2536,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               y="16"
             >
-              10000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(383,0)"
+            transform="translate(271.11538461538464,0)"
           >
             <line
               stroke="currentColor"
@@ -2523,7 +2554,61 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               y="16"
             >
-              25000
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(378.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(485.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(593.0384615384615,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
             </text>
           </g>
         </g>
@@ -2538,8 +2623,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -2548,14 +2633,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2597,7 +2682,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -2633,7 +2718,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -2656,11 +2741,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           </g>
         </g>
         <g>
-          <g
-            transform="translate(0, 0)"
-          >
+          <g>
             <rect
               aria-label="2020/04/30. First, 10%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
@@ -2669,7 +2757,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="0"
               width="16"
-              x="279"
+              x="48"
               y="209.6"
             />
             <text
@@ -2681,18 +2769,24 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
-              x="287"
+              x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
-          <g
-            transform="translate(0, 0)"
-          >
+          <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#002050"
               height="237"
@@ -2701,7 +2795,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="-1"
               width="16"
-              x="327"
+              x="262.61538461538464"
               y="20"
             />
             <text
@@ -2713,18 +2807,24 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
-              x="335"
+              x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
-          <g
-            transform="translate(0, 0)"
-          >
+          <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
@@ -2733,7 +2833,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="-1"
               width="16"
-              x="375"
+              x="584.5384615384615"
               y="114.80000000000001"
             />
             <text
@@ -2745,11 +2845,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
-              x="383"
+              x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -2801,7 +2904,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -9958,12 +10061,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -9972,7 +10076,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -9987,7 +10091,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -9996,17 +10100,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -10014,7 +10118,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -10056,7 +10160,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -10143,8 +10247,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -10153,14 +10257,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -10202,7 +10306,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              −38k
+              −37.5k
             </text>
           </g>
           <g
@@ -10238,7 +10342,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              −13k
+              −12.5k
             </text>
           </g>
           <g
@@ -10289,6 +10393,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="79.39999999999998"
@@ -10324,6 +10431,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="269"
@@ -10358,6 +10468,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -10415,7 +10528,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -12229,12 +12342,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -12243,7 +12357,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -12258,7 +12372,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -12267,17 +12381,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -12285,7 +12399,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -12327,7 +12441,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -12414,8 +12528,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -12424,14 +12538,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -12473,7 +12587,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -12509,7 +12623,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -12560,11 +12674,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -12595,11 +12712,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -12630,11 +12750,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -12686,7 +12809,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -13018,12 +13141,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -13032,7 +13156,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -13047,7 +13171,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -13056,17 +13180,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -13074,7 +13198,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -13116,7 +13240,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -13203,8 +13327,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -13213,14 +13337,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -13262,7 +13386,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -13298,7 +13422,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -13332,8 +13456,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -13342,14 +13466,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementSecondarychart_3"
+            id="yAxisGElementSecondarychart_2"
             text-anchor="start"
             transform="translate(610, 0)"
           >
@@ -13479,11 +13603,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -13514,11 +13641,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="262.92307692307696"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -13549,11 +13679,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="573.3076923076924"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -13605,7 +13738,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -13937,12 +14070,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -13951,7 +14085,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -13966,7 +14100,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -13975,17 +14109,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -13993,7 +14127,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -14086,8 +14220,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -14096,14 +14230,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -14145,7 +14279,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              880
+              875
             </text>
           </g>
           <g
@@ -14163,7 +14297,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              1.8k
+              1.75k
             </text>
           </g>
           <g
@@ -14181,7 +14315,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              2.6k
+              2.63k
             </text>
           </g>
           <g
@@ -14209,6 +14343,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a medium long label. . 3500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#627CEF"
               height="237"
@@ -14229,6 +14368,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="263"
               y="14"
@@ -14241,6 +14383,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a long label This is a long label. 2500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#C19C00"
               height="169.28571428571428"
@@ -14261,6 +14408,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="311"
               y="81.71428571428572"
@@ -14273,6 +14423,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This label is as long as the previous one. 1900."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#E650AF"
               height="128.65714285714284"
@@ -14293,6 +14448,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="359"
               y="122.34285714285716"
@@ -14305,6 +14463,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="A short label. 2800."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#0E7878"
               height="189.60000000000002"
@@ -14324,6 +14487,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="407"
@@ -14381,7 +14547,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -14513,12 +14679,13 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -14527,7 +14694,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             outline: none;
           }
           {
-            overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -14542,7 +14709,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -14551,17 +14718,17 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -14569,7 +14736,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -14611,7 +14778,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -14698,8 +14865,8 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -14708,14 +14875,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -14862,11 +15029,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="85.10000000000002"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -14896,6 +15066,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -14932,11 +15105,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="37.69999999999999"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -14988,7 +15164,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -15333,10 +15509,8 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone5"
+
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -15358,17 +15532,17 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -15418,7 +15592,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -15505,8 +15679,8 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -15515,9 +15689,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -15564,7 +15738,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -15600,7 +15774,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -15634,7 +15808,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_14"
+              id="_VBC_bar_15"
               role="img"
               rx="0"
               tabindex="0"
@@ -15651,11 +15825,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -15669,7 +15846,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_16"
+              id="_VBC_bar_17"
               role="img"
               rx="0"
               tabindex="-1"
@@ -15686,11 +15863,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -15704,7 +15884,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_18"
+              id="_VBC_bar_19"
               role="img"
               rx="0"
               tabindex="-1"
@@ -15721,11 +15901,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -15760,7 +15943,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone7"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -16168,10 +16351,8 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone5"
+
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -16193,17 +16374,17 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -16253,7 +16434,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -16340,8 +16521,8 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -16350,9 +16531,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -16399,7 +16580,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -16435,7 +16616,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -16469,7 +16650,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_14"
+              id="_VBC_bar_15"
               role="img"
               rx="0"
               tabindex="0"
@@ -16486,11 +16667,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -16504,7 +16688,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_16"
+              id="_VBC_bar_17"
               role="img"
               rx="0"
               tabindex="-1"
@@ -16521,11 +16705,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -16539,7 +16726,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_18"
+              id="_VBC_bar_19"
               role="img"
               rx="0"
               tabindex="-1"
@@ -16556,11 +16743,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -16595,7 +16785,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone7"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >

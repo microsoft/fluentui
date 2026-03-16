@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   TreeChart,
   ITreeProps,
@@ -69,7 +70,7 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createTreeChart()}</div>;
   }
 
@@ -77,9 +78,9 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
     this.setState({ _layoutWidth: parseInt(e.target.value, 10) });
   };
 
-  private _createTreeChart(): JSX.Element {
+  private _createTreeChart(): JSXElement {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -99,7 +100,7 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
           height={this.state._height}
           margins={{ top: 30, right: 130, bottom: 30, left: 50 }}
         />
-      </>
+      </div>
     );
   }
 }

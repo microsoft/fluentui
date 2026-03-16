@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 
-import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
+import { CheckmarkCircleFilled, DiamondDismissFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
@@ -27,7 +29,7 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
       defaultIcon = <CheckmarkCircleFilled />;
       break;
     case 'error':
-      defaultIcon = <DismissCircleFilled />;
+      defaultIcon = <DiamondDismissFilled />;
       break;
     case 'warning':
       defaultIcon = <WarningFilled />;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import {
   bundleIcon,
@@ -15,7 +16,7 @@ const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 
-export const Interaction = (props: Partial<MenuProps>) => {
+export const Interaction = (props: Partial<MenuProps>): JSXElement => {
   return (
     <Menu {...props}>
       <MenuTrigger disableButtonEnhancement>

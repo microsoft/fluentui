@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 import {
   Toolbar,
@@ -18,21 +18,29 @@ import {
   FontDecreaseRegular,
   TextFontRegular,
 } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
-import { steps } from './utils';
+import type { Meta } from '@storybook/react-webpack5';
 
 export default {
   title: 'Toolbar Converged',
   component: Toolbar,
   decorators: [
     story => (
-      <StoryWright steps={steps}>
-        <div className="testWrapper" style={{ width: '600px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '600px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('#snooze-toggle')
+        .snapshot('Toggle On', { cropTo: '.testWrapper' })
+        .mouseDown('#bold-button')
+        .snapshot('Button Pressed', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Toolbar>;
 
 export const Default = (props: Partial<ToolbarProps>) => (

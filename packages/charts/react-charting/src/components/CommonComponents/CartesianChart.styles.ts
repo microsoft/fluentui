@@ -1,11 +1,21 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { FontSizes, FontWeights, HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { NeutralColors, isIE11 } from '@fluentui/react';
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { isIE11 } from '@fluentui/react';
+import { CARTESIAN_XAXIS_CLASSNAME, getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
-  const { className, theme, isRtl, shouldHighlight, href, lineColor = 'transparent', toDrawShape } = props;
+  const {
+    className,
+    theme,
+    isRtl,
+    shouldHighlight,
+    href,
+    lineColor = 'transparent',
+    toDrawShape,
+    enableReflow,
+  } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -16,53 +26,54 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         height: '100%',
         flexDirection: 'column',
         overflow: 'hidden',
+        position: 'relative',
       },
       className,
     ],
     chartWrapper: {
-      overflow: 'auto',
+      position: 'relative',
+      ...(enableReflow ? { overflow: 'auto' } : {}),
     },
-    axisTitle: [
-      theme.fonts.xSmall,
+    plotContainer: {
+      position: 'relative',
+      width: '100%',
+      height: '100%',
+    },
+    axisTitle: getAxisTitleStyle(theme!, theme.fonts.xSmall),
+    axisAnnotation: getAxisTitleStyle(theme!, theme.fonts.small),
+    xAxis: [
       {
-        textAlign: 'center',
-        fontWeight: FontWeights.semibold,
-        fontStyle: 'normal',
-        lineHeight: FontSizes.medium,
-        color: NeutralColors.gray160,
-        fill: theme.semanticColors.bodyText,
-      },
-    ],
-    xAxis: {
-      selectors: {
-        text: [
-          theme.fonts.tiny,
-          {
-            fill: theme.semanticColors.bodyText,
-            fontWeight: '600',
+        selectors: {
+          text: [
+            theme.fonts.tiny,
+            {
+              fill: theme.semanticColors.bodyText,
+              fontWeight: '600',
+              selectors: {
+                [HighContrastSelector]: {
+                  fill: 'CanvasText',
+                },
+              },
+            },
+          ],
+          line: {
+            opacity: 0.2,
+            stroke: theme.semanticColors.bodyText,
+            width: '1px',
             selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
+              [HighContrastSelector]: {
+                opacity: 0.1,
+                stroke: 'CanvasText',
               },
             },
           },
-        ],
-        line: {
-          opacity: 0.2,
-          stroke: theme.semanticColors.bodyText,
-          width: '1px',
-          selectors: {
-            [HighContrastSelectorBlack]: {
-              opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
-            },
+          path: {
+            display: 'none',
           },
         },
-        path: {
-          display: 'none',
-        },
       },
-    },
+      CARTESIAN_XAXIS_CLASSNAME,
+    ],
     yAxis: {
       selectors: {
         text: [
@@ -71,8 +82,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
             fill: theme.semanticColors.bodyText,
             fontWeight: '600',
             selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
+              [HighContrastSelector]: {
+                fill: 'CanvasText',
               },
             },
           },
@@ -84,9 +95,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           opacity: 0.2,
           stroke: theme.semanticColors.bodyText,
           selectors: {
-            [HighContrastSelectorBlack]: {
+            [HighContrastSelector]: {
               opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
+              stroke: 'CanvasText',
             },
           },
         },
@@ -158,8 +169,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       ...fonts.small,
       lineHeight: '16px',
       selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
+        [HighContrastSelector]: {
+          color: 'CanvasText',
         },
       },
       color: theme.semanticColors.bodySubtext,
@@ -170,8 +181,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         fontWeight: 'bold',
         lineHeight: '22px',
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
       },
@@ -180,8 +191,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       theme.fonts.small,
       {
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
         color: theme.semanticColors.bodyText,
@@ -190,5 +201,15 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
+    tooltip: getTooltipStyle(theme),
+    svgTooltip: {
+      fill: theme.semanticColors.bodyBackground,
+      [HighContrastSelector]: {
+        fill: 'Canvas',
+      },
+    },
+    annotationLayer: {
+      pointerEvents: 'none',
+    },
   };
 };

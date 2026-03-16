@@ -17,6 +17,8 @@ import { AreaChartDataChangeExample } from './AreaChart.DataChange.Example';
 import { AreaChartNegativeExample } from './AreaChart.Negative.Example';
 import { AreaChartMultipleNegativeExample } from './AreaChart.MultipleNegative.Example';
 import { AreaChartAllNegativeExample } from './AreaChart.AllNegative.Example';
+import { AreaChartSecondaryYAxisExample } from './AreaChart.SecondaryYAxis.Example';
+import type { JSXElement } from '@fluentui/utilities';
 
 const AreaChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
@@ -36,8 +38,11 @@ const AreaChartMultipleNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.MultipleNegative.Example.tsx') as string;
 const AreaChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.AllNegative.Example.tsx') as string;
+const AreaChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.SecondaryYAxis.Example.tsx') as string;
+
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Area Chart"
@@ -70,6 +75,9 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Area chart All negative y value data" code={AreaChartAllNegativeExampleCode}>
               <AreaChartAllNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart secondary y-axis" code={AreaChartSecondaryYAxisExampleCode}>
+              <AreaChartSecondaryYAxisExample />
             </ExampleCard>
           </div>
         }

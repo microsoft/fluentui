@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
 
 const useLayoutStyles = makeStyles({
@@ -23,7 +24,7 @@ const useLayoutStyles = makeStyles({
   },
 });
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const layoutStyles = useLayoutStyles();
   const smallId = useId('small-id');
   const mediumId = useId('medium-id');

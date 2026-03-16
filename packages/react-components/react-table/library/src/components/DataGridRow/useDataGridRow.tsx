@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';
@@ -72,6 +74,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   return {
     ...baseState,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...baseState.components,
       selectionCell: DataGridSelectionCell,
     },

@@ -4,6 +4,7 @@
 import { Portal } from '@fluentui/react-portal';
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
@@ -12,7 +13,7 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 /**
  * Render the final JSX of Dropdown
  */
-export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues) => {
+export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues): JSXElement => {
   assertSlots<DropdownSlots>(state);
 
   return (

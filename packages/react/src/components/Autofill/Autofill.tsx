@@ -11,6 +11,8 @@ import {
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IAutofillState {
   inputValue: string;
   isComposing: boolean;
@@ -34,6 +36,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   };
   // need to check WindowContext to get the provided document
   public static contextType = WindowContext;
+  public context: any;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
@@ -98,7 +101,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate(_: any, previousState: IAutofillState, cursor: ICursorLocation | null) {
+  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -114,8 +117,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
-      _doesTextStartWith(suggestedDisplayValue, this.value) &&
-      previousState.inputValue !== this.value
+      _doesTextStartWith(suggestedDisplayValue, this.value)
     ) {
       let shouldSelectFullRange = false;
 
@@ -151,7 +153,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     this._async.dispose();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     const style = { ...this.props.style, fontFamily: 'inherit' };
     return (
@@ -176,11 +178,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     );
   }
 
-  public focus() {
+  public focus(): void {
     this._inputElement.current && this._inputElement.current.focus();
   }
 
-  public clear() {
+  public clear(): void {
     this._autoFillEnabled = true;
     this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
@@ -250,7 +252,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     if (!(ev.nativeEvent as any).isComposing) {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       switch (ev.which) {
-        case KeyCodes.del:
         case KeyCodes.backspace:
           this._autoFillEnabled = false;
           break;

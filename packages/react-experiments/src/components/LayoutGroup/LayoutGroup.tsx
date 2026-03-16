@@ -3,6 +3,7 @@ import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { getNativeProps, divProperties } from '@fluentui/react/lib/Utilities';
 import type { ILayoutGroupProps } from './LayoutGroup.types';
 import type { IRawStyle } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   public static defaultProps: ILayoutGroupProps = {
@@ -11,14 +12,14 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     justify: 'start',
   };
 
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const { children, direction, layoutGap, justify } = this.props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const numberOfChildren = React.Children.count(children);
 
-    const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
+    const group = React.Children.map(children, (child: React.ReactElement | string | number, i: number) => {
       const isLastChild = i === numberOfChildren - 1;
 
       // Render individual item

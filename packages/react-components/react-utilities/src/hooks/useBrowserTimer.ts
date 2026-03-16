@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 type BrowserTimerSetter =
@@ -5,11 +7,11 @@ type BrowserTimerSetter =
   | ((fn: () => void) => number);
 
 /**
- * @internal
  * Helper to manage a browser timer.
  * Ensures that the timer isn't set multiple times at once,
  * and is cleaned up when the component is unloaded.
  *
+ * @internal
  * @param setTimer - The timer setter function
  * @param cancelTimer - The timer cancel function
  * @returns A pair of [setTimer, cancelTimer] that are stable between renders.
@@ -20,7 +22,10 @@ type BrowserTimerSetter =
  * setTimer(() => console.log('Hello world!'), 1000);
  * cancelTimer();
  */
-export function useBrowserTimer(setTimer: BrowserTimerSetter, cancelTimer: (id: number) => void) {
+export function useBrowserTimer(
+  setTimer: BrowserTimerSetter,
+  cancelTimer: (id: number) => void,
+): [(fn: () => void, delay?: number) => number, () => void] {
   const id = React.useRef<number | undefined>(undefined);
 
   const set = React.useCallback(

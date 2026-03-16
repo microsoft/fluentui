@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Tag } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { Meta } from '@storybook/react-webpack5';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps } from 'storywright';
 
@@ -13,7 +14,7 @@ const steps = new Steps().snapshot('default').end();
 export default {
   title: 'Tag Converged',
   component: Tag,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Tag>;
 
 export const Default = () => <Tag>Primary Text</Tag>;
@@ -81,3 +82,28 @@ export const SizeExtraSmallWithMedia = () => (
     Primary Text
   </Tag>
 );
+
+// selected
+export const Selected = () => (
+  <Tag selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const SelectedHighContrast = getStoryVariant(Selected, HIGH_CONTRAST);
+export const SelectedDarkMode = getStoryVariant(Selected, DARK_MODE);
+
+export const OutlineSelected = () => (
+  <Tag appearance="outline" selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
+export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);
+
+export const BrandSelected = () => (
+  <Tag appearance="brand" selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const BrandSelectedHighContrast = getStoryVariant(BrandSelected, HIGH_CONTRAST);
+export const BrandSelectedDarkMode = getStoryVariant(BrandSelected, DARK_MODE);

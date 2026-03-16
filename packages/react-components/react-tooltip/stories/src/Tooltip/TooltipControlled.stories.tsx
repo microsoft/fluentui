@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox, Tooltip } from '@fluentui/react-components';
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [visible, setVisible] = React.useState(false);
   const [enabled, setEnabled] = React.useState(false);
   return (

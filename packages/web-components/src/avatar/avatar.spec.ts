@@ -6,10 +6,47 @@ test.describe('Avatar', () => {
     tagName: 'fluent-avatar',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-avatar');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a `role` of `img`', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
+  });
+
+  test('should render an icon when no name or initials are provided', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const icon = element.locator('svg');
+
+    await fastPage.setTemplate({ innerHTML: `\n\n\n` });
+
+    await expect(icon).toBeVisible();
+
+    await test.step('should NOT render the icon when empty elements are present in the default slot', async () => {
+      await fastPage.setTemplate({ innerHTML: `<div></div><span></span>\n\n` });
+
+      await expect(icon).toBeHidden();
+    });
+
+    await test.step('should retain comment nodes in the default slot when no name or initials are provided', async () => {
+      await fastPage.setTemplate({ innerHTML: `\n<!--hello-->\n<!--world-->\n` });
+
+      await expect(icon).toBeVisible();
+    });
   });
 
   test('When no name value is set, should render with custom initials based on the provided initials value', async ({
@@ -20,6 +57,12 @@ test.describe('Avatar', () => {
     await fastPage.setTemplate({ attributes: { initials: 'JD' } });
 
     await expect(element).toContainText('JD');
+
+    await test.step('should NOT render the default icon', async () => {
+      const icon = element.locator('svg');
+
+      await expect(icon).toBeHidden();
+    });
   });
 
   test('When name value is set, should generate initials based on the provided name value', async ({ fastPage }) => {
@@ -58,16 +101,16 @@ test.describe('Avatar', () => {
     await expect(element).toHaveJSProperty('active', 'inactive');
   });
 
-  test('should have a custom state of `neutral` when no color is provided', async ({ fastPage }) => {
-    await expect(fastPage.element).toHaveCustomState('neutral');
+  test('should have a data-color attribute of `neutral` when no color is provided', async ({ fastPage }) => {
+    await expect(fastPage.element).toHaveAttribute('data-color', 'neutral');
   });
 
-  test('should add a custom state of `brand` when `brand is provided as the color', async ({ fastPage }) => {
+  test('should add a data-color attribute of `brand` when `brand is provided as the color', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({ attributes: { color: 'brand', 'color-id': 'pumpkin', name: 'John Doe' } });
 
-    await expect(element).toHaveCustomState('brand');
+    await expect(element).toHaveAttribute('data-color', 'brand');
   });
 
   test('should prioritize color derivation from `colorId` over `name` when set to "colorful"', async ({ fastPage }) => {
@@ -75,10 +118,10 @@ test.describe('Avatar', () => {
 
     await fastPage.setTemplate({ attributes: { color: 'colorful', 'color-id': 'pumpkin', name: 'Steve Smith' } });
 
-    await expect(element).toHaveCustomState('pumpkin');
+    await expect(element).toHaveAttribute('data-color', 'pumpkin');
   });
 
-  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
+  test('should set the `data-color` attribute to match the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
     for (const color of Object.values(AvatarColor)) {
@@ -91,7 +134,7 @@ test.describe('Avatar', () => {
 
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (color !== AvatarColor.colorful) {
-          await expect.soft(element).toHaveCustomState(color);
+          await expect.soft(element).toHaveAttribute('data-color', color);
         }
       });
     }

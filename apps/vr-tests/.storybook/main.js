@@ -13,7 +13,6 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     name: '@storybook/react-webpack5',
     options: {
       builder: {
-        useSWC: true,
         lazyCompilation: false,
       },
     },
@@ -24,31 +23,8 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
   },
   webpackFinal: config => {
     registerTsPaths({ config, configFile: tsConfigPath });
-    registerRules({ config, rules: [rules.scssRule] });
+    registerRules({ config, rules: [rules.swcRule, rules.scssRule] });
 
     return config;
-  },
-  swc() {
-    return {
-      jsc: {
-        target: 'es2019',
-        parser: {
-          syntax: 'typescript',
-          tsx: true,
-          decorators: true,
-          dynamicImport: true,
-        },
-        transform: {
-          decoratorMetadata: true,
-          legacyDecorator: true,
-        },
-        keepClassNames: true,
-        externalHelpers: true,
-        loose: true,
-        minify: {
-          mangle: false,
-        },
-      },
-    };
   },
 });

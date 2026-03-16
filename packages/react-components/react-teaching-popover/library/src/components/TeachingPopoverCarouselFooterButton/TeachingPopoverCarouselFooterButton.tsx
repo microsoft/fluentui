@@ -1,9 +1,12 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTeachingPopoverCarouselFooterButton_unstable } from './useTeachingPopoverCarouselFooterButton';
 import { renderTeachingPopoverCarouselFooterButton_unstable } from './renderTeachingPopoverCarouselFooterButton';
 import { useTeachingPopoverCarouselFooterButtonStyles_unstable } from './useTeachingPopoverCarouselFooterButtonStyles.styles';
 import type { TeachingPopoverCarouselFooterButtonProps } from './TeachingPopoverCarouselFooterButton.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TeachingPopoverCarouselFooterButton component
@@ -16,6 +19,8 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
     const state = useTeachingPopoverCarouselFooterButton_unstable(props, ref);
 
     useTeachingPopoverCarouselFooterButtonStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useTeachingPopoverCarouselFooterButtonStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselFooterButton_unstable(state);
   });

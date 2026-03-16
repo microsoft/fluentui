@@ -1,4 +1,13 @@
-module.exports = {
+// @ts-check
+const importPlugin = require('eslint-plugin-import');
+const { defineConfig } = require('eslint/config');
+
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig({
+  files: ['**/*.{ts,tsx,js,jsx,cjs,mjs}'],
+  plugins: {
+    import: importPlugin,
+  },
   rules: {
     /**
      * core eslint rules
@@ -24,4 +33,4 @@ module.exports = {
       },
     ],
   },
-};
+});

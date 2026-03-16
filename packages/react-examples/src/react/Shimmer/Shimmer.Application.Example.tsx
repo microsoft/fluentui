@@ -3,6 +3,7 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react';
 import { ShimmeredDetailsList } from '@fluentui/react/lib/ShimmeredDetailsList';
 import { useSetInterval, useConst } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IShimmerApplicationExampleState {
   lastIntervalId: number;
@@ -54,7 +55,7 @@ const randomFileIcon = (): { docType: string; url: string } => {
   };
 };
 
-const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   if (column.key === 'thumbnail') {
     return <img src={item.thumbnail} />;
   }

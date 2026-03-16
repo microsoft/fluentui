@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AvatarGroup,
   AvatarGroupItem,
@@ -32,7 +33,7 @@ const names = [
 
 const sizes: AvatarSize[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
-export const SizeStack = () => {
+export const SizeStack = (): JSXElement => {
   const styles = useStyles();
 
   return (

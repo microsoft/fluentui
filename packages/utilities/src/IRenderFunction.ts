@@ -1,8 +1,8 @@
+import type { JSXElement } from './jsx';
+
 /**
  * Render function interface for providing overrideable render callbacks.
  *
  * @public
  */
-export interface IRenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
-}
+export type IRenderFunction<P> = (props?: P, defaultRender?: (props?: P) => JSXElement | null) => JSXElement | null;

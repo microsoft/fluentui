@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { ToastTriggerState } from './ToastTrigger.types';
 
 /**
@@ -5,4 +6,4 @@ import type { ToastTriggerState } from './ToastTrigger.types';
  *
  * Only renders children
  */
-export const renderToastTrigger_unstable = (state: ToastTriggerState) => state.children;
+export const renderToastTrigger_unstable = (state: ToastTriggerState): JSXElement | null => state.children;

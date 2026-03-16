@@ -1,12 +1,14 @@
 import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnd, keyHome } from '@microsoft/fast-web-utilities';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
-import { MenuItem } from '../menu-item/menu-item.js';
-import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
+import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu Custom HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#menu | ARIA menu }.
+ *
+ * @tag fluent-menu-list
  *
  * @slot - The default slot for the menu items
  *
@@ -159,7 +161,7 @@ export class MenuList extends FASTElement {
   }
 
   private static elementIndent(el: HTMLElement): MenuItemColumnCount {
-    const role = el.getAttribute('role');
+    const role = el.role;
     const startSlot = el.querySelector('[slot=start]');
 
     if (role && role !== MenuItemRole.menuitem) {
@@ -205,9 +207,7 @@ export class MenuList extends FASTElement {
     }, 0);
 
     filteredMenuListItems?.forEach((item: HTMLElement) => {
-      if (item instanceof MenuItem) {
-        item.setAttribute('data-indent', `${indent}`);
-      }
+      item.dataset.indent = `${indent}`;
     });
   }
 
@@ -237,7 +237,7 @@ export class MenuList extends FASTElement {
     if (changedMenuItem.role === 'menuitemradio' && changedMenuItem.checked === true) {
       for (let i = changeItemIndex - 1; i >= 0; --i) {
         const item: Element = this.menuItems[i];
-        const role: string | null = item.getAttribute('role');
+        const role: string | null = (item as HTMLElement).role;
         if (role === MenuItemRole.menuitemradio) {
           (item as MenuItem).checked = false;
         }
@@ -248,7 +248,7 @@ export class MenuList extends FASTElement {
       const maxIndex: number = this.menuItems.length - 1;
       for (let i = changeItemIndex + 1; i <= maxIndex; ++i) {
         const item: Element = this.menuItems[i];
-        const role: string | null = item.getAttribute('role');
+        const role: string | null = (item as HTMLElement).role;
         if (role === MenuItemRole.menuitemradio) {
           (item as MenuItem).checked = false;
         }
@@ -263,10 +263,7 @@ export class MenuList extends FASTElement {
    * check if the item is a menu item
    */
   protected isMenuItemElement = (el: Element): el is HTMLElement => {
-    return (
-      el instanceof MenuItem ||
-      (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
-    );
+    return isMenuItem(el) || (isHTMLElement(el) && !!el.role && el.role in MenuList.focusableElementRoles);
   };
 
   /**

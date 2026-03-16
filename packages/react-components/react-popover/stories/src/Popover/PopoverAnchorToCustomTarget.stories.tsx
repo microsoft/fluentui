@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
@@ -23,7 +24,7 @@ const ExampleContent = () => {
   );
 };
 
-export const AnchorToCustomTarget = () => {
+export const AnchorToCustomTarget = (): JSXElement => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const buttonRef = React.useCallback(
     (el: HTMLButtonElement | null) => {

@@ -7,6 +7,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
+  aipage: {
+    extensions: ['page'],
+  },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
@@ -164,11 +167,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'make',
       'manifest',
       'master',
-      'md',
-      'markdn',
-      'markdown',
-      'mdown',
-      'mkdn',
       'ml',
       'mli',
       'mll',
@@ -361,6 +359,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
     extensions: ['one', 'onepart'],
   },
+  onepage: {
+    extensions: ['onepage'],
+  },
   onetoc: {
     // This is an entire OneNote notebook.
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
@@ -437,12 +438,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spo: {
     extensions: ['aspx'],
   },
+  spocampaign: {},
   sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
+    extensions: ['epub', 'gdoc', 'odt', 'md', 'markdn', 'markdown', 'mdown', 'mkdn', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
   playlist: {},

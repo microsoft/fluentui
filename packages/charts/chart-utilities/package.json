@@ -1,0 +1,51 @@
+{
+  "name": "@fluentui/chart-utilities",
+  "version": "1.1.38",
+  "description": "React web chart utilities.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev:storybook",
+    "start:legacy": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "cross-env TZ=UTC just-scripts jest -u"
+  },
+  "dependencies": {
+    "@fluentui/set-version": "^8.2.24",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {},
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}

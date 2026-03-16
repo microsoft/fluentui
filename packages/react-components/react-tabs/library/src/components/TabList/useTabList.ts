@@ -1,14 +1,18 @@
+'use client';
+
 import * as React from 'react';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import {
-  getIntrinsicElementProps,
-  useControllableState,
-  useEventCallback,
-  useMergedRefs,
-  slot,
-} from '@fluentui/react-utilities';
-import type { TabRegisterData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
-import { TabValue } from '../Tab/Tab.types';
+import { type TabsterDOMAttribute, useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useControllableState, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import type {
+  TabRegisterData,
+  SelectTabData,
+  SelectTabEvent,
+  TabListBaseProps,
+  TabListBaseState,
+  TabListProps,
+  TabListState,
+} from './TabList.types';
+import type { TabValue } from '../Tab';
 
 /**
  * Create the state required to render TabList.
@@ -20,29 +24,47 @@ import { TabValue } from '../Tab/Tab.types';
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
+  const { appearance = 'transparent', reserveSelectedTabSpace = true, size = 'medium' } = props;
+  const state = useTabListBase_unstable(props, ref);
+  const focusAttributes = useTabListA11yBehavior_unstable({ vertical: state.vertical });
+
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      ...focusAttributes,
+    },
+    appearance,
+    reserveSelectedTabSpace,
+    size,
+  };
+};
+
+/**
+ * Create the state required to render TabList.
+ *
+ * The returned state can be modified with hooks such as useTabListStyles_unstable,
+ * before being passed to renderTabList_unstable.
+ *
+ * @param props - props from this instance of TabList
+ * @param ref - reference to root HTMLElement of TabList
+ */
+export const useTabListBase_unstable = (props: TabListBaseProps, ref: React.Ref<HTMLElement>): TabListBaseState => {
   const {
-    appearance = 'transparent',
-    reserveSelectedTabSpace = true,
     disabled = false,
     onTabSelect,
     selectTabOnFocus = false,
-    size = 'medium',
     vertical = false,
+    selectedValue: controlledSelectedValue,
+    defaultSelectedValue,
+    ...rest
   } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: vertical ? 'vertical' : 'horizontal',
-    memorizeCurrent: false,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault: true,
-  });
-
   const [selectedValue, setSelectedValue] = useControllableState({
-    state: props.selectedValue,
-    defaultState: props.defaultSelectedValue,
+    state: controlledSelectedValue,
+    defaultState: defaultSelectedValue,
     initialState: undefined,
   });
 
@@ -66,7 +88,21 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const registeredTabs = React.useRef<Record<string, TabRegisterData>>({});
 
   const onRegister = useEventCallback((data: TabRegisterData) => {
-    registeredTabs.current[JSON.stringify(data.value)] = data;
+    const key = JSON.stringify(data.value);
+
+    if (!key && process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.error(
+        [
+          `[@fluentui/react-tabs] The value "${data.value}" cannot be serialized to JSON string.`,
+          'Tab component requires serializable values.',
+          'Please provide a primitive value (string, number, boolean),',
+          `or a plain object/array that doesn't contain functions, symbols, or circular references.`,
+        ].join(' '),
+      );
+    }
+
+    registeredTabs.current[key] = data;
   });
 
   const onUnregister = useEventCallback((data: TabRegisterData) => {
@@ -86,28 +122,40 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      {
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'tablist',
         'aria-orientation': vertical ? 'vertical' : 'horizontal',
-        ...focusAttributes,
-        ...props,
-      } as const),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-    appearance,
-    reserveSelectedTabSpace,
     disabled,
     selectTabOnFocus,
     selectedValue,
-    size,
-    vertical,
     onRegister,
     onUnregister,
     onSelect,
     getRegisteredTabs,
+    vertical,
   };
+};
+
+/**
+ * Hook to get accessibility attributes for TabList component, such as roving tab index.
+ * Based on Tabster's useArrowNavigationGroup.
+ *
+ * @param vertical - whether the TabList is vertical
+ * @returns Tabster DOM attributes
+ */
+export const useTabListA11yBehavior_unstable = ({
+  vertical,
+}: Pick<TabListBaseState, 'vertical'>): TabsterDOMAttribute => {
+  return useArrowNavigationGroup({
+    circular: true,
+    axis: vertical ? 'vertical' : 'horizontal',
+    memorizeCurrent: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault: true,
+  });
 };

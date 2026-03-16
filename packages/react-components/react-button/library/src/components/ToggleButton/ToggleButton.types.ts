@@ -1,4 +1,4 @@
-import type { ButtonProps, ButtonState } from '../Button/Button.types';
+import type { ButtonBaseProps, ButtonBaseState, ButtonProps, ButtonState } from '../Button/Button.types';
 
 export type ToggleButtonProps = ButtonProps & {
   /**
@@ -19,4 +19,8 @@ export type ToggleButtonProps = ButtonProps & {
   checked?: boolean;
 };
 
+export type ToggleButtonBaseProps = ButtonBaseProps & Pick<ToggleButtonProps, 'defaultChecked' | 'checked'>;
+
 export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
+
+export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked'>>;

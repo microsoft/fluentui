@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react-calendar-compat';
 
 const workWeekDays = [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday];
 
-export const CalendarNonContiguousWorkWeekDays = () => {
+export const CalendarNonContiguousWorkWeekDays = (): JSXElement => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 

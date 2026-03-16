@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon, Stack, TooltipHost } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   CollapsibleSection,
   CollapsibleSectionTitle,
@@ -16,7 +17,7 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
       render: (renderProps, DefaultComponent) => (
         // Supplement the default title text with an icon. Wrap in a Stack for proper placement.
         <Stack grow horizontal horizontalAlign="space-between">
-          <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
+          <DefaultComponent {...renderProps}>{props.text as React.ReactNode}</DefaultComponent>
           <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
         </Stack>
       ),
@@ -32,14 +33,18 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
 };
 
 export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <p>
           This CollapsibleSection has been customized with a TooltipHost around its entire title and an icon in its
           title.
         </p>
-        <Stack maxWidth={200} styles={{ root: { border: '1px solid black' } }}>
+        <Stack
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          maxWidth={200}
+          styles={{ root: { border: '1px solid black' } }}
+        >
           <CollapsibleSection
             key={1}
             defaultCollapsed={true}

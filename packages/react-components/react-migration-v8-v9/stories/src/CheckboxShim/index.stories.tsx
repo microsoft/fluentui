@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import descriptionMd from './Description.md';
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   return (

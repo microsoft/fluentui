@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar, addDays } from '@fluentui/react-calendar-compat';
 import type { CalendarDayProps } from '@fluentui/react-calendar-compat';
 
@@ -6,7 +7,7 @@ const calendarDayProps: Partial<CalendarDayProps> = {
   getMarkedDays: (startingDate, _) => [addDays(startingDate, 3), addDays(startingDate, 4)],
 };
 
-export const CalendarMarkedDays = () => {
+export const CalendarMarkedDays = (): JSXElement => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   return (

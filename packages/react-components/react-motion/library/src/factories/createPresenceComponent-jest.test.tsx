@@ -1,4 +1,3 @@
-import { useEventCallback } from '@fluentui/react-utilities';
 import { act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
@@ -12,13 +11,9 @@ const TestPresence = createPresenceComponent({
   enter: { keyframes, ...options },
   exit: { keyframes: keyframes.slice().reverse(), ...options },
 });
-const TestComponent: React.FC<{ appear?: boolean; finish?: () => void }> = props => {
-  const { appear, finish } = props;
-
+const TestComponent: React.FC<{ appear?: boolean; onMotionFinish?: () => void }> = props => {
+  const { appear, onMotionFinish } = props;
   const [visible, setVisible] = React.useState(true);
-  const onMotionFinish = useEventCallback(() => {
-    finish?.();
-  });
 
   return (
     <>
@@ -43,9 +38,10 @@ describe('createPresenceComponent (jest)', () => {
   });
 
   it('unmounts when state changes', () => {
-    const finish = jest.fn();
-    const { getByText, queryByText } = render(<TestComponent finish={finish} />);
+    const onMotionFinish = jest.fn();
+    const { getByText, queryByText } = render(<TestComponent onMotionFinish={onMotionFinish} />);
 
+    expect(onMotionFinish).toHaveBeenCalledTimes(0);
     expect(queryByText('Hello')).toBeInTheDocument();
 
     // ---
@@ -54,7 +50,7 @@ describe('createPresenceComponent (jest)', () => {
       userEvent.click(getByText('Click me'));
     });
 
-    expect(finish).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
     expect(queryByText('Hello')).not.toBeInTheDocument();
 
     // ---
@@ -63,15 +59,15 @@ describe('createPresenceComponent (jest)', () => {
       userEvent.click(getByText('Click me'));
     });
 
-    expect(finish).toHaveBeenCalledTimes(2);
+    expect(onMotionFinish).toHaveBeenCalledTimes(2);
     expect(queryByText('Hello')).toBeInTheDocument();
   });
 
   it('handles "appear"', () => {
-    const finish = jest.fn();
-    const { getByText, queryByText } = render(<TestComponent appear finish={finish} />);
+    const onMotionFinish = jest.fn();
+    const { getByText, queryByText } = render(<TestComponent appear onMotionFinish={onMotionFinish} />);
 
-    expect(finish).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
     expect(queryByText('Hello')).toBeInTheDocument();
 
     // ---
@@ -80,7 +76,7 @@ describe('createPresenceComponent (jest)', () => {
       userEvent.click(getByText('Click me'));
     });
 
-    expect(finish).toHaveBeenCalledTimes(2);
+    expect(onMotionFinish).toHaveBeenCalledTimes(2);
     expect(queryByText('Hello')).not.toBeInTheDocument();
   });
 });

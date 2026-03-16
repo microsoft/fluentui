@@ -28,6 +28,9 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },
+  // Keeps Jest from using too much memory as GC gets invokes more often, makes tests slower
+  // https://stackoverflow.com/a/75857711
+  workerIdleMemoryLimit: '1024MB',
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@griffel/jest-serializer'],

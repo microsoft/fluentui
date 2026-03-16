@@ -13,6 +13,7 @@ import {
   mergeStyles,
 } from '@fluentui/react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 const itemClass = mergeStyles({
   selectors: {
@@ -29,13 +30,13 @@ const buildColumn = (): IColumn[] => {
   );
 };
 const columns: IColumn[] = buildColumn();
-const onRenderPlainCard = (item: IExampleItem): JSX.Element => {
+const onRenderPlainCard = (item: IExampleItem): JSXElement => {
   const src = item.thumbnail + `/${getColorFromString(item.color)!.hex}`;
   return <Image src={src} width={item.width} height={item.height} imageFit={ImageFit.cover} />;
 };
-const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
     renderData: item,
   };
   if (column.key === 'color') {

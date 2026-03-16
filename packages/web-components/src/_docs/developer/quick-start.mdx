@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Quick Start" />
+
+# Quick Start
+
+## Install Fluent UI Web Components v3
+
+Fluent UI web components and Fluent tokens should be installed as a `dependency` of your app. Both packages are also [available on unpkg](https://unpkg.com/@fluentui/web-components).
+
+```sh
+npm install @fluentui/web-components @fluentui/tokens
+```
+
+## Basic Usage: Import entire component bundle
+
+The easiest way to get up and running with Fluent Web Components is to use our entire component bundle. You will also need Fluent UI's design token CSS on the page in either by generating stylesheet yourself or using our `setTheme` utility.
+
+```js
+// Import all components and the setTheme utility
+import '@fluentui/web-components/web-components.min.js';
+
+// Set theme
+import { webLightTheme } from '@fluentui/tokens';
+setTheme(webLightTheme);
+```
+
+## Recommended Usage: Use our tree-shakable component exports
+
+To reduce your production bundle size, we offer each component as a standalone ESM export. We recommend this pathway for maximum performance and tree-shaking. There are two options for importing individual components.
+
+### Importing the defined component
+
+Our defined component exports will import single components _and_ define the custom element on the page.
+
+```js
+// Import with side-effectful Custom Element definitions
+import '@fluentui/web-components/button.js';
+import '@fluentui/web-components/dialog.js';
+
+// Set theme
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+setTheme(webLightTheme);
+```
+
+Note: If a component has a child component dependency, you will need to import both components (e.g. Tablist and Tab).
+
+### Defining the element yourself using named imports
+
+If you want to control side-effects and need granular control of when your component definitions are defined, import the named imports for each component definition, and call the `define` method.
+
+```js
+// Import non-side-effectful component definitions
+import { ButtonDefinition, DialogDefinition, FluentDesignSystem } from '@fluentui/web-components';
+
+// Manual component definition
+ButtonDefinition.define(FluentDesignSystem.registry);
+DialogDefinition.define(FluentDesignSystem.registry);
+
+// Set theme
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+setTheme(webLightTheme);
+```

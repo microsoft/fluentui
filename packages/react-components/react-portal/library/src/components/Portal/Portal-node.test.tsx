@@ -6,21 +6,18 @@
 
 import { SSRProvider } from '@fluentui/react-utilities';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { renderToString } from 'react-dom/server';
 import { Portal } from './Portal';
 
 describe('Portal (node)', () => {
   it('renders hidden span as virtual parent in SSR', () => {
-    const component = renderer.create(
+    const html = renderToString(
       <SSRProvider>
         <Portal>portals content</Portal>
       </SSRProvider>,
     );
 
-    expect(component.toJSON()).toMatchInlineSnapshot(`
-      <span
-        hidden={true}
-      />
-    `);
+    // Portal renders nothing on the server
+    expect(html).toMatchInlineSnapshot(`"<span hidden=\\"\\"></span>"`);
   });
 });

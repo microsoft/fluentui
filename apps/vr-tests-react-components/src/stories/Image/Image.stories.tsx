@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Image } from '@fluentui/react-image';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
 export default {
   title: 'Image Converged',
-
-  decorators: [
-    (story: () => React.ReactNode) => <StoryWright steps={new Steps().snapshot('normal').end()}>{story()}</StoryWright>,
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Image>;
 
 export const Default = () => (

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 export type MessageBarTransitionContextValue = {
@@ -26,5 +28,5 @@ export const MessageBarTransitionContextProvider = messageBarTransitionContext.P
 /**
  * @internal
  */
-export const useMessageBarTransitionContext = () =>
+export const useMessageBarTransitionContext = (): MessageBarTransitionContextValue =>
   React.useContext(messageBarTransitionContext) ?? messageBarTransitionContextDefaultValue;

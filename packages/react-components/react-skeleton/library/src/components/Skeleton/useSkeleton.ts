@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SkeletonProps, SkeletonState } from './Skeleton.types';
@@ -14,7 +16,7 @@ import { useSkeletonContext } from '../../contexts/SkeletonContext';
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
   const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
-  const { animation = contextAnimation ?? 'wave', appearance = contextAppearance ?? 'opaque' } = props;
+  const { animation = contextAnimation ?? 'wave', appearance = contextAppearance ?? 'opaque', size, shape } = props;
 
   const root = slot.always(
     getIntrinsicElementProps('div', {
@@ -28,5 +30,5 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
     }),
     { elementType: 'div' },
   );
-  return { animation, appearance, components: { root: 'div' }, root };
+  return { animation, appearance, size, shape, components: { root: 'div' }, root };
 };

@@ -10,6 +10,8 @@ export {
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
+  getSlotClassNameProp_unstable,
+  SLOT_CLASS_NAME_PROP_SYMBOL,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
@@ -18,6 +20,7 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  RefAttributes,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -41,6 +44,7 @@ export {
   IdPrefixProvider,
   resetIdsForTests,
   useAnimationFrame,
+  useApplyScrollbarWidth,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -63,6 +67,7 @@ export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
+  getReactElementRef,
   getRTLSafeKey,
   mergeCallbacks,
   isHTMLElement,
@@ -71,7 +76,13 @@ export {
   createPriorityQueue,
 } from './utils/index';
 
-export type { DistributiveOmit, UnionToIntersection } from './utils/types';
+export type {
+  DistributiveOmit,
+  UnionToIntersection,
+  JSXElement,
+  JSXIntrinsicElement,
+  JSXIntrinsicElementKeys,
+} from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 

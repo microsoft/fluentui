@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Line chart rendering Should render the Line chart with date x-axis data 1`] = `
 <div>
@@ -3897,12 +3897,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -3912,6 +3913,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -3926,7 +3928,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3935,17 +3937,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -3953,7 +3955,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4082,8 +4084,8 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4092,14 +4094,14 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4435,7 +4437,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4767,12 +4769,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -4782,6 +4785,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -4796,7 +4800,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4805,17 +4809,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -4823,7 +4827,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4952,8 +4956,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4962,14 +4966,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5301,7 +5305,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -5639,12 +5643,13 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -5654,6 +5659,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -5668,7 +5674,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5677,17 +5683,17 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -5695,7 +5701,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -5824,8 +5830,8 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -5834,14 +5840,14 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5953,8 +5959,8 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -5963,14 +5969,14 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementSecondarychart_9"
+            id="yAxisGElementSecondarychart_8"
             text-anchor="start"
             transform="translate(610, 0)"
           >
@@ -6307,7 +6313,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -6639,12 +6645,13 @@ exports[`Line chart rendering should render the line chart with all negative y v
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -6654,6 +6661,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -6668,7 +6676,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -6677,17 +6685,17 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -6695,7 +6703,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -6824,8 +6832,8 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -6834,14 +6842,14 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -7177,7 +7185,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -7509,12 +7517,13 @@ exports[`Line chart rendering should render the line chart with negative y value
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -7524,6 +7533,7 @@ exports[`Line chart rendering should render the line chart with negative y value
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -7538,7 +7548,7 @@ exports[`Line chart rendering should render the line chart with negative y value
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -7547,17 +7557,17 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -7565,7 +7575,7 @@ exports[`Line chart rendering should render the line chart with negative y value
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -7694,8 +7704,8 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -7704,14 +7714,14 @@ exports[`Line chart rendering should render the line chart with negative y value
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -7825,7 +7835,7 @@ exports[`Line chart rendering should render the line chart with negative y value
               fill="currentColor"
               x="-10"
             >
-              130
+              129
             </text>
           </g>
         </g>
@@ -8065,7 +8075,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -8397,12 +8407,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -8412,6 +8423,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -8426,7 +8438,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -8435,17 +8447,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -8453,7 +8465,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -8582,8 +8594,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -8592,14 +8604,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8935,7 +8947,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -9267,12 +9279,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_9"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -9282,6 +9295,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -9296,7 +9310,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -9305,17 +9319,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -9323,7 +9337,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_9"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -9452,8 +9466,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -9462,14 +9476,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_9"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -9805,7 +9819,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -10150,12 +10164,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
-      id="chart_12"
+      id="chart_11"
     >
       <div
-        id="defaultTabbableElement_13"
+        id="defaultTabbableElement_12"
       />
       <div
         class=
@@ -10165,6 +10180,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             }
             {
               overflow: auto;
+              position: relative;
             }
         data-focuszone-id="FocusZone14"
         data-tabster="{\\"uncontrolled\\": {}}"
@@ -10179,7 +10195,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -10188,17 +10204,17 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -10206,7 +10222,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_12"
+            id="xAxisGElementchart_11"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -10335,8 +10351,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -10345,14 +10361,14 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_12"
+            id="yAxisGElementchart_11"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -10688,7 +10704,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }

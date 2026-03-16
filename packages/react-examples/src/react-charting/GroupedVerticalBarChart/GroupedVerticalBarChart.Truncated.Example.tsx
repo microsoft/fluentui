@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox, Label, Stack, TextField } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IGroupedBarChartState {
   width: number;
@@ -37,7 +38,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -69,7 +70,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     this.setState({ xAxisOuterPadding: Number(e.target.value) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data = [
       {
         name: 'Data (Text that exceeds the maximum number of characters is truncated)',
@@ -117,7 +118,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -218,6 +219,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             showXAxisLablesTooltip
             noOfCharsToTruncate={6}
@@ -239,7 +241,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

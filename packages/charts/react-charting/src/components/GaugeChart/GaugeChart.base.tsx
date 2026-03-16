@@ -10,24 +10,26 @@ import {
   GaugeChartVariant,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   Points,
   areArraysEqual,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
   getNextGradient,
   pointTypes,
+  ChartTitle,
 } from '../../utilities/index';
-import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
+import { ILegend, ILegendContainer, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -47,7 +49,7 @@ export const BREAKPOINTS = [
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
-export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number): number => {
   let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
   if (needleRotation < 0) {
     needleRotation = 0;
@@ -64,7 +66,7 @@ export const getSegmentLabel = (
   maxValue: number,
   variant?: GaugeChartVariant,
   isAriaLabel: boolean = false,
-) => {
+): string => {
   if (isAriaLabel) {
     return minValue === 0 && variant === GaugeChartVariant.SingleSegment
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
@@ -134,6 +136,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
   private _legendsHeight: number;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -157,6 +160,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     this._isRTL = getRTL(props.theme);
     this._calloutAnchor = '';
+    this._legendsRef = React.createRef();
   }
 
   public componentDidMount(): void {
@@ -196,31 +200,35 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       className: this.props.className,
-      chartWidth: width,
-      chartHeight: height - this._legendsHeight,
       chartValueSize,
     });
 
     return (
-      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
+        <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
           <svg
             className={this._classNames.chart}
             role="region"
             aria-label={this._getChartTitle()}
             onMouseLeave={this._handleMouseOut}
+            width={width}
+            height={height - this._legendsHeight}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (
-                <text
+                <ChartTitle
+                  title={this.props.chartTitle}
                   x={0}
                   y={-(this._outerRadius + TITLE_OFFSET)}
-                  textAnchor="middle"
                   className={this._classNames.chartTitle}
-                  aria-hidden={true}
-                >
-                  {this.props.chartTitle}
-                </text>
+                  titleStyles={this.props.titleStyles}
+                  tooltipClassName={this._classNames.svgTooltip}
+                />
               )}
               {!this.props.hideMinMax && (
                 <>
@@ -232,7 +240,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Min value: ${this._minValue}`}
                   >
-                    {formatValueWithSIPrefix(this._minValue)}
+                    {formatScientificLimitWidth(this._minValue)}
                   </text>
                   <text
                     x={(this._isRTL ? -1 : 1) * (this._outerRadius + LABEL_OFFSET)}
@@ -242,7 +250,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Max value: ${this._maxValue}`}
                   >
-                    {formatValueWithSIPrefix(this._maxValue)}
+                    {formatScientificLimitWidth(this._maxValue)}
                   </text>
                 </>
               )}
@@ -359,6 +367,15 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   public get chartContainer(): HTMLElement | null {
     return this._rootElem;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRTL,
+      opts,
+    );
+  };
 
   private _getMargins = () => {
     const { hideMinMax, chartTitle, sublabel } = this.props;
@@ -514,6 +531,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {...this.props.legendProps}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={this._onLegendSelectionChange.bind(this)}
+          ref={this._legendsRef}
         />
       </div>
     );
@@ -651,7 +669,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture) as React.ReactNode}
           </div>
         </div>
         <div
@@ -724,7 +742,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -746,10 +764,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                  culture,
-                )}
+                {
+                  formatToLocaleString(
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                    culture,
+                  ) as React.ReactNode
+                }
               </div>
             </div>
           </div>
@@ -765,9 +785,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {' '}
+                  {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                 </div>
               </div>
             );

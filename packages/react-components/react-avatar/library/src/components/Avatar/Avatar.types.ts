@@ -1,5 +1,5 @@
 import { PresenceBadge } from '@fluentui/react-badge';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 
 /**
  * Sizes for the avatar
@@ -155,6 +155,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
   size?: AvatarSize;
 };
 
+export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
+
 /**
  * State used in rendering Avatar
  */
@@ -168,5 +170,7 @@ export type AvatarState = ComponentState<AvatarSlots> &
     /**
      * Hidden span to render the active state label for the purposes of including in the aria-labelledby, if needed.
      */
-    activeAriaLabelElement?: JSX.Element;
+    activeAriaLabelElement?: JSXElement;
   };
+
+export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;

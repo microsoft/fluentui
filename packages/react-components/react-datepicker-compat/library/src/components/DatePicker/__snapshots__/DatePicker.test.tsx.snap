@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DatePicker should not render popup when it is not open 1`] = `
 Object {
@@ -12,7 +12,7 @@ Object {
           aria-expanded="false"
           aria-haspopup="dialog"
           class="fui-Input__input"
-          id="datePicker-input1"
+          id="datePicker-input_r_m_"
           readonly=""
           role="combobox"
           type="text"
@@ -20,7 +20,7 @@ Object {
         />
         <span
           aria-expanded="false"
-          aria-labelledby="datePicker-input1"
+          aria-labelledby="datePicker-input_r_m_"
           class="fui-Input__contentAfter"
           role="button"
         >
@@ -50,7 +50,7 @@ Object {
         aria-expanded="false"
         aria-haspopup="dialog"
         class="fui-Input__input"
-        id="datePicker-input1"
+        id="datePicker-input_r_m_"
         readonly=""
         role="combobox"
         type="text"
@@ -58,7 +58,7 @@ Object {
       />
       <span
         aria-expanded="false"
-        aria-labelledby="datePicker-input1"
+        aria-labelledby="datePicker-input_r_m_"
         class="fui-Input__contentAfter"
         role="button"
       >

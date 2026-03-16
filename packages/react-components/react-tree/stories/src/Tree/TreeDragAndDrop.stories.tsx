@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -17,6 +18,7 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
+import type { DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -56,18 +58,18 @@ const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
   );
 };
 
-export const DragAndDrop = () => {
+export const DragAndDrop = (): JSXElement => {
   const [items, setItems] = React.useState(flatTreeItems);
   const virtualTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1'],
   });
 
-  const handleDragEnd = React.useCallback(event => {
+  const handleDragEnd = React.useCallback((event: DragEndEvent) => {
     const { active, over } = event;
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       setItems(prevItems => {
         const oldIndex = prevItems.findIndex(item => item.value === active.id);
-        const newIndex = prevItems.findIndex(item => item.value === over.id);
+        const newIndex = prevItems.findIndex(item => item.value === over?.id);
         return sortItems(prevItems, oldIndex, newIndex);
       });
     }

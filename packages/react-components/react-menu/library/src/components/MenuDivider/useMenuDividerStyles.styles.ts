@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
@@ -15,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState): MenuDividerState => {
   'use no memo';
 
   const styles = useStyles();

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Tag } from '@fluentui/react-components';
 
-export const Icon = () => <Tag icon={<CalendarMonthRegular />}>Primary text</Tag>;
+export const Icon = (): JSXElement => <Tag icon={<CalendarMonthRegular />}>Primary text</Tag>;
 
 Icon.storyName = 'Icon';
 Icon.parameters = {

@@ -1,7 +1,9 @@
 import { Persona, SelectionItemId } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
+import type { ListItemProps } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -23,15 +25,18 @@ const items: Item[] = [
     'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
 }));
 
-export const SingleActionSelectionDifferentPrimary = () => {
+export const SingleActionSelectionDifferentPrimary = (): JSXElement => {
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Demetra Manwaring', 'Bart Merrill']);
 
   // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback((event, { value: val }) => {
-    // This prevents the change in selection on click/Enter
-    event.preventDefault();
-    alert(`Triggered custom action on ${val}`);
-  }, []);
+  const onAction = React.useCallback(
+    (event: React.SyntheticEvent | Event, { value: val }: { value: ListItemProps['value'] }) => {
+      // This prevents the change in selection on click/Enter
+      event.preventDefault();
+      alert(`Triggered custom action on ${val}`);
+    },
+    [],
+  );
 
   return (
     <List
@@ -40,8 +45,15 @@ export const SingleActionSelectionDifferentPrimary = () => {
       selectedItems={selectedItems}
       onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
     >
-      {items.map(({ name, avatar }) => (
-        <ListItem key={name} value={name} aria-label={name} onAction={onAction} checkmark={{ 'aria-label': name }}>
+      {items.map(({ name, avatar }, index) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          onAction={onAction}
+          checkmark={{ 'aria-label': name }}
+          disabledSelection={index === 2}
+        >
           <Persona
             name={name}
             secondaryText="Available"

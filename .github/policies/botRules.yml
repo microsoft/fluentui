@@ -321,58 +321,26 @@ configuration:
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/office-ui-fabric-react/src/components/pickers
-                    - packages/react/src/components/pickers
-                  excludedFiles:
-                    - packages/office-ui-fabric-react/src/components/__snapshots__/
-                    - change
-                    - common/changes
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Pickers'
-          - if:
-              - includesModifiedFiles:
-                  files:
+                    - nx.json
                     - package.json
                     - scripts
-                    - apps/vr-tests/screener.config.js
-                    - apps/vr-tests/screener.local.config.js
-                    - apps/pr-deploy-site
-                    - apps/perf-test
-                    - packages/tslint-rules
-                    - packages/jest-serializer-merge-styles
-                    - packages/prettier-rules
-                    - packages/webpack-utils
-                    - packages/codemods
-                    - packages/monaco-editor
-                    - packages/eslint-plugin
-                    - nx.json
                     - tools
                   excludedFiles:
                     - change
-                    - common/changes
-                    - packages/react-examples
             then:
               - addLabel:
                   label: 'Area: Build System'
           - if:
               - includesModifiedFiles:
                   files:
-                    - apps/fabric-website
-                    - packages/example-app-base
-                    - apps/fabric-website-resources
                     - packages/example-data
-                    - packages/examples
-                    - packages/tsx-editor
                     - packages/monaco-editor
-                    - apps/public-docsite
+                    - apps/public-docsite/
                     - apps/public-docsite-resources
                     - packages/react-examples
                     - packages/react-monaco-editor
                   excludedFiles:
                     - change
-                    - common/changes
                     - scripts
             then:
               - addLabel:
@@ -380,16 +348,6 @@ configuration:
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/fluentui
-                  excludedFiles:
-                    - scripts
-            then:
-              - addLabel:
-                  label: Fluent UI react-northstar
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/tsx-editor
                     - packages/monaco-editor
                     - packages/react-monaco-editor
                   excludedFiles:
@@ -400,13 +358,9 @@ configuration:
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/icons
-                    - packages/file-type-icons
-                    - packages/react-icons
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
+                    - packages/react-file-type-icons
+                    - packages/font-icons-mdl2
+                    - packages/font-icons-mdl2-branded
             then:
               - addLabel:
                   label: 'Area: Icons'
@@ -415,7 +369,6 @@ configuration:
                   files:
                     - packages/web-components
                   excludedFiles:
-                    - change
                     - scripts
             then:
               - addLabel:
@@ -423,96 +376,16 @@ configuration:
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/react-button
+                    - packages/charts
                   excludedFiles:
                     - change
                     - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Button'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-avatar
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Avatar'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-checkbox
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Checkbox'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-link
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Link'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-tabs
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Pivot'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-slider
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Slider'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/react-toggle
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
-            then:
-              - addLabel:
-                  label: 'Component: Toggle'
-          - if:
-              - includesModifiedFiles:
-                  files:
-                    - packages/charting
-                    - packages/react-charting
-                  excludedFiles:
-                    - change
-                    - scripts
-                    - packages/react-examples
             then:
               - addLabel:
                   label: 'Package: charting'
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/date-time
                     - packages/date-time-utilities
                     - packages/react-date-time
                   excludedFiles:
@@ -525,24 +398,20 @@ configuration:
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/experiments
                     - packages/react-experiments
                   excludedFiles:
                     - change
                     - scripts
-                    - packages/react-examples
             then:
               - addLabel:
                   label: 'Package: experiments'
           - if:
               - includesModifiedFiles:
                   files:
-                    - packages/styling
                     - packages/style-utilities
                   excludedFiles:
                     - change
                     - scripts
-                    - packages/react-examples
             then:
               - addLabel:
                   label: 'Package: styling'
@@ -553,31 +422,7 @@ configuration:
           - or:
               - includesModifiedFiles:
                   files:
-                    - packages/styling/etc/styling.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/utilities/etc/utilities.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/office-ui-fabric-react/etc/office-ui-fabric-react.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/date-time/etc/date-time.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/foundation-scenarios/etc/foundation-scenarios.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/merge-styles/etc/merge-styles.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/react/etc/react.api.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/style-utilities/etc/style-utilities.md
-              - includesModifiedFiles:
-                  files:
-                    - packages/theme/etc/theme.api.md
+                    - packages/**/*.api.md
           - or:
               - isAction:
                   action: Opened

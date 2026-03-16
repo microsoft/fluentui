@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
@@ -13,8 +15,10 @@ const menuContextDefaultValue: MenuContextValue = {
   checkedValues: {},
   onCheckedValueChange: () => null,
   isSubmenu: false,
-  triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
-  menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
   mountNode: null,
   triggerId: '',
   openOnContext: false,
@@ -46,6 +50,7 @@ export type MenuContextValue = Pick<
   | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
+  | 'safeZone'
 > & {
   open: boolean;
   triggerId: string;
@@ -59,5 +64,5 @@ export type MenuContextValue = Pick<
 
 export const MenuProvider = MenuContext.Provider;
 
-export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>) =>
+export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>): T =>
   useContextSelector(MenuContext, (ctx = menuContextDefaultValue) => selector(ctx));

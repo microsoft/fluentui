@@ -16,6 +16,22 @@ const attributes = {
 test.describe('Link', () => {
   test.use({ tagName: 'fluent-link' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-link');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test(`should set each property to match its corresponding attribute`, async ({ fastPage }) => {
     const { element } = fastPage;
     const anchor = element.locator('a');
@@ -49,19 +65,19 @@ test.describe('Link', () => {
     }
   });
 
-  test('should add an "inline" state when the `inline` property is true', async ({ fastPage }) => {
+  test('should add an "inline" attribute when the `inline` property is true', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await element.evaluate((node: Link) => {
       node.inline = true;
     });
 
-    await expect(element).toHaveCustomState('inline');
+    await expect(element).toHaveAttribute('inline');
 
     await element.evaluate((node: Link) => {
       node.inline = false;
     });
 
-    await expect(element).not.toHaveCustomState('inline');
+    await expect(element).not.toHaveAttribute('inline');
   });
 });

@@ -4,6 +4,8 @@ export {
   toolbarClassNames,
   useToolbarStyles_unstable,
   useToolbar_unstable,
+  useToolbarContextValues_unstable,
+  useToolbarContext_unstable,
 } from './Toolbar';
 export type { ToolbarContextValue, ToolbarContextValues, ToolbarProps, ToolbarSlots, ToolbarState } from './Toolbar';
 export { ToolbarButton, useToolbarButtonStyles_unstable, useToolbarButton_unstable } from './ToolbarButton';
@@ -32,3 +34,15 @@ export {
 export type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup';
 export { ToolbarRadioGroup } from './ToolbarRadioGroup';
 export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarRadioGroup';
+
+// Experimental APIs
+// export type { ToolbarBaseState, ToolbarBaseProps } from './Toolbar';
+// export { useToolbarBase_unstable } from './Toolbar';
+// export type { ToolbarButtonBaseState, ToolbarButtonBaseProps } from './ToolbarButton';
+// export { useToolbarButtonBase_unstable } from './ToolbarButton';
+// export type { ToolbarDividerBaseState, ToolbarDividerBaseProps } from './ToolbarDivider';
+// export { useToolbarDividerBase_unstable } from './ToolbarDivider';
+// export type { ToolbarRadioButtonBaseState, ToolbarRadioButtonBaseProps } from './ToolbarRadioButton';
+// export { useToolbarRadioButtonBase_unstable } from './ToolbarRadioButton';
+// export type { ToolbarToggleButtonBaseState, ToolbarToggleButtonBaseProps } from './ToolbarToggleButton';
+// export { useToolbarToggleButtonBase_unstable } from './ToolbarToggleButton';

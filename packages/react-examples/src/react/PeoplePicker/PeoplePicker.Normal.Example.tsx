@@ -10,6 +10,7 @@ import {
   ValidationState,
 } from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
@@ -128,7 +129,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
   };
 
   const onGetErrorMessage = React.useCallback(
-    (items: IPersonaProps[]): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined => {
+    (items: IPersonaProps[]): string | JSXElement | PromiseLike<string | JSXElement> | undefined => {
       return isPickerRequired && (items || []).length === 0 ? 'Please fill out this field.' : undefined;
     },
     [isPickerRequired],
@@ -140,7 +141,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
         label={showPickerLabel ? pickerLabel : undefined}
         // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
-        // eslint-disable-next-line react/jsx-no-bind
+        // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}

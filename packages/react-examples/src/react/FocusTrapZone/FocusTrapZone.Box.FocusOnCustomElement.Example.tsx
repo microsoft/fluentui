@@ -20,7 +20,7 @@ const focusClassName = 'shouldFocusInput';
 
 export const FocusTrapZoneBoxCustomElementExample = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
-  const toggle = React.useRef<IToggle>(null);
+  const toggle = React.useRef<IToggle | null>(null);
   return (
     <Stack tokens={stackTokens}>
       <Stack.Item>
@@ -29,7 +29,11 @@ export const FocusTrapZoneBoxCustomElementExample = () => {
       <Stack.Item>
         <DefaultButton onClick={toggleUseTrapZone} text="Focus Custom Element" />
       </Stack.Item>
-      <FocusTrapZone disabled={!useTrapZone} firstFocusableSelector={focusClassName}>
+      <FocusTrapZone
+        disabled={!useTrapZone}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        firstFocusableSelector={focusClassName}
+      >
         <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>
           <Toggle
             label="Use trap zone"

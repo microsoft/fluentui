@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 /**
@@ -14,8 +16,9 @@ export type TooltipVisibilityContextValue = {
 };
 
 /**
- * @internal
  * Context shared by all of the tooltips in the app
+ *
+ * @internal
  */
 const TooltipVisibilityContext = React.createContext<TooltipVisibilityContextValue | undefined>(
   undefined,

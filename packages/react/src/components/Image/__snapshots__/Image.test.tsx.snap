@@ -1,36 +1,32 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Image renders Image correctly 1`] = `
 <div
-  className=
+  class=
       ms-Image
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        animation-duration: 0.367s;
+        animation-fill-mode: both;
+        animation-name: keyframes from{opacity:0;}to{opacity:1;};
+        animation-timing-function: cubic-bezier(.1,.25,.75,.9);
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         overflow: hidden;
       }
-  style={
-    Object {
-      "height": undefined,
-      "width": undefined,
-    }
-  }
 >
   <img
-    className=
+    class=
         ms-Image-image
+        is-loaded
         ms-Image-image--portrait
-        is-notLoaded
         is-fadeIn
         {
           display: block;
-          opacity: 0;
+          opacity: 1;
         }
-    onError={[Function]}
-    onLoad={[Function]}
     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
   />
 </div>
@@ -38,42 +34,39 @@ exports[`Image renders Image correctly 1`] = `
 
 exports[`Image renders ImageFit.centerContain correctly 1`] = `
 <div
-  className=
+  class=
       ms-Image
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        animation-duration: 0.367s;
+        animation-fill-mode: both;
+        animation-name: keyframes from{opacity:0;}to{opacity:1;};
+        animation-timing-function: cubic-bezier(.1,.25,.75,.9);
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         overflow: hidden;
         position: relative;
       }
-  style={
-    Object {
-      "height": 100,
-      "width": 50,
-    }
-  }
+  style="width: 50px; height: 100px;"
 >
   <img
-    className=
+    class=
         ms-Image-image
+        is-loaded
         ms-Image-image--centerContain
-        ms-Image-image--portrait
-        is-notLoaded
+        ms-Image-image--landscape
         is-fadeIn
         {
           display: block;
           left: 50% /* @noflip */;
-          max-height: 100%;
-          opacity: 0;
+          max-width: 100%;
+          opacity: 1;
           position: absolute;
           top: 50%;
           transform: translate(-50%,-50%);
         }
-    onError={[Function]}
-    onLoad={[Function]}
     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
   />
 </div>
@@ -81,42 +74,39 @@ exports[`Image renders ImageFit.centerContain correctly 1`] = `
 
 exports[`Image renders ImageFit.centerCover correctly 1`] = `
 <div
-  className=
+  class=
       ms-Image
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        animation-duration: 0.367s;
+        animation-fill-mode: both;
+        animation-name: keyframes from{opacity:0;}to{opacity:1;};
+        animation-timing-function: cubic-bezier(.1,.25,.75,.9);
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         overflow: hidden;
         position: relative;
       }
-  style={
-    Object {
-      "height": 100,
-      "width": 50,
-    }
-  }
+  style="width: 50px; height: 100px;"
 >
   <img
-    className=
+    class=
         ms-Image-image
+        is-loaded
         ms-Image-image--centerCover
-        ms-Image-image--portrait
-        is-notLoaded
+        ms-Image-image--landscape
         is-fadeIn
         {
           display: block;
           left: 50% /* @noflip */;
-          max-width: 100%;
-          opacity: 0;
+          max-height: 100%;
+          opacity: 1;
           position: absolute;
           top: 50%;
           transform: translate(-50%,-50%);
         }
-    onError={[Function]}
-    onLoad={[Function]}
     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
   />
 </div>

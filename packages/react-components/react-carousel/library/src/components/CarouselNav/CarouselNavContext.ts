@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { CarouselNavContextValue, CarouselNavState } from './CarouselNav.types';
 
@@ -7,7 +9,8 @@ export const carouselNavContextDefaultValue: CarouselNavContextValue = {
   appearance: undefined,
 };
 
-export const useCarouselNavContext = () => React.useContext(carouselNavContext) ?? carouselNavContextDefaultValue;
+export const useCarouselNavContext = (): CarouselNavContextValue =>
+  React.useContext(carouselNavContext) ?? carouselNavContextDefaultValue;
 
 export const CarouselNavContextProvider = carouselNavContext.Provider;
 

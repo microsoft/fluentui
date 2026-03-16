@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   OverlayDrawer,
   DrawerBody,
@@ -12,6 +13,8 @@ import {
   useId,
   tokens,
   makeStyles,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -30,7 +33,7 @@ const useStyles = makeStyles({
 
 type DrawerSizeStory = Required<DrawerProps>['size'];
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
   const labelId = useId('size-label');
 
@@ -44,9 +47,20 @@ export const Size = () => {
     full: 'Full',
   };
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer size={size} position="end" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <OverlayDrawer
+        size={size}
+        {...restoreFocusSourceAttributes}
+        position="end"
+        open={open}
+        onOpenChange={(_, state) => setOpen(state.open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -68,7 +82,7 @@ export const Size = () => {
       </OverlayDrawer>
 
       <div className={styles.main}>
-        <Button appearance="primary" onClick={() => setOpen(true)}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setOpen(true)}>
           Open Drawer
         </Button>
 

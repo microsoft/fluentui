@@ -33,17 +33,21 @@ export type ListProps = ComponentProps<ListSlots> & {
 };
 
 export type ListContextValue = {
-  navigationMode: ListNavigationMode | undefined;
   selection?: ListSelectionState;
-  listItemRole: string;
   validateListItem: (listItemElement: HTMLElement) => void;
+};
+
+export type ListSynchronousContextValue = {
+  navigationMode: ListNavigationMode | undefined;
+  listItemRole: string;
 };
 
 export type ListContextValues = {
   listContext: ListContextValue;
+  synchronousContext: ListSynchronousContextValue;
 };
 
 /**
  * State used in rendering List
  */
-export type ListState = ComponentState<ListSlots> & ListContextValue;
+export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;

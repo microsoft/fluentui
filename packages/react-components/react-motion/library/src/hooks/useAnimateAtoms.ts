@@ -1,4 +1,8 @@
+'use client';
+
 import * as React from 'react';
+
+import { isAnimationRunning } from '../utils/isAnimationRunning';
 import type { AnimationHandle, AtomMotion } from '../types';
 
 export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
@@ -10,6 +14,81 @@ export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
 const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
   duration: 1,
 };
+
+/**
+ * Creates an animation handle that controls multiple animations.
+ * Is used to avoid leaking "element" references from the hook.
+ *
+ * @param animations
+ */
+function createHandle(animations: Animation[]): AnimationHandle {
+  return {
+    set playbackRate(rate: number) {
+      animations.forEach(animation => {
+        animation.playbackRate = rate;
+      });
+    },
+    setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
+      // Heads up!
+      // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+      // See: https://issues.chromium.org/u/2/issues/383016426
+      const promises = animations.map(animation => {
+        return new Promise<void>((resolve, reject) => {
+          animation.onfinish = () => resolve();
+          animation.oncancel = () => reject();
+        });
+      });
+
+      Promise.all(promises)
+        .then(() => {
+          onfinish();
+        })
+        .catch(() => {
+          oncancel();
+        });
+    },
+    isRunning() {
+      return animations.some(animation => isAnimationRunning(animation));
+    },
+
+    dispose: () => {
+      animations.length = 0;
+    },
+
+    cancel: () => {
+      animations.forEach(animation => {
+        animation.cancel();
+      });
+    },
+    pause: () => {
+      animations.forEach(animation => {
+        animation.pause();
+      });
+    },
+    play: () => {
+      animations.forEach(animation => {
+        animation.play();
+      });
+    },
+    finish: () => {
+      animations.forEach(animation => {
+        animation.finish();
+      });
+    },
+    reverse: () => {
+      // Heads up!
+      //
+      // This is used for the interruptible motion. If the animation is running, we need to reverse it.
+      //
+      // TODO: what do with animations that have "delay"?
+      // TODO: what do with animations that have different "durations"?
+
+      animations.forEach(animation => {
+        animation.reverse();
+      });
+    },
+  };
+}
 
 function useAnimateAtomsInSupportedEnvironment() {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
@@ -26,80 +105,44 @@ function useAnimateAtomsInSupportedEnvironment() {
       const atoms = Array.isArray(value) ? value : [value];
       const { isReducedMotion } = options;
 
-      const animations = atoms.map(motion => {
-        // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
-        const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
-        // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
-        const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
+      const animations = atoms
+        .map(motion => {
+          // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
+          const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
+          // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
+          const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
 
-        const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : motionKeyframes;
-        const animationParams: KeyframeEffectOptions = {
-          ...DEFAULT_ANIMATION_OPTIONS,
-          ...params,
+          const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : motionKeyframes;
+          const animationParams: KeyframeEffectOptions = {
+            ...DEFAULT_ANIMATION_OPTIONS,
+            ...params,
 
-          // Use reduced motion overrides (e.g. duration, easing) when reduced motion is enabled
-          ...(isReducedMotion && reducedMotionParams),
-        };
+            // Use reduced motion overrides (e.g. duration, easing) when reduced motion is enabled
+            ...(isReducedMotion && reducedMotionParams),
+          };
 
-        const animation = element.animate(animationKeyframes, animationParams);
+          try {
+            // Firefox can throw an error when calling `element.animate()`.
+            // See: https://github.com/microsoft/fluentui/issues/33902
+            const animation = element.animate(animationKeyframes, animationParams);
 
-        if (SUPPORTS_PERSIST) {
-          animation.persist();
-        } else {
-          const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
-          Object.assign(element.style ?? {}, resultKeyframe);
-        }
+            if (SUPPORTS_PERSIST) {
+              // Chromium browsers can return null when calling `element.animate()`.
+              // See: https://github.com/microsoft/fluentui/issues/33902
+              animation?.persist();
+            } else {
+              const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
+              Object.assign(element.style ?? {}, resultKeyframe);
+            }
 
-        return animation;
-      });
+            return animation;
+          } catch (e) {
+            return null;
+          }
+        })
+        .filter(animation => !!animation) as Animation[];
 
-      return {
-        set playbackRate(rate: number) {
-          animations.forEach(animation => {
-            animation.playbackRate = rate;
-          });
-        },
-        setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
-          // Heads up!
-          // This could use "Animation:finished", but it's causing a memory leak in Chromium.
-          // See: https://issues.chromium.org/u/2/issues/383016426
-          const promises = animations.map(animation => {
-            return new Promise<void>((resolve, reject) => {
-              animation.onfinish = () => resolve();
-              animation.oncancel = () => reject();
-            });
-          });
-
-          Promise.all(promises)
-            .then(() => {
-              onfinish();
-            })
-            .catch(() => {
-              oncancel();
-            });
-        },
-
-        cancel: () => {
-          animations.forEach(animation => {
-            animation.cancel();
-          });
-        },
-        pause: () => {
-          animations.forEach(animation => {
-            animation.pause();
-          });
-        },
-        play: () => {
-          animations.forEach(animation => {
-            animation.play();
-          });
-        },
-        finish: () => {
-          animations.forEach(animation => {
-            animation.finish();
-          });
-        },
-      };
+      return createHandle(animations);
     },
     [SUPPORTS_PERSIST],
   );
@@ -113,7 +156,7 @@ function useAnimateAtomsInSupportedEnvironment() {
  */
 function useAnimateAtomsInTestEnvironment() {
   const [count, setCount] = React.useState(0);
-  const callbackRef = React.useRef<() => void>();
+  const callbackRef = React.useRef<() => void>(undefined);
 
   const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
 
@@ -148,6 +191,14 @@ function useAnimateAtomsInTestEnvironment() {
         set playbackRate(rate: number) {
           /* no-op */
         },
+        isRunning() {
+          return false;
+        },
+
+        dispose() {
+          /* no-op */
+        },
+
         cancel() {
           /* no-op */
         },
@@ -160,6 +211,9 @@ function useAnimateAtomsInTestEnvironment() {
         finish() {
           /* no-op */
         },
+        reverse() {
+          /* no-op */
+        },
       };
     },
     [realAnimateAtoms],
@@ -169,7 +223,11 @@ function useAnimateAtomsInTestEnvironment() {
 /**
  * @internal
  */
-export function useAnimateAtoms() {
+export function useAnimateAtoms(): (
+  element: HTMLElement,
+  value: AtomMotion | AtomMotion[],
+  options: { isReducedMotion: boolean },
+) => AnimationHandle {
   'use no memo';
 
   if (process.env.NODE_ENV === 'test') {

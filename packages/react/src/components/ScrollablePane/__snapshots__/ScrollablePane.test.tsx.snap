@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ScrollablePane renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-ScrollablePane
       {
         -moz-osx-font-smoothing: grayscale;
@@ -19,7 +19,7 @@ exports[`ScrollablePane renders correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
 
         {
           pointer-events: none;
@@ -30,17 +30,10 @@ exports[`ScrollablePane renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           border-bottom: 1px solid WindowText;
         }
-    style={
-      Object {
-        "height": 0,
-        "left": "0",
-        "right": "0px",
-        "top": "0",
-      }
-    }
+    style="height: 0px; left: 0px; right: 0px; top: 0px;"
   />
   <div
-    className=
+    class=
         ms-ScrollablePane--contentContainer
         {
           -webkit-overflow-scrolling: touch;
@@ -51,10 +44,10 @@ exports[`ScrollablePane renders correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    data-is-scrollable={true}
+    data-is-scrollable="true"
   />
   <div
-    className=
+    class=
 
         {
           bottom: 0px;
@@ -64,17 +57,10 @@ exports[`ScrollablePane renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           border-top: 1px solid WindowText;
         }
-    style={
-      Object {
-        "bottom": "0px",
-        "height": 0,
-        "left": "0",
-        "right": "0px",
-      }
-    }
+    style="height: 0px; left: 0px; right: 0px; bottom: 0px;"
   >
     <div
-      className=
+      class=
 
           {
             bottom: 0px;

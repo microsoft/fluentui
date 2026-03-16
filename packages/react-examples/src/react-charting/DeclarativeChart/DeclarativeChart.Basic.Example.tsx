@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IErrorBoundaryProps {
   children: React.ReactNode;
@@ -11,6 +12,8 @@ interface IErrorBoundaryState {
   hasError: boolean;
   error: string;
 }
+
+type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'others';
 
 class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryState> {
   public static getDerivedStateFromError(error: Error) {
@@ -35,6 +38,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
 interface IDeclarativeChartState {
   selectedChoice: string;
   selectedLegends: string;
+  fluentDataVizColorPalette: FluentDataVizColorPaletteTypes;
 }
 
 const options: IDropdownOption[] = [
@@ -48,6 +52,16 @@ const options: IDropdownOption[] = [
   { key: 'sankeychart', text: 'Sankey Chart' },
   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
+  { key: 'scatterchart', text: 'Scatter Chart' },
+  { key: 'chart_table', text: 'Chart Table' },
+  { key: 'funnelchart', text: 'Funnel Chart' },
+  { key: 'ganttchart', text: 'Gantt Chart' },
+];
+
+const colorOptions: IDropdownOption[] = [
+  { key: 'default', text: 'Default' },
+  { key: 'builtin', text: 'Builtin' },
+  { key: 'override', text: 'Override' },
 ];
 
 const schemas: any[] = [
@@ -61,6 +75,10 @@ const schemas: any[] = [
   { key: 'sankeychart', schema: require('./schema/fluent_sankey.json') },
   { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
   { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
+  { key: 'scatterchart', schema: require('./schema/fluent_scatter.json') },
+  { key: 'chart_table', schema: require('./schema/fluent_table.json') },
+  { key: 'funnelchart', schema: require('./schema/fluent_funnel.json') },
+  { key: 'ganttchart', schema: require('./schema/fluent_gantt.json') },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };
@@ -77,7 +95,7 @@ function fileSaver(url: string) {
 }
 
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
-  private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
+  private _declarativeChartRef: React.RefObject<IDeclarativeChart | null>;
   private _lastKnownValidLegends: string[] | undefined;
 
   constructor(props: DeclarativeChartProps) {
@@ -88,6 +106,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.state = {
       selectedChoice: defaultselection,
       selectedLegends: JSON.stringify(selectedLegends),
+      fluentDataVizColorPalette: 'default',
     };
 
     this._declarativeChartRef = React.createRef();
@@ -100,7 +119,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     });
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createDeclarativeChart()}</div>;
   }
 
@@ -108,6 +127,10 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     const selectedPlotlySchema = this._getSchemaByKey(option.key as string);
     const { selectedLegends } = selectedPlotlySchema;
     this.setState({ selectedChoice: option.key as string, selectedLegends: JSON.stringify(selectedLegends) });
+  };
+
+  private _onColorPaletteChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
+    this.setState({ fluentDataVizColorPalette: option.key as FluentDataVizColorPaletteTypes });
   };
 
   private _onSelectedLegendsEdited = (
@@ -127,8 +150,8 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     return schema ? schema.schema : null;
   }
 
-  private _createDeclarativeChart(): JSX.Element {
-    const uniqueKey = `${this.state.selectedChoice}`;
+  private _createDeclarativeChart(): JSXElement {
+    const uniqueKey = `${this.state.selectedChoice}_${this.state.fluentDataVizColorPalette}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
     const { data, layout } = currentPlotlySchema;
     if (this.state.selectedLegends === '') {
@@ -154,6 +177,14 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
             styles={dropdownStyles}
           />
           &nbsp;&nbsp;&nbsp;
+          <Dropdown
+            label="Select a color palette"
+            options={colorOptions}
+            onChange={this._onColorPaletteChange}
+            selectedKey={this.state.fluentDataVizColorPalette}
+            styles={dropdownStyles}
+          />
+          &nbsp;&nbsp;
         </div>
         <br />
         <button
@@ -171,6 +202,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           chartSchema={inputSchema}
           onSchemaChange={this._handleChartSchemaChanged}
           componentRef={this._declarativeChartRef}
+          colorwayType={this.state.fluentDataVizColorPalette}
         />
         <br />
         <TextField

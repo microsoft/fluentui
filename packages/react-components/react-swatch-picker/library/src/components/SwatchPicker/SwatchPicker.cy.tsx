@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { SwatchPicker } from './SwatchPicker';
@@ -8,8 +8,9 @@ import { ImageSwatch } from '../ImageSwatch';
 import { SwatchPickerRow } from '../SwatchPickerRow';
 import type { SwatchPickerProps, SwatchPickerOnSelectEventHandler } from '../SwatchPicker';
 import { renderSwatchPickerGrid } from '../../utils/renderUtils';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
@@ -202,6 +203,32 @@ describe('SwatchPicker', () => {
         cy.realPress('ArrowRight');
         cy.get('#color-5').should('not.be.focused');
         cy.get('#color-6').should('be.focused');
+      });
+    });
+    describe('focusMode="tab"', () => {
+      it('should navigate between swatches with Tab key', () => {
+        mountFluent(<SwatchPickerRowColorSample focusMode="tab" />);
+
+        cy.get('#before').focus();
+
+        cy.realPress('Tab');
+        cy.get('#swatch-0').should('be.focused');
+
+        cy.realPress('Tab');
+        cy.get('#swatch-1').should('be.focused');
+
+        cy.realPress('Tab');
+        // swatch-2 is disabled, so it should be skipped
+        cy.get('#swatch-3').should('be.focused');
+      });
+
+      it('should move focus out of picker after last swatch', () => {
+        mountFluent(<SwatchPickerRowColorSample focusMode="tab" />);
+
+        cy.get('#swatch-3').focus();
+
+        cy.realPress('Tab');
+        cy.get('#after').should('be.focused');
       });
     });
   });

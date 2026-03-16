@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IButtonGrid {}
 
 export interface IButtonGridProps
@@ -25,7 +27,8 @@ export interface IButtonGridProps
   /**
    * Custom renderer for the individual items
    */
-  onRenderItem: (item: any, index: number) => JSX.Element;
+
+  onRenderItem: (item: any, index: number) => JSXElement;
 
   /**
    * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).

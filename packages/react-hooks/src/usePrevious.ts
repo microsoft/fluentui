@@ -5,7 +5,7 @@ import * as React from 'react';
  * See [React Hooks FAQ](https://reactjs.org/docs/hooks-faq.html#how-to-get-the-previous-props-or-state)
  */
 export function usePrevious<T>(value: T): T | undefined {
-  const ref = React.useRef<T | undefined>();
+  const ref = React.useRef<T | undefined>(undefined);
   React.useEffect(() => {
     ref.current = value;
   });

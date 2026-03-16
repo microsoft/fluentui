@@ -1,0 +1,19 @@
+{
+  "name": "visual-regression-assert",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/visual-regression-assert/src",
+  "projectType": "library",
+  "tags": ["platform:any", "tools"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "tools/visual-regression-assert/src/index.ts",
+        "tsConfig": "tools/visual-regression-assert/tsconfig.lib.json",
+        "assets": ["tools/visual-regression-assert/*.md", "tools/visual-regression-assert/src/template/*"]
+      }
+    }
+  }
+}

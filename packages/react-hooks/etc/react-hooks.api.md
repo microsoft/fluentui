@@ -38,13 +38,13 @@ export interface IWarningOptions<P> {
 }
 
 // @public
-export type RefCallback<T> = ((value: T | null) => void) & React_2.RefObject<T>;
+export type RefCallback<T> = ((value: T | null) => void) & React_2.RefObject<T | null>;
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T | null> & ((value: T) => void);
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | Rectangle | null | React_2.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | Rectangle | null | React_2.RefObject<Element | null>;
 
 // @public
 export function useAsync(): Async;

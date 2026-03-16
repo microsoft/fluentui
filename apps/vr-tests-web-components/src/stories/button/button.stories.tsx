@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { ButtonDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
@@ -21,14 +21,13 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={steps}>
-          <div className="testWrapper" style={{ width: '300px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '300px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: steps } },
 };
 
 export const Default = () => parse(`<fluent-button id="${buttonId}">Default</fluent-button>`);
@@ -87,6 +86,7 @@ export const Rounded = () => parse(`<fluent-button id="${buttonId}" shape="round
 export const Circular = () => parse(`<fluent-button id="${buttonId}" shape="circular">Circular</fluent-button>`);
 export const Square = () => parse(`<fluent-button id="${buttonId}" shape="square">Square</fluent-button>`);
 
+// eslint-disable-next-line no-unused-vars
 const icon: (slot?: 'start' | undefined) => string = slot => `<svg
       fill="currentColor"
       aria-hidden="true"

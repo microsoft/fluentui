@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTreeItemPersonaLayout_unstable } from './useTreeItemPersonaLayout';
 import { renderTreeItemPersonaLayout_unstable } from './renderTreeItemPersonaLayout';
@@ -5,6 +7,7 @@ import { useTreeItemPersonaLayoutStyles_unstable } from './useTreeItemPersonaLay
 import type { TreeItemPersonaLayoutProps } from './TreeItemPersonaLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeItemPersonaLayoutContextValues_unstable } from './useTreeItemPersonaLayoutContextValues';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `TreeItemPersonaLayout` component is used as a child of `TreeItem` to display a `TreeItem` with a media (typically an avatar) and a description.
@@ -15,6 +18,7 @@ export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutPro
   const state = useTreeItemPersonaLayout_unstable(props, ref);
 
   useTreeItemPersonaLayoutStyles_unstable(state);
+  useCustomStyleHook_unstable('useTreeItemPersonaLayoutStyles_unstable')(state);
 
   const contextValues = useTreeItemPersonaLayoutContextValues_unstable(state);
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { type SlotClassNames } from '@fluentui/react-utilities';
@@ -135,6 +137,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   useMenuItemStyles_unstable({
     ...state,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,
       checkmark: 'span',
       submenuIndicator: 'span',

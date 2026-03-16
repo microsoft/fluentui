@@ -13,49 +13,58 @@ import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
 import { getGradientFromToken, getNextGradient } from './gradients';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import { fireEvent } from '@testing-library/react';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
+const X_ORIGIN = 0;
 
-describe('Unit test to convert data to localized string', () => {
+describe('Unit test to format data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
-    expect(utils.convertToLocaleString(undefined)).toBeUndefined();
+    expect(formatToLocaleString(undefined)).toBeUndefined();
   });
   test('Should return NaN when data is NaN', () => {
-    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+    expect(formatToLocaleString(NaN)).toBeNaN();
   });
   test('Should return localized 0 when data is numeric 0', () => {
-    expect(utils.convertToLocaleString(0)).toBe('0');
+    expect(formatToLocaleString(0)).toBe('0');
   });
   test('Should return localized 123 when data is string 123', () => {
-    expect(utils.convertToLocaleString('123')).toBe('123');
+    expect(formatToLocaleString('123')).toBe('123');
   });
   test('Should return localized 1234 when data is string 1234', () => {
-    expect(utils.convertToLocaleString('1234')).toBe('1,234');
+    expect(formatToLocaleString('1234')).toBe('1234');
   });
   test('Should return localized Hello World when data is string Hello World', () => {
-    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+    expect(formatToLocaleString('Hello World')).toBe('Hello World');
   });
   test('Should return 0 as string when data is empty string', () => {
-    expect(utils.convertToLocaleString('')).toBe('0');
+    expect(formatToLocaleString('')).toBe('');
   });
   test('Should return 0 as string when data is single whitespace string', () => {
-    expect(utils.convertToLocaleString(' ')).toBe('0');
+    expect(formatToLocaleString(' ')).toBe('0');
   });
   test('Should return the localised data in the given culture when input data is a string', () => {
-    expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
-    expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
+    expect(formatToLocaleString('text', 'en-GB')).toBe('text');
+    expect(formatToLocaleString('text', 'ar-SY')).toBe('text');
   });
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
-    expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('٢٬٥٦٠');
+    expect(formatToLocaleString(10, 'en-GB')).toBe('10');
+    expect(formatToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
+  });
+
+  test('Do not apply comma grouping to 4 digit numbers', () => {
+    expect(formatToLocaleString(1000, 'en-GB')).toBe('1000');
+    expect(formatToLocaleString(2560, 'ar-SY')).toBe('٢٥٦٠');
+    expect(formatToLocaleString('2000')).toBe('2000');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
-    expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('1234', 'ar-SY')).toBe('١٬٢٣٤');
+    expect(formatToLocaleString('10', 'en-GB')).toBe('10');
+    expect(formatToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
   });
 });
 
@@ -152,11 +161,12 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
       bottom: 0,
       ...xAxisParams?.margins,
     },
+    calcMaxLabelWidth: utils.calculateLongestLabelWidth,
   };
 };
 const convertXAxisResultToJson = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  result: { xScale: any; tickValues: string[] },
+  result: { xScale: any; tickValues: any[] },
   isStringAxis: boolean = false,
 ): [number, string][] => {
   const tickValues = isStringAxis ? result.tickValues : result.xScale.ticks(result.tickValues.length);
@@ -245,7 +255,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
 
   it('should create the x-axis labels correctly when culture and options are provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG', { dateStyle: 'full' });
+    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG');
     matchResult(convertXAxisResultToJson(result));
   });
 
@@ -391,6 +401,11 @@ describe('prepareDatapoints for rounded tick value cases', () => {
     const result = utils.prepareDatapoints(589030.78, -234.45, 4, false, true);
     matchResult(result);
   });
+
+  it('should return array with rounded datapoints when yMax is power of 10 with floating point precision error', () => {
+    const result = utils.prepareDatapoints(1000.000000002, -234.45, 4, false, true);
+    matchResult(result);
+  });
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
@@ -420,31 +435,36 @@ describe('createYAxisForHorizontalBarChartWithAxis', () => {
   it('should render y-axis labels correctly with specific min and max tick values', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1 });
     delete yAxisParams.yMinMaxValues;
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 2 });
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (domainValue: number) => `₹${domainValue}` });
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -453,21 +473,21 @@ describe('createYAxisForOtherCharts', () => {
   it('should render y-axis labels correctly with specific min and max tick values', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1, maxOfYVal: 5 });
     delete yAxisParams.yMinMaxValues;
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 3 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
@@ -477,35 +497,35 @@ describe('createYAxisForOtherCharts', () => {
       eventAnnotationProps: { events: [], mergedLabel: () => '' },
       eventLabelHeight: 20,
     });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, true, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale', () => {
     const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, true, axisData, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: d3Format('$') });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
@@ -516,19 +536,22 @@ describe('createStringYAxisForHorizontalBarChartWithAxis', () => {
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, false, 16);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, false, axisData, 16);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, true, 16);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, true, axisData, 16);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
-    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, false, 16);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, false, axisData, 16);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -538,25 +561,29 @@ describe('createStringYAxis', () => {
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createStringYAxis(yAxisParams, dataPoints, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxis(yAxisParams, dataPoints, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for specific padding values', () => {
     const yAxisParams = createYAxisParams({ yAxisPadding: 0.5 });
-    utils.createStringYAxis(yAxisParams, dataPoints, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxis(yAxisParams, dataPoints, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxis(yAxisParams, dataPoints, true);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxis(yAxisParams, dataPoints, true, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
-    utils.createStringYAxis(yAxisParams, dataPoints, false);
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createStringYAxis(yAxisParams, dataPoints, false, axisData);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -691,15 +718,15 @@ describe('createWrapOfXLabels', () => {
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
-  it('should wrap x-axis labels when their width exceeds the maximum allowed line width', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const SVGElement: any = window.SVGElement;
-    const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+  it.skip('should wrap x-axis labels when their width exceeds the maximum allowed line width', () => {
     let calls = 0;
     const results = [6, 12, 7]; // 'X-axis', 'X-axis label', 'label 1'
-    SVGElement.prototype.getComputedTextLength = jest.fn().mockImplementation(() => results[calls++ % results.length]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SVGElement: any = window.SVGElement;
     const originalGetBoundingClientRect = SVGElement.prototype.getBoundingClientRect;
-    SVGElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ height: 15 });
+    SVGElement.prototype.getBoundingClientRect = jest
+      .fn()
+      .mockImplementation(() => ({ width: results[calls++ % results.length], height: 15 }));
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.appendChild(xAxisParams.xAxisElement!);
@@ -718,7 +745,6 @@ describe('createWrapOfXLabels', () => {
     document.body.removeChild(svg);
 
     SVGElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
-    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
   });
 });
 
@@ -728,10 +754,12 @@ describe('createYAxisLabels', () => {
 
   beforeEach(() => {
     yAxisParams = createYAxisParams();
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     yAxis = utils.createStringYAxisForHorizontalBarChartWithAxis(
       yAxisParams,
       ['Y-axis label 1', 'Y-axis label 2', 'Y-axis label 3'],
       false,
+      axisData,
       16,
     );
   });
@@ -790,18 +818,23 @@ describe('wrapContent', () => {
   });
 });
 
-describe('tooltipOfXAxislabels', () => {
+describe('tooltipOfAxislabels', () => {
   it('should terminate when no x-axis node is provided', () => {
     const tooltipProps = {
       tooltipCls: 'tooltip-1',
       id: 'VBCTooltipId_1',
-      xAxis: null,
+      axis: null,
     };
-    expect(utils.tooltipOfXAxislabels(tooltipProps)).toBeNull();
+    expect(utils.tooltipOfAxislabels(tooltipProps)).toBeNull();
   });
 
   it('should render a tooltip for x-axis labels', () => {
     const xAxisParams = createXAxisParams();
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.appendChild(xAxisParams.xAxisElement!);
+    document.body.appendChild(svg);
+
     const result = utils.createStringXAxis(xAxisParams, {}, ['X-axis label 1', 'X-axis label 2', 'X-axis label 3']);
     utils.createWrapOfXLabels({
       node: xAxisParams.xAxisElement!,
@@ -810,15 +843,18 @@ describe('tooltipOfXAxislabels', () => {
       noOfCharsToTruncate: 10,
       showXAxisLablesTooltip: true,
     });
-
     const tooltipProps = {
       tooltipCls: 'tooltip-1',
       id: 'VBCTooltipId_1',
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      xAxis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
+      axis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
     };
-    utils.tooltipOfXAxislabels(tooltipProps);
+    utils.tooltipOfAxislabels(tooltipProps);
+
+    fireEvent.mouseOver(document.querySelector('.tick text')!);
     expect(document.body).toMatchSnapshot();
+
+    document.body.innerHTML = '';
   });
 });
 
@@ -860,7 +896,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for date x-axis', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -872,7 +908,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -884,7 +920,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -914,12 +950,12 @@ describe('domainRangeOfNumericForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, false);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, true);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, true);
     matchResult(result);
   });
 });
@@ -929,6 +965,7 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
+
   const margins: utils.IMargins = {
     left: 5,
     right: 10,
@@ -937,12 +974,37 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, X_ORIGIN);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
+  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 20, y: 40 },
+    { x: 30, y: 40 },
+    { x: 50, y: 20 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, X_ORIGIN);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
     matchResult(result);
   });
 });
@@ -1147,11 +1209,11 @@ test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWi
   SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 });
 
-test('formatValueWithSIPrefix should format a numeric value with appropriate SI prefix', () => {
-  expect(utils.formatValueWithSIPrefix(19.53)).toBe('19.53');
-  expect(utils.formatValueWithSIPrefix(983)).toBe('983');
-  expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
-  expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
+test('formatScientificLimitWidth should format a numeric value with appropriate SI prefix', () => {
+  expect(utils.formatScientificLimitWidth(19.53)).toBe('19.53');
+  expect(utils.formatScientificLimitWidth(983)).toBe('983');
+  expect(utils.formatScientificLimitWidth(9801)).toBe('9.8k');
+  expect(utils.formatScientificLimitWidth(100990000)).toBe('101M');
 });
 
 describe('getClosestPairDiffAndRange', () => {
@@ -1260,5 +1322,261 @@ describe('test array equality utility', () => {
 
   it('both arrays are equal', () => {
     expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
+  });
+});
+
+describe('defaultYAxisTickFormatter tests', () => {
+  it('should format small numbers and maintain precision', () => {
+    expect(utils.defaultYAxisTickFormatter(1000)).toBe('1k');
+    expect(utils.defaultYAxisTickFormatter(123.56)).toBe('123.56');
+    expect(utils.defaultYAxisTickFormatter(148)).toBe('148');
+    expect(utils.defaultYAxisTickFormatter(999.56)).toBe('999.56');
+    expect(utils.defaultYAxisTickFormatter(1995.89)).toBe('2k');
+  });
+  it('should format large numbers with SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(1e6)).toBe('1M'); // 1 million
+    expect(utils.defaultYAxisTickFormatter(1e9)).toBe('1B'); // 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(1.5e9)).toBe('1.5B'); // 1.5 billion
+  });
+
+  it('should format small numbers without SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(0.123)).toBe('0.12'); // Small number
+    expect(utils.defaultYAxisTickFormatter(0.0000343)).toBe('0.000034'); // Scientific notation for very small numbers
+  });
+
+  it('should format negative numbers correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(-1e6)).toBe('−1M'); // Negative 1 million
+    expect(utils.defaultYAxisTickFormatter(-1e9)).toBe('−1B'); // Negative 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(-0.123)).toBe('−0.12'); // Small negative number
+  });
+
+  it('should handle zero correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(0)).toBe('0'); // Zero
+  });
+
+  it('should not replace G with B for values less than 1e9', () => {
+    expect(utils.defaultYAxisTickFormatter(1e8)).toBe('100M'); // 100 million (no G to replace)
+  });
+
+  it('should format very small numbers in scientific notation', () => {
+    expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
+  });
+});
+
+// To move this test to chart-utilities once test config is enabled there
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+
+describe('formatDateToLocaleString', () => {
+  const date = new Date(Date.UTC(2023, 4, 15, 12, 30, 45)); // May 15, 2023, 12:30:45 UTC
+
+  it.skip('formats date in default locale', () => {
+    const result = formatDateToLocaleString(date);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it.skip('formats date in en-US locale', () => {
+    const result = formatDateToLocaleString(date, 'en-US', false);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it.skip('formats date in fr-FR locale', () => {
+    const result = formatDateToLocaleString(date, 'fr-FR', false);
+    expect(result).toBe('15/05/2023 00:30:45 PM UTC');
+  });
+
+  it.skip('formats date in ar-SY locale', () => {
+    const result = formatDateToLocaleString(date, 'ar-SY', false);
+    expect(result).toBe('١٥‏/٠٥‏/٢٠٢٣، ١٢:٣٠:٤٥ م UTC');
+  });
+
+  it.skip('formats date in en-IN locale', () => {
+    const result = formatDateToLocaleString(date, 'en-IN', false);
+    expect(result).toBe('15/05/2023, 12:30:45 pm UTC');
+  });
+
+  it.skip('formats date in zh-Hans-CN-u-nu-hanidec locale', () => {
+    const result = formatDateToLocaleString(date, 'zh-Hans-CN-u-nu-hanidec', false);
+    expect(result).toBe('二〇二三/〇五/一五 UTC 下午〇〇:三〇:四五');
+  });
+
+  it('formats date in UTC', () => {
+    const result = formatDateToLocaleString(date, 'en-US', true);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it('formats date with time zone name hidden', () => {
+    const result = formatDateToLocaleString(date, 'en-US', true, false);
+    expect(result).toBe('05/15/2023, 12:30:45 PM');
+  });
+
+  it.skip('formats date with custom Intl.DateTimeFormatOptions', () => {
+    const result = formatDateToLocaleString(date, 'en-US', false, true, { year: '2-digit', month: 'short' });
+    expect(result).toBe('May 23, UTC');
+  });
+
+  it('returns empty string for invalid date', () => {
+    const result = formatDateToLocaleString(new Date('invalid date'));
+    expect(result).toBe('Invalid Date');
+  });
+});
+
+describe('generateLinearTicks', () => {
+  it('generates ticks within the domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [0, 5])).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+
+  it('respects tick0 offset', () => {
+    expect(utils.generateLinearTicks(0.5, 1, [0, 5])).toEqual([0.5, 1.5, 2.5, 3.5, 4.5]);
+  });
+
+  it('handles non-integer tickStep', () => {
+    expect(utils.generateLinearTicks(0, 0.5, [0, 2])).toEqual([0, 0.5, 1, 1.5, 2]);
+  });
+
+  it('rounds to avoid floating point issues', () => {
+    expect(utils.generateLinearTicks(0, 0.1, [0, 0.3])).toEqual([0, 0.1, 0.2, 0.3]);
+  });
+
+  it('works when domainMin > tick0', () => {
+    expect(utils.generateLinearTicks(0, 2, [5, 12])).toEqual([6, 8, 10, 12]);
+  });
+
+  it('works when domainMax < tick0', () => {
+    expect(utils.generateLinearTicks(10, 2, [2, 8])).toEqual([2, 4, 6, 8]);
+  });
+
+  it('handles reversed domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [5, 0])).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+});
+
+describe('generateMonthlyTicks', () => {
+  const jan1 = new Date(2020, 0, 1); // Jan 1, 2020 (local time)
+
+  const formatLocalDate = (d: Date, asUTC: boolean = false) => {
+    const formatter = new Intl.DateTimeFormat('en-CA', asUTC ? { timeZone: 'UTC' } : {});
+    return formatter.format(d);
+  };
+
+  it('generates ticks every 1 month within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 1, [new Date(2020, 0, 1), new Date(2020, 5, 30)]);
+    expect(ticks.map(d => formatLocalDate(d))).toEqual([
+      '2020-01-01',
+      '2020-02-01',
+      '2020-03-01',
+      '2020-04-01',
+      '2020-05-01',
+      '2020-06-01',
+    ]);
+  });
+
+  it('generates ticks every 3 months within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 3, [new Date(2020, 0, 1), new Date(2020, 11, 31)]);
+    expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-01-01', '2020-04-01', '2020-07-01', '2020-10-01']);
+  });
+
+  it('works when domainMin > tick0', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-03-01', '2020-05-01', '2020-07-01', '2020-09-01']);
+  });
+
+  it('works when domainMax < tick0', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 11, 1), 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-04-01', '2020-06-01', '2020-08-01']);
+  });
+
+  it('handles leap years correctly (Feb 29)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 0, 31), 1, [new Date(2020, 0, 1), new Date(2020, 2, 31)]);
+    // Jan 31 → Feb (adjust to Feb 29 since Feb 31 is invalid) → Mar 31
+    expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-01-31', '2020-02-29', '2020-03-31']);
+  });
+
+  it('handles end-of-month correctly (short months)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2021, 0, 31), 1, [new Date(2021, 0, 1), new Date(2021, 4, 31)]);
+    // Jan 31 → Feb (28th in non-leap year) → Mar 31 → Apr 30 → May 31
+    expect(ticks.map(d => formatLocalDate(d))).toEqual([
+      '2021-01-31',
+      '2021-02-28',
+      '2021-03-31',
+      '2021-04-30',
+      '2021-05-31',
+    ]);
+  });
+
+  it('works with UTC mode', () => {
+    const ticks = utils.generateMonthlyTicks(
+      new Date(Date.UTC(2020, 0, 1)),
+      2,
+      [new Date(Date.UTC(2020, 0, 1)), new Date(Date.UTC(2020, 6, 1))],
+      true,
+    );
+    expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-01-01', '2020-03-01', '2020-05-01', '2020-07-01']);
+  });
+});
+
+describe('isSafeUrl', () => {
+  test('Should allow http URL', () => {
+    expect(utils.isSafeUrl('http://example.com')).toBe(true);
+  });
+
+  test('Should allow https URL', () => {
+    expect(utils.isSafeUrl('https://example.com')).toBe(true);
+  });
+
+  test('Should allow https URL with path, query, and fragment', () => {
+    expect(utils.isSafeUrl('https://example.com/path?q=1#section')).toBe(true);
+  });
+
+  test('Should allow relative path', () => {
+    expect(utils.isSafeUrl('/dashboard')).toBe(true);
+  });
+
+  test('Should allow relative path without leading slash', () => {
+    expect(utils.isSafeUrl('dashboard/overview')).toBe(true);
+  });
+
+  test('Should allow fragment-only URL', () => {
+    expect(utils.isSafeUrl('#section')).toBe(true);
+  });
+
+  test('Should allow query-only URL', () => {
+    expect(utils.isSafeUrl('?page=2')).toBe(true);
+  });
+
+  test('Should allow empty string', () => {
+    expect(utils.isSafeUrl('')).toBe(true);
+  });
+
+  test('Should block javascript: protocol', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('javascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block data: protocol', () => {
+    expect(utils.isSafeUrl('data:text/html,<script>alert(1)</script>')).toBe(false);
+  });
+
+  test('Should block vbscript: protocol', () => {
+    expect(utils.isSafeUrl('vbscript:msgbox("xss")')).toBe(false);
+  });
+
+  test('Should block file: protocol', () => {
+    expect(utils.isSafeUrl('file:///etc/passwd')).toBe(false);
+  });
+
+  test('Should block ftp: protocol', () => {
+    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(false);
+  });
+
+  test('Should block custom: protocol', () => {
+    expect(utils.isSafeUrl('custom:payload')).toBe(false);
+  });
+
+  test('Should allow a path that contains a colon but is not a scheme', () => {
+    expect(utils.isSafeUrl('/path/to:resource')).toBe(true);
+  });
+
+  test('Should allow a path starting with a digit before colon', () => {
+    expect(utils.isSafeUrl('123:not-a-scheme')).toBe(true);
   });
 });

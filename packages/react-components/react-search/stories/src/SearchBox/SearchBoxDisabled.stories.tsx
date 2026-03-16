@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, SearchBox } from '@fluentui/react-components';
 
-export const Disabled = () => {
+export const Disabled = (): JSXElement => {
   return (
     <Field label="Disabled SearchBox">
       <SearchBox disabled defaultValue="disabled value" />

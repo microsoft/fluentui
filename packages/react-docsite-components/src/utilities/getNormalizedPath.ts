@@ -5,7 +5,7 @@ import { removeAnchorLink } from './removeAnchorLink';
  * Get current hash route path, lowercase and without any trailing slash, query, or anchor
  * (will include leading #)
  */
-export function getNormalizedPath() {
+export function getNormalizedPath(): string {
   let path = getDocument()?.location.hash;
   if (!path) {
     return '';
@@ -17,7 +17,7 @@ export function getNormalizedPath() {
 }
 
 /** Convert path to lowercase and remove trailing slash (doesn't check for query or anchor) */
-export function normalizePath(path?: string) {
+export function normalizePath(path?: string): string {
   path = path || '';
   if (path.slice(-1) === '/') {
     path = path.slice(0, -1);

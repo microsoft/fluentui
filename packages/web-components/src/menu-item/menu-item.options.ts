@@ -1,4 +1,5 @@
 import type { ValuesOf } from '../utils/index.js';
+import type { MenuItem } from './menu-item.js';
 
 /**
  * Menu items roles.
@@ -37,3 +38,19 @@ export const roleForMenuItem: {
   [MenuItemRole.menuitemcheckbox]: 'menuitemcheckbox',
   [MenuItemRole.menuitemradio]: 'menuitemradio',
 };
+
+/**
+ * Predicate function that determines if the element should be considered a menu-item.
+ *
+ * @param element - The element to check.
+ * @param tagName - The tag name to check.
+ * @returns true if the element is a dropdown.
+ * @public
+ */
+export function isMenuItem(element?: Node | null, tagName: string = '-menu-item'): element is MenuItem {
+  if (element?.nodeType !== Node.ELEMENT_NODE) {
+    return false;
+  }
+
+  return (element as Element).tagName.toLowerCase().endsWith(tagName);
+}

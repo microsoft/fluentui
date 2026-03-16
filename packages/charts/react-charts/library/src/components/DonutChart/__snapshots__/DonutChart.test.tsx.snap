@@ -1,0 +1,2703 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
+<div>
+  <div
+    class="fui-donut__root"
+  >
+    <div
+      class="fui-donut__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Donut chart example"
+        class="fui-donut__chart"
+        height="214"
+        width="0"
+      >
+        <rect
+          class="fui-donut__svgTooltip"
+          height="3"
+          width="6"
+          x="-3"
+          y="-6"
+        />
+        <text
+          aria-describedby="tooltip-_r_2_"
+          aria-hidden="true"
+          class="fui-donut__chartTitle"
+          dominant-baseline="auto"
+          id="tooltip-host_r_1_"
+          text-anchor="middle"
+          x="0"
+          y="0"
+        >
+          ...
+        </text>
+        <span
+          hidden=""
+        />
+        <g
+          transform="translate(0, 98)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              class="fui-donut-arc__root"
+              d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+              id="_Pie__r_0_first20000"
+              opacity="1"
+              role="img"
+              style="fill: #E5E5E5; cursor: default;"
+              tabindex="0"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              class="fui-donut-arc__root"
+              d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+              id="_Pie__r_0_second39000"
+              opacity="1"
+              role="img"
+              style="fill: #0078D4; cursor: default;"
+              tabindex="0"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              class="fui-donut-arc__root"
+              d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+              id="_Pie__r_0_third45000"
+              opacity="1"
+              role="img"
+              style="fill: #DADADA; cursor: default;"
+              tabindex="0"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="callout_r_3_"
+    />
+    <div
+      class="fui-donut__legendContainer"
+      style="margin-top: -36px;"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: center;"
+        >
+          <button
+            aria-label="first"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Donut chart interactions Should reflect theme change 1`] = `
+<div>
+  <div
+    class="fui-FluentProvider fui-FluentProvider_r_1h_"
+    dir="ltr"
+  >
+    <div
+      class="fui-donut__root"
+    >
+      <div
+        class="fui-donut__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Donut chart example"
+          class="fui-donut__chart"
+          height="214"
+          width="0"
+        >
+          <rect
+            class="fui-donut__svgTooltip"
+            height="3"
+            width="6"
+            x="-3"
+            y="-6"
+          />
+          <text
+            aria-describedby="tooltip-_r_1k_"
+            aria-hidden="true"
+            class="fui-donut__chartTitle"
+            dominant-baseline="auto"
+            id="tooltip-host_r_1j_"
+            text-anchor="middle"
+            x="0"
+            y="0"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+          <g
+            transform="translate(0, 98)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_1i_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_1i_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_1i_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        class="fui-cart__calloutContainer"
+        id="callout_r_1l_"
+      />
+      <div
+        class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: center;"
+          >
+            <button
+              aria-label="first"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                first
+              </div>
+            </button>
+            <button
+              aria-label="second"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                second
+              </div>
+            </button>
+            <button
+              aria-label="third"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                third
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart - mouse events Should render callout correctly on mouseover 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
+    <div>
+      <div
+        class="fui-donut__root"
+      >
+        <div
+          class="fui-donut__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Donut chart example"
+            class="fui-donut__chart"
+            height="214"
+            width="0"
+          >
+            <rect
+              class="fui-donut__svgTooltip"
+              height="3"
+              width="6"
+              x="-3"
+              y="-6"
+            />
+            <text
+              aria-describedby="tooltip-_r_40_"
+              aria-hidden="true"
+              class="fui-donut__chartTitle"
+              dominant-baseline="auto"
+              id="tooltip-host_r_3v_"
+              text-anchor="middle"
+              x="0"
+              y="0"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              transform="translate(0, 98)"
+            >
+              <g>
+                <path
+                  aria-label="2020/04/30, 20000."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                  id="_Pie__r_3u_first20000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/20, 39000."
+                  class="fui-donut-arc__root"
+                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                  id="_Pie__r_3u_second39000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/25, 45000."
+                  class="fui-donut-arc__root"
+                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_3u_third45000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__calloutContainer"
+          id="callout_r_41_"
+        >
+          <div
+            class="fui-PopoverSurface"
+            data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+            role="group"
+            style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+          >
+            <div
+              class="fui-cart__calloutContentRoot"
+            >
+              <div
+                class="fui-cart__calloutDateTimeContainer"
+              >
+                <div
+                  class="fui-cart__calloutContentX"
+                >
+                   
+                </div>
+              </div>
+              <div
+                class="fui-cart__calloutInfoContainer"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
+              >
+                <div
+                  class="fui-cart__calloutBlockContainer"
+                >
+                  <div
+                    class="fui-cart__calloutlegendText"
+                  >
+                    2020/04/30
+                  </div>
+                  <div
+                    class="fui-cart__calloutContentY"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  >
+                    20,000
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: center;"
+            >
+              <button
+                aria-label="first"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  first
+                </div>
+              </button>
+              <button
+                aria-label="second"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  second
+                </div>
+              </button>
+              <button
+                aria-label="third"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  third
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=""
+      data-portal-node="true"
+      dir="ltr"
+    >
+      <div
+        class="fui-Tooltip__content"
+        id="tooltip-_r_40_"
+        role="tooltip"
+      >
+        <div
+          class=""
+        />
+        Donut chart example
+      </div>
+      <span
+        hidden=""
+      />
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-donut__root"
+    >
+      <div
+        class="fui-donut__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Donut chart example"
+          class="fui-donut__chart"
+          height="214"
+          width="0"
+        >
+          <rect
+            class="fui-donut__svgTooltip"
+            height="3"
+            width="6"
+            x="-3"
+            y="-6"
+          />
+          <text
+            aria-describedby="tooltip-_r_40_"
+            aria-hidden="true"
+            class="fui-donut__chartTitle"
+            dominant-baseline="auto"
+            id="tooltip-host_r_3v_"
+            text-anchor="middle"
+            x="0"
+            y="0"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+          <g
+            transform="translate(0, 98)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_3u_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_3u_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_3u_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        class="fui-cart__calloutContainer"
+        id="callout_r_41_"
+      >
+        <div
+          class="fui-PopoverSurface"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+          role="group"
+          style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+        >
+          <div
+            class="fui-cart__calloutContentRoot"
+          >
+            <div
+              class="fui-cart__calloutDateTimeContainer"
+            >
+              <div
+                class="fui-cart__calloutContentX"
+              >
+                 
+              </div>
+            </div>
+            <div
+              class="fui-cart__calloutInfoContainer"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
+            >
+              <div
+                class="fui-cart__calloutBlockContainer"
+              >
+                <div
+                  class="fui-cart__calloutlegendText"
+                >
+                  2020/04/30
+                </div>
+                <div
+                  class="fui-cart__calloutContentY"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                >
+                  20,000
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: center;"
+          >
+            <button
+              aria-label="first"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                first
+              </div>
+            </button>
+            <button
+              aria-label="second"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                second
+              </div>
+            </button>
+            <button
+              aria-label="third"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                third
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`DonutChart - mouse events Should render customized callout on mouseover 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
+    <div>
+      <div
+        class="fui-donut__root"
+      >
+        <div
+          class="fui-donut__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Donut chart example"
+            class="fui-donut__chart"
+            height="214"
+            width="0"
+          >
+            <rect
+              class="fui-donut__svgTooltip"
+              height="3"
+              width="6"
+              x="-3"
+              y="-6"
+            />
+            <text
+              aria-describedby="tooltip-_r_4d_"
+              aria-hidden="true"
+              class="fui-donut__chartTitle"
+              dominant-baseline="auto"
+              id="tooltip-host_r_4c_"
+              text-anchor="middle"
+              x="0"
+              y="0"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              transform="translate(0, 98)"
+            >
+              <g>
+                <path
+                  aria-label="2020/04/30, 20000."
+                  class="fui-donut-arc__root"
+                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                  id="_Pie__r_4b_first20000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/20, 39000."
+                  class="fui-donut-arc__root"
+                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                  id="_Pie__r_4b_second39000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+              <g>
+                <path
+                  aria-label="2020/04/25, 45000."
+                  class="fui-donut-arc__root"
+                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  id="_Pie__r_4b_third45000"
+                  opacity="1"
+                  role="img"
+                  style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__calloutContainer"
+          id="callout_r_4e_"
+        >
+          <div
+            class="fui-PopoverSurface"
+            data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+            role="group"
+            style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+          >
+            <div
+              class="fui-cart__calloutContentRoot"
+            >
+              <div
+                class="fui-cart__calloutDateTimeContainer"
+              >
+                <div
+                  class="fui-cart__calloutContentX"
+                >
+                   
+                </div>
+              </div>
+              <div
+                class="fui-cart__calloutInfoContainer"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
+              >
+                <div
+                  class="fui-cart__calloutBlockContainer"
+                >
+                  <div
+                    class="fui-cart__calloutlegendText"
+                  >
+                    2020/04/30
+                  </div>
+                  <div
+                    class="fui-cart__calloutContentY"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  >
+                    20,000
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="fui-donut__legendContainer"
+          style="margin-top: -36px;"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: center;"
+            >
+              <button
+                aria-label="first"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  first
+                </div>
+              </button>
+              <button
+                aria-label="second"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  second
+                </div>
+              </button>
+              <button
+                aria-label="third"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  third
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=""
+      data-portal-node="true"
+      dir="ltr"
+    >
+      <div
+        class="fui-Tooltip__content"
+        id="tooltip-_r_4d_"
+        role="tooltip"
+      >
+        <div
+          class=""
+        />
+        Donut chart example
+      </div>
+      <span
+        hidden=""
+      />
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-donut__root"
+    >
+      <div
+        class="fui-donut__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Donut chart example"
+          class="fui-donut__chart"
+          height="214"
+          width="0"
+        >
+          <rect
+            class="fui-donut__svgTooltip"
+            height="3"
+            width="6"
+            x="-3"
+            y="-6"
+          />
+          <text
+            aria-describedby="tooltip-_r_4d_"
+            aria-hidden="true"
+            class="fui-donut__chartTitle"
+            dominant-baseline="auto"
+            id="tooltip-host_r_4c_"
+            text-anchor="middle"
+            x="0"
+            y="0"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+          <g
+            transform="translate(0, 98)"
+          >
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class="fui-donut-arc__root"
+                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                id="_Pie__r_4b_first20000"
+                opacity="1"
+                role="img"
+                style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class="fui-donut-arc__root"
+                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                id="_Pie__r_4b_second39000"
+                opacity="1"
+                role="img"
+                style="fill: #0078D4; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class="fui-donut-arc__root"
+                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                id="_Pie__r_4b_third45000"
+                opacity="1"
+                role="img"
+                style="fill: #DADADA; cursor: default;"
+                tabindex="0"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        class="fui-cart__calloutContainer"
+        id="callout_r_4e_"
+      >
+        <div
+          class="fui-PopoverSurface"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+          role="group"
+          style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+        >
+          <div
+            class="fui-cart__calloutContentRoot"
+          >
+            <div
+              class="fui-cart__calloutDateTimeContainer"
+            >
+              <div
+                class="fui-cart__calloutContentX"
+              >
+                 
+              </div>
+            </div>
+            <div
+              class="fui-cart__calloutInfoContainer"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
+            >
+              <div
+                class="fui-cart__calloutBlockContainer"
+              >
+                <div
+                  class="fui-cart__calloutlegendText"
+                >
+                  2020/04/30
+                </div>
+                <div
+                  class="fui-cart__calloutContentY"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                >
+                  20,000
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="fui-donut__legendContainer"
+        style="margin-top: -36px;"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: center;"
+          >
+            <button
+              aria-label="first"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                first
+              </div>
+            </button>
+            <button
+              aria-label="second"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                second
+              </div>
+            </button>
+            <button
+              aria-label="third"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                third
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`DonutChart snapShot testing Should elevate all smaller values to minimums 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_32_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_31_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_30_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_33_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2o_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_2n_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="start"
+            x="-1.143083014314768"
+            y="1.6411463135214555"
+          >
+            20k
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="hanging"
+            text-anchor="start"
+            x="-1.3603172563291284"
+            y="-1.4661299267572407"
+          >
+            39k
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2m_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="end"
+            x="1.9541939332494636"
+            y="0.42558908732601586"
+          >
+            45k
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_2p_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2t_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_2s_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="start"
+            x="-1.143083014314768"
+            y="1.6411463135214555"
+          >
+            19%
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="hanging"
+            text-anchor="start"
+            x="-1.3603172563291284"
+            y="-1.4661299267572407"
+          >
+            38%
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2r_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-donut-arc__arcLabel"
+            dominant-baseline="auto"
+            text-anchor="end"
+            x="1.9541939332494636"
+            y="0.42558908732601586"
+          >
+            43%
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_2u_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_1u_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_1t_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+            id="_Pie__r_1s_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+            id="_Pie__r_1s_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+            id="_Pie__r_1s_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_1v_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders DonutChart correctly without color points 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_23_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_22_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_first20000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_second39000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_21_third45000"
+            opacity="1"
+            role="img"
+            style="cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_24_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2f_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_2e_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2d_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_2g_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+      style="justify-content: center; flex-wrap: wrap;"
+    >
+      <div
+        class="fui-legend__resizableArea"
+        style="display: flex; flex-wrap: wrap; overflow: auto;"
+      >
+        <div
+          class="fui-legend__legendContainer"
+        >
+          <button
+            aria-label="first"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              first
+            </div>
+          </button>
+        </div>
+        <div
+          class="fui-legend__legendContainer"
+        >
+          <button
+            aria-label="second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              second
+            </div>
+          </button>
+        </div>
+        <div
+          class="fui-legend__legendContainer"
+        >
+          <button
+            aria-label="third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="218"
+      width="0"
+    >
+      <g
+        transform="translate(0, 100)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_26_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_27_"
+  />
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2a_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_29_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_28_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_2b_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2j_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_2i_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M0,0Z"
+            id="_Pie__r_2h_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_2k_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
