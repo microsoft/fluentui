@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   getGradientFromToken,
   DataVizGradientPalette,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 
 export const DonutChartCustomAccessibility = (): JSXElement => {

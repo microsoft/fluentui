@@ -17,16 +17,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "nx build",
-    "clean": "nx clean",
-    "generate-api": "nx generate-api",
-    "start": "yarn storybook",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "update-snapshots": "jest -u",
-    "type-check": "nx type-check"
-  },
   "syncpack": {
     "dependencyTypes": []
   },

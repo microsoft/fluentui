@@ -7,7 +7,7 @@ import {
   ChartDataPoint,
   DataVizGradientPalette,
   getGradientFromToken,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, mergeClasses } from '@fluentui/react-components';
 

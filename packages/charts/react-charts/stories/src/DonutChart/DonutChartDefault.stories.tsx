@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   DataVizGradientPalette,
   getGradientFromToken,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 
 export const DonutChartBasic = () => {
   const points: ChartDataPoint[] = [

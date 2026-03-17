@@ -3,9 +3,8 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
-import { convertToLocaleString } from '../../utilities/locale-util';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { formatValueWithSIPrefix, formatScientificLimitWidth, getAccessibleDataObject, getNextGradient, useRtl } from '../../utilities/index';
+import { formatScientificLimitWidth, getAccessibleDataObject, getNextGradient, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -119,7 +118,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       point =>
         point.chartData?.map((dataPoint): Legend => {
           const legend = dataPoint.legend ?? '';
-          const color = dataPoint.color ?? '';
+          const color = Array.isArray(dataPoint.color) ? dataPoint.color[0] : dataPoint.color ?? '';
 
           return {
             title: legend,
@@ -215,7 +214,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: ChartProps, dataPointIndex: number): JSX.Element[] {
+  function _createBars(data: ChartProps, dataPointIndex: number): JSXElement[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -377,7 +376,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata
-        ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.total ?? point.horizontalBarChartdata.y ?? ''}`
+        ? `${point.horizontalBarChartdata.x}/${
+            point.horizontalBarChartdata.total ?? point.horizontalBarChartdata.total ?? ''
+          }`
         : 0);
     return point.callOutAccessibilityData?.ariaLabel || (pointLegend ? `${pointLegend}, ` : '') + `${yValue}.`;
   };

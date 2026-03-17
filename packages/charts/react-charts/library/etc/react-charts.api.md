@@ -435,7 +435,7 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 // @public (undocumented)
 export interface ChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
-    color?: string;
+    color?: string | [string, string];
     data?: number;
     horizontalBarChartdata?: HorizontalDataPoint;
     legend?: string;
@@ -659,6 +659,36 @@ export interface DataSeries {
 }
 
 // @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
+
+// @public (undocumented)
 export const DataVizPalette: {
     color1: string;
     color2: string;
@@ -707,36 +737,6 @@ export const DataVizPalette: {
     warning: string;
     success: string;
     highSuccess: string;
-};
-
-// @public (undocumented)
-export const DataVizGradientPalette: {
-    gradient1: string;
-    gradient2: string;
-    gradient3: string;
-    gradient4: string;
-    gradient5: string;
-    gradient6: string;
-    gradient7: string;
-    gradient8: string;
-    gradient9: string;
-    gradient10: string;
-    gradient1Ext: string;
-    gradient2Ext: string;
-    gradient3Ext: string;
-    gradient4Ext: string;
-    gradient5Ext: string;
-    gradient6Ext: string;
-    gradient7Ext: string;
-    gradient8Ext: string;
-    gradient9Ext: string;
-    gradient10Ext: string;
-    success: string;
-    highSuccess: string;
-    warning: string;
-    error: string;
-    highError: string;
-    disabled: string;
 };
 
 // @public
@@ -1001,16 +1001,19 @@ export const getColorContrast: (c1: string, c2: string) => number;
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
-export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
 
 // @public (undocumented)
-export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
 export const getInvertedTextColor: (color: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
 export const getSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant?: GaugeChartVariant, isAriaLabel?: boolean) => string;

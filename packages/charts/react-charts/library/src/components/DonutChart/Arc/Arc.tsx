@@ -6,9 +6,8 @@ import { useArcStyles } from './useArcStyles.styles';
 import { ChartDataPoint } from '../index';
 import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix, useRtl } from '../../../utilities/index';
+import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
-import { formatScientificLimitWidth } from '../../../utilities/index';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
 /**
@@ -122,10 +121,10 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
 
     const fill = useGradient
       ? `conic-gradient(
-          from ${((props.data?.startAngle ?? 0) * 180) / Math.PI - 90}deg,
-          ${props.color[0]} 0%,
-          ${props.color[1]} ${((props.data!.endAngle - props.data!.startAngle) / (2 * Math.PI)) * 100}%
-        )`
+      from ${props.data?.startAngle}rad,
+      ${props.color[0]},
+      ${props.color[1]} ${props.data!.endAngle - props.data!.startAngle}rad
+    )`
       : (props.color as string);
 
     const pathData = arc.cornerRadius(cornerRadius)({
@@ -149,7 +148,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           id={id}
           d={pathData}
           className={classes.root}
-          style={{ fill: useGradient ? 'transparent' : props.color, cursor: href ? 'pointer' : 'default' }}
+          style={{ fill: useGradient ? 'transparent' : (props.color as string), cursor: href ? 'pointer' : 'default' }}
           onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
           data-is-focusable={_shouldHighlightArc(props.data!.data.legend!) || activeArc?.length === 0}
           onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}

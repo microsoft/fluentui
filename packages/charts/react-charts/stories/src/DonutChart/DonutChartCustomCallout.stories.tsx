@@ -9,7 +9,7 @@ import {
   ChartPopoverProps,
   getGradientFromToken,
   DataVizGradientPalette,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
