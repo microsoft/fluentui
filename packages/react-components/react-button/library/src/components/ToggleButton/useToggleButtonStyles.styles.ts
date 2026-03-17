@@ -174,6 +174,12 @@ const useCheckedAccessibleStyles = makeStyles({
     // primary has an inner stroke for the checked style
     outline: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForegroundOnBrand}`,
     outlineOffset: `calc(${tokens.strokeWidthThicker} * -1)`,
+
+    // need to not have the default focus style that removes the outline
+    ...createCustomFocusIndicatorStyle({
+      outline: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForegroundOnBrand}`,
+      outlineOffset: `calc(${tokens.strokeWidthThickest} * -1)`,
+    }),
   },
 
   subtle: {
