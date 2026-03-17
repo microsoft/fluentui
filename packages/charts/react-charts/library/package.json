@@ -18,14 +18,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "generate-api": "just-scripts generate-api",
+    "build": "nx build",
+    "clean": "nx clean",
+    "generate-api": "nx generate-api",
     "start": "yarn storybook",
     "storybook": "yarn --cwd ../stories storybook",
     "test": "jest --passWithNoTests",
     "update-snapshots": "jest -u",
-    "type-check": "just-scripts type-check"
+    "type-check": "nx type-check"
   },
   "syncpack": {
     "dependencyTypes": []
