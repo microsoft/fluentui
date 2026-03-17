@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, mergeClasses, SearchBox, Spinner, tokens } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, SearchBox, Spinner, tokens, useId } from '@fluentui/react-components';
 import type { SearchBoxChangeEvent } from '@fluentui/react-components';
 import type { InputOnChangeData } from '@fluentui/react-components';
 
@@ -100,7 +100,7 @@ export const Typeahead = (): JSXElement => {
   const [focusedIndex, setFocusedIndex] = React.useState(-1);
   const [selectedLabel, setSelectedLabel] = React.useState('');
 
-  const listboxId = React.useId();
+  const listboxId = useId();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const optionRefs = React.useRef<(HTMLLIElement | null)[]>([]);
 
@@ -155,7 +155,9 @@ export const Typeahead = (): JSXElement => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      return;
+    }
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
