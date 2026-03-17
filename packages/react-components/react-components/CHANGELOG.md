@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 11 Mar 2026 12:58:37 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2026 07:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.4)
+
+Tue, 17 Mar 2026 07:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.3..@fluentui/react-components_v9.73.4)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale ([PR #35863](https://github.com/microsoft/fluentui/pull/35863) by copilot@github.com)
+
+### Patches
+
+- `@fluentui/react-menu-grid-preview`
+  - fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation) ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
 
 ## [9.73.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.3)
 
