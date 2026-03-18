@@ -10,7 +10,12 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useTableCompositeNavigation } from '@fluentui/react-table';
-import { useFocusFinders, useMergedTabsterAttributes_unstable, useTabsterAttributes } from '@fluentui/react-tabster';
+import {
+  useArrowNavigationGroup,
+  useFocusFinders,
+  useMergedTabsterAttributes_unstable,
+  useTabsterAttributes,
+} from '@fluentui/react-tabster';
 import type { MenuGridProps, MenuGridState } from './MenuGrid.types';
 import { useMenuContext_unstable } from '@fluentui/react-menu';
 import { useValidateNesting } from '../../utils/useValidateNesting';
@@ -23,19 +28,23 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
   const innerRef = React.useRef<HTMLDivElement>(null);
   const { findAllFocusable } = useFocusFinders();
   const triggerId = useMenuContext_unstable(context => context.triggerId);
+
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
-  const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onTableKeyDown));
+
+  const circularGridAttribute = useArrowNavigationGroup({ circular: true });
+  const mergedTabsterAttribute = useMergedTabsterAttributes_unstable(tableTabsterAttribute, circularGridAttribute);
 
   const ignoreEnterKeyAttribute = useTabsterAttributes({
     focusable: {
       ignoreKeydown: { Enter: true },
     },
   });
-
   const mergedRowTabsterAttribute = useMergedTabsterAttributes_unstable(
     tableRowTabsterAttribute,
     ignoreEnterKeyAttribute,
   );
+
+  const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onTableKeyDown));
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
@@ -97,7 +106,8 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
         ref: useMergedRefs(ref, validateNestingRef, innerRef),
         role: 'grid',
         'aria-labelledby': triggerId,
-        ...tableTabsterAttribute,
+        // ...circularGridAttribute,
+        ...mergedTabsterAttribute,
         ...props,
         onKeyDown,
       }),
