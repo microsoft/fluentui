@@ -10,9 +10,11 @@ const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]/g;
 
 /**
  * Regular expression matching special ASCII characters except space, plus some unicode special characters.
- * Applies after unwanted enclosures have been removed
+ * Applies after unwanted enclosures have been removed.
+ * Note: the range starts at \uE000 (not \uD800) to avoid matching surrogate code units, which would break
+ * supplementary Unicode characters (encoded as surrogate pairs in UTF-16) such as GB18030-2022 extension characters.
  */
-const UNWANTED_CHARS_REGEX: RegExp = /[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
+const UNWANTED_CHARS_REGEX: RegExp = /[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uE000-\uFFFF]/g;
 
 /**
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
@@ -28,30 +30,34 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
  * Arabic:   Arabic, Arabic Supplement, Arabic Extended-A.
  * Korean:   Hangul Jamo, Hangul Compatibility Jamo, Hangul Jamo Extended-A, Hangul Syllables, Hangul Jamo Extended-B.
  * Japanese: Hiragana, Katakana.
- * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs,
- *             CJK Unified Ideographs Extension B
+ * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs.
+ * Note: Supplementary CJK characters (GB18030-2022 extension characters in Ext B-I) are intentionally not listed
+ * here so they can be rendered as initials.
  */
 const UNSUPPORTED_TEXT_REGEX: RegExp =
-  /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
+  /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/;
 
 function getInitialsLatin(displayName: string, isRtl: boolean, firstInitialOnly?: boolean): string {
   let initials = '';
 
   const splits: string[] = displayName.split(' ');
   if (splits.length !== 0) {
-    initials += splits[0].charAt(0).toUpperCase();
+    // Use code point iteration to correctly handle supplementary characters (e.g. GB18030-2022 extension chars)
+    // that are encoded as surrogate pairs; charAt(0) would only return half of such a character.
+    initials += ([...splits[0]][0] ?? '').toUpperCase();
   }
 
   if (!firstInitialOnly) {
     if (splits.length === 2) {
-      initials += splits[1].charAt(0).toUpperCase();
+      initials += ([...splits[1]][0] ?? '').toUpperCase();
     } else if (splits.length === 3) {
-      initials += splits[2].charAt(0).toUpperCase();
+      initials += ([...splits[2]][0] ?? '').toUpperCase();
     }
   }
 
-  if (isRtl && initials.length > 1) {
-    return initials.charAt(1) + initials.charAt(0);
+  if (isRtl && [...initials].length > 1) {
+    const chars = [...initials];
+    return chars[1] + chars[0];
   }
 
   return initials;
@@ -95,9 +101,12 @@ export function getInitials(
 
   displayName = cleanupDisplayName(displayName);
 
-  // For names containing CJK characters, and phone numbers, we don't display initials
+  // Check only the first code point against UNSUPPORTED_TEXT_REGEX so that names starting with a supported
+  // character (e.g. GB18030-2022 extension characters) produce an initial even when the rest of the string
+  // contains BMP CJK characters that would otherwise trigger the regex.
+  const firstCodePoint = [...displayName][0] ?? '';
   if (
-    UNSUPPORTED_TEXT_REGEX.test(displayName) ||
+    UNSUPPORTED_TEXT_REGEX.test(firstCodePoint) ||
     (!options?.allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))
   ) {
     return '';
