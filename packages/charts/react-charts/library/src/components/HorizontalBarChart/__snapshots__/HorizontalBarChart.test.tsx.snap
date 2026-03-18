@@ -39,15 +39,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_2s__0"
+            id="_HorizontalLine__r_3c__0"
           >
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -56,10 +58,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -103,15 +107,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_2s__1"
+            id="_HorizontalLine__r_3c__1"
           >
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -120,10 +126,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -167,15 +175,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_2s__2"
+            id="_HorizontalLine__r_3c__2"
           >
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -184,10 +194,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="40.74666666666666%"
               x="59.25333333333334%"
@@ -199,7 +211,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_31_"
+      id="callout_r_3i_"
     />
   </div>
 </div>
@@ -244,15 +256,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_32__0"
+            id="_HorizontalLine__r_3j__0"
           >
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -261,10 +275,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -308,15 +324,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_32__1"
+            id="_HorizontalLine__r_3j__1"
           >
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -325,10 +343,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -372,15 +392,17 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_32__2"
+            id="_HorizontalLine__r_3j__2"
           >
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -389,10 +411,12 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="40.74666666666666%"
               x="59.25333333333334%"
@@ -404,7 +428,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_37_"
+      id="callout_r_3p_"
     />
   </div>
 </div>
@@ -413,7 +437,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_38_"
+    class="fui-FluentProvider fui-FluentProvider_r_3q_"
     dir="ltr"
   >
     <div
@@ -453,15 +477,17 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_39__0"
+              id="_HorizontalLine__r_3r__0"
             >
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -470,10 +496,12 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="13457/15000."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
@@ -517,15 +545,17 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_39__1"
+              id="_HorizontalLine__r_3r__1"
             >
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -534,10 +564,12 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="14200/15000."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
@@ -581,15 +613,17 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_39__2"
+              id="_HorizontalLine__r_3r__2"
             >
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
@@ -598,10 +632,12 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="6112/15000."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
@@ -613,7 +649,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_3e_"
+        id="callout_r_41_"
       />
     </div>
   </div>
@@ -624,7 +660,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty_r_3g_"
+    id="_HBC_empty_r_43_"
     role="alert"
     style="opacity: 0;"
   />
@@ -671,15 +707,17 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_3f__0"
+            id="_HorizontalLine__r_42__0"
           >
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -688,10 +726,12 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -735,15 +775,17 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_3f__1"
+            id="_HorizontalLine__r_42__1"
           >
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -752,10 +794,12 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -799,15 +843,17 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_3f__2"
+            id="_HorizontalLine__r_42__2"
           >
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -816,10 +862,12 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="40.74666666666666%"
               x="59.25333333333334%"
@@ -831,7 +879,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_3k_"
+      id="callout_r_48_"
     />
   </div>
 </div>
@@ -869,15 +917,17 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_6__0"
+            id="_HorizontalLine__r_7__0"
           >
             <rect
               aria-label="one.one, 10/100."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="10%"
               x="0%"
@@ -886,10 +936,12 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <rect
               aria-label="one.two, 90/100."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="90%"
               x="10%"
@@ -901,7 +953,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_9_"
+      id="callout_r_b_"
     />
     <div
       class="fui-hbc__legendContainer"
@@ -1015,15 +1067,17 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
-            id="_HorizontalLine__r_a__0"
+            id="_HorizontalLine__r_c__0"
           >
             <rect
               aria-label="two.one, 30/200."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="15%"
               x="0%"
@@ -1032,10 +1086,12 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <rect
               aria-label="two.two, 170/200."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="85%"
               x="15%"
@@ -1047,7 +1103,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_d_"
+      id="callout_r_g_"
     />
     <div
       class="fui-hbc__legendContainer"
@@ -1173,10 +1229,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -1185,10 +1243,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -1237,10 +1297,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -1249,10 +1311,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -1301,10 +1365,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
+              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -1313,10 +1379,12 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
+              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
               role="img"
+              rx="4"
               tabindex="0"
               width="40.74666666666666%"
               x="59.25333333333334%"
@@ -1328,7 +1396,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_5_"
+      id="callout_r_6_"
     />
   </div>
 </div>
@@ -1371,15 +1439,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_41__0"
+                id="_HorizontalLine__r_4n__0"
               >
                 <rect
                   aria-label="2020/04/30, 10%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#004b50"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="10.286666666666665%"
                   x="0%"
@@ -1417,15 +1487,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_41__1"
+                id="_HorizontalLine__r_4n__1"
               >
                 <rect
                   aria-label="2020/04/30, 5%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="5.333333333333334%"
                   x="0%"
@@ -1463,15 +1535,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_41__2"
+                id="_HorizontalLine__r_4n__2"
               >
                 <rect
                   aria-label="2020/04/30, 59%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#a4262c"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="59.25333333333334%"
                   x="0%"
@@ -1484,7 +1558,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_46_"
+          id="callout_r_4t_"
         />
       </div>
     </div>
@@ -1495,7 +1569,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_43_"
+        id="tooltip-_r_4q_"
         role="tooltip"
       >
         one
@@ -1511,7 +1585,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_44_"
+        id="tooltip-_r_4r_"
         role="tooltip"
       >
         two
@@ -1527,7 +1601,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_45_"
+        id="tooltip-_r_4s_"
         role="tooltip"
       >
         three
@@ -1568,15 +1642,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_41__0"
+              id="_HorizontalLine__r_4n__0"
             >
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -1614,15 +1690,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_41__1"
+              id="_HorizontalLine__r_4n__1"
             >
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -1660,15 +1738,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_41__2"
+              id="_HorizontalLine__r_4n__2"
             >
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
@@ -1681,7 +1761,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_46_"
+        id="callout_r_4t_"
       />
     </div>
   </div>,
@@ -1776,15 +1856,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_3r__0"
+                id="_HorizontalLine__r_4g__0"
               >
                 <rect
                   aria-label="2020/04/30, 10%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#004b50"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="10.286666666666665%"
                   x="0%"
@@ -1831,15 +1913,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_3r__1"
+                id="_HorizontalLine__r_4g__1"
               >
                 <rect
                   aria-label="2020/04/30, 5%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="5.333333333333334%"
                   x="0%"
@@ -1886,15 +1970,17 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                id="_HorizontalLine__r_3r__2"
+                id="_HorizontalLine__r_4g__2"
               >
                 <rect
                   aria-label="2020/04/30, 59%."
                   class="fui-hbc__barWrapper"
+                  data-is-focusable="true"
                   fill="#a4262c"
                   height="12"
                   opacity="1"
                   role="img"
+                  rx="4"
                   tabindex="0"
                   width="59.25333333333334%"
                   x="0%"
@@ -1916,7 +2002,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_40_"
+          id="callout_r_4m_"
         />
       </div>
     </div>
@@ -1927,7 +2013,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_3t_"
+        id="tooltip-_r_4j_"
         role="tooltip"
       >
         one
@@ -1943,7 +2029,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_3u_"
+        id="tooltip-_r_4k_"
         role="tooltip"
       >
         two
@@ -1959,7 +2045,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_3v_"
+        id="tooltip-_r_4l_"
         role="tooltip"
       >
         three
@@ -2000,15 +2086,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_3r__0"
+              id="_HorizontalLine__r_4g__0"
             >
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -2055,15 +2143,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_3r__1"
+              id="_HorizontalLine__r_4g__1"
             >
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -2110,15 +2200,17 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              id="_HorizontalLine__r_3r__2"
+              id="_HorizontalLine__r_4g__2"
             >
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
+                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
@@ -2140,7 +2232,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_40_"
+        id="callout_r_4m_"
       />
     </div>
   </div>,
