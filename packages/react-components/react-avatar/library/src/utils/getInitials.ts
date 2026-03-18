@@ -37,21 +37,30 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
 const UNSUPPORTED_TEXT_REGEX: RegExp =
   /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/;
 
+function getFirstCodePoint(value: string): string {
+  if (!value) {
+    return '';
+  }
+
+  const codePoint = value.codePointAt(0);
+  return codePoint === undefined ? '' : String.fromCodePoint(codePoint);
+}
+
 function getInitialsLatin(displayName: string, isRtl: boolean, firstInitialOnly?: boolean): string {
   let initials = '';
 
   const splits: string[] = displayName.split(' ');
   if (splits.length !== 0) {
-    // Use code point iteration to correctly handle supplementary characters (e.g. GB18030-2022 extension chars)
+    // Use code point-aware helper to correctly handle supplementary characters (e.g. GB18030-2022 extension chars)
     // that are encoded as surrogate pairs; charAt(0) would only return half of such a character.
-    initials += ([...splits[0]][0] ?? '').toUpperCase();
+    initials += getFirstCodePoint(splits[0]).toUpperCase();
   }
 
   if (!firstInitialOnly) {
     if (splits.length === 2) {
-      initials += ([...splits[1]][0] ?? '').toUpperCase();
+      initials += getFirstCodePoint(splits[1]).toUpperCase();
     } else if (splits.length === 3) {
-      initials += ([...splits[2]][0] ?? '').toUpperCase();
+      initials += getFirstCodePoint(splits[2]).toUpperCase();
     }
   }
 
@@ -104,7 +113,7 @@ export function getInitials(
   // Check only the first code point against UNSUPPORTED_TEXT_REGEX so that names starting with a supported
   // character (e.g. GB18030-2022 extension characters) produce an initial even when the rest of the string
   // contains BMP CJK characters that would otherwise trigger the regex.
-  const firstCodePoint = [...displayName][0] ?? '';
+  const firstCodePoint = getFirstCodePoint(displayName);
   if (
     UNSUPPORTED_TEXT_REGEX.test(firstCodePoint) ||
     (!options?.allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))
