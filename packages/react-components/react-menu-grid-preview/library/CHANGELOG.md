@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Wed, 11 Mar 2026 12:58:41 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2026 07:57:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.2)
+
+Tue, 17 Mar 2026 07:57:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.1..@fluentui/react-menu-grid-preview_v0.3.2)
+
+### Patches
+
+- fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation) ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-menu to v9.23.0 ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by beachball)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus",
-  "packageName": "@fluentui/react-menu",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

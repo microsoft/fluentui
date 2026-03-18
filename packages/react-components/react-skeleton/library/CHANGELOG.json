@@ -2,6 +2,21 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2026 07:57:16 GMT",
+      "tag": "@fluentui/react-skeleton_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4946012a1e9752d2b2baef42bae321c1f899136d",
+            "comment": "feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:21 GMT",
       "tag": "@fluentui/react-skeleton_v9.5.0",
       "version": "9.5.0",
