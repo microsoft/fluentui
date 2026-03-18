@@ -8,7 +8,14 @@ export type MenuGridSlots = {
   root: Slot<'div'>;
 };
 
-export type MenuGridProps = ComponentProps<MenuGridSlots> & {};
+export type MenuGridProps = ComponentProps<MenuGridSlots> & {
+  /**
+   * Whether keyboard navigation wraps from the last row to the first and vice versa.
+   *
+   * @default true
+   */
+  circular?: boolean;
+};
 
 export type MenuGridState = ComponentState<MenuGridSlots> & {
   /**

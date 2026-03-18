@@ -24,6 +24,7 @@ import { useValidateNesting } from '../../utils/useValidateNesting';
  * Returns the props and state required to render the component
  */
 export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDivElement>): MenuGridState => {
+  const { circular = true, ...restProps } = props;
   const validateNestingRef = useValidateNesting('MenuGrid');
   const innerRef = React.useRef<HTMLDivElement>(null);
   const { findAllFocusable } = useFocusFinders();
@@ -31,7 +32,7 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
 
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
 
-  const circularGridAttribute = useArrowNavigationGroup({ circular: true });
+  const circularGridAttribute = useArrowNavigationGroup({ circular });
   const mergedTabsterAttribute = useMergedTabsterAttributes_unstable(tableTabsterAttribute, circularGridAttribute);
 
   const ignoreEnterKeyAttribute = useTabsterAttributes({
@@ -106,9 +107,8 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
         ref: useMergedRefs(ref, validateNestingRef, innerRef),
         role: 'grid',
         'aria-labelledby': triggerId,
-        // ...circularGridAttribute,
         ...mergedTabsterAttribute,
-        ...props,
+        ...restProps,
         onKeyDown,
       }),
       { elementType: 'div' },
