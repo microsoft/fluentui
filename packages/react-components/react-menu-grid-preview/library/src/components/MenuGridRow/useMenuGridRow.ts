@@ -13,12 +13,14 @@ import {
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
 import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
 import { useValidateNesting } from '../../utils/useValidateNesting';
+import { useCharacterSearch } from './useCharacterSearch';
 
 /**
  * Given user props, returns state and render function for a MenuGridRow.
  */
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
   const validateNestingRef = useValidateNesting('MenuGridRow');
+  const innerRef = React.useRef<HTMLDivElement>(null);
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   const onKeyDownToClick = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -44,13 +46,13 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     props.onClick?.(event);
   });
 
-  return {
+  const state: MenuGridRowState = {
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, validateNestingRef),
+        ref: useMergedRefs(ref, validateNestingRef, innerRef),
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,
@@ -61,4 +63,8 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
       { elementType: 'div' },
     ),
   };
+
+  useCharacterSearch(state, innerRef);
+
+  return state;
 }

@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useTableCompositeNavigation } from '@fluentui/react-table';
-import { useMergedTabsterAttributes_unstable, useTabsterAttributes } from '@fluentui/react-tabster';
+import { useFocusFinders, useMergedTabsterAttributes_unstable, useTabsterAttributes } from '@fluentui/react-tabster';
 import type { MenuGridProps, MenuGridState } from './MenuGrid.types';
 import { useMenuContext_unstable } from '@fluentui/react-menu';
 import { useValidateNesting } from '../../utils/useValidateNesting';
@@ -20,6 +20,8 @@ import { useValidateNesting } from '../../utils/useValidateNesting';
  */
 export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDivElement>): MenuGridState => {
   const validateNestingRef = useValidateNesting('MenuGrid');
+  const innerRef = React.useRef<HTMLDivElement>(null);
+  const { findAllFocusable } = useFocusFinders();
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
   const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onTableKeyDown));
@@ -35,13 +37,57 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
     ignoreEnterKeyAttribute,
   );
 
+  const setFocusByFirstCharacter = React.useCallback(
+    (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
+      if (!innerRef.current) {
+        return;
+      }
+
+      const rows = findAllFocusable(
+        innerRef.current,
+        (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'row',
+      );
+
+      let startIndex = rows.indexOf(itemEl) + 1;
+      if (startIndex === rows.length) {
+        startIndex = 0;
+      }
+
+      const firstChars = rows.map(row => row.textContent?.charAt(0).toLowerCase());
+      const char = e.key.toLowerCase();
+
+      const getIndexFirstChars = (start: number) => {
+        for (let i = start; i < firstChars.length; i++) {
+          if (char === firstChars[i]) {
+            return i;
+          }
+        }
+        return -1;
+      };
+
+      // Check remaining rows in the grid
+      let index = getIndexFirstChars(startIndex);
+
+      // If not found in remaining rows, check from beginning
+      if (index === -1) {
+        index = getIndexFirstChars(0);
+      }
+
+      // If match was found, focus it
+      if (index > -1) {
+        rows[index].focus();
+      }
+    },
+    [findAllFocusable],
+  );
+
   return {
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, validateNestingRef),
+        ref: useMergedRefs(ref, validateNestingRef, innerRef),
         role: 'grid',
         'aria-labelledby': triggerId,
         ...tableTabsterAttribute,
@@ -51,5 +97,6 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
       { elementType: 'div' },
     ),
     tableRowTabsterAttribute: mergedRowTabsterAttribute,
+    setFocusByFirstCharacter,
   };
 };
