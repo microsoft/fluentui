@@ -4,6 +4,8 @@ import { makeStyles, mergeClasses, SearchBox, Spinner, tokens, useId } from '@fl
 import type { SearchBoxChangeEvent } from '@fluentui/react-components';
 import type { InputOnChangeData } from '@fluentui/react-components';
 
+const DEBOUNCE_MS = 300;
+
 const useStyles = makeStyles({
   root: {
     position: 'relative',
@@ -67,7 +69,7 @@ type SearchResult = {
 };
 
 // Simulated async search function
-const fakeSearch = (query: string): Promise<SearchResult[]> => {
+const fetchResults = (query: string): Promise<SearchResult[]> => {
   const allResults: SearchResult[] = [
     { id: '1', label: 'Accessibility in Fluent UI' },
     { id: '2', label: 'Button component' },
@@ -83,8 +85,7 @@ const fakeSearch = (query: string): Promise<SearchResult[]> => {
 
   return new Promise(resolve => {
     setTimeout(() => {
-      const filtered = query ? allResults.filter(r => r.label.toLowerCase().includes(query.toLowerCase())) : [];
-      resolve(filtered);
+      resolve(allResults.filter(r => r.label.toLowerCase().includes(query.toLowerCase())));
     }, 500);
   });
 };
@@ -96,40 +97,47 @@ export const Typeahead = (): JSXElement => {
   const [results, setResults] = React.useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [hasSearched, setHasSearched] = React.useState(false);
   const [focusedIndex, setFocusedIndex] = React.useState(-1);
-  const [selectedLabel, setSelectedLabel] = React.useState('');
+  const [selectedId, setSelectedId] = React.useState<string | null>(null);
 
   const listboxId = useId();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const optionRefs = React.useRef<(HTMLLIElement | null)[]>([]);
+  const cancelRef = React.useRef<(() => void) | null>(null);
 
-  // Run search when query changes
+  // Debounced search when query changes
   React.useEffect(() => {
     if (!query) {
       setResults([]);
       setIsOpen(false);
       setIsLoading(false);
-      setHasSearched(false);
       return;
     }
 
     setIsLoading(true);
     setIsOpen(true);
-    setHasSearched(false);
     setFocusedIndex(-1);
 
-    let cancelled = false;
-    fakeSearch(query).then(data => {
-      if (!cancelled) {
-        setResults(data);
-        setIsLoading(false);
-        setHasSearched(true);
-      }
-    });
+    const debounceTimer = setTimeout(() => {
+      let cancelled = false;
+      fetchResults(query).then(data => {
+        if (!cancelled) {
+          setResults(data);
+          optionRefs.current = new Array(data.length).fill(null);
+          setIsLoading(false);
+        }
+      });
+
+      // Store cancel in the ref so the cleanup can access it
+      cancelRef.current = () => {
+        cancelled = true;
+      };
+    }, DEBOUNCE_MS);
 
     return () => {
-      cancelled = true;
+      clearTimeout(debounceTimer);
+      cancelRef.current?.();
+      cancelRef.current = null;
     };
   }, [query]);
 
@@ -142,12 +150,11 @@ export const Typeahead = (): JSXElement => {
 
   const handleChange = (_: SearchBoxChangeEvent, data: InputOnChangeData) => {
     setQuery(data.value);
-    setSelectedLabel('');
-    setHasSearched(false);
+    setSelectedId(null);
   };
 
   const handleSelect = (result: SearchResult) => {
-    setSelectedLabel(result.label);
+    setSelectedId(result.id);
     setQuery(result.label);
     setIsOpen(false);
     setFocusedIndex(-1);
@@ -184,7 +191,8 @@ export const Typeahead = (): JSXElement => {
     }
   };
 
-  const showDropdown = isOpen && (isLoading || hasSearched);
+  const showDropdown = isOpen && (isLoading || results.length > 0);
+  const noResults = isOpen && !isLoading && query.length > 0 && results.length === 0;
   const activedescendant = focusedIndex >= 0 ? `${listboxId}-option-${focusedIndex}` : undefined;
 
   return (
@@ -193,7 +201,7 @@ export const Typeahead = (): JSXElement => {
         ref={inputRef}
         aria-autocomplete="list"
         aria-controls={listboxId}
-        aria-expanded={showDropdown}
+        aria-expanded={showDropdown || noResults}
         aria-activedescendant={activedescendant}
         role="combobox"
         placeholder="Search..."
@@ -205,17 +213,22 @@ export const Typeahead = (): JSXElement => {
 
       {/* Live region announces result count for screen readers */}
       <div aria-live="polite" aria-atomic="true" className={styles.visuallyHidden}>
-        {!isLoading && isOpen && `${results.length} result${results.length !== 1 ? 's' : ''} available`}
+        {isLoading && 'Searching…'}
+        {!isLoading &&
+          isOpen &&
+          results.length > 0 &&
+          `${results.length} result${results.length !== 1 ? 's' : ''} available`}
+        {noResults && 'No results found'}
       </div>
 
       <ul
         id={listboxId}
         role="listbox"
         aria-label="Search results"
-        className={mergeClasses(styles.listbox, !showDropdown && styles.listboxHidden)}
+        className={mergeClasses(styles.listbox, !showDropdown && !noResults && styles.listboxHidden)}
       >
         {isLoading ? (
-          <li className={styles.spinnerWrapper} aria-live="polite">
+          <li className={styles.spinnerWrapper}>
             <Spinner size="tiny" label="Loading results…" labelPosition="after" />
           </li>
         ) : results.length > 0 ? (
@@ -227,7 +240,7 @@ export const Typeahead = (): JSXElement => {
                 optionRefs.current[index] = el;
               }}
               role="option"
-              aria-selected={selectedLabel === result.label}
+              aria-selected={selectedId === result.id}
               className={mergeClasses(styles.option, focusedIndex === index && styles.optionFocused)}
               onMouseDown={e => {
                 // Prevent input blur before click registers
@@ -253,10 +266,10 @@ Typeahead.parameters = {
 A \`SearchBox\` can be combined with a results dropdown to create a typeahead (autocomplete) pattern.
 This example demonstrates:
 
-- **Async search**: results are fetched asynchronously as the user types (simulated with a 500ms delay).
+- **Debounced async search**: results are fetched asynchronously after a ${DEBOUNCE_MS}ms debounce to avoid firing on every keystroke. In-flight requests are cancelled when the query changes.
 - **Loading state**: a \`Spinner\` is shown inside the dropdown while results are loading.
 - **Keyboard navigation**: use \`ArrowDown\`/\`ArrowUp\` to move through results, \`Enter\` to select, and \`Escape\` to close the dropdown.
-- **Accessibility**: the input uses \`role="combobox"\`, \`aria-autocomplete="list"\`, \`aria-expanded\`, \`aria-controls\`, and \`aria-activedescendant\` to communicate state to assistive technologies. A live region announces the number of results available.
+- **Accessibility**: the input uses \`role="combobox"\`, \`aria-autocomplete="list"\`, \`aria-expanded\`, \`aria-controls\`, and \`aria-activedescendant\` to communicate state to assistive technologies. A live region announces loading state, result count, and "no results" to screen readers.
 
 > **Note**: This pattern is intentionally left as a composable building block rather than a single sealed component,
 > allowing you to integrate your own data-fetching solution (e.g. TanStack Query, SWR, or a custom hook) and
