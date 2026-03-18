@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 12:58:39 GMT",
+      "tag": "@fluentui/react-color-picker_v9.2.15",
+      "version": "9.2.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-color-picker_v9.2.15",
       "version": "9.2.15",

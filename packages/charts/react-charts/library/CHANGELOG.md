@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Tue, 03 Mar 2026 09:43:42 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.14)
+
+Wed, 11 Mar 2026 09:22:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.13..@fluentui/react-charts_v9.3.14)
+
+### Patches
+
+- Replace unsafe expression evaluation with safe recursive-descent parser ([PR #35852](https://github.com/microsoft/fluentui/pull/35852) by atisjai@microsoft.com)
+- fix(charts): block unsafe urls in chart click-to-navigate handlers ([PR #35857](https://github.com/microsoft/fluentui/pull/35857) by vgenaev@gmail.com)
+- Marker size issue in scatter chart and line chart ([PR #35699](https://github.com/microsoft/fluentui/pull/35699) by yushsingla@microsoft.com)
+- Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart ([PR #35854](https://github.com/microsoft/fluentui/pull/35854) by copilot@microsoft.com)
 
 ## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.13)
 
