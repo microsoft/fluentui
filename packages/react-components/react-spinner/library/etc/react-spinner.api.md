@@ -53,6 +53,8 @@ export type SpinnerSlots = {
 // @public
 export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
     shouldRenderSpinner: boolean;
+    tailArcClassName?: string;
+    tailArcRtlClassName?: string;
 };
 
 // @public

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: migrate Spinner from CSS to motion components",
+  "packageName": "@fluentui/react-spinner",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
