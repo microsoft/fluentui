@@ -398,6 +398,7 @@ export class RadioGroup extends FASTElement {
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }
 
+  /** @internal */
   connectedCallback() {
     super.connectedCallback();
     Updates.enqueue(() => {
@@ -430,7 +431,7 @@ export class RadioGroup extends FASTElement {
    */
   public focusinHandler(e: FocusEvent): boolean | void {
     if (!this.disabled) {
-      const index = this.enabledRadios.indexOf(e.target);
+      const index = this.enabledRadios.indexOf(e.target as Radio);
       if (index > -1) {
         this.checkRadio(index);
       }

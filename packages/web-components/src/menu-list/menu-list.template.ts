@@ -3,11 +3,7 @@ import type { MenuList } from './menu-list.js';
 
 export function menuTemplate<T extends MenuList>(): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      slot="${x => (x.slot ? x.slot : x.isNestedMenu() ? 'submenu' : void 0)}"
-      @keydown="${(x, c) => x.handleMenuKeyDown(c.event as KeyboardEvent)}"
-      @focusout="${(x, c) => x.handleFocusOut(c.event as FocusEvent)}"
-    >
+    <template focusgroup="menu" slot="${x => (x.slot ? x.slot : x.isNestedMenu() ? 'submenu' : void 0)}">
       <slot ${slotted('items')}></slot>
     </template>
   `;

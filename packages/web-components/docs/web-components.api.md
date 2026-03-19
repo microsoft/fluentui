@@ -3253,10 +3253,6 @@ export class MenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
     protected isMenuItemElement: (el: Element) => el is HTMLElement;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
@@ -3265,7 +3261,7 @@ export class MenuList extends FASTElement {
     // (undocumented)
     protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
     // (undocumented)
-    protected menuItems: Element[] | undefined;
+    protected menuItems: HTMLElement[] | undefined;
     // (undocumented)
     protected setItems(): void;
 }
@@ -3425,6 +3421,8 @@ export class RadioGroup extends FASTElement {
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // @internal (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // @internal
     protected disabledChanged(prev?: boolean, next?: boolean): void;
@@ -3438,8 +3436,6 @@ export class RadioGroup extends FASTElement {
     focus(): void;
     // @internal
     focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
     static formAssociated: boolean;
     // (undocumented)
     formResetCallback(): void;

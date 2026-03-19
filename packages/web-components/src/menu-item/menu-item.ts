@@ -238,13 +238,11 @@ export class MenuItem extends FASTElement {
    */
   public toggleHandler = (e: Event): void => {
     if (e instanceof ToggleEvent && e.newState === 'open') {
-      this.setAttribute('tabindex', '-1');
       this.elementInternals.ariaExpanded = 'true';
       this.setSubmenuPosition();
     }
     if (e instanceof ToggleEvent && e.newState === 'closed') {
       this.elementInternals.ariaExpanded = 'false';
-      this.setAttribute('tabindex', '0');
     }
   };
 
