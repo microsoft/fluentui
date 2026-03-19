@@ -6,8 +6,12 @@ import { render } from '@testing-library/react';
 
 import { composeComponent } from './composeComponent';
 import * as slot from './slot';
-import { ComponentProps, ComponentState, Slot } from './types';
+import { ComponentProps, ComponentState, RefAttributes, Slot } from './types';
 import { assertSlots } from './assertSlots';
+
+type TestForwardRefComponent<Props, Element> = React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<Props> & RefAttributes<Element>
+>;
 
 describe('composeComponent', () => {
   it('sets displayName on the returned component', () => {
@@ -32,7 +36,7 @@ describe('composeComponent', () => {
 
     // ForwardRefComponent<{}> infers ref type as never via InferredElementRefType,
     // so we bypass the JSX type-check with createElement + cast.
-    render(React.createElement(Comp as React.ComponentType<any>, { id: 'test', ref }));
+    render(React.createElement(Comp as TestForwardRefComponent<{ id?: string }, HTMLSpanElement>, { id: 'test', ref }));
 
     expect(mockUseState).toHaveBeenCalledTimes(1);
     expect(mockUseState).toHaveBeenCalledWith({ id: 'test' }, ref);
@@ -62,7 +66,7 @@ describe('composeComponent', () => {
       render: state => React.createElement('span', { ref: state.elRef }),
     });
 
-    render(React.createElement(Comp as React.ComponentType<any>, { ref }));
+    render(React.createElement(Comp as TestForwardRefComponent<{}, HTMLSpanElement>, { ref }));
 
     expect(ref.current).toBeInstanceOf(HTMLSpanElement);
   });
@@ -146,7 +150,7 @@ describe('composeComponent', () => {
 
   describe('useContextValues', () => {
     // Shared fixture: a minimal Menu that exposes `open` via React context.
-    const Ctx = React.createContext({ open: false });
+    const Ctx = React.createContext<{ open: boolean } | undefined>(undefined);
 
     type MenuProps = { open: boolean; children?: React.ReactNode };
     type MenuState = { open: boolean; children?: React.ReactNode };
@@ -162,7 +166,13 @@ describe('composeComponent', () => {
     // React.createElement avoids native JSX in this file, which uses @fluentui/react-jsx-runtime
     // that does not declare JSX.IntrinsicElements.
     const Consumer: React.FC = () => {
-      const { open } = React.useContext(Ctx);
+      const context = React.useContext(Ctx);
+
+      if (!context) {
+        throw new Error('Menu context is missing');
+      }
+
+      const { open } = context;
       return React.createElement('span', { 'data-testid': 'consumer' }, open ? 'open' : 'closed');
     };
 
@@ -265,7 +275,7 @@ describe('composeComponent', () => {
         render: state => React.createElement('span', { ref: state.elRef }),
       });
 
-      render(React.createElement(Comp as React.ComponentType<any>, { ref }));
+      render(React.createElement(Comp as TestForwardRefComponent<{}, HTMLSpanElement>, { ref }));
 
       expect(ref.current).toBeInstanceOf(HTMLSpanElement);
     });
@@ -273,15 +283,21 @@ describe('composeComponent', () => {
     it('supports generic component props by casting the return value', () => {
       type ListProps<T> = { items: T[]; renderItem: (item: T, index: number) => React.ReactElement };
       type ListState<T> = Pick<ListProps<T>, 'items' | 'renderItem'>;
+      type GenericListComponent = <T>(
+        props: ListProps<T> & RefAttributes<HTMLUListElement>,
+      ) => React.ReactElement | null;
 
       const List = composeComponent<HTMLUListElement, ListProps<unknown>, ListState<unknown>>({
         displayName: 'List',
         useState: ({ items = [], renderItem }) => ({ items, renderItem }),
         render: state => React.createElement('ul', { 'data-testid': 'list' }, state.items.map(state.renderItem)),
-      }) as <T>(props: ListProps<T> & React.RefAttributes<HTMLUListElement>) => React.ReactElement | null;
+      }) as GenericListComponent;
 
       const { getByTestId } = render(
-        <List<string> items={['a', 'b', 'c']} renderItem={(item, i) => React.createElement('li', { key: i }, item)} />,
+        <List<string>
+          items={['a', 'b', 'c']}
+          renderItem={(item: string, i: number) => React.createElement('li', { key: i }, item)}
+        />,
       );
 
       expect(getByTestId('list').children).toHaveLength(3);

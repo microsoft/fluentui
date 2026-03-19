@@ -7,11 +7,15 @@ import type { JSXElement } from '../utils/types';
 /**
  * Options for creating a composed component via {@link composeComponent}.
  *
- * @typeParam Element - The underlying DOM element type (e.g. `HTMLButtonElement`).
- * @typeParam Props - The public props accepted by the component.
- * @typeParam State - The internal state derived from props by `useState`.
- * @typeParam ContextValues - The shape of values passed via React context. Defaults to `never`
- *   (no context) when omitted.
+ * @template Element
+ * @template Props
+ * @template State
+ * @template ContextValues
+ * `Element` is the underlying DOM element type (for example, `HTMLButtonElement`).
+ * `Props` is the public props accepted by the component.
+ * `State` is the internal state derived from props by `useState`.
+ * `ContextValues` is the shape of values passed via React context. It defaults to `never`
+ * (no context) when omitted.
  *
  * @example
  * ```tsx
@@ -81,10 +85,14 @@ export type ComposeComponentOptions<Element, Props, State, ContextValues = never
  * 3. `useStyles` — applies styles by mutating the state *(optional)*.
  * 4. `render` — converts state and context values into JSX.
  *
- * @typeParam Element - The underlying DOM element type the ref will point to.
- * @typeParam Props - The public prop surface of the component.
- * @typeParam State - The internal state shape produced by `useState`.
- * @typeParam ContextValues - Values passed down via React context. Defaults to `never`.
+ * @template Element
+ * @template Props
+ * @template State
+ * @template ContextValues
+ * `Element` is the underlying DOM element type the ref will point to.
+ * `Props` is the public prop surface of the component.
+ * `State` is the internal state shape produced by `useState`.
+ * `ContextValues` contains values passed down via React context and defaults to `never`.
  *
  * @param options - {@link ComposeComponentOptions} that define the component's behavior.
  * @returns A `ForwardRefComponent<Props>` with `displayName` set.
