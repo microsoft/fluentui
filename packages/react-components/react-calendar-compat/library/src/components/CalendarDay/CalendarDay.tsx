@@ -6,9 +6,11 @@ import { mergeClasses } from '@griffel/react';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
+import { HeaderFade } from '../../utils/calendarMotions';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarDayProps, CalendarDayStyles } from './CalendarDay.types';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { AnimationDirection } from '../../Calendar';
 
 /**
  * @internal
@@ -40,7 +42,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     onNavigateDate,
     showWeekNumbers,
     dateRangeType,
-    animationDirection,
+    animationDirection = AnimationDirection.Vertical,
   } = props;
 
   const classNames = useCalendarDayStyles_unstable({
@@ -69,9 +71,11 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          <span aria-live="polite" aria-atomic="true">
-            {monthAndYear}
-          </span>
+          <HeaderFade navigationKey={monthAndYear}>
+            <span aria-live="polite" aria-atomic="true">
+              {monthAndYear}
+            </span>
+          </HeaderFade>
         </HeaderButtonComponentType>
         <CalendarDayNavigationButtons {...props} classNames={classNames} />
       </div>

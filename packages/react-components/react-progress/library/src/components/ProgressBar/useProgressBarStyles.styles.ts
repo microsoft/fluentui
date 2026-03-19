@@ -19,27 +19,6 @@ const barThicknessValues = {
   large: '4px',
 };
 
-const indeterminateProgressBar = {
-  '0%': {
-    left: '-33%', // matches indeterminate bar width
-  },
-  '100%': {
-    left: '100%',
-  },
-};
-
-const indeterminateProgressBarReducedMotion = {
-  '0%': {
-    opacity: '.2',
-  },
-  '50%': {
-    opacity: '1',
-  },
-  '100%': {
-    opacity: '.2',
-  },
-};
-
 /**
  * Styles for the root slot
  */
@@ -93,15 +72,10 @@ const useBarStyles = makeStyles({
       ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
-    animationName: indeterminateProgressBar,
-    animationDuration: '3s',
-    animationTimingFunction: 'linear',
-    animationIterationCount: 'infinite',
+    // CSS animation removed — now handled by ProgressBarIndeterminate motion component
     '@media screen and (prefers-reduced-motion: reduce)': {
+      // Reduced motion: bar is full width and pulses opacity (handled by WAAPI reducedMotion keyframes)
       maxWidth: '100%',
-      animationIterationCount: 'infinite',
-      animationDuration: '3s',
-      animationName: indeterminateProgressBarReducedMotion,
     },
   },
 

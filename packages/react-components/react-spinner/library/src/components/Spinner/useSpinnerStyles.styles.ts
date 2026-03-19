@@ -55,23 +55,14 @@ const useSpinnerBaseClassName = makeResetStyles({
     forcedColorAdjust: 'none',
   },
 
-  animationDuration: '1.5s',
-  animationIterationCount: 'infinite',
-  animationTimingFunction: 'linear',
-  animationName: {
-    '0%': { transform: 'rotate(0deg)' },
-    '100%': { transform: 'rotate(360deg)' },
-  },
-
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '1.8s',
-  },
+  // CSS rotation animation removed — now handled by SpinnerRotation motion component in renderSpinner
 });
 
 // The spinner tail is rendered using two 135deg arc segments, behind a 105deg arc mask.
 // The segments are rotated out from behind the mask to expand the visible arc from
 // 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
-// The tail and spinner itself also have 360deg rotation animations for the spin.
+// The spinner root 360deg rotation is handled by SpinnerRotation (WAAPI). The tail arc
+// animation is CSS-based here; ::before/::after use `animation: inherit` to sync with the tail.
 const useSpinnerTailBaseClassName = makeResetStyles({
   position: 'absolute',
   display: 'block',

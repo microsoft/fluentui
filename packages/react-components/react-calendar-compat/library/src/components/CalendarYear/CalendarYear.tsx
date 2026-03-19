@@ -5,6 +5,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
+import { DirectionalSlide, HeaderFade } from '../../utils/calendarMotions';
 import type {
   CalendarYearStrings,
   CalendarYearProps,
@@ -176,10 +177,13 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
   return (
     <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
       {cells.map((cellRow: React.ReactNode[], index: number) => {
+        const rowKey = 'yearPickerRow_' + index + '_' + fromYear;
         return (
-          <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
-            {cellRow}
-          </div>
+          <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
+            <div key={rowKey} role="row" className={classNames.buttonRow}>
+              {cellRow}
+            </div>
+          </DirectionalSlide>
         );
       })}
     </div>
@@ -318,16 +322,22 @@ const CalendarYearTitle: React.FunctionComponent<CalendarYearHeaderProps> = prop
         role="button"
         type="button"
       >
-        <span aria-live="assertive" aria-atomic="true">
-          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
-        </span>
+        <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
+          <span aria-live="assertive" aria-atomic="true">
+            {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+          </span>
+        </HeaderFade>
       </button>
     );
   }
 
   return (
     <div className={classNames.current}>
-      {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+      <HeaderFade navigationKey={`${fromYear}-${toYear}`}>
+        <span>
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        </span>
+      </HeaderFade>
     </div>
   );
 };
