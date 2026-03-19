@@ -75,6 +75,7 @@ const useRootStyles = makeStyles({
     gridTemplateColumns: `1fr var(${rangeSliderThumbSizeVar}) 1fr`,
   },
   enabled: {
+    cursor: 'pointer',
     [rangeSliderRailColorVar]: tokens.colorNeutralStrokeAccessible,
     [rangeSliderProgressColorVar]: tokens.colorCompoundBrandBackground,
     [rangeSliderThumbColorVar]: tokens.colorCompoundBrandBackground,
@@ -97,6 +98,7 @@ const useRootStyles = makeStyles({
     },
   },
   disabled: {
+    cursor: 'default',
     [rangeSliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
     [rangeSliderRailColorVar]: tokens.colorNeutralBackgroundDisabled,
     [rangeSliderProgressColorVar]: tokens.colorNeutralForegroundDisabled,

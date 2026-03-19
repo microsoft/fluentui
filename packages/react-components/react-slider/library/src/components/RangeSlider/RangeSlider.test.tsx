@@ -178,7 +178,137 @@ describe('RangeSlider', () => {
     expect(sliders[1].id).toContain('rangeslider-end-');
   });
 
+  // Pointer event tests
+  // Note: jsdom lacks PointerEvent, setPointerCapture, and getBoundingClientRect support,
+  // so these tests mock the missing DOM APIs to validate the pointer handler logic.
+  describe('pointer interactions', () => {
+    const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
+
+    // jsdom lacks PointerEvent, so fireEvent.pointerDown creates a MouseEvent whose
+    // clientX/clientY default to 0. Dispatching via MouseEvent constructor preserves coordinates.
+    const dispatchPointer = (element: HTMLElement, type: string, init: { clientX?: number; clientY?: number }) => {
+      const event = new MouseEvent(type, { bubbles: true, cancelable: true, ...init });
+      element.dispatchEvent(event);
+    };
+
+    beforeEach(() => {
+      // Mock a 100px-wide rail starting at x=0 so clientX maps directly to slider value (0–100)
+      window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+        bottom: 20,
+        height: 10,
+        left: 0,
+        right: 100,
+        top: 10,
+        width: 100,
+        x: 0,
+        y: 10,
+      } as DOMRect);
+
+      // jsdom does not implement pointer capture methods
+      window.HTMLElement.prototype.setPointerCapture = jest.fn();
+      window.HTMLElement.prototype.releasePointerCapture = jest.fn();
+      window.HTMLElement.prototype.hasPointerCapture = jest.fn().mockReturnValue(true);
+    });
+
+    afterEach(() => {
+      window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+    });
+
+    it('calls onChange on pointerDown', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 30, clientY: 15 });
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
+    });
+
+    it('updates values on pointerMove during drag', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      // Start drag near the start thumb
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      onChange.mockClear();
+
+      // Drag to new position
+      dispatchPointer(root, 'pointermove', { clientX: 40, clientY: 15 });
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 40, end: 80 });
+    });
+
+    it('stops updating on pointerUp', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      dispatchPointer(root, 'pointerup', { clientX: 20, clientY: 15 });
+      onChange.mockClear();
+
+      // Move after pointerUp should not trigger onChange
+      dispatchPointer(root, 'pointermove', { clientX: 50, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('does not respond to pointer events when disabled', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} disabled onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 30, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('moves the closest thumb on pointerDown', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      // Click near end thumb (value 75 is closer to end=80 than start=20)
+      dispatchPointer(root, 'pointerdown', { clientX: 75, clientY: 15 });
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 20, end: 75 });
+    });
+
+    it('stops updating on pointerCancel', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      dispatchPointer(root, 'pointercancel', { clientX: 20, clientY: 15 });
+      onChange.mockClear();
+
+      dispatchPointer(root, 'pointermove', { clientX: 50, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+  });
+
   // Overlapping thumbs – last-used thumb tracking
+  // fireEvent.focus is used because the inputs have pointer-events: none,
+  // so userEvent.click cannot target them, and native .focus() doesn't
+  // reliably trigger React's synthetic onFocus in jsdom.
   describe('overlapping thumbs', () => {
     it('elevates the end thumb when it receives focus while overlapping', () => {
       const { container } = render(<RangeSlider defaultValue={{ start: 50, end: 50 }} min={0} max={100} />);

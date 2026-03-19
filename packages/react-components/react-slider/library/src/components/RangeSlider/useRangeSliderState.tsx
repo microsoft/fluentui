@@ -54,16 +54,26 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   const endInputRef = React.useRef<HTMLInputElement>(null);
 
   // Shared update function for pointer and input handlers.
-  const updateValues = useEventCallback((start: number, end: number, event?: React.SyntheticEvent | Event) => {
-    setCurrentValues({ start, end });
-    if (event) {
-      props.onChange?.(event, {
-        type: 'change',
-        event: event as React.ChangeEvent<HTMLInputElement>,
-        value: { start, end },
-      });
-    }
-  });
+  const updateValues = useEventCallback(
+    (start: number, end: number, event: React.SyntheticEvent | Event, type: 'change' | 'pointer') => {
+      setCurrentValues({ start, end });
+      const value = { start, end };
+
+      if (type === 'pointer') {
+        props.onChange?.(event, {
+          type: 'pointer',
+          event: event as React.PointerEvent<HTMLDivElement>,
+          value,
+        });
+      } else {
+        props.onChange?.(event, {
+          type: 'change',
+          event: event as React.ChangeEvent<HTMLInputElement>,
+          value,
+        });
+      }
+    },
+  );
 
   // Convert pointer position to slider value using the rail's bounding rect
   // (rail excludes thumb overhang padding, giving accurate 0-100% mapping)
@@ -90,11 +100,11 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   };
 
   // Apply snapped value to the appropriate thumb
-  const applyValueToThumb = (thumb: 'start' | 'end', value: number, event?: React.SyntheticEvent | Event) => {
+  const applyValueToThumb = (thumb: 'start' | 'end', value: number, event: React.SyntheticEvent | Event) => {
     const snapped = snapToStep(value);
     const newStart = thumb === 'start' ? Math.min(snapped, upperValue) : lowerValue;
     const newEnd = thumb === 'end' ? Math.max(snapped, lowerValue) : upperValue;
-    updateValues(newStart, newEnd, event);
+    updateValues(newStart, newEnd, event, 'pointer');
   };
 
   // Pointer handlers for rail click and drag
@@ -174,7 +184,7 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   state.startInput.disabled = disabled;
   state.startInput.onChange = mergeCallbacks(state.startInput.onChange, ev => {
     if (!disabled) {
-      updateValues(Math.min(Number(ev.currentTarget.value), upperValue), upperValue, ev);
+      updateValues(Math.min(Number(ev.currentTarget.value), upperValue), upperValue, ev, 'change');
     }
   });
   state.startInput.onFocus = mergeCallbacks(state.startInput.onFocus, () => {
@@ -188,7 +198,7 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   state.endInput.disabled = disabled;
   state.endInput.onChange = mergeCallbacks(state.endInput.onChange, ev => {
     if (!disabled) {
-      updateValues(lowerValue, Math.max(Number(ev.currentTarget.value), lowerValue), ev);
+      updateValues(lowerValue, Math.max(Number(ev.currentTarget.value), lowerValue), ev, 'change');
     }
   });
   state.endInput.onFocus = mergeCallbacks(state.endInput.onFocus, () => {

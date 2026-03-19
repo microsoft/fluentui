@@ -13,7 +13,10 @@ export type RangeSliderValue = {
   end: number;
 };
 
-export type RangeSliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
+export type RangeSliderOnChangeData = (
+  | EventData<'change', React.ChangeEvent<HTMLInputElement>>
+  | EventData<'pointer', React.PointerEvent<HTMLDivElement>>
+) & {
   value: RangeSliderValue;
 };
 
