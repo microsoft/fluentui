@@ -33,6 +33,18 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     [Key in keyof Slots]: ReplaceNullWithUndefined<WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>>;
 };
 
+// @public
+export function composeComponent<Element, Props, State, ContextValues = never>(options: ComposeComponentOptions<Element, Props, State, ContextValues>): ForwardRefComponent<Props>;
+
+// @public
+export type ComposeComponentOptions<Element, Props, State, ContextValues = never> = {
+    displayName: string;
+    useState: (props: Props, ref: React_2.Ref<Element>) => State;
+    useStyles?: (state: State) => void;
+    useContextValues?: (state: State) => ContextValues;
+    render: (state: State, contextValues?: ContextValues) => JSXElement | null;
+};
+
 // @internal (undocumented)
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 

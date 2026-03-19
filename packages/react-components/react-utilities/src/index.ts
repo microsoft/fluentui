@@ -1,4 +1,5 @@
 export {
+  composeComponent,
   slot,
   isSlot,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -19,6 +20,7 @@ export type {
   ExtractSlotProps,
   ComponentProps,
   ComponentState,
+  ComposeComponentOptions,
   ForwardRefComponent,
   RefAttributes,
   // eslint-disable-next-line @typescript-eslint/no-deprecated

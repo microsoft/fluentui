@@ -41,3 +41,6 @@ export { getSlotsNext } from './deprecated/getSlotsNext';
 export { slot };
 export type { SlotOptions } from './slot';
 export type { PropsWithoutChildren, PropsWithoutRef } from '../utils/types';
+
+export type { ComposeComponentOptions } from './composeComponent';
+export { composeComponent } from './composeComponent';
