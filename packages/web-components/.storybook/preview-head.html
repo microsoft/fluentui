@@ -5,4 +5,9 @@
     );
     window.CSS_ANCHOR_POLYFILL = applyPolyfill;
   }
+
+  if (!('focusgroup' in HTMLElement.prototype)) {
+    const { polyfill } = await import('/focusgroup-polyfill.js');
+    window.FOCUSGROUP_POLYFILL = polyfill;
+  }
 </script>
