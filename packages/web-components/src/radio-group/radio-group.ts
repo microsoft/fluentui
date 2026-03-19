@@ -402,7 +402,7 @@ export class RadioGroup extends FASTElement {
     super.connectedCallback();
     Updates.enqueue(() => {
       // @ts-expect-error: client side module.
-      window.FOCUSGROUP_POLYFILL?.();
+      window.FOCUSGROUP_POLYFILL?.(this);
     });
   }
 
