@@ -14,6 +14,8 @@ export const renderProgressBar_unstable = (state: ProgressBarState): JSXElement 
   return (
     <state.root>
       {state.bar &&
+        // If the progress is undefined, render the indeterminate motiond.
+        // Otherwise, render the bar without motion.
         (state.value === undefined ? (
           <ProgressBarIndeterminateMotion>
             <state.bar />

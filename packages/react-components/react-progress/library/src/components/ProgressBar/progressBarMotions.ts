@@ -1,5 +1,3 @@
-'use client';
-
 import { createMotionComponent, motionTokens } from '@fluentui/react-motion';
 
 /**
