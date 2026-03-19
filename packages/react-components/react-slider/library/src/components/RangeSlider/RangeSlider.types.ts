@@ -77,6 +77,7 @@ export type RangeSliderProps = Omit<
 
   /**
    * Whether the RangeSlider is disabled.
+   * @default `false`
    */
   disabled?: boolean;
 
@@ -111,6 +112,7 @@ export type RangeSliderProps = Omit<
 
   /**
    * Render the RangeSlider vertically with the smallest value at the bottom.
+   * @default `false`.
    */
   vertical?: boolean;
 

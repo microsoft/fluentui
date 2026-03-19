@@ -1,5 +1,4 @@
 /**
- * @internal
  * Calculates the percentage of a value within a given range.
  *
  * @param value - The value to be converted to a percentage.

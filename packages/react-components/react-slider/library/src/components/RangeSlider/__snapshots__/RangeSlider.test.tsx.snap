@@ -14,6 +14,7 @@ exports[`RangeSlider renders disabled RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="horizontal"
         class="fui-RangeSlider__startInput"
         disabled=""
         id="rangeslider-start-_r_i_"
@@ -29,6 +30,7 @@ exports[`RangeSlider renders disabled RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="horizontal"
         class="fui-RangeSlider__endInput"
         disabled=""
         id="rangeslider-end-_r_j_"
@@ -57,6 +59,7 @@ exports[`RangeSlider renders horizontal RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="horizontal"
         class="fui-RangeSlider__startInput"
         id="rangeslider-start-_r_e_"
         max="80"
@@ -71,6 +74,7 @@ exports[`RangeSlider renders horizontal RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="horizontal"
         class="fui-RangeSlider__endInput"
         id="rangeslider-end-_r_f_"
         max="100"
@@ -98,6 +102,7 @@ exports[`RangeSlider renders vertical RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="vertical"
         class="fui-RangeSlider__startInput"
         id="rangeslider-start-_r_g_"
         max="80"
@@ -113,6 +118,7 @@ exports[`RangeSlider renders vertical RangeSlider correctly 1`] = `
       role="presentation"
     >
       <input
+        aria-orientation="vertical"
         class="fui-RangeSlider__endInput"
         id="rangeslider-end-_r_h_"
         max="100"
