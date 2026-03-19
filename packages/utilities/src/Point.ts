@@ -1,8 +1,11 @@
 /**
  * Point interface.
  *
- * @public
+ * Point interface.
+ *
  * {@docCategory Point}
+ *
+ * @public
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface Point {

@@ -1244,3 +1244,106 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
     expect(legendTexts).toContain('B');
   });
 });
+
+describe('VegaDeclarativeChart - Security', () => {
+  it('blocks malicious calculate expression (MSRC PoC: globalThis assignment)', () => {
+    // Exact payload from the MSRC vulnerability report
+    const maliciousSpec: VegaLiteSpec = {
+      mark: 'bar',
+      data: {
+        values: [
+          { a: 'A', b: 28 },
+          { a: 'B', b: 55 },
+        ],
+      },
+      transform: [
+        {
+          calculate: "((globalThis.__msrcFluentUiPoc = 'owned-from-calculate'), 1337)",
+          as: 'injected',
+        },
+      ],
+      encoding: {
+        x: { field: 'a', type: 'nominal' },
+        y: { field: 'b', type: 'quantitative' },
+      },
+    };
+
+    render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+
+    // The malicious payload must NOT have executed
+    expect((globalThis as Record<string, unknown>).__msrcFluentUiPoc).toBeUndefined();
+  });
+
+  it('blocks malicious filter expression', () => {
+    const maliciousSpec: VegaLiteSpec = {
+      mark: 'bar',
+      data: {
+        values: [
+          { a: 'A', b: 28 },
+          { a: 'B', b: 55 },
+        ],
+      },
+      transform: [
+        {
+          filter: "((globalThis.__msrcFilterPoc = 'owned-from-filter'), true)",
+        },
+      ],
+      encoding: {
+        x: { field: 'a', type: 'nominal' },
+        y: { field: 'b', type: 'quantitative' },
+      },
+    };
+
+    render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+
+    expect((globalThis as Record<string, unknown>).__msrcFilterPoc).toBeUndefined();
+  });
+
+  it('blocks malicious condition test expression', () => {
+    const maliciousSpec: VegaLiteSpec = {
+      mark: 'bar',
+      data: {
+        values: [
+          { a: 'A', b: 28 },
+          { a: 'B', b: 55 },
+        ],
+      },
+      encoding: {
+        x: { field: 'a', type: 'nominal' },
+        y: { field: 'b', type: 'quantitative' },
+        color: {
+          condition: {
+            test: "((globalThis.__msrcConditionPoc = 'owned-from-condition'), true)",
+            value: 'red',
+          },
+          value: 'blue',
+        },
+      },
+    };
+
+    render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+
+    expect((globalThis as Record<string, unknown>).__msrcConditionPoc).toBeUndefined();
+  });
+
+  it('rejects excessively deep JSON specs (DoS prevention)', () => {
+    // Build a spec nested deeper than MAX_DEPTH (15)
+    let nested: Record<string, unknown> = { values: [{ x: 1, y: 1 }] };
+    for (let i = 0; i < 20; i++) {
+      nested = { wrapper: nested };
+    }
+
+    const deepSpec: VegaLiteSpec = {
+      mark: 'bar',
+      data: nested as VegaLiteSpec['data'],
+      encoding: {
+        x: { field: 'x', type: 'nominal' },
+        y: { field: 'y', type: 'quantitative' },
+      },
+    };
+
+    expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: deepSpec }} />)).toThrow(
+      'Maximum JSON depth exceeded',
+    );
+  });
+});

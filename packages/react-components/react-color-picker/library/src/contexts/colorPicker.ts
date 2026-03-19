@@ -11,9 +11,10 @@ import type { HsvColor } from '../types/color';
  */
 export type ColorPickerContextValue = Pick<ColorPickerProps, 'shape' | 'color'> & {
   /**
-   * @internal
    * Callback used by Sliders to request a change on it's selected value
    * Should be used to get value of color channel
+   *
+   * @internal
    */
   requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { color: HsvColor }) => void;
 };

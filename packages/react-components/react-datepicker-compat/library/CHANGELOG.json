@@ -2,6 +2,54 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 12:58:45 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.6.27",
+      "version": "0.6.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-calendar-compat to v0.4.0",
+            "commit": "de6619310a88ff6bf955685b690c82993e1bb413"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:20 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.6.26",
+      "version": "0.6.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "85318654+JakubWieclaw@users.noreply.github.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "490829c876d1c628aeabc30354c2f94243bea02f",
+            "comment": "fix: reorder event handling for Escape key"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-calendar-compat to v0.3.21",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.7.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.6.25",
       "version": "0.6.25",

@@ -12,7 +12,9 @@ import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from 
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 /**
- * @internal A private symbol to store the motion definition on the component for variants.
+ * A private symbol to store the motion definition on the component for variants.
+ *
+ * @internal
  */
 export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
 

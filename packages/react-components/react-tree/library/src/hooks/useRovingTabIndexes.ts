@@ -14,8 +14,9 @@ const findTreeItemRoot = (element: HTMLElement) => {
 };
 
 /**
- * @internal
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
+ *
+ * @internal
  */
 export function useRovingTabIndex(): {
   rove: (nextElement: HTMLElement, focusOptions?: FocusOptions) => void;

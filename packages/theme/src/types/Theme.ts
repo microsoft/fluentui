@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import type { IRawStyle } from '@fluentui/merge-styles';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { IPalette } from './IPalette';
@@ -45,16 +47,18 @@ export interface Theme extends IScheme {
   name?: string;
 
   /**
-   * @internal
    * Id of the theme. This is for internal use only.
+   *
+   * @internal
    */
   id?: string;
 
   /**
-   * @internal
    * The schemes property is still in an experimental phase. The intent is to have it work
    * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
    * Alternative themes that can be referred to by name.
+   *
+   * @internal
    */
   schemes?: { [P in ISchemeNames]?: IScheme };
 }
@@ -81,10 +85,11 @@ export interface PartialTheme {
   defaultFontStyle?: IRawStyle;
 
   /**
-   * @internal
    * The schemes property is still in an experimental phase. The intent is to have it work
    * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
    * Alternative themes that can be referred to by name.
+   *
+   * @internal
    */
   schemes?: { [P in ISchemeNames]?: IScheme };
 }

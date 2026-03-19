@@ -2,6 +2,63 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2026 07:57:16 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.23.0",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 12:58:41 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "de6619310a88ff6bf955685b690c82993e1bb413",
+            "comment": "fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:21 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "80f357995c67265a761717b3ea4bd4ca300dc220",
+            "comment": "Proper onClick handling for MenuGridRow"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.11",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.2.11",
       "version": "0.2.11",
