@@ -73,7 +73,7 @@ const useBarStyles = makeStyles({
       ${tokens.colorNeutralBackground6} 100%
     )`,
     '@media screen and (prefers-reduced-motion: reduce)': {
-      // Reduced motion: bar is full width and the opacity pulse is handled by ProgressBarIndeterminate motion component
+      // Reduced motion: bar is sized here, and the opacity is pulsed by ProgressBarIndeterminateMotion
       maxWidth: '100%',
     },
   },

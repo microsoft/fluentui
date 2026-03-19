@@ -4,7 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
-import { ProgressBarIndeterminate } from './progressBarMotions';
+import { ProgressBarIndeterminateMotion } from './progressBarMotions';
 
 /**
  * Render the final JSX of ProgressBar
@@ -15,9 +15,9 @@ export const renderProgressBar_unstable = (state: ProgressBarState): JSXElement 
     <state.root>
       {state.bar &&
         (state.value === undefined ? (
-          <ProgressBarIndeterminate>
+          <ProgressBarIndeterminateMotion>
             <state.bar />
-          </ProgressBarIndeterminate>
+          </ProgressBarIndeterminateMotion>
         ) : (
           <state.bar />
         ))}
