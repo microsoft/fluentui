@@ -72,8 +72,7 @@ export const useLinkBase_unstable = (
     ),
   };
 
-  // useLinkState_unstable only accesses disabled, disabledFocusable, and root — all present in LinkBaseState
-  useLinkState_unstable(state as unknown as LinkState);
+  useLinkState_unstable(state);
 
   return state;
 };

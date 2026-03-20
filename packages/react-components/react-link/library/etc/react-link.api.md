@@ -7,6 +7,7 @@
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -15,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
+
+// @public
+export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
+
+// @public
+export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance'>;
 
 // @public (undocumented)
 export const linkClassNames: SlotClassNames<LinkSlots>;
@@ -49,16 +56,19 @@ export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'ap
 };
 
 // @public
-export const renderLink_unstable: (state: LinkState) => JSXElement;
+export const renderLink_unstable: (state: LinkBaseState) => JSXElement;
 
 // @public
 export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;
+
+// @public
+export const useLinkBase_unstable: (props: LinkBaseProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkBaseState;
 
 // @public (undocumented)
 export const useLinkContext: () => LinkContextValue;
 
 // @public
-export const useLinkState_unstable: (state: LinkState) => LinkState;
+export const useLinkState_unstable: (state: LinkBaseState) => LinkBaseState;
 
 // @public (undocumented)
 export const useLinkStyles_unstable: (state: LinkState) => LinkState;
