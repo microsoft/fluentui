@@ -53,7 +53,7 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
  */
 export const useSkeletonItemBase_unstable = (
   props: SkeletonItemBaseProps,
-  ref?: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): SkeletonItemBaseState => {
   const root = slot.always(
     getIntrinsicElementProps('div', {

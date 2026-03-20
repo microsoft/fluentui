@@ -101,7 +101,7 @@ export const useSkeletonContext: () => SkeletonContextValue;
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
 
 // @public
-export const useSkeletonItemBase_unstable: (props: SkeletonItemBaseProps, ref?: React_2.Ref<HTMLDivElement>) => SkeletonItemBaseState;
+export const useSkeletonItemBase_unstable: (props: SkeletonItemBaseProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemBaseState;
 
 // @public
 export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;
