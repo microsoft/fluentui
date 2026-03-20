@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
 export type SearchBoxSlots = InputSlots & {
@@ -29,7 +29,7 @@ export type SearchBoxProps = Omit<
 /**
  * SearchBox base props — excludes design props (appearance, size).
  */
-export type SearchBoxBaseProps = DistributiveOmit<SearchBoxProps, 'appearance' | 'size'>;
+export type SearchBoxBaseProps = Omit<SearchBoxProps, 'appearance' | 'size'>;
 
 /**
  * State used in rendering SearchBox
@@ -44,7 +44,7 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
 /**
  * SearchBox base state — excludes design props (appearance, size).
  */
-export type SearchBoxBaseState = DistributiveOmit<SearchBoxState, 'appearance' | 'size'>;
+export type SearchBoxBaseState = Omit<SearchBoxState, 'appearance' | 'size'>;
 
 /** Overloaded onChange event type, used to merge functionality of regular text entry and the dismiss button */
 export type SearchBoxChangeEvent = React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>;

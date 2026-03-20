@@ -4,9 +4,13 @@ export {
   searchBoxClassNames,
   useSearchBoxStyles_unstable,
   useSearchBox_unstable,
+  useSearchBoxBase_unstable,
 } from './SearchBox';
-export type { SearchBoxChangeEvent, SearchBoxProps, SearchBoxSlots, SearchBoxState } from './SearchBox';
-
-// Experimental APIs - will be uncommented in the experimental release branch
-// export { useSearchBoxBase_unstable } from './SearchBox';
-// export type { SearchBoxBaseProps, SearchBoxBaseState } from './SearchBox';
+export type {
+  SearchBoxChangeEvent,
+  SearchBoxProps,
+  SearchBoxSlots,
+  SearchBoxState,
+  SearchBoxBaseProps,
+  SearchBoxBaseState,
+} from './SearchBox';
