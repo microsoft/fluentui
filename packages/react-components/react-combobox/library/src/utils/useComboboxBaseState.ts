@@ -11,8 +11,9 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
 import { SelectionEvents } from './Selection.types';
 
 /**
- * @internal
  * State shared between Combobox and Dropdown components
+ *
+ * @internal
  */
 export const useComboboxBaseState = (
   props: ComboboxBaseProps & {

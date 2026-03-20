@@ -127,10 +127,11 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 export type ToggleButtonProps = ButtonProps & {
     defaultChecked?: boolean;
     checked?: boolean;
+    isAccessible?: boolean;
 };
 
 // @public (undocumented)
-export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked' | 'isAccessible'>>;
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
@@ -166,7 +167,7 @@ export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.R
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
 
 // @public (undocumented)
-export function useToggleState<TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>, TButtonState extends Pick<ButtonState, 'root'>, TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
+export function useToggleState<TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'isAccessible'>, TButtonState extends Pick<ButtonState, 'root'>, TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root' | 'isAccessible'>>(props: TToggleButtonProps, state: TButtonState): TToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

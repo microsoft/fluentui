@@ -10,6 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useTableCompositeNavigation } from '@fluentui/react-table';
+import { useMergedTabsterAttributes_unstable, useTabsterAttributes } from '@fluentui/react-tabster';
 import type { MenuGridProps, MenuGridState } from './MenuGrid.types';
 import { useMenuContext_unstable } from '@fluentui/react-menu';
 import { useValidateNesting } from '../../utils/useValidateNesting';
@@ -22,6 +23,17 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
   const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onTableKeyDown));
+
+  const ignoreEnterKeyAttribute = useTabsterAttributes({
+    focusable: {
+      ignoreKeydown: { Enter: true },
+    },
+  });
+
+  const mergedRowTabsterAttribute = useMergedTabsterAttributes_unstable(
+    tableRowTabsterAttribute,
+    ignoreEnterKeyAttribute,
+  );
 
   return {
     components: {
@@ -38,6 +50,6 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
       }),
       { elementType: 'div' },
     ),
-    tableRowTabsterAttribute,
+    tableRowTabsterAttribute: mergedRowTabsterAttribute,
   };
 };

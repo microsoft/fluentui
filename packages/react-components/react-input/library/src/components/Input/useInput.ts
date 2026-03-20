@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { InputProps, InputState } from './Input.types';
+import type { InputBaseProps, InputBaseState, InputProps, InputState } from './Input.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
@@ -20,7 +20,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
 
   const overrides = useOverrides();
 
-  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
+  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', ...baseProps } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -33,6 +33,25 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     );
   }
 
+  const state = useInputBase_unstable(baseProps, ref);
+
+  return {
+    size,
+    appearance,
+    ...state,
+  };
+};
+
+/**
+ * Base hook for Input component, which manages state related to controlled/uncontrolled value,
+ * slot structure, and onChange handling. This hook excludes design-specific props (appearance, size).
+ *
+ * @param props - User provided props to the Input component.
+ * @param ref - User provided ref to be passed to the Input component.
+ */
+export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTMLInputElement>): InputBaseState => {
+  const { onChange } = props;
+
   const [value, setValue] = useControllableState({
     state: props.value,
     defaultState: props.defaultValue,
@@ -42,12 +61,10 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['size', 'onChange', 'value', 'defaultValue'],
+    excludedPropNames: ['onChange', 'value', 'defaultValue'],
   });
 
-  const state: InputState = {
-    size,
-    appearance,
+  const state: InputBaseState = {
     components: {
       root: 'span',
       input: 'input',

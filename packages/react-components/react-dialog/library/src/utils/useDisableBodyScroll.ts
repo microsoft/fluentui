@@ -6,8 +6,9 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useBodyNoScrollStyles, useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
 
 /**
- * @internal
  * A React *hook* that disables body scrolling through `overflowY: hidden` CSS property
+ *
+ * @internal
  */
 export function useDisableBodyScroll(): {
   disableBodyScroll: () => void;
