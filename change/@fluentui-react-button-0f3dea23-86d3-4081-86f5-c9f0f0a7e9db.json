@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: ToggleButton provides an opt-in isAccessible variant for accessible checked colors",
+  "packageName": "@fluentui/react-button",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

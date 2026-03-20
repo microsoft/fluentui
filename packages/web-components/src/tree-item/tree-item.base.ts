@@ -21,8 +21,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control will be appear expanded by user interaction.
-   * @public
+   * When true, the control will be appear expanded by user interaction.
+   *
    * HTML Attribute: `expanded`
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   expanded: boolean = false;
@@ -70,8 +73,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control has no child tree items
-   * @public
+   * When true, the control has no child tree items
+   *
    * HTML Attribute: empty
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   public empty: boolean = false;
