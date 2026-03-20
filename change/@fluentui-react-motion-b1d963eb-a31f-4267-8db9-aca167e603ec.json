@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add motionSlot() as parallel to presenceMotionSlot()",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
