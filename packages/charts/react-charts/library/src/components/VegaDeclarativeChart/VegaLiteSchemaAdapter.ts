@@ -45,6 +45,7 @@ import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import { getVegaColorFromMap, getVegaColor, getSequentialSchemeColors } from './VegaLiteColorAdapter';
+import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import type { ColorMapRef } from './VegaLiteColorAdapter';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
 import type { Bin } from 'd3-array';
@@ -234,9 +235,7 @@ function applyTransforms(
       if (typeof filterExpr === 'string') {
         result = result.filter(row => {
           try {
-            const datum = row;
-            // eslint-disable-next-line no-new-func
-            return new Function('datum', `return ${filterExpr}`)(datum);
+            return safeEvaluateExpression(filterExpr, row);
           } catch {
             return true;
           }
@@ -250,9 +249,7 @@ function applyTransforms(
       const asField = transform.as as string;
       result = result.map(row => {
         try {
-          const datum = row;
-          // eslint-disable-next-line no-new-func
-          const value = new Function('datum', `return ${expr}`)(datum);
+          const value = safeEvaluateExpression(expr, row);
           return { ...row, [asField]: value };
         } catch {
           return row;
@@ -1185,10 +1182,8 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
     dataValues.forEach(row => {
       try {
-        const datum = row;
-        // eslint-disable-next-line no-new-func
-        const result = new Function('datum', `return ${condition.test}`)(datum);
-        row[colorField] = result ? condition.value : elseValue;
+        const testResult = safeEvaluateExpression(condition.test, row);
+        row[colorField] = testResult ? condition.value : elseValue;
       } catch {
         row[colorField] = elseValue;
       }

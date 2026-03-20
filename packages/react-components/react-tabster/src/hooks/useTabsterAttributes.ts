@@ -5,8 +5,9 @@ import { useTabster } from './useTabster';
 import * as React from 'react';
 
 /**
- * @internal
  * Hook that returns tabster attributes while ensuring tabster exists
+ *
+ * @internal
  */
 export const useTabsterAttributes = (props: TabsterTypes.TabsterAttributeProps): TabsterTypes.TabsterDOMAttribute => {
   // A tabster instance is not necessary to generate tabster attributes

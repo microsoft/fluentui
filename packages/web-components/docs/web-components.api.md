@@ -867,6 +867,8 @@ export class BaseTextArea extends FASTElement {
     resize: TextAreaResize;
     // (undocumented)
     protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    // @internal
+    rootEl: HTMLDivElement;
     select(): void;
     setCustomValidity(message: string | null): void;
     // @internal

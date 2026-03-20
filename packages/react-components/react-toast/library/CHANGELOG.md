@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.7.15)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.7.14..@fluentui/react-toast_v9.7.15)
+
+### Patches
+
+- Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
 
 ## [9.7.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.7.14)
 

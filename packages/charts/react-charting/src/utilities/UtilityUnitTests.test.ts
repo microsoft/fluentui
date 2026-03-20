@@ -1513,3 +1513,70 @@ describe('generateMonthlyTicks', () => {
     expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-01-01', '2020-03-01', '2020-05-01', '2020-07-01']);
   });
 });
+
+describe('isSafeUrl', () => {
+  test('Should allow http URL', () => {
+    expect(utils.isSafeUrl('http://example.com')).toBe(true);
+  });
+
+  test('Should allow https URL', () => {
+    expect(utils.isSafeUrl('https://example.com')).toBe(true);
+  });
+
+  test('Should allow https URL with path, query, and fragment', () => {
+    expect(utils.isSafeUrl('https://example.com/path?q=1#section')).toBe(true);
+  });
+
+  test('Should allow relative path', () => {
+    expect(utils.isSafeUrl('/dashboard')).toBe(true);
+  });
+
+  test('Should allow relative path without leading slash', () => {
+    expect(utils.isSafeUrl('dashboard/overview')).toBe(true);
+  });
+
+  test('Should allow fragment-only URL', () => {
+    expect(utils.isSafeUrl('#section')).toBe(true);
+  });
+
+  test('Should allow query-only URL', () => {
+    expect(utils.isSafeUrl('?page=2')).toBe(true);
+  });
+
+  test('Should allow empty string', () => {
+    expect(utils.isSafeUrl('')).toBe(true);
+  });
+
+  test('Should block javascript: protocol', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('javascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block data: protocol', () => {
+    expect(utils.isSafeUrl('data:text/html,<script>alert(1)</script>')).toBe(false);
+  });
+
+  test('Should block vbscript: protocol', () => {
+    expect(utils.isSafeUrl('vbscript:msgbox("xss")')).toBe(false);
+  });
+
+  test('Should block file: protocol', () => {
+    expect(utils.isSafeUrl('file:///etc/passwd')).toBe(false);
+  });
+
+  test('Should block ftp: protocol', () => {
+    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(false);
+  });
+
+  test('Should block custom: protocol', () => {
+    expect(utils.isSafeUrl('custom:payload')).toBe(false);
+  });
+
+  test('Should allow a path that contains a colon but is not a scheme', () => {
+    expect(utils.isSafeUrl('/path/to:resource')).toBe(true);
+  });
+
+  test('Should allow a path starting with a digit before colon', () => {
+    expect(utils.isSafeUrl('123:not-a-scheme')).toBe(true);
+  });
+});

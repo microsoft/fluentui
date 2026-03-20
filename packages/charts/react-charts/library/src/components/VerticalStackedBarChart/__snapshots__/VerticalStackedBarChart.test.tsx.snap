@@ -2117,7 +2117,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_1s_"
+      id="callout_r_1v_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2685,7 +2685,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_24_"
+      id="callout_r_27_"
     >
       <div
         class="fui-PopoverSurface"
@@ -3290,7 +3290,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_28_"
+      id="callout_r_2b_"
     >
       <div
         class="fui-PopoverSurface"
@@ -7949,7 +7949,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
   </div>
   <div
     class="fui-cart__tooltip"
-    id="tooltip__r_2l_"
+    id="tooltip__r_2o_"
     style="opacity: 0;"
   />
 </div>

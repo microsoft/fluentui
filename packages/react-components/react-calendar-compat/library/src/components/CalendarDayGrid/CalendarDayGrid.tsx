@@ -155,7 +155,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     getRefsFromDayInfos,
   } as const;
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid-linear' });
 
   return (
     <table

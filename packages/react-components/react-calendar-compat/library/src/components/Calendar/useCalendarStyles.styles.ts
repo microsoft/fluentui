@@ -108,9 +108,9 @@ const useLiveRegionStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the Calendar slots based on the state
+ *
+ * @internal
  */
 export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarStyles => {
   'use no memo';
