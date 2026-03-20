@@ -5,7 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
+export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>> = {
   root: 'fui-ProgressBar',
   bar: 'fui-ProgressBar__bar',
 };
