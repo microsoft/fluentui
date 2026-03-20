@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, ComponentProps, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
@@ -106,11 +106,11 @@ export type SliderOnChangeData = {
  * Slider base props, excluding design-related props like size.
  * Note: vertical is kept as it affects aria-orientation behavior.
  */
-export type SliderBaseProps = DistributiveOmit<SliderProps, 'size'>;
+export type SliderBaseProps = Omit<SliderProps, 'size'>;
 
 export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;
 
 /**
  * Slider base state, excluding design-related state like size.
  */
-export type SliderBaseState = DistributiveOmit<SliderState, 'size'>;
+export type SliderBaseState = Omit<SliderState, 'size'>;

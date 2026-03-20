@@ -25,7 +25,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
  * @param props - User provided props to the Slider component.
  * @param ref - User provided ref to be passed to the Slider input element.
  */
-export const useSliderBase_unstable = (props: SliderBaseProps, ref?: React.Ref<HTMLInputElement>): SliderBaseState => {
+export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HTMLInputElement>): SliderBaseState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
 

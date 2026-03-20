@@ -13,7 +13,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSlider_unstable: (state: SliderState) => JSXElement;
+export const renderSlider_unstable: (state: SliderBaseState) => JSXElement;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
@@ -69,7 +69,7 @@ export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disab
 export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
-export const useSliderState_unstable: (state: SliderState, props: SliderProps) => SliderState;
+export const useSliderState_unstable: (state: SliderBaseState, props: SliderBaseProps) => SliderBaseState;
 
 // @public
 export const useSliderStyles_unstable: (state: SliderState) => SliderState;
