@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 03 Mar 2026 09:43:40 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2026 07:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.23.0)
+
+Tue, 17 Mar 2026 07:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.22.0..@fluentui/react-menu_v9.23.0)
+
+### Minor changes
+
+- feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
 
 ## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.22.0)
 

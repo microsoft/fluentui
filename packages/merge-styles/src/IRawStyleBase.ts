@@ -243,8 +243,11 @@ export interface IRawFontStyle {
 /**
  * Font face definition.
  *
- * @public
+ * Font face definition.
+ *
  * {@docCategory IFontFace}
+ *
+ * @public
  */
 export interface IFontFace extends IRawFontStyle {
   /**
@@ -274,8 +277,11 @@ export interface IFontFace extends IRawFontStyle {
 /**
  * All raw style properties.
  *
- * @public
+ * All raw style properties.
+ *
  * {@docCategory IRawStyleBase}
+ *
+ * @public
  */
 export interface IRawStyleBase extends IRawFontStyle {
   /**

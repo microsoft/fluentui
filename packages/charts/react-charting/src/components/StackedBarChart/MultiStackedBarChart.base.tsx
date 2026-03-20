@@ -19,6 +19,7 @@ import {
   formatScientificLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
+  isSafeUrl,
 } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import type { JSXElement } from '@fluentui/utilities';
@@ -629,7 +630,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   };
 
   private _redirectToUrl(href: string | undefined): void {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   }
 
   private _closeCallout = () => {

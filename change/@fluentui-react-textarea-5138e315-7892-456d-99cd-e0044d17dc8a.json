@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose base hook and types for Textarea",
+  "packageName": "@fluentui/react-textarea",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
