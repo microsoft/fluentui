@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2026 07:57:15 GMT",
+      "tag": "@fluentui/react-menu_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:40 GMT",
       "tag": "@fluentui/react-menu_v9.22.0",
       "version": "9.22.0",

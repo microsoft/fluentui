@@ -3,8 +3,9 @@ import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilit
 import { getMetadataFromSlotComponent } from '../utils/getMetadataFromSlotComponent';
 
 /**
- * @internal
  * creates a ReactElement from a slot declaration
+ *
+ * @internal
  */
 export function createElementFromSlotComponent<Props extends UnknownSlotProps>(
   type: SlotComponentType<Props>,

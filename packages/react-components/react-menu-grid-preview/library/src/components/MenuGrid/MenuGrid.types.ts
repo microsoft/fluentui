@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { MenuListContextValue } from '@fluentui/react-menu';
 
 import type { MenuGridContextValue } from '../../contexts/menuGridContext';
 
@@ -18,4 +19,5 @@ export type MenuGridState = ComponentState<MenuGridSlots> & {
 
 export type MenuGridContextValues = {
   menuGrid: MenuGridContextValue;
+  menuList: MenuListContextValue;
 };

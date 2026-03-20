@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-swatch-picker
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.5.0)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.4.15..@fluentui/react-swatch-picker_v9.5.0)
+
+### Minor changes
+
+- feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation ([PR #35803](https://github.com/microsoft/fluentui/pull/35803) by v.kozlova13@gmail.com)
+- Bump @fluentui/react-field to v9.4.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.4.15)
 

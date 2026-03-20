@@ -24,7 +24,17 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> &
   };
 
 /**
+ * SkeletonItem base props, excluding design-related props like animation, appearance, size, and shape.
+ */
+export type SkeletonItemBaseProps = Omit<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>;
+
+/**
  * State used in rendering SkeletonItem
  */
 export type SkeletonItemState = ComponentState<SkeletonItemSlots> &
   Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>>;
+
+/**
+ * SkeletonItem base state, excluding design-related state like animation, appearance, size, and shape.
+ */
+export type SkeletonItemBaseState = Omit<SkeletonItemState, 'animation' | 'appearance' | 'size' | 'shape'>;

@@ -9,22 +9,22 @@ type SlotComponents<Slots extends SlotPropsRecord> = {
 };
 
 /**
- * @internal
  * Assertion method to ensure state slots properties are properly declared.
  * A properly declared slot must be declared by using the `slot` method.
  *
+ * @internal
  * @example
  * ```tsx
  * export const renderInput_unstable  = (state: InputState): JSXElement => {
-    assertSlots<InputSlots>(state);
-    return (
-      <state.root>
-        {state.contentBefore && <state.contentBefore />}
-        <state.input />
-        {state.contentAfter && <state.contentAfter />}
-      </state.root>
-    );
-  };
+ *     assertSlots<InputSlots>(state);
+ *     return (
+ *       <state.root>
+ *         {state.contentBefore && <state.contentBefore />}
+ *         <state.input />
+ *         {state.contentAfter && <state.contentAfter />}
+ *       </state.root>
+ *     );
+ *   };
  * ```
  */
 export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots> {
