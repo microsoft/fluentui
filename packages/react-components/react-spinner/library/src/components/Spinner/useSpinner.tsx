@@ -35,7 +35,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
  * @param props - User provided props to the Spinner component.
  * @param ref - User provided ref to be passed to the Spinner component.
  */
-export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref?: React.Ref<HTMLElement>): SpinnerBaseState => {
+export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<HTMLElement>): SpinnerBaseState => {
   const { delay = 0, labelPosition = 'after' } = props;
   const baseId = useId('spinner');
 
