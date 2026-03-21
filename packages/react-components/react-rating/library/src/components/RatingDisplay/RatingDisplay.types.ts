@@ -64,6 +64,7 @@ export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
 /**
  * RatingDisplay base state — excludes design props (color, size).
  */
-export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size'>;
+export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size' | 'icon'> &
+  Pick<RatingDisplayProps, 'icon'>;
 
 export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };

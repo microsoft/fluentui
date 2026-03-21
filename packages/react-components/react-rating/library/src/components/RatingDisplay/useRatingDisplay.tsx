@@ -24,11 +24,12 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const { color = 'neutral', size = 'medium', ...baseProps } = props;
-  const state = useRatingDisplayBase_unstable(baseProps, ref);
+  const { color = 'neutral', size = 'medium', icon = StarFilled, ...baseProps } = props;
+  const state = useRatingDisplayBase_unstable({ icon, ...baseProps }, ref);
 
   return {
     ...state,
+    icon,
     color,
     size,
   };
@@ -46,7 +47,7 @@ export const useRatingDisplayBase_unstable = (
   props: RatingDisplayBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayBaseState => {
-  const { count, compact = false, icon = StarFilled, max = 5, value } = props;
+  const { count, compact = false, icon, max = 5, value } = props;
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
