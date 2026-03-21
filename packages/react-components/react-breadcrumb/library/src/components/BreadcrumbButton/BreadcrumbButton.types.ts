@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Omit } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 

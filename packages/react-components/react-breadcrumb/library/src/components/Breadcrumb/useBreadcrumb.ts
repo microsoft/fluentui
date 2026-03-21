@@ -30,8 +30,9 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
 };
 
 /**
- * Base hook for Breadcrumb component, which manages state related to slots structure, ARIA attributes,
- * and keyboard navigation without design props.
+ * Base hook for Breadcrumb component, which manages state related to slots structure and ARIA attributes.
+ *
+ * Note: keyboard navigation behavior is not handled in this hook, but in useBreadcrumbA11yBehavior_unstable.
  *
  * @param props - props from this instance of Breadcrumb
  * @param ref - reference to root HTMLElement of Breadcrumb
