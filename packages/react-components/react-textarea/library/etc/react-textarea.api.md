@@ -18,6 +18,12 @@ export const renderTextarea_unstable: (state: TextareaState) => JSXElement;
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
 
+// @public
+export type TextareaBaseProps = Omit<TextareaProps, 'appearance' | 'size'>;
+
+// @public
+export type TextareaBaseState = Omit<TextareaState, 'appearance' | 'size'>;
+
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
@@ -47,6 +53,9 @@ export type TextareaState = ComponentState<TextareaSlots> & Required<Pick<Textar
 
 // @public
 export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
+
+// @public
+export const useTextareaBase_unstable: (props: TextareaBaseProps, ref?: React_2.Ref<HTMLTextAreaElement>) => TextareaBaseState;
 
 // @public
 export const useTextareaStyles_unstable: (state: TextareaState) => TextareaState;

@@ -12,7 +12,7 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
       <label ${ref('labelEl')} for="control" part="label">
         <slot name="label" ${slotted('labelSlottedNodes')}></slot>
       </label>
-      <div class="root" part="root">
+      <div class="root" part="root" ${ref('rootEl')}>
         <textarea
           ${ref('controlEl')}
           id="control"

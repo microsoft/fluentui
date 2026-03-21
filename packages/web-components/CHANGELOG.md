@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 03 Mar 2026 04:07:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Mar 2026 04:08:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.9)
+
+Thu, 12 Mar 2026 04:08:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.8..@fluentui/web-components_v3.0.0-rc.9)
+
+### Changes
+
+- fix(web-components): resolve auto-resize issues for TextArea in Firefox ([PR #35849](https://github.com/microsoft/fluentui/pull/35849) by 198982749+Copilot@users.noreply.github.com)
 
 ## [3.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.8)
 

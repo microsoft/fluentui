@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2026 09:22:22 GMT",
+      "tag": "@fluentui/react-toolbar_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.5.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-toolbar_v9.7.3",
       "version": "9.7.3",

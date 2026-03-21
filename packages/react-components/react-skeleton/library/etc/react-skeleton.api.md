@@ -16,10 +16,16 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSXElement;
 
 // @public
-export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSXElement;
+export const renderSkeletonItem_unstable: (state: SkeletonItemBaseState) => JSXElement;
 
 // @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public
+export type SkeletonBaseProps = Omit<SkeletonProps, 'animation' | 'appearance'>;
+
+// @public
+export type SkeletonBaseState = Omit<SkeletonState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
@@ -41,6 +47,12 @@ export interface SkeletonContextValue {
 
 // @public (undocumented)
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public
+export type SkeletonItemBaseProps = Omit<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>;
+
+// @public
+export type SkeletonItemBaseState = Omit<SkeletonItemState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
@@ -79,11 +91,17 @@ export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<Skelet
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
 
+// @public
+export const useSkeletonBase_unstable: (props: SkeletonBaseProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonBaseState;
+
 // @public (undocumented)
 export const useSkeletonContext: () => SkeletonContextValue;
 
 // @public
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
+
+// @public
+export const useSkeletonItemBase_unstable: (props: SkeletonItemBaseProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemBaseState;
 
 // @public
 export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;

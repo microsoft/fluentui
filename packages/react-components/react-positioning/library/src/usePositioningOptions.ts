@@ -22,10 +22,10 @@ import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
 /**
- * @internal
- *
  * This is redundant and exists only to manage React dependencies properly & avoid leaking individual options to the
  * scope of `usePositioningOptions`.
+ *
+ * @internal
  */
 function usePositioningConfigFn(
   configFn: PositioningConfigurationFn,

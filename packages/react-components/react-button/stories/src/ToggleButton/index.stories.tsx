@@ -2,10 +2,12 @@ import { Meta } from '@storybook/react-webpack5';
 import { ToggleButton } from '@fluentui/react-components';
 import descriptionMd from './ToggleButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
+import accessibilityMd from './ToggleButtonAccessibility.md';
 
 export { Default } from './ToggleButtonDefault.stories';
 export { Shape } from './ToggleButtonShape.stories';
 export { Appearance } from './ToggleButtonAppearance.stories';
+export { AccessibleAppearance } from './ToggleButtonAppearanceAccessible.stories';
 export { Icon } from './ToggleButtonIcon.stories';
 export { Size } from './ToggleButtonSize.stories';
 export { Disabled } from './ToggleButtonDisabled.stories';
@@ -18,7 +20,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, accessibilityMd].join('\n'),
       },
     },
   },

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2026 07:57:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.2)
+
+Tue, 17 Mar 2026 07:57:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.1..@fluentui/react-menu-grid-preview_v0.3.2)
+
+### Patches
+
+- fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation) ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-menu to v9.23.0 ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by beachball)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.1)
+
+Wed, 11 Mar 2026 12:58:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.0..@fluentui/react-menu-grid-preview_v0.3.1)
+
+### Patches
+
+- fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover ([PR #35862](https://github.com/microsoft/fluentui/pull/35862) by bernardo.sunderhus@gmail.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.0)
+
+Wed, 11 Mar 2026 09:22:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.11..@fluentui/react-menu-grid-preview_v0.3.0)
+
+### Minor changes
+
+- Proper onClick handling for MenuGridRow ([PR #35795](https://github.com/microsoft/fluentui/pull/35795) by adam.samec@gmail.com)
+- Bump @fluentui/react-table to v9.19.11 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.11)
 

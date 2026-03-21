@@ -64,6 +64,7 @@ import {
   calcTotalWidth,
   calcBandwidth,
   calcRequiredWidth,
+  isSafeUrl,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
@@ -887,7 +888,9 @@ export class VerticalStackedBarChartBase
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     this.props.onBarClick?.(mouseEvent, data);
-    this.props.href ? (window.location.href = this.props.href) : '';
+    if (this.props.href && isSafeUrl(this.props.href)) {
+      window.location.href = this.props.href;
+    }
   }
 
   private _getBarGapAndScale(

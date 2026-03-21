@@ -4,8 +4,12 @@ import type { IStyle } from './IStyle';
 /**
  * IRawStyle extends a raw style object, but allows selectors to be defined
  * under the selectors node.
- * @public
+ * IRawStyle extends a raw style object, but allows selectors to be defined
+ * under the selectors node.
+ *
  * {@docCategory IRawStyle}
+ *
+ * @public
  */
 
 export interface IRawStyle extends IRawStyleBase {

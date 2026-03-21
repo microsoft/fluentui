@@ -12,7 +12,27 @@ export type SkeletonSlots = {
 /**
  * Sizes for the SkeletonItem
  */
-export type SkeletonItemSize = 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type SkeletonItemSize =
+  | 8
+  | 12
+  | 14
+  | 16
+  | 20
+  | 22
+  | 24
+  | 28
+  | 32
+  | 36
+  | 40
+  | 48
+  | 52
+  | 56
+  | 64
+  | 72
+  | 92
+  | 96
+  | 120
+  | 128;
 
 /**
  * Skeleton Props
@@ -51,6 +71,11 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
   shape?: 'circle' | 'square' | 'rectangle';
 };
 
+/**
+ * Skeleton base props, excluding design-related props like animation and appearance.
+ */
+export type SkeletonBaseProps = Omit<SkeletonProps, 'animation' | 'appearance'>;
+
 export type SkeletonContextValues = {
   skeletonGroup: SkeletonContextValue;
 };
@@ -61,3 +86,8 @@ export type SkeletonContextValues = {
 export type SkeletonState = ComponentState<SkeletonSlots> &
   Required<Pick<SkeletonProps, 'animation' | 'appearance'>> &
   Pick<SkeletonProps, 'size' | 'shape'>;
+
+/**
+ * Skeleton base state, excluding design-related state like animation and appearance.
+ */
+export type SkeletonBaseState = Omit<SkeletonState, 'animation' | 'appearance' | 'size' | 'shape'>;

@@ -13,17 +13,19 @@ export interface ILegendOverflowData {
 }
 
 /**
- * @public
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
 /**
- * @public
  * Legends styles
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendsStyles {
   /**
@@ -78,9 +80,10 @@ export interface ILegendsStyles {
 }
 
 /**
- * @public
  * ILegend interface
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegend {
   /**
@@ -135,9 +138,10 @@ export interface ILegend {
 }
 
 /**
- * @public
  * Legend style properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendStyleProps {
   theme?: ITheme;
@@ -151,9 +155,10 @@ export interface ILegendStyleProps {
 }
 
 /**
- * @public
  * Legend properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendsProps {
   /**
@@ -287,11 +292,12 @@ export interface ILegendsProps {
 }
 
 /**
- * @public
  * The shape for the legend
  * default: show the rect legend
  * triangle: show the triangle legend
  * {@docCategory Legends}
+ *
+ * @public
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
 
