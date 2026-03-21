@@ -47,7 +47,6 @@ type WithSlotShorthandValue<Props> =
   | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
 
 /**
- * @internal
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
  *
@@ -55,6 +54,7 @@ type WithSlotShorthandValue<Props> =
  * For React 18 and later, `children` can be any value, as React.ReactNode is a more strict type and does not allow functions anymore.
  * This means that the render functions need to be asserted as `SlotRenderFunction<Props>` for React 18 and later.
  *
+ * @internal
  * @example
  * ```tsx
  * // For React 17 and earlier:
@@ -275,8 +275,9 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
       | ComponentType<Props>
       | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     /**
-     * @internal
      * The original className prop for the slot, before being modified by the useStyles hook.
+     *
+     * @internal
      */
     [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
   };

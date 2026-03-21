@@ -64,10 +64,21 @@ export type TextareaProps = Omit<
 };
 
 /**
+ * Textarea base props, excluding design-related props like appearance and size.
+ * Note: resize is kept as it is a structural/behavioral prop.
+ */
+export type TextareaBaseProps = Omit<TextareaProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering Textarea
  */
 export type TextareaState = ComponentState<TextareaSlots> &
   Required<Pick<TextareaProps, 'appearance' | 'resize' | 'size'>>;
+
+/**
+ * Textarea base state, excluding design-related state like appearance and size.
+ */
+export type TextareaBaseState = Omit<TextareaState, 'appearance' | 'size'>;
 
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.

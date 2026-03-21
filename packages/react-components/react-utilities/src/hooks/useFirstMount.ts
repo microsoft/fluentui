@@ -3,11 +3,11 @@
 import * as React from 'react';
 
 /**
- * @internal
  * Checks if components was mounted the first time.
  * Supports React concurrent/strict mode by using `useEffect`
  * to track the first mount instead of mutating refs during render.
  *
+ * @internal
  * @example
  * const isFirstMount = useFirstMount();
  */
