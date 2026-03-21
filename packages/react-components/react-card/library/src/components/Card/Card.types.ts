@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Card selected event type
@@ -135,7 +135,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   disabled?: boolean;
 };
 
-export type CardBaseProps = DistributiveOmit<CardProps, 'appearance' | 'orientation' | 'size'>;
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'>;
 
 /**
  * State used in rendering Card.
@@ -181,4 +181,4 @@ export type CardState = ComponentState<CardSlots> &
     }
   >;
 
-export type CardBaseState = DistributiveOmit<CardState, 'appearance' | 'orientation' | 'size'>;
+export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;
