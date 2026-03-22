@@ -1,0 +1,256 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Base State Hooks" />
+
+## Base state hooks
+
+Base state hooks are an advanced, opt-in API for teams building custom component libraries that significantly diverge from Fluent 2 visual design.
+
+They let you reuse Fluent UI behavior primitives (ARIA patterns, keyboard handling, semantic structure) while owning rendering and styling completely.
+
+For most apps, the styled component APIs are still the right default.
+
+### Quick decision guide
+
+Use styled components (`Button`, `Input`, etc.) when you want:
+
+- Fluent 2 visuals out of the box
+- Design-token-based customization
+- Simpler and lower-maintenance integration
+
+Use base state hooks when you need:
+
+- Full control over rendering and styling architecture
+- A custom design system that is not based on Fluent 2 visual patterns
+- Fluent behavior and accessibility primitives without default design opinions
+
+### What base state hooks include
+
+- Component behavior and state logic
+- ARIA attributes and keyboard interaction patterns
+- Semantic slot structure
+
+### What base state hooks exclude
+
+- Design props (for example appearance, size, shape)
+- Style logic (Griffel styles, design token styling)
+- Motion and transitions
+- Default slot implementations
+
+### Layer model
+
+Components are composed in layers:
+
+1. `use{Component}Base_unstable` for behavior and structure
+2. `use{Component}_unstable` for component-level design concerns
+3. `{Component}` for the default styled experience
+
+For example:
+
+```tsx
+import { useButtonBase_unstable } from '@fluentui/react-button';
+import type { ButtonBaseProps } from '@fluentui/react-button';
+
+type MyButtonProps = ButtonBaseProps & {
+  variant?: 'primary' | 'secondary';
+};
+```
+
+### Authoring cookbook
+
+The examples below show common authoring patterns when building custom components on top of base state hooks.
+
+#### 1) Full composition with base hook, custom styles, and custom render
+
+```tsx
+import * as React from 'react';
+import { mergeClasses, slot, type Slot } from '@fluentui/react-components';
+import { useButtonBase_unstable } from '@fluentui/react-button';
+import type { ButtonBaseProps, ButtonBaseState } from '@fluentui/react-button';
+
+type CustomButtonSlots = {
+  root: NonNullable<ButtonBaseState['root']>;
+  icon?: ButtonBaseState['icon'];
+  badge?: Slot<'span'>;
+};
+
+type CustomButtonProps = ButtonBaseProps & {
+  tone?: 'neutral' | 'success' | 'danger';
+  badge?: string;
+};
+
+type CustomButtonState = ButtonBaseState & {
+  tone: NonNullable<CustomButtonProps['tone']>;
+  badge?: ReturnType<typeof slot.optional>;
+  components: CustomButtonSlots;
+};
+
+const useCustomButtonState = (
+  props: CustomButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): CustomButtonState => {
+  const { tone = 'neutral', badge, ...baseProps } = props;
+  const baseState = useButtonBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    tone,
+    badge: slot.optional(badge, { elementType: 'span' }),
+    components: {
+      ...baseState.components,
+      badge: 'span',
+    },
+  };
+};
+
+const useCustomButtonStyles = (state: CustomButtonState): void => {
+  state.root.className = mergeClasses('myButton', `myButton--${state.tone}`, state.root.className);
+
+  if (state.icon) {
+    state.icon.className = mergeClasses('myButton__icon', state.icon.className);
+  }
+
+  if (state.badge) {
+    state.badge.className = mergeClasses('myButton__badge', state.badge.className);
+  }
+};
+
+const renderCustomButton = (state: CustomButtonState) => {
+  assertSlots<CustomButtonSlots>(state);
+
+  return (
+    <state.root>
+      {state.icon && <state.icon />}
+      {<state.content />}
+      {state.badge && <state.badge />}
+    </state.root>
+  );
+};
+
+export const CustomButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, CustomButtonProps>((props, ref) => {
+  const state = useCustomButtonState(props, ref);
+  useCustomButtonStyles(state);
+  return renderCustomButton(state);
+});
+```
+
+#### 2) Full example: replacing slot logic and conditionally omitting slot rendering
+
+This example shows the full flow (types, state, styles, render, component) for a loading-aware button that replaces icon/content rendering while loading.
+
+```tsx
+import * as React from 'react';
+import { assertSlots, mergeClasses, slot, type Slot } from '@fluentui/react-components';
+import { useButtonBase_unstable } from '@fluentui/react-button';
+import type { ButtonBaseProps, ButtonBaseState } from '@fluentui/react-button';
+
+type LoadingButtonSlots = {
+  root: NonNullable<ButtonBaseState['root']>;
+  icon?: ButtonBaseState['icon'];
+  loadingIndicator?: Slot<'span'>;
+};
+
+type LoadingButtonProps = ButtonBaseProps & {
+  isLoading?: boolean;
+  loadingIndicator?: Slot<'span'>;
+};
+
+type LoadingButtonState = ButtonBaseState & {
+  isLoading: boolean;
+  loadingIndicator?: ReturnType<typeof slot.optional>;
+  components: LoadingButtonSlots;
+};
+
+const useLoadingButtonState = (
+  props: LoadingButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): LoadingButtonState => {
+  const { isLoading = false, loadingIndicator, ...baseProps } = props;
+  const baseState = useButtonBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    isLoading,
+    loadingIndicator: slot.optional(loadingIndicator, {
+      renderByDefault: true,
+      defaultProps: {
+        children: 'Loading...',
+        'aria-live': 'polite',
+      },
+      elementType: 'span',
+    }),
+    components: {
+      ...baseState.components,
+      loadingIndicator: 'span',
+    },
+  };
+};
+
+const useLoadingButtonStyles = (state: LoadingButtonState): void => {
+  state.root.className = mergeClasses('loadingButton', state.isLoading && 'loadingButton--busy', state.root.className);
+
+  if (state.loadingIndicator) {
+    state.loadingIndicator.className = mergeClasses('loadingButton__indicator', state.loadingIndicator.className);
+  }
+};
+
+const renderLoadingButton = (state: LoadingButtonState) => {
+  assertSlots<LoadingButtonSlots>(state);
+
+  return (
+    <state.root>
+      {state.isLoading ? (
+        // Replaces icon/content rendering while loading
+        state.loadingIndicator && <state.loadingIndicator />
+      ) : (
+        <>
+          {state.icon && <state.icon />}
+          {state.root.children}
+        </>
+      )}
+    </state.root>
+  );
+};
+
+export const LoadingButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, LoadingButtonProps>(
+  (props, ref) => {
+    const state = useLoadingButtonState(props, ref);
+    useLoadingButtonStyles(state);
+    return renderLoadingButton(state);
+  },
+);
+```
+
+When replacing slot logic, verify keyboard behavior, ARIA semantics, and focus handling still match component expectations.
+
+### Authoring checklist
+
+- Preserve base root props and ref wiring from `use{Component}Base_unstable`.
+- Keep user `className` precedence by appending existing slot class names last.
+- Validate all states visually (`:hover`, `:active`, `:focus-visible`, disabled).
+- Test keyboard and screen reader behavior after custom rendering changes.
+- Prefer small wrappers (`useXxxState`, `useXxxStyles`, `renderXxx`) for maintainability.
+
+### Accessibility responsibilities
+
+Base state hooks provide ARIA and interaction behavior, but they do not provide visual accessibility defaults.
+
+When you implement custom styles, ensure:
+
+- Visible focus indicators
+- Sufficient color contrast
+- Clear hover, pressed, and disabled visual states
+
+For accessibility guidance, see [Accessibility](?path=/docs/concepts-developer-accessibility-components-overview--docs).
+
+### Relationship to other customization options
+
+- Use [Styling Components](?path=/docs/concepts-developer-styling-components--docs) for standard style overrides.
+- Use [Advanced Styling Techniques](?path=/docs/concepts-developer-advanced-styling-techniques--docs) for app-wide style hook customization.
+- Use [Customizing Components with Slots](?path=/docs/concepts-developer-customizing-components-with-slots--docs) for part-level composition within existing components.
+
+### Stability and API lifecycle
+
+Base state hooks use the `_unstable` suffix and are intended for advanced consumers who can absorb lower-level API evolution over time.
+
+For deeper rationale and rollout context, see the RFC: [Component Base State Hooks](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/base-state-hooks.md).
