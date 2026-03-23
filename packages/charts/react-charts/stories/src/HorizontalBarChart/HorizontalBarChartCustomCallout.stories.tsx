@@ -24,7 +24,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient1Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '1.5K',
@@ -36,7 +36,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient2Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '800',
@@ -48,7 +48,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient3Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '8.8K',
@@ -60,7 +60,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient4Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '16K',
@@ -72,7 +72,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient5Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '11K',
@@ -84,7 +84,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '14K',
@@ -96,7 +96,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient7Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '9.9K',
@@ -108,7 +108,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '4.3K',

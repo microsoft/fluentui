@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { HorizontalBarChart } from '@fluentui/react-charts';
+import { ChartProps, HorizontalBarChart } from '@fluentui/react-charts';
 
 export const HorizontalBarCustomGradient = () => {
-  const data = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           // custom gradient
           color: ['#8800FF', '#00D0FF'],
           xAxisCalloutData: '2020/04/30',
@@ -21,7 +21,7 @@ export const HorizontalBarCustomGradient = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           // custom gradient
           color: ['#00D0FF', 'lightgreen'],
           xAxisCalloutData: '2020/04/30',
@@ -34,7 +34,7 @@ export const HorizontalBarCustomGradient = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           // custom gradient
           color: ['green', 'yellow'],
           xAxisCalloutData: '2020/04/30',
@@ -47,7 +47,7 @@ export const HorizontalBarCustomGradient = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: ['yellow', 'orange'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '106%',
@@ -59,7 +59,7 @@ export const HorizontalBarCustomGradient = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: ['orange', 'red'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',

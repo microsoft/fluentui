@@ -18,9 +18,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onSwitchGradient = (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => {
-    setEnableGradient(data.checked);
-  };
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
 
   const data = [
     {
