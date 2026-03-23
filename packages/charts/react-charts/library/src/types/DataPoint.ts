@@ -182,7 +182,7 @@ export interface VerticalBarChartDataPoint {
   /**
    * color for the legend in the chart
    */
-  color?: string;
+  color?: string | [string, string];
 
   /**
    * Callout data for x axis

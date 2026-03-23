@@ -11,6 +11,7 @@ import {
   Input,
   InputProps,
   InputOnChangeData,
+  Switch,
 } from '@fluentui/react-components';
 
 export const VerticalBarAxisTooltip = (): JSXElement => {
@@ -24,6 +25,7 @@ export const VerticalBarAxisTooltip = (): JSXElement => {
   const [xAxisOuterPadding, setXAxisOuterPadding] = React.useState<number>(0);
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setBarWidthEnabled(checked.checked);
@@ -57,6 +59,9 @@ export const VerticalBarAxisTooltip = (): JSXElement => {
   };
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(Number(e.target.value));
+  };
+  const _onToggleGradient = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setEnableGradient(ev.currentTarget.checked);
   };
   const points: VerticalBarChartDataPoint[] = [
     {
@@ -187,6 +192,13 @@ export const VerticalBarAxisTooltip = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
+      <div style={{ marginTop: '20px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onToggleGradient}
+        />
+      </div>
       <div style={rootStyle}>
         <VerticalBarChart
           chartTitle="Vertical bar chart axis tooltip example "
@@ -201,6 +213,7 @@ export const VerticalBarAxisTooltip = (): JSXElement => {
           maxBarWidth={maxBarWidth}
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}
           xAxisOuterPadding={xAxisOuterPaddingEnabled ? xAxisOuterPadding : undefined}
+          enableGradient={enableGradient}
         />
       </div>
     </>

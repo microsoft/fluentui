@@ -19,6 +19,7 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
   const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -67,6 +68,10 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
 
   const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const data = [
@@ -326,6 +331,8 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
           label={selectMultipleLegends ? 'legendmultiselect ON' : 'legendmultiselect OFF'}
           onChange={_onSwitchLegendMultiSelect}
         />
+        &nbsp;&nbsp;
+        <Switch label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'} onChange={_onSwitchGradient} />
       </div>
       <div style={rootStyle}>
         <GroupedVerticalBarChart
@@ -342,6 +349,7 @@ export const GroupedVerticalBarNegative = (): JSXElement => {
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
+          enableGradient={enableGradient}
         />
       </div>
     </div>

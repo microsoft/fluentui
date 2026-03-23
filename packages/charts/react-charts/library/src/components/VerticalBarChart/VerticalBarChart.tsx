@@ -53,6 +53,7 @@ import {
   calcBandwidth,
   calcRequiredWidth,
   sortAxisCategories,
+  getNextGradient,
 } from '../../utilities/index';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -95,6 +96,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const _vbcLineId: string = useId('_VBC_line_');
   const _vbcPointId: string = useId('_VBC_point_');
   const _vbcBarId: string = useId('_VBC_bar_');
+  const _gradientId = useId('VBC_Gradient');
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
@@ -358,6 +360,22 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSXElement {
+    const pointIndex = props.data?.findIndex(item => item === _props) || 0;
+    let calloutColor =
+      !props.useSingleColor && _props.color
+        ? Array.isArray(_props.color)
+          ? _props.color[0]
+          : _props.color
+        : _createColors()(_props.y);
+
+    if (props.enableGradient) {
+      calloutColor = props.useSingleColor
+        ? getNextGradient(0)[0]
+        : Array.isArray(_props.color)
+        ? _props.color[0]
+        : getNextGradient(pointIndex)[0];
+    }
+
     return (
       <>
         <ChartPopover
@@ -369,7 +387,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           isPopoverOpen={isPopoverOpen}
           legend={_props.legend!}
           YValue={_props.yAxisCalloutData || _props.y}
-          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
+          color={calloutColor}
           isCalloutForStack={false}
         />
       </>
@@ -424,6 +442,25 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _refArray.push({ index: legendTitle, refElement: element });
   }
 
+  function _addDefaultColors(dataPoints: VerticalBarChartDataPoint[]): VerticalBarChartDataPoint[] {
+    return dataPoints
+      ? dataPoints.map((item, index) => {
+          let itemColor = item.color;
+
+          // if color is not defined, assign a default color
+          if (!itemColor) {
+            itemColor = _colors[index % _colors.length];
+          }
+          // if color is a string, check if it is undefined or blank assign a default color
+          if (typeof itemColor === 'string' && itemColor.trim() === '') {
+            itemColor = _colors[index % _colors.length];
+          }
+
+          return { ...item, color: itemColor };
+        })
+      : [];
+  }
+
   function _getCalloutContentForLineAndBar(point: VerticalBarChartDataPoint): {
     YValueHover: YValueHover[];
     hoverXValue: string | number | undefined;
@@ -433,6 +470,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     const selectedPoint = data!.filter((xDataPoint: VerticalBarChartDataPoint) => xDataPoint.x === point.x);
+    const pointIndex = data!.indexOf(selectedPoint[0]);
+
     // Check if the line legend is highlighted or no legend is highlighted
     if (
       _isHavingLine &&
@@ -451,14 +490,26 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     // Check if the bar legend is highlighted or no legend is highlighted
     if (selectedLegends.includes(selectedPoint[0].legend!) || _noLegendHighlighted()) {
       // Add callout data for the bar
+      let calloutColor = !useSingleColor
+        ? selectedPoint[0].color
+          ? Array.isArray(selectedPoint[0].color)
+            ? selectedPoint[0].color[0]
+            : selectedPoint[0].color
+          : _createColors()(selectedPoint[0].y)
+        : _createColors()(1);
+
+      if (props.enableGradient) {
+        calloutColor = useSingleColor
+          ? getNextGradient(0)[0]
+          : Array.isArray(selectedPoint[0].color)
+          ? selectedPoint[0].color[0]
+          : getNextGradient(pointIndex)[0];
+      }
+
       YValueHover.push({
         legend: selectedPoint[0].legend,
         y: selectedPoint[0].y,
-        color: !useSingleColor
-          ? selectedPoint[0].color
-            ? selectedPoint[0].color
-            : _createColors()(selectedPoint[0].y)
-          : _createColors()(1),
+        color: calloutColor,
         data: selectedPoint[0].yAxisCalloutData,
         yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
       });
@@ -488,7 +539,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
       setDataForHoverCard(point.y);
       setCalloutLegend(point.legend!);
-      setColor(point.color || color);
+      setColor(Array.isArray(point.color) ? point.color[0] : point.color || color);
       // To display callout value, if no callout value given, taking given point.x value as a string.
       setXCalloutValue(
         point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
@@ -536,7 +587,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
         setDataForHoverCard(point.y);
         setCalloutLegend(point.legend!);
-        setColor(point.color || color);
+        setColor(Array.isArray(point.color) ? point.color[0] : point.color || color);
         // To display callout value, if no callout value given, taking given point.x value as a string.
         setXCalloutValue(
           point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
@@ -670,8 +721,35 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
+      const gradientId = _gradientId + `_numeric_${index}`;
+
+      // Generate colors using the same pattern as other bar functions
+      let startColor = (point.color as string) && !useSingleColor ? (point.color as string) : colorScale(point.y);
+      let endColor = startColor;
+
+      if (props.enableGradient) {
+        startColor = Array.isArray(point.color) ? point.color[0] : getNextGradient(index)[0];
+        endColor = Array.isArray(point.color) ? point.color[1] : getNextGradient(index)[1];
+        if (useSingleColor) {
+          startColor = getNextGradient(0)[0];
+          endColor = getNextGradient(0)[1];
+        }
+        console.log(`VerticalBarChart numeric bars rendering bar ${index} with gradient: ${startColor} -> ${endColor}`);
+        _points[index].color = startColor;
+      } else {
+        console.log(`VerticalBarChart numeric bars rendering bar ${index} with solid color: ${startColor}`);
+      }
+
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <React.Fragment key={`${point.x}_${index}` as string}>
+          {props.enableGradient && (
+            <defs>
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -688,19 +766,20 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
-            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            fill={props.enableGradient ? `url(#${gradientId})` : startColor}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
-        </g>
+        </React.Fragment>
       );
     });
     return bars;
   }
 
   function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
+    const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
@@ -730,11 +809,32 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth(), props.mode);
+
+      let startColor = (point.color as string) && !useSingleColor ? (point.color as string) : colorScale(point.y);
+      let endColor = startColor;
+
+      if (props.enableGradient) {
+        startColor = Array.isArray(point.color) ? point.color[0] : getNextGradient(index)[0];
+        endColor = Array.isArray(point.color) ? point.color[1] : getNextGradient(index)[1];
+        if (useSingleColor) {
+          startColor = getNextGradient(0)[0];
+          endColor = getNextGradient(0)[1];
+        }
+        _points[index].color = startColor;
+      }
+
+      const gradientId = _gradientId + `_string_${index}`;
+
       return (
-        <g
-          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
-          transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
-        >
+        <React.Fragment key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+          {props.enableGradient && (
+            <defs>
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -747,17 +847,18 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
+            onMouseOver={event => _onBarHover(point, startColor, event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
-            fill={point.color ? point.color : colorScale(point.y)}
+            onFocus={event => _onBarFocus(event, point, index, startColor)}
+            fill={props.enableGradient ? `url(#${gradientId})` : startColor}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
+            transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
-        </g>
+        </React.Fragment>
       );
     });
     return bars;
@@ -791,32 +892,59 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
+
+      let startColor = point.color && !useSingleColor ? point.color : colorScale(point.y);
+      let endColor = startColor;
+
+      if (props.enableGradient) {
+        startColor = Array.isArray(point.color) ? point.color[0] : getNextGradient(index)[0];
+        endColor = Array.isArray(point.color) ? point.color[1] : getNextGradient(index)[1];
+        if (useSingleColor) {
+          startColor = getNextGradient(0)[0];
+          endColor = getNextGradient(0)[1];
+        }
+        console.log(`VerticalBarChart date bars rendering bar ${index} with gradient: ${startColor} -> ${endColor}`);
+        _points[index].color = startColor;
+      } else {
+        console.log(`VerticalBarChart date bars rendering bar ${index} with solid color: ${startColor}`);
+      }
+
+      const gradientId = _gradientId + `_date_${index}`;
+
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <React.Fragment key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+          {props.enableGradient && (
+            <defs>
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0" stopColor={startColor as string} />
+                <stop offset="100%" stopColor={endColor as string} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            className={classes.opacityChangeOnHover}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
+            className={classes.opacityChangeOnHover}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
+            onMouseOver={event => _onBarHover(point, startColor as string, event)}
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, index, startColor as string)}
             onBlur={_onBarLeave}
-            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            fill={props.enableGradient ? `url(#${gradientId})` : (startColor as string)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
-        </g>
+        </React.Fragment>
       );
     });
     return bars;
@@ -837,7 +965,20 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      const color: string = !useSingleColor ? point.color! : _createColors()(1);
+      let color: string = !useSingleColor
+        ? Array.isArray(point.color)
+          ? point.color[0]
+          : point.color!
+        : _createColors()(1);
+
+      if (props.enableGradient) {
+        const pointIndex = Math.max(props.data?.findIndex(item => item.legend === point.legend) || 0, 0);
+        color = Array.isArray(point.color) ? point.color[0] : getNextGradient(pointIndex)[0];
+        if (useSingleColor) {
+          color = getNextGradient(0)[0];
+        }
+      }
+
       mapLegendToColor[point.legend!] = color;
     });
     Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
@@ -1122,6 +1263,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   _adjustProps();
+  _points = _addDefaultColors(_points);
   _xAxisLabels = _getOrderedXAxisLabels();
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);

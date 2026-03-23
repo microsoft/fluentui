@@ -220,6 +220,16 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with gradient enabled',
+    VerticalStackedBarChart,
+    { data: chartPointsVSBC, enableGradient: true },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {

@@ -28,6 +28,7 @@ export const VerticalBarDefault = (): JSXElement => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
   const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -55,6 +56,9 @@ export const VerticalBarDefault = (): JSXElement => {
   }, []);
   const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
+  }, []);
+  const _onToggleGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const points: VerticalBarChartDataPoint[] = [
@@ -213,6 +217,12 @@ export const VerticalBarDefault = (): JSXElement => {
         checked={selectMultipleLegends}
         onChange={_onToggleMultiLegendSelection}
       />
+      <Switch
+        label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+        checked={enableGradient}
+        onChange={_onToggleGradient}
+        style={{ marginTop: '10px' }}
+      />
       {showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
@@ -243,6 +253,7 @@ export const VerticalBarDefault = (): JSXElement => {
                 ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
                 : undefined
             }
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
@@ -276,6 +287,8 @@ export const VerticalBarDefault = (): JSXElement => {
             legendProps={{
               canSelectMultipleLegends: selectMultipleLegends,
             }}
+            enableGradient={enableGradient}
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>

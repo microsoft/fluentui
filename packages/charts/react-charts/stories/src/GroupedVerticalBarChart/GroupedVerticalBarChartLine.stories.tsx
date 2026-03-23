@@ -163,6 +163,7 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
   const [height, setHeight] = React.useState(400);
   const [calloutVariant, setCalloutVariant] = React.useState<string>('SingleCallout');
   const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   return (
     <div className="containerDiv">
@@ -198,13 +199,22 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
           <Radio value="StackCallout" label="Stack Callout" />
         </RadioGroup>
       </Field>
-      <Field label="Select multiple legends:" style={{ marginTop: 10 }}>
-        <Switch
-          checked={selectMultipleLegends}
-          label={selectMultipleLegends ? 'ON' : 'OFF'}
-          onChange={ev => setSelectMultipleLegends(ev.currentTarget.checked)}
-        />
-      </Field>
+      <div style={{ display: 'flex', gap: 20, marginTop: 10 }}>
+        <Field label="Select multiple legends:">
+          <Switch
+            checked={selectMultipleLegends}
+            label={selectMultipleLegends ? 'ON' : 'OFF'}
+            onChange={ev => setSelectMultipleLegends(ev.currentTarget.checked)}
+          />
+        </Field>
+        <Field label="Enable Gradient:">
+          <Switch
+            checked={enableGradient}
+            label={enableGradient ? 'ON' : 'OFF'}
+            onChange={ev => setEnableGradient(ev.currentTarget.checked)}
+          />
+        </Field>
+      </div>
       <div style={{ width, height }}>
         <GroupedVerticalBarChart
           chartTitle="Grouped Vertical Bar chart line example"
@@ -216,6 +226,7 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
+          enableGradient={enableGradient}
         />
       </div>
     </div>

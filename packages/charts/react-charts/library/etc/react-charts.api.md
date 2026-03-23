@@ -1946,7 +1946,7 @@ export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 export interface VerticalBarChartDataPoint {
     barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
-    color?: string;
+    color?: string | [string, string];
     legend?: string;
     lineData?: LineDataInVerticalBarChart;
     onClick?: VoidFunction;
