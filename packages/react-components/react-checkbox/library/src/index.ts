@@ -4,9 +4,13 @@ export {
   renderCheckbox_unstable,
   useCheckboxStyles_unstable,
   useCheckbox_unstable,
+  useCheckboxBase_unstable,
 } from './Checkbox';
-export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from './Checkbox';
-
-// Experimental APIs - will be uncommented in the experimental release branch
-// export { useCheckboxBase_unstable } from './Checkbox';
-// export type { CheckboxBaseProps, CheckboxBaseState } from './Checkbox';
+export type {
+  CheckboxOnChangeData,
+  CheckboxProps,
+  CheckboxSlots,
+  CheckboxState,
+  CheckboxBaseProps,
+  CheckboxBaseState,
+} from './Checkbox';

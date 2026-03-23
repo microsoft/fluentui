@@ -17,6 +17,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
 // @public (undocumented)
+export type CheckboxBaseProps = Omit<CheckboxProps, 'shape' | 'size'>;
+
+// @public (undocumented)
+export type CheckboxBaseState = Omit<CheckboxState, 'shape' | 'size'>;
+
+// @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
 // @public
@@ -52,6 +58,9 @@ export const renderCheckbox_unstable: (state: CheckboxState) => JSXElement;
 
 // @public
 export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+
+// @public
+export const useCheckboxBase_unstable: (props: CheckboxBaseProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxBaseState;
 
 // @public
 export const useCheckboxStyles_unstable: (state: CheckboxState) => CheckboxState;
