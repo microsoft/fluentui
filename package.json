@@ -28,7 +28,8 @@
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
     "generate": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/generate-ui",
     "clean": "nx run-many -t clean --verbose",
-    "reset-workspace": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/reset-workspace.ts"
+    "reset-workspace": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/reset-workspace.ts",
+    "test-ssr": "node node_modules/@fluentui/scripts-test-ssr/bin/test-ssr.js"
   },
   "devDependencies": {
     "@actions/core": "1.9.1",
