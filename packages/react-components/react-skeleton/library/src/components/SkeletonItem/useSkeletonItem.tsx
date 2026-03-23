@@ -3,7 +3,12 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
-import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
+import type {
+  SkeletonItemBaseProps,
+  SkeletonItemBaseState,
+  SkeletonItemProps,
+  SkeletonItemState,
+} from './SkeletonItem.types';
 
 /**
  * Create the state required to render SkeletonItem.
@@ -26,17 +31,36 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
     appearance = contextAppearance ?? 'opaque',
     size = contextSize ?? 16,
     shape = contextShape ?? 'rectangle',
+    ...baseProps
   } = props;
 
+  const baseState = useSkeletonItemBase_unstable(baseProps, ref as React.Ref<HTMLDivElement>);
+
+  return {
+    ...baseState,
+    animation,
+    appearance,
+    size,
+    shape,
+  };
+};
+
+/**
+ * Base hook for SkeletonItem component, which manages state related to slots structure.
+ *
+ * @param props - User provided props to the SkeletonItem component.
+ * @param ref - User provided ref to be passed to the SkeletonItem component.
+ */
+export const useSkeletonItemBase_unstable = (
+  props: SkeletonItemBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): SkeletonItemBaseState => {
   const root = slot.always(
     getIntrinsicElementProps('div', {
-      // FIXME:
-      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: ref as React.Ref<HTMLDivElement>,
+      ref,
       ...props,
     }),
     { elementType: 'div' },
   );
-  return { appearance, animation, size, shape, components: { root: 'div' }, root };
+  return { components: { root: 'div' }, root };
 };

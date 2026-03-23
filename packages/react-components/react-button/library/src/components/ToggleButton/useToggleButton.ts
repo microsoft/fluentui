@@ -15,7 +15,7 @@ export const useToggleButton_unstable = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  const { checked = false, defaultChecked = false, ...buttonProps } = props;
+  const { checked = false, defaultChecked = false, isAccessible = false, ...buttonProps } = props;
   const buttonState = useButton_unstable(buttonProps, ref);
 
   return useToggleState(props, buttonState);
@@ -31,7 +31,7 @@ export const useToggleButtonBase_unstable = (
   props: ToggleButtonProps,
   ref?: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonBaseState => {
-  const { checked = false, defaultChecked = false, ...buttonProps } = props;
+  const { checked = false, defaultChecked = false, isAccessible = false, ...buttonProps } = props;
   const buttonState = useButtonBase_unstable(buttonProps, ref);
 
   return useToggleState(props, buttonState);
