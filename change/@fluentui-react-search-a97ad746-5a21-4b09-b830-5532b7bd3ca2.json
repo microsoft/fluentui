@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for SearchBox",
+  "packageName": "@fluentui/react-search",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
