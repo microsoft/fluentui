@@ -2998,6 +2998,7 @@ __metadata:
     glob: "npm:7.2.0"
     globals: "npm:13.24.0"
     html-webpack-plugin: "npm:5.6.0"
+    husky: "npm:9.1.7"
     ignore-not-found-export-webpack-plugin: "npm:1.0.2"
     imports-loader: "npm:1.2.0"
     jest: "npm:30.2.0"
@@ -3021,6 +3022,7 @@ __metadata:
     monosize: "npm:0.6.3"
     monosize-bundler-webpack: "npm:0.1.6"
     monosize-storage-azure: "npm:0.0.16"
+    nano-staged: "npm:0.9.0"
     node-plop: "npm:0.25.0"
     nx: "npm:21.6.10"
     p-queue: "npm:6.6.2"
@@ -19587,6 +19589,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"husky@npm:9.1.7":
+  version: 9.1.7
+  resolution: "husky@npm:9.1.7"
+  bin:
+    husky: bin.js
+  checksum: 10c0/35bb110a71086c48906aa7cd3ed4913fb913823715359d65e32e0b964cb1e255593b0ae8014a5005c66a68e6fa66c38dcfa8056dbbdfb8b0187c0ffe7ee3a58f
+  languageName: node
+  linkType: hard
+
 "hyphenate-style-name@npm:^1.0.2":
   version: 1.0.3
   resolution: "hyphenate-style-name@npm:1.0.3"
@@ -24202,6 +24213,17 @@ __metadata:
   version: 1.0.0
   resolution: "n-readlines@npm:1.0.0"
   checksum: 10c0/cf03bdb03705980887421777e0aa880b2440a6af7ad40f710c16dfe87233798d6477ddbd8782aa9ed8ac8b7f2edc13756c0300524bc959bfd42fa1eeb4d4d365
+  languageName: node
+  linkType: hard
+
+"nano-staged@npm:0.9.0":
+  version: 0.9.0
+  resolution: "nano-staged@npm:0.9.0"
+  dependencies:
+    picocolors: "npm:^1.0.0"
+  bin:
+    nano-staged: lib/bin.js
+  checksum: 10c0/7052f159e1c0ce5c4d65df3a17288bd099779819fe13fa658bdd10c0eb41b0094ffa9391d84bd3774f9bcfd41fa5e5f82f0d7cb6f69c2e04d4580cf7f6d7b3f2
   languageName: node
   linkType: hard
 
