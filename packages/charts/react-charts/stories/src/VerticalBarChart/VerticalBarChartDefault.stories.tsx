@@ -288,7 +288,6 @@ export const VerticalBarDefault = (): JSXElement => {
               canSelectMultipleLegends: selectMultipleLegends,
             }}
             enableGradient={enableGradient}
-            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
