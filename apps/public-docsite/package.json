@@ -41,7 +41,7 @@
     "@fluentui/theme": "*",
     "@fluentui/theme-samples": "*",
     "@fluentui/utilities": "*",
-    "@microsoft/load-themed-styles": "1.10.26",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "office-ui-fabric-core": "^11.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",

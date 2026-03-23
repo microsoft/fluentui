@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/load-themed-styles": "1.10.26",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "10.0.10",
     "mocha": "11.2.2"
   },

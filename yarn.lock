@@ -3098,7 +3098,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/font-icons-mdl2@npm:*, @fluentui/font-icons-mdl2@npm:^8.5.71, @fluentui/font-icons-mdl2@npm:^8.5.72, @fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2":
+"@fluentui/font-icons-mdl2@npm:*, @fluentui/font-icons-mdl2@npm:^8.5.72, @fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2":
   version: 0.0.0-use.local
   resolution: "@fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2"
   dependencies:
@@ -3109,7 +3109,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/foundation-legacy@npm:*, @fluentui/foundation-legacy@npm:^8.6.4, @fluentui/foundation-legacy@npm:^8.6.5, @fluentui/foundation-legacy@workspace:packages/foundation-legacy":
+"@fluentui/foundation-legacy@npm:*, @fluentui/foundation-legacy@npm:^8.6.5, @fluentui/foundation-legacy@workspace:packages/foundation-legacy":
   version: 0.0.0-use.local
   resolution: "@fluentui/foundation-legacy@workspace:packages/foundation-legacy"
   dependencies:
@@ -3176,7 +3176,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/monaco-editor@workspace:packages/monaco-editor"
   dependencies:
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     monaco-editor: "npm:0.33.0"
     tslib: "npm:^2.1.0"
   languageName: unknown
@@ -3196,7 +3196,7 @@ __metadata:
     "@fluentui/react-theme": "npm:*"
     "@fluentui/scripts-perf-test-flamegrill": "npm:*"
     "@griffel/core": "npm:^1.16.0"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -3210,7 +3210,7 @@ __metadata:
     "@fluentui/example-data": "npm:*"
     "@fluentui/react": "npm:*"
     "@fluentui/scripts-perf-test-flamegrill": "npm:*"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -3244,7 +3244,7 @@ __metadata:
     "@fluentui/react-monaco-editor": "npm:*"
     "@fluentui/set-version": "npm:*"
     "@fluentui/theme-samples": "npm:*"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -3309,7 +3309,7 @@ __metadata:
     "@fluentui/theme": "npm:*"
     "@fluentui/theme-samples": "npm:*"
     "@fluentui/utilities": "npm:*"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -3593,7 +3593,7 @@ __metadata:
     "@fluentui/foundation-legacy": "npm:^8.6.5"
     "@fluentui/react": "npm:^8.125.5"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -3636,7 +3636,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-charting@npm:*, @fluentui/react-charting@npm:^5.25.6, @fluentui/react-charting@workspace:packages/charts/react-charting":
+"@fluentui/react-charting@npm:*, @fluentui/react-charting@workspace:packages/charts/react-charting":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-charting@workspace:packages/charts/react-charting"
   dependencies:
@@ -3644,7 +3644,7 @@ __metadata:
     "@fluentui/react-focus": "npm:^8.10.4"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme-samples": "npm:^8.7.223"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/d3-array": "npm:^3.0.0"
     "@types/d3-axis": "npm:^3.0.0"
     "@types/d3-color": "npm:^3.0.0"
@@ -4172,12 +4172,12 @@ __metadata:
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
     "@fluentui/public-docsite-setup": "npm:^0.3.34"
-    "@fluentui/react": "npm:^8.125.4"
+    "@fluentui/react": "npm:^8.125.5"
     "@fluentui/react-hooks": "npm:^8.10.2"
     "@fluentui/react-monaco-editor": "npm:^1.8.6"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme": "npm:^2.7.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/color-check": "npm:0.0.0"
     "@types/react-custom-scrollbars": "npm:^4.0.5"
     color-check: "npm:0.0.2"
@@ -4276,7 +4276,7 @@ __metadata:
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/theme-samples": "npm:^8.7.224"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/d3-fetch": "npm:^3.0.1"
     "@types/d3-format": "npm:^3.0.0"
     d3-fetch: "npm:3.0.1"
@@ -4294,16 +4294,16 @@ __metadata:
   resolution: "@fluentui/react-experiments@workspace:packages/react-experiments"
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
-    "@fluentui/font-icons-mdl2": "npm:^8.5.71"
-    "@fluentui/foundation-legacy": "npm:^8.6.4"
+    "@fluentui/font-icons-mdl2": "npm:^8.5.72"
+    "@fluentui/foundation-legacy": "npm:^8.6.5"
     "@fluentui/merge-styles": "npm:^8.6.14"
-    "@fluentui/react": "npm:^8.125.4"
+    "@fluentui/react": "npm:^8.125.5"
     "@fluentui/react-hooks": "npm:^8.10.2"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.14.0"
+    "@fluentui/style-utilities": "npm:^8.15.0"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/deep-assign": "npm:^0.1.1"
     "@types/prop-types": "npm:15.7.1"
     deep-assign: "npm:^2.0.0"
@@ -4476,7 +4476,7 @@ __metadata:
     "@fluentui/react-icon-provider": "npm:^1.4.4"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
@@ -4879,10 +4879,10 @@ __metadata:
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
     "@fluentui/monaco-editor": "npm:^1.3.24"
-    "@fluentui/react": "npm:^8.125.4"
-    "@fluentui/react-charting": "npm:^5.25.6"
+    "@fluentui/react": "npm:^8.125.5"
+    "@fluentui/react-charting": "npm:^5.25.7"
     "@fluentui/react-hooks": "npm:^8.10.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/react-syntax-highlighter": "npm:^10.2.1"
     raw-loader: "npm:4.0.2"
     react-syntax-highlighter: "npm:^10.1.3"
@@ -6096,18 +6096,18 @@ __metadata:
   resolution: "@fluentui/react@workspace:packages/react"
   dependencies:
     "@fluentui/date-time-utilities": "npm:^8.6.11"
-    "@fluentui/font-icons-mdl2": "npm:^8.5.71"
-    "@fluentui/foundation-legacy": "npm:^8.6.4"
+    "@fluentui/font-icons-mdl2": "npm:^8.5.72"
+    "@fluentui/foundation-legacy": "npm:^8.6.5"
     "@fluentui/merge-styles": "npm:^8.6.14"
-    "@fluentui/react-focus": "npm:^8.10.4"
+    "@fluentui/react-focus": "npm:^8.10.5"
     "@fluentui/react-hooks": "npm:^8.10.2"
     "@fluentui/react-portal-compat-context": "npm:^9.0.15"
     "@fluentui/react-window-provider": "npm:^2.3.2"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.14.0"
+    "@fluentui/style-utilities": "npm:^8.15.0"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     office-ui-fabric-core: "npm:^11.0.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -6383,7 +6383,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/ssr-tests@workspace:apps/ssr-tests"
   dependencies:
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/mocha": "npm:10.0.10"
     mocha: "npm:11.2.2"
     tslib: "npm:^2.1.0"
@@ -6436,7 +6436,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/style-utilities@npm:^8.14.0, @fluentui/style-utilities@npm:^8.15.0, @fluentui/style-utilities@workspace:packages/style-utilities":
+"@fluentui/style-utilities@npm:^8.15.0, @fluentui/style-utilities@workspace:packages/style-utilities":
   version: 0.0.0-use.local
   resolution: "@fluentui/style-utilities@workspace:packages/style-utilities"
   dependencies:
@@ -6444,7 +6444,7 @@ __metadata:
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme": "npm:^2.7.2"
     "@fluentui/utilities": "npm:^8.17.2"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
@@ -6529,7 +6529,7 @@ __metadata:
     "@fluentui/react-docsite-components": "npm:*"
     "@fluentui/scheme-utilities": "npm:*"
     "@fluentui/set-version": "npm:*"
-    "@microsoft/load-themed-styles": "npm:1.10.26"
+    "@microsoft/load-themed-styles": "npm:^1.10.26"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
