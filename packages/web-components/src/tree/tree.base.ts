@@ -1,15 +1,5 @@
-import { FASTElement, observable } from '@microsoft/fast-element';
-import {
-  isHTMLElement,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyEnter,
-  keyHome,
-  keySpace,
-} from '@microsoft/fast-web-utilities';
+import { FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { isHTMLElement, keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
 
@@ -41,6 +31,16 @@ export class BaseTree extends FASTElement {
   constructor() {
     super();
     this.elementInternals.role = 'tree';
+  }
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+
+    Updates.enqueue(() => {
+      // @ts-expect-error: Client side module.
+      window.FOCUSGROUP_POLYFILL?.(this);
+    });
   }
 
   /** @internal */
@@ -81,21 +81,7 @@ export class BaseTree extends FASTElement {
       return true;
     }
 
-    const elements = this.getVisibleNodes();
-
     switch (e.key) {
-      case keyHome: {
-        if (elements.length) {
-          elements[0].focus();
-        }
-        return;
-      }
-      case keyEnd: {
-        if (elements.length) {
-          elements[elements.length - 1].focus();
-        }
-        return;
-      }
       case keyArrowLeft: {
         if (item?.childTreeItems?.length && item.expanded) {
           item.expanded = false;
@@ -108,18 +94,8 @@ export class BaseTree extends FASTElement {
         if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
-          } else {
-            this.focusNextNode(1, item);
           }
         }
-        return;
-      }
-      case keyArrowDown: {
-        this.focusNextNode(1, item);
-        return;
-      }
-      case keyArrowUp: {
-        this.focusNextNode(-1, item);
         return;
       }
       case keyEnter: {
@@ -136,44 +112,6 @@ export class BaseTree extends FASTElement {
 
     // don't prevent default if we took no action
     return true;
-  }
-
-  /**
-   * Handle focus events
-   *
-   * @internal
-   */
-  public focusHandler(e: FocusEvent): void {
-    if (this.childTreeItems.length < 1) {
-      // no child items, nothing to do
-      return;
-    }
-
-    if (e.target === this) {
-      this.currentFocused = this.getValidFocusableItem();
-      if (this.currentFocused && this.currentFocused.tabIndex < 0) {
-        this.currentFocused.tabIndex = 0;
-      }
-      this.currentFocused?.focus();
-
-      return;
-    }
-
-    if (this.contains(e.target as Node)) {
-      this.setAttribute('tabindex', '-1');
-      this.currentFocused = e.target as HTMLElement;
-    }
-  }
-
-  /**
-   * Handle blur events
-   *
-   * @internal
-   */
-  public blurHandler(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && (e.relatedTarget === null || !this.contains(e.relatedTarget as Node))) {
-      this.setAttribute('tabindex', '0');
-    }
   }
 
   /**
@@ -250,21 +188,6 @@ export class BaseTree extends FASTElement {
     return Array.from(this.querySelectorAll('*')).filter(
       node => isTreeItem(node) && node.offsetParent !== null,
     ) as HTMLElement[];
-  }
-
-  /**
-   * Move focus to a tree item based on its offset from the provided item
-   */
-  private focusNextNode(delta: number, item: BaseTreeItem): void {
-    const visibleNodes = this.getVisibleNodes();
-    if (!visibleNodes.length) {
-      return;
-    }
-
-    const focusItem = visibleNodes[visibleNodes.indexOf(item) + delta];
-    if (isHTMLElement(focusItem)) {
-      focusItem.focus();
-    }
   }
 
   /** @internal */

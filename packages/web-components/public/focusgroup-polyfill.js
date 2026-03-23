@@ -37,12 +37,12 @@ const BehaviorMap = /* @__PURE__ */ new Map([
   [BehaviorToken.MENU, { ownerRole: 'menu', childRole: 'menuitem', wrap: true, axis: 'block' }],
   [BehaviorToken.MENUBAR, { ownerRole: 'menubar', childRole: 'menuitem', wrap: true, axis: 'inline' }],
 ]);
-function shadowClosest(start, selector) {
+function getClosestElement(start, selector) {
   if (!start || !selector) {
     return null;
   }
   if (start instanceof ShadowRoot) {
-    return shadowClosest(start.host, selector);
+    return getClosestElement(start.host, selector);
   }
   const assignedSlot = start.assignedSlot;
   return assignedSlot
@@ -50,9 +50,9 @@ function shadowClosest(start, selector) {
       // ancestors, treating the slotted element as a child of the slot.
       start.matches(selector)
       ? start
-      : shadowClosest(assignedSlot, selector)
+      : getClosestElement(assignedSlot, selector)
     : start.closest(selector) ??
-        (start.getRootNode() instanceof ShadowRoot ? shadowClosest(start.getRootNode().host, selector) : null);
+        (start.getRootNode() instanceof ShadowRoot ? getClosestElement(start.getRootNode().host, selector) : null);
 }
 function nodeContains(node, otherNode) {
   if (!node || !otherNode) {
@@ -221,6 +221,9 @@ class ShadowMutationObserver {
     }
     return records;
   }
+}
+function createMutationObserver(callback) {
+  return new ShadowMutationObserver(callback);
 }
 class ShadowTreeWalker {
   filter;
@@ -639,6 +642,12 @@ class ShadowTreeWalker {
     return this.#walkBackward();
   }
 }
+function createTreeWalker(doc, root, whatToShow, filter) {
+  return new ShadowTreeWalker(doc, root, whatToShow, filter);
+}
+function hasDocument() {
+  return typeof document !== 'undefined';
+}
 function supportsFocusGroup() {
   return 'focusgroup' in (globalThis?.HTMLElement?.prototype ?? {});
 }
@@ -660,8 +669,7 @@ function isKeyboardFocusable(element) {
         element.hasAttribute('disabled') || // Not an anchor or area without href
         element.matches(':is(a, area):not([href])') || // Not inert
         element.inert || // Not hidden
-        element.hidden ||
-        element.matches("input[type='hidden']") || // Not a media element without controls
+        !checkVisibility(element) || // Not a media element without controls
         element.matches(':is(audio, video):not([controls])') || // Has not been assigned a tabindex by the polyfill
         element.hasAttribute(DatasetName.AUTHOR_TABINDEX)
       )
@@ -727,7 +735,7 @@ function isSegmentor(element) {
   if (isKeyboardFocusable(element)) {
     return element.getAttribute('focusgroup').includes('none');
   }
-  const walker = new ShadowTreeWalker(document, element, NodeFilter.SHOW_ELEMENT);
+  const walker = createTreeWalker(document, element, NodeFilter.SHOW_ELEMENT);
   while (walker.nextNode()) {
     if (walker.currentNode !== element && isKeyboardFocusable(walker.currentNode)) {
       return true;
@@ -843,7 +851,7 @@ class FocusGroup {
       return;
     }
     this.#owner = owner;
-    this.#itemWalker = new ShadowTreeWalker(document, this.#owner, NodeFilter.SHOW_ELEMENT, node => {
+    this.#itemWalker = createTreeWalker(document, this.#owner, NodeFilter.SHOW_ELEMENT, node => {
       if (node.hasAttribute('focusgroup') && node.getAttribute(DatasetName.ITEM) !== this.#id) {
         return NodeFilter.FILTER_REJECT;
       }
@@ -857,7 +865,7 @@ class FocusGroup {
         break;
       }
     }
-    const observer = new ShadowMutationObserver(this.#processMutations.bind(this));
+    const observer = createMutationObserver(this.#processMutations.bind(this));
     observer.observe(owner, {
       attributes: true,
       attributeFilter: [
@@ -909,7 +917,7 @@ class FocusGroup {
       this.#undecorateItems();
       return;
     }
-    const walker = new ShadowTreeWalker(document, this.#owner, NodeFilter.SHOW_ELEMENT, node => {
+    const walker = createTreeWalker(document, this.#owner, NodeFilter.SHOW_ELEMENT, node => {
       if (this.#isItemCandidate(node) || this.#isNestedGroupOwner(node)) {
         return NodeFilter.FILTER_ACCEPT;
       }
@@ -1010,11 +1018,11 @@ class FocusGroup {
     if (evt.defaultPrevented || evtTarget === this.#owner) {
       return;
     }
-    const closestGroup = shadowClosest(evtTarget, '[focusgroup]');
+    const closestGroup = getClosestElement(evtTarget, '[focusgroup]');
     if (closestGroup) {
       evt.stopPropagation();
     }
-    if (closestGroup.getAttribute('focusgroup').includes('none')) {
+    if (closestGroup?.getAttribute('focusgroup').includes('none')) {
       return;
     }
     const current = this.#itemWalker.currentNode;
@@ -1100,8 +1108,8 @@ class FocusGroup {
       node.hasAttribute(DatasetName.ITEM) || // if the element is yet to be decorated
       (isKeyboardFocusable(node) &&
         (node.assignedSlot
-          ? shadowClosest(node.assignedSlot, '[focusgroup]') === this.#owner
-          : shadowClosest(node.parentNode, '[focusgroup]') === this.#owner))
+          ? getClosestElement(node.assignedSlot, '[focusgroup]') === this.#owner
+          : getClosestElement(node.parentNode, '[focusgroup]') === this.#owner))
     );
   }
   #isNestedGroupOwner(node) {
@@ -1193,11 +1201,14 @@ class FocusGroup {
     this.#decorateItems();
   }
 }
-function polyfill(root = document.body) {
-  if (supportsFocusGroup() || !root) {
+function polyfill(root) {
+  if (supportsFocusGroup() || !hasDocument()) {
     return;
   }
-  const walker = new ShadowTreeWalker(document, root, NodeFilter.SHOW_ELEMENT, node =>
+  if (!root) {
+    root = document.body;
+  }
+  const walker = createTreeWalker(document, root, NodeFilter.SHOW_ELEMENT, node =>
     node.hasAttribute('focusgroup') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
   );
   do {
