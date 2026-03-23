@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2026 07:57:15 GMT",
+      "tag": "@fluentui/react-components_v9.73.4",
+      "version": "9.73.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus"
+          },
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4946012a1e9752d2b2baef42bae321c1f899136d",
+            "comment": "feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:37 GMT",
       "tag": "@fluentui/react-components_v9.73.3",
       "version": "9.73.3",

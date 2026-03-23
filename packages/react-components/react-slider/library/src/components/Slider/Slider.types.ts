@@ -102,4 +102,15 @@ export type SliderOnChangeData = {
   value: number;
 };
 
+/**
+ * Slider base props, excluding design-related props like size.
+ * Note: vertical is kept as it affects aria-orientation behavior.
+ */
+export type SliderBaseProps = Omit<SliderProps, 'size'>;
+
 export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;
+
+/**
+ * Slider base state, excluding design-related state like size.
+ */
+export type SliderBaseState = Omit<SliderState, 'size'>;

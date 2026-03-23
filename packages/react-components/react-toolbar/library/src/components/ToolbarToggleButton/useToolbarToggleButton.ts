@@ -20,9 +20,10 @@ export const useToolbarToggleButton_unstable = (
   props: ToolbarToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarToggleButtonState => {
-  const state = useToolbarToggleButtonBase_unstable(props, ref);
+  const { appearance = 'subtle', ...baseProps } = props;
+  const state = useToolbarToggleButtonBase_unstable(baseProps, ref);
   return {
-    appearance: 'subtle',
+    appearance,
     ...state,
   };
 };

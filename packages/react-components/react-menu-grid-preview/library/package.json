@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu-grid-preview",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-menu": "^9.22.0",
+    "@fluentui/react-menu": "^9.23.0",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-table": "^9.19.11",
     "@fluentui/react-tabster": "^9.26.13",
