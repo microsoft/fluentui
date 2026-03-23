@@ -1,6 +1,15 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, mergeClasses, SearchBox, Spinner, tokens, useId } from '@fluentui/react-components';
+import {
+  AriaLiveAnnouncer,
+  makeStyles,
+  mergeClasses,
+  SearchBox,
+  Spinner,
+  tokens,
+  useId,
+  useTypingAnnounce,
+} from '@fluentui/react-components';
 import type { SearchBoxChangeEvent } from '@fluentui/react-components';
 import type { InputOnChangeData } from '@fluentui/react-components';
 
@@ -52,15 +61,6 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
   },
-  visuallyHidden: {
-    clip: 'rect(0,0,0,0)',
-    clipPath: 'inset(50%)',
-    height: '1px',
-    overflow: 'hidden',
-    position: 'absolute',
-    whiteSpace: 'nowrap',
-    width: '1px',
-  },
 });
 
 type SearchResult = {
@@ -98,10 +98,12 @@ export const Typeahead = (): JSXElement => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [focusedIndex, setFocusedIndex] = React.useState(-1);
+  const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
   const [selectedId, setSelectedId] = React.useState<string | null>(null);
 
   const listboxId = useId();
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const announceId = useId('typeahead');
+  const { typingAnnounce, inputRef } = useTypingAnnounce<HTMLInputElement>();
   const optionRefs = React.useRef<(HTMLLIElement | null)[]>([]);
   const cancelRef = React.useRef<(() => void) | null>(null);
 
@@ -141,6 +143,20 @@ export const Typeahead = (): JSXElement => {
     };
   }, [query]);
 
+  React.useEffect(() => {
+    if (!isOpen || isLoading) {
+      return;
+    }
+
+    if (results.length > 0) {
+      typingAnnounce(`${results.length} result${results.length !== 1 ? 's' : ''} available`, {
+        batchId: announceId,
+      });
+    } else if (query.length > 0) {
+      typingAnnounce('No results found', { batchId: announceId });
+    }
+  }, [isLoading, isOpen, results.length, query.length, typingAnnounce, announceId]);
+
   // Keep focused option scrolled into view
   React.useEffect(() => {
     if (focusedIndex >= 0) {
@@ -151,6 +167,14 @@ export const Typeahead = (): JSXElement => {
   const handleChange = (_: SearchBoxChangeEvent, data: InputOnChangeData) => {
     setQuery(data.value);
     setSelectedId(null);
+
+    if (!data.value) {
+      return;
+    }
+
+    // useTypingAnnounce waits until the user pauses typing before announcing,
+    // preventing interference with screen reader keyboard echo.
+    typingAnnounce('Searching…', { batchId: announceId });
   };
 
   const handleSelect = (result: SearchResult) => {
@@ -168,16 +192,21 @@ export const Typeahead = (): JSXElement => {
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
+      setHideActiveDescendant(false);
       setFocusedIndex(prev => Math.min(prev + 1, results.length - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
+      setHideActiveDescendant(false);
       setFocusedIndex(prev => Math.max(prev - 1, -1));
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      setHideActiveDescendant(true);
     } else if (e.key === 'Enter' && focusedIndex >= 0) {
       e.preventDefault();
       handleSelect(results[focusedIndex]);
     } else if (e.key === 'Escape') {
       setIsOpen(false);
       setFocusedIndex(-1);
+      setHideActiveDescendant(false);
     }
   };
 
@@ -185,7 +214,7 @@ export const Typeahead = (): JSXElement => {
     // Close if focus leaves both the input and the listbox
     const relatedTarget = e.relatedTarget as Node | null;
     const listboxEl = document.getElementById(listboxId);
-    if (!listboxEl?.contains(relatedTarget)) {
+    if (!e.currentTarget.contains(relatedTarget) && !listboxEl?.contains(relatedTarget)) {
       setIsOpen(false);
       setFocusedIndex(-1);
     }
@@ -193,69 +222,61 @@ export const Typeahead = (): JSXElement => {
 
   const showDropdown = isOpen && (isLoading || results.length > 0);
   const noResults = isOpen && !isLoading && query.length > 0 && results.length === 0;
-  const activedescendant = focusedIndex >= 0 ? `${listboxId}-option-${focusedIndex}` : undefined;
+  const activedescendant =
+    focusedIndex >= 0 && !hideActiveDescendant ? `${listboxId}-option-${focusedIndex}` : undefined;
 
   return (
-    <div className={styles.root}>
-      <SearchBox
-        ref={inputRef}
-        aria-autocomplete="list"
-        aria-controls={listboxId}
-        aria-expanded={showDropdown || noResults}
-        aria-activedescendant={activedescendant}
-        role="combobox"
-        placeholder="Search..."
-        value={query}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        root={{ onBlur: handleBlur }}
-      />
+    <AriaLiveAnnouncer>
+      <div className={styles.root}>
+        <SearchBox
+          ref={inputRef}
+          aria-autocomplete="list"
+          aria-controls={listboxId}
+          aria-expanded={showDropdown || noResults}
+          aria-activedescendant={activedescendant}
+          placeholder="Search..."
+          value={query}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          root={{ onBlur: handleBlur }}
+        />
 
-      {/* Live region announces result count for screen readers */}
-      <div aria-live="polite" aria-atomic="true" className={styles.visuallyHidden}>
-        {isLoading && 'Searching…'}
-        {!isLoading &&
-          isOpen &&
-          results.length > 0 &&
-          `${results.length} result${results.length !== 1 ? 's' : ''} available`}
-        {noResults && 'No results found'}
-      </div>
-
-      <ul
-        id={listboxId}
-        role="listbox"
-        aria-label="Search results"
-        className={mergeClasses(styles.listbox, !showDropdown && !noResults && styles.listboxHidden)}
-      >
-        {isLoading ? (
-          <li className={styles.spinnerWrapper}>
-            <Spinner size="tiny" label="Loading results…" labelPosition="after" />
-          </li>
-        ) : results.length > 0 ? (
-          results.map((result, index) => (
-            <li
-              key={result.id}
-              id={`${listboxId}-option-${index}`}
-              ref={el => {
-                optionRefs.current[index] = el;
-              }}
-              role="option"
-              aria-selected={selectedId === result.id}
-              className={mergeClasses(styles.option, focusedIndex === index && styles.optionFocused)}
-              onMouseDown={e => {
-                // Prevent input blur before click registers
-                e.preventDefault();
-              }}
-              onClick={() => handleSelect(result)}
-            >
-              {result.label}
+        <ul
+          id={listboxId}
+          role="listbox"
+          aria-label="Search results"
+          className={mergeClasses(styles.listbox, !showDropdown && !noResults && styles.listboxHidden)}
+        >
+          {isLoading ? (
+            <li className={styles.spinnerWrapper}>
+              <Spinner size="tiny" label="Loading results…" labelPosition="after" />
             </li>
-          ))
-        ) : (
-          <li className={styles.noResults}>No results found</li>
-        )}
-      </ul>
-    </div>
+          ) : results.length > 0 ? (
+            results.map((result, index) => (
+              <li
+                key={result.id}
+                id={`${listboxId}-option-${index}`}
+                ref={el => {
+                  optionRefs.current[index] = el;
+                }}
+                role="option"
+                aria-selected={selectedId === result.id}
+                className={mergeClasses(styles.option, focusedIndex === index && styles.optionFocused)}
+                onMouseDown={e => {
+                  // Prevent input blur before click registers
+                  e.preventDefault();
+                }}
+                onClick={() => handleSelect(result)}
+              >
+                {result.label}
+              </li>
+            ))
+          ) : (
+            <li className={styles.noResults}>No results found</li>
+          )}
+        </ul>
+      </div>
+    </AriaLiveAnnouncer>
   );
 };
 
@@ -269,7 +290,7 @@ This example demonstrates:
 - **Debounced async search**: results are fetched asynchronously after a ${DEBOUNCE_MS}ms debounce to avoid firing on every keystroke. In-flight requests are cancelled when the query changes.
 - **Loading state**: a \`Spinner\` is shown inside the dropdown while results are loading.
 - **Keyboard navigation**: use \`ArrowDown\`/\`ArrowUp\` to move through results, \`Enter\` to select, and \`Escape\` to close the dropdown.
-- **Accessibility**: the input uses \`role="combobox"\`, \`aria-autocomplete="list"\`, \`aria-expanded\`, \`aria-controls\`, and \`aria-activedescendant\` to communicate state to assistive technologies. A live region announces loading state, result count, and "no results" to screen readers.
+- **Accessibility**: the input uses \`role="combobox"\`, \`aria-autocomplete="list"\`, \`aria-expanded\`, \`aria-controls\`, and \`aria-activedescendant\` to communicate state to assistive technologies. The \`useTypingAnnounce\` hook announces loading state, result count, and "no results" to screen readers — waiting until the user pauses typing so announcements don't interfere with keyboard echo.
 
 > **Note**: This pattern is intentionally left as a composable building block rather than a single sealed component,
 > allowing you to integrate your own data-fetching solution (e.g. TanStack Query, SWR, or a custom hook) and
