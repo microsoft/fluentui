@@ -33,6 +33,14 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   const { size = 'medium', appearance = 'outline', ...baseProps } = props;
   const state = useSearchBoxBase_unstable(baseProps, ref);
 
+  if (state.contentBefore) {
+    state.contentBefore.children ??= <SearchRegular />;
+  }
+
+  if (state.dismiss) {
+    state.dismiss.children ??= <DismissRegular />;
+  }
+
   return {
     ...state,
     size,
@@ -108,9 +116,6 @@ export const useSearchBoxBase_unstable = (
       ),
       contentBefore: slot.optional(contentBefore, {
         renderByDefault: true,
-        defaultProps: {
-          children: <SearchRegular />,
-        },
         elementType: 'span',
       }),
       contentAfter: slot.optional(contentAfter, {
@@ -136,7 +141,6 @@ export const useSearchBoxBase_unstable = (
     },
     dismiss: slot.optional(dismiss, {
       defaultProps: {
-        children: <DismissRegular />,
         role: 'button',
         'aria-label': 'clear',
         tabIndex: -1,
