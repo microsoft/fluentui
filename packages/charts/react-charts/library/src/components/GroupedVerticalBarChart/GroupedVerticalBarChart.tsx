@@ -327,9 +327,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
                     startColor = getNextGradient(colorIndex)[0];
                     endColor = getNextGradient(colorIndex)[1];
                   }
-                  console.log(
-                    `GroupedVerticalBarChart preparing data with gradient ${colorIndex}: ${startColor} -> ${endColor}`,
-                  );
                 }
                 if (!_legendColorMap[seriesPoint.legend]) {
                   _legendColorMap[seriesPoint.legend] = [startColor, endColor];
@@ -586,7 +583,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             const gradientColors = _legendColorMap[pointData.legend];
             pointColor = gradientColors[0];
             endColor = gradientColors[1];
-            console.log(`GroupedVerticalBarChart rendering bar with gradient: ${pointColor} -> ${endColor}`);
           }
           const gradientId = `${_gradientId}_${singleSet.indexNum}_${legendIndex}_${pointIndex}`;
 
