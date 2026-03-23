@@ -35,7 +35,6 @@ describe('getFloatingUIOffset', () => {
       getDocumentElement: jest.fn(),
       getClientRects: jest.fn(),
       isRTL: jest.fn(),
-      detectOverflow: jest.fn(),
     },
     middlewareData: {},
     x: 0,
