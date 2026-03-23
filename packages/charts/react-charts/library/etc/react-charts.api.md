@@ -1036,6 +1036,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     culture?: string;
     data?: GroupedVerticalBarChartData[];
     dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
