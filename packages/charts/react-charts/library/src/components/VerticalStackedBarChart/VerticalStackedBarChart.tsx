@@ -160,13 +160,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (props.hideLegend) {
       return <></>;
     }
-    const defaultPalette: string[] = [
-      getColorFromToken(DataVizPalette.color6),
-      getColorFromToken(DataVizPalette.color1),
-      getColorFromToken(DataVizPalette.color5),
-      getColorFromToken(DataVizPalette.color7),
-      getColorFromToken(DataVizPalette.color10),
-    ];
     const actions: Legend[] = [];
     const { allowHoverOnLegend = true } = props;
 
