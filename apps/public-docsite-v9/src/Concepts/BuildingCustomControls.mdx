@@ -1,28 +1,28 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Concepts/Developer/Base State Hooks" />
+<Meta title="Concepts/Developer/Building Custom Controls" />
 
-## Base state hooks
+## Building custom controls
 
-Base state hooks are an advanced, opt-in API for teams building custom component libraries that significantly diverge from Fluent 2 visual design.
+Base state hooks provide a low-level API for teams building custom component libraries with their own design systems.
 
 They let you reuse Fluent UI behavior primitives (ARIA patterns, keyboard handling, semantic structure) while owning rendering and styling completely.
 
-For most apps, the styled component APIs are still the right default.
+For Fluent UI v9 apps, the styled component APIs are the standard default. For Fluent DS extensions, existing component composition hooks are the right starting point.
 
 ### Quick decision guide
 
-Use styled components (`Button`, `Input`, etc.) when you want:
+Use existing composition hooks (`useButton_unstable`, `useInput_unstable`, etc.) when you want:
 
-- Fluent 2 visuals out of the box
-- Design-token-based customization
-- Simpler and lower-maintenance integration
+- Default styling with design tokens
+- Simpler customization through style overrides
+- Built-in accessibility and behavior
 
-Use base state hooks when you need:
+Use base state hooks (`useButtonBase_unstable`, `useInputBase_unstable`, etc.) when you need:
 
 - Full control over rendering and styling architecture
-- A custom design system that is not based on Fluent 2 visual patterns
-- Fluent behavior and accessibility primitives without default design opinions
+- A custom design system with completely different visual patterns
+- Fluent behavior and accessibility primitives without styling opinions
 
 ### What base state hooks include
 
@@ -58,83 +58,9 @@ type MyButtonProps = ButtonBaseProps & {
 
 ### Authoring cookbook
 
-The examples below show common authoring patterns when building custom components on top of base state hooks.
+The example below shows common authoring patterns when building custom components on top of base state hooks.
 
-#### 1) Full composition with base hook, custom styles, and custom render
-
-```tsx
-import * as React from 'react';
-import { mergeClasses, slot, type Slot } from '@fluentui/react-components';
-import { useButtonBase_unstable } from '@fluentui/react-button';
-import type { ButtonBaseProps, ButtonBaseState } from '@fluentui/react-button';
-
-type CustomButtonSlots = {
-  root: NonNullable<ButtonBaseState['root']>;
-  icon?: ButtonBaseState['icon'];
-  badge?: Slot<'span'>;
-};
-
-type CustomButtonProps = ButtonBaseProps & {
-  tone?: 'neutral' | 'success' | 'danger';
-  badge?: string;
-};
-
-type CustomButtonState = ButtonBaseState & {
-  tone: NonNullable<CustomButtonProps['tone']>;
-  badge?: ReturnType<typeof slot.optional>;
-  components: CustomButtonSlots;
-};
-
-const useCustomButtonState = (
-  props: CustomButtonProps,
-  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): CustomButtonState => {
-  const { tone = 'neutral', badge, ...baseProps } = props;
-  const baseState = useButtonBase_unstable(baseProps, ref);
-
-  return {
-    ...baseState,
-    tone,
-    badge: slot.optional(badge, { elementType: 'span' }),
-    components: {
-      ...baseState.components,
-      badge: 'span',
-    },
-  };
-};
-
-const useCustomButtonStyles = (state: CustomButtonState): void => {
-  state.root.className = mergeClasses('myButton', `myButton--${state.tone}`, state.root.className);
-
-  if (state.icon) {
-    state.icon.className = mergeClasses('myButton__icon', state.icon.className);
-  }
-
-  if (state.badge) {
-    state.badge.className = mergeClasses('myButton__badge', state.badge.className);
-  }
-};
-
-const renderCustomButton = (state: CustomButtonState) => {
-  assertSlots<CustomButtonSlots>(state);
-
-  return (
-    <state.root>
-      {state.icon && <state.icon />}
-      {<state.content />}
-      {state.badge && <state.badge />}
-    </state.root>
-  );
-};
-
-export const CustomButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, CustomButtonProps>((props, ref) => {
-  const state = useCustomButtonState(props, ref);
-  useCustomButtonStyles(state);
-  return renderCustomButton(state);
-});
-```
-
-#### 2) Full example: replacing slot logic and conditionally omitting slot rendering
+#### Full example: replacing slot logic and conditionally omitting slot rendering
 
 This example shows the full flow (types, state, styles, render, component) for a loading-aware button that replaces icon/content rendering while loading.
 
@@ -229,7 +155,7 @@ When replacing slot logic, verify keyboard behavior, ARIA semantics, and focus h
 - Keep user `className` precedence by appending existing slot class names last.
 - Validate all states visually (`:hover`, `:active`, `:focus-visible`, disabled).
 - Test keyboard and screen reader behavior after custom rendering changes.
-- Prefer small wrappers (`useXxxState`, `useXxxStyles`, `renderXxx`) for maintainability.
+- Prefer small wrapper functions (e.g., `useCustomButtonState`, `useCustomButtonStyles`, `renderCustomButton`) for maintainability.
 
 ### Accessibility responsibilities
 
@@ -251,6 +177,6 @@ For accessibility guidance, see [Accessibility](?path=/docs/concepts-developer-a
 
 ### Stability and API lifecycle
 
-Base state hooks use the `_unstable` suffix and are intended for advanced consumers who can absorb lower-level API evolution over time.
+Base state hooks use the `_unstable` suffix following Fluent UI's stability pattern. The `_unstable` prefix indicates APIs that may evolve as we refine the component architecture patterns and best practices.
 
-For deeper rationale and rollout context, see the RFC: [Component Base State Hooks](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/base-state-hooks.md).
+For deeper rationale and rollout context, see the RFC: [Component Base State Hooks](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/building-custom-controls.md).
