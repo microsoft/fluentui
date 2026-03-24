@@ -104,7 +104,7 @@ export class Accordion extends FASTElement {
    * then rebinds event listeners to each non-disabled item
    * @returns {void}
    */
-  private setItems = (): void => {
+  protected setItems(): void {
     if (this.slottedAccordionItems.length === 0) {
       return;
     }
@@ -128,13 +128,13 @@ export class Accordion extends FASTElement {
       const expandedItem = this.findExpandedItem() as BaseAccordionItem;
       this.setSingleExpandMode(expandedItem);
     }
-  };
+  }
 
   /**
    * Checks if the accordion is in single expand mode
    * @returns {boolean}
    */
-  private isSingleExpandMode(): boolean {
+  protected isSingleExpandMode(): boolean {
     return this.expandmode === AccordionExpandMode.single;
   }
 
@@ -143,7 +143,7 @@ export class Accordion extends FASTElement {
    * @param expandedItem The item to expand in single expand mode
    * @returns {void}
    */
-  private setSingleExpandMode(expandedItem: Element): void {
+  protected setSingleExpandMode(expandedItem: Element): void {
     if (this.accordionItems.length === 0) {
       return;
     }
@@ -170,20 +170,20 @@ export class Accordion extends FASTElement {
    * Removes event listeners from the previous accordion items
    * @param oldValue An array of the previous accordion items
    */
-  private removeItemListeners = (oldValue: any): void => {
+  protected removeItemListeners(oldValue: any): void {
     oldValue.forEach((item: HTMLElement, index: number) => {
       Observable.getNotifier(item).unsubscribe(this, 'disabled');
       Observable.getNotifier(item).unsubscribe(this, 'expanded');
       item.removeEventListener('click', this.expandedChangedHandler);
     });
-  };
+  }
 
   /**
    * Changes the expanded state of the accordion item
    * @param evt Click event
    * @returns
    */
-  private expandedChangedHandler: EventListener = (evt: Event): void => {
+  protected expandedChangedHandler: EventListener = (evt: Event): void => {
     const item = evt.target as HTMLElement;
 
     if (item instanceof BaseAccordionItem) {
