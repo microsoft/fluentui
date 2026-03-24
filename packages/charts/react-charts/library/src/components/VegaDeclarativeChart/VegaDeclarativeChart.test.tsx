@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
-import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
+import type { VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // Suppress console warnings for cleaner test output

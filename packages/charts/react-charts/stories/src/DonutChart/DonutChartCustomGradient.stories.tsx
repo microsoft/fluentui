@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DonutChart, ChartProps, ChartDataPoint } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
 
-export const DonutChartCustomGradient = (): React.JSX.Element => {
+export const DonutChartCustomGradient = (): JSXElement => {
   const points: ChartDataPoint[] = [
     {
       legend: 'first',

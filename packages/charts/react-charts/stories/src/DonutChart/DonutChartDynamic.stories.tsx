@@ -20,8 +20,9 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   clip: 'rect(0,0,0,0)',
   border: 0,
 };
+import type { JSXElement } from '@fluentui/react-components';
 
-export const DonutChartDynamic = (): React.JSX.Element => {
+export const DonutChartDynamic = (): JSXElement => {
   const _gradientColors = [
     [
       getGradientFromToken(DataVizGradientPalette.gradient1),

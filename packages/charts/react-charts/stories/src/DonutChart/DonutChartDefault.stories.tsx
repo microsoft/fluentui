@@ -6,8 +6,9 @@ import {
   DataVizGradientPalette,
   getGradientFromToken,
 } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
 
-export const DonutChartBasic = (): React.JSX.Element => {
+export const DonutChartBasic = (): JSXElement => {
   const points: ChartDataPoint[] = [
     {
       legend: 'first',
