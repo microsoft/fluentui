@@ -1,0 +1,1 @@
+Consumers can override the default animation by providing a `children` render function. The render function receives the default motion component and its props, allowing you to substitute a completely different animation built with `createPresenceComponent()`.
