@@ -11,7 +11,6 @@ env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
   NX_VERBOSE_LOGGING: true
-  YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
 jobs:
   check-tools:
@@ -40,12 +39,31 @@ jobs:
       # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
       - run: yarn nx run react-jsx-runtime:build
 
+      # Generators create/remove packages and modify the lockfile, so immutable installs must be disabled
       - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
