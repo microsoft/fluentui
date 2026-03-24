@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for Spinner",
+  "packageName": "@fluentui/react-spinner",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

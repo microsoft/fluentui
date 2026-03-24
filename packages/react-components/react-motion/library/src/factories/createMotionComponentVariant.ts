@@ -2,11 +2,11 @@ import type { MotionParam, AtomMotionFn } from '../types';
 import { MOTION_DEFINITION, createMotionComponent, MotionComponent } from './createMotionComponent';
 
 /**
- * @internal
- *
  * Create a variant function that wraps a motion function to customize it.
  * The new motion function has the supplied variant params as defaults,
  * but these can still be overridden by runtime params when the new function is called.
+ *
+ * @internal
  */
 export function createMotionFnVariant<MotionParams extends Record<string, MotionParam> = {}>(
   motionFn: AtomMotionFn<MotionParams>,

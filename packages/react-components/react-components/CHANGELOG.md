@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 03 Mar 2026 09:43:39 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2026 07:57:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.4)
+
+Tue, 17 Mar 2026 07:57:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.3..@fluentui/react-components_v9.73.4)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale ([PR #35863](https://github.com/microsoft/fluentui/pull/35863) by copilot@github.com)
+
+### Patches
+
+- `@fluentui/react-menu-grid-preview`
+  - fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation) ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+
+## [9.73.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.3)
+
+Wed, 11 Mar 2026 12:58:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.3..@fluentui/react-components_v9.73.3)
+
+### Minor changes
+
+- `@fluentui/react-calendar-compat`
+  - feat: add onNavigateDate callback to CalendarYear decade selector ([PR #35804](https://github.com/microsoft/fluentui/pull/35804) by 198982749+Copilot@users.noreply.github.com)
+
+### Patches
+
+- `@fluentui/react-menu-grid-preview`
+  - fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover ([PR #35862](https://github.com/microsoft/fluentui/pull/35862) by bernardo.sunderhus@gmail.com)
+
+## [9.73.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.3)
+
+Wed, 11 Mar 2026 09:22:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.2..@fluentui/react-components_v9.73.3)
+
+### Minor changes
+
+- `@fluentui/react-menu-grid-preview`
+  - Proper onClick handling for MenuGridRow ([PR #35795](https://github.com/microsoft/fluentui/pull/35795) by adam.samec@gmail.com)
+- `@fluentui/react-skeleton`
+  - feat(react-skeleton): Add size and shape props to Skeleton component ([PR #35787](https://github.com/microsoft/fluentui/pull/35787) by v.kozlova13@gmail.com)
+- `@fluentui/react-swatch-picker`
+  - feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation ([PR #35803](https://github.com/microsoft/fluentui/pull/35803) by v.kozlova13@gmail.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - feat(react-calendar-compat): added navigation to the next date when date is on row edge ([PR #35790](https://github.com/microsoft/fluentui/pull/35790) by v.kozlova13@gmail.com)
+- `@fluentui/react-charts`
+  - Replace unsafe expression evaluation with safe recursive-descent parser ([PR #35852](https://github.com/microsoft/fluentui/pull/35852) by atisjai@microsoft.com)
+  - fix(charts): block unsafe urls in chart click-to-navigate handlers ([PR #35857](https://github.com/microsoft/fluentui/pull/35857) by vgenaev@gmail.com)
+  - Marker size issue in scatter chart and line chart ([PR #35699](https://github.com/microsoft/fluentui/pull/35699) by yushsingla@microsoft.com)
+  - Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart ([PR #35854](https://github.com/microsoft/fluentui/pull/35854) by copilot@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: reorder event handling for Escape key ([PR #35839](https://github.com/microsoft/fluentui/pull/35839) by 85318654+JakubWieclaw@users.noreply.github.com)
+- `@fluentui/react-field`
+  - Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-message-bar`
+  - Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-toast`
+  - Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
 
 ## [9.73.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.2)
 

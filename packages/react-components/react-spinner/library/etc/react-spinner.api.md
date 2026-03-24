@@ -14,10 +14,16 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSpinner_unstable: (state: SpinnerState) => JSXElement;
+export const renderSpinner_unstable: (state: SpinnerBaseState) => JSXElement;
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
+
+// @public
+export type SpinnerBaseProps = Omit<SpinnerProps, 'appearance' | 'size'>;
+
+// @public
+export type SpinnerBaseState = Omit<SpinnerState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
@@ -51,6 +57,9 @@ export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerP
 
 // @public
 export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
+
+// @public
+export const useSpinnerBase_unstable: (props: SpinnerBaseProps, ref: React_2.Ref<HTMLElement>) => SpinnerBaseState;
 
 // @internal (undocumented)
 export const useSpinnerContext: () => SpinnerContextValue;

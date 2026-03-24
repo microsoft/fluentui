@@ -41,6 +41,12 @@ export class BaseTextArea extends FASTElement {
   public labelEl!: HTMLLabelElement;
 
   /**
+   * The root container element.
+   * @internal
+   */
+  public rootEl!: HTMLDivElement;
+
+  /**
    * The `<textarea>` element.
    * @internal
    */
@@ -587,7 +593,10 @@ export class BaseTextArea extends FASTElement {
       this.autoSizerEl.classList.add('auto-sizer');
       this.autoSizerEl.ariaHidden = 'true';
     }
-    this.shadowRoot!.prepend(this.autoSizerEl);
+    // `rootEl` uses optional chaining because `autoResizeChanged` may be called before
+    // the element connects and the template renders. `connectedCallback` will call this
+    // method again once `rootEl` is available.
+    this.rootEl?.prepend(this.autoSizerEl);
 
     // The `ResizeObserver` is used to observe when the component gains
     // explicit block size, when so, the `autoSizerEl` element should be

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import type { LinkState } from './Link.types';
+import type { LinkBaseState } from './Link.types';
 
 /**
  * The useLinkState_unstable hook processes the Link state.
  * @param state - Link state to mutate.
  */
-export const useLinkState_unstable = (state: LinkState): LinkState => {
+export const useLinkState_unstable = (state: LinkBaseState): LinkBaseState => {
   const { disabled, disabledFocusable } = state;
   const { onClick, onKeyDown, role, tabIndex } = state.root;
 

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2026 07:57:16 GMT",
+      "tag": "@fluentui/react-skeleton_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4946012a1e9752d2b2baef42bae321c1f899136d",
+            "comment": "feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:21 GMT",
+      "tag": "@fluentui/react-skeleton_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "ace36179073ac4600a3635304a0941bd7dcda21d",
+            "comment": "feat(react-skeleton): Add size and shape props to Skeleton component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-skeleton_v9.4.15",
       "version": "9.4.15",
