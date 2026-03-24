@@ -1,9 +1,6 @@
-Fluent components leverages the `@fluentui/react-motion` to handle animations. All components that expose a motion slot, can be configured in a similar way. For detailed guidance on creating animations using `@fluentui/react-motion`, refer to the [motion API](https://react.fluentui.dev/?path=/docs/motion-apis-createpresencecomponent--docs) documentation.
+Fluent UI components use `@fluentui/react-motion` to handle animations. Components that expose a motion slot can be configured by consumers to disable or customize the animation.
 
-### Components using motion API
+For components that provide a motion slot, you can disable or customize the motion by configuring these slots. For technical details on creating motion slots in your own components, see:
 
-- Dialog
-- Drawer
-- Toast (_internally uses the motion API but does not expose a slot_)
-
-For components that provide a slot to control animation, you can disable or customize the motion by configuring these slots.
+- [motionSlot()](https://react.fluentui.dev/?path=/docs/motion-apis-motionslot--docs) — for one-way or looping animations
+- [presenceMotionSlot()](https://react.fluentui.dev/?path=/docs/motion-apis-presencemotionslot--docs) — for enter/exit presence animations
