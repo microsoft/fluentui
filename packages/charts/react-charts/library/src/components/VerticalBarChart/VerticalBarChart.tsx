@@ -734,10 +734,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           startColor = getNextGradient(0)[0];
           endColor = getNextGradient(0)[1];
         }
-        console.log(`VerticalBarChart numeric bars rendering bar ${index} with gradient: ${startColor} -> ${endColor}`);
         _points[index].color = startColor;
-      } else {
-        console.log(`VerticalBarChart numeric bars rendering bar ${index} with solid color: ${startColor}`);
       }
 
       return (
@@ -903,10 +900,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           startColor = getNextGradient(0)[0];
           endColor = getNextGradient(0)[1];
         }
-        console.log(`VerticalBarChart date bars rendering bar ${index} with gradient: ${startColor} -> ${endColor}`);
         _points[index].color = startColor;
-      } else {
-        console.log(`VerticalBarChart date bars rendering bar ${index} with solid color: ${startColor}`);
       }
 
       const gradientId = _gradientId + `_date_${index}`;
