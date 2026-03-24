@@ -23,6 +23,8 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
   const innerRef = React.useRef<HTMLDivElement>(null);
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
+  const { characterSearchOnKeyDown, characterSearchRef } = useCharacterSearch();
+
   const onKeyDownToClick = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (
       !event.isDefaultPrevented() &&
@@ -33,7 +35,9 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     }
   });
 
-  const onKeyDown = useEventCallback(mergeCallbacks(props.onKeyDown, onKeyDownToClick));
+  const onKeyDown = useEventCallback(
+    mergeCallbacks(props.onKeyDown, mergeCallbacks(onKeyDownToClick, characterSearchOnKeyDown)),
+  );
 
   const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     let element = event.target as HTMLElement | null;
@@ -52,7 +56,7 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, validateNestingRef, innerRef),
+        ref: useMergedRefs(ref, validateNestingRef, innerRef, characterSearchRef),
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,
@@ -63,8 +67,6 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
       { elementType: 'div' },
     ),
   };
-
-  useCharacterSearch(state, innerRef);
 
   return state;
 }

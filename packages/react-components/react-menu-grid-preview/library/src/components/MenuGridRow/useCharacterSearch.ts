@@ -2,34 +2,31 @@
 
 import * as React from 'react';
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
-import type { MenuGridRowState } from './MenuGridRow.types';
 
 /**
- * Wraps the MenuGridRow's `onKeyDown` handler to support first-letter navigation.
+ * Returns the MenuGridRow's `onKeyDown` handler to support first-letter navigation.
  * When a single character key is pressed, it delegates to the grid-level `setFocusByFirstCharacter`
  * callback which finds and focuses the next row starting with that character.
  */
-export const useCharacterSearch = (
-  state: MenuGridRowState,
-  ref: React.RefObject<HTMLElement | null>,
-): MenuGridRowState => {
+export const useCharacterSearch = (): {
+  characterSearchOnKeyDown: React.KeyboardEventHandler<HTMLElement>;
+  characterSearchRef: React.RefObject<HTMLElement | null>;
+} => {
   'use no memo';
+
+  const characterSearchRef = React.useRef<HTMLDivElement>(null);
 
   const { setFocusByFirstCharacter } = useMenuGridContext_unstable();
 
-  const { onKeyDown: originalOnKeyDown } = state.root;
-
-  state.root.onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    originalOnKeyDown?.(e);
-
+  const characterSearchOnKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key?.length > 1) {
       return;
     }
 
-    if (ref.current) {
-      setFocusByFirstCharacter?.(e, ref.current);
+    if (characterSearchRef.current) {
+      setFocusByFirstCharacter?.(e, characterSearchRef.current);
     }
   };
 
-  return state;
+  return { characterSearchOnKeyDown, characterSearchRef };
 };
