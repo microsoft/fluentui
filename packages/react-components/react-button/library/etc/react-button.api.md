@@ -7,6 +7,7 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -15,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
+
+// @public (undocumented)
+export type ButtonBaseProps = DistributiveOmit<ButtonProps, 'appearance' | 'size' | 'shape'>;
+
+// @public (undocumented)
+export type ButtonBaseState = DistributiveOmit<ButtonState, 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
@@ -121,6 +128,12 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
 // @public (undocumented)
+export type ToggleButtonBaseProps = ButtonBaseProps & Pick<ToggleButtonProps, 'defaultChecked' | 'checked' | 'isAccessible'>;
+
+// @public (undocumented)
+export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked' | 'isAccessible'>>;
+
+// @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
@@ -135,6 +148,9 @@ export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, '
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
+
+// @public
+export const useButtonBase_unstable: (props: ButtonBaseProps, ref?: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonBaseState;
 
 // @internal
 export const useButtonContext: () => ButtonContextValue;
@@ -162,6 +178,9 @@ export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitBu
 
 // @public
 export const useToggleButton_unstable: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+
+// @public
+export const useToggleButtonBase_unstable: (props: ToggleButtonProps, ref?: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonBaseState;
 
 // @public (undocumented)
 export const useToggleButtonStyles_unstable: (state: ToggleButtonState) => ToggleButtonState;
