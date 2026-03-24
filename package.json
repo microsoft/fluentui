@@ -365,20 +365,7 @@
     "puppeteer": "19.6.3",
     "ws": "8.17.1",
     "playwright": "1.55.1",
-    "webpack": "5.99.8",
-    "@swc/helpers": "0.5.1",
-    "tslib": "2.8.1",
-    "d3-array": "3.2.4",
-    "d3-axis": "3.0.0",
-    "d3-format": "3.1.0",
-    "d3-hierarchy": "3.1.2",
-    "d3-sankey": "0.12.3",
-    "d3-scale": "4.0.2",
-    "d3-selection": "3.0.0",
-    "d3-shape": "3.2.0",
-    "d3-time": "3.1.0",
-    "d3-time-format": "3.0.0",
-    "lodash": "4.17.21"
+    "webpack": "5.99.8"
   },
   "nx": {
     "includedScripts": []
