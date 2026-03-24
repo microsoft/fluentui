@@ -156,16 +156,16 @@ export type CardState = ComponentState<CardSlots> & CardContextValue & Required<
 }>;
 
 // @public
-export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSXElement;
+export const renderCard_unstable: (state: CardBaseState, cardContextValue: CardContextValue) => JSXElement;
 
 // @public
-export const renderCardFooter_unstable: (state: CardFooterState) => JSXElement;
+export const renderCardFooter_unstable: (state: CardFooterBaseState) => JSXElement;
 
 // @public
-export const renderCardHeader_unstable: (state: CardHeaderState) => JSXElement;
+export const renderCardHeader_unstable: (state: CardHeaderBaseState) => JSXElement;
 
 // @public
-export const renderCardPreview_unstable: (state: CardPreviewState) => JSXElement;
+export const renderCardPreview_unstable: (state: CardPreviewBaseState) => JSXElement;
 
 // @public
 export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
