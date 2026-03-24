@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import type { BreadcrumbBaseProps, BreadcrumbBaseState, BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
+import { TabsterDOMAttribute, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Breadcrumb.
@@ -15,13 +15,33 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { focusMode = 'tab', size = 'medium', list, ...rest } = props;
+  const { focusMode = 'tab', size = 'medium', ...breadcrumbProps } = props;
+  const state = useBreadcrumbBase_unstable(breadcrumbProps, ref);
+  const focusAttributes = useBreadcrumbA11yBehavior_unstable({ focusMode });
 
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: 'horizontal',
-    memorizeCurrent: true,
-  });
+  return {
+    ...state,
+    root: {
+      ...focusAttributes,
+      ...state.root,
+    },
+    size,
+  };
+};
+
+/**
+ * Base hook for Breadcrumb component, which manages state related to slots structure and ARIA attributes.
+ *
+ * Note: keyboard navigation behavior is not handled in this hook, but in useBreadcrumbA11yBehavior_unstable.
+ *
+ * @param props - props from this instance of Breadcrumb
+ * @param ref - reference to root HTMLElement of Breadcrumb
+ */
+export const useBreadcrumbBase_unstable = (
+  props: BreadcrumbBaseProps,
+  ref: React.Ref<HTMLElement>,
+): BreadcrumbBaseState => {
+  const { focusMode = 'tab', list, ...rest } = props;
 
   return {
     components: {
@@ -32,12 +52,29 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       getIntrinsicElementProps('nav', {
         ref,
         'aria-label': props['aria-label'] ?? 'breadcrumb',
-        ...(focusMode === 'arrow' ? focusAttributes : {}),
         ...rest,
       }),
       { elementType: 'nav' },
     ),
     list: slot.optional(list, { renderByDefault: true, defaultProps: { role: 'list' }, elementType: 'ol' }),
-    size,
   };
+};
+
+/**
+ * Hook to get accessibility attributes for Breadcrumb component, such as roving tab index.
+ * Based on Tabster's useArrowNavigationGroup.
+ *
+ * @param focusMode - whether the Breadcrumb uses arrow key navigation or tab key navigation
+ * @returns Tabster DOM attributes
+ */
+export const useBreadcrumbA11yBehavior_unstable = ({
+  focusMode,
+}: Pick<BreadcrumbBaseProps, 'focusMode'>): Partial<TabsterDOMAttribute> => {
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'horizontal',
+    memorizeCurrent: true,
+  });
+
+  return focusMode === 'arrow' ? focusAttributes : {};
 };

@@ -18,6 +18,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Persona: ForwardRefComponent<PersonaProps>;
 
 // @public (undocumented)
+export type PersonaBaseProps = ComponentProps<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaProps, 'name'>;
+
+// @public (undocumented)
+export type PersonaBaseState = ComponentState<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaState, 'numTextLines'>;
+
+// @public (undocumented)
 export const personaClassNames: SlotClassNames<PersonaSlots>;
 
 // @public
@@ -50,6 +56,9 @@ export const renderPersona_unstable: (state: PersonaState) => JSXElement;
 
 // @public
 export const usePersona_unstable: (props: PersonaProps, ref: React_2.Ref<HTMLElement>) => PersonaState;
+
+// @public
+export const usePersonaBase_unstable: (props: PersonaBaseProps, ref?: React_2.Ref<HTMLElement>) => PersonaBaseState;
 
 // @public
 export const usePersonaStyles_unstable: (state: PersonaState) => PersonaState;
