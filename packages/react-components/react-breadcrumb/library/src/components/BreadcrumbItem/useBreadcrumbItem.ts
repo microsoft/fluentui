@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
+import type {
+  BreadcrumbItemBaseProps,
+  BreadcrumbItemBaseState,
+  BreadcrumbItemProps,
+  BreadcrumbItemState,
+} from './BreadcrumbItem.types';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
 /**
@@ -19,7 +24,25 @@ export const useBreadcrumbItem_unstable = (
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbItemState => {
   const { size } = useBreadcrumbContext_unstable();
+  const state = useBreadcrumbItemBase_unstable(props, ref);
 
+  return {
+    ...state,
+    size,
+  };
+};
+
+/**
+ * Base hook for BreadcrumbItem component, which manages state related to slots structure
+ * without design props. Note: size is provided via BreadcrumbContext in the full hook.
+ *
+ * @param props - props from this instance of BreadcrumbItem
+ * @param ref - reference to root HTMLElement of BreadcrumbItem
+ */
+export const useBreadcrumbItemBase_unstable = (
+  props: BreadcrumbItemBaseProps,
+  ref: React.Ref<HTMLLIElement>,
+): BreadcrumbItemBaseState => {
   return {
     components: { root: 'li' },
     root: slot.always(
@@ -29,6 +52,5 @@ export const useBreadcrumbItem_unstable = (
       }),
       { elementType: 'li' },
     ),
-    size,
   };
 };

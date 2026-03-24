@@ -73,6 +73,11 @@ export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDi
 };
 
 /**
+ * Rating base props — excludes design props (color, size).
+ */
+export type RatingBaseProps = Omit<RatingProps, 'color' | 'size'>;
+
+/**
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
@@ -80,6 +85,11 @@ export type RatingState = ComponentState<RatingSlots> &
   Pick<RatingProps, 'itemLabel'> & {
     hoveredValue?: number | undefined;
   };
+
+/**
+ * Rating base state — excludes design props (color, size).
+ */
+export type RatingBaseState = Omit<RatingState, 'color' | 'size'>;
 
 export type RatingContextValues = {
   ratingItem: RatingItemContextValue;

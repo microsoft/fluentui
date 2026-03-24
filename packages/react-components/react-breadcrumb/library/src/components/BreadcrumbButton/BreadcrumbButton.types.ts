@@ -24,3 +24,7 @@ export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> &
 export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'> &
   Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
+
+export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
+
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'size'>;

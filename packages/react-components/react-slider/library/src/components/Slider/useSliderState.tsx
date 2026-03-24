@@ -4,7 +4,7 @@ import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { sliderCSSVars } from './useSliderStyles.styles';
-import type { SliderState, SliderProps } from './Slider.types';
+import type { SliderBaseState, SliderBaseProps } from './Slider.types';
 
 const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
 
@@ -12,7 +12,7 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-export const useSliderState_unstable = (state: SliderState, props: SliderProps): SliderState => {
+export const useSliderState_unstable = (state: SliderBaseState, props: SliderBaseProps): SliderBaseState => {
   'use no memo';
 
   const { min = 0, max = 100, step } = props;

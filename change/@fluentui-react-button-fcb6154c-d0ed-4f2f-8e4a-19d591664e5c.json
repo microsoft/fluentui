@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose button base hooks and types",
+  "packageName": "@fluentui/react-button",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
