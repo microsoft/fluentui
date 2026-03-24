@@ -7,7 +7,7 @@ import {
   getGradientFromToken,
 } from '@fluentui/react-charts';
 
-export const DonutChartBasic = () => {
+export const DonutChartBasic = (): React.JSX.Element => {
   const points: ChartDataPoint[] = [
     {
       legend: 'first',

@@ -21,7 +21,7 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   border: 0,
 };
 
-export const DonutChartDynamic = () => {
+export const DonutChartDynamic = (): React.JSX.Element => {
   const _gradientColors = [
     [
       getGradientFromToken(DataVizGradientPalette.gradient1),
