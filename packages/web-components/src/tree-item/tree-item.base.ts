@@ -45,6 +45,13 @@ export class BaseTreeItem extends FASTElement {
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
+      for (const item of this.childTreeItems) {
+        if (next) {
+          item.removeAttribute('focusgroup');
+        } else {
+          item.setAttribute('focusgroup', 'none');
+        }
+      }
     }
   }
 

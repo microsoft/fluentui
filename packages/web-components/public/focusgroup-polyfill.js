@@ -716,16 +716,16 @@ function getNavigationDirection(event, owner, axis) {
   }
   return action.dir;
 }
-function isKeyConflictElement(el2) {
+function isKeyConflictElement(el) {
   return (
-    el2?.nodeType === Node.ELEMENT_NODE && // Is an editable form element
-    ((['INPUT', 'TEXTAREA', 'SELECT'].includes(el2.nodeName) &&
-      !['checkbox', 'radio'].includes(el2.getAttribute('type'))) || // Is content editable
-      el2.isContentEditable || // Scrollable and scroll direction aligns with the direction limit
+    el?.nodeType === Node.ELEMENT_NODE && // Is an editable form element
+    ((['INPUT', 'TEXTAREA', 'SELECT'].includes(el.nodeName) &&
+      !['checkbox', 'radio'].includes(el.getAttribute('type'))) || // Is content editable
+      el.isContentEditable || // Scrollable and scroll direction aligns with the direction limit
       // TODO
       // Element with preventDefault() on arrow keys
-      (['AUDIO', 'VIDEO'].includes(el2.nodeName) && el2.hasAttribute('controls')) || // iframes and object
-      ['IFRAME', 'OBJECT'].includes(el2.nodeName))
+      (['AUDIO', 'VIDEO'].includes(el.nodeName) && el.hasAttribute('controls')) || // iframes and object
+      ['IFRAME', 'OBJECT'].includes(el.nodeName))
   );
 }
 function isSegmentor(element) {
@@ -743,20 +743,28 @@ function isSegmentor(element) {
   }
   return false;
 }
-function checkVisibility(element) {
-  if (typeof element.checkVisibility === 'function') {
+function checkVisibility(element, ancestor) {
+  if ('checkVisibility' in Element.prototype) {
     return element.checkVisibility({
-      checkOpacity: true,
-      checkVisibility: true,
+      visibilityProperty: true,
       contentVisibilityAuto: true,
     });
   }
-  if (el.getClientRects().length === 0) {
+  if (element.getClientRects().length === 0) {
     return false;
   }
-  const { visibility, opacity, contentVisibility } = window.getComputedStyle(el);
-  if (['hidden', 'collapse'].includes(visibility) || opacity === '0' || contentVisibility === 'hidden') {
-    return false;
+  let current = element;
+  while (current) {
+    const { visibility, contentVisibility } = window.getComputedStyle(current);
+    if (['hidden', 'collapse'].includes(visibility)) {
+      return false;
+    }
+    if (current !== element && contentVisibility === 'hidden') {
+      return false;
+    }
+    {
+      break;
+    }
   }
   return true;
 }
