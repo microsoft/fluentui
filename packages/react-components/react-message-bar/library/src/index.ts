@@ -1,6 +1,7 @@
 export {
   MessageBar,
   useMessageBarStyles_unstable,
+  useMessageBarBase_unstable,
   useMessageBar_unstable,
   useMessageBarContextValue_unstable,
   renderMessageBar_unstable,
@@ -8,6 +9,8 @@ export {
 } from './MessageBar';
 
 export type {
+  MessageBarBaseProps,
+  MessageBarBaseState,
   MessageBarProps,
   MessageBarSlots,
   MessageBarState,

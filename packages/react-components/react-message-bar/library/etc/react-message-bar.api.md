@@ -7,6 +7,7 @@
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -40,6 +41,12 @@ export type MessageBarActionsSlots = {
 export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pick<Required<MessageBarContextValue>, 'layout'> & {
     hasActions: boolean;
 };
+
+// @public (undocumented)
+export type MessageBarBaseProps = DistributiveOmit<MessageBarProps, 'shape'>;
+
+// @public (undocumented)
+export type MessageBarBaseState = DistributiveOmit<MessageBarState, 'shape'>;
 
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
@@ -156,7 +163,7 @@ export type MessageBarTransitionContextValue = {
 };
 
 // @public
-export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSXElement;
+export const renderMessageBar_unstable: (state: MessageBarBaseState, contexts: MessageBarContextValues) => JSXElement;
 
 // @public
 export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSXElement;
@@ -181,6 +188,9 @@ export function useMessageBarActionsContextValue_unstable(): MessageBarActionsCo
 
 // @public
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
+
+// @public
+export const useMessageBarBase_unstable: (props: MessageBarBaseProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBaseState;
 
 // @public
 export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;

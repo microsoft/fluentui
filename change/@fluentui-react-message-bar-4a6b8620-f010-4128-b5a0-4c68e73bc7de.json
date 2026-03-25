@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-message-bar): add useMessageBarBase_unstable hook",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
