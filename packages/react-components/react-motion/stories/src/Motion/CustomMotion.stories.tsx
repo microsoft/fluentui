@@ -23,21 +23,22 @@ import {
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 import description from './CustomMotion.stories.md';
-import { Slide, slideAtom } from '@fluentui/react-motion-components-preview';
+import { Scale } from '../../../../react-motion-components-preview/library/src/index';
 
 // --- Custom motions for Dialog ---
 
 const SlideDialogMotion = createPresenceComponent(() => {
   const keyframes = [
-    { opacity: 0, transform: 'translateX(-100%)', boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)' },
+    { opacity: 1, transform: 'translateX(-150%)', boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)' },
     { opacity: 1, transform: 'translateX(0)', boxShadow: tokens.shadow64 },
   ];
 
   return {
     enter: {
       keyframes,
-      easing: motionTokens.curveDecelerateMax,
-      duration: motionTokens.durationGentle,
+      // easing: curveLinearToSoftClose,
+      easing: curveSwimSpring2,
+      duration: motionTokens.durationUltraSlow * 5,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
@@ -240,6 +241,21 @@ const useStyles = makeStyles({
   },
 });
 
+// http://localhost:3000/#head_type=swim&tail_type=spring&join=.377&head_strokes=2&head_effort=27&head_gamma=4.6&bounces=3&decay=90&duration=2000&show_heatmap=true&show_grid=false
+const curveSwimSpring = `linear(0, .006229 1%, .02395 2%, .05184 3%, .08874 4%, .1336 5%, .1803 6%, .2218 7%, .2584 8%, .2909 9%, .3196 10%, .345 11%, .3675 12%, .3874 13%, .4051 14%, .4207 15%, .4345 16%, .4467 17%, .4576 18%, .4673 19%, .4838 20%, .5106 21%, .5466 22%, .5906 23%, .6924 25%, .7372 26%, .7769 27%, .812 28%, .8431 29%, .8706 30%, .8949 31%, .9165 32%, .9356 33%, .9525 34%, .9674 35%, .9807 36%, .9924 37%, 1.003 38%, 1.012 39%, 1.02 40%, 1.027 41%, 1.032 42%, 1.036 43%, 1.038 44%, 1.04 45%, 1.04 46%, 1.038 48%, 1.032 50%, 1.021 53%, 1.005 57%, .9984 59%, .9932 61%, .9896 63%, .9877 65%, .9876 68%, .99 71%, .9987 78%, 1.002 82%, 1.004 86%, 1.003 91%, 1)`;
+
+// http://localhost:3000/#head_type=swim&tail_type=power-back&join=.703&head_strokes=3&head_effort=24&head_gamma=7.5&tail_overshoot=100&tail_exponent=3&duration=2000&show_heatmap=true
+const curveSwimSpring2 = `linear(0, .003149 1%, .01215 2%, .02643 3%, .04544 4%, .06871 5%, .09533 6%, .1204 7%, .1429 8%, .1632 9%, .1814 10%, .1977 11%, .2124 12%, .2257 13%, .2375 14%, .2482 15%, .2664 17%, .2811 19%, .293 21%, .3078 24%, .3181 25%, .3336 26%, .3536 27%, .3778 28%, .4342 30%, .4598 31%, .4827 32%, .5034 33%, .5219 34%, .5386 35%, .5536 36%, .5671 37%, .5792 38%, .5901 39%, .6086 41%, .6236 43%, .6358 45%, .6456 47%, .6537 48%, .6672 49%, .6855 50%, .7081 51%, .7346 52%, .7638 53%, .7908 54%, .8151 55%, .8369 56%, .8565 57%, .8741 58%, .8899 59%, .9041 60%, .9169 61%, .9284 62%, .9387 63%, .9563 65%, .9706 67%, .9821 69%, .9914 71%, .9987 73%, 1.004 75%, 1.008 77%, 1.011 80%, 1.012 83%, 1.01 87%, 1.002 95%, 1 99%, 1)`;
+
+const CustomDialogMotion = createPresenceComponentVariant(Scale, {
+  outScale: 0.1,
+  duration: motionTokens.durationUltraSlow * 8,
+  // easing: motionTokens.curveDecelerateMid,
+  easing: curveSwimSpring,
+  // exitDuration: motionTokens.durationGentle,
+  exitEasing: motionTokens.curveAccelerateMin,
+});
+
 // --- Dialog examples ---
 
 const DialogExample = () => {
@@ -257,6 +273,7 @@ const DialogExample = () => {
         <Dialog
           surfaceMotion={{
             children: (_, props) => <SlideDialogMotion {...props}>{props.children}</SlideDialogMotion>,
+            // children: (_, props) => <CustomDialogMotion {...props}>{props.children}</CustomDialogMotion>,
           }}
         >
           <DialogTrigger disableButtonEnhancement>
