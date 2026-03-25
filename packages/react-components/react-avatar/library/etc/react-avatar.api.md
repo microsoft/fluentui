@@ -24,6 +24,12 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
+export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
+
+// @public (undocumented)
+export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;
+
+// @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
 // @internal (undocumented)
@@ -196,6 +202,9 @@ export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState,
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public
+export const useAvatarBase_unstable: (props: AvatarBaseProps, ref?: React_2.Ref<HTMLElement>) => AvatarBaseState;
 
 // @internal (undocumented)
 export const useAvatarContext: () => AvatarContextValue;
