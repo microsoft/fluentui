@@ -14,8 +14,7 @@ export type { PopoverContextValue } from './popoverContext';
 export { PopoverTrigger, renderPopoverTrigger_unstable, usePopoverTrigger_unstable } from './PopoverTrigger';
 export type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger';
 
-// Experimental APIs
-// export type { PopoverBaseProps, PopoverBaseState } from './Popover';
-// export { usePopoverBase_unstable } from './Popover';
-// export type { PopoverSurfaceBaseProps, PopoverSurfaceBaseState } from './PopoverSurface';
-// export { usePopoverSurfaceBase_unstable } from './PopoverSurface';
+export type { PopoverBaseProps, PopoverBaseState } from './Popover';
+export { usePopoverBase_unstable } from './Popover';
+export type { PopoverSurfaceBaseProps, PopoverSurfaceBaseState } from './PopoverSurface';
+export { usePopoverSurfaceBase_unstable } from './PopoverSurface';

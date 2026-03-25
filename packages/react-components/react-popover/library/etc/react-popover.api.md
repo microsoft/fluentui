@@ -38,6 +38,12 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 // @public
 export const Popover: React_2.FC<PopoverProps>;
 
+// @public (undocumented)
+export type PopoverBaseProps = Omit<PopoverProps, 'appearance' | 'size'>;
+
+// @public (undocumented)
+export type PopoverBaseState = Omit<PopoverState, 'appearance' | 'components' | 'size' | 'surfaceMotion'>;
+
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
 
@@ -87,6 +93,12 @@ export type PopoverState = ComponentState<InternalPopoverSlots> & Pick<PopoverPr
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
 // @public (undocumented)
+export type PopoverSurfaceBaseProps = PopoverSurfaceProps;
+
+// @public (undocumented)
+export type PopoverSurfaceBaseState = Omit<PopoverSurfaceState, 'appearance' | 'size'>;
+
+// @public (undocumented)
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
 
 // @public
@@ -128,7 +140,7 @@ export type PopoverTriggerState = {
 export const renderPopover_unstable: (state: PopoverState) => JSXElement;
 
 // @public
-export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSXElement;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceBaseState) => JSXElement;
 
 // @public
 export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSXElement | null;
@@ -136,11 +148,17 @@ export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSXE
 // @public
 export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 
+// @internal
+export const usePopoverBase_unstable: (props: PopoverBaseProps) => PopoverBaseState;
+
 // @public (undocumented)
 export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
 export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
+
+// @internal
+export const usePopoverSurfaceBase_unstable: (props: PopoverSurfaceBaseProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceBaseState;
 
 // @public
 export const usePopoverSurfaceStyles_unstable: (state: PopoverSurfaceState) => PopoverSurfaceState;
