@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -14,6 +15,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
+
+// @public
+export type LabelBaseProps = DistributiveOmit<LabelProps, 'size' | 'weight'>;
+
+// @public
+export type LabelBaseState = DistributiveOmit<LabelState, 'size' | 'weight'>;
 
 // @public (undocumented)
 export const labelClassNames: SlotClassNames<LabelSlots>;
@@ -36,10 +43,13 @@ export type LabelSlots = {
 export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;
 
 // @public
-export const renderLabel_unstable: (state: LabelState) => JSXElement;
+export const renderLabel_unstable: (state: LabelBaseState) => JSXElement;
 
 // @public
 export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+
+// @public
+export const useLabelBase_unstable: (props: LabelBaseProps, ref: React_2.Ref<HTMLLabelElement>) => LabelBaseState;
 
 // @public
 export const useLabelStyles_unstable: (state: LabelState) => LabelState;
