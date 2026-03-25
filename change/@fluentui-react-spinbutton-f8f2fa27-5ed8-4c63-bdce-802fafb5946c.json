@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-spinbutton): add useSpinButtonBase_unstable hook",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
