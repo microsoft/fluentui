@@ -1,4 +1,9 @@
-export type { MenuItemRadioProps, MenuItemRadioState } from './components/MenuItemRadio/index';
+export type {
+  MenuItemRadioProps,
+  MenuItemRadioState,
+  MenuItemRadioBaseProps,
+  MenuItemRadioBaseState,
+} from './components/MenuItemRadio/index';
 export {
   MenuItemRadio,
   menuItemRadioClassNames,

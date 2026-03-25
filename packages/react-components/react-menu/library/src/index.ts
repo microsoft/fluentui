@@ -128,8 +128,8 @@ export {
 
 export type { MenuItemSwitchProps, MenuItemSwitchState, MenuItemSwitchSlots } from './MenuItemSwitch';
 
-// Experimental: Base hooks - will be enabled in the experimental release branch
-// export { useMenuItemBase_unstable } from './MenuItem';
-// export { useMenuItemCheckboxBase_unstable } from './MenuItemCheckbox';
-// export { useMenuItemRadioBase_unstable } from './MenuItemRadio';
-// export { useMenuItemSwitchBase_unstable } from './MenuItemSwitch';
+export { useMenuItemBase_unstable } from './MenuItem';
+export { useMenuItemCheckboxBase_unstable } from './MenuItemCheckbox';
+export { useMenuItemRadioBase_unstable } from './MenuItemRadio';
+export type { MenuItemRadioBaseProps, MenuItemRadioBaseState } from './MenuItemRadio';
+export { useMenuItemSwitchBase_unstable } from './MenuItemSwitch';

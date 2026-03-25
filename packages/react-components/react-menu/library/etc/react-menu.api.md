@@ -167,6 +167,12 @@ export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'conten
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
 
+// @public
+export type MenuItemRadioBaseProps = MenuItemRadioProps;
+
+// @public
+export type MenuItemRadioBaseState = MenuItemRadioState;
+
 // @public (undocumented)
 export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
 
@@ -514,8 +520,14 @@ export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupSt
 // @public
 export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
 
+// @internal
+export const useMenuItemBase_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
+
 // @public
 export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
+
+// @internal
+export const useMenuItemCheckboxBase_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
 
 // @public (undocumented)
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
@@ -529,6 +541,9 @@ export const useMenuItemLinkStyles_unstable: (state: MenuItemLinkState) => MenuI
 // @public
 export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioState;
 
+// @internal
+export const useMenuItemRadioBase_unstable: (props: MenuItemRadioBaseProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioBaseState;
+
 // @public (undocumented)
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
 
@@ -537,6 +552,9 @@ export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState
 
 // @public
 export const useMenuItemSwitch_unstable: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
+
+// @internal
+export const useMenuItemSwitchBase_unstable: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
 
 // @public
 export const useMenuItemSwitchStyles_unstable: (state: MenuItemSwitchState) => MenuItemSwitchState;
