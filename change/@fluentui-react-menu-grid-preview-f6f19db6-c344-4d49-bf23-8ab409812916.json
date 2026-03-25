@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add circular and first-letter navigation",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
