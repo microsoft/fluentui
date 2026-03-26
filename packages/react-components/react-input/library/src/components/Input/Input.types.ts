@@ -107,9 +107,20 @@ export type InputProps = Omit<
 };
 
 /**
+ * Input props without design-specific props (appearance, size).
+ * Use this when building a base input that is unstyled or uses a custom design system.
+ */
+export type InputBaseProps = Omit<InputProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering Input.
  */
 export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
+
+/**
+ * Input state without design-specific state (appearance, size).
+ */
+export type InputBaseState = Omit<InputState, 'appearance' | 'size'>;
 
 /**
  * Data passed to the `onChange` callback when a user changes the input's value.

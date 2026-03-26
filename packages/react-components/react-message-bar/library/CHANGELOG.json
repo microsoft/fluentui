@@ -2,6 +2,27 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:54 GMT",
+      "tag": "@fluentui/react-message-bar_v9.6.22",
+      "version": "9.6.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.9.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.8.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:21 GMT",
       "tag": "@fluentui/react-message-bar_v9.6.21",
       "version": "9.6.21",
