@@ -73,6 +73,19 @@ function nodeContains(node, otherNode) {
   }
   return false;
 }
+function getParentElement(node) {
+  if (!node) {
+    return null;
+  }
+  if (typeof node.assignedElements !== 'function' && node.assignedSlot) {
+    return node.assignedSlot;
+  }
+  const root = node.getRootNode();
+  if (root instanceof ShadowRoot) {
+    return node.parentElement ?? root.host;
+  }
+  return node.parentElement;
+}
 function getLastElementChild(node) {
   return node ? node.lastElementChild ?? getLastElementChild(node.shadowRoot) : null;
 }
@@ -655,7 +668,7 @@ let focusgroupCount = 0;
 function generateUniqueId() {
   return String(focusgroupCount++);
 }
-function isKeyboardFocusable(element) {
+function isKeyboardFocusable(element, owner) {
   return (
     // Is content editable
     (element.isContentEditable || // A media element with controls, this check is necessary because
@@ -669,7 +682,7 @@ function isKeyboardFocusable(element) {
         element.hasAttribute('disabled') || // Not an anchor or area without href
         element.matches(':is(a, area):not([href])') || // Not inert
         element.inert || // Not hidden
-        !checkVisibility(element) || // Not a media element without controls
+        !checkVisibility(element, owner) || // Not a media element without controls
         element.matches(':is(audio, video):not([controls])') || // Has not been assigned a tabindex by the polyfill
         element.hasAttribute(DatasetName.AUTHOR_TABINDEX)
       )
@@ -728,16 +741,16 @@ function isKeyConflictElement(el) {
       ['IFRAME', 'OBJECT'].includes(el.nodeName))
   );
 }
-function isSegmentor(element) {
+function isSegmentor(element, owner) {
   if (!checkVisibility(element)) {
     return false;
   }
-  if (isKeyboardFocusable(element)) {
+  if (isKeyboardFocusable(element, owner)) {
     return element.getAttribute('focusgroup').includes('none');
   }
   const walker = createTreeWalker(document, element, NodeFilter.SHOW_ELEMENT);
   while (walker.nextNode()) {
-    if (walker.currentNode !== element && isKeyboardFocusable(walker.currentNode)) {
+    if (walker.currentNode !== element && isKeyboardFocusable(walker.currentNode, owner)) {
       return true;
     }
   }
@@ -762,9 +775,10 @@ function checkVisibility(element, ancestor) {
     if (current !== element && contentVisibility === 'hidden') {
       return false;
     }
-    {
+    if (!ancestor || current === ancestor) {
       break;
     }
+    current = getParentElement(current);
   }
   return true;
 }
@@ -938,12 +952,12 @@ class FocusGroup {
     while (walker.nextNode()) {
       const node = walker.currentNode;
       if (this.#isNestedGroupOwner(node)) {
-        if (isSegmentor(node)) {
+        if (isSegmentor(node, this.#owner)) {
           segment++;
           shouldStartNewSegment = true;
         }
         const isOptedOut = node.getAttribute('focusgroup').includes('none');
-        if (!isKeyboardFocusable(node) || isOptedOut) {
+        if (!isKeyboardFocusable(node, this.#owner) || isOptedOut) {
           continue;
         }
       }
@@ -973,32 +987,41 @@ class FocusGroup {
     if (!startItem && firstItem) {
       startItem = firstItem;
     }
+    if (!this.#memorized?.isConnected) {
+      this.#memorized = null;
+    }
     if (this.#memorized) {
-      startItem = this.#memorized;
+      if (this.#memorized.getAttribute(DatasetName.ITEM) === this.#id) {
+        startItem = this.#memorized;
+      } else {
+        startItem = firstItem || startItem;
+        this.#memorized = null;
+      }
     }
     if (startItem) {
       startItem.tabIndex = 0;
       this.#start = startItem;
-      this.#clearProxyTabbability();
-      this.#ensureAncestorTabbability(startItem);
+      this.#disableKeyboardFocusabilityForProxyHosts();
+      this.#enableKeyboardFocusabilityForProxyHost(startItem);
+      this.#itemWalker.currentNode = startItem;
     }
     flushAllObservers();
   }
   #undecorateItems() {
-    this.#clearProxyTabbability();
-    const first = this.#getFirstItem();
+    this.#disableKeyboardFocusabilityForProxyHosts();
+    const first = this.#firstItem();
     if (!first) {
       return;
     }
     do {
       const item = this.#itemWalker.currentNode;
       inferRole(item, null, null);
-      if (item.hasAttribute(DatasetName.AUTHOR_TABINDEX)) {
-        const authorTabIndex = item.getAttribute(DatasetName.AUTHOR_TABINDEX);
+      const authorTabIndex = item.getAttribute(DatasetName.AUTHOR_TABINDEX);
+      if (authorTabIndex) {
         if (authorTabIndex === 'none') {
           item.removeAttribute('tabindex');
         } else {
-          item.setAttribute('tabindex', item.getAttribute(DatasetName.AUTHOR_TABINDEX));
+          item.setAttribute('tabindex', authorTabIndex);
         }
         item.removeAttribute(DatasetName.AUTHOR_TABINDEX);
       }
@@ -1006,21 +1029,17 @@ class FocusGroup {
     } while (this.#itemWalker.nextNode());
     flushAllObservers();
   }
-  #getFirstItem() {
-    let first;
-    do {
-      first = this.#itemWalker.currentNode;
-    } while (this.#itemWalker?.previousNode());
-    return first;
+  /** @returns {HTMLElement} The first item element. */
+  #firstItem() {
+    while (this.#itemWalker.previousNode()) {}
+    return this.#itemWalker.currentNode;
   }
-  #getLastItem() {
-    let last;
-    do {
-      last = this.#itemWalker.currentNode;
-    } while (this.#itemWalker?.nextNode());
-    return last;
+  /** @returns {HTMLElement} The last item element. */
+  #lastItem() {
+    while (this.#itemWalker.nextNode()) {}
+    return this.#itemWalker.currentNode;
   }
-  /** @param {KeyboardEvent!} evt */
+  /** @param {KeyboardEvent} evt */
   #handleKeydown(evt) {
     const evtTarget = evt.composedPath()[0];
     if (evt.defaultPrevented || evtTarget === this.#owner) {
@@ -1037,21 +1056,21 @@ class FocusGroup {
     let target;
     switch (getNavigationDirection(evt, evtTarget, this.#axis)) {
       case 'start':
-        target = this.#getFirstItem();
+        target = this.#firstItem();
         break;
       case 'end':
-        target = this.#getLastItem();
+        target = this.#lastItem();
         break;
       case 'forward':
         target = this.#itemWalker.nextNode();
         if (!target && this.#wrap) {
-          target = this.#getFirstItem();
+          target = this.#firstItem();
         }
         break;
       case 'backward':
         target = this.#itemWalker.previousNode();
         if (!target && this.#wrap) {
-          target = this.#getLastItem();
+          target = this.#lastItem();
         }
         break;
     }
@@ -1060,7 +1079,7 @@ class FocusGroup {
       evt.preventDefault();
     }
   }
-  /** @param {FocusEvent!} evt */
+  /** @param {FocusEvent} evt */
   #handleFocusin(evt) {
     const target = evt.target.shadowRoot ? evt.composedPath()[0] : evt.target;
     if (!this.#itemWalker.filter(target)) {
@@ -1075,12 +1094,10 @@ class FocusGroup {
       }
     }
     if (this.#proxyHosts.size > 0) {
-      this.#clearProxyTabbability();
+      this.#disableKeyboardFocusabilityForProxyHosts();
       flushAllObservers();
     }
-    if (this.#memory) {
-      this.#memorized = target;
-    }
+    this.#memorized = target;
     if (this.#itemWalker.currentNode === target) {
       return;
     }
@@ -1089,19 +1106,20 @@ class FocusGroup {
     }
     this.#itemWalker.currentNode = target;
   }
-  /** @param {FocusEvent!} evt */
+  /** @param {FocusEvent} evt */
   #handleFocusout(evt) {
     const focusLeavingGroup = !evt.relatedTarget || !this.#owner.contains(evt.relatedTarget);
     if (focusLeavingGroup) {
       const tabStop = this.#memory ? this.#memorized || this.#start : this.#start;
       if (tabStop) {
-        this.#ensureAncestorTabbability(tabStop);
+        this.#enableKeyboardFocusabilityForProxyHost(tabStop);
         flushAllObservers();
       }
     }
     if ((evt.relatedTarget && this.#owner.contains(evt.relatedTarget)) || this.#memory || !this.#start) {
       return;
     }
+    this.#memorized = null;
     this.#start.tabIndex = 0;
     this.#itemWalker.currentNode = this.#start;
     while (this.#itemWalker.nextNode()) {
@@ -1110,27 +1128,36 @@ class FocusGroup {
     }
     flushAllObservers();
   }
+  /**
+   * @param {HTMLElement} node
+   * @returns {boolean}
+   */
   #isItemCandidate(node) {
     return (
       // if it’s already an item (useful when focusgroup definition changes)
       node.hasAttribute(DatasetName.ITEM) || // if the element is yet to be decorated
-      (isKeyboardFocusable(node) &&
+      (isKeyboardFocusable(node, this.#owner) &&
         (node.assignedSlot
           ? getClosestElement(node.assignedSlot, '[focusgroup]') === this.#owner
           : getClosestElement(node.parentNode, '[focusgroup]') === this.#owner))
     );
   }
+  /**
+   * @param {HTMLElement} node
+   * @returns {boolean}
+   */
   #isNestedGroupOwner(node) {
     return node.hasAttribute('focusgroup') && node !== this.#owner;
   }
   /**
-   * Walk from `tabStop` up through shadow boundaries and slot assignments to
+   * Walks from `tabStop` up through shadow boundaries and slot assignments to
    * `this.#owner`. For each shadow host ancestor that is a decorated item of
-   * this group, set `tabindex=0` so the browser can Tab into the shadow root
-   * that contains the real tab stop.
-   * @param {HTMLElement} tabStop
+   * this group, sets `tabindex=0` so the browser's sequential focus navigation
+   * can Tab into the shadow root that contains the real tab stop. Adds each
+   * such host to the `#proxyHosts` tracking set.
+   * @param {HTMLElement} tabStop - The actual focusable tab stop element.
    */
-  #ensureAncestorTabbability(tabStop) {
+  #enableKeyboardFocusabilityForProxyHost(tabStop) {
     let node = tabStop;
     while (node && node !== this.#owner) {
       const slot = node.assignedSlot;
@@ -1160,24 +1187,43 @@ class FocusGroup {
     }
   }
   /**
-   * Reset all proxy hosts back to `tabindex=-1` (or `0` if they are segment
-   * starts) and clear the tracking set.
+   * Resets all proxy shadow hosts back to `tabindex=-1` (or `0` if they are
+   * segment starts) so they no longer appear as extra Tab stops. Clears the
+   * `#proxyHosts` tracking set.
    */
-  #clearProxyTabbability() {
+  #disableKeyboardFocusabilityForProxyHosts() {
     for (const host of this.#proxyHosts) {
       host.tabIndex = host.hasAttribute(DatasetName.SEGMENT_START) ? 0 : -1;
     }
     this.#proxyHosts.clear();
   }
+  /**
+   * Transfers the focusgroup's active tab stop from one item to another.
+   * Sets the target's `tabindex` to `0` and optionally calls `focus()` on it.
+   * The previous item's `tabindex` is set to `-1` unless it belongs to a
+   * different segment (in which case it remains `0` as a segment tab stop).
+   * Also clears proxy hosts and flushes observers.
+   * @param {HTMLElement} current - The currently focused item.
+   * @param {HTMLElement} target - The item to receive focus.
+   * @param {boolean} [shouldCallFocus=false] - Whether to programmatically call
+   *     `focus()` on the target element.
+   */
   #setItemFocused(current, target, shouldCallFocus = false) {
     target.tabIndex = 0;
     if (shouldCallFocus) {
       target.focus();
     }
     current.tabIndex = current.getAttribute(DatasetName.SEGMENT) === target.getAttribute(DatasetName.SEGMENT) ? -1 : 0;
-    this.#clearProxyTabbability();
+    this.#disableKeyboardFocusabilityForProxyHosts();
     flushAllObservers();
   }
+  /**
+   * Processes DOM mutation records observed on the owner's subtree. Handles
+   * changes to the `focusgroup` attribute definition, removal of the memorized
+   * tab stop, and author `tabindex` updates on decorated items. After
+   * processing, fully undecorates and redecorates all items to reconcile state.
+   * @param {MutationRecord[]} entries - The list of mutation records to process.
+   */
   // TODO: Handle mutations more granularly than redecorating all items.
   #processMutations(entries) {
     const hasDefinitionChanged = entries.find(e => e.target === this.#owner && e.attributeName === 'focusgroup');
