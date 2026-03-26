@@ -2,18 +2,24 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
-import type { ColorPickerProps, ColorPickerState } from './ColorPicker.types';
+import type {
+  ColorPickerBaseProps,
+  ColorPickerBaseState,
+  ColorPickerProps,
+  ColorPickerState,
+} from './ColorPicker.types';
+
 /**
- * Create the state required to render ColorPicker.
+ * Create the base state required to render ColorPicker, without design-only props.
  *
- * The returned state can be modified with hooks such as useColorPickerStyles_unstable,
- * before being passed to renderColorPicker_unstable.
- *
- * @param props - props from this instance of ColorPicker
+ * @param props - props from this instance of ColorPicker (without shape)
  * @param ref - reference to root HTMLDivElement of ColorPicker
  */
-export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<HTMLDivElement>): ColorPickerState => {
-  const { color, onColorChange, shape, ...rest } = props;
+export const useColorPickerBase_unstable = (
+  props: ColorPickerBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): ColorPickerBaseState => {
+  const { color, onColorChange, ...rest } = props;
 
   const requestChange: ColorPickerState['requestChange'] = useEventCallback((event, data) => {
     onColorChange?.(event, {
@@ -36,6 +42,23 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
     ),
     color,
     requestChange,
+  };
+};
+
+/**
+ * Create the state required to render ColorPicker.
+ *
+ * The returned state can be modified with hooks such as useColorPickerStyles_unstable,
+ * before being passed to renderColorPicker_unstable.
+ *
+ * @param props - props from this instance of ColorPicker
+ * @param ref - reference to root HTMLDivElement of ColorPicker
+ */
+export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<HTMLDivElement>): ColorPickerState => {
+  const { shape } = props;
+
+  return {
+    ...useColorPickerBase_unstable(props, ref),
     shape,
   };
 };

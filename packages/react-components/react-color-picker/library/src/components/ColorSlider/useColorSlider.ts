@@ -11,7 +11,12 @@ import {
 } from '@fluentui/react-utilities';
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { ColorSliderProps, ColorSliderState } from './ColorSlider.types';
+import type {
+  ColorSliderBaseProps,
+  ColorSliderBaseState,
+  ColorSliderProps,
+  ColorSliderState,
+} from './ColorSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, HUE_MAX, MAX as COLOR_MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
@@ -21,24 +26,20 @@ import { HsvColor } from '../../types/color';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 
 /**
- * Create the state required to render ColorSlider.
+ * Create the base state required to render ColorSlider, without design-only props.
  *
- * The returned state can be modified with hooks such as useColorSliderStyles_unstable,
- * before being passed to renderColorSlider_unstable.
- *
- * @param props - props from this instance of ColorSlider
+ * @param props - props from this instance of ColorSlider (without shape)
  * @param ref - reference to root HTMLInputElement of ColorSlider
  */
-export const useColorSlider_unstable = (
-  props: ColorSliderProps,
+export const useColorSliderBase_unstable = (
+  props: ColorSliderBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): ColorSliderState => {
+): ColorSliderBaseState => {
   'use no memo';
 
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -49,7 +50,6 @@ export const useColorSlider_unstable = (
     color,
     channel = 'hue',
     onChange = onChangeFromContext,
-    shape = shapeFromContext,
     vertical,
     // Slots
     root,
@@ -110,8 +110,7 @@ export const useColorSlider_unstable = (
         : `hsl(${hslColor.h} 100%, 50%)`,
   };
 
-  const state: ColorSliderState = {
-    shape,
+  const state: ColorSliderBaseState = {
     vertical,
     channel,
     components: {
@@ -154,4 +153,28 @@ export const useColorSlider_unstable = (
   state.input.value = clampedValue;
   state.input.onChange = _onChange;
   return state;
+};
+
+/**
+ * Create the state required to render ColorSlider.
+ *
+ * The returned state can be modified with hooks such as useColorSliderStyles_unstable,
+ * before being passed to renderColorSlider_unstable.
+ *
+ * @param props - props from this instance of ColorSlider
+ * @param ref - reference to root HTMLInputElement of ColorSlider
+ */
+export const useColorSlider_unstable = (
+  props: ColorSliderProps,
+  ref: React.Ref<HTMLInputElement>,
+): ColorSliderState => {
+  'use no memo';
+
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+  const { shape = shapeFromContext } = props;
+
+  return {
+    ...useColorSliderBase_unstable(props, ref),
+    shape,
+  };
 };

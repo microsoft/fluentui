@@ -1,4 +1,6 @@
 export type {
+  ColorPickerBaseProps,
+  ColorPickerBaseState,
   ColorPickerOnChangeData,
   ColorPickerProps,
   ColorPickerSlots,
@@ -8,6 +10,7 @@ export {
   ColorPicker,
   colorPickerClassNames,
   renderColorPicker_unstable,
+  useColorPickerBase_unstable,
   useColorPickerStyles_unstable,
   useColorPicker_unstable,
 } from './components/ColorPicker/index';

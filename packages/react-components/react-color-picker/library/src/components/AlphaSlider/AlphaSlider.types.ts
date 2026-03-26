@@ -1,4 +1,4 @@
-import type { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderProps, ColorSliderState } from '../ColorSlider/ColorSlider.types';
 
 export type AlphaSliderSlots = ColorSliderSlots;
@@ -24,3 +24,13 @@ export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
 export type AlphaSliderState = ComponentState<AlphaSliderSlots> &
   Pick<AlphaSliderProps, 'vertical'> &
   Omit<ColorSliderState, keyof ColorSliderSlots | 'components'>;
+
+/**
+ * AlphaSlider Props without design-only props.
+ */
+export type AlphaSliderBaseProps = DistributiveOmit<AlphaSliderProps, 'shape'>;
+
+/**
+ * State used in rendering AlphaSlider, without design-only state.
+ */
+export type AlphaSliderBaseState = DistributiveOmit<AlphaSliderState, 'shape'>;

@@ -1,5 +1,12 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  Slot,
+  EventHandler,
+  EventData,
+} from '@fluentui/react-utilities';
 import type { HsvColor } from '../../types/color';
 import type { ColorPickerProps } from '../ColorPicker/ColorPicker.types';
 
@@ -57,3 +64,13 @@ export type ColorSliderProps = Omit<
  */
 export type ColorSliderState = ComponentState<ColorSliderSlots> &
   Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
+
+/**
+ * ColorSlider Props without design-only props.
+ */
+export type ColorSliderBaseProps = DistributiveOmit<ColorSliderProps, 'shape'>;
+
+/**
+ * State used in rendering ColorSlider, without design-only state.
+ */
+export type ColorSliderBaseState = DistributiveOmit<ColorSliderState, 'shape'>;
