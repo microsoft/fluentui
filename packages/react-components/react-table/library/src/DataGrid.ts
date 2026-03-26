@@ -1,6 +1,4 @@
 export type {
-  DataGridBaseProps,
-  DataGridBaseState,
   DataGridContextValue,
   DataGridContextValues,
   DataGridFocusMode,
@@ -14,6 +12,5 @@ export {
   renderDataGrid_unstable,
   useDataGridContextValues_unstable,
   useDataGridStyles_unstable,
-  useDataGridBase_unstable,
   useDataGrid_unstable,
 } from './components/DataGrid/index';

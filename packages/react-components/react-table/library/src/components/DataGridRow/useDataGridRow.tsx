@@ -3,29 +3,23 @@
 import * as React from 'react';
 import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';
-import type {
-  DataGridRowBaseProps,
-  DataGridRowBaseState,
-  DataGridRowProps,
-  DataGridRowState,
-} from './DataGridRow.types';
-import { useTableRowBase_unstable } from '../TableRow/useTableRow';
+import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
+import { useTableRow_unstable } from '../TableRow/useTableRow';
 import { dataGridContextDefaultValue, useDataGridContext_unstable } from '../../contexts/dataGridContext';
-import { useTableContext } from '../../contexts/tableContext';
 import { DataGridSelectionCell } from '../DataGridSelectionCell/DataGridSelectionCell';
 import { useTableRowIdContext } from '../../contexts/rowIdContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 /**
- * Create the base state required to render DataGridRow, without design-only props.
+ * Create the state required to render DataGridRow.
  *
- * @param props - props from this instance of DataGridRow (without appearance)
+ * The returned state can be modified with hooks such as useDataGridRowStyles_unstable,
+ * before being passed to renderDataGridRow_unstable.
+ *
+ * @param props - props from this instance of DataGridRow
  * @param ref - reference to root HTMLElement of DataGridRow
  */
-export const useDataGridRowBase_unstable = (
-  props: DataGridRowBaseProps,
-  ref: React.Ref<HTMLElement>,
-): DataGridRowBaseState => {
+export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<HTMLElement>): DataGridRowState => {
   const rowId = useTableRowIdContext();
   const isHeader = useIsInTableHeader();
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
@@ -35,7 +29,13 @@ export const useDataGridRowBase_unstable = (
   const compositeRowTabsterAttribute = useDataGridContext_unstable(ctx => ctx.compositeRowTabsterAttribute);
 
   const tabbable = focusMode === 'row_unstable' || focusMode === 'composite';
+  const appearance = useDataGridContext_unstable(ctx => {
+    if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
+      return ctx.selectionAppearance;
+    }
 
+    return 'none';
+  });
   const toggleRow = useDataGridContext_unstable(ctx => ctx.selection.toggleRow);
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableRowElement>) => {
@@ -56,8 +56,9 @@ export const useDataGridRowBase_unstable = (
     props.onKeyDown?.(e);
   });
 
-  const baseState = useTableRowBase_unstable(
+  const baseState = useTableRow_unstable(
     {
+      appearance,
       'aria-selected': selectable ? selected : undefined,
       tabIndex: tabbable && !isHeader ? 0 : undefined,
       ...(focusMode === 'composite' && !isHeader && compositeRowTabsterAttribute),
@@ -83,35 +84,9 @@ export const useDataGridRowBase_unstable = (
     }),
     renderCell: props.children,
     columnDefs,
+    // This context value should not be used internally
+    // It's intended to help power user render functions
     dataGridContextValue: useStableDataGridContextValue(),
-  };
-};
-
-/**
- * Create the state required to render DataGridRow.
- *
- * The returned state can be modified with hooks such as useDataGridRowStyles_unstable,
- * before being passed to renderDataGridRow_unstable.
- *
- * @param props - props from this instance of DataGridRow
- * @param ref - reference to root HTMLElement of DataGridRow
- */
-export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<HTMLElement>): DataGridRowState => {
-  const rowId = useTableRowIdContext();
-  const isHeader = useIsInTableHeader();
-  const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
-  const { size } = useTableContext();
-  const appearance = useDataGridContext_unstable(ctx => {
-    if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
-      return ctx.selectionAppearance ?? 'brand';
-    }
-
-    return 'none';
-  });
-  return {
-    ...useDataGridRowBase_unstable(props, ref),
-    appearance,
-    size,
   };
 };
 

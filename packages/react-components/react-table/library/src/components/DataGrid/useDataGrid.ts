@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
-import type { DataGridBaseProps, DataGridBaseState, DataGridProps, DataGridState } from './DataGrid.types';
-import { useTableBase_unstable } from '../Table/useTable';
+import type { DataGridProps, DataGridState } from './DataGrid.types';
+import { useTable_unstable } from '../Table/useTable';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { End, Home } from '@fluentui/keyboard-keys';
 import {
@@ -16,12 +16,15 @@ import {
 import { CELL_WIDTH } from '../TableSelectionCell';
 
 /**
- * Create the base state required to render DataGrid, without design-only props.
+ * Create the state required to render DataGrid.
  *
- * @param props - props from this instance of DataGrid (without subtleSelection, selectionAppearance, size)
+ * The returned state can be modified with hooks such as useDataGridStyles_unstable,
+ * before being passed to renderDataGrid_unstable.
+ *
+ * @param props - props from this instance of DataGrid
  * @param ref - reference to root HTMLElement of DataGrid
  */
-export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Ref<HTMLElement>): DataGridBaseState => {
+export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
   const {
     items,
     columns,
@@ -33,6 +36,8 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     sortState,
     selectedItems,
     defaultSelectedItems,
+    subtleSelection = false,
+    selectionAppearance = 'brand',
     getRowId,
     resizableColumns,
     columnSizingOptions,
@@ -68,7 +73,11 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     useTableColumnSizing_unstable({
       onColumnResize,
       columnSizingOptions,
+      // The selection cell is not part of the columns, therefore its width needs to be subtracted
+      // from the container to make sure the columns don't overflow the table.
       containerWidthOffset: widthOffset,
+      // Disables automatic resizing of columns when the container overflows.
+      // This allows the sum of the columns to be larger than the container.
       autoFitColumns: resizableColumnsOptions.autoFitColumns ?? true,
     }),
   ]);
@@ -79,6 +88,7 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     props.onKeyDown?.(e);
     focusMode === 'composite' && onCompositeKeyDown(e);
 
+    // handle ctrl+home and ctrl+end
     if (!innerRef.current || !e.ctrlKey || e.defaultPrevented) {
       return;
     }
@@ -99,7 +109,7 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     }
   });
 
-  const baseTableState = useTableBase_unstable(
+  const baseTableState = useTable_unstable(
     {
       role: 'grid',
       as: 'div',
@@ -118,26 +128,9 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     focusMode,
     tableState,
     selectableRows: !!selectionMode,
-    resizableColumns,
-    compositeRowTabsterAttribute,
-  };
-};
-
-/**
- * Create the state required to render DataGrid.
- *
- * The returned state can be modified with hooks such as useDataGridStyles_unstable,
- * before being passed to renderDataGrid_unstable.
- *
- * @param props - props from this instance of DataGrid
- * @param ref - reference to root HTMLElement of DataGrid
- */
-export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLElement>): DataGridState => {
-  const { subtleSelection = false, selectionAppearance = 'brand' } = props;
-  return {
-    ...useDataGridBase_unstable(props, ref),
     subtleSelection,
     selectionAppearance,
-    size: props.size ?? 'medium',
+    resizableColumns,
+    compositeRowTabsterAttribute,
   };
 };

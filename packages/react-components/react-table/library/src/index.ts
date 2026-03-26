@@ -26,28 +26,20 @@ export {
   tableCellClassNames,
   tableCellClassName,
   useTableCellStyles_unstable,
-  useTableCellBase_unstable,
   useTableCell_unstable,
   renderTableCell_unstable,
 } from './TableCell';
-export type {
-  TableCellBaseProps,
-  TableCellBaseState,
-  TableCellProps,
-  TableCellState,
-  TableCellSlots,
-} from './TableCell';
+export type { TableCellProps, TableCellState, TableCellSlots } from './TableCell';
 
 export {
   TableRow,
   tableRowClassNames,
   tableRowClassName,
   useTableRowStyles_unstable,
-  useTableRowBase_unstable,
   useTableRow_unstable,
   renderTableRow_unstable,
 } from './TableRow';
-export type { TableRowBaseProps, TableRowBaseState, TableRowProps, TableRowState, TableRowSlots } from './TableRow';
+export type { TableRowProps, TableRowState, TableRowSlots } from './TableRow';
 
 export {
   TableBody,
@@ -64,20 +56,10 @@ export {
   tableClassName,
   tableClassNames,
   useTableStyles_unstable,
-  useTableBase_unstable,
   useTable_unstable,
   renderTable_unstable,
 } from './Table';
-export type {
-  TableBaseProps,
-  TableBaseState,
-  TableProps,
-  TableSlots,
-  TableState,
-  TableContextValue,
-  TableContextValues,
-  SortDirection,
-} from './Table';
+export type { TableProps, TableSlots, TableState, TableContextValue, TableContextValues, SortDirection } from './Table';
 
 export {
   TableHeader,
@@ -135,17 +117,10 @@ export {
   TableCellLayout,
   tableCellLayoutClassNames,
   useTableCellLayoutStyles_unstable,
-  useTableCellLayoutBase_unstable,
   useTableCellLayout_unstable,
   renderTableCellLayout_unstable,
 } from './TableCellLayout';
-export type {
-  TableCellLayoutBaseProps,
-  TableCellLayoutBaseState,
-  TableCellLayoutProps,
-  TableCellLayoutSlots,
-  TableCellLayoutState,
-} from './TableCellLayout';
+export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
 
 export {
   DataGridCell,
@@ -160,18 +135,10 @@ export {
   DataGridRow,
   dataGridRowClassNames,
   useDataGridRowStyles_unstable,
-  useDataGridRowBase_unstable,
   useDataGridRow_unstable,
   renderDataGridRow_unstable,
 } from './DataGridRow';
-export type {
-  DataGridRowBaseProps,
-  DataGridRowBaseState,
-  DataGridRowProps,
-  DataGridRowState,
-  DataGridRowSlots,
-  CellRenderFunction,
-} from './DataGridRow';
+export type { DataGridRowProps, DataGridRowState, DataGridRowSlots, CellRenderFunction } from './DataGridRow';
 
 export {
   DataGridBody,
@@ -186,14 +153,11 @@ export {
   DataGrid,
   dataGridClassNames,
   useDataGridStyles_unstable,
-  useDataGridBase_unstable,
   useDataGrid_unstable,
   renderDataGrid_unstable,
   useDataGridContextValues_unstable,
 } from './DataGrid';
 export type {
-  DataGridBaseProps,
-  DataGridBaseState,
   DataGridProps,
   DataGridSlots,
   DataGridState,

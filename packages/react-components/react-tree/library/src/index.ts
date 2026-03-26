@@ -1,6 +1,7 @@
 export {
   Tree,
   treeClassNames,
+  useTreeBase_unstable,
   useTree_unstable,
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
@@ -8,6 +9,8 @@ export {
 } from './Tree';
 
 export type {
+  TreeBaseProps,
+  TreeBaseState,
   TreeSlots,
   TreeProps,
   TreeState,
@@ -26,13 +29,14 @@ export type {
 export {
   FlatTree,
   flatTreeClassNames,
+  useFlatTreeBase_unstable,
   useFlatTree_unstable,
   useFlatTreeStyles_unstable,
   useFlatTreeContextValues_unstable,
   renderFlatTree_unstable,
 } from './FlatTree';
 
-export type { FlatTreeSlots, FlatTreeProps, FlatTreeState } from './FlatTree';
+export type { FlatTreeBaseProps, FlatTreeBaseState, FlatTreeSlots, FlatTreeProps, FlatTreeState } from './FlatTree';
 
 export { TreeProvider, TreeRootReset } from './components/TreeProvider';
 
@@ -90,9 +94,12 @@ export {
   treeItemPersonaLayoutClassNames,
   renderTreeItemPersonaLayout_unstable,
   useTreeItemPersonaLayoutStyles_unstable,
+  useTreeItemPersonaLayoutBase_unstable,
   useTreeItemPersonaLayout_unstable,
 } from './TreeItemPersonaLayout';
 export type {
+  TreeItemPersonaLayoutBaseProps,
+  TreeItemPersonaLayoutBaseState,
   TreeItemPersonaLayoutProps,
   TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutState,

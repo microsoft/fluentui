@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { AvatarContextValue, AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
 import { TreeItemLayoutSlots } from '../TreeItemLayout/TreeItemLayout.types';
@@ -35,3 +35,13 @@ export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlo
   avatarSize: AvatarSize;
   buttonContextValue: ButtonContextValue;
 };
+
+/**
+ * TreeItemPersonaLayout Props without design-only props.
+ */
+export type TreeItemPersonaLayoutBaseProps = TreeItemPersonaLayoutProps;
+
+/**
+ * State used in rendering TreeItemPersonaLayout, without design-only state.
+ */
+export type TreeItemPersonaLayoutBaseState = DistributiveOmit<TreeItemPersonaLayoutState, 'avatarSize'>;

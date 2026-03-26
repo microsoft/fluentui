@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { TableColumnDefinition } from '../../hooks';
 import { DataGridContextValue } from '../DataGrid/DataGrid.types';
 import type { TableRowProps, TableRowSlots, TableRowState } from '../TableRow/TableRow.types';
@@ -36,13 +36,3 @@ export type DataGridRowState = TableRowState &
     columnDefs: TableColumnDefinition<any>[];
     dataGridContextValue: DataGridContextValue;
   };
-
-/**
- * DataGridRow Props without design-only props.
- */
-export type DataGridRowBaseProps<TItem = unknown> = DistributiveOmit<DataGridRowProps<TItem>, 'appearance'>;
-
-/**
- * State used in rendering DataGridRow, without design-only state.
- */
-export type DataGridRowBaseState = DistributiveOmit<DataGridRowState, 'appearance' | 'size'>;

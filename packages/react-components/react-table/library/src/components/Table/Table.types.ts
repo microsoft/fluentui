@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TableSlots = {
   root: Slot<'table', 'div'>;
@@ -37,18 +37,8 @@ export type TableContextValues = {
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 /**
- * Table Props without design-only props.
- */
-export type TableBaseProps = DistributiveOmit<TableProps, 'size'>;
-
-/**
  * State used in rendering Table
  */
 export type TableState = ComponentState<TableSlots> &
   Pick<Required<TableProps>, 'size' | 'noNativeElements'> &
   TableContextValue;
-
-/**
- * State used in rendering Table, without design-only state.
- */
-export type TableBaseState = DistributiveOmit<TableState, 'size'>;

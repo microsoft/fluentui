@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DistributiveOmit, SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
+import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
@@ -118,13 +118,3 @@ export type DataGridState = TableState & { tableState: TableFeaturesState<unknow
     | 'resizableColumns'
     | 'compositeRowTabsterAttribute'
   >;
-
-/**
- * DataGrid Props without design-only props.
- */
-export type DataGridBaseProps = DistributiveOmit<DataGridProps, 'subtleSelection' | 'selectionAppearance' | 'size'>;
-
-/**
- * State used in rendering DataGrid, without design-only state.
- */
-export type DataGridBaseState = DistributiveOmit<DataGridState, 'subtleSelection' | 'selectionAppearance' | 'size'>;
