@@ -3,21 +3,18 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
-import type { TableRowProps, TableRowState } from './TableRow.types';
+import type { TableRowBaseProps, TableRowBaseState, TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 /**
- * Create the state required to render TableRow.
+ * Create the base state required to render TableRow, without design-only props.
  *
- * The returned state can be modified with hooks such as useTableRowStyles_unstable,
- * before being passed to renderTableRow_unstable.
- *
- * @param props - props from this instance of TableRow
+ * @param props - props from this instance of TableRow (without appearance)
  * @param ref - reference to root HTMLElement of TableRow
  */
-export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLElement>): TableRowState => {
-  const { noNativeElements, size } = useTableContext();
+export const useTableRowBase_unstable = (props: TableRowBaseProps, ref: React.Ref<HTMLElement>): TableRowBaseState => {
+  const { noNativeElements } = useTableContext();
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'tr';
   const focusVisibleRef = useFocusVisible();
   const focusWithinRef = useFocusWithin();
@@ -38,9 +35,25 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
       }),
       { elementType: rootComponent },
     ),
-    size,
     noNativeElements,
-    appearance: props.appearance ?? 'none',
     isHeaderRow,
+  };
+};
+
+/**
+ * Create the state required to render TableRow.
+ *
+ * The returned state can be modified with hooks such as useTableRowStyles_unstable,
+ * before being passed to renderTableRow_unstable.
+ *
+ * @param props - props from this instance of TableRow
+ * @param ref - reference to root HTMLElement of TableRow
+ */
+export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLElement>): TableRowState => {
+  const { size } = useTableContext();
+  return {
+    ...useTableRowBase_unstable(props, ref),
+    size,
+    appearance: props.appearance ?? 'none',
   };
 };

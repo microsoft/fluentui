@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { TableContextValue } from '../Table/Table.types';
 
@@ -50,6 +50,11 @@ export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSl
   };
 
 /**
+ * TableCellLayout Props without design-only props.
+ */
+export type TableCellLayoutBaseProps = DistributiveOmit<TableCellLayoutProps, 'appearance'>;
+
+/**
  * State used in rendering TableCellLayout
  */
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &
@@ -57,3 +62,8 @@ export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &
     TableContextValue,
     'size'
   >;
+
+/**
+ * State used in rendering TableCellLayout, without design-only state.
+ */
+export type TableCellLayoutBaseState = DistributiveOmit<TableCellLayoutState, 'appearance' | 'size' | 'avatarSize'>;

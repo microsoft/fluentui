@@ -1,5 +1,7 @@
 export type {
   SortDirection,
+  TableBaseProps,
+  TableBaseState,
   TableContextValue,
   TableContextValues,
   TableProps,
@@ -12,5 +14,6 @@ export {
   tableClassName,
   tableClassNames,
   useTableStyles_unstable,
+  useTableBase_unstable,
   useTable_unstable,
 } from './components/Table/index';

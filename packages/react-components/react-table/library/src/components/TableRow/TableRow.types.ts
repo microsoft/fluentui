@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { TableContextValue } from '../Table/Table.types';
 
 export type TableRowSlots = {
@@ -18,6 +18,11 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {
 };
 
 /**
+ * TableRow Props without design-only props.
+ */
+export type TableRowBaseProps = DistributiveOmit<TableRowProps, 'appearance'>;
+
+/**
  * State used in rendering TableRow
  */
 export type TableRowState = ComponentState<TableRowSlots> &
@@ -25,3 +30,8 @@ export type TableRowState = ComponentState<TableRowSlots> &
   Pick<Required<TableRowProps>, 'appearance'> & {
     isHeaderRow: boolean;
   };
+
+/**
+ * State used in rendering TableRow, without design-only state.
+ */
+export type TableRowBaseState = DistributiveOmit<TableRowState, 'appearance' | 'size'>;
