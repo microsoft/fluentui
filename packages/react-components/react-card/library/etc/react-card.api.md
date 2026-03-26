@@ -15,6 +15,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
+// @public (undocumented)
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'>;
+
+// @public (undocumented)
+export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;
+
 // @public
 export const cardClassNames: SlotClassNames<CardSlots>;
 
@@ -39,6 +45,12 @@ export const cardCSSVars: {
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
 // @public
+export type CardFooterBaseProps = CardFooterProps;
+
+// @public
+export type CardFooterBaseState = CardFooterState;
+
+// @public
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
@@ -55,6 +67,12 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
+
+// @public
+export type CardHeaderBaseProps = CardHeaderProps;
+
+// @public
+export type CardHeaderBaseState = CardHeaderState;
 
 // @public
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
@@ -84,6 +102,12 @@ export type CardOnSelectionChangeEvent = React_2.MouseEvent | React_2.KeyboardEv
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
+
+// @public
+export type CardPreviewBaseProps = CardPreviewProps;
+
+// @public
+export type CardPreviewBaseState = CardPreviewState;
 
 // @public
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
@@ -132,19 +156,22 @@ export type CardState = ComponentState<CardSlots> & CardContextValue & Required<
 }>;
 
 // @public
-export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSXElement;
+export const renderCard_unstable: (state: CardBaseState, cardContextValue: CardContextValue) => JSXElement;
 
 // @public
-export const renderCardFooter_unstable: (state: CardFooterState) => JSXElement;
+export const renderCardFooter_unstable: (state: CardFooterBaseState) => JSXElement;
 
 // @public
-export const renderCardHeader_unstable: (state: CardHeaderState) => JSXElement;
+export const renderCardHeader_unstable: (state: CardHeaderBaseState) => JSXElement;
 
 // @public
-export const renderCardPreview_unstable: (state: CardPreviewState) => JSXElement;
+export const renderCardPreview_unstable: (state: CardPreviewBaseState) => JSXElement;
 
 // @public
 export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
+
+// @public
+export const useCardBase_unstable: (props: CardBaseProps, ref: React_2.Ref<HTMLDivElement>) => CardBaseState;
 
 // @internal (undocumented)
 export const useCardContext_unstable: () => CardContextValue;
@@ -153,16 +180,25 @@ export const useCardContext_unstable: () => CardContextValue;
 export const useCardFooter_unstable: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;
 
 // @public
+export const useCardFooterBase_unstable: (props: CardFooterBaseProps, ref: React_2.Ref<HTMLElement>) => CardFooterBaseState;
+
+// @public
 export const useCardFooterStyles_unstable: (state: CardFooterState) => CardFooterState;
 
 // @public
 export const useCardHeader_unstable: (props: CardHeaderProps, ref: React_2.Ref<HTMLElement>) => CardHeaderState;
 
 // @public
+export const useCardHeaderBase_unstable: (props: CardHeaderBaseProps, ref: React_2.Ref<HTMLElement>) => CardHeaderBaseState;
+
+// @public
 export const useCardHeaderStyles_unstable: (state: CardHeaderState) => CardHeaderState;
 
 // @public
 export const useCardPreview_unstable: (props: CardPreviewProps, ref: React_2.Ref<HTMLElement>) => CardPreviewState;
+
+// @public
+export const useCardPreviewBase_unstable: (props: CardPreviewBaseProps, ref: React_2.Ref<HTMLElement>) => CardPreviewBaseState;
 
 // @public
 export const useCardPreviewStyles_unstable: (state: CardPreviewState) => CardPreviewState;

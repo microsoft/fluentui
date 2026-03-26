@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.6.2..@fluentui/react-persona_v9.7.0)
+
+### Minor changes
+
+- feat: expose base hooks for Persona ([PR #35814](https://github.com/microsoft/fluentui/pull/35814) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-avatar to v9.10.3 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-badge to v9.5.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.6.2)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Switch",
-  "packageName": "@fluentui/react-switch",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:50 GMT",
+      "tag": "@fluentui/react-link_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "ee6a69da2a9d939fe1cf47ec721f0884ed55d82f",
+            "comment": "feat: add base hooks for Link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-link_v9.7.4",
       "version": "9.7.4",

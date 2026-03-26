@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:50 GMT",
+      "tag": "@fluentui/react-input_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "cd159227b9f5dd4d6d5b28b363971843ffac5d0d",
+            "comment": "feat: add base hooks for Input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-input_v9.7.16",
       "version": "9.7.16",
