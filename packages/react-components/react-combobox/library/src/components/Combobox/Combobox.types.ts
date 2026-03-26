@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
   ActiveOptionChangeData as ComboboxBaseActiveOptionChangeData,
@@ -41,6 +41,11 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
   };
 
 /**
+ * Combobox Props without design-only props.
+ */
+export type ComboboxBaseHookProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering Combobox
  */
 export type ComboboxState = ComponentState<ComboboxSlots> &
@@ -48,6 +53,11 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     showClearIcon?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
   };
+
+/**
+ * State used in rendering Combobox, without design-only state.
+ */
+export type ComboboxBaseHookState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

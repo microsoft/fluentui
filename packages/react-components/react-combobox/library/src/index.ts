@@ -26,9 +26,12 @@ export {
   comboboxClassNames,
   renderCombobox_unstable,
   useComboboxStyles_unstable,
+  useComboboxBase_unstable,
   useCombobox_unstable,
 } from './Combobox';
 export type {
+  ComboboxBaseHookProps,
+  ComboboxBaseHookState,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -41,9 +44,12 @@ export {
   dropdownClassNames,
   renderDropdown_unstable,
   useDropdownStyles_unstable,
+  useDropdownBase_unstable,
   useDropdown_unstable,
 } from './Dropdown';
 export type {
+  DropdownBaseHookProps,
+  DropdownBaseHookState,
   DropdownContextValues,
   DropdownOpenChangeData,
   DropdownOpenEvents,

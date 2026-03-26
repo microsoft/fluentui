@@ -16,26 +16,26 @@ import {
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { DropdownProps, DropdownState } from './Dropdown.types';
+import type { DropdownBaseHookProps, DropdownBaseHookState, DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
 
 /**
- * Create the state required to render Dropdown.
+ * Create the base state required to render Dropdown, without design-only props.
  *
- * The returned state can be modified with hooks such as useDropdownStyles_unstable,
- * before being passed to renderDropdown_unstable.
- *
- * @param props - props from this instance of Dropdown
- * @param ref - reference to root HTMLElement of Dropdown
+ * @param props - props from this instance of Dropdown (without appearance and size)
+ * @param ref - reference to root HTMLButtonElement of Dropdown
  */
-export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
+export const useDropdownBase_unstable = (
+  props: DropdownBaseHookProps,
+  ref: React.Ref<HTMLButtonElement>,
+): DropdownBaseHookState => {
   'use no memo';
 
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
   const {
     listboxRef: activeDescendantListboxRef,
     activeParentRef,
@@ -44,7 +44,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
-  const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
+  const dropdownInternalState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
+  const { appearance: _appearance, size: _size, freeform: _freeform, ...baseState } = dropdownInternalState;
   const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -57,7 +58,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
   const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
-    state: baseState,
+    state: dropdownInternalState,
     triggerRef,
     defaultProps: {
       children: props.children,
@@ -74,7 +75,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
 
   const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
-    state: baseState,
+    state: dropdownInternalState,
     defaultProps: {
       type: 'button',
       // tabster navigation breaks if the button is disabled and tabIndex is 0
@@ -97,7 +98,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
   const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
-  const state: DropdownState = {
+  const state: DropdownBaseHookState = {
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: trigger,
@@ -105,7 +106,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     clearButton: slot.optional(props.clearButton, {
       defaultProps: {
         'aria-label': 'Clear selection',
-        children: <DismissIcon />,
         // Safari doesn't allow to focus an element with this
         // when the element is not visible (display: none) we need to remove it to avoid tabster issues
         tabIndex: showClearButton ? 0 : undefined,
@@ -116,9 +116,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     }),
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
-      defaultProps: {
-        children: <ChevronDownIcon />,
-      },
       elementType: 'span',
     }),
     placeholderVisible: !baseState.value && !!props.placeholder,
@@ -154,4 +151,32 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   }
 
   return state;
+};
+
+/**
+ * Create the state required to render Dropdown.
+ *
+ * The returned state can be modified with hooks such as useDropdownStyles_unstable,
+ * before being passed to renderDropdown_unstable.
+ *
+ * @param props - props from this instance of Dropdown
+ * @param ref - reference to root HTMLElement of Dropdown
+ */
+export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
+  'use no memo';
+
+  const { appearance = 'outline', size = 'medium' } = props;
+  const baseState = useDropdownBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    appearance,
+    size,
+    clearButton: baseState.clearButton
+      ? { ...baseState.clearButton, children: baseState.clearButton.children ?? <DismissIcon /> }
+      : baseState.clearButton,
+    expandIcon: baseState.expandIcon
+      ? { ...baseState.expandIcon, children: baseState.expandIcon.children ?? <ChevronDownIcon /> }
+      : baseState.expandIcon,
+  };
 };

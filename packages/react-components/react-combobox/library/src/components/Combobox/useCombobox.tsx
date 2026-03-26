@@ -17,25 +17,31 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { ComboboxOpenEvents, ComboboxProps, ComboboxState } from './Combobox.types';
+import type {
+  ComboboxBaseHookProps,
+  ComboboxBaseHookState,
+  ComboboxOpenEvents,
+  ComboboxProps,
+  ComboboxState,
+} from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
- * Create the state required to render Combobox.
+ * Create the base state required to render Combobox, without design-only props.
  *
- * The returned state can be modified with hooks such as useComboboxStyles_unstable,
- * before being passed to renderCombobox_unstable.
- *
- * @param props - props from this instance of Combobox
- * @param ref - reference to root HTMLElement of Combobox
+ * @param props - props from this instance of Combobox (without appearance and size)
+ * @param ref - reference to root HTMLInputElement of Combobox
  */
-export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+export const useComboboxBase_unstable = (
+  props: ComboboxBaseHookProps,
+  ref: React.Ref<HTMLInputElement>,
+): ComboboxBaseHookState => {
   'use no memo';
 
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
   const {
     listboxRef: activeDescendantListboxRef,
     activeParentRef,
@@ -43,7 +49,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
-  const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
+  const comboboxInternalState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
+  const { appearance: _appearance, size: _size, ...baseState } = comboboxInternalState;
 
   const { clearable, clearSelection, disabled, multiselect, open, selectedOptions, setOpen, value, hasFocus } =
     baseState;
@@ -60,7 +67,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
   const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
-    state: baseState,
+    state: comboboxInternalState,
     triggerRef,
     defaultProps: {
       children: props.children,
@@ -69,7 +76,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
 
   const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
-    state: baseState,
+    state: comboboxInternalState,
     freeform,
     defaultProps: {
       type: 'text',
@@ -90,7 +97,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
-  const state: ComboboxState = {
+  const state: ComboboxBaseHookState = {
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,
@@ -98,7 +105,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     clearIcon: slot.optional(props.clearIcon, {
       defaultProps: {
         'aria-hidden': 'true',
-        children: <DismissIcon />,
       },
       elementType: 'span',
       renderByDefault: true,
@@ -108,7 +114,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       defaultProps: {
         'aria-disabled': disabled ? 'true' : undefined,
         'aria-expanded': open,
-        children: <ChevronDownIcon />,
         role: 'button',
       },
       elementType: 'span',
@@ -197,4 +202,32 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   }
 
   return state;
+};
+
+/**
+ * Create the state required to render Combobox.
+ *
+ * The returned state can be modified with hooks such as useComboboxStyles_unstable,
+ * before being passed to renderCombobox_unstable.
+ *
+ * @param props - props from this instance of Combobox
+ * @param ref - reference to root HTMLElement of Combobox
+ */
+export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+  'use no memo';
+
+  const { appearance = 'outline', size = 'medium' } = props;
+  const baseState = useComboboxBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    appearance,
+    size,
+    clearIcon: baseState.clearIcon
+      ? { ...baseState.clearIcon, children: baseState.clearIcon.children ?? <DismissIcon /> }
+      : baseState.clearIcon,
+    expandIcon: baseState.expandIcon
+      ? { ...baseState.expandIcon, children: baseState.expandIcon.children ?? <ChevronDownIcon /> }
+      : baseState.expandIcon,
+  };
 };
