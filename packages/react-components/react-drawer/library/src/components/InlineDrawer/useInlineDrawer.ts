@@ -76,7 +76,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
   return {
     ...state,
     components: {
-      ...state.components,
+      root: 'div',
       // casting from internal type that has required properties
       // to external type that only has optional properties
       // converting to unknown first as both Function component signatures are not compatible
@@ -91,7 +91,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     animationDirection,
 
     surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
-      elementType: InlineDrawerMotion as unknown as React.FC<SurfaceMotionSlotProps>,
+      elementType: InlineDrawerMotion,
       defaultProps: {
         position,
         size,

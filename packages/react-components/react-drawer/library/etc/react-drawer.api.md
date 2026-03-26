@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceDirection } from '@fluentui/react-motion';
@@ -135,6 +136,15 @@ export type DrawerState = ComponentState<DrawerSlots>;
 // @public
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
+// @public
+export type InlineDrawerBaseProps = ComponentProps<Omit<InlineDrawerSlots, 'surfaceMotion'>> & Omit<DrawerBaseProps, 'size' | 'position'>;
+
+// @public
+export type InlineDrawerBaseState = ComponentState<Omit<InlineDrawerSlots, 'surfaceMotion'>> & {
+    open: boolean;
+    unmountOnClose: boolean;
+};
+
 // @public (undocumented)
 export const inlineDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
 
@@ -150,12 +160,20 @@ export type InlineDrawerSlots = {
 };
 
 // @public
-export type InlineDrawerState = Required<ComponentState<NonNullable<InlineDrawerSlots>> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'> & {
+export type InlineDrawerState = ComponentState<InlineDrawerSlots> & Required<DrawerBaseState & Pick<InlineDrawerProps, 'separator'>> & {
     animationDirection: PresenceDirection;
-}>;
+    open: boolean;
+    unmountOnClose: boolean;
+};
 
 // @public
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
+
+// @public
+export type OverlayDrawerBaseProps = DistributiveOmit<OverlayDrawerProps, 'size' | 'position'>;
+
+// @public
+export type OverlayDrawerBaseState = DistributiveOmit<OverlayDrawerState, 'size' | 'position' | 'motion'>;
 
 // @public (undocumented)
 export const overlayDrawerClassNames: SlotClassNames<Omit<OverlayDrawerSurfaceSlots, 'backdropMotion'>>;
@@ -199,7 +217,7 @@ export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) =
 export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSXElement;
 
 // @public
-export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSXElement;
+export const renderOverlayDrawer_unstable: (state: OverlayDrawerBaseState, contextValue: DrawerContextValue) => JSXElement;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
@@ -247,10 +265,16 @@ export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
 export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerState;
 
 // @public
+export const useInlineDrawerBase_unstable: (props: InlineDrawerBaseProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerBaseState;
+
+// @public
 export const useInlineDrawerStyles_unstable: (state: InlineDrawerState) => InlineDrawerState;
 
 // @public
 export const useOverlayDrawer_unstable: (props: OverlayDrawerProps, ref: React_2.Ref<HTMLElement>) => OverlayDrawerState;
+
+// @public
+export const useOverlayDrawerBase_unstable: (props: OverlayDrawerBaseProps, ref: React_2.Ref<HTMLElement>) => OverlayDrawerBaseState;
 
 // @public
 export const useOverlayDrawerStyles_unstable: (state: OverlayDrawerState) => OverlayDrawerState;

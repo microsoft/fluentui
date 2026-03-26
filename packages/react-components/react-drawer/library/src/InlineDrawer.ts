@@ -1,4 +1,6 @@
 export type {
+  InlineDrawerBaseProps,
+  InlineDrawerBaseState,
   InlineDrawerProps,
   InlineDrawerSlots,
   InlineDrawerState,
@@ -10,4 +12,5 @@ export {
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,
+  useInlineDrawerBase_unstable,
 } from './components/InlineDrawer/index';

@@ -39,7 +39,7 @@ export const useOverlayDrawerBase_unstable = (
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerBaseState => {
   const { open = false, unmountOnClose = true } = props;
-  const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, surfaceMotion, mountNode } = props;
+  const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, mountNode } = props;
   const { targetDocument } = useFluent();
   const { element: mountNodeElement } = toMountNodeProps(mountNode);
   const hasMountNodeElement = Boolean(mountNodeElement && targetDocument?.body !== mountNodeElement);
@@ -67,7 +67,6 @@ export const useOverlayDrawerBase_unstable = (
       inertTrapFocus,
       modalType,
       unmountOnClose,
-      surfaceMotion,
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
@@ -111,23 +110,53 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
   const { open, size, position, unmountOnClose } = useDrawerDefaultProps(props);
-  const { backdropMotion, surfaceMotion } = props;
+  const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, surfaceMotion, mountNode } = props;
   const { dir } = useFluent();
 
   const state = useOverlayDrawerBase_unstable(props, ref);
 
-  // Override motion slots with position/size-aware defaults
-  state.root.backdropMotion = mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size });
-  state.dialog.surfaceMotion = mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir });
+  const backdropProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
 
   return {
     ...state,
+    root: slot.always(
+      {
+        ...props,
+        ref,
+        unmountOnClose,
+        backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
+        backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
+      },
+      {
+        elementType: OverlayDrawerSurface,
+      },
+    ),
+    dialog: slot.always(
+      {
+        open,
+        onOpenChange,
+        inertTrapFocus,
+        modalType,
+        unmountOnClose,
+        surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir }),
+        /**
+         * children is not needed here because we construct the children in the render function,
+         * but it's required by DialogProps
+         */
+        children: null as unknown as JSXElement,
+      },
+      {
+        elementType: Dialog,
+      },
+    ),
     open,
     size,
     position,
     unmountOnClose,
 
     // Deprecated props
+    mountNode,
     motion: STATIC_MOTION,
   };
 };
