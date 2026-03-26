@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-drawer): add useOverlayDrawerBase_unstable and useInlineDrawerBase_unstable hooks",
+  "packageName": "@fluentui/react-drawer",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

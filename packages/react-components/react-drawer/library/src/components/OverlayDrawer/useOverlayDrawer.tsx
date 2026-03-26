@@ -9,7 +9,12 @@ import { toMountNodeProps } from '@fluentui/react-portal';
 
 import { OverlayDrawerMotion, OverlaySurfaceBackdropMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
-import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
+import type {
+  OverlayDrawerBaseProps,
+  OverlayDrawerBaseState,
+  OverlayDrawerProps,
+  OverlayDrawerState,
+} from './OverlayDrawer.types';
 import { OverlayDrawerSurface } from './OverlayDrawerSurface';
 import { mergePresenceSlots } from '../../shared/drawerMotionUtils';
 
@@ -21,21 +26,21 @@ const STATIC_MOTION = {
 };
 
 /**
- * Create the state required to render OverlayDrawer.
+ * Create the base state required to render OverlayDrawer without design-specific props.
  *
- * The returned state can be modified with hooks such as useOverlayDrawerStyles_unstable,
- * before being passed to renderOverlayDrawer_unstable.
+ * The returned state can be composed with `useOverlayDrawer_unstable` or used directly
+ * to build custom-styled OverlayDrawer variants.
  *
- * @param props - props from this instance of OverlayDrawer
+ * @param props - props from this instance of OverlayDrawer (without size and position)
  * @param ref - reference to root HTMLElement of OverlayDrawer
  */
-export const useOverlayDrawer_unstable = (
-  props: OverlayDrawerProps,
+export const useOverlayDrawerBase_unstable = (
+  props: OverlayDrawerBaseProps,
   ref: React.Ref<HTMLElement>,
-): OverlayDrawerState => {
-  const { open, size, position, unmountOnClose } = useDrawerDefaultProps(props);
+): OverlayDrawerBaseState => {
+  const { open = false, unmountOnClose = true } = props;
   const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, surfaceMotion, mountNode } = props;
-  const { dir, targetDocument } = useFluent();
+  const { targetDocument } = useFluent();
   const { element: mountNodeElement } = toMountNodeProps(mountNode);
   const hasMountNodeElement = Boolean(mountNodeElement && targetDocument?.body !== mountNodeElement);
 
@@ -48,7 +53,7 @@ export const useOverlayDrawer_unstable = (
       ref,
       unmountOnClose,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
-      backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
+      backdropMotion,
     },
     {
       elementType: OverlayDrawerSurface,
@@ -62,7 +67,7 @@ export const useOverlayDrawer_unstable = (
       inertTrapFocus,
       modalType,
       unmountOnClose,
-      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir }),
+      surfaceMotion,
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
@@ -84,13 +89,45 @@ export const useOverlayDrawer_unstable = (
     dialog,
 
     open,
-    size,
-    position,
     hasMountNodeElement,
     unmountOnClose,
 
     // Deprecated props
     mountNode,
+  };
+};
+
+/**
+ * Create the state required to render OverlayDrawer.
+ *
+ * The returned state can be modified with hooks such as useOverlayDrawerStyles_unstable,
+ * before being passed to renderOverlayDrawer_unstable.
+ *
+ * @param props - props from this instance of OverlayDrawer
+ * @param ref - reference to root HTMLElement of OverlayDrawer
+ */
+export const useOverlayDrawer_unstable = (
+  props: OverlayDrawerProps,
+  ref: React.Ref<HTMLElement>,
+): OverlayDrawerState => {
+  const { open, size, position, unmountOnClose } = useDrawerDefaultProps(props);
+  const { backdropMotion, surfaceMotion } = props;
+  const { dir } = useFluent();
+
+  const state = useOverlayDrawerBase_unstable(props, ref);
+
+  // Override motion slots with position/size-aware defaults
+  state.root.backdropMotion = mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size });
+  state.dialog.surfaceMotion = mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir });
+
+  return {
+    ...state,
+    open,
+    size,
+    position,
+    unmountOnClose,
+
+    // Deprecated props
     motion: STATIC_MOTION,
   };
 };

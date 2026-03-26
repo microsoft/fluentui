@@ -10,8 +10,15 @@ export {
   renderOverlayDrawer_unstable,
   useOverlayDrawerStyles_unstable,
   useOverlayDrawer_unstable,
+  useOverlayDrawerBase_unstable,
 } from './OverlayDrawer';
-export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from './OverlayDrawer';
+export type {
+  OverlayDrawerBaseProps,
+  OverlayDrawerBaseState,
+  OverlayDrawerProps,
+  OverlayDrawerSlots,
+  OverlayDrawerState,
+} from './OverlayDrawer';
 
 export {
   InlineDrawer,
@@ -19,8 +26,15 @@ export {
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,
+  useInlineDrawerBase_unstable,
 } from './InlineDrawer';
-export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './InlineDrawer';
+export type {
+  InlineDrawerBaseProps,
+  InlineDrawerBaseState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+} from './InlineDrawer';
 
 export {
   DrawerBody,

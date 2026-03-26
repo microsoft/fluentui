@@ -5,13 +5,13 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { DrawerContextValue, DrawerProvider } from '../../contexts/drawerContext';
 import { DialogBackdropProvider } from '@fluentui/react-dialog';
 
-import type { OverlayDrawerState, OverlayDrawerInternalSlots } from './OverlayDrawer.types';
+import type { OverlayDrawerBaseState, OverlayDrawerInternalSlots } from './OverlayDrawer.types';
 
 /**
  * Render the final JSX of OverlayDrawer
  */
 export const renderOverlayDrawer_unstable = (
-  state: OverlayDrawerState,
+  state: OverlayDrawerBaseState,
   contextValue: DrawerContextValue,
 ): JSXElement => {
   assertSlots<OverlayDrawerInternalSlots>(state);

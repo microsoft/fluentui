@@ -27,10 +27,25 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> &
 /**
  * State used in rendering InlineDrawer
  */
-export type InlineDrawerState = Required<
-  ComponentState<NonNullable<InlineDrawerSlots>> &
-    DrawerBaseState &
-    Pick<InlineDrawerProps, 'separator'> & {
-      animationDirection: PresenceDirection;
-    }
->;
+export type InlineDrawerState = ComponentState<InlineDrawerSlots> &
+  Required<DrawerBaseState & Pick<InlineDrawerProps, 'separator'>> & {
+    animationDirection: PresenceDirection;
+    open: boolean;
+    unmountOnClose: boolean;
+  };
+
+/**
+ * InlineDrawer props without design-specific props (`size`, `position`, `separator`, and `surfaceMotion`).
+ * Use with `useInlineDrawerBase_unstable` to build custom-styled InlineDrawer variants.
+ */
+export type InlineDrawerBaseProps = ComponentProps<Omit<InlineDrawerSlots, 'surfaceMotion'>> &
+  Omit<DrawerBaseProps, 'size' | 'position'>;
+
+/**
+ * InlineDrawer state without design-specific state fields (no `size`, `position`, `separator`,
+ * `surfaceMotion`, `animationDirection`, or deprecated `motion`).
+ */
+export type InlineDrawerBaseState = ComponentState<Omit<InlineDrawerSlots, 'surfaceMotion'>> & {
+  open: boolean;
+  unmountOnClose: boolean;
+};

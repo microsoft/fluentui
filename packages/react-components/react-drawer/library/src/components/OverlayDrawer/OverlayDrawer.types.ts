@@ -1,6 +1,6 @@
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 import type { DrawerMotionParams, OverlayDrawerSurfaceMotionParams } from '../../shared/drawerMotions';
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
@@ -57,3 +57,14 @@ export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> &
   Pick<OverlayDrawerProps, 'mountNode' | 'unmountOnClose'> & {
     hasMountNodeElement: boolean;
   };
+
+/**
+ * OverlayDrawer props without design-specific props (`size` and `position`).
+ * Use with `useOverlayDrawerBase_unstable` to build custom-styled OverlayDrawer variants.
+ */
+export type OverlayDrawerBaseProps = DistributiveOmit<OverlayDrawerProps, 'size' | 'position'>;
+
+/**
+ * OverlayDrawer state without design-specific state fields (`size`, `position`, and deprecated `motion`).
+ */
+export type OverlayDrawerBaseState = DistributiveOmit<OverlayDrawerState, 'size' | 'position' | 'motion'>;

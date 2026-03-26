@@ -7,13 +7,53 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 
 import { type DrawerMotionParams, InlineDrawerMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
-import type { InlineDrawerProps, InlineDrawerState, SurfaceMotionSlotProps } from './InlineDrawer.types';
+import type {
+  InlineDrawerBaseProps,
+  InlineDrawerBaseState,
+  InlineDrawerProps,
+  InlineDrawerState,
+  SurfaceMotionSlotProps,
+} from './InlineDrawer.types';
 
 const STATIC_MOTION = {
   active: true,
   canRender: true,
   ref: React.createRef<HTMLDivElement>(),
   type: 'idle' as const,
+};
+
+/**
+ * Create the base state required to render InlineDrawer without design-specific props.
+ *
+ * The returned state can be composed with `useInlineDrawer_unstable` or used directly
+ * to build custom-styled InlineDrawer variants.
+ *
+ * @param props - props from this instance of InlineDrawer (without size, position, separator, surfaceMotion)
+ * @param ref - reference to root HTMLElement of InlineDrawer
+ */
+export const useInlineDrawerBase_unstable = (
+  props: InlineDrawerBaseProps,
+  ref: React.Ref<HTMLElement>,
+): InlineDrawerBaseState => {
+  const { open = false, unmountOnClose = true } = props;
+
+  return {
+    components: {
+      root: 'div',
+    },
+
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ...props,
+        ref,
+        'aria-hidden': !unmountOnClose && !open ? true : undefined,
+      }),
+      { elementType: 'div' },
+    ),
+
+    open,
+    unmountOnClose,
+  };
 };
 
 /**
@@ -27,36 +67,31 @@ const STATIC_MOTION = {
  */
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
   const { size, position, open, unmountOnClose } = useDrawerDefaultProps(props);
-  const { separator = false, surfaceMotion } = props;
+  const { separator = false, surfaceMotion, ...baseProps } = props;
   const { dir } = useFluent();
   const [animationDirection, setAnimationDirection] = React.useState<PresenceDirection>(open ? 'enter' : 'exit');
 
+  const state = useInlineDrawerBase_unstable(baseProps as InlineDrawerBaseProps, ref);
+
   return {
+    ...state,
     components: {
-      root: 'div',
+      ...state.components,
       // casting from internal type that has required properties
       // to external type that only has optional properties
       // converting to unknown first as both Function component signatures are not compatible
       surfaceMotion: InlineDrawerMotion as unknown as React.FC<SurfaceMotionSlotProps>,
     },
 
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ...props,
-        ref,
-        'aria-hidden': !unmountOnClose && !open ? true : undefined,
-      }),
-      { elementType: 'div' },
-    ),
-
     open,
+    unmountOnClose,
     position,
     size,
     separator,
-    unmountOnClose,
     animationDirection,
+
     surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
-      elementType: InlineDrawerMotion,
+      elementType: InlineDrawerMotion as unknown as React.FC<SurfaceMotionSlotProps>,
       defaultProps: {
         position,
         size,
