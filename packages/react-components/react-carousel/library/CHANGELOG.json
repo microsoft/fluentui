@@ -2,6 +2,21 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:54 GMT",
+      "tag": "@fluentui/react-carousel_v9.9.5",
+      "version": "9.9.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-button to v9.9.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:42 GMT",
       "tag": "@fluentui/react-carousel_v9.9.4",
       "version": "9.9.4",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Card",
-  "packageName": "@fluentui/react-card",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

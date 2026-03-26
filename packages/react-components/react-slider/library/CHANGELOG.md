@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.6.0)
+
+Thu, 26 Mar 2026 08:12:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.5.16..@fluentui/react-slider_v9.6.0)
+
+### Minor changes
+
+- feat: add base hooks for Slider ([PR #35815](https://github.com/microsoft/fluentui/pull/35815) by dmytrokirpa@microsoft.com)
 
 ## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.5.16)
 
