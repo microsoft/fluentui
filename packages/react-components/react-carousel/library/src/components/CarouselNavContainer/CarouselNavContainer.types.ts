@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { CarouselAutoplayButton } from '../CarouselAutoplayButton/CarouselAutoplayButton';
 import { CarouselButtonProps } from '../CarouselButton/CarouselButton.types';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -39,3 +39,13 @@ export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots
  */
 export type CarouselNavContainerState = ComponentState<CarouselNavContainerSlots> &
   Pick<CarouselNavContainerProps, 'layout'>;
+
+/**
+ * CarouselNavContainer Props without design-only props.
+ */
+export type CarouselNavContainerBaseProps = DistributiveOmit<CarouselNavContainerProps, 'layout'>;
+
+/**
+ * State used in rendering CarouselNavContainer, without design-only state.
+ */
+export type CarouselNavContainerBaseState = DistributiveOmit<CarouselNavContainerState, 'layout'>;

@@ -6,11 +6,19 @@ export {
   useCarouselButtonStyles_unstable,
   useCarouselButton_unstable,
 } from './CarouselButton';
-export type { CarouselNavProps, CarouselNavSlots, CarouselNavState, NavButtonRenderFunction } from './CarouselNav';
+export type {
+  CarouselNavBaseProps,
+  CarouselNavBaseState,
+  CarouselNavProps,
+  CarouselNavSlots,
+  CarouselNavState,
+  NavButtonRenderFunction,
+} from './CarouselNav';
 export {
   CarouselNav,
   carouselNavClassNames,
   renderCarouselNav_unstable,
+  useCarouselNavBase_unstable,
   useCarouselNavStyles_unstable,
   useCarouselNav_unstable,
 } from './CarouselNav';
@@ -22,11 +30,19 @@ export {
   useCarouselNavButtonStyles_unstable,
   useCarouselNavButton_unstable,
 } from './CarouselNavButton';
-export type { CarouselProps, CarouselSlots, CarouselState, CarouselAnnouncerFunction } from './Carousel';
+export type {
+  CarouselAnnouncerFunction,
+  CarouselBaseProps,
+  CarouselBaseState,
+  CarouselProps,
+  CarouselSlots,
+  CarouselState,
+} from './Carousel';
 export {
   Carousel,
   carouselClassNames,
   renderCarousel_unstable,
+  useCarouselBase_unstable,
   useCarouselStyles_unstable,
   useCarousel_unstable,
 } from './Carousel';
@@ -71,6 +87,8 @@ export {
 } from './CarouselSlider';
 export type { CarouselSliderProps, CarouselSliderSlots, CarouselSliderState } from './CarouselSlider';
 export type {
+  CarouselNavContainerBaseProps,
+  CarouselNavContainerBaseState,
   CarouselNavContainerProps,
   CarouselNavContainerSlots,
   CarouselNavContainerState,
@@ -79,6 +97,7 @@ export {
   CarouselNavContainer,
   carouselNavContainerClassNames,
   renderCarouselNavContainer_unstable,
+  useCarouselNavContainerBase_unstable,
   useCarouselNavContainerStyles_unstable,
   useCarouselNavContainer_unstable,
 } from './CarouselNavContainer';

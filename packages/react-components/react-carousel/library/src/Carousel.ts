@@ -1,5 +1,7 @@
 export type {
   CarouselAnnouncerFunction,
+  CarouselBaseProps,
+  CarouselBaseState,
   CarouselMotion,
   CarouselProps,
   CarouselSlots,
@@ -12,6 +14,7 @@ export {
   Carousel,
   carouselClassNames,
   renderCarousel_unstable,
+  useCarouselBase_unstable,
   useCarouselStyles_unstable,
   useCarousel_unstable,
 } from './components/Carousel/index';

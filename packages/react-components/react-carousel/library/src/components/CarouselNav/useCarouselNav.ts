@@ -5,21 +5,24 @@ import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@flue
 import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
-import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
+import type {
+  CarouselNavBaseProps,
+  CarouselNavBaseState,
+  CarouselNavProps,
+  CarouselNavState,
+} from './CarouselNav.types';
 import { useControllableState } from '@fluentui/react-utilities';
 
 /**
- * Create the state required to render CarouselNav.
+ * Create the base state required to render CarouselNav, without design-only props.
  *
- * The returned state can be modified with hooks such as useCarouselNavStyles_unstable,
- * before being passed to renderCarouselNav_unstable.
- *
- * @param props - props from this instance of CarouselNav
+ * @param props - props from this instance of CarouselNav (without appearance)
  * @param ref - reference to root HTMLDivElement of CarouselNav
  */
-export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
-  const { appearance } = props;
-
+export const useCarouselNavBase_unstable = (
+  props: CarouselNavBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): CarouselNavBaseState => {
   const focusableGroupAttr = useArrowNavigationGroup({
     circular: false,
     axis: 'horizontal',
@@ -44,7 +47,6 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
 
   return {
     totalSlides,
-    appearance,
     renderNavButton: props.children,
     components: {
       root: 'div',
@@ -59,5 +61,23 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
       }),
       { elementType: 'div' },
     ),
+  };
+};
+
+/**
+ * Create the state required to render CarouselNav.
+ *
+ * The returned state can be modified with hooks such as useCarouselNavStyles_unstable,
+ * before being passed to renderCarouselNav_unstable.
+ *
+ * @param props - props from this instance of CarouselNav
+ * @param ref - reference to root HTMLDivElement of CarouselNav
+ */
+export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
+  const { appearance } = props;
+
+  return {
+    ...useCarouselNavBase_unstable(props, ref),
+    appearance,
   };
 };

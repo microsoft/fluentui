@@ -1,5 +1,7 @@
 export { CarouselNav } from './CarouselNav';
 export type {
+  CarouselNavBaseProps,
+  CarouselNavBaseState,
   CarouselNavContextValue,
   CarouselNavProps,
   CarouselNavSlots,
@@ -7,5 +9,5 @@ export type {
   NavButtonRenderFunction,
 } from './CarouselNav.types';
 export { renderCarouselNav_unstable } from './renderCarouselNav';
-export { useCarouselNav_unstable } from './useCarouselNav';
+export { useCarouselNavBase_unstable, useCarouselNav_unstable } from './useCarouselNav';
 export { carouselNavClassNames, useCarouselNavStyles_unstable } from './useCarouselNavStyles.styles';

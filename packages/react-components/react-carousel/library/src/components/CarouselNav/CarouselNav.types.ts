@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type CarouselNavSlots = {
@@ -33,3 +33,13 @@ export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, '
 } & Partial<Pick<CarouselNavState, 'appearance' | 'totalSlides'>>;
 
 export type CarouselNavContextValue = Pick<CarouselNavState, 'appearance'>;
+
+/**
+ * CarouselNav Props without design-only props.
+ */
+export type CarouselNavBaseProps = DistributiveOmit<CarouselNavProps, 'appearance'>;
+
+/**
+ * State used in rendering CarouselNav, without design-only state.
+ */
+export type CarouselNavBaseState = DistributiveOmit<CarouselNavState, 'appearance'>;
