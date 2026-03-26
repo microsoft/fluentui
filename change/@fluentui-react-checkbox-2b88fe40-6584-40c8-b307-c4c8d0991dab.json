@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "karesansui.u@gmail.com",
-  "dependentChangeType": "patch"
-}

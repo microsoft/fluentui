@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.6.16..@fluentui/react-textarea_v9.7.0)
+
+### Minor changes
+
+- feat: expose base hook and types for Textarea ([PR #35886](https://github.com/microsoft/fluentui/pull/35886) by dmytrokirpa@microsoft.com)
+- feat: add base hooks for Textarea ([PR #35822](https://github.com/microsoft/fluentui/pull/35822) by dmytrokirpa@microsoft.com)
 
 ## [9.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.6.16)
 

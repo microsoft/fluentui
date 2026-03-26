@@ -2,6 +2,27 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:50 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "d2d48440be57395a523dfd901621d99b58340ef4",
+            "comment": "Add circular and first-letter navigation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.12",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2026 07:57:16 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.3.2",
       "version": "0.3.2",
