@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot, EventHandler } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot, EventHandler } from '@fluentui/react-utilities';
 import type {
   TagSize,
   TagValue,
@@ -64,3 +64,13 @@ export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
     handleTagSelect?: TagSelectHandler<Value>;
     role?: React.AriaRole;
   };
+
+/**
+ * TagGroup Base Props - omits design-only props
+ */
+export type TagGroupBaseProps<Value = TagValue> = DistributiveOmit<TagGroupProps<Value>, 'appearance' | 'size'>;
+
+/**
+ * TagGroup Base State - omits design-only state
+ */
+export type TagGroupBaseState<Value = TagValue> = DistributiveOmit<TagGroupState<Value>, 'appearance' | 'size'>;

@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
@@ -50,3 +50,16 @@ export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlo
       Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>
   > &
   UseTagAvatarContextValuesOptions;
+
+/**
+ * InteractionTagPrimary Base Props - same as InteractionTagPrimaryProps (no design-only own props)
+ */
+export type InteractionTagPrimaryBaseProps = InteractionTagPrimaryProps;
+
+/**
+ * InteractionTagPrimary Base State - omits design-only state derived from context
+ */
+export type InteractionTagPrimaryBaseState = DistributiveOmit<
+  InteractionTagPrimaryState,
+  'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'
+>;
