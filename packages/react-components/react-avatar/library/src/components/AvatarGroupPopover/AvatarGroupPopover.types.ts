@@ -51,6 +51,8 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
   children: React.ReactNode;
 };
 
+export type AvatarGroupPopoverBaseProps = AvatarGroupPopoverProps;
+
 /**
  * State used in rendering AvatarGroupPopover
  */
@@ -60,3 +62,5 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
     layout: AvatarGroupProps['layout'];
     size: AvatarSize;
   };
+
+export type AvatarGroupPopoverBaseState = Omit<AvatarGroupPopoverState, 'size'>;
