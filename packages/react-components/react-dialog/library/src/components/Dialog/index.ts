@@ -1,5 +1,7 @@
 export { Dialog } from './Dialog';
 export type {
+  DialogBaseProps,
+  DialogBaseState,
   DialogContextValues,
   DialogModalType,
   DialogOpenChangeData,
@@ -11,5 +13,5 @@ export type {
   InternalDialogSlots,
 } from './Dialog.types';
 export { renderDialog_unstable } from './renderDialog';
-export { useDialog_unstable } from './useDialog';
+export { useDialog_unstable, useDialogBase_unstable } from './useDialog';
 export { useDialogContextValues_unstable } from './useDialogContextValues';

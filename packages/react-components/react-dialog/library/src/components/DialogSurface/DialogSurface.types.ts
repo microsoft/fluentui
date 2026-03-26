@@ -2,7 +2,7 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot, ExtractSlotProps } from '@fluentui/react-utilities';
 
-import { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
+import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 /**
  * Custom slot props for the backdrop slot.
@@ -40,7 +40,7 @@ export type DialogSurfaceSlots = {
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
-  backdropMotion: Slot<PresenceMotionSlotProps>;
+  backdropMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 /**
@@ -52,6 +52,25 @@ export type DialogSurfaceElement = HTMLElement;
  * DialogSurface Props
  */
 export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>> & Pick<PortalProps, 'mountNode'>;
+
+/**
+ * DialogSurface props without design-specific props (i.e. `backdropMotion`).
+ * Use with `useDialogSurfaceBase_unstable` to build custom-styled DialogSurface variants.
+ */
+export type DialogSurfaceBaseProps = ComponentProps<Omit<DialogSurfaceSlots, 'backdropMotion'>> &
+  Pick<PortalProps, 'mountNode'>;
+
+/**
+ * DialogSurface state without design-specific state fields (no `backdropMotion` or deprecated `transitionStatus`).
+ */
+export type DialogSurfaceBaseState = ComponentState<Omit<DialogSurfaceSlots, 'backdropMotion'>> &
+  Pick<DialogContextValue, 'isNestedDialog'> &
+  Pick<PortalProps, 'mountNode'> & {
+    open?: boolean;
+    unmountOnClose?: boolean;
+    treatBackdropAsNested: boolean;
+    backdropAppearance?: DialogBackdropSlotProps['appearance'];
+  };
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;

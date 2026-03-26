@@ -10,7 +10,7 @@ export type DialogSlots = {
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
-  surfaceMotion: Slot<PresenceMotionSlotProps>;
+  surfaceMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 export type InternalDialogSlots = {
@@ -118,6 +118,21 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 };
 
 export type DialogState = ComponentState<InternalDialogSlots> &
+  DialogContextValue & {
+    content: React.ReactNode;
+    trigger: React.ReactNode;
+  };
+
+/**
+ * Dialog props without design-specific props (i.e. `surfaceMotion`).
+ * Use with `useDialogBase_unstable` to build custom-styled Dialog variants.
+ */
+export type DialogBaseProps = ComponentProps<{}> & Omit<DialogProps, 'surfaceMotion'>;
+
+/**
+ * Dialog state without design-specific state fields (no `surfaceMotion`).
+ */
+export type DialogBaseState = ComponentState<Omit<InternalDialogSlots, 'surfaceMotion'>> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;

@@ -1,4 +1,6 @@
 export type {
+  DialogBaseProps,
+  DialogBaseState,
   DialogContextValues,
   DialogModalType,
   DialogOpenChangeData,
@@ -14,4 +16,5 @@ export {
   renderDialog_unstable,
   useDialogContextValues_unstable,
   useDialog_unstable,
+  useDialogBase_unstable,
 } from './components/Dialog/index';

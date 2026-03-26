@@ -1,4 +1,6 @@
 export type {
+  DialogActionsBaseProps,
+  DialogActionsBaseState,
   DialogActionsPosition,
   DialogActionsProps,
   DialogActionsSlots,
@@ -10,4 +12,5 @@ export {
   renderDialogActions_unstable,
   useDialogActionsStyles_unstable,
   useDialogActions_unstable,
+  useDialogActionsBase_unstable,
 } from './components/DialogActions/index';

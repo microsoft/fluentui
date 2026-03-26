@@ -7,13 +7,13 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DialogSurfaceProvider } from '../../contexts';
-import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
+import type { DialogSurfaceBaseState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
 
 /**
  * Render the final JSX of DialogSurface
  */
 export const renderDialogSurface_unstable = (
-  state: DialogSurfaceState,
+  state: DialogSurfaceBaseState,
   contextValues: DialogSurfaceContextValues,
 ): JSXElement => {
   assertSlots<DialogSurfaceSlots>(state);

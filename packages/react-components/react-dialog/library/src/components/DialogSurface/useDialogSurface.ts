@@ -16,21 +16,27 @@ import { useDialogContext_unstable, useDialogBackdropContext_unstable } from '..
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import { useMotionForwardedRef } from '@fluentui/react-motion';
-import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import type {
+  DialogSurfaceBaseProps,
+  DialogSurfaceBaseState,
+  DialogSurfaceElement,
+  DialogSurfaceProps,
+  DialogSurfaceState,
+} from './DialogSurface.types';
 
 /**
- * Create the state required to render DialogSurface.
+ * Create the base state required to render DialogSurface without design-specific props.
  *
- * The returned state can be modified with hooks such as useDialogSurfaceStyles_unstable,
- * before being passed to renderDialogSurface_unstable.
+ * The returned state can be composed with `useDialogSurface_unstable` or used directly
+ * to build custom-styled DialogSurface variants.
  *
- * @param props - props from this instance of DialogSurface
+ * @param props - props from this instance of DialogSurface (without backdropMotion)
  * @param ref - reference to root HTMLElement of DialogSurface
  */
-export const useDialogSurface_unstable = (
-  props: DialogSurfaceProps,
+export const useDialogSurfaceBase_unstable = (
+  props: DialogSurfaceBaseProps,
   ref: React.Ref<DialogSurfaceElement>,
-): DialogSurfaceState => {
+): DialogSurfaceBaseState => {
   const contextRef = useMotionForwardedRef();
 
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
@@ -110,7 +116,6 @@ export const useDialogSurface_unstable = (
     components: {
       backdrop: 'div',
       root: 'div',
-      backdropMotion: DialogBackdropMotion,
     },
     open,
     backdrop,
@@ -136,6 +141,33 @@ export const useDialogSurface_unstable = (
       }),
       { elementType: 'div' },
     ),
+  };
+};
+
+/**
+ * Create the state required to render DialogSurface.
+ *
+ * The returned state can be modified with hooks such as useDialogSurfaceStyles_unstable,
+ * before being passed to renderDialogSurface_unstable.
+ *
+ * @param props - props from this instance of DialogSurface
+ * @param ref - reference to root HTMLElement of DialogSurface
+ */
+export const useDialogSurface_unstable = (
+  props: DialogSurfaceProps,
+  ref: React.Ref<DialogSurfaceElement>,
+): DialogSurfaceState => {
+  const state = useDialogSurfaceBase_unstable(props, ref);
+  const open = useDialogContext_unstable(ctx => ctx.open);
+  const unmountOnClose = useDialogContext_unstable(ctx => ctx.unmountOnClose);
+
+  return {
+    ...state,
+    components: {
+      backdrop: 'div',
+      root: 'div',
+      backdropMotion: DialogBackdropMotion,
+    },
     backdropMotion: presenceMotionSlot(props.backdropMotion, {
       elementType: DialogBackdropMotion,
       defaultProps: {

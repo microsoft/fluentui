@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type DialogActionsSlots = {
   root: Slot<'div'>;
@@ -28,3 +28,14 @@ export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
  */
 export type DialogActionsState = ComponentState<DialogActionsSlots> &
   Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
+
+/**
+ * DialogActions props without design-specific props (`position` and `fluid`).
+ * Use with `useDialogActionsBase_unstable` to build custom-styled DialogActions variants.
+ */
+export type DialogActionsBaseProps = DistributiveOmit<DialogActionsProps, 'position' | 'fluid'>;
+
+/**
+ * DialogActions state without design-specific state fields (no `position` or `fluid`).
+ */
+export type DialogActionsBaseState = ComponentState<DialogActionsSlots>;

@@ -10,17 +10,17 @@ import { useControllableState, useEventCallback, useId } from '@fluentui/react-u
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 import { DialogSurfaceMotion } from '../DialogSurfaceMotion';
-import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
+import type { DialogBaseProps, DialogBaseState, DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
 
 /**
- * Create the state required to render Dialog.
+ * Create the base state required to render Dialog without design-specific props.
  *
- * The returned state can be modified with hooks such as useDialogStyles_unstable,
- * before being passed to renderDialog_unstable.
+ * The returned state can be composed with `useDialog_unstable` or used directly
+ * to build custom-styled Dialog variants.
  *
- * @param props - props from this instance of Dialog
+ * @param props - props from this instance of Dialog (without surfaceMotion)
  */
-export const useDialog_unstable = (props: DialogProps): DialogState => {
+export const useDialogBase_unstable = (props: DialogBaseProps): DialogBaseState => {
   const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false, unmountOnClose = true } = props;
 
   const dialogTitleId = useId('dialog-title-');
@@ -53,9 +53,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   const isNestedDialog = useHasParentContext(DialogContext);
 
   return {
-    components: {
-      surfaceMotion: DialogSurfaceMotion,
-    },
+    components: {},
     inertTrapFocus,
     open,
     modalType,
@@ -68,10 +66,30 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     dialogRef,
     modalAttributes,
     triggerAttributes,
+  };
+};
+
+/**
+ * Create the state required to render Dialog.
+ *
+ * The returned state can be modified with hooks such as useDialogStyles_unstable,
+ * before being passed to renderDialog_unstable.
+ *
+ * @param props - props from this instance of Dialog
+ */
+export const useDialog_unstable = (props: DialogProps): DialogState => {
+  const state = useDialogBase_unstable(props);
+  const unmountOnClose = props.unmountOnClose ?? true;
+
+  return {
+    ...state,
+    components: {
+      surfaceMotion: DialogSurfaceMotion,
+    },
     surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
       elementType: DialogSurfaceMotion,
       defaultProps: {
-        visible: open,
+        visible: state.open,
         appear: unmountOnClose,
         unmountOnExit: unmountOnClose,
       },

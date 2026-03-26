@@ -1,5 +1,13 @@
-export { Dialog, renderDialog_unstable, useDialog_unstable, useDialogContextValues_unstable } from './Dialog';
+export {
+  Dialog,
+  renderDialog_unstable,
+  useDialog_unstable,
+  useDialogBase_unstable,
+  useDialogContextValues_unstable,
+} from './Dialog';
 export type {
+  DialogBaseProps,
+  DialogBaseState,
   DialogContextValues,
   DialogSlots,
   DialogProps,
@@ -22,10 +30,13 @@ export {
   DialogActions,
   dialogActionsClassNames,
   useDialogActions_unstable,
+  useDialogActionsBase_unstable,
   useDialogActionsStyles_unstable,
   renderDialogActions_unstable,
 } from './DialogActions';
 export type {
+  DialogActionsBaseProps,
+  DialogActionsBaseState,
   DialogActionsProps,
   DialogActionsSlots,
   DialogActionsState,
@@ -54,12 +65,15 @@ export {
   DialogSurface,
   dialogSurfaceClassNames,
   useDialogSurface_unstable,
+  useDialogSurfaceBase_unstable,
   useDialogSurfaceStyles_unstable,
   useDialogSurfaceContextValues_unstable,
   renderDialogSurface_unstable,
 } from './DialogSurface';
 export type {
   DialogBackdropSlotProps,
+  DialogSurfaceBaseProps,
+  DialogSurfaceBaseState,
   DialogSurfaceProps,
   DialogSurfaceSlots,
   DialogSurfaceState,

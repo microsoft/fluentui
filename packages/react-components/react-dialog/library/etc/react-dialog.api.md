@@ -9,6 +9,7 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -34,6 +35,12 @@ export const DIALOG_MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 3
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
+
+// @public
+export type DialogActionsBaseProps = DistributiveOmit<DialogActionsProps, 'position' | 'fluid'>;
+
+// @public
+export type DialogActionsBaseState = ComponentState<DialogActionsSlots>;
 
 // @public (undocumented)
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
@@ -65,6 +72,15 @@ export const DialogBackdropProvider: React_2.Provider<boolean | undefined>;
 export type DialogBackdropSlotProps = ExtractSlotProps<Slot<'div'> & {
     appearance?: 'dimmed' | 'transparent';
 }>;
+
+// @public
+export type DialogBaseProps = ComponentProps<{}> & Omit<DialogProps, 'surfaceMotion'>;
+
+// @public
+export type DialogBaseState = ComponentState<Omit<InternalDialogSlots, 'surfaceMotion'>> & DialogContextValue & {
+    content: React_2.ReactNode;
+    trigger: React_2.ReactNode;
+};
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -158,7 +174,7 @@ export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & 
 
 // @public (undocumented)
 export type DialogSlots = {
-    surfaceMotion: Slot<PresenceMotionSlotProps>;
+    surfaceMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public (undocumented)
@@ -169,6 +185,17 @@ export type DialogState = ComponentState<InternalDialogSlots> & DialogContextVal
 
 // @public
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
+
+// @public
+export type DialogSurfaceBaseProps = ComponentProps<Omit<DialogSurfaceSlots, 'backdropMotion'>> & Pick<PortalProps, 'mountNode'>;
+
+// @public
+export type DialogSurfaceBaseState = ComponentState<Omit<DialogSurfaceSlots, 'backdropMotion'>> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
+    open?: boolean;
+    unmountOnClose?: boolean;
+    treatBackdropAsNested: boolean;
+    backdropAppearance?: DialogBackdropSlotProps['appearance'];
+};
 
 // @public (undocumented)
 export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>>;
@@ -194,7 +221,7 @@ export const DialogSurfaceProvider: React_2.Provider<boolean | undefined>;
 export type DialogSurfaceSlots = {
     backdrop?: Slot<DialogBackdropSlotProps>;
     root: Slot<'div'>;
-    backdropMotion: Slot<PresenceMotionSlotProps>;
+    backdropMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public
@@ -250,7 +277,7 @@ export type DialogTriggerState = {
 export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSXElement;
 
 // @public
-export const renderDialogActions_unstable: (state: DialogActionsState) => JSXElement;
+export const renderDialogActions_unstable: (state: DialogActionsBaseState) => JSXElement;
 
 // @public
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSXElement;
@@ -259,7 +286,7 @@ export const renderDialogBody_unstable: (state: DialogBodyState) => JSXElement;
 export const renderDialogContent_unstable: (state: DialogContentState) => JSXElement;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSXElement;
+export const renderDialogSurface_unstable: (state: DialogSurfaceBaseState, contextValues: DialogSurfaceContextValues) => JSXElement;
 
 // @public
 export const renderDialogTitle_unstable: (state: DialogTitleState) => JSXElement;
@@ -274,10 +301,16 @@ export const useDialog_unstable: (props: DialogProps) => DialogState;
 export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLElement>) => DialogActionsState;
 
 // @public
+export const useDialogActionsBase_unstable: (props: DialogActionsBaseProps, ref: React_2.Ref<HTMLElement>) => DialogActionsBaseState;
+
+// @public
 export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
 
 // @public (undocumented)
 export const useDialogBackdropContext_unstable: () => DialogBackdropContextValue | undefined;
+
+// @public
+export const useDialogBase_unstable: (props: DialogBaseProps) => DialogBaseState;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;
@@ -299,6 +332,9 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
 
 // @public
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
+
+// @public
+export const useDialogSurfaceBase_unstable: (props: DialogSurfaceBaseProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceBaseState;
 
 // @public (undocumented)
 export const useDialogSurfaceContext_unstable: () => DialogSurfaceContextValue;

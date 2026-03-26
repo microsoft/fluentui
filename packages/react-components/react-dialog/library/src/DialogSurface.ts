@@ -1,5 +1,7 @@
 export type {
   DialogBackdropSlotProps,
+  DialogSurfaceBaseProps,
+  DialogSurfaceBaseState,
   DialogSurfaceContextValues,
   DialogSurfaceElement,
   DialogSurfaceProps,
@@ -13,4 +15,5 @@ export {
   useDialogSurfaceContextValues_unstable,
   useDialogSurfaceStyles_unstable,
   useDialogSurface_unstable,
+  useDialogSurfaceBase_unstable,
 } from './components/DialogSurface/index';
