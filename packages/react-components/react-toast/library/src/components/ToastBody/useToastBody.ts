@@ -2,21 +2,20 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ToastBodyProps, ToastBodyState } from './ToastBody.types';
+import type { ToastBodyBaseProps, ToastBodyBaseState, ToastBodyProps, ToastBodyState } from './ToastBody.types';
 import { useToastContainerContext } from '../../contexts/toastContainerContext';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
 /**
- * Create the state required to render ToastBody.
- *
- * The returned state can be modified with hooks such as useToastBodyStyles_unstable,
- * before being passed to renderToastBody_unstable.
+ * Create the base state required to render ToastBody, without design-only props.
  *
  * @param props - props from this instance of ToastBody
  * @param ref - reference to root HTMLElement of ToastBody
  */
-export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTMLElement>): ToastBodyState => {
-  const backgroundAppearance = useBackgroundAppearance();
+export const useToastBodyBase_unstable = (
+  props: ToastBodyBaseProps,
+  ref: React.Ref<HTMLElement>,
+): ToastBodyBaseState => {
   const { bodyId } = useToastContainerContext();
   return {
     components: {
@@ -35,6 +34,22 @@ export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTML
       }),
       { elementType: 'div' },
     ),
+  };
+};
+
+/**
+ * Create the state required to render ToastBody.
+ *
+ * The returned state can be modified with hooks such as useToastBodyStyles_unstable,
+ * before being passed to renderToastBody_unstable.
+ *
+ * @param props - props from this instance of ToastBody
+ * @param ref - reference to root HTMLElement of ToastBody
+ */
+export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTMLElement>): ToastBodyState => {
+  const backgroundAppearance = useBackgroundAppearance();
+  return {
+    ...useToastBodyBase_unstable(props, ref),
     backgroundAppearance,
   };
 };

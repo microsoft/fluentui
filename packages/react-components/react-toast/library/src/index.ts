@@ -11,26 +11,47 @@ export {
   toasterClassNames,
 } from './Toaster';
 export type { ToasterProps, ToasterState, ToasterSlots } from './Toaster';
-export { Toast, useToastStyles_unstable, useToast_unstable, renderToast_unstable, toastClassNames } from './Toast';
-export type { ToastProps, ToastState, ToastSlots } from './Toast';
+export {
+  Toast,
+  useToastStyles_unstable,
+  useToastBase_unstable,
+  useToast_unstable,
+  renderToast_unstable,
+  toastClassNames,
+} from './Toast';
+export type { ToastBaseProps, ToastBaseState, ToastProps, ToastState, ToastSlots } from './Toast';
 
 export {
   ToastTitle,
   useToastTitleStyles_unstable,
+  useToastTitleBase_unstable,
   useToastTitle_unstable,
   renderToastTitle_unstable,
   toastTitleClassNames,
 } from './ToastTitle';
-export type { ToastTitleProps, ToastTitleState, ToastTitleSlots } from './ToastTitle';
+export type {
+  ToastTitleBaseProps,
+  ToastTitleBaseState,
+  ToastTitleProps,
+  ToastTitleState,
+  ToastTitleSlots,
+} from './ToastTitle';
 
 export {
   ToastBody,
   useToastBodyStyles_unstable,
+  useToastBodyBase_unstable,
   useToastBody_unstable,
   renderToastBody_unstable,
   toastBodyClassNames,
 } from './ToastBody';
-export type { ToastBodyProps, ToastBodyState, ToastBodySlots } from './ToastBody';
+export type {
+  ToastBodyBaseProps,
+  ToastBodyBaseState,
+  ToastBodyProps,
+  ToastBodyState,
+  ToastBodySlots,
+} from './ToastBody';
 
 export {
   ToastFooter,

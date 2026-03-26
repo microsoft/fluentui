@@ -2,19 +2,16 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ToastProps, ToastState } from './Toast.types';
+import type { ToastBaseProps, ToastBaseState, ToastProps, ToastState } from './Toast.types';
 import { useToastContainerContext } from '../../contexts/toastContainerContext';
 
 /**
- * Create the state required to render Toast.
+ * Create the base state required to render Toast, without design-only props.
  *
- * The returned state can be modified with hooks such as useToastStyles_unstable,
- * before being passed to renderToast_unstable.
- *
- * @param props - props from this instance of Toast
+ * @param props - props from this instance of Toast (without appearance)
  * @param ref - reference to root HTMLElement of Toast
  */
-export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
+export const useToastBase_unstable = (props: ToastBaseProps, ref: React.Ref<HTMLElement>): ToastBaseState => {
   const { intent } = useToastContainerContext();
 
   return {
@@ -31,7 +28,22 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
       }),
       { elementType: 'div' },
     ),
-    backgroundAppearance: props.appearance,
     intent,
+  };
+};
+
+/**
+ * Create the state required to render Toast.
+ *
+ * The returned state can be modified with hooks such as useToastStyles_unstable,
+ * before being passed to renderToast_unstable.
+ *
+ * @param props - props from this instance of Toast
+ * @param ref - reference to root HTMLElement of Toast
+ */
+export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
+  return {
+    ...useToastBase_unstable(props, ref),
+    backgroundAppearance: props.appearance,
   };
 };
