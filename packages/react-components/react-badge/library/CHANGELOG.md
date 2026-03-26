@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.5.0)
+
+Thu, 26 Mar 2026 08:12:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.4.15..@fluentui/react-badge_v9.5.0)
+
+### Minor changes
+
+- feat: add base hooks for Badge ([PR #35811](https://github.com/microsoft/fluentui/pull/35811) by dmytrokirpa@microsoft.com)
 
 ## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.4.15)
 
