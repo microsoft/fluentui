@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { type PopoverContextValue } from '@fluentui/react-popover';
 
 import { type CarouselContextValue } from './Carousel/CarouselContext';
@@ -29,3 +29,7 @@ export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopov
 export type TeachingPopoverCarouselContextValues = {
   carousel: CarouselContextValue;
 };
+
+export type TeachingPopoverCarouselBaseProps = TeachingPopoverCarouselProps;
+
+export type TeachingPopoverCarouselBaseState = DistributiveOmit<TeachingPopoverCarouselState, 'appearance'>;

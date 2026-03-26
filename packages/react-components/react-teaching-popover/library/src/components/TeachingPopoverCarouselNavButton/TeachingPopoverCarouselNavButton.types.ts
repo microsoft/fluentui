@@ -1,6 +1,6 @@
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { PopoverContextValue } from '@fluentui/react-popover';
-import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverCarouselNavButtonSlots = {
   /**
@@ -23,3 +23,10 @@ export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopov
    */
   isSelected?: boolean;
 } & Pick<PopoverContextValue, 'appearance'>;
+
+export type TeachingPopoverCarouselNavButtonBaseProps = TeachingPopoverCarouselNavButtonProps;
+
+export type TeachingPopoverCarouselNavButtonBaseState = DistributiveOmit<
+  TeachingPopoverCarouselNavButtonState,
+  'appearance'
+>;

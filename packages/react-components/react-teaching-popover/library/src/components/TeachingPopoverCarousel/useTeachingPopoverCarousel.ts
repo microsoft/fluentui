@@ -2,14 +2,19 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
+import type {
+  TeachingPopoverCarouselBaseProps,
+  TeachingPopoverCarouselBaseState,
+  TeachingPopoverCarouselProps,
+  TeachingPopoverCarouselState,
+} from './TeachingPopoverCarousel.types';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useCarousel_unstable } from './Carousel/Carousel';
 
-export const useTeachingPopoverCarousel_unstable = (
-  props: TeachingPopoverCarouselProps,
+export const useTeachingPopoverCarouselBase_unstable = (
+  props: TeachingPopoverCarouselBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselState => {
+): TeachingPopoverCarouselBaseState => {
   const toggleOpen = usePopoverContext_unstable(c => c.toggleOpen);
   const handleFinish: TeachingPopoverCarouselProps['onFinish'] = useEventCallback((event, data) => {
     props.onFinish?.(event, data);
@@ -24,9 +29,7 @@ export const useTeachingPopoverCarousel_unstable = (
     onFinish: handleFinish,
   });
 
-  const appearance = usePopoverContext_unstable(context => context.appearance);
   return {
-    appearance,
     components: {
       root: 'div',
     },
@@ -38,5 +41,18 @@ export const useTeachingPopoverCarousel_unstable = (
       { elementType: 'div' },
     ),
     ...carousel,
+  };
+};
+
+export const useTeachingPopoverCarousel_unstable = (
+  props: TeachingPopoverCarouselProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverCarouselState => {
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const baseState = useTeachingPopoverCarouselBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    appearance,
   };
 };

@@ -2,16 +2,18 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type {
+  TeachingPopoverCarouselFooterBaseProps,
+  TeachingPopoverCarouselFooterBaseState,
   TeachingPopoverCarouselFooterProps,
   TeachingPopoverCarouselFooterState,
 } from './TeachingPopoverCarouselFooter.types';
 import { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
 
-export const useTeachingPopoverCarouselFooter_unstable = (
-  props: TeachingPopoverCarouselFooterProps,
+export const useTeachingPopoverCarouselFooterBase_unstable = (
+  props: TeachingPopoverCarouselFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselFooterState => {
-  const { layout = 'centered', initialStepText, finalStepText } = props;
+): TeachingPopoverCarouselFooterBaseState => {
+  const { initialStepText, finalStepText } = props;
 
   const previous = slot.optional(props.previous, {
     defaultProps: {
@@ -31,7 +33,6 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   });
 
   return {
-    layout,
     components: {
       root: 'div',
       next: TeachingPopoverCarouselFooterButton,
@@ -46,5 +47,18 @@ export const useTeachingPopoverCarouselFooter_unstable = (
     ),
     previous,
     next,
+  };
+};
+
+export const useTeachingPopoverCarouselFooter_unstable = (
+  props: TeachingPopoverCarouselFooterProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverCarouselFooterState => {
+  const layout = props.layout ?? 'centered';
+  const baseState = useTeachingPopoverCarouselFooterBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    layout,
   };
 };
