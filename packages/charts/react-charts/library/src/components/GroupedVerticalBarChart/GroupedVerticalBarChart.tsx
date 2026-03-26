@@ -986,7 +986,14 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
     setCalloutLegend(pointData.legend);
     setDataForHoverCard(pointData.data);
-    setColor(pointData.color);
+
+    // Use gradient colors from legend color map when gradients are enabled
+    const calloutColor =
+      props.enableGradient && _legendColorMap[pointData.legend]
+        ? _legendColorMap[pointData.legend][0]
+        : pointData.color;
+    setColor(calloutColor);
+
     setXCalloutValue(pointData.xAxisCalloutData ?? groupData.xAxisPoint);
     setYCalloutValue(pointData.yAxisCalloutData);
     setCallOutAccessibilityData(
