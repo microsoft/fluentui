@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Skeleton",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

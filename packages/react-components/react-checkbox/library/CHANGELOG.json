@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:49 GMT",
+      "tag": "@fluentui/react-checkbox_v9.5.17",
+      "version": "9.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "karesansui.u@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "609f8c5062cfbd19c6d7e8c56e8d2bb17c9d4c8a",
+            "comment": "fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-checkbox_v9.5.16",
       "version": "9.5.16",

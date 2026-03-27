@@ -2,6 +2,21 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:52 GMT",
+      "tag": "@fluentui/react-slider_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "35e19d05bde0efa931508f861e9afd17d70f2c8e",
+            "comment": "feat: add base hooks for Slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-slider_v9.5.16",
       "version": "9.5.16",

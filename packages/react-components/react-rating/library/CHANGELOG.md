@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.4.0)
+
+Thu, 26 Mar 2026 08:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.3.15..@fluentui/react-rating_v9.4.0)
+
+### Minor changes
+
+- feat: add base hooks for Rating ([PR #35823](https://github.com/microsoft/fluentui/pull/35823) by dmytrokirpa@microsoft.com)
 
 ## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.3.15)
 
