@@ -125,8 +125,20 @@ const curveLinearToSoftClose = `linear(0, .774 30%, .7977 31%, .8144 32%, .8268 
 // http://localhost:3000/#head_type=power-back&tail_type=bezier&join=.403&head_overshoot=10&head_exponent=2.5&tail_bezier_x1=.06&tail_bezier_y1=.51&tail_bezier_x2=.24&tail_bezier_y2=.53&duration=2000
 const curveBackToSoftClose1 = `linear(0, -.002844 1%, -.01341 3%, -.03805 7%, -.04837 9%, -.05577 11%, -.05807 12%, -.05931 13%, -.0594 14%, -.05823 15%, -.05573 16%, -.05181 17%, -.0464 18%, -.03943 19%, -.03082 20%, -.0205 21%, -.008402 22%, .00553 23%, .02136 24%, .03916 25%, .05897 26%, .08086 27%, .1049 28%, .1311 29%, .1596 30%, .1903 31%, .2234 32%, .2589 33%, .2968 34%, .3373 35%, .3802 36%, .4258 37%, .474 38%, .5249 39%, .5785 40%, .629 41%, .663 42%, .6876 43%, .7067 44%, .7222 45%, .7352 46%, .7465 47%, .7565 48%, .7736 50%, .7881 52%, .8066 55%, .8228 58%, .8422 62%, .8686 68%, .975 94%, 1)`;
 
-// http://localhost:3000/#head_type=power-back&tail_type=bezier&join=.257&head_overshoot=0&head_exponent=1.5&tail_bezier_x1=.03&tail_bezier_y1=.31&tail_bezier_x2=.08&tail_bezier_y2=.48&duration=1200
-const curvePower1_5ToSoftClose = `http://localhost:3000/#head_type=power-back&tail_type=bezier&join=.257&head_overshoot=0&head_exponent=1.5&tail_bezier_x1=.03&tail_bezier_y1=.31&tail_bezier_x2=.08&tail_bezier_y2=.48&duration=1200`;
+// https://robertpenner.com/fuse/#head_type=power-back&tail_type=bezier&join=.257&head_exponent=1.5&head_overshoot=0&tail_bezier_x1=.03&tail_bezier_y1=.31&tail_bezier_x2=.08&tail_bezier_y2=.48&duration=1200&show_heatmap=true&show_grid=false&paused=true
+const curvePower1_5ToSoftClose = `linear(0, .005362 1%, .01517 2%, .02786 3%, .04289 4%, .05995 5%, .0788 6%, .0993 7%, .1213 8%, .1448 9%, .1696 10%, .1956 11%, .2229 12%, .2513 13%, .2809 14%, .3115 15%, .3432 16%, .4095 18%, .4796 20%, .5533 22%, .6304 24%, .7104 26%, .7379 27%, .7549 28%, .7671 29%, .777 30%, .7853 31%, .7991 33%, .8106 35%, .8253 38%, .8421 42%, .8602 47%, .8797 53%, .9031 61%, .93 71%, .9624 84%, 1)`;
+
+// https://robertpenner.com/fuse/#head_type=power-back&tail_type=bezier&join=.16&head_exponent=1.06&head_overshoot=0&tail_bezier_x1=.03&tail_bezier_y1=.31&tail_bezier_x2=.08&tail_bezier_y2=.48&duration=1200&show_heatmap=true&show_grid=false
+const curvePower1_5ToSoftClose2 = `linear(0, .04106 1%, .08561 2%, .1785 4%, .2743 6%, .3721 8%, .5716 12%, .6081 13%, .6316 14%, .6488 15%, .6625 16%, .6741 17%, .6843 18%, .7016 20%, .7164 22%, .7356 25%, .7523 28%, .7722 32%, .7945 37%, .8187 43%, .8447 50%, .8757 59%, .9111 70%, .9507 83%, .9972 99%, 1)`;
+
+// https://robertpenner.com/fuse/#head_type=power-back&tail_type=bezier&join=.16&head_exponent=1.06&head_overshoot=0&tail_bezier_x1=.02&tail_bezier_y1=.48&tail_bezier_x2=.08&tail_bezier_y2=.48&duration=1200&show_heatmap=true
+const curveLinearToSoftClose2 = `linear(0, .04212 1%, .08781 2%, .1831 4%, .2814 6%, .3817 8%, .535 11%, .6908 14%, .7959 16%, .8297 17%, .8446 18%, .854 19%, .861 20%, .8713 22%, .879 24%, .888 27%, .8975 31%, .9093 37%, .9257 47%, .9532 66%, 1)`;
+
+// https://robertpenner.com/fuse/#head_type=power-back&tail_type=bezier&join=.226&head_exponent=1.5&head_overshoot=0&tail_bezier_x1=.04&tail_bezier_y1=.63&tail_bezier_x2=.24&tail_bezier_y2=.53&duration=1500
+const curvePower1_5ToSoftClose3 = `linear(0, .005601 1%, .01584 2%, .0291 3%, .04481 4%, .06262 5%, .08231 6%, .1037 7%, .1267 8%, .1512 9%, .1771 10%, .2043 11%, .2328 12%, .2625 13%, .2934 14%, .3254 15%, .3584 16%, .3926 17%, .4638 19%, .539 21%, .6169 23%, .6466 24%, .6689 25%, .6866 26%, .7013 27%, .7137 28%, .7246 29%, .7428 31%, .7579 33%, .7709 35%, .7876 38%, .8022 41%, .8194 45%, .8387 50%, .8633 57%, .9024 69%, .9968 99%, 1)`;
+
+// https://robertpenner.com/fuse/#head_type=power-back&tail_type=bezier&join=.25&head_exponent=1.4&head_overshoot=0&tail_bezier_x1=.07&tail_bezier_y1=.49&tail_bezier_x2=0&tail_bezier_y2=.27&duration=1500&show_heatmap=true
+const curvePower1_4ToSoftClose = `linear(0, .006908 1%, .01823 2%, .03216 3%, .04811 4%, .06575 5%, .08487 6%, .1053 7%, .127 8%, .1497 9%, .1983 11%, .2505 13%, .3061 15%, .3647 17%, .4262 19%, .4903 21%, .5569 23%, .6259 25%, .6614 26%, .6937 27%, .7168 28%, .7321 29%, .7428 30%, .7511 31%, .7637 33%, .7737 35%, .7862 38%, .8078 44%, .8877 68%, .9393 83%, .9964 99%, 1)`;
 
 // --- Custom motion for Drawer ---
 
@@ -144,8 +156,11 @@ const CustomSlideMotion = createPresenceComponent(() => {
     exit: {
       // Slide out to the left
       keyframes: [{ translate: '0 0' }, { translate: '-100% 0' }],
-      duration: motionTokens.durationUltraSlow * 4,
-      easing: curveQuadraticToSoftClose,
+      duration: motionTokens.durationUltraSlow * 5,
+      // easing: curveQuadraticToSoftClose,
+      // easing: curvePower1_5ToSoftClose3,
+      easing: curvePower1_4ToSoftClose,
+      // easing: curvePower1_5ToSoftClose2,
       // easing: curveLinearToSoftClose,
       // easing: curveBackToSoftClose1,
     },
@@ -333,8 +348,8 @@ const DrawerExample = () => {
     <div className={classes.section}>
       <p className={classes.sectionTitle}>Drawer</p>
       <p className={classes.sectionDescription}>
-        Override Drawer&apos;s <code>surfaceMotion</code> with a custom animation. This example replaces the default
-        slide with a slide that overshoots.
+        Override Drawer&apos;s <code>surfaceMotion</code> with a custom animation. This custom motion slides in with an
+        overshoot, and exits like a soft-close drawer (hydraulic).
       </p>
 
       <div className={classes.drawerContainer}>
@@ -343,7 +358,7 @@ const DrawerExample = () => {
           // surfaceMotion={{ children: (_, props) => <SoftCloseDrawerMotion {...props} /> }}
           separator
           open={isOpen}
-          style={{ backgroundColor: tokens.colorNeutralBackground4, marginLeft: '-5%', paddingLeft: '5%' }}
+          style={{ backgroundColor: tokens.colorNeutralBackground6, marginLeft: '-5%', paddingLeft: '5%' }}
         >
           <DrawerHeader>
             <DrawerHeaderTitle
