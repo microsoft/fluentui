@@ -34,6 +34,7 @@ export const useAvatarGroupItem_unstable = (
     size,
     ...state,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,
       avatar: Avatar,
     },

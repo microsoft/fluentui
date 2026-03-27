@@ -49,6 +49,7 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     ...state,
 
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,
       root: Popover,
       popoverSurface: PopoverSurface,
