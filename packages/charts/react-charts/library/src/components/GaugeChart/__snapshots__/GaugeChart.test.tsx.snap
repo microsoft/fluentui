@@ -20,6 +20,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -307,6 +308,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -500,6 +502,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -693,6 +696,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -993,6 +997,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -1186,6 +1191,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -1379,6 +1385,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -1679,6 +1686,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -1979,6 +1987,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -2194,6 +2203,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -2387,6 +2397,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -2580,6 +2591,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
         role="region"
         width="0"
       >
+        <defs />
         <g
           transform="translate(0, -48)"
         >
@@ -2778,6 +2790,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -48)"
             >
@@ -2968,6 +2981,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -3198,6 +3212,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -16)"
             >
@@ -3334,6 +3349,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -16)"
           >
@@ -3510,6 +3526,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -48)"
             >
@@ -3720,6 +3737,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -3970,6 +3988,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -48)"
             >
@@ -4149,6 +4168,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -4368,6 +4388,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -48)"
             >
@@ -4619,6 +4640,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -4891,6 +4913,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -48)"
             >
@@ -5101,6 +5124,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -48)"
           >
@@ -5351,6 +5375,7 @@ Object {
             role="region"
             width="0"
           >
+            <defs />
             <g
               transform="translate(0, -68)"
             >
@@ -5594,6 +5619,7 @@ Object {
           role="region"
           width="0"
         >
+          <defs />
           <g
             transform="translate(0, -68)"
           >
@@ -5853,6 +5879,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         role="region"
         width="300"
       >
+        <defs />
         <g
           transform="translate(150, 252)"
         >
@@ -6046,6 +6073,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         role="region"
         width="300"
       >
+        <defs />
         <g
           transform="translate(150, 252)"
         >

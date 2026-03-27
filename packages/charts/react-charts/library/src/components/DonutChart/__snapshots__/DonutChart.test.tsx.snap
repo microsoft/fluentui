@@ -2067,28 +2067,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_35_first20000"
             opacity="1"
             role="img"
-            style="fill: transparent; cursor: default;"
+            style="fill: #4760D5; cursor: default;"
             tabindex="0"
           />
-          <clippath
-            id="Arc_clip_r_38_#4760D5_#637CEF"
-          >
-            <path
-              d="M0,0Z"
-            />
-          </clippath>
-          <foreignobject
-            clip-path="url(#Arc_clip_r_38_#4760D5_#637CEF)"
-            height="100%"
-            width="100%"
-            x="-50%"
-            y="-50%"
-          >
-            <div
-              class="fui-donut-arc__root"
-              style="width: 100%; height: 100%; background: conic-gradient( from 0rad, #4760D5, #637CEF 1.2167664052268437rad ); opacity: 1;"
-            />
-          </foreignobject>
         </g>
         <g>
           <path
@@ -2099,28 +2080,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_35_second39000"
             opacity="1"
             role="img"
-            style="fill: transparent; cursor: default;"
+            style="fill: #795AA6; cursor: default;"
             tabindex="0"
           />
-          <clippath
-            id="Arc_clip_r_39_#795AA6_#9373C0"
-          >
-            <path
-              d="M0,0Z"
-            />
-          </clippath>
-          <foreignobject
-            clip-path="url(#Arc_clip_r_39_#795AA6_#9373C0)"
-            height="100%"
-            width="100%"
-            x="-50%"
-            y="-50%"
-          >
-            <div
-              class="fui-donut-arc__root"
-              style="width: 100%; height: 100%; background: conic-gradient( from 1.2167664052268437rad, #795AA6, #9373C0 2.3536944901923453rad ); opacity: 1;"
-            />
-          </foreignobject>
         </g>
         <g>
           <path
@@ -2131,28 +2093,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_35_third45000"
             opacity="1"
             role="img"
-            style="fill: transparent; cursor: default;"
+            style="fill: #159195; cursor: default;"
             tabindex="0"
           />
-          <clippath
-            id="Arc_clip_r_3a_#159195_#2AA0A4"
-          >
-            <path
-              d="M0,0Z"
-            />
-          </clippath>
-          <foreignobject
-            clip-path="url(#Arc_clip_r_3a_#159195_#2AA0A4)"
-            height="100%"
-            width="100%"
-            x="-50%"
-            y="-50%"
-          >
-            <div
-              class="fui-donut-arc__root"
-              style="width: 100%; height: 100%; background: conic-gradient( from 3.5704608954191888rad, #159195, #2AA0A4 2.7127244117603975rad ); opacity: 1;"
-            />
-          </foreignobject>
         </g>
       </g>
     </svg>
