@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:54 GMT",
+      "tag": "@fluentui/react-tags_v9.7.18",
+      "version": "9.7.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.10.3",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-tags_v9.7.17",
       "version": "9.7.17",

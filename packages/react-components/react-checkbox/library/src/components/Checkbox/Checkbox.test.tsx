@@ -159,6 +159,17 @@ describe('Checkbox', () => {
     expect(onChange.mock.calls[2][1]).toEqual({ checked: true });
   });
 
+  it('calls custom onChange passed via input slot prop', () => {
+    const onChange = jest.fn();
+    const slotOnChange = jest.fn();
+
+    const renderedComponent = render(<Checkbox onChange={onChange} input={{ onChange: slotOnChange }} />);
+    fireEvent.click(renderedComponent.getByRole('checkbox'));
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(slotOnChange).toHaveBeenCalledTimes(1);
+  });
+
   it("doesn't remove controlled mixed when no onChange provided", () => {
     const renderedComponent = render(<Checkbox checked="mixed" />);
     const input = renderedComponent.getByRole('checkbox') as HTMLInputElement;

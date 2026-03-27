@@ -4,7 +4,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
-import type { LinkProps, LinkState } from './Link.types';
+import type { LinkBaseProps, LinkBaseState, LinkProps, LinkState } from './Link.types';
 import { useLinkContext } from '../../contexts/linkContext';
 
 /**
@@ -17,8 +17,30 @@ export const useLink_unstable = (
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
   const backgroundAppearance = useBackgroundAppearance();
+  const { appearance = 'default', ...baseProps } = props;
+
+  const state = useLinkBase_unstable(baseProps, ref);
+
+  return {
+    appearance,
+    backgroundAppearance,
+    ...state,
+  };
+};
+
+/**
+ * Base hook for Link component, which manages state related to ARIA, keyboard handling,
+ * disabled behavior, and slot structure. This hook excludes design-specific props (appearance).
+ *
+ * @param props - User provided props to the Link component.
+ * @param ref - User provided ref to be passed to the Link component.
+ */
+export const useLinkBase_unstable = (
+  props: LinkBaseProps,
+  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
+): LinkBaseState => {
   const { inline: inlineContext } = useLinkContext();
-  const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
+  const { disabled = false, disabledFocusable = false, inline = false } = props;
 
   const elementType = props.as || (props.href ? 'a' : 'button');
 
@@ -28,11 +50,10 @@ export const useLink_unstable = (
     type: elementType === 'button' ? 'button' : undefined,
     ...props,
     as: elementType,
-  } as LinkProps;
+  } as LinkBaseProps;
 
-  const state: LinkState = {
+  const state: LinkBaseState = {
     // Props passed at the top-level
-    appearance,
     disabled,
     disabledFocusable,
     inline: inline ?? !!inlineContext,
@@ -43,13 +64,12 @@ export const useLink_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps<LinkProps>(elementType, {
+      getIntrinsicElementProps<LinkBaseProps>(elementType, {
         ref,
         ...propsWithAssignedAs,
       } as const),
       { elementType },
     ),
-    backgroundAppearance,
   };
 
   useLinkState_unstable(state);
