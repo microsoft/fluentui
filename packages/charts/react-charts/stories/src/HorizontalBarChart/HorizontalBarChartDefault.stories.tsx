@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { HorizontalBarChart, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-components';
 
 export const HorizontalBarBasic = (): JSXElement => {
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
   const data = [
     {
       chartTitle: 'one',
@@ -103,9 +109,23 @@ export const HorizontalBarBasic = (): JSXElement => {
   ];
 
   return (
-    <div style={{ maxWidth: 600 }}>
-      <HorizontalBarChart data={data} chartDataMode={'default'} className={'hbcbasic'} />
-    </div>
+    <>
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
+      <div style={{ maxWidth: 600 }}>
+        <HorizontalBarChart
+          data={data}
+          chartDataMode={'default'}
+          className={'hbcbasic'}
+          enableGradient={enableGradient}
+        />
+      </div>
+    </>
   );
 };
 

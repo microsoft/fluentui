@@ -15,6 +15,7 @@ import type { JSXElement } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = (): JSXElement => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const points: ChartDataPoint[] = [
     {
@@ -36,6 +37,10 @@ export const DonutChartCustomCallout = (): JSXElement => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _onTogglePopoverCheckChange = React.useCallback((ev: any) => {
     setUseCustomPopover(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const data: ChartProps = {
@@ -92,7 +97,14 @@ export const DonutChartCustomCallout = (): JSXElement => {
 
   return (
     <>
-      <Switch label={'User Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+        <Switch label={'User Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       <DonutChart
         data={data}
         innerRadius={55}
@@ -101,6 +113,7 @@ export const DonutChartCustomCallout = (): JSXElement => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
+        enableGradient={enableGradient}
         calloutPropsPerDataPoint={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />

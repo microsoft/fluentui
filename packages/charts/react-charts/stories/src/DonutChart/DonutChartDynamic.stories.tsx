@@ -7,7 +7,7 @@ import {
   getGradientFromToken,
 } from '@fluentui/react-charts';
 
-import { Button, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Button, Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -46,6 +46,7 @@ export const DonutChartDynamic = (): JSXElement => {
   ]);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showLabelsInPercent, setShowLabelsInPercent] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [innerRadius, setInnerRadius] = React.useState<number>(35);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
@@ -95,6 +96,10 @@ export const DonutChartDynamic = (): JSXElement => {
     setShowLabelsInPercent(checked.checked as boolean);
   };
 
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
+
   const data: ChartProps = {
     chartTitle: 'Donut chart dynamic example',
     chartData: dynamicData,
@@ -116,6 +121,13 @@ export const DonutChartDynamic = (): JSXElement => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       <DonutChart
         data={data}
         innerRadius={innerRadius}
@@ -124,6 +136,7 @@ export const DonutChartDynamic = (): JSXElement => {
         }}
         hideLabels={hideLabels}
         showLabelsInPercent={showLabelsInPercent}
+        enableGradient={enableGradient}
         height={248}
       />
       <Button onClick={_changeData}> Change data </Button>

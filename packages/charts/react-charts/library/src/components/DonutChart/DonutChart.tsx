@@ -266,11 +266,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 
             // if color is not defined, assign a default color
             if (!itemColor) {
-              itemColor = getNextGradient(index);
+              itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
             }
             // if color is a string, check if it is undefined or blank assign a default color
             if (typeof itemColor === 'string' && itemColor.trim() === '') {
-              itemColor = getNextGradient(index);
+              itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
             }
             // if color is an array, check if either colors are undefined or blank
             // if startColor is undefined or blank, assign a default color
@@ -281,7 +281,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
                 itemColor[0] = getNextGradient(index)[0];
               }
               if (!endColor || endColor.trim() === '') {
-                itemColor[1] = itemColor[0];
+                itemColor[1] = props.enableGradient ? getNextGradient(index)[1] : itemColor[0];
+              }
+              // If gradients are disabled, convert array to single color
+              if (!props.enableGradient) {
+                itemColor = itemColor[0];
               }
             }
 

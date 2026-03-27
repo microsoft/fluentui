@@ -78,7 +78,14 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
       updatePosition(x, y);
       setHoverValue(hoverVal);
-      setLineColor(Array.isArray(point.color) ? point.color[0] : point.color!);
+      // Use gradient start color when gradients are enabled
+      const calloutColor =
+        props.enableGradient && Array.isArray(point.color)
+          ? point.color[0]
+          : Array.isArray(point.color)
+          ? point.color[0]
+          : point.color!;
+      setLineColor(calloutColor);
       setLegend(point.legend!);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
@@ -118,6 +125,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       point =>
         point.chartData?.map((dataPoint): Legend => {
           const legend = dataPoint.legend ?? '';
+          // Use gradient start color for legends when gradients are enabled
           const color = Array.isArray(dataPoint.color) ? dataPoint.color[0] : dataPoint.color ?? '';
 
           return {
@@ -297,13 +305,25 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       }
 
       const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
-      const useGradient = Array.isArray(point.color);
+      // Only use gradients when both enableGradient prop is true and color is an array
+      const useGradient = props.enableGradient && Array.isArray(point.color);
+
+      // Determine fill color based on gradient settings
+      let fillColor: string;
+      if (useGradient) {
+        fillColor = `url(#${gradientId})`;
+      } else if (Array.isArray(point.color)) {
+        // If color is array but gradient is disabled, use the first color
+        fillColor = point.color[0];
+      } else {
+        fillColor = point.color as string;
+      }
 
       return (
         <React.Fragment key={index}>
           {useGradient && (
             <defs>
-              <linearGradient id={gradientId} className="HBC_gradient">
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={point.color?.[0]} />
                 <stop offset="100%" stopColor={point.color?.[1]} />
               </linearGradient>
@@ -321,7 +341,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={_barHeight}
-            fill={useGradient ? `url(#${gradientId})` : (point.color as string)}
+            fill={fillColor}
             onMouseOver={
               _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
             }
@@ -345,13 +365,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       ? dataPoints.map((item, index) => {
           let itemColor = item.color;
 
-          // if color is not defined, assign a default color
+          // if color is not defined, assign a default color based on enableGradient prop
           if (!itemColor) {
-            itemColor = getNextGradient(index);
+            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
           }
           // if color is a string, check if it is undefined or blank assign a default color
           if (typeof itemColor === 'string' && itemColor.trim() === '') {
-            itemColor = getNextGradient(index);
+            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
           }
           // if color is an array, check if either colors are undefined or blank
           // if startColor is undefined or blank, assign a default color

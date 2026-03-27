@@ -7,8 +7,15 @@ import {
   getGradientFromToken,
 } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-components';
 
 export const DonutChartBasic = (): JSXElement => {
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
+
   const points: ChartDataPoint[] = [
     {
       legend: 'first',
@@ -29,16 +36,26 @@ export const DonutChartBasic = (): JSXElement => {
     chartData: points,
   };
   return (
-    <DonutChart
-      culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
-      data={data}
-      innerRadius={55}
-      href={'https://developer.microsoft.com/en-us/'}
-      legendsOverflowText={'overflow Items'}
-      hideLegend={false}
-      height={220}
-      valueInsideDonut={35000}
-    />
+    <div className="containerDiv">
+      <div style={{ marginBottom: '16px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
+      <DonutChart
+        culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
+        data={data}
+        innerRadius={55}
+        href={'https://developer.microsoft.com/en-us/'}
+        legendsOverflowText={'overflow Items'}
+        hideLegend={false}
+        height={220}
+        valueInsideDonut={35000}
+        enableGradient={enableGradient}
+      />
+    </div>
   );
 };
 
