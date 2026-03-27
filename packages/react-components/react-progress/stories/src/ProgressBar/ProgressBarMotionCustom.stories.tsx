@@ -5,7 +5,10 @@ import { createMotionComponent, Field, ProgressBar } from '@fluentui/react-compo
 // A custom motion component that swings between left and right, instead of always moving to the right.
 // The reduced motion version of the animation moves more slowly, with no acceleration, using a gentler gradient.
 const SwingMotion = createMotionComponent({
-  // The gradient bar is 33% of the container
+  // translate percentages are relative to the element's own width, not the container's.
+  // The indeterminate bar is ~33% the width of its container, so:
+  //   translate: '-100%' === left: '-33%' (one bar-width off-screen to the left)
+  //   translate: '300%'  === left: '100%' (3 × bar-width ≈ full container width, off-screen to the right)
   keyframes: [{ translate: '-100%' }, { translate: '300%' }],
   duration: 2000,
   easing: 'ease-in-out',
