@@ -761,6 +761,7 @@ export interface DonutChartProps extends CartesianChartProps {
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
     data?: ChartProps;
+    enableGradient?: boolean;
     height?: number;
     hideLabels?: boolean;
     hideLegend?: boolean;
@@ -826,9 +827,13 @@ export interface EventsAnnotationProps {
 }
 
 // @public (undocumented)
-export interface ExtendedSegment extends GaugeChartSegment {
+export interface ExtendedSegment extends Omit<GaugeChartSegment, 'color'> {
+    // (undocumented)
+    color: string | [string, string];
     // (undocumented)
     end: number;
+    // (undocumented)
+    gradientId?: string;
     // (undocumented)
     start: number;
 }
@@ -1155,6 +1160,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     color?: string;
     culture?: string;
     data?: ChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
