@@ -10,5 +10,16 @@ import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
  */
 export const renderProgressBar_unstable = (state: ProgressBarState): JSXElement => {
   assertSlots<ProgressBarSlots>(state);
-  return <state.root>{state.bar && <state.bar />}</state.root>;
+  return (
+    <state.root>
+      {state.bar &&
+        (state.indeterminateMotion ? (
+          <state.indeterminateMotion>
+            <state.bar />
+          </state.indeterminateMotion>
+        ) : (
+          <state.bar />
+        ))}
+    </state.root>
+  );
 };
