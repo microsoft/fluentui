@@ -21,7 +21,6 @@ Rather than a sealed `TypeaheadSearchbox` component, this feature is delivered a
 ```tsx
 <div style={{ position: 'relative' }}>
   <SearchBox
-    role="combobox"
     aria-autocomplete="list"
     aria-controls={listboxId}
     aria-expanded={isOpen}
@@ -67,11 +66,11 @@ See the **Typeahead** story for a complete, runnable example with debouncing, lo
 
 The pattern follows the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apd/patterns/combobox/):
 
-| Element                  | Attributes                                                                                               |
-| ------------------------ | -------------------------------------------------------------------------------------------------------- |
-| Input (`SearchBox`)      | `role="combobox"`, `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`, `aria-activedescendant` |
-| Results container (`ul`) | `role="listbox"`, `aria-label="Search results"`                                                          |
-| Each result (`li`)       | `role="option"`, `aria-selected`                                                                         |
+| Element                  | Attributes                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| Input (`SearchBox`)      | `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`, `aria-activedescendant` |
+| Results container (`ul`) | `role="listbox"`, `aria-label="Search results"`                                       |
+| Each result (`li`)       | `role="option"`, `aria-selected`                                                      |
 
 - A **live region** (`aria-live="polite"`) announces loading state, result count, and "no results" to screen readers.
 - Focus remains on the input at all times; `aria-activedescendant` communicates the visually focused option.

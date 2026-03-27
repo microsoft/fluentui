@@ -6,7 +6,7 @@
 
 - **Consider using `SearchBox` with underline or outline appearances.** When the contrast ratio against the immediate surrounding color is less than 3:1, consider using underline or outline styles which has a bottom border stroke. But please ensure the color of bottom border stroke has a sufficient contrast which is greater than 3 to 1 against the immediate surrounding.
 
-- **Consider composing `SearchBox` with a results dropdown for typeahead (autocomplete) patterns.** `SearchBox` can be paired with a results list to show suggestions as the user types. Use `role="combobox"`, `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`, and `aria-activedescendant` on the input, and `role="listbox"` / `role="option"` on the result elements to ensure the pattern is accessible. See the **Typeahead** story for a complete example.
+- **Consider composing `SearchBox` with a results dropdown for typeahead (autocomplete) patterns.** `SearchBox` can be paired with a results list to show suggestions as the user types. Use `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`, and `aria-activedescendant` on the input, and `role="listbox"` / `role="option"` on the result elements to ensure the pattern is accessible. See the **Typeahead** story for a complete example.
 
 ### Don't
 
