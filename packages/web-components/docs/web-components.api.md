@@ -779,28 +779,31 @@ export class BaseSpinner extends FASTElement {
 // @public
 export class BaseTablist extends FASTElement {
     activeid: string;
-    // @internal (undocumented)
+    // (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // @internal
+    // (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
-    orientation: TablistOrientation;
     // @internal (undocumented)
+    handleFocusIn(event: FocusEvent): void;
+    orientation: TablistOrientation;
+    // (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
-    protected setTabs(): void;
+    // @internal
+    protected setTabs(connectToPanel?: boolean): void;
     // @internal
     slottedTabs: Node[];
-    // @internal
-    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // (undocumented)
+    protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
     tabs: Tab[];
-    // @internal (undocumented)
+    // (undocumented)
     protected tabsChanged(): void;
 }
 
@@ -963,8 +966,6 @@ export class BaseTextInput extends FASTElement {
 export class BaseTree extends FASTElement {
     constructor();
     // @internal
-    blurHandler(e: FocusEvent): void;
-    // @internal
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
@@ -974,13 +975,13 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
+    // @internal (undocumented)
+    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
     // @internal
     elementInternals: ElementInternals;
-    // @internal
-    focusHandler(e: FocusEvent): void;
     // @internal (undocumented)
     handleDefaultSlotChange(): void;
     // @internal
@@ -3932,6 +3933,8 @@ export class Tab extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(prev: boolean, next: boolean): void;
 }
 
 // @public (undocumented)
