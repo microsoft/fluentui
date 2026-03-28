@@ -47,7 +47,7 @@ export class BaseTreeItem extends FASTElement {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
       // Update focusgroup attributes after subtree show/hide renderig is done.
       requestAnimationFrame(() => {
-        for (const item of this.childTreeItems) {
+        for (const item of this.childTreeItems ?? []) {
           if (next) {
             item.removeAttribute('focusgroup');
           } else {
