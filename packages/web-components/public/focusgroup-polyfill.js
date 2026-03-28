@@ -1120,13 +1120,8 @@ class FocusGroup {
       return;
     }
     this.#memorized = null;
-    this.#start.tabIndex = 0;
-    this.#itemWalker.currentNode = this.#start;
-    while (this.#itemWalker.nextNode()) {
-      const current = this.#itemWalker.currentNode;
-      current.tabIndex = current.hasAttribute(DatasetName.SEGMENT_START) ? 0 : -1;
-    }
-    flushAllObservers();
+    this.#undecorateItems();
+    this.#decorateItems();
   }
   /**
    * @param {HTMLElement} node

@@ -22,12 +22,26 @@ export class Tab extends FASTElement {
    * HTML Attribute: disabled
    */
   @attr({ mode: 'boolean' })
-  public disabled!: boolean;
+  public disabled = false;
+  protected disabledChanged(prev: boolean, next: boolean) {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
+    if (next) {
+      this.setAttribute('aria-disabled', 'true');
+    } else {
+      this.removeAttribute('aria-disabled');
+    }
+    this.tabIndex = next ? -1 : 0;
+  }
 
   private styles: ElementStyles | undefined;
 
   connectedCallback() {
     super.connectedCallback();
+
+    this.disabledChanged(false, this.disabled);
 
     if (this.styles !== undefined) {
       this.$fastController.removeStyles(this.styles);
