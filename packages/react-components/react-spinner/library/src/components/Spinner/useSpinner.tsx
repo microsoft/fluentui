@@ -1,10 +1,12 @@
 'use client';
 
 import * as React from 'react';
+import { motionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerBaseProps, SpinnerBaseState, SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
+import { SpinnerRotation, SpinnerTailMotion, SpinnerArcStartMotion, SpinnerArcEndMotion } from './spinnerMotions';
 
 /**
  * Create the state required to render Spinner.
@@ -91,11 +93,36 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
     delay,
     labelPosition,
     shouldRenderSpinner: !delay || isShownAfterDelay,
-    components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: 'label' },
+    components: {
+      root: 'div',
+      spinner: 'span',
+      spinnerTail: 'span',
+      label: Label,
+      rotationMotion: SpinnerRotation,
+      tailMotion: SpinnerTailMotion,
+      arcStartMotion: SpinnerArcStartMotion,
+      arcEndMotion: SpinnerArcEndMotion,
+    },
     root: nativeRoot,
     spinner: spinnerShortHand,
     spinnerTail: slot.always(props.spinnerTail, { elementType: 'span' }),
     label: labelShorthand,
+    rotationMotion: motionSlot(props.rotationMotion, {
+      elementType: SpinnerRotation,
+      defaultProps: {},
+    }),
+    tailMotion: motionSlot(props.tailMotion, {
+      elementType: SpinnerTailMotion,
+      defaultProps: {},
+    }),
+    arcStartMotion: motionSlot(props.arcStartMotion, {
+      elementType: SpinnerArcStartMotion,
+      defaultProps: {},
+    }),
+    arcEndMotion: motionSlot(props.arcEndMotion, {
+      elementType: SpinnerArcEndMotion,
+      defaultProps: {},
+    }),
   };
   return state;
 };

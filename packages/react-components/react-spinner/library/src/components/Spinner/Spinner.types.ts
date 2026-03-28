@@ -1,3 +1,4 @@
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
 
@@ -22,6 +23,26 @@ export type SpinnerSlots = {
    * An optional label for the Spinner.
    */
   label?: Slot<typeof Label>;
+
+  /**
+   * Motion slot for the outer 360° rotation animation. Pass `null` to disable.
+   */
+  rotationMotion?: Slot<MotionSlotProps>;
+
+  /**
+   * Motion slot for the tail container rotation. Pass `null` to disable.
+   */
+  tailMotion?: Slot<MotionSlotProps>;
+
+  /**
+   * Motion slot for the first arc segment animation. Pass `null` to disable.
+   */
+  arcStartMotion?: Slot<MotionSlotProps>;
+
+  /**
+   * Motion slot for the second arc segment animation. Pass `null` to disable.
+   */
+  arcEndMotion?: Slot<MotionSlotProps>;
 };
 
 /**

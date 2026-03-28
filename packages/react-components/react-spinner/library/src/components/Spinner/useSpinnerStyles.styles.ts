@@ -6,7 +6,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
-export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
+export const spinnerClassNames: SlotClassNames<
+  Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'arcStartMotion' | 'arcEndMotion'>
+> = {
   root: 'fui-Spinner',
   spinner: 'fui-Spinner__spinner',
   spinnerTail: 'fui-Spinner__spinnerTail',

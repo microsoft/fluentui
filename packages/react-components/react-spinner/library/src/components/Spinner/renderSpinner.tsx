@@ -5,7 +5,6 @@ import { assertSlots } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { SpinnerBaseState, SpinnerSlots } from './Spinner.types';
-import { SpinnerRotation, SpinnerTailMotion, SpinnerArcStartMotion, SpinnerArcEndMotion } from './spinnerMotions';
 
 /**
  * Render the final JSX of Spinner
@@ -20,22 +19,22 @@ export const renderSpinner_unstable = (state: SpinnerBaseState): JSXElement => {
         <state.label />
       )}
       {state.spinner && shouldRenderSpinner && (
-        <SpinnerRotation>
+        <state.rotationMotion>
           <state.spinner>
             {state.spinnerTail && (
-              <SpinnerTailMotion>
+              <state.tailMotion>
                 <state.spinnerTail>
-                  <SpinnerArcStartMotion>
+                  <state.arcStartMotion>
                     <span className={arcClassName} />
-                  </SpinnerArcStartMotion>
-                  <SpinnerArcEndMotion>
+                  </state.arcStartMotion>
+                  <state.arcEndMotion>
                     <span className={arcClassName} />
-                  </SpinnerArcEndMotion>
+                  </state.arcEndMotion>
                 </state.spinnerTail>
-              </SpinnerTailMotion>
+              </state.tailMotion>
             )}
           </state.spinner>
-        </SpinnerRotation>
+        </state.rotationMotion>
       )}
       {state.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
         <state.label />
