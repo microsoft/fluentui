@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.5.17)
+
+Thu, 26 Mar 2026 08:12:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.5.16..@fluentui/react-checkbox_v9.5.17)
+
+### Patches
+
+- fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment ([PR #35877](https://github.com/microsoft/fluentui/pull/35877) by karesansui.u@gmail.com)
 
 ## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.5.16)
 

@@ -94,6 +94,20 @@ export const MotionRefForwarderReset: React_2.FC<{
 }>;
 
 // @public (undocumented)
+export function motionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: MotionSlotProps<MotionParams> | null | undefined, options: {
+    elementType: React_2.FC<MotionComponentProps & MotionParams>;
+    defaultProps: MotionSlotRenderProps & MotionParams;
+}): SlotComponentType<MotionSlotRenderProps & MotionParams>;
+
+// @public (undocumented)
+export type MotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<MotionComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & {
+    as?: JSXIntrinsicElementKeys;
+    children?: SlotRenderFunction<MotionSlotRenderProps & MotionParams & {
+        children: JSXElement;
+    }>;
+};
+
+// @public (undocumented)
 export const motionTokens: {
     curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
     curveAccelerateMid: "cubic-bezier(1,0,1,1)";

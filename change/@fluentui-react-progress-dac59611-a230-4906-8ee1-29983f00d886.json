@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: migrate ProgressBar from CSS to motion components",
+  "packageName": "@fluentui/react-progress",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

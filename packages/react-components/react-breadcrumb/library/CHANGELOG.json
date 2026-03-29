@@ -2,6 +2,33 @@
   "name": "@fluentui/react-breadcrumb",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:47 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "f630c09bb0bbacb6e616e767b42af39982177d64",
+            "comment": "feat: add base hooks for Breadcrumb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.9.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.8.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-breadcrumb_v9.3.17",
       "version": "9.3.17",
