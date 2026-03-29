@@ -242,7 +242,7 @@ export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGro
 // @public
 export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
 
-// @public (undocumented)
+// @public
 export const useAvatarGroupItemBase_unstable: (props: AvatarGroupItemBaseProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemBaseState;
 
 // @public
@@ -251,7 +251,7 @@ export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) =>
 // @public
 export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
 
-// @public (undocumented)
+// @public
 export const useAvatarGroupPopoverBase_unstable: (props: AvatarGroupPopoverBaseProps) => AvatarGroupPopoverBaseState;
 
 // @public (undocumented)
