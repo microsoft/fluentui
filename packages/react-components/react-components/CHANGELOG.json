@@ -2,6 +2,143 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:47 GMT",
+      "tag": "@fluentui/react-components_v9.73.5",
+      "version": "9.73.5",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2747bc1dad2cb2dc8674a8c2d3f5fb0b286008a5",
+            "comment": "feat: add base hooks for Badge"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "f630c09bb0bbacb6e616e767b42af39982177d64",
+            "comment": "feat: add base hooks for Breadcrumb"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b3ee095a0faf60ed0eba642a26e698453b2fffa5",
+            "comment": "fix: ToggleButton provides an opt-in isAccessible variant for accessible checked colors"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5a0dfa8f625b9becf86ad17289988e2a494f184b",
+            "comment": "feat: expose button base hooks and types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4",
+            "comment": "feat: add base hooks for Card"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "108eb5b1a7d515ca9f00cc9a0b5b845da491f4cb",
+            "comment": "feat: expose base hook and types for Divider component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "35fe7957c67573f8d13a5ccd91ea801b66a545e7",
+            "comment": "feat: add base hooks for Image"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "cd159227b9f5dd4d6d5b28b363971843ffac5d0d",
+            "comment": "feat: add base hooks for Input"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "ee6a69da2a9d939fe1cf47ec721f0884ed55d82f",
+            "comment": "feat: add base hooks for Link"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "d2d48440be57395a523dfd901621d99b58340ef4",
+            "comment": "Add circular and first-letter navigation"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "109610e4667712e7f93bf0ec3bc5d3052c900288",
+            "comment": "feat: expose base hooks for Persona"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "bd4ea9164d0412cc5eeed2a927cdca28ffd6d0f6",
+            "comment": "feat: add base hooks for Rating"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "17eeda5bbac5fa585a0c4fe4a45745f7a4e53f84",
+            "comment": "feat: add base hooks for SearchBox"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "8b677d0f0120d5bb60acc558325d8a0e37269cf6",
+            "comment": "feat: add base hooks for Skeleton"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "35e19d05bde0efa931508f861e9afd17d70f2c8e",
+            "comment": "feat: add base hooks for Slider"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "991db63a413d8a800d496f45c0e47ba7267b4b56",
+            "comment": "feat: add base hooks for Spinner"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4267b29a575d6480c73f4700dbb5b2b0626addb2",
+            "comment": "feat: add base hooks for Switch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "cd29f13fec3bd7fe638323d6a821b4aaf931a29b",
+            "comment": "feat: expose base hook and types for Textarea"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "3c6e2f147eebe0e2ce07e04660373d66c20794db",
+            "comment": "feat: add base hooks for Textarea"
+          }
+        ],
+        "patch": [
+          {
+            "author": "karesansui.u@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "609f8c5062cfbd19c6d7e8c56e8d2bb17c9d4c8a",
+            "comment": "fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "3d3d763e52a1c29cf4e7a621038af1daf7c258a0",
+            "comment": "fix: preserve user-defined appearance prop in useToolbarToggleButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2026 07:57:15 GMT",
       "tag": "@fluentui/react-components_v9.73.4",
       "version": "9.73.4",

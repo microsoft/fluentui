@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose base hooks and types for Accordion components",
+  "packageName": "@fluentui/react-accordion",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
