@@ -1,5 +1,13 @@
-export { Popover, renderPopover_unstable, usePopover_unstable } from './Popover';
-export type { OnOpenChangeData, OpenPopoverEvents, PopoverProps, PopoverSize, PopoverState } from './Popover';
+export { Popover, renderPopover_unstable, usePopover_unstable, usePopoverBase_unstable } from './Popover';
+export type {
+  OnOpenChangeData,
+  OpenPopoverEvents,
+  PopoverProps,
+  PopoverSize,
+  PopoverState,
+  PopoverBaseProps,
+  PopoverBaseState,
+} from './Popover';
 export {
   PopoverSurface,
   arrowHeights,
@@ -7,14 +15,16 @@ export {
   renderPopoverSurface_unstable,
   usePopoverSurfaceStyles_unstable,
   usePopoverSurface_unstable,
+  usePopoverSurfaceBase_unstable,
 } from './PopoverSurface';
-export type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface';
+export type {
+  PopoverSurfaceProps,
+  PopoverSurfaceSlots,
+  PopoverSurfaceState,
+  PopoverSurfaceBaseProps,
+  PopoverSurfaceBaseState,
+} from './PopoverSurface';
 export { PopoverProvider, usePopoverContext_unstable } from './popoverContext';
 export type { PopoverContextValue } from './popoverContext';
 export { PopoverTrigger, renderPopoverTrigger_unstable, usePopoverTrigger_unstable } from './PopoverTrigger';
 export type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger';
-
-export type { PopoverBaseProps, PopoverBaseState } from './Popover';
-export { usePopoverBase_unstable } from './Popover';
-export type { PopoverSurfaceBaseProps, PopoverSurfaceBaseState } from './PopoverSurface';
-export { usePopoverSurfaceBase_unstable } from './PopoverSurface';
