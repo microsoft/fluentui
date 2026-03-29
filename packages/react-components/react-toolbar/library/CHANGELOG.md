@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.5)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.4..@fluentui/react-toolbar_v9.7.5)
+
+### Patches
+
+- fix: preserve user-defined appearance prop in useToolbarToggleButton ([PR #35893](https://github.com/microsoft/fluentui/pull/35893) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.9.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-divider to v9.7.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.4)
 

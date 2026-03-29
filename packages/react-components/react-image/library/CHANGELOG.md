@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.0)
+
+Thu, 26 Mar 2026 08:12:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.3.15..@fluentui/react-image_v9.4.0)
+
+### Minor changes
+
+- feat: add base hooks for Image ([PR #35808](https://github.com/microsoft/fluentui/pull/35808) by dmytrokirpa@microsoft.com)
 
 ## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.3.15)
 

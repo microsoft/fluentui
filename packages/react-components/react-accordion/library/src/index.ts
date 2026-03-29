@@ -5,6 +5,7 @@ export {
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
+  useAccordionBase_unstable,
 } from './Accordion';
 export type {
   AccordionContextValues,
@@ -15,6 +16,8 @@ export type {
   AccordionToggleData,
   AccordionToggleEvent,
   AccordionToggleEventHandler,
+  AccordionBaseState,
+  AccordionBaseProps,
 } from './Accordion';
 export {
   AccordionItem,
@@ -38,6 +41,7 @@ export {
   useAccordionHeaderContextValues_unstable,
   useAccordionHeaderStyles_unstable,
   useAccordionHeader_unstable,
+  useAccordionHeaderBase_unstable,
 } from './AccordionHeader';
 export type {
   AccordionHeaderContextValues,
@@ -46,6 +50,8 @@ export type {
   AccordionHeaderSize,
   AccordionHeaderSlots,
   AccordionHeaderState,
+  AccordionHeaderBaseState,
+  AccordionHeaderBaseProps,
 } from './AccordionHeader';
 export {
   AccordionPanel,
@@ -53,8 +59,15 @@ export {
   renderAccordionPanel_unstable,
   useAccordionPanelStyles_unstable,
   useAccordionPanel_unstable,
+  useAccordionPanelBase_unstable,
 } from './AccordionPanel';
-export type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel';
+export type {
+  AccordionPanelProps,
+  AccordionPanelSlots,
+  AccordionPanelState,
+  AccordionPanelBaseState,
+  AccordionPanelBaseProps,
+} from './AccordionPanel';
 
 export { AccordionProvider, useAccordionContext_unstable } from './contexts/accordion';
 
@@ -67,10 +80,3 @@ export type { AccordionItemContextValue } from './contexts/accordionItem';
 export { AccordionHeaderProvider, useAccordionHeaderContext_unstable } from './contexts/accordionHeader';
 
 export type { AccordionHeaderContextValue } from './contexts/accordionHeader';
-
-// Experimental APIs
-// export type { AccordionBaseState, AccordionBaseProps } from './Accordion';
-// export { useAccordionBase_unstable } from './Accordion';
-// export { useAccordionHeaderBase_unstable } from './AccordionHeader';
-// export type { AccordionPanelBaseState, AccordionPanelBaseProps } from './AccordionPanel';
-// export { useAccordionPanelBase_unstable } from './AccordionPanel';
