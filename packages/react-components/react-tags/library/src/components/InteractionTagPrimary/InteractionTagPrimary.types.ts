@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
@@ -59,7 +59,7 @@ export type InteractionTagPrimaryBaseProps = InteractionTagPrimaryProps;
 /**
  * InteractionTagPrimary Base State - omits design-only state derived from context
  */
-export type InteractionTagPrimaryBaseState = DistributiveOmit<
+export type InteractionTagPrimaryBaseState = Omit<
   InteractionTagPrimaryState,
   'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'
 >;

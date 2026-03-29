@@ -79,14 +79,12 @@ export const useInteractionTagSecondary_unstable = (
   const { appearance, shape, size } = useInteractionTagContext_unstable();
   const baseState = useInteractionTagSecondaryBase_unstable(props, ref);
 
+  baseState.root.children ??= <DismissRegular />;
+
   return {
     ...baseState,
     appearance,
     shape,
     size,
-    root: {
-      ...baseState.root,
-      children: baseState.root.children !== undefined ? baseState.root.children : <DismissRegular />,
-    },
   };
 };

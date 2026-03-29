@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot, EventHandler } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, EventHandler } from '@fluentui/react-utilities';
 import type {
   TagSize,
   TagValue,
@@ -68,9 +68,9 @@ export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
 /**
  * TagGroup Base Props - omits design-only props
  */
-export type TagGroupBaseProps<Value = TagValue> = DistributiveOmit<TagGroupProps<Value>, 'appearance' | 'size'>;
+export type TagGroupBaseProps<Value = TagValue> = Omit<TagGroupProps<Value>, 'appearance' | 'size'>;
 
 /**
  * TagGroup Base State - omits design-only state
  */
-export type TagGroupBaseState<Value = TagValue> = DistributiveOmit<TagGroupState<Value>, 'appearance' | 'size'>;
+export type TagGroupBaseState<Value = TagValue> = Omit<TagGroupState<Value>, 'appearance' | 'size'>;

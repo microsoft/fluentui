@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 
 export type InteractionTagSecondarySlots = {
@@ -24,7 +24,4 @@ export type InteractionTagSecondaryBaseProps = InteractionTagSecondaryProps;
 /**
  * InteractionTagSecondary Base State - omits design-only state derived from context
  */
-export type InteractionTagSecondaryBaseState = DistributiveOmit<
-  InteractionTagSecondaryState,
-  'appearance' | 'size' | 'shape'
->;
+export type InteractionTagSecondaryBaseState = Omit<InteractionTagSecondaryState, 'appearance' | 'size' | 'shape'>;

@@ -8,7 +8,7 @@ import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import { DistributiveOmit } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -21,10 +21,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
 
 // @public
-export type InteractionTagBaseProps<Value = TagValue> = DistributiveOmit<InteractionTagProps<Value>, 'appearance' | 'size' | 'shape'>;
+export type InteractionTagBaseProps<Value = TagValue> = Omit<InteractionTagProps<Value>, 'appearance' | 'size' | 'shape'>;
 
 // @public
-export type InteractionTagBaseState<Value = TagValue> = DistributiveOmit<InteractionTagState<Value>, 'appearance' | 'size' | 'shape'>;
+export type InteractionTagBaseState<Value = TagValue> = Omit<InteractionTagState<Value>, 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
@@ -36,7 +36,7 @@ export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryPro
 export type InteractionTagPrimaryBaseProps = InteractionTagPrimaryProps;
 
 // @public
-export type InteractionTagPrimaryBaseState = DistributiveOmit<InteractionTagPrimaryState, 'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'>;
+export type InteractionTagPrimaryBaseState = Omit<InteractionTagPrimaryState, 'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'>;
 
 // @public (undocumented)
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots>;
@@ -78,7 +78,7 @@ export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondar
 export type InteractionTagSecondaryBaseProps = InteractionTagSecondaryProps;
 
 // @public
-export type InteractionTagSecondaryBaseState = DistributiveOmit<InteractionTagSecondaryState, 'appearance' | 'size' | 'shape'>;
+export type InteractionTagSecondaryBaseState = Omit<InteractionTagSecondaryState, 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots>;
@@ -152,10 +152,10 @@ export type TagDismissHandler<Value = TagValue> = (e: TagDismissEvent, data: Tag
 export const TagGroup: ForwardRefComponent<TagGroupProps>;
 
 // @public
-export type TagGroupBaseProps<Value = TagValue> = DistributiveOmit<TagGroupProps<Value>, 'appearance' | 'size'>;
+export type TagGroupBaseProps<Value = TagValue> = Omit<TagGroupProps<Value>, 'appearance' | 'size'>;
 
 // @public
-export type TagGroupBaseState<Value = TagValue> = DistributiveOmit<TagGroupState<Value>, 'appearance' | 'size'>;
+export type TagGroupBaseState<Value = TagValue> = Omit<TagGroupState<Value>, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;

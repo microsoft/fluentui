@@ -122,6 +122,10 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
 
   const baseState = useTagBase_unstable(props, ref);
 
+  if (baseState.dismissIcon) {
+    baseState.dismissIcon.children ??= <DismissRegular />;
+  }
+
   return {
     ...baseState,
     appearance,
@@ -129,12 +133,5 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     avatarSize: tagAvatarSizeMap[size],
     shape,
     size,
-    dismissIcon: slot.optional(props.dismissIcon, {
-      renderByDefault: baseState.dismissible,
-      defaultProps: {
-        children: <DismissRegular />,
-      },
-      elementType: 'span',
-    }),
   };
 };
