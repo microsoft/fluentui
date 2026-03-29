@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ToastIntent } from '../../state/types';
 
@@ -20,7 +20,7 @@ export type ToastProps = ComponentProps<ToastSlots> & {
 /**
  * Toast Props without design-only props.
  */
-export type ToastBaseProps = DistributiveOmit<ToastProps, 'appearance'>;
+export type ToastBaseProps = Omit<ToastProps, 'appearance'>;
 
 /**
  * State used in rendering Toast
@@ -33,4 +33,4 @@ export type ToastState = ComponentState<ToastSlots> & {
 /**
  * State used in rendering Toast, without design-only state.
  */
-export type ToastBaseState = DistributiveOmit<ToastState, 'backgroundAppearance'>;
+export type ToastBaseState = Omit<ToastState, 'backgroundAppearance'>;

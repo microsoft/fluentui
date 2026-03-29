@@ -42,8 +42,9 @@ export const useToastBase_unstable = (props: ToastBaseProps, ref: React.Ref<HTML
  * @param ref - reference to root HTMLElement of Toast
  */
 export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
+  const state = useToastBase_unstable(props, ref);
   return {
-    ...useToastBase_unstable(props, ref),
+    ...state,
     backgroundAppearance: props.appearance,
   };
 };
