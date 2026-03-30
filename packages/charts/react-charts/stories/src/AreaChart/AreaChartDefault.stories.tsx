@@ -16,6 +16,7 @@ export const AreaChartBasic = (): JSXElement => {
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState<boolean>(false);
   const [changeChartMode, setChangeChartMode] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const classes = useStyles();
 
@@ -58,6 +59,10 @@ export const AreaChartBasic = (): JSXElement => {
 
   const _onSwitchChartMode = React.useCallback((ev: any) => {
     setChangeChartMode(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const chart1Points = [
@@ -255,6 +260,13 @@ export const AreaChartBasic = (): JSXElement => {
           onChange={_onSwitchChartMode}
         />
       </div>
+      <div style={{ marginTop: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       {showAxisTitles && (
         <div style={rootStyle}>
           <AreaChart
@@ -269,6 +281,7 @@ export const AreaChartBasic = (): JSXElement => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
@@ -285,6 +298,7 @@ export const AreaChartBasic = (): JSXElement => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
