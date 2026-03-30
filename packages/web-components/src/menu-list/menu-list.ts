@@ -123,9 +123,7 @@ export class MenuList extends FASTElement {
 
     this.menuItems?.forEach((item: HTMLElement) => {
       item.dataset.indent = `${indent}`;
-      if (!item.hasAttribute('disabled')) {
-        item.tabIndex = 0;
-      }
+      item.tabIndex = item.hasAttribute('disabled') ? -1 : 0;
     });
   }
 
