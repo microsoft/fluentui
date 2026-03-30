@@ -100,7 +100,7 @@ export const GanttChartBasic = (): JSXElement => {
           <Switch
             checked={enableGradient}
             onChange={(_, val) => setEnableGradient(val.checked)}
-            label="Enable Gradient"
+            label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
           />
         </div>
         <div>
