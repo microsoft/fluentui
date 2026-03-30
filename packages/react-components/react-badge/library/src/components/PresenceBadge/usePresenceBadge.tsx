@@ -43,7 +43,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
   }
 };
 
-const DEFAULT_STRINGS = {
+export const DEFAULT_STRINGS = {
   busy: 'busy',
   'out-of-office': 'out of office',
   away: 'away',
