@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 26 Mar 2026 08:12:54 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.19.13)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.19.12..@fluentui/react-table_v9.19.13)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.10.4 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-radio to v9.6.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
 
 ## [9.19.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.19.12)
 
