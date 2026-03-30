@@ -79,9 +79,11 @@ export const DonutChartResponsive = (): JSXElement => {
   };
 
   return (
-    <ResponsiveContainer>
-      <DonutChart data={data} innerRadius={55} valueInsideDonut={39000} />
-    </ResponsiveContainer>
+    <div style={{ width: '100%', height: '400px' }}>
+      <ResponsiveContainer>
+        <DonutChart data={data} innerRadius={55} valueInsideDonut={39000} />
+      </ResponsiveContainer>
+    </div>
   );
 };
 DonutChartResponsive.parameters = {
