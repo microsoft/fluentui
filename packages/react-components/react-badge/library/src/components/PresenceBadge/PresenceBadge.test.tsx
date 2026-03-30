@@ -16,11 +16,8 @@ describe('PresenceBadge', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it.each(Object.keys(STATUS_LABELS) as PresenceBadgeStatus[])(
-    'renders correctly aria label for "%s" status',
-    status => {
-      const { getByLabelText } = render(<PresenceBadge status={status} />);
-      expect(getByLabelText(STATUS_LABELS[status])).toBeTruthy();
-    },
-  );
+  it.each(Object.keys(STATUS_LABELS) as PresenceBadgeStatus[])('renders correct aria label for "%s" status', status => {
+    const { getByLabelText } = render(<PresenceBadge status={status} />);
+    expect(getByLabelText(STATUS_LABELS[status])).toBeTruthy();
+  });
 });
