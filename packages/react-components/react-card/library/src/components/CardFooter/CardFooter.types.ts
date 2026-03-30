@@ -21,6 +21,16 @@ export type CardFooterSlots = {
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 /**
+ * CardFooter base props (same as CardFooterProps since CardFooter has no design props)
+ */
+export type CardFooterBaseProps = CardFooterProps;
+
+/**
  * State used in rendering CardFooter.
  */
 export type CardFooterState = ComponentState<CardFooterSlots>;
+
+/**
+ * CardFooter base state (same as CardFooterState since CardFooter has no design props)
+ */
+export type CardFooterBaseState = CardFooterState;

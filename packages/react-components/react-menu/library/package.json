@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.23.0",
+  "version": "9.23.1",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -16,8 +16,8 @@
     "@fluentui/react-aria": "^9.17.10",
     "@fluentui/react-context-selector": "^9.2.15",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-motion": "^9.13.0",
-    "@fluentui/react-motion-components-preview": "^0.15.2",
+    "@fluentui/react-motion": "^9.14.0",
+    "@fluentui/react-motion-components-preview": "^0.15.3",
     "@fluentui/react-portal": "^9.8.11",
     "@fluentui/react-positioning": "^9.22.0",
     "@fluentui/react-shared-contexts": "^9.26.2",

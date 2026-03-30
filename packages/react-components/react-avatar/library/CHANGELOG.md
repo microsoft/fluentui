@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.4)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.10.3..@fluentui/react-avatar_v9.10.4)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.5.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-popover to v9.14.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.3)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.10.2..@fluentui/react-avatar_v9.10.3)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.5.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.2)
 

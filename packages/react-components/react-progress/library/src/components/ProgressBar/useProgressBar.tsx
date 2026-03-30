@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
+import { motionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+import { ProgressBarIndeterminateMotion } from './progressBarMotions';
 
 /**
  * Create the state required to render ProgressBar.
@@ -55,9 +57,16 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     shape,
     thickness,
     value,
-    components: { root: 'div', bar: 'div' },
+    components: { root: 'div', bar: 'div', indeterminateMotion: ProgressBarIndeterminateMotion },
     root,
     bar,
+    indeterminateMotion:
+      value === undefined
+        ? motionSlot(props.indeterminateMotion, {
+            elementType: ProgressBarIndeterminateMotion,
+            defaultProps: {},
+          })
+        : undefined,
   };
 
   return state;

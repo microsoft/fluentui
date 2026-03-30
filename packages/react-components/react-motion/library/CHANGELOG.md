@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Tue, 03 Mar 2026 09:43:40 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.14.0)
+
+Mon, 30 Mar 2026 14:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.13.0..@fluentui/react-motion_v9.14.0)
+
+### Minor changes
+
+- feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35888](https://github.com/microsoft/fluentui/pull/35888) by robertpenner@microsoft.com)
+- feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
 
 ## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.13.0)
 

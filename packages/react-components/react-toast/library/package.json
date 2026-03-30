@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toast",
-  "version": "9.7.15",
+  "version": "9.7.16",
   "description": "Toast component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -16,8 +16,8 @@
     "@fluentui/react-aria": "^9.17.10",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.4.1",
-    "@fluentui/react-motion": "^9.13.0",
-    "@fluentui/react-motion-components-preview": "^0.15.2",
+    "@fluentui/react-motion": "^9.14.0",
+    "@fluentui/react-motion-components-preview": "^0.15.3",
     "@fluentui/react-portal": "^9.8.11",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-tabster": "^9.26.13",

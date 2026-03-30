@@ -2,6 +2,36 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2026 14:37:41 GMT",
+      "tag": "@fluentui/react-charts_v9.3.16",
+      "version": "9.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.14.1",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Mar 2026 08:12:54 GMT",
+      "tag": "@fluentui/react-charts_v9.3.15",
+      "version": "9.3.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.9.0",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:38 GMT",
       "tag": "@fluentui/react-charts_v9.3.14",
       "version": "9.3.14",
