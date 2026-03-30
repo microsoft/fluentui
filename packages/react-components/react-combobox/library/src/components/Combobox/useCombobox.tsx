@@ -61,7 +61,7 @@ export const useComboboxBase_unstable = (
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['children', 'size'],
+    excludedPropNames: ['children'],
   });
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
@@ -216,18 +216,20 @@ export const useComboboxBase_unstable = (
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   'use no memo';
 
-  const { appearance = 'outline', size = 'medium' } = props;
-  const baseState = useComboboxBase_unstable(props, ref);
+  const { appearance = 'outline', size = 'medium', ...baseProps } = props;
+  const baseState = useComboboxBase_unstable(baseProps, ref);
+
+  if (baseState.clearIcon) {
+    baseState.clearIcon.children ??= <DismissIcon />;
+  }
+
+  if (baseState.expandIcon) {
+    baseState.expandIcon.children ??= <ChevronDownIcon />;
+  }
 
   return {
     ...baseState,
     appearance,
     size,
-    clearIcon: baseState.clearIcon
-      ? { ...baseState.clearIcon, children: baseState.clearIcon.children ?? <DismissIcon /> }
-      : baseState.clearIcon,
-    expandIcon: baseState.expandIcon
-      ? { ...baseState.expandIcon, children: baseState.expandIcon.children ?? <ChevronDownIcon /> }
-      : baseState.expandIcon,
   };
 };

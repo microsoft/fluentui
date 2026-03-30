@@ -165,18 +165,20 @@ export const useDropdownBase_unstable = (
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   'use no memo';
 
-  const { appearance = 'outline', size = 'medium' } = props;
-  const baseState = useDropdownBase_unstable(props, ref);
+  const { appearance = 'outline', size = 'medium', ...baseProps } = props;
+  const baseState = useDropdownBase_unstable(baseProps, ref);
+
+  if (baseState.clearButton) {
+    baseState.clearButton.children ??= <DismissIcon />;
+  }
+
+  if (baseState.expandIcon) {
+    baseState.expandIcon.children ??= <ChevronDownIcon />;
+  }
 
   return {
     ...baseState,
     appearance,
     size,
-    clearButton: baseState.clearButton
-      ? { ...baseState.clearButton, children: baseState.clearButton.children ?? <DismissIcon /> }
-      : baseState.clearButton,
-    expandIcon: baseState.expandIcon
-      ? { ...baseState.expandIcon, children: baseState.expandIcon.children ?? <ChevronDownIcon /> }
-      : baseState.expandIcon,
   };
 };

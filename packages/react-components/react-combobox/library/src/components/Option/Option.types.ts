@@ -47,6 +47,8 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
       }
   );
 
+export type OptionBaseProps = OptionProps;
+
 /**
  * State used in rendering Option
  */
@@ -68,3 +70,5 @@ export type OptionState = ComponentState<OptionSlots> &
     /** If true, the option is selected */
     selected: boolean;
   };
+
+export type OptionBaseState = OptionState;

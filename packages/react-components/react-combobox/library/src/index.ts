@@ -19,8 +19,9 @@ export {
   renderOption_unstable,
   useOptionStyles_unstable,
   useOption_unstable,
+  useOptionBase_unstable,
 } from './Option';
-export type { OptionProps, OptionSlots, OptionState } from './Option';
+export type { OptionProps, OptionSlots, OptionState, OptionBaseProps, OptionBaseState } from './Option';
 export {
   Combobox,
   comboboxClassNames,

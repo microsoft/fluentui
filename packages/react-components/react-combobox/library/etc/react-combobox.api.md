@@ -10,6 +10,7 @@ import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
@@ -27,6 +28,12 @@ import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+// @public
+export type ComboboxBaseHookProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
+
+// @public
+export type ComboboxBaseHookState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
 
 // @public
 export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<PortalProps, 'mountNode'> & {
@@ -106,6 +113,12 @@ export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
 
+// @public
+export type DropdownBaseHookProps = DistributiveOmit<DropdownProps, 'appearance' | 'size'>;
+
+// @public
+export type DropdownBaseHookState = DistributiveOmit<DropdownState, 'appearance' | 'size'>;
+
 // @public (undocumented)
 export const dropdownClassNames: SlotClassNames<DropdownSlots>;
 
@@ -182,6 +195,12 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
 // @public
 const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
+
+// @public (undocumented)
+export type OptionBaseProps = OptionProps;
+
+// @public (undocumented)
+export type OptionBaseState = OptionState;
 
 // @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
@@ -261,6 +280,9 @@ export function useButtonTriggerSlot(triggerFromProps: NonNullable<Slot<'button'
 // @public
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
+// @public
+export const useComboboxBase_unstable: (props: ComboboxBaseHookProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxBaseHookState;
+
 // @internal
 export const useComboboxBaseState: (props: ComboboxBaseProps & {
     children?: React_2.ReactNode;
@@ -286,6 +308,9 @@ export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState
 export const useDropdown_unstable: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
 
 // @public
+export const useDropdownBase_unstable: (props: DropdownBaseHookProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownBaseHookState;
+
+// @public
 export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState;
 
 // @internal
@@ -308,6 +333,9 @@ export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;
 
 // @public
 export const useOption_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
+
+// @public
+export const useOptionBase_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
 
 // @public
 export const useOptionGroup_unstable: (props: OptionGroupProps, ref: React_2.Ref<HTMLElement>) => OptionGroupState;
