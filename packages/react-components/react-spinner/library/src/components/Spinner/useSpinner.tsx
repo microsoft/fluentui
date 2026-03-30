@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
-import type { SpinnerProps, SpinnerState } from './Spinner.types';
+import type { SpinnerBaseProps, SpinnerBaseState, SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
@@ -16,25 +16,39 @@ import { useSpinnerContext } from '../../contexts/SpinnerContext';
  * @param ref - reference to root HTMLElement of Spinner
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
-  // Props
   const { size: contextSize } = useSpinnerContext();
-  const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
+  const { appearance = 'primary', size = contextSize ?? 'medium', ...baseProps } = props;
+
+  const baseState = useSpinnerBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    appearance,
+    size,
+  };
+};
+
+/**
+ * Base hook for Spinner component, which manages state related to slots structure, ARIA attributes,
+ * and delay-based visibility logic.
+ *
+ * @param props - User provided props to the Spinner component.
+ * @param ref - User provided ref to be passed to the Spinner component.
+ */
+export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<HTMLElement>): SpinnerBaseState => {
+  const { delay = 0, labelPosition = 'after' } = props;
   const baseId = useId('spinner');
 
   const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
-    getIntrinsicElementProps(
-      'div',
-      {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
-        role,
-        ...rest,
-      },
-      ['size'],
-    ),
+    getIntrinsicElementProps('div', {
+      // FIXME:
+      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      ref: ref as React.Ref<HTMLDivElement>,
+      role,
+      ...rest,
+    }),
     {
       elementType: 'div',
     },
@@ -64,11 +78,9 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
     nativeRoot['aria-labelledby'] = labelShorthand.id;
   }
-  const state: SpinnerState = {
-    appearance,
+  const state: SpinnerBaseState = {
     delay,
     labelPosition,
-    size,
     shouldRenderSpinner: !delay || isShownAfterDelay,
     components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: Label },
     root: nativeRoot,

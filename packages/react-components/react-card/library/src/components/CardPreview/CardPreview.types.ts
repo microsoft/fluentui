@@ -21,6 +21,16 @@ export type CardPreviewSlots = {
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 /**
+ * CardPreview base props (same as CardPreviewProps since CardPreview has no design props)
+ */
+export type CardPreviewBaseProps = CardPreviewProps;
+
+/**
  * State used in rendering CardPreview.
  */
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
+
+/**
+ * CardPreview base state (same as CardPreviewState since CardPreview has no design props)
+ */
+export type CardPreviewBaseState = CardPreviewState;

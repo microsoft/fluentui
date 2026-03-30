@@ -2,6 +2,21 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:51 GMT",
+      "tag": "@fluentui/react-rating_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "bd4ea9164d0412cc5eeed2a927cdca28ffd6d0f6",
+            "comment": "feat: add base hooks for Rating"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-rating_v9.3.15",
       "version": "9.3.15",

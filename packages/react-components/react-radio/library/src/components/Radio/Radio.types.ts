@@ -64,6 +64,8 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onC
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 };
 
+export type RadioBaseProps = RadioProps;
+
 /**
  * Data for the onChange event for Radio.
  */
@@ -78,3 +80,5 @@ export type RadioOnChangeData = {
  * State used in rendering Radio
  */
 export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;
+
+export type RadioBaseState = RadioState;
