@@ -4,7 +4,7 @@ import type { RadioGroup } from './radio-group.js';
 export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<T> {
   return html<T>`
     <template
-      focusgroup="radiogroup"
+      focusgroup="radiogroup wrap"
       @disabled="${(x, c) => x.disabledRadioHandler(c.event as CustomEvent)}"
       @change="${(x, c) => x.changeHandler(c.event as Event)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"

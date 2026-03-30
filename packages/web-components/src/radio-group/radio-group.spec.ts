@@ -492,14 +492,16 @@ test.describe('RadioGroup', () => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
-      `,
-    });
+      </fluent-radio-group>
+    `);
 
+    await page.getByTestId('before').focus();
     await page.keyboard.press('Tab');
 
     await expect(radios.nth(0)).toBeFocused();

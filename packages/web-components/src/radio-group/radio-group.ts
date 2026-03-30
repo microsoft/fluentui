@@ -431,9 +431,16 @@ export class RadioGroup extends FASTElement {
    */
   public focusinHandler(e: FocusEvent): boolean | void {
     if (!this.disabled) {
+      // Uncheck the checked disabled radio, if any.
+      this.radios?.forEach(radio => {
+        if (radio.disabled && radio.checked) {
+          radio.checked = false;
+        }
+      });
+
       const index = this.enabledRadios.indexOf(e.target as Radio);
       if (index > -1) {
-        this.checkRadio(index);
+        this.checkRadio(index, true);
       }
     }
 

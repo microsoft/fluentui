@@ -6,6 +6,14 @@ if (!CSS.supports('anchor-name: --foo')) {
   });
 }
 
+if (!('focusgroup' in HTMLElement.prototype)) {
+  import('../../../public/focusgroup-polyfill.js').then(({ polyfill }) => {
+    Object.defineProperty(window, 'FOCUSGROUP_POLYFILL', {
+      value: polyfill,
+    });
+  });
+}
+
 import { webLightTheme } from '@fluentui/tokens';
 import { setTheme } from '../../../src/theme/set-theme.js';
 import '../../../src/index-rollup.js';
