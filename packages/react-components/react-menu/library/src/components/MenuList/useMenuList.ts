@@ -8,12 +8,7 @@ import {
   getIntrinsicElementProps,
   slot,
 } from '@fluentui/react-utilities';
-import {
-  useArrowNavigationGroup,
-  useFocusFinders,
-  TabsterMoveFocusEventName,
-  type TabsterMoveFocusEvent,
-} from '@fluentui/react-tabster';
+import { useFocusFinders, TabsterMoveFocusEventName, type TabsterMoveFocusEvent } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
@@ -29,7 +24,6 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   const { targetDocument } = useFluent();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
@@ -149,7 +143,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<HTMLDivElement>,
         role: 'menu',
         'aria-labelledby': menuContext.triggerId,
-        ...focusAttributes,
+        focusgroup: 'menu nomemory wrap',
         ...props,
       }),
       { elementType: 'div' },

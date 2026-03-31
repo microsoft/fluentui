@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbBaseProps, BreadcrumbBaseState, BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
-import { TabsterDOMAttribute, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Breadcrumb.
@@ -62,19 +61,13 @@ export const useBreadcrumbBase_unstable = (
 
 /**
  * Hook to get accessibility attributes for Breadcrumb component, such as roving tab index.
- * Based on Tabster's useArrowNavigationGroup.
+ * Based on the HTML focusgroup attribute.
  *
  * @param focusMode - whether the Breadcrumb uses arrow key navigation or tab key navigation
  * @returns Tabster DOM attributes
  */
 export const useBreadcrumbA11yBehavior_unstable = ({
   focusMode,
-}: Pick<BreadcrumbBaseProps, 'focusMode'>): Partial<TabsterDOMAttribute> => {
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: 'horizontal',
-    memorizeCurrent: true,
-  });
-
-  return focusMode === 'arrow' ? focusAttributes : {};
+}: Pick<BreadcrumbBaseProps, 'focusMode'>): { focusgroup?: string } => {
+  return focusMode === 'arrow' ? { focusgroup: 'toolbar inline wrap' } : {};
 };

@@ -1,7 +1,6 @@
 'use client';
 
 import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
@@ -51,12 +50,8 @@ export const useCarouselNavButton_unstable = (
     resetAutoplay();
   });
 
-  const defaultTabProps = useTabsterAttributes({
-    focusable: { isDefault: selected },
-  });
-
   const buttonRef = React.useRef<HTMLElement>(undefined);
-  const _carouselButton = slot.always<ARIAButtonSlotProps>(
+  const _carouselButton = slot.always<ARIAButtonSlotProps & { focusGroupStart?: boolean }>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
@@ -65,7 +60,7 @@ export const useCarouselNavButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        ...defaultTabProps,
+        focusGroupStart: true,
       },
     },
   );

@@ -1,6 +1,5 @@
 'use client';
 
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -19,14 +18,6 @@ import { useControllableState } from '@fluentui/react-utilities';
  */
 export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
   const { appearance } = props;
-
-  const focusableGroupAttr = useArrowNavigationGroup({
-    circular: false,
-    axis: 'horizontal',
-    memorizeCurrent: false,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault: true,
-  });
 
   // Users can choose controlled or uncontrolled, if uncontrolled, the default is initialized by carousel context
   const [totalSlides, setTotalSlides] = useControllableState({
@@ -54,7 +45,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
         ref,
         role: 'tablist',
         ...props,
-        ...focusableGroupAttr,
+        focusgroup: 'tablist nowrap nomemory',
         children: null,
       }),
       { elementType: 'div' },
