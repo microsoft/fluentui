@@ -35,9 +35,6 @@ export const Appearance = (): JSXElement => {
       <Button appearance="tint" icon={<CalendarMonth />}>
         Tint
       </Button>
-      <Button appearance="outlineColor" icon={<CalendarMonth />}>
-        Outline Color
-      </Button>
     </div>
   );
 };
@@ -51,8 +48,7 @@ Appearance.parameters = {
         '- `outline`: removes background styling.\n' +
         '- `subtle`: minimizes emphasis to blend into the background until hovered or focused\n' +
         '- `transparent`: removes background and border styling.\n' +
-        '- `tint`: applies a tinted background with brand colors.\n' +
-        '- `outlineColor`: applies a colored outline with brand colors.\n',
+        '- `tint`: applies a tinted background with brand colors.\n',
     },
   },
 };

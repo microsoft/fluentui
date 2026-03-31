@@ -129,9 +129,6 @@ const useRootStyles = makeStyles({
   tint: {
     /* Styles provided by consumer via custom hooks */
   },
-  outlineColor: {
-    /* Styles provided by consumer via custom hooks */
-  },
 
   // Shape variations
   circular: {},

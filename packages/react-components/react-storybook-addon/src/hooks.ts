@@ -40,7 +40,6 @@ type FluentDocsConfig =
       tableOfContents?: boolean;
       dirSwitcher?: boolean;
       themePicker?: boolean;
-      styleModePicker?: boolean;
       copyAsMarkdown?: boolean;
       argTable?:
         | boolean
