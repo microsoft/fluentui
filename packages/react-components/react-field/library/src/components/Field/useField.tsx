@@ -27,12 +27,21 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const { orientation = 'vertical', size = 'medium', ...fieldProps } = props;
   const state = useFieldBase_unstable(fieldProps, ref);
 
-  // Merge the size design prop into the label slot (which already has htmlFor, id, required)
-  const label = state.label ? { ...state.label, size } : state.label;
+  const defaultIcon = validationMessageIcons[state.validationState];
 
   return {
     ...state,
-    label,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    components: { ...state.components, label: Label },
+    label: slot.optional(props.label, {
+      defaultProps: { size, ...state.label },
+      elementType: Label,
+    }),
+    validationMessageIcon: slot.optional(props.validationMessageIcon, {
+      renderByDefault: !!defaultIcon,
+      defaultProps: { children: defaultIcon },
+      elementType: 'span',
+    }),
     orientation,
     size,
   };
@@ -56,7 +65,7 @@ export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTML
   });
   const label = slot.optional(props.label, {
     defaultProps: { htmlFor: generatedControlId, id: baseId + '__label', required },
-    elementType: Label,
+    elementType: 'label',
   });
   const validationMessage = slot.optional(props.validationMessage, {
     defaultProps: {
@@ -66,10 +75,8 @@ export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTML
     elementType: 'div',
   });
   const hint = slot.optional(props.hint, { defaultProps: { id: baseId + '__hint' }, elementType: 'div' });
-  const defaultIcon = validationMessageIcons[validationState];
   const validationMessageIcon = slot.optional(props.validationMessageIcon, {
-    renderByDefault: !!defaultIcon,
-    defaultProps: { children: defaultIcon },
+    renderByDefault: false,
     elementType: 'span',
   });
 
@@ -78,7 +85,7 @@ export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTML
     generatedControlId,
     required,
     validationState,
-    components: { root: 'div', label: Label, validationMessage: 'div', validationMessageIcon: 'span', hint: 'div' },
+    components: { root: 'div', label: 'label', validationMessage: 'div', validationMessageIcon: 'span', hint: 'div' },
     root,
     label,
     validationMessageIcon,
