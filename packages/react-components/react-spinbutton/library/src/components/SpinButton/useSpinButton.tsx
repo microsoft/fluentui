@@ -12,6 +12,8 @@ import {
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
+  SpinButtonBaseProps,
+  SpinButtonBaseState,
   SpinButtonProps,
   SpinButtonState,
   SpinButtonSpinState,
@@ -41,25 +43,20 @@ const MAX_SPIN_TIME_MS = 1000;
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;
 
 /**
- * Create the state required to render SpinButton.
+ * Create the base state required to render SpinButton without design-specific props.
  *
- * The returned state can be modified with hooks such as useSpinButtonStyles_unstable,
- * before being passed to renderSpinButton_unstable.
- *
- * @param props - props from this instance of SpinButton
+ * @param props - props from this instance of SpinButton (without appearance/size)
  * @param ref - reference to root HTMLElement of SpinButton
  */
-export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
-
+export const useSpinButtonBase_unstable = (
+  props: SpinButtonBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): SpinButtonBaseState => {
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
+    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'value'],
   });
-
-  const overrides = useOverrides();
 
   const {
     value,
@@ -71,8 +68,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     stepPage = 1,
     precision: precisionFromProps,
     onChange,
-    size = 'medium',
-    appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,
     incrementButton,
@@ -159,6 +154,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (inputRef.current) {
       // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
       // is not in sync with the user-entered native input value, and some screen readers end up reading the wrong value.
+      // eslint-disable-next-line react-compiler/react-compiler
       inputRef.current.ariaValueNow = newValue;
     }
   };
@@ -281,9 +277,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
   }
 
-  const state: SpinButtonState = {
-    size,
-    appearance,
+  const state: SpinButtonBaseState = {
     spinState: keyboardSpinState,
     atBound: internalState.current.atBound,
 
@@ -301,7 +295,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         autoComplete: 'off',
         role: 'spinbutton',
-        appearance,
         type: 'text',
         ...nativeProps.primary,
       },
@@ -310,7 +303,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     incrementButton: slot.always(incrementButton, {
       defaultProps: {
         tabIndex: -1,
-        children: <ChevronUp16Regular />,
         disabled:
           nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
@@ -324,7 +316,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     decrementButton: slot.always(decrementButton, {
       defaultProps: {
         tabIndex: -1,
-        children: <ChevronDown16Regular />,
         disabled:
           nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
@@ -358,4 +349,29 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.decrementButton.onMouseLeave = mergeCallbacks(state.decrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
   return state;
+};
+
+/**
+ * Create the state required to render SpinButton.
+ *
+ * The returned state can be modified with hooks such as useSpinButtonStyles_unstable,
+ * before being passed to renderSpinButton_unstable.
+ *
+ * @param props - props from this instance of SpinButton
+ * @param ref - reference to root HTMLElement of SpinButton
+ */
+export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
+  const overrides = useOverrides();
+
+  const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;
+
+  const state = useSpinButtonBase_unstable(baseProps, ref);
+
+  state.incrementButton.children ??= <ChevronUp16Regular />;
+  state.decrementButton.children ??= <ChevronDown16Regular />;
+
+  return { ...state, appearance, size };
 };

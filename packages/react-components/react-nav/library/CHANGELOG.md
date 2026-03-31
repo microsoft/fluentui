@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Thu, 26 Mar 2026 08:12:54 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.3.22)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.3.21..@fluentui/react-nav_v9.3.22)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.11.6 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-motion to v9.14.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.3 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
 
 ## [9.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.3.21)
 

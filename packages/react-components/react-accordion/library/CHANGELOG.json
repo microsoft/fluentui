@@ -2,6 +2,33 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2026 14:37:39 GMT",
+      "tag": "@fluentui/react-accordion_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "60e59306fff71cffb065250b2b1a68490d0528f3",
+            "comment": "feat: expose base hooks and types for Accordion components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-motion to v9.14.0",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.3",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-accordion_v9.9.2",
       "version": "9.9.2",

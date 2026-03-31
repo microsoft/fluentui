@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2026 14:37:39 GMT",
+      "tag": "@fluentui/react-components_v9.73.6",
+      "version": "9.73.6",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "60e59306fff71cffb065250b2b1a68490d0528f3",
+            "comment": "feat: expose base hooks and types for Accordion components"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "a72cc70fab2a56641dd70b83586039833376298b",
+            "comment": "feat: add motionSlot() as parallel to presenceMotionSlot()"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "feat: add motionSlot() as parallel to presenceMotionSlot()"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ca8968af85531cc12b0371680a0de44e884dfae0",
+            "comment": "feat: expose base state hooks for Radio components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4",
+            "comment": "feat(react-spinbutton): add useSpinButtonBase_unstable hook"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "99713fdb62519430c1bab8d565a1fa134564483d",
+            "comment": "fix: fix incorrect PresenceBadge aria-label"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "refactor: migrate ProgressBar from CSS to motion components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Mar 2026 08:12:47 GMT",
       "tag": "@fluentui/react-components_v9.73.5",
       "version": "9.73.5",

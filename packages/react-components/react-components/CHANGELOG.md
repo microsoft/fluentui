@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 26 Mar 2026 08:12:47 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.6)
+
+Mon, 30 Mar 2026 14:37:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.5..@fluentui/react-components_v9.73.6)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: expose base hooks and types for Accordion components ([PR #35897](https://github.com/microsoft/fluentui/pull/35897) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35888](https://github.com/microsoft/fluentui/pull/35888) by robertpenner@microsoft.com)
+  - feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: expose base state hooks for Radio components ([PR #35894](https://github.com/microsoft/fluentui/pull/35894) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat(react-spinbutton): add useSpinButtonBase_unstable hook ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix: fix incorrect PresenceBadge aria-label ([PR #35927](https://github.com/microsoft/fluentui/pull/35927) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - refactor: migrate ProgressBar from CSS to motion components ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
 
 ## [9.73.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.5)
 
