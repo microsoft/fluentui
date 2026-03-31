@@ -246,18 +246,6 @@ export {
   SwitchTemplate,
 } from './switch/index.js';
 export { isTab, Tab, type TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
-export { TabPanel, TabPanelTemplate, TabPanelStyles, TabPanelDefinition } from './tab-panel/index.js';
-export {
-  Tabs,
-  TabsAppearance,
-  type TabsOptions,
-  TabsOrientation,
-  TabsSize,
-  TabsTemplate,
-  TabsStyles,
-  TabsDefinition,
-} from './tabs/index.js';
-
 export {
   typographyBody1Styles,
   typographyBody1StrongStyles,
