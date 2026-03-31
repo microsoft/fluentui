@@ -89,6 +89,7 @@ export const styles = css`
     cursor: not-allowed;
     fill: ${colorNeutralForegroundDisabled};
     color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
   }
 
   :host([disabled]:hover)::after {

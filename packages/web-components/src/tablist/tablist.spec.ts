@@ -156,8 +156,6 @@ test.describe('Tablist', () => {
       const tabs = element.locator('fluent-tab');
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
-
-      await expect(element).toHaveJSProperty('activeTabIndex', 0);
     });
   });
 

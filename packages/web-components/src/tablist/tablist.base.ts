@@ -33,7 +33,7 @@ export class BaseTablist extends FASTElement {
       return;
     }
 
-    this.setTabs();
+    this.setTabs({ forceDisabled: true });
   }
 
   /**
@@ -91,7 +91,7 @@ export class BaseTablist extends FASTElement {
       return;
     }
 
-    this.setTabs(true);
+    this.setTabs({ connectToPanel: true });
   }
 
   /**
@@ -121,7 +121,7 @@ export class BaseTablist extends FASTElement {
    *
    * @internal
    */
-  protected setTabs(connectToPanel = false): void {
+  protected setTabs({ connectToPanel = false, forceDisabled = false } = {}): void {
     const hasStartSlot = this.tabs.some(tab => !!tab.querySelector("[slot='start']"));
     const rootNode = this.getRootNode() as Document | ShadowRoot;
     let firstEnabledTabId = '';
@@ -132,7 +132,11 @@ export class BaseTablist extends FASTElement {
       }
 
       tab.id ||= uniqueId('tab-');
-      tab.disabled = this.disabled;
+      if (forceDisabled) {
+        tab.disabled = this.disabled;
+      } else {
+        tab.disabled = tab.disabled || this.disabled;
+      }
 
       if (!firstEnabledTabId && !tab.disabled) {
         firstEnabledTabId = tab.id;
@@ -170,7 +174,7 @@ export class BaseTablist extends FASTElement {
   /** @internal */
   public handleFocusIn(event: FocusEvent) {
     const target = event.target as Node;
-    if (!isTab(target)) {
+    if (!isTab(target) || target.disabled) {
       return;
     }
     this.activeid = target.id;
