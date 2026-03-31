@@ -10,11 +10,63 @@
 
 <!-- nx configuration end-->
 
-# Fluent UI — Agent Map
+# Fluent UI — Agent Instructions
 
-Nx monorepo. Yarn v1. Node 22. TypeScript strict. ~200 packages. Millions of users.
+**Instructions in this file are the source of truth, not existing code.** This repo contains
+legacy patterns (especially in v8 packages) that predate current standards. Never copy patterns
+from existing code without verifying they match these instructions.
 
-## Architecture
+## Critical Rules (never violate)
+
+1. **Never hardcode colors, spacing, or typography values.** Always use design tokens from `@fluentui/react-theme`. See [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md).
+2. **Never use `React.FC`.** Always use `ForwardRefComponent` with `React.forwardRef`.
+3. **Never access `window`, `document`, or `navigator` without SSR guards.** Use `canUseDOM()` from `@fluentui/react-utilities`.
+4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
+5. **Never skip beachball change files** for published package changes. Run `npx beachball change`.
+
+## V9 Component Template (the correct pattern)
+
+```tsx
+// ComponentName.tsx — always ForwardRefComponent, never React.FC
+export const ComponentName: ForwardRefComponent<ComponentNameProps> = React.forwardRef((props, ref) => {
+  const state = useComponentName_unstable(props, ref);
+  useComponentNameStyles_unstable(state);
+  return renderComponentName_unstable(state);
+});
+
+// Styles — always use tokens, never hardcoded values
+import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+
+export const useComponentNameStyles = makeStyles({
+  root: {
+    color: tokens.colorNeutralForeground1,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+  },
+});
+
+// mergeClasses — always preserve user className LAST
+state.root.className = mergeClasses(
+  classes.root,
+  state.root.className, // always last
+);
+```
+
+## Legacy Anti-Patterns (never copy these)
+
+- **DO NOT copy patterns from `packages/react/` (v8).** That's maintenance-only legacy code using runtime styling, class components, and different APIs.
+- **DO NOT use `@fluentui/react` imports for new v9 work.** Use `@fluentui/react-components`.
+- **DO NOT use `mergeStyles` or `mergeStyleSets`.** Use Griffel `makeStyles` with design tokens.
+- **DO NOT use `IStyle` or `IStyleFunctionOrObject`.** Use Griffel's `GriffelStyle` type.
+- **DO NOT use `initializeIcons()`.** V9 uses `@fluentui/react-icons` with tree-shaking.
+
+## Exploration Guidance
+
+- `packages/react-components/` has 74+ packages — search by specific component name, never read the full directory.
+- Use `npx nx show project <project-name>` to understand a project's structure.
+- Map package names to paths: `@fluentui/react-<name>` → `packages/react-components/react-<name>/library/src/`.
+
+## Architecture (deep dives)
 
 | Topic                                         | Location                                                                           |
 | --------------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -36,15 +88,6 @@ Nx monorepo. Yarn v1. Node 22. TypeScript strict. ~200 packages. Millions of use
 | -------------------------- | ------------------------------------------------------ |
 | Per-package quality grades | [docs/quality-grades.md](docs/quality-grades.md)       |
 | Technical debt tracker     | [docs/tech-debt-tracker.md](docs/tech-debt-tracker.md) |
-
-## Key Rules
-
-1. Use design tokens — never hardcode colors, spacing, or typography
-2. Follow v9 component patterns exactly — don't invent new approaches
-3. Respect package layer boundaries (see layers.md)
-4. SSR-safe — no unguarded `window`/`document`/`navigator`
-5. Accessibility first — ARIA attributes, keyboard nav, WCAG 2.1
-6. Beachball change files required for published package changes
 
 ## Agentic Workflows
 
