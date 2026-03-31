@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for Field",
+  "packageName": "@fluentui/react-field",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
