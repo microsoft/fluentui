@@ -48,13 +48,13 @@ Nx monorepo. Yarn v1. Node 22. TypeScript strict. ~200 packages. Millions of use
 
 ## Agentic Workflows
 
-| Workflow                   | Trigger           | Purpose                                       |
-| -------------------------- | ----------------- | --------------------------------------------- |
-| `agent-triage`             | Issue opened      | Classify, label, validate issues              |
-| `agent-fix`                | `agent:fix` label | Implement fixes, open PRs                     |
-| `agent-review`             | PR opened         | FluentUI review with confidence score         |
-| `agent-docs-grooming`      | Weekly Monday     | Documentation audit                           |
-| `agent-skills-improvement` | Weekly Friday     | Improve agent instructions from PR patterns   |
+| Workflow                   | Trigger           | Purpose                                     |
+| -------------------------- | ----------------- | ------------------------------------------- |
+| `agent-triage`             | Issue opened      | Classify, label, validate issues            |
+| `agent-fix`                | `agent:fix` label | Implement fixes, open PRs                   |
+| `agent-review`             | PR opened         | FluentUI review with confidence score       |
+| `agent-docs-grooming`      | Weekly Monday     | Documentation audit                         |
+| `agent-skills-improvement` | Weekly Friday     | Improve agent instructions from PR patterns |
 
 ## Package Layout
 
