@@ -33,7 +33,7 @@ Find recent agent activity:
 - Search for PRs created by `copilot-swe-agent[bot]` in the last 14 days
 - Search for PRs with the `agent:automated-fix` label
 - For each PR, read: the diff, review comments, whether it was merged/closed, and any
-  devil's advocate review scores
+  FluentUI review scores
 
 ## Step 2: Categorize Outcomes
 
@@ -59,7 +59,7 @@ Why was it rejected? Look for:
 
 ## Step 3: Analyze Review Scores
 
-If devil's advocate reviews exist:
+If FluentUI review scores exist:
 
 - Which dimensions consistently score low?
 - Are scores well-calibrated? (high-scored PRs that got rejected = too lenient)

@@ -24,7 +24,7 @@
 #
 # gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"63152329a1470b2af57f2e646db4ca8f368aa39674caab7a05c13b1175d5019f","compiler_version":"v0.50.6"}
 
-name: "Devil's Advocate PR Review"
+name: "FluentUI Review"
 "on":
   pull_request:
     types:
@@ -37,7 +37,7 @@ concurrency:
   group: "gh-aw-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}"
   cancel-in-progress: true
 
-run-name: "Devil's Advocate PR Review"
+run-name: "FluentUI Review"
 
 jobs:
   activation:
@@ -298,7 +298,7 @@ jobs:
               version: "",
               agent_version: "0.0.418",
               cli_version: "v0.50.6",
-              workflow_name: "Devil's Advocate PR Review",
+              workflow_name: "FluentUI Review",
               experimental: false,
               supports_tools_allowlist: true,
               run_id: context.runId,
@@ -830,7 +830,7 @@ jobs:
         if: always() && steps.detection_guard.outputs.run_detection == 'true'
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          WORKFLOW_NAME: "Devil's Advocate PR Review"
+          WORKFLOW_NAME: "FluentUI Review"
           WORKFLOW_DESCRIPTION: "No description provided"
           HAS_PATCH: ${{ steps.collect_output.outputs.has_patch }}
         with:
@@ -949,7 +949,7 @@ jobs:
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
           GH_AW_NOOP_MAX: "1"
-          GH_AW_WORKFLOW_NAME: "Devil's Advocate PR Review"
+          GH_AW_WORKFLOW_NAME: "FluentUI Review"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -962,7 +962,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Devil's Advocate PR Review"
+          GH_AW_WORKFLOW_NAME: "FluentUI Review"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -975,7 +975,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Devil's Advocate PR Review"
+          GH_AW_WORKFLOW_NAME: "FluentUI Review"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_WORKFLOW_ID: "agent-review"
@@ -994,7 +994,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Devil's Advocate PR Review"
+          GH_AW_WORKFLOW_NAME: "FluentUI Review"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_NOOP_MESSAGE: ${{ steps.noop.outputs.noop_message }}
@@ -1044,7 +1044,7 @@ jobs:
     env:
       GH_AW_ENGINE_ID: "copilot"
       GH_AW_WORKFLOW_ID: "agent-review"
-      GH_AW_WORKFLOW_NAME: "Devil's Advocate PR Review"
+      GH_AW_WORKFLOW_NAME: "FluentUI Review"
     outputs:
       code_push_failure_count: ${{ steps.process_safe_outputs.outputs.code_push_failure_count }}
       code_push_failure_errors: ${{ steps.process_safe_outputs.outputs.code_push_failure_errors }}
