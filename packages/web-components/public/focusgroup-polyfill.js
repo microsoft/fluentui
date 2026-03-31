@@ -1,3 +1,4 @@
+// @ts-nocheck: this file will be replaced with the actual package
 const DatasetName = {
   // Whether the polyfill added an inferred role to the element due to lack of
   // explicit author role.
