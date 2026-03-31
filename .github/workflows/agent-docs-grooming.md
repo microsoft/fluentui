@@ -15,8 +15,8 @@ tools:
 
 safe-outputs:
   create-issue:
-    title-prefix: "Docs Audit — "
-    labels: ["Area: Documentation"]
+    title-prefix: 'Docs Audit — '
+    labels: ['Area: Documentation']
     close-older-issues: true
     max: 1
 ---
@@ -73,18 +73,23 @@ Create an issue with a structured audit report:
 **Scope**: packages/react-components/
 
 ### Missing or Incomplete READMEs
+
 - [ ] `@fluentui/react-<name>` — [what's missing]
 
 ### Missing Storybook Stories
+
 - [ ] `@fluentui/react-<name>` — no stories directory
 
 ### API Doc Issues
+
 - [ ] `@fluentui/react-<name>` — [issue found]
 
 ### Stale Code Comments
+
 - [ ] `packages/.../file.ts:LINE` — "TODO: ..." — [assessment]
 
 ### Summary
+
 - X packages checked
 - X issues found (X critical, X moderate, X low)
 ```

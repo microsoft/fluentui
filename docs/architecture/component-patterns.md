@@ -37,12 +37,12 @@ Components use three core hooks:
 
 ### Where to Fix Bugs
 
-| Bug type | Fix location |
-|----------|-------------|
-| State / behavior | `use<Name>.ts` |
-| Styling | `use<Name>Styles.styles.ts` |
-| Rendering / JSX | `render<Name>.tsx` |
-| Types / props | `<Name>.types.ts` |
+| Bug type         | Fix location                |
+| ---------------- | --------------------------- |
+| State / behavior | `use<Name>.ts`              |
+| Styling          | `use<Name>Styles.styles.ts` |
+| Rendering / JSX  | `render<Name>.tsx`          |
+| Types / props    | `<Name>.types.ts`           |
 
 ## Slot System
 

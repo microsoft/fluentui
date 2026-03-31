@@ -38,16 +38,21 @@ Find recent agent activity:
 ## Step 2: Categorize Outcomes
 
 ### Merged Successfully
+
 What did the agent do right? Note any non-obvious good patterns.
 
 ### Merged with Changes Requested
+
 What did humans correct? These are the most valuable signals:
+
 - Conventions the agent didn't follow
 - Missing steps (forgot change file, didn't update tests, etc.)
 - Wrong assumptions about the codebase
 
 ### Closed without Merge
+
 Why was it rejected? Look for:
+
 - Fundamental misunderstandings
 - Wrong approach entirely
 - Scope creep
@@ -55,6 +60,7 @@ Why was it rejected? Look for:
 ## Step 3: Analyze Review Scores
 
 If devil's advocate reviews exist:
+
 - Which dimensions consistently score low?
 - Are scores well-calibrated? (high-scored PRs that got rejected = too lenient)
 - Are there false negatives? (low-scored PRs that were fine = too strict)
@@ -72,20 +78,24 @@ Open a pull request modifying one or more of:
 Title: `chore: agent skills update — [date]`
 
 Body:
+
 ```markdown
 ## Skills Update
 
 ### Data Analyzed
+
 - X PRs reviewed (Y merged, Z closed, W pending)
 
 ### Changes
 
 #### [File changed]
+
 - **Added**: [rule] — Motivated by PR #N: [what happened]
 - **Clarified**: [rule] — PR #N misinterpreted the original wording
 - **Removed**: [rule] — Caused [problem] in PRs #N, #M
 
 ### Patterns Observed
+
 - [Theme 1]
 - [Theme 2]
 ```

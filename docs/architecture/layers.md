@@ -39,13 +39,13 @@ Dependencies may only flow **downward** — never upward or sideways within the 
 
 Projects are tagged for identification:
 
-| Tag | Meaning |
-|-----|---------|
-| `vNext` | v9 packages |
-| `v8` | v8 packages (maintenance only) |
-| `platform:web` | Browser-targeted |
-| `platform:node` | Node.js-targeted |
-| `type:stories` | Storybook story packages |
-| `web-components` | Web Components packages |
-| `charting` | Charting packages |
-| `tools` | Build tooling |
+| Tag              | Meaning                        |
+| ---------------- | ------------------------------ |
+| `vNext`          | v9 packages                    |
+| `v8`             | v8 packages (maintenance only) |
+| `platform:web`   | Browser-targeted               |
+| `platform:node`  | Node.js-targeted               |
+| `type:stories`   | Storybook story packages       |
+| `web-components` | Web Components packages        |
+| `charting`       | Charting packages              |
+| `tools`          | Build tooling                  |

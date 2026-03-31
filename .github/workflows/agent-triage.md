@@ -35,14 +35,14 @@ When a new issue is opened, perform the following steps:
 
 Determine which product area this issue belongs to based on the issue content:
 
-| Signal | Label |
-|--------|-------|
-| `@fluentui/react-components` or v9 component names (react-button, react-dialog, etc.) | `Fluent UI react-components (v9)` |
-| `@fluentui/react` or v8 component names (DetailsList, CommandBar, etc.) | `Fluent UI react (v8)` |
-| `@fluentui/web-components` or web component names | `web-components`, `Fluent UI WC (v3)` |
-| `@fluentui/react-charting` or chart types (AreaChart, DonutChart, etc.) | `Package: charting` |
-| Build, CI, Nx, pipelines, webpack, tooling issues | `Area: Build System` |
-| Documentation, storybook, website, examples | `Area: Documentation` |
+| Signal                                                                                | Label                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------- |
+| `@fluentui/react-components` or v9 component names (react-button, react-dialog, etc.) | `Fluent UI react-components (v9)`     |
+| `@fluentui/react` or v8 component names (DetailsList, CommandBar, etc.)               | `Fluent UI react (v8)`                |
+| `@fluentui/web-components` or web component names                                     | `web-components`, `Fluent UI WC (v3)` |
+| `@fluentui/react-charting` or chart types (AreaChart, DonutChart, etc.)               | `Package: charting`                   |
+| Build, CI, Nx, pipelines, webpack, tooling issues                                     | `Area: Build System`                  |
+| Documentation, storybook, website, examples                                           | `Area: Documentation`                 |
 
 ### Type
 
@@ -52,6 +52,7 @@ Determine which product area this issue belongs to based on the issue content:
 ## 2. Validate the Issue
 
 ### For Bug Reports, check:
+
 - Does it have reproduction steps?
 - Does it include expected vs actual behavior?
 - Does it mention a package version?
@@ -60,10 +61,12 @@ Determine which product area this issue belongs to based on the issue content:
 If critical info is missing, add label `Needs: Author Feedback` and comment asking for specifics.
 
 ### Duplicate Check
+
 - Search recent issues (last 90 days) for similar titles or keywords.
 - If a likely duplicate exists, comment linking to it and add label `Resolution: Duplicate`.
 
 ### Validity
+
 - Is this actually a Fluent UI issue or a general React/CSS question?
 - If not actionable, add `Needs: Author Feedback` and ask for clarification.
 

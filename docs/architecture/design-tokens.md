@@ -7,17 +7,17 @@ Hardcoded values break theming, high contrast mode, and dark mode.
 
 ## Token Categories
 
-| Category | Example tokens | Use for |
-|----------|---------------|---------|
-| Color | `tokens.colorNeutralForeground1`, `tokens.colorBrandBackground` | All colors |
-| Spacing | `tokens.spacingVerticalM`, `tokens.spacingHorizontalL` | Padding, margin, gap |
-| Border radius | `tokens.borderRadiusMedium`, `tokens.borderRadiusLarge` | Border radius |
-| Font | `tokens.fontSizeBase300`, `tokens.fontWeightSemibold` | Typography |
-| Line height | `tokens.lineHeightBase300` | Line height |
-| Stroke | `tokens.strokeWidthThin`, `tokens.strokeWidthThick` | Border width |
-| Shadow | `tokens.shadow4`, `tokens.shadow16` | Box shadow |
-| Duration | `tokens.durationNormal`, `tokens.durationFast` | Animations |
-| Easing | `tokens.curveEasyEase` | Animation timing |
+| Category      | Example tokens                                                  | Use for              |
+| ------------- | --------------------------------------------------------------- | -------------------- |
+| Color         | `tokens.colorNeutralForeground1`, `tokens.colorBrandBackground` | All colors           |
+| Spacing       | `tokens.spacingVerticalM`, `tokens.spacingHorizontalL`          | Padding, margin, gap |
+| Border radius | `tokens.borderRadiusMedium`, `tokens.borderRadiusLarge`         | Border radius        |
+| Font          | `tokens.fontSizeBase300`, `tokens.fontWeightSemibold`           | Typography           |
+| Line height   | `tokens.lineHeightBase300`                                      | Line height          |
+| Stroke        | `tokens.strokeWidthThin`, `tokens.strokeWidthThick`             | Border width         |
+| Shadow        | `tokens.shadow4`, `tokens.shadow16`                             | Box shadow           |
+| Duration      | `tokens.durationNormal`, `tokens.durationFast`                  | Animations           |
+| Easing        | `tokens.curveEasyEase`                                          | Animation timing     |
 
 ## Examples
 
@@ -45,7 +45,7 @@ Themes define CSS custom properties consumed by components:
 // FluentProvider injects CSS variables into DOM
 <FluentProvider theme={webLightTheme}>
   <App />
-</FluentProvider>
+</FluentProvider>;
 
 // Tokens resolve to CSS variables at build time
 makeStyles({

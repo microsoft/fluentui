@@ -27,7 +27,7 @@
 name: "Weekly Agent Skills Improvement"
 "on":
   schedule:
-  - cron: "24 1 * * 5"
+  - cron: "38 3 * * 5"
     # Friendly format: weekly on friday (scattered)
   workflow_dispatch:
 

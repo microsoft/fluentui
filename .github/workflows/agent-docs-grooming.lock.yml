@@ -22,12 +22,12 @@
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"3f302991a4628d6227769b22185201326fc159676d554198db10adbb49583dfb","compiler_version":"v0.50.6"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"914290db4a747f3d1c2b0b6eeafb80bbaf6e5835547755a9657dc49901b97fcb","compiler_version":"v0.50.6"}
 
 name: "Weekly Documentation Audit"
 "on":
   schedule:
-  - cron: "49 21 * * 1"
+  - cron: "19 21 * * 1"
     # Friendly format: weekly on monday (scattered)
   workflow_dispatch:
 

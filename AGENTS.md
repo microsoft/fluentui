@@ -16,26 +16,26 @@ Nx monorepo. Yarn v1. Node 22. TypeScript strict. ~200 packages. Millions of use
 
 ## Architecture
 
-| Topic | Location |
-|-------|----------|
+| Topic                                         | Location                                                                           |
+| --------------------------------------------- | ---------------------------------------------------------------------------------- |
 | V9 component patterns (hooks, slots, Griffel) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md) |
-| Design tokens and theming | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md) |
-| Package dependency layers | [docs/architecture/layers.md](docs/architecture/layers.md) |
+| Design tokens and theming                     | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)           |
+| Package dependency layers                     | [docs/architecture/layers.md](docs/architecture/layers.md)                         |
 
 ## Workflows
 
-| Topic | Location |
-|-------|----------|
+| Topic                                | Location                                                         |
+| ------------------------------------ | ---------------------------------------------------------------- |
 | PR checklist, change files, commands | [docs/workflows/contributing.md](docs/workflows/contributing.md) |
-| Testing guide (unit, VRT, SSR, E2E) | [docs/workflows/testing.md](docs/workflows/testing.md) |
-| Team routing and label taxonomy | [docs/team-routing.md](docs/team-routing.md) |
+| Testing guide (unit, VRT, SSR, E2E)  | [docs/workflows/testing.md](docs/workflows/testing.md)           |
+| Team routing and label taxonomy      | [docs/team-routing.md](docs/team-routing.md)                     |
 
 ## Quality Tracking
 
-| Topic | Location |
-|-------|----------|
-| Per-package quality grades | [docs/quality-grades.md](docs/quality-grades.md) |
-| Technical debt tracker | [docs/tech-debt-tracker.md](docs/tech-debt-tracker.md) |
+| Topic                      | Location                                               |
+| -------------------------- | ------------------------------------------------------ |
+| Per-package quality grades | [docs/quality-grades.md](docs/quality-grades.md)       |
+| Technical debt tracker     | [docs/tech-debt-tracker.md](docs/tech-debt-tracker.md) |
 
 ## Key Rules
 
@@ -48,21 +48,21 @@ Nx monorepo. Yarn v1. Node 22. TypeScript strict. ~200 packages. Millions of use
 
 ## Agentic Workflows
 
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| `agent-triage` | Issue opened | Classify, label, validate issues |
-| `agent-fix` | `agent:fix` label | Implement fixes, open PRs |
-| `agent-review` | PR opened | Devil's advocate review with confidence score |
-| `agent-docs-grooming` | Weekly Monday | Documentation audit |
-| `agent-skills-improvement` | Weekly Friday | Improve agent instructions from PR patterns |
+| Workflow                   | Trigger           | Purpose                                       |
+| -------------------------- | ----------------- | --------------------------------------------- |
+| `agent-triage`             | Issue opened      | Classify, label, validate issues              |
+| `agent-fix`                | `agent:fix` label | Implement fixes, open PRs                     |
+| `agent-review`             | PR opened         | Devil's advocate review with confidence score |
+| `agent-docs-grooming`      | Weekly Monday     | Documentation audit                           |
+| `agent-skills-improvement` | Weekly Friday     | Improve agent instructions from PR patterns   |
 
 ## Package Layout
 
-| Area | Path | Status |
-|------|------|--------|
-| V9 components | `packages/react-components/` | Active development |
-| V8 components | `packages/react/` | Maintenance only |
-| Web Components | `packages/web-components/` | Active |
-| Charting | `packages/charts/` | Active |
-| Build tooling | `tools/` | Active |
-| ESLint plugin | `packages/eslint-plugin/` | Active |
+| Area           | Path                         | Status             |
+| -------------- | ---------------------------- | ------------------ |
+| V9 components  | `packages/react-components/` | Active development |
+| V8 components  | `packages/react/`            | Maintenance only   |
+| Web Components | `packages/web-components/`   | Active             |
+| Charting       | `packages/charts/`           | Active             |
+| Build tooling  | `tools/`                     | Active             |
+| ESLint plugin  | `packages/eslint-plugin/`    | Active             |

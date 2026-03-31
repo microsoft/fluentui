@@ -5,12 +5,12 @@ Updated by the `agent-docs-grooming` workflow and the `agent-skills-improvement`
 
 ## Grading Criteria
 
-| Grade | Meaning |
-|-------|---------|
-| A | README + stories + tests + API docs all present and current |
-| B | Missing one of: complete README, full story coverage, or up-to-date API docs |
-| C | Missing two or more quality signals |
-| D | Minimal or no documentation/testing |
+| Grade | Meaning                                                                      |
+| ----- | ---------------------------------------------------------------------------- |
+| A     | README + stories + tests + API docs all present and current                  |
+| B     | Missing one of: complete README, full story coverage, or up-to-date API docs |
+| C     | Missing two or more quality signals                                          |
+| D     | Minimal or no documentation/testing                                          |
 
 ## Quality Signals
 
@@ -24,9 +24,9 @@ Updated by the `agent-docs-grooming` workflow and the `agent-skills-improvement`
 
 <!-- This table is updated by the docs-groomer agent. Do not edit manually. -->
 
-| Package | README | Stories | Tests | API Docs | Conformance | Grade |
-|---------|--------|---------|-------|----------|-------------|-------|
-| _To be populated by first docs audit run_ | | | | | | |
+| Package                                   | README | Stories | Tests | API Docs | Conformance | Grade |
+| ----------------------------------------- | ------ | ------- | ----- | -------- | ----------- | ----- |
+| _To be populated by first docs audit run_ |        |         |       |          |             |       |
 
 ## How to Update
 

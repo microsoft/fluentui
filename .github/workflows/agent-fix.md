@@ -38,12 +38,12 @@ receives the `agent:fix` label. If the triggering label is NOT `agent:fix`, do n
 
 This is an Nx monorepo. Package locations:
 
-| Package pattern | Path |
-|----------------|------|
+| Package pattern               | Path                                                  |
+| ----------------------------- | ----------------------------------------------------- |
 | `@fluentui/react-<name>` (v9) | `packages/react-components/react-<name>/library/src/` |
-| `@fluentui/react` (v8) | `packages/react/src/` |
-| `@fluentui/web-components` | `packages/web-components/src/` |
-| `@fluentui/react-charting` | `packages/charts/react-charting/src/` |
+| `@fluentui/react` (v8)        | `packages/react/src/`                                 |
+| `@fluentui/web-components`    | `packages/web-components/src/`                        |
+| `@fluentui/react-charting`    | `packages/charts/react-charting/src/`                 |
 
 ### v9 Component Architecture
 
@@ -104,6 +104,7 @@ npx beachball change --type patch --message "fix(<package>): <description>"
 ## When to Bail Out
 
 If you cannot confidently fix the issue, comment explaining:
+
 - What you investigated
 - What you think the root cause might be
 - Why you couldn't complete the fix

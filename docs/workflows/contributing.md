@@ -28,9 +28,11 @@ yarn create-component                     # Interactive generator
 ## PR Checklist
 
 1. **Change file** — Required for any published package change:
+
    ```bash
    npx beachball change --type patch --message "fix(react-button): description"
    ```
+
    Use `patch` for fixes, `minor` for features. Never `major` without approval.
 
 2. **Tests pass** — `npx nx run <project>:test`

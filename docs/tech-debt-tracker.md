@@ -7,9 +7,9 @@ Items are added during code review, agent runs, and manual audits.
 
 <!-- Add items with: category, description, location, priority, and date added -->
 
-| ID | Category | Description | Location | Priority | Added |
-|----|----------|-------------|----------|----------|-------|
-| _To be populated by agent runs and manual audits_ | | | | | |
+| ID                                                | Category | Description | Location | Priority | Added |
+| ------------------------------------------------- | -------- | ----------- | -------- | -------- | ----- |
+| _To be populated by agent runs and manual audits_ |          |             |          |          |       |
 
 ## Categories
 
@@ -31,9 +31,11 @@ Items are added during code review, agent runs, and manual audits.
 ## How to Use
 
 ### For agents
+
 When you find technical debt during a fix or review, add a row to the table above.
 When you fix a debt item, remove its row.
 
 ### For engineers
+
 Review this file when planning sprints. Use it to justify cleanup PRs.
 The `agent-skills-improvement` workflow analyzes this file to identify recurring patterns.
