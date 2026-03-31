@@ -782,7 +782,6 @@ export class BaseTablist extends FASTElement {
     // (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
-    adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
@@ -796,7 +795,10 @@ export class BaseTablist extends FASTElement {
     // (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     // @internal
-    protected setTabs(connectToPanel?: boolean): void;
+    protected setTabs({ connectToPanel, forceDisabled }?: {
+        connectToPanel?: boolean | undefined;
+        forceDisabled?: boolean | undefined;
+    }): void;
     // @internal
     slottedTabs: Node[];
     // (undocumented)

@@ -209,26 +209,4 @@ export class BaseTablist extends FASTElement {
 
     this.change();
   }
-
-  /**
-   * The adjust method for FASTTabs
-   * @public
-   * @remarks
-   * This method allows the active index to be adjusted by numerical increments
-   */
-  public adjust(adjustment: number): void {
-    /*
-    const focusableTabs = this.tabs.filter(t => isFocusableElement(t));
-    const currentActiveTabIndex = focusableTabs.indexOf(this.activetab);
-
-    const nextTabIndex = wrapInBounds(0, focusableTabs.length - 1, currentActiveTabIndex + adjustment);
-
-    // the index of the next focusable tab within the context of all available tabs
-    const nextIndex = this.tabs.indexOf(focusableTabs[nextTabIndex]);
-
-    if (nextIndex > -1) {
-      this.activateTabByIndex(this.tabs, nextIndex);
-    }
-    */
-  }
 }
