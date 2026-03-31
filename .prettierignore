@@ -9,6 +9,8 @@ api-report.md
 *.scss.ts
 _*.scss
 yarn.lock
+# generated agentic workflow lock files
+.github/workflows/*.lock.yml
 
 # generated folders
 node_modules
