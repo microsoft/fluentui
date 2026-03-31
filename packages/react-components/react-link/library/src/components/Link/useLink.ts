@@ -40,7 +40,7 @@ export const useLinkBase_unstable = (
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkBaseState => {
   const { inline: inlineContext } = useLinkContext();
-  const { disabled = false, disabledFocusable = false, inline = false } = props;
+  const { bold = false, disabled = false, disabledFocusable = false, inline = false } = props;
 
   const elementType = props.as || (props.href ? 'a' : 'button');
 
@@ -54,6 +54,7 @@ export const useLinkBase_unstable = (
 
   const state: LinkBaseState = {
     // Props passed at the top-level
+    bold,
     disabled,
     disabledFocusable,
     inline: inline ?? !!inlineContext,

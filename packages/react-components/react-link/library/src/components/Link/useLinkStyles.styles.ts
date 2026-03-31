@@ -109,13 +109,28 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundInvertedLinkPressed,
     },
   },
+  bold: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  appearanceInverted: {
+    color: tokens.colorNeutralForegroundInvertedLink,
+    ':hover': {
+      color: tokens.colorNeutralForegroundInvertedLinkHover,
+    },
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundInvertedLinkPressed,
+    },
+    ':focus': {
+      textDecorationColor: tokens.colorNeutralForegroundInvertedLink,
+    },
+  },
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   'use no memo';
 
   const styles = useStyles();
-  const { appearance, disabled, inline, root, backgroundAppearance } = state;
+  const { appearance, bold, disabled, inline, root, backgroundAppearance } = state;
 
   state.root.className = mergeClasses(
     linkClassNames.root,
@@ -124,9 +139,11 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
+    appearance === 'inverted' && styles.appearanceInverted,
     backgroundAppearance === 'inverted' && styles.inverted,
     backgroundAppearance === 'brand' && styles.brand,
     inline && styles.inline,
+    bold && styles.bold,
     disabled && styles.disabled,
     state.root.className,
   );

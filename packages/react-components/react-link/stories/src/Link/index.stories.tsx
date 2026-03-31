@@ -6,6 +6,8 @@ import accessibilityMd from './LinkAccessibility.md';
 
 export { Default } from './LinkDefault.stories';
 export { Appearance } from './LinkAppearance.stories';
+export { Inverted } from './LinkInverted.stories';
+export { Bold } from './LinkBold.stories';
 export { Inline } from './LinkInline.stories';
 export { Disabled } from './LinkDisabled.stories';
 export { DisabledFocusable } from './LinkDisabledFocusable.stories';
