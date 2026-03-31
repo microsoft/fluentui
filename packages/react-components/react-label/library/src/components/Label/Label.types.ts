@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
  * Label Props
@@ -44,9 +44,9 @@ export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 
  * Label props without design-specific props (size, weight).
  * Use this when building a label that is unstyled or uses a custom design system.
  */
-export type LabelBaseProps = DistributiveOmit<LabelProps, 'size' | 'weight'>;
+export type LabelBaseProps = Omit<LabelProps, 'size' | 'weight'>;
 
 /**
  * Label state without design-specific state (size, weight).
  */
-export type LabelBaseState = DistributiveOmit<LabelState, 'size' | 'weight'>;
+export type LabelBaseState = Omit<LabelState, 'size' | 'weight'>;

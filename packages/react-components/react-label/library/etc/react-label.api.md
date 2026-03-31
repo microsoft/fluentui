@@ -6,7 +6,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -17,10 +16,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Label: ForwardRefComponent<LabelProps>;
 
 // @public
-export type LabelBaseProps = DistributiveOmit<LabelProps, 'size' | 'weight'>;
+export type LabelBaseProps = Omit<LabelProps, 'size' | 'weight'>;
 
 // @public
-export type LabelBaseState = DistributiveOmit<LabelState, 'size' | 'weight'>;
+export type LabelBaseState = Omit<LabelState, 'size' | 'weight'>;
 
 // @public (undocumented)
 export const labelClassNames: SlotClassNames<LabelSlots>;
