@@ -48,9 +48,6 @@ const useRootExpandedStyles = makeStyles({
   tint: {
     /* Styles provided by consumer via custom hooks */
   },
-  outlineColor: {
-    /* Styles provided by consumer via custom hooks */
-  },
 });
 
 const useIconExpandedStyles = makeStyles({
@@ -71,9 +68,6 @@ const useIconExpandedStyles = makeStyles({
     color: tokens.colorNeutralForeground2BrandSelected,
   },
   tint: {
-    /* Styles provided by consumer via custom hooks */
-  },
-  outlineColor: {
     /* Styles provided by consumer via custom hooks */
   },
   highContrast: {

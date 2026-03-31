@@ -1,10 +1,9 @@
 import { addons, types } from 'storybook/manager-api';
 
-import { ADDON_ID, DIR_ID, STRICT_MODE_ID, STYLE_MODE_ID, THEME_ID } from '../constants';
+import { ADDON_ID, DIR_ID, STRICT_MODE_ID, THEME_ID } from '../constants';
 import { ThemePicker } from '../components/ThemePicker';
 import { ReactStrictMode } from '../components/ReactStrictMode';
 import { DirectionSwitch } from '../components/DirectionSwitch';
-import { StyleModeSwitch } from '../components/StyleModeSwitch';
 
 addons.register(ADDON_ID, () => {
   addons.add(THEME_ID, {
@@ -26,11 +25,5 @@ addons.register(ADDON_ID, () => {
     title: 'React Strict Mode',
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: ReactStrictMode,
-  });
-  addons.add(STYLE_MODE_ID, {
-    type: types.TOOL,
-    title: 'CAP Style Mode',
-    match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
-    render: StyleModeSwitch,
   });
 });

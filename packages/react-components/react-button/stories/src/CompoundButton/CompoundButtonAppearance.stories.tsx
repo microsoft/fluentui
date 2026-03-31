@@ -38,9 +38,6 @@ export const Appearance = (): JSXElement => {
       <CompoundButton secondaryContent="Secondary content" appearance="tint" icon={<CalendarMonth />}>
         Tint
       </CompoundButton>
-      <CompoundButton secondaryContent="Secondary content" appearance="outlineColor" icon={<CalendarMonth />}>
-        Outline Color
-      </CompoundButton>
     </div>
   );
 };
@@ -54,8 +51,7 @@ Appearance.parameters = {
         '- `outline`: removes background styling.\n' +
         '- `subtle`: minimizes emphasis to blend into the background until hovered or focused\n' +
         '- `transparent`: removes background and border styling.\n' +
-        '- `tint`: applies a tinted background with brand colors.\n' +
-        '- `outlineColor`: applies a colored outline with brand colors.\n',
+        '- `tint`: applies a tinted background with brand colors.\n',
     },
   },
 };

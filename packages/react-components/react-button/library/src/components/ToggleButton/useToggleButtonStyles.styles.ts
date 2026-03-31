@@ -145,9 +145,6 @@ const useRootCheckedStyles = makeStyles({
   tint: {
     /* Styles provided by custom hooks */
   },
-  outlineColor: {
-    /* Styles provided by custom hooks */
-  },
 });
 
 const useCheckedAccessibleStyles = makeStyles({
@@ -273,9 +270,6 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by custom hooks */
-  },
-  outlineColor: {
     /* Styles provided by custom hooks */
   },
 });

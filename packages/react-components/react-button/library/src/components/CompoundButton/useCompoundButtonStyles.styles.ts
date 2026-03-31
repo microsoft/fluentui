@@ -132,9 +132,6 @@ const useRootStyles = makeStyles({
   tint: {
     /* Styles provided by custom hooks */
   },
-  outlineColor: {
-    /* Styles provided by custom hooks */
-  },
 
   // Size variations
   small: {

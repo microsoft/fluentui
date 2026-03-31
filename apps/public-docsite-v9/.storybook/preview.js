@@ -1,10 +1,9 @@
 import * as rootPreview from '../../../.storybook/preview';
-import { withCAPTheme } from '../../../packages/react-components/react-button/stories/src/CAPTheme';
 
 import './docs-root-v9.css';
 
 /** @type {NonNullable<import('@storybook/react').Decorator[]>} */
-export const decorators = [...rootPreview.decorators, withCAPTheme];
+export const decorators = rootPreview.decorators;
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters & typeof rootPreview.parameters} */
 export const parameters = {

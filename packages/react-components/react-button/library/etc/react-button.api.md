@@ -37,7 +37,7 @@ export interface ButtonContextValue {
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & {
-    appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent' | 'tint' | 'outlineColor';
+    appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent' | 'tint';
     disabledFocusable?: boolean;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
