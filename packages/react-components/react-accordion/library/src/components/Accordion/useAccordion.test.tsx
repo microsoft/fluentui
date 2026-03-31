@@ -144,7 +144,7 @@ describe('useAccordionBase', () => {
       state.root.className,
     );
 
-    const contextValues = useAccordionHeaderContextValues_unstable(state);
+    const contextValues = useAccordionHeaderContextValues_unstable(state as AccordionHeaderState);
     return renderAccordionHeader_unstable(state as AccordionHeaderState, contextValues);
   });
 

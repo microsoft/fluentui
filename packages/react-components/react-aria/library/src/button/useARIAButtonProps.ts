@@ -6,12 +6,11 @@ import * as React from 'react';
 import type { ARIAButtonElementIntersection, ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './types';
 
 /**
- * @internal
- *
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
  * for multiple scenarios of non native button elements. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  *
+ * @internal
  * @param type - the proper scenario to be interpreted by the hook.
  *  1. `button` - Minimal interference from the hook, as semantic button already supports most of the states
  *  2. `a` or `div` - Proper keyboard/mouse handling plus other support to ensure ARIA behavior

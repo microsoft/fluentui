@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.15)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.15.14..@fluentui/react-tree_v9.15.15)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.10.4 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.3 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-motion to v9.14.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-radio to v9.6.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.15.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.14)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.15.13..@fluentui/react-tree_v9.15.14)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.10.3 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-button to v9.9.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-checkbox to v9.5.17 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+
+## [9.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.13)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.15.12..@fluentui/react-tree_v9.15.13)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.5.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
+- Bump @fluentui/react-radio to v9.5.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [9.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.15.12)
 

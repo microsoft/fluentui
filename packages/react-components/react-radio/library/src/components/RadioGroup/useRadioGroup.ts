@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getIntrinsicElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
-import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
+import { RadioGroupBaseProps, RadioGroupBaseState, RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
  * Create the state required to render RadioGroup.
@@ -15,15 +15,30 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
  * @param ref - reference to root HTMLElement of RadioGroup
  */
 export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
+  const { layout = 'vertical', ...baseProps } = props;
+  const state = useRadioGroupBase_unstable(baseProps, ref);
+
+  return {
+    layout,
+    ...state,
+  };
+};
+
+/**
+ * Create the base state required to render RadioGroup, without design-related properties such as `layout`.
+ */
+export const useRadioGroupBase_unstable = (
+  props: RadioGroupBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): RadioGroupBaseState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props);
 
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;
+  const { name = generatedName, value, defaultValue, disabled, onChange, required } = props;
 
   return {
-    layout,
     name,
     value,
     defaultValue,

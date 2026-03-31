@@ -8,6 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { MenuListContextValue } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -44,11 +45,13 @@ export const MenuGridContextProvider: React_2.Provider<MenuGridContextValue>;
 // @public
 export type MenuGridContextValue = {
     tableRowTabsterAttribute: TabsterDOMAttribute | null;
+    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
 };
 
 // @public (undocumented)
 export type MenuGridContextValues = {
     menuGrid: MenuGridContextValue;
+    menuList: MenuListContextValue;
 };
 
 // @public
@@ -123,7 +126,9 @@ export type MenuGridItemSlots = {
 export type MenuGridItemState = ComponentState<MenuGridItemSlots>;
 
 // @public (undocumented)
-export type MenuGridProps = ComponentProps<MenuGridSlots> & {};
+export type MenuGridProps = ComponentProps<MenuGridSlots> & {
+    circular?: boolean;
+};
 
 // @public
 export const MenuGridRow: ForwardRefComponent<MenuGridRowProps>;
@@ -150,6 +155,7 @@ export type MenuGridSlots = {
 // @public (undocumented)
 export type MenuGridState = ComponentState<MenuGridSlots> & {
     tableRowTabsterAttribute: TabsterDOMAttribute | null;
+    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
 };
 
 // @public

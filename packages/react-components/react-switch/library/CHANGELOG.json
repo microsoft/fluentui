@@ -2,6 +2,36 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Thu, 26 Mar 2026 08:12:53 GMT",
+      "tag": "@fluentui/react-switch_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4267b29a575d6480c73f4700dbb5b2b0626addb2",
+            "comment": "feat: add base hooks for Switch"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:22 GMT",
+      "tag": "@fluentui/react-switch_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:41 GMT",
       "tag": "@fluentui/react-switch_v9.6.0",
       "version": "9.6.0",

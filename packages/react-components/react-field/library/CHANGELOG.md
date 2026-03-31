@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2026 09:22:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.4.16)
+
+Wed, 11 Mar 2026 09:22:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.4.15..@fluentui/react-field_v9.4.16)
+
+### Patches
+
+- Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
 
 ## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.4.15)
 

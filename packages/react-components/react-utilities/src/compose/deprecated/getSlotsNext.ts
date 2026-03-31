@@ -5,11 +5,11 @@ import { ObjectSlotProps, Slots } from './getSlots';
 /**
  * Similar to `getSlots`, main difference is that it's compatible with new custom jsx pragma
  *
- * @internal
  * This is an internal temporary method, this method will cease to exist eventually!
  *
  * * ❗️❗️ **DO NOT USE IT EXTERNALLY** ❗️❗️
  *
+ * @internal
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 export function getSlotsNext<R extends SlotPropsRecord>(

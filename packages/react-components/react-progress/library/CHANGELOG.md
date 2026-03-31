@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.17)
+
+Mon, 30 Mar 2026 14:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.4.16..@fluentui/react-progress_v9.4.17)
+
+### Patches
+
+- refactor: migrate ProgressBar from CSS to motion components ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+- Bump @fluentui/react-motion to v9.14.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.16)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.4.15..@fluentui/react-progress_v9.4.16)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.15)
 

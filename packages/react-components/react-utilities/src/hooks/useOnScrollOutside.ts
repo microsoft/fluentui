@@ -5,8 +5,9 @@ import { useEventCallback } from './useEventCallback';
 import type { UseOnClickOrScrollOutsideOptions } from './useOnClickOutside';
 
 /**
- * @internal
  * Utility to perform checks where a click/touch event was made outside a component
+ *
+ * @internal
  */
 export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { refs, callback, element, disabled, contains: containsProp } = options;

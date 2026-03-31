@@ -5,7 +5,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   useControllableState,
-  useEventCallback,
+  mergeCallbacks,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
@@ -113,7 +113,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     }),
   };
 
-  state.input.onChange = useEventCallback(ev => {
+  state.input.onChange = mergeCallbacks(state.input.onChange, ev => {
     const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
     onChange?.(ev, { checked: val });
     setChecked(val);

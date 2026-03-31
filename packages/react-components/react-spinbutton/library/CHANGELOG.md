@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Wed, 25 Feb 2026 13:32:26 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.6.0)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.5.16..@fluentui/react-spinbutton_v9.6.0)
+
+### Minor changes
+
+- feat(react-spinbutton): add useSpinButtonBase_unstable hook ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by dmytrokirpa@microsoft.com)
+
+## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.5.16)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.5.15..@fluentui/react-spinbutton_v9.5.16)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.5.15)
 
