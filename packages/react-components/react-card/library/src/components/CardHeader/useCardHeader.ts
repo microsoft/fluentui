@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
+import type { CardHeaderBaseProps, CardHeaderBaseState, CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
@@ -54,6 +54,21 @@ function getReferenceId(
  * @param ref - reference to root HTMLElement of CardHeader
  */
 export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
+  return useCardHeaderBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for CardHeader component, which manages state related to slots structure
+ * and the card's selectable accessibility properties.
+ * Note: CardHeader has no design props, so this is equivalent to useCardHeader_unstable.
+ *
+ * @param props - props from this instance of CardHeader
+ * @param ref - reference to root HTMLElement of CardHeader
+ */
+export const useCardHeaderBase_unstable = (
+  props: CardHeaderBaseProps,
+  ref: React.Ref<HTMLElement>,
+): CardHeaderBaseState => {
   const { image, header, description, action } = props;
 
   const {

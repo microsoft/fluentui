@@ -135,6 +135,8 @@ export type CardProps = ComponentProps<CardSlots> & {
   disabled?: boolean;
 };
 
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'>;
+
 /**
  * State used in rendering Card.
  */
@@ -178,3 +180,5 @@ export type CardState = ComponentState<CardSlots> &
       disabled: boolean;
     }
   >;
+
+export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;

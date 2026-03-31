@@ -8,6 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -16,7 +17,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public (undocumented)
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
+export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>>;
 
 // @public
 export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
@@ -31,6 +32,7 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
 export type ProgressBarSlots = {
     root: NonNullable<Slot<'div'>>;
     bar?: NonNullable<Slot<'div'>>;
+    indeterminateMotion?: Slot<MotionSlotProps>;
 };
 
 // @public

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.6.0)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.5.16..@fluentui/react-radio_v9.6.0)
+
+### Minor changes
+
+- feat: expose base state hooks for Radio components ([PR #35894](https://github.com/microsoft/fluentui/pull/35894) by dmytrokirpa@microsoft.com)
 
 ## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.5.16)
 

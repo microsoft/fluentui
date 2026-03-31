@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { CardFooterProps, CardFooterState } from './CardFooter.types';
+import type { CardFooterBaseProps, CardFooterBaseState, CardFooterProps, CardFooterState } from './CardFooter.types';
 
 /**
  * Create the state required to render CardFooter.
@@ -12,6 +14,20 @@ import type { CardFooterProps, CardFooterState } from './CardFooter.types';
  * @param ref - reference to root HTMLElement of CardFooter
  */
 export const useCardFooter_unstable = (props: CardFooterProps, ref: React.Ref<HTMLElement>): CardFooterState => {
+  return useCardFooterBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for CardFooter component, which manages state related to slots structure.
+ * Note: CardFooter has no design props, so this is equivalent to useCardFooter_unstable.
+ *
+ * @param props - props from this instance of CardFooter
+ * @param ref - reference to root HTMLElement of CardFooter
+ */
+export const useCardFooterBase_unstable = (
+  props: CardFooterBaseProps,
+  ref: React.Ref<HTMLElement>,
+): CardFooterBaseState => {
   const { action } = props;
 
   return {

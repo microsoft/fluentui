@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.8.0)
+
+Thu, 26 Mar 2026 08:12:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.7.16..@fluentui/react-input_v9.8.0)
+
+### Minor changes
+
+- feat: add base hooks for Input ([PR #35813](https://github.com/microsoft/fluentui/pull/35813) by dmytrokirpa@microsoft.com)
 
 ## [9.7.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.7.16)
 
