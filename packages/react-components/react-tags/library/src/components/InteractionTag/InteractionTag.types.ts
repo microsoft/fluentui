@@ -81,3 +81,19 @@ export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTa
      */
     interactionTagPrimaryId: string;
   };
+
+/**
+ * InteractionTag Base Props - omits design-only props
+ */
+export type InteractionTagBaseProps<Value = TagValue> = Omit<
+  InteractionTagProps<Value>,
+  'appearance' | 'size' | 'shape'
+>;
+
+/**
+ * InteractionTag Base State - omits design-only state
+ */
+export type InteractionTagBaseState<Value = TagValue> = Omit<
+  InteractionTagState<Value>,
+  'appearance' | 'size' | 'shape'
+>;

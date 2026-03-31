@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.24.0)
+
+Wed, 01 Apr 2026 15:52:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.23.1..@fluentui/react-menu_v9.24.0)
+
+### Minor changes
+
+- Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
 
 ## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.23.1)
 

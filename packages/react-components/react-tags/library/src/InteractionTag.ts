@@ -1,4 +1,6 @@
 export type {
+  InteractionTagBaseProps,
+  InteractionTagBaseState,
   InteractionTagContextValues,
   InteractionTagProps,
   InteractionTagSlots,
@@ -10,5 +12,6 @@ export {
   renderInteractionTag_unstable,
   useInteractionTagContextValues_unstable,
   useInteractionTagStyles_unstable,
+  useInteractionTagBase_unstable,
   useInteractionTag_unstable,
 } from './components/InteractionTag/index';

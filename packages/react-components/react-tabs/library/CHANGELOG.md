@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 25 Feb 2026 13:32:26 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.12.0)
+
+Wed, 01 Apr 2026 15:52:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.11.2..@fluentui/react-tabs_v9.12.0)
+
+### Minor changes
+
+- feat: expose base hooks for Tab and TabList ([PR #35902](https://github.com/microsoft/fluentui/pull/35902) by dmytrokirpa@microsoft.com)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.11.2)
 

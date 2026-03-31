@@ -4,9 +4,29 @@
 
 ```ts
 
+import { BabelPluginOptions } from '@fluentui/babel-preset-storybook-full-source';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { Parameters as Parameters_2 } from '@storybook/react-webpack5';
+import type { Parameters as Parameters_3 } from '@storybook/react-webpack5';
+import { RuleSetRule } from 'webpack';
 import type { StoryContext as StoryContext_2 } from '@storybook/react-webpack5';
+import { TransformOptions } from '@babel/core';
+
+// @public (undocumented)
+interface Parameters_2 {
+    // (undocumented)
+    exportToSandbox?: ParametersConfig;
+}
+export { Parameters_2 as Parameters }
+
+// @public (undocumented)
+export interface PresetConfig {
+    // (undocumented)
+    babelLoaderOptionsUpdater?: (value: TransformOptions) => typeof value;
+    // (undocumented)
+    importMappings: BabelPluginOptions;
+    // (undocumented)
+    webpackRule?: RuleSetRule;
+}
 
 // @public
 export const withExportToSandboxButton: (storyFn: (context: StoryContext) => JSXElement, context: StoryContext) => JSXElement;

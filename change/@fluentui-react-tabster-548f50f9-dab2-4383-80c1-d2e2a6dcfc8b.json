@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path",
+  "packageName": "@fluentui/react-tabster",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

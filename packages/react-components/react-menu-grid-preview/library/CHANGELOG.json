@@ -2,6 +2,39 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:41 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "50162292a5a16f1c7e2f7285678965a8228307c1",
+            "comment": "Fix: Left arrow behavior in MenuGrid submenus"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "4319a8d2d0007b36857d821ec32280fc6b475b58",
+            "comment": "Fix: Correct type for content prop in MenuGridItem"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.24.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.14",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2026 14:37:41 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.4.1",
       "version": "0.4.1",

@@ -22,6 +22,8 @@ export type AvatarGroupItemSlots = {
  */
 export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
+export type AvatarGroupItemBaseProps = AvatarGroupItemProps;
+
 /**
  * State used in rendering AvatarGroupItem
  */
@@ -36,3 +38,5 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
   layout: AvatarGroupProps['layout'];
   size: AvatarSize;
 };
+
+export type AvatarGroupItemBaseState = Omit<AvatarGroupItemState, 'size'>;

@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 30 Mar 2026 14:37:39 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.7)
+
+Wed, 01 Apr 2026 15:52:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.6..@fluentui/react-components_v9.73.7)
+
+### Minor changes
+
+- `@fluentui/react-avatar`
+  - feat: expose base hooks for Avatar ([PR #35899](https://github.com/microsoft/fluentui/pull/35899) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: add base hooks for Checkbox ([PR #35826](https://github.com/microsoft/fluentui/pull/35826) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: add useComboboxBase_unstable and useDropdownBase_unstable hooks ([PR #35915](https://github.com/microsoft/fluentui/pull/35915) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - feat: add base hooks for Field ([PR #35827](https://github.com/microsoft/fluentui/pull/35827) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - feat: add useLabelBase_unstable hook ([PR #35905](https://github.com/microsoft/fluentui/pull/35905) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+- `@fluentui/react-menu-grid-preview`
+  - Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+  - Fix: Correct type for content prop in MenuGridItem ([PR #35939](https://github.com/microsoft/fluentui/pull/35939) by email not defined)
+- `@fluentui/react-progress`
+  - feat: add base hooks for ProgressBar ([PR #35817](https://github.com/microsoft/fluentui/pull/35817) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - feat(react-select): add useSelectBase_unstable hook ([PR #35906](https://github.com/microsoft/fluentui/pull/35906) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: expose base hooks for Tab and TabList ([PR #35902](https://github.com/microsoft/fluentui/pull/35902) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: add base hooks for Tags components ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: expose base hooks for Tooltip ([PR #35904](https://github.com/microsoft/fluentui/pull/35904) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: support initials calculation for GB18030-2022 extension characters ([PR #35878](https://github.com/microsoft/fluentui/pull/35878) by dmytrokirpa@microsoft.com)
 
 ## [9.73.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.6)
 
