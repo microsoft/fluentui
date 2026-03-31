@@ -2,6 +2,9 @@
 
 ## Team Routing
 
+The source of truth for code ownership is [`.github/CODEOWNERS`](../.github/CODEOWNERS).
+The table below is a summary — when in doubt, check CODEOWNERS.
+
 | Area           | Team                            | Packages                             |
 | -------------- | ------------------------------- | ------------------------------------ |
 | v9 Components  | @microsoft/cxe-prg              | `packages/react-components/*`        |
