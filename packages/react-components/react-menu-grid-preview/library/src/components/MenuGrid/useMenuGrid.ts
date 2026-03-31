@@ -60,10 +60,7 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
         return;
       }
 
-      const rows = findAllFocusable(
-        innerRef.current,
-        (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'row',
-      );
+      const rows = findAllFocusable(innerRef.current, (el: HTMLElement) => el.role === 'row');
 
       let startIndex = rows.indexOf(itemEl) + 1;
       if (startIndex === rows.length) {
