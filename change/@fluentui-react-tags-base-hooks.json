@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for Tags components",
+  "packageName": "@fluentui/react-tags",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
