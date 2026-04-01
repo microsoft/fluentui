@@ -37,7 +37,7 @@ export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 
 // @public
 export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTriggerProps> & Pick<PortalProps, 'mountNode'> & {
-    appearance?: 'normal' | 'inverted';
+    appearance?: 'normal' | 'inverted' | 'brand';
     hideDelay?: number;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     positioning?: PositioningShorthand;
