@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:43 GMT",
+      "tag": "@fluentui/react-charts_v9.3.17",
+      "version": "9.3.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2026 14:37:41 GMT",
       "tag": "@fluentui/react-charts_v9.3.16",
       "version": "9.3.16",

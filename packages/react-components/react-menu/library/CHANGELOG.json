@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:41 GMT",
+      "tag": "@fluentui/react-menu_v9.24.0",
+      "version": "9.24.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu",
+            "commit": "50162292a5a16f1c7e2f7285678965a8228307c1",
+            "comment": "Fix: Left arrow behavior in MenuGrid submenus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2026 14:37:41 GMT",
       "tag": "@fluentui/react-menu_v9.23.1",
       "version": "9.23.1",

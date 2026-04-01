@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: expose base hooks for Tooltip",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

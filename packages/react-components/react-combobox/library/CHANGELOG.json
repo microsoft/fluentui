@@ -2,6 +2,27 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:40 GMT",
+      "tag": "@fluentui/react-combobox_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d743ae8841a74632c7adcb80ec8070da8f65b681",
+            "comment": "feat: add useComboboxBase_unstable and useDropdownBase_unstable hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:39 GMT",
       "tag": "@fluentui/react-combobox_v9.16.18",
       "version": "9.16.18",

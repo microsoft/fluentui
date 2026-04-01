@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks for Checkbox",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

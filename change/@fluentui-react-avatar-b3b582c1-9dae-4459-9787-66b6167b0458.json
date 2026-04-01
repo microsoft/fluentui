@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: support initials calculation for GB18030-2022 extension characters",
-  "packageName": "@fluentui/react-avatar",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

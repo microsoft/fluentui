@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.8.0)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.7.19..@fluentui/react-tags_v9.8.0)
+
+### Minor changes
+
+- feat: add base hooks for Tags components ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-avatar to v9.11.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
 
 ## [9.7.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.7.19)
 
