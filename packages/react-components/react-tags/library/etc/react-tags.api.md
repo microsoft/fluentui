@@ -108,19 +108,19 @@ export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTa
 };
 
 // @public
-export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSXElement;
+export const renderInteractionTag_unstable: (state: InteractionTagBaseState, contextValues: InteractionTagContextValues) => JSXElement;
 
 // @public
-export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryState, contextValues: InteractionTagPrimaryContextValues) => JSXElement;
+export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryBaseState, contextValues: InteractionTagPrimaryContextValues) => JSXElement;
 
 // @public
-export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryState) => JSXElement;
+export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryBaseState) => JSXElement;
 
 // @public
-export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSXElement;
+export const renderTag_unstable: (state: TagBaseState, contextValues: TagContextValues) => JSXElement;
 
 // @public
-export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSXElement;
+export const renderTagGroup_unstable: (state: TagGroupBaseState, contextValue: TagGroupContextValues) => JSXElement;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
