@@ -30,9 +30,11 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     color = fieldState === 'error' || fieldState === 'warning' || fieldState === 'success' ? fieldState : 'brand',
     shape = 'rounded',
     thickness = 'medium',
+    indeterminateMotion,
+    ...baseProps
   } = props;
 
-  const state = useProgressBarBase_unstable(props, ref);
+  const state = useProgressBarBase_unstable(baseProps, ref);
 
   return {
     ...state,
@@ -41,7 +43,7 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     thickness,
     indeterminateMotion:
       state.value === undefined
-        ? motionSlot(props.indeterminateMotion, {
+        ? motionSlot(indeterminateMotion, {
             elementType: ProgressBarIndeterminateMotion,
             defaultProps: {},
           })

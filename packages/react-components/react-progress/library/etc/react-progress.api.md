@@ -17,10 +17,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public
-export type ProgressBarBaseProps = Omit<ProgressBarProps, 'shape' | 'thickness' | 'color'>;
+export type ProgressBarBaseProps = Omit<ProgressBarProps, 'shape' | 'thickness' | 'color' | 'indeterminateMotion'>;
 
 // @public
-export type ProgressBarBaseState = Omit<ProgressBarState, 'shape' | 'thickness' | 'color'>;
+export type ProgressBarBaseState = Omit<ProgressBarState, 'shape' | 'thickness' | 'color' | 'indeterminateMotion'>;
 
 // @public (undocumented)
 export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>>;
