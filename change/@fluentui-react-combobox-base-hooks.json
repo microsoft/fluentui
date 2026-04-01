@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useComboboxBase_unstable and useDropdownBase_unstable hooks",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
