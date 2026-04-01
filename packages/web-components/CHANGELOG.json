@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 04:08:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.10",
+      "version": "3.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e89fd73d5695771e599d74828e4fc1fd7c375f55",
+            "comment": "remove deprecated tabs and tab-panel components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2026 04:08:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.9",
       "version": "3.0.0-rc.9",

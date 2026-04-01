@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2026 14:37:39 GMT",
+      "tag": "@fluentui/react-badge_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "99713fdb62519430c1bab8d565a1fa134564483d",
+            "comment": "fix: fix incorrect PresenceBadge aria-label"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Mar 2026 08:12:47 GMT",
       "tag": "@fluentui/react-badge_v9.5.0",
       "version": "9.5.0",

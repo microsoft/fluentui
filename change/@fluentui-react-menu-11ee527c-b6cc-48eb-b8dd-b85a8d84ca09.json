@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix: Left arrow behavior in MenuGrid submenus",
+  "packageName": "@fluentui/react-menu",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
