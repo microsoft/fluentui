@@ -111,7 +111,7 @@ Actions.parameters = {
 In addition to \`aside\` slot, both tree item layouts support \`actions\` slot that can be used for tasks such as edit, rename, or triggering a menu.
 \`actions\` and \`aside\` slots are positioned on the exact same spot, so they won't be visible at the same time. \`aside\` slot is visible by default meanwhile \`actions\` slot are only visible when the tree item is active (by hovering or by navigating to it). \`actions\` slot supports a \`visible\` prop to force visibility of the actions.
 
-The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navigation with the keyboard by using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default).
+The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navigation with the keyboard by using [\`focusgroup\`](https://open-ui.org/components/scoped-focusgroup.explainer/).
 
 > ⚠️ Although \`actions\` are easy to navigate, they're not an expected pattern according to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).providing a context menu with the same functionalities as the actions is recommended to ensure your tree item is accessible.
 

@@ -10,7 +10,7 @@ import {
   slot,
 } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
 import type { TagValue } from '../../utils/types';
@@ -32,7 +32,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     size = 'medium',
     appearance = 'filled',
     dismissible = false,
-    role = 'toolbar',
+    role,
     onTagSelect,
     selectedValues,
     ...rest
@@ -82,12 +82,6 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }),
   );
 
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: true,
-    axis: 'both',
-    memorizeCurrent: true,
-  });
-
   return {
     handleTagDismiss,
     handleTagSelect: onTagSelect ? handleTagSelect : undefined,
@@ -109,7 +103,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role,
         'aria-disabled': disabled,
-        ...arrowNavigationProps,
+        focusgroup: 'toolbar inline block wrap',
         ...rest,
       }),
       { elementType: 'div' },

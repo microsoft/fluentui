@@ -36,11 +36,12 @@ export const useSwatchPicker_unstable = (
   } = props;
 
   const isGrid = layout === 'grid';
-  const focusAttributes = useArrowNavigationGroup({
+  const gridFocusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: isGrid ? 'grid-linear' : 'both',
+    axis: 'grid-linear',
     memorizeCurrent: true,
   });
+  const focusAttributes = isGrid ? gridFocusAttributes : { focusgroup: 'radiogroup inline block wrap' };
 
   const role = isGrid ? 'grid' : 'radiogroup';
 

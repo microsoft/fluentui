@@ -15,6 +15,6 @@
 - **Make `actions` or additional functionality in tree items accessible with a context menu:**
 
   - ⚠️ `actions` slot do not adhere to keyboard navigation standards! Use `aria-description` or `aria-describedby` on tree items to indicate this interaction, you should explain your user how to interact with `actions` slot.
-  - the `actions` slot will have `role="toolbar"` and are accessible with horizontal keyboard navigation using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default) by default.
+  - the `actions` slot will have `role="toolbar"` and are accessible with horizontal keyboard navigation using [\`focusgroup\`](https://open-ui.org/components/scoped-focusgroup.explainer/) by default.
 
 - **Use `aria-selected=true` once a treeitem is selected in custom behaviors** Some tree utilization might use the selection feature for navigation purposes, in this case, the `aria-selected` attribute should be set to `true` once the treeitem is the current active item to indicate that it is selected for the navigation.

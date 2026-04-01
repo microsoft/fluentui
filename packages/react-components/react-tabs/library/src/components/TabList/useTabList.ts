@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { type TabsterDOMAttribute, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useControllableState, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type {
   TabRegisterData,
@@ -143,19 +142,13 @@ export const useTabListBase_unstable = (props: TabListBaseProps, ref: React.Ref<
 
 /**
  * Hook to get accessibility attributes for TabList component, such as roving tab index.
- * Based on Tabster's useArrowNavigationGroup.
+ * Based on the HTML focusgroup attribute.
  *
  * @param vertical - whether the TabList is vertical
  * @returns Tabster DOM attributes
  */
 export const useTabListA11yBehavior_unstable = ({
   vertical,
-}: Pick<TabListBaseState, 'vertical'>): TabsterDOMAttribute => {
-  return useArrowNavigationGroup({
-    circular: true,
-    axis: vertical ? 'vertical' : 'horizontal',
-    memorizeCurrent: false,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault: true,
-  });
+}: Pick<TabListBaseState, 'vertical'>): { focusgroup: string } => {
+  return { focusgroup: vertical ? 'tablist block wrap nomemory' : 'tablist inline wrap nomemory' };
 };

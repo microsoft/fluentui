@@ -9,7 +9,6 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
 import * as React from 'react';
 
 import { useCarouselNavIndexContext } from '../CarouselNav/CarouselNavIndexContext';
@@ -44,10 +43,6 @@ export const useCarouselNavImageButton_unstable = (
     }
   });
 
-  const defaultTabProps = useTabsterAttributes({
-    focusable: { isDefault: selected },
-  });
-
   const buttonRef = React.useRef<HTMLElement>(undefined);
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
@@ -58,7 +53,7 @@ export const useCarouselNavImageButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        ...defaultTabProps,
+        focusGroupStart: selected,
       },
     },
   );

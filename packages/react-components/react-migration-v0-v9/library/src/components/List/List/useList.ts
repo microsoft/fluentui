@@ -37,10 +37,12 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     truncateHeader = false,
   } = props;
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: layout === 'grid' ? 'grid-linear' : 'both',
+  const gridArrowNavigationAttributes = useArrowNavigationGroup({
+    axis: 'grid-linear',
     memorizeCurrent: true,
   });
+  const arrowNavigationAttributes =
+    layout === 'grid' ? gridArrowNavigationAttributes : { focusgroup: 'toolbar block nowrap' };
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,

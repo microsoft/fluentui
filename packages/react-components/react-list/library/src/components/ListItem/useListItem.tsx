@@ -6,7 +6,6 @@ import {
   MoverMoveFocusEvent,
   GroupperMoveFocusActions,
   MoverKeys,
-  useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
   type TabsterDOMAttribute,
@@ -178,12 +177,7 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-  });
-
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
-    focusableItems ? arrowNavigationAttributes : {},
     focusableGroupAttrs,
     props as Partial<TabsterDOMAttribute>,
   );
@@ -198,6 +192,7 @@ export const useListItem_unstable = (
         'aria-selected': isSelected,
         'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
+      ...(focusableItems && { focusgroup: 'toolbar inline nowrap' }),
       ...props,
       ...tabsterAttributes,
       onKeyDown: handleKeyDown,

@@ -1,6 +1,5 @@
 'use client';
 
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -19,13 +18,6 @@ export const useTeachingPopoverCarouselNav_unstable = (
   props: TeachingPopoverCarouselNavProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselNavState => {
-  const focusableGroupAttr = useArrowNavigationGroup({
-    circular: false,
-    axis: 'horizontal',
-    memorizeCurrent: false,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault: true,
-  });
   const values = useCarouselValues_unstable(snapshot => snapshot);
 
   return {
@@ -37,10 +29,8 @@ export const useTeachingPopoverCarouselNav_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: 'tablist',
-        tabIndex: 0,
+        focusgroup: 'tablist inline nowrap nomemory',
         ...props,
-        ...focusableGroupAttr,
         children: null,
       }),
       { elementType: 'div' },

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { AccordionBaseProps, AccordionBaseState, AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { AccordionRequestToggleData } from '../../contexts/accordion';
 
 /**
@@ -24,10 +23,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
   const state = useAccordionBase_unstable(baseProps, ref);
 
   /** FIXME: deprecated will be removed after navigation prop is removed */
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: navigation === 'circular',
-    tabbable: true,
-  });
+  const arrowNavigationProps = { focusgroup: navigation === 'circular' ? 'block wrap' : 'block nowrap' };
 
   return {
     navigation,

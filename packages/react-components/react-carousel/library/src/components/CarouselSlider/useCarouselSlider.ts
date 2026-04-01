@@ -22,6 +22,10 @@ export const useCarouselSlider_unstable = (
 ): CarouselSliderState => {
   const { cardFocus = false } = props;
   const circular = useCarouselContext(ctx => ctx.circular);
+
+  // this can't yet be a focusgroup because we don't have a way
+  // to set focusgroup=none on descendants of the CarouselCard
+  // without adding an extra wrapping element
   const focusableGroupAttr = useArrowNavigationGroup({
     circular,
     axis: 'horizontal',

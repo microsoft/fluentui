@@ -20,7 +20,7 @@ import type {
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
-import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
+import { useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
@@ -152,10 +152,9 @@ export const useTreeItemLayout_unstable = (
   if (expandIcon) {
     expandIcon.ref = expandIconRefs;
   }
-  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
   const actions = isActionsVisible
     ? slot.optional(props.actions, {
-        defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
+        defaultProps: { focusgroup: navigationMode === 'tree' ? 'toolbar inline wrap' : 'toolbar inline nowrap' },
         elementType: 'div',
       })
     : undefined;

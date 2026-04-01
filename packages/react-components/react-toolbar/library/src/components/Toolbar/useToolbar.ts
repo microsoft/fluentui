@@ -10,7 +10,6 @@ import type {
   ToolbarState,
   UninitializedToolbarState,
 } from './Toolbar.types';
-import { TabsterDOMAttribute, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Toolbar.
@@ -141,9 +140,6 @@ const useToolbarSelectableState = (
  * @internal
  * @returns - Tabster DOM attributes for arrow navigation
  */
-export const useToolbarArrowNavigationProps_unstable = (): TabsterDOMAttribute => {
-  return useArrowNavigationGroup({
-    circular: true,
-    axis: 'both',
-  });
+export const useToolbarArrowNavigationProps_unstable = (): { focusgroup: string } => {
+  return { focusgroup: 'toolbar inline block wrap' };
 };

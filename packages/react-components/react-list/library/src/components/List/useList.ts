@@ -8,7 +8,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 import {
@@ -38,10 +38,8 @@ export const useList_unstable = (
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'vertical',
-    memorizeCurrent: true,
-  });
+  // using "toolbar" here because we explicitly set roles based on other logic
+  const arrowNavigationAttributes = { focusgroup: 'toolbar block nowrap' };
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,

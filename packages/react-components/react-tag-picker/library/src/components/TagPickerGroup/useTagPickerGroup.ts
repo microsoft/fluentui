@@ -6,7 +6,6 @@ import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { isHTMLElement, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { tagPickerAppearanceToTagAppearance, tagPickerSizeToTagSize } from '../../utils/tagPicker2Tag';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ArrowRight } from '@fluentui/keyboard-keys';
 
 /**
@@ -31,18 +30,12 @@ export const useTagPickerGroup_unstable = (
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
 
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: false,
-    axis: 'both',
-    memorizeCurrent: true,
-  });
-
   const state = useTagGroup_unstable(
     {
       role: 'listbox',
       disabled,
       ...props,
-      ...arrowNavigationProps,
+      focusgroup: 'listbox inline block nowrap',
       size,
       appearance: tagPickerAppearanceToTagAppearance(appearance),
       dismissible: true,

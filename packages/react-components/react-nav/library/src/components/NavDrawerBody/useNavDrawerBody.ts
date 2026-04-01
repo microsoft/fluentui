@@ -20,6 +20,7 @@ export const useNavDrawerBody_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): NavDrawerBodyState => {
   const { tabbable } = useNavContext_unstable();
+  // cannot use focusgroup here because of the tabbable behavior
   const focusAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     circular: true,

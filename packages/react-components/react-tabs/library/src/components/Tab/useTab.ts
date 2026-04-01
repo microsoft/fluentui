@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { type TabsterDOMAttribute, useTabsterAttributes } from '@fluentui/react-tabster';
 import { mergeCallbacks, useEventCallback, useMergedRefs, slot, omit } from '@fluentui/react-utilities';
 import type { TabProps, TabState, TabBaseProps, TabBaseState } from './Tab.types';
 import { useTabListContext_unstable } from '../TabList';
@@ -122,8 +121,10 @@ export const useTabBase_unstable = (props: TabBaseProps, ref: React.Ref<HTMLElem
  * @param selected - whether the Tab is selected
  * @returns Tabster DOM attributes
  */
-export const useTabA11yBehavior_unstable = ({ selected }: Pick<TabBaseState, 'selected'>): TabsterDOMAttribute => {
-  return useTabsterAttributes({
-    focusable: { isDefault: selected },
-  });
+export const useTabA11yBehavior_unstable = ({
+  selected,
+}: Pick<TabBaseState, 'selected'>): { focusGroupStart: boolean } => {
+  return {
+    focusGroupStart: selected,
+  };
 };
