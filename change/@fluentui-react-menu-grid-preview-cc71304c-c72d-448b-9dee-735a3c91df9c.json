@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix: Correct type for content prop in MenuGridItem",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
