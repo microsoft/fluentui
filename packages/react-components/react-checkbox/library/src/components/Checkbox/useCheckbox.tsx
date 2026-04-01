@@ -59,9 +59,21 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   }
 
   return {
-    ...state,
     shape,
     size,
+    ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      label: Label,
+    },
+    label: slot.optional(props.label, {
+      defaultProps: {
+        ...state.label,
+        size: 'medium',
+      },
+      elementType: Label,
+    }),
   };
 };
 
@@ -103,7 +115,7 @@ export const useCheckboxBase_unstable = (
       root: 'span',
       input: 'input',
       indicator: 'div',
-      label: Label,
+      label: 'label',
     },
     root: slot.always(props.root, {
       defaultProps: {
@@ -127,9 +139,8 @@ export const useCheckboxBase_unstable = (
         htmlFor: id,
         disabled,
         required,
-        size: 'medium',
       },
-      elementType: Label,
+      elementType: 'label',
     }),
     indicator: slot.optional(props.indicator, {
       renderByDefault: true,
