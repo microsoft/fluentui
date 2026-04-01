@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ship public types and resolve cjs/esm issues for preset loader",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
