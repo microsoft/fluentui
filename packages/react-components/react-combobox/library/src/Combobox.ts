@@ -1,7 +1,7 @@
 export type {
   ActiveOptionChangeData,
-  ComboboxBaseHookProps,
-  ComboboxBaseHookState,
+  BaseComboboxProps,
+  BaseComboboxState,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,

@@ -18,8 +18,8 @@ import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
 import type {
-  ComboboxBaseHookProps,
-  ComboboxBaseHookState,
+  BaseComboboxProps,
+  BaseComboboxState,
   ComboboxOpenEvents,
   ComboboxProps,
   ComboboxState,
@@ -35,9 +35,9 @@ import { optionClassNames } from '../Option/useOptionStyles.styles';
  * @param ref - reference to root HTMLInputElement of Combobox
  */
 export const useComboboxBase_unstable = (
-  props: ComboboxBaseHookProps,
+  props: BaseComboboxProps,
   ref: React.Ref<HTMLInputElement>,
-): ComboboxBaseHookState => {
+): BaseComboboxState => {
   'use no memo';
 
   // Merge props from surrounding <Field>, if any
@@ -97,7 +97,7 @@ export const useComboboxBase_unstable = (
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
-  const state: ComboboxBaseHookState = {
+  const state: BaseComboboxState = {
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,

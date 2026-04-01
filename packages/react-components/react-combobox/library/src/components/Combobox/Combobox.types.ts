@@ -43,7 +43,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * Combobox Props without design-only props.
  */
-export type ComboboxBaseHookProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
+export type BaseComboboxProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
 
 /**
  * State used in rendering Combobox
@@ -57,7 +57,7 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
 /**
  * State used in rendering Combobox, without design-only state.
  */
-export type ComboboxBaseHookState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
+export type BaseComboboxState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

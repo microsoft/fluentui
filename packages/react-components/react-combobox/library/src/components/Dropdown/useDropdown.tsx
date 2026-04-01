@@ -16,7 +16,7 @@ import {
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { DropdownBaseHookProps, DropdownBaseHookState, DropdownProps, DropdownState } from './Dropdown.types';
+import type { DropdownBaseProps, DropdownBaseState, DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
@@ -29,9 +29,9 @@ import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
  * @param ref - reference to root HTMLButtonElement of Dropdown
  */
 export const useDropdownBase_unstable = (
-  props: DropdownBaseHookProps,
+  props: DropdownBaseProps,
   ref: React.Ref<HTMLButtonElement>,
-): DropdownBaseHookState => {
+): DropdownBaseState => {
   'use no memo';
 
   // Merge props from surrounding <Field>, if any
@@ -98,7 +98,7 @@ export const useDropdownBase_unstable = (
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
   const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
-  const state: DropdownBaseHookState = {
+  const state: DropdownBaseState = {
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: trigger,

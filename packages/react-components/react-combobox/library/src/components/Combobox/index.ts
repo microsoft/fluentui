@@ -1,8 +1,8 @@
 export { Combobox } from './Combobox';
 export type {
   ActiveOptionChangeData,
-  ComboboxBaseHookProps,
-  ComboboxBaseHookState,
+  BaseComboboxProps,
+  BaseComboboxState,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,

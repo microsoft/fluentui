@@ -1,8 +1,8 @@
 export { Dropdown } from './Dropdown';
 export type {
   ActiveOptionChangeData,
-  DropdownBaseHookProps,
-  DropdownBaseHookState,
+  DropdownBaseProps as DropdownBaseHookProps,
+  DropdownBaseState as DropdownBaseHookState,
   DropdownContextValues,
   DropdownOpenChangeData,
   DropdownOpenEvents,

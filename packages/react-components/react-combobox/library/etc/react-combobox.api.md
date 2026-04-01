@@ -27,13 +27,13 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
+export type BaseComboboxProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
+
+// @public
+export type BaseComboboxState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
+
+// @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
-
-// @public
-export type ComboboxBaseHookProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
-
-// @public
-export type ComboboxBaseHookState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
 
 // @public
 export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<PortalProps, 'mountNode'> & {
@@ -197,12 +197,6 @@ const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
 // @public (undocumented)
-export type OptionBaseProps = OptionProps;
-
-// @public (undocumented)
-export type OptionBaseState = OptionState;
-
-// @public (undocumented)
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
 // @public
@@ -257,7 +251,7 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
 };
 
 // @public
-export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSXElement;
+export const renderCombobox_unstable: (state: BaseComboboxState, contextValues: ComboboxContextValues) => JSXElement;
 
 // @public
 export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSXElement;
@@ -281,7 +275,7 @@ export function useButtonTriggerSlot(triggerFromProps: NonNullable<Slot<'button'
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public
-export const useComboboxBase_unstable: (props: ComboboxBaseHookProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxBaseHookState;
+export const useComboboxBase_unstable: (props: BaseComboboxProps, ref: React_2.Ref<HTMLInputElement>) => BaseComboboxState;
 
 // @internal
 export const useComboboxBaseState: (props: ComboboxBaseProps & {

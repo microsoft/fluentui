@@ -35,7 +35,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 /**
  * Dropdown Props without design-only props.
  */
-export type DropdownBaseHookProps = DistributiveOmit<DropdownProps, 'appearance' | 'size'>;
+export type DropdownBaseProps = DistributiveOmit<DropdownProps, 'appearance' | 'size'>;
 
 /**
  * State used in rendering Dropdown
@@ -53,7 +53,7 @@ export type DropdownState = ComponentState<DropdownSlots> &
 /**
  * State used in rendering Dropdown, without design-only state.
  */
-export type DropdownBaseHookState = DistributiveOmit<DropdownState, 'appearance' | 'size'>;
+export type DropdownBaseState = DistributiveOmit<DropdownState, 'appearance' | 'size'>;
 
 /* Export types defined in ComboboxBase */
 export type DropdownContextValues = ComboboxBaseContextValues;

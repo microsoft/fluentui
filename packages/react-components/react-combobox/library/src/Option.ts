@@ -1,10 +1,4 @@
-export type {
-  OptionProps,
-  OptionSlots,
-  OptionState,
-  OptionBaseProps,
-  OptionBaseState,
-} from './components/Option/index';
+export type { OptionProps, OptionSlots, OptionState } from './components/Option/index';
 export {
   Option,
   optionClassNames,
