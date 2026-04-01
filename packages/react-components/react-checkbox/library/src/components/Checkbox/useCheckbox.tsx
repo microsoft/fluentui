@@ -54,16 +54,10 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   const mixed = checked === 'mixed';
   const id = useId('checkbox-', nativeProps.primary.id);
 
-  let checkmarkIcon;
-  if (mixed) {
-    if (shape === 'circular') {
-      checkmarkIcon = <CircleFilled />;
-    } else {
-      checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
-    }
-  } else if (checked) {
-    checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
-  }
+  // Always render both icons, let CSS control visibility using child selectors
+  const checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
+  const mixedIcon =
+    shape === 'circular' ? <CircleFilled /> : size === 'large' ? <Square16Filled /> : <Square12Filled />;
 
   const state: CheckboxState = {
     shape,
@@ -107,7 +101,12 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
-        children: checkmarkIcon,
+        children: (
+          <>
+            {checkmarkIcon}
+            {mixedIcon}
+          </>
+        ),
       },
       elementType: 'div',
     }),
