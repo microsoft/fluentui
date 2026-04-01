@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 export type SelectSlots = {
   /*
@@ -39,6 +39,9 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
 };
 
 export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
+
+export type SelectBaseProps = DistributiveOmit<SelectProps, 'appearance' | 'size'>;
+export type SelectBaseState = DistributiveOmit<SelectState, 'appearance' | 'size'>;
 
 /**
  * Data passed to the `onChange` callback when a new option is selected.
