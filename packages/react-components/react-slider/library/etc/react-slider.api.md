@@ -35,7 +35,7 @@ export const rangeSliderCSSVars: {
 };
 
 // @public (undocumented)
-export type RangeSliderOnChangeData = EventData<'change', React_2.ChangeEvent<HTMLInputElement>> & {
+export type RangeSliderOnChangeData = (EventData<'change', React_2.ChangeEvent<HTMLInputElement>> | EventData<'pointer', React_2.PointerEvent<HTMLDivElement>>) & {
     value: RangeSliderValue;
 };
 

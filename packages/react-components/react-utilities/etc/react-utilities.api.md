@@ -93,7 +93,7 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
     primary: Omit<Props, ExcludedPropKeys>;
 };
 
-// @public
+// @internal
 export const getPercent: (value: number, min: number, max: number) => number;
 
 // @public
