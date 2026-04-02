@@ -8,6 +8,7 @@ import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTim
 import * as React from 'react';
 
 import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { dispatchMenuEnterEvent, useIsSubmenu } from '../../utils/index';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
@@ -31,6 +32,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
 
   const isSubmenu = useIsSubmenu();
+  const shouldCloseOnArrowLeft = useMenuListContext_unstable(ctx => ctx.shouldCloseOnArrowLeft ?? true);
+
   const canDispatchCustomEventRef = React.useRef(true);
   const restoreFocusSourceAttributes = useRestoreFocusSource();
   const [setThrottleTimeout, clearThrottleTimeout] = useTimeout();
@@ -93,7 +96,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   });
   rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const key = event.key;
-    if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
+    if (key === Escape || (isSubmenu && shouldCloseOnArrowLeft && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement) && !event.isDefaultPrevented()) {
         setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
         // stop propagation to avoid conflicting with other elements that listen for `Escape`

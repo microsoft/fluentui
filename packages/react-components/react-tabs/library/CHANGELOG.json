@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:42 GMT",
+      "tag": "@fluentui/react-tabs_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e084883ccefb9f57a4127b1a815765f4d2cae8cb",
+            "comment": "feat: expose base hooks for Tab and TabList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:26 GMT",
       "tag": "@fluentui/react-tabs_v9.11.2",
       "version": "9.11.2",

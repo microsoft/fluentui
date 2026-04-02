@@ -1,3 +1,4 @@
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ProgressBarSlots = {
@@ -9,6 +10,10 @@ export type ProgressBarSlots = {
    * The filled portion of the ProgressBar bar. Animated in the indeterminate state, when no value is provided.
    */
   bar?: NonNullable<Slot<'div'>>;
+  /**
+   * Motion slot for the indeterminate animation. Pass `null` to disable the animation.
+   */
+  indeterminateMotion?: Slot<MotionSlotProps>;
 };
 
 /**
@@ -47,8 +52,18 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
 };
 
 /**
+ * ProgressBar base props — excludes design props (shape, thickness, color).
+ */
+export type ProgressBarBaseProps = Omit<ProgressBarProps, 'shape' | 'thickness' | 'color' | 'indeterminateMotion'>;
+
+/**
  * State used in rendering ProgressBar
  */
 export type ProgressBarState = ComponentState<Required<ProgressBarSlots>> &
   Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> &
   Pick<ProgressBarProps, 'value' | 'color'>;
+
+/**
+ * ProgressBar base state — excludes design props (shape, thickness, color).
+ */
+export type ProgressBarBaseState = Omit<ProgressBarState, 'shape' | 'thickness' | 'color' | 'indeterminateMotion'>;

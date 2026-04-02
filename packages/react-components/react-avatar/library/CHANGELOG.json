@@ -2,6 +2,56 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:39 GMT",
+      "tag": "@fluentui/react-avatar_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2b928d016809ccd4b33ada33678a56c289e8e13e",
+            "comment": "feat: expose base hooks for Avatar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "51317b2404ffd14b04619e696ee5ed44beee066d",
+            "comment": "fix: support initials calculation for GB18030-2022 extension characters"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:41 GMT",
+      "tag": "@fluentui/react-avatar_v9.10.4",
+      "version": "9.10.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.5.1",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.14.1",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Mar 2026 08:12:54 GMT",
       "tag": "@fluentui/react-avatar_v9.10.3",
       "version": "9.10.3",

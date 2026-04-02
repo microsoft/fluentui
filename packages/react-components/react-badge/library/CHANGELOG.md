@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 26 Mar 2026 08:12:47 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2026 14:37:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.5.1)
+
+Mon, 30 Mar 2026 14:37:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.5.0..@fluentui/react-badge_v9.5.1)
+
+### Patches
+
+- fix: fix incorrect PresenceBadge aria-label ([PR #35927](https://github.com/microsoft/fluentui/pull/35927) by dmytrokirpa@microsoft.com)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.5.0)
 

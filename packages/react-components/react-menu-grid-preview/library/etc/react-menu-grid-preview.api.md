@@ -110,7 +110,7 @@ export const MenuGridItem: ForwardRefComponent<MenuGridItemProps>;
 export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots>;
 
 // @public (undocumented)
-export type MenuGridItemProps = ComponentProps<Partial<MenuGridItemSlots>>;
+export type MenuGridItemProps = Omit<ComponentProps<Partial<MenuGridItemSlots>>, 'content'> & Pick<Partial<MenuGridItemSlots>, 'content'>;
 
 // @public (undocumented)
 export type MenuGridItemSlots = {
