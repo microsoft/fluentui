@@ -1,5 +1,5 @@
 export const isARIADisabledElement = (el: Element): boolean => {
-  return el.getAttribute('aria-disabled') === 'true';
+  return el.getAttribute('aria-disabled') === 'true' || (el as any).elementInternals?.ariaDisabled === true;
 };
 
 export const isHiddenElement = (el: Element): boolean => {
