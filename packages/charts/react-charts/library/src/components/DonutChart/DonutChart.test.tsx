@@ -221,6 +221,39 @@ describe('Donut Chart - axe-core', () => {
   });
 });
 
+describe('Donut Chart - Gradient', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should compare DonutChart snapshots with enableGradient true and false', () => {
+    // Test with enableGradient={false}
+    const { container: containerGradientFalse } = render(
+      <DonutChart data={chartPointsDC} innerRadius={55} enableGradient={false} />,
+    );
+    const gradientFalseHtml = (containerGradientFalse.firstChild as Element)?.outerHTML;
+    expect(containerGradientFalse.firstChild).toMatchSnapshot('donut-chart-gradient-disabled');
+
+    // Test with enableGradient={true}
+    const { container: containerGradientTrue } = render(
+      <DonutChart data={chartPointsDC} innerRadius={55} enableGradient={true} />,
+    );
+    const gradientTrueHtml = (containerGradientTrue.firstChild as Element)?.outerHTML;
+    expect(containerGradientTrue.firstChild).toMatchSnapshot('donut-chart-gradient-enabled');
+
+    // Compare the rendered HTML to verify they are different
+    expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
+
+    // Log the difference for debugging
+    console.log('Gradient disabled HTML length:', gradientFalseHtml?.length);
+    console.log('Gradient enabled HTML length:', gradientTrueHtml?.length);
+    console.log('Are snapshots different?', gradientFalseHtml !== gradientTrueHtml);
+  });
+});
+
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
     const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);

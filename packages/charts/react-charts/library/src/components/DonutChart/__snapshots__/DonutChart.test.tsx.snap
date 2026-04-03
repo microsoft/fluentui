@@ -1,5 +1,331 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Donut Chart - Gradient Should compare DonutChart snapshots with enableGradient true and false: donut-chart-gradient-disabled 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_2v_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_2u_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_2t_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_2t_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_2t_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_33_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Donut Chart - Gradient Should compare DonutChart snapshots with enableGradient true and false: donut-chart-gradient-enabled 1`] = `
+<div
+  class="fui-donut__root"
+>
+  <div
+    class="fui-donut__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Donut chart example"
+      class="fui-donut__chart"
+      height="214"
+      width="0"
+    >
+      <rect
+        class="fui-donut__svgTooltip"
+        height="3"
+        width="6"
+        x="-3"
+        y="-6"
+      />
+      <text
+        aria-describedby="tooltip-_r_37_"
+        aria-hidden="true"
+        class="fui-donut__chartTitle"
+        dominant-baseline="auto"
+        id="tooltip-host_r_36_"
+        text-anchor="middle"
+        x="0"
+        y="0"
+      >
+        ...
+      </text>
+      <span
+        hidden=""
+      />
+      <g
+        transform="translate(0, 98)"
+      >
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            class="fui-donut-arc__root"
+            d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_35_first20000"
+            opacity="1"
+            role="img"
+            style="fill: #E5E5E5; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            class="fui-donut-arc__root"
+            d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_35_second39000"
+            opacity="1"
+            role="img"
+            style="fill: #0078D4; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            class="fui-donut-arc__root"
+            d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+            data-is-focusable="true"
+            id="_Pie__r_35_third45000"
+            opacity="1"
+            role="img"
+            style="fill: #DADADA; cursor: default;"
+            tabindex="0"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__calloutContainer"
+    id="callout_r_3b_"
+  />
+  <div
+    class="fui-donut__legendContainer"
+    style="margin-top: -36px;"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="first"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            first
+          </div>
+        </button>
+        <button
+          aria-label="second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            second
+          </div>
+        </button>
+        <button
+          aria-label="third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 <div>
   <div
@@ -363,11 +689,11 @@ Object {
               y="-6"
             />
             <text
-              aria-describedby="tooltip-_r_6b_"
+              aria-describedby="tooltip-_r_6r_"
               aria-hidden="true"
               class="fui-donut__chartTitle"
               dominant-baseline="auto"
-              id="tooltip-host_r_6a_"
+              id="tooltip-host_r_6q_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -386,7 +712,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_69_first20000"
+                  id="_Pie__r_6p_first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -399,7 +725,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_69_second39000"
+                  id="_Pie__r_6p_second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -412,7 +738,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_69_third45000"
+                  id="_Pie__r_6p_third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -424,7 +750,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_6f_"
+          id="callout_r_6v_"
         >
           <div
             class="fui-PopoverSurface"
@@ -551,7 +877,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_6b_"
+        id="tooltip-_r_6r_"
         role="tooltip"
       >
         <div
@@ -586,11 +912,11 @@ Object {
             y="-6"
           />
           <text
-            aria-describedby="tooltip-_r_6b_"
+            aria-describedby="tooltip-_r_6r_"
             aria-hidden="true"
             class="fui-donut__chartTitle"
             dominant-baseline="auto"
-            id="tooltip-host_r_6a_"
+            id="tooltip-host_r_6q_"
             text-anchor="middle"
             x="0"
             y="0"
@@ -609,7 +935,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_69_first20000"
+                id="_Pie__r_6p_first20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
@@ -622,7 +948,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_69_second39000"
+                id="_Pie__r_6p_second39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
@@ -635,7 +961,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_69_third45000"
+                id="_Pie__r_6p_third45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
@@ -647,7 +973,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_6f_"
+        id="callout_r_6v_"
       >
         <div
           class="fui-PopoverSurface"
@@ -849,11 +1175,11 @@ Object {
               y="-6"
             />
             <text
-              aria-describedby="tooltip-_r_6u_"
+              aria-describedby="tooltip-_r_7e_"
               aria-hidden="true"
               class="fui-donut__chartTitle"
               dominant-baseline="auto"
-              id="tooltip-host_r_6t_"
+              id="tooltip-host_r_7d_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -872,7 +1198,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_6s_first20000"
+                  id="_Pie__r_7c_first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -885,7 +1211,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_6s_second39000"
+                  id="_Pie__r_7c_second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -898,7 +1224,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie__r_6s_third45000"
+                  id="_Pie__r_7c_third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -910,7 +1236,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_72_"
+          id="callout_r_7i_"
         >
           <div
             class="fui-PopoverSurface"
@@ -1037,7 +1363,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_6u_"
+        id="tooltip-_r_7e_"
         role="tooltip"
       >
         <div
@@ -1072,11 +1398,11 @@ Object {
             y="-6"
           />
           <text
-            aria-describedby="tooltip-_r_6u_"
+            aria-describedby="tooltip-_r_7e_"
             aria-hidden="true"
             class="fui-donut__chartTitle"
             dominant-baseline="auto"
-            id="tooltip-host_r_6t_"
+            id="tooltip-host_r_7d_"
             text-anchor="middle"
             x="0"
             y="0"
@@ -1095,7 +1421,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_6s_first20000"
+                id="_Pie__r_7c_first20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
@@ -1108,7 +1434,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_6s_second39000"
+                id="_Pie__r_7c_second39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
@@ -1121,7 +1447,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie__r_6s_third45000"
+                id="_Pie__r_7c_third45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
@@ -1133,7 +1459,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout_r_72_"
+        id="callout_r_7i_"
       >
         <div
           class="fui-PopoverSurface"
@@ -1329,11 +1655,11 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_4r_"
+        aria-describedby="tooltip-_r_5b_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_4q_"
+        id="tooltip-host_r_5a_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -1352,7 +1678,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4p_first20000"
+            id="_Pie__r_59_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -1365,7 +1691,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4p_second39000"
+            id="_Pie__r_59_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -1378,7 +1704,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4p_third45000"
+            id="_Pie__r_59_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -1390,7 +1716,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_4v_"
+    id="callout_r_5f_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1492,11 +1818,11 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_4b_"
+        aria-describedby="tooltip-_r_4r_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_4a_"
+        id="tooltip-host_r_4q_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -1515,7 +1841,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_49_first20000"
+            id="_Pie__r_4p_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -1538,7 +1864,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_49_second39000"
+            id="_Pie__r_4p_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -1561,7 +1887,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_49_third45000"
+            id="_Pie__r_4p_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -1583,7 +1909,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_4f_"
+    id="callout_r_4v_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1685,11 +2011,11 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_4j_"
+        aria-describedby="tooltip-_r_53_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_4i_"
+        id="tooltip-host_r_52_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -1708,7 +2034,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4h_first20000"
+            id="_Pie__r_51_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -1731,7 +2057,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4h_second39000"
+            id="_Pie__r_51_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -1754,7 +2080,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_4h_third45000"
+            id="_Pie__r_51_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -1776,7 +2102,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_4n_"
+    id="callout_r_57_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -1878,11 +2204,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_2v_"
+        aria-describedby="tooltip-_r_3f_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_2u_"
+        id="tooltip-host_r_3e_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -1901,7 +2227,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_2t_first20000"
+            id="_Pie__r_3d_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -1914,7 +2240,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             class="fui-donut-arc__root"
             d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_2t_second39000"
+            id="_Pie__r_3d_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -1927,7 +2253,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             class="fui-donut-arc__root"
             d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_2t_third45000"
+            id="_Pie__r_3d_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -1939,7 +2265,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_33_"
+    id="callout_r_3j_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2041,11 +2367,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_37_"
+        aria-describedby="tooltip-_r_3n_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_36_"
+        id="tooltip-host_r_3m_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -2064,7 +2390,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_35_first20000"
+            id="_Pie__r_3l_first20000"
             opacity="1"
             role="img"
             style="fill: #4760D5; cursor: default;"
@@ -2077,7 +2403,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_35_second39000"
+            id="_Pie__r_3l_second39000"
             opacity="1"
             role="img"
             style="fill: #795AA6; cursor: default;"
@@ -2090,7 +2416,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_35_third45000"
+            id="_Pie__r_3l_third45000"
             opacity="1"
             role="img"
             style="fill: #159195; cursor: default;"
@@ -2102,7 +2428,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_3b_"
+    id="callout_r_3r_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2204,11 +2530,11 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_3s_"
+        aria-describedby="tooltip-_r_4c_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_3r_"
+        id="tooltip-host_r_4b_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -2227,7 +2553,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3q_first20000"
+            id="_Pie__r_4a_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -2240,7 +2566,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3q_second39000"
+            id="_Pie__r_4a_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -2253,7 +2579,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3q_third45000"
+            id="_Pie__r_4a_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -2265,7 +2591,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_40_"
+    id="callout_r_4g_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2378,7 +2704,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3d_first20000"
+            id="_Pie__r_3t_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -2391,7 +2717,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3d_second39000"
+            id="_Pie__r_3t_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -2404,7 +2730,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3d_third45000"
+            id="_Pie__r_3t_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -2416,7 +2742,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_3h_"
+    id="callout_r_41_"
   />
 </div>
 `;
@@ -2443,11 +2769,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_3k_"
+        aria-describedby="tooltip-_r_44_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_3j_"
+        id="tooltip-host_r_43_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -2466,7 +2792,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3i_first20000"
+            id="_Pie__r_42_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -2479,7 +2805,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3i_second39000"
+            id="_Pie__r_42_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -2492,7 +2818,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_3i_third45000"
+            id="_Pie__r_42_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -2504,7 +2830,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_3o_"
+    id="callout_r_48_"
   />
   <div
     class="fui-donut__legendContainer"
@@ -2606,11 +2932,11 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         y="-6"
       />
       <text
-        aria-describedby="tooltip-_r_43_"
+        aria-describedby="tooltip-_r_4j_"
         aria-hidden="true"
         class="fui-donut__chartTitle"
         dominant-baseline="auto"
-        id="tooltip-host_r_42_"
+        id="tooltip-host_r_4i_"
         text-anchor="middle"
         x="0"
         y="0"
@@ -2629,7 +2955,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_41_first20000"
+            id="_Pie__r_4h_first20000"
             opacity="1"
             role="img"
             style="fill: #E5E5E5; cursor: default;"
@@ -2642,7 +2968,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_41_second39000"
+            id="_Pie__r_4h_second39000"
             opacity="1"
             role="img"
             style="fill: #0078D4; cursor: default;"
@@ -2655,7 +2981,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             class="fui-donut-arc__root"
             d="M0,0Z"
             data-is-focusable="true"
-            id="_Pie__r_41_third45000"
+            id="_Pie__r_4h_third45000"
             opacity="1"
             role="img"
             style="fill: #DADADA; cursor: default;"
@@ -2667,7 +2993,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   </div>
   <div
     class="fui-cart__calloutContainer"
-    id="callout_r_47_"
+    id="callout_r_4n_"
   />
   <div
     class="fui-donut__legendContainer"
