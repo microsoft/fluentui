@@ -1,17 +1,25 @@
 import type { Locator, Page } from '@playwright/test';
 
+export type InitialTemplateAttributes = Record<string, string | true>;
+
+export type TemplateAttributes = Record<string, string | boolean>;
+
 /**
  * The options for configuring the fixture's template.
  */
-export type FixtureOptions = {
-  attributes?: Record<string, string | true>;
+export type InitialTemplateOptions = {
+  attributes?: InitialTemplateAttributes;
   innerHTML?: string;
+};
+
+export type FixtureOptions = Omit<InitialTemplateOptions, 'attributes'> & {
+  attributes?: TemplateAttributes;
 };
 
 /**
  * The template configuration, which can be a raw HTML string or fixture options.
  */
-export type TemplateOrOptions = FixtureOptions | string;
+export type TemplateOrOptions = InitialTemplateOptions | string;
 
 /**
  * A fixture for testing FAST components.
@@ -50,8 +58,6 @@ export class FASTFixture {
     this.innerHTML = innerHTML;
     this.element = this.page.locator(this.tagName);
     this.waitFor = waitFor;
-
-    this.page.emulateMedia({ reducedMotion: 'reduce' });
   }
 
   /**
@@ -83,7 +89,7 @@ export class FASTFixture {
    */
   private defaultTemplate(
     tagName: string = this.tagName,
-    attributes: Record<string, string | true> = {},
+    attributes: InitialTemplateAttributes = {},
     innerHTML: string = this.innerHTML,
   ) {
     const attributesString = Object.entries(attributes)
@@ -147,7 +153,7 @@ export class FASTFixture {
   async updateTemplate(locator: string | Locator, options: FixtureOptions): Promise<void> {
     const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
 
-    await element.evaluateHandle((node, options) => {
+    await element.evaluate((node, options) => {
       if (options.innerHTML) {
         node.innerHTML = options.innerHTML;
       }
@@ -155,7 +161,7 @@ export class FASTFixture {
       if (options.attributes) {
         const attributesAsJSON = options.attributes;
 
-        Object.entries(attributesAsJSON).forEach(([key, value]: [string, string | boolean]) => {
+        Object.entries(attributesAsJSON).forEach(([key, value]) => {
           if (value === true) {
             node.setAttribute(key, '');
           } else if (value === false) {
