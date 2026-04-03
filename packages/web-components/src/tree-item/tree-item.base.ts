@@ -14,6 +14,16 @@ export class BaseTreeItem extends FASTElement {
   @observable
   public itemSlot!: HTMLSlotElement;
 
+  /**
+   * Calls the slot change handler when the `itemSlot` reference is updated
+   * by the template binding.
+   *
+   * @internal
+   */
+  public itemSlotChanged() {
+    this.handleItemSlotChange();
+  }
+
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
@@ -55,7 +65,7 @@ export class BaseTreeItem extends FASTElement {
    * HTML Attribute: selected
    */
   @attr({ mode: 'boolean' })
-  selected: boolean = false;
+  selected!: boolean;
 
   /**
    * Handles changes to the selected attribute
@@ -122,7 +132,10 @@ export class BaseTreeItem extends FASTElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateTabindexBySelected();
+
+    requestAnimationFrame(() => {
+      this.updateTabindexBySelected();
+    });
   }
 
   /**
@@ -173,9 +186,7 @@ export class BaseTreeItem extends FASTElement {
   }
 
   protected updateTabindexBySelected() {
-    if (this.$fastController.isConnected) {
-      this.tabIndex = this.selected ? 0 : -1;
-    }
+    this.tabIndex = this.selected ? 0 : -1;
   }
 
   /** @internal */
