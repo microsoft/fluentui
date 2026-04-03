@@ -6,9 +6,9 @@ import { isDropdownOption } from '../option/option.options.js';
 import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
+import { requestIdleCallback, waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
