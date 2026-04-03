@@ -163,11 +163,20 @@ export class Menu extends FASTElement {
       this,
       () => {
         requestAnimationFrame(() => {
-          this._trigger = this.slottedTriggers![0];
-          this._menuList = this.slottedMenuList![0];
+          const trigger = this.slottedTriggers?.[0];
+          const menuList = this.slottedMenuList?.[0];
+          if (!trigger || !menuList) {
+            this.removeListeners();
+            return;
+          }
+
+          this._trigger = trigger;
+          this._menuList = menuList;
+
           this._trigger.setAttribute('aria-haspopup', 'true');
           this._trigger.setAttribute('aria-expanded', `${this._open}`);
           this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
+          this.removeListeners();
           this.addListeners();
         });
       },
