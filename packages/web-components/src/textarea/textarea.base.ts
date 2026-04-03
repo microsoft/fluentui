@@ -244,6 +244,10 @@ export class BaseTextArea extends FASTElement {
   public readOnly = false;
   protected readOnlyChanged() {
     this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+
+    if (this.$fastController.isConnected) {
+      this.setValidity();
+    }
   }
 
   /**
@@ -399,11 +403,22 @@ export class BaseTextArea extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setDefaultValue();
-    this.maybeCreateAutoSizerEl();
+    requestAnimationFrame(() => {
+      const preConnect = this.preConnectControlEl;
+      const content = this.getContent();
 
-    this.bindEvents();
-    this.observeControlElAttrs();
+      this.defaultValue = content || preConnect?.defaultValue || '';
+      this.value = preConnect?.value || this.defaultValue;
+      this.setFormValue(this.value);
+      this.setValidity();
+      this.preConnectControlEl = null;
+
+      this.maybeCreateAutoSizerEl();
+
+      this.bindEvents();
+
+      this.observeControlElAttrs();
+    });
   }
 
   /**
