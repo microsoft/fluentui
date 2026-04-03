@@ -82,7 +82,7 @@ export class BaseTablist extends FASTElement {
    * @internal
    */
   protected activeidChanged(oldValue: string, newValue: string): void {
-    if (this.tabs.length > 0) {
+    if (this.tabs?.length > 0) {
       this.prevActiveTabIndex = this.tabs.findIndex((item: HTMLElement) => item.id === oldValue);
       this.setTabs();
 

@@ -47,7 +47,7 @@ export class Tab extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.slot = this.slot || 'tab';
+    this.slot ||= 'tab';
 
     if (this.disabled) {
       this.setAttribute('aria-disabled', 'true');
