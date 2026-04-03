@@ -8,6 +8,7 @@ import { getInitials } from '../utils/get-initials.js';
 export class BaseAvatar extends FASTElement {
   /**
    * Reference to the default slot element.
+   *
    * @internal
    */
   @observable
@@ -29,8 +30,6 @@ export class BaseAvatar extends FASTElement {
       this.defaultSlot.classList.toggle('has-slotted', elements.length > 0);
     }
 
-    // Defer cleanup to avoid DOM mutation (normalize)
-    // during hydration, which would corrupt binding markers.
     Updates.enqueue(() => {
       this.cleanupSlottedContent();
     });
@@ -39,17 +38,12 @@ export class BaseAvatar extends FASTElement {
   /**
    * Reference to the monogram element that displays generated initials.
    *
-   * Uses a `ref` binding so the text content can be imperatively updated
-   * after hydration, avoiding calls to `generateInitials()` during SSR
-   * (which depends on runtime APIs like `getComputedStyle`).
-   *
    * @internal
    */
   @observable
   public monogram!: HTMLElement;
 
   /**
-   * Handles changes to the monogram element reference.
    * Updates the monogram text content when the ref is captured.
    *
    * @internal
@@ -138,7 +132,7 @@ export class BaseAvatar extends FASTElement {
    * @internal
    */
   public generateInitials(): string | void {
-    return this.initials || getInitials(this.name, window.getComputedStyle(this).direction === 'rtl', {});
+    return this.initials || getInitials(this.name, window.getComputedStyle(this).direction === 'rtl');
   }
 
   /**

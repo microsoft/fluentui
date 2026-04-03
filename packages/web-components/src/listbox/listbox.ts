@@ -34,12 +34,6 @@ export class Listbox extends FASTElement {
    * via the `ref` directive in the template.
    *
    * @internal
-   * @remarks
-   * This is needed for scenarios where the slot element is already present
-   * when the component is connected, such as when the instance is hydrating in
-   * a declarative Shadow DOM environment. In this case, the `slotchange` event
-   * doesn't fire during initialization, so the `slotchangeHandler` needs to be
-   * called manually to populate the options.
    */
   protected defaultSlotChanged() {
     this.slotchangeHandler();

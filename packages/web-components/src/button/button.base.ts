@@ -384,10 +384,7 @@ export class BaseButton extends FASTElement {
   }
 
   /**
-   * Sets the `tabindex` attribute based on the disabled state of the button. If
-   * the button is disabled, `tabindex` is removed to prevent focus. If the
-   * button is enabled, `tabindex` is set to 0 (or a non-positive value if
-   * specified by the author) to allow focus.
+   * Sets the `tabindex` attribute based on the disabled state of the button.
    *
    * @internal
    */
@@ -397,6 +394,10 @@ export class BaseButton extends FASTElement {
       return;
     }
 
+    // If author sets tabindex to a non-positive value, the component should
+    // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+    // tabindex to a positive number. See details:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
     this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
   }
 
