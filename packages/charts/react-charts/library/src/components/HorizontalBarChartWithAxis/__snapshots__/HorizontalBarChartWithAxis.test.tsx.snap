@@ -1,5 +1,1131 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Horizontal Bar Chart With Axis - Gradient Should compare HorizontalBarChartWithAxis snapshots with enableGradient true and false: horizontal-bar-chart-with-axis-gradient-disabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M40.5,6V0.5H630.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(40.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(114.25,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            5000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(188,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(261.75,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(335.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(409.25,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            25,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(483,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            30,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(556.75,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            35,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(630.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            40,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,249.5H0.5V36.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,249.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,206.9)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            10k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,164.3)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            20k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,121.7)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            30k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.1)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            40k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,36.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <rect
+          aria-label="2020/04/30. Oranges, 10%."
+          aria-labelledby="toolTipcallout_r_29_"
+          fill="#0078d4"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="147.5"
+          x="40"
+          y="219.7"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="187.5"
+          y="227.7"
+        >
+          10k
+        </text>
+        <rect
+          aria-label="2020/04/30. Bananas, 88%."
+          aria-labelledby="toolTipcallout_r_29_"
+          fill="#002050"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="590"
+          x="40"
+          y="185.62"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="630"
+          y="193.62"
+        >
+          40k
+        </text>
+        <rect
+          aria-label="2020/04/30. Apples, 37%."
+          aria-labelledby="toolTipcallout_r_29_"
+          fill="#00188f"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="368.75"
+          x="40"
+          y="113.2"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="408.75"
+          y="121.2"
+        >
+          25k
+        </text>
+        <rect
+          aria-label="2020/04/30. Grapes, 20%."
+          aria-labelledby="toolTipcallout_r_29_"
+          fill="#00bcf2"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="295"
+          x="40"
+          y="28"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="335"
+          y="36"
+        >
+          20k
+        </text>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="Oranges"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Oranges
+          </div>
+        </button>
+        <button
+          aria-label="Grapes"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Grapes
+          </div>
+        </button>
+        <button
+          aria-label="Apples"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Apples
+          </div>
+        </button>
+        <button
+          aria-label="Bananas"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Bananas
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Horizontal Bar Chart With Axis - Gradient Should compare HorizontalBarChartWithAxis snapshots with enableGradient true and false: horizontal-bar-chart-with-axis-gradient-enabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M40.5,6V0.5H630.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(40.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(114.25,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            5000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(188,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(261.75,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(335.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(409.25,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            25,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(483,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            30,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(556.75,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            35,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(630.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="-280"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="10"
+          >
+            40,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,249.5H0.5V36.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,249.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,206.9)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            10k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,164.3)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            20k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,121.7)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            30k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.1)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            40k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,36.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <defs>
+          <lineargradient
+            id="HBCWAxis_Gradient_r_2g__numeric_0"
+            x1="0%"
+            x2="100%"
+            y1="0%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#4760D5"
+            />
+            <stop
+              offset="100%"
+              stop-color="#637CEF"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Oranges, 10%."
+          aria-labelledby="toolTipcallout_r_2e_"
+          fill="url(#HBCWAxis_Gradient_r_2g__numeric_0)"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="147.5"
+          x="40"
+          y="219.7"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="187.5"
+          y="227.7"
+        >
+          10k
+        </text>
+        <defs>
+          <lineargradient
+            id="HBCWAxis_Gradient_r_2g__numeric_1"
+            x1="0%"
+            x2="100%"
+            y1="0%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#795AA6"
+            />
+            <stop
+              offset="100%"
+              stop-color="#9373C0"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Bananas, 88%."
+          aria-labelledby="toolTipcallout_r_2e_"
+          fill="url(#HBCWAxis_Gradient_r_2g__numeric_1)"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="590"
+          x="40"
+          y="185.62"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="630"
+          y="193.62"
+        >
+          40k
+        </text>
+        <defs>
+          <lineargradient
+            id="HBCWAxis_Gradient_r_2g__numeric_2"
+            x1="0%"
+            x2="100%"
+            y1="0%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#159195"
+            />
+            <stop
+              offset="100%"
+              stop-color="#2AA0A4"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Apples, 37%."
+          aria-labelledby="toolTipcallout_r_2e_"
+          fill="url(#HBCWAxis_Gradient_r_2g__numeric_2)"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="368.75"
+          x="40"
+          y="113.2"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="408.75"
+          y="121.2"
+        >
+          25k
+        </text>
+        <defs>
+          <lineargradient
+            id="HBCWAxis_Gradient_r_2g__numeric_3"
+            x1="0%"
+            x2="100%"
+            y1="0%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#B146C2"
+            />
+            <stop
+              offset="100%"
+              stop-color="#C36BD1"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Grapes, 20%."
+          aria-labelledby="toolTipcallout_r_2e_"
+          fill="url(#HBCWAxis_Gradient_r_2g__numeric_3)"
+          height="16"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="295"
+          x="40"
+          y="28"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-hbcwa__barLabel"
+          dominant-baseline="central"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="start"
+          transform="translate(4)"
+          x="335"
+          y="36"
+        >
+          20k
+        </text>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="Oranges"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Oranges
+          </div>
+        </button>
+        <button
+          aria-label="Grapes"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Grapes
+          </div>
+        </button>
+        <button
+          aria-label="Apples"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #159195; --rect-borderColor: #159195;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(21, 145, 149); border-color: rgb(21, 145, 149); --rect-content-high-contrast: linear-gradient(to right, #159195, #159195);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Apples
+          </div>
+        </button>
+        <button
+          aria-label="Bananas"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #B146C2; --rect-borderColor: #B146C2;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(177, 70, 194); border-color: rgb(177, 70, 194); --rect-content-high-contrast: linear-gradient(to right, #B146C2, #B146C2);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Bananas
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Horizontal bar chart with axis rendering Should render the Horizontal bar chart with axis with numaric yaxis data 1`] = `
 <div>
   <div
@@ -1339,7 +2465,7 @@ Object {
             <g>
               <defs>
                 <lineargradient
-                  id="HBCWAxis_Gradient_r_33__numeric_0"
+                  id="HBCWAxis_Gradient_r_3d__numeric_0"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -1357,8 +2483,8 @@ Object {
               </defs>
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
-                aria-labelledby="toolTipcallout_r_31_"
-                fill="url(#HBCWAxis_Gradient_r_33__numeric_0)"
+                aria-labelledby="toolTipcallout_r_3b_"
+                fill="url(#HBCWAxis_Gradient_r_3d__numeric_0)"
                 height="16"
                 opacity="1"
                 role="img"
@@ -1382,7 +2508,7 @@ Object {
               </text>
               <defs>
                 <lineargradient
-                  id="HBCWAxis_Gradient_r_33__numeric_1"
+                  id="HBCWAxis_Gradient_r_3d__numeric_1"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -1400,8 +2526,8 @@ Object {
               </defs>
               <rect
                 aria-label="2020/04/30. Bananas, 88%."
-                aria-labelledby="toolTipcallout_r_31_"
-                fill="url(#HBCWAxis_Gradient_r_33__numeric_1)"
+                aria-labelledby="toolTipcallout_r_3b_"
+                fill="url(#HBCWAxis_Gradient_r_3d__numeric_1)"
                 height="16"
                 opacity="1"
                 role="img"
@@ -1425,7 +2551,7 @@ Object {
               </text>
               <defs>
                 <lineargradient
-                  id="HBCWAxis_Gradient_r_33__numeric_2"
+                  id="HBCWAxis_Gradient_r_3d__numeric_2"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -1443,8 +2569,8 @@ Object {
               </defs>
               <rect
                 aria-label="2020/04/30. Apples, 37%."
-                aria-labelledby="toolTipcallout_r_31_"
-                fill="url(#HBCWAxis_Gradient_r_33__numeric_2)"
+                aria-labelledby="toolTipcallout_r_3b_"
+                fill="url(#HBCWAxis_Gradient_r_3d__numeric_2)"
                 height="16"
                 opacity="1"
                 role="img"
@@ -1468,7 +2594,7 @@ Object {
               </text>
               <defs>
                 <lineargradient
-                  id="HBCWAxis_Gradient_r_33__numeric_3"
+                  id="HBCWAxis_Gradient_r_3d__numeric_3"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -1486,8 +2612,8 @@ Object {
               </defs>
               <rect
                 aria-label="2020/04/30. Grapes, 20%."
-                aria-labelledby="toolTipcallout_r_31_"
-                fill="url(#HBCWAxis_Gradient_r_33__numeric_3)"
+                aria-labelledby="toolTipcallout_r_3b_"
+                fill="url(#HBCWAxis_Gradient_r_3d__numeric_3)"
                 height="16"
                 opacity="1"
                 role="img"
@@ -1938,7 +3064,7 @@ Object {
           <g>
             <defs>
               <lineargradient
-                id="HBCWAxis_Gradient_r_33__numeric_0"
+                id="HBCWAxis_Gradient_r_3d__numeric_0"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -1956,8 +3082,8 @@ Object {
             </defs>
             <rect
               aria-label="2020/04/30. Oranges, 10%."
-              aria-labelledby="toolTipcallout_r_31_"
-              fill="url(#HBCWAxis_Gradient_r_33__numeric_0)"
+              aria-labelledby="toolTipcallout_r_3b_"
+              fill="url(#HBCWAxis_Gradient_r_3d__numeric_0)"
               height="16"
               opacity="1"
               role="img"
@@ -1981,7 +3107,7 @@ Object {
             </text>
             <defs>
               <lineargradient
-                id="HBCWAxis_Gradient_r_33__numeric_1"
+                id="HBCWAxis_Gradient_r_3d__numeric_1"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -1999,8 +3125,8 @@ Object {
             </defs>
             <rect
               aria-label="2020/04/30. Bananas, 88%."
-              aria-labelledby="toolTipcallout_r_31_"
-              fill="url(#HBCWAxis_Gradient_r_33__numeric_1)"
+              aria-labelledby="toolTipcallout_r_3b_"
+              fill="url(#HBCWAxis_Gradient_r_3d__numeric_1)"
               height="16"
               opacity="1"
               role="img"
@@ -2024,7 +3150,7 @@ Object {
             </text>
             <defs>
               <lineargradient
-                id="HBCWAxis_Gradient_r_33__numeric_2"
+                id="HBCWAxis_Gradient_r_3d__numeric_2"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2042,8 +3168,8 @@ Object {
             </defs>
             <rect
               aria-label="2020/04/30. Apples, 37%."
-              aria-labelledby="toolTipcallout_r_31_"
-              fill="url(#HBCWAxis_Gradient_r_33__numeric_2)"
+              aria-labelledby="toolTipcallout_r_3b_"
+              fill="url(#HBCWAxis_Gradient_r_3d__numeric_2)"
               height="16"
               opacity="1"
               role="img"
@@ -2067,7 +3193,7 @@ Object {
             </text>
             <defs>
               <lineargradient
-                id="HBCWAxis_Gradient_r_33__numeric_3"
+                id="HBCWAxis_Gradient_r_3d__numeric_3"
                 x1="0%"
                 x2="100%"
                 y1="0%"
@@ -2085,8 +3211,8 @@ Object {
             </defs>
             <rect
               aria-label="2020/04/30. Grapes, 20%."
-              aria-labelledby="toolTipcallout_r_31_"
-              fill="url(#HBCWAxis_Gradient_r_33__numeric_3)"
+              aria-labelledby="toolTipcallout_r_3b_"
+              fill="url(#HBCWAxis_Gradient_r_3d__numeric_3)"
               height="16"
               opacity="1"
               role="img"
@@ -2596,7 +3722,7 @@ Object {
             <g>
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
-                aria-labelledby="toolTipcallout_r_36_"
+                aria-labelledby="toolTipcallout_r_3g_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -2621,7 +3747,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Bananas, 88%."
-                aria-labelledby="toolTipcallout_r_36_"
+                aria-labelledby="toolTipcallout_r_3g_"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -2646,7 +3772,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Apples, 37%."
-                aria-labelledby="toolTipcallout_r_36_"
+                aria-labelledby="toolTipcallout_r_3g_"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -2671,7 +3797,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Grapes, 20%."
-                aria-labelledby="toolTipcallout_r_36_"
+                aria-labelledby="toolTipcallout_r_3g_"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -3123,7 +4249,7 @@ Object {
           <g>
             <rect
               aria-label="2020/04/30. Oranges, 10%."
-              aria-labelledby="toolTipcallout_r_36_"
+              aria-labelledby="toolTipcallout_r_3g_"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -3148,7 +4274,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Bananas, 88%."
-              aria-labelledby="toolTipcallout_r_36_"
+              aria-labelledby="toolTipcallout_r_3g_"
               fill="#002050"
               height="16"
               opacity="1"
@@ -3173,7 +4299,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Apples, 37%."
-              aria-labelledby="toolTipcallout_r_36_"
+              aria-labelledby="toolTipcallout_r_3g_"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -3198,7 +4324,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Grapes, 20%."
-              aria-labelledby="toolTipcallout_r_36_"
+              aria-labelledby="toolTipcallout_r_3g_"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -3709,7 +4835,7 @@ Object {
             <g>
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
-                aria-labelledby="toolTipcallout_r_29_"
+                aria-labelledby="toolTipcallout_r_2j_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
@@ -3734,7 +4860,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Bananas, 88%."
-                aria-labelledby="toolTipcallout_r_29_"
+                aria-labelledby="toolTipcallout_r_2j_"
                 fill="#002050"
                 height="16"
                 opacity="1"
@@ -3759,7 +4885,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Apples, 37%."
-                aria-labelledby="toolTipcallout_r_29_"
+                aria-labelledby="toolTipcallout_r_2j_"
                 fill="#00188f"
                 height="16"
                 opacity="1"
@@ -3784,7 +4910,7 @@ Object {
               </text>
               <rect
                 aria-label="2020/04/30. Grapes, 20%."
-                aria-labelledby="toolTipcallout_r_29_"
+                aria-labelledby="toolTipcallout_r_2j_"
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
@@ -4236,7 +5362,7 @@ Object {
           <g>
             <rect
               aria-label="2020/04/30. Oranges, 10%."
-              aria-labelledby="toolTipcallout_r_29_"
+              aria-labelledby="toolTipcallout_r_2j_"
               fill="#0078d4"
               height="16"
               opacity="1"
@@ -4261,7 +5387,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Bananas, 88%."
-              aria-labelledby="toolTipcallout_r_29_"
+              aria-labelledby="toolTipcallout_r_2j_"
               fill="#002050"
               height="16"
               opacity="1"
@@ -4286,7 +5412,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Apples, 37%."
-              aria-labelledby="toolTipcallout_r_29_"
+              aria-labelledby="toolTipcallout_r_2j_"
               fill="#00188f"
               height="16"
               opacity="1"
@@ -4311,7 +5437,7 @@ Object {
             </text>
             <rect
               aria-label="2020/04/30. Grapes, 20%."
-              aria-labelledby="toolTipcallout_r_29_"
+              aria-labelledby="toolTipcallout_r_2j_"
               fill="#00bcf2"
               height="16"
               opacity="1"
@@ -4879,7 +6005,7 @@ Object {
             <g>
               <rect
                 aria-label="Q1. Product A, 10K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4893,7 +6019,7 @@ Object {
               />
               <rect
                 aria-label="Q1. Product B, -5K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4907,7 +6033,7 @@ Object {
               />
               <rect
                 aria-label="Q1. Product C, 8K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -4933,7 +6059,7 @@ Object {
               </text>
               <rect
                 aria-label="Q2. Product A, -7K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -4947,7 +6073,7 @@ Object {
               />
               <rect
                 aria-label="Q2. Product B, 12K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -4961,7 +6087,7 @@ Object {
               />
               <rect
                 aria-label="Q2. Product C, 3K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -4987,7 +6113,7 @@ Object {
               </text>
               <rect
                 aria-label="Q3. Product A, 15K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
@@ -5001,7 +6127,7 @@ Object {
               />
               <rect
                 aria-label="Q3. Product B, -4K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
@@ -5015,7 +6141,7 @@ Object {
               />
               <rect
                 aria-label="Q3. Product C, 5K."
-                aria-labelledby="toolTipcallout_r_2e_"
+                aria-labelledby="toolTipcallout_r_2o_"
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
@@ -5506,7 +6632,7 @@ Object {
           <g>
             <rect
               aria-label="Q1. Product A, 10K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5520,7 +6646,7 @@ Object {
             />
             <rect
               aria-label="Q1. Product B, -5K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5534,7 +6660,7 @@ Object {
             />
             <rect
               aria-label="Q1. Product C, 8K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5560,7 +6686,7 @@ Object {
             </text>
             <rect
               aria-label="Q2. Product A, -7K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5574,7 +6700,7 @@ Object {
             />
             <rect
               aria-label="Q2. Product B, 12K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5588,7 +6714,7 @@ Object {
             />
             <rect
               aria-label="Q2. Product C, 3K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -5614,7 +6740,7 @@ Object {
             </text>
             <rect
               aria-label="Q3. Product A, 15K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
@@ -5628,7 +6754,7 @@ Object {
             />
             <rect
               aria-label="Q3. Product B, -4K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#ff8c00"
               height="45.8"
               opacity="1"
@@ -5642,7 +6768,7 @@ Object {
             />
             <rect
               aria-label="Q3. Product C, 5K."
-              aria-labelledby="toolTipcallout_r_2e_"
+              aria-labelledby="toolTipcallout_r_2o_"
               fill="#107c10"
               height="45.8"
               opacity="1"
@@ -6135,7 +7261,7 @@ Object {
             <g>
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
-                aria-labelledby="toolTipcallout_r_2j_"
+                aria-labelledby="toolTipcallout_r_2t_"
                 fill="#0078d4"
                 height="1"
                 opacity="1"
@@ -6148,7 +7274,7 @@ Object {
               />
               <rect
                 aria-label="2020/04/30. Bananas, 88%."
-                aria-labelledby="toolTipcallout_r_2j_"
+                aria-labelledby="toolTipcallout_r_2t_"
                 fill="#002050"
                 height="1"
                 opacity="1"
@@ -6161,7 +7287,7 @@ Object {
               />
               <rect
                 aria-label="2020/04/30. Apples, 37%."
-                aria-labelledby="toolTipcallout_r_2j_"
+                aria-labelledby="toolTipcallout_r_2t_"
                 fill="#00188f"
                 height="1"
                 opacity="1"
@@ -6174,7 +7300,7 @@ Object {
               />
               <rect
                 aria-label="2020/04/30. Grapes, 20%."
-                aria-labelledby="toolTipcallout_r_2j_"
+                aria-labelledby="toolTipcallout_r_2t_"
                 fill="#00bcf2"
                 height="1"
                 opacity="1"
@@ -6521,7 +7647,7 @@ Object {
           <g>
             <rect
               aria-label="2020/04/30. Oranges, 10%."
-              aria-labelledby="toolTipcallout_r_2j_"
+              aria-labelledby="toolTipcallout_r_2t_"
               fill="#0078d4"
               height="1"
               opacity="1"
@@ -6534,7 +7660,7 @@ Object {
             />
             <rect
               aria-label="2020/04/30. Bananas, 88%."
-              aria-labelledby="toolTipcallout_r_2j_"
+              aria-labelledby="toolTipcallout_r_2t_"
               fill="#002050"
               height="1"
               opacity="1"
@@ -6547,7 +7673,7 @@ Object {
             />
             <rect
               aria-label="2020/04/30. Apples, 37%."
-              aria-labelledby="toolTipcallout_r_2j_"
+              aria-labelledby="toolTipcallout_r_2t_"
               fill="#00188f"
               height="1"
               opacity="1"
@@ -6560,7 +7686,7 @@ Object {
             />
             <rect
               aria-label="2020/04/30. Grapes, 20%."
-              aria-labelledby="toolTipcallout_r_2j_"
+              aria-labelledby="toolTipcallout_r_2t_"
               fill="#00bcf2"
               height="1"
               opacity="1"
@@ -6988,7 +8114,7 @@ Object {
             <g>
               <rect
                 aria-label="String One. 1000."
-                aria-labelledby="toolTipcallout_r_2n_"
+                aria-labelledby="toolTipcallout_r_31_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -7014,7 +8140,7 @@ Object {
               </text>
               <rect
                 aria-label="String Two. 5000."
-                aria-labelledby="toolTipcallout_r_2n_"
+                aria-labelledby="toolTipcallout_r_31_"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -7040,7 +8166,7 @@ Object {
               </text>
               <rect
                 aria-label="String Three. 3000."
-                aria-labelledby="toolTipcallout_r_2n_"
+                aria-labelledby="toolTipcallout_r_31_"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -7066,7 +8192,7 @@ Object {
               </text>
               <rect
                 aria-label="String Four. 2000."
-                aria-labelledby="toolTipcallout_r_2n_"
+                aria-labelledby="toolTipcallout_r_31_"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -7131,7 +8257,7 @@ Object {
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_2q_"
+          id="tooltip__r_34_"
           style="opacity: 0;"
         />
       </div>
@@ -7489,7 +8615,7 @@ Object {
           <g>
             <rect
               aria-label="String One. 1000."
-              aria-labelledby="toolTipcallout_r_2n_"
+              aria-labelledby="toolTipcallout_r_31_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -7515,7 +8641,7 @@ Object {
             </text>
             <rect
               aria-label="String Two. 5000."
-              aria-labelledby="toolTipcallout_r_2n_"
+              aria-labelledby="toolTipcallout_r_31_"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -7541,7 +8667,7 @@ Object {
             </text>
             <rect
               aria-label="String Three. 3000."
-              aria-labelledby="toolTipcallout_r_2n_"
+              aria-labelledby="toolTipcallout_r_31_"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -7567,7 +8693,7 @@ Object {
             </text>
             <rect
               aria-label="String Four. 2000."
-              aria-labelledby="toolTipcallout_r_2n_"
+              aria-labelledby="toolTipcallout_r_31_"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
@@ -7632,7 +8758,7 @@ Object {
       </div>
       <div
         class="fui-cart__tooltip"
-        id="tooltip__r_2q_"
+        id="tooltip__r_34_"
         style="opacity: 0;"
       />
     </div>
@@ -8025,7 +9151,7 @@ Object {
             <g>
               <rect
                 aria-label="String One. 1000."
-                aria-labelledby="toolTipcallout_r_2s_"
+                aria-labelledby="toolTipcallout_r_36_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
@@ -8051,7 +9177,7 @@ Object {
               </text>
               <rect
                 aria-label="String Two. 5000."
-                aria-labelledby="toolTipcallout_r_2s_"
+                aria-labelledby="toolTipcallout_r_36_"
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
@@ -8077,7 +9203,7 @@ Object {
               </text>
               <rect
                 aria-label="String Three. 3000."
-                aria-labelledby="toolTipcallout_r_2s_"
+                aria-labelledby="toolTipcallout_r_36_"
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
@@ -8103,7 +9229,7 @@ Object {
               </text>
               <rect
                 aria-label="String Four. 2000."
-                aria-labelledby="toolTipcallout_r_2s_"
+                aria-labelledby="toolTipcallout_r_36_"
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
@@ -8497,7 +9623,7 @@ Object {
           <g>
             <rect
               aria-label="String One. 1000."
-              aria-labelledby="toolTipcallout_r_2s_"
+              aria-labelledby="toolTipcallout_r_36_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
@@ -8523,7 +9649,7 @@ Object {
             </text>
             <rect
               aria-label="String Two. 5000."
-              aria-labelledby="toolTipcallout_r_2s_"
+              aria-labelledby="toolTipcallout_r_36_"
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
@@ -8549,7 +9675,7 @@ Object {
             </text>
             <rect
               aria-label="String Three. 3000."
-              aria-labelledby="toolTipcallout_r_2s_"
+              aria-labelledby="toolTipcallout_r_36_"
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
@@ -8575,7 +9701,7 @@ Object {
             </text>
             <rect
               aria-label="String Four. 2000."
-              aria-labelledby="toolTipcallout_r_2s_"
+              aria-labelledby="toolTipcallout_r_36_"
               fill="#002050"
               height="32.714285714285715"
               opacity="1"

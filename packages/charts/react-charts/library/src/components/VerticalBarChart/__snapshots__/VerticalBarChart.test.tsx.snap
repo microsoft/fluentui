@@ -1688,6 +1688,1178 @@ exports[`Theme Change Should reflect theme change 1`] = `
 </div>
 `;
 
+exports[`Vertical Bar Chart - Gradient Should compare VerticalBarChart snapshots with enableGradient true and false: vertical-bar-chart-gradient-disabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M64.5,6V0.5H606.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(64.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(106.19230769230771,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            2000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(147.8846153846154,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            4000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(189.5769230769231,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            6000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(231.26923076923077,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            8000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(272.96153846153845,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(314.6538461538462,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            12,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(356.3461538461538,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            14,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(398.03846153846155,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            16,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(439.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            18,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(481.42307692307696,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(523.1153846153845,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            22,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(564.8076923076924,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            24,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(606.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            26,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,265.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,265.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,204.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            12.5k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,143)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,81.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            37.5k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <rect
+          aria-label="2020/04/30. First, 10%."
+          fill="aqua"
+          height="49"
+          id="_VBC_bar__r_7f_-0"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="56"
+          y="216"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="64"
+          y="210"
+        >
+          10k
+        </text>
+        <rect
+          aria-label="2020/04/30. Second, 20%."
+          fill="blue"
+          height="245"
+          id="_VBC_bar__r_7f_-1"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="264.46153846153845"
+          y="20"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="272.46153846153845"
+          y="14"
+        >
+          50k
+        </text>
+        <rect
+          aria-label="2020/04/30. Third, 37%."
+          fill="navy"
+          height="147"
+          id="_VBC_bar__r_7f_-2"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="577.1538461538462"
+          y="118"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="585.1538461538462"
+          y="112"
+        >
+          30k
+        </text>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="First"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            First
+          </div>
+        </button>
+        <button
+          aria-label="Second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Second
+          </div>
+        </button>
+        <button
+          aria-label="Third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical Bar Chart - Gradient Should compare VerticalBarChart snapshots with enableGradient true and false: vertical-bar-chart-gradient-enabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M64.5,6V0.5H606.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(64.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(106.19230769230771,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            2000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(147.8846153846154,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            4000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(189.5769230769231,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            6000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(231.26923076923077,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            8000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(272.96153846153845,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(314.6538461538462,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            12,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(356.3461538461538,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            14,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(398.03846153846155,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            16,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(439.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            18,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(481.42307692307696,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(523.1153846153845,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            22,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(564.8076923076924,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            24,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(606.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            26,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,265.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,265.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,204.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            12.5k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,143)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,81.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            37.5k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <defs>
+          <lineargradient
+            id="VBC_Gradient_r_7n__numeric_0"
+            x1="0%"
+            x2="0%"
+            y1="100%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#4760D5"
+            />
+            <stop
+              offset="100%"
+              stop-color="#637CEF"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. First, 10%."
+          fill="url(#VBC_Gradient_r_7n__numeric_0)"
+          height="49"
+          id="_VBC_bar__r_7m_-0"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="56"
+          y="216"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="64"
+          y="210"
+        >
+          10k
+        </text>
+        <defs>
+          <lineargradient
+            id="VBC_Gradient_r_7n__numeric_1"
+            x1="0%"
+            x2="0%"
+            y1="100%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#795AA6"
+            />
+            <stop
+              offset="100%"
+              stop-color="#9373C0"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Second, 20%."
+          fill="url(#VBC_Gradient_r_7n__numeric_1)"
+          height="245"
+          id="_VBC_bar__r_7m_-1"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="264.46153846153845"
+          y="20"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="272.46153846153845"
+          y="14"
+        >
+          50k
+        </text>
+        <defs>
+          <lineargradient
+            id="VBC_Gradient_r_7n__numeric_2"
+            x1="0%"
+            x2="0%"
+            y1="100%"
+            y2="0%"
+          >
+            <stop
+              offset="0"
+              stop-color="#159195"
+            />
+            <stop
+              offset="100%"
+              stop-color="#2AA0A4"
+            />
+          </lineargradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. Third, 37%."
+          fill="url(#VBC_Gradient_r_7n__numeric_2)"
+          height="147"
+          id="_VBC_bar__r_7m_-2"
+          opacity="1"
+          role="img"
+          rx="0"
+          tabindex="0"
+          width="16"
+          x="577.1538461538462"
+          y="118"
+        />
+        <text
+          aria-hidden="true"
+          class="fui-vbc__barLabel"
+          style="direction: ltr; unicode-bidi: isolate;"
+          text-anchor="middle"
+          x="585.1538461538462"
+          y="112"
+        >
+          30k
+        </text>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="First"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            First
+          </div>
+        </button>
+        <button
+          aria-label="Second"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Second
+          </div>
+        </button>
+        <button
+          aria-label="Third"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #159195; --rect-borderColor: #159195;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(21, 145, 149); border-color: rgb(21, 145, 149); --rect-content-high-contrast: linear-gradient(to right, #159195, #159195);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Third
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart with data 1`] = `
 <div>
   <div
@@ -5948,7 +7120,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_8u_-0"
+          id="_VBC_bar__r_9c_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -5961,7 +7133,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_8u_-1"
+          id="_VBC_bar__r_9c_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -5974,7 +7146,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_8u_-2"
+          id="_VBC_bar__r_9c_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -6477,7 +7649,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_95_-0"
+          id="_VBC_bar__r_9j_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -6500,7 +7672,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_95_-1"
+          id="_VBC_bar__r_9j_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -6523,7 +7695,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_95_-2"
+          id="_VBC_bar__r_9j_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -7036,7 +8208,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_9c_-0"
+          id="_VBC_bar__r_9q_-0"
           opacity="1"
           role="img"
           rx="3"
@@ -7059,7 +8231,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_9c_-1"
+          id="_VBC_bar__r_9q_-1"
           opacity="1"
           role="img"
           rx="3"
@@ -7082,7 +8254,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_9c_-2"
+          id="_VBC_bar__r_9q_-2"
           opacity="1"
           role="img"
           rx="3"
@@ -7595,7 +8767,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_7f_-0"
+          id="_VBC_bar__r_7t_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -7618,7 +8790,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_7f_-1"
+          id="_VBC_bar__r_7t_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -7641,7 +8813,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_7f_-2"
+          id="_VBC_bar__r_7t_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -8154,7 +9326,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_83_-0"
+          id="_VBC_bar__r_8h_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -8177,7 +9349,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_83_-1"
+          id="_VBC_bar__r_8h_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -8200,7 +9372,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_83_-2"
+          id="_VBC_bar__r_8h_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -8723,7 +9895,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="1"
-          id="_VBC_bar__r_7m_-0"
+          id="_VBC_bar__r_84_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -8746,7 +9918,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="5"
-          id="_VBC_bar__r_7m_-1"
+          id="_VBC_bar__r_84_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -8769,7 +9941,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="3"
-          id="_VBC_bar__r_7m_-2"
+          id="_VBC_bar__r_84_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -9208,7 +10380,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_7s_-0"
+          id="_VBC_bar__r_8a_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -9230,7 +10402,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_7s_-1"
+          id="_VBC_bar__r_8a_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -9252,7 +10424,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_7s_-2"
+          id="_VBC_bar__r_8a_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -9862,7 +11034,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_89_-0"
+          id="_VBC_bar__r_8n_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -9885,7 +11057,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_89_-1"
+          id="_VBC_bar__r_8n_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -9908,7 +11080,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_89_-2"
+          id="_VBC_bar__r_8n_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -10006,7 +11178,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
   </div>
   <div
     class="fui-cart__tooltip"
-    id="tooltip__r_8b_"
+    id="tooltip__r_8p_"
     style="opacity: 0;"
   />
 </div>
@@ -10524,7 +11696,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_8g_-0"
+          id="_VBC_bar__r_8u_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -10547,7 +11719,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_8g_-1"
+          id="_VBC_bar__r_8u_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -10570,7 +11742,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_8g_-2"
+          id="_VBC_bar__r_8u_-2"
           opacity="1"
           role="img"
           rx="0"
@@ -11090,7 +12262,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           aria-label="2020/04/30. First, 10%."
           fill="aqua"
           height="49"
-          id="_VBC_bar__r_8n_-0"
+          id="_VBC_bar__r_95_-0"
           opacity="1"
           role="img"
           rx="0"
@@ -11113,7 +12285,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           aria-label="2020/04/30. Second, 20%."
           fill="blue"
           height="245"
-          id="_VBC_bar__r_8n_-1"
+          id="_VBC_bar__r_95_-1"
           opacity="1"
           role="img"
           rx="0"
@@ -11136,7 +12308,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           aria-label="2020/04/30. Third, 37%."
           fill="navy"
           height="147"
-          id="_VBC_bar__r_8n_-2"
+          id="_VBC_bar__r_95_-2"
           opacity="1"
           role="img"
           rx="0"

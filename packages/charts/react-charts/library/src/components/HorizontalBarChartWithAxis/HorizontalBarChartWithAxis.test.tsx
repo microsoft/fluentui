@@ -487,6 +487,36 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
   });
 });
 
+describe('Horizontal Bar Chart With Axis - Gradient', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+    updateChartWidthAndHeight();
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+    sharedAfterEach();
+  });
+
+  it('Should compare HorizontalBarChartWithAxis snapshots with enableGradient true and false', () => {
+    // Test with enableGradient={false}
+    const { container: containerGradientFalse } = render(
+      <HorizontalBarChartWithAxis data={chartPointsHBCWA} enableGradient={false} />,
+    );
+    const gradientFalseHtml = (containerGradientFalse.firstChild as Element)?.outerHTML;
+    expect(containerGradientFalse.firstChild).toMatchSnapshot('horizontal-bar-chart-with-axis-gradient-disabled');
+
+    // Test with enableGradient={true}
+    const { container: containerGradientTrue } = render(
+      <HorizontalBarChartWithAxis data={chartPointsHBCWA} enableGradient={true} />,
+    );
+    const gradientTrueHtml = (containerGradientTrue.firstChild as Element)?.outerHTML;
+    expect(containerGradientTrue.firstChild).toMatchSnapshot('horizontal-bar-chart-with-axis-gradient-enabled');
+
+    // Compare the rendered HTML to verify they are different
+    expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
+  });
+});
+
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);

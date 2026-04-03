@@ -1,5 +1,438 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Gauge Chart - Gradient Should compare GaugeChart snapshots with enableGradient true and false: gauge-chart-gradient-disabled 1`] = `
+<div
+  class="fui-gc__root"
+>
+  <div
+    class="fui-gc__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Gauge chart with 3 segments. "
+      class="fui-gc__chart"
+      height="-32"
+      role="region"
+      width="0"
+    >
+      <defs />
+      <g
+        transform="translate(0, -48)"
+      >
+        <text
+          aria-label="Min value: 0"
+          class="fui-gc__limits"
+          role="img"
+          text-anchor="end"
+          x="62"
+          y="0"
+        >
+          0
+        </text>
+        <text
+          aria-label="Max value: 100"
+          class="fui-gc__limits"
+          role="img"
+          text-anchor="start"
+          x="-62"
+          y="0"
+        >
+          100
+        </text>
+        <path
+          aria-label="Low Risk, 0 to 33"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="#107c10"
+          id="gauge-chart-arc-0"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <path
+          aria-label="Medium Risk, 33 to 67"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="#f7630c"
+          id="gauge-chart-arc-1"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <path
+          aria-label="High Risk, 67 to 100"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="#c50f1f"
+          id="gauge-chart-arc-2"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <g
+          transform="rotate(54, 0, 0)"
+        >
+          <path
+            aria-label="Current value: 30%"
+            class="fui-gc__needle"
+            d="
+            M 0,-4
+            L -16,-2
+            A 2,2,0,0,0,-16,2
+            L 0,4
+            A 4,4,0,0,0,0,-4
+          "
+            data-is-focusable="true"
+            id="gauge-chart-needle"
+            role="img"
+            stroke-width="2"
+            transform="translate(80)"
+          />
+        </g>
+        <g>
+          <text
+            aria-describedby="tooltip-_r_2c_"
+            aria-hidden="true"
+            class="fui-gc__chartValue"
+            font-size="20"
+            id="tooltip-host_r_2b_"
+            text-anchor="middle"
+            x="0"
+            y="0"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-gc__legendsContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="Low Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Low Risk
+          </div>
+        </button>
+        <button
+          aria-label="Medium Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Medium Risk
+          </div>
+        </button>
+        <button
+          aria-label="High Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            High Risk
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Gauge Chart - Gradient Should compare GaugeChart snapshots with enableGradient true and false: gauge-chart-gradient-enabled 1`] = `
+<div
+  class="fui-gc__root"
+>
+  <div
+    class="fui-gc__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Gauge chart with 3 segments. "
+      class="fui-gc__chart"
+      height="-32"
+      role="region"
+      width="0"
+    >
+      <defs>
+        <lineargradient
+          id="gauge-gradient-0"
+          x1="0%"
+          x2="100%"
+          y1="0%"
+          y2="0%"
+        >
+          <stop
+            offset="0%"
+            stop-color="#4760D5"
+          />
+          <stop
+            offset="100%"
+            stop-color="#637CEF"
+          />
+        </lineargradient>
+        <lineargradient
+          id="gauge-gradient-1"
+          x1="0%"
+          x2="100%"
+          y1="0%"
+          y2="0%"
+        >
+          <stop
+            offset="0%"
+            stop-color="#795AA6"
+          />
+          <stop
+            offset="100%"
+            stop-color="#9373C0"
+          />
+        </lineargradient>
+        <lineargradient
+          id="gauge-gradient-2"
+          x1="0%"
+          x2="100%"
+          y1="0%"
+          y2="0%"
+        >
+          <stop
+            offset="0%"
+            stop-color="#159195"
+          />
+          <stop
+            offset="100%"
+            stop-color="#2AA0A4"
+          />
+        </lineargradient>
+      </defs>
+      <g
+        transform="translate(0, -48)"
+      >
+        <text
+          aria-label="Min value: 0"
+          class="fui-gc__limits"
+          role="img"
+          text-anchor="end"
+          x="62"
+          y="0"
+        >
+          0
+        </text>
+        <text
+          aria-label="Max value: 100"
+          class="fui-gc__limits"
+          role="img"
+          text-anchor="start"
+          x="-62"
+          y="0"
+        >
+          100
+        </text>
+        <path
+          aria-label="Low Risk, 0 to 33"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="url(#gauge-gradient-0)"
+          id="gauge-chart-arc-0"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <path
+          aria-label="Medium Risk, 33 to 67"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="url(#gauge-gradient-1)"
+          id="gauge-chart-arc-1"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <path
+          aria-label="High Risk, 67 to 100"
+          class="fui-gc__segment"
+          d="M0,0Z"
+          data-is-focusable="true"
+          fill="url(#gauge-gradient-2)"
+          id="gauge-chart-arc-2"
+          opacity="1"
+          role="img"
+          stroke-width="0"
+          tabindex="0"
+        />
+        <g
+          transform="rotate(54, 0, 0)"
+        >
+          <path
+            aria-label="Current value: 30%"
+            class="fui-gc__needle"
+            d="
+            M 0,-4
+            L -16,-2
+            A 2,2,0,0,0,-16,2
+            L 0,4
+            A 4,4,0,0,0,0,-4
+          "
+            data-is-focusable="true"
+            id="gauge-chart-needle"
+            role="img"
+            stroke-width="2"
+            transform="translate(80)"
+          />
+        </g>
+        <g>
+          <text
+            aria-describedby="tooltip-_r_2f_"
+            aria-hidden="true"
+            class="fui-gc__chartValue"
+            font-size="20"
+            id="tooltip-host_r_2e_"
+            text-anchor="middle"
+            x="0"
+            y="0"
+          >
+            ...
+          </text>
+          <span
+            hidden=""
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    class="fui-gc__legendsContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: center;"
+      >
+        <button
+          aria-label="Low Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Low Risk
+          </div>
+        </button>
+        <button
+          aria-label="Medium Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Medium Risk
+          </div>
+        </button>
+        <button
+          aria-label="High Risk"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #159195; --rect-borderColor: #159195;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(21, 145, 149); border-color: rgb(21, 145, 149); --rect-content-high-contrast: linear-gradient(to right, #159195, #159195);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            High Risk
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
@@ -2852,11 +3285,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2f_"
+                  aria-describedby="tooltip-_r_2l_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2e_"
+                  id="tooltip-host_r_2k_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -2953,7 +3386,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2f_"
+        id="tooltip-_r_2l_"
         role="tooltip"
       >
         <div
@@ -3043,11 +3476,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2f_"
+                aria-describedby="tooltip-_r_2l_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2e_"
+                id="tooltip-host_r_2k_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3294,11 +3727,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2s_"
+                  aria-describedby="tooltip-_r_32_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2r_"
+                  id="tooltip-host_r_31_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3321,7 +3754,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2s_"
+        id="tooltip-_r_32_"
         role="tooltip"
       >
         <div
@@ -3431,11 +3864,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2s_"
+                aria-describedby="tooltip-_r_32_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2r_"
+                id="tooltip-host_r_31_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3608,11 +4041,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2c_"
+                  aria-describedby="tooltip-_r_2i_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2b_"
+                  id="tooltip-host_r_2h_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3709,7 +4142,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2c_"
+        id="tooltip-_r_2i_"
         role="tooltip"
       >
         <div
@@ -3819,11 +4252,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2c_"
+                aria-describedby="tooltip-_r_2i_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2b_"
+                id="tooltip-host_r_2h_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4058,11 +4491,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_31_"
+                  aria-describedby="tooltip-_r_37_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_30_"
+                  id="tooltip-host_r_36_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4140,7 +4573,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_31_"
+        id="tooltip-_r_37_"
         role="tooltip"
       >
         <div
@@ -4238,11 +4671,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_31_"
+                aria-describedby="tooltip-_r_37_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_30_"
+                id="tooltip-host_r_36_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4400,11 +4833,11 @@ Object {
                 y="74"
               />
               <text
-                aria-describedby="tooltip-_r_2i_"
+                aria-describedby="tooltip-_r_2o_"
                 aria-hidden="true"
                 class="fui-gc__chartTitle"
                 dominant-baseline="auto"
-                id="tooltip-host_r_2h_"
+                id="tooltip-host_r_2n_"
                 text-anchor="middle"
                 x="0"
                 y="80"
@@ -4492,11 +4925,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2k_"
+                  aria-describedby="tooltip-_r_2q_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2j_"
+                  id="tooltip-host_r_2p_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4593,7 +5026,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2i_"
+        id="tooltip-_r_2o_"
         role="tooltip"
       >
         <div
@@ -4612,7 +5045,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2k_"
+        id="tooltip-_r_2q_"
         role="tooltip"
       >
         <div
@@ -4652,11 +5085,11 @@ Object {
               y="74"
             />
             <text
-              aria-describedby="tooltip-_r_2i_"
+              aria-describedby="tooltip-_r_2o_"
               aria-hidden="true"
               class="fui-gc__chartTitle"
               dominant-baseline="auto"
-              id="tooltip-host_r_2h_"
+              id="tooltip-host_r_2n_"
               text-anchor="middle"
               x="0"
               y="80"
@@ -4744,11 +5177,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2k_"
+                aria-describedby="tooltip-_r_2q_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2j_"
+                id="tooltip-host_r_2p_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4995,11 +5428,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2u_"
+                  aria-describedby="tooltip-_r_34_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2t_"
+                  id="tooltip-host_r_33_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5096,7 +5529,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2u_"
+        id="tooltip-_r_34_"
         role="tooltip"
       >
         <div
@@ -5206,11 +5639,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2u_"
+                aria-describedby="tooltip-_r_34_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2t_"
+                id="tooltip-host_r_33_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5457,11 +5890,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2n_"
+                  aria-describedby="tooltip-_r_2t_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host_r_2m_"
+                  id="tooltip-host_r_2s_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5473,10 +5906,10 @@ Object {
                 />
               </g>
               <text
-                aria-describedby="tooltip-_r_2p_"
+                aria-describedby="tooltip-_r_2v_"
                 class="fui-gc__sublabel"
                 dominant-baseline="hanging"
-                id="tooltip-host_r_2o_"
+                id="tooltip-host_r_2u_"
                 text-anchor="middle"
                 x="0"
                 y="4"
@@ -5572,7 +6005,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2n_"
+        id="tooltip-_r_2t_"
         role="tooltip"
       >
         <div
@@ -5591,7 +6024,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-_r_2p_"
+        id="tooltip-_r_2v_"
         role="tooltip"
       >
         <div
@@ -5701,11 +6134,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2n_"
+                aria-describedby="tooltip-_r_2t_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host_r_2m_"
+                id="tooltip-host_r_2s_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5717,10 +6150,10 @@ Object {
               />
             </g>
             <text
-              aria-describedby="tooltip-_r_2p_"
+              aria-describedby="tooltip-_r_2v_"
               class="fui-gc__sublabel"
               dominant-baseline="hanging"
-              id="tooltip-host_r_2o_"
+              id="tooltip-host_r_2u_"
               text-anchor="middle"
               x="0"
               y="4"

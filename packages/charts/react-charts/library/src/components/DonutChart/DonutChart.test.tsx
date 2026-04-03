@@ -246,11 +246,6 @@ describe('Donut Chart - Gradient', () => {
 
     // Compare the rendered HTML to verify they are different
     expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
-
-    // Log the difference for debugging
-    console.log('Gradient disabled HTML length:', gradientFalseHtml?.length);
-    console.log('Gradient enabled HTML length:', gradientTrueHtml?.length);
-    console.log('Are snapshots different?', gradientFalseHtml !== gradientTrueHtml);
   });
 });
 
