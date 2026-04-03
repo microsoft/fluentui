@@ -9,9 +9,21 @@ import { ProgressBarValidationState } from './progress-bar.options.js';
  * @public
  */
 export class BaseProgressBar extends FASTElement {
-  /** @internal */
+  /**
+   * Reference to the indicator element which visually represents the progress.
+   *
+   * @internal
+   */
   @observable
-  public indicator!: HTMLElement;
+  public indicator?: HTMLElement;
+
+  /**
+   * Updates the indicator width after the element is connected to the DOM via the template.
+   * @internal
+   */
+  protected indicatorChanged() {
+    this.setIndicatorWidth();
+  }
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -138,7 +150,7 @@ export class BaseProgressBar extends FASTElement {
 
     requestAnimationFrame(() => {
       if (typeof this.value !== 'number') {
-        this.indicator.style.removeProperty('width');
+        this.indicator?.style.removeProperty('width');
         return;
       }
 
@@ -148,7 +160,7 @@ export class BaseProgressBar extends FASTElement {
       const range = max - min;
       const width = range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
 
-      this.indicator.style.setProperty('width', `${width}%`);
+      this.indicator?.style.setProperty('width', `${width}%`);
     });
   }
 }

@@ -734,8 +734,10 @@ export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
     elementInternals: ElementInternals;
-    // @internal (undocumented)
-    indicator: HTMLElement;
+    // @internal
+    indicator?: HTMLElement;
+    // @internal
+    protected indicatorChanged(): void;
     // @internal
     max?: number;
     // @internal
