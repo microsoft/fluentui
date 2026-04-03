@@ -1,4 +1,12 @@
-import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
+import {
+  attr,
+  FASTElement,
+  nullableNumberConverter,
+  Observable,
+  observable,
+  type Subscriber,
+  Updates,
+} from '@microsoft/fast-element';
 import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.options.js';
 
 /**
@@ -71,9 +79,11 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    if (this.$fastController.isConnected) {
-      this.controlLabel.hidden = !next?.length;
-    }
+    Updates.enqueue(() => {
+      if (this.defaultSlottedNodes.every(node => node.nodeType === Node.TEXT_NODE)) {
+        this.controlLabel.hidden = this.innerText.trim().length === 0;
+      }
+    });
   }
 
   /**
@@ -304,7 +314,21 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
-    this.setValidity();
+    if (this.$fastController.isConnected) {
+      this.setValidity();
+      return;
+    }
+
+    const subscriber: Subscriber = {
+      handleChange: () => {
+        if (this.$fastController.isConnected) {
+          this.setValidity();
+          this.$fastController.unsubscribe(subscriber, 'isConnected');
+        }
+      },
+    };
+
+    this.$fastController.subscribe(subscriber, 'isConnected');
   }
 
   /**
@@ -458,6 +482,8 @@ export class BaseTextInput extends FASTElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
 
     this.setFormValue(this.value);
     this.setValidity();

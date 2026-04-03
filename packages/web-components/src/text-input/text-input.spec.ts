@@ -678,8 +678,8 @@ test.describe('TextInput', () => {
     await fastPage.setTemplate({
       innerHTML: /* html */ `
         <span>Label</span>
-        <button slot="start">start</button>
-        <button slot="end">end</button>
+        <button tabindex="0" slot="start">start</button>
+        <button tabindex="0" slot="end">end</button>
       `,
     });
 
