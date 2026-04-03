@@ -1,8 +1,9 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
-import type { MenuList } from '../menu-list/menu-list.js';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import type { MenuList } from '../menu-list/menu-list.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 
 /**
  * A Menu component that provides a customizable menu element.
@@ -89,14 +90,24 @@ export class Menu extends FASTElement {
    * @public
    */
   @observable
-  public slottedMenuList: MenuList[] = [];
+  public slottedMenuList!: MenuList[];
+
+  /**
+   * Sets up the component when the slotted menu list changes.
+   * @param prev - The previous items in the slotted menu list.
+   * @param next - The new items in the slotted menu list.
+   * @internal
+   */
+  slottedMenuListChanged(prev: MenuList[] | undefined, next: MenuList[] | undefined): void {
+    this.setComponent();
+  }
 
   /**
    * Holds the slotted triggers.
    * @public
    */
   @observable
-  public slottedTriggers: HTMLElement[] = [];
+  public slottedTriggers!: HTMLElement[];
 
   /**
    * Holds the primary slot element.
@@ -129,9 +140,7 @@ export class Menu extends FASTElement {
    */
   public connectedCallback() {
     super.connectedCallback();
-    queueMicrotask(() => {
-      this.setComponent();
-    });
+    this.setComponent();
   }
 
   /**
@@ -150,15 +159,20 @@ export class Menu extends FASTElement {
    * @public
    */
   public setComponent(): void {
-    if (this.$fastController.isConnected && this.slottedMenuList.length && this.slottedTriggers.length) {
-      this._trigger = this.slottedTriggers![0];
-      this._menuList = this.slottedMenuList![0];
-      this._trigger.setAttribute('aria-haspopup', 'true');
-      this._trigger.setAttribute('aria-expanded', `${this._open}`);
-      this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
-
-      this.addListeners();
-    }
+    waitForConnectedDescendants(
+      this,
+      () => {
+        requestAnimationFrame(() => {
+          this._trigger = this.slottedTriggers![0];
+          this._menuList = this.slottedMenuList![0];
+          this._trigger.setAttribute('aria-haspopup', 'true');
+          this._trigger.setAttribute('aria-expanded', `${this._open}`);
+          this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
+          this.addListeners();
+        });
+      },
+      { shallow: true },
+    );
   }
 
   /**
