@@ -465,18 +465,32 @@ export class BaseAnchor extends FASTElement {
 // @public
 export class BaseAvatar extends FASTElement {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
+    // @internal
+    protected cleanupSlottedContent(): void;
     // @internal
     defaultSlot: HTMLSlotElement;
-    // (undocumented)
-    disconnectedCallback(): void;
+    // @internal
+    defaultSlotChanged(): void;
     // @internal
     elementInternals: ElementInternals;
+    // @internal
+    generateInitials(): string | void;
     initials?: string | undefined;
+    // @internal
+    protected initialsChanged(): void;
+    // @internal
+    monogram: HTMLElement;
+    // @internal
+    protected monogramChanged(): void;
     name?: string | undefined;
     // @internal
-    slotchangeHandler(): void;
+    protected nameChanged(): void;
+    // @internal
+    slottedDefaults: Node[];
+    // @internal
+    protected slottedDefaultsChanged(): void;
+    // @internal
+    protected updateMonogram(): void;
 }
 
 // @public
@@ -489,8 +503,8 @@ export class BaseButton extends FASTElement {
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
     disabled: boolean;
-    // (undocumented)
-    protected disabledChanged(): void;
+    // @internal
+    disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -511,6 +525,8 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
+    // @internal
+    protected setTabIndex(): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -599,6 +615,8 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -714,8 +732,6 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseProgressBar extends FASTElement {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)
@@ -727,6 +743,8 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    protected setIndicatorWidth(): void;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
@@ -751,8 +769,10 @@ export class BaseRatingDisplay extends FASTElement {
     get formattedCount(): string;
     // @internal (undocumented)
     handleSlotChange(): void;
-    // @internal (undocumented)
+    // @internal
     iconSlot: HTMLSlotElement;
+    // @internal
+    iconSlotChanged(): void;
     // @deprecated
     iconViewBox?: string;
     max?: number;
@@ -778,6 +798,7 @@ export class BaseSpinner extends FASTElement {
 
 // @public
 export class BaseTablist extends FASTElement {
+    constructor();
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
@@ -801,7 +822,7 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     tabs: Tab[];
     // @internal (undocumented)
-    protected tabsChanged(): void;
+    protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public
@@ -974,9 +995,13 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
+    // @internal
+    defaultSlotChanged(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -1087,7 +1112,7 @@ export const ButtonSize: {
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
 // @public
-export const ButtonTemplate: ElementViewTemplate<Button>;
+export const ButtonTemplate: ElementViewTemplate<BaseButton>;
 
 // @public
 export const ButtonType: {
@@ -2407,8 +2432,6 @@ export class Dialog extends FASTElement {
     ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
     dialog: HTMLDialogElement;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
@@ -2416,7 +2439,7 @@ export class Dialog extends FASTElement {
     show(): void;
     type: DialogType;
     // (undocumented)
-    protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined): void;
+    protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
 }
 
 // @public
@@ -3042,6 +3065,12 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    defaultSlot: HTMLSlotElement;
+    // @internal
+    protected defaultSlotChanged(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -3050,8 +3079,6 @@ export class Listbox extends FASTElement {
     get enabledOptions(): DropdownOption[];
     // @internal
     handleChange(source: any, propertyName?: string): void;
-    // @override
-    id: string;
     multiple?: boolean;
     multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
     options: DropdownOption[];
@@ -3061,7 +3088,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
-    slotchangeHandler(e: Event): void;
+    slotchangeHandler(e?: Event): void;
 }
 
 // @public
@@ -3119,6 +3146,8 @@ export class Menu extends FASTElement {
     primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
+    // @internal
+    slottedMenuListChanged(prev: MenuList[] | undefined, next: MenuList[] | undefined): void;
     slottedTriggers: HTMLElement[];
     split?: boolean;
     toggleHandler: (e: Event) => void;
@@ -3464,7 +3493,8 @@ export class RadioGroup extends FASTElement {
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     // @internal
-    slotchangeHandler(e: Event): void;
+    slottedRadios: Radio[];
+    slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void;
     // @internal
     get validationMessage(): string;
     get validity(): ValidityState;
@@ -3596,7 +3626,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     calculateNewValue(rawValue: number): number;
     checkValidity(): boolean;
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
@@ -3626,6 +3656,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     initialValue: string;
     // @internal
     protected initialValueChanged(_: string, next: string): void;
+    // @internal
+    protected get isDisabled(): boolean;
     // @internal (undocumented)
     isDragging: boolean;
     get labels(): ReadonlyArray<Node>;
@@ -3933,9 +3965,12 @@ export const SwitchTemplate: ElementViewTemplate<Switch>;
 //
 // @public
 export class Tab extends FASTElement {
+    constructor();
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // @internal
+    elementInternals: ElementInternals;
 }
 
 // @public (undocumented)
@@ -3952,7 +3987,7 @@ export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
     size?: TablistSize;
-    tabsChanged(): void;
+    tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public

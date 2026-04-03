@@ -34,10 +34,19 @@ export class BaseRatingDisplay extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  /** @internal */
+  /**
+   * Reference to the slot element used for the rating icon.
+   *
+   * @internal
+   */
   @observable
   public iconSlot!: HTMLSlotElement;
 
+  /**
+   * Updates the icon when the referenced slot is bound in the template.
+   *
+   * @internal
+   */
   iconSlotChanged() {
     this.handleSlotChange();
   }

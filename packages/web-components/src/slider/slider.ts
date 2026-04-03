@@ -406,6 +406,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.setDisabledSideEffect(this.disabled);
   }
 
+  /**
+   * Returns true if the component is disabled, taking into account the `disabled`
+   * attribute, `aria-disabled` attribute, and the `:disabled` pseudo-class.
+   *
+   * @internal
+   */
   protected get isDisabled() {
     return (
       this.disabled || this.elementInternals?.ariaDisabled === 'true' || (this.isConnected && this.matches(':disabled'))
