@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 
 const SUPPORTS_ATTR_TYPE = CSS.supports('width: attr(value type(<number>))');
 const CUSTOM_PROPERTY_NAME = {
@@ -35,7 +35,12 @@ export class BaseRatingDisplay extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   /** @internal */
+  @observable
   public iconSlot!: HTMLSlotElement;
+
+  iconSlotChanged() {
+    this.handleSlotChange();
+  }
 
   protected defaultCustomIconViewBox = '0 0 20 20';
 
@@ -151,16 +156,18 @@ export class BaseRatingDisplay extends FASTElement {
   }
 
   protected setCustomPropertyValue(propertyName: PropertyNameForCalculation) {
-    if (!this.display || SUPPORTS_ATTR_TYPE) {
-      return;
-    }
+    requestAnimationFrame(() => {
+      if (!this.display || SUPPORTS_ATTR_TYPE) {
+        return;
+      }
 
-    const propertyValue = this[propertyName];
+      const propertyValue = this[propertyName];
 
-    if (typeof propertyValue !== 'number' || Number.isNaN(propertyValue)) {
-      this.display.style.removeProperty(CUSTOM_PROPERTY_NAME[propertyName]);
-    } else {
-      this.display.style.setProperty(CUSTOM_PROPERTY_NAME[propertyName], `${propertyValue}`);
-    }
+      if (typeof propertyValue !== 'number' || Number.isNaN(propertyValue)) {
+        this.display.style.removeProperty(CUSTOM_PROPERTY_NAME[propertyName]);
+      } else {
+        this.display.style.setProperty(CUSTOM_PROPERTY_NAME[propertyName], `${propertyValue}`);
+      }
+    });
   }
 }
