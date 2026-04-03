@@ -50,7 +50,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': `${!!isSelected}`,
-        focusGroupStart: isSelected,
+        focusgroupstart: isSelected ? 'true' : undefined,
       },
     },
   );

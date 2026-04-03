@@ -51,7 +51,7 @@ export const useCarouselNavButton_unstable = (
   });
 
   const buttonRef = React.useRef<HTMLElement>(undefined);
-  const _carouselButton = slot.always<ARIAButtonSlotProps & { focusGroupStart?: boolean }>(
+  const _carouselButton = slot.always<ARIAButtonSlotProps & { focusgroupstart?: 'true' | undefined }>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
@@ -60,7 +60,7 @@ export const useCarouselNavButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        focusGroupStart: true,
+        focusgroupstart: selected ? 'true' : undefined,
       },
     },
   );

@@ -123,8 +123,8 @@ export const useTabBase_unstable = (props: TabBaseProps, ref: React.Ref<HTMLElem
  */
 export const useTabA11yBehavior_unstable = ({
   selected,
-}: Pick<TabBaseState, 'selected'>): { focusGroupStart: boolean } => {
+}: Pick<TabBaseState, 'selected'>): { focusgroupstart: 'true' | undefined } => {
   return {
-    focusGroupStart: selected,
+    focusgroupstart: selected ? 'true' : undefined,
   };
 };

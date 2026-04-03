@@ -53,7 +53,7 @@ export const useCarouselNavImageButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        focusGroupStart: selected,
+        focusgroupstart: selected ? 'true' : undefined,
       },
     },
   );
