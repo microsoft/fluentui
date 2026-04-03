@@ -1,4 +1,5 @@
-import { attr, FASTElement, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { getInitials } from '../utils/get-initials.js';
 
 /**
  * The base class used for constructing a fluent-avatar custom element
@@ -6,17 +7,80 @@ import { attr, FASTElement, Updates } from '@microsoft/fast-element';
  */
 export class BaseAvatar extends FASTElement {
   /**
-   * Signal to remove event listeners when the component is disconnected.
-   *
-   * @internal
-   */
-  private abortSignal?: AbortController;
-
-  /**
    * Reference to the default slot element.
    * @internal
    */
+  @observable
   public defaultSlot!: HTMLSlotElement;
+
+  /**
+   * Handles changes to the default slot element reference.
+   *
+   * Toggles the `has-slotted` class on the slot element for browsers that do not
+   * support the `:has-slotted` CSS selector. Defers cleanup using
+   * `Updates.enqueue` to avoid DOM mutations during hydration that could
+   * corrupt binding markers.
+   *
+   * @internal
+   */
+  public defaultSlotChanged() {
+    if (!CSS.supports('selector(:has-slotted)')) {
+      const elements = this.defaultSlot.assignedElements();
+      this.defaultSlot.classList.toggle('has-slotted', elements.length > 0);
+    }
+
+    // Defer cleanup to avoid DOM mutation (normalize)
+    // during hydration, which would corrupt binding markers.
+    Updates.enqueue(() => {
+      this.cleanupSlottedContent();
+    });
+  }
+
+  /**
+   * Reference to the monogram element that displays generated initials.
+   *
+   * Uses a `ref` binding so the text content can be imperatively updated
+   * after hydration, avoiding calls to `generateInitials()` during SSR
+   * (which depends on runtime APIs like `getComputedStyle`).
+   *
+   * @internal
+   */
+  @observable
+  public monogram!: HTMLElement;
+
+  /**
+   * Handles changes to the monogram element reference.
+   * Updates the monogram text content when the ref is captured.
+   *
+   * @internal
+   */
+  protected monogramChanged() {
+    this.updateMonogram();
+  }
+
+  /**
+   * The slotted content nodes assigned to the default slot.
+   *
+   * @internal
+   */
+  @observable
+  public slottedDefaults: Node[] = [];
+
+  /**
+   * Handles changes to the slotted default content.
+   *
+   * Normalizes the DOM, toggles the `has-slotted` class on the default slot element
+   * for browsers that do not support the `:has-slotted` CSS selector, and removes
+   * empty text nodes from the default slot to keep the DOM clean.
+   *
+   * @internal
+   */
+  protected slottedDefaultsChanged() {
+    if (!this.defaultSlot) {
+      return;
+    }
+    this.cleanupSlottedContent();
+  }
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -36,18 +100,29 @@ export class BaseAvatar extends FASTElement {
   public name?: string | undefined;
 
   /**
+   * Handles changes to the name attribute.
+   * @internal
+   */
+  protected nameChanged() {
+    this.updateMonogram();
+  }
+
+  /**
    * Provide custom initials rather than one generated via the name
    *
    * @public
    * @remarks
-   * HTML Attribute: name
+   * HTML Attribute: initials
    */
   @attr
   public initials?: string | undefined;
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.slotchangeHandler();
+  /**
+   * Handles changes to the initials attribute.
+   * @internal
+   */
+  protected initialsChanged() {
+    this.updateMonogram();
   }
 
   constructor() {
@@ -56,43 +131,45 @@ export class BaseAvatar extends FASTElement {
     this.elementInternals.role = 'img';
   }
 
-  disconnectedCallback(): void {
-    this.abortSignal?.abort();
-    this.abortSignal = undefined;
-
-    super.disconnectedCallback();
+  /**
+   * Generates and sets the initials for the template.
+   * Subclasses should override this to provide custom initials logic.
+   *
+   * @internal
+   */
+  public generateInitials(): string | void {
+    return this.initials || getInitials(this.name, window.getComputedStyle(this).direction === 'rtl', {});
   }
 
   /**
-   * Removes any empty text nodes from the default slot when the slotted content changes.
+   * Updates the monogram element's text content with the generated initials.
    *
-   * @param e - The event object
    * @internal
    */
-  public slotchangeHandler(): void {
+  protected updateMonogram(): void {
+    if (this.monogram) {
+      this.monogram.textContent = this.generateInitials() ?? '';
+    }
+  }
+
+  /**
+   * Normalizes the DOM and removes empty text nodes from the default slot.
+   *
+   * @internal
+   */
+  protected cleanupSlottedContent(): void {
     this.normalize();
 
-    const elements = this.defaultSlot.assignedElements();
-
-    if (!elements.length && !this.innerText.trim()) {
-      const nodes = this.defaultSlot.assignedNodes() as Element[];
-
-      nodes
-        .filter(node => node.nodeType === Node.TEXT_NODE)
-        .forEach(node => {
-          this.removeChild(node);
-        });
+    if (!CSS.supports('selector(:has-slotted)')) {
+      this.defaultSlot.classList.toggle('has-slotted', !!this.slottedDefaults.length);
     }
 
-    Updates.enqueue(() => {
-      if (!this.abortSignal || this.abortSignal.signal.aborted) {
-        this.abortSignal = new AbortController();
-      }
-
-      this.defaultSlot.addEventListener('slotchange', () => this.slotchangeHandler(), {
-        once: true,
-        signal: this.abortSignal.signal,
+    if (!this.innerText.trim()) {
+      this.slottedDefaults.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          (node as ChildNode).remove();
+        }
       });
-    });
+    }
   }
 }
