@@ -1,6 +1,7 @@
 import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { findLastIndex } from '@microsoft/fast-web-utilities';
 import { Radio } from '../radio/radio.js';
+import { isRadio } from '../radio/radio.options.js';
 import { getDirection } from '../utils/direction.js';
 import { getRootActiveElement } from '../utils/root-active-element.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -52,7 +53,7 @@ export class RadioGroup extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ attribute: 'disabled', mode: 'boolean' })
-  public disabled: boolean = false;
+  public disabled!: boolean;
 
   /**
    * Sets the `disabled` attribute on all child radios when the `disabled` property changes.
@@ -62,13 +63,13 @@ export class RadioGroup extends FASTElement {
    * @internal
    */
   protected disabledChanged(prev?: boolean, next?: boolean): void {
-    if (this.$fastController.isConnected) {
+    requestAnimationFrame(() => {
       this.checkedIndex = -1;
       this.radios?.forEach(radio => {
         radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
       this.restrictFocus();
-    }
+    });
   }
 
   /**
@@ -223,6 +224,24 @@ export class RadioGroup extends FASTElement {
   public requiredChanged(prev: boolean, next: boolean): void {
     this.elementInternals.ariaRequired = next ? 'true' : null;
     this.setValidity();
+  }
+
+  /**
+   * The collection of radios that are slotted into the default slot.
+   *
+   * @internal
+   */
+  @observable
+  slottedRadios!: Radio[];
+
+  /**
+   * Updates the radios collection when the slotted radios change.
+   *
+   * @param prev - the previous slotted radios
+   * @param next - the current slotted radios
+   */
+  slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
+    this.radios = [...this.querySelectorAll('*')].filter(x => isRadio(x)) as Radio[];
   }
 
   /**
@@ -605,17 +624,5 @@ export class RadioGroup extends FASTElement {
         }
       });
     }
-  }
-
-  /**
-   * Updates the collection of child radios when the slot changes.
-   *
-   * @param e - the slot change event
-   * @internal
-   */
-  public slotchangeHandler(e: Event): void {
-    Updates.enqueue(() => {
-      this.radios = [...this.querySelectorAll('*')].filter(x => x instanceof Radio) as Radio[];
-    });
   }
 }
