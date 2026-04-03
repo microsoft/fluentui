@@ -9,11 +9,12 @@ import {
   uniqueId,
   wrapInBounds,
 } from '@microsoft/fast-web-utilities';
-import { getDirection } from '../utils/index.js';
-import { swapStates, toggleState } from '../utils/element-internals.js';
-import { isFocusableElement } from '../utils/focusable-element.js';
 import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
+import { isFocusableElement } from '../utils/focusable-element.js';
+import { getDirection } from '../utils/index.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
@@ -45,9 +46,7 @@ export class BaseTablist extends FASTElement {
    */
   protected disabledChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'disabled', next);
-    if (this.$fastController.isConnected) {
-      this.setTabs();
-    }
+    this.setTabs();
   }
 
   /**
@@ -62,13 +61,12 @@ export class BaseTablist extends FASTElement {
    * @internal
    */
   protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void {
-    this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
-
-    swapStates(this.elementInternals, prev, next, TablistOrientation);
-
-    if (this.$fastController.isConnected) {
-      this.setTabs();
+    if (this.elementInternals) {
+      this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
+      swapStates(this.elementInternals, prev, next, TablistOrientation);
     }
+
+    this.setTabs();
   }
 
   /**
@@ -84,7 +82,7 @@ export class BaseTablist extends FASTElement {
    * @internal
    */
   protected activeidChanged(oldValue: string, newValue: string): void {
-    if (this.$fastController.isConnected && this.tabs.length > 0) {
+    if (this.tabs.length > 0) {
       this.prevActiveTabIndex = this.tabs.findIndex((item: HTMLElement) => item.id === oldValue);
       this.setTabs();
 
@@ -132,8 +130,15 @@ export class BaseTablist extends FASTElement {
   /**
    * @internal
    */
-  protected tabsChanged(): void {
-    if (this.$fastController.isConnected && this.tabs.length > 0) {
+  protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
+    if (prev?.length) {
+      prev.forEach((tab: Tab) => {
+        tab.removeEventListener('click', this.handleTabClick);
+        tab.removeEventListener('keydown', this.handleTabKeyDown);
+      });
+    }
+
+    if (this.tabs.length > 0) {
       this.tabIds = this.getTabIds();
       this.setTabs();
 
@@ -183,13 +188,12 @@ export class BaseTablist extends FASTElement {
   protected setTabs(): void {
     this.activeTabIndex = this.getActiveIndex();
 
-    const hasStartSlot = this.tabs.some(tab => !!tab.querySelector("[slot='start']"));
+    const hasStartSlot = this.tabs?.some(tab => !!tab.querySelector("[slot='start']"));
 
-    this.tabs.forEach((tab: Tab, index: number) => {
+    this.tabs?.forEach((tab: Tab, index: number) => {
       if (tab.slot === 'tab') {
         const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
         const tabId: string = this.tabIds[index];
-        console.log('disabled', this.disabled);
         if (!tab.disabled) {
           this.disabled ? tab.setAttribute('aria-disabled', 'true') : tab.removeAttribute('aria-disabled');
         }
@@ -225,6 +229,9 @@ export class BaseTablist extends FASTElement {
 
   private handleTabClick = (event: MouseEvent): void => {
     const selectedTab = event.currentTarget as Tab;
+    if (selectedTab.disabled || this.disabled) {
+      return;
+    }
     if (selectedTab.nodeType === Node.ELEMENT_NODE && isFocusableElement(selectedTab)) {
       this.prevActiveTabIndex = this.activeTabIndex;
       this.activeTabIndex = this.tabs.indexOf(selectedTab);
@@ -237,6 +244,10 @@ export class BaseTablist extends FASTElement {
   }
 
   private handleTabKeyDown = (event: KeyboardEvent): void => {
+    if (this.disabled) {
+      return;
+    }
+
     const dir = getDirection(this);
     switch (event.key) {
       case keyArrowLeft:
@@ -309,6 +320,28 @@ export class BaseTablist extends FASTElement {
 
   private focusTab(): void {
     this.tabs[this.activeTabIndex].focus();
+  }
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'tablist';
+    this.elementInternals.ariaOrientation = this.orientation ?? TablistOrientation.horizontal;
+
+    this.$fastController.subscribe(
+      {
+        handleChange: (source: any, propertyName: string) => {
+          if (propertyName === 'isConnected') {
+            waitForConnectedDescendants(this, () => {
+              requestAnimationFrame(() => {
+                this.setTabs();
+              });
+            });
+          }
+        },
+      },
+      'isConnected',
+    );
   }
 
   /**
