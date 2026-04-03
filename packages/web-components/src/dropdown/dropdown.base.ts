@@ -123,7 +123,7 @@ export class BaseDropdown extends FASTElement {
    * @param next - the current disabled state
    */
   public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    Updates.enqueue(() => {
+    requestIdleCallback(() => {
       this.options.forEach(option => {
         option.disabled = option.disabledAttribute || this.disabled;
       });
@@ -232,7 +232,7 @@ export class BaseDropdown extends FASTElement {
         notifier.notify(key);
       }
 
-      Updates.enqueue(() => {
+      requestAnimationFrame(() => {
         this.enabledOptions
           .filter(x => x.defaultSelected)
           .forEach((x, i) => {
@@ -292,7 +292,7 @@ export class BaseDropdown extends FASTElement {
    * @param next - the current name
    */
   nameChanged(prev: string, next: string): void {
-    Updates.enqueue(() => {
+    requestIdleCallback(() => {
       this.options.forEach(option => {
         option.name = next;
       });
@@ -684,10 +684,6 @@ export class BaseDropdown extends FASTElement {
     super();
 
     this.elementInternals.role = 'presentation';
-
-    Updates.enqueue(() => {
-      this.insertControl();
-    });
   }
 
   /**
@@ -1008,6 +1004,14 @@ export class BaseDropdown extends FASTElement {
 
     this.freeformOption.value = value;
     this.freeformOption.hidden = false;
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    Updates.enqueue(() => {
+      this.insertControl();
+    });
   }
 
   disconnectedCallback(): void {
