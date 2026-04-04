@@ -1,5 +1,6 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { uniqueId, wrapInBounds } from '@microsoft/fast-web-utilities';
+import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
 import type { Tab } from '../tab/tab.js';
@@ -115,8 +116,7 @@ export class BaseTablist extends FASTElement {
     super.connectedCallback();
 
     Updates.enqueue(() => {
-      // @ts-expect-error: Client side module.
-      window.FOCUSGROUP_POLYFILL?.(this);
+      focusgroupPolyfill(this);
     });
   }
 

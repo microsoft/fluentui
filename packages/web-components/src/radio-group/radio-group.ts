@@ -1,5 +1,6 @@
 import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { findLastIndex } from '@microsoft/fast-web-utilities';
+import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -421,8 +422,7 @@ export class RadioGroup extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
     Updates.enqueue(() => {
-      // @ts-expect-error: client side module.
-      window.FOCUSGROUP_POLYFILL?.(this);
+      focusgroupPolyfill(this);
     });
   }
 

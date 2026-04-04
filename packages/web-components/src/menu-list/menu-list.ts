@@ -1,5 +1,6 @@
 import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement } from '@microsoft/fast-web-utilities';
+import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
 import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
@@ -58,8 +59,7 @@ export class MenuList extends FASTElement {
     });
 
     Updates.enqueue(() => {
-      // @ts-expect-error: client side module.
-      window.FOCUSGROUP_POLYFILL?.(this);
+      focusgroupPolyfill(this);
     });
 
     this.addEventListener('change', this.changedMenuItemHandler);

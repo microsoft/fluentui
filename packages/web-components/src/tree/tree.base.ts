@@ -1,5 +1,6 @@
 import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
+import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
 
@@ -55,8 +56,7 @@ export class BaseTree extends FASTElement {
     super.connectedCallback();
 
     Updates.enqueue(() => {
-      // @ts-expect-error: Client side module.
-      window.FOCUSGROUP_POLYFILL?.(this);
+      focusgroupPolyfill(this);
     });
   }
 

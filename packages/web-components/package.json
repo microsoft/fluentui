@@ -88,6 +88,7 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
+    "@microsoft/focusgroup-polyfill": "1.1.0",
     "@fluentui/tokens": "1.0.0-alpha.23",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
