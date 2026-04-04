@@ -1,7 +1,5 @@
 import * as rootPreview from '../../../.storybook/preview';
 
-import './docs-root-v9.css';
-
 /** @type {NonNullable<import('@storybook/react').Decorator[]>} */
 export const decorators = rootPreview.decorators;
 

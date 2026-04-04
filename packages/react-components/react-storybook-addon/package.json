@@ -5,7 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -53,11 +52,16 @@
       "require": "./lib-commonjs/index.js"
     },
     "./preset": "./preset.js",
+    "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
   },
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/styles.css",
     "lib",
     "lib-commonjs",
     "preset.js"
