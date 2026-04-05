@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
+import type {
+  TagPickerInputBaseProps,
+  TagPickerInputBaseState,
+  TagPickerInputProps,
+  TagPickerInputState,
+} from './TagPickerInput.types';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import {
@@ -18,25 +23,21 @@ import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
- * Create the state required to render TagPickerInput.
+ * Create the base state required to render TagPickerInput, without design-only props.
  *
- * The returned state can be modified with hooks such as useTagPickerInputStyles_unstable,
- * before being passed to renderTagPickerInput_unstable.
- *
- * @param props - props from this instance of TagPickerInput
- * @param ref - reference to root HTMLDivElement of TagPickerInput
+ * @param propsArg - props from this instance of TagPickerInput (without appearance)
+ * @param ref - reference to root HTMLInputElement of TagPickerInput
  */
-export const useTagPickerInput_unstable = (
-  propsArg: TagPickerInputProps,
+export const useTagPickerInputBase_unstable = (
+  propsArg: TagPickerInputBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): TagPickerInputState => {
+): TagPickerInputBaseState => {
   const props = useFieldControlProps_unstable(propsArg, {
     supportsLabelFor: true,
     supportsRequired: true,
     supportsSize: true,
   });
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
 
@@ -128,16 +129,33 @@ export const useTagPickerInput_unstable = (
     },
   );
 
-  const state: TagPickerInputState = {
+  return {
     components: {
       root: 'input',
     },
     root,
     disabled,
+  };
+};
+
+/**
+ * Create the state required to render TagPickerInput.
+ *
+ * The returned state can be modified with hooks such as useTagPickerInputStyles_unstable,
+ * before being passed to renderTagPickerInput_unstable.
+ *
+ * @param propsArg - props from this instance of TagPickerInput
+ * @param ref - reference to root HTMLInputElement of TagPickerInput
+ */
+export const useTagPickerInput_unstable = (
+  propsArg: TagPickerInputProps,
+  ref: React.Ref<HTMLInputElement>,
+): TagPickerInputState => {
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+  return {
+    ...useTagPickerInputBase_unstable(propsArg, ref),
     size,
   };
-
-  return state;
 };
 
 /**

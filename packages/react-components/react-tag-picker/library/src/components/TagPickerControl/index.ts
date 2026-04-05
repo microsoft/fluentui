@@ -1,5 +1,7 @@
 export { TagPickerControl } from './TagPickerControl';
 export type {
+  TagPickerControlBaseProps,
+  TagPickerControlBaseState,
   TagPickerControlCSSProperties,
   TagPickerControlInternalSlots,
   TagPickerControlProps,
@@ -7,7 +9,7 @@ export type {
   TagPickerControlState,
 } from './TagPickerControl.types';
 export { renderTagPickerControl_unstable } from './renderTagPickerControl';
-export { useTagPickerControl_unstable } from './useTagPickerControl';
+export { useTagPickerControlBase_unstable, useTagPickerControl_unstable } from './useTagPickerControl';
 export {
   iconSizes,
   tagPickerControlAsideWidthToken,

@@ -1,4 +1,6 @@
 export type {
+  TagPickerButtonBaseProps,
+  TagPickerButtonBaseState,
   TagPickerButtonProps,
   TagPickerButtonSlots,
   TagPickerButtonState,
@@ -8,5 +10,6 @@ export {
   renderTagPickerButton_unstable,
   tagPickerButtonClassNames,
   useTagPickerButtonStyles_unstable,
+  useTagPickerButtonBase_unstable,
   useTagPickerButton_unstable,
 } from './components/TagPickerButton/index';

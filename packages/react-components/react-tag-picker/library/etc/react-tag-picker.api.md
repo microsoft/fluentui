@@ -28,6 +28,7 @@ import type { OptionState } from '@fluentui/react-combobox';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TagGroupBaseState } from '@fluentui/react-tags';
 import { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
@@ -60,7 +61,19 @@ export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => J
 export const TagPicker: React_2.FC<TagPickerProps>;
 
 // @public
+export type TagPickerBaseProps = Omit<TagPickerProps, 'size' | 'appearance'>;
+
+// @public
+export type TagPickerBaseState = Omit<TagPickerState, 'size' | 'appearance'>;
+
+// @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
+
+// @public
+export type TagPickerButtonBaseProps = Omit<TagPickerButtonProps, 'size' | 'appearance'>;
+
+// @public
+export type TagPickerButtonBaseState = Omit<TagPickerButtonState, 'size'>;
 
 // @public (undocumented)
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots>;
@@ -110,6 +123,12 @@ export type TagPickerContextValues = {
 // @public
 export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
 
+// @public
+export type TagPickerControlBaseProps = TagPickerControlProps;
+
+// @public
+export type TagPickerControlBaseState = Omit<TagPickerControlState, 'size' | 'appearance'>;
+
 // @public (undocumented)
 export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots>;
 
@@ -132,6 +151,14 @@ export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPi
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 
+// @public
+export type TagPickerGroupBaseProps = TagPickerGroupProps;
+
+// @public
+export type TagPickerGroupBaseState = TagGroupBaseState & {
+    hasSelectedOptions: boolean;
+};
+
 // @public (undocumented)
 export const tagPickerGroupClassNames: SlotClassNames<TagPickerGroupSlots>;
 
@@ -148,6 +175,12 @@ export type TagPickerGroupState = TagGroupState & {
 
 // @public
 export const TagPickerInput: ForwardRefComponent<TagPickerInputProps>;
+
+// @public
+export type TagPickerInputBaseProps = Omit<TagPickerInputProps, 'appearance'>;
+
+// @public
+export type TagPickerInputBaseState = Omit<TagPickerInputState, 'size'>;
 
 // @public (undocumented)
 export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots>;
@@ -263,7 +296,13 @@ export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState
 export const useTagPicker_unstable: (props: TagPickerProps) => TagPickerState;
 
 // @public
+export const useTagPickerBase_unstable: (props: TagPickerBaseProps) => TagPickerBaseState;
+
+// @public
 export const useTagPickerButton_unstable: (props: TagPickerButtonProps, ref: React_2.Ref<HTMLButtonElement>) => TagPickerButtonState;
+
+// @public
+export const useTagPickerButtonBase_unstable: (props: TagPickerButtonBaseProps, ref: React_2.Ref<HTMLButtonElement>) => TagPickerButtonBaseState;
 
 // @public
 export const useTagPickerButtonStyles_unstable: (state: TagPickerButtonState) => TagPickerButtonState;
@@ -275,6 +314,9 @@ export const useTagPickerContext_unstable: <T>(selector: ContextSelector<TagPick
 export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;
 
 // @public
+export const useTagPickerControlBase_unstable: (props: TagPickerControlBaseProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlBaseState;
+
+// @public
 export const useTagPickerControlStyles_unstable: (state: TagPickerControlState) => TagPickerControlState;
 
 // @public (undocumented)
@@ -284,10 +326,16 @@ export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, r
 export const useTagPickerGroup_unstable: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;
 
 // @public
+export const useTagPickerGroupBase_unstable: (props: TagPickerGroupBaseProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupBaseState;
+
+// @public
 export const useTagPickerGroupStyles_unstable: (state: TagPickerGroupState) => TagPickerGroupState;
 
 // @public
 export const useTagPickerInput_unstable: (propsArg: TagPickerInputProps, ref: React_2.Ref<HTMLInputElement>) => TagPickerInputState;
+
+// @public
+export const useTagPickerInputBase_unstable: (propsArg: TagPickerInputBaseProps, ref: React_2.Ref<HTMLInputElement>) => TagPickerInputBaseState;
 
 // @public
 export const useTagPickerInputStyles_unstable: (state: TagPickerInputState) => TagPickerInputState;

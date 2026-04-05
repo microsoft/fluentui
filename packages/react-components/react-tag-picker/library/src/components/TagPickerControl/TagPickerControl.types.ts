@@ -32,3 +32,13 @@ export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPi
   Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'> & {
     invalid: boolean;
   };
+
+/**
+ * TagPickerControl Base Props - same as TagPickerControlProps (no design-only own props)
+ */
+export type TagPickerControlBaseProps = TagPickerControlProps;
+
+/**
+ * TagPickerControl Base State - omits design-only state sourced from context
+ */
+export type TagPickerControlBaseState = Omit<TagPickerControlState, 'size' | 'appearance'>;

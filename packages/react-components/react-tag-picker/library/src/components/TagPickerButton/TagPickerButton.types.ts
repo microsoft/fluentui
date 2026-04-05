@@ -21,3 +21,13 @@ export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> &
   Pick<TagPickerContextValue, 'size'> & {
     hasSelectedOption: boolean;
   };
+
+/**
+ * TagPickerButton Base Props - omits design-only props
+ */
+export type TagPickerButtonBaseProps = Omit<TagPickerButtonProps, 'size' | 'appearance'>;
+
+/**
+ * TagPickerButton Base State - omits design-only state
+ */
+export type TagPickerButtonBaseState = Omit<TagPickerButtonState, 'size'>;
