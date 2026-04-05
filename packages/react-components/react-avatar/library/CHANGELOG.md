@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.11.0)
+
+Wed, 01 Apr 2026 15:52:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.10.4..@fluentui/react-avatar_v9.11.0)
+
+### Minor changes
+
+- feat: expose base hooks for Avatar ([PR #35899](https://github.com/microsoft/fluentui/pull/35899) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.10.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+### Patches
+
+- fix: support initials calculation for GB18030-2022 extension characters ([PR #35878](https://github.com/microsoft/fluentui/pull/35878) by dmytrokirpa@microsoft.com)
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.4)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.10.3..@fluentui/react-avatar_v9.10.4)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.5.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-popover to v9.14.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.3)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.10.2..@fluentui/react-avatar_v9.10.3)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.5.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.10.2)
 

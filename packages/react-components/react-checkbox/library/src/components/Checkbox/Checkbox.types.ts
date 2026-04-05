@@ -100,3 +100,7 @@ export interface CheckboxOnChangeData {
  */
 export type CheckboxState = ComponentState<CheckboxSlots> &
   Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
+
+export type CheckboxBaseProps = Omit<CheckboxProps, 'shape' | 'size'>;
+
+export type CheckboxBaseState = Omit<CheckboxState, 'shape' | 'size'>;

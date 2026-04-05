@@ -1,8 +1,121 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 17 Mar 2026 07:57:15 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.73.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.7)
+
+Wed, 01 Apr 2026 15:52:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.6..@fluentui/react-components_v9.73.7)
+
+### Minor changes
+
+- `@fluentui/react-avatar`
+  - feat: expose base hooks for Avatar ([PR #35899](https://github.com/microsoft/fluentui/pull/35899) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: add base hooks for Checkbox ([PR #35826](https://github.com/microsoft/fluentui/pull/35826) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: add useComboboxBase_unstable and useDropdownBase_unstable hooks ([PR #35915](https://github.com/microsoft/fluentui/pull/35915) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - feat: add base hooks for Field ([PR #35827](https://github.com/microsoft/fluentui/pull/35827) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - feat: add useLabelBase_unstable hook ([PR #35905](https://github.com/microsoft/fluentui/pull/35905) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+- `@fluentui/react-menu-grid-preview`
+  - Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+  - Fix: Correct type for content prop in MenuGridItem ([PR #35939](https://github.com/microsoft/fluentui/pull/35939) by email not defined)
+- `@fluentui/react-progress`
+  - feat: add base hooks for ProgressBar ([PR #35817](https://github.com/microsoft/fluentui/pull/35817) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - feat(react-select): add useSelectBase_unstable hook ([PR #35906](https://github.com/microsoft/fluentui/pull/35906) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: expose base hooks for Tab and TabList ([PR #35902](https://github.com/microsoft/fluentui/pull/35902) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: add base hooks for Tags components ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: expose base hooks for Tooltip ([PR #35904](https://github.com/microsoft/fluentui/pull/35904) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - fix: support initials calculation for GB18030-2022 extension characters ([PR #35878](https://github.com/microsoft/fluentui/pull/35878) by dmytrokirpa@microsoft.com)
+
+## [9.73.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.6)
+
+Mon, 30 Mar 2026 14:37:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.5..@fluentui/react-components_v9.73.6)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: expose base hooks and types for Accordion components ([PR #35897](https://github.com/microsoft/fluentui/pull/35897) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35888](https://github.com/microsoft/fluentui/pull/35888) by robertpenner@microsoft.com)
+  - feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: expose base state hooks for Radio components ([PR #35894](https://github.com/microsoft/fluentui/pull/35894) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat(react-spinbutton): add useSpinButtonBase_unstable hook ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix: fix incorrect PresenceBadge aria-label ([PR #35927](https://github.com/microsoft/fluentui/pull/35927) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - refactor: migrate ProgressBar from CSS to motion components ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+
+## [9.73.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.5)
+
+Thu, 26 Mar 2026 08:12:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.4..@fluentui/react-components_v9.73.5)
+
+### Minor changes
+
+- `@fluentui/react-badge`
+  - feat: add base hooks for Badge ([PR #35811](https://github.com/microsoft/fluentui/pull/35811) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - feat: add base hooks for Breadcrumb ([PR #35819](https://github.com/microsoft/fluentui/pull/35819) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - fix: ToggleButton provides an opt-in isAccessible variant for accessible checked colors ([PR #35837](https://github.com/microsoft/fluentui/pull/35837) by sarah.higley@microsoft.com)
+  - feat: expose button base hooks and types ([PR #35890](https://github.com/microsoft/fluentui/pull/35890) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - feat: add base hooks for Card ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: expose base hook and types for Divider component ([PR #35889](https://github.com/microsoft/fluentui/pull/35889) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-image`
+  - feat: add base hooks for Image ([PR #35808](https://github.com/microsoft/fluentui/pull/35808) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - feat: add base hooks for Input ([PR #35813](https://github.com/microsoft/fluentui/pull/35813) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - feat: add base hooks for Link ([PR #35816](https://github.com/microsoft/fluentui/pull/35816) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - Add circular and first-letter navigation ([PR #35880](https://github.com/microsoft/fluentui/pull/35880) by email not defined)
+- `@fluentui/react-persona`
+  - feat: expose base hooks for Persona ([PR #35814](https://github.com/microsoft/fluentui/pull/35814) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: add base hooks for Rating ([PR #35823](https://github.com/microsoft/fluentui/pull/35823) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-search`
+  - feat: add base hooks for SearchBox ([PR #35825](https://github.com/microsoft/fluentui/pull/35825) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: add base hooks for Skeleton ([PR #35809](https://github.com/microsoft/fluentui/pull/35809) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: add base hooks for Slider ([PR #35815](https://github.com/microsoft/fluentui/pull/35815) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: add base hooks for Spinner ([PR #35818](https://github.com/microsoft/fluentui/pull/35818) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: add base hooks for Switch ([PR #35820](https://github.com/microsoft/fluentui/pull/35820) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: expose base hook and types for Textarea ([PR #35886](https://github.com/microsoft/fluentui/pull/35886) by dmytrokirpa@microsoft.com)
+  - feat: add base hooks for Textarea ([PR #35822](https://github.com/microsoft/fluentui/pull/35822) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment ([PR #35877](https://github.com/microsoft/fluentui/pull/35877) by karesansui.u@gmail.com)
+- `@fluentui/react-toolbar`
+  - fix: preserve user-defined appearance prop in useToolbarToggleButton ([PR #35893](https://github.com/microsoft/fluentui/pull/35893) by dmytrokirpa@microsoft.com)
 
 ## [9.73.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.4)
 

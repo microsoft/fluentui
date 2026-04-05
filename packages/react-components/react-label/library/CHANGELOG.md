@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.4.0)
+
+Wed, 01 Apr 2026 15:52:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.15..@fluentui/react-label_v9.4.0)
+
+### Minor changes
+
+- feat: add useLabelBase_unstable hook ([PR #35905](https://github.com/microsoft/fluentui/pull/35905) by dmytrokirpa@microsoft.com)
 
 ## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.15)
 

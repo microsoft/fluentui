@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Tue, 03 Mar 2026 13:16:27 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 14:06:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.1)
+
+Wed, 01 Apr 2026 14:06:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.0..@fluentui/react-storybook-addon-export-to-sandbox_v0.2.1)
+
+### Patches
+
+- fix: button selector issue to support SB 10 ([PR #35801](https://github.com/microsoft/fluentui/pull/35801) by vgenaev@gmail.com)
+- fix: ship public types and resolve cjs/esm issues for preset loader ([PR #35932](https://github.com/microsoft/fluentui/pull/35932) by martinhochel@microsoft.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.0)
 

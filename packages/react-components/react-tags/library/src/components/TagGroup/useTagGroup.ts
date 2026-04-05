@@ -9,28 +9,26 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import type { TagGroupProps, TagGroupState } from './TagGroup.types';
+import type { TagGroupBaseProps, TagGroupBaseState, TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
 import type { TagValue } from '../../utils/types';
 
 /**
- * Create the state required to render TagGroup.
+ * Create the base state required to render TagGroup, without design-only props.
  *
- * The returned state can be modified with hooks such as useTagGroupStyles_unstable,
- * before being passed to renderTagGroup_unstable.
- *
- * @param props - props from this instance of TagGroup
+ * @param props - props from this instance of TagGroup (without appearance, size)
  * @param ref - reference to root HTMLDivElement of TagGroup
  */
-export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
+export const useTagGroupBase_unstable = (
+  props: TagGroupBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): TagGroupBaseState => {
   const {
     onDismiss,
     disabled = false,
     defaultSelectedValues,
-    size = 'medium',
-    appearance = 'filled',
     dismissible = false,
     role = 'toolbar',
     onTagSelect,
@@ -48,7 +46,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     initialState: [],
   });
 
-  const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
+  const handleTagDismiss: TagGroupBaseState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
 
     // set focus after tag dismiss
@@ -72,7 +70,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }
   });
 
-  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback(
+  const handleTagSelect: TagGroupBaseState['handleTagSelect'] = useEventCallback(
     mergeCallbacks(onTagSelect, (_, data) => {
       if (items.includes(data.value)) {
         setItems(items.filter(item => item !== data.value));
@@ -93,9 +91,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     handleTagSelect: onTagSelect ? handleTagSelect : undefined,
     selectedValues: items,
     role,
-    size,
     disabled,
-    appearance,
     dismissible,
     components: {
       root: 'div',
@@ -114,5 +110,23 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
       }),
       { elementType: 'div' },
     ),
+  };
+};
+
+/**
+ * Create the state required to render TagGroup.
+ *
+ * The returned state can be modified with hooks such as useTagGroupStyles_unstable,
+ * before being passed to renderTagGroup_unstable.
+ *
+ * @param props - props from this instance of TagGroup
+ * @param ref - reference to root HTMLDivElement of TagGroup
+ */
+export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
+  const { size = 'medium', appearance = 'filled' } = props;
+  return {
+    ...useTagGroupBase_unstable(props, ref),
+    size,
+    appearance,
   };
 };

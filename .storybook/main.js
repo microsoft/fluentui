@@ -39,7 +39,7 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
     /** {@link file://./../packages/react-components/react-storybook-addon-export-to-sandbox/package.json} */
     loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', {
       tsConfigPath,
-      /** @type {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').PresetConfig} */
+      /** @type {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/index').PresetConfig} */
       options: {
         importMappings: getImportMappingsForExportToSandboxAddon(),
         babelLoaderOptionsUpdater: processBabelLoaderOptions,

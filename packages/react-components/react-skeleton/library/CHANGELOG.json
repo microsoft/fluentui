@@ -2,6 +2,36 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:43 GMT",
+      "tag": "@fluentui/react-skeleton_v9.7.1",
+      "version": "9.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Mar 2026 08:12:52 GMT",
+      "tag": "@fluentui/react-skeleton_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "8b677d0f0120d5bb60acc558325d8a0e37269cf6",
+            "comment": "feat: add base hooks for Skeleton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2026 07:57:16 GMT",
       "tag": "@fluentui/react-skeleton_v9.6.0",
       "version": "9.6.0",

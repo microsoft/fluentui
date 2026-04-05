@@ -17,10 +17,22 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Radio: ForwardRefComponent<RadioProps>;
 
 // @public (undocumented)
+export type RadioBaseProps = RadioProps;
+
+// @public (undocumented)
+export type RadioBaseState = RadioState;
+
+// @public (undocumented)
 export const radioClassNames: SlotClassNames<RadioSlots>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public (undocumented)
+export type RadioGroupBaseProps = Omit<RadioGroupProps, 'layout'>;
+
+// @public (undocumented)
+export type RadioGroupBaseState = Omit<RadioGroupState, 'layout'>;
 
 // @public (undocumented)
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
@@ -85,16 +97,22 @@ export type RadioSlots = {
 export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;
 
 // @public
-export const renderRadio_unstable: (state: RadioState) => JSXElement;
+export const renderRadio_unstable: (state: RadioBaseState) => JSXElement;
 
 // @public
-export const renderRadioGroup_unstable: (state: RadioGroupState, contextValues: RadioGroupContextValues) => JSXElement;
+export const renderRadioGroup_unstable: (state: RadioGroupBaseState, contextValues: RadioGroupContextValues) => JSXElement;
 
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
 // @public
+export const useRadioBase_unstable: (props: RadioBaseProps, ref: React_2.Ref<HTMLInputElement>) => RadioBaseState;
+
+// @public
 export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
+
+// @public
+export const useRadioGroupBase_unstable: (props: RadioGroupBaseProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupBaseState;
 
 // @public @deprecated (undocumented)
 export const useRadioGroupContext_unstable: <T>(selector: (ctx: RadioGroupContextValue) => T) => T;

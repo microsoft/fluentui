@@ -23,4 +23,5 @@ export {
   useTabListStyles_unstable,
   useTabList_unstable,
   useTabListBase_unstable,
+  useTabListA11yBehavior_unstable,
 } from './components/TabList/index';

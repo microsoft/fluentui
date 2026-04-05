@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.1)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.0..@fluentui/react-switch_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+- Bump @fluentui/react-label to v9.4.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.6.1..@fluentui/react-switch_v9.7.0)
+
+### Minor changes
+
+- feat: add base hooks for Switch ([PR #35820](https://github.com/microsoft/fluentui/pull/35820) by dmytrokirpa@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.6.1)
 

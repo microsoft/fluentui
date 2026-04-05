@@ -72,6 +72,60 @@ describe('MenuGrid', () => {
       .focused()
       .should('have.text', 'Remove Sophia Martinez');
   });
+
+  it('should wrap focus to the first row when pressing ArrowDown on the last row', () => {
+    mount(<DefaultExample />);
+    cy.get('body')
+      .click()
+      .get(menuGridItemSelector)
+      .last()
+      .focus()
+      .should('have.id', `row${items.length - 1}`)
+      .realPress('ArrowDown');
+    cy.focused().should('have.id', 'row0');
+  });
+
+  it('should wrap focus to the last row when pressing ArrowUp on the first row', () => {
+    mount(<DefaultExample />);
+    cy.get('body').click().get(menuGridItemSelector).first().focus().should('have.id', 'row0').realPress('ArrowUp');
+    cy.focused().should('have.id', `row${items.length - 1}`);
+  });
+
+  const NonCircularExample = () => {
+    return (
+      <MenuGrid circular={false}>
+        {items.map((name, index) => (
+          <MenuGridItem
+            key={name}
+            id={`row${index}`}
+            firstSubAction={<button>Profile for {name}</button>}
+            secondSubAction={<button>Remove {name}</button>}
+          >
+            {name}
+          </MenuGridItem>
+        ))}
+      </MenuGrid>
+    );
+  };
+
+  describe('Non-circular navigation', () => {
+    it('should not wrap focus when circular is false and ArrowDown is pressed on the last row', () => {
+      mount(<NonCircularExample />);
+      cy.get(menuGridItemSelector)
+        .last()
+        .focus()
+        .should('have.id', `row${items.length - 1}`);
+      cy.focused().realPress('ArrowDown');
+      cy.focused().should('have.id', `row${items.length - 1}`);
+    });
+  });
+
+  it('should not wrap focus when circular is false and ArrowUp is pressed on the first row', () => {
+    mount(<NonCircularExample />);
+    cy.get(menuGridItemSelector).first().focus().should('have.id', 'row0');
+    cy.focused().realPress('ArrowUp');
+    cy.focused().should('have.id', 'row0');
+  });
 });
 
 const Submenu = () => {
@@ -253,5 +307,13 @@ describe('With MenuList submenus', () => {
     cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('Enter');
     cy.get(menuSelector).should('have.length', 1);
     cy.focused().should('have.attr', 'role', 'menuitem');
+  });
+
+  it('should not close submenu when pressing ArrowLeft inside it', () => {
+    mount(<WithSubmenuExample />);
+    cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('Enter');
+    cy.get(menuSelector).should('have.length', 1);
+    cy.focused().should('have.attr', 'role', 'menuitem').realPress('ArrowLeft');
+    cy.get(menuSelector).should('have.length', 1);
   });
 });

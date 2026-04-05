@@ -43,7 +43,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
   }
 };
 
-const DEFAULT_STRINGS = {
+export const DEFAULT_STRINGS = {
   busy: 'busy',
   'out-of-office': 'out of office',
   away: 'away',
@@ -61,7 +61,8 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const { size = 'medium', status = 'available', outOfOffice = false, ...baseProps } = props;
+  const { size = 'medium', outOfOffice = false, ...baseProps } = props;
+  const status = props.status ?? 'available';
 
   const IconElement = iconMap(status, outOfOffice, size);
 
@@ -71,7 +72,6 @@ export const usePresenceBadge_unstable = (
     color: 'brand',
     shape: 'circular',
     size,
-    status,
     outOfOffice,
   };
 

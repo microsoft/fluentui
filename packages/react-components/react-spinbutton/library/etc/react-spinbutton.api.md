@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -13,10 +14,16 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSpinButton_unstable: (state: SpinButtonState) => JSXElement;
+export const renderSpinButton_unstable: (state: SpinButtonBaseState) => JSXElement;
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
+
+// @public (undocumented)
+export type SpinButtonBaseProps = DistributiveOmit<SpinButtonProps, 'appearance' | 'size'>;
+
+// @public (undocumented)
+export type SpinButtonBaseState = DistributiveOmit<SpinButtonState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
@@ -67,6 +74,9 @@ export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<Sp
 
 // @public
 export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLInputElement>) => SpinButtonState;
+
+// @public
+export const useSpinButtonBase_unstable: (props: SpinButtonBaseProps, ref: React_2.Ref<HTMLInputElement>) => SpinButtonBaseState;
 
 // @public
 export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;

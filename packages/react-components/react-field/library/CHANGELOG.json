@@ -2,6 +2,27 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:40 GMT",
+      "tag": "@fluentui/react-field_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "381468576f19140edb1051990083830d62f17796",
+            "comment": "feat: add base hooks for Field"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.4.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:40 GMT",
       "tag": "@fluentui/react-field_v9.4.16",
       "version": "9.4.16",

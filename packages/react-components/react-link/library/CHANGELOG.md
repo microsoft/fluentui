@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Mar 2026 08:12:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.8.0)
+
+Thu, 26 Mar 2026 08:12:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.7.4..@fluentui/react-link_v9.8.0)
+
+### Minor changes
+
+- feat: add base hooks for Link ([PR #35816](https://github.com/microsoft/fluentui/pull/35816) by dmytrokirpa@microsoft.com)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.7.4)
 
