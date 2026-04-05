@@ -80,8 +80,11 @@ export class BaseTextInput extends FASTElement {
    */
   public defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     Updates.enqueue(() => {
-      if (this.defaultSlottedNodes.every(node => node.nodeType === Node.TEXT_NODE)) {
-        this.controlLabel.hidden = this.innerText.trim().length === 0;
+      if (this.controlLabel) {
+        this.controlLabel.hidden = !next?.some(
+          node =>
+            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
+        );
       }
     });
   }
