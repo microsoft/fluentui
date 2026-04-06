@@ -333,9 +333,7 @@ export class BaseTablist extends FASTElement {
         handleChange: (source: any, propertyName: string) => {
           if (propertyName === 'isConnected') {
             waitForConnectedDescendants(this, () => {
-              requestAnimationFrame(() => {
-                this.setTabs();
-              });
+              this.setTabs();
             });
           }
         },

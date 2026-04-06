@@ -162,23 +162,21 @@ export class Menu extends FASTElement {
     waitForConnectedDescendants(
       this,
       () => {
-        requestAnimationFrame(() => {
-          const trigger = this.slottedTriggers?.[0];
-          const menuList = this.slottedMenuList?.[0];
-          if (!trigger || !menuList) {
-            this.removeListeners();
-            return;
-          }
-
-          this._trigger = trigger;
-          this._menuList = menuList;
-
-          this._trigger.setAttribute('aria-haspopup', 'true');
-          this._trigger.setAttribute('aria-expanded', `${this._open}`);
-          this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
+        const trigger = this.slottedTriggers?.[0];
+        const menuList = this.slottedMenuList?.[0];
+        if (!trigger || !menuList) {
           this.removeListeners();
-          this.addListeners();
-        });
+          return;
+        }
+
+        this._trigger = trigger;
+        this._menuList = menuList;
+
+        this._trigger.setAttribute('aria-haspopup', 'true');
+        this._trigger.setAttribute('aria-expanded', `${this._open}`);
+        this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
+        this.removeListeners();
+        this.addListeners();
       },
       { shallow: true },
     );
