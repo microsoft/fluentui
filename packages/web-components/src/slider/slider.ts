@@ -65,14 +65,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
-      case 'max': {
+      case 'max':
         this.setSliderPosition();
-      }
-
-      case 'step': {
+      case 'step':
         this.handleStepStyles();
         break;
-      }
     }
   }
 
