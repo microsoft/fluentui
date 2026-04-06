@@ -1,4 +1,4 @@
-import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
@@ -133,7 +133,7 @@ export class BaseTreeItem extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    requestAnimationFrame(() => {
+    Updates.enqueue(() => {
       this.updateTabindexBySelected();
     });
   }

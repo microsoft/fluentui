@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable, Updates } from '@microsoft/fast-element';
 import { swapStates } from '../utils/element-internals.js';
 import { ProgressBarValidationState } from './progress-bar.options.js';
 
@@ -148,7 +148,7 @@ export class BaseProgressBar extends FASTElement {
       return;
     }
 
-    requestAnimationFrame(() => {
+    Updates.enqueue(() => {
       if (typeof this.value !== 'number') {
         this.indicator?.style.removeProperty('width');
         return;

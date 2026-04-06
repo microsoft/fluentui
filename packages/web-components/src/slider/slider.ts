@@ -1,5 +1,5 @@
 import type { ElementStyles } from '@microsoft/fast-element';
-import { attr, css, FASTElement, observable, Observable } from '@microsoft/fast-element';
+import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
 import {
   Direction,
   keyArrowDown,
@@ -829,7 +829,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * Makes sure the side effects of set up when the disabled state changes.
    */
   private setDisabledSideEffect(disabled: boolean = this.isDisabled): void {
-    requestAnimationFrame(() => {
+    Updates.enqueue(() => {
       this.elementInternals.ariaDisabled = disabled.toString();
       this.tabIndex = disabled ? -1 : 0;
     });
