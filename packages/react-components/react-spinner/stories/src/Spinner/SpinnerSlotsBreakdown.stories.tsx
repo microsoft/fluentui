@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import { Body1, makeStyles, Spinner, Subtitle2, Switch, Text, tokens } from '@fluentui/react-components';
 
 // Distinct colors for each motion slot
@@ -57,9 +58,11 @@ export const SlotsBreakdown = (): JSXElement => {
 
   // When halfSpeed is true, override motion duration to 2× (0.5× speed); otherwise use defaults.
   // The children render function is the slot API for passing custom props to the motion component.
-  const variableSpeed:
-    | { children: (Motion: React.ElementType, props: Record<string, unknown>) => JSXElement }
-    | undefined = halfSpeed ? { children: (Motion, props) => <Motion {...props} duration={3000} /> } : undefined;
+  const variableSpeed: MotionSlotProps<{ duration?: number; easing?: string }> | undefined = halfSpeed
+    ? {
+        children: (Motion, props) => <Motion {...props} duration={3000} />,
+      }
+    : undefined;
 
   return (
     <div className={styles.container}>
