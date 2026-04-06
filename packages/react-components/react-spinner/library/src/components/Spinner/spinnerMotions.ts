@@ -1,5 +1,6 @@
-import { createMotionComponent, createMotionComponentVariant, motionTokens } from '@fluentui/react-motion';
-import { Rotate } from '@fluentui/react-motion-components-preview';
+import { createMotionComponent, motionTokens } from '@fluentui/react-motion';
+// import { createMotionComponent, createMotionComponentVariant, motionTokens } from '@fluentui/react-motion';
+// import { Rotate } from '@fluentui/react-motion-components-preview';
 
 // --- Tail arc animations ---
 // The spinner tail uses a 105deg arc mask with two 135deg arc segments that rotate
@@ -29,6 +30,7 @@ export const SpinnerRotation = createMotionComponent<{ duration?: number; easing
 // export const SpinnerRotation2 = createMotionComponentVariant(Rotate.In, {
 //   duration: SPINNER_DURATION,
 //   easing: motionTokens.curveLinear,
+//   outAngle: 360,
 //   iterations: Infinity,
 //   reducedMotion: {
 //     duration: 1800,
