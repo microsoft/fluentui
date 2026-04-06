@@ -317,21 +317,11 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
-    if (this.$fastController.isConnected) {
-      this.setValidity();
-      return;
-    }
-
-    const subscriber: Subscriber = {
-      handleChange: () => {
-        if (this.$fastController.isConnected) {
-          this.setValidity();
-          this.$fastController.unsubscribe(subscriber, 'isConnected');
-        }
-      },
-    };
-
-    this.$fastController.subscribe(subscriber, 'isConnected');
+    Updates.enqueue(() => {
+      if (this.$fastController.isConnected) {
+        this.setValidity();
+      }
+    });
   }
 
   /**
