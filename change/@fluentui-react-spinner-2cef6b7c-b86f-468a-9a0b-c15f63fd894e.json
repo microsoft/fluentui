@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "refactor: migrate Spinner from CSS to motion components",
+  "type": "minor",
+  "comment": "feat: migrate Spinner from CSS to motion components, expose motion slots",
   "packageName": "@fluentui/react-spinner",
   "email": "robertpenner@microsoft.com",
   "dependentChangeType": "patch"
