@@ -176,7 +176,7 @@ export class RadioGroup extends FASTElement {
       if (radio.checked && !radio.disabled) {
         // Update.enqueu() would be too soon for this operation.
         requestAnimationFrame(() => {
-          radio.setAttribute('focusgroupstart', '');
+          radio.toggleAttribute('focusgroupstart', true);
         });
       }
     });
