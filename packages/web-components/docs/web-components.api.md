@@ -842,6 +842,8 @@ export class BaseTextArea extends FASTElement {
     // @internal
     controlEl: HTMLTextAreaElement;
     // @internal
+    protected controlElChanged(): void;
+    // @internal
     defaultSlottedNodes: Node[];
     // (undocumented)
     protected defaultSlottedNodesChanged(): void;
@@ -2435,6 +2437,8 @@ export class Dialog extends FASTElement {
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
     dialog: HTMLDialogElement;
+    // (undocumented)
+    protected dialogChanged(): void;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
@@ -2442,6 +2446,8 @@ export class Dialog extends FASTElement {
     type: DialogType;
     // (undocumented)
     protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
+    // @internal
+    protected updateDialogAttributes(): void;
 }
 
 // @public
