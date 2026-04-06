@@ -1,6 +1,7 @@
 /**
  * Calculates the percentage of a value within a given range.
  *
+ * @internal
  * @param value - The value to be converted to a percentage.
  * @param min - The minimum value of the range.
  * @param max - The maximum value of the range.
