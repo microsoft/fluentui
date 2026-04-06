@@ -1,6 +1,16 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Body1, makeStyles, Spinner, Subtitle2, Text, tokens } from '@fluentui/react-components';
+import {
+  Body1,
+  createMotionComponent,
+  makeStyles,
+  motionTokens,
+  Spinner,
+  Subtitle2,
+  Switch,
+  Text,
+  tokens,
+} from '@fluentui/react-components';
 
 // Distinct colors for each motion slot
 const colors = {
@@ -9,6 +19,37 @@ const colors = {
   leadArc: '#107c10',
   trailArc: '#a333c8',
 };
+
+// Slow (0.5x speed) motion variants — double the default 1500ms duration
+const SLOW_DURATION = 3000;
+
+const SlowRotation = createMotionComponent({
+  keyframes: [{ rotate: '0deg' }, { rotate: '360deg' }],
+  duration: SLOW_DURATION,
+  iterations: Infinity,
+  easing: motionTokens.curveLinear,
+});
+
+const SlowTailMotion = createMotionComponent({
+  keyframes: [{ rotate: '-135deg' }, { rotate: '0deg' }, { rotate: '225deg' }],
+  duration: SLOW_DURATION,
+  iterations: Infinity,
+  easing: motionTokens.curveEasyEase,
+});
+
+const SlowLeadArcMotion = createMotionComponent({
+  keyframes: [{ rotate: '0deg' }, { rotate: '105deg' }, { rotate: '0deg' }],
+  duration: SLOW_DURATION,
+  iterations: Infinity,
+  easing: motionTokens.curveEasyEase,
+});
+
+const SlowTrailArcMotion = createMotionComponent({
+  keyframes: [{ rotate: '0deg' }, { rotate: '225deg' }, { rotate: '0deg' }],
+  duration: SLOW_DURATION,
+  iterations: Infinity,
+  easing: motionTokens.curveEasyEase,
+});
 
 const useStyles = makeStyles({
   container: {
@@ -48,11 +89,24 @@ const useStyles = makeStyles({
   },
 });
 
+// Helper to create a motion slot override that uses a slow motion component
+const slowSlot = (SlowComponent: React.ComponentType<{ children: JSXElement }>) => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  children: (_: unknown, motionProps: Record<string, unknown>) => <SlowComponent {...motionProps} />,
+});
+
 /**
- * An "exploded view" of the Spinner, progressively building up from static structure to full animation.
+ * A "slots breakdown" of the Spinner, progressively building up from static structure to full animation.
  */
 export const SlotsBreakdown = (): JSXElement => {
   const styles = useStyles();
+  const [halfSpeed, setHalfSpeed] = React.useState(true);
+
+  // When halfSpeed is true, override motion slots with slow variants; otherwise use defaults (undefined)
+  const rotation = halfSpeed ? slowSlot(SlowRotation) : undefined;
+  const tail = halfSpeed ? slowSlot(SlowTailMotion) : undefined;
+  const leadArc = halfSpeed ? slowSlot(SlowLeadArcMotion) : undefined;
+  const trailArc = halfSpeed ? slowSlot(SlowTrailArcMotion) : undefined;
 
   return (
     <div className={styles.container}>
@@ -158,32 +212,43 @@ export const SlotsBreakdown = (): JSXElement => {
         </div>
       </div>
 
-      {/* --- Individual motions --- */}
+      {/* --- Speed toggle for animated sections --- */}
       <div className={styles.section}>
-        <Subtitle2>Motions</Subtitle2>
+        <Subtitle2>Animations</Subtitle2>
         <Body1>
           All animations use only CSS <code>rotate</code> transforms, which run on the compositor thread and stay
           jank-free even under heavy main-thread load.
         </Body1>
+        <Switch
+          checked={halfSpeed}
+          onChange={(_, data) => setHalfSpeed(data.checked)}
+          label={halfSpeed ? '0.5× speed' : '1× speed'}
+        />
+      </div>
+
+      {/* --- Individual motions --- */}
+      <div className={styles.section}>
+        <Subtitle2>Individual motions</Subtitle2>
 
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
             <Spinner
+              key={`lead-${halfSpeed}`}
               size="extra-large"
-              spinner={{ className: styles.dashedRing, style: { color: colors.rotation } }}
-              spinnerTail={{ style: { opacity: 0 } }}
+              spinner={{ style: { color: colors.leadArc } }}
+              rotationMotion={null}
               tailMotion={null}
-              leadArcMotion={null}
+              leadArcMotion={leadArc}
               trailArcMotion={null}
             />
           </div>
           <div className={styles.text}>
-            <Text size={300} className={styles.label} style={{ color: colors.rotation }}>
-              rotationMotion
+            <Text size={300} className={styles.label} style={{ color: colors.leadArc }}>
+              leadArcMotion
             </Text>
             <Body1>
-              Wraps <code>spinner</code>. Continuous 360° rotation of the entire spinner element — ring, tail mask, and
-              arcs all spin together as one unit. The dashed ring makes the rotation visible in isolation.
+              Wraps the first arc span inside <code>spinnerTail</code>. Rotates the 135° segment from 0° → 105° → 0°. As
+              it rotates, more of the segment extends past the tail mask edge, growing the visible arc.
             </Body1>
           </div>
         </div>
@@ -191,9 +256,34 @@ export const SlotsBreakdown = (): JSXElement => {
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
             <Spinner
+              key={`trail-${halfSpeed}`}
+              size="extra-large"
+              spinner={{ style: { color: colors.trailArc } }}
+              rotationMotion={null}
+              tailMotion={null}
+              leadArcMotion={null}
+              trailArcMotion={trailArc}
+            />
+          </div>
+          <div className={styles.text}>
+            <Text size={300} className={styles.label} style={{ color: colors.trailArc }}>
+              trailArcMotion
+            </Text>
+            <Body1>
+              Wraps the second arc span inside <code>spinnerTail</code>. Rotates from 0° → 225° → 0°. Together with
+              leadArcMotion, the two arcs pulse the visible tail between 30° and 255°.
+            </Body1>
+          </div>
+        </div>
+
+        <div className={styles.row}>
+          <div className={styles.spinnerCell}>
+            <Spinner
+              key={`tail-${halfSpeed}`}
               size="extra-large"
               spinner={{ style: { color: colors.tail } }}
               rotationMotion={null}
+              tailMotion={tail}
               leadArcMotion={null}
               trailArcMotion={null}
             />
@@ -212,41 +302,23 @@ export const SlotsBreakdown = (): JSXElement => {
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
             <Spinner
+              key={`rotation-${halfSpeed}`}
               size="extra-large"
-              spinner={{ style: { color: colors.leadArc } }}
-              rotationMotion={null}
+              spinner={{ className: styles.dashedRing, style: { color: colors.rotation } }}
+              spinnerTail={{ style: { opacity: 0 } }}
+              rotationMotion={rotation}
               tailMotion={null}
+              leadArcMotion={null}
               trailArcMotion={null}
             />
           </div>
           <div className={styles.text}>
-            <Text size={300} className={styles.label} style={{ color: colors.leadArc }}>
-              leadArcMotion
+            <Text size={300} className={styles.label} style={{ color: colors.rotation }}>
+              rotationMotion
             </Text>
             <Body1>
-              Wraps the first arc span inside <code>spinnerTail</code>. Rotates the 135° segment from 0° → 105° → 0°. As
-              it rotates, more of the segment extends past the tail mask edge, growing the visible arc.
-            </Body1>
-          </div>
-        </div>
-
-        <div className={styles.row}>
-          <div className={styles.spinnerCell}>
-            <Spinner
-              size="extra-large"
-              spinner={{ style: { color: colors.trailArc } }}
-              rotationMotion={null}
-              tailMotion={null}
-              leadArcMotion={null}
-            />
-          </div>
-          <div className={styles.text}>
-            <Text size={300} className={styles.label} style={{ color: colors.trailArc }}>
-              trailArcMotion
-            </Text>
-            <Body1>
-              Wraps the second arc span inside <code>spinnerTail</code>. Rotates from 0° → 225° → 0°. Together with
-              leadArcMotion, the two arcs pulse the visible tail between 30° and 255°.
+              Wraps <code>spinner</code>. Continuous 360° rotation of the entire spinner element — ring, tail mask, and
+              arcs all spin together as one unit. The dashed ring makes the rotation visible in isolation.
             </Body1>
           </div>
         </div>
@@ -258,7 +330,14 @@ export const SlotsBreakdown = (): JSXElement => {
 
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
-            <Spinner size="extra-large" rotationMotion={null} tailMotion={null} trailArcMotion={null} />
+            <Spinner
+              key={`comp1-${halfSpeed}`}
+              size="extra-large"
+              rotationMotion={null}
+              tailMotion={null}
+              leadArcMotion={leadArc}
+              trailArcMotion={null}
+            />
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
@@ -272,7 +351,14 @@ export const SlotsBreakdown = (): JSXElement => {
 
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
-            <Spinner size="extra-large" rotationMotion={null} tailMotion={null} />
+            <Spinner
+              key={`comp2-${halfSpeed}`}
+              size="extra-large"
+              rotationMotion={null}
+              tailMotion={null}
+              leadArcMotion={leadArc}
+              trailArcMotion={trailArc}
+            />
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
@@ -286,7 +372,14 @@ export const SlotsBreakdown = (): JSXElement => {
 
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
-            <Spinner size="extra-large" rotationMotion={null} />
+            <Spinner
+              key={`comp3-${halfSpeed}`}
+              size="extra-large"
+              rotationMotion={null}
+              tailMotion={tail}
+              leadArcMotion={leadArc}
+              trailArcMotion={trailArc}
+            />
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
@@ -300,7 +393,14 @@ export const SlotsBreakdown = (): JSXElement => {
 
         <div className={styles.row}>
           <div className={styles.spinnerCell}>
-            <Spinner size="extra-large" />
+            <Spinner
+              key={`comp4-${halfSpeed}`}
+              size="extra-large"
+              rotationMotion={rotation}
+              tailMotion={tail}
+              leadArcMotion={leadArc}
+              trailArcMotion={trailArc}
+            />
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
