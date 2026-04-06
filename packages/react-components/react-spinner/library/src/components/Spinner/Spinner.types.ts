@@ -89,13 +89,13 @@ export type SpinnerState = ComponentState<SpinnerSlots> &
      */
     shouldRenderSpinner: boolean;
     /**
-     * @internal
      * Class name for the arc span elements inside spinnerTail (replaces ::before/::after pseudo-elements).
+     * @internal
      */
     tailArcClassName?: string;
     /**
-     * @internal
      * RTL-specific class name override for the arc span elements.
+     * @internal
      */
     tailArcRtlClassName?: string;
   };

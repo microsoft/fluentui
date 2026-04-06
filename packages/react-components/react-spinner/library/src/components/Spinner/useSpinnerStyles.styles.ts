@@ -16,7 +16,8 @@ export const spinnerClassNames: SlotClassNames<
 };
 
 /**
- * @internal Class names for the tail arc span elements (replacing ::before/::after).
+ * Class names for the tail arc span elements (replacing ::before/::after).
+ * @internal
  */
 export const spinnerTailArcClassNames = {
   arc: 'fui-Spinner__spinnerTailArc',
