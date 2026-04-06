@@ -72,10 +72,7 @@ export function waitForConnectedDescendants(
     }
 
     if (
-      target
-        .querySelectorAll(`${shallow ? ':scope > ' : ''}:defined`)
-        .values()
-        .every(el => el.isConnected) ||
+      Array.from(target.querySelectorAll(`${shallow ? ':scope > ' : ''}:defined`)).every(el => el.isConnected) ||
       (deadline && deadline.timeRemaining() <= 0)
     ) {
       requestAnimationFrame(callback);
