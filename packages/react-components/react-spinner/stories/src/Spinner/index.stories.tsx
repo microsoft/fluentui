@@ -7,7 +7,7 @@ export { Default } from './SpinnerDefault.stories';
 export { Appearance } from './SpinnerAppearance.stories';
 export { Labels } from './SpinnerLabel.stories';
 export { Size } from './SpinnerSize.stories';
-export { MotionExploded } from './SpinnerMotionExploded.stories';
+export { SlotsBreakdown } from './SpinnerSlotsBreakdown.stories';
 export { MotionCustom } from './SpinnerMotionCustom.stories';
 
 export default {
