@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Spinner } from './Spinner';
 import { isConformant } from '../../testing/isConformant';
+import { spinnerClassNames, spinnerTailArcClassNames } from './useSpinnerStyles.styles';
 
 describe('Spinner', () => {
   isConformant({
@@ -49,5 +50,84 @@ describe('Spinner', () => {
   it('renders span as a root slot tag', () => {
     const result = render(<Spinner as="span" />);
     expect(result.getByRole('progressbar').tagName).toBe('SPAN');
+  });
+
+  describe('motion slots', () => {
+    it('renders spinner with default motion slots', () => {
+      const result = render(<Spinner />);
+      const spinnerEl = result.container.querySelector(`.${spinnerClassNames.spinner}`);
+      const spinnerTail = result.container.querySelector(`.${spinnerClassNames.spinnerTail}`);
+
+      expect(spinnerEl).not.toBeNull();
+      expect(spinnerTail).not.toBeNull();
+    });
+
+    it('renders arc span elements inside spinnerTail', () => {
+      const result = render(<Spinner />);
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+
+      // Two arc spans: one for arcStart and one for arcEnd
+      expect(arcElements).toHaveLength(2);
+    });
+
+    it('renders correctly when rotationMotion is null', () => {
+      const result = render(<Spinner rotationMotion={null} />);
+
+      // Spinner should still render its structure
+      const spinnerEl = result.container.querySelector(`.${spinnerClassNames.spinner}`);
+      expect(spinnerEl).not.toBeNull();
+
+      const spinnerTail = result.container.querySelector(`.${spinnerClassNames.spinnerTail}`);
+      expect(spinnerTail).not.toBeNull();
+    });
+
+    it('renders correctly when tailMotion is null', () => {
+      const result = render(<Spinner tailMotion={null} />);
+
+      const spinnerTail = result.container.querySelector(`.${spinnerClassNames.spinnerTail}`);
+      expect(spinnerTail).not.toBeNull();
+
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+      expect(arcElements).toHaveLength(2);
+    });
+
+    it('renders correctly when arcStartMotion is null', () => {
+      const result = render(<Spinner arcStartMotion={null} />);
+
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+      expect(arcElements).toHaveLength(2);
+    });
+
+    it('renders correctly when arcEndMotion is null', () => {
+      const result = render(<Spinner arcEndMotion={null} />);
+
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+      expect(arcElements).toHaveLength(2);
+    });
+
+    it('renders correctly when all motion slots are null', () => {
+      const result = render(
+        <Spinner rotationMotion={null} tailMotion={null} arcStartMotion={null} arcEndMotion={null} />,
+      );
+
+      const spinnerEl = result.container.querySelector(`.${spinnerClassNames.spinner}`);
+      expect(spinnerEl).not.toBeNull();
+
+      const spinnerTail = result.container.querySelector(`.${spinnerClassNames.spinnerTail}`);
+      expect(spinnerTail).not.toBeNull();
+
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+      expect(arcElements).toHaveLength(2);
+    });
+
+    it('does not render motion content when shouldRenderSpinner is false (delay)', () => {
+      const result = render(<Spinner delay={5000} />);
+
+      const spinnerEl = result.container.querySelector(`.${spinnerClassNames.spinner}`);
+      expect(spinnerEl).toBeNull();
+
+      const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
+      expect(arcElements).toHaveLength(0);
+    });
   });
 });
