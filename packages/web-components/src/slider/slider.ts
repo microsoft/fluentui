@@ -64,22 +64,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
-      case 'isConnected': {
-        if (this.$fastController.isConnected) {
-          this.direction = getDirection(this);
-
-          this.setDisabledSideEffect(this.disabled);
-          this.updateStepMultiplier();
-          this.setupTrackConstraints();
-          this.setupDefaultValue();
-          this.setSliderPosition();
-
-          this.handleStepStyles();
-        }
-
-        break;
-      }
-
       case 'min':
       case 'max': {
         this.setSliderPosition();
@@ -551,17 +535,27 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
     this.elementInternals.role = 'slider';
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
-
-    this.$fastController.subscribe(this, 'isConnected');
   }
 
   public connectedCallback(): void {
     super.connectedCallback();
 
-    const notifier = Observable.getNotifier(this);
-    notifier.subscribe(this, 'max');
-    notifier.subscribe(this, 'min');
-    notifier.subscribe(this, 'step');
+    requestAnimationFrame(() => {
+      this.direction = getDirection(this);
+
+      this.setDisabledSideEffect(this.disabled);
+      this.updateStepMultiplier();
+      this.setupTrackConstraints();
+      this.setupDefaultValue();
+      this.setSliderPosition();
+
+      this.handleStepStyles();
+
+      const notifier = Observable.getNotifier(this);
+      notifier.subscribe(this, 'max');
+      notifier.subscribe(this, 'min');
+      notifier.subscribe(this, 'step');
+    });
   }
 
   /**
