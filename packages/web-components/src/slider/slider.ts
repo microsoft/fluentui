@@ -541,6 +541,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
     super.connectedCallback();
 
     requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
+
       this.direction = getDirection(this);
 
       this.setDisabledSideEffect(this.disabled);

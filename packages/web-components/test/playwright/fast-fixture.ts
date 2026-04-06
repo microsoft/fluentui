@@ -154,7 +154,7 @@ export class FASTFixture {
     const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
 
     await element.evaluate((node, options) => {
-      if (options.innerHTML) {
+      if (options.innerHTML !== undefined) {
         node.innerHTML = options.innerHTML;
       }
 

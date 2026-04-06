@@ -424,6 +424,13 @@ export class BaseTextArea extends FASTElement {
     super.connectedCallback();
 
     requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
+
       const preConnect = this.preConnectControlEl;
       const content = this.getContent();
 

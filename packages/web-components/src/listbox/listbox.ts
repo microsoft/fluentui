@@ -239,11 +239,13 @@ export class Listbox extends FASTElement {
    */
   public slotchangeHandler(e?: Event): void {
     waitForConnectedDescendants(this, () => {
-      const options = this.defaultSlot
-        .assignedElements()
-        .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
+      if (this.defaultSlot) {
+        const options = this.defaultSlot
+          .assignedElements()
+          .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
 
-      this.options = options;
+        this.options = options;
+      }
     });
   }
 }
