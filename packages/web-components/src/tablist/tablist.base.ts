@@ -26,6 +26,7 @@ export class BaseTablist extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
+  /** @internal */
   protected disabledChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'disabled', next);
 
@@ -65,6 +66,7 @@ export class BaseTablist extends FASTElement {
    */
   @attr
   public activeid!: string;
+  /** @internal */
   protected activeidChanged(oldValue: string, newValue: string): void {
     if (!this.$fastController.isConnected || this.tabs.length === 0) {
       return;
@@ -79,6 +81,7 @@ export class BaseTablist extends FASTElement {
    */
   @observable
   public slottedTabs!: Node[];
+  /** @internal */
   protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     this.tabs = (next?.filter(tab => isTab(tab)) as Tab[]) ?? [];
   }
@@ -86,6 +89,7 @@ export class BaseTablist extends FASTElement {
   /** @internal */
   @observable
   public tabs: Tab[] = [];
+  /** @internal */
   protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
     if (!this.$fastController.isConnected || this.tabs.length === 0) {
       return;

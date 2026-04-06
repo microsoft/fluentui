@@ -801,13 +801,13 @@ export class BaseSpinner extends FASTElement {
 // @public
 export class BaseTablist extends FASTElement {
     activeid: string;
-    // (undocumented)
+    // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // (undocumented)
+    // @internal (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
@@ -823,11 +823,11 @@ export class BaseTablist extends FASTElement {
     }): void;
     // @internal
     slottedTabs: Node[];
-    // (undocumented)
+    // @internal (undocumented)
     protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
     tabs: Tab[];
-    // (undocumented)
+    // @internal (undocumented)
     protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
