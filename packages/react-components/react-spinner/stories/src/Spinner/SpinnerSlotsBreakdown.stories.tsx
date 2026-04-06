@@ -5,10 +5,11 @@ import { Body1, makeStyles, Spinner, Subtitle2, Switch, Text, tokens } from '@fl
 
 // Distinct colors for each motion slot
 const colors = {
-  rotation: '#e03e3e',
+  rotation: '#666666',
   tail: '#0078d4',
-  leadArc: '#107c10',
-  trailArc: '#a333c8',
+  leadArc: 'red',
+  // trailArc: '#a333c8',
+  trailArc: 'green',
 };
 
 const useStyles = makeStyles({
@@ -30,9 +31,11 @@ const useStyles = makeStyles({
   },
   spinnerCell: {
     flexShrink: 0,
-    width: '40px',
+    width: '48px',
     display: 'flex',
     justifyContent: 'center',
+    padding: '4px',
+    overflow: 'visible',
   },
   text: {
     display: 'flex',
@@ -46,6 +49,37 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent',
     backgroundImage:
       'repeating-conic-gradient(color-mix(in srgb, currentcolor 40%, transparent) 0deg 30deg, transparent 30deg 36deg)',
+  },
+  dualColorArcs: {
+    '> :first-child': { color: colors.leadArc },
+    '> :last-child': { color: colors.trailArc },
+  },
+  dualColorArcsSeparated: {
+    '> :first-child': { color: colors.leadArc },
+    '> :last-child': { color: colors.trailArc, transform: 'rotate(120deg)' },
+  },
+  leadArcOnly: {
+    '> :first-child': { color: colors.leadArc },
+    '> :last-child': { display: 'none' },
+  },
+  trailArcOnly: {
+    '> :first-child': { display: 'none' },
+    '> :last-child': { color: colors.trailArc, transform: 'rotate(120deg)' },
+  },
+  maskZoneOverlay: {
+    position: 'relative',
+    overflow: 'visible',
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      inset: '-4px',
+      borderRadius: '50%',
+      // backgroundImage: `conic-gradient(${tokens.colorBrandStroke1} 105deg, transparent 105deg)`,
+      backgroundImage: `conic-gradient(red 105deg, transparent 105deg)`,
+      opacity: 0.2,
+      maskImage:
+        'radial-gradient(closest-side, transparent calc(100% - 10px), black calc(100% - 10px) calc(100% - 2px), transparent calc(100% - 2px) 100%)',
+    },
   },
 });
 
@@ -74,7 +108,7 @@ export const SlotsBreakdown = (): JSXElement => {
           <div className={styles.spinnerCell}>
             <Spinner
               size="extra-large"
-              spinner={{ style: { backgroundColor: 'color-mix(in srgb, #107c10 25%, transparent)' } }}
+              spinner={{}}
               spinnerTail={{ style: { opacity: 0 } }}
               rotationMotion={null}
               tailMotion={null}
@@ -87,9 +121,8 @@ export const SlotsBreakdown = (): JSXElement => {
               spinner slot — ring track
             </Text>
             <Body1>
-              The <code>spinner</code> slot is a span with a radial-gradient mask that punches out a ring shape. Here it
-              is styled green to show that the track color is customizable. Its foreground color (
-              <code>currentcolor</code>) is inherited by the arc segments inside.
+              The <code>spinner</code> slot is a span with a radial-gradient mask that punches out a ring shape. Its
+              foreground color (<code>currentcolor</code>) is inherited by the arc segments inside.
             </Body1>
           </div>
         </div>
@@ -98,7 +131,7 @@ export const SlotsBreakdown = (): JSXElement => {
           <div className={styles.spinnerCell}>
             <Spinner
               size="extra-large"
-              spinnerTail={{ style: { maskImage: 'none' } }}
+              spinnerTail={{ style: { maskImage: 'none' }, className: styles.leadArcOnly }}
               rotationMotion={null}
               tailMotion={null}
               leadArcMotion={null}
@@ -107,13 +140,13 @@ export const SlotsBreakdown = (): JSXElement => {
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
-              spinnerTail slot — arc segments (unmasked)
+              spinnerTail slot — <span style={{ color: colors.leadArc }}>lead arc</span> (unmasked)
             </Text>
             <Body1>
-              The <code>spinnerTail</code> slot is positioned inside <code>spinner</code>. It contains two identical
-              135° arc segments drawn with conic-gradient. Here the tail's mask is removed so you can see their full
-              extent. At rest (0° rotation) they overlap completely. Two arcs are needed because no single arc width can
-              achieve both the 30° minimum and 255° maximum visible range.
+              The <code>spinnerTail</code> slot is positioned inside <code>spinner</code>. It contains two 135° arc
+              segments drawn with conic-gradient. This is the first arc, shown unmasked at its rest position (0°). Two
+              arcs are needed because no single arc width can achieve both the 30° minimum and 255° maximum visible
+              range.
             </Body1>
           </div>
         </div>
@@ -123,11 +156,8 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               size="extra-large"
               spinnerTail={{
-                style: {
-                  maskImage: 'none',
-                  backgroundImage:
-                    'conic-gradient(transparent 105deg, color-mix(in srgb, currentcolor 25%, transparent) 105deg)',
-                },
+                style: { maskImage: 'none' },
+                className: styles.trailArcOnly,
               }}
               rotationMotion={null}
               tailMotion={null}
@@ -137,11 +167,11 @@ export const SlotsBreakdown = (): JSXElement => {
           </div>
           <div className={styles.text}>
             <Text size={300} weight="semibold">
-              spinnerTail slot — mask zone
+              spinnerTail slot — <span style={{ color: colors.trailArc }}>trail arc</span> (unmasked)
             </Text>
             <Body1>
-              The faded region shows the 255° window that the conic-gradient mask reveals (105°–360°). The remaining
-              105° is hidden. Only the arc portions inside the faded window will be visible once the mask is applied.
+              The second arc, identical in shape (135°) and also at rest (0°). At rest both arcs overlap completely —
+              their animations rotate them to different positions to create the expanding/contracting tail effect.
             </Body1>
           </div>
         </div>
@@ -150,6 +180,13 @@ export const SlotsBreakdown = (): JSXElement => {
           <div className={styles.spinnerCell}>
             <Spinner
               size="extra-large"
+              className={styles.maskZoneOverlay}
+              spinnerTail={{
+                className: styles.dualColorArcsSeparated,
+                style: {
+                  maskImage: 'conic-gradient(transparent 105deg, white 105deg)',
+                },
+              }}
               rotationMotion={null}
               tailMotion={null}
               leadArcMotion={null}
@@ -161,8 +198,11 @@ export const SlotsBreakdown = (): JSXElement => {
               spinnerTail slot — mask applied
             </Text>
             <Body1>
-              The mask hides the first 105°. Since each arc spans 0–135°, only the 105–135° sliver peeks through —
-              giving the 30° minimum arc at rest.
+              The mask hides the first 105° (= 135° arc − 30° desired minimum). Here the masked zone is shown
+              semi-transparently so you can see what's hidden. The{' '}
+              <span style={{ color: colors.leadArc }}>lead arc</span> at 0° has only its 105–135° sliver peeking
+              through. The <span style={{ color: colors.trailArc }}>trail arc</span>, shown here rotated to 120°, is
+              fully visible.
             </Body1>
           </div>
         </div>
@@ -289,6 +329,7 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               key={`comp1-${halfSpeed}`}
               size="extra-large"
+              spinner={{ style: { color: colors.leadArc } }}
               rotationMotion={null}
               tailMotion={null}
               leadArcMotion={variableSpeed}
@@ -310,6 +351,7 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               key={`comp2-${halfSpeed}`}
               size="extra-large"
+              spinnerTail={{ className: styles.dualColorArcs }}
               rotationMotion={null}
               tailMotion={null}
               leadArcMotion={variableSpeed}
@@ -331,6 +373,7 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               key={`comp3-${halfSpeed}`}
               size="extra-large"
+              spinnerTail={{ className: styles.dualColorArcs }}
               rotationMotion={null}
               tailMotion={variableSpeed}
               leadArcMotion={variableSpeed}
@@ -352,6 +395,8 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               key={`comp4-${halfSpeed}`}
               size="extra-large"
+              spinner={{ className: styles.dashedRing, style: { color: colors.rotation } }}
+              spinnerTail={{ className: styles.dualColorArcs }}
               rotationMotion={variableSpeed}
               tailMotion={variableSpeed}
               leadArcMotion={variableSpeed}
