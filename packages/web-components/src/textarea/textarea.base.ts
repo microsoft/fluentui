@@ -50,7 +50,27 @@ export class BaseTextArea extends FASTElement {
    * The `<textarea>` element.
    * @internal
    */
+  @observable
   public controlEl!: HTMLTextAreaElement;
+
+  /**
+   * Sets up a mutation observer to watch for changes to the control element's
+   * attributes that could affect validity, and binds an input event listener to detect user interaction.
+   *
+   * @internal
+   */
+  protected controlElChanged() {
+    this.controlElAttrObserver = new MutationObserver(() => {
+      this.setValidity();
+    });
+
+    this.controlElAttrObserver.observe(this.controlEl, {
+      attributes: true,
+      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
+    });
+
+    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
+  }
 
   /**
    * @internal
@@ -414,10 +434,6 @@ export class BaseTextArea extends FASTElement {
       this.preConnectControlEl = null;
 
       this.maybeCreateAutoSizerEl();
-
-      this.bindEvents();
-
-      this.observeControlElAttrs();
     });
   }
 
@@ -528,20 +544,6 @@ export class BaseTextArea extends FASTElement {
     this.controlEl.select();
   }
 
-  private setDefaultValue() {
-    this.defaultValue = this.innerHTML.trim() || this.preConnectControlEl!.defaultValue || '';
-    this.value = this.preConnectControlEl!.value || this.defaultValue;
-
-    this.setFormValue(this.value);
-    this.setValidity();
-
-    this.preConnectControlEl = null;
-  }
-
-  private bindEvents() {
-    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
-  }
-
   /**
    * Gets the content inside the light DOM, if any HTML element is present, use its `outerHTML` value.
    */
@@ -560,16 +562,6 @@ export class BaseTextArea extends FASTElement {
         })
         .join('') || ''
     );
-  }
-
-  private observeControlElAttrs() {
-    this.controlElAttrObserver = new MutationObserver(() => {
-      this.setValidity();
-    });
-    this.controlElAttrObserver.observe(this.controlEl, {
-      attributes: true,
-      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
-    });
   }
 
   private setDisabledSideEffect(disabled: boolean) {
