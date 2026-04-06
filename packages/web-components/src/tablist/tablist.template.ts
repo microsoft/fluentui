@@ -7,7 +7,7 @@ import type { Tablist } from './tablist.js';
 export const template = html<Tablist>`
   <template
     role="tablist"
-    focusgroup="tablist inline block nomemory"
+    focusgroup="tablist inline block"
     @focusin="${(x, c) => x.handleFocusIn(c.event as FocusEvent)}"
   >
     <slot name="tab" ${slotted('slottedTabs')}></slot>
