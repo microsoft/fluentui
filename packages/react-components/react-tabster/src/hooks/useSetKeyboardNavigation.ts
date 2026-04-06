@@ -4,14 +4,15 @@ import * as React from 'react';
 import { useKeyborgRef } from './useKeyborgRef';
 
 /**
+ * Returns a function that programmatically overrides the keyboard navigation mode.
  */
 export function useSetKeyboardNavigation(): (isNavigatingWithKeyboard: boolean) => void {
-  const keyborgRef = useKeyborgRef();
+  const detectorRef = useKeyborgRef();
 
   return React.useCallback(
     (isNavigatingWithKeyboard: boolean) => {
-      keyborgRef.current?.setVal(isNavigatingWithKeyboard);
+      detectorRef.current?.setVal(isNavigatingWithKeyboard);
     },
-    [keyborgRef],
+    [detectorRef],
   );
 }

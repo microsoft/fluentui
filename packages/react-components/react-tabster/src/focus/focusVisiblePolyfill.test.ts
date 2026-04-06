@@ -1,18 +1,19 @@
-import { createKeyborg, disposeKeyborg, Keyborg } from 'keyborg';
+import { createKeyboardDetector, disposeKeyboardDetector } from '../focus-navigation/keyboardDetector';
 import { FOCUS_VISIBLE_ATTR } from './constants';
 import { applyFocusVisiblePolyfill } from './focusVisiblePolyfill';
 import { fireEvent } from '@testing-library/dom';
 
 describe('focus visible polyfill', () => {
-  let keyborg: Keyborg;
+  let detector: ReturnType<typeof createKeyboardDetector>;
+
   beforeEach(() => {
-    keyborg = createKeyborg(window);
+    detector = createKeyboardDetector(window);
     document.body.innerHTML = '';
   });
 
   afterEach(() => {
-    if (keyborg) {
-      disposeKeyborg(keyborg);
+    if (detector) {
+      disposeKeyboardDetector(detector);
     }
   });
 

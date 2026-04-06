@@ -1,12 +1,11 @@
 'use client';
 
-import { Types, getMover, MoverDirections } from 'tabster';
+import { type TabsterDOMAttribute } from '../focus-navigation/types';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {
   /**
-   * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
+   * Focus will navigate vertically, horizontally or in both directions (grid), defaults to vertical
    * @defaultValue vertical
    */
   axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
@@ -25,23 +24,21 @@ export interface UseArrowNavigationGroupOptions {
    */
   tabbable?: boolean;
   /**
-   * Tabster should ignore default handling of keydown events
+   * Navigation manager should ignore default handling of keydown events
    */
-  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  ignoreDefaultKeydown?: Record<string, boolean>;
   /**
-   * The default focusable item in the group will be an element with Focusable.isDefault property.
-   * Note that there is no way in \@fluentui/react-tabster to set default focusable element,
-   * and this option is currently for internal testing purposes only.
+   * The default focusable item in the group will be an element with the `data-fui-default` attribute.
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_hasDefault?: boolean;
 }
 
 /**
- * A hook that returns the necessary tabster attributes to support arrow key navigation
+ * A hook that returns the necessary attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
+export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): TabsterDOMAttribute => {
   const {
     circular,
     axis,
@@ -52,37 +49,34 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     unstable_hasDefault,
   } = options;
 
-  useTabster(getMover);
-
   return useTabsterAttributes({
     mover: {
       cyclic: !!circular,
-      direction: axisToMoverDirection(axis ?? 'vertical'),
+      direction: axisToDirection(axis ?? 'vertical'),
       memorizeCurrent,
       tabbable,
       hasDefault: unstable_hasDefault,
     },
     ...(ignoreDefaultKeydown && {
-      focusable: {
-        ignoreKeydown: ignoreDefaultKeydown,
-      },
+      focusable: { ignoreKeydown: ignoreDefaultKeydown },
     }),
   });
 };
 
-function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
+function axisToDirection(
+  axis: UseArrowNavigationGroupOptions['axis'],
+): 'vertical' | 'horizontal' | 'grid' | 'gridLinear' | 'both' {
   switch (axis) {
     case 'horizontal':
-      return MoverDirections.Horizontal;
+      return 'horizontal';
     case 'grid':
-      return MoverDirections.Grid;
+      return 'grid';
     case 'grid-linear':
-      return MoverDirections.GridLinear;
+      return 'gridLinear';
     case 'both':
-      return MoverDirections.Both;
-
+      return 'both';
     case 'vertical':
     default:
-      return MoverDirections.Vertical;
+      return 'vertical';
   }
 }

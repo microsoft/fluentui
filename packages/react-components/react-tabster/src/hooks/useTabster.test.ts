@@ -1,40 +1,40 @@
-import { createTabster, disposeTabster } from 'tabster';
 import { renderHook } from '@testing-library/react-hooks';
 import { useTabster } from './useTabster';
+import * as navigationManagerModule from '../focus-navigation/navigationManager';
 
-jest.mock('tabster', () => ({
-  createTabster: jest.fn(() => 'mock-tabster-instance'),
-  disposeTabster: jest.fn(),
+jest.mock('../focus-navigation/navigationManager', () => ({
+  createNavigationManager: jest.fn(() => 'mock-manager-instance'),
+  disposeNavigationManager: jest.fn(),
 }));
 
-const createTabsterMock = createTabster as jest.Mock;
-const disposeTabsterMock = disposeTabster as jest.Mock;
+const createNavigationManagerMock = navigationManagerModule.createNavigationManager as jest.Mock;
+const disposeNavigationManagerMock = navigationManagerModule.disposeNavigationManager as jest.Mock;
 
 describe('useTabster', () => {
-  it('returns a ref to the tabster instance', () => {
+  it('returns a ref to the navigation manager instance', () => {
     const { result } = renderHook(() => useTabster());
 
-    expect(createTabsterMock).toHaveBeenCalledTimes(1);
+    expect(createNavigationManagerMock).toHaveBeenCalledTimes(1);
     expect(result.current).toMatchObject({
-      current: 'mock-tabster-instance',
+      current: 'mock-manager-instance',
     });
   });
 
-  it('uses the provided factory function to transform the tabster instance', () => {
-    const factoryMock = jest.fn(tabster => ({ customProperty: 'value', tabster }));
+  it('uses the provided factory function to transform the manager instance', () => {
+    const factoryMock = jest.fn(manager => ({ customProperty: 'value', manager }));
     const { result } = renderHook(() => useTabster(factoryMock));
 
-    expect(factoryMock).toHaveBeenCalledWith('mock-tabster-instance');
+    expect(factoryMock).toHaveBeenCalledWith('mock-manager-instance');
     expect(result.current).toMatchObject({
-      current: { customProperty: 'value', tabster: 'mock-tabster-instance' },
+      current: { customProperty: 'value', manager: 'mock-manager-instance' },
     });
   });
 
-  it('disposes tabster when the component unmounts', () => {
+  it('disposes the navigation manager when the component unmounts', () => {
     const { unmount } = renderHook(() => useTabster());
 
     unmount();
-    expect(disposeTabsterMock).toHaveBeenCalledWith('mock-tabster-instance');
+    expect(disposeNavigationManagerMock).toHaveBeenCalledWith('mock-manager-instance');
   });
 
   describe('environment checks', () => {
@@ -51,8 +51,8 @@ describe('useTabster', () => {
     it('throws an error in development if factory function changes', () => {
       process.env.NODE_ENV = 'development';
 
-      const mockFactory1 = jest.fn(tabster => tabster);
-      const mockFactory2 = jest.fn(tabster => tabster);
+      const mockFactory1 = jest.fn(m => m);
+      const mockFactory2 = jest.fn(m => m);
 
       const { rerender, result } = renderHook(({ factory }) => useTabster(factory), {
         initialProps: { factory: mockFactory1 },
@@ -64,8 +64,6 @@ describe('useTabster', () => {
         /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./,
       );
 
-      // React 17 (with @testing-library/react-hooks) captures hook errors into result.error instead of throwing
-      // while React 18/19 tend to throw synchronously. Support both behaviors.
       function expectRenderErrorMatching(run: () => void, renderResult: { error?: unknown }, expected: RegExp) {
         let threw: unknown;
         try {
@@ -77,7 +75,6 @@ describe('useTabster', () => {
         if (threw) {
           expect(getErrorMessages(threw).join('\n')).toMatch(expected);
         } else {
-          // React 17 behavior
           expect(renderResult.error).toBeDefined();
           expect(getErrorMessages(renderResult.error).join('\n')).toMatch(expected);
         }
@@ -86,24 +83,14 @@ describe('useTabster', () => {
   });
 });
 
-// React 19 wraps render-time errors into an AggregateError with empty message.
-// This helper extracts nested messages so we can assert reliably across React versions.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getErrorMessages(err: any): string[] {
-  if (!err) {
-    return [];
-  }
+  if (!err) return [];
   const messages: string[] = [];
-  if (typeof err.message === 'string') {
-    messages.push(err.message);
-  }
+  if (typeof err.message === 'string') messages.push(err.message);
   if (Array.isArray(err.errors)) {
-    for (const inner of err.errors) {
-      messages.push(...getErrorMessages(inner));
-    }
+    for (const inner of err.errors) messages.push(...getErrorMessages(inner));
   }
-  if (err.cause) {
-    messages.push(...getErrorMessages(err.cause));
-  }
+  if (err.cause) messages.push(...getErrorMessages(err.cause));
   return messages;
 }

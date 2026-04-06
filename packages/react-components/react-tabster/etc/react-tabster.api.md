@@ -4,25 +4,9 @@
 
 ```ts
 
-import { dispatchGroupperMoveFocusEvent } from 'tabster';
-import { dispatchMoverMoveFocusEvent } from 'tabster';
-import { EventsTypes } from 'tabster';
 import type { GriffelStyle } from '@griffel/react';
-import { GroupperMoveFocusActions } from 'tabster';
-import { GroupperMoveFocusEvent } from 'tabster';
-import { GroupperMoveFocusEventName } from 'tabster';
-import { KEYBORG_FOCUSIN } from 'keyborg';
-import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
-import { MoverKeys } from 'tabster';
-import { MoverMemorizedElementEvent } from 'tabster';
-import { MoverMemorizedElementEventName } from 'tabster';
-import { MoverMoveFocusEvent } from 'tabster';
-import { MoverMoveFocusEventName } from 'tabster';
 import * as React_2 from 'react';
-import { TabsterMoveFocusEvent } from 'tabster';
-import { TabsterMoveFocusEventName } from 'tabster';
-import { Types } from 'tabster';
 
 // @internal (undocumented)
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
@@ -236,9 +220,11 @@ interface DeloserProps {
     restoreFocusOrder?: RestoreFocusOrder;
 }
 
-export { dispatchGroupperMoveFocusEvent }
+// @public @deprecated (undocumented)
+export function dispatchGroupperMoveFocusEvent(element: HTMLElement, action: GroupperMoveFocusAction): void;
 
-export { dispatchMoverMoveFocusEvent }
+// @public @deprecated (undocumented)
+export function dispatchMoverMoveFocusEvent(element: HTMLElement, key: MoverKey): void;
 
 // @public (undocumented)
 interface Disposable {
@@ -536,7 +522,7 @@ interface Groupper extends TabsterPart<GroupperProps>, TabsterPartWithFindNextTa
 // @public (undocumented)
 interface GroupperAPI extends GroupperAPIInternal, Disposable {
     // @internal
-    moveFocus(element: HTMLElement, action: GroupperMoveFocusAction): HTMLElement | null;
+    moveFocus(element: HTMLElement, action: GroupperMoveFocusAction_2): HTMLElement | null;
 }
 
 // @public (undocumented)
@@ -557,9 +543,13 @@ interface GroupperAPIInternal {
 type GroupperConstructor = (tabster: TabsterCore, element: HTMLElement, props: GroupperProps) => Groupper;
 
 // @public (undocumented)
-type GroupperMoveFocusAction = GroupperMoveFocusActions_2[keyof GroupperMoveFocusActions_2];
+type GroupperMoveFocusAction_2 = GroupperMoveFocusActions_2[keyof GroupperMoveFocusActions_2];
 
-export { GroupperMoveFocusActions }
+// @public (undocumented)
+export const GroupperMoveFocusActions: {
+    readonly Enter: "enter";
+    readonly Escape: "escape";
+};
 
 // @public (undocumented)
 interface GroupperMoveFocusActions_2 {
@@ -572,17 +562,23 @@ interface GroupperMoveFocusActions_2 {
 // @public (undocumented)
 const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
 
-export { GroupperMoveFocusEvent }
+// @public (undocumented)
+export class GroupperMoveFocusEvent extends CustomEvent<GroupperMoveFocusEventDetail> {
+    constructor(detail: GroupperMoveFocusEventDetail);
+}
 
 // @public (undocumented)
 type GroupperMoveFocusEvent_2 = CustomEvent<{
-    action: GroupperMoveFocusAction;
+    action: GroupperMoveFocusAction_2;
 } | undefined>;
 
 // @public (undocumented)
-export type GroupperMoveFocusEventDetail = EventsTypes.GroupperMoveFocusEventDetail;
+export type GroupperMoveFocusEventDetail = {
+    action: GroupperMoveFocusAction;
+};
 
-export { GroupperMoveFocusEventName }
+// @public (undocumented)
+export const GroupperMoveFocusEventName: "tabster:groupper:movefocus";
 
 // @public (undocumented)
 const GroupperMoveFocusEventName_2 = "tabster:groupper:movefocus";
@@ -598,7 +594,7 @@ interface GroupperProps {
     // (undocumented)
     delegated?: boolean;
     // (undocumented)
-    tabbability?: GroupperTabbability;
+    tabbability?: GroupperTabbability_2;
 }
 
 // @public (undocumented)
@@ -615,7 +611,7 @@ interface GroupperTabbabilities {
 const GroupperTabbabilities: GroupperTabbabilities;
 
 // @public (undocumented)
-type GroupperTabbability = GroupperTabbabilities[keyof GroupperTabbabilities];
+type GroupperTabbability_2 = GroupperTabbabilities[keyof GroupperTabbabilities];
 
 // @public (undocumented)
 interface InternalAPI {
@@ -633,9 +629,13 @@ interface KeyboardNavigationState extends Subscribable<boolean>, Disposable {
     setNavigatingWithKeyboard(isNavigatingWithKeyboard: boolean): void;
 }
 
-export { KEYBORG_FOCUSIN }
+// @public
+export const KEYBORG_FOCUSIN: "keyborg:focusin";
 
-export { KeyborgFocusInEvent }
+// @public
+export type KeyborgFocusInEvent = CustomEvent<{
+    isNavigatingWithKeyboard: boolean;
+}>;
 
 // @public (undocumented)
 interface Modalizer extends TabsterPart<ModalizerProps>, TabsterPartWithFindNextTabbable {
@@ -741,14 +741,14 @@ interface Mover extends TabsterPart<MoverProps>, TabsterPartWithFindNextTabbable
 // @public (undocumented)
 interface MoverAPI extends MoverAPIInternal, Disposable {
     // @internal
-    moveFocus(fromElement: HTMLElement, key: MoverKey): HTMLElement | null;
+    moveFocus(fromElement: HTMLElement, key: MoverKey_2): HTMLElement | null;
 }
 
 // @public (undocumented)
 type MoverConstructor = (tabster: TabsterCore, element: HTMLElement, props: MoverProps) => Mover;
 
 // @public (undocumented)
-type MoverDirection = MoverDirections[keyof MoverDirections];
+type MoverDirection_2 = MoverDirections[keyof MoverDirections];
 
 // @public (undocumented)
 interface MoverDirections {
@@ -782,9 +782,19 @@ type MoverEvent = TabsterEventWithDetails<MoverElementState>;
 const MoverEventName = "tabster:mover";
 
 // @public (undocumented)
-type MoverKey = MoverKeys_2[keyof MoverKeys_2];
+type MoverKey_2 = MoverKeys_2[keyof MoverKeys_2];
 
-export { MoverKeys }
+// @public (undocumented)
+export const MoverKeys: {
+    readonly ArrowUp: "ArrowUp";
+    readonly ArrowDown: "ArrowDown";
+    readonly ArrowLeft: "ArrowLeft";
+    readonly ArrowRight: "ArrowRight";
+    readonly Home: "Home";
+    readonly End: "End";
+    readonly PageUp: "PageUp";
+    readonly PageDown: "PageDown";
+};
 
 // @public (undocumented)
 interface MoverKeys_2 {
@@ -809,24 +819,36 @@ interface MoverKeys_2 {
 // @public (undocumented)
 const MoverKeys_2: MoverKeys_2;
 
-export { MoverMemorizedElementEvent }
+// @public (undocumented)
+export class MoverMemorizedElementEvent extends CustomEvent<MoverMemorizedElementEventDetail> {
+    constructor(detail: MoverMemorizedElementEventDetail);
+}
 
 // @public (undocumented)
-export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElementEventDetail;
+export type MoverMemorizedElementEventDetail = {
+    element: HTMLElement | undefined;
+};
 
-export { MoverMemorizedElementEventName }
+// @public (undocumented)
+export const MoverMemorizedElementEventName: "tabster:mover:memorized";
 
-export { MoverMoveFocusEvent }
+// @public (undocumented)
+export class MoverMoveFocusEvent extends CustomEvent<MoverMoveFocusEventDetail> {
+    constructor(detail: MoverMoveFocusEventDetail);
+}
 
 // @public (undocumented)
 type MoverMoveFocusEvent_2 = CustomEvent<{
-    key: MoverKey;
+    key: MoverKey_2;
 } | undefined>;
 
 // @public (undocumented)
-export type MoverMoveFocusEventDetail = EventsTypes.MoverMoveFocusEventDetail;
+export type MoverMoveFocusEventDetail = {
+    key: MoverKey;
+};
 
-export { MoverMoveFocusEventName }
+// @public
+export const MoverMoveFocusEventName: "tabster:mover:movefocus";
 
 // @public (undocumented)
 const MoverMoveFocusEventName_2 = "tabster:mover:movefocus";
@@ -841,7 +863,7 @@ interface MoverOnElement {
 interface MoverProps {
     cyclic?: boolean;
     // (undocumented)
-    direction?: MoverDirection;
+    direction?: MoverDirection_2;
     hasDefault?: boolean;
     // (undocumented)
     memorizeCurrent?: boolean;
@@ -996,11 +1018,11 @@ interface RestorerOnElement {
 // @public (undocumented)
 interface RestorerProps {
     // (undocumented)
-    type: RestorerType;
+    type: RestorerType_2;
 }
 
 // @public (undocumented)
-type RestorerType = (typeof RestorerTypes)[keyof typeof RestorerTypes];
+type RestorerType_2 = (typeof RestorerTypes)[keyof typeof RestorerTypes];
 
 // @public (undocumented)
 const RestorerTypes: {
@@ -1190,8 +1212,10 @@ interface TabsterCoreProps {
     rootDummyInputs?: boolean;
 }
 
-// @public (undocumented)
-export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+// @public
+export type TabsterDOMAttribute = {
+    [TABSTER_ATTRIBUTE_NAME]?: string;
+};
 
 // @public (undocumented)
 interface TabsterDOMAttribute_2 {
@@ -1221,13 +1245,19 @@ interface TabsterElementStorageEntry {
 // @public (undocumented)
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
-export { TabsterMoveFocusEvent }
+// @public (undocumented)
+export class TabsterMoveFocusEvent extends CustomEvent<TabsterMoveFocusEventDetail> {
+    constructor(detail: TabsterMoveFocusEventDetail);
+}
 
 // @public (undocumented)
 type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
 
 // @public (undocumented)
-export type TabsterMoveFocusEventDetail = EventsTypes.TabsterMoveFocusEventDetail;
+export type TabsterMoveFocusEventDetail = {
+    by: 'mover' | 'groupper';
+    key: string;
+};
 
 // @public (undocumented)
 interface TabsterMoveFocusEventDetails {
@@ -1241,7 +1271,8 @@ interface TabsterMoveFocusEventDetails {
     relatedEvent?: KeyboardEvent;
 }
 
-export { TabsterMoveFocusEventName }
+// @public (undocumented)
+export const TabsterMoveFocusEventName: "tabster:movefocus";
 
 // @public (undocumented)
 type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;
@@ -1289,7 +1320,7 @@ declare namespace TabsterTypes {
         FocusableSelector,
         MoverMoveFocusEvent_2 as MoverMoveFocusEvent,
         GroupperMoveFocusActions_2 as GroupperMoveFocusActions,
-        GroupperMoveFocusAction,
+        GroupperMoveFocusAction_2 as GroupperMoveFocusAction,
         GroupperMoveFocusEvent_2 as GroupperMoveFocusEvent,
         TabsterEventWithDetails,
         TabsterMoveFocusEventDetails,
@@ -1351,18 +1382,18 @@ declare namespace TabsterTypes {
         MoverElementState,
         MoverDirections,
         RestorerTypes,
-        RestorerType,
-        MoverDirection,
+        RestorerType_2 as RestorerType,
+        MoverDirection_2 as MoverDirection,
         NextTabbable,
         MoverProps,
         MoverEvent,
         Mover,
         MoverConstructor,
         MoverKeys_2 as MoverKeys,
-        MoverKey,
+        MoverKey_2 as MoverKey,
         MoverAPI,
         GroupperTabbabilities,
-        GroupperTabbability,
+        GroupperTabbability_2 as GroupperTabbability,
         GroupperProps,
         Groupper,
         GroupperConstructor,
@@ -1442,13 +1473,13 @@ interface UncontrolledProps {
 export function useActivateModal(): (elementFromModal: HTMLElement | undefined) => void;
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
-    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: Record<string, boolean>;
     memorizeCurrent?: boolean;
     tabbable?: boolean;
     unstable_hasDefault?: boolean;
@@ -1460,16 +1491,16 @@ export function useDangerousNeverHidden_unstable(): {
 };
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: Record<string, boolean>;
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
 // @public
-export function useFocusedElementChange(callback: Types.SubscribableCallback<HTMLElement | undefined, Types.FocusedElementDetail>): void;
+export function useFocusedElementChange(callback: FocusedElementCallback): void;
 
 // @public
 export const useFocusFinders: () => {
@@ -1485,7 +1516,7 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => ObservedRequest;
 
 // @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement | null>;
@@ -1500,12 +1531,12 @@ export function useIsNavigatingWithKeyboard(): () => boolean;
 export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E | null>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]) => Types.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<TabsterDOMAttribute> | null | undefined)[]) => TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
-    modalAttributes: Types.TabsterDOMAttribute;
-    triggerAttributes: Types.TabsterDOMAttribute;
+    modalAttributes: TabsterDOMAttribute;
+    triggerAttributes: TabsterDOMAttribute;
 };
 
 // @public (undocumented)
@@ -1516,26 +1547,26 @@ export interface UseModalAttributesOptions {
     trapFocus?: boolean;
 }
 
-// @public (undocumented)
-export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
+// @public
+export function useObservedElement(name: string | string[]): TabsterDOMAttribute;
 
 // @public
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void;
 
 // @public
-export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
+export function useRestoreFocusSource(): TabsterDOMAttribute;
 
 // @public
-export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
+export function useRestoreFocusTarget(): TabsterDOMAttribute;
 
-// @public (undocumented)
+// @public
 export function useSetKeyboardNavigation(): (isNavigatingWithKeyboard: boolean) => void;
 
 // @internal
-export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
+export const useTabsterAttributes: (config: NavConfig) => TabsterDOMAttribute;
 
 // @public
-export function useUncontrolledFocus(): Types.TabsterDOMAttribute;
+export function useUncontrolledFocus(): TabsterDOMAttribute;
 
 // @public (undocumented)
 interface Visibilities {

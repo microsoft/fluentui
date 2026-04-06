@@ -1,25 +1,10 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
-
+import { createKeyboardDetector, disposeKeyboardDetector, KEYBORG_FOCUSIN } from '../focus-navigation/keyboardDetector';
 import { FOCUS_VISIBLE_ATTR } from './constants';
 
-/**
- * Because `addEventListener` type override falls back to 2nd definition (evt name is unknown string literal)
- * evt is being typed as a base class of MouseEvent -> `Event`.
- * This type is used to override `listener` calls to make TS happy
- */
-type ListenerOverride = (evt: Event) => void;
-
-type FocusVisibleState = {
-  /**
-   * Current element with focus visible in state
-   */
-  current: HTMLElement | undefined;
+type HTMLElementWithFocusVisibleScope = HTMLElement & {
+  focusVisible?: boolean;
 };
-
-type HTMLElementWithFocusVisibleScope = {
-  focusVisible: boolean | undefined;
-} & HTMLElement;
 
 /**
  * @internal
@@ -28,55 +13,53 @@ type HTMLElementWithFocusVisibleScope = {
  */
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void {
   if (alreadyInScope(scope)) {
-    // Focus visible polyfill already applied at this scope
     return () => undefined;
   }
 
-  const state: FocusVisibleState = {
-    current: undefined,
-  };
+  const keyboard = createKeyboardDetector(targetWindow);
 
-  const keyborg = createKeyborg(targetWindow);
+  let current: HTMLElement | undefined;
 
   function registerElementIfNavigating(el: EventTarget | HTMLElement | null) {
-    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el)) {
-      state.current = el;
+    if (keyboard.isNavigatingWithKeyboard() && isHTMLElement(el)) {
+      current = el;
       el.setAttribute(FOCUS_VISIBLE_ATTR, '');
     }
   }
 
   function disposeCurrentElement() {
-    if (state.current) {
-      state.current.removeAttribute(FOCUS_VISIBLE_ATTR);
-      state.current = undefined;
+    if (current) {
+      current.removeAttribute(FOCUS_VISIBLE_ATTR);
+      current = undefined;
     }
   }
 
-  // When navigation mode changes remove the focus-visible selector
-  keyborg.subscribe(isNavigatingWithKeyboard => {
+  // When navigation mode changes, add/remove the focus-visible attribute
+  const keyborgCallback = (isNavigatingWithKeyboard: boolean) => {
     if (!isNavigatingWithKeyboard) {
       disposeCurrentElement();
     } else {
       registerElementIfNavigating(targetWindow.document.activeElement);
     }
-  });
+  };
+  keyboard.subscribe(keyborgCallback);
 
-  // Keyborg's focusin event is delegated so it's only registered once on the window
-  // and contains metadata about the focus event
-  const keyborgListener = (e: KeyborgFocusInEvent) => {
+  // Listen for KEYBORG_FOCUSIN (fired by our keyboardDetector on every focusin
+  // while in keyboard mode) — keeps the same interface as the original polyfill.
+  const keyborgListener = (e: Event) => {
     disposeCurrentElement();
-    const target = e.composedPath()[0];
-    registerElementIfNavigating(target);
+    const target = (e as CustomEvent).composedPath?.()[0] ?? (e as Event).target;
+    registerElementIfNavigating(target as EventTarget);
   };
 
-  // Make sure that when focus leaves the scope, the focus visible class is removed
+  // Make sure that when focus leaves the scope, the attribute is removed
   const blurListener = (e: FocusEvent) => {
     if (!e.relatedTarget || (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget))) {
       disposeCurrentElement();
     }
   };
 
-  scope.addEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
+  scope.addEventListener(KEYBORG_FOCUSIN, keyborgListener);
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
@@ -84,15 +67,13 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
     registerElementIfNavigating(targetWindow.document.activeElement);
   }
 
-  // Return disposer
   return () => {
     disposeCurrentElement();
-
-    scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
+    scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener);
     scope.removeEventListener('focusout', blurListener);
     (scope as HTMLElementWithFocusVisibleScope).focusVisible = undefined;
-
-    disposeKeyborg(keyborg);
+    keyboard.unsubscribe(keyborgCallback);
+    disposeKeyboardDetector(keyboard);
   };
 }
 
@@ -100,10 +81,8 @@ function alreadyInScope(el: HTMLElement | null | undefined): boolean {
   if (!el) {
     return false;
   }
-
   if ((el as HTMLElementWithFocusVisibleScope).focusVisible) {
     return true;
   }
-
-  return alreadyInScope(el?.parentElement);
+  return alreadyInScope(el.parentElement);
 }

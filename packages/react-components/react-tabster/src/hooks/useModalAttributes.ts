@@ -1,17 +1,13 @@
 'use client';
 
-import { getModalizer, getRestorer, RestorerTypes } from 'tabster';
-import type { Types as TabsterTypes } from 'tabster';
-
 import { useId } from '@fluentui/react-utilities';
+import { type TabsterDOMAttribute } from '../focus-navigation/types';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { useTabster } from './useTabster';
-import { DangerousNeverHiddenAttribute } from './useDangerousNeverHidden';
 
 export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
-   * it forbids users to tab out of the focus trap into the actual browser.
+   * It forbids users to tab out of the focus trap into the actual browser.
    */
   trapFocus?: boolean;
 
@@ -25,7 +21,7 @@ export interface UseModalAttributesOptions {
   legacyTrapFocus?: boolean;
 
   /**
-   * Always reachabled in Tab order
+   * Always reachable in Tab order
    */
   alwaysFocusable?: boolean;
 
@@ -35,45 +31,33 @@ export interface UseModalAttributesOptions {
   id?: string;
 }
 
-const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
-  return element.hasAttribute(DangerousNeverHiddenAttribute);
-};
-
-function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
-  getModalizer(tabster, undefined, tabsterAccessibleCheck);
-  getRestorer(tabster);
-}
-
 /**
- * Applies modal dialog behaviour through DOM attributes
- * Modal element will focus trap and hide other content on the page
- * The trigger element will be focused if focus is lost after the modal element is removed
+ * Applies modal dialog behaviour through DOM attributes.
+ * Modal element will focus trap and hide other content on the page.
+ * The trigger element will be focused if focus is lost after the modal element is removed.
  *
  * @returns DOM attributes to apply to the modal element and its trigger
  */
 export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
-): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
+): { modalAttributes: TabsterDOMAttribute; triggerAttributes: TabsterDOMAttribute } => {
   const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
-
-  // Initializes the modalizer and restorer APIs
-  useTabster(initTabsterModules);
-
   const id = useId('modal-', options.id);
+
   const modalAttributes = useTabsterAttributes({
-    restorer: { type: RestorerTypes.Source },
+    restorer: { type: 'source' },
     ...(trapFocus && {
       modalizer: {
         id,
         isOthersAccessible: !trapFocus,
         isAlwaysAccessible: alwaysFocusable,
-        isTrapped: legacyTrapFocus && trapFocus,
+        isTrapped: !!(legacyTrapFocus && trapFocus),
       },
     }),
   });
 
   const triggerAttributes = useTabsterAttributes({
-    restorer: { type: RestorerTypes.Target },
+    restorer: { type: 'target' },
   });
 
   return { modalAttributes, triggerAttributes };

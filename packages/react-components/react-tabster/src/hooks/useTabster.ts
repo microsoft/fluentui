@@ -1,53 +1,24 @@
 'use client';
 
 import * as React from 'react';
-import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
+import {
+  createNavigationManager,
+  disposeNavigationManager,
+  type NavigationManager,
+} from '../focus-navigation/navigationManager';
 
-interface WindowWithTabsterShadowDOMAPI extends Window {
-  __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
-}
+type UseTabsterFactory<FactoryResult> = (manager: NavigationManager) => FactoryResult;
 
-type UseTabsterFactory<FactoryResult> = (tabster: TabsterTypes.TabsterCore) => FactoryResult;
-
-const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabster => {
-  return tabster;
-};
-
-/**
- * Creates a tabster instance with the provided configuration
- *
- * @internal
- * @param targetDocument
- */
-export function createTabsterWithConfig(targetDocument: Document | undefined): TabsterTypes.TabsterCore | undefined {
-  const defaultView = targetDocument?.defaultView || undefined;
-  const shadowDOMAPI = (defaultView as WindowWithTabsterShadowDOMAPI | undefined)?.__tabsterShadowDOMAPI;
-
-  if (defaultView) {
-    return createTabster(defaultView, {
-      autoRoot: {},
-      controlTab: false,
-      getParent,
-      // The non-undefined return value of checkUncontrolledCompletely() dominates the value that the element might
-      // have in its `uncontrolled: { completely: true }` part of the tabster attribute. We must make sure to return
-      // undefined if we want the value from tabster attribute to be respected.
-      checkUncontrolledCompletely: element =>
-        element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
-      DOMAPI: shadowDOMAPI,
-    });
-  }
-}
+const DEFAULT_FACTORY: UseTabsterFactory<NavigationManager> = manager => manager;
 
 /**
- * Tries to get a tabster instance on the current window or creates a new one
- * Since Tabster is single instance only, feel free to call this hook to ensure Tabster exists if necessary
+ * Creates (or reuses) the NavigationManager for the current document.
  *
  * @internal
- * @returns Tabster a ref to core instance or a factory result
  */
-export function useTabster(): React.RefObject<TabsterTypes.TabsterCore | null>;
+export function useTabster(): React.RefObject<NavigationManager | null>;
 export function useTabster<FactoryResult>(
   factory: UseTabsterFactory<FactoryResult>,
 ): React.RefObject<FactoryResult | null>;
@@ -57,22 +28,21 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefO
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
   useIsomorphicLayoutEffect(() => {
-    const tabster = createTabsterWithConfig(targetDocument);
+    const doc = targetDocument;
+    if (!doc) return;
 
-    if (tabster) {
-      factoryResultRef.current = factory(tabster) as FactoryResult;
+    const manager = createNavigationManager(doc);
+    factoryResultRef.current = factory(manager) as FactoryResult;
 
-      return () => {
-        disposeTabster(tabster);
-        factoryResultRef.current = null;
-      };
-    }
+    return () => {
+      disposeNavigationManager(manager);
+      factoryResultRef.current = null;
+    };
   }, [targetDocument, factory]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line
     const previousFactory = usePrevious(factory);
-
     if (previousFactory !== null && previousFactory !== factory) {
       throw new Error(
         [

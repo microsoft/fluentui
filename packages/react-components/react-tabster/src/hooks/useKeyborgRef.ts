@@ -1,32 +1,36 @@
 'use client';
 
 import * as React from 'react';
-import { createKeyborg, disposeKeyborg, type Keyborg } from 'keyborg';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import {
+  createKeyboardDetector,
+  disposeKeyboardDetector,
+  type KeyboardDetector,
+} from '../focus-navigation/keyboardDetector';
 
 /**
- * Instantiates [keyborg](https://github.com/microsoft/keyborg)
+ * Creates (or reuses) the KeyboardDetector for the current window.
+ * Replaces the `keyborg` library.
  *
  * @internal
- * @returns - keyborg instance
+ * @returns ref to the KeyboardDetector instance
  */
-export function useKeyborgRef(): React.RefObject<Keyborg | null> {
+export function useKeyborgRef(): React.RefObject<KeyboardDetector | null> {
   const { targetDocument } = useFluent();
-  const keyborgRef = React.useRef<Keyborg | null>(null);
+  const detectorRef = React.useRef<KeyboardDetector | null>(null);
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
+    if (!targetWindow) return;
 
-    if (targetWindow) {
-      const keyborg = createKeyborg(targetWindow);
-      keyborgRef.current = keyborg;
+    const detector = createKeyboardDetector(targetWindow);
+    detectorRef.current = detector;
 
-      return () => {
-        disposeKeyborg(keyborg);
-        keyborgRef.current = null;
-      };
-    }
+    return () => {
+      disposeKeyboardDetector(detector);
+      detectorRef.current = null;
+    };
   }, [targetDocument]);
 
-  return keyborgRef;
+  return detectorRef;
 }

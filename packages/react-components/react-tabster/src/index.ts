@@ -36,11 +36,18 @@ export type {
 } from './focus/index';
 
 export { applyFocusVisiblePolyfill } from './focus/index';
-import {
-  type Types,
-  type EventsTypes,
-  dispatchGroupperMoveFocusEvent,
-  dispatchMoverMoveFocusEvent,
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+export type { TabsterDOMAttribute } from './focus-navigation/types';
+
+// ---------------------------------------------------------------------------
+// Keyboard navigation events (replacing tabster re-exports)
+// ---------------------------------------------------------------------------
+
+export {
   MoverMoveFocusEventName,
   MoverMoveFocusEvent,
   MoverKeys,
@@ -51,39 +58,34 @@ import {
   MoverMemorizedElementEvent,
   TabsterMoveFocusEventName,
   TabsterMoveFocusEvent,
-} from 'tabster';
+  /** @deprecated Use `element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }))` */
+  dispatchGroupperMoveFocusEvent,
+  /** @deprecated Use `element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown }))` */
+  dispatchMoverMoveFocusEvent,
+} from './focus-navigation/navigationEvents';
 
-export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+export type {
+  MoverMoveFocusEventDetail,
+  GroupperMoveFocusEventDetail,
+  MoverMemorizedElementEventDetail,
+  TabsterMoveFocusEventDetail,
+} from './focus-navigation/navigationEvents';
 
-export type { KeyborgFocusInEvent } from 'keyborg';
-export { KEYBORG_FOCUSIN } from 'keyborg';
+// ---------------------------------------------------------------------------
+// Keyboard detector (replacing keyborg re-exports)
+// ---------------------------------------------------------------------------
 
-// WARNING! ATTENTION! Tabster.Types was exported from here by mistake. To avoid breaking changes,
-// we are putting a snapshot of Tabster.Types@6.0.1 and marking the entire export as deprecated.
+export { KEYBORG_FOCUSIN } from './focus-navigation/keyboardDetector';
+export type { KeyborgFocusInEvent } from './focus-navigation/keyboardDetector';
+
+// ---------------------------------------------------------------------------
+// Deprecated TabsterTypes snapshot — kept to avoid breaking changes.
+// Everything below is deprecated and will be removed in the next major version.
+// ---------------------------------------------------------------------------
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import * as TabsterTypes6_0_1_DoNotUse from './tabster-types-6.0.1-do-not-use';
 export {
-  /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
+  /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.) */
   TabsterTypes6_0_1_DoNotUse as TabsterTypes,
-  /** @deprecated Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape })) */
-  dispatchGroupperMoveFocusEvent,
-  /** @deprecated Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown })) */
-  dispatchMoverMoveFocusEvent,
 };
-
-/**
- * For all exports below, we don't do wildcard exports to keep Tabster API flexible. We export only required
- * parts when they are needed.
- */
-
-export { MoverMoveFocusEventName, MoverMoveFocusEvent, MoverKeys };
-export type MoverMoveFocusEventDetail = EventsTypes.MoverMoveFocusEventDetail;
-
-export { GroupperMoveFocusEventName, GroupperMoveFocusEvent, GroupperMoveFocusActions };
-export type GroupperMoveFocusEventDetail = EventsTypes.GroupperMoveFocusEventDetail;
-
-export { MoverMemorizedElementEventName, MoverMemorizedElementEvent };
-export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElementEventDetail;
-
-export { TabsterMoveFocusEventName, TabsterMoveFocusEvent };
-export type TabsterMoveFocusEventDetail = EventsTypes.TabsterMoveFocusEventDetail;
