@@ -327,19 +327,6 @@ export class BaseTablist extends FASTElement {
 
     this.elementInternals.role = 'tablist';
     this.elementInternals.ariaOrientation = this.orientation ?? TablistOrientation.horizontal;
-
-    this.$fastController.subscribe(
-      {
-        handleChange: (source: any, propertyName: string) => {
-          if (propertyName === 'isConnected') {
-            waitForConnectedDescendants(this, () => {
-              this.setTabs();
-            });
-          }
-        },
-      },
-      'isConnected',
-    );
   }
 
   /**
@@ -348,7 +335,9 @@ export class BaseTablist extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.tabIds = this.getTabIds();
-    this.activeTabIndex = this.getActiveIndex();
+    waitForConnectedDescendants(this, () => {
+      this.tabIds = this.getTabIds();
+      this.setTabs();
+    });
   }
 }
