@@ -3,6 +3,7 @@ import { createMotionComponent, motionTokens } from '@fluentui/react-motion';
 /**
  * Motion component for the Spinner root 360° rotation animation.
  * In reduced motion mode, the duration is slightly longer (1.8s) per the original CSS fallback.
+ * @internal
  */
 export const SpinnerRotation = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '360deg' }],
@@ -25,6 +26,7 @@ const TAIL_ARC_EASING = motionTokens.curveEasyEase;
 /**
  * Motion component for the spinnerTail container rotation.
  * Rotates from -135deg → 0deg → 225deg to sweep the masked arc window.
+ * @internal
  */
 export const SpinnerTailMotion = createMotionComponent({
   keyframes: [{ rotate: '-135deg' }, { rotate: '0deg' }, { rotate: '225deg' }],
@@ -40,6 +42,7 @@ export const SpinnerTailMotion = createMotionComponent({
 /**
  * Motion component for the first arc segment (was ::before).
  * Expands from 0deg → 105deg then collapses back to 0deg.
+ * @internal
  */
 export const SpinnerArcStartMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '105deg' }, { rotate: '0deg' }],
@@ -55,6 +58,7 @@ export const SpinnerArcStartMotion = createMotionComponent({
 /**
  * Motion component for the second arc segment (was ::after).
  * Expands from 0deg → 225deg then collapses back to 0deg.
+ * @internal
  */
 export const SpinnerArcEndMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '225deg' }, { rotate: '0deg' }],
