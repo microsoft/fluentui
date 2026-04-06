@@ -1,16 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  Body1,
-  createMotionComponent,
-  makeStyles,
-  motionTokens,
-  Spinner,
-  Subtitle2,
-  Switch,
-  Text,
-  tokens,
-} from '@fluentui/react-components';
+import { Body1, makeStyles, Spinner, Subtitle2, Switch, Text, tokens } from '@fluentui/react-components';
 
 // Distinct colors for each motion slot
 const colors = {
@@ -19,37 +9,6 @@ const colors = {
   leadArc: '#107c10',
   trailArc: '#a333c8',
 };
-
-// Slow (0.5x speed) motion variants — double the default 1500ms duration
-const SLOW_DURATION = 3000;
-
-const SlowRotation = createMotionComponent({
-  keyframes: [{ rotate: '0deg' }, { rotate: '360deg' }],
-  duration: SLOW_DURATION,
-  iterations: Infinity,
-  easing: motionTokens.curveLinear,
-});
-
-const SlowTailMotion = createMotionComponent({
-  keyframes: [{ rotate: '-135deg' }, { rotate: '0deg' }, { rotate: '225deg' }],
-  duration: SLOW_DURATION,
-  iterations: Infinity,
-  easing: motionTokens.curveEasyEase,
-});
-
-const SlowLeadArcMotion = createMotionComponent({
-  keyframes: [{ rotate: '0deg' }, { rotate: '105deg' }, { rotate: '0deg' }],
-  duration: SLOW_DURATION,
-  iterations: Infinity,
-  easing: motionTokens.curveEasyEase,
-});
-
-const SlowTrailArcMotion = createMotionComponent({
-  keyframes: [{ rotate: '0deg' }, { rotate: '225deg' }, { rotate: '0deg' }],
-  duration: SLOW_DURATION,
-  iterations: Infinity,
-  easing: motionTokens.curveEasyEase,
-});
 
 const useStyles = makeStyles({
   container: {
@@ -89,12 +48,6 @@ const useStyles = makeStyles({
   },
 });
 
-// Helper to create a motion slot override that uses a slow motion component
-const slowSlot = (SlowComponent: React.ComponentType<{ children: JSXElement }>) => ({
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  children: (_: unknown, motionProps: Record<string, unknown>) => <SlowComponent {...motionProps} />,
-});
-
 /**
  * A "slots breakdown" of the Spinner, progressively building up from static structure to full animation.
  */
@@ -102,11 +55,11 @@ export const SlotsBreakdown = (): JSXElement => {
   const styles = useStyles();
   const [halfSpeed, setHalfSpeed] = React.useState(true);
 
-  // When halfSpeed is true, override motion slots with slow variants; otherwise use defaults (undefined)
-  const rotation = halfSpeed ? slowSlot(SlowRotation) : undefined;
-  const tail = halfSpeed ? slowSlot(SlowTailMotion) : undefined;
-  const leadArc = halfSpeed ? slowSlot(SlowLeadArcMotion) : undefined;
-  const trailArc = halfSpeed ? slowSlot(SlowTrailArcMotion) : undefined;
+  // When halfSpeed is true, override motion duration to 2× (0.5× speed); otherwise use defaults.
+  // The children render function is the slot API for passing custom props to the motion component.
+  const variableSpeed:
+    | { children: (Motion: React.ElementType, props: Record<string, unknown>) => JSXElement }
+    | undefined = halfSpeed ? { children: (Motion, props) => <Motion {...props} duration={3000} /> } : undefined;
 
   return (
     <div className={styles.container}>
@@ -238,7 +191,7 @@ export const SlotsBreakdown = (): JSXElement => {
               spinner={{ style: { color: colors.leadArc } }}
               rotationMotion={null}
               tailMotion={null}
-              leadArcMotion={leadArc}
+              leadArcMotion={variableSpeed}
               trailArcMotion={null}
             />
           </div>
@@ -262,7 +215,7 @@ export const SlotsBreakdown = (): JSXElement => {
               rotationMotion={null}
               tailMotion={null}
               leadArcMotion={null}
-              trailArcMotion={trailArc}
+              trailArcMotion={variableSpeed}
             />
           </div>
           <div className={styles.text}>
@@ -283,7 +236,7 @@ export const SlotsBreakdown = (): JSXElement => {
               size="extra-large"
               spinner={{ style: { color: colors.tail } }}
               rotationMotion={null}
-              tailMotion={tail}
+              tailMotion={variableSpeed}
               leadArcMotion={null}
               trailArcMotion={null}
             />
@@ -306,7 +259,7 @@ export const SlotsBreakdown = (): JSXElement => {
               size="extra-large"
               spinner={{ className: styles.dashedRing, style: { color: colors.rotation } }}
               spinnerTail={{ style: { opacity: 0 } }}
-              rotationMotion={rotation}
+              rotationMotion={variableSpeed}
               tailMotion={null}
               leadArcMotion={null}
               trailArcMotion={null}
@@ -335,7 +288,7 @@ export const SlotsBreakdown = (): JSXElement => {
               size="extra-large"
               rotationMotion={null}
               tailMotion={null}
-              leadArcMotion={leadArc}
+              leadArcMotion={variableSpeed}
               trailArcMotion={null}
             />
           </div>
@@ -356,8 +309,8 @@ export const SlotsBreakdown = (): JSXElement => {
               size="extra-large"
               rotationMotion={null}
               tailMotion={null}
-              leadArcMotion={leadArc}
-              trailArcMotion={trailArc}
+              leadArcMotion={variableSpeed}
+              trailArcMotion={variableSpeed}
             />
           </div>
           <div className={styles.text}>
@@ -376,9 +329,9 @@ export const SlotsBreakdown = (): JSXElement => {
               key={`comp3-${halfSpeed}`}
               size="extra-large"
               rotationMotion={null}
-              tailMotion={tail}
-              leadArcMotion={leadArc}
-              trailArcMotion={trailArc}
+              tailMotion={variableSpeed}
+              leadArcMotion={variableSpeed}
+              trailArcMotion={variableSpeed}
             />
           </div>
           <div className={styles.text}>
@@ -396,10 +349,10 @@ export const SlotsBreakdown = (): JSXElement => {
             <Spinner
               key={`comp4-${halfSpeed}`}
               size="extra-large"
-              rotationMotion={rotation}
-              tailMotion={tail}
-              leadArcMotion={leadArc}
-              trailArcMotion={trailArc}
+              rotationMotion={variableSpeed}
+              tailMotion={variableSpeed}
+              leadArcMotion={variableSpeed}
+              trailArcMotion={variableSpeed}
             />
           </div>
           <div className={styles.text}>
