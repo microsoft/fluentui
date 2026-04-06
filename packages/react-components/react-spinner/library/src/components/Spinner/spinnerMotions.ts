@@ -26,14 +26,14 @@ export const SpinnerRotation = createMotionComponent<{ duration?: number; easing
   }),
 );
 
-export const SpinnerRotation2 = createMotionComponentVariant(Rotate.In, {
-  duration: SPINNER_DURATION,
-  easing: motionTokens.curveLinear,
-  iterations: Infinity,
-  reducedMotion: {
-    duration: 1800,
-  },
-});
+// export const SpinnerRotation2 = createMotionComponentVariant(Rotate.In, {
+//   duration: SPINNER_DURATION,
+//   easing: motionTokens.curveLinear,
+//   iterations: Infinity,
+//   reducedMotion: {
+//     duration: 1800,
+//   },
+// });
 
 /**
  * Motion component for the spinnerTail container rotation.
