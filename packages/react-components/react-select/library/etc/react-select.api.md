@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -13,10 +14,16 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSelect_unstable: (state: SelectState) => JSXElement;
+export const renderSelect_unstable: (state: SelectBaseState) => JSXElement;
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
+
+// @public (undocumented)
+export type SelectBaseProps = DistributiveOmit<SelectProps, 'appearance' | 'size'>;
+
+// @public (undocumented)
+export type SelectBaseState = DistributiveOmit<SelectState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
@@ -45,6 +52,9 @@ export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProp
 
 // @public
 export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
+
+// @public
+export const useSelectBase_unstable: (props: SelectBaseProps, ref: React_2.Ref<HTMLSelectElement>) => SelectBaseState;
 
 // @public
 export const useSelectStyles_unstable: (state: SelectState) => SelectState;

@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
+import type {
+  InteractionTagPrimaryBaseProps,
+  InteractionTagPrimaryBaseState,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimaryState,
+} from './InteractionTagPrimary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
 const avatarSizeMap = {
@@ -17,27 +22,21 @@ const avatarShapeMap = {
 } as const;
 
 /**
- * Create the state required to render InteractionTagPrimary.
- *
- * The returned state can be modified with hooks such as useInteractionTagPrimaryStyles_unstable,
- * before being passed to renderInteractionTagPrimary_unstable.
+ * Create the base state required to render InteractionTagPrimary, without design-only props.
  *
  * @param props - props from this instance of InteractionTagPrimary
  * @param ref - reference to root HTMLButtonElement of InteractionTagPrimary
  */
-export const useInteractionTagPrimary_unstable = (
-  props: InteractionTagPrimaryProps,
+export const useInteractionTagPrimaryBase_unstable = (
+  props: InteractionTagPrimaryBaseProps,
   ref: React.Ref<HTMLButtonElement>,
-): InteractionTagPrimaryState => {
+): InteractionTagPrimaryBaseState => {
   const {
-    appearance,
     disabled,
     handleTagSelect,
     interactionTagPrimaryId,
     selected: contextSelected,
     selectedValues,
-    shape,
-    size,
     value,
   } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
@@ -49,14 +48,9 @@ export const useInteractionTagPrimary_unstable = (
   );
 
   return {
-    appearance,
-    avatarShape: avatarShapeMap[shape],
-    avatarSize: avatarSizeMap[size],
     disabled,
     hasSecondaryAction,
     selected: contextSelected,
-    shape,
-    size,
 
     components: {
       root: 'button',
@@ -88,5 +82,30 @@ export const useInteractionTagPrimary_unstable = (
       elementType: 'span',
     }),
     secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
+  };
+};
+
+/**
+ * Create the state required to render InteractionTagPrimary.
+ *
+ * The returned state can be modified with hooks such as useInteractionTagPrimaryStyles_unstable,
+ * before being passed to renderInteractionTagPrimary_unstable.
+ *
+ * @param props - props from this instance of InteractionTagPrimary
+ * @param ref - reference to root HTMLButtonElement of InteractionTagPrimary
+ */
+export const useInteractionTagPrimary_unstable = (
+  props: InteractionTagPrimaryProps,
+  ref: React.Ref<HTMLButtonElement>,
+): InteractionTagPrimaryState => {
+  const { appearance, shape, size } = useInteractionTagContext_unstable();
+
+  return {
+    ...useInteractionTagPrimaryBase_unstable(props, ref),
+    appearance,
+    avatarShape: avatarShapeMap[shape],
+    avatarSize: avatarSizeMap[size],
+    shape,
+    size,
   };
 };

@@ -64,3 +64,13 @@ export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
     handleTagSelect?: TagSelectHandler<Value>;
     role?: React.AriaRole;
   };
+
+/**
+ * TagGroup Base Props - omits design-only props
+ */
+export type TagGroupBaseProps<Value = TagValue> = Omit<TagGroupProps<Value>, 'appearance' | 'size'>;
+
+/**
+ * TagGroup Base State - omits design-only state
+ */
+export type TagGroupBaseState<Value = TagValue> = Omit<TagGroupState<Value>, 'appearance' | 'size'>;

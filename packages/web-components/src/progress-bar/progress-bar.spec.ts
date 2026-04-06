@@ -121,45 +121,39 @@ test.describe('Progress Bar', () => {
     await expect(indicator).toHaveCSS('width', '0px');
   });
 
-  test('should set the `thickness` property to match the `thickness` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const thickness of Object.values(ProgressBarThickness)) {
+    test(`should set the \`thickness\` property to \`${thickness}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const thickness of Object.values(ProgressBarThickness)) {
-      await test.step(thickness, async () => {
-        await fastPage.setTemplate({ attributes: { thickness } });
+      await fastPage.setTemplate({ attributes: { thickness } });
 
-        await expect(element).toHaveAttribute('thickness', thickness);
+      await expect(element).toHaveAttribute('thickness', thickness);
 
-        await expect(element).toHaveJSProperty('thickness', thickness);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('thickness', thickness);
+    });
+  }
 
-  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const shape of Object.values(ProgressBarShape)) {
+    test(`should set the \`shape\` property to \`${shape}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const shape of Object.values(ProgressBarShape)) {
-      await test.step(shape, async () => {
-        await fastPage.setTemplate({ attributes: { shape } });
+      await fastPage.setTemplate({ attributes: { shape } });
 
-        await expect(element).toHaveAttribute('shape', shape);
+      await expect(element).toHaveAttribute('shape', shape);
 
-        await expect(element).toHaveJSProperty('shape', shape);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('shape', shape);
+    });
+  }
 
-  test('should set the `validationState` property to match the `validation-state` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const validationState of Object.values(ProgressBarValidationState)) {
+    test(`should set the \`validationState\` property to \`${validationState}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const validationState of Object.values(ProgressBarValidationState)) {
-      await test.step(validationState, async () => {
-        await fastPage.setTemplate({ attributes: { 'validation-state': validationState } });
+      await fastPage.setTemplate({ attributes: { 'validation-state': validationState } });
 
-        await expect(element).toHaveAttribute('validation-state', validationState);
+      await expect(element).toHaveAttribute('validation-state', validationState);
 
-        await expect(element).toHaveJSProperty('validationState', validationState);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('validationState', validationState);
+    });
+  }
 });

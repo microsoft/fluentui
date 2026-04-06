@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 /**
  * The props added to the control inside the Field.
@@ -110,6 +110,10 @@ export type FieldState = ComponentState<Required<FieldSlots>> &
      */
     generatedControlId: string;
   };
+
+export type FieldBaseProps = DistributiveOmit<FieldProps, 'orientation' | 'size'>;
+
+export type FieldBaseState = DistributiveOmit<FieldState, 'orientation' | 'size'>;
 
 export type FieldContextValue = Readonly<
   Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {

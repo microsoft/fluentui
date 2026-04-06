@@ -112,7 +112,7 @@ function loadWorkspaceAddon(addonName, options) {
   // absolute path needs to be always posix, non posix will explode in module resolution
   const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
-  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
+  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}(-commonjs)?`, 'g');
   const presetConfigRegex = /const\s+([a-z]+)\s+=\s+require\('([a-z/.]+)\/preset'\)/i;
   const presetApiRegex = /module\.exports\s+=\s+({).+}/;
   const presetApiPathRegex = /(\/manager|\/preview)/g;

@@ -22,11 +22,11 @@ describe('useMenuGrid_unstable', () => {
 
     beforeEach(() => {
       rows = [
-        { textContent: 'Apple', focus: jest.fn(), hasAttribute: () => true, getAttribute: () => 'row' },
-        { textContent: 'Banana', focus: jest.fn(), hasAttribute: () => true, getAttribute: () => 'row' },
-        { textContent: 'Cherry', focus: jest.fn(), hasAttribute: () => true, getAttribute: () => 'row' },
-        { textContent: 'Apricot', focus: jest.fn(), hasAttribute: () => true, getAttribute: () => 'row' },
-        { textContent: 'Date', focus: jest.fn(), hasAttribute: () => true, getAttribute: () => 'row' },
+        { textContent: 'Apple', focus: jest.fn(), role: 'row' },
+        { textContent: 'Banana', focus: jest.fn(), role: 'row' },
+        { textContent: 'Cherry', focus: jest.fn(), role: 'row' },
+        { textContent: 'Apricot', focus: jest.fn(), role: 'row' },
+        { textContent: 'Date', focus: jest.fn(), role: 'row' },
       ];
 
       (useFocusFinders as jest.Mock).mockReturnValue({
@@ -37,7 +37,7 @@ describe('useMenuGrid_unstable', () => {
     const createEvent = (key: string, target?: Record<string, unknown>): React.KeyboardEvent<HTMLElement> =>
       ({
         key,
-        target: target ?? { hasAttribute: () => true, getAttribute: () => 'row' },
+        target: target ?? { role: 'row' },
       } as unknown as React.KeyboardEvent<HTMLElement>);
 
     it('should focus the next row matching the pressed character', () => {
@@ -97,7 +97,7 @@ describe('useMenuGrid_unstable', () => {
 
     it('should not apply first-letter navigation when event target is not a row', () => {
       const current = rows[0]; // Apple
-      const nonRowTarget = { hasAttribute: () => true, getAttribute: () => 'gridcell' };
+      const nonRowTarget = { role: 'gridcell' };
 
       const { result } = renderHook(() => useMenuGrid_unstable({}, React.createRef()));
       (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));

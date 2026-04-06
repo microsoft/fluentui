@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 03 Mar 2026 09:43:43 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.0)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.9.3..@fluentui/react-tooltip_v9.10.0)
+
+### Minor changes
+
+- feat: expose base hooks for Tooltip ([PR #35904](https://github.com/microsoft/fluentui/pull/35904) by dmytrokirpa@microsoft.com)
 
 ## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.9.3)
 

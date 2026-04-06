@@ -15,6 +15,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
+// @public
+export type LabelBaseProps = Omit<LabelProps, 'size' | 'weight'>;
+
+// @public
+export type LabelBaseState = Omit<LabelState, 'size' | 'weight'>;
+
 // @public (undocumented)
 export const labelClassNames: SlotClassNames<LabelSlots>;
 
@@ -36,10 +42,13 @@ export type LabelSlots = {
 export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;
 
 // @public
-export const renderLabel_unstable: (state: LabelState) => JSXElement;
+export const renderLabel_unstable: (state: LabelBaseState) => JSXElement;
 
 // @public
 export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+
+// @public
+export const useLabelBase_unstable: (props: LabelBaseProps, ref: React_2.Ref<HTMLLabelElement>) => LabelBaseState;
 
 // @public
 export const useLabelStyles_unstable: (state: LabelState) => LabelState;

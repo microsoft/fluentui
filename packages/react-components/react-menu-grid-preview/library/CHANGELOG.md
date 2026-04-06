@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.0)
+
+Wed, 01 Apr 2026 15:52:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.4.1..@fluentui/react-menu-grid-preview_v0.5.0)
+
+### Minor changes
+
+- Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+- Fix: Correct type for content prop in MenuGridItem ([PR #35939](https://github.com/microsoft/fluentui/pull/35939) by email not defined)
+- Bump @fluentui/react-menu to v9.24.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+- Bump @fluentui/react-table to v9.19.14 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.4.1)
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:39 GMT",
+      "tag": "@fluentui/react-checkbox_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b5fd7a7d9180fefbc2ca46789f246a571a6c72b3",
+            "comment": "feat: add base hooks for Checkbox"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.4.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Mar 2026 08:12:49 GMT",
       "tag": "@fluentui/react-checkbox_v9.5.17",
       "version": "9.5.17",

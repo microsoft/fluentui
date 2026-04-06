@@ -2,6 +2,21 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:43 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.138",
+      "version": "9.0.0-beta.138",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.11.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2026 14:37:41 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.137",
       "version": "9.0.0-beta.137",

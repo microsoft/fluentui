@@ -1,4 +1,4 @@
-import { type ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import type { RadioGroup } from './radio-group.js';
 
 export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<T> {
@@ -11,7 +11,7 @@ export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<
       @focusin="${(x, c) => x.focusinHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
-      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event as Event)}"></slot>
+      <slot ${slotted('slottedRadios')}></slot>
     </template>
   `;
 }

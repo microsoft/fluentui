@@ -61,23 +61,17 @@ export function waitForConnectedDescendants(
   callback: () => void,
   options?: { shallow?: boolean; timeout?: number },
 ): void {
-  let idleCallbackId: ReturnType<typeof requestIdleCallback> | undefined;
   const shallow = options?.shallow ?? false;
-  const query = `${shallow ? ':scope > ' : ''}:not(:defined)`;
   const timeout = options?.timeout ?? 50;
+  const selector = `${shallow ? ':scope > ' : ''}:not(:defined)`;
 
   const scheduleCheck = (deadline?: IdleDeadline) => {
-    if (idleCallbackId) {
-      cancelIdleCallback(idleCallbackId);
-      idleCallbackId = undefined;
-    }
-
-    if (!target.querySelector(query) || (deadline && deadline.timeRemaining() <= 0)) {
-      callback();
+    if (target.querySelector(selector) === null || (deadline && deadline.timeRemaining() <= 0)) {
+      requestAnimationFrame(callback);
       return;
     }
 
-    idleCallbackId = requestIdleCallback(scheduleCheck, { timeout });
+    requestIdleCallback(scheduleCheck, { timeout });
   };
 
   scheduleCheck();

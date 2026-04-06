@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: optimize identifier tracking in enforce-use-client rule",
-  "packageName": "@fluentui/eslint-plugin-react-components",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Mon, 30 Mar 2026 14:37:40 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.5.0)
+
+Wed, 01 Apr 2026 15:52:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.4.17..@fluentui/react-progress_v9.5.0)
+
+### Minor changes
+
+- feat: add base hooks for ProgressBar ([PR #35817](https://github.com/microsoft/fluentui/pull/35817) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
 
 ## [9.4.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.17)
 
