@@ -50,7 +50,27 @@ export class BaseTextArea extends FASTElement {
    * The `<textarea>` element.
    * @internal
    */
+  @observable
   public controlEl!: HTMLTextAreaElement;
+
+  /**
+   * Sets up a mutation observer to watch for changes to the control element's
+   * attributes that could affect validity, and binds an input event listener to detect user interaction.
+   *
+   * @internal
+   */
+  protected controlElChanged() {
+    this.controlElAttrObserver = new MutationObserver(() => {
+      this.setValidity();
+    });
+
+    this.controlElAttrObserver.observe(this.controlEl, {
+      attributes: true,
+      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
+    });
+
+    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
+  }
 
   /**
    * @internal
@@ -244,6 +264,10 @@ export class BaseTextArea extends FASTElement {
   public readOnly = false;
   protected readOnlyChanged() {
     this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+
+    if (this.$fastController.isConnected) {
+      this.setValidity();
+    }
   }
 
   /**
@@ -399,11 +423,25 @@ export class BaseTextArea extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setDefaultValue();
-    this.maybeCreateAutoSizerEl();
+    requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
 
-    this.bindEvents();
-    this.observeControlElAttrs();
+      const preConnect = this.preConnectControlEl;
+      const content = this.getContent();
+
+      this.defaultValue = content || preConnect?.defaultValue || '';
+      this.value = preConnect?.value || this.defaultValue;
+      this.setFormValue(this.value);
+      this.setValidity();
+      this.preConnectControlEl = null;
+
+      this.maybeCreateAutoSizerEl();
+    });
   }
 
   /**
@@ -513,20 +551,6 @@ export class BaseTextArea extends FASTElement {
     this.controlEl.select();
   }
 
-  private setDefaultValue() {
-    this.defaultValue = this.innerHTML.trim() || this.preConnectControlEl!.defaultValue || '';
-    this.value = this.preConnectControlEl!.value || this.defaultValue;
-
-    this.setFormValue(this.value);
-    this.setValidity();
-
-    this.preConnectControlEl = null;
-  }
-
-  private bindEvents() {
-    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
-  }
-
   /**
    * Gets the content inside the light DOM, if any HTML element is present, use its `outerHTML` value.
    */
@@ -545,16 +569,6 @@ export class BaseTextArea extends FASTElement {
         })
         .join('') || ''
     );
-  }
-
-  private observeControlElAttrs() {
-    this.controlElAttrObserver = new MutationObserver(() => {
-      this.setValidity();
-    });
-    this.controlElAttrObserver.observe(this.controlEl, {
-      attributes: true,
-      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
-    });
   }
 
   private setDisabledSideEffect(disabled: boolean) {
