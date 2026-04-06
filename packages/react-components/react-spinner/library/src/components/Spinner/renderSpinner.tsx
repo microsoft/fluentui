@@ -19,8 +19,8 @@ export const renderSpinner_unstable = (state: SpinnerBaseState): JSXElement => {
   // Fall back to React.Fragment so the JSX structure stays intact without the animation.
   const RotationMotion = state.rotationMotion ?? React.Fragment;
   const TailMotion = state.tailMotion ?? React.Fragment;
-  const ArcStartMotion = state.arcStartMotion ?? React.Fragment;
-  const ArcEndMotion = state.arcEndMotion ?? React.Fragment;
+  const LeadArcMotion = state.leadArcMotion ?? React.Fragment;
+  const TrailArcMotion = state.trailArcMotion ?? React.Fragment;
 
   return (
     <state.root>
@@ -33,12 +33,12 @@ export const renderSpinner_unstable = (state: SpinnerBaseState): JSXElement => {
             {state.spinnerTail && (
               <TailMotion>
                 <state.spinnerTail>
-                  <ArcStartMotion>
+                  <LeadArcMotion>
                     <span className={arcClassName} />
-                  </ArcStartMotion>
-                  <ArcEndMotion>
+                  </LeadArcMotion>
+                  <TrailArcMotion>
                     <span className={arcClassName} />
-                  </ArcEndMotion>
+                  </TrailArcMotion>
                 </state.spinnerTail>
               </TailMotion>
             )}

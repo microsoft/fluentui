@@ -27,7 +27,7 @@ export type SpinnerBaseProps = Omit<SpinnerProps, 'appearance' | 'size'>;
 export type SpinnerBaseState = Omit<SpinnerState, 'appearance' | 'size'>;
 
 // @public (undocumented)
-export const spinnerClassNames: SlotClassNames<Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'arcStartMotion' | 'arcEndMotion'>>;
+export const spinnerClassNames: SlotClassNames<Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'leadArcMotion' | 'trailArcMotion'>>;
 
 // @internal (undocumented)
 export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;
@@ -51,8 +51,8 @@ export type SpinnerSlots = {
     label?: Slot<typeof Label>;
     rotationMotion?: Slot<MotionSlotProps>;
     tailMotion?: Slot<MotionSlotProps>;
-    arcStartMotion?: Slot<MotionSlotProps>;
-    arcEndMotion?: Slot<MotionSlotProps>;
+    leadArcMotion?: Slot<MotionSlotProps>;
+    trailArcMotion?: Slot<MotionSlotProps>;
 };
 
 // @public

@@ -7,7 +7,7 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
 export const spinnerClassNames: SlotClassNames<
-  Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'arcStartMotion' | 'arcEndMotion'>
+  Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'leadArcMotion' | 'trailArcMotion'>
 > = {
   root: 'fui-Spinner',
   spinner: 'fui-Spinner__spinner',
@@ -89,7 +89,7 @@ const useSpinnerTailBaseClassName = makeResetStyles({
 
 // Styles for the arc span elements (replacing the ::before/::after pseudo-elements).
 // Both arc elements share identical base styles; their different rotation animations
-// are handled by SpinnerArcStartMotion and SpinnerArcEndMotion respectively.
+// are handled by SpinnerLeadArcMotion and SpinnerTrailArcMotion respectively.
 const useSpinnerTailArcBaseClassName = makeResetStyles({
   position: 'absolute',
   display: 'block',

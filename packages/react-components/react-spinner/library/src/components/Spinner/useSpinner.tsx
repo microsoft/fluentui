@@ -6,7 +6,7 @@ import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/rea
 import type { SpinnerBaseProps, SpinnerBaseState, SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
-import { SpinnerRotation, SpinnerTailMotion, SpinnerArcStartMotion, SpinnerArcEndMotion } from './spinnerMotions';
+import { SpinnerRotation, SpinnerTailMotion, SpinnerLeadArcMotion, SpinnerTrailArcMotion } from './spinnerMotions';
 
 /**
  * Create the state required to render Spinner.
@@ -101,8 +101,8 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
       // 4 motion slots comprise the full spinner animation, which can be customized or disabled via props
       rotationMotion: SpinnerRotation,
       tailMotion: SpinnerTailMotion,
-      arcStartMotion: SpinnerArcStartMotion,
-      arcEndMotion: SpinnerArcEndMotion,
+      leadArcMotion: SpinnerLeadArcMotion,
+      trailArcMotion: SpinnerTrailArcMotion,
     },
     root: nativeRoot,
     spinner: spinnerShortHand,
@@ -116,12 +116,12 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
       elementType: SpinnerTailMotion,
       defaultProps: {},
     }),
-    arcStartMotion: motionSlot(props.arcStartMotion, {
-      elementType: SpinnerArcStartMotion,
+    leadArcMotion: motionSlot(props.leadArcMotion, {
+      elementType: SpinnerLeadArcMotion,
       defaultProps: {},
     }),
-    arcEndMotion: motionSlot(props.arcEndMotion, {
-      elementType: SpinnerArcEndMotion,
+    trailArcMotion: motionSlot(props.trailArcMotion, {
+      elementType: SpinnerTrailArcMotion,
       defaultProps: {},
     }),
   };

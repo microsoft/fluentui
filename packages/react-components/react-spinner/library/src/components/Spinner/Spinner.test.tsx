@@ -66,7 +66,7 @@ describe('Spinner', () => {
       const result = render(<Spinner />);
       const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
 
-      // Two arc spans: one for arcStart and one for arcEnd
+      // Two arc spans: one for leadArc and one for trailArc
       expect(arcElements).toHaveLength(2);
     });
 
@@ -91,15 +91,15 @@ describe('Spinner', () => {
       expect(arcElements).toHaveLength(2);
     });
 
-    it('renders correctly when arcStartMotion is null', () => {
-      const result = render(<Spinner arcStartMotion={null} />);
+    it('renders correctly when leadArcMotion is null', () => {
+      const result = render(<Spinner leadArcMotion={null} />);
 
       const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
       expect(arcElements).toHaveLength(2);
     });
 
-    it('renders correctly when arcEndMotion is null', () => {
-      const result = render(<Spinner arcEndMotion={null} />);
+    it('renders correctly when trailArcMotion is null', () => {
+      const result = render(<Spinner trailArcMotion={null} />);
 
       const arcElements = result.container.querySelectorAll(`.${spinnerTailArcClassNames.arc}`);
       expect(arcElements).toHaveLength(2);
@@ -107,7 +107,7 @@ describe('Spinner', () => {
 
     it('renders correctly when all motion slots are null', () => {
       const result = render(
-        <Spinner rotationMotion={null} tailMotion={null} arcStartMotion={null} arcEndMotion={null} />,
+        <Spinner rotationMotion={null} tailMotion={null} leadArcMotion={null} trailArcMotion={null} />,
       );
 
       const spinnerEl = result.container.querySelector(`.${spinnerClassNames.spinner}`);

@@ -35,14 +35,14 @@ export type SpinnerSlots = {
   tailMotion?: Slot<MotionSlotProps>;
 
   /**
-   * Motion slot for the first arc segment animation. Pass `null` to disable.
+   * Motion slot for the leading arc segment animation. Pass `null` to disable.
    */
-  arcStartMotion?: Slot<MotionSlotProps>;
+  leadArcMotion?: Slot<MotionSlotProps>;
 
   /**
-   * Motion slot for the second arc segment animation. Pass `null` to disable.
+   * Motion slot for the trailing arc segment animation. Pass `null` to disable.
    */
-  arcEndMotion?: Slot<MotionSlotProps>;
+  trailArcMotion?: Slot<MotionSlotProps>;
 };
 
 /**

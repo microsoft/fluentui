@@ -30,7 +30,7 @@ const DreamyTailMotion = createMotionComponent({
 });
 
 // Custom arc-start animation synced to the slower 3000ms timing.
-const DreamyArcStartMotion = createMotionComponent({
+const DreamyLeadArcMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '105deg' }, { rotate: '0deg' }],
   duration: 3000,
   iterations: Infinity,
@@ -43,7 +43,7 @@ const DreamyArcStartMotion = createMotionComponent({
 });
 
 // Custom arc-end animation synced to the slower 3000ms timing.
-const DreamyArcEndMotion = createMotionComponent({
+const DreamyTrailArcMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '225deg' }, { rotate: '0deg' }],
   duration: 3000,
   iterations: Infinity,
@@ -64,11 +64,11 @@ export const MotionCustom = (): JSXElement => (
     tailMotion={{
       children: (_, motionProps) => <DreamyTailMotion {...motionProps} />,
     }}
-    arcStartMotion={{
-      children: (_, motionProps) => <DreamyArcStartMotion {...motionProps} />,
+    leadArcMotion={{
+      children: (_, motionProps) => <DreamyLeadArcMotion {...motionProps} />,
     }}
-    arcEndMotion={{
-      children: (_, motionProps) => <DreamyArcEndMotion {...motionProps} />,
+    trailArcMotion={{
+      children: (_, motionProps) => <DreamyTrailArcMotion {...motionProps} />,
     }}
   />
 );
@@ -77,7 +77,7 @@ MotionCustom.parameters = {
   docs: {
     description: {
       story:
-        'The spinner animations can be customized using the [Motion APIs](?path=/docs/motion-apis-createmotioncomponent--docs), together with the `rotationMotion`, `tailMotion`, `arcStartMotion`, and `arcEndMotion` slots. This example replaces all four motion slots with slower, smoother variants that use `curveEasyEaseMax` easing for a "dreamy" feel. Passing `null` to any motion slot disables that part of the animation.',
+        'The spinner animations can be customized using the [Motion APIs](?path=/docs/motion-apis-createmotioncomponent--docs), together with the `rotationMotion`, `tailMotion`, `leadArcMotion`, and `trailArcMotion` slots. This example replaces all four motion slots with slower, smoother variants that use `curveEasyEaseMax` easing for a "dreamy" feel. Passing `null` to any motion slot disables that part of the animation.',
     },
   },
 };

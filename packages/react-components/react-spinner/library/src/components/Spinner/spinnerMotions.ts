@@ -40,11 +40,11 @@ export const SpinnerTailMotion = createMotionComponent({
 });
 
 /**
- * Motion component for the first arc segment (was ::before).
+ * Motion component for the leading arc segment (was ::before).
  * Expands from 0deg → 105deg then collapses back to 0deg.
  * @internal
  */
-export const SpinnerArcStartMotion = createMotionComponent({
+export const SpinnerLeadArcMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '105deg' }, { rotate: '0deg' }],
   duration: TAIL_ARC_DURATION,
   iterations: Infinity,
@@ -56,11 +56,11 @@ export const SpinnerArcStartMotion = createMotionComponent({
 });
 
 /**
- * Motion component for the second arc segment (was ::after).
+ * Motion component for the trailing arc segment (was ::after).
  * Expands from 0deg → 225deg then collapses back to 0deg.
  * @internal
  */
-export const SpinnerArcEndMotion = createMotionComponent({
+export const SpinnerTrailArcMotion = createMotionComponent({
   keyframes: [{ rotate: '0deg' }, { rotate: '225deg' }, { rotate: '0deg' }],
   duration: TAIL_ARC_DURATION,
   iterations: Infinity,
