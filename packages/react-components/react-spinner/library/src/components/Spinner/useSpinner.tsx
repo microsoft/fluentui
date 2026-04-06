@@ -98,6 +98,7 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
       spinner: 'span',
       spinnerTail: 'span',
       label: Label,
+      // 4 motion slots comprise the full spinner animation, which can be customized or disabled via props
       rotationMotion: SpinnerRotation,
       tailMotion: SpinnerTailMotion,
       arcStartMotion: SpinnerArcStartMotion,
