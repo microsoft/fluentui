@@ -1,14 +1,9 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { uniqueId, wrapInBounds } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '@microsoft/fast-web-utilities';
 import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
-import { swapStates, toggleState } from '../utils/element-internals.js';
-import { isFocusableElement } from '../utils/focusable-element.js';
 import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
-import { isFocusableElement } from '../utils/focusable-element.js';
-import { getDirection } from '../utils/index.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
@@ -91,7 +86,7 @@ export class BaseTablist extends FASTElement {
   /** @internal */
   @observable
   public tabs: Tab[] = [];
-  protected tabsChanged(): void {
+  protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
     if (!this.$fastController.isConnected || this.tabs.length === 0) {
       return;
     }

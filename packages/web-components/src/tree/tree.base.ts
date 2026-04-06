@@ -45,12 +45,6 @@ export class BaseTree extends FASTElement {
     this.elementInternals.role = 'tree';
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-  }
-
   /** @internal */
   connectedCallback() {
     super.connectedCallback();

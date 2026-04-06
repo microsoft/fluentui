@@ -800,7 +800,6 @@ export class BaseSpinner extends FASTElement {
 
 // @public
 export class BaseTablist extends FASTElement {
-    constructor();
     activeid: string;
     // (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
@@ -828,7 +827,7 @@ export class BaseTablist extends FASTElement {
     protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
     tabs: Tab[];
-    // @internal (undocumented)
+    // (undocumented)
     protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
@@ -3974,6 +3973,8 @@ export class Tab extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
 }
