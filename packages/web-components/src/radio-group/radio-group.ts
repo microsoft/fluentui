@@ -63,13 +63,13 @@ export class RadioGroup extends FASTElement {
    * @internal
    */
   protected disabledChanged(prev?: boolean, next?: boolean): void {
-    requestAnimationFrame(() => {
+    if (this.radios) {
       this.checkedIndex = -1;
       this.radios?.forEach(radio => {
         radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
       this.restrictFocus();
-    });
+    }
   }
 
   /**
