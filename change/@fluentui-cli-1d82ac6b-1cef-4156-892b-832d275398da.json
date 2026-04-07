@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "initial release",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
