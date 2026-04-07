@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-motion": "^9.14.0",
     "@fluentui/react-field": "^9.5.0",
     "@fluentui/react-jsx-runtime": "^9.4.1",
+    "@fluentui/react-motion": "^9.14.0",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.2",
