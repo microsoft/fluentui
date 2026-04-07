@@ -1,13 +1,17 @@
 import { handler } from '../handler';
 import * as annotator from '../utils/annotator';
+import * as skillCheck from '../utils/skill-check';
 import * as fs from 'fs/promises';
 
 jest.mock('../utils/annotator');
+jest.mock('../utils/skill-check');
 jest.mock('fs/promises');
 
 const mockAnalyzeFiles = annotator.analyzeFiles as jest.MockedFunction<typeof annotator.analyzeFiles>;
 const mockWriteAnnotations = annotator.writeAnnotations as jest.MockedFunction<typeof annotator.writeAnnotations>;
 const mockStat = fs.stat as jest.MockedFunction<typeof fs.stat>;
+const mockIsSkillInstalled = skillCheck.isSkillInstalled as jest.MockedFunction<typeof skillCheck.isSkillInstalled>;
+const mockPrintSkillHint = skillCheck.printSkillHint as jest.MockedFunction<typeof skillCheck.printSkillHint>;
 
 describe('migrate v8-to-v9 handler', () => {
   let logSpy: jest.SpyInstance;
@@ -17,6 +21,8 @@ describe('migrate v8-to-v9 handler', () => {
     logSpy = jest.spyOn(console, 'log').mockImplementation();
     // Default: path exists and is a directory
     mockStat.mockResolvedValue({ isDirectory: () => true } as Awaited<ReturnType<typeof fs.stat>>);
+    // Default: skill is installed (suppress hint)
+    mockIsSkillInstalled.mockReturnValue(true);
   });
 
   afterEach(() => {
@@ -97,5 +103,36 @@ describe('migrate v8-to-v9 handler', () => {
     );
 
     expect(mockAnalyzeFiles).not.toHaveBeenCalled();
+  });
+
+  it('prints skill install hint when skill is not found', async () => {
+    mockAnalyzeFiles.mockResolvedValue([]);
+    mockWriteAnnotations.mockResolvedValue({ filesChanged: 0 });
+    mockIsSkillInstalled.mockReturnValue(false);
+
+    await handler({ path: 'src/', dryRun: false, _: [], $0: 'fluentui-cli' });
+
+    expect(mockIsSkillInstalled).toHaveBeenCalled();
+    expect(mockPrintSkillHint).toHaveBeenCalled();
+  });
+
+  it('does not print skill hint when skill is already installed', async () => {
+    mockAnalyzeFiles.mockResolvedValue([]);
+    mockWriteAnnotations.mockResolvedValue({ filesChanged: 0 });
+    mockIsSkillInstalled.mockReturnValue(true);
+
+    await handler({ path: 'src/', dryRun: false, _: [], $0: 'fluentui-cli' });
+
+    expect(mockPrintSkillHint).not.toHaveBeenCalled();
+  });
+
+  it('prints skill install hint in dryRun mode when skill is not found', async () => {
+    mockAnalyzeFiles.mockResolvedValue([]);
+    mockIsSkillInstalled.mockReturnValue(false);
+
+    await handler({ path: 'src/', dryRun: true, _: [], $0: 'fluentui-cli' });
+
+    expect(mockPrintSkillHint).toHaveBeenCalled();
+    expect(mockWriteAnnotations).not.toHaveBeenCalled();
   });
 });
