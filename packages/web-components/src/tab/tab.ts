@@ -28,12 +28,7 @@ export class Tab extends FASTElement {
       return;
     }
 
-    if (next) {
-      this.setAttribute('aria-disabled', 'true');
-    } else {
-      this.removeAttribute('aria-disabled');
-    }
-    this.tabIndex = next ? -1 : 0;
+    this.setDisabledSideEffect(next);
   }
 
   /**
@@ -61,17 +56,28 @@ export class Tab extends FASTElement {
 
     this.slot ||= 'tab';
 
+    this.setDisabledSideEffect(this.disabled);
+
     if (this.styles) {
       this.$fastController.removeStyles(this.styles);
     }
 
     this.styles = css`
       :host {
-        --textContent: '${this.textContent as any}';
+        --textContent: '${this.textContent as string}';
       }
     `;
 
     this.$fastController.addStyles(this.styles);
+  }
+
+  private setDisabledSideEffect(disabled: boolean) {
+    if (disabled) {
+      this.setAttribute('aria-disabled', 'true');
+    } else {
+      this.removeAttribute('aria-disabled');
+    }
+    this.tabIndex = disabled ? -1 : 0;
   }
 }
 
