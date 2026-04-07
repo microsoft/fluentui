@@ -6,9 +6,9 @@ import { isDropdownOption } from '../option/option.options.js';
 import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -123,11 +123,13 @@ export class BaseDropdown extends FASTElement {
    * @param next - the current disabled state
    */
   public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    Updates.enqueue(() => {
-      this.options.forEach(option => {
-        option.disabled = option.disabledAttribute || this.disabled;
+    if (this.listbox) {
+      Updates.enqueue(() => {
+        this.options.forEach(option => {
+          option.disabled = option.disabledAttribute || this.disabled;
+        });
       });
-    });
+    }
   }
 
   /**
@@ -228,11 +230,14 @@ export class BaseDropdown extends FASTElement {
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
 
-      for (const key of ['disabled', 'multiple']) {
-        notifier.notify(key);
-      }
+      notifier.notify('multiple');
 
       Updates.enqueue(() => {
+        this.options.forEach(option => {
+          option.disabled = option.disabledAttribute || this.disabled;
+          option.name = this.name;
+        });
+
         this.enabledOptions
           .filter(x => x.defaultSelected)
           .forEach((x, i) => {
@@ -292,11 +297,13 @@ export class BaseDropdown extends FASTElement {
    * @param next - the current name
    */
   nameChanged(prev: string, next: string): void {
-    Updates.enqueue(() => {
-      this.options.forEach(option => {
-        option.name = next;
+    if (this.listbox) {
+      Updates.enqueue(() => {
+        this.options.forEach(option => {
+          option.name = next;
+        });
       });
-    });
+    }
   }
 
   /**
@@ -684,10 +691,6 @@ export class BaseDropdown extends FASTElement {
     super();
 
     this.elementInternals.role = 'presentation';
-
-    Updates.enqueue(() => {
-      this.insertControl();
-    });
   }
 
   /**
@@ -1008,6 +1011,14 @@ export class BaseDropdown extends FASTElement {
 
     this.freeformOption.value = value;
     this.freeformOption.hidden = false;
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    Updates.enqueue(() => {
+      this.insertControl();
+    });
   }
 
   disconnectedCallback(): void {
