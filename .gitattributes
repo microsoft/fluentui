@@ -3,5 +3,3 @@
 
 # API files should be checked in with Unix-style newlines
 *.api.md text=auto
-
-.github/workflows/*.lock.yml linguist-generated=true merge=ours

@@ -89,16 +89,6 @@ state.root.className = mergeClasses(
 | Per-package quality grades | [docs/quality-grades.md](docs/quality-grades.md)       |
 | Technical debt tracker     | [docs/tech-debt-tracker.md](docs/tech-debt-tracker.md) |
 
-## Agentic Workflows
-
-| Workflow                   | Trigger           | Purpose                                     |
-| -------------------------- | ----------------- | ------------------------------------------- |
-| `agent-triage`             | Issue opened      | Classify, label, validate issues            |
-| `agent-fix`                | `agent:fix` label | Implement fixes, open PRs                   |
-| `agent-review`             | PR opened         | FluentUI review with confidence score       |
-| `agent-docs-grooming`      | Weekly Monday     | Documentation audit                         |
-| `agent-skills-improvement` | Weekly Friday     | Improve agent instructions from PR patterns |
-
 ## Package Layout
 
 | Area           | Path                         | Status             |

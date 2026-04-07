@@ -38,4 +38,3 @@ When you fix a debt item, remove its row.
 ### For engineers
 
 Review this file when planning sprints. Use it to justify cleanup PRs.
-The `agent-skills-improvement` workflow analyzes this file to identify recurring patterns.

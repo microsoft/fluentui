@@ -1,7 +1,7 @@
 # Package Quality Grades
 
 This file tracks the documentation and test coverage quality of v9 component packages.
-Updated by the `agent-docs-grooming` workflow and the `agent-skills-improvement` workflow.
+Updated during periodic documentation audits.
 
 ## Grading Criteria
 
@@ -30,10 +30,4 @@ Updated by the `agent-docs-grooming` workflow and the `agent-skills-improvement`
 
 ## How to Update
 
-The `agent-docs-grooming` workflow populates this table during weekly audits.
-To trigger manually, create a "Documentation Audit" issue and assign to Copilot
-with the docs-groomer workflow, or run:
-
-```bash
-gh aw run agent-docs-grooming
-```
+This table is populated during periodic documentation audits.
