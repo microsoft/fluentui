@@ -2,6 +2,7 @@ import * as fs from 'fs/promises';
 import type { CommandHandler } from '../../../utils/types';
 import { analyzeFiles, writeAnnotations } from './utils/annotator';
 import type { FileAnalysis } from './utils/annotator';
+import { isSkillInstalled, printSkillHint } from './utils/skill-check';
 
 interface V8ToV9Args {
   path: string;
@@ -24,11 +25,13 @@ export const handler: CommandHandler<V8ToV9Args> = async argv => {
 
   if (argv.dryRun) {
     printDryRunReport(results);
+    printSkillHintIfNeeded();
     return;
   }
 
   const { filesChanged } = await writeAnnotations(results, argv.path);
   printSummary(results, filesChanged);
+  printSkillHintIfNeeded();
 };
 
 function countByAction(results: FileAnalysis[]) {
@@ -104,5 +107,11 @@ function printDryRunReport(results: FileAnalysis[]): void {
     for (const file of results) {
       console.log(`  ${file.filePath}  (${file.annotations.length} annotations)`);
     }
+  }
+}
+
+function printSkillHintIfNeeded(): void {
+  if (!isSkillInstalled()) {
+    printSkillHint();
   }
 }
