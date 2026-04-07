@@ -21,7 +21,9 @@ export function useKeyborgRef(): React.RefObject<KeyboardDetector | null> {
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
-    if (!targetWindow) return;
+    if (!targetWindow) {
+      return;
+    }
 
     const detector = createKeyboardDetector(targetWindow);
     detectorRef.current = detector;

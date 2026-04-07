@@ -37,7 +37,9 @@ export const useFocusFinders = (): {
 
   const findNextFocusable = React.useCallback(
     (currentElement: HTMLElement | null, options: { container?: HTMLElement } = {}) => {
-      if (!currentElement || !targetDocument) return null;
+      if (!currentElement || !targetDocument) {
+        return null;
+      }
       const container = options.container ?? (targetDocument.body as HTMLElement);
       return findNext(currentElement, container);
     },
@@ -46,7 +48,9 @@ export const useFocusFinders = (): {
 
   const findPrevFocusable = React.useCallback(
     (currentElement: HTMLElement | null, options: { container?: HTMLElement } = {}) => {
-      if (!currentElement || !targetDocument) return null;
+      if (!currentElement || !targetDocument) {
+        return null;
+      }
       const container = options.container ?? (targetDocument.body as HTMLElement);
       return findPrev(currentElement, container);
     },

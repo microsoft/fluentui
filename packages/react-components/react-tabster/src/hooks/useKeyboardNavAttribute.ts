@@ -16,7 +16,9 @@ export function useKeyboardNavAttribute<E extends HTMLElement>(): React.RefObjec
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
-    if (!targetWindow) return;
+    if (!targetWindow) {
+      return;
+    }
 
     const detector = createKeyboardDetector(targetWindow);
 
@@ -38,7 +40,9 @@ export function useKeyboardNavAttribute<E extends HTMLElement>(): React.RefObjec
 }
 
 function setBooleanAttribute(elementRef: React.RefObject<HTMLElement | null>, attribute: string, value: boolean) {
-  if (!elementRef.current) return;
+  if (!elementRef.current) {
+    return;
+  }
   if (value) {
     elementRef.current.setAttribute(attribute, '');
   } else {

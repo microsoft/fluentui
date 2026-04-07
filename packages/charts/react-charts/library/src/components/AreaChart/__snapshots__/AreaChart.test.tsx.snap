@@ -9,7 +9,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple negative y value example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -788,7 +788,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -868,7 +868,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -1647,7 +1647,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -1727,7 +1727,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
@@ -2618,7 +2618,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -2698,7 +2698,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -3477,7 +3477,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -4102,9 +4102,7 @@ exports[`Area chart rendering with duplicate values Should return the correct da
 exports[`AreaChart - mouse events Should render callout correctly on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -4113,7 +4111,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -4892,7 +4890,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -4970,7 +4968,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -5749,7 +5747,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -5875,9 +5873,7 @@ Object {
 exports[`AreaChart - mouse events Should render customized callout on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -5886,7 +5882,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -6665,7 +6661,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -6743,7 +6739,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -7522,7 +7518,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -7648,9 +7644,7 @@ Object {
 exports[`AreaChart - mouse events Should render customized callout per stack on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -7659,7 +7653,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -8438,7 +8432,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -8516,7 +8510,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -9295,7 +9289,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -9421,9 +9415,7 @@ Object {
 exports[`AreaChart snapShot testing Should not render circles when optimizeLargeData is true 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -9432,7 +9424,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -9841,7 +9833,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -9919,7 +9911,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -10328,7 +10320,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -10454,9 +10446,7 @@ Object {
 exports[`AreaChart snapShot testing Should render with default colors when line color is not provided 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -10465,7 +10455,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="AreaChart. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -11244,7 +11234,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -11322,7 +11312,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="AreaChart. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -12101,7 +12091,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -12227,9 +12217,7 @@ Object {
 exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -12238,7 +12226,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -13017,7 +13005,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -13095,7 +13083,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -13874,7 +13862,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -14000,9 +13988,7 @@ Object {
 exports[`AreaChart snapShot testing renders Areachart with single point correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -14011,7 +13997,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
@@ -14233,7 +14219,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -14273,7 +14259,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
@@ -14495,7 +14481,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -14583,9 +14569,7 @@ Object {
 exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -14594,7 +14578,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -15373,7 +15357,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
             style="justify-content: unset; flex-wrap: wrap;"
           >
@@ -15461,7 +15445,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -16240,7 +16224,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
           style="justify-content: unset; flex-wrap: wrap;"
         >
@@ -16376,9 +16360,7 @@ Object {
 exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -16387,7 +16369,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -17170,7 +17152,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -18001,9 +17983,7 @@ Object {
 exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -18012,7 +17992,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -18791,7 +18771,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -18869,7 +18849,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -19648,7 +19628,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -19774,9 +19754,7 @@ Object {
 exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -19785,7 +19763,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -20634,7 +20612,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -20717,7 +20695,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -21566,7 +21544,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -21697,9 +21675,7 @@ Object {
 exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -21708,7 +21684,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -22557,7 +22533,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -22642,7 +22618,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -23491,7 +23467,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -23624,9 +23600,7 @@ Object {
 exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -23635,7 +23609,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -24414,7 +24388,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -24492,7 +24466,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -25271,7 +25245,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -25403,7 +25377,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -26087,7 +26061,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -26167,7 +26141,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
@@ -26851,7 +26825,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div

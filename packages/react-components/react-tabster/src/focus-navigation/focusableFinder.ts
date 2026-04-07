@@ -9,6 +9,8 @@
  *   - Its computed visibility is not hidden
  */
 
+import { isHTMLElement } from '@fluentui/react-utilities';
+
 // Elements that are natively focusable without an explicit tabindex
 const NATURALLY_FOCUSABLE = new Set([
   'BUTTON',
@@ -27,7 +29,7 @@ const NATURALLY_FOCUSABLE = new Set([
  * Returns true when the element can receive keyboard focus.
  */
 export function isFocusable(el: Element): el is HTMLElement {
-  if (!(el instanceof HTMLElement)) {
+  if (!isHTMLElement(el)) {
     return false;
   }
 
@@ -47,9 +49,12 @@ export function isFocusable(el: Element): el is HTMLElement {
   }
 
   // Check computed style — skip elements that are display:none or visibility:hidden
-  const style = getComputedStyle(el);
-  if (style.display === 'none' || style.visibility === 'hidden') {
-    return false;
+  const win = el.ownerDocument?.defaultView;
+  if (win) {
+    const style = win.getComputedStyle(el);
+    if (style.display === 'none' || style.visibility === 'hidden') {
+      return false;
+    }
   }
 
   // tabindex attribute overrides everything
@@ -220,7 +225,9 @@ export function findNextInColumn(
   if (direction === 'down') {
     // Elements whose top edge is clearly below current's bottom
     const candidates = all.filter(el => {
-      if (el === current) return false;
+      if (el === current) {
+        return false;
+      }
       const r = el.getBoundingClientRect();
       return r.top >= currentRect.bottom - 1;
     });
@@ -228,7 +235,9 @@ export function findNextInColumn(
   } else {
     // Elements whose bottom edge is clearly above current's top
     const candidates = all.filter(el => {
-      if (el === current) return false;
+      if (el === current) {
+        return false;
+      }
       const r = el.getBoundingClientRect();
       return r.bottom <= currentRect.top + 1;
     });

@@ -4,7 +4,7 @@ exports[`MenuGrid renders a default state 1`] = `
 <div
   aria-labelledby=""
   class="fui-MenuGrid"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
   role="grid"
 >
   Default MenuGrid

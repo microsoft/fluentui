@@ -13,7 +13,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
@@ -236,7 +236,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
             >
               <g>
                 <g
@@ -491,7 +491,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -592,7 +592,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
@@ -815,7 +815,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
             >
               <g>
                 <g
@@ -953,7 +953,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -1035,7 +1035,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
@@ -1258,7 +1258,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
             >
               <g>
                 <g
@@ -1396,7 +1396,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -1478,7 +1478,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sales and Profit Trend. Vertical bar chart with 6 stacked bars and 1 lines. The X axis displays Month. The Y axis displays Sales ($). "
@@ -1778,7 +1778,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
             >
               <g>
                 <g
@@ -2073,7 +2073,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -2153,7 +2153,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       >
         <div
           class="fui-donut__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-donut__chart fui-charts-resp-child__chart"
@@ -2201,7 +2201,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -2268,7 +2268,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
@@ -2470,7 +2470,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -2537,7 +2537,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
@@ -2601,7 +2601,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="A, Monday. , 10."
@@ -2674,7 +2674,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Financial Ratios Heatmap. Heat map chart with 12 data points. The X axis displays Company. The Y axis displays Financial Ratio. "
@@ -2827,7 +2827,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Company A, ROE. , 15.2."
@@ -3142,7 +3142,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
@@ -3206,7 +3206,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="A, Mon. , 10."
@@ -3279,7 +3279,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
@@ -3483,7 +3483,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
             >
               <g>
                 <g
@@ -3600,7 +3600,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -3682,7 +3682,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. The X axis displays Time of Day. The Y axis displays City. "
@@ -3835,7 +3835,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Morning, Houston. , 72."
@@ -4150,7 +4150,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Weekly Attendance Patterns. Heat map chart with 12 data points. The X axis displays Day of Week. The Y axis displays Class Period. "
@@ -4303,7 +4303,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Monday, Period 4. , 85."
@@ -4618,7 +4618,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -4705,7 +4705,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="A, Tue. , 30."
@@ -4822,7 +4822,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="BMI Distribution ScatterThe X axis displays Height (cm). The Y axis displays Weight (kg). "
@@ -5091,7 +5091,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -5210,7 +5210,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
@@ -5418,7 +5418,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -5537,7 +5537,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       >
         <div
           class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
@@ -5760,7 +5760,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             aria-label="Legends"
             aria-multiselectable="true"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div

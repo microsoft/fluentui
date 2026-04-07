@@ -9,7 +9,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -439,7 +439,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -538,7 +538,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -970,7 +970,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -1006,9 +1006,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
 exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on bars 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -1017,7 +1015,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -1447,7 +1445,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -1544,7 +1542,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -1974,7 +1972,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -2119,9 +2117,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corners on bars 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -2130,7 +2126,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -2560,7 +2556,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -2657,7 +2653,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -3087,7 +3083,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -3232,9 +3228,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartWithAxis correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -3243,7 +3237,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -3673,7 +3667,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -3770,7 +3764,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -4200,7 +4194,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -4345,9 +4339,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing renders Stacked HorizontalBarChartWithAxis correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -4356,7 +4348,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
@@ -4905,7 +4897,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -4983,7 +4975,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 9 bars. The X axis displays values. The Y axis displays categories. "
@@ -5532,7 +5524,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -5658,9 +5650,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -5669,7 +5659,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -6055,7 +6045,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
@@ -6489,9 +6479,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxisLabels correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -6500,7 +6488,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -6956,7 +6944,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -7001,7 +6989,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -7457,7 +7445,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -7550,9 +7538,7 @@ Object {
 exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -7561,7 +7547,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -7993,7 +7979,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -8033,7 +8019,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
@@ -8465,7 +8451,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div

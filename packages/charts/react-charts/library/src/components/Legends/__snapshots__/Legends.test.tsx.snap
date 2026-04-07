@@ -9,7 +9,7 @@ Object {
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -348,7 +348,7 @@ Object {
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -740,7 +740,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable="false"
   class="fui-legend__root"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   role="listbox"
 >
   <div
@@ -1079,7 +1079,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable="false"
   class="fui-legend__root"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   role="listbox"
 >
   <div
@@ -1418,7 +1418,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
   aria-label="Legends"
   aria-multiselectable="true"
   class="fui-legend__root"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   role="listbox"
 >
   <div
@@ -1757,7 +1757,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable="false"
   class="fui-legend__root"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   role="listbox"
 >
   <div

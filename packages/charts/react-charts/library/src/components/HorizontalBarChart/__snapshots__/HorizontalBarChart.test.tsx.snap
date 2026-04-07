@@ -910,7 +910,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: center; flex-wrap: wrap;"
       >
@@ -1056,7 +1056,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: center; flex-wrap: wrap;"
       >
@@ -1337,9 +1337,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
 exports[`HorizontalBarChart snapShot testing Should not render bar labels in absolute-scale variant 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-hbc__root"
@@ -1742,9 +1740,7 @@ Object {
 exports[`HorizontalBarChart snapShot testing Should render absolute-scale variant correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-hbc__root"

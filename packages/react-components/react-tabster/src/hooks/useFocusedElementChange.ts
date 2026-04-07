@@ -18,7 +18,9 @@ export function useFocusedElementChange(callback: FocusedElementCallback): void 
   const listener = useEventCallback(callback);
 
   React.useEffect(() => {
-    if (!targetDocument) return;
+    if (!targetDocument) {
+      return;
+    }
 
     const manager = createNavigationManager(targetDocument);
     const unsubscribe = manager.subscribeFocusedElement(listener);

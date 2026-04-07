@@ -4,12 +4,12 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
 <div>
   <div
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
     role="list"
   >
     <div
       class="fui-ListItem"
-      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="listitem"
     >
@@ -17,7 +17,7 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
     </div>
     <div
       class="fui-ListItem"
-      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="listitem"
     >
@@ -31,12 +31,12 @@ exports[`List rendering render as div by default when navigationMode is 'composi
 <div>
   <div
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="row"
       tabindex="0"
@@ -45,7 +45,7 @@ exports[`List rendering render as div by default when navigationMode is 'composi
     </div>
     <div
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="row"
       tabindex="0"
@@ -60,12 +60,12 @@ exports[`List rendering renders a default state 1`] = `
 <div>
   <ul
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
     role="list"
   >
     <li
       class="fui-ListItem"
-      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="listitem"
       value="test-value-1"
@@ -74,7 +74,7 @@ exports[`List rendering renders a default state 1`] = `
     </li>
     <li
       class="fui-ListItem"
-      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="listitem"
       value="test-value-2"
@@ -90,13 +90,13 @@ exports[`List selection multiselect items are properly rendered with all attribu
   <ul
     aria-multiselectable="true"
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
     role="listbox"
   >
     <li
       aria-selected="false"
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="option"
       tabindex="0"
@@ -121,7 +121,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
     <li
       aria-selected="false"
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="option"
       tabindex="0"
@@ -151,13 +151,13 @@ exports[`List selection single select items are properly rendered with all attri
 <div>
   <ul
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"vertical\\",\\"memorizeCurrent\\":true}}"
     role="listbox"
   >
     <li
       aria-selected="false"
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="option"
       tabindex="0"
@@ -182,7 +182,7 @@ exports[`List selection single select items are properly rendered with all attri
     <li
       aria-selected="false"
       class="fui-ListItem"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":\\"limited-trap\\"},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="option"
       tabindex="0"

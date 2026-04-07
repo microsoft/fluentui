@@ -85,12 +85,20 @@ describe('useTabster', () => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getErrorMessages(err: any): string[] {
-  if (!err) return [];
-  const messages: string[] = [];
-  if (typeof err.message === 'string') messages.push(err.message);
-  if (Array.isArray(err.errors)) {
-    for (const inner of err.errors) messages.push(...getErrorMessages(inner));
+  if (!err) {
+    return [];
   }
-  if (err.cause) messages.push(...getErrorMessages(err.cause));
+  const messages: string[] = [];
+  if (typeof err.message === 'string') {
+    messages.push(err.message);
+  }
+  if (Array.isArray(err.errors)) {
+    for (const inner of err.errors) {
+      messages.push(...getErrorMessages(inner));
+    }
+  }
+  if (err.cause) {
+    messages.push(...getErrorMessages(err.cause));
+  }
   return messages;
 }

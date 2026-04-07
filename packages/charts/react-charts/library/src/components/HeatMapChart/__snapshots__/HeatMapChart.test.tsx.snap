@@ -3,9 +3,7 @@
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -14,7 +12,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -127,7 +125,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -229,7 +227,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -288,7 +286,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -401,7 +399,7 @@ Object {
             </g>
           </g>
           <g
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -503,7 +501,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -610,9 +608,7 @@ Object {
 exports[`HeatMapChart snapShot testing renders corretly even when data is not present for some group 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -621,7 +617,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -734,7 +730,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="p4, p1. Nasty, 50."
@@ -834,7 +830,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -893,7 +889,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -1006,7 +1002,7 @@ Object {
             </g>
           </g>
           <g
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
           >
             <g
               aria-label="p4, p1. Nasty, 50."
@@ -1106,7 +1102,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -1213,9 +1209,7 @@ Object {
 exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -1224,7 +1218,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -1337,7 +1331,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -1443,7 +1437,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -1556,7 +1550,7 @@ Object {
             </g>
           </g>
           <g
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -1710,9 +1704,7 @@ Object {
 exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -1721,7 +1713,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -1834,7 +1826,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -1936,7 +1928,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -1995,7 +1987,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -2108,7 +2100,7 @@ Object {
             </g>
           </g>
           <g
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -2210,7 +2202,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -2317,9 +2309,7 @@ Object {
 exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -2328,7 +2318,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -2441,7 +2431,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -2543,7 +2533,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -2602,7 +2592,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -2715,7 +2705,7 @@ Object {
             </g>
           </g>
           <g
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -2817,7 +2807,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -2924,9 +2914,7 @@ Object {
 exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in dark theme 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-FluentProvider fui-FluentProvider_r_1e_"
@@ -2939,7 +2927,7 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           >
             <svg
               aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -3052,7 +3040,7 @@ Object {
                 </g>
               </g>
               <g
-                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
               >
                 <g
                   aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -3154,7 +3142,7 @@ Object {
               aria-label="Legends"
               aria-multiselectable="false"
               class="fui-legend__root"
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
               <div
@@ -3218,7 +3206,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -3331,7 +3319,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -3433,7 +3421,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -3541,9 +3529,7 @@ Object {
 exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when the layout direction is RTL 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         dir="rtl"
@@ -3555,7 +3541,7 @@ Object {
         >
           <div
             class="fui-cart__chartWrapper"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           >
             <svg
               aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -3668,7 +3654,7 @@ Object {
                 </g>
               </g>
               <g
-                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+                data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
               >
                 <g
                   aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -3770,7 +3756,7 @@ Object {
               aria-label="Legends"
               aria-multiselectable="false"
               class="fui-legend__root"
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
               <div
@@ -3833,7 +3819,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -3946,7 +3932,7 @@ Object {
               </g>
             </g>
             <g
-              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
@@ -4048,7 +4034,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -4162,7 +4148,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -4275,7 +4261,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           </g>
         </g>
         <g
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
         >
           <g
             aria-label="Lorem ipsum dolor sit amet"
@@ -4367,7 +4353,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -4428,7 +4414,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
@@ -4541,7 +4527,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
         >
           <g
             aria-label="xPoint p4, yPoint p1. Nasty, 50."
@@ -4641,7 +4627,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div

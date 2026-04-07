@@ -9,7 +9,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -496,7 +496,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -576,7 +576,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -1063,7 +1063,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -1147,7 +1147,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -1634,7 +1634,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -1726,7 +1726,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -2213,7 +2213,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -2293,7 +2293,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -2780,7 +2780,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -2860,7 +2860,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -3347,7 +3347,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -3427,7 +3427,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 4 bars. The X axis displays categories. The Y axis displays values. "
@@ -3757,7 +3757,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -3799,7 +3799,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -4305,7 +4305,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -4385,7 +4385,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -4872,7 +4872,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
@@ -4955,7 +4955,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
     >
       <div
         class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
@@ -5008,7 +5008,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -5495,7 +5495,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
@@ -5578,7 +5578,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     >
       <div
         class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
@@ -5608,7 +5608,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -6065,7 +6065,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -6143,7 +6143,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -6630,7 +6630,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -6708,7 +6708,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -7195,7 +7195,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -7273,7 +7273,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -7760,7 +7760,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -7838,7 +7838,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -8325,7 +8325,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
       style="justify-content: unset; flex-wrap: wrap;"
     >
@@ -8413,7 +8413,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -8904,7 +8904,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -9388,7 +9388,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -9466,7 +9466,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -10051,7 +10051,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -10134,7 +10134,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -10719,7 +10719,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -10804,7 +10804,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
 >
   <div
     class="fui-cart__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
@@ -11291,7 +11291,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div

@@ -29,7 +29,9 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefO
 
   useIsomorphicLayoutEffect(() => {
     const doc = targetDocument;
-    if (!doc) return;
+    if (!doc) {
+      return;
+    }
 
     const manager = createNavigationManager(doc);
     factoryResultRef.current = factory(manager) as FactoryResult;

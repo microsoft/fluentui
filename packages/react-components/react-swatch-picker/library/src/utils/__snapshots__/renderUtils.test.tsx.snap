@@ -5,7 +5,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
   <div
     aria-label="SwatchPicker grid layout"
     class="fui-SwatchPicker"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"gridLinear\\",\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div
@@ -101,7 +101,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
   <div
     aria-label="SwatchPicker grid layout"
     class="fui-SwatchPicker"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"gridLinear\\",\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div
@@ -171,7 +171,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
   <div
     aria-label="SwatchPicker grid layout"
     class="fui-SwatchPicker"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"gridLinear\\",\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div

@@ -14,6 +14,7 @@
  *   - Focused element subscriptions
  */
 
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { getNavConfig, findAncestorWithNavKey, TABSTER_ATTRIBUTE_NAME, type MoverDirection } from './types';
 import { findAll, findFirst, findLast, findNext, findPrev, findNextInColumn } from './focusableFinder';
 import {
@@ -118,7 +119,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
   // -------------------------------------------------------------------------
   state.onKeydown = (e: KeyboardEvent) => {
     const target = e.target as HTMLElement | null;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     // --- Arrow navigation (Mover) ---
     if (isArrowKey(e.key)) {
@@ -127,7 +130,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
         const config = getNavConfig(moverEl)!.mover!;
         // Check ignoreKeydown config on the container
         const ignoreKeydown = getNavConfig(moverEl)?.focusable?.ignoreKeydown;
-        if (ignoreKeydown?.[e.key]) return;
+        if (ignoreKeydown?.[e.key]) {
+          return;
+        }
 
         handleArrowKey(e, target, moverEl, config.direction ?? 'vertical', !!config.cyclic, state);
         return;
@@ -151,7 +156,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
   // -------------------------------------------------------------------------
   state.onFocusin = (e: FocusEvent) => {
     const target = e.target as HTMLElement | null;
-    if (!(target instanceof HTMLElement)) return;
+    if (!isHTMLElement(target)) {
+      return;
+    }
 
     // Notify subscribers
     for (const cb of state.focusedElementCallbacks) {
@@ -187,7 +194,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
   state.onFocusout = (e: FocusEvent) => {
     const target = e.target as HTMLElement | null;
     const relatedTarget = e.relatedTarget as HTMLElement | null;
-    if (!(target instanceof HTMLElement)) return;
+    if (!isHTMLElement(target)) {
+      return;
+    }
 
     // Notify subscribers (focus moved away)
     if (!relatedTarget) {
@@ -216,10 +225,14 @@ export function createNavigationManager(doc: Document): NavigationManager {
   state.onCustomMoverMove = (e: Event) => {
     const customEvent = e as CustomEvent<{ key: MoverKey }>;
     const target = e.target as HTMLElement | null;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     const moverEl = findAncestorWithNavKey(target, 'mover') as HTMLElement | null;
-    if (!moverEl) return;
+    if (!moverEl) {
+      return;
+    }
 
     const config = getNavConfig(moverEl)!.mover!;
     const syntheticKbd = {
@@ -237,7 +250,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
   state.onCustomGroupperMove = (e: Event) => {
     const customEvent = e as CustomEvent<{ action: GroupperMoveFocusAction }>;
     const target = e.target as HTMLElement | null;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     if (customEvent.detail.action === GroupperMoveFocusActions.Enter) {
       const groupperEl = findAncestorWithNavKey(target, 'groupper') as HTMLElement | null;
@@ -254,40 +269,43 @@ export function createNavigationManager(doc: Document): NavigationManager {
   // -------------------------------------------------------------------------
   // MutationObserver — detect modalizer and observed elements entering/leaving
   // -------------------------------------------------------------------------
-  state.mutationObserver = new MutationObserver(mutations => {
-    for (const mutation of mutations) {
-      for (let i = 0; i < mutation.addedNodes.length; i++) {
-        const node = mutation.addedNodes.item(i);
-        if (node instanceof HTMLElement) {
-          checkForModalizer(node, state, true);
-          syncObservedElements(node, state, true);
+  const win = doc.defaultView;
+  if (win) {
+    state.mutationObserver = new win.MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        for (let i = 0; i < mutation.addedNodes.length; i++) {
+          const node = mutation.addedNodes.item(i);
+          if (isHTMLElement(node)) {
+            checkForModalizer(node, state, true);
+            syncObservedElements(node, state, true);
+          }
+        }
+        for (let i = 0; i < mutation.removedNodes.length; i++) {
+          const node = mutation.removedNodes.item(i);
+          if (isHTMLElement(node)) {
+            checkForModalizer(node, state, false);
+            syncObservedElements(node, state, false);
+          }
+        }
+        // Attribute changes on data-tabster
+        if (
+          mutation.type === 'attributes' &&
+          mutation.attributeName === TABSTER_ATTRIBUTE_NAME &&
+          isHTMLElement(mutation.target)
+        ) {
+          checkForModalizer(mutation.target, state, true);
+          syncObservedElements(mutation.target, state, true);
         }
       }
-      for (let i = 0; i < mutation.removedNodes.length; i++) {
-        const node = mutation.removedNodes.item(i);
-        if (node instanceof HTMLElement) {
-          checkForModalizer(node, state, false);
-          syncObservedElements(node, state, false);
-        }
-      }
-      // Attribute changes on data-tabster
-      if (
-        mutation.type === 'attributes' &&
-        mutation.attributeName === TABSTER_ATTRIBUTE_NAME &&
-        mutation.target instanceof HTMLElement
-      ) {
-        checkForModalizer(mutation.target, state, true);
-        syncObservedElements(mutation.target, state, true);
-      }
-    }
-  });
+    });
 
-  state.mutationObserver.observe(doc.body ?? doc.documentElement, {
-    subtree: true,
-    childList: true,
-    attributes: true,
-    attributeFilter: [TABSTER_ATTRIBUTE_NAME],
-  });
+    state.mutationObserver.observe(doc.body ?? doc.documentElement, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: [TABSTER_ATTRIBUTE_NAME],
+    });
+  }
 
   // Attach document-level listeners
   doc.addEventListener('keydown', state.onKeydown, true);
@@ -317,30 +335,30 @@ export function createNavigationManager(doc: Document): NavigationManager {
       let cancelled = false;
 
       const result = new Promise<boolean>(resolve => {
-        const existing = state.observedElements.get(name);
-        if (existing) {
-          existing.focus();
+        const observedElement = state.observedElements.get(name);
+        if (observedElement) {
+          observedElement.focus();
           resolve(true);
           return;
         }
 
         // Poll until the element is registered or timeout
         const startTime = Date.now();
-        const interval = setInterval(() => {
+        const interval = win?.setInterval?.(() => {
           if (cancelled) {
-            clearInterval(interval);
+            win?.clearInterval?.(interval);
             resolve(false);
             return;
           }
           const el = state.observedElements.get(name);
           if (el) {
-            clearInterval(interval);
+            win?.clearInterval?.(interval);
             el.focus();
             resolve(true);
             return;
           }
           if (Date.now() - startTime >= timeout) {
-            clearInterval(interval);
+            win?.clearInterval?.(interval);
             resolve(false);
           }
         }, 50);
@@ -362,7 +380,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
     },
 
     activateModal(elementFromModal: HTMLElement | undefined) {
-      if (!elementFromModal) return;
+      if (!elementFromModal) {
+        return;
+      }
       const modalizerEl = findAncestorWithNavKey(elementFromModal, 'modalizer') as HTMLElement | null;
       if (modalizerEl) {
         activateModalizer(modalizerEl, state);
@@ -428,35 +448,51 @@ function handleArrowKey(
 
   switch (e.key) {
     case 'ArrowDown':
-      if (!isVertical) return;
+      if (!isVertical) {
+        return;
+      }
       if (isGrid) {
         next = findNextInColumn(current, container, 'down');
       } else {
         next = findNext(current, container);
       }
-      if (!next && cyclic) next = findFirst(container);
+      if (!next && cyclic) {
+        next = findFirst(container);
+      }
       break;
 
     case 'ArrowUp':
-      if (!isVertical) return;
+      if (!isVertical) {
+        return;
+      }
       if (isGrid) {
         next = findNextInColumn(current, container, 'up');
       } else {
         next = findPrev(current, container);
       }
-      if (!next && cyclic) next = findLast(container);
+      if (!next && cyclic) {
+        next = findLast(container);
+      }
       break;
 
     case 'ArrowRight':
-      if (!isHorizontal) return;
+      if (!isHorizontal) {
+        return;
+      }
       next = findNext(current, container);
-      if (!next && cyclic) next = findFirst(container);
+      if (!next && cyclic) {
+        next = findFirst(container);
+      }
       break;
 
     case 'ArrowLeft':
-      if (!isHorizontal) return;
+      if (!isHorizontal) {
+        return;
+      }
       next = findPrev(current, container);
-      if (!next && cyclic) next = findLast(container);
+      if (!next && cyclic) {
+        next = findLast(container);
+      }
       break;
 
     case 'Home':
@@ -494,7 +530,9 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
     const modalConfig = getNavConfig(state.activeModal)?.modalizer;
     if (modalConfig?.isTrapped) {
       const allFocusable = findAll(state.activeModal);
-      if (allFocusable.length === 0) return;
+      if (allFocusable.length === 0) {
+        return;
+      }
 
       const first = allFocusable[0];
       const last = allFocusable[allFocusable.length - 1];
@@ -530,7 +568,9 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
 
     if (config.tabbability === 'limited-trap') {
       const allFocusable = findAll(groupperEl);
-      if (allFocusable.length === 0) return;
+      if (allFocusable.length === 0) {
+        return;
+      }
 
       const first = allFocusable[0];
       const last = allFocusable[allFocusable.length - 1];
@@ -555,10 +595,14 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
 
 function handleGroupperEnterEscape(e: KeyboardEvent, target: HTMLElement, state: ManagerState): void {
   const groupperEl = findAncestorWithNavKey(target, 'groupper') as HTMLElement | null;
-  if (!groupperEl) return;
+  if (!groupperEl) {
+    return;
+  }
 
   const config = getNavConfig(groupperEl)!.groupper!;
-  if (config.tabbability === 'unlimited') return;
+  if (config.tabbability === 'unlimited') {
+    return;
+  }
 
   if (e.key === 'Enter' && target === groupperEl) {
     e.preventDefault();
@@ -590,12 +634,16 @@ function applyRovingTabindex(container: HTMLElement, focused: HTMLElement, state
 // ---------------------------------------------------------------------------
 
 function getActiveModalId(state: ManagerState): string | undefined {
-  if (!state.activeModal) return undefined;
+  if (!state.activeModal) {
+    return undefined;
+  }
   return getNavConfig(state.activeModal)?.modalizer?.id;
 }
 
 function activateModalizer(modalizerEl: HTMLElement, state: ManagerState): void {
-  if (state.activeModal === modalizerEl) return;
+  if (state.activeModal === modalizerEl) {
+    return;
+  }
 
   // Deactivate previous modal if any
   if (state.activeModal) {
@@ -604,14 +652,18 @@ function activateModalizer(modalizerEl: HTMLElement, state: ManagerState): void 
 
   state.activeModal = modalizerEl;
   const config = getNavConfig(modalizerEl)?.modalizer;
-  if (!config || config.isOthersAccessible) return;
+  if (!config || config.isOthersAccessible) {
+    return;
+  }
 
   // Hide all top-level siblings of modal's ancestor chain from assistive technology
   applyAriaHiddenToSiblings(modalizerEl, state.doc, true);
 }
 
 function deactivateModalizer(modalizerEl: HTMLElement, state: ManagerState): void {
-  if (state.activeModal !== modalizerEl) return;
+  if (state.activeModal !== modalizerEl) {
+    return;
+  }
 
   const config = getNavConfig(modalizerEl)?.modalizer;
   if (config && !config.isOthersAccessible) {
@@ -652,7 +704,9 @@ function applyAriaHiddenToSiblings(modalizerEl: HTMLElement, doc: Document, hide
         processChildren(child);
       } else {
         // Check for never-hide attribute
-        if (child.hasAttribute('data-tabster-never-hide')) continue;
+        if (child.hasAttribute('data-tabster-never-hide')) {
+          continue;
+        }
         if (hide) {
           if (!child.hasAttribute('aria-hidden')) {
             child.setAttribute('aria-hidden', 'true');
@@ -675,9 +729,13 @@ function checkForModalizer(el: HTMLElement, state: ManagerState, added: boolean)
   // Check this element and its descendants for modalizer configs
   const candidates = [el, ...Array.from(el.querySelectorAll(`[${TABSTER_ATTRIBUTE_NAME}]`))];
   for (const candidate of candidates) {
-    if (!(candidate instanceof HTMLElement)) continue;
+    if (!isHTMLElement(candidate)) {
+      continue;
+    }
     const config = getNavConfig(candidate)?.modalizer;
-    if (!config) continue;
+    if (!config) {
+      continue;
+    }
 
     if (added) {
       // Auto-activate if it is the only / topmost modal
@@ -698,9 +756,13 @@ function checkForModalizer(el: HTMLElement, state: ManagerState, added: boolean)
 function syncObservedElements(el: HTMLElement, state: ManagerState, added: boolean): void {
   const candidates = [el, ...Array.from(el.querySelectorAll(`[${TABSTER_ATTRIBUTE_NAME}]`))];
   for (const candidate of candidates) {
-    if (!(candidate instanceof HTMLElement)) continue;
+    if (!isHTMLElement(candidate)) {
+      continue;
+    }
     const names = getNavConfig(candidate)?.observed?.names;
-    if (!names || names.length === 0) continue;
+    if (!names || names.length === 0) {
+      continue;
+    }
 
     if (added) {
       for (const name of names) {

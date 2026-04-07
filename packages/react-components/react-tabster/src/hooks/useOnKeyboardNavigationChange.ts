@@ -15,7 +15,9 @@ export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboar
 
   React.useEffect(() => {
     const detector = detectorRef.current;
-    if (!detector) return;
+    if (!detector) {
+      return;
+    }
 
     const cb = (next: boolean) => {
       eventCallback(next);
