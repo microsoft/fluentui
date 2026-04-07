@@ -84,13 +84,13 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
     onKeydown: null as unknown as (e: KeyboardEvent) => void,
     onPointerdown: null as unknown as () => void,
     onFocusin: null as unknown as (e: FocusEvent) => void,
-    originalFocus: win.HTMLElement.prototype.focus,
+    originalFocus: HTMLElement.prototype.focus,
   };
 
   // Patch HTMLElement.prototype.focus to detect programmatic focus calls.
   // This matches keyborg's behaviour: any direct .focus() call (not triggered
   // by keyboard/pointer interaction) sets isProgrammaticFocus.
-  win.HTMLElement.prototype.focus = function patchedFocus(this: HTMLElement, options?: FocusOptions) {
+  HTMLElement.prototype.focus = function patchedFocus(this: HTMLElement, options?: FocusOptions) {
     state.isProgrammaticFocus = true;
     state.originalFocus.call(this, options);
   };
@@ -170,7 +170,7 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
         state.callbacks.clear();
         registry.delete(win);
         // Restore patched focus and clear global marker
-        win.HTMLElement.prototype.focus = state.originalFocus;
+        HTMLElement.prototype.focus = state.originalFocus;
         delete (win as Window & { __keyborg?: unknown }).__keyborg;
       }
     },
