@@ -22,9 +22,11 @@ import { ViewTemplate } from '@microsoft/fast-element';
 export class Accordion extends FASTElement {
     // @internal (undocumented)
     protected accordionItems: Element[];
+    // (undocumented)
+    connectedCallback(): void;
     expandmode: AccordionExpandMode;
     // (undocumented)
-    expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
+    expandmodeChanged(prev: AccordionExpandMode | undefined, next: AccordionExpandMode): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
