@@ -7,7 +7,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
   >
     <div
       class="fui-donut__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Donut chart example"
@@ -91,7 +91,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -173,7 +173,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -257,7 +257,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -332,14 +332,16 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
 exports[`DonutChart - mouse events Should render callout correctly on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-donut__root"
       >
         <div
           class="fui-donut__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
@@ -417,7 +419,7 @@ Object {
         >
           <div
             class="fui-PopoverSurface"
-            data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+            data-tabster="{\\"restorer\\":{\\"type\\":0}}"
             role="group"
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
           >
@@ -464,7 +466,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -559,7 +561,7 @@ Object {
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -637,7 +639,7 @@ Object {
       >
         <div
           class="fui-PopoverSurface"
-          data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
           role="group"
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
@@ -684,7 +686,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -810,14 +812,16 @@ Object {
 exports[`DonutChart - mouse events Should render customized callout on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-donut__root"
       >
         <div
           class="fui-donut__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
@@ -895,7 +899,7 @@ Object {
         >
           <div
             class="fui-PopoverSurface"
-            data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+            data-tabster="{\\"restorer\\":{\\"type\\":0}}"
             role="group"
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
           >
@@ -942,7 +946,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -1037,7 +1041,7 @@ Object {
     >
       <div
         class="fui-donut__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
@@ -1115,7 +1119,7 @@ Object {
       >
         <div
           class="fui-PopoverSurface"
-          data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
           role="group"
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
@@ -1162,7 +1166,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -1291,7 +1295,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1375,7 +1379,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -1451,7 +1455,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1565,7 +1569,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -1641,7 +1645,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1755,7 +1759,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -1831,7 +1835,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -1915,7 +1919,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -1991,7 +1995,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2075,7 +2079,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -2151,7 +2155,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2235,7 +2239,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style="justify-content: center; flex-wrap: wrap;"
     >
@@ -2321,7 +2325,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2384,7 +2388,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2468,7 +2472,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
@@ -2544,7 +2548,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 >
   <div
     class="fui-donut__chartWrapper"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
@@ -2628,7 +2632,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
       aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div

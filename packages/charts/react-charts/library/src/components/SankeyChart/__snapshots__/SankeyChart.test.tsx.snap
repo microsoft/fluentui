@@ -3,14 +3,16 @@
 exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by formatting large numbers 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -700,7 +702,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -1421,14 +1423,16 @@ Object {
 exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by styling numbers as percentages 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -2000,7 +2004,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -2603,14 +2607,16 @@ Object {
 exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -3698,7 +3704,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -4817,14 +4823,16 @@ Object {
 exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nodecolors and border colors  1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -5909,7 +5917,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -7025,14 +7033,16 @@ Object {
 exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied resource strings 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -7248,7 +7258,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -7499,7 +7509,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
         class="fui-sc__chart"
@@ -7853,7 +7863,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -8216,7 +8226,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
         class="fui-sc__chart"
@@ -8562,14 +8572,16 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on providing height less than onepercent of total height 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -9137,7 +9149,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -9736,14 +9748,16 @@ Object {
 exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on providing height less than onepercent of total height for two columns 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -10114,7 +10128,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -10520,7 +10534,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
         class="fui-sc__chart"
@@ -11581,7 +11595,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
     >
       <div
         class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
@@ -11631,14 +11645,16 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
 exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-sc__root"
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
             class="fui-sc__chart"
@@ -12726,7 +12742,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
           class="fui-sc__chart"
@@ -13849,7 +13865,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"grid\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
         class="fui-sc__chart"

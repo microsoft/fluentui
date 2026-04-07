@@ -2,7 +2,7 @@
 
 exports[`DialogTrigger renders a default state 1`] = `
 <button
-  data-tabster="{\\"restorer\\":{\\"type\\":\\"target\\"}}"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
 >
   Dialog trigger
 </button>

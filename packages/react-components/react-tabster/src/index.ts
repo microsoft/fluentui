@@ -75,7 +75,7 @@ export type {
 // Keyboard detector (replacing keyborg re-exports)
 // ---------------------------------------------------------------------------
 
-export { KEYBORG_FOCUSIN } from './focus-navigation/keyboardDetector';
+export { KEYBORG_FOCUSIN, markNextFocusProgrammatic } from './focus-navigation/keyboardDetector';
 export type { KeyborgFocusInEvent } from './focus-navigation/keyboardDetector';
 
 // ---------------------------------------------------------------------------

@@ -90,9 +90,28 @@ export type NavConfig = {
   uncontrolled?: UncontrolledConfig;
 };
 
+// Numeric direction values matching the old tabster MoverDirections enum.
+// Keeping numeric values avoids churn in test snapshots when tabster is replaced.
+const DIRECTION_TO_NUMBER: Record<MoverDirection, number> = {
+  both: 0,
+  vertical: 1,
+  horizontal: 2,
+  grid: 3,
+  gridLinear: 4,
+};
+
+const NUMBER_TO_DIRECTION: Record<number, MoverDirection> = {
+  0: 'both',
+  1: 'vertical',
+  2: 'horizontal',
+  3: 'grid',
+  4: 'gridLinear',
+};
+
 /**
  * Parse the data-tabster attribute of an element into a NavConfig.
  * Returns null if the attribute is absent or invalid JSON.
+ * Handles both numeric direction values (legacy tabster format) and strings.
  */
 export function getNavConfig(element: Element): NavConfig | null {
   const attr = element.getAttribute(TABSTER_ATTRIBUTE_NAME);
@@ -100,7 +119,14 @@ export function getNavConfig(element: Element): NavConfig | null {
     return null;
   }
   try {
-    return JSON.parse(attr) as NavConfig;
+    const parsed = JSON.parse(attr) as NavConfig & { mover?: { direction?: number | MoverDirection } };
+    if (parsed.mover && typeof parsed.mover.direction === 'number') {
+      parsed.mover = {
+        ...parsed.mover,
+        direction: NUMBER_TO_DIRECTION[parsed.mover.direction as number] ?? 'vertical',
+      };
+    }
+    return parsed as NavConfig;
   } catch {
     return null;
   }
@@ -108,9 +134,17 @@ export function getNavConfig(element: Element): NavConfig | null {
 
 /**
  * Serialize a NavConfig to a data-tabster attribute string.
+ * Mover direction is stored as a number (matching the legacy tabster format) to avoid snapshot churn.
  */
 export function serializeNavConfig(config: NavConfig): string {
-  return JSON.stringify(config);
+  if (!config.mover?.direction) {
+    return JSON.stringify(config);
+  }
+  const { direction, ...restMover } = config.mover;
+  return JSON.stringify({
+    ...config,
+    mover: { ...restMover, direction: DIRECTION_TO_NUMBER[direction] },
+  });
 }
 
 /**

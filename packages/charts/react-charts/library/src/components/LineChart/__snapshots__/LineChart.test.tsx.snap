@@ -9,7 +9,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -544,7 +544,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -624,7 +624,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -1155,7 +1155,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -1268,7 +1268,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -1804,7 +1804,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -1877,7 +1877,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     >
       <div
         class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
@@ -1943,7 +1943,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -2479,7 +2479,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -2552,7 +2552,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     >
       <div
         class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":\\"source\\"}}"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
@@ -2580,7 +2580,9 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
 exports[`LineChart snapShot testing Should render with default colors when line color is not provided 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -2589,7 +2591,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -3124,7 +3126,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -3202,7 +3204,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -3737,7 +3739,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -3863,7 +3865,9 @@ Object {
 exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -3872,7 +3876,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -4407,7 +4411,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -4485,7 +4489,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -5020,7 +5024,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -5146,7 +5150,9 @@ Object {
 exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -5155,7 +5161,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -5690,7 +5696,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
             style="justify-content: unset; flex-wrap: wrap;"
           >
@@ -5778,7 +5784,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -6313,7 +6319,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
           style="justify-content: unset; flex-wrap: wrap;"
         >
@@ -6449,7 +6455,9 @@ Object {
 exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -6458,7 +6466,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -6997,7 +7005,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -7584,7 +7592,9 @@ Object {
 exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -7593,7 +7603,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -8128,7 +8138,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -8206,7 +8216,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -8741,7 +8751,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -8867,7 +8877,9 @@ Object {
 exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -8876,7 +8888,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -9488,7 +9500,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -9571,7 +9583,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -10183,7 +10195,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -10314,7 +10326,9 @@ Object {
 exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
     <div>
       <div
         class="fui-cart__root"
@@ -10323,7 +10337,7 @@ Object {
       >
         <div
           class="fui-cart__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -10858,7 +10872,7 @@ Object {
             aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
@@ -10936,7 +10950,7 @@ Object {
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -11471,7 +11485,7 @@ Object {
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
@@ -11603,7 +11617,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -12043,7 +12057,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -12123,7 +12137,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
   >
     <div
       class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -12563,7 +12577,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
@@ -12647,7 +12661,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
     >
       <div
         class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
@@ -13182,7 +13196,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":\\"horizontal\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div

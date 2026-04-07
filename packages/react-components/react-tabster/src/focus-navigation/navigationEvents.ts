@@ -120,3 +120,12 @@ export class TabsterMoveFocusEvent extends CustomEvent<TabsterMoveFocusEventDeta
     });
   }
 }
+
+declare global {
+  interface DocumentEventMap {
+    'tabster:movefocus': TabsterMoveFocusEvent;
+  }
+  interface ElementEventMap {
+    'tabster:movefocus': TabsterMoveFocusEvent;
+  }
+}

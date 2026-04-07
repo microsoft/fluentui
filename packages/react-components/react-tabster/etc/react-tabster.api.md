@@ -635,7 +635,11 @@ export const KEYBORG_FOCUSIN: "keyborg:focusin";
 // @public
 export type KeyborgFocusInEvent = CustomEvent<{
     isNavigatingWithKeyboard: boolean;
+    isFocusedProgrammatically?: boolean;
 }>;
+
+// @public
+export function markNextFocusProgrammatic(win: Window): void;
 
 // @public (undocumented)
 interface Modalizer extends TabsterPart<ModalizerProps>, TabsterPartWithFindNextTabbable {

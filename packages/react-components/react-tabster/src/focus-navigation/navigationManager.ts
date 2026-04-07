@@ -26,6 +26,13 @@ import {
   type MoverKey,
   type GroupperMoveFocusAction,
 } from './navigationEvents';
+import {
+  markNextFocusProgrammatic,
+  consumeProgrammaticFocusFlag,
+  createKeyboardDetector,
+  disposeKeyboardDetector,
+  type KeyboardDetector,
+} from './keyboardDetector';
 
 // ---------------------------------------------------------------------------
 // Public API types
@@ -33,7 +40,7 @@ import {
 
 export type FocusedElementCallback = (
   element: HTMLElement | undefined,
-  detail: { isFocusedProgrammatically?: boolean },
+  detail: { relatedTarget?: HTMLElement | null; isFocusedProgrammatically?: boolean },
 ) => void;
 
 export type ObservedRequest = {
@@ -81,6 +88,8 @@ type ManagerState = {
   onCustomMoverMove: (e: Event) => void;
   onCustomGroupperMove: (e: Event) => void;
   mutationObserver: MutationObserver;
+  // Keyboard detector owned by this manager (patched focus + keyboard detection)
+  keyboardDetector: KeyboardDetector | null;
 };
 
 const registry = new WeakMap<Document, ManagerState>();
@@ -112,6 +121,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
     onCustomMoverMove: null as unknown as (e: Event) => void,
     onCustomGroupperMove: null as unknown as (e: Event) => void,
     mutationObserver: null as unknown as MutationObserver,
+    // Create keyboard detector to enable programmatic-focus detection and
+    // keyboard-vs-pointer tracking for this document's window.
+    keyboardDetector: doc.defaultView ? createKeyboardDetector(doc.defaultView) : null,
   };
 
   // -------------------------------------------------------------------------
@@ -160,9 +172,15 @@ export function createNavigationManager(doc: Document): NavigationManager {
       return;
     }
 
+    const relatedTarget = (e.relatedTarget as HTMLElement | null) ?? undefined;
+    // consumeProgrammaticFocusFlag resets the flag — must be called once per focusin.
+    // This window-level keyboardDetector listener fires first (window capture fires
+    // before document capture), so the flag is still set when we reach here.
+    const isFocusedProgrammatically = consumeProgrammaticFocusFlag(state.doc.defaultView);
+
     // Notify subscribers
     for (const cb of state.focusedElementCallbacks) {
-      cb(target, {});
+      cb(target, { relatedTarget, isFocusedProgrammatically });
     }
 
     // Groupper: update roving tabindex when focus enters a limited groupper
@@ -258,10 +276,12 @@ export function createNavigationManager(doc: Document): NavigationManager {
       const groupperEl = findAncestorWithNavKey(target, 'groupper') as HTMLElement | null;
       if (groupperEl) {
         const first = findFirst(groupperEl);
+        markProgrammatic(state);
         first?.focus();
       }
     } else if (customEvent.detail.action === GroupperMoveFocusActions.Escape) {
       const groupperEl = findAncestorWithNavKey(target, 'groupper') as HTMLElement | null;
+      markProgrammatic(state);
       groupperEl?.focus();
     }
   };
@@ -337,6 +357,7 @@ export function createNavigationManager(doc: Document): NavigationManager {
       const result = new Promise<boolean>(resolve => {
         const observedElement = state.observedElements.get(name);
         if (observedElement) {
+          markProgrammatic(state);
           observedElement.focus();
           resolve(true);
           return;
@@ -353,6 +374,7 @@ export function createNavigationManager(doc: Document): NavigationManager {
           const el = state.observedElements.get(name);
           if (el) {
             win?.clearInterval?.(interval);
+            markProgrammatic(state);
             el.focus();
             resolve(true);
             return;
@@ -401,6 +423,9 @@ export function createNavigationManager(doc: Document): NavigationManager {
         state.focusedElementCallbacks.clear();
         state.observedElements.clear();
         state.restoreTargets.clear();
+        if (state.keyboardDetector) {
+          disposeKeyboardDetector(state.keyboardDetector);
+        }
         registry.delete(doc);
       }
     },
@@ -413,6 +438,17 @@ export function createNavigationManager(doc: Document): NavigationManager {
 
 export function disposeNavigationManager(manager: NavigationManager): void {
   manager.dispose();
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function markProgrammatic(state: ManagerState): void {
+  const win = state.doc.defaultView;
+  if (win) {
+    markNextFocusProgrammatic(win);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -509,6 +545,7 @@ function handleArrowKey(
 
   if (next && next !== current) {
     e.preventDefault();
+    markProgrammatic(state);
     next.focus();
 
     // Update memorized element
@@ -539,11 +576,13 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
 
       if (!e.shiftKey && target === last) {
         e.preventDefault();
+        markProgrammatic(state);
         first.focus();
         return;
       }
       if (e.shiftKey && target === first) {
         e.preventDefault();
+        markProgrammatic(state);
         last.focus();
         return;
       }
@@ -555,6 +594,7 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
       if (!state.activeModal.contains(target)) {
         e.preventDefault();
         const first = findFirst(state.activeModal);
+        markProgrammatic(state);
         first?.focus();
         return;
       }
@@ -577,11 +617,13 @@ function handleTab(e: KeyboardEvent, target: HTMLElement, state: ManagerState): 
 
       if (!e.shiftKey && target === last) {
         e.preventDefault();
+        markProgrammatic(state);
         first.focus();
         return;
       }
       if (e.shiftKey && target === first) {
         e.preventDefault();
+        markProgrammatic(state);
         last.focus();
         return;
       }
@@ -608,10 +650,12 @@ function handleGroupperEnterEscape(e: KeyboardEvent, target: HTMLElement, state:
     e.preventDefault();
     const active = state.groupperActiveChild.get(groupperEl);
     const toFocus = active && groupperEl.contains(active) ? active : findFirst(groupperEl);
+    markProgrammatic(state);
     toFocus?.focus();
     target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Enter' }));
   } else if (e.key === 'Escape' && groupperEl.contains(target)) {
     e.preventDefault();
+    markProgrammatic(state);
     groupperEl.focus();
     target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Escape' }));
   }
@@ -675,6 +719,7 @@ function deactivateModalizer(modalizerEl: HTMLElement, state: ManagerState): voi
   if (modalId) {
     const target = state.restoreTargets.get(modalId);
     if (target && state.doc.contains(target)) {
+      markProgrammatic(state);
       target.focus();
     }
   }

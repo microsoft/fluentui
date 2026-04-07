@@ -45,7 +45,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
 
     if (hasMenuContext && targetDocument && element) {
       const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
-        const nextElement = e.detail.next;
+        const nextElement = e.target as HTMLElement | null;
 
         if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
           // Preventing Tabster from handling Tab press, useMenuPopover will handle it.
@@ -53,10 +53,10 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         }
       };
 
-      targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+      targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus as EventListener);
 
       return () => {
-        targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+        targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus as EventListener);
       };
     }
   }, [innerRef, targetDocument, hasMenuContext]);

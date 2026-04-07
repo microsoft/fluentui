@@ -27,7 +27,19 @@ export const KEYBORG_FOCUSIN = 'keyborg:focusin' as const;
  * Event dispatched on every focusin when navigating with the keyboard,
  * matches the shape consumers expect from keyborg.
  */
-export type KeyborgFocusInEvent = CustomEvent<{ isNavigatingWithKeyboard: boolean }>;
+export type KeyborgFocusInEvent = CustomEvent<{
+  isNavigatingWithKeyboard: boolean;
+  isFocusedProgrammatically?: boolean;
+}>;
+
+declare global {
+  interface DocumentEventMap {
+    'keyborg:focusin': KeyborgFocusInEvent;
+  }
+  interface ElementEventMap {
+    'keyborg:focusin': KeyborgFocusInEvent;
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Module-private singleton registry
@@ -37,10 +49,12 @@ type DetectorState = {
   detector: KeyboardDetector;
   refCount: number;
   isKeyboard: boolean;
+  isProgrammaticFocus: boolean;
   callbacks: Set<KeyboardDetectorCallback>;
   onKeydown: (e: KeyboardEvent) => void;
   onPointerdown: () => void;
   onFocusin: (e: FocusEvent) => void;
+  originalFocus: typeof HTMLElement.prototype.focus;
 };
 
 const registry = new WeakMap<Window, DetectorState>();
@@ -65,10 +79,20 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
     detector: null as unknown as KeyboardDetector, // set below
     refCount: 1,
     isKeyboard: false,
+    isProgrammaticFocus: false,
     callbacks: new Set(),
     onKeydown: null as unknown as (e: KeyboardEvent) => void,
     onPointerdown: null as unknown as () => void,
     onFocusin: null as unknown as (e: FocusEvent) => void,
+    originalFocus: win.HTMLElement.prototype.focus,
+  };
+
+  // Patch HTMLElement.prototype.focus to detect programmatic focus calls.
+  // This matches keyborg's behaviour: any direct .focus() call (not triggered
+  // by keyboard/pointer interaction) sets isProgrammaticFocus.
+  win.HTMLElement.prototype.focus = function patchedFocus(this: HTMLElement, options?: FocusOptions) {
+    state.isProgrammaticFocus = true;
+    state.originalFocus.call(this, options);
   };
 
   function notify(value: boolean) {
@@ -91,6 +115,14 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
   state.onPointerdown = () => notify(false);
 
   state.onFocusin = (e: FocusEvent) => {
+    // Read the flag but do NOT reset it here — navigationManager's document-level
+    // focusin listener fires after this window-level one and will consume it via
+    // consumeProgrammaticFocusFlag(). After the full focusin dispatch cycle,
+    // we clear it in a microtask to handle cases where no navigationManager exists.
+    const isFocusedProgrammatically = state.isProgrammaticFocus;
+    Promise.resolve().then(() => {
+      state.isProgrammaticFocus = false;
+    });
     if (!state.isKeyboard) {
       return;
     }
@@ -100,7 +132,7 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
       const keyborgEvent: KeyborgFocusInEvent = new CustomEvent(KEYBORG_FOCUSIN, {
         bubbles: true,
         composed: true,
-        detail: { isNavigatingWithKeyboard: true },
+        detail: { isNavigatingWithKeyboard: true, isFocusedProgrammatically },
       });
       target.dispatchEvent(keyborgEvent);
     }
@@ -109,6 +141,10 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
   win.addEventListener('keydown', state.onKeydown, true);
   win.addEventListener('pointerdown', state.onPointerdown, true);
   win.addEventListener('focusin', state.onFocusin, true);
+
+  // Set win.__keyborg for backwards-compatibility with code that checks for it
+  // (matches original keyborg library behaviour).
+  (win as Window & { __keyborg?: unknown }).__keyborg = state;
 
   const detector: KeyboardDetector = {
     isNavigatingWithKeyboard: () => state.isKeyboard,
@@ -133,6 +169,9 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
         win.removeEventListener('focusin', state.onFocusin, true);
         state.callbacks.clear();
         registry.delete(win);
+        // Restore patched focus and clear global marker
+        win.HTMLElement.prototype.focus = state.originalFocus;
+        delete (win as Window & { __keyborg?: unknown }).__keyborg;
       }
     },
   };
@@ -144,4 +183,36 @@ export function createKeyboardDetector(win: Window): KeyboardDetector {
 
 export function disposeKeyboardDetector(detector: KeyboardDetector): void {
   detector.dispose();
+}
+
+/**
+ * Signal that the next focus event will be programmatically initiated
+ * (e.g. by arrow-key navigation, focus restoration after modal close).
+ * The keyboard detector will include `isFocusedProgrammatically: true`
+ * in the next `keyborg:focusin` event detail.
+ */
+export function markNextFocusProgrammatic(win: Window): void {
+  const state = registry.get(win);
+  if (state) {
+    state.isProgrammaticFocus = true;
+  }
+}
+
+/**
+ * Reads and resets the programmatic-focus flag for the given window.
+ * Called by navigationManager's focusin handler (which fires after this
+ * module's window-level handler) to determine whether the focus change was
+ * triggered by a direct `.focus()` call rather than by user interaction.
+ */
+export function consumeProgrammaticFocusFlag(win: Window | null | undefined): boolean {
+  if (!win) {
+    return false;
+  }
+  const state = registry.get(win);
+  if (!state) {
+    return false;
+  }
+  const val = state.isProgrammaticFocus;
+  state.isProgrammaticFocus = false;
+  return val;
 }
