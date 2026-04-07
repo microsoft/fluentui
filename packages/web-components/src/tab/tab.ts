@@ -22,7 +22,7 @@ export class Tab extends FASTElement {
    * HTML Attribute: disabled
    */
   @attr({ mode: 'boolean' })
-  public disabled = false;
+  public disabled!: boolean;
   protected disabledChanged(prev: boolean, next: boolean) {
     if (!this.$fastController.isConnected) {
       return;
@@ -60,8 +60,6 @@ export class Tab extends FASTElement {
     super.connectedCallback();
 
     this.slot ||= 'tab';
-
-    this.disabledChanged(false, this.disabled);
 
     if (this.styles) {
       this.$fastController.removeStyles(this.styles);
