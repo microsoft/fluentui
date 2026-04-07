@@ -28,10 +28,8 @@ export class BaseTablist extends FASTElement {
   public disabled: boolean = false;
   /** @internal */
   protected disabledChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'disabled', next);
-
-    if (!this.$fastController.isConnected) {
-      return;
+    if (this.elementInternals) {
+      toggleState(this.elementInternals, 'disabled', next);
     }
 
     this.setTabs({ forceDisabled: true });
@@ -46,12 +44,9 @@ export class BaseTablist extends FASTElement {
   @attr
   public orientation: TablistOrientation = TablistOrientation.horizontal;
   protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void {
-    this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
-
-    swapStates(this.elementInternals, prev, next, TablistOrientation);
-
-    if (!this.$fastController.isConnected) {
-      return;
+    if (this.elementInternals) {
+      this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
+      swapStates(this.elementInternals, prev, next, TablistOrientation);
     }
 
     this.setTabs();
@@ -68,11 +63,9 @@ export class BaseTablist extends FASTElement {
   public activeid!: string;
   /** @internal */
   protected activeidChanged(oldValue: string, newValue: string): void {
-    if (!this.$fastController.isConnected || this.tabs.length === 0) {
-      return;
+    if (this.tabs?.length > 0) {
+      this.changeTab(oldValue, newValue);
     }
-
-    this.changeTab(oldValue, newValue);
   }
 
   /**
@@ -91,11 +84,9 @@ export class BaseTablist extends FASTElement {
   public tabs: Tab[] = [];
   /** @internal */
   protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
-    if (!this.$fastController.isConnected || this.tabs.length === 0) {
-      return;
+    if (this.tabs?.length > 0) {
+      this.setTabs({ connectToPanel: true });
     }
-
-    this.setTabs({ connectToPanel: true });
   }
 
   /**
@@ -125,6 +116,10 @@ export class BaseTablist extends FASTElement {
    * @internal
    */
   protected setTabs({ connectToPanel = false, forceDisabled = false } = {}): void {
+    if (!this.tabs) {
+      return;
+    }
+
     const hasStartSlot = this.tabs.some(tab => !!tab.querySelector("[slot='start']"));
     const rootNode = this.getRootNode() as Document | ShadowRoot;
     let firstEnabledTabId = '';
