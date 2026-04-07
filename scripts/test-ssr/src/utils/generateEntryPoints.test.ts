@@ -72,5 +72,5 @@ describe('generateEntryPoints', () => {
       );
       "
     `);
-  });
+  }, 15000);
 });

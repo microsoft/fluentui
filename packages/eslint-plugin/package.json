@@ -12,13 +12,13 @@
   "dependencies": {
     "@eslint/compat": "1.3.0",
     "@griffel/eslint-plugin": "^2.0.0",
+    "@nx/eslint-plugin": "21.6.10",
     "@rnx-kit/eslint-plugin": "^0.8.4",
+    "@typescript-eslint/eslint-plugin": "patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch",
     "@typescript-eslint/type-utils": "^8.46.2",
     "@typescript-eslint/utils": "^8.46.2",
-    "@nx/eslint-plugin": "21.6.10",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react-compiler": "0.0.0-experimental-a97cca1-20240529",
     "eslint-config-airbnb-extended": "2.1.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-compat": "^6.0.2",
     "eslint-plugin-import": "^2.31.0",
@@ -26,13 +26,13 @@
     "eslint-plugin-jsdoc": "^50.6.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-a97cca1-20240529",
     "eslint-plugin-react-hooks": "^5.1.0",
     "fs-extra": "^8.1.0",
     "globals": "13.24.0",
     "jju": "^1.4.0",
     "minimatch": "^3.1.2",
-    "typescript-eslint": "^8.46.2",
-    "@typescript-eslint/eslint-plugin": "^8.46.2"
+    "typescript-eslint": "^8.46.2"
   },
   "peerDependencies": {
     "eslint": "^9.0.0",

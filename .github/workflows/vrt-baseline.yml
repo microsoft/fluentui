@@ -30,7 +30,7 @@ jobs:
           cache: 'yarn'
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn playwright install --with-deps
 
       - name: Run VR tests (generate screenshots)

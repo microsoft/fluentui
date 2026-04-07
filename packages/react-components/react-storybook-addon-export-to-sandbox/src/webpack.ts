@@ -4,10 +4,13 @@ type WebpackFinalFn = NonNullable<import('@storybook/react-webpack5').StorybookC
 export type WebpackFinalConfig = Parameters<WebpackFinalFn>[0];
 export type WebpackFinalOptions = Parameters<WebpackFinalFn>[1];
 
-export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions) {
+export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions): WebpackFinalConfig {
   const addonPresetConfig = getAddonOptions(options);
 
-  registerRules({ config, rules: [createBabelLoaderRule(addonPresetConfig)] });
+  registerRules({
+    config: config as import('webpack').Configuration,
+    rules: [createBabelLoaderRule(addonPresetConfig)],
+  });
 
   return config;
 }

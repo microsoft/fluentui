@@ -13,14 +13,14 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-button": "^9.9.0",
-    "@fluentui/react-divider": "^9.7.0",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.2",
-    "@fluentui/react-jsx-runtime": "^9.4.1",
     "@fluentui/react-context-selector": "^9.2.15",
+    "@fluentui/react-divider": "^9.7.0",
+    "@fluentui/react-jsx-runtime": "^9.4.1",
     "@fluentui/react-radio": "^9.6.1",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-tabster": "^9.26.13",
+    "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-utilities": "^9.26.2",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
