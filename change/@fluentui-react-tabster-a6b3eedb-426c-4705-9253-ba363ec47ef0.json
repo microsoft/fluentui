@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-tabster): replace tabster/keyborg logic with inline custom logic to reduce bundle size",
+  "packageName": "@fluentui/react-tabster",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
