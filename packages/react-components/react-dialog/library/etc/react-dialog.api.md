@@ -6,6 +6,7 @@
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ButtonProps } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -213,7 +214,9 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
 
 // @public
-export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
+export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {
+    closeButton?: ButtonProps;
+};
 
 // @public (undocumented)
 export type DialogTitleSlots = {

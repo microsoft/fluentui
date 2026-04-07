@@ -4,9 +4,9 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
-import { Dismiss20Regular } from '@fluentui/react-icons';
+import { Dismiss16Regular } from '@fluentui/react-icons';
+import { Button } from '@fluentui/react-button';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
-import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
 
 /**
  * Create the state required to render DialogTitle.
@@ -18,9 +18,8 @@ import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
  * @param ref - reference to root HTMLElement of DialogTitle
  */
 export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLDivElement>): DialogTitleState => {
-  const { action } = props;
+  const { action, closeButton: closeButtonProps, ...restProps } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
-  const internalStyles = useDialogTitleInternalStyles();
 
   return {
     components: {
@@ -31,7 +30,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       getIntrinsicElementProps('h2', {
         ref,
         id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
-        ...props,
+        ...restProps,
       }),
       { elementType: 'h2' },
     ),
@@ -40,14 +39,13 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       defaultProps: {
         children: (
           <DialogTrigger disableButtonEnhancement action="close">
-            <button
-              type="button"
-              className={internalStyles}
-              // TODO: find a better way to add internal labels
+            <Button
+              appearance="transparent"
               aria-label="close"
-            >
-              <Dismiss20Regular />
-            </button>
+              icon={<Dismiss16Regular />}
+              size="small"
+              {...closeButtonProps}
+            />
           </DialogTrigger>
         ),
       },

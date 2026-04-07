@@ -27,6 +27,12 @@ const useStyles = makeStyles({
   rootWithoutAction: {
     gridColumnEnd: 4,
   },
+  action: {
+    // Aligns the dismiss icon within the close button to the right edge of the body container.
+    // This only applies to the dismiss icon with close button in size small.
+    // Custom styling may be needed for other icons or sizes.
+    marginRight: '-8px',
+  },
 });
 
 /**
@@ -79,7 +85,12 @@ export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTi
   );
 
   if (state.action) {
-    state.action.className = mergeClasses(dialogTitleClassNames.action, actionResetStyles, state.action.className);
+    state.action.className = mergeClasses(
+      dialogTitleClassNames.action,
+      actionResetStyles,
+      styles.action,
+      state.action.className,
+    );
   }
 
   return state;

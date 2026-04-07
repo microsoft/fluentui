@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ButtonProps } from '@fluentui/react-button';
 
 export type DialogTitleSlots = {
   /**
@@ -15,7 +16,14 @@ export type DialogTitleSlots = {
 /**
  * DialogTitle Props
  */
-export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
+export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {
+  /**
+   * Props to customise the default close button rendered in the `action` slot
+   * for non-modal dialogs. Has no effect when `action` is explicitly provided.
+   * Use `action` to replace close button with other action element.
+   */
+  closeButton?: ButtonProps;
+};
 
 /**
  * State used in rendering DialogTitle
