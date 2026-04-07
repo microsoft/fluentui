@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/cli",
   "version": "0.0.1",
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "bin": {
-    "fluentui-cli": "./bin/fluentui-cli.js"
-  },
+  "bin": "./bin/fluentui-cli.js",
   "files": [
     "*.md",
     "bin",
