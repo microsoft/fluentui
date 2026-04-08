@@ -1,8 +1,8 @@
-import './docs-root.css';
+import '../packages/react-components/react-storybook-addon/src/styles.css';
 import '../packages/react-components/react-storybook-addon-export-to-sandbox/src/styles.css';
 import { withLinks } from '@storybook/addon-links';
 
-/** @typedef {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').ParametersExtension & import('@storybook/react').Parameters} Parameters */
+/** @typedef {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/index').Parameters & import('@storybook/react').Parameters} Parameters */
 
 /** @type {import('@storybook/react').Decorator[]} */
 export const decorators = [withLinks];

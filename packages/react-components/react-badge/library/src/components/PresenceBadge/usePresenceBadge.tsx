@@ -14,8 +14,13 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable } from '../Badge/index';
-import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
+import { useBadgeBase_unstable } from '../Badge/index';
+import type {
+  PresenceBadgeBaseProps,
+  PresenceBadgeBaseState,
+  PresenceBadgeProps,
+  PresenceBadgeState,
+} from './PresenceBadge.types';
 
 const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, size: PresenceBadgeState['size']) => {
   switch (status) {
@@ -38,7 +43,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
   }
 };
 
-const DEFAULT_STRINGS = {
+export const DEFAULT_STRINGS = {
   busy: 'busy',
   'out-of-office': 'out of office',
   away: 'away',
@@ -56,29 +61,56 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const { size = 'medium', status = 'available', outOfOffice = false } = props;
-
-  const statusText = DEFAULT_STRINGS[status];
-  const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+  const { size = 'medium', outOfOffice = false, ...baseProps } = props;
+  const status = props.status ?? 'available';
 
   const IconElement = iconMap(status, outOfOffice, size);
 
   const state: PresenceBadgeState = {
-    ...useBadge_unstable(
+    ...usePresenceBadgeBase_unstable(baseProps, ref),
+    appearance: 'filled',
+    color: 'brand',
+    shape: 'circular',
+    size,
+    outOfOffice,
+  };
+
+  if (state.icon) {
+    state.icon.children ??= <IconElement />;
+  }
+
+  return state;
+};
+
+/**
+ * Base hook for PresenceBadge component, which manages state related to presence status and ARIA attributes.
+ * Note: size is excluded from BaseProps as it is a design prop; icon selection uses the 'medium' size default.
+ * To render size-specific icons, use the full usePresenceBadge_unstable hook.
+ *
+ * @param props - User provided props to the PresenceBadge component.
+ * @param ref - User provided ref to be passed to the PresenceBadge component.
+ */
+export const usePresenceBadgeBase_unstable = (
+  props: PresenceBadgeBaseProps,
+  ref: React.Ref<HTMLElement>,
+): PresenceBadgeBaseState => {
+  const { status = 'available', outOfOffice = false } = props;
+
+  const statusText = DEFAULT_STRINGS[status];
+  const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
+
+  const state: PresenceBadgeBaseState = {
+    ...useBadgeBase_unstable(
       {
         'aria-label': statusText + oofText,
         role: 'img',
         ...props,
-        size,
         icon: slot.optional(props.icon, {
-          defaultProps: {
-            children: IconElement ? <IconElement /> : null,
-          },
           renderByDefault: true,
           elementType: 'span',
         }),
       },
-      ref,
+      ref as React.Ref<HTMLDivElement>,
     ),
     status,
     outOfOffice,

@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type SpinButtonSlots = {
@@ -157,3 +157,6 @@ export type SpinButtonOnChangeData = {
 
 export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
+
+export type SpinButtonBaseProps = DistributiveOmit<SpinButtonProps, 'appearance' | 'size'>;
+export type SpinButtonBaseState = DistributiveOmit<SpinButtonState, 'appearance' | 'size'>;

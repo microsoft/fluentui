@@ -50,10 +50,21 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
 };
 
 /**
+ * RatingDisplay base props — excludes design props (color, size).
+ */
+export type RatingDisplayBaseProps = Omit<RatingDisplayProps, 'color' | 'size'>;
+
+/**
  * State used in rendering RatingDisplay
  */
 export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
   Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'icon' | 'max' | 'size'>> &
   Pick<RatingDisplayProps, 'value'>;
+
+/**
+ * RatingDisplay base state — excludes design props (color, size).
+ */
+export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size' | 'icon'> &
+  Pick<RatingDisplayProps, 'icon'>;
 
 export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };

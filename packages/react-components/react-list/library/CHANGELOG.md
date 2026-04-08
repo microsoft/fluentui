@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-list
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 15:52:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.6.13)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.6.12..@fluentui/react-list_v9.6.13)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.6.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.6.12)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.6.11..@fluentui/react-list_v9.6.12)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.5.17 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+
+## [9.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.6.11)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.6.10..@fluentui/react-list_v9.6.11)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.5.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
 
 ## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.6.10)
 

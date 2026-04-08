@@ -2,6 +2,138 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:41 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "50162292a5a16f1c7e2f7285678965a8228307c1",
+            "comment": "Fix: Left arrow behavior in MenuGrid submenus"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "4319a8d2d0007b36857d821ec32280fc6b475b58",
+            "comment": "Fix: Correct type for content prop in MenuGridItem"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.24.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.14",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:41 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.23.1",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.13",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Mar 2026 08:12:50 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "d2d48440be57395a523dfd901621d99b58340ef4",
+            "comment": "Add circular and first-letter navigation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.12",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2026 07:57:16 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.23.0",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 12:58:41 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "de6619310a88ff6bf955685b690c82993e1bb413",
+            "comment": "fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:21 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "80f357995c67265a761717b3ea4bd4ca300dc220",
+            "comment": "Proper onClick handling for MenuGridRow"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-table to v9.19.11",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-menu-grid-preview_v0.2.11",
       "version": "0.2.11",

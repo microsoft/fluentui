@@ -1,6 +1,8 @@
 export { Dropdown } from './Dropdown';
 export type {
   ActiveOptionChangeData,
+  DropdownBaseProps as DropdownBaseHookProps,
+  DropdownBaseState as DropdownBaseHookState,
   DropdownContextValues,
   DropdownOpenChangeData,
   DropdownOpenEvents,
@@ -9,5 +11,5 @@ export type {
   DropdownState,
 } from './Dropdown.types';
 export { renderDropdown_unstable } from './renderDropdown';
-export { useDropdown_unstable } from './useDropdown';
+export { useDropdownBase_unstable, useDropdown_unstable } from './useDropdown';
 export { dropdownClassNames, useDropdownStyles_unstable } from './useDropdownStyles.styles';

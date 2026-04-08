@@ -22,6 +22,7 @@ import {
   isScatterPolarSeries,
   isPlottable,
   getRangeForScatterMarkerSize,
+  calculateMarkerRadius,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
@@ -415,18 +416,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         const seriesId = `${_seriesId}_${i}_${j}`;
         const circleId = `${_circleId}_${i}_${j}`;
         const pointMarkerSize = (_points[i].data[j] as ScatterChartDataPoint).markerSize;
-        const minPixel = 4;
-        const maxPixel = 16;
-        let circleRadius = activePoint === circleId ? 6 : 4;
-
-        if (pointMarkerSize) {
-          if (isContinuousXY && maxMarkerSize !== 0) {
-            circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
-          } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
-            circleRadius =
-              minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
-          }
-        }
+        const circleRadius = calculateMarkerRadius({
+          pointMarkerSize,
+          minMarkerSize,
+          maxMarkerSize,
+          extraMaxPixels,
+          isContinuousXY,
+          isActive: activePoint === circleId,
+          defaultRadius: 4,
+          activeRadius: 6,
+        });
 
         const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
@@ -438,7 +437,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               <circle
                 id={circleId}
                 key={circleId}
-                r={Math.max(circleRadius, 4)}
+                r={circleRadius}
                 cx={xPoint + _xBandwidth}
                 cy={yPoint}
                 data-is-focusable={isLegendSelected}

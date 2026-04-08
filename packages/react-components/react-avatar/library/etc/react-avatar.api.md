@@ -24,6 +24,12 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
+export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
+
+// @public (undocumented)
+export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;
+
+// @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
 // @internal (undocumented)
@@ -41,6 +47,12 @@ export interface AvatarContextValue {
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
+export type AvatarGroupBaseProps = Omit<AvatarGroupProps, 'size'>;
+
+// @public (undocumented)
+export type AvatarGroupBaseState = Omit<AvatarGroupState, 'size'>;
+
+// @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public (undocumented)
@@ -55,6 +67,12 @@ export type AvatarGroupContextValues = {
 
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+
+// @public (undocumented)
+export type AvatarGroupItemBaseProps = AvatarGroupItemProps;
+
+// @public (undocumented)
+export type AvatarGroupItemBaseState = Omit<AvatarGroupItemState, 'size'>;
 
 // @public (undocumented)
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
@@ -78,6 +96,12 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 
 // @public
 export const AvatarGroupPopover: React_2.FC<AvatarGroupPopoverProps>;
+
+// @public (undocumented)
+export type AvatarGroupPopoverBaseProps = AvatarGroupPopoverProps;
+
+// @public (undocumented)
+export type AvatarGroupPopoverBaseState = Omit<AvatarGroupPopoverState, 'size'>;
 
 // @public (undocumented)
 export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots>;
@@ -183,25 +207,31 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 };
 
 // @public (undocumented)
-export const renderAvatar_unstable: (state: AvatarState) => JSXElement;
+export const renderAvatar_unstable: (state: AvatarBaseState) => JSXElement;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSXElement;
+export const renderAvatarGroup_unstable: (state: AvatarGroupBaseState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public
-export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSXElement;
+export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemBaseState) => JSXElement;
 
 // @public
-export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSXElement;
+export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverBaseState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public
+export const useAvatarBase_unstable: (props: AvatarBaseProps, ref?: React_2.Ref<HTMLElement>) => AvatarBaseState;
 
 // @internal (undocumented)
 export const useAvatarContext: () => AvatarContextValue;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public
+export const useAvatarGroupBase_unstable: (props: AvatarGroupBaseProps, ref: React_2.Ref<HTMLDivElement>) => AvatarGroupBaseState;
 
 // @public (undocumented)
 export const useAvatarGroupContext_unstable: <T>(selector: ContextSelector<AvatarGroupContextValue, T>) => T;
@@ -213,10 +243,16 @@ export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGro
 export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
 
 // @public
+export const useAvatarGroupItemBase_unstable: (props: AvatarGroupItemBaseProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemBaseState;
+
+// @public
 export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
 export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
+
+// @public
+export const useAvatarGroupPopoverBase_unstable: (props: AvatarGroupPopoverBaseProps) => AvatarGroupPopoverBaseState;
 
 // @public (undocumented)
 export const useAvatarGroupPopoverContextValues_unstable: (state: AvatarGroupPopoverState) => AvatarGroupContextValues;

@@ -17,8 +17,11 @@ let _counter = 0;
 /**
  * Change description used for change callbacks in GlobalSettings.
  *
- * @public
+ * Change description used for change callbacks in GlobalSettings.
+ *
  * {@docCategory IChangeDescription}
+ *
+ * @public
  */
 export interface IChangeDescription {
   key: string;
@@ -31,8 +34,11 @@ export interface IChangeDescription {
 /**
  * Change event callback.
  *
- * @public
+ * Change event callback.
+ *
  * {@docCategory IChangeEventCallback}
+ *
+ * @public
  */
 export interface IChangeEventCallback {
   __id__?: string;
@@ -44,8 +50,13 @@ export interface IChangeEventCallback {
  * If window is not provided, it will store settings in module scope. Provides a
  * way to observe changes as well when their values change.
  *
- * @public
+ * Global settings helper, which stores settings in the global (window) namespace.
+ * If window is not provided, it will store settings in module scope. Provides a
+ * way to observe changes as well when their values change.
+ *
  * {@docCategory GlobalSettings}
+ *
+ * @public
  */
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {

@@ -36,6 +36,22 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
    * the signature remains just to avoid breaking changes
    */
   onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+  /**
+   * Whether child menus (submenus) should open when the user presses the ArrowRight key on their trigger.
+   * Set to `false` when the list context is provided by a grid-like container (e.g. MenuGrid) where
+   * ArrowRight is reserved for column navigation.
+   *
+   * @default true
+   */
+  shouldOpenOnArrowRight?: boolean;
+  /**
+   * Whether child menus (submenus) should close when the user presses the ArrowLeft key.
+   * Set to `false` when the list context is provided by a grid-like container (e.g. MenuGrid) where
+   * ArrowLeft is reserved for column navigation.
+   *
+   * @default true
+   */
+  shouldCloseOnArrowLeft?: boolean;
 };
 
 export const MenuListProvider = MenuListContext.Provider;

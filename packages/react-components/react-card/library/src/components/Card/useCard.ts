@@ -4,7 +4,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
 
-import type { CardProps, CardState } from './Card.types';
+import type { CardBaseProps, CardBaseState, CardProps, CardState } from './Card.types';
 import { useCardSelectable } from './useCardSelectable';
 import { cardContextDefaultValue } from './CardContext';
 
@@ -79,7 +79,26 @@ const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...
  * @param ref - reference to the root element of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  const { appearance = 'filled', orientation = 'vertical', size = 'medium', disabled = false, ...restProps } = props;
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium', ...cardProps } = props;
+  const state = useCardBase_unstable(cardProps, ref);
+
+  return {
+    ...state,
+    appearance,
+    orientation,
+    size,
+  };
+};
+
+/**
+ * Base hook for Card component, which manages state related to interactivity, selection,
+ * focus management, ARIA attributes, and slot structure without design props.
+ *
+ * @param props - props from this instance of Card
+ * @param ref - reference to the root element of Card
+ */
+export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDivElement>): CardBaseState => {
+  const { disabled = false, ...restProps } = props;
 
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
@@ -107,9 +126,6 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
   }
 
   return {
-    appearance,
-    orientation,
-    size,
     interactive,
     selectable,
     selectFocused,

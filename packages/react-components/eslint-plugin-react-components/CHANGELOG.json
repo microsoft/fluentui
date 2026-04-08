@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 14:06:15 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "2095d48e326c499b63ea3d0c49edc67ea1d2104b",
+            "comment": "refactor: optimize identifier tracking in enforce-use-client rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:20 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.2.0",
       "version": "0.2.0",

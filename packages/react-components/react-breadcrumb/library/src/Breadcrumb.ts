@@ -3,6 +3,8 @@ export type {
   BreadcrumbProps,
   BreadcrumbSlots,
   BreadcrumbState,
+  BreadcrumbBaseProps,
+  BreadcrumbBaseState,
 } from './components/Breadcrumb/index';
 export {
   Breadcrumb,
@@ -13,4 +15,6 @@ export {
   useBreadcrumbContext_unstable,
   useBreadcrumbStyles_unstable,
   useBreadcrumb_unstable,
+  useBreadcrumbBase_unstable,
+  useBreadcrumbA11yBehavior_unstable,
 } from './components/Breadcrumb/index';

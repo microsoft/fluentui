@@ -27,6 +27,11 @@ export type SearchBoxProps = Omit<
   };
 
 /**
+ * SearchBox base props — excludes design props (appearance, size).
+ */
+export type SearchBoxBaseProps = Omit<SearchBoxProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering SearchBox
  */
 export type SearchBoxState = ComponentState<SearchBoxSlots> &
@@ -35,6 +40,11 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
   Required<Pick<SearchBoxProps, 'disabled'>> & {
     focused: boolean;
   };
+
+/**
+ * SearchBox base state — excludes design props (appearance, size).
+ */
+export type SearchBoxBaseState = Omit<SearchBoxState, 'appearance' | 'size'>;
 
 /** Overloaded onChange event type, used to merge functionality of regular text entry and the dismiss button */
 export type SearchBoxChangeEvent = React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>;

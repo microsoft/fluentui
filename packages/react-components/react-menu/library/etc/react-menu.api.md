@@ -230,6 +230,8 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
     toggleCheckbox?: SelectableHandler;
     selectRadio?: SelectableHandler;
     onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+    shouldOpenOnArrowRight?: boolean;
+    shouldCloseOnArrowLeft?: boolean;
 };
 
 // @public (undocumented)

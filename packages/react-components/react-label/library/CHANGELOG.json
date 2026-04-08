@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:40 GMT",
+      "tag": "@fluentui/react-label_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "48c16913efc9bb85f3a3d2a4ce6ec713cae1d9d2",
+            "comment": "feat: add useLabelBase_unstable hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:28 GMT",
       "tag": "@fluentui/react-label_v9.3.15",
       "version": "9.3.15",
