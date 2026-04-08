@@ -1,9 +1,7 @@
-import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { findLastIndex } from '@microsoft/fast-web-utilities';
 import { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
-import { getDirection } from '../utils/direction.js';
-import { getRootActiveElement } from '../utils/root-active-element.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
@@ -64,7 +62,6 @@ export class BaseRadioGroup extends FASTElement {
       this.radios?.forEach(radio => {
         radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
-      this.restrictFocus();
     }
   }
 
@@ -170,6 +167,13 @@ export class BaseRadioGroup extends FASTElement {
 
       radio.name = this.name ?? radio.name;
       radio.disabled = !!this.disabled || !!radio.disabledAttribute;
+
+      if (radio.checked && !radio.disabled) {
+        // Update.enqueu() would be too soon for this operation.
+        requestAnimationFrame(() => {
+          radio.toggleAttribute('focusgroupstart', true);
+        });
+      }
     });
 
     if (!this.dirtyState && this.initialValue) {
@@ -196,10 +200,6 @@ export class BaseRadioGroup extends FASTElement {
     if (radioIds) {
       this.setAttribute('aria-owns', radioIds);
     }
-
-    Updates.enqueue(() => {
-      this.restrictFocus();
-    });
   }
 
   /**
@@ -422,6 +422,13 @@ export class BaseRadioGroup extends FASTElement {
     this.enabledRadios[Math.max(0, this.checkedIndex)]?.focus();
   }
 
+  formResetCallback(): void {
+    this.dirtyState = false;
+    this.checkedIndex = -1;
+    this.setFormValue(this.value);
+    this.setValidity();
+  }
+
   /**
    * Enables tabbing through the radio group when the group receives focus.
    *
@@ -430,41 +437,20 @@ export class BaseRadioGroup extends FASTElement {
    */
   public focusinHandler(e: FocusEvent): boolean | void {
     if (!this.disabled) {
-      this.enabledRadios.forEach(radio => {
-        radio.tabIndex = 0;
+      // Uncheck the checked disabled radio, if any.
+      this.radios?.forEach(radio => {
+        if (radio.disabled && radio.checked) {
+          radio.checked = false;
+        }
       });
+
+      const index = this.enabledRadios.indexOf(e.target as Radio);
+      if (index > -1) {
+        this.checkRadio(index, true);
+      }
     }
 
     return true;
-  }
-
-  /**
-   * Sets the tabindex of the radios based on the checked state when the radio group loses focus.
-   *
-   * @param e - the focusout event
-   * @internal
-   */
-  public focusoutHandler(e: FocusEvent): boolean | void {
-    if (this.radios?.includes(e.relatedTarget as Radio) && this.radios?.some(x => x.checked)) {
-      this.restrictFocus();
-    }
-
-    return true;
-  }
-
-  formResetCallback(): void {
-    this.dirtyState = false;
-    this.checkedIndex = -1;
-    this.setFormValue(this.value);
-    this.setValidity();
-  }
-
-  private getEnabledIndexInBounds(index: number, upperBound = this.enabledRadios.length): number {
-    if (upperBound === 0) {
-      return -1;
-    }
-
-    return (index + upperBound) % upperBound;
   }
 
   /**
@@ -474,49 +460,12 @@ export class BaseRadioGroup extends FASTElement {
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    const isRtl = getDirection(this) === 'rtl';
-    const checkedIndex = this.enabledRadios.findIndex(x => x === getRootActiveElement(this)) ?? this.checkedIndex;
-    let increment = 0;
-
     switch (e.key) {
-      case 'ArrowLeft': {
-        increment = isRtl ? 1 : -1;
-        break;
-      }
-
-      case 'ArrowUp': {
-        increment = -1;
-        break;
-      }
-
-      case 'ArrowRight': {
-        increment = isRtl ? -1 : 1;
-        break;
-      }
-
-      case 'ArrowDown': {
-        increment = 1;
-        break;
-      }
-
-      case 'Tab': {
-        this.restrictFocus();
-        break;
-      }
-
-      case ' ': {
+      case ' ':
         this.checkRadio();
         break;
-      }
     }
-
-    if (!increment) {
-      return true;
-    }
-
-    const nextIndex = checkedIndex + increment;
-    this.checkRadio(this.getEnabledIndexInBounds(nextIndex), true);
-    this.enabledRadios[this.checkedIndex]?.focus();
+    return true;
   }
 
   /**
@@ -538,26 +487,6 @@ export class BaseRadioGroup extends FASTElement {
    */
   public reportValidity(): boolean {
     return this.elementInternals.reportValidity();
-  }
-
-  /**
-   * Resets the `tabIndex` for all child radios when the radio group loses focus.
-   *
-   * @internal
-   */
-  private restrictFocus() {
-    let activeIndex = Math.max(this.checkedIndex, 0);
-    const focusedRadioIndex = this.enabledRadios.indexOf(getRootActiveElement(this) as Radio);
-
-    if (focusedRadioIndex !== -1) {
-      activeIndex = focusedRadioIndex;
-    }
-
-    activeIndex = this.getEnabledIndexInBounds(activeIndex);
-
-    this.enabledRadios.forEach((item, index) => {
-      item.tabIndex = index === activeIndex ? 0 : -1;
-    });
   }
 
   /**

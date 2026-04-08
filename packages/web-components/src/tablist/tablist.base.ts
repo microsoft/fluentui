@@ -1,6 +1,5 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
@@ -100,15 +99,6 @@ export class BaseTablist extends FASTElement {
   private change = (): void => {
     this.$emit('change', this.activetab);
   };
-
-  /** @internal */
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Updates.enqueue(() => {
-      focusgroupPolyfill(this);
-    });
-  }
 
   /**
    * Function that is invoked whenever the selected tab or the tab collection changes.

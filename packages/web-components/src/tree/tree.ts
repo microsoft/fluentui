@@ -1,4 +1,5 @@
-import { attr } from '@microsoft/fast-element';
+import { attr, Updates } from '@microsoft/fast-element';
+import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import { BaseTree } from './tree.base.js';
@@ -45,6 +46,15 @@ export class Tree extends BaseTree {
   public childTreeItemsChanged() {
     super.childTreeItemsChanged();
     this.updateSizeAndAppearance();
+  }
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+
+    Updates.enqueue(() => {
+      focusgroupPolyfill(this);
+    });
   }
 
   /**

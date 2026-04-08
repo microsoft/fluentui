@@ -742,10 +742,6 @@ export class BaseMenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
     protected isMenuItemElement: (el: Element) => el is HTMLElement;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
@@ -754,7 +750,7 @@ export class BaseMenuList extends FASTElement {
     // (undocumented)
     protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
     // (undocumented)
-    protected menuItems: Element[] | undefined;
+    protected menuItems: HTMLElement[] | undefined;
     // (undocumented)
     protected setItems(): void;
 }
@@ -811,8 +807,6 @@ export class BaseRadioGroup extends FASTElement {
     focus(): void;
     // @internal
     focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
     static formAssociated: boolean;
     // (undocumented)
     formResetCallback(): void;
@@ -895,8 +889,6 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
-    // @internal (undocumented)
-    connectedCallback(): void;
     disabled: boolean;
     // @internal (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
@@ -1092,8 +1084,6 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
-    // @internal (undocumented)
-    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
@@ -3372,7 +3362,7 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends BaseMenuList {
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
 }
 
@@ -4010,6 +4000,8 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
+    // @internal (undocumented)
+    connectedCallback(): void;
     size?: TablistSize;
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
@@ -4407,6 +4399,8 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
     size: TreeItemSize;
     // (undocumented)
     protected sizeChanged(): void;

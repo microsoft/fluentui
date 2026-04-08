@@ -1,6 +1,5 @@
-import { FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { isHTMLElement, keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
+import { FASTElement, observable } from '@microsoft/fast-element';
+import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
 
@@ -43,15 +42,6 @@ export class BaseTree extends FASTElement {
   constructor() {
     super();
     this.elementInternals.role = 'tree';
-  }
-
-  /** @internal */
-  connectedCallback() {
-    super.connectedCallback();
-
-    Updates.enqueue(() => {
-      focusgroupPolyfill(this);
-    });
   }
 
   /** @internal */
