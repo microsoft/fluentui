@@ -1,12 +1,12 @@
 {
   "name": "@fluentui/cli",
   "version": "0.0.1",
-  "private": true,
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "bin": {
-    "fluentui-cli": "./bin/fluentui-cli.js"
+    "fluentui-cli": "./bin/fluentui-cli.js",
+    "cli": "./bin/fluentui-cli.js"
   },
   "files": [
     "*.md",
