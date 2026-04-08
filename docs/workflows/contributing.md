@@ -9,17 +9,17 @@ yarn clean                                # Clean build artifacts
 
 # Development
 yarn start                                # Interactive project selector
-npx nx run <project>:build                # Build specific project
-npx nx run <project>:start                # Start Storybook for component
-npx nx run <project>:test                 # Run unit tests
-npx nx run <project>:test -u              # Update snapshots
-npx nx run <project>:lint                 # Lint
-npx nx run <project>:type-check           # Type check
-npx nx run <project>:generate-api         # Update API docs
+yarn nx run <project>:build                # Build specific project
+yarn nx run <project>:start               # Start Storybook for component
+yarn nx run <project>:test                # Run unit tests
+yarn nx run <project>:test -u             # Update snapshots
+yarn nx run <project>:lint                # Lint
+yarn nx run <project>:type-check          # Type check
+yarn nx run <project>:generate-api        # Update API docs
 
 # Multi-project
-npx nx run-many -t build                  # Build multiple
-npx nx affected -t test                   # Test affected projects
+yarn nx run-many -t build                 # Build multiple
+yarn nx affected -t test                  # Test affected projects
 
 # Component generation (v9 only)
 yarn create-component                     # Interactive generator
@@ -30,18 +30,18 @@ yarn create-component                     # Interactive generator
 1. **Change file** — Required for any published package change:
 
    ```bash
-   npx beachball change --type patch --message "fix(react-button): description"
+   yarn beachball change --type patch --message "fix(react-button): description"
    ```
 
    Use `patch` for fixes, `minor` for features. Never `major` without approval.
 
-2. **Tests pass** — `npx nx run <project>:test`
+2. **Tests pass** — `yarn nx run <project>:test`
 
-3. **Lint passes** — `npx nx run <project>:lint`
+3. **Lint passes** — `yarn nx run <project>:lint`
 
-4. **Types check** — `npx nx run <project>:type-check`
+4. **Types check** — `yarn nx run <project>:type-check`
 
-5. **API docs updated** — If public API changed: `npx nx run <project>:generate-api`
+5. **API docs updated** — If public API changed: `yarn nx run <project>:generate-api`
 
 6. **Link issue** — Use `Fixes #<number>` in PR body
 

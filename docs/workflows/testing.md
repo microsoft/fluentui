@@ -4,11 +4,11 @@
 
 | Type              | Tool                         | Command                                        | Purpose                          |
 | ----------------- | ---------------------------- | ---------------------------------------------- | -------------------------------- |
-| Unit              | Jest + React Testing Library | `npx nx run <project>:test`                    | Component behavior, hooks, utils |
-| Visual Regression | Storybook + StoryWright      | `npx nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)       |
-| E2E               | Cypress                      | `npx nx run react-components:e2e`              | Integration flows                |
-| SSR               | Custom                       | `npx nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety     |
-| Cross-React       | Custom                       | `npx nx run rit-tests-v9:test-rit`             | React version compatibility      |
+| Unit              | Jest + React Testing Library | `yarn nx run <project>:test`                    | Component behavior, hooks, utils |
+| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)       |
+| E2E               | Cypress                      | `yarn nx run react-components:e2e`              | Integration flows                |
+| SSR               | Custom                       | `yarn nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety     |
+| Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                             | Consistent component API         |
 
 ## Writing Unit Tests
@@ -36,7 +36,7 @@ components/Button/
 If your change intentionally alters rendered output:
 
 ```bash
-npx nx run <project>:test -u
+yarn nx run <project>:test -u
 ```
 
 Review the snapshot diff to verify the change is correct before committing.

@@ -22,7 +22,7 @@ from existing code without verifying they match these instructions.
 2. **Never use `React.FC`.** Always use `ForwardRefComponent` with `React.forwardRef`.
 3. **Never access `window`, `document`, or `navigator` without SSR guards.** Use `canUseDOM()` from `@fluentui/react-utilities`.
 4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
-5. **Never skip beachball change files** for published package changes. Run `npx beachball change`.
+5. **Never skip beachball change files** for published package changes. Run `yarn beachball change`.
 
 ## V9 Component Template (the correct pattern)
 
@@ -63,7 +63,7 @@ state.root.className = mergeClasses(
 ## Exploration Guidance
 
 - `packages/react-components/` has 74+ packages — search by specific component name, never read the full directory.
-- Use `npx nx show project <project-name>` to understand a project's structure.
+- Use `yarn nx show project <project-name>` to understand a project's structure.
 - Map package names to paths: `@fluentui/react-<name>` → `packages/react-components/react-<name>/library/src/`.
 
 ## Architecture (deep dives)
@@ -98,6 +98,7 @@ state.root.className = mergeClasses(
 | `lint-check`     | `/lint-check [pkg]`  | Run lint, parse errors, and auto-fix common issues       |
 | `token-lookup`   | `/token-lookup val`  | Find the design token for a hardcoded CSS value          |
 | `package-info`   | `/package-info pkg`  | Quick lookup: path, deps, owner, tests, structure        |
+| `visual-test`    | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
 
 ## Package Layout
 
