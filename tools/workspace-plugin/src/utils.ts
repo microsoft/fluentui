@@ -265,6 +265,14 @@ export function isV8Package(tree: Tree, project: ProjectConfiguration) {
   return packageJson.version.startsWith('8.');
 }
 
+export function isToolsPackage(tree: Tree, project: ProjectConfiguration) {
+  const hasToolsTag = !!project.tags?.includes('tools');
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  const isPrivate = !!packageJson.private;
+
+  return hasToolsTag && !isPrivate && !isV8Package(tree, project);
+}
+
 export function packageJsonHasBeachballConfig(packageJson: PackageJson): packageJson is PackageJsonWithBeachball {
   return !!(packageJson as PackageJsonWithBeachball).beachball;
 }
