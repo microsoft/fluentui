@@ -1,6 +1,6 @@
 import { Updates } from '@microsoft/fast-element';
 import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
-import { BaseMenuList } from './menu-list.base';
+import { BaseMenuList } from './menu-list.base.js';
 
 /**
  * A MenuList Custom HTML Element.
