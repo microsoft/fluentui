@@ -5,6 +5,15 @@ import { analyzeFiles } from '../utils/annotator';
 import { writeAnnotations } from '../utils/annotator';
 import { handler } from '../handler';
 
+// Mock the skill-check module to avoid spawning `npx` in every handler test.
+// The `isSkillInstalled` function calls `execFileSync('npx', …)` which takes ~3s
+// per invocation and causes CI timeouts on slower runners.
+// skill-check logic is independently covered by skill-check.spec.ts.
+jest.mock('../utils/skill-check', () => ({
+  isSkillInstalled: jest.fn().mockReturnValue(true),
+  printSkillHint: jest.fn(),
+}));
+
 const FIXTURES_DIR = path.join(__dirname, 'fixtures');
 
 async function mkTmpDir(): Promise<string> {
