@@ -198,6 +198,7 @@
   padding: 0;
   border-collapse: collapse;
 }
+
 #storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) tr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -428,9 +429,11 @@ h1.fluent {
 
 h1.fluent .fluent-version {
   display: block;
-  font-size: 24px; /* --font-size-base-600 */
+  font-size: 24px;
+  /* --font-size-base-600 */
   line-height: 32px;
-  color: #707070; /* --color-neutral-foreground-3 */
+  color: #707070;
+  /* --color-neutral-foreground-3 */
 }
 
 h2.fluent {
@@ -439,4 +442,29 @@ h2.fluent {
   font-family: 'Segoe UI';
   line-height: 36px;
   letter-spacing: -0.16px;
+}
+
+/* remove the docs wrapper bg to let page bg show through */
+/* remove unnecessary padding now that theme switcher is not taking up space */
+#storybook-docs .sbdocs-wrapper {
+  background: transparent !important;
+  padding: 0 48px;
+}
+
+/* sb-show-main is missing during page transitions causing a page shift */
+/* todo: cleanup once we no longer inherit docs-root */
+.sb-show-main.sb-main-fullscreen,
+.sb-main-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* remove loading overlay */
+.sb-preparing-story,
+.sb-preparing-docs,
+.sb-nopreview,
+.sb-errordisplay,
+.sidebar-container .search-field + div {
+  display: none !important;
 }

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add base classes for menu-list and radio-group",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
