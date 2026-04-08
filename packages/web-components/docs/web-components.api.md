@@ -3281,32 +3281,10 @@ export const MenuItemStyles: ElementStyles;
 // @public (undocumented)
 export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
+// Warning: (ae-forgotten-export) The symbol "BaseMenuList" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class MenuList extends FASTElement {
-    constructor();
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    focus(): void;
-    handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
-    // @internal (undocumented)
-    readonly isNestedMenu: () => boolean;
-    // @internal (undocumented)
-    items: HTMLElement[];
-    // (undocumented)
-    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
-    // (undocumented)
-    protected menuItems: Element[] | undefined;
-    // (undocumented)
-    protected setItems(): void;
+export class MenuList extends BaseMenuList {
 }
 
 // @public (undocumented)
@@ -3451,65 +3429,10 @@ export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focu
 // @public
 export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
+// Warning: (ae-forgotten-export) The symbol "BaseRadioGroup" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class RadioGroup extends FASTElement {
-    constructor();
-    changeHandler(e: Event): boolean | void;
-    // @internal
-    protected checkedIndex: number;
-    // @internal
-    protected checkedIndexChanged(prev: number | undefined, next: number): void;
-    // @internal
-    checkRadio(index?: number, shouldEmit?: boolean): void;
-    checkValidity(): boolean;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    disabled: boolean;
-    // @internal
-    protected disabledChanged(prev?: boolean, next?: boolean): void;
-    // (undocumented)
-    disabledRadioHandler(e: CustomEvent): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get enabledRadios(): Radio[];
-    // @internal
-    focus(): void;
-    // @internal
-    focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    static formAssociated: boolean;
-    // (undocumented)
-    formResetCallback(): void;
-    initialValue?: string;
-    initialValueChanged(prev: string | undefined, next: string | undefined): void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    name: string;
-    // @internal
-    protected nameChanged(prev: string | undefined, next: string | undefined): void;
-    orientation?: RadioGroupOrientation;
-    // @internal
-    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
-    radios: Radio[];
-    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // (undocumented)
-    requiredChanged(prev: boolean, next: boolean): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    // @internal
-    slottedRadios: Radio[];
-    slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void;
-    // @internal
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string | null;
-    set value(next: string | null);
+export class RadioGroup extends BaseRadioGroup {
 }
 
 // @public
