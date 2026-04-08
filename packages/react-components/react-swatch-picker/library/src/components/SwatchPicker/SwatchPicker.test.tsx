@@ -25,7 +25,7 @@ describe('SwatchPicker', () => {
       <div>
         <div
           class="fui-SwatchPicker"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":\\"both\\",\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
           role="radiogroup"
         >
           <button

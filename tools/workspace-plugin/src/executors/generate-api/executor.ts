@@ -1,5 +1,5 @@
 import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
 
@@ -29,11 +29,15 @@ export default runExecutor;
 interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 
 async function runGenerateApi(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
-  if (generateTypeDeclarations(options)) {
-    return apiExtractor(options, context);
+  if (!generateTypeDeclarations(options)) {
+    return false;
   }
-
-  return false;
+  if (!apiExtractor(options, context)) {
+    return false;
+  }
+  // API Extractor strips `declare global` blocks. Re-inject them from the compiled .d.ts files.
+  preserveGlobalAugmentations(options, context);
+  return true;
 }
 
 function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorContext) {
@@ -242,6 +246,95 @@ function getTsConfigPathUsedForProduction(projectRoot: string) {
   }
 
   return { error: null, result: tsConfigFileForCompilation };
+}
+
+/**
+ * API Extractor's DtsRollupGenerator unconditionally skips `declare global` blocks.
+ * This function re-injects them from the per-file compiled .d.ts files so that
+ * consumers can type-check against augmented globals (e.g. DocumentEventMap).
+ */
+function preserveGlobalAugmentations(options: NormalizedOptions, context: ExecutorContext): void {
+  const dtsSourceDir = join(context.root, 'dist', 'out-tsc', 'types', options.project.root, 'src');
+
+  if (!existsSync(dtsSourceDir)) {
+    verboseLog(`No compiled .d.ts directory found at "${dtsSourceDir}", skipping global augmentation preservation`);
+    return;
+  }
+
+  const rollupPath = join(options.projectAbsolutePath, 'dist', 'index.d.ts');
+
+  if (!existsSync(rollupPath)) {
+    verboseLog(`No rollup dist found at "${rollupPath}", skipping global augmentation preservation`);
+    return;
+  }
+
+  const globalBlocks = collectGlobalAugmentations(dtsSourceDir);
+
+  if (globalBlocks.length === 0) {
+    verboseLog(`No declare global blocks found in "${dtsSourceDir}"`);
+    return;
+  }
+
+  const rollupContent = readFileSync(rollupPath, 'utf-8');
+  const blocksToAppend = globalBlocks.filter(block => !rollupContent.includes(block));
+
+  if (blocksToAppend.length === 0) {
+    verboseLog(`All declare global blocks already present in rollup`);
+    return;
+  }
+
+  const augmented = rollupContent.trimEnd() + '\n\n' + blocksToAppend.join('\n\n') + '\n';
+  writeFileSync(rollupPath, augmented, 'utf-8');
+  logger.info(`Appended ${blocksToAppend.length} declare global block(s) to "${rollupPath}"`);
+}
+
+function collectGlobalAugmentations(dir: string): string[] {
+  const blocks: string[] = [];
+
+  for (const entry of readdirSync(dir)) {
+    const fullPath = join(dir, entry);
+    if (statSync(fullPath).isDirectory()) {
+      blocks.push(...collectGlobalAugmentations(fullPath));
+    } else if (entry.endsWith('.d.ts')) {
+      blocks.push(...extractGlobalBlocks(readFileSync(fullPath, 'utf-8')));
+    }
+  }
+
+  return blocks;
+}
+
+function extractGlobalBlocks(content: string): string[] {
+  const blocks: string[] = [];
+  let i = 0;
+
+  while (i < content.length) {
+    const idx = content.indexOf('declare global', i);
+    if (idx === -1) break;
+
+    const openBrace = content.indexOf('{', idx);
+    if (openBrace === -1) break;
+
+    let depth = 0;
+    let j = openBrace;
+
+    while (j < content.length) {
+      if (content[j] === '{') {
+        depth++;
+      } else if (content[j] === '}') {
+        depth--;
+        if (depth === 0) {
+          blocks.push(content.slice(idx, j + 1));
+          i = j + 1;
+          break;
+        }
+      }
+      j++;
+    }
+
+    if (depth !== 0) break;
+  }
+
+  return blocks;
 }
 
 function verboseLog(message: string, kind: keyof typeof logger = 'info') {

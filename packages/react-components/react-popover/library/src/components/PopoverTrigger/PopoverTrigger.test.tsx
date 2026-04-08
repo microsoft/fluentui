@@ -113,7 +113,7 @@ describe('PopoverTrigger', () => {
       Array [
         <button
           aria-expanded="false"
-          data-tabster="{\\"restorer\\":{\\"type\\":\\"target\\"}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
         >
           Trigger
         </button>,
@@ -143,7 +143,7 @@ describe('PopoverTrigger', () => {
       Array [
         <button
           aria-expanded="false"
-          data-tabster="{\\"restorer\\":{\\"type\\":\\"target\\"}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
         >
           Trigger
         </button>,

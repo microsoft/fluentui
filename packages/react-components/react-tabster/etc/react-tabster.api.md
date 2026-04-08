@@ -1261,6 +1261,7 @@ type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDeta
 export type TabsterMoveFocusEventDetail = {
     by: 'mover' | 'groupper';
     key: string;
+    next: HTMLElement | null;
 };
 
 // @public (undocumented)

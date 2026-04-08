@@ -109,6 +109,8 @@ export const TabsterMoveFocusEventName = 'tabster:movefocus' as const;
 export type TabsterMoveFocusEventDetail = {
   by: 'mover' | 'groupper';
   key: string;
+  /** The element that will receive focus as a result of this move. */
+  next: HTMLElement | null;
 };
 
 export class TabsterMoveFocusEvent extends CustomEvent<TabsterMoveFocusEventDetail> {

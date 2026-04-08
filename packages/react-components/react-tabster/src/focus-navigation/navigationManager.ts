@@ -466,6 +466,10 @@ function isArrowKey(key: string): boolean {
   );
 }
 
+function notExcludedFromMover(el: HTMLElement): boolean {
+  return !getNavConfig(el)?.focusable?.excludeFromMover;
+}
+
 function handleArrowKey(
   e: Pick<KeyboardEvent, 'key' | 'preventDefault'>,
   current: HTMLElement,
@@ -488,12 +492,12 @@ function handleArrowKey(
         return;
       }
       if (isGrid) {
-        next = findNextInColumn(current, container, 'down');
+        next = findNextInColumn(current, container, 'down', notExcludedFromMover);
       } else {
-        next = findNext(current, container);
+        next = findNext(current, container, notExcludedFromMover);
       }
       if (!next && cyclic) {
-        next = findFirst(container);
+        next = findFirst(container, notExcludedFromMover);
       }
       break;
 
@@ -502,12 +506,12 @@ function handleArrowKey(
         return;
       }
       if (isGrid) {
-        next = findNextInColumn(current, container, 'up');
+        next = findNextInColumn(current, container, 'up', notExcludedFromMover);
       } else {
-        next = findPrev(current, container);
+        next = findPrev(current, container, notExcludedFromMover);
       }
       if (!next && cyclic) {
-        next = findLast(container);
+        next = findLast(container, notExcludedFromMover);
       }
       break;
 
@@ -515,9 +519,9 @@ function handleArrowKey(
       if (!isHorizontal) {
         return;
       }
-      next = findNext(current, container);
+      next = findNext(current, container, notExcludedFromMover);
       if (!next && cyclic) {
-        next = findFirst(container);
+        next = findFirst(container, notExcludedFromMover);
       }
       break;
 
@@ -525,18 +529,18 @@ function handleArrowKey(
       if (!isHorizontal) {
         return;
       }
-      next = findPrev(current, container);
+      next = findPrev(current, container, notExcludedFromMover);
       if (!next && cyclic) {
-        next = findLast(container);
+        next = findLast(container, notExcludedFromMover);
       }
       break;
 
     case 'Home':
-      next = findFirst(container);
+      next = findFirst(container, notExcludedFromMover);
       break;
 
     case 'End':
-      next = findLast(container);
+      next = findLast(container, notExcludedFromMover);
       break;
 
     default:
@@ -552,7 +556,7 @@ function handleArrowKey(
     state.moverMemorized.set(container, next);
 
     // Dispatch events for external listeners
-    next.dispatchEvent(new TabsterMoveFocusEvent({ by: 'mover', key: e.key }));
+    next.dispatchEvent(new TabsterMoveFocusEvent({ by: 'mover', key: e.key, next }));
     container.dispatchEvent(new MoverMemorizedElementEvent({ element: next }));
   }
 }
@@ -652,12 +656,12 @@ function handleGroupperEnterEscape(e: KeyboardEvent, target: HTMLElement, state:
     const toFocus = active && groupperEl.contains(active) ? active : findFirst(groupperEl);
     markProgrammatic(state);
     toFocus?.focus();
-    target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Enter' }));
+    target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Enter', next: toFocus ?? null }));
   } else if (e.key === 'Escape' && groupperEl.contains(target)) {
     e.preventDefault();
     markProgrammatic(state);
     groupperEl.focus();
-    target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Escape' }));
+    target.dispatchEvent(new TabsterMoveFocusEvent({ by: 'groupper', key: 'Escape', next: groupperEl }));
   }
 }
 

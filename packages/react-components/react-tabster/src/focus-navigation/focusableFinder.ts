@@ -153,33 +153,46 @@ export function findAll(container: HTMLElement | null, acceptCondition?: (el: HT
 /**
  * Find the first focusable element within a container.
  */
-export function findFirst(container: HTMLElement | null): HTMLElement | null {
+export function findFirst(
+  container: HTMLElement | null,
+  acceptCondition?: (el: HTMLElement) => boolean,
+): HTMLElement | null {
   if (!container) {
     return null;
   }
-  const walker = createFocusableWalker(container);
-  return (walker.nextNode() as HTMLElement | null) ?? null;
+  if (!acceptCondition) {
+    const walker = createFocusableWalker(container);
+    return (walker.nextNode() as HTMLElement | null) ?? null;
+  }
+  return findAll(container, acceptCondition)[0] ?? null;
 }
 
 /**
  * Find the last focusable element within a container.
  */
-export function findLast(container: HTMLElement | null): HTMLElement | null {
+export function findLast(
+  container: HTMLElement | null,
+  acceptCondition?: (el: HTMLElement) => boolean,
+): HTMLElement | null {
   if (!container) {
     return null;
   }
-  const all = findAll(container);
+  const all = findAll(container, acceptCondition);
   return all.length > 0 ? all[all.length - 1] : null;
 }
 
 /**
  * Find the next focusable element after `currentElement` within `container`.
  */
-export function findNext(currentElement: HTMLElement | null, container: HTMLElement): HTMLElement | null {
+export function findNext(
+  currentElement: HTMLElement | null,
+  container: HTMLElement,
+  acceptCondition?: (el: HTMLElement) => boolean,
+): HTMLElement | null {
   if (!currentElement) {
-    return findFirst(container);
+    return findFirst(container, acceptCondition);
   }
-  const all = findAll(container);
+  const all = findAll(container, acceptCondition);
   const index = all.indexOf(currentElement);
   if (index === -1 || index === all.length - 1) {
     return null;
@@ -190,11 +203,15 @@ export function findNext(currentElement: HTMLElement | null, container: HTMLElem
 /**
  * Find the previous focusable element before `currentElement` within `container`.
  */
-export function findPrev(currentElement: HTMLElement | null, container: HTMLElement): HTMLElement | null {
+export function findPrev(
+  currentElement: HTMLElement | null,
+  container: HTMLElement,
+  acceptCondition?: (el: HTMLElement) => boolean,
+): HTMLElement | null {
   if (!currentElement) {
-    return findLast(container);
+    return findLast(container, acceptCondition);
   }
-  const all = findAll(container);
+  const all = findAll(container, acceptCondition);
   const index = all.indexOf(currentElement);
   if (index <= 0) {
     return null;
@@ -214,8 +231,9 @@ export function findNextInColumn(
   current: HTMLElement,
   container: HTMLElement,
   direction: 'up' | 'down',
+  acceptCondition?: (el: HTMLElement) => boolean,
 ): HTMLElement | null {
-  const all = findAll(container);
+  const all = findAll(container, acceptCondition);
   if (all.length === 0) {
     return null;
   }

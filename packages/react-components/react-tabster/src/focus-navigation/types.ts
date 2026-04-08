@@ -68,6 +68,7 @@ export type ObservedConfig = {
 
 export type FocusableConfig = {
   ignoreKeydown?: Record<string, boolean>;
+  excludeFromMover?: boolean;
 };
 
 // ---------------------------------------------------------------------------
@@ -90,7 +91,7 @@ export type NavConfig = {
   uncontrolled?: UncontrolledConfig;
 };
 
-// Numeric direction values matching the old tabster MoverDirections enum.
+// Numeric values matching the old tabster enums.
 // Keeping numeric values avoids churn in test snapshots when tabster is replaced.
 const DIRECTION_TO_NUMBER: Record<MoverDirection, number> = {
   both: 0,
@@ -108,6 +109,16 @@ const NUMBER_TO_DIRECTION: Record<number, MoverDirection> = {
   4: 'gridLinear',
 };
 
+const RESTORER_TYPE_TO_NUMBER: Record<RestorerType, number> = {
+  source: 0,
+  target: 1,
+};
+
+const NUMBER_TO_RESTORER_TYPE: Record<number, RestorerType> = {
+  0: 'source',
+  1: 'target',
+};
+
 /**
  * Parse the data-tabster attribute of an element into a NavConfig.
  * Returns null if the attribute is absent or invalid JSON.
@@ -119,11 +130,20 @@ export function getNavConfig(element: Element): NavConfig | null {
     return null;
   }
   try {
-    const parsed = JSON.parse(attr) as NavConfig & { mover?: { direction?: number | MoverDirection } };
+    const parsed = JSON.parse(attr) as NavConfig & {
+      mover?: { direction?: number | MoverDirection };
+      restorer?: { type?: number | RestorerType };
+    };
     if (parsed.mover && typeof parsed.mover.direction === 'number') {
       parsed.mover = {
         ...parsed.mover,
         direction: NUMBER_TO_DIRECTION[parsed.mover.direction as number] ?? 'vertical',
+      };
+    }
+    if (parsed.restorer && typeof parsed.restorer.type === 'number') {
+      parsed.restorer = {
+        ...parsed.restorer,
+        type: NUMBER_TO_RESTORER_TYPE[parsed.restorer.type as number] ?? 'target',
       };
     }
     return parsed as NavConfig;
@@ -137,14 +157,15 @@ export function getNavConfig(element: Element): NavConfig | null {
  * Mover direction is stored as a number (matching the legacy tabster format) to avoid snapshot churn.
  */
 export function serializeNavConfig(config: NavConfig): string {
-  if (!config.mover?.direction) {
-    return JSON.stringify(config);
+  const out: Record<string, unknown> = { ...config };
+  if (config.mover?.direction) {
+    const { direction, ...restMover } = config.mover;
+    out.mover = { ...restMover, direction: DIRECTION_TO_NUMBER[direction] };
   }
-  const { direction, ...restMover } = config.mover;
-  return JSON.stringify({
-    ...config,
-    mover: { ...restMover, direction: DIRECTION_TO_NUMBER[direction] },
-  });
+  if (config.restorer?.type) {
+    out.restorer = { ...config.restorer, type: RESTORER_TYPE_TO_NUMBER[config.restorer.type] };
+  }
+  return JSON.stringify(out);
 }
 
 /**
