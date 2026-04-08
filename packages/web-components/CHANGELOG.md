@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 06 Apr 2026 22:24:42 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Apr 2026 20:44:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.12)
+
+Tue, 07 Apr 2026 20:44:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.11..@fluentui/web-components_v3.0.0-rc.12)
+
+### Changes
+
+- feat: enhance Accordion component with improved item handling and lifecycle management ([PR #35954](https://github.com/microsoft/fluentui/pull/35954) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.11)
 
