@@ -1,11 +1,11 @@
-import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
-import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnd, keyHome } from '@microsoft/fast-web-utilities';
+import { FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { isHTMLElement } from '@microsoft/fast-web-utilities';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
 import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
- * A Base Menu List Custom HTML Element.
+ * A Base MenuList Custom HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#menu | ARIA menu }.
  *
  * @public
@@ -32,13 +32,7 @@ export class BaseMenuList extends FASTElement {
     }
   }
 
-  protected menuItems: Element[] | undefined;
-
-  /**
-   * The index of the focusable element in the items array
-   * defaults to -1
-   */
-  private focusIndex: number = -1;
+  protected menuItems: HTMLElement[] | undefined;
 
   private static focusableElementRoles = MenuItemRole;
 
@@ -67,7 +61,6 @@ export class BaseMenuList extends FASTElement {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.removeItemListeners();
     this.menuItems = undefined;
     this.removeEventListener('change', this.changedMenuItemHandler);
   }
@@ -89,71 +82,7 @@ export class BaseMenuList extends FASTElement {
    * @public
    */
   public focus(): void {
-    this.setFocus(0, 1);
-  }
-
-  /**
-   * @internal
-   */
-  public handleMenuKeyDown(e: KeyboardEvent): void | boolean {
-    if (e.defaultPrevented || this.menuItems === undefined) {
-      return;
-    }
-    switch (e.key) {
-      case keyArrowDown:
-        // go forward one index
-        this.setFocus(this.focusIndex + 1, 1);
-        return;
-      case keyArrowUp:
-        // go back one index
-        this.setFocus(this.focusIndex - 1, -1);
-        return;
-      case keyEnd:
-        // set focus on last item
-        this.setFocus(this.menuItems.length - 1, -1);
-        return;
-      case keyHome:
-        // set focus on first item
-        this.setFocus(0, 1);
-        return;
-      default:
-        // if we are not handling the event, do not prevent default
-        return true;
-    }
-  }
-
-  /**
-   * if focus is moving out of the menu, reset to a stable initial state
-   * @internal
-   */
-  public handleFocusOut = (e: FocusEvent) => {
-    if (!this.contains(e.relatedTarget as Element) && this.menuItems !== undefined) {
-      // find our first focusable element
-      const focusIndex: number = this.menuItems.findIndex(this.isFocusableElement);
-      // set the current focus index's tabindex to -1
-      this.menuItems[this.focusIndex].setAttribute('tabindex', '-1');
-      // set the first focusable element tabindex to 0
-      this.menuItems[focusIndex].setAttribute('tabindex', '0');
-      // set the focus index
-      this.focusIndex = focusIndex;
-    }
-  };
-
-  private handleItemFocus = (e: FocusEvent) => {
-    const targetItem: HTMLElement = e.target as HTMLElement;
-
-    if (this.menuItems !== undefined && targetItem !== this.menuItems[this.focusIndex]) {
-      this.menuItems[this.focusIndex].setAttribute('tabindex', '-1');
-      this.focusIndex = this.menuItems.indexOf(targetItem);
-      targetItem.setAttribute('tabindex', '0');
-    }
-  };
-
-  private removeItemListeners(items: HTMLElement[] = this.items): void {
-    items.forEach(item => {
-      item.removeEventListener('focus', this.handleItemFocus);
-      Observable.getNotifier(item).unsubscribe(this, 'hidden');
-    });
+    this.menuItems?.find(item => isMenuItem(item) && !item.disabled)?.focus();
   }
 
   private static elementIndent(el: HTMLElement): MenuItemColumnCount {
@@ -170,40 +99,23 @@ export class BaseMenuList extends FASTElement {
   protected setItems(): void {
     const children: HTMLElement[] = Array.from(this.children) as HTMLElement[];
 
-    this.removeItemListeners(children);
-
-    children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'hidden'));
-
-    const newItems: Element[] = children.filter(child => !child.hasAttribute('hidden'));
-
-    this.menuItems = newItems;
-
-    const menuItems = this.menuItems.filter(this.isMenuItemElement);
-
-    // if our focus index is not -1 we have items
-    if (menuItems.length) {
-      this.focusIndex = 0;
-    }
-
-    menuItems.forEach((item: HTMLElement, index: number) => {
-      item.setAttribute('tabindex', index === 0 ? '0' : '-1');
-      item.addEventListener('focus', this.handleItemFocus);
-    });
+    this.menuItems = children.filter(child => !child.hasAttribute('hidden'));
 
     /**
      * Set the indent attribute on MenuItem elements based on their
      * position in the MenuList. Each MenuItem element has a data-indent attribute that is
      * used to set the indent of the element's start slot content.
      */
-    const filteredMenuListItems = this.menuItems?.filter(this.isMenuItemElement);
-    const indent: MenuItemColumnCount = filteredMenuListItems?.reduce<MenuItemColumnCount>((accum, current) => {
+    const filteredMenuItems = this.menuItems?.filter(this.isMenuItemElement);
+    const indent: MenuItemColumnCount = filteredMenuItems?.reduce<MenuItemColumnCount>((accum, current) => {
       const elementValue = BaseMenuList.elementIndent(current as HTMLElement);
 
       return Math.max(accum, elementValue as number) as MenuItemColumnCount;
     }, 0);
 
-    filteredMenuListItems?.forEach((item: HTMLElement) => {
+    filteredMenuItems?.forEach((item: HTMLElement) => {
       item.dataset.indent = `${indent}`;
+      item.tabIndex = item.hasAttribute('disabled') ? -1 : 0;
     });
   }
 
@@ -261,41 +173,4 @@ export class BaseMenuList extends FASTElement {
   protected isMenuItemElement = (el: Element): el is HTMLElement => {
     return isMenuItem(el) || (isHTMLElement(el) && !!el.role && el.role in BaseMenuList.focusableElementRoles);
   };
-
-  /**
-   * check if the item is focusable
-   */
-  private isFocusableElement = (el: Element): el is HTMLElement => {
-    return this.isMenuItemElement(el);
-  };
-
-  private setFocus(focusIndex: number, adjustment: number): void {
-    if (this.menuItems === undefined) {
-      return;
-    }
-
-    while (focusIndex >= 0 && focusIndex < this.menuItems.length) {
-      const child: Element = this.menuItems[focusIndex];
-
-      if (this.isFocusableElement(child)) {
-        // change the previous index to -1
-        if (this.focusIndex > -1 && this.menuItems.length >= this.focusIndex - 1) {
-          this.menuItems[this.focusIndex].setAttribute('tabindex', '-1');
-        }
-
-        // update the focus index
-        this.focusIndex = focusIndex;
-
-        // update the tabindex of next focusable element
-        child.setAttribute('tabindex', '0');
-
-        // focus the element
-        child.focus();
-
-        break;
-      }
-
-      focusIndex += adjustment;
-    }
-  }
 }
