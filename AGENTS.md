@@ -99,6 +99,7 @@ state.root.className = mergeClasses(
 | `token-lookup` | `/token-lookup val`  | Find the design token for a hardcoded CSS value            |
 | `package-info` | `/package-info pkg`  | Quick lookup: path, deps, owner, tests, structure          |
 | `visual-test`  | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
+| `review-pr`    | `/review-pr #123`    | Review a PR with confidence scoring and category checks    |
 
 ## Package Layout
 
