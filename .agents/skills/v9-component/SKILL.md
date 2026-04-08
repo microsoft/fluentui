@@ -15,21 +15,22 @@ Create a new v9 component named **$ARGUMENTS** following the exact patterns in [
 1. **Determine the package path.** If creating inside an existing package, use that path. If creating a new package, the path is `packages/react-components/react-<lowercase-name>/library/src/`.
 
 2. **Read an existing well-structured component** for reference. Good examples:
+
    - `packages/react-components/react-badge/library/src/components/Badge/`
    - `packages/react-components/react-tag/library/src/components/Tag/`
-   Read at least the types, hook, styles, render, and main component files from one of these.
+     Read at least the types, hook, styles, render, and main component files from one of these.
 
 3. **Generate all required files** under `components/$ARGUMENTS/`:
 
-   | File | Purpose |
-   |------|---------|
-   | `$ARGUMENTS.tsx` | `ForwardRefComponent` with `React.forwardRef`. Never use `React.FC`. |
-   | `$ARGUMENTS.types.ts` | Props, State, Slots types |
-   | `use$ARGUMENTS.ts` | State hook — processes props/slots into normalized state |
+   | File                              | Purpose                                                                                                    |
+   | --------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+   | `$ARGUMENTS.tsx`                  | `ForwardRefComponent` with `React.forwardRef`. Never use `React.FC`.                                       |
+   | `$ARGUMENTS.types.ts`             | Props, State, Slots types                                                                                  |
+   | `use$ARGUMENTS.ts`                | State hook — processes props/slots into normalized state                                                   |
    | `use${ARGUMENTS}Styles.styles.ts` | Griffel styling with `makeStyles` using design tokens from `@fluentui/react-theme`. Never hardcode values. |
-   | `render$ARGUMENTS.tsx` | Pure JSX render using `assertSlots` |
-   | `$ARGUMENTS.test.tsx` | Unit tests with React Testing Library |
-   | `index.ts` | Barrel export for the component |
+   | `render$ARGUMENTS.tsx`            | Pure JSX render using `assertSlots`                                                                        |
+   | `$ARGUMENTS.test.tsx`             | Unit tests with React Testing Library                                                                      |
+   | `index.ts`                        | Barrel export for the component                                                                            |
 
 4. **Update barrel exports** — add the component to the package's root `index.ts`.
 

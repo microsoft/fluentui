@@ -91,14 +91,14 @@ state.root.className = mergeClasses(
 
 ## Skills (Slash Commands)
 
-| Skill            | Command              | Purpose                                                  |
-| ---------------- | -------------------- | -------------------------------------------------------- |
-| `v9-component`   | `/v9-component Name` | Scaffold a new v9 component with all required files      |
-| `change`         | `/change`            | Create beachball change file from current diff            |
-| `lint-check`     | `/lint-check [pkg]`  | Run lint, parse errors, and auto-fix common issues       |
-| `token-lookup`   | `/token-lookup val`  | Find the design token for a hardcoded CSS value          |
-| `package-info`   | `/package-info pkg`  | Quick lookup: path, deps, owner, tests, structure        |
-| `visual-test`    | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
+| Skill          | Command              | Purpose                                                    |
+| -------------- | -------------------- | ---------------------------------------------------------- |
+| `v9-component` | `/v9-component Name` | Scaffold a new v9 component with all required files        |
+| `change`       | `/change`            | Create beachball change file from current diff             |
+| `lint-check`   | `/lint-check [pkg]`  | Run lint, parse errors, and auto-fix common issues         |
+| `token-lookup` | `/token-lookup val`  | Find the design token for a hardcoded CSS value            |
+| `package-info` | `/package-info pkg`  | Quick lookup: path, deps, owner, tests, structure          |
+| `visual-test`  | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
 
 ## Package Layout
 

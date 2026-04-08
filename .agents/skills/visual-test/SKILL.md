@@ -13,6 +13,7 @@ Visually verify **$ARGUMENTS** by launching Storybook and capturing a screenshot
 ## Prerequisites
 
 Ensure `playwright-cli` is installed globally:
+
 ```bash
 npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
 ```
@@ -20,27 +21,33 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
 ## Steps
 
 1. **Find the component's stories package.** Each v9 component has a dedicated stories package:
+
    ```bash
    yarn nx show projects 2>/dev/null | grep "<lowercase-component-name>.*stories"
    ```
 
 2. **Start the component's Storybook dev server:**
+
    ```bash
    # Use the stories package directly — much faster than the full VR tests app
    yarn nx run react-<component>-stories:start &
    ```
+
    Wait for Storybook to be ready on port 6006. Check with:
+
    ```bash
    curl -s -o /dev/null -w "%{http_code}" http://localhost:6006 2>/dev/null
    ```
 
 3. **Open the page with playwright-cli:**
+
    ```bash
    playwright-cli open "http://localhost:6006"
    ```
 
 4. **Navigate to the specific story iframe** and capture a screenshot.
    Use the iframe URL for a clean render without Storybook chrome:
+
    ```bash
    playwright-cli goto "http://localhost:6006/iframe.html?id=components-<component>-<component>--default&viewMode=story"
    playwright-cli screenshot --filename=/tmp/visual-test-$ARGUMENTS.png
@@ -49,9 +56,11 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
 5. **View the screenshot** using the Read tool to visually inspect the rendered component.
 
 6. **Use `snapshot`** to get the accessibility tree and find interactive element refs:
+
    ```bash
    playwright-cli snapshot
    ```
+
    Then interact with elements by ref (e.g., click, hover) before taking more screenshots.
 
 7. **If the component doesn't look right**, go back to the code, fix the issue, and repeat from step 4 (Storybook hot-reloads changes).
