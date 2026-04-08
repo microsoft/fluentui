@@ -54,6 +54,8 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   required?: boolean;
 };
 
+export type RadioGroupBaseProps = Omit<RadioGroupProps, 'layout'>;
+
 /**
  * Data for the onChange event for RadioGroup.
  */
@@ -70,6 +72,8 @@ export type RadioGroupOnChangeData = {
 export type RadioGroupState = ComponentState<RadioGroupSlots> &
   Required<Pick<RadioGroupProps, 'layout'>> &
   Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
+
+export type RadioGroupBaseState = Omit<RadioGroupState, 'layout'>;
 
 export type RadioGroupContextValue = Pick<
   RadioGroupProps,

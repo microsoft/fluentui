@@ -347,6 +347,126 @@ describe('version-string-replace generator', () => {
       `);
     });
   });
+
+  describe('--scope tools with --versionSuffix', () => {
+    const suffix = 'experimental.my-feature.20260408-abc1234';
+
+    beforeEach(() => {
+      // Tools packages
+      tree = setupDummyPackage(tree, {
+        name: 'react-storybook-addon',
+        version: '0.6.0',
+        dependencies: {},
+        projectConfiguration: { tags: ['tools', 'platform:node'], sourceRoot: 'packages/react-storybook-addon/src' },
+      });
+      tree = setupDummyPackage(tree, {
+        name: 'eslint-plugin-react-components',
+        version: '0.2.1',
+        dependencies: {
+          '@proj/react-storybook-addon': '^0.6.0',
+        },
+        projectConfiguration: {
+          tags: ['tools', 'platform:node'],
+          sourceRoot: 'packages/eslint-plugin-react-components/src',
+        },
+      });
+      // vNext package (should NOT be bumped)
+      tree = setupDummyPackage(tree, {
+        name: 'react-button',
+        version: '9.0.0',
+        dependencies: {},
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+      });
+      // Private tools package (should NOT be bumped)
+      tree = setupDummyPackage(tree, {
+        name: 'private-tool',
+        version: '1.0.0',
+        dependencies: {},
+        projectConfiguration: { tags: ['tools', 'platform:node'], sourceRoot: 'packages/private-tool/src' },
+        isPrivate: true,
+      });
+    });
+
+    it('should bump only tools packages with their own base version + suffix', async () => {
+      await generator(tree, { all: true, scope: 'tools', versionSuffix: suffix });
+
+      const storybookAddon = readJson(tree, 'packages/react-storybook-addon/package.json');
+      const eslintPlugin = readJson(tree, 'packages/eslint-plugin-react-components/package.json');
+      const reactButton = readJson(tree, 'packages/react-button/package.json');
+
+      expect(storybookAddon.version).toBe(`0.6.0-${suffix}`);
+      expect(eslintPlugin.version).toBe(`0.2.1-${suffix}`);
+      // vNext package should not be affected
+      expect(reactButton.version).toBe('9.0.0');
+    });
+
+    it('should not bump private tools packages', async () => {
+      await generator(tree, { all: true, scope: 'tools', versionSuffix: suffix });
+
+      const privateTool = readJson(tree, 'packages/private-tool/package.json');
+      expect(privateTool.version).toBe('1.0.0');
+    });
+
+    it('should update dependency versions for tools dependents', async () => {
+      await generator(tree, { all: true, scope: 'tools', versionSuffix: suffix });
+
+      const eslintPlugin = readJson(tree, 'packages/eslint-plugin-react-components/package.json');
+      expect(eslintPlugin.dependencies['@proj/react-storybook-addon']).toBe(`0.6.0-${suffix}`);
+    });
+
+    it('should remove beachball disallowedChangeTypes for tools packages', async () => {
+      tree = setupDummyPackage(tree, {
+        name: 'react-conformance',
+        version: '0.20.1',
+        dependencies: {},
+        projectConfiguration: { tags: ['tools', 'platform:node'], sourceRoot: 'packages/react-conformance/src' },
+        beachball: {
+          disallowedChangeTypes: ['prerelease'],
+        },
+      });
+
+      await generator(tree, { all: true, scope: 'tools', versionSuffix: suffix });
+
+      const reactConformance = readJson<PackageJsonWithBeachball>(tree, 'packages/react-conformance/package.json');
+      expect(reactConformance.version).toBe(`0.20.1-${suffix}`);
+      expect(reactConformance.beachball?.disallowedChangeTypes).toBeUndefined();
+    });
+
+    it('should exclude specified tools packages', async () => {
+      await generator(tree, {
+        all: true,
+        scope: 'tools',
+        versionSuffix: suffix,
+        exclude: 'react-storybook-addon',
+      });
+
+      const storybookAddon = readJson(tree, 'packages/react-storybook-addon/package.json');
+      const eslintPlugin = readJson(tree, 'packages/eslint-plugin-react-components/package.json');
+
+      expect(storybookAddon.version).toBe('0.6.0');
+      expect(eslintPlugin.version).toBe(`0.2.1-${suffix}`);
+    });
+  });
+
+  describe('--versionSuffix validation', () => {
+    it('should throw if --versionSuffix is used with --bumpType', async () => {
+      await expect(
+        generator(tree, { all: true, versionSuffix: 'experimental.feat.20260408-abc', bumpType: 'patch' }),
+      ).rejects.toThrow('--versionSuffix is mutually exclusive with --bumpType and --explicitVersion');
+    });
+
+    it('should throw if --versionSuffix is used with --explicitVersion', async () => {
+      await expect(
+        generator(tree, { all: true, versionSuffix: 'experimental.feat.20260408-abc', explicitVersion: '1.0.0' }),
+      ).rejects.toThrow('--versionSuffix is mutually exclusive with --bumpType and --explicitVersion');
+    });
+
+    it('should throw if --versionSuffix is used without --all', async () => {
+      await expect(
+        generator(tree, { name: 'react-button', versionSuffix: 'experimental.feat.20260408-abc' }),
+      ).rejects.toThrow('--versionSuffix requires --all');
+    });
+  });
 });
 
 function setupDummyPackage(
@@ -358,6 +478,7 @@ function setupDummyPackage(
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
       beachball: PackageJsonWithBeachball['beachball'];
+      isPrivate: boolean;
     }>,
 ) {
   const workspaceConfig = getWorkspaceConfig(tree);
@@ -382,6 +503,7 @@ function setupDummyPackage(
     packageJson: {
       name: `@${workspaceConfig.npmScope}/${projectName}`,
       version: normalizedOptions.version,
+      ...(options.isPrivate ? { private: true } : {}),
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
       beachball: options.beachball,

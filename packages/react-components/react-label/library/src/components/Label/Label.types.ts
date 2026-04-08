@@ -39,3 +39,14 @@ export type LabelSlots = {
  * State used in rendering Label
  */
 export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;
+
+/**
+ * Label props without design-specific props (size, weight).
+ * Use this when building a label that is unstyled or uses a custom design system.
+ */
+export type LabelBaseProps = Omit<LabelProps, 'size' | 'weight'>;
+
+/**
+ * Label state without design-specific state (size, weight).
+ */
+export type LabelBaseState = Omit<LabelState, 'size' | 'weight'>;

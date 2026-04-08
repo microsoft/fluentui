@@ -308,4 +308,12 @@ describe('With MenuList submenus', () => {
     cy.get(menuSelector).should('have.length', 1);
     cy.focused().should('have.attr', 'role', 'menuitem');
   });
+
+  it('should not close submenu when pressing ArrowLeft inside it', () => {
+    mount(<WithSubmenuExample />);
+    cy.get(menuGridItemSelector).first().focus().realPress('ArrowRight').realPress('Enter');
+    cy.get(menuSelector).should('have.length', 1);
+    cy.focused().should('have.attr', 'role', 'menuitem').realPress('ArrowLeft');
+    cy.get(menuSelector).should('have.length', 1);
+  });
 });

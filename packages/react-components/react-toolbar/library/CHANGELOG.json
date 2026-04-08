@@ -2,6 +2,36 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:43 GMT",
+      "tag": "@fluentui/react-toolbar_v9.7.7",
+      "version": "9.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.6.1",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:41 GMT",
+      "tag": "@fluentui/react-toolbar_v9.7.6",
+      "version": "9.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.6.0",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Mar 2026 08:12:54 GMT",
       "tag": "@fluentui/react-toolbar_v9.7.5",
       "version": "9.7.5",

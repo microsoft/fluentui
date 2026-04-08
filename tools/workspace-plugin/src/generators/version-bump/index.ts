@@ -7,6 +7,7 @@ import {
   printUserLogs,
   UserLog,
   isPackageConverged,
+  isToolsPackage,
   getNpmScope,
 } from '../../utils';
 import { PackageJson } from '../../types';
@@ -39,11 +40,17 @@ function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: Use
   }
 
   updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
-    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag, schema.explicitVersion);
+    nextVersion = bumpVersion(
+      packageJson,
+      schema.bumpType,
+      schema.prereleaseTag,
+      schema.explicitVersion,
+      schema.versionSuffix,
+    );
 
-    // explicitVersion or nightly releases should bypass beachball disallowed changetypes
+    // explicitVersion, versionSuffix, or nightly releases should bypass beachball disallowed changetypes
     if (
-      (schema.explicitVersion || schema.bumpType === 'nightly') &&
+      (schema.explicitVersion || schema.versionSuffix || schema.bumpType === 'nightly') &&
       packageJsonHasBeachballConfig(packageJson) &&
       packageJson.beachball?.disallowedChangeTypes
     ) {
@@ -130,17 +137,20 @@ const bumpDependency = (options: {
 
 function runBatchMigration(tree: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const projects = getProjects(tree);
+  const scopeFilter = schema.scope === 'tools' ? isToolsPackage : isPackageConverged;
 
   projects.forEach((project, projectName) => {
-    if (isPackageConverged(tree, project)) {
+    if (scopeFilter(tree, project)) {
       runMigrationOnProject(
         tree,
         {
           name: projectName,
           all: false,
+          scope: schema.scope,
           bumpType: schema.bumpType,
           prereleaseTag: schema.prereleaseTag,
           explicitVersion: schema.explicitVersion,
+          versionSuffix: schema.versionSuffix,
           exclude: schema.exclude,
         },
         userLog,
@@ -154,9 +164,14 @@ function bumpVersion(
   bumpType: ValidatedSchema['bumpType'],
   prereleaseTag?: string,
   version?: string,
+  versionSuffix?: string,
 ) {
   if (version) {
     return version;
+  }
+
+  if (versionSuffix) {
+    return `${packageJson.version}-${versionSuffix}`;
   }
 
   if (bumpType === 'nightly') {
@@ -200,11 +215,15 @@ export const validBumpTypes = [
   'nightly',
 ] as const;
 
+export const validScopes = ['vNext', 'tools'] as const;
+
 interface ValidatedSchema
-  extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'explicitVersion' | 'bumpType'>> {
+  extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'explicitVersion' | 'bumpType' | 'versionSuffix'>> {
   bumpType?: (typeof validBumpTypes)[number];
   explicitVersion?: string;
+  versionSuffix?: string;
   exclude: string[];
+  scope: (typeof validScopes)[number];
 }
 
 function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
@@ -212,8 +231,16 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  if (!schema.explicitVersion && !schema.bumpType) {
-    throw new Error('Either --bumpType or --explicitVersion must be provided');
+  if (!schema.explicitVersion && !schema.bumpType && !schema.versionSuffix) {
+    throw new Error('Either --bumpType, --explicitVersion, or --versionSuffix must be provided');
+  }
+
+  if (schema.versionSuffix && (schema.bumpType || schema.explicitVersion)) {
+    throw new Error('--versionSuffix is mutually exclusive with --bumpType and --explicitVersion');
+  }
+
+  if (schema.versionSuffix && !schema.all) {
+    throw new Error('--versionSuffix requires --all');
   }
 
   const validateBumpType = (type?: string): type is ValidatedSchema['bumpType'] => {
@@ -224,13 +251,20 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validBumpTypes}`);
   }
 
+  const scope = schema.scope ?? 'vNext';
+  if (!validScopes.includes(scope as (typeof validScopes)[number])) {
+    throw new Error(`${scope} is not a valid scope, please use one of ${validScopes}`);
+  }
+
   const validatedSchema: ValidatedSchema = {
     bumpType: schema.bumpType as ValidatedSchema['bumpType'],
     prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
     explicitVersion: schema.explicitVersion,
+    versionSuffix: schema.versionSuffix,
     exclude: schema.exclude ? schema.exclude.split(',') : [],
+    scope: scope,
   };
 
   return validatedSchema;

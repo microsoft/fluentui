@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:43 GMT",
+      "tag": "@fluentui/react-tooltip_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "6603c85a1b8beacc28d5f38901d2c97aed199a9f",
+            "comment": "feat: expose base hooks for Tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 09:43:43 GMT",
       "tag": "@fluentui/react-tooltip_v9.9.3",
       "version": "9.9.3",

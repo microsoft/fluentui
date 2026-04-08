@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 07 Apr 2026 20:44:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.12",
+      "version": "3.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1668a3c1995614853faf0adabd33fcb5b6994aa0",
+            "comment": "feat: enhance Accordion component with improved item handling and lifecycle management"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Apr 2026 22:24:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.11",
+      "version": "3.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "da4bf9e456311296cb300097ddfd98764888f61a",
+            "comment": "fix: harden component lifecycle for SSR/DSD hydration scenarios"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 04:08:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.10",
+      "version": "3.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e89fd73d5695771e599d74828e4fc1fd7c375f55",
+            "comment": "remove deprecated tabs and tab-panel components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2026 04:08:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.9",
       "version": "3.0.0-rc.9",

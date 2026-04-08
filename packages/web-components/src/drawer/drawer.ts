@@ -202,7 +202,6 @@ export class Drawer extends FASTElement {
   }
 
   protected updateDialogRole() {
-    console.log(this.role);
     if (!this.dialog) {
       return;
     }

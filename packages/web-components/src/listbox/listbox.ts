@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
@@ -22,15 +22,22 @@ import { uniqueId } from '../utils/unique-id.js';
  */
 export class Listbox extends FASTElement {
   /**
-   * Sets the listbox ID to a unique value if one is not provided.
+   * A reference to the default slot element.
    *
-   * @override
-   * @public
-   * @remarks
-   * HTML Attribute: `id`
+   * @internal
    */
-  @attr({ attribute: 'id', mode: 'fromView' })
-  public override id: string = uniqueId('listbox-');
+  @observable
+  public defaultSlot!: HTMLSlotElement;
+
+  /**
+   * Calls the `slotchangeHandler` when the `defaultSlot` element is assigned
+   * via the `ref` directive in the template.
+   *
+   * @internal
+   */
+  protected defaultSlotChanged() {
+    this.slotchangeHandler();
+  }
 
   /**
    * Indicates whether the listbox allows multiple selection.
@@ -165,6 +172,21 @@ export class Listbox extends FASTElement {
     this.elementInternals.role = 'listbox';
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    // The listbox needs to have an id for the dropdown to reference via
+    // `aria-controls`. If an id is not present on connection, a unique one is
+    // generated and assigned to the element.
+    waitForConnectedDescendants(
+      this,
+      () => {
+        this.id = this.id || uniqueId('listbox-');
+      },
+      { shallow: true },
+    );
+  }
+
   /**
    * Handles observable subscriptions for the listbox.
    *
@@ -215,14 +237,15 @@ export class Listbox extends FASTElement {
    * @param e - The slotchange event
    * @public
    */
-  public slotchangeHandler(e: Event): void {
-    const target = e.target as HTMLSlotElement;
+  public slotchangeHandler(e?: Event): void {
     waitForConnectedDescendants(this, () => {
-      const options = target
-        .assignedElements()
-        .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
+      if (this.defaultSlot) {
+        const options = this.defaultSlot
+          .assignedElements()
+          .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
 
-      this.options = options;
+        this.options = options;
+      }
     });
   }
 }

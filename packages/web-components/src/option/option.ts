@@ -297,7 +297,7 @@ export class DropdownOption extends FASTElement implements Start {
     this.currentSelected = next;
 
     Updates.enqueue(() => {
-      if (this.$fastController.isConnected) {
+      if (this.elementInternals) {
         this.setFormValue(next ? this.value : null);
 
         this.elementInternals.ariaSelected = next ? 'true' : 'false';

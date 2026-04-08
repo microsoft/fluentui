@@ -131,6 +131,9 @@ export class BaseAnchor extends FASTElement {
 
   public connectedCallback() {
     super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+
     Observable.getNotifier(this).subscribe(this);
 
     Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {

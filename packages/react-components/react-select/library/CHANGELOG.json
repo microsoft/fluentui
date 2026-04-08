@@ -2,6 +2,27 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Wed, 01 Apr 2026 15:52:42 GMT",
+      "tag": "@fluentui/react-select_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "eaea7b7df203a87ba69e3d96a5f55174043f6668",
+            "comment": "feat(react-select): add useSelectBase_unstable hook"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-select_v9.4.16",
       "version": "9.4.16",
