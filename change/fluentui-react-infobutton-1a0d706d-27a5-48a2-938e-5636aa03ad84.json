@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enforce consistent type imports",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "patch"
+}

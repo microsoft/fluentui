@@ -1,2 +1,2 @@
-export { Pie } from './Pie';
-export type { PieProps, PieStyles } from './Pie.types';
+export * from './Pie';
+export * from './Pie.types';

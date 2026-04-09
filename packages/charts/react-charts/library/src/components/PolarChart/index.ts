@@ -1,2 +1,2 @@
-export { PolarChart } from './PolarChart';
-export type { PolarAxisProps, PolarChartProps, PolarChartStyleProps, PolarChartStyles } from './PolarChart.types';
+export * from './PolarChart';
+export * from './PolarChart.types';

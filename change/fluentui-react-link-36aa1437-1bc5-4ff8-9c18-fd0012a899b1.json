@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enforce consistent type imports",
+  "packageName": "@fluentui/react-link",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "patch"
+}

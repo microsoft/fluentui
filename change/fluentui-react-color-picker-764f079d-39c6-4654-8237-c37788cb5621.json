@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enforce consistent type imports",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "patch"
+}

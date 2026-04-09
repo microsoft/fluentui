@@ -1,2 +1,1 @@
-export type { AnnotationOnlyChartProps } from './components/AnnotationOnlyChart/index';
-export { AnnotationOnlyChart } from './components/AnnotationOnlyChart/index';
+export * from './components/AnnotationOnlyChart/index';

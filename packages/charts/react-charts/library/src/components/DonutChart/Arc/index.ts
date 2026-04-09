@@ -1,2 +1,2 @@
-export { Arc } from './Arc';
-export type { ArcData, ArcProps, ArcStyles } from './Arc.types';
+export * from './Arc';
+export * from './Arc.types';
