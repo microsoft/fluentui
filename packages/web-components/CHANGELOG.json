@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2026 04:07:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.13",
+      "version": "3.0.0-rc.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c207e1425c9a98ded3c06adf037bca603ad1f8eb",
+            "comment": "add base classes for menu-list and radio-group"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Apr 2026 20:44:54 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.12",
       "version": "3.0.0-rc.12",
