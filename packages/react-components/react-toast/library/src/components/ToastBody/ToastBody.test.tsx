@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToastBody } from './ToastBody';
 import { isConformant } from '../../testing/isConformant';
-import { ToastBodyProps } from './ToastBody.types';
+import type { ToastBodyProps } from './ToastBody.types';
 
 describe('ToastBody', () => {
   isConformant<ToastBodyProps>({

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 
 import type { AriaLiveAnnouncerProps } from './AriaLiveAnnouncer.types';
 import { renderAriaLiveAnnouncer_unstable } from './renderAriaLiveAnnouncer';

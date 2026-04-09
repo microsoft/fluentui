@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { InlineDrawer } from './InlineDrawer';
 import { isConformant } from '../../testing/isConformant';
-import { InlineDrawerProps } from './InlineDrawer.types';
+import type { InlineDrawerProps } from './InlineDrawer.types';
 
 describe('InlineDrawer', () => {
   isConformant<InlineDrawerProps>({

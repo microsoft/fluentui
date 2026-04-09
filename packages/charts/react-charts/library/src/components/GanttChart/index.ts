@@ -1,2 +1,2 @@
-export * from './GanttChart';
-export * from './GanttChart.types';
+export { GanttChart } from './GanttChart';
+export type { GanttChartProps, GanttChartStyleProps, GanttChartStyles } from './GanttChart.types';

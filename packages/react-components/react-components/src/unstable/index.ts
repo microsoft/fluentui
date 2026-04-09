@@ -7,7 +7,6 @@
 // - use/consume `*-preview` packages directly for preview/unstable Fluent UI core controls early access
 // =====================================================================================================
 
-/* eslint-disable @typescript-eslint/no-deprecated */
 export {
   Alert,
   alertClassNames,
@@ -37,7 +36,6 @@ export type {
   InfoLabelSlots,
   InfoLabelState,
 } from '@fluentui/react-infobutton';
-/* eslint-enable @typescript-eslint/no-deprecated */
 
 export {
   /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/

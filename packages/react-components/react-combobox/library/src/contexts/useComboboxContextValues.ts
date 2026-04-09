@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ComboboxState } from '../Combobox';
+import type { ComboboxState } from '../Combobox';
 import type { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(

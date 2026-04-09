@@ -1,14 +1,14 @@
 import * as utils from './utilities';
 import * as colors from './colors';
-import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
+import type { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
-import {
+import type {
   DataPoint,
   HorizontalBarChartWithAxisDataPoint,
   LineChartPoints,
   VerticalBarChartDataPoint,
 } from '../types/DataPoint';
-import { ScaleBand } from 'd3-scale';
+import type { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';

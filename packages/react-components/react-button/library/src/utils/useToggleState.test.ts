@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useToggleState } from './useToggleState';
 

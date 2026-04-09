@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { RatingItemContextValue } from '../RatingItem';
+import type { RatingItemContextValue } from '../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
 /**

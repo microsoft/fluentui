@@ -1,13 +1,7 @@
 import * as React from 'react';
 
-import {
-  DonutChart,
-  ChartProps,
-  ChartDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-  ChartPopoverProps,
-} from '@fluentui/react-charts';
+import type { ChartProps, ChartDataPoint, ChartPopoverProps } from '@fluentui/react-charts';
+import { DonutChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 

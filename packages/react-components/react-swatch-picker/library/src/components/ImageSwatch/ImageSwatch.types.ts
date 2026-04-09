@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
+import type { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type ImageSwatchSlots = {
   root: Slot<'button'>;

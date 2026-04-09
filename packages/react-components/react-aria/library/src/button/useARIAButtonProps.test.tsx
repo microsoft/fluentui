@@ -4,8 +4,9 @@
 import { useARIAButtonProps } from './useARIAButtonProps';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, render } from '@testing-library/react';
-import { Slot, ComponentProps, assertSlots, ComponentState, slot } from '@fluentui/react-utilities';
-import { ARIAButtonProps, ARIAButtonSlotProps } from './types';
+import type { Slot, ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { assertSlots, slot } from '@fluentui/react-utilities';
+import type { ARIAButtonProps, ARIAButtonSlotProps } from './types';
 
 type TestButtonSlots = { root: Slot<ARIAButtonSlotProps> };
 

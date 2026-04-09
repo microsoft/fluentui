@@ -1,2 +1,2 @@
-export * from './AnnotationOnlyChart';
-export * from './AnnotationOnlyChart.types';
+export { AnnotationOnlyChart } from './AnnotationOnlyChart';
+export type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';

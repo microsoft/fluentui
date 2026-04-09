@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useToggleState } from '../../utils/useToggleState';
 import { useButton_unstable, useButtonBase_unstable } from '../Button/useButton';
 import type { ToggleButtonBaseState, ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';

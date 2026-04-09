@@ -2,7 +2,7 @@
 
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { getIntrinsicElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 import { useListContext_unstable } from '../List/listContext';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 

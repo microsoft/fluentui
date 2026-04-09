@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ItemLayout } from '../../ItemLayout';
+import type { ItemLayout } from '../../ItemLayout';
 
 export type ListItemSlots = {
   root: NonNullable<Slot<'li', 'div'>>;

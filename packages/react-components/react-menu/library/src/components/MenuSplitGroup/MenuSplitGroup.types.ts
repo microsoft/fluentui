@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { MenuSplitGroupContextValue } from '../../contexts/menuSplitGroupContext';
+import type { MenuSplitGroupContextValue } from '../../contexts/menuSplitGroupContext';
 
 export type MenuSplitGroupSlots = {
   root: Slot<'div'>;

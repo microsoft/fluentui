@@ -3,7 +3,7 @@
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-import { DrawerBaseState } from './DrawerBase.types';
+import type { DrawerBaseState } from './DrawerBase.types';
 
 /**
  * CSS variable names used internally for uniform styling in Drawer.

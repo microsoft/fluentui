@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { EventData, EventHandler } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { EventData, EventHandler } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
   clear: () => void;

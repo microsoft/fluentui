@@ -19,7 +19,8 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
-import { createMotionComponent, MotionComponent } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
+import { createMotionComponent } from './createMotionComponent';
 
 /**
  * A private symbol to store the motion definition on the component for variants.

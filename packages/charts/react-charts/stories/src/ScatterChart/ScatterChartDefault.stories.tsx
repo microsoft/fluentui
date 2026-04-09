@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import type { ChartProps } from '@fluentui/react-charts';
+import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
 import { makeStyles, Switch, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

@@ -7,7 +7,7 @@ import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
-import { ComboboxProps } from '@fluentui/react-combobox';
+import type { ComboboxProps } from '@fluentui/react-combobox';
 
 describe('Combobox', () => {
   beforeEach(() => {

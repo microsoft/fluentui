@@ -3,7 +3,7 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
+import type { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
 
 export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>> = {
   root: 'fui-FlatTree',
