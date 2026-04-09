@@ -7,16 +7,18 @@ allowed-tools: Bash Read Grep Glob
 
 # Create a Beachball Change File
 
-Generate a change file for the current branch's modifications.
+Generate a change file for the current branch's modifications using the repo's beachball setup.
 
 ## Steps
 
 1. **Identify changed packages** by running:
-   ```!
+
+   ```bash
    git diff --name-only HEAD~1
    ```
 
 2. **Determine the change type:**
+
    - `patch` — bug fixes, internal refactors, test-only changes
    - `minor` — new features, new exports, new component variants
    - `none` — changes that don't affect the published package (stories, docs, tests only)
@@ -24,12 +26,27 @@ Generate a change file for the current branch's modifications.
 
 3. **Generate a descriptive message** following the format: `fix(package-name): description` or `feat(package-name): description`
 
-4. **Run beachball** to create the change file:
+4. **Run the repo's change script** to create the change file:
+
    ```bash
-   yarn beachball change --type <type> --message "<message>"
+   yarn change
    ```
 
-5. If multiple packages are affected, create separate change files for each.
+   This runs `beachball change --no-commit` (configured in root `package.json`).
+
+   For non-interactive usage with a specific type and message:
+
+   ```bash
+   yarn beachball change --no-commit --type <type> --message "<message>"
+   ```
+
+5. **Verify** the change file was created:
+
+   ```bash
+   yarn check:change
+   ```
+
+6. If multiple packages are affected, create separate change files for each.
 
 ## Rules
 

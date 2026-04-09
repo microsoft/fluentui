@@ -8,35 +8,52 @@ allowed-tools: Read Write Bash Glob Grep
 
 # Scaffold a V9 Component
 
-Create a new v9 component named **$ARGUMENTS** following the exact patterns in [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md).
+Create a new v9 component named **$ARGUMENTS** using the repo's Nx generators.
 
 ## Steps
 
-1. **Determine the package path.** If creating inside an existing package, use that path. If creating a new package, the path is `packages/react-components/react-<lowercase-name>/library/src/`.
+### Adding a component to an existing package
 
-2. **Read an existing well-structured component** for reference. Good examples:
+Use the `react-component` generator:
 
-   - `packages/react-components/react-badge/library/src/components/Badge/`
-   - `packages/react-components/react-tag/library/src/components/Tag/`
-     Read at least the types, hook, styles, render, and main component files from one of these.
+```bash
+yarn nx g @fluentui/workspace-plugin:react-component --name $ARGUMENTS --project <project-name>
+```
 
-3. **Generate all required files** under `components/$ARGUMENTS/`:
+Where `<project-name>` is the Nx project (e.g., `react-button`). This generates all required files: component, types, hook, styles, render, index barrel, and conformance test.
 
-   | File                              | Purpose                                                                                                    |
-   | --------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-   | `$ARGUMENTS.tsx`                  | `ForwardRefComponent` with `React.forwardRef`. Never use `React.FC`.                                       |
-   | `$ARGUMENTS.types.ts`             | Props, State, Slots types                                                                                  |
-   | `use$ARGUMENTS.ts`                | State hook — processes props/slots into normalized state                                                   |
-   | `use${ARGUMENTS}Styles.styles.ts` | Griffel styling with `makeStyles` using design tokens from `@fluentui/react-theme`. Never hardcode values. |
-   | `render$ARGUMENTS.tsx`            | Pure JSX render using `assertSlots`                                                                        |
-   | `$ARGUMENTS.test.tsx`             | Unit tests with React Testing Library                                                                      |
-   | `index.ts`                        | Barrel export for the component                                                                            |
+### Creating a new package + component
 
-4. **Update barrel exports** — add the component to the package's root `index.ts`.
+Use the `react-library` generator first, then add the component:
 
-5. **Create conformance test** at `testing/isConformant.ts` if it doesn't exist.
+```bash
+# Create the package (will prompt for owner team)
+yarn create-package
 
-6. **Create a default story** at the appropriate stories package location.
+# Or non-interactively:
+yarn nx g @fluentui/workspace-plugin:react-library --name <package-name> --owner "<team>"
+
+# Then add the component inside it:
+yarn nx g @fluentui/workspace-plugin:react-component --name $ARGUMENTS --project <package-name>
+```
+
+### After scaffolding
+
+1. **Review generated files** against [docs/architecture/component-patterns.md](../../../docs/architecture/component-patterns.md) and fill in component-specific logic.
+
+2. **Add styles** in `use${ARGUMENTS}Styles.styles.ts` using design tokens:
+
+   ```tsx
+   import { makeStyles } from '@griffel/react';
+   import { tokens } from '@fluentui/react-theme';
+   ```
+
+3. **Create a default story** at the appropriate stories package location if not generated.
+
+4. **Update API docs** after adding exports:
+   ```bash
+   yarn nx run <project>:generate-api
+   ```
 
 ## Critical Rules
 
@@ -45,4 +62,15 @@ Create a new v9 component named **$ARGUMENTS** following the exact patterns in [
 - Always preserve user `className` as the LAST argument in `mergeClasses()`
 - Use `_unstable` suffix on exported hooks: `use$ARGUMENTS_unstable`, `use${ARGUMENTS}Styles_unstable`, `render${ARGUMENTS}_unstable`
 - Guard any `window`/`document`/`navigator` access with `canUseDOM()` from `@fluentui/react-utilities`
-- Do not add dependencies on other Tier 3 component packages (see [docs/architecture/layers.md](docs/architecture/layers.md))
+- Do not add dependencies on other Tier 3 component packages (see [docs/architecture/layers.md](../../../docs/architecture/layers.md))
+
+## Available Generators Reference
+
+| Generator                         | Command                                                                | Purpose                                             |
+| --------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------- |
+| `react-component`                 | `yarn nx g @fluentui/workspace-plugin:react-component`                 | Add component to existing package                   |
+| `react-library`                   | `yarn nx g @fluentui/workspace-plugin:react-library`                   | Create new v9 package                               |
+| `recipe-generator`                | `yarn nx g @fluentui/workspace-plugin:recipe-generator`                | Create a v9 recipe                                  |
+| `prepare-initial-release`         | `yarn nx g @fluentui/workspace-plugin:prepare-initial-release`         | Prepare package for release (compat/preview/stable) |
+| `bundle-size-configuration`       | `yarn nx g @fluentui/workspace-plugin:bundle-size-configuration`       | Setup bundle-size tracking                          |
+| `cypress-component-configuration` | `yarn nx g @fluentui/workspace-plugin:cypress-component-configuration` | Setup Cypress component tests                       |

@@ -51,7 +51,17 @@ Get a comprehensive overview of the package **$ARGUMENTS**.
    Tests: unit ✓/✗ | conformance ✓/✗ | stories ✓/✗
    ```
 
+## Useful Commands for the Package
+
+```bash
+yarn nx run <project>:build          # Build
+yarn nx run <project>:test           # Unit tests
+yarn nx run <project>:lint           # Lint
+yarn nx run <project>:type-check     # Type check
+yarn nx run <project>:generate-api   # Regenerate API docs (etc/*.api.md)
+```
+
 ## References
 
-- Package layers: [docs/architecture/layers.md](docs/architecture/layers.md)
-- Team routing: [docs/team-routing.md](docs/team-routing.md)
+- Package layers: [docs/architecture/layers.md](../../../docs/architecture/layers.md)
+- Team routing: [docs/team-routing.md](../../../docs/team-routing.md)
