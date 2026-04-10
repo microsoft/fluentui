@@ -25,6 +25,11 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     ...baseState,
     appearance,
     size,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...baseState.components,
+      label: Label,
+    },
     label: slot.optional(props.label, {
       defaultProps: baseState.label,
       elementType: Label,
