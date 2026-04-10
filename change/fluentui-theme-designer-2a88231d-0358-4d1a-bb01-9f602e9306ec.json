@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "chore: enforce consistent type imports",
   "packageName": "@fluentui/theme-designer",
   "email": "copilot@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

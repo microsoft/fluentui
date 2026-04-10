@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "chore: enforce consistent type imports",
   "packageName": "@fluentui/react-tree",
   "email": "copilot@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
