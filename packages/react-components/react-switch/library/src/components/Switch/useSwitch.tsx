@@ -26,6 +26,11 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
 
   return {
     ...baseState,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...baseState.components,
+      label: Label,
+    },
     size,
     label: slot.optional(props.label, {
       defaultProps: { size: 'medium', ...baseState.label },
