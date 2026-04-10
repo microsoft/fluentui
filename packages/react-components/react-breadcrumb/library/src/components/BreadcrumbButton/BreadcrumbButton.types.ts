@@ -27,4 +27,4 @@ export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> &
 
 export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 
-export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'size'>;
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;

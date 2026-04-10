@@ -32,7 +32,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 
 // @public (undocumented)
-export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'size'>;
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;
 
 // @public
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;

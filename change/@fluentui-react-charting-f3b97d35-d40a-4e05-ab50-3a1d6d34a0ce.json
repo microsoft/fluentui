@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: isSafeUrl utility",
+  "packageName": "@fluentui/react-charting",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
