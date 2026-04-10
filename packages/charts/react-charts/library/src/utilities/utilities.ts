@@ -2713,7 +2713,7 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
 export function isSafeUrl(href: string): boolean {
   if (/^[a-z][a-z0-9+.-]*:/i.test(href)) {
-    return /^https?:/i.test(href);
+    return /^(https?|mailto|tel|ftp):/i.test(href);
   }
   return true;
 }
