@@ -92,7 +92,7 @@ export type MenuButtonSlots = ButtonSlots & {
 export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
 // @public
-const renderButton_unstable: (state: ButtonState) => JSXElement;
+const renderButton_unstable: (state: ButtonBaseState) => JSXElement;
 export { renderButton_unstable }
 export { renderButton_unstable as renderToggleButton_unstable }
 

@@ -22,9 +22,15 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
 
   const baseState = useSwitchBase_unstable(baseProps, ref);
 
+  baseState.indicator.children ??= <CircleFilled />;
+
   return {
     ...baseState,
     size,
+    label: slot.optional(props.label, {
+      defaultProps: { size: 'medium', ...baseState.label },
+      elementType: Label,
+    }),
   };
 };
 
@@ -61,7 +67,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
     elementType: 'div',
   });
   const indicator = slot.always(props.indicator, {
-    defaultProps: { 'aria-hidden': true, children: <CircleFilled /> },
+    defaultProps: { 'aria-hidden': true },
     elementType: 'div',
   });
   const input = slot.always(props.input, {
@@ -90,13 +96,13 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
     }
   });
   const label = slot.optional(props.label, {
-    defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required, size: 'medium' },
-    elementType: Label,
+    defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required },
+    elementType: 'label',
   });
   return {
     disabledFocusable,
     labelPosition,
-    components: { root: 'div', indicator: 'div', input: 'input', label: Label },
+    components: { root: 'div', indicator: 'div', input: 'input', label: 'label' },
 
     root,
     indicator,

@@ -25,6 +25,10 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     ...baseState,
     appearance,
     size,
+    label: slot.optional(props.label, {
+      defaultProps: baseState.label,
+      elementType: Label,
+    }),
   };
 };
 
@@ -69,7 +73,7 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
   const labelShorthand = slot.optional(props.label, {
     defaultProps: { id: baseId },
     renderByDefault: false,
-    elementType: Label,
+    elementType: 'label',
   });
   const spinnerShortHand = slot.optional(props.spinner, {
     renderByDefault: true,
@@ -82,7 +86,7 @@ export const useSpinnerBase_unstable = (props: SpinnerBaseProps, ref: React.Ref<
     delay,
     labelPosition,
     shouldRenderSpinner: !delay || isShownAfterDelay,
-    components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: Label },
+    components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: 'label' },
     root: nativeRoot,
     spinner: spinnerShortHand,
     spinnerTail: slot.always(props.spinnerTail, { elementType: 'span' }),

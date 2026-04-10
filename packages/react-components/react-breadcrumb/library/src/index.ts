@@ -5,6 +5,7 @@ export {
   useBreadcrumbBase_unstable,
   useBreadcrumbA11yBehavior_unstable,
   useBreadcrumbStyles_unstable,
+  useBreadcrumbContextValues_unstable,
   breadcrumbClassNames,
 } from './Breadcrumb';
 export type {
