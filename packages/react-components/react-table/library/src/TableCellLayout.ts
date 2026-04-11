@@ -1,4 +1,6 @@
 export type {
+  TableCellLayoutBaseProps,
+  TableCellLayoutBaseState,
   TableCellLayoutContextValues,
   TableCellLayoutProps,
   TableCellLayoutSlots,
@@ -9,5 +11,6 @@ export {
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
   useTableCellLayoutStyles_unstable,
+  useTableCellLayoutBase_unstable,
   useTableCellLayout_unstable,
 } from './components/TableCellLayout/index';

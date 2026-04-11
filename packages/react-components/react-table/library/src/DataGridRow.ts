@@ -1,5 +1,7 @@
 export type {
   CellRenderFunction,
+  DataGridRowBaseProps,
+  DataGridRowBaseState,
   DataGridRowProps,
   DataGridRowSlots,
   DataGridRowState,
@@ -9,5 +11,6 @@ export {
   dataGridRowClassNames,
   renderDataGridRow_unstable,
   useDataGridRowStyles_unstable,
+  useDataGridRowBase_unstable,
   useDataGridRow_unstable,
 } from './components/DataGridRow/index';
