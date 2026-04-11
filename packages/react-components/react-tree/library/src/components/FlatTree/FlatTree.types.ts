@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, SelectionMode } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, SelectionMode } from '@fluentui/react-utilities';
 import type {
   TreeSlots,
   TreeCheckedChangeData,
@@ -96,3 +96,13 @@ export type FlatTreeState = ComponentState<FlatTreeSlots> &
   TreeContextValue & {
     open: boolean;
   };
+
+/**
+ * FlatTree Props without design-only props.
+ */
+export type FlatTreeBaseProps = DistributiveOmit<FlatTreeProps, 'appearance' | 'size'>;
+
+/**
+ * State used in rendering FlatTree, without design-only state.
+ */
+export type FlatTreeBaseState = DistributiveOmit<FlatTreeState, 'appearance' | 'size'>;

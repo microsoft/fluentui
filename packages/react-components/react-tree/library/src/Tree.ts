@@ -1,4 +1,6 @@
 export type {
+  TreeBaseProps,
+  TreeBaseState,
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValues,
@@ -19,5 +21,6 @@ export {
   treeClassNames,
   useTreeContextValues_unstable,
   useTreeStyles_unstable,
+  useTreeBase_unstable,
   useTree_unstable,
 } from './components/Tree/index';

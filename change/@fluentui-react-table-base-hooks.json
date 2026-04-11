@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for Table, TableCell, TableRow, TableCellLayout, DataGrid, DataGridRow",
+  "packageName": "@fluentui/react-table",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,4 +1,6 @@
 export type {
+  FlatTreeBaseProps,
+  FlatTreeBaseState,
   FlatTreeContextValues,
   FlatTreeProps,
   FlatTreeSlots,
@@ -14,6 +16,7 @@ export {
   renderFlatTree_unstable,
   useFlatTreeContextValues_unstable,
   useFlatTreeStyles_unstable,
+  useFlatTreeBase_unstable,
   useFlatTree_unstable,
   useHeadlessFlatTree_unstable,
 } from './components/FlatTree/index';

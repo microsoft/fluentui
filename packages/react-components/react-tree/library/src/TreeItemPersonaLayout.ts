@@ -1,4 +1,6 @@
 export type {
+  TreeItemPersonaLayoutBaseProps,
+  TreeItemPersonaLayoutBaseState,
   TreeItemPersonaLayoutContextValues,
   TreeItemPersonaLayoutProps,
   TreeItemPersonaLayoutSlots,
@@ -9,5 +11,6 @@ export {
   renderTreeItemPersonaLayout_unstable,
   treeItemPersonaLayoutClassNames,
   useTreeItemPersonaLayoutStyles_unstable,
+  useTreeItemPersonaLayoutBase_unstable,
   useTreeItemPersonaLayout_unstable,
 } from './components/TreeItemPersonaLayout/index';
