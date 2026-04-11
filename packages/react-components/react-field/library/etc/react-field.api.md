@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
@@ -15,6 +16,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Field: ForwardRefComponent<FieldProps>;
+
+// @public (undocumented)
+export type FieldBaseProps = DistributiveOmit<FieldProps, 'orientation' | 'size'>;
+
+// @public (undocumented)
+export type FieldBaseState = DistributiveOmit<FieldState, 'orientation' | 'size'>;
 
 // @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
@@ -74,10 +81,13 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<Fi
 };
 
 // @public
-export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSXElement;
+export const renderField_unstable: (state: FieldBaseState, contextValues: FieldContextValues) => JSXElement;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public
+export const useFieldBase_unstable: (props: FieldBaseProps, ref: React_2.Ref<HTMLDivElement>) => FieldBaseState;
 
 // @public (undocumented)
 export const useFieldContext_unstable: () => FieldContextValue | undefined;

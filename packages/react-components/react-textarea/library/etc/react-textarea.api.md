@@ -13,7 +13,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTextarea_unstable: (state: TextareaState) => JSXElement;
+export const renderTextarea_unstable: (state: TextareaBaseState) => JSXElement;
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
