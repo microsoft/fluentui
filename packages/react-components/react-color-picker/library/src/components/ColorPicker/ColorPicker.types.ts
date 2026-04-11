@@ -1,5 +1,12 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  Slot,
+  EventHandler,
+  EventData,
+} from '@fluentui/react-utilities';
 import { ColorPickerContextValue } from '../../contexts/colorPicker';
 import type { HsvColor } from '../../types/color';
 
@@ -36,3 +43,13 @@ export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, '
  * State used in rendering ColorPicker
  */
 export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerContextValue;
+
+/**
+ * ColorPicker Props without design-only props.
+ */
+export type ColorPickerBaseProps = DistributiveOmit<ColorPickerProps, 'shape'>;
+
+/**
+ * State used in rendering ColorPicker, without design-only state.
+ */
+export type ColorPickerBaseState = DistributiveOmit<ColorPickerState, 'shape'>;

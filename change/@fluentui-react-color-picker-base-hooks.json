@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useColorPickerBase_unstable, useColorAreaBase_unstable, useColorSliderBase_unstable, and useAlphaSliderBase_unstable hooks",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

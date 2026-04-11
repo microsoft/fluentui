@@ -2,24 +2,25 @@
 
 import * as React from 'react';
 import { getPartitionedNativeProps, useId, slot } from '@fluentui/react-utilities';
-import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
+import type {
+  AlphaSliderBaseProps,
+  AlphaSliderBaseState,
+  AlphaSliderProps,
+  AlphaSliderState,
+} from './AlphaSlider.types';
 import { useAlphaSliderState_unstable } from './useAlphaSliderState';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
 /**
- * Create the state required to render AlphaSlider.
+ * Create the base state required to render AlphaSlider, without design-only props.
  *
- * The returned state can be modified with hooks such as useAlphaSliderStyles_unstable,
- * before being passed to renderAlphaSlider_unstable.
- *
- * @param props - props from this instance of AlphaSlider
+ * @param props - props from this instance of AlphaSlider (without shape)
  * @param ref - reference to root HTMLInputElement of AlphaSlider
  */
-export const useAlphaSlider_unstable = (
-  props: AlphaSliderProps,
+export const useAlphaSliderBase_unstable = (
+  props: AlphaSliderBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): AlphaSliderState => {
-  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+): AlphaSliderBaseState => {
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -27,7 +28,6 @@ export const useAlphaSlider_unstable = (
   });
 
   const {
-    shape = shapeFromContext,
     vertical,
     // Slots
     root,
@@ -36,8 +36,7 @@ export const useAlphaSlider_unstable = (
     thumb,
   } = props;
 
-  const state: AlphaSliderState = {
-    shape,
+  const state: AlphaSliderBaseState = {
     vertical,
     components: {
       input: 'input',
@@ -62,7 +61,29 @@ export const useAlphaSlider_unstable = (
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
 
-  useAlphaSliderState_unstable(state, props);
+  useAlphaSliderState_unstable(state as AlphaSliderState, props as AlphaSliderProps);
 
   return state;
+};
+
+/**
+ * Create the state required to render AlphaSlider.
+ *
+ * The returned state can be modified with hooks such as useAlphaSliderStyles_unstable,
+ * before being passed to renderAlphaSlider_unstable.
+ *
+ * @param props - props from this instance of AlphaSlider
+ * @param ref - reference to root HTMLInputElement of AlphaSlider
+ */
+export const useAlphaSlider_unstable = (
+  props: AlphaSliderProps,
+  ref: React.Ref<HTMLInputElement>,
+): AlphaSliderState => {
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+  const { shape = shapeFromContext } = props;
+
+  return {
+    ...useAlphaSliderBase_unstable(props, ref),
+    shape,
+  };
 };
