@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
 
 export type TeachingPopoverCarouselFooterSlots = {
@@ -50,3 +50,7 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
  */
 export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> &
   Pick<TeachingPopoverCarouselFooterProps, 'layout'>;
+
+export type TeachingPopoverCarouselFooterBaseProps = DistributiveOmit<TeachingPopoverCarouselFooterProps, 'layout'>;
+
+export type TeachingPopoverCarouselFooterBaseState = DistributiveOmit<TeachingPopoverCarouselFooterState, 'layout'>;

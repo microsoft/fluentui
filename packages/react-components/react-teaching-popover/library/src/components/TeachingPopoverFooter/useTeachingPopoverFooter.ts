@@ -2,20 +2,24 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
+import type {
+  TeachingPopoverFooterBaseProps,
+  TeachingPopoverFooterBaseState,
+  TeachingPopoverFooterProps,
+  TeachingPopoverFooterState,
+} from './TeachingPopoverFooter.types';
 import { Button } from '@fluentui/react-button';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 /**
- * Returns the props and state required to render the component
+ * Returns the base props and state required to render the component, without design-specific props.
  * @param props - TeachingPopoverFooter properties
  * @param ref - reference to root HTMLElement of TeachingPopoverFooter
  */
-export const useTeachingPopoverFooter_unstable = (
-  props: TeachingPopoverFooterProps,
+export const useTeachingPopoverFooterBase_unstable = (
+  props: TeachingPopoverFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverFooterState => {
-  const appearance = usePopoverContext_unstable(context => context.appearance);
+): TeachingPopoverFooterBaseState => {
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const handleButtonClick = useEventCallback(
@@ -30,7 +34,7 @@ export const useTeachingPopoverFooter_unstable = (
 
   const secondary = slot.optional(props.secondary, {
     defaultProps: {
-      appearance: appearance === 'brand' ? 'primary' : undefined,
+      appearance: undefined,
     },
     renderByDefault: props.secondary !== undefined,
     elementType: Button,
@@ -43,7 +47,7 @@ export const useTeachingPopoverFooter_unstable = (
 
   const primary = slot.always(props.primary, {
     defaultProps: {
-      appearance: appearance === 'brand' ? undefined : 'primary',
+      appearance: undefined,
     },
     elementType: Button,
   });
@@ -54,8 +58,6 @@ export const useTeachingPopoverFooter_unstable = (
   }
 
   return {
-    footerLayout: props.footerLayout ?? 'horizontal',
-    appearance,
     components: {
       root: 'div',
       primary: Button,
@@ -70,5 +72,31 @@ export const useTeachingPopoverFooter_unstable = (
     ),
     secondary,
     primary,
+  };
+};
+
+/**
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverFooter properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverFooter
+ */
+export const useTeachingPopoverFooter_unstable = (
+  props: TeachingPopoverFooterProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverFooterState => {
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const footerLayout = props.footerLayout ?? 'horizontal';
+  const baseState = useTeachingPopoverFooterBase_unstable(props, ref);
+
+  // Override button appearance based on popover appearance
+  if (baseState.secondary) {
+    baseState.secondary.appearance = appearance === 'brand' ? 'primary' : undefined;
+  }
+  baseState.primary.appearance = appearance === 'brand' ? undefined : 'primary';
+
+  return {
+    ...baseState,
+    footerLayout,
+    appearance,
   };
 };

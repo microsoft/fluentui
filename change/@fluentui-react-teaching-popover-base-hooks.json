@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks for TeachingPopover components",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

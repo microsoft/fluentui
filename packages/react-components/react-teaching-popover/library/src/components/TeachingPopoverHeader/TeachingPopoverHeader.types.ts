@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverHeaderSlots = {
@@ -22,3 +22,7 @@ export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlo
   Pick<PopoverContextValue, 'appearance'>;
 
 export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;
+
+export type TeachingPopoverHeaderBaseProps = TeachingPopoverHeaderProps;
+
+export type TeachingPopoverHeaderBaseState = DistributiveOmit<TeachingPopoverHeaderState, 'appearance'>;

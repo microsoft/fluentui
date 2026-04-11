@@ -2,25 +2,29 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
+import type {
+  TeachingPopoverHeaderBaseProps,
+  TeachingPopoverHeaderBaseState,
+  TeachingPopoverHeaderProps,
+  TeachingPopoverHeaderState,
+} from './TeachingPopoverHeader.types';
 
 import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 /**
- * Returns the props and state required to render the component
+ * Returns the base props and state required to render the component, without design-specific props.
  * @param props - TeachingPopoverHeader properties
  * @param ref - reference to root HTMLElement of TeachingPopoverHeader
  */
-export const useTeachingPopoverHeader_unstable = (
-  props: TeachingPopoverHeaderProps,
+export const useTeachingPopoverHeaderBase_unstable = (
+  props: TeachingPopoverHeaderBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverHeaderState => {
+): TeachingPopoverHeaderBaseState => {
   const { dismissButton, icon } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
-  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -33,7 +37,6 @@ export const useTeachingPopoverHeader_unstable = (
   });
 
   return {
-    appearance,
     components: {
       root: 'div',
       dismissButton: 'button',
@@ -64,5 +67,23 @@ export const useTeachingPopoverHeader_unstable = (
       },
       elementType: 'button',
     }),
+  };
+};
+
+/**
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverHeader properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverHeader
+ */
+export const useTeachingPopoverHeader_unstable = (
+  props: TeachingPopoverHeaderProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverHeaderState => {
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const baseState = useTeachingPopoverHeaderBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    appearance,
   };
 };

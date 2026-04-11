@@ -7,6 +7,8 @@ import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
 
 import type {
+  TeachingPopoverCarouselNavButtonBaseProps,
+  TeachingPopoverCarouselNavButtonBaseState,
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonState,
 } from './TeachingPopoverCarouselNavButton.types';
@@ -14,23 +16,19 @@ import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel
 import { useValueIdContext } from '../TeachingPopoverCarouselNav/valueIdContext';
 
 /**
- * Create the state required to render TeachingPopoverCarouselNavButton.
- *
- * The returned state can be modified with hooks such as useTeachingPopoverCarouselNavButtonStyles_unstable,
- * before being passed to renderTeachingPopoverCarouselNavButton_unstable.
+ * Create the base state required to render TeachingPopoverCarouselNavButton, without design-specific props.
  *
  * @param props - props from this instance of TeachingPopoverCarouselNavButton
  * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNavButton
  */
-export const useTeachingPopoverCarouselNavButton_unstable = (
-  props: TeachingPopoverCarouselNavButtonProps,
+export const useTeachingPopoverCarouselNavButtonBase_unstable = (
+  props: TeachingPopoverCarouselNavButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): TeachingPopoverCarouselNavButtonState => {
+): TeachingPopoverCarouselNavButtonBaseState => {
   const { onClick, as = 'a' } = props;
 
   const value = useValueIdContext();
 
-  const appearance = usePopoverContext_unstable(context => context.appearance);
   const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
   const isSelected = useCarouselContext_unstable(c => c.value === value);
 
@@ -62,9 +60,8 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
 
   _carouselButton.onClick = handleClick;
 
-  const state: TeachingPopoverCarouselNavButtonState = {
+  const state: TeachingPopoverCarouselNavButtonBaseState = {
     isSelected,
-    appearance,
     components: {
       root: 'button',
     },
@@ -72,4 +69,26 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   };
 
   return state;
+};
+
+/**
+ * Create the state required to render TeachingPopoverCarouselNavButton.
+ *
+ * The returned state can be modified with hooks such as useTeachingPopoverCarouselNavButtonStyles_unstable,
+ * before being passed to renderTeachingPopoverCarouselNavButton_unstable.
+ *
+ * @param props - props from this instance of TeachingPopoverCarouselNavButton
+ * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNavButton
+ */
+export const useTeachingPopoverCarouselNavButton_unstable = (
+  props: TeachingPopoverCarouselNavButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): TeachingPopoverCarouselNavButtonState => {
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const baseState = useTeachingPopoverCarouselNavButtonBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    appearance,
+  };
 };

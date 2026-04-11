@@ -1,5 +1,5 @@
 import { Button } from '@fluentui/react-button';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverFooterSlots = {
@@ -30,3 +30,10 @@ export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlo
 
 export type TeachingPopoverFooterProps = ComponentProps<TeachingPopoverFooterSlots> &
   Pick<TeachingPopoverFooterState, 'footerLayout'>;
+
+export type TeachingPopoverFooterBaseProps = DistributiveOmit<TeachingPopoverFooterProps, 'footerLayout'>;
+
+export type TeachingPopoverFooterBaseState = DistributiveOmit<
+  TeachingPopoverFooterState,
+  'appearance' | 'footerLayout'
+>;

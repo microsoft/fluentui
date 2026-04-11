@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { ButtonProps, ButtonState } from '@fluentui/react-button';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
@@ -33,3 +33,10 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState &
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
   };
+
+export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarouselFooterButtonProps;
+
+export type TeachingPopoverCarouselFooterButtonBaseState = DistributiveOmit<
+  TeachingPopoverCarouselFooterButtonState,
+  'popoverAppearance'
+>;
