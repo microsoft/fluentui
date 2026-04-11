@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import type { RatingItemContextValue } from '../RatingItem';
-import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
 /**
  * RatingContext is provided by Rating, and is consumed by Rating to determine default values of some props.
@@ -10,8 +9,8 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const RatingItemContext = React.createContext<RatingItemContextValue | undefined>(undefined);
 const ratingItemContextDefaultValue: RatingItemContextValue = {
   color: 'neutral',
-  iconFilled: StarFilled,
-  iconOutline: StarRegular,
+  iconFilled: 'span',
+  iconOutline: 'span',
   step: 1,
   size: 'medium',
 };

@@ -139,16 +139,16 @@ export type PartitionBreadcrumbItemsOptions<T> = {
 };
 
 // @public
-export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSXElement;
+export const renderBreadcrumb_unstable: (state: BreadcrumbBaseState, contextValues: BreadcrumbContextValues) => JSXElement;
 
 // @public
-export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonState) => JSXElement;
+export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonBaseState) => JSXElement;
 
 // @public
-export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSXElement;
+export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerBaseState) => JSXElement;
 
 // @public
-export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSXElement;
+export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemBaseState) => JSXElement;
 
 // @public (undocumented)
 export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
@@ -176,6 +176,9 @@ export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) 
 
 // @internal (undocumented)
 export const useBreadcrumbContext_unstable: () => BreadcrumbContextValues;
+
+// @public (undocumented)
+export function useBreadcrumbContextValues_unstable(state: BreadcrumbState): BreadcrumbContextValues;
 
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;

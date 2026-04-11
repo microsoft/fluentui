@@ -98,11 +98,11 @@ export const useAvatarGroupPopoverBase_unstable = (props: AvatarGroupPopoverBase
     popoverOpen,
 
     components: {
-      root: Popover,
+      root: 'div',
       triggerButton: 'button',
       content: 'ul',
-      popoverSurface: PopoverSurface,
-      tooltip: Tooltip,
+      popoverSurface: 'div',
+      tooltip: 'div',
     },
     root: slot.always(
       {
