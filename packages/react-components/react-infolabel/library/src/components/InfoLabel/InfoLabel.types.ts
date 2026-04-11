@@ -1,5 +1,5 @@
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton';
 import type { InfoButtonProps } from '../InfoButton';
 
@@ -36,6 +36,17 @@ export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & 
 };
 
 /**
+ * InfoLabel props without design-specific props (size).
+ * Use this when building a base info label that is unstyled or uses a custom design system.
+ */
+export type InfoLabelBaseProps = DistributiveOmit<InfoLabelProps, 'size'>;
+
+/**
  * State used in rendering InfoLabel
  */
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
+
+/**
+ * InfoLabel state without design-specific state (size).
+ */
+export type InfoLabelBaseState = DistributiveOmit<InfoLabelState, 'size'>;

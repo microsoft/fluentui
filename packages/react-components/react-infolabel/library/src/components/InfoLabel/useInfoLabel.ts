@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { mergeCallbacks, useId, slot, useEventCallback } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
-import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
+import type { InfoLabelBaseProps, InfoLabelBaseState, InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
 /**
  * Create the state required to render InfoLabel.
@@ -17,12 +17,31 @@ import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
  * @param ref - reference to label element of InfoLabel
  */
 export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElement>): InfoLabelState => {
+  const { size, ...baseProps } = props;
+  const state = useInfoLabelBase_unstable(baseProps, ref);
+
+  return {
+    size,
+    ...state,
+  };
+};
+
+/**
+ * Base hook for InfoLabel component, which manages state related to ARIA, slot structure, and focus behavior.
+ * This hook excludes design-specific props (size).
+ *
+ * @param props - User provided props to the InfoLabel component.
+ * @param ref - User provided ref to be passed to the InfoLabel component.
+ */
+export const useInfoLabelBase_unstable = (
+  props: InfoLabelBaseProps,
+  ref: React.Ref<HTMLLabelElement>,
+): InfoLabelBaseState => {
   const {
     root: rootShorthand,
     label: labelShorthand,
     infoButton: infoButtonShorthand,
     info,
-    size,
     className,
     style,
     ...labelProps
@@ -42,7 +61,6 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     defaultProps: {
       id: baseId + '__label',
       ref,
-      size,
       ...labelProps,
     },
     elementType: Label,
@@ -52,7 +70,6 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     renderByDefault: !!info,
     defaultProps: {
       id: baseId + '__infoButton',
-      size,
       info,
     },
     elementType: InfoButton,
@@ -86,7 +103,6 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   }
 
   return {
-    size,
     components: {
       root: 'span',
       label: Label,

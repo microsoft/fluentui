@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 
 export type InfoButtonSlots = {
@@ -40,6 +40,17 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
 };
 
 /**
+ * InfoButton props without design-specific props (size).
+ * Use this when building a base info button that is unstyled or uses a custom design system.
+ */
+export type InfoButtonBaseProps = DistributiveOmit<InfoButtonProps, 'size'>;
+
+/**
  * State used in rendering InfoButton
  */
 export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'inline' | 'size'>>;
+
+/**
+ * InfoButton state without design-specific state (size).
+ */
+export type InfoButtonBaseState = DistributiveOmit<InfoButtonState, 'size'>;
