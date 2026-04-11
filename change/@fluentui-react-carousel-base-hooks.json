@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useCarouselBase_unstable, useCarouselNavBase_unstable, and useCarouselNavContainerBase_unstable hooks",
+  "packageName": "@fluentui/react-carousel",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

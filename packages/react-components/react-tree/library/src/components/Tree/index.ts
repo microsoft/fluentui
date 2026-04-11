@@ -1,5 +1,7 @@
 export { Tree } from './Tree';
 export type {
+  TreeBaseProps,
+  TreeBaseState,
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValues,
@@ -14,7 +16,7 @@ export type {
   TreeNavigationMode,
   TreeNavigationDataParam,
 } from './Tree.types';
-export { useTree_unstable } from './useTree';
+export { useTreeBase_unstable, useTree_unstable } from './useTree';
 export { useTreeContextValues_unstable } from './useTreeContextValues';
 export { treeClassNames, useTreeStyles_unstable } from './useTreeStyles.styles';
 export { renderTree_unstable } from './renderTree';

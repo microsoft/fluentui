@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { CarouselAppearance, CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
@@ -107,6 +107,16 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
  * State used in rendering Carousel
  */
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
+
+/**
+ * Carousel Props without design-only props.
+ */
+export type CarouselBaseProps = DistributiveOmit<CarouselProps, 'appearance'>;
+
+/**
+ * State used in rendering Carousel, without design-only state.
+ */
+export type CarouselBaseState = DistributiveOmit<CarouselState, 'appearance'>;
 
 export interface CarouselVisibilityEventDetail {
   isVisible: boolean;

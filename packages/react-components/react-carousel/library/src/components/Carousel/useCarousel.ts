@@ -10,21 +10,18 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import type { CarouselProps, CarouselState } from './Carousel.types';
+import type { CarouselBaseProps, CarouselBaseState, CarouselProps, CarouselState } from './Carousel.types';
 import type { CarouselContextValue } from '../CarouselContext.types';
 import { useEmblaCarousel } from '../useEmblaCarousel';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 
 /**
- * Create the state required to render Carousel.
+ * Create the base state required to render Carousel, without design-only props.
  *
- * The returned state can be modified with hooks such as useCarouselStyles_unstable,
- * before being passed to renderCarousel_unstable.
- *
- * @param props - props from this instance of Carousel
+ * @param props - props from this instance of Carousel (without appearance)
  * @param ref - reference to root HTMLDivElement of Carousel
  */
-export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
+export function useCarouselBase_unstable(props: CarouselBaseProps, ref: React.Ref<HTMLDivElement>): CarouselBaseState {
   'use no memo';
 
   const {
@@ -37,7 +34,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     announcement,
     motion = 'slide',
     autoplayInterval = 4000,
-    appearance = 'flat',
   } = props;
 
   const { dir } = useFluent();
@@ -132,7 +128,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     ),
 
     activeIndex,
-    appearance,
     circular,
     containerRef: mergedContainerRef,
     viewportRef,
@@ -142,5 +137,25 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     subscribeForValues,
     enableAutoplay,
     resetAutoplay,
+  };
+}
+
+/**
+ * Create the state required to render Carousel.
+ *
+ * The returned state can be modified with hooks such as useCarouselStyles_unstable,
+ * before being passed to renderCarousel_unstable.
+ *
+ * @param props - props from this instance of Carousel
+ * @param ref - reference to root HTMLDivElement of Carousel
+ */
+export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
+  'use no memo';
+
+  const { appearance = 'flat' } = props;
+
+  return {
+    ...useCarouselBase_unstable(props, ref),
+    appearance,
   };
 }
