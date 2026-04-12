@@ -133,12 +133,15 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
-    this.submenu?.removeEventListener('toggle', this.toggleHandler);
+    this.submenu?.removeEventListener('toggle', this.handleToggle);
+    this.submenu?.removeEventListener('focusout', this.handleSubmenuFocusOut);
 
     if (next.length) {
       this.submenu = next[0];
       this.submenu.toggleAttribute('popover', true);
-      this.submenu.addEventListener('toggle', this.toggleHandler);
+      this.submenu.setAttribute('focusgroup', 'none');
+      this.submenu.addEventListener('toggle', this.handleToggle);
+      this.submenu.addEventListener('focusout', this.handleSubmenuFocusOut);
       this.elementInternals.ariaHasPopup = 'menu';
       toggleState(this.elementInternals, 'submenu', true);
     } else {
@@ -236,14 +239,29 @@ export class MenuItem extends FASTElement {
    * Setup required ARIA on open/close
    * @internal
    */
-  public toggleHandler = (e: Event): void => {
-    if (e instanceof ToggleEvent && e.newState === 'open') {
+  public handleToggle = (e: Event): void => {
+    if (!(e instanceof ToggleEvent)) {
+      return;
+    }
+
+    if (e.newState === 'open') {
       this.elementInternals.ariaExpanded = 'true';
       this.setSubmenuPosition();
     }
-    if (e instanceof ToggleEvent && e.newState === 'closed') {
+    if (e.newState === 'closed') {
       this.elementInternals.ariaExpanded = 'false';
     }
+
+    this.submenu?.setAttribute('focusgroup', e.newState === 'open' ? 'menu' : 'none');
+  };
+
+  /** @internal */
+  public handleSubmenuFocusOut = (e: FocusEvent) => {
+    if (e.relatedTarget && this.submenu?.contains(e.relatedTarget as Node)) {
+      return;
+    }
+
+    this.submenu?.togglePopover(false);
   };
 
   /**
