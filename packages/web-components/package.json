@@ -88,13 +88,13 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@microsoft/focusgroup-polyfill": "^1.2.1",
     "@fluentui/tokens": "1.0.0-alpha.23",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0"
+    "@microsoft/fast-element": "^2.0.0",
+    "@microsoft/focusgroup-polyfill": "^1.2.1"
   },
   "beachball": {
     "disallowedChangeTypes": [

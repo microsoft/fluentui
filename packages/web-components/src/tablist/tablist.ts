@@ -1,5 +1,4 @@
-import { attr, Updates } from '@microsoft/fast-element';
-import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
+import { attr } from '@microsoft/fast-element';
 import type { Tab } from '../tab/tab.js';
 import { BaseTablist } from './tablist.base.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
@@ -49,15 +48,6 @@ export class Tablist extends BaseTablist {
    */
   @attr
   public size?: TablistSize;
-
-  /** @internal */
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Updates.enqueue(() => {
-      focusgroupPolyfill(this);
-    });
-  }
 
   /**
    * calculateAnimationProperties

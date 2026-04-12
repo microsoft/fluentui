@@ -1,4 +1,5 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import { polyfillBodyAndObserve } from "@microsoft/focusgroup-polyfill";
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import { setTheme } from '../src/theme/set-theme.js';
@@ -20,6 +21,8 @@ const themes = {
 Object.defineProperty(window, 'setTheme', { value: setTheme });
 
 setTheme(themes['web-light']);
+
+polyfillBodyAndObserve();
 
 export const globalTypes = {
   theme: {

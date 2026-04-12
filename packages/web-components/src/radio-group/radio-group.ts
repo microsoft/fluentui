@@ -1,5 +1,3 @@
-import { Updates } from '@microsoft/fast-element';
-import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import { BaseRadioGroup } from './radio-group.base.js';
 
 /**
@@ -12,13 +10,4 @@ import { BaseRadioGroup } from './radio-group.base.js';
  *
  * @public
  */
-export class RadioGroup extends BaseRadioGroup {
-  /** @internal */
-  public connectedCallback() {
-    super.connectedCallback();
-
-    Updates.enqueue(() => {
-      focusgroupPolyfill(this);
-    });
-  }
-}
+export class RadioGroup extends BaseRadioGroup {}

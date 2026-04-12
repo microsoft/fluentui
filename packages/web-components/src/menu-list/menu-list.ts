@@ -1,5 +1,3 @@
-import { Updates } from '@microsoft/fast-element';
-import { polyfill as focusgroupPolyfill } from '@microsoft/focusgroup-polyfill';
 import { BaseMenuList } from './menu-list.base.js';
 
 /**
@@ -12,12 +10,4 @@ import { BaseMenuList } from './menu-list.base.js';
  *
  * @public
  */
-export class MenuList extends BaseMenuList {
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Updates.enqueue(() => {
-      focusgroupPolyfill(this);
-    });
-  }
-}
+export class MenuList extends BaseMenuList {}
