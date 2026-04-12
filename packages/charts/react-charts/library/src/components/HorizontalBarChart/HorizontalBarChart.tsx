@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
+import { formatScientificLimitWidth, getAccessibleDataObject, getNextGradient, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -29,6 +29,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement | null> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
+  const _gradientId = useId('HBC_Gradient');
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
   let isSingleBar: boolean = true;
@@ -77,7 +78,14 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
       updatePosition(x, y);
       setHoverValue(hoverVal);
-      setLineColor(point.color!);
+      // Use gradient start color when gradients are enabled
+      const calloutColor =
+        props.enableGradient && Array.isArray(point.color)
+          ? point.color[0]
+          : Array.isArray(point.color)
+          ? point.color[0]
+          : point.color!;
+      setLineColor(calloutColor);
       setLegend(point.legend!);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
@@ -117,7 +125,8 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       point =>
         point.chartData?.map((dataPoint): Legend => {
           const legend = dataPoint.legend ?? '';
-          const color = dataPoint.color ?? '';
+          // Use gradient start color for legends when gradients are enabled
+          const color = Array.isArray(dataPoint.color) ? dataPoint.color[0] : dataPoint.color ?? '';
 
           return {
             title: legend,
@@ -213,18 +222,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: ChartProps): JSXElement[] {
+  function _createBars(data: ChartProps, dataPointIndex: number): JSXElement[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
-    const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
-    ];
+
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
@@ -260,7 +263,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: ChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultColors[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -302,43 +304,103 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         );
       }
 
+      const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
+      // Only use gradients when both enableGradient prop is true and color is an array
+      const useGradient = props.enableGradient && Array.isArray(point.color);
+
+      // Determine fill color based on gradient settings
+      let fillColor: string;
+      if (useGradient) {
+        fillColor = `url(#${gradientId})`;
+      } else if (Array.isArray(point.color)) {
+        // If color is array but gradient is disabled, use the first color
+        fillColor = point.color[0];
+      } else {
+        fillColor = point.color as string;
+      }
+
       return (
-        <rect
-          key={index}
-          x={`${
-            _isRTL
-              ? 100 - startingPoint[index] - value - index * barSpacingInPercent
-              : startingPoint[index] + index * barSpacingInPercent
-          }%`}
-          y={0}
-          width={value + '%'}
-          height={_barHeight}
-          fill={color}
-          onMouseOver={
-            _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
-          }
-          onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role="img"
-          aria-label={_getAriaLabel(point)}
-          onBlur={_hoverOff}
-          onMouseLeave={_hoverOff}
-          className={classes.barWrapper}
-          opacity={isLegendSelected ? 1 : 0.1}
-          tabIndex={_legendHighlighted(point.legend!) || _noLegendHighlighted() ? 0 : undefined}
-        />
+        <React.Fragment key={index}>
+          {useGradient && (
+            <defs>
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0" stopColor={point.color?.[0]} />
+                <stop offset="100%" stopColor={point.color?.[1]} />
+              </linearGradient>
+            </defs>
+          )}
+          <rect
+            key={index}
+            x={`${
+              _isRTL
+                ? 100 - startingPoint[index] - value - index * barSpacingInPercent
+                : startingPoint[index] + index * barSpacingInPercent
+            }%`}
+            y={0}
+            rx={4}
+            data-is-focusable={point.legend !== '' ? true : false}
+            width={value + '%'}
+            height={_barHeight}
+            fill={fillColor}
+            onMouseOver={
+              _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+            }
+            onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
+            role="img"
+            aria-label={_getAriaLabel(point)}
+            onBlur={_hoverOff}
+            onMouseLeave={_hoverOff}
+            className={classes.barWrapper}
+            opacity={isLegendSelected ? 1 : 0.1}
+            tabIndex={_legendHighlighted(point.legend!) || _noLegendHighlighted() ? 0 : undefined}
+          />
+        </React.Fragment>
       );
     });
     return bars;
   }
 
+  function _addDefaultColors(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
+    return dataPoints
+      ? dataPoints.map((item, index) => {
+          let itemColor = item.color;
+
+          // if color is not defined, assign a default color based on enableGradient prop
+          if (!itemColor) {
+            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
+          }
+          // if color is a string, check if it is undefined or blank assign a default color
+          if (typeof itemColor === 'string' && itemColor.trim() === '') {
+            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
+          }
+          // if color is an array, check if either colors are undefined or blank
+          // if startColor is undefined or blank, assign a default color
+          // if endColor is undefined or blank, assign the startColor to endColor
+          if (Array.isArray(itemColor)) {
+            const [startColor, endColor] = itemColor;
+            if (!startColor || startColor.trim() === '') {
+              itemColor[0] = getNextGradient(index)[0];
+            }
+            if (!endColor || endColor.trim() === '') {
+              itemColor[1] = itemColor[0];
+            }
+          }
+
+          return { ...item, color: itemColor };
+        })
+      : [];
+  }
+
   const _getAriaLabel = (point: ChartDataPoint): string => {
-    const legend = point.xAxisCalloutData || point.legend;
+    const pointLegend = point.xAxisCalloutData || point.legend;
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata
-        ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.total ?? ''}`
+        ? `${point.horizontalBarChartdata.x}/${
+            point.horizontalBarChartdata.total ?? point.horizontalBarChartdata.total ?? ''
+          }`
         : 0);
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return point.callOutAccessibilityData?.ariaLabel || (pointLegend ? `${pointLegend}, ` : '') + `${yValue}.`;
   };
 
   function _isChartEmpty(): boolean {
@@ -388,9 +450,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const legendButtons = _createLegends(data!);
 
   let datapoint: number | undefined = 0;
+
   return !_isChartEmpty() ? (
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
       {data!.map((points: ChartProps, index: number) => {
+        // Add default gradients if not present
+        points = { ...points, chartData: _addDefaultColors(points.chartData!, index) };
+
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
         } else {
@@ -413,7 +479,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         // Hide right side text of chart title for absolute-scale variant
         const chartDataText =
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
-        const bars = _createBars(points!);
+        const bars = _createBars(points!, index);
         const keyVal = _uniqLineText + '_' + index;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
         /*         const classes = useHorizontalBarChartStyles(props.styles!, {

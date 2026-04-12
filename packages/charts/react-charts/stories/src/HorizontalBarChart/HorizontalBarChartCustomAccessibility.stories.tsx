@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { HorizontalBarChart, ChartProps, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
-import { HorizontalBarChart, ChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 export const HorizontalBarCustomAccessibility = (): JSXElement => {
   const data: ChartProps[] = [
@@ -12,7 +12,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color9),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1Ext),
           xAxisCalloutData: '2021/06/10',
           yAxisCalloutData: '10%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart one 2021/06/10 10%' },
@@ -27,7 +27,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color10),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2Ext),
           xAxisCalloutData: '2021/06/11',
           yAxisCalloutData: '5%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart two 2021/06/11 5%' },
@@ -42,7 +42,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color11),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3Ext),
           xAxisCalloutData: '2021/06/12',
           yAxisCalloutData: '59%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart three 2021/06/12 59%' },
@@ -57,7 +57,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color12),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4Ext),
           xAxisCalloutData: '2021/06/13',
           yAxisCalloutData: '105%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart four 2021/06/13 105%' },
@@ -72,7 +72,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color13),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5Ext),
           xAxisCalloutData: '2021/06/14',
           yAxisCalloutData: '76%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart five 2021/06/14 76%' },
@@ -87,7 +87,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color14),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
           xAxisCalloutData: '2021/06/15',
           yAxisCalloutData: '93%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart six 2021/06/15 93%' },
@@ -102,7 +102,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color15),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7Ext),
           xAxisCalloutData: '2021/06/16',
           yAxisCalloutData: '65%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart seven 2021/06/16 65%' },
@@ -117,7 +117,7 @@ export const HorizontalBarCustomAccessibility = (): JSXElement => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color16),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
           xAxisCalloutData: '2021/06/17',
           yAxisCalloutData: '28%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart eight 2021/06/17 28%' },

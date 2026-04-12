@@ -220,6 +220,16 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with gradient enabled',
+    VerticalStackedBarChart,
+    { data: chartPointsVSBC, enableGradient: true },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {
@@ -831,6 +841,36 @@ describe.skip('Vertical Stacked Bar Chart - axe-core', () => {
     });
     expect(axeResults).toHaveNoViolations();
   }, 10000);
+});
+
+describe('Vertical Stacked Bar Chart - Gradient', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+    sharedBeforeEach();
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+    sharedAfterEach();
+  });
+
+  it('Should compare VerticalStackedBarChart snapshots with enableGradient true and false', () => {
+    // Test with enableGradient={false}
+    const { container: containerGradientFalse } = render(
+      <VerticalStackedBarChart data={chartPointsVSBC} enableGradient={false} />,
+    );
+    const gradientFalseHtml = (containerGradientFalse.firstChild as Element)?.outerHTML;
+    expect(containerGradientFalse.firstChild).toMatchSnapshot('vertical-stacked-bar-chart-gradient-disabled');
+
+    // Test with enableGradient={true}
+    const { container: containerGradientTrue } = render(
+      <VerticalStackedBarChart data={chartPointsVSBC} enableGradient={true} />,
+    );
+    const gradientTrueHtml = (containerGradientTrue.firstChild as Element)?.outerHTML;
+    expect(containerGradientTrue.firstChild).toMatchSnapshot('vertical-stacked-bar-chart-gradient-enabled');
+
+    // Compare the rendered HTML to verify they are different
+    expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
+  });
 });
 
 describe('VerticalStackedBarChart snapShot testing', () => {

@@ -128,10 +128,15 @@ export const HorizontalBarWithAxisNegative = (): JSXElement => {
           </RadioGroup>
         </Field>
         <div style={{ display: 'flex' }}>
-          <Switch label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'} onChange={_onToggleGradient} />
+          <Switch
+            label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+            checked={enableGradient}
+            onChange={_onToggleGradient}
+          />
           &nbsp;&nbsp;
           <Switch
             label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'}
+            checked={roundCorners}
             onChange={_onToggleRoundedCorners}
           />
         </div>

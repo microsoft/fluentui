@@ -1,6 +1,14 @@
 import * as React from 'react';
+import {
+  DonutChart,
+  ChartProps,
+  getColorFromToken,
+  DataVizPalette,
+  ChartDataPoint,
+  DataVizGradientPalette,
+  getGradientFromToken,
+} from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
-import { DonutChart, ChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 import { makeStyles, mergeClasses } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -15,12 +23,17 @@ const useStyles = makeStyles({
 export const DonutChartStyled = (): JSXElement => {
   const classes = useStyles();
 
-  const points = [
-    { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
+  const points: ChartDataPoint[] = [
+    {
+      legend: 'first',
+      data: 20000,
+      color: getGradientFromToken(DataVizGradientPalette.gradient1),
+      xAxisCalloutData: '2020/04/30',
+    },
     {
       legend: 'second',
       data: 39000,
-      color: getColorFromToken(DataVizPalette.color2),
+      color: getGradientFromToken(DataVizGradientPalette.gradient2),
       xAxisCalloutData: '2020/04/20',
     },
   ];

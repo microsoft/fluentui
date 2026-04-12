@@ -1,12 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
 export const GroupedVerticalBarDefault = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -17,6 +18,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
 
   const data = [
     {
@@ -253,6 +257,13 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
+      <div style={{ marginTop: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       <div style={rootStyle}>
         <GroupedVerticalBarChart
           culture={window.navigator.language}
@@ -261,6 +272,7 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           height={height}
           width={width}
           hideLabels={hideLabels}
+          enableGradient={enableGradient}
         />
       </div>
     </>

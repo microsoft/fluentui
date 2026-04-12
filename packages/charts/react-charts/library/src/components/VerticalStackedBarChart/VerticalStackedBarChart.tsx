@@ -60,6 +60,7 @@ import {
   calcRequiredWidth,
   sortAxisCategories,
   isSafeUrl,
+  getNextGradient,
 } from '../../utilities/index';
 import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
@@ -119,6 +120,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
+  const _gradientId = useId('VSBC_Gradient');
   const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
   let _yAxisType: YAxisType;
@@ -158,19 +160,22 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (props.hideLegend) {
       return <></>;
     }
-    const defaultPalette: string[] = [
-      getColorFromToken(DataVizPalette.color6),
-      getColorFromToken(DataVizPalette.color1),
-      getColorFromToken(DataVizPalette.color5),
-      getColorFromToken(DataVizPalette.color7),
-      getColorFromToken(DataVizPalette.color10),
-    ];
     const actions: Legend[] = [];
     const { allowHoverOnLegend = true } = props;
 
     data.forEach((singleChartData: VerticalStackedChartProps) => {
-      singleChartData.chartData.forEach((point: VSChartDataPoint) => {
-        const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      singleChartData.chartData.forEach((point: VSChartDataPoint, index: number) => {
+        let color: string = point.color as string; // Color should now be set by _addDefaultColors
+
+        // Handle gradient colors for legends
+        if (props.enableGradient) {
+          if (point.color && Array.isArray(point.color)) {
+            color = point.color[0]; // Use the start color from gradient
+          } else {
+            color = getNextGradient(index)[0]; // Use the start color from gradient
+          }
+        }
+
         const checkSimilarLegends = actions.filter((leg: Legend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
           return;
@@ -336,6 +341,26 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
     _initYAxisParams();
+  }
+
+  function _addDefaultColors(points: VerticalStackedChartProps[]): VerticalStackedChartProps[] {
+    return points.map(point => ({
+      ...point,
+      chartData: point.chartData.map((item, index) => {
+        let itemColor = item.color;
+
+        // if color is not defined, assign a default color
+        if (!itemColor) {
+          itemColor = _colors[index % _colors.length];
+        }
+        // if color is a string, check if it is undefined or blank assign a default color
+        if (typeof itemColor === 'string' && itemColor.trim() === '') {
+          itemColor = _colors[index % _colors.length];
+        }
+
+        return { ...item, color: itemColor };
+      }),
+    }));
   }
 
   function _createDataSetLayer(): VerticalStackedBarDataPoint[] {
@@ -709,7 +734,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         isPopoverOpen={isPopoverOpen}
         legend={props.legend}
         YValue={props.yAxisCalloutData}
-        color={props.color}
+        color={color} // Use the current color state which includes gradient adjustments
       />
     ) : null;
   }
@@ -762,7 +787,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       setColor(color);
       setXCalloutValue(xCalloutValue);
       setYCalloutValue(point.yAxisCalloutData!);
-      setDataPointCalloutProps(point);
+      // Create a modified datapoint with gradient-adjusted color for custom callout renderers
+      const adjustedDataPoint = { ...point, color: color };
+      setDataPointCalloutProps(adjustedDataPoint);
       setCallOutAccessibilityData(point.callOutAccessibilityData);
     }
   }
@@ -1033,7 +1060,17 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       let heightOfLastBar = 0;
 
       const singleBar = barsToDisplay.map((point: VSChartDataPoint, index: number) => {
-        const startColor = point.color ? point.color : _colors[index];
+        let startColor = point.color ? point.color : _colors[index];
+        let endColor = startColor;
+        if (props.enableGradient) {
+          if (point.color && Array.isArray(point.color)) {
+            startColor = point.color[0];
+            endColor = point.color[1];
+          } else {
+            startColor = getNextGradient(index)[0];
+            endColor = getNextGradient(index)[1];
+          }
+        }
         const ref: RefArrayData = {};
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
         const rectFocusProps = !shouldFocusWholeStack &&
@@ -1083,9 +1120,19 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
         }
 
+        const gradientId = `${_gradientId}_${indexNumber}_${index}`;
+
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
             <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
+              {props.enableGradient && (
+                <defs>
+                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0" stopColor={startColor} />
+                    <stop offset="100%" stopColor={endColor} />
+                  </linearGradient>
+                </defs>
+              )}
               <path
                 className={classes.opacityChangeOnHover}
                 d={`
@@ -1097,7 +1144,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                   h ${-_barWidth}
                   z
                 `}
-                fill={startColor}
+                fill={props.enableGradient ? `url(#${gradientId})` : startColor}
                 opacity={shouldHighlight ? 1 : 0.1}
                 rx={props.roundCorners ? 3 : 0}
                 ref={e => {
@@ -1115,13 +1162,21 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         }
         return (
           <React.Fragment key={index + indexNumber}>
+            {props.enableGradient && (
+              <defs>
+                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0" stopColor={startColor} />
+                  <stop offset="100%" stopColor={endColor} />
+                </linearGradient>
+              </defs>
+            )}
             <rect
               className={classes.opacityChangeOnHover}
               x={xPoint}
               y={yPoint}
               width={_barWidth}
               height={barHeight}
-              fill={startColor}
+              fill={props.enableGradient ? `url(#${gradientId})` : startColor}
               opacity={shouldHighlight ? 1 : 0.1}
               cursor={props.href ? 'pointer' : 'default'}
               rx={props.roundCorners ? 3 : 0}
@@ -1337,6 +1392,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   if (!_isChartEmpty()) {
     _adjustProps();
+    _points = _addDefaultColors(_points);
     const _isHavingLines = props.data.some(
       (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
     );

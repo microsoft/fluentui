@@ -4,8 +4,8 @@ import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
   ChartProps,
-  DataVizPalette,
-  getColorFromToken,
+  DataVizGradientPalette,
+  getGradientFromToken,
 } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
@@ -21,7 +21,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color17),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1),
         },
       ],
     },
@@ -31,7 +31,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color18),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2),
         },
       ],
     },
@@ -41,7 +41,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color19),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3),
         },
       ],
     },
@@ -51,7 +51,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color20),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4),
         },
       ],
     },
@@ -61,7 +61,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color21),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5),
         },
       ],
     },
@@ -71,7 +71,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color22),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6),
         },
       ],
     },
@@ -81,7 +81,7 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color23),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7),
         },
       ],
     },
@@ -91,11 +91,12 @@ export const HorizontalBarAbsoluteScale = (): JSXElement => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color24),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8),
         },
       ],
     },
   ];
+
   return (
     <>
       <div style={{ marginBottom: '20px' }}>

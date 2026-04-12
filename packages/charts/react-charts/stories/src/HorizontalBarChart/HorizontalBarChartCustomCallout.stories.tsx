@@ -6,7 +6,10 @@ import {
   DataVizPalette,
   getColorFromToken,
   ChartPopoverProps,
+  DataVizGradientPalette,
+  getGradientFromToken,
 } from '@fluentui/react-charts';
+// } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
@@ -22,7 +25,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color28),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '1.5K',
         },
@@ -34,7 +37,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color29),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '800',
         },
@@ -46,7 +49,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color30),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '8.8K',
         },
@@ -58,7 +61,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color31),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '16K',
         },
@@ -70,7 +73,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color32),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '11K',
         },
@@ -82,7 +85,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color33),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '14K',
         },
@@ -94,7 +97,7 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color34),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '9.9K',
         },
@@ -106,16 +109,17 @@ export const HorizontalBarCustomCallout = (): JSXElement => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color35),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '4.3K',
         },
       ],
     },
   ];
+
   const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
-    const color = props ? props.color : getColorFromToken(DataVizPalette.color28);
+    const color = props ? props.color?.[0] : getColorFromToken(DataVizPalette.color28);
     return {
       XValue: 'Custom XVal',
       legend: 'Custom Legend',

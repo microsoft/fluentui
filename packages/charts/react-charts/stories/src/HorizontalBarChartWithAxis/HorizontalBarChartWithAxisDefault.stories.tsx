@@ -138,12 +138,21 @@ export const HorizontalBarWithAxisBasic = (): JSXElement => {
         />
       </div>
       <div style={{ display: 'flex' }}>
-        <Switch label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'} onChange={_onSwitchGradient} />
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
         &nbsp;&nbsp;
-        <Switch label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'} onChange={_onSwitchRoundCorners} />
+        <Switch
+          label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'}
+          checked={roundCorners}
+          onChange={_onSwitchRoundCorners}
+        />
         &nbsp;&nbsp;
         <Switch
           label={selectMultipleLegends ? 'Select multiple legends ON' : 'Select multiple legends OFF'}
+          checked={selectMultipleLegends}
           onChange={_onSwitchRoundMultipleLegendSelection}
         />
       </div>

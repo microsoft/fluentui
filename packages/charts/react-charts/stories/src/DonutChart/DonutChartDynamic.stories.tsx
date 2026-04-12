@@ -1,8 +1,13 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { DonutChart, ChartProps, ChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import {
+  DonutChart,
+  ChartProps,
+  ChartDataPoint,
+  DataVizGradientPalette,
+  getGradientFromToken,
+} from '@fluentui/react-charts';
 
-import { Button, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Button, Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -15,33 +20,43 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   clip: 'rect(0,0,0,0)',
   border: 0,
 };
+import type { JSXElement } from '@fluentui/react-components';
 
 export const DonutChartDynamic = (): JSXElement => {
-  const _colors = [
-    [DataVizPalette.color3, DataVizPalette.color4, DataVizPalette.color5, DataVizPalette.color6, DataVizPalette.color7],
-    [DataVizPalette.color8, DataVizPalette.color9, DataVizPalette.color10, DataVizPalette.color11],
-    [DataVizPalette.color12, DataVizPalette.color13, DataVizPalette.color14, DataVizPalette.color15],
-    [DataVizPalette.color16, DataVizPalette.color17, DataVizPalette.color18],
+  const _gradientColors = [
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient1),
+      getGradientFromToken(DataVizGradientPalette.gradient3),
+      getGradientFromToken(DataVizGradientPalette.gradient9),
+    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient5),
+      getGradientFromToken(DataVizGradientPalette.gradient6),
+      getGradientFromToken(DataVizGradientPalette.gradient10),
+    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
   ];
 
   const [dynamicData, setDynamicData] = React.useState<ChartDataPoint[]>([
-    { legend: 'first', data: 40, color: getColorFromToken(DataVizPalette.color1) },
-    { legend: 'second', data: 20, color: getColorFromToken(DataVizPalette.color2) },
-    { legend: 'third', data: 30, color: getColorFromToken(DataVizPalette.color3) },
-    { legend: 'fourth', data: 10, color: getColorFromToken(DataVizPalette.color4) },
+    { legend: 'first', data: 40, color: getGradientFromToken(DataVizGradientPalette.gradient1) },
+    { legend: 'second', data: 20, color: getGradientFromToken(DataVizGradientPalette.gradient2) },
+    { legend: 'third', data: 30, color: getGradientFromToken(DataVizGradientPalette.gradient3) },
+    { legend: 'fourth', data: 10, color: getGradientFromToken(DataVizGradientPalette.gradient4) },
   ]);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showLabelsInPercent, setShowLabelsInPercent] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [innerRadius, setInnerRadius] = React.useState<number>(35);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
 
   const _changeData = (): void => {
     setDynamicData([
-      { legend: 'first', data: _randomY(), color: getColorFromToken(DataVizPalette.color1) },
-      { legend: 'second', data: _randomY(), color: getColorFromToken(DataVizPalette.color2) },
-      { legend: 'third', data: _randomY(), color: getColorFromToken(DataVizPalette.color3) },
-      { legend: 'fourth', data: _randomY(), color: getColorFromToken(DataVizPalette.color4) },
+      { legend: 'first', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient1) },
+      { legend: 'second', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient2) },
+      { legend: 'third', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient3) },
+      { legend: 'fourth', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient4) },
     ]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart data changed');
@@ -49,10 +64,10 @@ export const DonutChartDynamic = (): JSXElement => {
 
   const _changeColors = (): void => {
     setDynamicData([
-      { legend: 'first', data: 40, color: _randomColor(0) },
-      { legend: 'second', data: 20, color: _randomColor(1) },
-      { legend: 'third', data: 30, color: _randomColor(2) },
-      { legend: 'fourth', data: 10, color: _randomColor(3) },
+      { legend: 'first', data: 40, color: _randomGradient(0) },
+      { legend: 'second', data: 20, color: _randomGradient(1) },
+      { legend: 'third', data: 30, color: _randomGradient(2) },
+      { legend: 'fourth', data: 10, color: _randomGradient(3) },
     ]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart colors changed');
@@ -62,8 +77,8 @@ export const DonutChartDynamic = (): JSXElement => {
     return Math.floor(Math.random() * max + 5);
   };
 
-  const _randomColor = (index: number): string => {
-    return getColorFromToken(_colors[index][Math.floor(Math.random() * _colors[index].length)]);
+  const _randomGradient = (index: number): [string, string] => {
+    return _gradientColors[index][Math.floor(Math.random() * _gradientColors[index].length)];
   };
 
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
@@ -80,6 +95,10 @@ export const DonutChartDynamic = (): JSXElement => {
   const _onShowPercentCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setShowLabelsInPercent(checked.checked as boolean);
   };
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
 
   const data: ChartProps = {
     chartTitle: 'Donut chart dynamic example',
@@ -102,6 +121,13 @@ export const DonutChartDynamic = (): JSXElement => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       <DonutChart
         data={data}
         innerRadius={innerRadius}
@@ -110,6 +136,7 @@ export const DonutChartDynamic = (): JSXElement => {
         }}
         hideLabels={hideLabels}
         showLabelsInPercent={showLabelsInPercent}
+        enableGradient={enableGradient}
         height={248}
       />
       <Button onClick={_changeData}> Change data </Button>

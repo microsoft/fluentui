@@ -439,6 +439,34 @@ describe('Horizontal Bar Chart - axe-core', () => {
   });
 });
 
+describe('Horizontal Bar Chart - Gradient', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should compare HorizontalBarChart snapshots with enableGradient true and false', () => {
+    // Test with enableGradient={false}
+    const { container: containerGradientFalse } = render(
+      <HorizontalBarChart data={chartPoints} enableGradient={false} />,
+    );
+    const gradientFalseHtml = (containerGradientFalse.firstChild as Element)?.outerHTML;
+    expect(containerGradientFalse.firstChild).toMatchSnapshot('horizontal-bar-chart-gradient-disabled');
+
+    // Test with enableGradient={true}
+    const { container: containerGradientTrue } = render(
+      <HorizontalBarChart data={chartPoints} enableGradient={true} />,
+    );
+    const gradientTrueHtml = (containerGradientTrue.firstChild as Element)?.outerHTML;
+    expect(containerGradientTrue.firstChild).toMatchSnapshot('horizontal-bar-chart-gradient-enabled');
+
+    // Compare the rendered HTML to verify they are different
+    expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
+  });
+});
+
 describe('HorizontalBarChart snapShot testing', () => {
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);

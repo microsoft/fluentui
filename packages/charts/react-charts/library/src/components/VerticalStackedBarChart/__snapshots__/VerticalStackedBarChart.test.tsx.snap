@@ -1,5 +1,1103 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBarChart snapshots with enableGradient true and false: vertical-stacked-bar-chart-gradient-disabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(112.30000000000001,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            2
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(168.10000000000002,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            4
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(223.89999999999998,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            6
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(279.70000000000005,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            8
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(335.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            10
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(391.29999999999995,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            12
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(447.09999999999997,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            14
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(502.90000000000003,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            16
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(558.7,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            18
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(614.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            20
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,265.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,265.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,204.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            13
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,143)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            26
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,81.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            39
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            52
+          </text>
+        </g>
+      </g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height="188.46153846153845"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="56"
+              y="76.53846153846155"
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height="23.557692307692307"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="56"
+              y="52.98076923076924"
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            class="fui-vsbc__barLabel"
+            role="img"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="middle"
+            transform="translate(-8, 0)"
+            x="64"
+            y="46.98076923076924"
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height="141.34615384615384"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="614"
+              y="123.65384615384616"
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height="94.23076923076923"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="614"
+              y="29.423076923076934"
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            class="fui-vsbc__barLabel"
+            role="img"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="middle"
+            transform="translate(-8, 0)"
+            x="622"
+            y="23.423076923076934"
+          >
+            50
+          </text>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBarChart snapshots with enableGradient true and false: vertical-stacked-bar-chart-gradient-enabled 1`] = `
+<div
+  class="fui-cart__root"
+  id="chart_"
+  role="presentation"
+>
+  <div
+    class="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      class="fui-cart__chart"
+      height="300"
+      role="region"
+      style="display: block;"
+      width="650"
+    >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 265)"
+      >
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(112.30000000000001,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            2
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(168.10000000000002,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            4
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(223.89999999999998,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            6
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(279.70000000000005,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            8
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(335.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            10
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(391.29999999999995,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            12
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(447.09999999999997,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            14
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(502.90000000000003,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            16
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(558.7,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            18
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(614.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate;"
+            y="16"
+          >
+            20
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,265.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,265.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,204.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            13
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,143)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            26
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,81.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            39
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+            x="-10"
+          >
+            52
+          </text>
+        </g>
+      </g>
+      <g
+        data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+      >
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_3e__0_0"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#637CEF"
+                />
+              </lineargradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="url(#VSBC_Gradient_r_3e__0_0)"
+              height="188.46153846153845"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="56"
+              y="76.53846153846155"
+            />
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_3e__0_1"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#9373C0"
+                />
+              </lineargradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="url(#VSBC_Gradient_r_3e__0_1)"
+              height="23.557692307692307"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="56"
+              y="52.98076923076924"
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            class="fui-vsbc__barLabel"
+            role="img"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="middle"
+            transform="translate(-8, 0)"
+            x="64"
+            y="46.98076923076924"
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_3e__1_0"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#637CEF"
+                />
+              </lineargradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="url(#VSBC_Gradient_r_3e__1_0)"
+              height="141.34615384615384"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="614"
+              y="123.65384615384616"
+            />
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_3e__1_1"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#9373C0"
+                />
+              </lineargradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              class="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="url(#VSBC_Gradient_r_3e__1_1)"
+              height="94.23076923076923"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(-8, 0)"
+              width="16"
+              x="614"
+              y="29.423076923076934"
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            class="fui-vsbc__barLabel"
+            role="img"
+            style="direction: ltr; unicode-bidi: isolate;"
+            text-anchor="middle"
+            transform="translate(-8, 0)"
+            x="622"
+            y="23.423076923076934"
+          >
+            50
+          </text>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    class="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
@@ -1082,6 +2180,593 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
 </div>
 `;
 
+exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with gradient enabled 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+        class="fui-cart__chart"
+        height="300"
+        role="region"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.30000000000001,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(223.89999999999998,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(279.70000000000005,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(391.29999999999995,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.09999999999997,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(502.90000000000003,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.7,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        >
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <defs>
+                <lineargradient
+                  id="VSBC_Gradient_r_5__0_0"
+                  x1="0%"
+                  x2="0%"
+                  y1="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#4760D5"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#637CEF"
+                  />
+                </lineargradient>
+              </defs>
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="url(#VSBC_Gradient_r_5__0_0)"
+                height="188.46153846153845"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="76.53846153846155"
+              />
+              <defs>
+                <lineargradient
+                  id="VSBC_Gradient_r_5__0_1"
+                  x1="0%"
+                  x2="0%"
+                  y1="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#795AA6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#9373C0"
+                  />
+                </lineargradient>
+              </defs>
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="url(#VSBC_Gradient_r_5__0_1)"
+                height="23.557692307692307"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="52.98076923076924"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="46.98076923076924"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              id="1-singleBar"
+            >
+              <defs>
+                <lineargradient
+                  id="VSBC_Gradient_r_5__1_0"
+                  x1="0%"
+                  x2="0%"
+                  y1="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#4760D5"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#637CEF"
+                  />
+                </lineargradient>
+              </defs>
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="url(#VSBC_Gradient_r_5__1_0)"
+                height="141.34615384615384"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="123.65384615384616"
+              />
+              <defs>
+                <lineargradient
+                  id="VSBC_Gradient_r_5__1_1"
+                  x1="0%"
+                  x2="0%"
+                  y1="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#795AA6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#9373C0"
+                  />
+                </lineargradient>
+              </defs>
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="url(#VSBC_Gradient_r_5__1_1)"
+                height="94.23076923076923"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="29.423076923076934"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.423076923076934"
+            >
+              50
+            </text>
+          </g>
+        </g>
+        <g />
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="Metadata1"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with numeric x-axis data 1`] = `
 <div>
   <div
@@ -2117,7 +3802,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_1v_"
+      id="callout_r_2o_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2685,7 +4370,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_27_"
+      id="callout_r_32_"
     >
       <div
         class="fui-PopoverSurface"
@@ -3290,7 +4975,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_2b_"
+      id="callout_r_37_"
     >
       <div
         class="fui-PopoverSurface"
@@ -4186,11 +5871,29 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <g
             id="0-singleBar"
           >
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_4k__0_0"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#637CEF"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               class="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              fill="aqua"
+              fill="url(#VSBC_Gradient_r_4k__0_0)"
               height="188.46153846153845"
               opacity="1"
               role="img"
@@ -4201,11 +5904,29 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               x="56"
               y="76.53846153846155"
             />
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_4k__0_1"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#9373C0"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
               class="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              fill="navy"
+              fill="url(#VSBC_Gradient_r_4k__0_1)"
               height="23.557692307692307"
               opacity="1"
               role="img"
@@ -4234,11 +5955,29 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <g
             id="1-singleBar"
           >
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_4k__1_0"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#637CEF"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               class="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              fill="aqua"
+              fill="url(#VSBC_Gradient_r_4k__1_0)"
               height="141.34615384615384"
               opacity="1"
               role="img"
@@ -4249,11 +5988,29 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               x="614"
               y="123.65384615384616"
             />
+            <defs>
+              <lineargradient
+                id="VSBC_Gradient_r_4k__1_1"
+                x1="0%"
+                x2="0%"
+                y1="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#9373C0"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
               class="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              fill="navy"
+              fill="url(#VSBC_Gradient_r_4k__1_1)"
               height="94.23076923076923"
               opacity="1"
               role="img"
@@ -4302,12 +6059,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
           />
           <div
             class="fui-legend__text"
@@ -4321,12 +6078,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
           />
           <div
             class="fui-legend__text"
@@ -7949,7 +9706,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
   </div>
   <div
     class="fui-cart__tooltip"
-    id="tooltip__r_2o_"
+    id="tooltip__r_41_"
     style="opacity: 0;"
   />
 </div>

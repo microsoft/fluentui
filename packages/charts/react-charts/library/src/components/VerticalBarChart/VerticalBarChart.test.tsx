@@ -891,6 +891,36 @@ describe('VerticalBarChart - accessibility', () => {
   });
 });
 
+describe('Vertical Bar Chart - Gradient', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+    sharedBeforeEach();
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+    sharedAfterEach();
+  });
+
+  it('Should compare VerticalBarChart snapshots with enableGradient true and false', () => {
+    // Test with enableGradient={false}
+    const { container: containerGradientFalse } = render(
+      <VerticalBarChart data={chartPointsVBC} enableGradient={false} />,
+    );
+    const gradientFalseHtml = (containerGradientFalse.firstChild as Element)?.outerHTML;
+    expect(containerGradientFalse.firstChild).toMatchSnapshot('vertical-bar-chart-gradient-disabled');
+
+    // Test with enableGradient={true}
+    const { container: containerGradientTrue } = render(
+      <VerticalBarChart data={chartPointsVBC} enableGradient={true} />,
+    );
+    const gradientTrueHtml = (containerGradientTrue.firstChild as Element)?.outerHTML;
+    expect(containerGradientTrue.firstChild).toMatchSnapshot('vertical-bar-chart-gradient-enabled');
+
+    // Compare the rendered HTML to verify they are different
+    expect(gradientFalseHtml).not.toBe(gradientTrueHtml);
+  });
+});
+
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

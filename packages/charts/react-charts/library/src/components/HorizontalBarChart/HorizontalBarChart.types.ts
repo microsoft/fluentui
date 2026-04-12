@@ -122,6 +122,12 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
    * @default false
    */
   showLegendForSinglePointBar?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable gradient colors for the chart.
+   */
+  enableGradient?: boolean;
 }
 
 /**

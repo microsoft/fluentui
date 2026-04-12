@@ -214,20 +214,17 @@ export const VerticalBarAllNegative = (): JSXElement => {
       <div style={{ marginTop: '20px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
-      <div style={{ marginTop: '10px' }}>
+      <div style={{ display: 'flex', gap: 20, marginTop: '10px' }}>
         <Switch
           label={showAxisTitles ? 'Switch Axis titles' : 'Hide axis tiles'}
           checked={showAxisTitles}
           onChange={_onSwitchAxisTitlesCheckChange}
         />
-      </div>
-      <div style={{ display: 'flex' }}>
         <Switch
           label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
           checked={enableGradient}
           onChange={_onSwitchGradient}
         />
-        &nbsp;&nbsp;
         <Switch
           label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'}
           checked={roundCorners}

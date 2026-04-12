@@ -218,7 +218,7 @@ export const VerticalStackedBarAxisTooltip = (): JSXElement => {
         </Field>
 
         <Switch
-          label={enableGradient ? 'Enable Gradient' : 'Disable Gradient'}
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
           checked={enableGradient}
           onChange={_onSwitchGradient}
         />

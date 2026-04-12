@@ -13,6 +13,7 @@ import {
   Input,
   InputProps,
   InputOnChangeData,
+  Switch,
 } from '@fluentui/react-components';
 
 export const VerticalBarDynamic = (): JSXElement => {
@@ -119,6 +120,9 @@ export const VerticalBarDynamic = (): JSXElement => {
     setDynamicData(_getData(dataSize, xAxisType));
     setDynamicData(_getData(dataSize, xAxisType));
   };
+  const _onToggleGradient = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setEnableGradient(ev.currentTarget.checked);
+  };
 
   const _getData = (dataSize: number, xAxisType: string) => {
     const data: VerticalBarChartDataPoint[] = [];
@@ -157,6 +161,7 @@ export const VerticalBarDynamic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   _changeData = _changeData.bind(this);
   _changeColors = _changeColors.bind(this);
@@ -273,6 +278,13 @@ export const VerticalBarDynamic = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
+      <div style={{ marginTop: '20px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onToggleGradient}
+        />
+      </div>
       <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart
           // Force rerender when any of the following states change
@@ -288,6 +300,7 @@ export const VerticalBarDynamic = (): JSXElement => {
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}
           xAxisOuterPadding={xAxisOuterPaddingEnabled ? xAxisOuterPadding : undefined}
           hideTickOverlap={true}
+          enableGradient={enableGradient}
         />
       </div>
       <div>

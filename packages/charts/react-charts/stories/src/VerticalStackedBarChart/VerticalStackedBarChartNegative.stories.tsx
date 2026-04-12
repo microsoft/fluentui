@@ -32,6 +32,7 @@ export const VerticalStackedBarNegative = (): JSXElement => {
   });
   const [roundCorners, setRoundCorners] = React.useState(false);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState(false);
+  const [enableGradient, setEnableGradient] = React.useState(false);
 
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -92,6 +93,10 @@ export const VerticalStackedBarNegative = (): JSXElement => {
 
   const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const firstChartPoints: VSChartDataPoint[] = [
@@ -339,18 +344,21 @@ export const VerticalStackedBarNegative = (): JSXElement => {
       <div style={{ marginTop: '20px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', gap: 20 }}>
         <Switch
           label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
           checked={showAxisTitles}
           onChange={_onSwitchAxisTitlesCheckChange}
         />
-        &nbsp;&nbsp;
         <Switch label={roundCorners ? 'Rounded corners ON' : 'Rounded corners OFF'} onChange={_onRoundCornersChange} />
-        &nbsp;&nbsp;
         <Switch
           label={legendMultiSelect ? 'legendmultiselect ON' : 'legendmultiselect OFF'}
           onChange={_onSwitchLegendMultiSelect}
+        />
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
         />
       </div>
       {showAxisTitles && (
@@ -374,6 +382,7 @@ export const VerticalStackedBarNegative = (): JSXElement => {
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
             roundedTicks={true}
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
@@ -397,6 +406,7 @@ export const VerticalStackedBarNegative = (): JSXElement => {
             reflowProps={{ mode: 'min-width' }}
             roundCorners={roundCorners}
             roundedTicks={true}
+            enableGradient={enableGradient}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>

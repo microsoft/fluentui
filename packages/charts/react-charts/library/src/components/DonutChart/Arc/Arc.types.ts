@@ -31,9 +31,9 @@ export interface ArcProps {
   outerRadius: number;
 
   /**
-   * Color for the Arc.
+   * Color or gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
-  color: string;
+  color: string | [string, string];
 
   /**
    * Defines the function that is executed upon hovering over the legend

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added gradiant color functiaonlity in Donut chart and horizontalbarchart",
+  "packageName": "@fluentui/react-charts",
+  "email": "132879294+v-baambati@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

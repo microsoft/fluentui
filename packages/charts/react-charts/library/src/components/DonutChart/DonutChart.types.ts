@@ -135,6 +135,12 @@ export interface DonutChartProps extends CartesianChartProps {
    * 'sorted' - in descending order of value
    */
   order?: 'default' | 'sorted';
+
+  /**
+   * @default false
+   * The prop used to enable gradient colors for the chart.
+   */
+  enableGradient?: boolean;
 }
 
 /**
