@@ -1,0 +1,1 @@
+export { mapStateToDataAttributes } from './mapStateToDataAttributes';
