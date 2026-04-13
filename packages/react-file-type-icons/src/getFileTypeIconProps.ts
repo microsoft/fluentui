@@ -1,32 +1,10 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
-import type { FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
+let _typeToIconName: { [key: number]: string };
 
 const GENERIC_FILE = 'genericfile';
-const FOLDER = 'folder';
-const SHARED_FOLDER = 'sharedfolder';
-const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'listitem';
-const LIST = 'splist';
-const MULTIPLE_ITEMS = 'multiple';
-const NEWS = 'sponews';
-const STREAM = 'video';
-const DESKTOP_FOLDER = 'desktopfolder';
-const DOCUMENTS_FOLDER = 'documentsfolder';
-const PICTURES_FOLDER = 'picturesfolder';
-const LINKED_FOLDER = 'linkedfolder';
-const FORM = 'form';
-const SWAY = 'sway';
-const PLAYLIST = 'playlist';
-const LOOP_WORKSPACE = 'loopworkspace';
-const TODOITEM = 'todoitem';
-const PLANNER = 'planner';
-const PORTFOLIO = 'portfolio';
-const ALBUM = 'album';
-const LIST_FORM = 'listform';
-const CAMPAIGN = 'spocampaign';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -44,7 +22,7 @@ export interface IFileTypeIconOptions {
    * file type icons that are not associated with a file extension,
    * such as folder.
    */
-  type?: FileIconTypeInput;
+  type?: FileIconType;
   /**
    * The size of the icon in pixels.
    * @default 16
@@ -72,8 +50,8 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
   // Next, obtain the suffix using the icon size, user's device pixel ration, and
   // preference for svg or png
-  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+  let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
   return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
@@ -88,7 +66,7 @@ export function getFileTypeIconNameFromExtensionOrType(
       _extensionToIconName = {};
 
       for (const iconName in FileTypeIconMap) {
-        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+        if (Object.prototype.hasOwnProperty.call(FileTypeIconMap, iconName)) {
           const extensions = FileTypeIconMap[iconName].extensions;
 
           if (extensions) {
@@ -104,76 +82,26 @@ export function getFileTypeIconNameFromExtensionOrType(
     extension = extension.replace('.', '').toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
   } else if (type) {
-    switch (type) {
-      case FileIconType.docset:
-        iconBaseName = DOCSET_FOLDER;
-        break;
-      case FileIconType.folder:
-        iconBaseName = FOLDER;
-        break;
-      case FileIconType.listItem:
-        iconBaseName = LIST_ITEM;
-        break;
-      case FileIconType.sharedFolder:
-        iconBaseName = SHARED_FOLDER;
-        break;
-      case FileIconType.stream:
-        iconBaseName = STREAM;
-        break;
-      case FileIconType.multiple:
-        iconBaseName = MULTIPLE_ITEMS;
-        break;
-      case FileIconType.news:
-        iconBaseName = NEWS;
-        break;
-      case FileIconType.desktopFolder:
-        iconBaseName = DESKTOP_FOLDER;
-        break;
-      case FileIconType.documentsFolder:
-        iconBaseName = DOCUMENTS_FOLDER;
-        break;
-      case FileIconType.picturesFolder:
-        iconBaseName = PICTURES_FOLDER;
-        break;
-      case FileIconType.linkedFolder:
-        iconBaseName = LINKED_FOLDER;
-        break;
-      case FileIconType.list:
-        iconBaseName = LIST;
-        break;
-      case FileIconType.form:
-        iconBaseName = FORM;
-        break;
-      case FileIconType.sway:
-        iconBaseName = SWAY;
-        break;
-      case FileIconType.playlist:
-        iconBaseName = PLAYLIST;
-        break;
-      case FileIconType.loopworkspace:
-        iconBaseName = LOOP_WORKSPACE;
-        break;
-      case FileIconType.planner:
-        iconBaseName = PLANNER;
-        break;
-      case FileIconType.todoItem:
-        iconBaseName = TODOITEM;
-        break;
-      case FileIconType.portfolio:
-        iconBaseName = PORTFOLIO;
-        break;
-      case FileIconType.album:
-        iconBaseName = ALBUM;
-        break;
-      case FileIconType.listForm:
-        iconBaseName = LIST_FORM;
-        break;
-      case FileIconType.campaign:
-        iconBaseName = CAMPAIGN;
-        break;
+    if (!_typeToIconName) {
+      _typeToIconName = {};
+
+      for (const iconName in FileTypeIconMap) {
+        if (Object.prototype.hasOwnProperty.call(FileTypeIconMap, iconName)) {
+          const types = FileTypeIconMap[iconName].types;
+
+          if (types) {
+            for (let i = 0; i < types.length; i++) {
+              _typeToIconName[types[i]] = iconName;
+            }
+          }
+        }
+      }
     }
+
+    return _typeToIconName[type] || GENERIC_FILE;
   }
-  return iconBaseName || GENERIC_FILE;
+
+  return GENERIC_FILE;
 }
 
 export function getFileTypeIconSuffix(
@@ -183,7 +111,7 @@ export function getFileTypeIconSuffix(
 ): string {
   // eslint-disable-next-line no-restricted-globals
   win ??= window;
-  const devicePixelRatio: number = win.devicePixelRatio;
+  let devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

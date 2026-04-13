@@ -44,7 +44,7 @@ export const parameters = {
         'Compat Components',
         'Preview Components',
         'Icons',
-        ['Overview', 'Catalog'],
+        ['Overview', 'Catalog', 'Filetype Icons', 'Advanced Usage'],
         'Motion',
         'Utilities',
       ],
