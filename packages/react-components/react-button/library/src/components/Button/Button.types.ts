@@ -29,7 +29,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
    *
    * @default 'secondary'
    */
-  appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
+  appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent' | 'tint';
 
   /**
    * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
