@@ -678,3 +678,327 @@ describe('Gauge Chart - Callout', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
 });
+
+describe('GaugeChart - Annotations', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('should render an annotation at the specified value', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Target')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render multiple annotations', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Low',
+            coordinates: { value: 25, position: 'outer' },
+          },
+          {
+            text: 'High',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Low')).toBeInTheDocument();
+    expect(screen.getByText('High')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render annotations at different radial positions', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Inner',
+            coordinates: { value: 25, position: 'inner' },
+          },
+          {
+            text: 'Arc',
+            coordinates: { value: 50, position: 'arc' },
+          },
+          {
+            text: 'Outer',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Inner')).toBeInTheDocument();
+    expect(screen.getByText('Arc')).toBeInTheDocument();
+    expect(screen.getByText('Outer')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply custom styles to annotations', () => {
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Styled',
+            coordinates: { value: 50, position: 'outer' },
+            style: {
+              textColor: 'red',
+              fontSize: '14px',
+              fontWeight: 'bold',
+            },
+          },
+        ]}
+      />,
+    );
+    const annotation = screen.getByText('Styled');
+    expect(annotation).toBeInTheDocument();
+  });
+
+  it('should use custom ariaLabel for accessibility', () => {
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+            ariaLabel: 'Target value at 75',
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByLabelText('Target value at 75')).toBeInTheDocument();
+  });
+
+  it('should not render annotations when array is empty', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={50} annotations={[]} />);
+    expect(getByClass(container, /annotationText/i)).toHaveLength(0);
+  });
+
+  it('should support custom annotation rendering', () => {
+    const customRenderer = jest.fn((annotation, defaultRender) => {
+      return (
+        <g key={annotation.id} data-testid="custom-annotation">
+          <text>{`Custom: ${annotation.text}`}</text>
+        </g>
+      );
+    });
+
+    render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'custom-1',
+            text: 'Target',
+            coordinates: { value: 75, position: 'outer' },
+          },
+        ]}
+        onRenderAnnotation={customRenderer}
+      />,
+    );
+    expect(customRenderer).toHaveBeenCalled();
+    expect(screen.getByText('Custom: Target')).toBeInTheDocument();
+  });
+});
+
+describe('GaugeChart - Annotation helper functions', () => {
+  it('calcValueToAngle should convert value to correct angle', () => {
+    const { calcValueToAngle } = require('./GaugeChart');
+    // At minValue (0), angle should be -90 degrees = -PI/2 radians
+    expect(calcValueToAngle(0, 0, 100)).toBeCloseTo(-Math.PI / 2, 5);
+    // At maxValue (100), angle should be +90 degrees = PI/2 radians
+    expect(calcValueToAngle(100, 0, 100)).toBeCloseTo(Math.PI / 2, 5);
+    // At midpoint (50), angle should be 0 degrees = 0 radians
+    expect(calcValueToAngle(50, 0, 100)).toBeCloseTo(0, 5);
+  });
+
+  it('calcAnnotationPosition should calculate correct positions', () => {
+    const { calcAnnotationPosition } = require('./GaugeChart');
+    const innerRadius = 50;
+    const outerRadius = 70;
+
+    // At value 50 (center), x should be 0
+    const posCenter = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posCenter.x).toBeCloseTo(0, 3);
+    expect(posCenter.y).toBeLessThan(0); // y should be negative (above center)
+
+    // At value 0 (left), x should be negative
+    const posLeft = calcAnnotationPosition(0, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posLeft.x).toBeLessThan(0);
+
+    // At value 100 (right), x should be positive
+    const posRight = calcAnnotationPosition(100, 'outer', 0, 100, innerRadius, outerRadius);
+    expect(posRight.x).toBeGreaterThan(0);
+  });
+
+  it('calcAnnotationPosition should apply radial offset correctly', () => {
+    const { calcAnnotationPosition } = require('./GaugeChart');
+    const innerRadius = 50;
+    const outerRadius = 70;
+
+    const posNoOffset = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius, 0);
+    const posWithOffset = calcAnnotationPosition(50, 'outer', 0, 100, innerRadius, outerRadius, 10);
+
+    // At value 50, both should have x = 0, but offset should move y further from center
+    expect(Math.abs(posWithOffset.y)).toBeGreaterThan(Math.abs(posNoOffset.y));
+  });
+});
+
+describe('GaugeChart - Arrow Annotations', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('should render an annotation with an arrow', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={75}
+        annotations={[
+          {
+            id: 'arrow-annotation',
+            text: 'Target Zone',
+            coordinates: { value: 75, position: 'outer', radialOffset: 30 },
+            arrow: {
+              show: true,
+              color: '#0078d4',
+              width: 2,
+              headStyle: 2,
+              tailOffsetX: 0,
+              tailOffsetY: -40,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Target Zone')).toBeInTheDocument();
+    // Check that a line element (arrow shaft) is rendered
+    const lines = container.querySelectorAll('line');
+    expect(lines.length).toBeGreaterThan(0);
+  });
+
+  it('should render arrow with custom head style', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'custom-arrow',
+            text: 'Custom Arrow',
+            coordinates: { value: 50, position: 'outer', radialOffset: 40 },
+            arrow: {
+              show: true,
+              headStyle: 4,
+              color: 'red',
+              width: 3,
+              headSize: 1.5,
+              tailOffsetY: -50,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Custom Arrow')).toBeInTheDocument();
+    // Check for polygon element (arrowhead)
+    const polygons = container.querySelectorAll('polygon');
+    expect(polygons.length).toBeGreaterThan(0);
+  });
+
+  it('should not render arrow when show is false', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            text: 'No Arrow',
+            coordinates: { value: 50, position: 'outer' },
+            arrow: {
+              show: false,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('No Arrow')).toBeInTheDocument();
+    // Should not have any line elements for arrows
+    const annotationLines = container.querySelectorAll('.annotation-arrow line');
+    expect(annotationLines.length).toBe(0);
+  });
+
+  it('should render multiple annotations with arrows', () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={50}
+        annotations={[
+          {
+            id: 'arrow-1',
+            text: 'Low',
+            coordinates: { value: 25, position: 'outer', radialOffset: 25 },
+            arrow: { show: true, color: 'green', tailOffsetY: -30 },
+          },
+          {
+            id: 'arrow-2',
+            text: 'High',
+            coordinates: { value: 75, position: 'outer', radialOffset: 25 },
+            arrow: { show: true, color: 'red', tailOffsetY: -30 },
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Low')).toBeInTheDocument();
+    expect(screen.getByText('High')).toBeInTheDocument();
+    const lines = container.querySelectorAll('.annotation-arrow line');
+    expect(lines.length).toBe(2);
+  });
+});
+
+describe('GaugeChart - Arrow helper functions', () => {
+  it('getArrowHeadPath should return correct path for different styles', () => {
+    const { getArrowHeadPath } = require('./GaugeChart');
+
+    // Style 0 should return empty string (no head)
+    expect(getArrowHeadPath(0, 1, 1)).toBe('');
+
+    // Style 2 (default filled arrowhead) should return a closed path
+    const path2 = getArrowHeadPath(2, 1, 1);
+    expect(path2).toContain('M 0 0');
+    expect(path2).toContain('Z');
+
+    // All other styles should return non-empty paths
+    for (let style = 1; style <= 8; style++) {
+      const path = getArrowHeadPath(style, 1, 1);
+      expect(path.length).toBeGreaterThan(0);
+    }
+  });
+});
