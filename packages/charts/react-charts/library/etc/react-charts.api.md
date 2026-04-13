@@ -517,6 +517,7 @@ export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
 
 // @public
 export interface ChartTableProps {
+    annotations?: ChartAnnotation[];
     chartTitle?: string;
     className?: string;
     componentRef?: React_2.Ref<Chart>;

@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "type": "table",
+      "header": {
+        "values": ["Product", "Q1 Sales", "Q2 Sales", "Q3 Sales"],
+        "fill": { "color": "#0078d4" },
+        "font": { "color": "white", "size": 14 }
+      },
+      "cells": {
+        "values": [
+          ["Widget A", "Widget B", "Widget C"],
+          [1500, 2300, 1800],
+          [1700, 2100, 2000],
+          [1900, 2500, 2200]
+        ],
+        "fill": { "color": "#f5f5f5" }
+      }
+    }
+  ],
+  "layout": {
+    "title": "Quarterly Sales Report",
+    "width": 600,
+    "height": 300,
+    "annotations": [
+      {
+        "text": "Data as of Q3 2025",
+        "x": 0.5,
+        "y": 0.05,
+        "xref": "paper",
+        "yref": "paper",
+        "showarrow": false,
+        "font": { "size": 12, "color": "#666666" }
+      }
+    ]
+  }
+}
