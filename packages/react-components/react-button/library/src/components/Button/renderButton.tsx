@@ -4,12 +4,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import type { ButtonSlots, ButtonState } from './Button.types';
+import type { ButtonSlots, ButtonBaseState } from './Button.types';
 
 /**
  * Renders a Button component by passing the state defined props to the appropriate slots.
  */
-export const renderButton_unstable = (state: ButtonState): JSXElement => {
+export const renderButton_unstable = (state: ButtonBaseState): JSXElement => {
   assertSlots<ButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
