@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { RatingState } from '../Rating/Rating.types';
-import { RatingDisplayState } from '../RatingDisplay/RatingDisplay.types';
+import type { RatingState } from '../Rating/Rating.types';
+import type { RatingDisplayState } from '../RatingDisplay/RatingDisplay.types';
 
 export type RatingItemSlots = {
   /**

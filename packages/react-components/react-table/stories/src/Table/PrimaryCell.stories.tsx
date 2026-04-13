@@ -14,7 +14,6 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   Button,
   TableBody,
@@ -26,7 +25,7 @@ import {
   TableCellActions,
   TableCellLayout,
 } from '@fluentui/react-components';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { PolarChart, PolarChartProps } from '@fluentui/react-charts';
+import type { PolarChartProps } from '@fluentui/react-charts';
+import { PolarChart } from '@fluentui/react-charts';
 
 const data: PolarChartProps['data'] = [
   {

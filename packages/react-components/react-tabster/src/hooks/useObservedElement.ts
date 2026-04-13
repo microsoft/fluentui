@@ -1,6 +1,7 @@
 'use client';
 
-import { getObservedElement, Types as TabsterTypes } from 'tabster';
+import type { Types as TabsterTypes } from 'tabster';
+import { getObservedElement } from 'tabster';
 
 import { useTabster } from './useTabster';
 import { useTabsterAttributes } from './useTabsterAttributes';

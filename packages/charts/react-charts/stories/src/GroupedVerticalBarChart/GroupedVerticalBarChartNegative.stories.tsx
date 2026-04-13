@@ -1,15 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import { Switch, Checkbox, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const GroupedVerticalBarNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);

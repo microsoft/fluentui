@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, NavDrawerProps, NavDensity } from '@fluentui/react-components';
 import {
   Hamburger,
   NavCategory,
@@ -7,12 +7,10 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerProps,
   NavItem,
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  NavDensity,
   NavDivider,
   AppItem,
   AppItemStatic,

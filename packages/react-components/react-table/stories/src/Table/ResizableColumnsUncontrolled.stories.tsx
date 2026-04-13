@@ -1,20 +1,22 @@
 import * as React from 'react';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type {
+  JSXElement,
+  TableColumnDefinition,
+  TableColumnSizingOptions,
+  PresenceBadgeStatus,
+} from '@fluentui/react-components';
 import {
   Table,
   TableBody,
   TableCell,
   TableCellLayout,
-  TableColumnDefinition,
-  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableFeatures,
-  PresenceBadgeStatus,
   Avatar,
   Input,
   useId,

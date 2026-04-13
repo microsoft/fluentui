@@ -5,11 +5,12 @@ import '@testing-library/jest-dom';
 
 import { useTabListBase_unstable } from './useTabList';
 import { renderTabList_unstable } from './renderTabList';
-import { renderTab_unstable, TabState, useTabBase_unstable } from '../Tab';
+import type { TabState } from '../Tab';
+import { renderTab_unstable, useTabBase_unstable } from '../Tab';
 import { useTabListContextValues_unstable } from './useTabListContextValues';
 import { mergeClasses } from '@griffel/react';
 import { useTabListContext_unstable } from './TabListContext';
-import { TabListState } from './TabList.types';
+import type { TabListState } from './TabList.types';
 
 describe('useTabListBase', () => {
   type CustomTabAppearance = 'filled' | 'outline';

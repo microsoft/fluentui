@@ -7,8 +7,8 @@ import type {
   TagSelectHandler,
   TagSelectData,
 } from '../../utils/types';
-import { TagGroupContextValue } from '../../contexts/tagGroupContext';
-import * as React from 'react';
+import type { TagGroupContextValue } from '../../contexts/tagGroupContext';
+import type * as React from 'react';
 
 export type TagGroupContextValues = {
   tagGroup: TagGroupContextValue;

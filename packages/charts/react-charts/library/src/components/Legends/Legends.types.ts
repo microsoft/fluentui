@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { CustomPoints, Points } from '../../utilities/utilities';
+import type * as React from 'react';
+import type { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
  * Legends styles

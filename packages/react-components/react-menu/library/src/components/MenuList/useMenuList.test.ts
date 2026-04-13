@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuList_unstable } from './useMenuList';

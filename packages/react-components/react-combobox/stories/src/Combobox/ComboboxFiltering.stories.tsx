@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, ComboboxProps, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
+import type { JSXElement, ComboboxProps } from '@fluentui/react-components';
+import { Combobox, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

@@ -2,7 +2,7 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot, ExtractSlotProps } from '@fluentui/react-utilities';
 
-import { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
+import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 /**
  * Custom slot props for the backdrop slot.

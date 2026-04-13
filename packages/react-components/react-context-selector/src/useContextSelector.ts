@@ -3,7 +3,7 @@
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
+import type { Context, ContextSelector, ContextValue, ContextVersion } from './types';
 
 /**
  * This hook returns context selected value by selector.

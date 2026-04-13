@@ -8,7 +8,7 @@ import { CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
 import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
-import { CarouselContextValue } from './CarouselContext';
+import type { CarouselContextValue } from './CarouselContext';
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.

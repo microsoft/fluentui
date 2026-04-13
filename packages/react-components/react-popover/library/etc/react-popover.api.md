@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -18,7 +18,7 @@ import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PositioningImperativeRef, MenuProps } from '@fluentui/react-components';
 
 import {
   Button,
@@ -8,11 +8,9 @@ import {
   MenuList,
   MenuItem,
   MenuPopover,
-  PositioningImperativeRef,
   makeStyles,
   tokens,
   mergeClasses,
-  MenuProps,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

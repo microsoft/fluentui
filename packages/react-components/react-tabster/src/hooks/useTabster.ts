@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
+import type { Types as TabsterTypes } from 'tabster';
+import { createTabster, disposeTabster } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
 

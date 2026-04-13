@@ -1,7 +1,7 @@
 import { useGlobals as useStorybookGlobals } from 'storybook/manager-api';
-import { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react-webpack5';
+import type { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react-webpack5';
 
-import { DIR_ID, STRICT_MODE_ID, THEME_ID } from './constants';
+import type { DIR_ID, STRICT_MODE_ID, THEME_ID } from './constants';
 import type { ThemeIds } from './theme';
 
 export interface FluentStoryContext extends StorybookContext {

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';

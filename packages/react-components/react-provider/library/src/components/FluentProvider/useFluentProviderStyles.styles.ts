@@ -4,7 +4,7 @@ import { makeStyles, mergeClasses } from '@griffel/core';
 import { useRenderer_unstable } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
   root: 'fui-FluentProvider',

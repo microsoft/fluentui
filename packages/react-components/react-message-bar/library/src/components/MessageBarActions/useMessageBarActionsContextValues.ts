@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { MessageBarActionsContextValues } from './MessageBarActions.types';
+import type { MessageBarActionsContextValues } from './MessageBarActions.types';
 
 export function useMessageBarActionsContextValue_unstable(): MessageBarActionsContextValues {
   const buttonContext = React.useMemo(

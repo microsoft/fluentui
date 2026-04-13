@@ -4,35 +4,28 @@ import * as React from 'react';
 import { useVerticalBarChartStyles } from './useVerticalBarChartStyles.styles';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
-import {
-  scaleLinear as d3ScaleLinear,
-  ScaleLinear as D3ScaleLinear,
-  scaleBand as d3ScaleBand,
-  scaleUtc as d3ScaleUtc,
-} from 'd3-scale';
+import type { ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   Margins,
   Legend,
   RefArrayData,
   VerticalBarChartProps,
   VerticalBarChartDataPoint,
-  Legends,
   ChildProps,
   YValueHover,
-  ChartPopover,
   DataPoint,
 } from '../../index';
+import { CartesianChart, Legends, ChartPopover } from '../../index';
+import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
-  NumericAxis,
   getTypeOfAxis,
   formatScientificLimitWidth,
   getBarWidth,
@@ -44,7 +37,6 @@ import {
   calculateLongestLabelWidth,
   findVerticalNumericMinMaxOfY,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfVerticalNumeric,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfXStringAxis,
@@ -428,7 +420,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     YValueHover: YValueHover[];
     hoverXValue: string | number | undefined;
   } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const YValueHover: YValueHover[] = [];
     const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
@@ -514,7 +505,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     setHoverXValue('');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   function _onBarFocus(
     event: React.FocusEvent<SVGRectElement, Element>,
     point: VerticalBarChartDataPoint,
@@ -1129,16 +1119,16 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const calloutProps = {
     ...(_isHavingLine && {
       YValueHover: hoveredYValues,
-      hoverXValue: hoverXValue,
+      hoverXValue,
     }),
-    color: color,
+    color,
     legend: calloutLegend,
     XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
-    clickPosition: clickPosition,
-    isPopoverOpen: isPopoverOpen,
+    clickPosition,
+    isPopoverOpen,
     isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
     culture: props.culture,
     isCartesian: true,
@@ -1185,7 +1175,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         !isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram'
       }
       /* eslint-disable react/jsx-no-bind */
-      // eslint-disable-next-line react/no-children-prop
+
       children={(props: ChildProps) => {
         return (
           <>

@@ -1,7 +1,7 @@
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { ButtonSlots, ToggleButtonProps, ToggleButtonState } from '@fluentui/react-button';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ButtonSlots, ToggleButtonProps, ToggleButtonState } from '@fluentui/react-button';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 export type CarouselAutoplayButtonSlots = ButtonSlots & {
   root: NonNullable<Slot<ARIAButtonSlotProps>>;

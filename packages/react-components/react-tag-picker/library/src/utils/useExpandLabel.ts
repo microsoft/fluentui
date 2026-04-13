@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useTagPickerContext_unstable } from '../contexts/TagPickerContext';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { TagPickerControlState } from '../TagPickerControl';
+import type { TagPickerControlState } from '../TagPickerControl';
 
 export function useExpandLabel(options: {
   tagPickerId: string;

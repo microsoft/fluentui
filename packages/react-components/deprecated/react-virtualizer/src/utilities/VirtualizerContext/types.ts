@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 /**
  * {@docCategory Virtualizer}
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
@@ -9,7 +9,7 @@ export type VirtualizerContextProps = {
   /*
    * These optional props are used in dynamic virtualizer
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   childProgressiveSizes?: React.MutableRefObject<number[]>;
 };
 

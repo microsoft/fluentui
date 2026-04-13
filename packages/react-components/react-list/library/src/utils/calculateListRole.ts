@@ -1,4 +1,4 @@
-import { ListNavigationMode } from '../List';
+import type { ListNavigationMode } from '../List';
 
 /**
  * Calculate the role for the list based on the navigation mode and selectable state

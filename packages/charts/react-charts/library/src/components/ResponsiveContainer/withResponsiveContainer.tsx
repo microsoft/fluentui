@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { ResponsiveContainer } from './ResponsiveContainer';
-import { ResponsiveContainerProps } from './ResponsiveContainer.types';
+import type { ResponsiveContainerProps } from './ResponsiveContainer.types';
 
 /**
  * An HOC to update wrapped component on container resize.

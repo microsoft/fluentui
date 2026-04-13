@@ -1,6 +1,14 @@
 import * as React from 'react';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableColumnId,
+  TableRowId,
+  TableRowProps,
+  TableSelectionState,
+} from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -11,7 +19,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   useArrowNavigationGroup,
   TableBody,
@@ -23,14 +30,9 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   useTableSort,
   createTableColumn,
-  TableColumnId,
-  TableRowId,
-  TableRowProps,
-  TableSelectionState,
 } from '@fluentui/react-components';
 
 type FileCell = {

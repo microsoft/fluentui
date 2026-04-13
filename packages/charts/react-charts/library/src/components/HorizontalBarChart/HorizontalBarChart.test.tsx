@@ -3,7 +3,8 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { HorizontalBarChartVariant, ChartProps } from './index';
+import type { ChartProps } from './index';
+import { HorizontalBarChartVariant } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -464,25 +465,25 @@ describe('HorizontalBarChart snapShot testing', () => {
 
 describe('HorizontalBarChart - basic props', () => {
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerHorizonalBar ', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM).toBeDefined();
   });
 
   it('Should not render onRenderCalloutPerHorizonalBar ', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerHorizonalBar');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -533,13 +534,13 @@ describe('Render calling with respective to props', () => {
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<HorizontalBarChart data={[]} />);
+    const wrapper = render(<HorizontalBarChart data={[]} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

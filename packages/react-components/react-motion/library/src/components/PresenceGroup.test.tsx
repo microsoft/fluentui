@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import { PresenceGroupChildContext, PresenceGroupChildContextValue } from '../contexts/PresenceGroupChildContext';
+import type { PresenceGroupChildContextValue } from '../contexts/PresenceGroupChildContext';
+import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { PresenceGroup } from './PresenceGroup';
 
 const TestComponent: React.FC<{
