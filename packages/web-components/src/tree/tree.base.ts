@@ -12,13 +12,6 @@ export class BaseTree extends FASTElement {
   public currentSelected: HTMLElement | null = null;
 
   /**
-   * The tree item that is designated to be in the tab queue.
-   *
-   * @internal
-   */
-  private currentFocused: HTMLElement | null = null;
-
-  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -61,11 +54,6 @@ export class BaseTree extends FASTElement {
     // defaults to first one found
     const selectedItem = this.querySelector<HTMLElement>(`[selected]`);
     this.currentSelected = selectedItem;
-
-    // invalidate the current focused item if it is no longer valid
-    if (this.currentFocused === null || !this.contains(this.currentFocused)) {
-      this.currentFocused = this.getValidFocusableItem();
-    }
   }
 
   /**
@@ -157,7 +145,7 @@ export class BaseTree extends FASTElement {
     const item = e.target as BaseTreeItem;
 
     if (item.selected) {
-      // Deselect the prevously selected item
+      // Deselect the previously selected item
       if (this.currentSelected && this.currentSelected !== item && isTreeItem(this.currentSelected)) {
         this.currentSelected.selected = false;
       }
@@ -167,29 +155,6 @@ export class BaseTree extends FASTElement {
       // Selected item deselected
       this.currentSelected = null;
     }
-  }
-
-  /**
-   * checks if there are any nested tree items
-   */
-  private getValidFocusableItem() {
-    const elements: HTMLElement[] | void = this.getVisibleNodes();
-    // default to selected element if there is one
-    let focusIndex = elements.findIndex(el => (el as any).selected);
-    if (focusIndex === -1) {
-      // otherwise first focusable tree item
-      focusIndex = elements.findIndex(el => isTreeItem(el));
-    }
-    if (focusIndex !== -1) {
-      return elements[focusIndex];
-    }
-    return null;
-  }
-
-  private getVisibleNodes(): HTMLElement[] {
-    return Array.from(this.querySelectorAll('*')).filter(
-      node => isTreeItem(node) && node.offsetParent !== null,
-    ) as HTMLElement[];
   }
 
   /** @internal */
