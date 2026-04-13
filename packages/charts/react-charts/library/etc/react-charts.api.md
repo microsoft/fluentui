@@ -820,6 +820,7 @@ export interface FunnelChartDataPoint {
 
 // @public
 export interface FunnelChartProps {
+    annotations?: ChartAnnotation[];
     calloutProps?: ChartPopoverProps;
     chartTitle?: string;
     className?: string;
