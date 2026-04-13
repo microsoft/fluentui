@@ -4,8 +4,10 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { semanticTokenVar, useIsVisualRefreshEnabled } from '@fluentui/visual-refresh-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ButtonSlots, ButtonState } from './Button.types';
+import type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -550,8 +552,152 @@ const useIconStyles = makeStyles({
   },
 });
 
+export type VisualRefreshAppearanceName = 'base' | NonNullable<ButtonProps['appearance']>;
+
+type VisualRefreshAppearanceVariant = VisualRefreshAppearanceName | 'base' | 'neutral' | 'brand';
+
+const visualRefreshAppearanceAlias: Record<
+  VisualRefreshAppearanceVariant,
+  'neutral' | 'brand' | 'outline' | 'subtle' | 'transparent'
+> = {
+  base: 'neutral',
+  neutral: 'neutral',
+  secondary: 'neutral',
+  brand: 'brand',
+  primary: 'brand',
+  outline: 'outline',
+  subtle: 'subtle',
+  transparent: 'transparent',
+};
+
+type SemanticTokenName = Parameters<typeof semanticTokenVar>[0];
+
+const getSemanticTokenValue = (token: string) => semanticTokenVar(token as SemanticTokenName);
+const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearanceVariant): GriffelStyle => {
+  const tokenGroup = visualRefreshAppearanceAlias[appearance] ?? 'neutral';
+  const foregroundTokenBase = `foreground/ctrl/${tokenGroup}`;
+  const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
+  const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
+  const iconColorTokenBase = `iconColor/ctrl/${tokenGroup}`;
+
+  return {
+    color: getSemanticTokenValue(`${foregroundTokenBase}/rest`),
+    backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
+    ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/rest`)),
+    [`& .${buttonClassNames.icon}`]: {
+      color: getSemanticTokenValue(`${iconColorTokenBase}/rest`),
+    },
+
+    ':hover': {
+      color: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/hover`)),
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/hover`),
+      },
+    },
+
+    ':hover:active': {
+      color: getSemanticTokenValue(`${foregroundTokenBase}/pressed`),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/pressed`)),
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/pressed`),
+      },
+    },
+
+    ':disabled': {
+      pointerEvents: 'none',
+      color: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/disabled`)),
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/disabled`),
+      },
+    },
+  };
+};
+
+const useVisualRefreshStyles = makeStyles({
+  base: createVisualRefreshAppearanceStyles('base'),
+
+  // Appearance variations
+  outline: createVisualRefreshAppearanceStyles('outline'),
+  primary: createVisualRefreshAppearanceStyles('primary'),
+  secondary: {
+    // same as base
+  },
+  subtle: createVisualRefreshAppearanceStyles('subtle'),
+  transparent: createVisualRefreshAppearanceStyles('transparent'),
+
+  small: {
+    minHeight: semanticTokenVar('size/ctrl/sm'),
+    height: semanticTokenVar('size/ctrl/sm'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/sm')} ${semanticTokenVar('padding/ctrl/horizontal/sm')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/sm'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/sm'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/sm'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/sm'),
+  },
+  medium: {
+    minHeight: semanticTokenVar('size/ctrl/md'),
+    height: semanticTokenVar('size/ctrl/md'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/md')} ${semanticTokenVar('padding/ctrl/horizontal/md')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/md'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/md'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/md'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/md'),
+  },
+  large: {
+    minHeight: semanticTokenVar('size/ctrl/lg'),
+    height: semanticTokenVar('size/ctrl/lg'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/lg')} ${semanticTokenVar('padding/ctrl/horizontal/lg')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/lg'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/lg'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/lg'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/lg'),
+  },
+});
+
+const useVisualRefreshIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+    height: '12px',
+    width: '12px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalXS,
+  },
+  medium: {
+    fontSize: '16px',
+    height: '16px',
+    width: '16px',
+  },
+  large: {
+    fontSize: '16px',
+    height: '16px',
+    width: '16px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  },
+});
+
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   'use no memo';
+
+  const isVisualRefreshEnabled = useIsVisualRefreshEnabled();
+  const visualRefreshStyles = useVisualRefreshStyles();
 
   const rootBaseClassName = useRootBaseClassName();
   const iconBaseClassName = useIconBaseClassName();
@@ -561,8 +707,15 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
+  const iconVisualRefreshStyles = useVisualRefreshIconStyles();
 
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
+
+  const visualRefreshStylesRecord = visualRefreshStyles as unknown as Record<string, string>;
+  const visualRefreshSlots: Array<string | undefined> = ['root', appearance, shape, size];
+  const visualRefreshOverrides = isVisualRefreshEnabled
+    ? mergeClasses(...visualRefreshSlots.map(slot => (slot ? visualRefreshStylesRecord[slot] : undefined)))
+    : undefined;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -581,15 +734,18 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles
-    appearance === 'primary' && rootFocusStyles.primary,
-    rootFocusStyles[size],
-    rootFocusStyles[shape],
+    !isVisualRefreshEnabled && appearance === 'primary' && rootFocusStyles.primary,
+    !isVisualRefreshEnabled && rootFocusStyles[size],
+    !isVisualRefreshEnabled && rootFocusStyles[shape],
 
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
 
     // User provided class name
     state.root.className,
+
+    isVisualRefreshEnabled && visualRefreshOverrides,
+    isVisualRefreshEnabled && visualRefreshStyles[size],
   );
 
   if (state.icon) {
@@ -598,9 +754,70 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       iconBaseClassName,
       !!state.root.children && iconStyles[iconPosition],
       iconStyles[size],
+      isVisualRefreshEnabled && iconVisualRefreshStyles[size],
       state.icon.className,
     );
   }
-
   return state;
+};
+
+/**
+ *  Visual Refresh Storybook utils
+ *  */
+type VisualRefreshInteractionState = 'rest' | 'hover' | 'pressed' | 'disabled';
+type VisualRefreshIconVariant = 'regular' | 'filled';
+
+const filledIconStates = new Set<VisualRefreshInteractionState>(['hover', 'pressed']);
+
+const visualRefreshInteractionStates: readonly VisualRefreshInteractionState[] = [
+  'rest',
+  'hover',
+  'pressed',
+  'disabled',
+];
+
+const createInteractionStateTokens = (tokenBase: string): Record<VisualRefreshInteractionState, string> =>
+  Object.fromEntries(
+    visualRefreshInteractionStates.map(state => [state, getSemanticTokenValue(`${tokenBase}/${state}`)]),
+  ) as Record<VisualRefreshInteractionState, string>;
+
+const createIconVariantTokens = (): Record<VisualRefreshInteractionState, VisualRefreshIconVariant> =>
+  Object.fromEntries(
+    visualRefreshInteractionStates.map(state => [state, filledIconStates.has(state) ? 'filled' : 'regular']),
+  ) as Record<VisualRefreshInteractionState, VisualRefreshIconVariant>;
+
+export type VisualRefreshAppearanceStateTokens = {
+  foreground: Record<VisualRefreshInteractionState, string>;
+  background: Record<VisualRefreshInteractionState, string>;
+  border: Record<VisualRefreshInteractionState, string>;
+  icon: {
+    color: Record<VisualRefreshInteractionState, string>;
+    variant: Record<VisualRefreshInteractionState, VisualRefreshIconVariant>;
+  };
+};
+
+const resolveVisualRefreshAppearanceVariant = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceVariant => {
+  if (!appearance) {
+    return 'secondary';
+  }
+  return appearance;
+};
+
+export const getVisualRefreshAppearanceStateTokens = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceStateTokens => {
+  const variant = resolveVisualRefreshAppearanceVariant(appearance);
+  const tokenGroup = visualRefreshAppearanceAlias[variant] ?? 'neutral';
+
+  const foreground = createInteractionStateTokens(`foreground/ctrl/${tokenGroup}`);
+  const background = createInteractionStateTokens(`background/ctrl/${tokenGroup}`);
+  const border = createInteractionStateTokens(`borderColor/ctrl/${tokenGroup}`);
+  const icon = {
+    color: createInteractionStateTokens(`iconColor/ctrl/${tokenGroup}`),
+    variant: createIconVariantTokens(),
+  };
+
+  return { foreground, background, border, icon };
 };
