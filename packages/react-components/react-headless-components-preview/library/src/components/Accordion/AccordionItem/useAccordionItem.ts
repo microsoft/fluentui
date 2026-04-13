@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-accordion';
 
 import type { AccordionItemProps, AccordionItemState, AccordionItemContextValues } from './AccordionItem.types';
-import { mapStateToDataAttributes } from '../../../utils/mapStateToDataAttributes';
+import { stringifyDataAttribute } from '../../../utils';
 
 /**
  * Returns the state for an AccordionItem component, given its props and ref.
@@ -17,7 +17,10 @@ import { mapStateToDataAttributes } from '../../../utils/mapStateToDataAttribute
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
   const state = useAccordionItem_unstable(props, ref);
 
-  Object.assign(state.root, mapStateToDataAttributes(state, ['disabled', 'open']));
+  Object.assign(state.root, {
+    'data-disabled': stringifyDataAttribute(state.disabled),
+    'data-open': stringifyDataAttribute(state.open),
+  });
 
   return state;
 };

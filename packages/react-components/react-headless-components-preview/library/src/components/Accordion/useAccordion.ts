@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-accordion';
 
 import type { AccordionProps, AccordionState, AccordionContextValues } from './Accordion.types';
-import { mapStateToDataAttributes } from '../../utils/mapStateToDataAttributes';
+import { stringifyDataAttribute } from '../../utils';
 
 /**
  * Returns the state for an Accordion component, given its props and ref.
@@ -17,7 +17,10 @@ import { mapStateToDataAttributes } from '../../utils/mapStateToDataAttributes';
 export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
   const state = useAccordionBase_unstable(props, ref);
 
-  Object.assign(state.root, mapStateToDataAttributes(state, ['collapsible', 'multiple']));
+  Object.assign(state.root, {
+    'data-collapsible': stringifyDataAttribute(state.collapsible),
+    'data-multiple': stringifyDataAttribute(state.multiple),
+  });
 
   return state;
 };

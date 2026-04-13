@@ -20,65 +20,16 @@ import type { AccordionPanelBaseProps } from '@fluentui/react-accordion';
 import type { AccordionPanelBaseState } from '@fluentui/react-accordion';
 import type { AccordionPanelSlots as AccordionPanelSlots_2 } from '@fluentui/react-accordion';
 import type { AccordionSlots as AccordionSlots_2 } from '@fluentui/react-accordion';
-import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
-import { AnnounceProvider } from '@fluentui/react-shared-contexts';
-import { assertSlots } from '@fluentui/react-utilities';
 import type { ButtonBaseProps } from '@fluentui/react-button';
 import { ButtonBaseState } from '@fluentui/react-button';
 import type { ButtonSlots as ButtonSlots_2 } from '@fluentui/react-button';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
-import { getIntrinsicElementProps } from '@fluentui/react-utilities';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import { getPartitionedNativeProps } from '@fluentui/react-utilities';
-import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
-import { getSlots } from '@fluentui/react-utilities';
-import { IdPrefixProvider } from '@fluentui/react-utilities';
-import { isHTMLElement } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
-import { JSXIntrinsicElement } from '@fluentui/react-utilities';
-import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
-import { mergeCallbacks } from '@fluentui/react-utilities';
-import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
-import { OnSelectionChangeData } from '@fluentui/react-utilities';
-import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import type * as React_2 from 'react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { ResolveShorthandFunction } from '@fluentui/react-utilities';
-import { ResolveShorthandOptions } from '@fluentui/react-utilities';
-import { SelectionHookParams } from '@fluentui/react-utilities';
-import { SelectionItemId } from '@fluentui/react-utilities';
-import { SelectionMethods } from '@fluentui/react-utilities';
-import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
-import { Slot } from '@fluentui/react-utilities';
-import { slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
-import { SlotComponentType } from '@fluentui/react-utilities';
-import { SlotOptions } from '@fluentui/react-utilities';
-import { SlotPropsRecord } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-utilities';
-import { SSRProvider } from '@fluentui/react-utilities';
-import { useAnimationFrame } from '@fluentui/react-utilities';
-import { useAnnounce } from '@fluentui/react-shared-contexts';
-import { useApplyScrollbarWidth } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useId } from '@fluentui/react-utilities';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useIsSSR } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-utilities';
-import { usePortalMountNode } from '@fluentui/react-shared-contexts';
-import { useScrollbarWidth } from '@fluentui/react-utilities';
-import { useSelection } from '@fluentui/react-utilities';
-import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
-import { useTimeout } from '@fluentui/react-utilities';
-import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -131,12 +82,6 @@ export type AccordionSlots = AccordionSlots_2;
 // @public (undocumented)
 export type AccordionState = AccordionBaseState;
 
-export { AnnounceContextValue }
-
-export { AnnounceProvider }
-
-export { assertSlots }
-
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
@@ -149,10 +94,6 @@ export type ButtonSlots = ButtonSlots_2;
 // @public
 export type ButtonState = ButtonBaseState;
 
-export { ComponentProps }
-
-export { ComponentState }
-
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
 
@@ -164,36 +105,6 @@ export type DividerSlots = DividerSlots_2;
 
 // @public (undocumented)
 export type DividerState = DividerBaseState;
-
-export { ForwardRefComponent }
-
-export { getIntrinsicElementProps }
-
-export { getNativeElementProps }
-
-export { getPartitionedNativeProps }
-
-export { getSlotClassNameProp_unstable }
-
-export { getSlots }
-
-export { IdPrefixProvider }
-
-export { isHTMLElement }
-
-export { JSXElement }
-
-export { JSXIntrinsicElement }
-
-export { JSXIntrinsicElementKeys }
-
-export { mergeCallbacks }
-
-export { OnSelectionChangeCallback }
-
-export { OnSelectionChangeData }
-
-export { PortalMountNodeProvider }
 
 // @public
 export const renderAccordion: (state: AccordionBaseState, contextValues: AccordionContextValues_2) => JSXElement;
@@ -213,38 +124,6 @@ export const renderButton: (state: ButtonBaseState) => JSXElement;
 // @public
 export const renderDivider: (state: DividerBaseState) => JSXElement;
 
-export { resetIdsForTests }
-
-export { resolveShorthand }
-
-export { ResolveShorthandFunction }
-
-export { ResolveShorthandOptions }
-
-export { SelectionHookParams }
-
-export { SelectionItemId }
-
-export { SelectionMethods }
-
-export { SelectionMode_2 as SelectionMode }
-
-export { Slot }
-
-export { slot }
-
-export { SlotClassNames }
-
-export { SlotComponentType }
-
-export { SlotOptions }
-
-export { SlotPropsRecord }
-
-export { SlotRenderFunction }
-
-export { SSRProvider }
-
 // @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
@@ -263,41 +142,11 @@ export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTML
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
-export { useAnimationFrame }
-
-export { useAnnounce }
-
-export { useApplyScrollbarWidth }
-
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
 // @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
-
-export { useEventCallback }
-
-export { useFluent }
-
-export { useId }
-
-export { useIsomorphicLayoutEffect }
-
-export { useIsSSR }
-
-export { useMergedRefs }
-
-export { usePortalMountNode }
-
-export { useScrollbarWidth }
-
-export { useSelection }
-
-export { useThemeClassName }
-
-export { useTimeout }
-
-export { useTooltipVisibility }
 
 // (No @packageDocumentation comment for this package)
 

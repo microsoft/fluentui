@@ -1,1 +1,1 @@
-export { mapStateToDataAttributes } from './mapStateToDataAttributes';
+export { stringifyDataAttribute } from './stringifyDataAttribute';
