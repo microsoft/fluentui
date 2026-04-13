@@ -1,0 +1,9 @@
+{
+  "name": "@fluentui/react-headless-components-preview-stories",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build-storybook": "storybook build -o ./dist/storybook"
+  },
+  "devDependencies": {}
+}
