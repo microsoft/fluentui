@@ -1,7 +1,7 @@
 'use client';
 
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';

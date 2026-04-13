@@ -5,13 +5,8 @@ import { useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContex
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { useControllableState, slot } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
-import {
-  OnOpenChangeData,
-  OpenPopoverEvents,
-  Popover,
-  type PopoverProps,
-  PopoverSurface,
-} from '@fluentui/react-popover';
+import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
+import { Popover, type PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 import type {
   AvatarGroupPopoverBaseProps,
   AvatarGroupPopoverBaseState,

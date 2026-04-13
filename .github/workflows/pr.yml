@@ -126,6 +126,8 @@ jobs:
           retention-days: 1
 
       - name: React Versions Integration Tests (17,18) - Type-check & Test
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--18--type-check,test-rit--17--test,test-rit--18--test --exclude='react-19-tests-v9'
 

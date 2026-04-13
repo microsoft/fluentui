@@ -1,14 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Checkbox } from '@fluentui/react-components';
 
 export const VerticalStackedBarCustomAccessibility = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);

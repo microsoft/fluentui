@@ -1,11 +1,7 @@
-import {
-  motionTokens,
-  createPresenceComponent,
-  PresenceMotionFn,
-  createPresenceComponentVariant,
-} from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
-import { FadeParams } from './fade-types';
+import type { FadeParams } from './fade-types';
 
 /**
  * Define a presence motion for fade in/out

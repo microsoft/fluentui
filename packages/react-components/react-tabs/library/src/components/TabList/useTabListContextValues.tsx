@@ -1,4 +1,4 @@
-import { TabListContextValue, TabListContextValues, TabListState } from './TabList.types';
+import type { TabListContextValue, TabListContextValues, TabListState } from './TabList.types';
 
 export function useTabListContextValues_unstable(state: TabListState): TabListContextValues {
   const {

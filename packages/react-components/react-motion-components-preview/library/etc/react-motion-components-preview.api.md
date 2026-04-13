@@ -4,9 +4,9 @@
 
 ```ts
 
-import { AtomMotion } from '@fluentui/react-motion';
+import type { AtomMotion } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import { PresenceComponentProps } from '@fluentui/react-motion';
+import type { PresenceComponentProps } from '@fluentui/react-motion';
 import type { PresenceDirection } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 

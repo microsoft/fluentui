@@ -10,7 +10,7 @@ import * as React from 'react';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { dispatchMenuEnterEvent, useIsSubmenu } from '../../utils/index';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
 /**
  * Create the state required to render MenuPopover.

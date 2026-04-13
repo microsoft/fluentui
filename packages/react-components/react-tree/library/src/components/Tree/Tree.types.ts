@@ -4,8 +4,8 @@ import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluen
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
 
 type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 type SingleSelectValue = NonNullable<RadioProps['checked']>;

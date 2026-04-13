@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { SubtreeContext, SubtreeContextValue, TreeContextValue, TreeContext } from '../contexts';
+import type { SubtreeContextValue, TreeContextValue } from '../contexts';
+import { SubtreeContext, TreeContext } from '../contexts';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 /**

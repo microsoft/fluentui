@@ -1,11 +1,10 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, TagSize } from '@fluentui/react-components';
 import {
   TagGroup,
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagSecondary,
-  TagSize,
   Avatar,
   makeStyles,
 } from '@fluentui/react-components';

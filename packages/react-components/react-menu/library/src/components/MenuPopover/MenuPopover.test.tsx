@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { MenuPopover } from './MenuPopover';
 import { isConformant } from '../../testing/isConformant';
-import { MenuPopoverProps } from './MenuPopover.types';
+import type { MenuPopoverProps } from './MenuPopover.types';
 
 describe('MenuPopover', () => {
   const testid = 'test';

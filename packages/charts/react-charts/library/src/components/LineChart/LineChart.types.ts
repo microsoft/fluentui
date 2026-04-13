@@ -1,5 +1,5 @@
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   ChartProps,
   LineChartPoints,
   Margins,
@@ -7,8 +7,8 @@ import {
   RefArrayData,
   CustomizedCalloutData,
 } from '../../types/index';
-import { EventAnnotation } from '../../types/EventAnnotation';
-import {
+import type { EventAnnotation } from '../../types/EventAnnotation';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,

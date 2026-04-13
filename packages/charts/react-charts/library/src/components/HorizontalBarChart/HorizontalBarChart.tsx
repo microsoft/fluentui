@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
-import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
+import type { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData } from './index';
+import { HorizontalBarChartVariant } from './index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
@@ -11,7 +12,8 @@ import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { Legend, Legends } from '../../index';
+import type { Legend } from '../../index';
+import { Legends } from '../../index';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -32,7 +34,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
   let isSingleBar: boolean = true;
-  let _showToolTipOnSegment: boolean = !props.hideTooltip;
+  const _showToolTipOnSegment: boolean = !props.hideTooltip;
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');

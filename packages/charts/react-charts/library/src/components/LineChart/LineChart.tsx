@@ -1,20 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { LineChartProps } from './LineChart.types';
+import type { LineChartProps } from './LineChart.types';
 import { useLineChartStyles } from './useLineChartStyles.styles';
-import { Axis as D3Axis } from 'd3-axis';
+import type { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { Legend, Legends } from '../Legends/index';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
 import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { find, findCalloutPoints, YAxisType } from '../../utilities/index';
-import {
+import type { YAxisType } from '../../utilities/index';
+import { find, findCalloutPoints } from '../../utilities/index';
+import type {
   AccessibilityProps,
-  CartesianChart,
   ChildProps,
   LineChartPoints,
   CustomizedCalloutData,
@@ -26,8 +27,10 @@ import {
   LineChartDataPoint,
   YValueHover,
 } from '../../index';
+import { CartesianChart } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
+import type { IDomainNRange } from '../../utilities/index';
 import {
   calloutData,
   ChartTypes,
@@ -40,7 +43,6 @@ import {
   getColorFromToken,
   findNumericMinMaxOfY,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   createStringYAxis,
@@ -52,7 +54,7 @@ import {
   getRangeForScatterMarkerSize,
   calculateMarkerRadius,
 } from '../../utilities/index';
-import { ScaleLinear } from 'd3-scale';
+import type { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
@@ -152,25 +154,25 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let _xAxisScale: any = '';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _yScalePrimary: any = '';
-    let _circleId: string = useId('circle');
-    let _lineId: string = useId('lineID');
-    let _borderId: string = useId('borderID');
-    let _verticalLine: string = useId('verticalLine');
-    let _colorFillBarPatternId: string = useId('colorFillBarPattern');
+    const _circleId: string = useId('circle');
+    const _lineId: string = useId('lineID');
+    const _borderId: string = useId('borderID');
+    const _verticalLine: string = useId('verticalLine');
+    const _colorFillBarPatternId: string = useId('colorFillBarPattern');
     let _uniqueCallOutID: string | null = '';
-    let _refArray: RefArrayData[] = [];
+    const _refArray: RefArrayData[] = [];
     let margins: Margins;
     let eventLabelHeight: number = 36;
     let lines: JSXElement[];
     let _renderedColorFillBars: JSXElement[];
     const _colorFillBars = React.useRef<ColorFillBarsProps[]>([]);
-    let _rectId: string = useId('containerRectLD');
-    let _staticHighlightCircle: string = useId('staticHighlightCircle');
-    let _firstRenderOptimization = true;
-    let _emptyChartId: string = useId('_LineChart_empty');
+    const _rectId: string = useId('containerRectLD');
+    const _staticHighlightCircle: string = useId('staticHighlightCircle');
+    const _firstRenderOptimization = true;
+    const _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = useRtl();
-    let xAxisCalloutAccessibilityData: AccessibilityProps = {};
+    const xAxisCalloutAccessibilityData: AccessibilityProps = {};
     const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
     let _yScaleSecondary: ScaleLinear<number, number> | undefined;
 
@@ -1871,8 +1873,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
     const calloutProps = {
       YValueHover: yValueHover,
-      hoverXValue: hoverXValue,
-      YValue: YValue,
+      hoverXValue,
+      YValue,
       legend: legendVal,
       color: lineColor,
       XValue: hoverXValue! as string,
@@ -1881,10 +1883,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           ? props.getCalloutDescriptionMessage(stackCalloutProps)
           : undefined,
       tabIndex: 0,
-      xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
+      xAxisCalloutAccessibilityData,
       ...props.calloutProps,
-      isPopoverOpen: isPopoverOpen,
-      clickPosition: clickPosition,
+      isPopoverOpen,
+      clickPosition,
       positioning: {
         target: refSelected,
       },

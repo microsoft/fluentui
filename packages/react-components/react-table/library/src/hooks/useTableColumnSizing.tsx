@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { TableResizeHandle } from '../TableResizeHandle';
-import {
+import type {
   ColumnWidthState,
   EnableKeyboardModeOnChangeCallback,
   TableColumnId,

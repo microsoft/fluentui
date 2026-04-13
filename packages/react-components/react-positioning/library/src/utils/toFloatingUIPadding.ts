@@ -1,5 +1,5 @@
 import type { SideObject } from '@floating-ui/dom';
-import { PositioningOptions } from '../types';
+import type { PositioningOptions } from '../types';
 
 export function toFloatingUIPadding(
   padding: NonNullable<PositioningOptions['overflowBoundaryPadding']>,

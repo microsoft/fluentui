@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-import { CarouselItemProps } from './CarouselItem.types';
+import type { CarouselItemProps } from './CarouselItem.types';
 import { useCarouselItem_unstable } from './useCarouselItem';
 import { renderCarouselItem_unstable } from './renderCarouselItem';
 

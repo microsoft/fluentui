@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { InteractionTagState, InteractionTagContextValues } from './InteractionTag.types';
+import type { InteractionTagState, InteractionTagContextValues } from './InteractionTag.types';
 
 export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues {
   const {

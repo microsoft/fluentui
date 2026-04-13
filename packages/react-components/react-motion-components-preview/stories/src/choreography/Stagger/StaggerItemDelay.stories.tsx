@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerItemDelayDescription from './StaggerItemDelay.stories.md';
-import { Field, makeStyles, tokens, Button, Label, Slider, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button, Label, Slider } from '@fluentui/react-components';
 import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({

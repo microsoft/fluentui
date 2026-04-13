@@ -1,4 +1,4 @@
-import { HsvColor } from '../types/color';
+import type { HsvColor } from '../types/color';
 
 /**
  * Creates an HSV color object with optional hue, saturation, value, and alpha components.

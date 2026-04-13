@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ScaleTime } from 'd3-scale';
+import type { ScaleTime } from 'd3-scale';
 import { tokens } from '@fluentui/react-theme';
 import { findIndex } from '../../../utilities/index';
-import { LineDef, LabelLink, LabelDef } from './LabelLink';
-import { EventsAnnotationProps } from '../LineChart.types';
+import type { LineDef, LabelDef } from './LabelLink';
+import { LabelLink } from './LabelLink';
+import type { EventsAnnotationProps } from '../LineChart.types';
 import { getColorFromToken } from '../../../utilities/colors';
 
 interface IEventsAnnotationExtendProps extends EventsAnnotationProps {

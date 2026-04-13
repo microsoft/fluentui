@@ -1,5 +1,5 @@
 import { defaultOptions, FOCUS_VISIBLE_ATTR, FOCUS_WITHIN_ATTR } from './constants';
-import { makeResetStyles } from '@griffel/react';
+import type { makeResetStyles } from '@griffel/react';
 import type { GriffelStyle } from '@griffel/react';
 
 // TODO: Use the type directly from @griffel/react

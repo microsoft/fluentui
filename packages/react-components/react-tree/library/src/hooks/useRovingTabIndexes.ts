@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useFocusedElementChange } from '@fluentui/react-tabster';
 
 const findTreeItemRoot = (element: HTMLElement) => {
