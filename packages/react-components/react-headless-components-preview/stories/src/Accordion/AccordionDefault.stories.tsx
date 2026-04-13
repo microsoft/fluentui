@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-headless-components-preview';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-headless-components-preview';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
@@ -8,7 +9,7 @@ const items = [
   { value: 'item-3', header: 'Accordion Header 3', panel: 'Accordion Panel 3' },
 ];
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <Accordion className="flex w-full max-w-96 flex-col justify-center text-gray-900 border border-gray-200 rounded-md">
     {items.map(item => (
       <AccordionItem className="group border-b border-gray-200" key={item.value} value={item.value}>
