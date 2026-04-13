@@ -1227,3 +1227,68 @@ describe('resolveXAxisPoint', () => {
     expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
   });
 });
+
+describe('transformPlotlyJsonToSankeyProps annotations', () => {
+  const mockColorMap = { current: new Map<string, string>() };
+
+  it('should include annotations when layout.annotations is provided', () => {
+    const input: PlotlySchema = {
+      data: [
+        {
+          type: 'sankey',
+          node: {
+            label: ['A', 'B', 'C'],
+          },
+          link: {
+            source: [0, 1],
+            target: [2, 2],
+            value: [10, 20],
+          },
+        },
+      ],
+      layout: {
+        annotations: [
+          {
+            text: 'Test Annotation',
+            x: 0.5,
+            y: 0.5,
+            xref: 'paper',
+            yref: 'paper',
+            showarrow: false,
+          },
+        ],
+      },
+    };
+
+    const result = transformPlotlyJsonToSankeyProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(1);
+    expect(result.annotations![0].text).toBe('Test Annotation');
+  });
+
+  it('should not include annotations when layout.annotations is empty', () => {
+    const input: PlotlySchema = {
+      data: [
+        {
+          type: 'sankey',
+          node: {
+            label: ['A', 'B', 'C'],
+          },
+          link: {
+            source: [0, 1],
+            target: [2, 2],
+            value: [10, 20],
+          },
+        },
+      ],
+      layout: {
+        annotations: [],
+      },
+    };
+
+    const result = transformPlotlyJsonToSankeyProps(input, false, mockColorMap, 'default');
+
+    expect(result.annotations).toBeUndefined();
+  });
+});
