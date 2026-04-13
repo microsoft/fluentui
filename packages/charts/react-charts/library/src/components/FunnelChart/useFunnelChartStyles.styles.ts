@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { FunnelChartProps, FunnelChartStyles } from './index';
+import type { FunnelChartProps, FunnelChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 

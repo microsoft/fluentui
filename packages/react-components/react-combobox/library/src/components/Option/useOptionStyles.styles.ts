@@ -1,7 +1,7 @@
 'use client';
 
 import { tokens } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { OptionSlots, OptionState } from './Option.types';

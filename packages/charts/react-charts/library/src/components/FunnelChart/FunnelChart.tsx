@@ -4,8 +4,9 @@ import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl, ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
-import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
-import { Legend, Legends } from '../Legends/index';
+import type { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -18,7 +19,7 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
-import { ChartPopoverProps } from '../../index';
+import type { ChartPopoverProps } from '../../index';
 import { useImageExport } from '../../utilities/hooks';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<

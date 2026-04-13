@@ -1,10 +1,11 @@
 'use client';
 
-import * as React from 'react';
-import { ExtractSlotProps, Slot, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
-import { MenuItemProps } from '../MenuItem/MenuItem.types';
+import type { MenuItemProps } from '../MenuItem/MenuItem.types';
 
 /**
  * Create the state required to render MenuItemLink.

@@ -2,7 +2,7 @@ import { screen, fireEvent, act } from '@testing-library/react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
-import { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
+import type { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 expect.extend(toHaveNoViolations);
@@ -491,27 +491,27 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('renders HorizontalBarChartWithAxis correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders Stacked HorizontalBarChartWithAxis correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={stackedChartPointsHBCWA} />);
+    const component = render(<HorizontalBarChartWithAxis data={stackedChartPointsHBCWA} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
+    const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders showToolTipForYAxisLabels correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />);
+    const component = render(<HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders showYAxisLables correctly', () => {
-    let component = render(
+    const component = render(
       <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
     );
     expect(component).toMatchSnapshot();
@@ -531,25 +531,25 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
     const calloutDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideTooltip={true} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideTooltip={true} />);
     const calloutDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM!.length).toBe(0);
   });

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { motionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
@@ -38,6 +38,11 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   return {
     ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      indeterminateMotion: ProgressBarIndeterminateMotion,
+    },
     color,
     shape,
     thickness,
@@ -94,7 +99,7 @@ export const useProgressBarBase_unstable = (
   return {
     max,
     value,
-    components: { root: 'div', bar: 'div', indeterminateMotion: ProgressBarIndeterminateMotion },
+    components: { root: 'div', bar: 'div', indeterminateMotion: 'div' },
     root,
     bar,
   };

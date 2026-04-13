@@ -5,7 +5,7 @@ import { useControllableState, useEventCallback, slot } from '@fluentui/react-ut
 import type { AccordionBaseProps, AccordionBaseState, AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { AccordionRequestToggleData } from '../../contexts/accordion';
+import type { AccordionRequestToggleData } from '../../contexts/accordion';
 
 /**
  * Returns the props and state required to render the component

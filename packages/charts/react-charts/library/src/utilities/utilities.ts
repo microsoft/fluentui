@@ -1,6 +1,7 @@
 'use client';
 
-import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import type { Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
 import {
   max as d3Max,
   min as d3Min,
@@ -10,26 +11,29 @@ import {
   mean as d3Mean,
   median as d3Median,
 } from 'd3-array';
+import type { NumberValue } from 'd3-scale';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
   scaleLog as d3ScaleLog,
-  NumberValue,
   type ScaleContinuousNumeric,
   type ScaleLinear,
   type ScaleBand,
   type ScaleTime,
 } from 'd3-scale';
-import { select as d3Select, selectAll as d3SelectAll, Selection } from 'd3-selection';
+import type { Selection } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
+import type {
   TimeLocaleObject as d3TimeLocaleObject,
+  TimeLocaleDefinition as d3TimeLocaleDefinition,
+} from 'd3-time-format';
+import {
   timeFormat as d3TimeFormat,
   timeFormatLocale as d3TimeFormatLocale,
-  TimeLocaleDefinition as d3TimeLocaleDefinition,
   utcFormat as d3UtcFormat,
 } from 'd3-time-format';
 import {
@@ -48,16 +52,16 @@ import {
   utcWeek as d3UtcWeek,
   utcYear as d3UtcYear,
 } from 'd3-time';
+import type { CurveFactory } from 'd3-shape';
 import {
-  CurveFactory,
   curveLinear as d3CurveLinear,
   curveNatural as d3CurveNatural,
   curveStep as d3CurveStep,
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { AxisProps, AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
-import {
+import type { AxisProps, AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
+import type {
   AccessibilityProps,
   EventsAnnotationProps,
   LineChartPoints,
@@ -998,7 +1002,7 @@ export const createStringYAxis = (
  */
 
 // changing the type to any as it is used by multiple charts with different data types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function calloutData(
   values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[],
 ): Record<string, YValueHover[]> {
@@ -1188,7 +1192,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
 /**
  * This method used for wrapping of y axis labels (tick values).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function createYAxisLabels(
   node: SVGElement | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1276,7 +1280,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * when prop 'showXAxisLablesTooltip' enables to the respected chart.
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function tooltipOfAxislabels(axistooltipProps: {
   tooltipCls: string;
   axis: Selection<SVGSVGElement, unknown, null, undefined> | null;
@@ -1946,7 +1950,7 @@ export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean
  * @param cb - Callback which returns true on matches
  */
 export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
-  let index = findIndex(array, cb);
+  const index = findIndex(array, cb);
 
   if (index < 0) {
     return undefined;
@@ -2713,7 +2717,7 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
 export function isSafeUrl(href: string): boolean {
   if (/^[a-z][a-z0-9+.-]*:/i.test(href)) {
-    return /^https?:/i.test(href);
+    return /^(https?|mailto|tel|ftp):/i.test(href);
   }
   return true;
 }

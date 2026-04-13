@@ -1,9 +1,10 @@
 'use client';
 
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
 import { getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {

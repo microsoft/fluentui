@@ -1,14 +1,14 @@
 import * as utils from './utilities';
 import * as colors from './colors';
-import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
+import type { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
-import {
+import type {
   DataPoint,
   HorizontalBarChartWithAxisDataPoint,
   LineChartPoints,
   VerticalBarChartDataPoint,
 } from '../types/DataPoint';
-import { ScaleBand } from 'd3-scale';
+import type { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
@@ -1569,8 +1569,16 @@ describe('isSafeUrl', () => {
     expect(utils.isSafeUrl('file:///etc/passwd')).toBe(false);
   });
 
-  test('Should block ftp: protocol', () => {
-    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(false);
+  test('Should allow ftp: protocol', () => {
+    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(true);
+  });
+
+  test('Should allow mailto: protocol', () => {
+    expect(utils.isSafeUrl('mailto:user@example.com')).toBe(true);
+  });
+
+  test('Should allow tel: protocol', () => {
+    expect(utils.isSafeUrl('tel:+1234567890')).toBe(true);
   });
 
   test('Should block custom: protocol', () => {

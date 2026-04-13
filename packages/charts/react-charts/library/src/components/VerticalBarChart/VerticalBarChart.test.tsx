@@ -13,15 +13,15 @@ import {
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
-import { VerticalBarChartProps } from './VerticalBarChart.types';
-import { VerticalBarChartDataPoint } from '../../index';
+import type { VerticalBarChartProps } from './VerticalBarChart.types';
+import type { VerticalBarChartDataPoint } from '../../index';
 import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 declare const global: any;
 
 beforeAll(() => {
@@ -945,44 +945,43 @@ describe('VerticalBarChart snapShot testing', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalBarChart
         data={chartPointsVBC}
         onRenderCalloutPerDataPoint={(props: VerticalBarChartDataPoint) =>
@@ -999,7 +998,7 @@ describe('VerticalBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -1040,13 +1039,13 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalBarChart data={[]} enabledLegendsWrapLines />);
+    const wrapper = render(<VerticalBarChart data={[]} enabledLegendsWrapLines />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

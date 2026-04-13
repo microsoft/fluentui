@@ -1,6 +1,6 @@
 import type { Slot } from '@fluentui/react-utilities';
-import { EVENTS } from './constants';
-import * as React from 'react';
+import type { EVENTS } from './constants';
+import type * as React from 'react';
 
 export type ToastId = string;
 export type ToasterId = string;

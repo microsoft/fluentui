@@ -9,7 +9,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useOverflowItem } from '../../useOverflowItem';
-import { OverflowItemProps } from './OverflowItem.types';
+import type { OverflowItemProps } from './OverflowItem.types';
 
 /**
  * Attaches overflow item behavior to its child registered with the OverflowContext.

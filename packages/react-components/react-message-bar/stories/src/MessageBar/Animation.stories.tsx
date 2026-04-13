@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, MessageBarGroupProps, MessageBarIntent } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -7,8 +7,6 @@ import {
   MessageBarTitle,
   MessageBarBody,
   MessageBarGroup,
-  MessageBarGroupProps,
-  MessageBarIntent,
   Button,
   Link,
   makeStyles,

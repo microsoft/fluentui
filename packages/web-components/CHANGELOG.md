@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 07 Apr 2026 20:44:54 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Apr 2026 04:07:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.13)
+
+Thu, 09 Apr 2026 04:07:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.12..@fluentui/web-components_v3.0.0-rc.13)
+
+### Changes
+
+- add base classes for menu-list and radio-group ([PR #35965](https://github.com/microsoft/fluentui/pull/35965) by machi@microsoft.com)
 
 ## [3.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.12)
 

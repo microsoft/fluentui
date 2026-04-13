@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useId, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';

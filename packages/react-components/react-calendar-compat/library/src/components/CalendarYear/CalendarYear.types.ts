@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AnimationDirection } from '../Calendar/Calendar.types';
+import type * as React from 'react';
+import type { AnimationDirection } from '../Calendar/Calendar.types';
 import type { CalendarNavigationIcons } from '../Calendar/calendarNavigationIcons';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 

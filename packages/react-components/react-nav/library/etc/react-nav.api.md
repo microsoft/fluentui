@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ButtonProps } from '@fluentui/react-button';
+import type { ButtonSlots } from '@fluentui/react-button';
+import type { ButtonState } from '@fluentui/react-button';
+import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
@@ -22,20 +22,20 @@ import type { DrawerFooterState } from '@fluentui/react-drawer';
 import type { DrawerHeaderProps } from '@fluentui/react-drawer';
 import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import type { DrawerHeaderState } from '@fluentui/react-drawer';
-import { DrawerProps } from '@fluentui/react-drawer';
-import { DrawerSlots } from '@fluentui/react-drawer';
-import { DrawerState } from '@fluentui/react-drawer';
+import type { DrawerProps } from '@fluentui/react-drawer';
+import type { DrawerSlots } from '@fluentui/react-drawer';
+import type { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { MenuButtonProps } from '@fluentui/react-button';
+import type { MenuButtonProps } from '@fluentui/react-button';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
-import { ToggleButtonProps } from '@fluentui/react-button';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { ToggleButtonProps } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public

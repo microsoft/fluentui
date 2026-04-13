@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { SplitButton } from './SplitButton';
-import { SplitButtonProps } from './SplitButton.types';
+import type { SplitButtonProps } from './SplitButton.types';
 
 describe('SplitButton', () => {
   isConformant({

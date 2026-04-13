@@ -1,4 +1,4 @@
-import { ChartAnnotation, ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
+import type { ChartAnnotation, ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
 
 export interface AnnotationPoint {
   x: number;

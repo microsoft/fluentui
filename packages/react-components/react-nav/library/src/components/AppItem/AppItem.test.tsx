@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { AppItem } from './AppItem';
 import type { AppItemProps } from './AppItem.types';

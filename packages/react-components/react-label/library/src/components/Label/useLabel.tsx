@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { LabelBaseProps, LabelBaseState, LabelProps, LabelState } from './Label.types';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getPartitionedNativeProps, useId, slot } from '@fluentui/react-utilities';
 import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
 import { useAlphaSliderState_unstable } from './useAlphaSliderState';
