@@ -3309,6 +3309,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
+    // @internal (undocumented)
+    handleSubmenuFocusOut: (e: FocusEvent) => void;
+    // @internal
+    handleToggle: (e: Event) => void;
     hidden: boolean;
     role: MenuItemRole;
     roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
@@ -3320,8 +3324,6 @@ export class MenuItem extends FASTElement {
     protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]): void;
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
-    // @internal
-    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -3362,8 +3364,6 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends BaseMenuList {
-    // (undocumented)
-    connectedCallback(): void;
 }
 
 // @public (undocumented)
@@ -3510,8 +3510,6 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
-    // @internal (undocumented)
-    connectedCallback(): void;
 }
 
 // @public
@@ -4000,8 +3998,6 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
-    // @internal (undocumented)
-    connectedCallback(): void;
     size?: TablistSize;
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
@@ -4399,8 +4395,6 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
     size: TreeItemSize;
     // (undocumented)
     protected sizeChanged(): void;
