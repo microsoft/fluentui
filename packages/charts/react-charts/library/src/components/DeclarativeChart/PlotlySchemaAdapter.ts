@@ -3276,12 +3276,15 @@ export const transformPlotlyJsonToPolarChartProps = (
     }
   });
 
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
+
   return {
     data: polarData,
     width: input.layout?.width,
     height: input.layout?.height ?? 400,
     hideLegend,
     ...getPolarAxisProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
     //  ...getTitles(input.layout),
   };
 };

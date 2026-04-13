@@ -4,6 +4,7 @@ import * as React from 'react';
 import { PolarChartProps } from './PolarChart.types';
 import { usePolarChartStyles } from './usePolarChartStyles.styles';
 import { useImageExport } from '../../utilities/hooks';
+import { useRtl } from '../../utilities/utilities';
 import {
   pointRadial as d3PointRadial,
   areaRadial as d3AreaRadial,
@@ -33,6 +34,8 @@ import { extent as d3Extent } from 'd3-array';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
+import { ChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
 const DEFAULT_LEGEND_HEIGHT = 32;
 const LABEL_WIDTH = 36;
@@ -636,6 +639,22 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
     const focusAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
 
+    const isRtl = useRtl();
+
+    const annotationContext: ChartAnnotationContext = React.useMemo(
+      () => ({
+        plotRect: {
+          x: margins.left,
+          y: margins.top,
+          width: svgWidth - margins.left - margins.right,
+          height: svgHeight - margins.top - margins.bottom,
+        },
+        svgRect: { width: svgWidth, height: svgHeight },
+        isRtl,
+      }),
+      [margins, svgWidth, svgHeight, isRtl],
+    );
+
     return (
       <div className={classes.root} ref={chartContainerRef} onMouseLeave={hidePopover} onBlur={hidePopover}>
         <div className={classes.chartWrapper} {...focusAttributes}>
@@ -670,6 +689,9 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               {renderPolarTicks()}
             </g>
           </svg>
+          {props.annotations && props.annotations.length > 0 && (
+            <ChartAnnotationLayer annotations={props.annotations} context={annotationContext} />
+          )}
         </div>
         {renderLegends()}
         {!props.hideTooltip && (
