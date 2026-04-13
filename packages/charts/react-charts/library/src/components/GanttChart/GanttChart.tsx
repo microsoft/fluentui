@@ -8,7 +8,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Legend, Legends } from '../Legends/index';
 import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
 import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
-import { GanttChartProps } from './GanttChart.types';
+import { GanttChartProps, GanttChartAnnotation, GanttChartAnnotationArrow } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { ChartPopoverProps } from '../../index';
 import {
@@ -38,6 +38,49 @@ type DateScale = ScaleTime<Date, number>;
 
 const DEFAULT_BAR_HEIGHT = 24;
 const MIN_BAR_HEIGHT = 1;
+
+/**
+ * Renders an arrow for an annotation pointing to the target position.
+ */
+const renderAnnotationArrow = (
+  arrowProps: GanttChartAnnotationArrow,
+  startX: number,
+  startY: number,
+  endX: number,
+  endY: number,
+  index: number,
+): React.ReactElement | null => {
+  if (!arrowProps.show) {
+    return null;
+  }
+
+  const color = arrowProps.color || '#000000';
+  const width = arrowProps.width || 1;
+  const headSize = arrowProps.headSize || 6;
+  const headStyle = arrowProps.headStyle || 'triangle';
+
+  // Calculate the angle of the line
+  const angle = Math.atan2(endY - startY, endX - startX);
+
+  // Calculate the arrow head points
+  const arrowHeadPoints =
+    headStyle === 'triangle'
+      ? [
+          [endX, endY],
+          [endX - headSize * Math.cos(angle - Math.PI / 6), endY - headSize * Math.sin(angle - Math.PI / 6)],
+          [endX - headSize * Math.cos(angle + Math.PI / 6), endY - headSize * Math.sin(angle + Math.PI / 6)],
+        ]
+          .map(p => p.join(','))
+          .join(' ')
+      : '';
+
+  return (
+    <g key={`annotation-arrow-${index}`}>
+      <line x1={startX} y1={startY} x2={endX} y2={endY} stroke={color} strokeWidth={width} />
+      {headStyle === 'triangle' && <polygon points={arrowHeadPoints} fill={color} />}
+    </g>
+  );
+};
 
 export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwardRef<HTMLDivElement, GanttChartProps>(
   ({ useUTC = true, yAxisCategoryOrder = 'default', maxBarHeight = 24, ...props }, forwardedRef) => {
@@ -428,10 +471,227 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
             />
           );
         });
+
+        // Render annotations
+        const annotations: JSXElement[] = [];
+        if (props.ganttAnnotations && props.ganttAnnotations.length > 0) {
+          props.ganttAnnotations.forEach((annotation: GanttChartAnnotation, index: number) => {
+            const xPos = xScale(annotation.date);
+            const position = annotation.position || 'above';
+            const fontSize = annotation.style?.fontSize || 12;
+            const textColor = annotation.style?.textColor || '#000000';
+            const fontWeight = annotation.style?.fontWeight || 'normal';
+            const backgroundColor = annotation.style?.backgroundColor;
+            const borderColor = annotation.style?.borderColor;
+            const arrowDirection = annotation.arrow?.direction || 'vertical';
+            const arrowOffsetX = annotation.arrow?.offsetX || 40;
+            const arrowOffsetY = annotation.arrow?.offsetY || 0;
+
+            // Calculate text position
+            let textX = xPos;
+            let textY: number;
+            let baseY: number | undefined;
+            let textAnchor: 'start' | 'middle' | 'end' = 'middle';
+
+            if (position === 'header') {
+              // Header annotations are positioned above the chart area
+              // Get the first visible row's Y position and place header above it
+              const firstRowLabel = _yAxisLabels[_yAxisLabels.length - 1];
+              if (firstRowLabel) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const firstRowY = yScale(firstRowLabel as any)!;
+                textY = firstRowY - fontSize - 10; // Position above first row
+              } else {
+                textY = 10; // Fallback position
+              }
+            } else {
+              // Use taskLabel if available, otherwise fall back to taskIndex
+              let yLabel: string | undefined;
+              if (annotation.taskLabel && _yAxisLabels.includes(annotation.taskLabel)) {
+                yLabel = annotation.taskLabel;
+              } else {
+                yLabel = _yAxisLabels[_yAxisLabels.length - 1 - annotation.taskIndex];
+              }
+              if (yLabel === undefined) {
+                return;
+              }
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              baseY = yScale(yLabel as any)! + scaleBandwidth / 2;
+              textY = baseY;
+
+              // Apply horizontal offset for arrows with ax value
+              if (arrowDirection === 'left') {
+                // Text is to the right of the arrow point (ax > 0 in Plotly)
+                textX = xPos + arrowOffsetX;
+                textAnchor = 'start';
+              } else if (arrowDirection === 'right') {
+                // Text is to the left of the arrow point (ax < 0 in Plotly)
+                textX = xPos - arrowOffsetX;
+                textAnchor = 'end';
+              }
+
+              // Apply vertical offset (ay value from Plotly)
+              // In Plotly, negative ay means text is above the arrow point
+              if (arrowOffsetY !== 0) {
+                textY = baseY + arrowOffsetY; // ay is negative for above, positive for below
+              } else if (position === 'above') {
+                textY = baseY - _barHeight.current / 2 - 8;
+              } else if (position === 'below') {
+                textY = baseY + _barHeight.current / 2 + fontSize + 4;
+              }
+            }
+
+            const annotationKey = annotation.id || `annotation-${index}`;
+
+            // Render arrow if configured (skip for header annotations)
+            if (annotation.arrow?.show && position !== 'header' && baseY !== undefined) {
+              let arrowStartX: number;
+              let arrowStartY: number;
+              let arrowEndX: number;
+              let arrowEndY: number;
+
+              // Arrow length - keep it short like Plotly (20-25 pixels)
+              const arrowLength = 20;
+
+              if (arrowDirection === 'left' || arrowDirection === 'right') {
+                // Horizontal/diagonal arrow from text position toward the target row
+                if (arrowDirection === 'left') {
+                  arrowStartX = textX - 5;
+                  arrowEndX = textX - 5 - arrowLength;
+                } else {
+                  arrowStartX = textX + 5;
+                  arrowEndX = textX + 5 + arrowLength;
+                }
+                // Arrow goes from text Y position toward the target row
+                arrowStartY = textY;
+                arrowEndY = baseY;
+              } else {
+                // Vertical arrows
+                arrowEndX = xPos;
+                if (position === 'above') {
+                  arrowStartX = xPos;
+                  arrowStartY = textY + 8; // Start below the text
+                  arrowEndY = baseY - _barHeight.current / 2; // End at top of bar
+                } else if (position === 'below') {
+                  arrowStartX = xPos;
+                  arrowStartY = textY - 4; // Start above the text
+                  arrowEndY = baseY + _barHeight.current / 2; // End at bottom of bar
+                } else {
+                  // For 'on' position with vertical arrow
+                  arrowStartX = xPos;
+                  arrowStartY = baseY - 10;
+                  arrowEndY = baseY;
+                }
+              }
+
+              annotations.push(
+                renderAnnotationArrow(
+                  annotation.arrow,
+                  arrowStartX,
+                  arrowStartY,
+                  arrowEndX,
+                  arrowEndY,
+                  index,
+                ) as JSXElement,
+              );
+            }
+
+            // Render text with optional background for header annotations
+            if (position === 'header' && (backgroundColor || borderColor)) {
+              // Estimate text width (rough approximation)
+              const textWidth = annotation.text.length * fontSize * 0.6;
+              const padding = 6;
+              annotations.push(
+                <g key={annotationKey}>
+                  <rect
+                    x={textX - textWidth / 2 - padding}
+                    y={textY - fontSize - padding / 2}
+                    width={textWidth + padding * 2}
+                    height={fontSize + padding}
+                    fill={backgroundColor || 'transparent'}
+                    stroke={borderColor}
+                    strokeWidth={borderColor ? 2 : 0}
+                    rx={3}
+                    ry={3}
+                  />
+                  <text
+                    x={textX}
+                    y={textY}
+                    textAnchor={textAnchor}
+                    fontSize={fontSize}
+                    fontWeight={fontWeight}
+                    fill={textColor}
+                    role="img"
+                    aria-label={annotation.ariaLabel || annotation.text}
+                  >
+                    {annotation.text}
+                  </text>
+                </g>,
+              );
+            } else if (backgroundColor || borderColor) {
+              // Render text with background for non-header annotations
+              const textWidth = annotation.text.length * fontSize * 0.6;
+              const padding = 4;
+              // Adjust rect position based on text anchor
+              let rectX = textX - padding;
+              if (textAnchor === 'middle') {
+                rectX = textX - textWidth / 2 - padding;
+              } else if (textAnchor === 'end') {
+                rectX = textX - textWidth - padding;
+              }
+              annotations.push(
+                <g key={annotationKey}>
+                  <rect
+                    x={rectX}
+                    y={textY - fontSize}
+                    width={textWidth + padding * 2}
+                    height={fontSize + padding}
+                    fill={backgroundColor || 'transparent'}
+                    stroke={borderColor}
+                    strokeWidth={borderColor ? 1 : 0}
+                    rx={2}
+                    ry={2}
+                  />
+                  <text
+                    x={textX}
+                    y={textY - padding / 2}
+                    textAnchor={textAnchor}
+                    fontSize={fontSize}
+                    fontWeight={fontWeight}
+                    fill={textColor}
+                    role="img"
+                    aria-label={annotation.ariaLabel || annotation.text}
+                  >
+                    {annotation.text}
+                  </text>
+                </g>,
+              );
+            } else {
+              // Render plain text
+              annotations.push(
+                <text
+                  key={annotationKey}
+                  x={textX}
+                  y={textY}
+                  textAnchor={textAnchor}
+                  fontSize={fontSize}
+                  fontWeight={fontWeight}
+                  fill={textColor}
+                  role="img"
+                  aria-label={annotation.ariaLabel || annotation.text}
+                >
+                  {annotation.text}
+                </text>,
+              );
+            }
+          });
+        }
+
         return (
           <g>
             {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
             {bars}
+            {annotations}
           </g>
         );
       },
@@ -444,8 +704,10 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
         _onBarFocus,
         _onBarHover,
         _onBarLeave,
+        _yAxisLabels,
         _yAxisType,
         props.enableGradient,
+        props.ganttAnnotations,
         props.roundCorners,
       ],
     );
