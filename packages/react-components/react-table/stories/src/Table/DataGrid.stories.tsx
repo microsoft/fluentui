@@ -19,17 +19,14 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   useTableSort,
   createTableColumn,
-  TableColumnId,
-  PresenceBadgeStatus,
   Avatar,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, TableColumnDefinition, TableColumnId, PresenceBadgeStatus } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

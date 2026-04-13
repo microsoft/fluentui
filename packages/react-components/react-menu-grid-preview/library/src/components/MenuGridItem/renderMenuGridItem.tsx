@@ -2,7 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types';
+import type { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types';
 
 /**
  * Function that renders the final JSX of the component

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { EventHandler } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { EventHandler } from '@fluentui/react-utilities';
 
 import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 

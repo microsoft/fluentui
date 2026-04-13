@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Body1, Caption1, Checkbox, JSXElement, makeStyles } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Body1, Caption1, Checkbox, makeStyles } from '@fluentui/react-components';
 import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
 import { Button } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';

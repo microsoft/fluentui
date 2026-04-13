@@ -3,7 +3,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
-import { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
+import type { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
 
 const useBaseStyles = makeStyles({
   /* use subtle ToggleButton selected styles for Toolbar Radio selected state */

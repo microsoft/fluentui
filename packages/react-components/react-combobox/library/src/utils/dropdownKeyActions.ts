@@ -1,5 +1,5 @@
 import * as keys from '@fluentui/keyboard-keys';
-import * as React from 'react';
+import type * as React from 'react';
 
 /**
  * enum of actions available in any type of managed dropdown control

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { TreeContextValue } from '../../contexts';
-import { TreeContextValues, TreeState } from './Tree.types';
+import type { TreeContextValue } from '../../contexts';
+import type { TreeContextValues, TreeState } from './Tree.types';
 
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
   'use no memo';

@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 
 // @internal (undocumented)
 export type Context<Value> = React_2.Context<Value> & {

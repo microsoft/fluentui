@@ -1,11 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses, makeResetStyles, GriffelStyle } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
+import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { textClassNames } from '@fluentui/react-text';
-import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';

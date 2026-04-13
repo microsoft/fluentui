@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { CarouselSliderContextValue, CarouselSliderState } from './CarouselSlider.types';
+import type { CarouselSliderContextValue, CarouselSliderState } from './CarouselSlider.types';
 
 const carouselSliderContext = React.createContext<CarouselSliderContextValue | undefined>(undefined);
 

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { MenuListContextValue } from '@fluentui/react-menu';
 
 import type { MenuGridContextValue } from '../../contexts/menuGridContext';

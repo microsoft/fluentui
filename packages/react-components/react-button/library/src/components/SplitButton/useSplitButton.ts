@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { useId, slot } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';

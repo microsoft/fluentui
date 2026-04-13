@@ -1,8 +1,9 @@
 'use client';
 
-import * as React from 'react';
-import { TreeProps, TreeState } from '../Tree';
-import { SubtreeContextValue, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
+import type * as React from 'react';
+import type { TreeProps, TreeState } from '../Tree';
+import type { SubtreeContextValue } from '../contexts/index';
+import { useSubtreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import { presenceMotionSlot } from '@fluentui/react-motion';

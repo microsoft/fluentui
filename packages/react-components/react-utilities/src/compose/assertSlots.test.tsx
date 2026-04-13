@@ -1,7 +1,7 @@
 import { assertSlots } from './assertSlots';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import * as slot from './slot';
-import { ComponentProps, ComponentState, Slot } from './types';
+import type { ComponentProps, ComponentState, Slot } from './types';
 
 type TestSlots = {
   slotA?: Slot<'div', 'a'>;

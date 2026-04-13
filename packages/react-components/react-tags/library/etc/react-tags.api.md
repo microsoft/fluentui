@@ -4,17 +4,17 @@
 
 ```ts
 
-import { AvatarShape } from '@fluentui/react-avatar';
-import { AvatarSize } from '@fluentui/react-avatar';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { AvatarShape } from '@fluentui/react-avatar';
+import type { AvatarSize } from '@fluentui/react-avatar';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { Slot } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public

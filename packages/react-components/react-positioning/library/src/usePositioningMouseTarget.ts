@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { createVirtualElementFromClick } from './createVirtualElementFromClick';
-import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
+import type { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
 
 /**
  * A state hook that manages a popper virtual element from mouseevents.

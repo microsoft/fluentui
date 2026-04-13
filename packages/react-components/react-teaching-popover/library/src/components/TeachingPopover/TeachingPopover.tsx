@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useTeachingPopover_unstable } from './useTeachingPopover';
 import { renderTeachingPopover_unstable } from './renderTeachingPopover';
 import type { TeachingPopoverProps } from './TeachingPopover.types';

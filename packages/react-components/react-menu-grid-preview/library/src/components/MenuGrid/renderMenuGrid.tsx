@@ -3,7 +3,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuListProvider } from '@fluentui/react-menu';
-import { MenuGridContextValues, MenuGridSlots, MenuGridState } from './MenuGrid.types';
+import type { MenuGridContextValues, MenuGridSlots, MenuGridState } from './MenuGrid.types';
 import { MenuGridContextProvider } from '../../contexts/menuGridContext';
 
 /**

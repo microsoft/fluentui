@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
-import { ColorPickerContextValue } from '../../contexts/colorPicker';
+import type { ColorPickerContextValue } from '../../contexts/colorPicker';
 import type { HsvColor } from '../../types/color';
 
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {

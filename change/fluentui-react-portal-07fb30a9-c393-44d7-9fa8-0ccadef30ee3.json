@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: enforce consistent type imports",
+  "packageName": "@fluentui/react-portal",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "none"
+}

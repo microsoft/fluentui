@@ -1,6 +1,13 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { TagAppearance, TagShape, TagSize, TagValue, TagDismissHandler, TagSelectHandler } from '../../utils/types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { InteractionTagContextValue } from '../../contexts/interactionTagContext';
+import type {
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissHandler,
+  TagSelectHandler,
+} from '../../utils/types';
 
 export type InteractionTagContextValues = {
   interactionTag: InteractionTagContextValue;

@@ -10,7 +10,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   DataGridBody,
   DataGridRow,
@@ -19,12 +18,10 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableCellLayout,
-  TableColumnDefinition,
   createTableColumn,
-  DataGridProps,
 } from '@fluentui/react-components';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition, DataGridProps } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

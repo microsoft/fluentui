@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagPickerOption } from './TagPickerOption';
-import { TagPickerOptionProps } from './TagPickerOption.types';
+import type { TagPickerOptionProps } from './TagPickerOption.types';
 
 describe('TagPickerOption', () => {
   isConformant<TagPickerOptionProps>({

@@ -1,5 +1,5 @@
-import { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
-import { ImmutableSet } from './ImmutableSet';
+import type { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
+import type { ImmutableSet } from './ImmutableSet';
 
 export type HeadlessTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> & {
   value: TreeItemValue;

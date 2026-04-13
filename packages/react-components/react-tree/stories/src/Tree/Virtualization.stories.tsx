@@ -1,24 +1,28 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
+import type {
+  JSXElement,
   FlatTreeProps,
-  FlatTreeItem,
-  TreeItemLayout,
-  TreeProvider,
   FlatTreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
-  useFlatTree_unstable,
   HeadlessFlatTreeItemProps,
+  HeadlessFlatTreeItem,
+  ForwardRefComponent,
+} from '@fluentui/react-components';
+import {
+  FlatTreeItem,
+  TreeItemLayout,
+  TreeProvider,
+  useFlatTree_unstable,
   useFlatTreeStyles_unstable,
   useFlatTreeContextValues_unstable,
-  HeadlessFlatTreeItem,
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-components';
-import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { ForwardRefComponent, assertSlots } from '@fluentui/react-components';
+import type { FixedSizeListProps, ListChildComponentProps } from 'react-window';
+import { FixedSizeList } from 'react-window';
+import { assertSlots } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 

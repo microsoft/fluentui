@@ -1,4 +1,4 @@
-import { AvatarGroupContextValue, AvatarGroupContextValues, AvatarGroupState } from '../AvatarGroup';
+import type { AvatarGroupContextValue, AvatarGroupContextValues, AvatarGroupState } from '../AvatarGroup';
 
 export const useAvatarGroupContextValues = (state: AvatarGroupState): AvatarGroupContextValues => {
   const { layout, size } = state;

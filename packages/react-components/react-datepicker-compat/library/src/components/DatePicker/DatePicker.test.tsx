@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render, RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
 import { datePickerClassNames } from './useDatePickerStyles.styles';
