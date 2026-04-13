@@ -2,7 +2,7 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
-import { ToolbarButtonState } from './ToolbarButton.types';
+import type { ToolbarButtonState } from './ToolbarButton.types';
 
 const useBaseStyles = makeStyles({
   vertical: {

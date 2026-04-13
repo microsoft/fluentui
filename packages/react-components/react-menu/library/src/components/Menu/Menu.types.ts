@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';

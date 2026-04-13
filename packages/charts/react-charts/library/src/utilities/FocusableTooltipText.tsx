@@ -6,7 +6,7 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { hasOverflow } from './overflow-utils';
 import { getAccessibleDataObject } from './index';
-import { AccessibilityProps } from '../types/index';
+import type { AccessibilityProps } from '../types/index';
 import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ContextualMenuItemType } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { MenuDividerProps } from '@fluentui/react-components';
 import {
   MenuItem,
   MenuDivider,
@@ -13,7 +14,6 @@ import {
   MenuList,
   MenuPopover,
   MenuItemCheckbox,
-  MenuDividerProps,
 } from '@fluentui/react-components';
 
 import { shimMenuHeaderProps, shimMenuItemCheckboxProps, shimMenuItemProps, shimMenuProps } from './shimMenuProps';

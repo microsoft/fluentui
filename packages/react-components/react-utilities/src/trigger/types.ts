@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 /**
  * Allows a component to be tagged as a FluentUI trigger component.

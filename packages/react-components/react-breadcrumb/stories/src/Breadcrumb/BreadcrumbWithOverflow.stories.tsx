@@ -1,12 +1,11 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ButtonProps } from '@fluentui/react-components';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbButton,
   BreadcrumbDivider,
   partitionBreadcrumbItems,
-  ButtonProps,
   makeStyles,
   tokens,
   Button,

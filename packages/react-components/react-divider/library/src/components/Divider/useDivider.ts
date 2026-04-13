@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useId, slot } from '@fluentui/react-utilities';
 import type { DividerBaseProps, DividerBaseState, DividerProps, DividerState } from './Divider.types';
 

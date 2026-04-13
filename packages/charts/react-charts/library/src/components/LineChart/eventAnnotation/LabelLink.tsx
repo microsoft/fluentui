@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { EventAnnotation } from '../../../types/EventAnnotation';
+import type { EventAnnotation } from '../../../types/EventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
 import { tokens } from '@fluentui/react-theme';

@@ -1,7 +1,7 @@
-import { Field, makeStyles, tokens, Switch, PresenceComponentProps } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceComponentProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SelectionHookParams, SelectionItemId, SelectionMethods } from './types';
+import type { SelectionHookParams, SelectionItemId, SelectionMethods } from './types';
 import { useControllableState } from '../hooks/useControllableState';
 import { createSetFromIterable } from '../utils/createSetFromIterable';
 

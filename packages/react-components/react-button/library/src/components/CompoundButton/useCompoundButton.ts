@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { useButton_unstable } from '../Button/index';
 import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';

@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
-import { ToastContainerContextValue } from '../../contexts/toastContainerContext';
+import type { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
+import type { ToastContainerContextValue } from '../../contexts/toastContainerContext';
 
 export type ToastTitleSlots = {
   root: NonNullable<Slot<'div'>>;

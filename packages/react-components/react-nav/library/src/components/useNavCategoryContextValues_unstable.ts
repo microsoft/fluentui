@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { NavCategoryState } from '../NavCategory';
-import { NavCategoryContextValue, NavCategoryContextValues } from './NavCategoryContext';
+import type { NavCategoryState } from '../NavCategory';
+import type { NavCategoryContextValue, NavCategoryContextValues } from './NavCategoryContext';
 
 export function useNavCategoryContextValues_unstable(state: NavCategoryState): NavCategoryContextValues {
   const { open, value } = state;

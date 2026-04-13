@@ -1,5 +1,5 @@
-import { AvatarGroupContextValue, AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
-import { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
+import type { AvatarGroupContextValue, AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
+import type { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 
 export const useAvatarGroupPopoverContextValues_unstable = (
   state: AvatarGroupPopoverState,

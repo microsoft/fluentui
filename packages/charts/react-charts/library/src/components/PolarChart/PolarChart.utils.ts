@@ -1,17 +1,14 @@
+import type { NumberValue, ScaleBand, ScaleContinuousNumeric, ScaleTime } from 'd3-scale';
 import {
   scaleBand as d3ScaleBand,
   scaleLinear as d3ScaleLinear,
   scaleLog as d3ScaleLog,
   scaleTime as d3ScaleTime,
   scaleUtc as d3ScaleUtc,
-  NumberValue,
-  ScaleBand,
-  ScaleContinuousNumeric,
-  ScaleTime,
 } from 'd3-scale';
 import { extent as d3Extent, range as d3Range } from 'd3-array';
 import { format as d3Format } from 'd3-format';
-import { AxisScaleType } from '../../types/DataPoint';
+import type { AxisScaleType } from '../../types/DataPoint';
 import {
   generateDateTicks,
   generateNumericTicks,
@@ -26,7 +23,7 @@ import {
   formatDateToLocaleString,
 } from '@fluentui/chart-utilities';
 import { timeFormat as d3TimeFormat, utcFormat as d3UtcFormat } from 'd3-time-format';
-import { PolarChartProps } from './PolarChart.types';
+import type { PolarChartProps } from './PolarChart.types';
 
 export const EPSILON = 1e-6;
 

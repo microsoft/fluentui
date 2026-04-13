@@ -11,7 +11,7 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
+import type { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
 import {
   Checkmark12Filled,
   Checkmark16Filled,

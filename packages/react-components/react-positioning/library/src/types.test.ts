@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { OnPositioningEndEvent } from './types';
-import { PositioningProps } from './types';
+import type { PositioningProps } from './types';
 
 describe('PositioningProps', () => {
   it('should not break API', () => {

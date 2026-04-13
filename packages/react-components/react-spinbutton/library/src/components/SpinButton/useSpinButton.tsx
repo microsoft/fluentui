@@ -11,7 +11,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
-import {
+import type {
   SpinButtonBaseProps,
   SpinButtonBaseState,
   SpinButtonProps,

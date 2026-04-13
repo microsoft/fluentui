@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
+import type { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ToastIntent } from '../../state/types';
 
 export type ToastSlots = {

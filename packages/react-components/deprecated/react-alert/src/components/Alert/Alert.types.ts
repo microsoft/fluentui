@@ -1,5 +1,5 @@
-import { Avatar } from '@fluentui/react-avatar';
-import { Button } from '@fluentui/react-button';
+import type { Avatar } from '@fluentui/react-avatar';
+import type { Button } from '@fluentui/react-button';
 
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 

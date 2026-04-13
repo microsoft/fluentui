@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import type {

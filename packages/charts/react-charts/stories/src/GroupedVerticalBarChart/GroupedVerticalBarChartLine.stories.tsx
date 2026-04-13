@@ -1,11 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  GroupedVerticalBarChart,
-  GroupedVerticalBarChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { GroupedVerticalBarChartProps } from '@fluentui/react-charts';
+import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Field, Label, Radio, RadioGroup, Slider, Switch, useId } from '@fluentui/react-components';
 
 const chartData: GroupedVerticalBarChartProps['dataV2'] = [

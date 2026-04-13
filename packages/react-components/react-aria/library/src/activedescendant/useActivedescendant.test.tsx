@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useActiveDescendant } from './useActiveDescendant';
-import { ActiveDescendantImperativeRef } from './types';
+import type { ActiveDescendantImperativeRef } from './types';
 import { render } from '@testing-library/react';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
 

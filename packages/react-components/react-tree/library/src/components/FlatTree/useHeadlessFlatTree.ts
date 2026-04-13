@@ -2,7 +2,8 @@
 
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { HeadlessTreeItem, HeadlessTreeItemProps, createHeadlessTree } from '../../utils/createHeadlessTree';
+import type { HeadlessTreeItem, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
+import { createHeadlessTree } from '../../utils/createHeadlessTree';
 import { treeDataTypes } from '../../utils/tokens';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
@@ -10,8 +11,8 @@ import type { TreeItemValue } from '../../TreeItem';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { ImmutableSet } from '../../utils/ImmutableSet';
 import { createNextFlatCheckedItems, useFlatControllableCheckedItems } from './useFlatControllableCheckedItems';
-import { FlatTreeProps } from './FlatTree.types';
-import {
+import type { FlatTreeProps } from './FlatTree.types';
+import type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeNavigationData_unstable,

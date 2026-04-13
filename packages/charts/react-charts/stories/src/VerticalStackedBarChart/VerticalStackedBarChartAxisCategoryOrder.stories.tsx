@@ -1,11 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  AxisCategoryOrder,
-  getNextColor,
-} from '@fluentui/react-charts';
+import type { VerticalStackedChartProps, AxisCategoryOrder } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, getNextColor } from '@fluentui/react-charts';
 import { Button, Dropdown, Option, Field } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */

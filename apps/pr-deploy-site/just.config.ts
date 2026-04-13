@@ -3,6 +3,10 @@ import path from 'path';
 import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts-tasks';
 import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
 
+function getDeployDirectoryName(packageName: string) {
+  return packageName.replace(/^@[^/]+\//, '');
+}
+
 task('clean', cleanTask());
 
 const gitRoot = findGitRoot();
@@ -29,6 +33,7 @@ const dependencies = [
   '@fluentui/public-docsite-v9',
   '@fluentui/perf-test-react-components',
   '@fluentui/theme-designer',
+  '@fluentui/react-headless-components-preview-stories',
   // web-components
   '@fluentui/web-components',
   // charting
@@ -45,7 +50,10 @@ repoDeps.forEach(dep => {
 
   if (fs.existsSync(packageDist)) {
     instructions.push(
-      ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', path.basename(dep.packagePath))),
+      ...copyInstructions.copyFilesInDirectory(
+        packageDist,
+        path.join('dist', getDeployDirectoryName(dep.packageJson.name)),
+      ),
     );
     deployedPackages.add(dep.packageJson.name);
   }

@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
-import { TagAppearance, TagShape, TagSize } from '../../utils/types';
-import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
+import type { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import type { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
 export type TagContextValues = TagAvatarContextValues;
 

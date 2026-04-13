@@ -1,6 +1,6 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import { fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
-import { MessageBarGroupProps } from './MessageBarGroup.types';
+import type { MessageBarGroupProps } from './MessageBarGroup.types';
 
 /**
  * A presence component for a MessageBar to enter and exit from a MessageBarGroup.

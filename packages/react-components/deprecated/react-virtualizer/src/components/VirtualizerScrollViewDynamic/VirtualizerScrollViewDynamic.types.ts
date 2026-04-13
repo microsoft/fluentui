@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type {
   VirtualizerConfigProps,

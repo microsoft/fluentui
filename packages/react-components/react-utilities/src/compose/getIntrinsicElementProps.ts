@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { getNativeElementProps } from '../utils/getNativeElementProps';
 import type { InferredElementRefType, UnknownSlotProps } from './types';
 import type { DistributiveOmit } from '../utils/types';

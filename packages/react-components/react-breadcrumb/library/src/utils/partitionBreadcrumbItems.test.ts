@@ -1,4 +1,5 @@
-import { partitionBreadcrumbItems, PartitionBreadcrumbItemsOptions } from './partitionBreadcrumbItems';
+import type { PartitionBreadcrumbItemsOptions } from './partitionBreadcrumbItems';
+import { partitionBreadcrumbItems } from './partitionBreadcrumbItems';
 
 type TestData = [PartitionBreadcrumbItemsOptions<number>, ReturnType<typeof partitionBreadcrumbItems>][];
 

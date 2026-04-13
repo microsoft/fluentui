@@ -1,23 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  VerticalBarChart,
-  VerticalBarChartDataPoint,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Switch, Checkbox, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { motionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
