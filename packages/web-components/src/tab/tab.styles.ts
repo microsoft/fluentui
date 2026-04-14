@@ -77,6 +77,23 @@ export const styles = css`
     z-index: 1;
   }
 
+  /*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tablist.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+  @supports (anchor-name: --a) and (text-size-adjust: auto) {
+    :host([aria-selected='true'])::after {
+      background-color: transparent;
+    }
+
+    :host([aria-selected='true']:hover)::after {
+      background-color: ${colorNeutralStroke1Hover};
+    }
+  }
+
   :host([aria-selected='true'][disabled])::after {
     background-color: ${colorNeutralForegroundDisabled};
   }

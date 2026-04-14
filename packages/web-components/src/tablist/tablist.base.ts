@@ -130,14 +130,12 @@ export class BaseTablist extends FASTElement {
         firstEnabledTabId = tab.id;
       }
 
-      if (this.activeid === tab.id) {
-        tab.toggleAttribute('focusgroupstart', true);
-      }
+      const isSelected = this.activeid === tab.id;
+      tab.setAttribute('aria-selected', isSelected.toString());
+      tab.toggleAttribute('focusgroupstart', isSelected);
 
       // Only set the data-hasIndent attribute if the tab has a start slot and the orientation is vertical
-      if (hasStartSlot && this.orientation === TablistOrientation.vertical) {
-        tab.setAttribute('data-hasIndent', '');
-      }
+      tab.toggleAttribute('data-hasIndent', hasStartSlot && this.orientation === TablistOrientation.vertical);
 
       if (connectToPanel) {
         const ariaControls = tab.getAttribute('aria-controls') ?? '';
@@ -178,7 +176,7 @@ export class BaseTablist extends FASTElement {
     }
 
     if (prevTab) {
-      prevTab.removeAttribute('aria-selected');
+      prevTab.setAttribute('aria-selected', 'false');
       prevTab.toggleAttribute('focusgroupstart', false);
       const prevPanel = this.tabPanelMap.get(prevTab);
       if (prevPanel) {

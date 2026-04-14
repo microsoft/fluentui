@@ -3996,10 +3996,8 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 
 // @public
 export class Tablist extends BaseTablist {
-    activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
     size?: TablistSize;
-    tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public
