@@ -22,7 +22,7 @@ visual design.
 Headless components include:
 
 - behavior and ARIA from base hooks
-- existing slot API
+- existing slot API (root slot only by default — optional slots such as icon, avatar, or indicator are not rendered unless explicitly provided via props)
 - forward refs
 - stable state `data-*` attributes on slots
 
@@ -31,9 +31,6 @@ Headless components exclude:
 - Griffel styles and tokens wiring
 - visual design props (`appearance`, `size`, `shape`)
 - built-in motion/animation
-
-Use headless when teams need Fluent behavior with non-Fluent visuals.
-Use styled components when teams want Fluent visuals with branding tweaks.
 
 ## Problem Statement
 
@@ -67,6 +64,9 @@ Ship headless components from `@fluentui/react-headless-components`.
 import { Button, Checkbox } from '@fluentui/react-headless-components';
 ```
 
+> **Note:** only the package root (export map entry point) is the supported import surface.
+> Deep imports such as `@fluentui/react-headless-components/src/Button` are not part of the public API.
+
 All convergence components are in scope. Simple components (Button, Checkbox, RadioButton,
 Toggle, Badge) ship first; compound/composite components (Menu, Dialog, Combobox, Select)
 follow in subsequent phases.
@@ -87,8 +87,10 @@ export const Button = React.forwardRef((props, ref) => {
 ```
 
 This abstraction preserves the existing base architecture but removes repetitive wiring from app
-code. Note: headless components wrap existing hooks — they introduce no new behavior or
-reimplemented logic.
+code.
+
+> **💁‍♂️ Note:** headless components wrap existing hooks — they introduce no new behavior or
+> reimplemented logic.
 
 Compound components wire sub-components and their shared context the same way styled variants
 do; the difference is that Griffel styles are omitted. Sub-components are exported from the
@@ -99,6 +101,10 @@ package root alongside the parent (e.g. `Menu`, `MenuTrigger`, `MenuPopover`, `M
 
 Headless state hooks map internal state to stable `data-*` attributes. Components then render
 those attributes on slots so styling remains possible without direct hook state access.
+
+> **Note:** this same pattern applies to icon-related headless components (e.g. `CompoundButton`
+> icon slot, `MenuItem` icon position) — icon presence and position states are surfaced as
+> `data-*` attributes rather than as style props.
 
 Example (simplified):
 
@@ -166,6 +172,7 @@ Rules:
 - no design-state attributes (no appearance/size/shape)
 - removal/rename is breaking (major)
 - adding a new attribute is non-breaking for CSS selectors; it may affect snapshot tests, which is acceptable
+- data attributes must be typed on the component `State` type (e.g. as `'data-disabled'?: string`) so they surface in `.d.ts` declarations, enabling automatic Storybook props-table population and agent metadata extraction
 - data attributes must be documented on the components documentation page (Storybook docsite)
 - base state attributes are reserved; if consumers provide the same `data-*` attribute, the base-hook value wins —
   this prevents state misrepresentation (a disabled button must not appear enabled regardless of consumer props)
