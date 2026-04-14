@@ -29,27 +29,33 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
 2. **Start the component's Storybook dev server:**
 
    ```bash
-   # Use the stories package directly — much faster than the full VR tests app
-   yarn nx run react-<component>-stories:start &
+   yarn nx run react-<component>:start &
    ```
 
-   Wait for Storybook to be ready on port 6006. Check with:
+   The port is **dynamic** — parse it from the Storybook startup output. Look for the `Local:` line
+   (e.g. `Local: http://localhost:61582/`). Extract the port and store it in a variable:
 
    ```bash
-   curl -s -o /dev/null -w "%{http_code}" http://localhost:6006 2>/dev/null
+   # Wait for Storybook to print its URL, then extract the port
+   # Or poll common ports until one responds:
+   for port in 6006 61582 $(seq 6007 6020); do
+     STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:$port 2>/dev/null)
+     if [ "$STATUS" = "200" ]; then SB_PORT=$port; break; fi
+   done
+   echo "Storybook on port $SB_PORT"
    ```
 
 3. **Open the page with playwright-cli:**
 
    ```bash
-   playwright-cli open "http://localhost:6006"
+   playwright-cli open "http://localhost:$SB_PORT"
    ```
 
 4. **Navigate to the specific story iframe** and capture a screenshot.
    Use the iframe URL for a clean render without Storybook chrome:
 
    ```bash
-   playwright-cli goto "http://localhost:6006/iframe.html?id=components-<component>-<component>--default&viewMode=story"
+   playwright-cli goto "http://localhost:$SB_PORT/iframe.html?id=components-<component>--default&viewMode=story"
    playwright-cli screenshot --filename=/tmp/visual-test-$ARGUMENTS.png
    ```
 
@@ -68,23 +74,23 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
 8. **Clean up** when done:
    ```bash
    playwright-cli close
-   # Kill the storybook process
-   kill %1 2>/dev/null
+   # Kill storybook by port
+   lsof -i :$SB_PORT -t 2>/dev/null | xargs kill 2>/dev/null
    ```
 
 ## Story ID Pattern
 
-Story IDs follow the pattern `<category>-<subcategory>-<component>--<story>`:
+Story IDs follow the pattern `<category>-<component>--<story>`:
 
 ```
 # Default story for Button
-components-button-button--default
+components-button--default
 
 # Appearance variant
-components-button-button--appearance
+components-button--appearance
 
 # Default story for Menu
-components-menu-menu--default
+components-menu--default
 ```
 
 To discover exact story IDs, open the Storybook sidebar and use `snapshot` to find navigation links,
@@ -93,11 +99,11 @@ or check the story file's `export default { title: '...' }` metadata.
 ## Iframe URL Format
 
 ```
-# Local storybook
-http://localhost:6006/iframe.html?id=components-button-button--default&viewMode=story
+# Local storybook (replace $SB_PORT with the actual port)
+http://localhost:$SB_PORT/iframe.html?id=components-button--default&viewMode=story
 
 # Dark theme
-http://localhost:6006/iframe.html?id=components-button-button--default&viewMode=story&globals=theme:webDarkTheme
+http://localhost:$SB_PORT/iframe.html?id=components-button--default&viewMode=story&globals=theme:webDarkTheme
 ```
 
 The `/iframe.html` URL gives a clean render without Storybook chrome — always prefer this for screenshots.
