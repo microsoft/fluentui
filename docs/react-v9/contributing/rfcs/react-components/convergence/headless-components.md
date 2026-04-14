@@ -6,53 +6,55 @@
 
 ## Summary
 
-We already have base hooks, render functions, and context value hooks.
-This RFC proposes the next abstraction layer: fully featured unstyled primitives for all
-convergence components so consumers do not need to wire `useButton` + `renderButton`
-for every usage, and so internal component state is exposed as stable `data-*` attributes
-for CSS targeting without direct hook access.
+Fluent v9's headless layer is a behavior-first, styling-agnostic foundation: it provides reliable interaction, accessibility, and composition patterns so product teams can bring their own visual system — CSS Modules, design tokens, Tailwind, whatever fits — while staying on a shared Fluent contract. It's intentionally moving toward modern browser primitives to cut JS from the boot path and keep the layer evergreen.
 
-Introduce `@fluentui/react-headless-components`: unstyled components built from
-`use${ComponentName}` + `render${ComponentName}`, with stable state
-`data-*` attributes emitted by headless state hooks.
+We already ship base hooks (`useButton`, `renderButton`) and context value hooks. This RFC proposes the next step up that stack: fully featured unstyled primitives so consumers don't have to hand-wire `useButton + renderButton` for every component, and so component state is surfaced as stable `data-*` attributes for CSS targeting without requiring direct hook access.
 
-Goal: give teams a supported, low-boilerplate path to Fluent behavior/accessibility with custom
-visual design.
+Introduce `@fluentui/react-headless-components`: components built from the existing hook + render layer, with state reflected as `data-*` attributes on DOM slots.
 
-Headless components include:
-
-- behavior and ARIA from base hooks
-- existing slot API (root slot only by default — optional slots such as icon, avatar, or indicator are not rendered unless explicitly provided via props)
-- forward refs
-- stable state `data-*` attributes on slots
-
-Headless components exclude:
-
-- Griffel styles and tokens wiring
-- visual design props (`appearance`, `size`, `shape`)
-- built-in motion/animation
+Goal: give teams a supported, low-boilerplate path to Fluent behavior and accessibility with complete freedom over visual design.
 
 ## Problem Statement
 
-Headless hooks solve logic reuse but leave two gaps:
+Headless hooks solve logic reuse but leave two gaps.
 
-1. Wiring gap: consumers repeat hook + render plumbing for each component.
-2. State visibility gap at the component abstraction: when consumers use a full component
-   (`<Button />`) they do not get direct state access like they do in hooks, so they cannot
-   reliably style based on internal state.
+**Gap 1 — wiring boilerplate.** Every consumer who wants custom styling today must wire `useButton + renderButton` by hand, for every component they use:
+
+```tsx
+const MyButton = React.forwardRef((props, ref) => {
+  const state = useButton(props, ref);
+  return renderButton(state);
+});
+```
+
+This works, but across 30+ convergence components it's a lot of repetitive plumbing that every team has to own and maintain in their own codebase.
+
+**Gap 2 — state visibility at the component level.** When consumers use `<Button />` they don't get direct access to internal state the way hooks do, so they can't reliably style based on whether the button is disabled, icon-only, etc. — short of reaching into undocumented class names or reimplementing hooks themselves.
 
 This RFC closes both:
 
-- #1 via pre-wired headless components for all convergence components, removing repetitive
-  hook + render wiring from app code
-- #2 via stable `data-*` attributes emitted by state hooks, keeping full-component DX
-  while preserving state-driven styling
+- **Gap 1:** pre-wired headless components for all convergence components, removing the hook + render boilerplate from app code
+- **Gap 2:** stable `data-*` attributes emitted by state hooks, so full-component DX is preserved while state-driven styling remains straightforward
 
 ## Decision Drivers
 
 - reduce repeated hook + render wiring for common component usage
 - provide a stable, documented state-to-attribute contract for CSS targeting
 - preserve accessibility behavior parity with styled components
+
+## Prior Art
+
+Several widely-used headless component libraries expose component state via `data-*` attributes, establishing this as a recognized ecosystem pattern.
+
+**[Radix UI](https://www.radix-ui.com/)** uses a single `data-state` attribute per component with semantic string values (`data-state="open"` / `"closed"` on Dialog, `data-state="checked"` / `"unchecked"` on Checkbox). Additional attributes like `data-disabled` and `data-highlighted` cover contextual state.
+
+**[React Aria Components](https://react-spectrum.adobe.com/react-aria/react-aria-components.html)** (Adobe) emits granular per-property `data-*` attributes (`data-hovered`, `data-pressed`, `data-focused`, `data-focus-visible`, `data-disabled`, `data-selected`, `data-orientation`, etc.). It also supports render props as an alternative — consumers can pass a function to `className` or `style` that receives the full component state object.
+
+**[Base UI](https://base-ui.com/)** (MUI) uses a similar `data-*` attribute model and additionally supports a `className` callback that receives component state, giving consumers both a CSS-native and a JS-driven option.
+
+The `data-*` attribute approach is the common denominator across all three: it works with plain CSS, CSS Modules, Tailwind, and CSS-in-JS without requiring a JavaScript styling layer. The render-prop and `className`-callback alternatives that Base UI and React Aria Components also offer are what we evaluated and rejected in [Alternatives Considered](#alternatives-considered).
+
+Fluent's proposal aligns with the `data-*` pattern while adding an explicit versioned contract: attributes are typed on the component `State` type and removal or rename is treated as a breaking change.
 
 ## Proposal
 
@@ -61,24 +63,27 @@ This RFC closes both:
 Ship headless components from `@fluentui/react-headless-components`.
 
 ```tsx
-import { Button, Checkbox } from '@fluentui/react-headless-components';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+} from '@fluentui/react-headless-components/Accordion';
+import { Button } from '@fluentui/react-headless-components/Button';
 ```
-
-> **Note:** only the package root (export map entry point) is the supported import surface.
-> Deep imports such as `@fluentui/react-headless-components/src/Button` are not part of the public API.
 
 All convergence components are in scope. Simple components (Button, Checkbox, RadioButton,
 Toggle, Badge) ship first; compound/composite components (Menu, Dialog, Combobox, Select)
 follow in subsequent phases.
 
-Headless hooks remain exported from `@fluentui/react-headless-components`.
+Headless hooks remain exported from `@fluentui/react-headless-components/[Component]`.
 
 ### Composition Model
 
 Each headless component is hook + render only (and option context if it's a composite component).
 
 ```tsx
-import { useButton, renderButton } from '@fluentui/react-headless-components';
+import { useButton, renderButton } from '@fluentui/react-headless-components/Button';
 
 export const Button = React.forwardRef((props, ref) => {
   const state = useButton(props, ref);
@@ -101,10 +106,6 @@ package root alongside the parent (e.g. `Menu`, `MenuTrigger`, `MenuPopover`, `M
 
 Headless state hooks map internal state to stable `data-*` attributes. Components then render
 those attributes on slots so styling remains possible without direct hook state access.
-
-> **Note:** this same pattern applies to icon-related headless components (e.g. `CompoundButton`
-> icon slot, `MenuItem` icon position) — icon presence and position states are surfaced as
-> `data-*` attributes rather than as style props.
 
 Example (simplified):
 
@@ -179,13 +180,6 @@ Rules:
 - precedence must be deterministic: apply reserved base-state attributes after consumer root props are resolved
 - `data-*` attributes are emitted as plain DOM attributes and are SSR-safe; no hydration concerns
 
-## Non-Goals
-
-- introducing new component behavior
-- defining a design system or default theme
-- replacing styled components
-- changing slot structure
-
 ## Accessibility
 
 Headless components must match styled-component accessibility behavior.
@@ -219,8 +213,7 @@ Tests live with `react-headless-components` and cover:
 //  <button class="fui-Button--disabled fui-Button--disabledFocusable">Button</button>
 ```
 
-Rejected: creates naming coupling between behavior state and styling implementation details,
-encourages internal class contracts, and diverges from a simple selector-based public contract.
+Rejected. Class names create a naming contract between behavior state and styling implementation — teams end up styling against `fui-Button--disabled` instead of a documented attribute, which is brittle across renames and refactors. It also blurs the boundary between what Fluent owns and what the consumer owns. `data-*` attributes keep that boundary explicit and selector-based.
 
 ### Render props / callback className API
 
@@ -228,8 +221,7 @@ encourages internal class contracts, and diverges from a simple selector-based p
 <Button className={state => `fui-Button ${state.disabled ? 'fui-Button--disabled' : ''}`}>Save</Button>
 ```
 
-Rejected: introduces a different composition API from existing Fluent components, increases
-verbosity, and makes migration between headless and styled variants harder.
+Rejected. The render-prop pattern is idiomatic in some libraries but introduces a different composition model from the existing Fluent slot API. It increases verbosity at the call site and makes migrating between headless and styled variants harder — a consumer can't just swap the import path; they'd have to rewrite the JSX too.
 
 ### Style callback prop
 
@@ -237,10 +229,10 @@ verbosity, and makes migration between headless and styled variants harder.
 <Button styles={state => ({ root: { opacity: state.disabled ? 0.5 : 1 } })} />
 ```
 
-Rejected: recreates a runtime styling API surface, increases API complexity, and does not align
-with the goal of exposing state through standard DOM selectors.
+Rejected. This effectively recreates a runtime styling API — which is what Griffel already is. It ties state access to a proprietary prop shape, adds API surface we'd have to version, and works against the goal of exposing state through standard, framework-agnostic DOM selectors that any styling tool can target.
 
 ## Decision
 
-Proposed direction: proceed with `@fluentui/react-headless-components` and `data-*` attributes as the stable
-state-styling contract.
+Proceed with `@fluentui/react-headless-components` and `data-*` attributes as the stable state-styling contract.
+
+This approach keeps the implementation grounded in primitives the platform already supports — DOM attribute selectors are universal, zero-JS, and work with every styling tool from plain CSS to Tailwind to CSS-in-JS. It preserves the existing hook + render architecture (no new behavior, no reimplemented logic), and gives teams a single supported import path to Fluent behavior and accessibility without locking them into the Fluent visual system.
