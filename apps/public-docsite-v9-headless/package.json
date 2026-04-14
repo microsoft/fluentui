@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/public-docsite-v9-headless",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fluent UI React Headless Components Preview documentation",
+  "scripts": {
+    "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-storybook:docsite": "cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "type-check": "just-scripts type-check",
+    "start": "yarn storybook:docs",
+    "storybook": "storybook dev --port 3000",
+    "storybook:docs": "yarn storybook --docs",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@fluentui/react-headless-components-preview": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tslib": "^2.1.0"
+  }
+}

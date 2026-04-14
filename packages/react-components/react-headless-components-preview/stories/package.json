@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook",
-    "build-storybook:docsite": "cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs"
+    "build-storybook": "storybook build -o ./dist/storybook"
   },
   "devDependencies": {}
 }

@@ -28,7 +28,7 @@
         "build-storybook",
         "build-storybook:react",
         {
-          "projects": ["chart-docsite", "web-components", "react-headless-components-preview-stories"],
+          "projects": ["chart-docsite", "web-components", "public-docsite-v9-headless"],
           "target": "build-storybook:docsite"
         }
       ]

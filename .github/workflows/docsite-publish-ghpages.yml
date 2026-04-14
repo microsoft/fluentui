@@ -54,7 +54,7 @@ jobs:
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
-          cp -R packages/react-components/react-headless-components-preview/stories/dist/storybook/* _pages/headless/
+          cp -R apps/public-docsite-v9-headless/dist/storybook/* _pages/headless/
 
       - name: Upload Pages Artifact
         if: steps.affected_storybooks_count.outputs.value > 0

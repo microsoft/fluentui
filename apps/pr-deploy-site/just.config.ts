@@ -33,7 +33,7 @@ const dependencies = [
   '@fluentui/public-docsite-v9',
   '@fluentui/perf-test-react-components',
   '@fluentui/theme-designer',
-  '@fluentui/react-headless-components-preview-stories',
+  '@fluentui/public-docsite-v9-headless',
   // web-components
   '@fluentui/web-components',
   // charting
