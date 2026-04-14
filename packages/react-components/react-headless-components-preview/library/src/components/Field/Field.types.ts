@@ -18,7 +18,11 @@ export type FieldProps = FieldBaseProps;
 /**
  * Field component state
  */
-export type FieldState = FieldBaseState;
+export type FieldState = FieldBaseState & {
+  root: {
+    'data-validate-state'?: FieldBaseState['validationState'];
+  };
+};
 
 /**
  * Field component context values

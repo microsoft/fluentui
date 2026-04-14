@@ -74,6 +74,10 @@ import { RadioSlots as RadioSlots_2 } from '@fluentui/react-radio';
 import type { RatingBaseProps } from '@fluentui/react-rating';
 import { RatingBaseState } from '@fluentui/react-rating';
 import { RatingContextValues } from '@fluentui/react-rating';
+import type { RatingDisplayBaseProps } from '@fluentui/react-rating';
+import { RatingDisplayBaseState } from '@fluentui/react-rating';
+import { RatingDisplayContextValues } from '@fluentui/react-rating';
+import type { RatingDisplaySlots as RatingDisplaySlots_2 } from '@fluentui/react-rating';
 import type { RatingItemBaseProps } from '@fluentui/react-rating';
 import { RatingItemBaseState } from '@fluentui/react-rating';
 import { RatingItemSlots as RatingItemSlots_2 } from '@fluentui/react-rating';
@@ -132,7 +136,13 @@ export type AccordionHeaderProps = AccordionHeaderBaseProps;
 export type AccordionHeaderSlots = AccordionHeaderSlots_2;
 
 // @public (undocumented)
-export type AccordionHeaderState = AccordionHeaderBaseState;
+export type AccordionHeaderState = AccordionHeaderBaseState & {
+    root: {
+        'data-open'?: string;
+        'data-disabled'?: string;
+        'data-expand-icon-position'?: string;
+    };
+};
 
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
@@ -161,7 +171,11 @@ export type AccordionPanelProps = AccordionPanelBaseProps;
 export type AccordionPanelSlots = AccordionPanelSlots_2;
 
 // @public (undocumented)
-export type AccordionPanelState = AccordionPanelBaseState;
+export type AccordionPanelState = AccordionPanelBaseState & {
+    root: {
+        'data-open'?: string;
+    };
+};
 
 // @public (undocumented)
 export type AccordionProps = AccordionBaseProps;
@@ -193,7 +207,11 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 export type BadgeProps = BadgeBaseProps;
 
 // @public
-export type BadgeState = BadgeBaseState;
+export type BadgeState = BadgeBaseState & {
+    root: {
+        'data-icon-position'?: 'before' | 'after';
+    };
+};
 
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
@@ -278,7 +296,12 @@ export type CheckboxProps = CheckboxBaseProps;
 export type CheckboxSlots = CheckboxSlots_2;
 
 // @public
-export type CheckboxState = CheckboxBaseState;
+export type CheckboxState = CheckboxBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-checked'?: string;
+    };
+};
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -306,7 +329,11 @@ export type FieldProps = FieldBaseProps;
 export type FieldSlots = FieldSlots_2;
 
 // @public
-export type FieldState = FieldBaseState;
+export type FieldState = FieldBaseState & {
+    root: {
+        'data-validate-state'?: FieldBaseState['validationState'];
+    };
+};
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -318,7 +345,11 @@ export type InputProps = InputBaseProps;
 export type InputSlots = InputSlots_2;
 
 // @public
-export type InputState = InputBaseState;
+export type InputState = InputBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
@@ -376,10 +407,26 @@ export type RadioProps = RadioBaseProps;
 export type RadioSlots = RadioSlots_2;
 
 // @public
-export type RadioState = RadioBaseState;
+export type RadioState = RadioBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
+
+// @public
+export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
+
+// @public
+export type RatingDisplayProps = RatingDisplayBaseProps;
+
+// @public
+export type RatingDisplaySlots = RatingDisplaySlots_2;
+
+// @public
+export type RatingDisplayState = RatingDisplayBaseState;
 
 // @public
 export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingItemSlots_2>, "root"> & Omit<{
@@ -397,7 +444,11 @@ export type RatingItemProps = RatingItemBaseProps;
 export type RatingItemSlots = RatingItemSlots_2;
 
 // @public
-export type RatingItemState = RatingItemBaseState;
+export type RatingItemState = RatingItemBaseState & {
+    root: {
+        'data-appearance'?: 'filled' | 'filled-half' | 'outline';
+    };
+};
 
 // @public
 export type RatingProps = RatingBaseProps;
@@ -469,6 +520,9 @@ export const renderRadioGroup: (state: RadioGroupBaseState, contextValues: Radio
 export const renderRating: (state: RatingBaseState, contextValues: RatingContextValues) => JSXElement;
 
 // @public
+export const renderRatingDisplay: (state: RatingDisplayBaseState, contextValues: RatingDisplayContextValues) => JSXElement;
+
+// @public
 export const renderRatingItem: (state: RatingItemBaseState) => JSXElement;
 
 // @public
@@ -514,7 +568,12 @@ export type SearchBoxProps = SearchBoxBaseProps;
 export type SearchBoxSlots = SearchBoxSlots_2;
 
 // @public
-export type SearchBoxState = SearchBoxBaseState;
+export type SearchBoxState = SearchBoxBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-focused'?: string;
+    };
+};
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
@@ -526,7 +585,11 @@ export type SelectProps = SelectBaseProps;
 export type SelectSlots = SelectSlots_2;
 
 // @public
-export type SelectState = SelectBaseState;
+export type SelectState = SelectBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
 
 // @public
 export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonBaseProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -562,7 +625,12 @@ export type SliderProps = SliderBaseProps;
 export type SliderSlots = SliderSlots_2;
 
 // @public
-export type SliderState = SliderBaseState;
+export type SliderState = SliderBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-vertical'?: string;
+    };
+};
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
@@ -574,7 +642,13 @@ export type SpinButtonProps = SpinButtonBaseProps;
 export type SpinButtonSlots = SpinButtonSlots_2;
 
 // @public
-export type SpinButtonState = SpinButtonBaseState;
+export type SpinButtonState = SpinButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-spin-state'?: string;
+        'data-at-bound'?: string;
+    };
+};
 
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
@@ -586,7 +660,11 @@ export type SpinnerProps = SpinnerBaseProps;
 export type SpinnerSlots = SpinnerSlots_2;
 
 // @public
-export type SpinnerState = SpinnerBaseState;
+export type SpinnerState = SpinnerBaseState & {
+    root: {
+        'data-label-position'?: 'before' | 'after' | 'above' | 'below';
+    };
+};
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
@@ -598,7 +676,13 @@ export type SwitchProps = SwitchBaseProps;
 export type SwitchSlots = SwitchSlots_2;
 
 // @public
-export type SwitchState = SwitchBaseState;
+export type SwitchState = SwitchBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-checked'?: string;
+    };
+};
 
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
@@ -616,6 +700,7 @@ export type TabListSlots = TabListSlots_2;
 export type TabListState = TabListBaseState & {
     root: {
         focusgroup?: string;
+        'data-orientation'?: 'vertical' | 'horizontal';
     };
 };
 
@@ -628,8 +713,8 @@ export { TabSlots }
 export type TabState = TabBaseState & {
     root: {
         focusgroupstart?: string;
-        'data-icon-only'?: '';
-        'data-selected'?: '';
+        'data-icon-only'?: string;
+        'data-selected'?: string;
     };
 };
 
@@ -718,6 +803,9 @@ export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivEle
 
 // @public
 export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
+
+// @public
+export const useRatingDisplay: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
 
 // @public
 export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;

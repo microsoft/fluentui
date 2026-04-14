@@ -8,4 +8,11 @@ export type AccordionPanelSlots = AccordionPanelBaseSlots;
 
 export type AccordionPanelProps = AccordionPanelBaseProps;
 
-export type AccordionPanelState = AccordionPanelBaseState;
+export type AccordionPanelState = AccordionPanelBaseState & {
+  root: {
+    /**
+     * Data attribute set when the accordion panel is open.
+     */
+    'data-open'?: string;
+  };
+};

@@ -4,6 +4,7 @@ exports[`TabList renders a default state 1`] = `
 <div>
   <div
     aria-orientation="horizontal"
+    data-orientation="horizontal"
     focusgroup="tablist inline wrap no-memory"
     role="tablist"
   >

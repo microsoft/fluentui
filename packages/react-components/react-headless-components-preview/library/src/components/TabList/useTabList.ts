@@ -15,6 +15,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   const state: TabListState = useTabListBase_unstable(props, ref);
 
   state.root.focusgroup = state.vertical ? 'tablist block wrap no-memory' : 'tablist inline wrap no-memory';
+  state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

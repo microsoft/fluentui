@@ -17,4 +17,11 @@ export type RatingItemProps = RatingItemBaseProps;
 /**
  * RatingItem component state
  */
-export type RatingItemState = RatingItemBaseState;
+export type RatingItemState = RatingItemBaseState & {
+  root: {
+    /**
+     * Data attribute reflecting the appearance of the rating item. Value is 'filled', 'filled-half', or 'outline'.
+     */
+    'data-appearance'?: 'filled' | 'filled-half' | 'outline';
+  };
+};

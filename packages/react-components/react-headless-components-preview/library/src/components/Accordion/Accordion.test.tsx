@@ -47,6 +47,8 @@ describe('Accordion', () => {
         >
           <div
             class="accordion-header"
+            data-expand-icon-position="start"
+            data-open=""
           >
             <button
               aria-disabled="true"
@@ -61,6 +63,7 @@ describe('Accordion', () => {
           </div>
           <div
             class="accordion-panel"
+            data-open=""
           >
             Item #1 Panel
           </div>
@@ -70,6 +73,7 @@ describe('Accordion', () => {
         >
           <div
             class="accordion-header"
+            data-expand-icon-position="start"
           >
             <button
               aria-expanded="false"

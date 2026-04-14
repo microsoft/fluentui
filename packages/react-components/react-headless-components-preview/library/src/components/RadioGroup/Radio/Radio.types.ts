@@ -13,4 +13,11 @@ export type RadioProps = RadioBaseProps;
 /**
  * Radio component state
  */
-export type RadioState = RadioBaseState;
+export type RadioState = RadioBaseState & {
+  root: {
+    /**
+     * Data attribute set when the radio is disabled.
+     */
+    'data-disabled'?: string;
+  };
+};

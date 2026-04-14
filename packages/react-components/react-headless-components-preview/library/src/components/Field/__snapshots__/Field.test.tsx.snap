@@ -2,7 +2,9 @@
 
 exports[`Field renders a default state 1`] = `
 <div>
-  <div>
+  <div
+    data-validate-state="none"
+  >
     Default Field
   </div>
 </div>

@@ -13,4 +13,16 @@ export type SliderProps = SliderBaseProps;
 /**
  * Slider component state
  */
-export type SliderState = SliderBaseState;
+export type SliderState = SliderBaseState & {
+  root: {
+    /**
+     * Data attribute set when the slider is disabled.
+     */
+    'data-disabled'?: string;
+
+    /**
+     * Data attribute set when the slider is oriented vertically.
+     */
+    'data-vertical'?: string;
+  };
+};

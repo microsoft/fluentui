@@ -2,7 +2,9 @@
 
 exports[`Checkbox renders a default state 1`] = `
 <div>
-  <span>
+  <span
+    data-checked=""
+  >
     <input
       checked=""
       id="checkbox-_r_6_"

@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import { useSelectBase_unstable } from '@fluentui/react-select';
 import type { SelectProps, SelectState } from './Select.types';
+import { stringifyDataAttribute } from '../../utils';
 
 /**
  * Create the state required to render Select.
@@ -14,6 +15,12 @@ import type { SelectProps, SelectState } from './Select.types';
  * @param ref - reference to root HTMLSelectElement
  */
 export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  const state = useSelectBase_unstable(props, ref);
+  'use no memo';
+
+  const state: SelectState = useSelectBase_unstable(props, ref);
+
+  // Set data attribute for disabled state to simplify styling.
+  state.root['data-disabled'] = stringifyDataAttribute(state.select.disabled);
+
   return state;
 };

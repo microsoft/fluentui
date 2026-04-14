@@ -109,6 +109,9 @@ export type {
   RatingState,
 } from './Rating';
 
+export { RatingDisplay, renderRatingDisplay, useRatingDisplay } from './RatingDisplay';
+export type { RatingDisplaySlots, RatingDisplayProps, RatingDisplayState } from './RatingDisplay';
+
 export { SearchBox, renderSearchBox, useSearchBox } from './SearchBox';
 export type { SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox';
 

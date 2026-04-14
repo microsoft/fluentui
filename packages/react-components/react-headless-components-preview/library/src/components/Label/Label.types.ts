@@ -13,4 +13,11 @@ export type LabelProps = LabelBaseProps;
 /**
  * Label component state
  */
-export type LabelState = LabelBaseState;
+export type LabelState = LabelBaseState & {
+  root: {
+    /**
+     * Data attribute set when the label is disabled.
+     */
+    'data-disabled'?: string;
+  };
+};

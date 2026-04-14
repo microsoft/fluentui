@@ -11,6 +11,10 @@ import { renderRatingItem } from './renderRatingItem';
 export const RatingItem = React.forwardRef<HTMLSpanElement, RatingItemProps>((props, ref) => {
   const state = useRatingItem(props, ref);
 
+  Object.assign(state.root, {
+    'data-appearance': state.iconFillWidth === 1 ? 'filled' : state.iconFillWidth > 0 ? 'filled-half' : 'outline',
+  });
+
   return renderRatingItem(state);
 });
 

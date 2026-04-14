@@ -13,4 +13,11 @@ export type SpinnerProps = SpinnerBaseProps;
 /**
  * Spinner component state
  */
-export type SpinnerState = SpinnerBaseState;
+export type SpinnerState = SpinnerBaseState & {
+  root: {
+    /**
+     * Data attribute reflecting the position of the label when a label slot is present. Value is 'before', 'after', 'above', or 'below'.
+     */
+    'data-label-position'?: 'before' | 'after' | 'above' | 'below';
+  };
+};

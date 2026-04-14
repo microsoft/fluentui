@@ -3,6 +3,7 @@
 exports[`Spinner renders a default state 1`] = `
 <div>
   <div
+    data-label-position="after"
     role="progressbar"
   >
     <span>

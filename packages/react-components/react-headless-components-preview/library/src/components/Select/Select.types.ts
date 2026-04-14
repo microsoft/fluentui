@@ -10,4 +10,11 @@ export type SelectProps = SelectBaseProps;
 /**
  * State used in rendering Select
  */
-export type SelectState = SelectBaseState;
+export type SelectState = SelectBaseState & {
+  root: {
+    /**
+     * Data attribute set when the select is disabled.
+     */
+    'data-disabled'?: string;
+  };
+};

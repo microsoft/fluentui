@@ -13,4 +13,11 @@ export type InputProps = InputBaseProps;
 /**
  * Input component state
  */
-export type InputState = InputBaseState;
+export type InputState = InputBaseState & {
+  root: {
+    /**
+     * Data attribute set when the input is disabled.
+     */
+    'data-disabled'?: string;
+  };
+};
