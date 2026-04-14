@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Breadcrumb renders a default state 1`] = `
+<div>
+  <nav
+    aria-label="breadcrumb"
+  >
+    <ol
+      role="list"
+    >
+      Default Breadcrumb
+    </ol>
+  </nav>
+</div>
+`;

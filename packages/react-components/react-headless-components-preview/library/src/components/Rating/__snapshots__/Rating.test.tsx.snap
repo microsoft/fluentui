@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Rating renders a default state 1`] = `
+<div>
+  <div
+    role="radiogroup"
+  >
+    <span>
+      <input
+        aria-label="1"
+        name="rating-_r_5_"
+        type="radio"
+        value="1"
+      />
+      <div
+        aria-hidden="true"
+      >
+        <span />
+      </div>
+    </span>
+    <span>
+      <input
+        aria-label="2"
+        name="rating-_r_5_"
+        type="radio"
+        value="2"
+      />
+      <div
+        aria-hidden="true"
+      >
+        <span />
+      </div>
+    </span>
+    <span>
+      <input
+        aria-label="3"
+        checked=""
+        name="rating-_r_5_"
+        type="radio"
+        value="3"
+      />
+      <div
+        aria-hidden="true"
+      >
+        <span />
+      </div>
+    </span>
+    <span>
+      <input
+        aria-label="4"
+        name="rating-_r_5_"
+        type="radio"
+        value="4"
+      />
+      <div
+        aria-hidden="true"
+      >
+        <span />
+      </div>
+    </span>
+    <span>
+      <input
+        aria-label="5"
+        name="rating-_r_5_"
+        type="radio"
+        value="5"
+      />
+      <div
+        aria-hidden="true"
+      >
+        <span />
+      </div>
+    </span>
+  </div>
+</div>
+`;

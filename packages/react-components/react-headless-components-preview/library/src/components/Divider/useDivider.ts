@@ -10,11 +10,12 @@ import type { DividerProps, DividerState } from './Divider.types';
  * The returned state can be modified with hooks before being passed to `renderDivider`.
  */
 export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
-  const state = useDividerBase_unstable(props, ref);
+  'use no memo';
 
-  Object.assign(state.root, {
-    'data-orientation': props.vertical ? 'vertical' : 'horizontal',
-  });
+  const state: DividerState = useDividerBase_unstable(props, ref);
+
+  // Set data attribute for orientation to simplify styling of vertical vs horizontal dividers.
+  state.root['data-orientation'] = props.vertical ? 'vertical' : 'horizontal';
 
   return state;
 };

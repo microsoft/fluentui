@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Checkbox renders a default state 1`] = `
+<div>
+  <span>
+    <input
+      checked=""
+      id="checkbox-_r_6_"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+    />
+    <label
+      for="checkbox-_r_6_"
+    >
+      Default Checkbox
+    </label>
+  </span>
+</div>
+`;

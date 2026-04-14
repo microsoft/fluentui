@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Textarea renders a default state 1`] = `
+<div>
+  <span>
+    <textarea
+      placeholder="Default Textarea"
+    />
+  </span>
+</div>
+`;

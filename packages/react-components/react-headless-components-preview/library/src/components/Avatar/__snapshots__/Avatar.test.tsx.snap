@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Avatar renders a default state 1`] = `
+<div>
+  <span
+    id="avatar-_r_5_"
+    role="img"
+  >
+    <span
+      aria-hidden="true"
+    />
+  </span>
+</div>
+`;

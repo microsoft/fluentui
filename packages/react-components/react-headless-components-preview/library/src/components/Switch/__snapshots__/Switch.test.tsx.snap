@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Switch renders a default state 1`] = `
+<div>
+  <div>
+    <input
+      checked=""
+      id="switch-_r_6_"
+      role="switch"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+    />
+    <label
+      for="switch-_r_6_"
+    >
+      Default Switch
+    </label>
+  </div>
+</div>
+`;

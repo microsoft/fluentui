@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SpinButton renders a default state 1`] = `
+<div>
+  <span>
+    <input
+      aria-valuemax="10"
+      aria-valuemin="0"
+      aria-valuenow="1"
+      autocomplete="off"
+      role="spinbutton"
+      type="text"
+      value="1"
+    />
+    <button
+      aria-label="Increment value"
+      tabindex="-1"
+      type="button"
+    />
+    <button
+      aria-label="Decrement value"
+      tabindex="-1"
+      type="button"
+    />
+  </span>
+</div>
+`;

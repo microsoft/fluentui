@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TabList renders a default state 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    focusgroup="tablist inline wrap no-memory"
+    role="tablist"
+  >
+    Default TabList
+  </div>
+</div>
+`;
