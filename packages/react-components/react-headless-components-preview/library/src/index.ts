@@ -145,3 +145,6 @@ export type { TabSlots, TabValue, TabProps, TabState, TabListSlots, TabListProps
 
 export { Textarea, renderTextarea, useTextarea } from './Textarea';
 export type { TextareaSlots, TextareaProps, TextareaState } from './Textarea';
+
+export { ToggleButton, renderToggleButton, useToggleButton } from './ToggleButton';
+export type { ToggleButtonSlots, ToggleButtonProps, ToggleButtonState } from './ToggleButton';

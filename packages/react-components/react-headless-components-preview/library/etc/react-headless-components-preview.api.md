@@ -119,6 +119,8 @@ import { TabValue } from '@fluentui/react-tabs';
 import type { TextareaBaseProps } from '@fluentui/react-textarea';
 import { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
+import type { ToggleButtonBaseProps } from '@fluentui/react-button';
+import type { ToggleButtonBaseState } from '@fluentui/react-button';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -559,6 +561,9 @@ export const renderTabList: (state: TabListBaseState, contextValues: TabListCont
 export const renderTextarea: (state: TextareaBaseState) => JSXElement;
 
 // @public
+export const renderToggleButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
 // @public
@@ -733,6 +738,25 @@ export type TextareaSlots = TextareaSlots_2;
 export type TextareaState = TextareaBaseState;
 
 // @public
+export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
+
+// @public
+export type ToggleButtonProps = ToggleButtonBaseProps;
+
+// @public
+export type ToggleButtonSlots = ButtonSlots;
+
+// @public
+export type ToggleButtonState = ToggleButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-checked'?: string;
+    };
+};
+
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public
@@ -842,6 +866,9 @@ export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) =>
 
 // @public
 export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
+
+// @public
+export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 
