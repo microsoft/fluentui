@@ -15,7 +15,7 @@ Visually verify **$ARGUMENTS** by launching Storybook and capturing a screenshot
 Ensure `playwright-cli` is installed globally:
 
 ```bash
-npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@latest
+npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
 ```
 
 ## Steps
