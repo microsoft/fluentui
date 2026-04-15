@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add TabList and Tab headless components",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

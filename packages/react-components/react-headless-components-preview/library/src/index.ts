@@ -35,6 +35,3 @@ export type { ButtonSlots, ButtonProps, ButtonState } from './Button';
 
 export { Divider, renderDivider, useDivider } from './Divider';
 export type { DividerSlots, DividerProps, DividerState } from './Divider';
-
-export { Tab, renderTab, useTab, TabList, renderTabList, useTabList } from './TabList';
-export type { TabSlots, TabValue, TabProps, TabState, TabListSlots, TabListProps, TabListState } from './TabList';
