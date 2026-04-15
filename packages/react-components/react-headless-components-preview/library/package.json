@@ -43,12 +43,17 @@
     "@fluentui/react-spinbutton": "^9.6.0",
     "@fluentui/react-spinner": "^9.8.0",
     "@fluentui/react-switch": "^9.7.0",
+    "@fluentui/react-tabs": "^9.11.2",
     "@fluentui/react-tags": "^9.7.19",
     "@fluentui/react-textarea": "^9.7.0",
     "@fluentui/react-utilities": "^9.26.2",
     "@swc/helpers": "^0.5.1"
   },
+  "devDependencies": {
+    "@microsoft/focusgroup-polyfill": "^1.2.1"
+  },
   "peerDependencies": {
+    "@microsoft/focusgroup-polyfill": "^1.2.1",
     "@types/react": ">=16.14.0 <20.0.0",
     "@types/react-dom": ">=16.9.0 <20.0.0",
     "react": ">=16.14.0 <20.0.0",

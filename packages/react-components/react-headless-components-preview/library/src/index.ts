@@ -140,6 +140,9 @@ export type { SpinnerSlots, SpinnerProps, SpinnerState } from './Spinner';
 export { Switch, renderSwitch, useSwitch } from './Switch';
 export type { SwitchSlots, SwitchProps, SwitchState } from './Switch';
 
+export { Tab, renderTab, useTab, TabList, renderTabList, useTabList } from './TabList';
+export type { TabSlots, TabValue, TabProps, TabState, TabListSlots, TabListProps, TabListState } from './TabList';
+
 export { Textarea, renderTextarea, useTextarea } from './Textarea';
 export type { TextareaSlots, TextareaProps, TextareaState } from './Textarea';
 

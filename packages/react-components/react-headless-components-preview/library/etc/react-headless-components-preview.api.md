@@ -108,6 +108,14 @@ import type { SpinnerSlots as SpinnerSlots_2 } from '@fluentui/react-spinner';
 import type { SwitchBaseProps } from '@fluentui/react-switch';
 import { SwitchBaseState } from '@fluentui/react-switch';
 import type { SwitchSlots as SwitchSlots_2 } from '@fluentui/react-switch';
+import type { TabBaseProps } from '@fluentui/react-tabs';
+import { TabBaseState } from '@fluentui/react-tabs';
+import type { TabListBaseProps } from '@fluentui/react-tabs';
+import { TabListBaseState } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import type { TabListSlots as TabListSlots_2 } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
 import type { TextareaBaseProps } from '@fluentui/react-textarea';
 import { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
@@ -544,6 +552,12 @@ export const renderSpinner: (state: SpinnerBaseState) => JSXElement;
 export const renderSwitch: (state: SwitchBaseState) => JSXElement;
 
 // @public
+export const renderTab: (state: TabBaseState) => JSXElement;
+
+// @public
+export const renderTabList: (state: TabListBaseState, contextValues: TabListContextValues) => JSXElement;
+
+// @public
 export const renderTextarea: (state: TextareaBaseState) => JSXElement;
 
 // @public
@@ -674,6 +688,42 @@ export type SwitchState = SwitchBaseState & {
         'data-checked'?: string;
     };
 };
+
+// @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public
+export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public
+export type TabListProps = TabListBaseProps;
+
+// @public
+export type TabListSlots = TabListSlots_2;
+
+// @public
+export type TabListState = TabListBaseState & {
+    root: {
+        focusgroup?: string;
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
+
+// @public (undocumented)
+export type TabProps = TabBaseProps;
+
+export { TabSlots }
+
+// @public (undocumented)
+export type TabState = TabBaseState & {
+    root: {
+        focusgroupstart?: string;
+        'data-icon-only'?: string;
+        'data-selected'?: string;
+    };
+};
+
+export { TabValue }
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
@@ -807,6 +857,12 @@ export const useSpinner: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) =>
 
 // @public
 export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
+
+// @public
+export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
 // @public
 export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
