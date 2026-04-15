@@ -10,7 +10,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // headless package stories
     '../../../packages/react-components/react-headless-components-preview/stories/src/**/index.stories.@(ts|tsx)',
   ],
-  staticDirs: ['../public'],
   addons: [...rootMain.addons],
   build: {
     previewUrl: process.env.DEPLOY_PATH,

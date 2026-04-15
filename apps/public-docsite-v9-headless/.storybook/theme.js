@@ -1,7 +1,5 @@
 import { create } from 'storybook/theming';
 
-import logo from '../public/fluentui-logo.svg';
-
 /**
  * Theming and branding the storybook to fluent. Taken from https://storybook.js.org/docs/react/configure/theming
  */
@@ -37,7 +35,6 @@ const theme = create({
   brandTitle: 'Fluent UI Headless Components',
   brandUrl:
     'https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-headless-components-preview',
-  brandImage: logo,
 });
 
 export default theme;
