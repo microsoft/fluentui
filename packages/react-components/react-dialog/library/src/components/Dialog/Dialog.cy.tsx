@@ -700,6 +700,200 @@ describe('Dialog', () => {
     cy.get('#second-dialog').should('not.exist');
     cy.get('#first-dialog').should('not.exist');
   });
+
+  describe('stacked non-nested dialogs (sibling)', () => {
+    /**
+     * Regression test for https://github.com/microsoft/fluentui/issues/35985
+     *
+     * Two sibling Dialogs (NOT nested inside each other's JSX tree).
+     * Dialog 1 is opened via a page-level trigger.
+     * Dialog 2 is opened via a button inside Dialog 1, but is a sibling in the React tree.
+     * When Dialog 2 closes, focus must return to the button inside Dialog 1 — NOT to the page trigger.
+     *
+     * Bug: Dialog 2's Modalizer leaves stale aria-hidden="true" on Dialog 1's portal mount node,
+     * blocking browser focus restoration back into Dialog 1.
+     */
+    it('should restore focus to underlying dialog when top stacked dialog closes', () => {
+      const StackedDialogsTest = () => {
+        const [dialog1Open, setDialog1Open] = React.useState(false);
+        const [dialog2Open, setDialog2Open] = React.useState(false);
+
+        return (
+          <>
+            <Button id={dialogTriggerOpenId} onClick={() => setDialog1Open(true)}>
+              Open Dialog 1
+            </Button>
+
+            {/* Dialog 1 — opened from the page-level trigger */}
+            <Dialog open={dialog1Open} onOpenChange={(_, data) => setDialog1Open(data.open)}>
+              <DialogSurface id="dialog-1-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 1</DialogTitle>
+                  <DialogContent>Dialog 1 content</DialogContent>
+                  <DialogActions>
+                    <Button id="open-dialog-2-btn" onClick={() => setDialog2Open(true)}>
+                      Open Dialog 2
+                    </Button>
+                    <Button id={dialogTriggerCloseId} onClick={() => setDialog1Open(false)}>
+                      Close Dialog 1
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+
+            {/* Dialog 2 — sibling in the React tree, NOT nested inside Dialog 1 */}
+            <Dialog modalType="alert" open={dialog2Open} onOpenChange={(_, data) => setDialog2Open(data.open)}>
+              <DialogSurface id="dialog-2-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 2 (alert)</DialogTitle>
+                  <DialogContent>Dialog 2 content</DialogContent>
+                  <DialogActions>
+                    <Button id="close-dialog-2-btn" onClick={() => setDialog2Open(false)}>
+                      Close Dialog 2
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </>
+        );
+      };
+
+      mount(<StackedDialogsTest />);
+
+      // Open Dialog 1
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#dialog-1-surface').should('exist');
+
+      // Open Dialog 2 from inside Dialog 1
+      cy.get('#open-dialog-2-btn').realClick();
+      cy.get('#dialog-2-surface').should('exist');
+
+      // Close Dialog 2
+      cy.get('#close-dialog-2-btn').realClick();
+      cy.get('#dialog-2-surface').should('not.exist');
+
+      // Dialog 1 should still be open and the trigger button for Dialog 2 should have focus
+      cy.get('#dialog-1-surface').should('exist');
+      cy.get('#open-dialog-2-btn').should('be.focused');
+    });
+
+    it('should not have stale aria-hidden on dialog 1 portal ancestors after dialog 2 closes', () => {
+      const StackedDialogsTest = () => {
+        const [dialog1Open, setDialog1Open] = React.useState(false);
+        const [dialog2Open, setDialog2Open] = React.useState(false);
+
+        return (
+          <>
+            <Button id={dialogTriggerOpenId} onClick={() => setDialog1Open(true)}>
+              Open Dialog 1
+            </Button>
+            <Dialog open={dialog1Open} onOpenChange={(_, data) => setDialog1Open(data.open)}>
+              <DialogSurface id="dialog-1-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 1</DialogTitle>
+                  <DialogActions>
+                    <Button id="open-dialog-2-btn" onClick={() => setDialog2Open(true)}>
+                      Open Dialog 2
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <Dialog modalType="alert" open={dialog2Open} onOpenChange={(_, data) => setDialog2Open(data.open)}>
+              <DialogSurface id="dialog-2-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 2</DialogTitle>
+                  <DialogActions>
+                    <Button id="close-dialog-2-btn" onClick={() => setDialog2Open(false)}>
+                      Close
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </>
+        );
+      };
+
+      mount(<StackedDialogsTest />);
+
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#open-dialog-2-btn').realClick();
+      cy.get('#close-dialog-2-btn').realClick();
+
+      // After Dialog 2 closes, no ancestor of Dialog 1's surface (up to body)
+      // should carry a stale aria-hidden="true" (the backdrop div is intentionally aria-hidden but is not an ancestor)
+      cy.get('#dialog-1-surface').then($el => {
+        let el = $el[0].parentElement;
+        while (el && el !== document.body) {
+          expect(el.getAttribute('aria-hidden'), `ancestor <${el.tagName}> should not be aria-hidden`).to.not.equal(
+            'true',
+          );
+          el = el.parentElement;
+        }
+      });
+    });
+
+    it('should maintain focus trap in dialog 1 after stacked dialog 2 is dismissed', () => {
+      const StackedDialogsTest = () => {
+        const [dialog1Open, setDialog1Open] = React.useState(false);
+        const [dialog2Open, setDialog2Open] = React.useState(false);
+
+        return (
+          <>
+            <Button id={dialogTriggerOpenId} onClick={() => setDialog1Open(true)}>
+              Open Dialog 1
+            </Button>
+            <Dialog open={dialog1Open} onOpenChange={(_, data) => setDialog1Open(data.open)}>
+              <DialogSurface id="dialog-1-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 1</DialogTitle>
+                  <DialogActions>
+                    <Button id="open-dialog-2-btn" onClick={() => setDialog2Open(true)}>
+                      Open Dialog 2
+                    </Button>
+                    <Button id={dialogTriggerCloseId} onClick={() => setDialog1Open(false)}>
+                      Close Dialog 1
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <Dialog modalType="modal" open={dialog2Open} onOpenChange={(_, data) => setDialog2Open(data.open)}>
+              <DialogSurface id="dialog-2-surface">
+                <DialogBody>
+                  <DialogTitle>Dialog 2</DialogTitle>
+                  <DialogActions>
+                    <Button id="close-dialog-2-btn" onClick={() => setDialog2Open(false)}>
+                      Close
+                    </Button>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </>
+        );
+      };
+
+      mount(<StackedDialogsTest />);
+
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#open-dialog-2-btn').realClick();
+      cy.get('#dialog-2-surface').should('exist');
+
+      // Close Dialog 2 via its close button
+      cy.get('#close-dialog-2-btn').realClick();
+      cy.get('#dialog-2-surface').should('not.exist');
+      cy.get('#dialog-1-surface').should('exist');
+
+      // Tab should cycle inside Dialog 1 (focus trap re-engaged)
+      cy.get('#open-dialog-2-btn').should('be.focused').realPress('Tab');
+      cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+      cy.get('#open-dialog-2-btn').should('be.focused');
+    });
+  });
 });
 
 const lorem = (
