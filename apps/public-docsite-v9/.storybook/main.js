@@ -46,6 +46,12 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     return localConfig;
   },
   refs: {
+    'fluent-system-icons': {
+      title: 'Fluent System Icons',
+      url: 'https://microsoft.github.io/fluentui-system-icons/',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui-system-icons',
+    },
     contrib: {
       title: 'Contributors Packages',
       url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
