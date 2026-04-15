@@ -41,12 +41,6 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public (undocumented)
-export type TabBaseProps = Omit<TabProps, 'contentReservedSpace'>;
-
-// @public (undocumented)
-export type TabBaseState = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;
-
-// @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
