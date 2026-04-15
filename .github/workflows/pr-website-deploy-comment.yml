@@ -11,13 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DEPLOY_HOST_URL: https://fluentuipr.z22.web.core.windows.net/
-  AZURE_STORAGE: fluentuipr
+  DEPLOY_HOST_URL: https://fluentuiprsim.z20.web.core.windows.net/
+  AZURE_STORAGE: fluentuiprsim
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'N372unn32' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     outputs:
       pr_number: ${{ steps.pr_number.outputs.result }}
       website_url: ${{ steps.website_url.outputs.id }}
