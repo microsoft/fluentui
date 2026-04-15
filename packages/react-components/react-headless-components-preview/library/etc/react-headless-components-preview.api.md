@@ -27,6 +27,14 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
+import type { TabBaseProps } from '@fluentui/react-tabs';
+import { TabBaseState } from '@fluentui/react-tabs';
+import type { TabListBaseProps } from '@fluentui/react-tabs';
+import { TabListBaseState } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import type { TabListSlots as TabListSlots_2 } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
@@ -110,6 +118,12 @@ export type DividerState = DividerBaseState;
 export const renderAccordion: (state: AccordionBaseState, contextValues: AccordionContextValues_2) => JSXElement;
 
 // @public
+export const renderTab: (state: TabBaseState) => JSXElement;
+
+// @public
+export const renderTabList: (state: TabListBaseState, contextValues: TabListContextValues) => JSXElement;
+
+// @public
 export const renderAccordionHeader: (state: AccordionHeaderBaseState, contextValues: AccordionHeaderContextValues) => JSXElement;
 
 // @public
@@ -147,6 +161,48 @@ export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement 
 
 // @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
+
+// @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public
+export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public
+export type TabListProps = TabListBaseProps;
+
+// @public
+export type TabListSlots = TabListSlots_2;
+
+// @public
+export type TabListState = TabListBaseState & {
+    root: {
+        focusgroup?: string;
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
+
+// @public (undocumented)
+export type TabProps = TabBaseProps;
+
+export { TabSlots }
+
+// @public (undocumented)
+export type TabState = TabBaseState & {
+    root: {
+        focusgroupstart?: string;
+        'data-icon-only'?: string;
+        'data-selected'?: string;
+    };
+};
+
+export { TabValue }
+
+// @public
+export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
 // (No @packageDocumentation comment for this package)
 
