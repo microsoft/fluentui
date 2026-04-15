@@ -13,14 +13,8 @@ describe('ToggleButton', () => {
     const result = render(<ToggleButton>Default ToggleButton</ToggleButton>);
     const button = result.getByRole('button', { name: 'Default ToggleButton' });
     expect(button).toBeInTheDocument();
-    expect(button).toMatchInlineSnapshot(`
-      <button
-        aria-pressed="false"
-        type="button"
-      >
-        Default ToggleButton
-      </button>
-    `);
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+    expect(button).toHaveAttribute('type', 'button');
   });
 
   it('renders as checked when "checked" prop is true', () => {

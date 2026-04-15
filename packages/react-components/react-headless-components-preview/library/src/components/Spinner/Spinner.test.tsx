@@ -10,7 +10,17 @@ describe('Spinner', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Spinner>Default Spinner</Spinner>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<Spinner>Default Spinner</Spinner>);
+    const spinner = getByRole('progressbar');
+
+    expect(spinner).toBeInTheDocument();
+    expect(spinner).toHaveAttribute('data-label-position', 'after');
+  });
+
+  it('renders with label position "before"', () => {
+    const { getByRole } = render(<Spinner labelPosition="before">Loading</Spinner>);
+    const spinner = getByRole('progressbar');
+
+    expect(spinner).toHaveAttribute('data-label-position', 'before');
   });
 });

@@ -11,7 +11,25 @@ describe('Checkbox', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Checkbox defaultChecked label="Default Checkbox" />);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole, getByText } = render(<Checkbox defaultChecked label="Default Checkbox" />);
+    const checkbox = getByRole('checkbox');
+
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).toBeChecked();
+    expect(getByText('Default Checkbox')).toBeInTheDocument();
+  });
+
+  it('renders with data-checked attribute when checked', () => {
+    const { container } = render(<Checkbox defaultChecked label="Checked" />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-checked');
+  });
+
+  it('renders with data-disabled attribute when disabled', () => {
+    const { container } = render(<Checkbox disabled label="Disabled" />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-disabled');
   });
 });

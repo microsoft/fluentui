@@ -10,7 +10,22 @@ describe('Badge', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Badge>Default Badge</Badge>);
-    expect(result.container).toMatchSnapshot();
+    const { getByText } = render(<Badge>Default Badge</Badge>);
+
+    expect(getByText('Default Badge')).toBeInTheDocument();
+  });
+
+  it('renders with data-icon-position when icon is provided', () => {
+    const { container } = render(<Badge icon={<span>★</span>}>With Icon</Badge>);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-icon-position', 'before');
+  });
+
+  it('does not render data-icon-position without icon', () => {
+    const { container } = render(<Badge>No Icon</Badge>);
+    const root = container.firstElementChild!;
+
+    expect(root).not.toHaveAttribute('data-icon-position');
   });
 });

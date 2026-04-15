@@ -11,11 +11,14 @@ describe('RatingDisplay', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(
+    const { getByRole, getByText } = render(
       <RatingDisplay icon="span" value={3}>
         <RatingItem value={1} />
       </RatingDisplay>,
     );
-    expect(result.container).toMatchSnapshot();
+    const ratingDisplay = getByRole('img');
+
+    expect(ratingDisplay).toBeInTheDocument();
+    expect(getByText('3')).toBeInTheDocument();
   });
 });

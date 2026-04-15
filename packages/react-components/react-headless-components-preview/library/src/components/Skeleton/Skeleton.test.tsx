@@ -10,7 +10,11 @@ describe('Skeleton', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Skeleton>Default Skeleton</Skeleton>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<Skeleton>Default Skeleton</Skeleton>);
+    const skeleton = getByRole('progressbar');
+
+    expect(skeleton).toBeInTheDocument();
+    expect(skeleton).toHaveAttribute('aria-busy', 'true');
+    expect(skeleton).toHaveTextContent('Default Skeleton');
   });
 });

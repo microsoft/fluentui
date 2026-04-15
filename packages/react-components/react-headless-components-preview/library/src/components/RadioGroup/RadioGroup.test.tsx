@@ -10,7 +10,10 @@ describe('RadioGroup', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<RadioGroup>Default RadioGroup</RadioGroup>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole, getByText } = render(<RadioGroup>Default RadioGroup</RadioGroup>);
+    const radiogroup = getByRole('radiogroup');
+
+    expect(radiogroup).toBeInTheDocument();
+    expect(getByText('Default RadioGroup')).toBeInTheDocument();
   });
 });

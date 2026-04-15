@@ -11,7 +11,25 @@ describe('SearchBox', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<SearchBox placeholder="Search..." />);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<SearchBox placeholder="Search..." />);
+    const input = getByRole('searchbox');
+
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('placeholder', 'Search...');
+    expect(input).toHaveAttribute('type', 'search');
+  });
+
+  it('renders a clear button', () => {
+    const { getByRole } = render(<SearchBox placeholder="Search..." />);
+    const clearButton = getByRole('button', { name: 'clear' });
+
+    expect(clearButton).toBeInTheDocument();
+  });
+
+  it('renders with data-disabled when disabled', () => {
+    const { container } = render(<SearchBox disabled placeholder="Search..." />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-disabled');
   });
 });

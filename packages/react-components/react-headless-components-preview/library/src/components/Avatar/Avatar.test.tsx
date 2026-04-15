@@ -10,7 +10,11 @@ describe('Avatar', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Avatar>Default Avatar</Avatar>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<Avatar name="John Doe" />);
+    const avatar = getByRole('img');
+
+    expect(avatar).toBeInTheDocument();
+    expect(avatar).toHaveAttribute('aria-label', 'John Doe');
+    expect(avatar).toHaveTextContent('JD');
   });
 });

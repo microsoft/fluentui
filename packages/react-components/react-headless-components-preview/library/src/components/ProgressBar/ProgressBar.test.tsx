@@ -10,7 +10,17 @@ describe('ProgressBar', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<ProgressBar>Default ProgressBar</ProgressBar>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<ProgressBar>Default ProgressBar</ProgressBar>);
+    const progressbar = getByRole('progressbar');
+
+    expect(progressbar).toBeInTheDocument();
+  });
+
+  it('renders the bar with correct width when value is provided', () => {
+    const { getByRole } = render(<ProgressBar value={0.5} max={1} />);
+    const progressbar = getByRole('progressbar');
+    const bar = progressbar.firstElementChild!;
+
+    expect(bar).toHaveStyle({ width: '50%' });
   });
 });

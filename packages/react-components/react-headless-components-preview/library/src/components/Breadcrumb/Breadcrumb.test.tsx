@@ -10,7 +10,12 @@ describe('Breadcrumb', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Breadcrumb>Default Breadcrumb</Breadcrumb>);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole, getByText } = render(<Breadcrumb>Default Breadcrumb</Breadcrumb>);
+    const nav = getByRole('navigation');
+
+    expect(nav).toBeInTheDocument();
+    expect(nav).toHaveAttribute('aria-label', 'breadcrumb');
+    expect(nav.querySelector('ol')).toBeInTheDocument();
+    expect(getByText('Default Breadcrumb')).toBeInTheDocument();
   });
 });

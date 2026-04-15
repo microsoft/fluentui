@@ -11,7 +11,11 @@ describe('Textarea', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<Textarea placeholder="Default Textarea" />);
-    expect(result.container).toMatchSnapshot();
+    const { getByRole } = render(<Textarea placeholder="Default Textarea" />);
+    const textarea = getByRole('textbox');
+
+    expect(textarea).toBeInTheDocument();
+    expect(textarea.tagName).toBe('TEXTAREA');
+    expect(textarea).toHaveAttribute('placeholder', 'Default Textarea');
   });
 });
