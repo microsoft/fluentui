@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added v9 calling patterns to @fluentui/react-file-type-icons",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

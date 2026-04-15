@@ -75,6 +75,7 @@
     "@fluentui/react-teaching-popover": "*",
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
+    "@fluentui/react-file-type-icons": "*",
     "@fluentui/react-list": "*",
     "@fluentui/react-color-picker": "*",
     "@fluentui/react-nav": "*"

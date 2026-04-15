@@ -78,5 +78,9 @@
   "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"],
   "nxConsole.generateAiAgentRules": true,
   // Maximum number of requests for the chat agent - Prevents AI agents from stopping mid-session
-  "chat.agent.maxRequests": 999
+  "chat.agent.maxRequests": 999,
+  // Keep a much larger terminal history so AI terminal queries can access more past output.
+  "terminal.integrated.scrollback": 200000,
+  // Preserve substantial scrollback when terminals are reloaded/revived.
+  "terminal.integrated.persistentSessionScrollback": 50000
 }

@@ -8,8 +8,6 @@ import {
 import { Body1Stronger, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './IconsBundleIcon.stories.md';
-
 const useClasses = makeStyles({
   container: {
     ...shorthands.padding('10px'),
@@ -62,7 +60,8 @@ export const BundleIcon = () => {
 BundleIcon.parameters = {
   docs: {
     description: {
-      story: description,
+      story:
+        '`bundleIcon()` is used to combine the `Regular` and `Filled` versions of icons and could be used to toggle between them on hover. Some of Fluent UI React component have also "fill-on-hover" behavior built-in, for example `Button` & `MenuItem`.',
     },
   },
 };
