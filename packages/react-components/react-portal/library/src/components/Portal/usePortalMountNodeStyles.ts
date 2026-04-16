@@ -15,14 +15,26 @@ const PORTAL_MOUNT_NODE_STYLE_RULE = `[data-portal-node]{position:absolute;top:0
 const PORTAL_STYLE_ELEMENT_ATTR = 'data-fui-portal-styles';
 
 // Symbol used as a "private" property key on Document to store the active portal reference count.
+// Symbol.for() registers in the global Symbol registry so the same key is shared across bundles
+// (e.g. when multiple copies of this module are loaded in the same page).
 // Storing state directly on the document avoids any WeakMap cross-reference issues and is safe
 // across multiple documents (e.g. iframes) because each document object carries its own counter.
-const PORTAL_STYLE_REF_COUNT = Symbol('fui-portal-style-ref-count');
+const PORTAL_STYLE_REF_COUNT = Symbol.for('fui-portal-style-ref-count');
+
+type DocumentWithPortalCounter = Document & { [PORTAL_STYLE_REF_COUNT]?: number };
+
+function getPortalRefCount(doc: Document): number {
+  return (doc as DocumentWithPortalCounter)[PORTAL_STYLE_REF_COUNT] ?? 0;
+}
+
+function setPortalRefCount(doc: Document, count: number): void {
+  (doc as DocumentWithPortalCounter)[PORTAL_STYLE_REF_COUNT] = count;
+}
 
 function injectPortalMountNodeStyles(doc: Document): void {
-  const currentCount = ((doc as never)[PORTAL_STYLE_REF_COUNT] as number | undefined) ?? 0;
+  const currentCount = getPortalRefCount(doc);
   if (currentCount > 0) {
-    (doc as never)[PORTAL_STYLE_REF_COUNT] = currentCount + 1;
+    setPortalRefCount(doc, currentCount + 1);
     return;
   }
   const style = doc.createElement('style');
@@ -32,20 +44,21 @@ function injectPortalMountNodeStyles(doc: Document): void {
   // Both prepend and append trigger one style recalculation; position in <head> does not change
   // the number of recalcs.
   doc.head.prepend(style);
-  style.sheet!.insertRule(PORTAL_MOUNT_NODE_STYLE_RULE);
-  (doc as never)[PORTAL_STYLE_REF_COUNT] = 1;
+  // sheet is available after the element is inserted into the document
+  style.sheet?.insertRule(PORTAL_MOUNT_NODE_STYLE_RULE);
+  setPortalRefCount(doc, 1);
 }
 
 function ejectPortalMountNodeStyles(doc: Document): void {
-  const currentCount = ((doc as never)[PORTAL_STYLE_REF_COUNT] as number | undefined) ?? 0;
-  if (currentCount <= 0) {
+  const currentCount = getPortalRefCount(doc);
+  if (currentCount === 0) {
     return;
   }
   const newCount = currentCount - 1;
   if (newCount === 0) {
-    doc.querySelector(`style[${PORTAL_STYLE_ELEMENT_ATTR}]`)?.remove();
+    doc.head.querySelector(`style[${PORTAL_STYLE_ELEMENT_ATTR}]`)?.remove();
   }
-  (doc as never)[PORTAL_STYLE_REF_COUNT] = newCount;
+  setPortalRefCount(doc, newCount);
 }
 
 /**
