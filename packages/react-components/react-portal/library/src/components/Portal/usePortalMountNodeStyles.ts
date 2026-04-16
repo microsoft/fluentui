@@ -20,8 +20,9 @@ type DocumentWithPortalCounter = Document & { [PORTAL_STYLE_REF_COUNT]?: number 
 // Also keeps a portal on top of a page to prevent scrollbars from appearing
 const PORTAL_MOUNT_NODE_STYLE_RULE = `[data-portal-node]{position:absolute;top:0;left:0;right:0;z-index:1000000}`;
 
-// Attribute used to identify the injected portal mount node <style> element in a document.
-const PORTAL_STYLE_ELEMENT_ATTR = 'data-fui-portal-styles';
+// ID used to identify the injected portal mount node <style> element in a document.
+// Only one such element exists per document, so an id is appropriate.
+export const PORTAL_STYLE_ELEMENT_ID = 'fui-portal-styles';
 
 function getPortalRefCount(targetDocument: Document): number {
   return (targetDocument as DocumentWithPortalCounter)[PORTAL_STYLE_REF_COUNT] ?? 0;
@@ -38,7 +39,7 @@ function injectPortalMountNodeStyles(targetDocument: Document): void {
     return;
   }
   const style = targetDocument.createElement('style');
-  style.setAttribute(PORTAL_STYLE_ELEMENT_ATTR, '');
+  style.id = PORTAL_STYLE_ELEMENT_ID;
   // Prepend so that consumer class names (applied later in document order) can override these
   // defaults via CSS source order at equal specificity — the same cascade behaviour as before.
   // Both prepend and append trigger one style recalculation; position in <head> does not change
@@ -56,7 +57,7 @@ function ejectPortalMountNodeStyles(targetDocument: Document): void {
   }
   const newCount = currentCount - 1;
   if (newCount === 0) {
-    targetDocument.head.querySelector(`style[${PORTAL_STYLE_ELEMENT_ATTR}]`)?.remove();
+    targetDocument.head.querySelector(`#${PORTAL_STYLE_ELEMENT_ID}`)?.remove();
   }
   setPortalRefCount(targetDocument, newCount);
 }

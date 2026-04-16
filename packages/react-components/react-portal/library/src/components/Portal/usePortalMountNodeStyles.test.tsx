@@ -2,12 +2,10 @@ import { renderHook } from '@testing-library/react-hooks';
 import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
-import { usePortalMountNodeStyles } from './usePortalMountNodeStyles';
-
-const STYLE_ATTR = 'data-fui-portal-styles';
+import { usePortalMountNodeStyles, PORTAL_STYLE_ELEMENT_ID } from './usePortalMountNodeStyles';
 
 function queryStyleElement(): HTMLStyleElement | null {
-  return document.head.querySelector(`style[${STYLE_ATTR}]`);
+  return document.head.querySelector(`#${PORTAL_STYLE_ELEMENT_ID}`);
 }
 
 function createWrapper(targetDocument: Document | undefined) {
@@ -63,7 +61,7 @@ describe('usePortalMountNodeStyles', () => {
     const hook1 = renderHook(() => usePortalMountNodeStyles(false));
     const hook2 = renderHook(() => usePortalMountNodeStyles(false));
 
-    const allStyles = document.head.querySelectorAll(`style[${STYLE_ATTR}]`);
+    const allStyles = document.head.querySelectorAll(`#${PORTAL_STYLE_ELEMENT_ID}`);
     expect(allStyles.length).toBe(1);
 
     // Unmounting one consumer keeps the style
