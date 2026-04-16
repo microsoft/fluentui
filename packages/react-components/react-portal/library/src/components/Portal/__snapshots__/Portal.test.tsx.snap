@@ -2,7 +2,6 @@
 
 exports[`Portal renders a default state 1`] = `
 <div
-  class=""
   data-portal-node="true"
   dir="ltr"
 >
