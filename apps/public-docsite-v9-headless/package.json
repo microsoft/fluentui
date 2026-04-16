@@ -7,6 +7,7 @@
     "build-storybook": "storybook build -o ./dist/storybook --docs",
     "build-storybook:docsite": "cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs",
     "postbuild-storybook": "yarn generate-llms-docs",
+    "postbuild-storybook:docsite": "yarn postbuild-storybook",
     "generate-llms-docs": "yarn storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/headless/\" --summaryTitle \"Fluent UI React Headless Components\" --summaryDescription \"Fluent UI React headless components provide unstyled, accessible component primitives that can be styled with any CSS approach.\"",
     "start": "yarn storybook:docs",
     "storybook": "storybook dev --port 3000",
