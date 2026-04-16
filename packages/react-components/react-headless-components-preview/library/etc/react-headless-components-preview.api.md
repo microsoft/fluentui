@@ -20,16 +20,107 @@ import type { AccordionPanelBaseProps } from '@fluentui/react-accordion';
 import type { AccordionPanelBaseState } from '@fluentui/react-accordion';
 import type { AccordionPanelSlots as AccordionPanelSlots_2 } from '@fluentui/react-accordion';
 import type { AccordionSlots as AccordionSlots_2 } from '@fluentui/react-accordion';
+import type { AvatarBaseProps } from '@fluentui/react-avatar';
+import { AvatarBaseState } from '@fluentui/react-avatar';
+import type { BadgeBaseProps } from '@fluentui/react-badge';
+import { BadgeBaseState } from '@fluentui/react-badge';
+import type { BreadcrumbBaseProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbBaseState } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbButtonBaseProps } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbButtonBaseState } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbButtonSlots as BreadcrumbButtonSlots_2 } from '@fluentui/react-breadcrumb';
+import { BreadcrumbContextValues as BreadcrumbContextValues_2 } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbDividerBaseProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerBaseState } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbDividerSlots as BreadcrumbDividerSlots_2 } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbItemBaseProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemBaseState } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbItemSlots as BreadcrumbItemSlots_2 } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbSlots as BreadcrumbSlots_2 } from '@fluentui/react-breadcrumb';
 import type { ButtonBaseProps } from '@fluentui/react-button';
 import { ButtonBaseState } from '@fluentui/react-button';
 import type { ButtonSlots as ButtonSlots_2 } from '@fluentui/react-button';
+import type { CheckboxBaseProps } from '@fluentui/react-checkbox';
+import { CheckboxBaseState } from '@fluentui/react-checkbox';
+import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-checkbox';
+import { ComponentProps } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
+import type { FieldBaseProps } from '@fluentui/react-field';
+import { FieldBaseState } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InputBaseProps } from '@fluentui/react-input';
+import { InputBaseState } from '@fluentui/react-input';
+import type { InputSlots as InputSlots_2 } from '@fluentui/react-input';
 import { JSXElement } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import type { LinkBaseProps } from '@fluentui/react-link';
+import { LinkBaseState } from '@fluentui/react-link';
+import type { LinkSlots as LinkSlots_2 } from '@fluentui/react-link';
+import type { ProgressBarBaseProps } from '@fluentui/react-progress';
+import type { ProgressBarBaseState } from '@fluentui/react-progress';
+import type { ProgressBarSlots as ProgressBarSlots_2 } from '@fluentui/react-progress';
+import type { RadioBaseProps } from '@fluentui/react-radio';
+import { RadioBaseState } from '@fluentui/react-radio';
+import type { RadioGroupBaseProps } from '@fluentui/react-radio';
+import { RadioGroupBaseState } from '@fluentui/react-radio';
+import { RadioGroupContextValues } from '@fluentui/react-radio';
+import type { RadioGroupSlots as RadioGroupSlots_2 } from '@fluentui/react-radio';
+import { RadioOnChangeData } from '@fluentui/react-radio';
+import { RadioSlots as RadioSlots_2 } from '@fluentui/react-radio';
+import type { RatingBaseProps } from '@fluentui/react-rating';
+import { RatingBaseState } from '@fluentui/react-rating';
+import { RatingContextValues } from '@fluentui/react-rating';
+import type { RatingDisplayBaseProps } from '@fluentui/react-rating';
+import { RatingDisplayBaseState } from '@fluentui/react-rating';
+import { RatingDisplayContextValues } from '@fluentui/react-rating';
+import type { RatingDisplaySlots as RatingDisplaySlots_2 } from '@fluentui/react-rating';
+import type { RatingItemBaseProps } from '@fluentui/react-rating';
+import { RatingItemBaseState } from '@fluentui/react-rating';
+import { RatingItemSlots as RatingItemSlots_2 } from '@fluentui/react-rating';
+import type { RatingSlots as RatingSlots_2 } from '@fluentui/react-rating';
+import * as React_2 from 'react';
+import type { SearchBoxBaseProps } from '@fluentui/react-search';
+import { SearchBoxBaseState } from '@fluentui/react-search';
+import type { SearchBoxSlots as SearchBoxSlots_2 } from '@fluentui/react-search';
+import type { SelectBaseProps } from '@fluentui/react-select';
+import { SelectBaseState } from '@fluentui/react-select';
+import type { SelectSlots as SelectSlots_2 } from '@fluentui/react-select';
+import { SkeletonBaseProps } from '@fluentui/react-skeleton';
+import { SkeletonBaseState } from '@fluentui/react-skeleton';
+import { SkeletonContextValues } from '@fluentui/react-skeleton';
+import { SkeletonItemBaseProps } from '@fluentui/react-skeleton';
+import { SkeletonItemBaseState } from '@fluentui/react-skeleton';
+import type { SkeletonItemSlots as SkeletonItemSlots_2 } from '@fluentui/react-skeleton';
+import type { SkeletonSlots as SkeletonSlots_2 } from '@fluentui/react-skeleton';
+import type { SliderBaseProps } from '@fluentui/react-slider';
+import { SliderBaseState } from '@fluentui/react-slider';
+import type { SliderSlots as SliderSlots_2 } from '@fluentui/react-slider';
+import type { SpinButtonBaseProps } from '@fluentui/react-spinbutton';
+import { SpinButtonBaseState } from '@fluentui/react-spinbutton';
+import type { SpinButtonSlots as SpinButtonSlots_2 } from '@fluentui/react-spinbutton';
+import type { SpinnerBaseProps } from '@fluentui/react-spinner';
+import { SpinnerBaseState } from '@fluentui/react-spinner';
+import type { SpinnerSlots as SpinnerSlots_2 } from '@fluentui/react-spinner';
+import type { SwitchBaseProps } from '@fluentui/react-switch';
+import { SwitchBaseState } from '@fluentui/react-switch';
+import type { SwitchSlots as SwitchSlots_2 } from '@fluentui/react-switch';
+import type { TabBaseProps } from '@fluentui/react-tabs';
+import { TabBaseState } from '@fluentui/react-tabs';
+import type { TabListBaseProps } from '@fluentui/react-tabs';
+import { TabListBaseState } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import type { TabListSlots as TabListSlots_2 } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
+import type { TextareaBaseProps } from '@fluentui/react-textarea';
+import { TextareaBaseState } from '@fluentui/react-textarea';
+import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
+import type { ToggleButtonBaseProps } from '@fluentui/react-button';
+import type { ToggleButtonBaseState } from '@fluentui/react-button';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -47,7 +138,13 @@ export type AccordionHeaderProps = AccordionHeaderBaseProps;
 export type AccordionHeaderSlots = AccordionHeaderSlots_2;
 
 // @public (undocumented)
-export type AccordionHeaderState = AccordionHeaderBaseState;
+export type AccordionHeaderState = AccordionHeaderBaseState & {
+    root: {
+        'data-open'?: string;
+        'data-disabled'?: string;
+        'data-expand-icon-position'?: string;
+    };
+};
 
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
@@ -59,7 +156,12 @@ export type AccordionItemProps = AccordionItemProps_2;
 export type AccordionItemSlots = AccordionItemSlots_2;
 
 // @public (undocumented)
-export type AccordionItemState = AccordionItemState_2;
+export type AccordionItemState = AccordionItemState_2 & {
+    root: {
+        'data-disabled'?: string;
+        'data-open'?: string;
+    };
+};
 
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
@@ -71,7 +173,11 @@ export type AccordionPanelProps = AccordionPanelBaseProps;
 export type AccordionPanelSlots = AccordionPanelSlots_2;
 
 // @public (undocumented)
-export type AccordionPanelState = AccordionPanelBaseState;
+export type AccordionPanelState = AccordionPanelBaseState & {
+    root: {
+        'data-open'?: string;
+    };
+};
 
 // @public (undocumented)
 export type AccordionProps = AccordionBaseProps;
@@ -80,7 +186,89 @@ export type AccordionProps = AccordionBaseProps;
 export type AccordionSlots = AccordionSlots_2;
 
 // @public (undocumented)
-export type AccordionState = AccordionBaseState;
+export type AccordionState = AccordionBaseState & {
+    root: {
+        'data-collapsible'?: string;
+        'data-multiple'?: string;
+    };
+};
+
+// @public
+export const Avatar: ForwardRefComponent<AvatarProps>;
+
+// @public
+export type AvatarProps = AvatarBaseProps;
+
+// @public
+export type AvatarState = AvatarBaseState;
+
+// @public
+export const Badge: ForwardRefComponent<BadgeProps>;
+
+// @public
+export type BadgeProps = BadgeBaseProps;
+
+// @public
+export type BadgeState = BadgeBaseState & {
+    root: {
+        'data-icon-position'?: 'before' | 'after';
+    };
+};
+
+// @public
+export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
+
+// @public
+export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
+
+// @public
+export type BreadcrumbButtonProps = BreadcrumbButtonBaseProps;
+
+// @public
+export type BreadcrumbButtonSlots = BreadcrumbButtonSlots_2;
+
+// @public
+export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
+    root: {
+        'data-current'?: string;
+    };
+};
+
+// @public
+export type BreadcrumbContextValues = BreadcrumbContextValues_2;
+
+// @public
+export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
+
+// @public
+export type BreadcrumbDividerProps = BreadcrumbDividerBaseProps;
+
+// @public
+export type BreadcrumbDividerSlots = BreadcrumbDividerSlots_2;
+
+// @public
+export type BreadcrumbDividerState = BreadcrumbDividerBaseState;
+
+// @public
+export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
+
+// @public
+export type BreadcrumbItemProps = BreadcrumbItemBaseProps;
+
+// @public
+export type BreadcrumbItemSlots = BreadcrumbItemSlots_2;
+
+// @public
+export type BreadcrumbItemState = BreadcrumbItemBaseState;
+
+// @public
+export type BreadcrumbProps = BreadcrumbBaseProps;
+
+// @public
+export type BreadcrumbSlots = BreadcrumbSlots_2;
+
+// @public
+export type BreadcrumbState = BreadcrumbBaseState;
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -92,7 +280,30 @@ export type ButtonProps = ButtonBaseProps;
 export type ButtonSlots = ButtonSlots_2;
 
 // @public
-export type ButtonState = ButtonBaseState;
+export type ButtonState = ButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+    };
+};
+
+// @public
+export const Checkbox: ForwardRefComponent<CheckboxProps>;
+
+// @public
+export type CheckboxProps = CheckboxBaseProps;
+
+// @public (undocumented)
+export type CheckboxSlots = CheckboxSlots_2;
+
+// @public
+export type CheckboxState = CheckboxBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-checked'?: string;
+    };
+};
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -104,7 +315,151 @@ export type DividerProps = DividerBaseProps;
 export type DividerSlots = DividerSlots_2;
 
 // @public (undocumented)
-export type DividerState = DividerBaseState;
+export type DividerState = DividerBaseState & {
+    root: {
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
+
+// @public
+export const Field: ForwardRefComponent<FieldProps>;
+
+// @public
+export type FieldProps = FieldBaseProps;
+
+// @public
+export type FieldSlots = FieldSlots_2;
+
+// @public
+export type FieldState = FieldBaseState & {
+    root: {
+        'data-validate-state'?: FieldBaseState['validationState'];
+    };
+};
+
+// @public
+export const Input: ForwardRefComponent<InputProps>;
+
+// @public
+export type InputProps = InputBaseProps;
+
+// @public
+export type InputSlots = InputSlots_2;
+
+// @public
+export type InputState = InputBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
+
+// @public
+export const Link: ForwardRefComponent<LinkProps>;
+
+// @public
+export type LinkProps = LinkBaseProps;
+
+// @public
+export type LinkSlots = LinkSlots_2;
+
+// @public
+export type LinkState = LinkBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+    };
+};
+
+// @public
+export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
+
+// @public
+export type ProgressBarProps = ProgressBarBaseProps;
+
+// @public (undocumented)
+export type ProgressBarSlots = ProgressBarSlots_2;
+
+// @public
+export type ProgressBarState = ProgressBarBaseState;
+
+// @public
+export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
+    value?: string;
+    labelPosition?: "after" | "below";
+    disabled?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+} & React_2.RefAttributes<HTMLInputElement>>;
+
+// @public
+export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+// @public
+export type RadioGroupProps = RadioGroupBaseProps;
+
+// @public
+export type RadioGroupSlots = RadioGroupSlots_2;
+
+// @public
+export type RadioGroupState = RadioGroupBaseState;
+
+// @public
+export type RadioProps = RadioBaseProps;
+
+// @public
+export type RadioSlots = RadioSlots_2;
+
+// @public
+export type RadioState = RadioBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
+
+// @public
+export const Rating: ForwardRefComponent<RatingProps>;
+
+// @public
+export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
+
+// @public
+export type RatingDisplayProps = RatingDisplayBaseProps;
+
+// @public
+export type RatingDisplaySlots = RatingDisplaySlots_2;
+
+// @public
+export type RatingDisplayState = RatingDisplayBaseState;
+
+// @public
+export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingItemSlots_2>, "root"> & Omit<{
+    as?: "span" | undefined;
+} & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children"> & {
+    children?: any;
+}, "ref"> & {
+    value?: number;
+} & React_2.RefAttributes<HTMLSpanElement>>;
+
+// @public
+export type RatingItemProps = RatingItemBaseProps;
+
+// @public
+export type RatingItemSlots = RatingItemSlots_2;
+
+// @public
+export type RatingItemState = RatingItemBaseState & {
+    root: {
+        'data-appearance'?: 'filled' | 'filled-half' | 'outline';
+    };
+};
+
+// @public
+export type RatingProps = RatingBaseProps;
+
+// @public
+export type RatingSlots = RatingSlots_2;
+
+// @public
+export type RatingState = RatingBaseState;
 
 // @public
 export const renderAccordion: (state: AccordionBaseState, contextValues: AccordionContextValues_2) => JSXElement;
@@ -119,10 +474,287 @@ export const renderAccordionItem: (state: AccordionItemState_2, contextValues: A
 export const renderAccordionPanel: (state: AccordionPanelState) => JSXElement;
 
 // @public
+export const renderAvatar: (state: AvatarBaseState) => JSXElement;
+
+// @public
+export const renderBadge: (state: BadgeBaseState) => JSXElement;
+
+// @public
+export const renderBreadcrumb: (state: BreadcrumbBaseState, contextValues: BreadcrumbContextValues_2) => JSXElement;
+
+// @public
+export const renderBreadcrumbButton: (state: BreadcrumbButtonState) => JSXElement;
+
+// @public
+export const renderBreadcrumbDivider: (state: BreadcrumbDividerBaseState) => JSXElement;
+
+// @public
+export const renderBreadcrumbItem: (state: BreadcrumbItemBaseState) => JSXElement;
+
+// @public
 export const renderButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
+export const renderCheckbox: (state: CheckboxBaseState) => JSXElement;
+
+// @public
 export const renderDivider: (state: DividerBaseState) => JSXElement;
+
+// @public
+export const renderField: (state: FieldBaseState, contextValues: FieldContextValues) => JSXElement;
+
+// @public
+export const renderInput: (state: InputBaseState) => JSXElement;
+
+// @public
+export const renderLink: (state: LinkBaseState) => JSXElement;
+
+// @public
+export const renderProgressBar: (state: ProgressBarState) => JSXElement;
+
+// @public
+export const renderRadio: (state: RadioBaseState) => JSXElement;
+
+// @public
+export const renderRadioGroup: (state: RadioGroupBaseState, contextValues: RadioGroupContextValues) => JSXElement;
+
+// @public
+export const renderRating: (state: RatingBaseState, contextValues: RatingContextValues) => JSXElement;
+
+// @public
+export const renderRatingDisplay: (state: RatingDisplayBaseState, contextValues: RatingDisplayContextValues) => JSXElement;
+
+// @public
+export const renderRatingItem: (state: RatingItemBaseState) => JSXElement;
+
+// @public
+export const renderSearchBox: (state: SearchBoxBaseState) => JSXElement;
+
+// @public
+export const renderSelect: (state: SelectBaseState) => JSXElement;
+
+// @public
+export const renderSkeleton: (state: SkeletonBaseState, contextValues: SkeletonContextValues) => JSXElement;
+
+// @public
+export const renderSkeletonItem: (state: SkeletonItemBaseState) => JSXElement;
+
+// @public
+export const renderSlider: (state: SliderBaseState) => JSXElement;
+
+// @public
+export const renderSpinButton: (state: SpinButtonBaseState) => JSXElement;
+
+// @public
+export const renderSpinner: (state: SpinnerBaseState) => JSXElement;
+
+// @public
+export const renderSwitch: (state: SwitchBaseState) => JSXElement;
+
+// @public
+export const renderTab: (state: TabBaseState) => JSXElement;
+
+// @public
+export const renderTabList: (state: TabListBaseState, contextValues: TabListContextValues) => JSXElement;
+
+// @public
+export const renderTextarea: (state: TextareaBaseState) => JSXElement;
+
+// @public
+export const renderToggleButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
+export const SearchBox: ForwardRefComponent<SearchBoxProps>;
+
+// @public
+export type SearchBoxProps = SearchBoxBaseProps;
+
+// @public
+export type SearchBoxSlots = SearchBoxSlots_2;
+
+// @public
+export type SearchBoxState = SearchBoxBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-focused'?: string;
+    };
+};
+
+// @public
+export const Select: ForwardRefComponent<SelectProps>;
+
+// @public
+export type SelectProps = SelectBaseProps;
+
+// @public (undocumented)
+export type SelectSlots = SelectSlots_2;
+
+// @public
+export type SelectState = SelectBaseState & {
+    root: {
+        'data-disabled'?: string;
+    };
+};
+
+// @public
+export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonBaseProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export const SkeletonItem: React_2.ForwardRefExoticComponent<SkeletonItemBaseProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export type SkeletonItemProps = SkeletonItemBaseProps;
+
+// @public
+export type SkeletonItemSlots = SkeletonItemSlots_2;
+
+// @public
+export type SkeletonItemState = SkeletonItemBaseState;
+
+// @public
+export type SkeletonProps = SkeletonBaseProps;
+
+// @public
+export type SkeletonSlots = SkeletonSlots_2;
+
+// @public
+export type SkeletonState = SkeletonBaseState;
+
+// @public
+export const Slider: ForwardRefComponent<SliderProps>;
+
+// @public
+export type SliderProps = SliderBaseProps;
+
+// @public
+export type SliderSlots = SliderSlots_2;
+
+// @public
+export type SliderState = SliderBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-vertical'?: string;
+    };
+};
+
+// @public
+export const SpinButton: ForwardRefComponent<SpinButtonProps>;
+
+// @public
+export type SpinButtonProps = SpinButtonBaseProps;
+
+// @public
+export type SpinButtonSlots = SpinButtonSlots_2;
+
+// @public
+export type SpinButtonState = SpinButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-spin-state'?: string;
+        'data-at-bound'?: string;
+    };
+};
+
+// @public
+export const Spinner: ForwardRefComponent<SpinnerProps>;
+
+// @public
+export type SpinnerProps = SpinnerBaseProps;
+
+// @public
+export type SpinnerSlots = SpinnerSlots_2;
+
+// @public
+export type SpinnerState = SpinnerBaseState & {
+    root: {
+        'data-label-position'?: 'before' | 'after' | 'above' | 'below';
+    };
+};
+
+// @public
+export const Switch: ForwardRefComponent<SwitchProps>;
+
+// @public
+export type SwitchProps = SwitchBaseProps;
+
+// @public
+export type SwitchSlots = SwitchSlots_2;
+
+// @public
+export type SwitchState = SwitchBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-checked'?: string;
+    };
+};
+
+// @public
+export const Tab: ForwardRefComponent<TabProps>;
+
+// @public
+export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public
+export type TabListProps = TabListBaseProps;
+
+// @public
+export type TabListSlots = TabListSlots_2;
+
+// @public
+export type TabListState = TabListBaseState & {
+    root: {
+        focusgroup?: string;
+        'data-orientation'?: 'vertical' | 'horizontal';
+    };
+};
+
+// @public (undocumented)
+export type TabProps = TabBaseProps;
+
+export { TabSlots }
+
+// @public (undocumented)
+export type TabState = TabBaseState & {
+    root: {
+        focusgroupstart?: string;
+        'data-icon-only'?: string;
+        'data-selected'?: string;
+    };
+};
+
+export { TabValue }
+
+// @public
+export const Textarea: ForwardRefComponent<TextareaProps>;
+
+// @public
+export type TextareaProps = TextareaBaseProps;
+
+// @public
+export type TextareaSlots = TextareaSlots_2;
+
+// @public
+export type TextareaState = TextareaBaseState;
+
+// @public
+export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
+
+// @public
+export type ToggleButtonProps = ToggleButtonBaseProps;
+
+// @public
+export type ToggleButtonSlots = ButtonSlots;
+
+// @public
+export type ToggleButtonState = ToggleButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-checked'?: string;
+    };
+};
 
 // @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
@@ -143,10 +775,100 @@ export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTML
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
+export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public
+export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLDivElement>) => BadgeState;
+
+// @public
+export const useBreadcrumb: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
+
+// @public
+export const useBreadcrumbButton: (props: BreadcrumbButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => BreadcrumbButtonState;
+
+// @public
+export const useBreadcrumbContext: () => BreadcrumbContextValues_2;
+
+// @public
+export const useBreadcrumbContextValues: (state: BreadcrumbState) => BreadcrumbContextValues;
+
+// @public
+export const useBreadcrumbDivider: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
+
+// @public
+export const useBreadcrumbItem: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemState;
+
+// @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
 // @public
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+
+// @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
+
+// @public
+export const useField: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
+
+// @public
+export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>) => LinkState;
+
+// @public
+export const useProgressBar: (props: ProgressBarProps, ref: React_2.Ref<HTMLDivElement>) => ProgressBarState;
+
+// @public
+export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
+
+// @public
+export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
+
+// @public
+export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
+
+// @public
+export const useRatingDisplay: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
+
+// @public
+export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
+
+// @public
+export const useSearchBox: (props: SearchBoxProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxState;
+
+// @public
+export const useSelect: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
+
+// @public
+export const useSkeleton: (props: SkeletonProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonState;
+
+// @public
+export const useSkeletonItem: (props: SkeletonItemProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemState;
+
+// @public
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
+
+// @public
+export const useSpinButton: (props: SpinButtonProps, ref: React_2.Ref<HTMLInputElement>) => SpinButtonState;
+
+// @public
+export const useSpinner: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
+
+// @public
+export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
+
+// @public
+export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+// @public
+export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
+
+// @public
+export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 
