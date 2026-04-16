@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: remove Griffel dependency from usePortalMountNode",
+  "packageName": "@fluentui/react-portal",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
