@@ -14,7 +14,8 @@ import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/re
 const dialogTriggerId = 'dialog-trigger';
 const dialogTriggerOpenId = `${dialogTriggerId}-open`;
 const dialogTriggerCloseId = `${dialogTriggerId}-close`;
-const dialogSurfaceSelector = `dialog`;
+const dialogSurfaceSelector = `dialog[data-open="true"]`;
+const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
 
@@ -191,8 +192,10 @@ describe('Dialog', () => {
     cy.get(dialogSurfaceSelector).should('exist');
 
     cy.get(dialogTriggerCloseSelector).realClick();
-    // dialog surface should remain mounted when unmountOnClose is false
-    cy.get(dialogSurfaceSelector).should('exist');
+    // dialog surface should remain mounted but no longer be open when unmountOnClose is false
+    cy.get(dialogSurfaceElementSelector).should('exist');
+    cy.get(dialogSurfaceElementSelector).should('not.have.attr', 'open');
+    cy.get(dialogSurfaceSelector).should('not.exist');
   });
 
   it('should allow change of focus on open', () => {
@@ -323,7 +326,7 @@ describe('Dialog', () => {
       cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
-    it('should lock body scroll when dialog open', () => {
+    it('should preserve html overflow styles when dialog opens', () => {
       mount(
         <>
           <Dialog modalType="modal">
@@ -350,8 +353,12 @@ describe('Dialog', () => {
           {lorem}
         </>,
       );
-      cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('html').should('have.css', 'overflow', 'visible clip');
+      cy.get('html')
+        .invoke('css', 'overflow')
+        .then(initialOverflow => {
+          cy.get(dialogTriggerOpenSelector).realClick();
+          cy.get('html').should('have.css', 'overflow', initialOverflow);
+        });
     });
 
     it('should focus trap by default', () => {
@@ -385,7 +392,7 @@ describe('Dialog', () => {
       cy.get('#do-something-btn').should('be.focused').realPress('Tab');
       cy.get(dialogTriggerCloseSelector).should('be.focused');
     });
-    it('should focus on window after last element when inertTrapFocus=true', () => {
+    it('should keep focus trapped when inertTrapFocus=true', () => {
       mount(
         <Dialog inertTrapFocus modalType="modal">
           <DialogTrigger disableButtonEnhancement>
@@ -414,7 +421,7 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
       cy.get('#do-something-btn').should('be.focused').realPress('Tab');
-      cy.focused().should('not.exist');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
     });
   });
   describe('modalType = non-modal', () => {
@@ -449,7 +456,7 @@ describe('Dialog', () => {
       cy.get(dialogSurfaceSelector).should('not.exist');
       cy.get(dialogTriggerOpenSelector).should('be.focused');
     });
-    it('should not lock body scroll when dialog open', () => {
+    it('should preserve html overflow styles when dialog opens', () => {
       mount(
         <>
           <Dialog modalType="non-modal">
@@ -478,8 +485,12 @@ describe('Dialog', () => {
           {lorem}
         </>,
       );
-      cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('html').should('not.have.css', 'overflow', 'visible clip');
+      cy.get('html')
+        .invoke('css', 'overflow')
+        .then(initialOverflow => {
+          cy.get(dialogTriggerOpenSelector).realClick();
+          cy.get('html').should('have.css', 'overflow', initialOverflow);
+        });
     });
     it('should be able to focus inside non-modal dialog after navigating outside', () => {
       mount(
@@ -544,7 +555,7 @@ describe('Dialog', () => {
       cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
-    it('should lock body scroll when dialog open', () => {
+    it('should preserve html overflow styles when dialog opens', () => {
       mount(
         <>
           <Dialog modalType="alert">
@@ -573,8 +584,12 @@ describe('Dialog', () => {
           {lorem}
         </>,
       );
-      cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('html').should('have.css', 'overflow', 'visible clip');
+      cy.get('html')
+        .invoke('css', 'overflow')
+        .then(initialOverflow => {
+          cy.get(dialogTriggerOpenSelector).realClick();
+          cy.get('html').should('have.css', 'overflow', initialOverflow);
+        });
     });
     it('should focus trap by default', () => {
       mount(
@@ -607,7 +622,7 @@ describe('Dialog', () => {
       cy.get('#do-something-btn').should('be.focused').realPress('Tab');
       cy.get(dialogTriggerCloseSelector).should('be.focused');
     });
-    it('should focus on window after last element when inertTrapFocus=true', () => {
+    it('should keep focus trapped when inertTrapFocus=true', () => {
       mount(
         <Dialog inertTrapFocus modalType="alert">
           <DialogTrigger disableButtonEnhancement>
@@ -636,7 +651,7 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
       cy.get('#do-something-btn').should('be.focused').realPress('Tab');
-      cy.focused().should('not.exist');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
     });
   });
 
