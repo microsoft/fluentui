@@ -1,9 +1,13 @@
 'use client';
 
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
+// String concatenation is used to prevent bundlers to complain with older versions of React
+const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
+  ? (React as never)['useInsertion' + 'Effect']
+  : useIsomorphicLayoutEffect;
 
 // Symbol used as a "private" property key on Document to store the active portal reference count.
 // Symbol.for() registers in the global Symbol registry so the same key is shared across bundles
