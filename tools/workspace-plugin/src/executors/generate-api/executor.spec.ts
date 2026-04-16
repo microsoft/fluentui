@@ -398,7 +398,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
 
   /**
    * Creates a fixture with a wildcard export "./*" whose types pattern resolves
-   * to one emitted .d.ts per sub-directory under src/items/.
+   * to one emitted .d.ts per sub-directory under dts/src/items/.
    * The primary api-extractor.json uses a relative path from config/ to dts/src/.
    */
   function prepareWildcardFixture(subDirNames: string[]) {
@@ -430,10 +430,6 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       }),
       'utf-8',
     );
-
-    for (const name of subDirNames) {
-      mkdirSync(join(projRoot, 'src', 'items', name), { recursive: true });
-    }
 
     execSyncMock.mockImplementation(() => {
       mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
@@ -537,7 +533,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1); // primary only
   });
 
-  it('skips wildcard expansion when the resolved source directory does not exist', async () => {
+  it('skips wildcard expansion when the resolved declaration directory does not exist', async () => {
     const { paths, context } = prepareFixture('valid', {});
     const { projRoot } = paths;
 
@@ -569,7 +565,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     execSyncMock.mockImplementation(() => {
       mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
       writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const x: 1;', 'utf-8');
-      // src/items/ intentionally NOT created
+      // dts/src/items/ intentionally NOT created
     });
 
     const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
@@ -585,7 +581,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     expect(output.success).toBe(true);
   });
 
-  it('routes api report for each wildcard component to etc/{componentName}.api.md', async () => {
+  it('routes api report for each wildcard entry to etc/{name}.api.md', async () => {
     const subDirs = ['alpha', 'beta'];
     const { paths, context } = prepareWildcardFixture(subDirs);
 
