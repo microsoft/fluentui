@@ -5,7 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle, DialogTrigger } from '.';
+import { Dialog, DialogFooter, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '.';
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '@fluentui/react-button';
@@ -14,7 +14,7 @@ import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/re
 const dialogTriggerId = 'dialog-trigger';
 const dialogTriggerOpenId = `${dialogTriggerId}-open`;
 const dialogTriggerCloseId = `${dialogTriggerId}-close`;
-const dialogSurfaceSelector = `dialog[data-open="true"]`;
+const dialogSurfaceSelector = `dialog[open]`;
 const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
@@ -31,19 +31,19 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -60,19 +60,19 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -89,19 +89,19 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -118,11 +118,11 @@ describe('Dialog', () => {
         <DialogSurface id="dialog-surface">
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
+            </div>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -139,19 +139,19 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -170,19 +170,19 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -215,18 +215,18 @@ describe('Dialog', () => {
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>This dialog focus on the second button instead of the first</DialogContent>
-              <DialogActions position="start">
+              <div>This dialog focus on the second button instead of the first</div>
+              <DialogFooter>
                 <Button appearance="outline">Third Action</Button>
-              </DialogActions>
-              <DialogActions position="end">
+              </DialogFooter>
+              <DialogFooter>
                 <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
                     Close
                   </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              </DialogFooter>
             </DialogBody>
           </DialogSurface>
         </Dialog>
@@ -245,7 +245,7 @@ describe('Dialog', () => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
+            <div>
               <Menu>
                 <MenuTrigger disableButtonEnhancement>
                   <Button id="open-menu-btn">Toggle menu</Button>
@@ -263,8 +263,8 @@ describe('Dialog', () => {
                 </PopoverTrigger>
                 <PopoverSurface aria-label="label">Content</PopoverSurface>
               </Popover>
-            </DialogContent>
-            <DialogActions>
+            </div>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
                   <Button id={dialogTriggerCloseId} appearance="secondary">
@@ -273,7 +273,7 @@ describe('Dialog', () => {
                 </Tooltip>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -305,19 +305,19 @@ describe('Dialog', () => {
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
+              <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
+              </div>
+              <DialogFooter>
                 <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
                   </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              </DialogFooter>
             </DialogBody>
           </DialogSurface>
         </Dialog>,
@@ -340,14 +340,14 @@ describe('Dialog', () => {
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
               </DialogBody>
-              <DialogActions>
+              <DialogFooter>
                 <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
                   </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              </DialogFooter>
             </DialogSurface>
           </Dialog>
           {lorem}
@@ -374,7 +374,7 @@ describe('Dialog', () => {
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
             </DialogBody>
-            <DialogActions>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
@@ -383,7 +383,7 @@ describe('Dialog', () => {
               <Button id="do-something-btn" appearance="primary">
                 Do Something
               </Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogSurface>
         </Dialog>,
       );
@@ -405,7 +405,7 @@ describe('Dialog', () => {
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
             </DialogBody>
-            <DialogActions>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
@@ -414,7 +414,7 @@ describe('Dialog', () => {
               <Button id="do-something-btn" appearance="primary">
                 Do Something
               </Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogSurface>
         </Dialog>,
       );
@@ -434,19 +434,19 @@ describe('Dialog', () => {
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
+              <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
+              </div>
+              <DialogFooter>
                 <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
                   </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              </DialogFooter>
             </DialogBody>
           </DialogSurface>
         </Dialog>,
@@ -466,19 +466,19 @@ describe('Dialog', () => {
             <DialogSurface>
               <DialogBody>
                 <DialogTitle>Dialog title</DialogTitle>
-                <DialogContent>
+                <div>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                   eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                   natus iure cumque eaque?
-                </DialogContent>
-                <DialogActions>
+                </div>
+                <DialogFooter>
                   <DialogTrigger disableButtonEnhancement>
                     <Button id={dialogTriggerCloseId} appearance="secondary">
                       Close
                     </Button>
                   </DialogTrigger>
                   <Button appearance="primary">Do Something</Button>
-                </DialogActions>
+                </DialogFooter>
               </DialogBody>
             </DialogSurface>
           </Dialog>
@@ -501,7 +501,7 @@ describe('Dialog', () => {
             </DialogTrigger>
             <DialogSurface>
               <DialogBody>
-                <DialogActions>
+                <DialogFooter>
                   <DialogTrigger disableButtonEnhancement>
                     <Button id={dialogTriggerCloseId} appearance="secondary">
                       Close
@@ -510,7 +510,7 @@ describe('Dialog', () => {
                   <Button id="extra-btn-inside" appearance="primary">
                     Do Something
                   </Button>
-                </DialogActions>
+                </DialogFooter>
               </DialogBody>
             </DialogSurface>
           </Dialog>
@@ -534,19 +534,19 @@ describe('Dialog', () => {
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
+              <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
+              </div>
+              <DialogFooter>
                 <DialogTrigger disableButtonEnhancement>
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
                   </Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              </DialogFooter>
             </DialogBody>
           </DialogSurface>
         </Dialog>,
@@ -565,19 +565,19 @@ describe('Dialog', () => {
             <DialogSurface>
               <DialogBody>
                 <DialogTitle>Dialog title</DialogTitle>
-                <DialogContent>
+                <div>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                   eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                   natus iure cumque eaque?
-                </DialogContent>
-                <DialogActions>
+                </div>
+                <DialogFooter>
                   <DialogTrigger disableButtonEnhancement>
                     <Button id={dialogTriggerCloseId} appearance="secondary">
                       Close
                     </Button>
                   </DialogTrigger>
                   <Button appearance="primary">Do Something</Button>
-                </DialogActions>
+                </DialogFooter>
               </DialogBody>
             </DialogSurface>
           </Dialog>
@@ -604,7 +604,7 @@ describe('Dialog', () => {
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
             </DialogBody>
-            <DialogActions>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
@@ -613,7 +613,7 @@ describe('Dialog', () => {
               <Button id="do-something-btn" appearance="primary">
                 Do Something
               </Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogSurface>
         </Dialog>,
       );
@@ -635,7 +635,7 @@ describe('Dialog', () => {
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
             </DialogBody>
-            <DialogActions>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
@@ -644,7 +644,7 @@ describe('Dialog', () => {
               <Button id="do-something-btn" appearance="primary">
                 Do Something
               </Button>
-            </DialogActions>
+            </DialogFooter>
           </DialogSurface>
         </Dialog>,
       );
@@ -664,7 +664,7 @@ describe('Dialog', () => {
         <DialogSurface id="first-dialog">
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
-            <DialogActions>
+            <DialogFooter>
               <DialogTrigger disableButtonEnhancement>
                 <Button id="close-first-dialog-btn">Close</Button>
               </DialogTrigger>
@@ -677,35 +677,33 @@ describe('Dialog', () => {
                 <DialogSurface id="second-dialog">
                   <DialogBody>
                     <DialogTitle>Inner dialog title</DialogTitle>
-                    <DialogContent>
-                      ⛔️ just because you can doesn't mean you should have nested dialogs ⛔️
-                    </DialogContent>
-                    <DialogActions>
+                    <div>⛔️ just because you can doesn't mean you should have nested dialogs ⛔️</div>
+                    <DialogFooter>
                       <DialogTrigger disableButtonEnhancement>
                         <Button id="close-second-dialog-btn" appearance="primary">
                           Close
                         </Button>
                       </DialogTrigger>
-                    </DialogActions>
+                    </DialogFooter>
                   </DialogBody>
                 </DialogSurface>
               </Dialog>
-            </DialogActions>
+            </DialogFooter>
           </DialogBody>
         </DialogSurface>
       </Dialog>,
     );
     cy.get('#open-first-dialog-btn').realClick();
-    cy.get('#first-dialog').should('exist');
-    cy.get('#second-dialog').should('not.exist');
+    cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#open-second-dialog-btn').should('exist').realClick();
-    cy.get('#second-dialog').should('exist');
-    cy.get('#close-second-dialog-btn').should('exist').realClick();
-    cy.get('#second-dialog').should('not.exist');
-    cy.get('#first-dialog').should('exist');
+    cy.get(dialogSurfaceSelector).should('have.length', 2);
+    // Use Escape to close only the top-most nested dialog.
+    // Clicking inside nested modal dialogs can be interpreted as a backdrop click
+    // by the parent native <dialog> in some browsers.
+    cy.get('#close-second-dialog-btn').should('exist').focus().realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#close-first-dialog-btn').should('exist').realClick();
-    cy.get('#second-dialog').should('not.exist');
-    cy.get('#first-dialog').should('not.exist');
+    cy.get(dialogSurfaceSelector).should('not.exist');
   });
 });
 
