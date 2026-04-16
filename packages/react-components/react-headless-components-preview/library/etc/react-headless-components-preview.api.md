@@ -142,6 +142,20 @@ import { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
 import type { ToggleButtonBaseProps } from '@fluentui/react-button';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
+import { ToolbarBaseState } from '@fluentui/react-toolbar';
+import type { ToolbarButtonProps as ToolbarButtonProps_2 } from '@fluentui/react-toolbar';
+import type { ToolbarButtonState as ToolbarButtonState_2 } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues as ToolbarContextValues_2 } from '@fluentui/react-toolbar';
+import type { ToolbarDividerProps as ToolbarDividerProps_2 } from '@fluentui/react-toolbar';
+import type { ToolbarDividerState as ToolbarDividerState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-toolbar';
+import { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarProps as ToolbarProps_2 } from '@fluentui/react-toolbar';
+import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-toolbar';
+import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
+import type { ToolbarState as ToolbarState_2 } from '@fluentui/react-toolbar';
 import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
@@ -680,6 +694,21 @@ export const renderTextarea: (state: TextareaBaseState) => JSXElement;
 export const renderToggleButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
+export const renderToolbar: (state: ToolbarBaseState, contextValues: ToolbarContextValues_2) => JSXElement;
+
+// @public
+export const renderToolbarButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
+export const renderToolbarDivider: (state: DividerBaseState) => JSXElement;
+
+// @public
+export const renderToolbarGroup: (state: ToolbarGroupState_2) => JSXElement;
+
+// @public
+export const renderToolbarRadioGroup: (state: ToolbarGroupState_2) => JSXElement;
+
+// @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
 // @public
@@ -873,6 +902,82 @@ export type ToggleButtonState = ToggleButtonBaseState & {
 };
 
 // @public
+export const Toolbar: ForwardRefComponent<ToolbarProps>;
+
+// @public
+export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
+
+// @public (undocumented)
+export type ToolbarButtonProps = ToolbarButtonProps_2;
+
+// @public (undocumented)
+export type ToolbarButtonState = ToolbarButtonState_2 & {
+    root: {
+        'data-vertical'?: string;
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarContextValues = ToolbarContextValues_2;
+
+// @public
+export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
+
+// @public (undocumented)
+export type ToolbarDividerProps = ToolbarDividerProps_2;
+
+// @public (undocumented)
+export type ToolbarDividerState = ToolbarDividerState_2 & {
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public
+export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public (undocumented)
+export type ToolbarGroupProps = ToolbarGroupProps_2;
+
+// @public (undocumented)
+export type ToolbarGroupState = ToolbarGroupState_2 & {
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarProps = ToolbarProps_2;
+
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public (undocumented)
+export type ToolbarRadioGroupProps = ToolbarRadioGroupProps_2;
+
+// @public (undocumented)
+export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
+    vertical?: boolean;
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarSlots = ToolbarSlots_2;
+
+// @public (undocumented)
+export type ToolbarState = ToolbarState_2 & {
+    root: {
+        'data-vertical'?: string;
+        'data-size'?: string;
+    };
+};
+
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public
@@ -1014,6 +1119,27 @@ export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaEl
 
 // @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+
+// @public
+export const useToolbar: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
+
+// @public
+export const useToolbarButton: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
+
+// @public
+export const useToolbarContext: <T>(selector: ContextSelector<ToolbarContextValue, T>) => T;
+
+// @public
+export const useToolbarContextValues: (state: ToolbarState) => ToolbarContextValues;
+
+// @public
+export const useToolbarDivider: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
+
+// @public
+export const useToolbarGroup: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarGroupState;
+
+// @public
+export const useToolbarRadioGroup: (props: ToolbarRadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarRadioGroupState;
 
 // (No @packageDocumentation comment for this package)
 
