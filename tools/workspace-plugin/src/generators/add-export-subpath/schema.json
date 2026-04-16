@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "add-export-subpath",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project to add the sub-path export to.",
+      "$default": { "$source": "argv", "index": 0 },
+      "x-priority": "important",
+      "x-prompt": "What is the project name?"
+    },
+    "subpath": {
+      "type": "string",
+      "description": "The sub-path name (e.g. 'utils'). Used as './utils' in the exports map and to derive config/api-extractor.utils.json.",
+      "x-priority": "important",
+      "x-prompt": "What is the export sub-path name (e.g. 'utils')?"
+    },
+    "sourceEntrypoint": {
+      "type": "string",
+      "description": "Path of the source entrypoint relative to src/ (defaults to '{subpath}/index.ts')."
+    },
+    "enableApiReport": {
+      "type": "boolean",
+      "description": "Whether to generate an api.md report for this sub-path entry.",
+      "default": false
+    }
+  },
+  "required": ["project", "subpath"]
+}

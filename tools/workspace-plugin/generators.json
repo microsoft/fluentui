@@ -1,5 +1,10 @@
 {
   "generators": {
+    "add-export-subpath": {
+      "implementation": "./src/generators/add-export-subpath/index.ts",
+      "schema": "./src/generators/add-export-subpath/schema.json",
+      "description": "Add a named sub-path export to a vNext library and scaffold the corresponding api-extractor config for dts rollup generation."
+    },
     "bundle-size-configuration": {
       "factory": "./src/generators/bundle-size-configuration/generator",
       "schema": "./src/generators/bundle-size-configuration/schema.json",

@@ -6,7 +6,7 @@ import {
   type ExtractorResult,
 } from '@microsoft/api-extractor';
 import { basename, join } from 'node:path';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
 import { type TsConfig } from '../../types';
@@ -230,5 +230,378 @@ describe('GenerateApi Executor', () => {
     });
 
     expect(output.success).toBe(true);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Additional file-based sub-path configs (api-extractor.*.json)
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('GenerateApi Executor – additional sub-path configs', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  /**
+   * Extends the base "valid" fixture with a second api-extractor config
+   * (e.g. api-extractor.utils.json) to simulate a named sub-path entry.
+   */
+  function prepareFixtureWithSubpathConfig() {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    // Write the sub-path api-extractor config that references an already-emitted dts file
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.utils.json'),
+      serializeJson({
+        mainEntryPointFilePath: '<projectFolder>/dts/utils/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true, untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      // Simulate tsc emitting declaration files for both main and utils entry
+      mkdirSync(join(projRoot, 'dts', 'utils'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'index.d.ts'), 'export const foo: number;', 'utf-8');
+      writeFileSync(join(projRoot, 'dts', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
+    });
+
+    return { paths, context };
+  }
+
+  it('invokes api-extractor twice when a sub-path config is present', async () => {
+    const { context } = prepareFixtureWithSubpathConfig();
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor(options, context);
+
+    // Should have been called once for primary + once for utils
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(2);
+    expect(output.success).toBe(true);
+  });
+
+  it('passes the sub-path mainEntryPointFilePath to api-extractor', async () => {
+    const { paths, context } = prepareFixtureWithSubpathConfig();
+
+    const extractorConfigs: string[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      extractorConfigs.push(cfg.mainEntryPointFilePath);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    // Second call should use the utils entry point
+    expect(extractorConfigs[1]).toContain('utils/index.d.ts');
+  });
+
+  it('returns false and stops after the first failing sub-path config', async () => {
+    const { context } = prepareFixtureWithSubpathConfig();
+
+    let callCount = 0;
+    jest.spyOn(Extractor, 'invoke').mockImplementation(() => {
+      callCount++;
+      // first call (primary) succeeds; second call (sub-path) fails
+      return { succeeded: callCount === 1, errorCount: callCount === 1 ? 0 : 1, warningCount: 0 } as ExtractorResult;
+    });
+
+    const output = await executor(options, context);
+
+    expect(callCount).toBe(2);
+    expect(output.success).toBe(false);
+  });
+
+  it('ignores the primary api-extractor.json when scanning for additional configs', async () => {
+    const { paths, context } = prepareFixtureWithSubpathConfig();
+
+    const extractorConfigPaths: string[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      // mainEntryPointFilePath is absolute at this stage
+      extractorConfigPaths.push(cfg.mainEntryPointFilePath);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    // Should only be called once for primary + once for utils; NOT a third time for primary again
+    expect(extractorConfigPaths).toHaveLength(2);
+    // The additional config entry should not duplicate the primary one
+    const primaryEntry = join(paths.projRoot, 'dts', 'index.d.ts');
+    const additionalEntry = join(paths.projRoot, 'dts', 'utils', 'index.d.ts');
+    expect(extractorConfigPaths[0]).toBe(primaryEntry);
+    expect(extractorConfigPaths[1]).toBe(additionalEntry);
+  });
+
+  it('routes api report for sub-path config to etc/<unscopedPackageName>.<subpath>.api.md', async () => {
+    const { paths, context } = prepareFixtureWithSubpathConfigAndApiReport();
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    const subpathConfig = capturedConfigs[1];
+    expect(subpathConfig.apiReportEnabled).toBe(true);
+    expect(subpathConfig.reportFilePath).toBe(join(paths.projRoot, 'etc', 'proj.utils.api.md'));
+  });
+
+  /**
+   * Like prepareFixtureWithSubpathConfig but with api report enabled and a unique reportFileName.
+   */
+  function prepareFixtureWithSubpathConfigAndApiReport() {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.utils.json'),
+      serializeJson({
+        mainEntryPointFilePath: '<projectFolder>/dts/utils/index.d.ts',
+        apiReport: { enabled: true, reportFileName: '<unscopedPackageName>.utils' },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true, untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'utils'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'index.d.ts'), 'export const foo: number;', 'utf-8');
+      writeFileSync(join(projRoot, 'dts', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
+    });
+
+    return { paths, context };
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Wildcard export expansion
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('GenerateApi Executor – wildcard export expansion', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  /**
+   * Creates a fixture with a wildcard export "./*" whose types pattern resolves
+   * to one emitted .d.ts per sub-directory under src/items/.
+   * The primary api-extractor.json uses a relative path from config/ to dts/src/.
+   */
+  function prepareWildcardFixture(subDirNames: string[]) {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({
+        name: '@proj/proj',
+        types: 'dist/index.d.ts',
+        exports: {
+          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+          './*': { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' },
+          './package.json': './package.json',
+        },
+      }),
+      'utf-8',
+    );
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    for (const name of subDirNames) {
+      mkdirSync(join(projRoot, 'src', 'items', name), { recursive: true });
+    }
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
+      for (const name of subDirNames) {
+        mkdirSync(join(projRoot, 'dts', 'src', 'items', name), { recursive: true });
+        writeFileSync(
+          join(projRoot, 'dts', 'src', 'items', name, 'index.d.ts'),
+          `export const value: string;`,
+          'utf-8',
+        );
+      }
+    });
+
+    return { paths, context };
+  }
+
+  it('calls api-extractor once per wildcard sub-directory in addition to the primary', async () => {
+    const subDirs = ['alpha', 'beta', 'gamma'];
+    const { context } = prepareWildcardFixture(subDirs);
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor(options, context);
+
+    // primary (1) + one per sub-directory
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);
+    expect(output.success).toBe(true);
+  });
+
+  it('passes the correct mainEntryPointFilePath for each wildcard sub-directory', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareWildcardFixture(subDirs);
+
+    const capturedEntries: string[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedEntries.push(cfg.mainEntryPointFilePath);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    const wildcardEntries = capturedEntries.slice(1); // skip primary
+    for (const name of subDirs) {
+      expect(wildcardEntries.some(p => p.includes(`items/${name}/index.d.ts`))).toBe(true);
+    }
+  });
+
+  it('sets the dts rollup untrimmedFilePath to dist/{wildcard-path}/{name}/index.d.ts', async () => {
+    const { paths, context } = prepareWildcardFixture(['alpha']);
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    const wildcardConfig = capturedConfigs[1]; // second call is the wildcard entry
+    expect(wildcardConfig.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'items', 'alpha', 'index.d.ts'));
+  });
+
+  it('skips wildcard exports with no types field', async () => {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({
+        name: '@proj/proj',
+        types: 'dist/index.d.ts',
+        exports: {
+          '.': { import: './lib/index.js' },
+          './*': { import: './lib/items/*/index.js' }, // no types field
+          './package.json': './package.json',
+        },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts'));
+      writeFileSync(join(projRoot, 'dts', 'index.d.ts'), 'export const x: 1;', 'utf-8');
+    });
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    await executor(options, context);
+
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1); // primary only
+  });
+
+  it('skips wildcard expansion when the resolved source directory does not exist', async () => {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({
+        name: '@proj/proj',
+        types: 'dist/index.d.ts',
+        exports: {
+          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+          './*': { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' },
+        },
+      }),
+      'utf-8',
+    );
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const x: 1;', 'utf-8');
+      // src/items/ intentionally NOT created
+    });
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor(options, context);
+
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1); // primary only
+    expect(output.success).toBe(true);
+  });
+
+  it('routes api report for each wildcard component to etc/{componentName}.api.md', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { paths, context } = prepareWildcardFixture(subDirs);
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor(options, context);
+
+    const wildcardConfigs = capturedConfigs.slice(1); // skip primary
+    for (const name of subDirs) {
+      const cfg = wildcardConfigs.find(c => c.mainEntryPointFilePath.includes(`items/${name}/`))!;
+      expect(cfg.apiReportEnabled).toBe(true);
+      expect(cfg.reportFilePath).toBe(join(paths.projRoot, 'etc', `${name}.api.md`));
+    }
   });
 });

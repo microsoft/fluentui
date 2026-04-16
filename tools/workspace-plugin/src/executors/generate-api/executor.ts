@@ -1,6 +1,6 @@
 import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
-import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { dirname, join, relative, resolve } from 'node:path';
 import { execSync } from 'node:child_process';
 
 import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
@@ -9,6 +9,7 @@ import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
 import { isCI } from './lib/shared';
+import { listAdditionalApiExtractorConfigs, hasWildcardTypedExport } from './utils';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -29,11 +30,34 @@ export default runExecutor;
 interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 
 async function runGenerateApi(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
-  if (generateTypeDeclarations(options)) {
-    return apiExtractor(options, context);
+  if (!generateTypeDeclarations(options)) {
+    return false;
   }
 
-  return false;
+  // Run primary api-extractor config
+  if (!apiExtractor({ configPath: options.config }, options, context)) {
+    return false;
+  }
+
+  // Run additional file-based sub-path configs (e.g. api-extractor.utils.json)
+  const additionalConfigs = listAdditionalApiExtractorConfigs(dirname(options.config), options.config);
+  for (const configPath of additionalConfigs) {
+    verboseLog(`Running api-extractor for sub-path config: ${relative(options.projectAbsolutePath, configPath)}`);
+    if (!apiExtractor({ configPath }, options, context)) {
+      return false;
+    }
+  }
+
+  // Expand wildcard exports and run api-extractor for each resolved component dir
+  const wildcardConfigs = getWildcardExportConfigs(options);
+  for (const configObject of wildcardConfigs) {
+    verboseLog(`Running api-extractor for wildcard component: ${configObject.mainEntryPointFilePath}`);
+    if (!apiExtractor({ configObject }, options, context)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorContext) {
@@ -92,15 +116,29 @@ function generateTypeDeclarations(options: NormalizedOptions) {
   }
 }
 
-function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
-  const extractorConfigPath = options.config;
+function apiExtractor(
+  configSource: { configPath: string } | { configObject: IConfigFile },
+  options: NormalizedOptions,
+  context: ExecutorContext,
+) {
+  let rawExtractorConfig: IConfigFile;
+  let configObjectFullPath: string;
+
+  if ('configPath' in configSource) {
+    rawExtractorConfig = ExtractorConfig.loadFile(configSource.configPath);
+    configObjectFullPath = configSource.configPath;
+  } else {
+    rawExtractorConfig = configSource.configObject;
+    // For programmatically-built configs, reuse the primary config path as the resolution base
+    // so that token resolution matches the same directory as file-based configs.
+    configObjectFullPath = options.config;
+  }
 
   // Load,parse,customize and prepare the api-extractor.json file for API Extractor API
-  const rawExtractorConfig = ExtractorConfig.loadFile(extractorConfigPath);
   customizeExtractorConfig(rawExtractorConfig);
   const extractorConfig = ExtractorConfig.prepare({
     configObject: rawExtractorConfig,
-    configObjectFullPath: extractorConfigPath,
+    configObjectFullPath,
     packageJsonFullPath: options.packageJsonPath,
   });
 
@@ -134,6 +172,125 @@ function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
 
     return apiExtractorConfig;
   }
+}
+
+/**
+/**
+ * Reads the package.json exports map and expands wildcard entries (e.g. "./*") into individual
+ * api-extractor config objects — one per source directory found under the resolved source path.
+ *
+ * Example: "./*" with types "./dist/components/STAR/index.d.ts" expands to one config per
+ * directory found in "src/components/".
+ */
+function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
+  const packageJson: PackageJson = parseJson(readFileSync(options.packageJsonPath, 'utf-8'));
+
+  const exports = packageJson.exports ?? {};
+  const configs: IConfigFile[] = [];
+
+  if (!hasWildcardTypedExport(exports as Record<string, unknown>)) {
+    return configs;
+  }
+
+  // Derive the declaration base path from the primary api-extractor config's mainEntryPointFilePath.
+  // The primary config uses tokens (<projectFolder>, <projectRoot>, <unscopedPackageName>) which we
+  // resolve here so that programmatic configs for wildcard entries land in the same output tree.
+  const primaryRawConfig = parseJson<{ mainEntryPointFilePath?: string }>(readFileSync(options.config, 'utf-8'));
+  const primaryMainEntryTemplate = primaryRawConfig?.mainEntryPointFilePath;
+  if (!primaryMainEntryTemplate) {
+    return configs;
+  }
+
+  const unscopedPackageName = (packageJson.name ?? '').replace(/^@[^/]+\//, '');
+  // <projectRoot> and <projectFolder> in api-extractor.json are NOT replaced before path.resolve —
+  // they act as literal path segments that the subsequent "../" chain traverses through.
+  // path.resolve(configDir, "<projectRoot>/../../../../../../...") naturally normalizes to the correct path.
+  const configDir = dirname(options.config);
+  const resolvedPrimaryEntry = resolve(
+    configDir,
+    primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
+  );
+
+  // The resolved primary entry ends with /src/index.d.ts; everything before is the "declaration base"
+  // e.g. .../dist/out-tsc/types/packages/react-components/react-headless-components-preview/library
+  const srcIndexSuffix = '/src/index.d.ts';
+  if (!resolvedPrimaryEntry.endsWith(srcIndexSuffix)) {
+    verboseLog(
+      `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${srcIndexSuffix}". ` +
+        `Skipping wildcard export expansion.`,
+      'warn',
+    );
+    return configs;
+  }
+  const declarationBase = resolvedPrimaryEntry.slice(0, -srcIndexSuffix.length);
+
+  for (const [exportKey, exportValue] of Object.entries(exports)) {
+    // Only process wildcard entries that have a `types` field
+    if (!exportKey.includes('*')) {
+      continue;
+    }
+    if (typeof exportValue !== 'object' || !exportValue.types) {
+      continue;
+    }
+
+    // e.g. types = "./dist/components/*/index.d.ts"
+    // Split on the wildcard to get prefix/suffix: ["./dist/components/", "/index.d.ts"]
+    const typePattern = exportValue.types;
+    const starIdx = typePattern.indexOf('*');
+    if (starIdx === -1) {
+      continue;
+    }
+    const typesPrefix = typePattern.slice(0, starIdx); // "./dist/components/"
+
+    // Derive the source path pattern from the types pattern:
+    // "./dist/components/*/index.d.ts" → "src/components/*/index.d.ts"
+    // Strip the leading "./" from typesPrefix to get the relative dist path
+    const distRelativePrefix = typesPrefix.replace(/^\.\//, '');
+    // Replace leading "dist/" with "src/" to find source files
+    const srcRelativePrefix = distRelativePrefix.replace(/^dist\//, 'src/');
+    const srcComponentsDir = join(options.projectAbsolutePath, srcRelativePrefix);
+
+    if (!existsSync(srcComponentsDir)) {
+      verboseLog(`Wildcard export source dir not found, skipping: ${srcComponentsDir}`, 'warn');
+      continue;
+    }
+
+    let componentDirs: string[];
+    try {
+      componentDirs = readdirSync(srcComponentsDir, { withFileTypes: true })
+        .filter(e => e.isDirectory())
+        .map(e => e.name);
+    } catch {
+      continue;
+    }
+
+    for (const componentName of componentDirs) {
+      // declarationBase ends at the package root (e.g. .../library), declaration files live at
+      // declarationBase/src/components/{name}/index.d.ts
+      const mainEntryPointFilePath = join(declarationBase, srcRelativePrefix, componentName, 'index.d.ts');
+
+      // Construct the dts rollup output path
+      // typesPrefix is e.g. "./dist/components/" → projectAbsolutePath/dist/components/{name}/index.d.ts
+      const dtsRollupPath = join(options.projectAbsolutePath, distRelativePrefix, componentName, 'index.d.ts');
+
+      const configObject: IConfigFile = {
+        // projectFolder must be set for programmatic configs (no implicit derivation from config file path)
+        projectFolder: options.projectAbsolutePath,
+        mainEntryPointFilePath,
+        apiReport: { enabled: true, reportFileName: componentName, reportFolder: '<projectFolder>/etc/' },
+        docModel: { enabled: false },
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: dtsRollupPath,
+        },
+        tsdocMetadata: { enabled: false },
+      };
+
+      configs.push(configObject);
+    }
+  }
+
+  return configs;
 }
 
 function getTsConfigForApiExtractor(options: {

@@ -23,6 +23,7 @@ import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
+import { listAdditionalApiExtractorConfigs, hasWildcardTypedExport } from '../executors/generate-api/utils';
 
 export interface WorkspacePluginOptions {
   testSSR?: TargetPluginOption;
@@ -201,27 +202,7 @@ function buildWorkspaceProjectConfiguration(
 
     // library
 
-    targets['generate-api'] = {
-      cache: true,
-      executor: '@fluentui/workspace-plugin:generate-api',
-      inputs: [
-        '{projectRoot}/config/api-extractor.json',
-        '{projectRoot}/tsconfig.json',
-        '{projectRoot}/tsconfig.lib.json',
-        '{projectRoot}/src/**/*.tsx?',
-        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
-        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
-        { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
-      ],
-      outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
-      metadata: {
-        technologies: ['typescript', 'api-extractor'],
-        help: {
-          command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
-          example: {},
-        },
-      },
-    };
+    targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
 
     targets.build = {
       cache: true,
@@ -285,6 +266,82 @@ function buildWorkspaceProjectConfiguration(
   }
 
   return { targets };
+}
+
+function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
+  const { extraInputs, extraOutputs } = buildExtraInputsAndOutputsForApiExtractorConfigs();
+
+  return {
+    cache: true,
+    executor: '@fluentui/workspace-plugin:generate-api',
+    inputs: [
+      '{projectRoot}/config/api-extractor.json',
+      ...extraInputs,
+      '{projectRoot}/tsconfig.json',
+      '{projectRoot}/tsconfig.lib.json',
+      '{projectRoot}/src/**/*.tsx?',
+      // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+      '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+      { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+    ],
+    outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`, ...extraOutputs],
+    metadata: {
+      technologies: ['typescript', 'api-extractor'],
+      help: {
+        command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
+        example: {},
+      },
+    },
+  };
+
+  function buildExtraInputsAndOutputsForApiExtractorConfigs() {
+    const extraInputs: string[] = [];
+    const extraOutputs: string[] = [];
+
+    // Pick up additional api-extractor.*.json configs (sub-path entries, e.g. api-extractor.utils.json)
+    const configDir = join(projectRoot, 'config');
+    const primaryConfigPath = join(configDir, 'api-extractor.json');
+    const additionalConfigFiles = listAdditionalApiExtractorConfigs(configDir, primaryConfigPath);
+
+    for (const absPath of additionalConfigFiles) {
+      const configFile = absPath.slice(configDir.length + 1); // filename only
+      extraInputs.push(`{projectRoot}/config/${configFile}`);
+      // Parse the config to derive outputs (dtsRollup untrimmedFilePath + apiReport reportFileName)
+      try {
+        const parsed = readJsonFile<{
+          dtsRollup?: { untrimmedFilePath?: string };
+          apiReport?: { enabled?: boolean; reportFileName?: string };
+        }>(absPath);
+        if (parsed.dtsRollup?.untrimmedFilePath) {
+          // untrimmedFilePath may contain api-extractor tokens like <projectFolder> — replace with {projectRoot}
+          extraOutputs.push(
+            parsed.dtsRollup.untrimmedFilePath
+              .replace('<projectFolder>', '{projectRoot}')
+              .replace('<projectRoot>', '{projectRoot}'),
+          );
+        }
+        if (parsed.apiReport?.enabled && parsed.apiReport.reportFileName) {
+          const unscopedPackageName = (config.packageJSON.name ?? '').replace(/^@[^/]+\//, '');
+          const resolvedReportFileName = parsed.apiReport.reportFileName.replace(
+            /<unscopedPackageName>/g,
+            unscopedPackageName,
+          );
+          extraOutputs.push(`{projectRoot}/etc/${resolvedReportFileName}.api.md`);
+        }
+      } catch {
+        // ignore parse errors; outputs will just be incomplete for this file
+      }
+    }
+
+    // Wildcard exports: if the package.json has a wildcard export key with a types field,
+    // the executor will expand it at runtime — add the dist glob and api report glob as outputs so nx can track them.
+    if (hasWildcardTypedExport(config.packageJSON.exports as Record<string, unknown>)) {
+      extraOutputs.push('{projectRoot}/dist/**/*.d.ts');
+      extraOutputs.push('{projectRoot}/etc/*.api.md');
+    }
+
+    return { extraInputs, extraOutputs };
+  }
 }
 
 function buildTestTarget(
