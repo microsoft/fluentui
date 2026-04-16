@@ -298,7 +298,6 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
     const extraInputs: string[] = [];
     const extraOutputs: string[] = [];
 
-    // Pick up additional api-extractor.*.json configs (sub-path entries, e.g. api-extractor.utils.json)
     const configDir = join(projectRoot, 'config');
     const primaryConfigPath = join(configDir, 'api-extractor.json');
     const additionalConfigFiles = listAdditionalApiExtractorConfigs(configDir, primaryConfigPath);
@@ -306,36 +305,14 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
     for (const absPath of additionalConfigFiles) {
       const configFile = absPath.slice(configDir.length + 1); // filename only
       extraInputs.push(`{projectRoot}/config/${configFile}`);
-      // Parse the config to derive outputs (dtsRollup untrimmedFilePath + apiReport reportFileName)
-      try {
-        const parsed = readJsonFile<{
-          dtsRollup?: { untrimmedFilePath?: string };
-          apiReport?: { enabled?: boolean; reportFileName?: string };
-        }>(absPath);
-        if (parsed.dtsRollup?.untrimmedFilePath) {
-          // untrimmedFilePath may contain api-extractor tokens like <projectFolder> — replace with {projectRoot}
-          extraOutputs.push(
-            parsed.dtsRollup.untrimmedFilePath
-              .replace('<projectFolder>', '{projectRoot}')
-              .replace('<projectRoot>', '{projectRoot}'),
-          );
-        }
-        if (parsed.apiReport?.enabled && parsed.apiReport.reportFileName) {
-          const unscopedPackageName = (config.packageJSON.name ?? '').replace(/^@[^/]+\//, '');
-          const resolvedReportFileName = parsed.apiReport.reportFileName.replace(
-            /<unscopedPackageName>/g,
-            unscopedPackageName,
-          );
-          extraOutputs.push(`{projectRoot}/etc/${resolvedReportFileName}.api.md`);
-        }
-      } catch {
-        // ignore parse errors; outputs will just be incomplete for this file
-      }
     }
 
-    // Wildcard exports: if the package.json has a wildcard export key with a types field,
-    // the executor will expand it at runtime — add the dist glob and api report glob as outputs so nx can track them.
-    if (hasWildcardTypedExport(config.packageJSON.exports as Record<string, unknown>)) {
+    const hasExtraEntryPoints =
+      additionalConfigFiles.length > 0 || hasWildcardTypedExport(config.packageJSON.exports as Record<string, unknown>);
+
+    // When any additional or wildcard entry points exist, use broad globs for outputs
+    // — the executor resolves exact paths at runtime.
+    if (hasExtraEntryPoints) {
       extraOutputs.push('{projectRoot}/dist/**/*.d.ts');
       extraOutputs.push('{projectRoot}/etc/*.api.md');
     }

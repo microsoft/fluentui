@@ -821,6 +821,71 @@ describe(`workspace-plugin`, () => {
       `);
     });
 
+    describe('generate-api target', () => {
+      const v9LibFiles = {
+        'proj/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      };
+
+      async function setupAndGetGenerateApiTarget(extraFiles: Record<string, string> = {}) {
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        return getTargets(results)?.['generate-api'];
+      }
+
+      it('should use default inputs and outputs for a standard v9 library', async () => {
+        const target = await setupAndGetGenerateApiTarget();
+
+        expect(target?.inputs).toEqual([
+          '{projectRoot}/config/api-extractor.json',
+          '{projectRoot}/tsconfig.json',
+          '{projectRoot}/tsconfig.lib.json',
+          '{projectRoot}/src/**/*.tsx?',
+          '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+          { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+        ]);
+        expect(target?.outputs).toEqual(['{projectRoot}/dist/index.d.ts', '{projectRoot}/etc/proj.api.md']);
+      });
+
+      it('should add glob outputs when additional api-extractor configs exist', async () => {
+        const target = await setupAndGetGenerateApiTarget({
+          'proj/config/api-extractor.json': '{}',
+          'proj/config/api-extractor.utils.json': serializeJson({
+            apiReport: { enabled: true, reportFileName: 'utils' },
+            dtsRollup: { untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
+          }),
+        });
+
+        expect(target?.inputs).toContain('{projectRoot}/config/api-extractor.utils.json');
+        expect(target?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
+        expect(target?.outputs).toContain('{projectRoot}/etc/*.api.md');
+      });
+
+      it('should add glob outputs when package has wildcard typed exports', async () => {
+        const target = await setupAndGetGenerateApiTarget({
+          'proj/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+            exports: {
+              '.': { types: './dist/index.d.ts' },
+              './*': { types: './dist/components/*/index.d.ts' },
+            },
+          } satisfies Partial<PackageJson>),
+        });
+
+        expect(target?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
+        expect(target?.outputs).toContain('{projectRoot}/etc/*.api.md');
+      });
+    });
+
     it('should add verify-packaging task only if package is not private', async () => {
       await tempFs.createFiles({
         'proj/project.json': serializeJson({
