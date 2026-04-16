@@ -197,16 +197,14 @@ const useModernElementFactory: UseElementFactory = options => {
       return;
     }
 
-    const classesToApply = className.split(' ').filter(Boolean);
-
-    elementProxy.classList.add(...classesToApply);
+    elementProxy.setAttribute('class', className);
     elementProxy.setAttribute('dir', dir);
     elementProxy.setAttribute('data-portal-node', 'true');
 
     focusVisibleRef.current = elementProxy;
 
     return () => {
-      elementProxy.classList.remove(...classesToApply);
+      elementProxy.removeAttribute('class');
       elementProxy.removeAttribute('dir');
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
