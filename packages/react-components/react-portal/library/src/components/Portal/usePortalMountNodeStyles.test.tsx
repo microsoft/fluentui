@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
-import { usePortalMountNodeStyles, PORTAL_STYLE_ELEMENT_ID } from './usePortalMountNodeStyles';
+import { usePortalMountNodeStyles, PORTAL_STYLE_ELEMENT_ID, setPortalRefCount } from './usePortalMountNodeStyles';
 
 function queryStyleElement(): HTMLStyleElement | null {
   return document.head.querySelector(`#${PORTAL_STYLE_ELEMENT_ID}`);
@@ -16,11 +16,9 @@ function createWrapper(targetDocument: Document | undefined) {
 
 describe('usePortalMountNodeStyles', () => {
   afterEach(() => {
-    // Clean up any leftover style elements
+    // Clean up any leftover style elements and reset the ref count
     queryStyleElement()?.remove();
-    // Clean up the ref count symbol on document
-    const sym = Symbol.for('fui-portal-style-ref-count');
-    delete (document as Record<symbol, unknown>)[sym];
+    setPortalRefCount(document, 0);
   });
 
   it('injects a <style> element into document.head when enabled', () => {

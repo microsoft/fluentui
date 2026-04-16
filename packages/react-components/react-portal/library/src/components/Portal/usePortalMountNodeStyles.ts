@@ -24,11 +24,11 @@ const PORTAL_MOUNT_NODE_STYLE_RULE = `[data-portal-node]{position:absolute;top:0
 // Only one such element exists per document, so an id is appropriate.
 export const PORTAL_STYLE_ELEMENT_ID = 'fui-portal-styles';
 
-function getPortalRefCount(targetDocument: Document): number {
+export function getPortalRefCount(targetDocument: Document): number {
   return (targetDocument as DocumentWithPortalCounter)[PORTAL_STYLE_REF_COUNT] ?? 0;
 }
 
-function setPortalRefCount(targetDocument: Document, count: number): void {
+export function setPortalRefCount(targetDocument: Document, count: number): void {
   (targetDocument as DocumentWithPortalCounter)[PORTAL_STYLE_REF_COUNT] = count;
 }
 
