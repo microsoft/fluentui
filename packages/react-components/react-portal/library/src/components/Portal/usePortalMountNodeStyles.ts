@@ -12,45 +12,45 @@ const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof
 const PORTAL_MOUNT_NODE_STYLE_RULE = `[data-portal-node]{position:absolute;top:0;left:0;right:0;z-index:1000000}`;
 
 // Attribute used to identify the injected portal mount node <style> element in a document.
-// Storing the element itself in the WeakMap would create a cross-reference
-// (Document → HTMLStyleElement → Document via ownerDocument), which would prevent the
-// document from being garbage-collected (e.g. after an iframe is removed).
 const PORTAL_STYLE_ELEMENT_ATTR = 'data-fui-portal-styles';
 
-// Tracks per-document reference counts to support multiple documents (e.g. iframes).
-// Only a plain object (no DOM references) is stored as the WeakMap value to avoid a memory leak.
-const documentStyleMap = new WeakMap<Document, { refCount: number }>();
+// Symbol used as a "private" property key on Document to store the active portal reference count.
+// Storing state directly on the document avoids any WeakMap cross-reference issues and is safe
+// across multiple documents (e.g. iframes) because each document object carries its own counter.
+const PORTAL_STYLE_REF_COUNT = Symbol('fui-portal-style-ref-count');
 
-function injectPortalMountNodeStyles(document: Document): void {
-  const entry = documentStyleMap.get(document);
-  if (entry) {
-    entry.refCount++;
+function injectPortalMountNodeStyles(doc: Document): void {
+  const currentCount = ((doc as never)[PORTAL_STYLE_REF_COUNT] as number | undefined) ?? 0;
+  if (currentCount > 0) {
+    (doc as never)[PORTAL_STYLE_REF_COUNT] = currentCount + 1;
     return;
   }
-  const style = document.createElement('style');
+  const style = doc.createElement('style');
   style.setAttribute(PORTAL_STYLE_ELEMENT_ATTR, '');
-  style.textContent = PORTAL_MOUNT_NODE_STYLE_RULE;
-  document.head.prepend(style);
-  documentStyleMap.set(document, { refCount: 1 });
+  // Prepend so that consumer class names (applied later in document order) can override these
+  // defaults via CSS source order at equal specificity — the same cascade behaviour as before.
+  // Both prepend and append trigger one style recalculation; position in <head> does not change
+  // the number of recalcs.
+  doc.head.prepend(style);
+  style.sheet!.insertRule(PORTAL_MOUNT_NODE_STYLE_RULE);
+  (doc as never)[PORTAL_STYLE_REF_COUNT] = 1;
 }
 
-function ejectPortalMountNodeStyles(document: Document): void {
-  const entry = documentStyleMap.get(document);
-  if (!entry) {
+function ejectPortalMountNodeStyles(doc: Document): void {
+  const currentCount = ((doc as never)[PORTAL_STYLE_REF_COUNT] as number | undefined) ?? 0;
+  if (currentCount <= 0) {
     return;
   }
-  entry.refCount--;
-  if (entry.refCount === 0) {
-    document.querySelector(`style[${PORTAL_STYLE_ELEMENT_ATTR}]`)?.remove();
-    documentStyleMap.delete(document);
+  const newCount = currentCount - 1;
+  if (newCount === 0) {
+    doc.querySelector(`style[${PORTAL_STYLE_ELEMENT_ATTR}]`)?.remove();
   }
+  (doc as never)[PORTAL_STYLE_REF_COUNT] = newCount;
 }
 
 /**
  * Injects a shared <style> element for portal mount node styling into the target document,
- * and returns the class name to apply to the mount node.
- *
- * The style element is reference-counted and removed when the last consumer unmounts.
+ * and removes it when the last consumer unmounts (reference counted via a Symbol property on `document`).
  */
 export function usePortalMountNodeStyles(disabled: boolean | undefined): void {
   const { targetDocument } = useFluent();
