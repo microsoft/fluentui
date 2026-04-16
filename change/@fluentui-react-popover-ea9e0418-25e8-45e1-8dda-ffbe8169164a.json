@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: close Popover when focus escapes outside while trapFocus is enabled",
+  "packageName": "@fluentui/react-popover",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "patch"
+}

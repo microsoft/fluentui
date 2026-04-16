@@ -168,6 +168,35 @@ export const usePopoverBase_unstable = (props: PopoverBaseProps): PopoverBaseSta
     disabled: !open || !closeOnScroll,
   });
 
+  // When trapFocus is enabled, close the popover if focus is programmatically moved outside
+  // (e.g. via element.focus()), which doesn't trigger click or scroll dismiss handlers.
+  const closeOnFocusOutCallback = useEventCallback((ev: FocusEvent) => {
+    const target = ev.target as HTMLElement;
+    const contentElement = positioningRefs.contentRef.current;
+
+    if (!contentElement) {
+      return;
+    }
+
+    const isOutside =
+      !elementContains(contentElement, target) && !elementContains(positioningRefs.triggerRef.current || null, target);
+
+    if (isOutside) {
+      setOpen(ev, false);
+    }
+  });
+
+  React.useEffect(() => {
+    if (!open || !props.trapFocus) {
+      return;
+    }
+
+    targetDocument?.addEventListener('focusin', closeOnFocusOutCallback, true);
+    return () => {
+      targetDocument?.removeEventListener('focusin', closeOnFocusOutCallback, true);
+    };
+  }, [open, props.trapFocus, targetDocument, closeOnFocusOutCallback]);
+
   const { findFirstFocusable } = useFocusFinders();
   const activateModal = useActivateModal();
 
