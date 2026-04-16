@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-headless-components-preview",
   "version": "0.0.0",
+  "private": true,
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,9 +49,6 @@
     "@fluentui/react-textarea": "^9.7.0",
     "@fluentui/react-utilities": "^9.26.2",
     "@swc/helpers": "^0.5.1"
-  },
-  "devDependencies": {
-    "@microsoft/focusgroup-polyfill": "^1.2.1"
   },
   "peerDependencies": {
     "@microsoft/focusgroup-polyfill": "^1.2.1",
