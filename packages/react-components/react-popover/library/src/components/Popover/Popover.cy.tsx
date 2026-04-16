@@ -453,6 +453,69 @@ describe('Popover', () => {
         cy.contains('Two').should('have.focus');
       });
     });
+
+    describe('close on focus escape', () => {
+      it('should close when focus is programmatically moved outside', () => {
+        mount(
+          <>
+            <button id="outside">Outside</button>
+            <Popover trapFocus>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>
+                <button>Inside</button>
+              </PopoverSurface>
+            </Popover>
+          </>,
+        );
+
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('not.exist');
+      });
+
+      it('should close with inertTrapFocus when focus is programmatically moved outside', () => {
+        mount(
+          <>
+            <button id="outside">Outside</button>
+            <Popover trapFocus inertTrapFocus>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>
+                <button>Inside</button>
+              </PopoverSurface>
+            </Popover>
+          </>,
+        );
+
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('not.exist');
+      });
+
+      it('should not close without trapFocus when focus moves outside', () => {
+        mount(
+          <>
+            <button id="outside">Outside</button>
+            <Popover>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>This is a popover</PopoverSurface>
+            </Popover>
+          </>,
+        );
+
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverContentSelector).should('be.visible');
+        cy.get('#outside').focus();
+        cy.get(popoverContentSelector).should('be.visible');
+      });
+    });
   });
 
   describe('with Iframe', () => {
