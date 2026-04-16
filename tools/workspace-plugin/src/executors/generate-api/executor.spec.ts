@@ -602,6 +602,44 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       const cfg = wildcardConfigs.find(c => c.mainEntryPointFilePath.includes(`items/${name}/`))!;
       expect(cfg.apiReportEnabled).toBe(true);
       expect(cfg.reportFilePath).toBe(join(paths.projRoot, 'etc', `${name}.api.md`));
+      expect(cfg.reportTempFilePath).toBe(join(paths.projRoot, 'temp', `${name}.api.md`));
     }
+  });
+
+  it('skips wildcard expansion when enableWildcardExpansion is false', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareWildcardFixture(subDirs);
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor({ ...options, enableWildcardExpansion: false }, context);
+
+    // Only the primary config should run — no wildcard expansion
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1);
+    expect(output.success).toBe(true);
+  });
+
+  it('expands wildcards by default (enableWildcardExpansion not set)', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareWildcardFixture(subDirs);
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    // Pass default options — no enableWildcardExpansion key
+    const output = await executor(options, context);
+
+    // primary (1) + one per sub-directory
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);
+    expect(output.success).toBe(true);
   });
 });

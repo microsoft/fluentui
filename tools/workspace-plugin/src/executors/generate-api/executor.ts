@@ -49,11 +49,13 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
   }
 
   // Expand wildcard exports and run api-extractor for each resolved component dir
-  const wildcardConfigs = getWildcardExportConfigs(options);
-  for (const configObject of wildcardConfigs) {
-    verboseLog(`Running api-extractor for wildcard component: ${configObject.mainEntryPointFilePath}`);
-    if (!apiExtractor({ configObject }, options, context)) {
-      return false;
+  if (options.enableWildcardExpansion) {
+    const wildcardConfigs = getWildcardExportConfigs(options);
+    for (const configObject of wildcardConfigs) {
+      verboseLog(`Running api-extractor for wildcard component: ${configObject.mainEntryPointFilePath}`);
+      if (!apiExtractor({ configObject }, options, context)) {
+        return false;
+      }
     }
   }
 
@@ -65,6 +67,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     config: '{projectRoot}/config/api-extractor.json',
     local: true,
     diagnostics: false,
+    enableWildcardExpansion: true,
   };
   const resolvedSchema = { ...defaults, ...schema };
 
@@ -277,7 +280,12 @@ function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
         // projectFolder must be set for programmatic configs (no implicit derivation from config file path)
         projectFolder: options.projectAbsolutePath,
         mainEntryPointFilePath,
-        apiReport: { enabled: true, reportFileName: componentName, reportFolder: '<projectFolder>/etc/' },
+        apiReport: {
+          enabled: true,
+          reportFileName: componentName,
+          reportFolder: '<projectFolder>/etc/',
+          reportTempFolder: '<projectFolder>/temp/',
+        },
         docModel: { enabled: false },
         dtsRollup: {
           enabled: true,
