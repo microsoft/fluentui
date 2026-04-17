@@ -1,11 +1,17 @@
 type ScrollLockState = {
   lockCount: number;
   previousBodyOverflow: string;
-  previousDocumentOverflow: string;
 };
 
 const scrollLockStateByDocument = new WeakMap<Document, ScrollLockState>();
 
+/**
+ * Prevents background scrolling while a modal/alert dialog is open by applying
+ * `overflow: hidden` to `<body>`. The `<html>` element is intentionally left
+ * untouched so host-application styles on the document element are preserved.
+ *
+ * Nested modal dialogs share a single lock via a reference count.
+ */
 export function lockDocumentScroll(targetDocument: Document): void {
   const previous = scrollLockStateByDocument.get(targetDocument);
   if (previous) {
@@ -13,15 +19,12 @@ export function lockDocumentScroll(targetDocument: Document): void {
     return;
   }
 
-  const nextState: ScrollLockState = {
+  scrollLockStateByDocument.set(targetDocument, {
     lockCount: 1,
     previousBodyOverflow: targetDocument.body.style.overflow,
-    previousDocumentOverflow: targetDocument.documentElement.style.overflow,
-  };
+  });
 
   targetDocument.body.style.overflow = 'hidden';
-  targetDocument.documentElement.style.overflow = 'hidden';
-  scrollLockStateByDocument.set(targetDocument, nextState);
 }
 
 export function unlockDocumentScroll(targetDocument: Document): void {
@@ -36,6 +39,5 @@ export function unlockDocumentScroll(targetDocument: Document): void {
   }
 
   targetDocument.body.style.overflow = state.previousBodyOverflow;
-  targetDocument.documentElement.style.overflow = state.previousDocumentOverflow;
   scrollLockStateByDocument.delete(targetDocument);
 }
