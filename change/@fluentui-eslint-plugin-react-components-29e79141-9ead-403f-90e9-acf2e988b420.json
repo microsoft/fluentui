@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: add more v8 to v9 component equivalents",
+  "type": "minor",
+  "comment": "feat: expand component coverage",
   "packageName": "@fluentui/eslint-plugin-react-components",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
