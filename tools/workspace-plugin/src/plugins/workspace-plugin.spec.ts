@@ -877,7 +877,7 @@ describe(`workspace-plugin`, () => {
         const generateApiTarget = targets?.['generate-api'];
         expect(generateApiTarget?.outputs).toEqual(['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']);
 
-        const buildTarget = targets?.['build'];
+        const buildTarget = targets?.build;
         expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
         expect(buildTarget?.outputs).toEqual([
           '{projectRoot}/lib',

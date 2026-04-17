@@ -6,7 +6,7 @@ import {
   type ExtractorResult,
 } from '@microsoft/api-extractor';
 import { basename, join } from 'node:path';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
 import { type TsConfig } from '../../types';
@@ -538,7 +538,9 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     for (const name of subDirs) {
       const cfg = wildcardConfigs.find(c => c.mainEntryPointFilePath.includes(`items/${name}/`))!;
       expect(cfg.apiReportEnabled).toBe(true);
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(cfg.reportFilePath).toBe(join(paths.projRoot, 'etc', `${name}.api.md`));
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(cfg.reportTempFilePath).toBe(join(paths.projRoot, 'temp', `${name}.api.md`));
     }
   });
@@ -628,6 +630,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     await executor({ ...options, exportSubpaths: true }, context);
 
     const utilsConfig = capturedConfigs[1];
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(utilsConfig.reportFilePath).toContain('utils.api.md');
   });
 
