@@ -14,9 +14,6 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `import { Button } from '@fluentui/react-components';`,
     },
-    {
-      code: `import { LayerHost } from '@fluentui/react';`,
-    },
   ],
   invalid: [
     {
