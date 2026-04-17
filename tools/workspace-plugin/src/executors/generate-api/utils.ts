@@ -18,9 +18,9 @@ export function listAdditionalApiExtractorConfigs(configDir: string, primaryConf
     return [];
   }
   return entries
-    .filter(f => /^api-extractor\..+\.json$/.test(f))
-    .map(f => join(configDir, f))
-    .filter(p => p !== primaryConfigPath);
+    .filter(filename => /^api-extractor\..+\.json$/.test(filename))
+    .map(filename => join(configDir, filename))
+    .filter(filepath => filepath !== primaryConfigPath);
 }
 
 /**
