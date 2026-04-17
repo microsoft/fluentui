@@ -591,7 +591,6 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/lib",
                         "{projectRoot}/lib-commonjs",
                         "{projectRoot}/dist",
-                        "{projectRoot}/dist/index.d.ts",
                         "{projectRoot}/etc/proj.api.md",
                       ],
                     },
@@ -876,11 +875,16 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results);
 
         const generateApiTarget = targets?.['generate-api'];
-        expect(generateApiTarget?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
-        expect(generateApiTarget?.outputs).toContain('{projectRoot}/etc/*.api.md');
+        expect(generateApiTarget?.outputs).toEqual(['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']);
 
         const buildTarget = targets?.['build'];
         expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
+        expect(buildTarget?.outputs).toEqual([
+          '{projectRoot}/lib',
+          '{projectRoot}/lib-commonjs',
+          '{projectRoot}/dist',
+          '{projectRoot}/etc/*.api.md',
+        ]);
       });
     });
 

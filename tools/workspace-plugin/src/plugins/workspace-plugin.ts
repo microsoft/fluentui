@@ -236,7 +236,8 @@ function buildWorkspaceProjectConfiguration(
         `{projectRoot}/lib-commonjs`,
         config.tags.includes('ships-amd') ? `{projectRoot}/lib-amd` : null,
         `{projectRoot}/dist`,
-        ...targets['generate-api'].outputs!,
+        // only spread etc/ outputs from generate-api (dist/ is already covered by {projectRoot}/dist above)
+        ...targets['generate-api'].outputs!.filter(outputPath => !outputPath.startsWith('{projectRoot}/dist')),
       ].filter(Boolean) as string[],
       metadata: {
         technologies: ['swc', 'typescript', 'api-extractor'],
@@ -282,15 +283,6 @@ function resolveExportSubpathsOption(config: TaskBuilderConfig): {
 function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
   const { enabled: hasExportSubpaths } = resolveExportSubpathsOption(config);
 
-  const extraOutputs: string[] = [];
-
-  // When exportSubpaths is enabled, use broad globs for outputs
-  // — the executor resolves exact paths at runtime.
-  if (hasExportSubpaths) {
-    extraOutputs.push('{projectRoot}/dist/**/*.d.ts');
-    extraOutputs.push('{projectRoot}/etc/*.api.md');
-  }
-
   return {
     cache: true,
     executor: '@fluentui/workspace-plugin:generate-api',
@@ -303,7 +295,11 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
       '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
       { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
     ],
-    outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`, ...extraOutputs],
+    // When exportSubpaths is enabled, use broad globs for outputs
+    // — the executor resolves exact paths at runtime.
+    outputs: hasExportSubpaths
+      ? ['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']
+      : [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
     metadata: {
       technologies: ['typescript', 'api-extractor'],
       help: {
