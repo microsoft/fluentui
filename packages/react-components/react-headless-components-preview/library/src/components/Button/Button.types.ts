@@ -13,4 +13,21 @@ export type ButtonProps = ButtonBaseProps;
 /**
  * Button component state
  */
-export type ButtonState = ButtonBaseState;
+export type ButtonState = ButtonBaseState & {
+  root: {
+    /**
+     * Data attribute set when the button is disabled.
+     */
+    'data-disabled'?: string;
+
+    /**
+     * Data attribute set when the button is disabled but still focusable.
+     */
+    'data-disabled-focusable'?: string;
+
+    /**
+     * Data attribute set when the button renders only an icon.
+     */
+    'data-icon-only'?: string;
+  };
+};

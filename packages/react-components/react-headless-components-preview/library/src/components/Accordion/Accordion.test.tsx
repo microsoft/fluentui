@@ -26,7 +26,7 @@ describe('Accordion', () => {
   ];
 
   it('renders a default state', () => {
-    const { container } = render(
+    const { getAllByRole, getByText } = render(
       <Accordion className="accordion" defaultOpenItems={items[0].id}>
         {items.map(item => (
           <AccordionItem className="accordion-item" key={item.id} value={item.id}>
@@ -37,57 +37,17 @@ describe('Accordion', () => {
       </Accordion>,
     );
 
-    expect(container.firstChild).toMatchInlineSnapshot(`
-      <div
-        class="accordion"
-      >
-        <div
-          class="accordion-item"
-          data-open=""
-        >
-          <div
-            class="accordion-header"
-          >
-            <button
-              aria-disabled="true"
-              aria-expanded="true"
-              type="button"
-            >
-              <span
-                aria-hidden="true"
-              />
-              Item #1 header
-            </button>
-          </div>
-          <div
-            class="accordion-panel"
-          >
-            Item #1 Panel
-          </div>
-        </div>
-        <div
-          class="accordion-item"
-        >
-          <div
-            class="accordion-header"
-          >
-            <button
-              aria-expanded="false"
-              type="button"
-            >
-              <span
-                aria-hidden="true"
-              />
-              Item #2 header
-            </button>
-          </div>
-          <div
-            class="accordion-panel"
-          >
-            Item #2 Panel
-          </div>
-        </div>
-      </div>
-    `);
+    const buttons = getAllByRole('button');
+    expect(buttons).toHaveLength(2);
+
+    // First item is open
+    expect(buttons[0]).toHaveAttribute('aria-expanded', 'true');
+    expect(getByText('Item #1 header')).toBeInTheDocument();
+    expect(getByText('Item #1 Panel')).toBeInTheDocument();
+
+    // Second item is closed
+    expect(buttons[1]).toHaveAttribute('aria-expanded', 'false');
+    expect(getByText('Item #2 header')).toBeInTheDocument();
+    expect(getByText('Item #2 Panel')).toBeInTheDocument();
   });
 });

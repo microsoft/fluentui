@@ -154,11 +154,13 @@
             "babel-preset-global-context",
             "eslint-plugin-react-components",
             "react-migration-v0-v9",
-            "react-migration-v0-v9-stories"
+            "react-migration-v0-v9-stories",
+            "public-docsite-v9-headless"
           ]
         }
       },
       "include": [
+        "apps/public-docsite-v9-headless/**",
         "apps/rit-tests-v9/*",
         "apps/rit-tests-v8/*",
 
