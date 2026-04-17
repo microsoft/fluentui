@@ -36,8 +36,8 @@ const defaultDialogContextValue: DialogContextValue = {
 
 export const DialogContext = React.createContext<DialogContextValue | undefined>(undefined);
 
-export const DialogSurfaceContext = React.createContext<DialogSurfaceContextValue>(false);
+export const DialogSurfaceContext = React.createContext<DialogSurfaceContextValue | undefined>(undefined);
 
 export const useDialogContext = (): DialogContextValue => React.useContext(DialogContext) ?? defaultDialogContextValue;
 
-export const useDialogSurfaceContext = (): DialogSurfaceContextValue => React.useContext(DialogSurfaceContext);
+export const useDialogSurfaceContext = (): DialogSurfaceContextValue => React.useContext(DialogSurfaceContext) ?? false;

@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { DialogSurfaceContext } from '../dialogContext';
@@ -24,9 +25,11 @@ export const renderDialogSurface = (state: DialogSurfaceState): JSXElement | nul
 
   assertSlots<DialogSurfaceSlots>(state);
 
-  return (
+  const content = (
     <DialogSurfaceContext.Provider value={true}>
       <state.root />
     </DialogSurfaceContext.Provider>
   );
+
+  return state.modalType === 'non-modal' ? <Portal>{content}</Portal> : content;
 };

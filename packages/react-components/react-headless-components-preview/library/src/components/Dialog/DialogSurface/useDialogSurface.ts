@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   getIntrinsicElementProps,
   slot,
@@ -11,6 +12,8 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { stringifyDataAttribute } from '../../../utils';
 import { useFocusScope } from '../../../hooks';
+import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
+import { focusFirstTabbable } from '../utils/tabbable';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
@@ -42,6 +45,7 @@ const EVENT_OPTIONS = { bubbles: false, cancelable: true } as const;
 export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>): DialogSurfaceState => {
   const { onMountAutoFocus, onUnmountAutoFocus, ...restProps } = props;
   const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId } = useDialogContext();
+  const { targetDocument } = useFluent(); // Ensure we're in a Fluent context, which provides SSR support for useIsomorphicLayoutEffect
 
   // Keep mutable refs to callbacks so layout effects always call the latest version
   // without needing to re-run when the callbacks change identity.
@@ -83,7 +87,14 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   // initial render.
   useIsomorphicLayoutEffect(() => {
     const dialog = persistedDialogRef.current;
-    if (!dialog) return;
+    if (!dialog) {
+      return;
+    }
+
+    const shouldLockScroll = open && modalType !== 'non-modal' && !!targetDocument;
+    if (shouldLockScroll) {
+      lockDocumentScroll(targetDocument);
+    }
 
     // Prevent the native cancel event (fired by Escape) from closing the dialog.
     // We handle Escape in onKeyDown so that React state stays authoritative.
@@ -94,7 +105,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
     if (open) {
       // Capture the previously focused element BEFORE showModal() transfers focus.
-      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+      previouslyFocusedRef.current = targetDocument?.activeElement as HTMLElement | null;
 
       if (!dialog.open) {
         if (modalType !== 'non-modal') {
@@ -107,9 +118,9 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       // Auto-focus: dispatch a cancellable custom event so consumers can call
       // event.preventDefault() to suppress the default focus move.
       // Only runs if nothing inside the dialog already holds focus (e.g. autofocus attr).
-      if (!dialog.contains(document.activeElement)) {
+      if (targetDocument && !dialog.contains(targetDocument.activeElement)) {
         const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS);
-        const handleMount = (e: Event) => onMountAutoFocusRef.current?.(e);
+        const handleMount = (e: Event) => onMountAutoFocusRef.current?.(e, { type: AUTOFOCUS_ON_MOUNT, event: e });
         dialog.addEventListener(AUTOFOCUS_ON_MOUNT, handleMount);
         dialog.dispatchEvent(mountEvent);
         dialog.removeEventListener(AUTOFOCUS_ON_MOUNT, handleMount);
@@ -122,7 +133,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         }
       }
     } else {
-      // Call close() only when the element is still in the document.
+      // Call close() only when the element is still in the targetDocument.
       // When unmountOnClose=true, React has already removed the element from the DOM
       // before this effect fires, so dialog.isConnected is false — calling close() on
       // a disconnected element is a no-op and does not trigger native focus restoration.
@@ -135,18 +146,23 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       //   - Native restoration does not fire when the element is removed without close().
       //   - Browser behaviour varies across implementations.
       const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
-      const handleUnmount = (e: Event) => onUnmountAutoFocusRef.current?.(e);
+      const handleUnmount = (e: Event) => onUnmountAutoFocusRef.current?.(e, { type: AUTOFOCUS_ON_UNMOUNT, event: e });
       dialog.addEventListener(AUTOFOCUS_ON_UNMOUNT, handleUnmount);
       dialog.dispatchEvent(unmountEvent);
       dialog.removeEventListener(AUTOFOCUS_ON_UNMOUNT, handleUnmount);
 
       if (!unmountEvent.defaultPrevented) {
-        (previouslyFocusedRef.current ?? document.body).focus({ preventScroll: true });
+        (previouslyFocusedRef.current ?? targetDocument?.body)?.focus({ preventScroll: true });
       }
     }
 
-    return () => dialog.removeEventListener('cancel', handleCancel);
-  }, [open, modalType]);
+    return () => {
+      dialog.removeEventListener('cancel', handleCancel);
+      if (shouldLockScroll) {
+        unlockDocumentScroll(targetDocument);
+      }
+    };
+  }, [open, modalType, targetDocument]);
 
   // Handle keyboard events:
   // - Tab / Shift+Tab: delegated to useFocusScope for wrap-around looping.
@@ -215,35 +231,3 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
   return state;
 };
-
-/* ---------------------------------------------------------------------------
- * Focus helpers
- * -------------------------------------------------------------------------*/
-
-/**
- * Focuses the first tabbable, visible, non-link element inside `container`.
- * Returns `true` if focus moved, `false` if no suitable element was found.
- */
-function focusFirstTabbable(container: HTMLElement): boolean {
-  const prev = document.activeElement;
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
-    acceptNode(node: Element) {
-      const el = node as HTMLElement;
-      // Skip links — auto-focusing a link on mount causes navigation side-effects.
-      if (el.tagName === 'A') return NodeFilter.FILTER_SKIP;
-      if (el.tagName === 'INPUT' && (el as HTMLInputElement).type === 'hidden') return NodeFilter.FILTER_SKIP;
-      if ((el as HTMLInputElement).disabled || el.hidden) return NodeFilter.FILTER_SKIP;
-      return el.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-    },
-  });
-
-  while (walker.nextNode()) {
-    const el = walker.currentNode as HTMLElement;
-    // Skip elements that are visually hidden.
-    if (getComputedStyle(el).visibility === 'hidden' || getComputedStyle(el).display === 'none') continue;
-    el.focus({ preventScroll: true });
-    if (document.activeElement !== prev) return true;
-  }
-
-  return false;
-}

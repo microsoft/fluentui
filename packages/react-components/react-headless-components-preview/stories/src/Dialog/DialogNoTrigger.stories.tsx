@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
 } from '@fluentui/react-headless-components-preview';
@@ -19,7 +18,7 @@ import type { DialogOpenChangeData } from '@fluentui/react-headless-components-p
 export const NoTrigger = (): React.ReactNode => {
   const [open, setOpen] = React.useState(false);
 
-  const handleOpenChange = (_event: DialogOpenChangeData['event'], data: DialogOpenChangeData) => {
+  const handleOpenChange = (_event: Event | React.SyntheticEvent, data: DialogOpenChangeData) => {
     setOpen(data.open);
   };
 
@@ -45,27 +44,16 @@ export const NoTrigger = (): React.ReactNode => {
 
       {/* No DialogTrigger — Dialog receives only DialogSurface as child */}
       <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogSurface className="w-full max-w-[420px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-          <DialogHeader className="flex items-center justify-between px-4 pt-4">
-            <DialogTitle className="m-0 text-lg font-semibold text-zinc-900">Programmatic open</DialogTitle>
-            <button
-              type="button"
-              aria-label="Close"
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border-none bg-transparent text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-              onClick={() => setOpen(false)}
-            >
-              ✕
-            </button>
-          </DialogHeader>
-
+        <DialogSurface className="fixed inset-0 m-auto w-full max-w-[420px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
           <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+            <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Programmatic open</DialogTitle>
             <p className="m-0">
               This dialog has no <code>DialogTrigger</code>. It was opened by the buttons above. Close it with Escape,
-              the backdrop, or the ✕ button.
+              the backdrop, or the Close button.
             </p>
           </DialogBody>
 
-          <DialogFooter className="flex justify-end px-4 pb-4">
+          <DialogActions className="flex justify-end px-4 pb-4">
             <button
               type="button"
               className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100"
@@ -73,7 +61,7 @@ export const NoTrigger = (): React.ReactNode => {
             >
               Close
             </button>
-          </DialogFooter>
+          </DialogActions>
         </DialogSurface>
       </Dialog>
     </div>

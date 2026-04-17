@@ -49,7 +49,13 @@ export const useDialog = (props: DialogProps): DialogState => {
 };
 
 /**
- * Extracts trigger and content from Dialog children.
+ * Splits Dialog children into trigger and surface content by position.
+ *
+ * Expected order is:
+ * - `[DialogTrigger, DialogSurface]`, or
+ * - `[DialogSurface]` when the dialog is externally triggered/controlled.
+ *
+ * In development, invalid child counts emit a warning.
  */
 function childrenToTriggerAndContent(
   children: React.ReactNode,

@@ -1,5 +1,9 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { DialogModalType } from '../dialogContext';
+
+export type DialogSurfaceMountAutoFocusData = EventData<'focusScope.autoFocusOnMount', Event>;
+
+export type DialogSurfaceUnmountAutoFocusData = EventData<'focusScope.autoFocusOnUnmount', Event>;
 
 export type DialogSurfaceSlots = {
   /**
@@ -19,15 +23,14 @@ export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
    * Call `event.preventDefault()` to suppress the built-in auto-focus and take full control
    * of where focus lands (e.g. to focus a specific element instead).
    */
-  onMountAutoFocus?: (event: Event) => void;
+  onMountAutoFocus?: EventHandler<DialogSurfaceMountAutoFocusData>;
 
   /**
    * Event handler called when the dialog closes and focus is about to be restored.
-   * For **non-modal** dialogs, calling `event.preventDefault()` suppresses the built-in
-   * restore so the focused element does not change. For **modal / alert** dialogs the
-   * browser restores focus natively (via `dialog.close()`), so `preventDefault` has no effect.
+   * Calling `event.preventDefault()` suppresses the built-in focus restore for all dialog types,
+   * allowing consumers to take full control of post-close focus.
    */
-  onUnmountAutoFocus?: (event: Event) => void;
+  onUnmountAutoFocus?: EventHandler<DialogSurfaceUnmountAutoFocusData>;
 };
 
 /**

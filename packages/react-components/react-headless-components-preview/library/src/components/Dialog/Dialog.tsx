@@ -9,7 +9,7 @@ import type { DialogProps } from './Dialog.types';
 /**
  * The `Dialog` root component serves as an interface for all Dialog behaviors.
  * It provides context to compound sub-components: `DialogTrigger`, `DialogSurface`,
- * `DialogHeader`, `DialogTitle`, `DialogBody`, and `DialogFooter`.
+ * `DialogHeader`, `DialogTitle`, `DialogBody`, and `DialogActions`.
  *
  * This component uses the native HTML `<dialog>` element (via `DialogSurface`) for
  * built-in focus trapping, backdrop, and accessibility semantics.

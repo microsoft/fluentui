@@ -1,4 +1,4 @@
-# Dialog — Headless Spec (Fluent UI v9)
+# Dialog — Headless Spec
 
 ## Overview
 
@@ -17,7 +17,7 @@ Dialog
 │   │   └── DialogCloseButton (optional)
 │   ├── DialogBody
 │   │   └── children / content slots
-│   └── DialogFooter
+│   └── DialogActions
 │       └── action buttons (1–3 actions)
 └── DialogBackdrop (when modal)
 ```
@@ -54,7 +54,7 @@ Dialog is a compound component. DialogTrigger is optional if opened programmatic
 | **Tab**           | Move focus to next focusable element within dialog (or wrap to first if at last). Blocked from leaving dialog boundary when `inertTrapFocus={true}`. |
 | **Shift + Tab**   | Move focus to previous focusable element within dialog (or wrap to last if at first). Blocked from leaving dialog boundary.                          |
 | **Escape**        | Close dialog by triggering `onDismiss()` (if modal or if configured). Non-modal dialogs may not close on Escape depending on use case.               |
-| **Enter / Space** | Activate focused button in DialogFooter. Standard button activation.                                                                                 |
+| **Enter / Space** | Activate focused button in DialogActions. Standard button activation.                                                                                |
 | **Home / End**    | No special handling at dialog level. Passed through to content (e.g., list inside body).                                                             |
 
 ## Content Slots
@@ -70,7 +70,7 @@ Dialog is a compound component. DialogTrigger is optional if opened programmatic
 
 - **children** / **content** (element slot) — main content. Can include text, images, forms, lists. Scrollable if content exceeds container height.
 
-### DialogFooter
+### DialogActions
 
 - **action buttons** (element slot(s)) — 1–3 button elements, typically:
 
@@ -144,10 +144,10 @@ Dialog manages its own `open` state internally:
       <DialogCloseButton />
     </DialogHeader>
     <DialogBody>Are you sure?</DialogBody>
-    <DialogFooter>
+    <DialogActions>
       <Button onClick={() => /* handle confirm */}>Confirm</Button>
       <Button onClick={() => /* dismiss will be called */}>Cancel</Button>
-    </DialogFooter>
+    </DialogActions>
   </DialogSurface>
 </Dialog>
 ```
@@ -168,9 +168,9 @@ const [isOpen, setIsOpen] = useState(false);
       <DialogTitle>Title</DialogTitle>
     </DialogHeader>
     <DialogBody>Content</DialogBody>
-    <DialogFooter>
+    <DialogActions>
       <Button onClick={() => setIsOpen(false)}>Close</Button>
-    </DialogFooter>
+    </DialogActions>
   </DialogSurface>
 </Dialog>;
 ```
@@ -180,7 +180,7 @@ const [isOpen, setIsOpen] = useState(false);
 Dialog layout mirrors in RTL (right-to-left) contexts:
 
 - **DialogHeader**: Close button moves from top-right to top-left.
-- **DialogFooter**: Button order reverses (rightmost becomes leftmost).
+- **DialogActions**: Button order reverses (rightmost becomes leftmost).
 - **DialogImage**: Full-width inset images remain unaffected (visual content); thumbnails move from start to end position.
 - Implement via CSS `direction: rtl` or logical properties (`inset-inline-start`, `inset-inline-end`).
 

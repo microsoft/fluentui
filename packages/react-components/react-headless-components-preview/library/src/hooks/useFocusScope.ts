@@ -1,6 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
 const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
 const AUTOFOCUS_ON_UNMOUNT = 'focusScope.autoFocusOnUnmount';
@@ -78,6 +80,8 @@ export interface UseFocusScopeReturn {
  */
 export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScopeReturn {
   const { loop = false, trapped = false, onMountAutoFocus, onUnmountAutoFocus } = options;
+  const { targetDocument } = useFluent();
+  const targetWindow = targetDocument?.defaultView ?? undefined;
 
   const [container, setContainer] = React.useState<HTMLElement | null>(null);
 
@@ -104,58 +108,72 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
   // Document-level listeners redirect any focus that escapes back into the container.
   // A MutationObserver re-focuses the container if the focused element is removed from the DOM.
   React.useEffect(() => {
-    if (!trapped || !container) return;
+    if (!trapped || !container || !targetDocument || !targetWindow) {
+      return;
+    }
 
     const handleFocusIn = (event: FocusEvent) => {
-      if (focusScope.paused) return;
+      if (focusScope.paused) {
+        return;
+      }
       const target = event.target as HTMLElement | null;
       if (container.contains(target)) {
         lastFocusedElementRef.current = target;
       } else {
-        focusElement(lastFocusedElementRef.current, { select: true });
+        focusElement(lastFocusedElementRef.current, targetDocument, { select: true });
       }
     };
 
     const handleFocusOut = (event: FocusEvent) => {
-      if (focusScope.paused) return;
+      if (focusScope.paused) {
+        return;
+      }
       const relatedTarget = event.relatedTarget as HTMLElement | null;
       // Null relatedTarget means the browser/app/tab lost focus, or Chrome removed
       // the focused element. Calling focus() in the Chrome removal case spikes CPU
       // to 100%, so we let the browser recover on its own.
-      if (relatedTarget === null) return;
+      if (relatedTarget === null) {
+        return;
+      }
       if (!container.contains(relatedTarget)) {
-        focusElement(lastFocusedElementRef.current, { select: true });
+        focusElement(lastFocusedElementRef.current, targetDocument, { select: true });
       }
     };
 
     // When the focused element is removed from the DOM, Chrome moves focus to
     // document.body. Re-focus the container to keep the trap intact.
     const handleMutations = (mutations: MutationRecord[]) => {
-      const active = document.activeElement as HTMLElement | null;
-      if (active !== document.body) return;
+      const active = targetDocument.activeElement as HTMLElement | null;
+      if (active !== targetDocument.body) {
+        return;
+      }
       for (const mutation of mutations) {
-        if (mutation.removedNodes.length > 0) focusElement(container);
+        if (mutation.removedNodes.length > 0) {
+          focusElement(container, targetDocument);
+        }
       }
     };
 
-    document.addEventListener('focusin', handleFocusIn);
-    document.addEventListener('focusout', handleFocusOut);
-    const observer = new MutationObserver(handleMutations);
+    targetDocument.addEventListener('focusin', handleFocusIn);
+    targetDocument.addEventListener('focusout', handleFocusOut);
+    const observer = new targetWindow.MutationObserver(handleMutations);
     observer.observe(container, { childList: true, subtree: true });
 
     return () => {
-      document.removeEventListener('focusin', handleFocusIn);
-      document.removeEventListener('focusout', handleFocusOut);
+      targetDocument.removeEventListener('focusin', handleFocusIn);
+      targetDocument.removeEventListener('focusout', handleFocusOut);
       observer.disconnect();
     };
-  }, [trapped, container, focusScope]);
+  }, [trapped, container, focusScope, targetDocument, targetWindow]);
 
   // --- Auto-focus on mount / restore focus on unmount ---
   React.useEffect(() => {
-    if (!container) return;
+    if (!container || !targetDocument || !targetWindow) {
+      return;
+    }
 
     focusScopesStack.add(focusScope);
-    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previouslyFocused = targetDocument.activeElement as HTMLElement | null;
 
     // Only auto-focus if nothing inside the scope already has focus.
     if (!container.contains(previouslyFocused)) {
@@ -168,16 +186,18 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
       container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMount);
 
       if (!mountEvent.defaultPrevented) {
-        focusFirst(removeLinks(getTabbableCandidates(container)), { select: true });
+        focusFirst(removeLinks(getTabbableCandidates(container, targetDocument)), targetDocument, { select: true });
         // If no tabbable element accepted focus, fall back to the container itself.
-        if (document.activeElement === previouslyFocused) focusElement(container);
+        if (targetDocument.activeElement === previouslyFocused) {
+          focusElement(container, targetDocument);
+        }
       }
     }
 
     return () => {
       // Delay to work around a React ≤16 bug where calling focus() during unmount throws:
       // https://github.com/facebook/react/issues/17894
-      setTimeout(() => {
+      targetWindow.setTimeout(() => {
         const onUnmount = (e: Event) => onUnmountAutoFocusRef.current?.(e);
         const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
         container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmount);
@@ -185,47 +205,59 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
         container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmount);
 
         if (!unmountEvent.defaultPrevented) {
-          focusElement(previouslyFocused ?? document.body, { select: true });
+          focusElement(previouslyFocused ?? targetDocument.body, targetDocument, { select: true });
         }
 
         focusScopesStack.remove(focusScope);
       }, 0);
     };
-  }, [container, focusScope]);
+  }, [container, focusScope, targetDocument, targetWindow]);
 
   // --- Keyboard looping ---
   // Intercepts Tab / Shift+Tab at the edges of the scope and wraps focus around.
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if (!loop && !trapped) return;
-      if (focusScope.paused) return;
+      if (!loop && !trapped) {
+        return;
+      }
+      if (focusScope.paused) {
+        return;
+      }
 
       const isTab = event.key === 'Tab' && !event.altKey && !event.ctrlKey && !event.metaKey;
-      if (!isTab) return;
+      if (!isTab) {
+        return;
+      }
 
-      const focused = document.activeElement as HTMLElement | null;
-      if (!focused) return;
+      const focused = targetDocument?.activeElement as HTMLElement | null;
+      if (!focused) {
+        return;
+      }
 
       const scopeContainer = event.currentTarget as HTMLElement;
-      const [first, last] = getTabbableEdges(scopeContainer);
+      const [first, last] = getTabbableEdges(scopeContainer, targetDocument, targetWindow);
 
       if (!first || !last) {
         // No tabbable children — block tab from leaving when the container itself is focused.
-        if (focused === scopeContainer) event.preventDefault();
+        if (focused === scopeContainer) {
+          event.preventDefault();
+        }
         return;
       }
 
       if (!event.shiftKey && focused === last) {
         event.preventDefault();
-        if (loop) focusElement(first, { select: true });
+        if (loop) {
+          focusElement(first, targetDocument, { select: true });
+        }
       } else if (event.shiftKey && focused === first) {
         event.preventDefault();
-        if (loop) focusElement(last, { select: true });
+        if (loop) {
+          focusElement(last, targetDocument, { select: true });
+        }
       }
     },
-    // focusScope is a stable object reference — reads .paused at call time, not at memoization time.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [loop, trapped],
+    [focusScope, loop, trapped, targetDocument, targetWindow],
   );
 
   const containerRef = React.useCallback((node: HTMLElement | null) => {
@@ -249,21 +281,31 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
  * Attempts to focus the first candidate that accepts focus.
  * Stops as soon as `document.activeElement` changes.
  */
-function focusFirst(candidates: HTMLElement[], { select = false } = {}): void {
-  const prev = document.activeElement;
+function focusFirst(candidates: HTMLElement[], targetDocument: Document | undefined, { select = false } = {}): void {
+  if (!targetDocument) {
+    return;
+  }
+
+  const prev = targetDocument.activeElement;
   for (const candidate of candidates) {
-    focusElement(candidate, { select });
-    if (document.activeElement !== prev) return;
+    focusElement(candidate, targetDocument, { select });
+    if (targetDocument.activeElement !== prev) {
+      return;
+    }
   }
 }
 
 /**
  * Returns the first and last tabbable elements inside `container`.
  */
-function getTabbableEdges(container: HTMLElement): [HTMLElement | undefined, HTMLElement | undefined] {
-  const candidates = getTabbableCandidates(container);
-  const first = findVisible(candidates, container);
-  const last = findVisible([...candidates].reverse(), container);
+function getTabbableEdges(
+  container: HTMLElement,
+  targetDocument?: Document,
+  targetWindow?: Window,
+): [HTMLElement | undefined, HTMLElement | undefined] {
+  const candidates = getTabbableCandidates(container, targetDocument);
+  const first = findVisible(candidates, container, targetWindow);
+  const last = findVisible([...candidates].reverse(), container, targetWindow);
   return [first, last];
 }
 
@@ -276,19 +318,27 @@ function getTabbableEdges(container: HTMLElement): [HTMLElement | undefined, HTM
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker
  */
-function getTabbableCandidates(container: HTMLElement): HTMLElement[] {
+function getTabbableCandidates(container: HTMLElement, targetDocument?: Document): HTMLElement[] {
+  if (!targetDocument) {
+    return [];
+  }
+
   const nodes: HTMLElement[] = [];
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
+  const walker = targetDocument.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
     acceptNode(node: Element) {
       const el = node as HTMLElement;
       if (el.tagName === 'INPUT' && (el as HTMLInputElement).type === 'hidden') {
         return NodeFilter.FILTER_SKIP;
       }
-      if ((el as HTMLInputElement).disabled || el.hidden) return NodeFilter.FILTER_SKIP;
+      if ((el as HTMLInputElement).disabled || el.hidden) {
+        return NodeFilter.FILTER_SKIP;
+      }
       return el.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
     },
   });
-  while (walker.nextNode()) nodes.push(walker.currentNode as HTMLElement);
+  while (walker.nextNode()) {
+    nodes.push(walker.currentNode as HTMLElement);
+  }
   return nodes;
 }
 
@@ -296,29 +346,42 @@ function getTabbableCandidates(container: HTMLElement): HTMLElement[] {
  * Returns the first element in `elements` that is not visually hidden.
  * Visibility is only checked up to (but not including) `container`.
  */
-function findVisible(elements: HTMLElement[], container: HTMLElement): HTMLElement | undefined {
+function findVisible(elements: HTMLElement[], container: HTMLElement, targetWindow?: Window): HTMLElement | undefined {
   for (const el of elements) {
-    if (!isHidden(el, { upTo: container })) return el;
+    if (!isHidden(el, targetWindow, { upTo: container })) {
+      return el;
+    }
   }
 }
 
-function isHidden(node: HTMLElement, { upTo }: { upTo?: HTMLElement } = {}): boolean {
-  if (getComputedStyle(node).visibility === 'hidden') return true;
+function isHidden(node: HTMLElement, targetWindow?: Window, { upTo }: { upTo?: HTMLElement } = {}): boolean {
+  if (!targetWindow) {
+    return false;
+  }
+  if (targetWindow.getComputedStyle(node).visibility === 'hidden') {
+    return true;
+  }
   let current: HTMLElement | null = node;
   while (current) {
-    if (upTo !== undefined && current === upTo) return false;
-    if (getComputedStyle(current).display === 'none') return true;
+    if (upTo !== undefined && current === upTo) {
+      return false;
+    }
+    if (targetWindow.getComputedStyle(current).display === 'none') {
+      return true;
+    }
     current = current.parentElement;
   }
   return false;
 }
 
-function focusElement(element?: HTMLElement | null, { select = false } = {}): void {
-  if (!element?.focus) return;
-  const prev = document.activeElement;
+function focusElement(element?: HTMLElement | null, targetDocument?: Document, { select = false } = {}): void {
+  if (!element?.focus || !targetDocument) {
+    return;
+  }
+  const prev = targetDocument.activeElement;
   // preventScroll avoids jarring scroll jumps when focus moves programmatically.
   element.focus({ preventScroll: true });
-  if (element !== prev && element instanceof HTMLInputElement && select) {
+  if (element !== prev && isHTMLElement(element, { constructorName: 'HTMLInputElement' }) && select) {
     element.select();
   }
 }
@@ -348,7 +411,9 @@ function createFocusScopesStack() {
     add(scope: FocusScopeAPI) {
       // Pause the currently active scope before pushing the new one.
       const active = stack[0];
-      if (scope !== active) active?.pause();
+      if (scope !== active) {
+        active?.pause();
+      }
       // Re-insert at the top in case this scope already exists deeper in the stack.
       stack = stack.filter(s => s !== scope);
       stack.unshift(scope);

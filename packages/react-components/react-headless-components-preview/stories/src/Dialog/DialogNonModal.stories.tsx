@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -24,33 +23,21 @@ export const NonModal = (): React.ReactNode => (
       </DialogTrigger>
 
       <DialogSurface className="fixed inset-0 m-auto w-72 rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-        <DialogHeader className="flex items-center justify-between px-4 pt-4">
-          <DialogTitle className="m-0 text-base font-semibold text-zinc-900">Non-modal</DialogTitle>
-          <DialogTrigger action="close">
-            <button
-              type="button"
-              aria-label="Close"
-              className="cursor-pointer border-none bg-transparent text-lg leading-none text-zinc-400 hover:text-zinc-700"
-            >
-              ✕
-            </button>
-          </DialogTrigger>
-        </DialogHeader>
-
         <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+          <DialogTitle className="mb-3 mt-0 text-base font-semibold text-zinc-900">Non-modal</DialogTitle>
           <p className="m-0">
             You can still interact with the page behind this dialog. Focus is not trapped and the background is not
             dimmed.
           </p>
         </DialogBody>
 
-        <DialogFooter className="flex justify-end gap-2 px-4 pb-4">
+        <DialogActions className="flex justify-end gap-2 px-4 pb-4">
           <DialogTrigger action="close">
             <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
               Close
             </button>
           </DialogTrigger>
-        </DialogFooter>
+        </DialogActions>
       </DialogSurface>
     </Dialog>
 

@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -22,21 +21,9 @@ export const WithCloseButton = (): React.ReactNode => (
       </button>
     </DialogTrigger>
 
-    <DialogSurface className="fixed m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-      <DialogHeader className="flex items-center justify-between px-4 pt-4">
-        <DialogTitle className="m-0 text-lg font-semibold text-zinc-900">Settings</DialogTitle>
-        <DialogTrigger action="close">
-          <button
-            type="button"
-            aria-label="Close"
-            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border-none bg-transparent text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-          >
-            ✕
-          </button>
-        </DialogTrigger>
-      </DialogHeader>
-
+    <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
       <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+        <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Settings</DialogTitle>
         <p className="mt-0 mb-3">Update your preferences below.</p>
         <div className="flex flex-col gap-3">
           <label className="flex cursor-pointer items-center gap-2">
@@ -54,7 +41,16 @@ export const WithCloseButton = (): React.ReactNode => (
         </div>
       </DialogBody>
 
-      <DialogFooter className="flex justify-end gap-2 px-4 pb-4">
+      <DialogActions className="flex justify-end gap-2 px-4 pb-4">
+        <DialogTrigger action="close">
+          <button
+            type="button"
+            aria-label="Close"
+            className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100"
+          >
+            Close
+          </button>
+        </DialogTrigger>
         <DialogTrigger action="close">
           <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
             Cancel
@@ -67,7 +63,7 @@ export const WithCloseButton = (): React.ReactNode => (
         >
           Save
         </button>
-      </DialogFooter>
+      </DialogActions>
     </DialogSurface>
   </Dialog>
 );

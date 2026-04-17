@@ -1,6 +1,4 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { DialogContext, DialogSurfaceContext } from './dialogContext';
 import type { DialogContextValues, DialogState } from './Dialog.types';
@@ -17,5 +15,5 @@ export const renderDialog = (state: DialogState, contextValues: DialogContextVal
         {state.content}
       </DialogSurfaceContext.Provider>
     </DialogContext.Provider>
-  ) as JSXElement;
+  );
 };

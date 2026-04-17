@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement, EventHandler } from '@fluentui/react-utilities';
 import type {
   DialogContextValue,
   DialogModalType,
@@ -18,7 +18,7 @@ export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
  * @param data - A data object with relevant information,
  * such as open value and type of interaction that created the event
  */
-export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+export type DialogOpenChangeEventHandler = EventHandler<DialogOpenChangeData>;
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
@@ -61,11 +61,12 @@ export type DialogProps = {
   /**
    * Callback fired when the component changes value from open state.
    */
-  onOpenChange?: DialogOpenChangeEventHandler;
+  onOpenChange?: EventHandler<DialogOpenChangeData>;
 
   /**
-   * Can contain two children including `DialogTrigger` and `DialogSurface`.
-   * Alternatively can only contain `DialogSurface` if using trigger outside dialog, or controlling state.
+   * Dialog children in the expected order:
+   * - `DialogTrigger` + `DialogSurface`, or
+   * - `DialogSurface` only when opening/closing from outside or controlling state.
    */
   children: [JSXElement, JSXElement] | JSXElement;
 

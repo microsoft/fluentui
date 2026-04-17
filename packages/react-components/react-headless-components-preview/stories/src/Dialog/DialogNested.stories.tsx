@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -25,21 +24,9 @@ export const Nested = (): React.ReactNode => (
       </button>
     </DialogTrigger>
 
-    <DialogSurface className="w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-      <DialogHeader className="flex items-center justify-between px-4 pt-4">
-        <DialogTitle className="m-0 text-lg font-semibold text-zinc-900">Outer dialog</DialogTitle>
-        <DialogTrigger action="close">
-          <button
-            type="button"
-            aria-label="Close"
-            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border-none bg-transparent text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-          >
-            ✕
-          </button>
-        </DialogTrigger>
-      </DialogHeader>
-
+    <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
       <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+        <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Outer dialog</DialogTitle>
         <p className="mt-0 mb-3">This is the outer dialog. Open the inner dialog to see nesting in action.</p>
 
         {/* Inner dialog lives inside the outer dialog's body */}
@@ -50,44 +37,32 @@ export const Nested = (): React.ReactNode => (
             </button>
           </DialogTrigger>
 
-          <DialogSurface className="w-full max-w-[360px] rounded-lg border border-zinc-300 bg-white p-0 shadow-xl">
-            <DialogHeader className="flex items-center justify-between px-4 pt-4">
-              <DialogTitle className="m-0 text-base font-semibold text-zinc-900">Inner dialog</DialogTitle>
-              <DialogTrigger action="close">
-                <button
-                  type="button"
-                  aria-label="Close"
-                  className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border-none bg-transparent text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-                >
-                  ✕
-                </button>
-              </DialogTrigger>
-            </DialogHeader>
-
+          <DialogSurface className="absolute m-auto w-full max-w-[360px] rounded-lg border border-zinc-300 bg-white p-0 shadow-xl">
             <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+              <DialogTitle className="mb-3 mt-0 text-base font-semibold text-zinc-900">Inner dialog</DialogTitle>
               <p className="m-0">
                 This is the inner dialog. Press Escape — only this dialog closes; the outer stays open.
               </p>
             </DialogBody>
 
-            <DialogFooter className="flex justify-end px-4 pb-4">
+            <DialogActions className="flex justify-end px-4 pb-4">
               <DialogTrigger action="close">
                 <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
                   Close inner
                 </button>
               </DialogTrigger>
-            </DialogFooter>
+            </DialogActions>
           </DialogSurface>
         </Dialog>
       </DialogBody>
 
-      <DialogFooter className="flex justify-end px-4 pb-4">
+      <DialogActions className="flex justify-end px-4 pb-4">
         <DialogTrigger action="close">
           <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
             Close outer
           </button>
         </DialogTrigger>
-      </DialogFooter>
+      </DialogActions>
     </DialogSurface>
   </Dialog>
 );

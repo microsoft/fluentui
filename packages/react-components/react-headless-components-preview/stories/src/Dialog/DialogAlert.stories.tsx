@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -31,16 +30,13 @@ export const Alert = (): React.ReactNode => {
         </button>
       </DialogTrigger>
 
-      <DialogSurface className="fixed m-auto w-full max-w-[400px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-        <DialogHeader className="px-4 pt-4">
-          <DialogTitle className="m-0 text-lg font-semibold text-zinc-900">Delete item?</DialogTitle>
-        </DialogHeader>
-
+      <DialogSurface className="fixed inset-0 m-auto w-full max-w-[400px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
         <DialogBody className="px-4 py-3 text-sm text-zinc-700">
+          <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Delete item?</DialogTitle>
           <p className="m-0">This action is permanent and cannot be undone. The item will be deleted immediately.</p>
         </DialogBody>
 
-        <DialogFooter className="flex justify-end gap-2 px-4 pb-4">
+        <DialogActions className="flex justify-end gap-2 px-4 pb-4">
           <DialogTrigger action="close">
             <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
               Cancel
@@ -54,7 +50,7 @@ export const Alert = (): React.ReactNode => {
               Delete
             </button>
           </DialogTrigger>
-        </DialogFooter>
+        </DialogActions>
       </DialogSurface>
     </Dialog>
   );

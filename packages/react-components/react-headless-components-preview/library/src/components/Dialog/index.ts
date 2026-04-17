@@ -34,6 +34,6 @@ export { DialogBody } from './DialogBody';
 export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './DialogBody';
 export { renderDialogBody_unstable, useDialogBody_unstable } from './DialogBody';
 
-export { DialogFooter } from './DialogFooter';
-export type { DialogFooterProps, DialogFooterSlots, DialogFooterState } from './DialogFooter';
-export { renderDialogFooter_unstable, useDialogFooter_unstable } from './DialogFooter';
+export { DialogActions } from './DialogActions';
+export type { DialogActionsProps, DialogActionsSlots, DialogActionsState } from './DialogActions';
+export { renderDialogActions_unstable, useDialogActions_unstable } from './DialogActions';

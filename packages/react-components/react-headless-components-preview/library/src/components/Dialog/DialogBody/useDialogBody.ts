@@ -1,5 +1,3 @@
-'use client';
-
 import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';

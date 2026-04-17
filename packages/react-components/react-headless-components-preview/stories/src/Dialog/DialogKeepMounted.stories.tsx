@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -28,21 +27,9 @@ export const KeepMounted = (): React.ReactNode => (
       </button>
     </DialogTrigger>
 
-    <DialogSurface className="fixed m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-      <DialogHeader className="flex items-center justify-between px-4 pt-4">
-        <DialogTitle className="m-0 text-lg font-semibold text-zinc-900">Draft message</DialogTitle>
-        <DialogTrigger action="close">
-          <button
-            type="button"
-            aria-label="Close"
-            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border-none bg-transparent text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
-          >
-            ✕
-          </button>
-        </DialogTrigger>
-      </DialogHeader>
-
+    <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
       <DialogBody className="px-4 py-3">
+        <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Draft message</DialogTitle>
         <p className="mt-0 mb-2 text-sm text-zinc-700">
           Close and reopen — your draft is preserved (<code>unmountOnClose=false</code>).
         </p>
@@ -54,7 +41,7 @@ export const KeepMounted = (): React.ReactNode => (
         />
       </DialogBody>
 
-      <DialogFooter className="flex justify-end gap-2 px-4 pb-4">
+      <DialogActions className="flex justify-end gap-2 px-4 pb-4">
         <DialogTrigger action="close">
           <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
             Save draft
@@ -66,7 +53,7 @@ export const KeepMounted = (): React.ReactNode => (
         >
           Send
         </button>
-      </DialogFooter>
+      </DialogActions>
     </DialogSurface>
   </Dialog>
 );

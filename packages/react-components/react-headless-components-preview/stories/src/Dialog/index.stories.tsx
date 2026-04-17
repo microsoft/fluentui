@@ -1,8 +1,7 @@
 import {
   Dialog,
   DialogBody,
-  DialogFooter,
-  DialogHeader,
+  DialogActions,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -22,7 +21,7 @@ export { NoTrigger } from './DialogNoTrigger.stories';
 export default {
   title: 'Headless Components/Dialog',
   component: Dialog,
-  subcomponents: { DialogSurface, DialogTrigger, DialogTitle, DialogHeader, DialogBody, DialogFooter },
+  subcomponents: { DialogSurface, DialogTrigger, DialogTitle, DialogBody, DialogActions },
   parameters: {
     docs: {
       description: {

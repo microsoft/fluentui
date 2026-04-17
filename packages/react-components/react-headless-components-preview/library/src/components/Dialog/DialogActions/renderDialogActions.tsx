@@ -3,9 +3,9 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { DialogFooterSlots, DialogFooterState } from './DialogFooter.types';
+import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 
-export const renderDialogFooter = (state: DialogFooterState): JSXElement => {
-  assertSlots<DialogFooterSlots>(state);
+export const renderDialogActions = (state: DialogActionsState): JSXElement => {
+  assertSlots<DialogActionsSlots>(state);
   return <state.root />;
 };
