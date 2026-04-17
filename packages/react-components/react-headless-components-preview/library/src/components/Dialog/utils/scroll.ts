@@ -24,9 +24,14 @@ export function lockDocumentScroll(targetDocument: Document): void {
     previousBodyOverflow: targetDocument.body.style.overflow,
   });
 
-  targetDocument.body.style.overflow = 'hidden';
+  targetDocument.body.style.overflow = 'visible clip';
 }
 
+/**
+ * Restores the document's scroll behavior by reverting the `overflow` style
+ * on the `<body>` element to its previous value. This function is typically
+ * called when a modal/alert dialog is closed.
+ */
 export function unlockDocumentScroll(targetDocument: Document): void {
   const state = scrollLockStateByDocument.get(targetDocument);
   if (!state) {

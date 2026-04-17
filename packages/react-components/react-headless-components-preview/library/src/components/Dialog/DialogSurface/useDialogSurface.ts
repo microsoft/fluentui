@@ -13,12 +13,7 @@ import { useDialogContext } from '../dialogContext';
 import { stringifyDataAttribute } from '../../../utils';
 import { useFocusScope } from '../../../hooks';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { focusFirstTabbable } from '../utils/tabbable';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
-
-const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
-const AUTOFOCUS_ON_UNMOUNT = 'focusScope.autoFocusOnUnmount';
-const EVENT_OPTIONS = { bubbles: false, cancelable: true } as const;
 
 /**
  * Create the state required to render DialogSurface.
@@ -28,12 +23,17 @@ const EVENT_OPTIONS = { bubbles: false, cancelable: true } as const;
  * - Calls `show()` for non-modal dialogs
  * - Calls `close()` when the dialog should close
  *
- * Focus management:
+ * Focus management is fully delegated to the browser:
  * - Tab / Shift+Tab wrap within the dialog boundary via `useFocusScope` (loop mode).
- * - On open, focus moves to the first tabbable element (links excluded); consumers can
- *   override via `onMountAutoFocus`.
- * - On close, focus is restored to the element that was focused before the dialog opened.
- *   Consumers can override via `onUnmountAutoFocus`.
+ * - On open, the browser's native dialog focusing steps move focus to the first
+ *   focusable descendant (or the dialog itself if none).
+ * - On close, the browser restores focus to the element that was focused before
+ *   `showModal()` / `show()` ran.
+ *
+ * When `unmountOnClose` is true, the DOM unmount is deferred by one render after
+ * `open` flips to false so that `dialog.close()` can run on the still-connected
+ * element — the browser only performs its close-time focus restoration when the
+ * element is in the document.
  *
  * `useIsomorphicLayoutEffect` is used for open/close so that `showModal()` runs
  * synchronously after the DOM is updated but before the browser paints. This prevents
@@ -43,55 +43,56 @@ const EVENT_OPTIONS = { bubbles: false, cancelable: true } as const;
  * @param ref - reference to root HTMLDialogElement of DialogSurface
  */
 export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>): DialogSurfaceState => {
-  const { onMountAutoFocus, onUnmountAutoFocus, ...restProps } = props;
   const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId } = useDialogContext();
   const { targetDocument } = useFluent(); // Ensure we're in a Fluent context, which provides SSR support for useIsomorphicLayoutEffect
 
-  // Keep mutable refs to callbacks so layout effects always call the latest version
-  // without needing to re-run when the callbacks change identity.
-  const onMountAutoFocusRef = React.useRef(onMountAutoFocus);
-  const onUnmountAutoFocusRef = React.useRef(onUnmountAutoFocus);
-  onMountAutoFocusRef.current = onMountAutoFocus;
-  onUnmountAutoFocusRef.current = onUnmountAutoFocus;
+  const dialogRef = React.useRef<HTMLDialogElement>(null);
+  const mergedRef = useMergedRefs(ref, dialogRef);
 
-  // The element focused before the dialog opened — used to restore focus on close.
-  const previouslyFocusedRef = React.useRef<HTMLElement | null>(null);
+  // Keeps the <dialog> element rendered for one extra frame after `open` flips to
+  // false so the effect can call `dialog.close()` on a connected element — which is
+  // what triggers the browser's native focus-restoration to `previouslyFocusedElement`.
+  // Irrelevant when `unmountOnClose` is false (the element is always in the DOM).
+  const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
 
-  // Persists the last non-null dialog element so the close branch can always access it.
-  //
-  // When unmountOnClose=true, React removes the <dialog> from the DOM during the
-  // mutation phase — BEFORE useIsomorphicLayoutEffect fires. React also clears any
-  // callback ref (set via useMergedRefs) to null at that point, so a normal ref would
-  // be null by the time the effect runs. By only ever *setting* this ref (never clearing
-  // it), we keep a stable pointer to the element for the close/focus-restore branch.
-  const persistedDialogRef = React.useRef<HTMLDialogElement | null>(null);
-
-  const handleRef = React.useCallback((node: HTMLDialogElement | null) => {
-    if (node !== null) {
-      persistedDialogRef.current = node;
-    }
-  }, []);
-
-  const mergedRef = useMergedRefs(ref, handleRef);
+  // Derived-state-during-render: when the dialog is asked to open again after an
+  // unmount, re-render immediately so the element is in the DOM before the layout
+  // effect runs (and before the browser paints).
+  if (open && !shouldRender) {
+    setShouldRender(true);
+  }
 
   // Tab looping — useFocusScope provides the Tab / Shift+Tab wrap handler.
   // Focus trapping is not needed here since native showModal() handles it for modal/alert,
   // and non-modal dialogs are intentionally not trapped.
   const { containerProps: focusScopeProps } = useFocusScope({ loop: true });
 
-  // Main effect: open/close the native dialog, manage focus, and suppress native Escape.
+  // Main effect: open/close the native dialog and suppress native Escape.
   //
   // Cancel (Escape) listener is co-located here — not in a separate [] effect — because
   // with unmountOnClose=true the <dialog> element unmounts when closed and re-mounts when
   // opened again. A [] effect only runs once and would miss elements that mount after the
   // initial render.
   useIsomorphicLayoutEffect(() => {
-    const dialog = persistedDialogRef.current;
+    const dialog = dialogRef.current;
     if (!dialog) {
       return;
     }
 
-    const shouldLockScroll = open && modalType !== 'non-modal' && !!targetDocument;
+    if (!open) {
+      // Close while the element is still connected so the browser runs its native
+      // close-the-dialog steps (including focus restoration). If `unmountOnClose` is
+      // true, schedule the actual DOM removal now that close has run.
+      if (dialog.open) {
+        dialog.close();
+      }
+      if (unmountOnClose) {
+        setShouldRender(false);
+      }
+      return;
+    }
+
+    const shouldLockScroll = modalType !== 'non-modal' && !!targetDocument;
     if (shouldLockScroll) {
       lockDocumentScroll(targetDocument);
     }
@@ -103,56 +104,11 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     const handleCancel = (event: Event) => event.preventDefault();
     dialog.addEventListener('cancel', handleCancel);
 
-    if (open) {
-      // Capture the previously focused element BEFORE showModal() transfers focus.
-      previouslyFocusedRef.current = targetDocument?.activeElement as HTMLElement | null;
-
-      if (!dialog.open) {
-        if (modalType !== 'non-modal') {
-          dialog.showModal();
-        } else {
-          dialog.show();
-        }
-      }
-
-      // Auto-focus: dispatch a cancellable custom event so consumers can call
-      // event.preventDefault() to suppress the default focus move.
-      // Only runs if nothing inside the dialog already holds focus (e.g. autofocus attr).
-      if (targetDocument && !dialog.contains(targetDocument.activeElement)) {
-        const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS);
-        const handleMount = (e: Event) => onMountAutoFocusRef.current?.(e, { type: AUTOFOCUS_ON_MOUNT, event: e });
-        dialog.addEventListener(AUTOFOCUS_ON_MOUNT, handleMount);
-        dialog.dispatchEvent(mountEvent);
-        dialog.removeEventListener(AUTOFOCUS_ON_MOUNT, handleMount);
-
-        if (!mountEvent.defaultPrevented) {
-          // Focus the first tabbable element, falling back to the dialog itself.
-          if (!focusFirstTabbable(dialog)) {
-            dialog.focus({ preventScroll: true });
-          }
-        }
-      }
-    } else {
-      // Call close() only when the element is still in the targetDocument.
-      // When unmountOnClose=true, React has already removed the element from the DOM
-      // before this effect fires, so dialog.isConnected is false — calling close() on
-      // a disconnected element is a no-op and does not trigger native focus restoration.
-      if (dialog.isConnected && dialog.open) {
-        dialog.close();
-      }
-
-      // Explicitly restore focus for all dialog types. We do not rely on the browser's
-      // native focus restoration from dialog.close() / element disconnection because:
-      //   - Native restoration does not fire when the element is removed without close().
-      //   - Browser behaviour varies across implementations.
-      const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
-      const handleUnmount = (e: Event) => onUnmountAutoFocusRef.current?.(e, { type: AUTOFOCUS_ON_UNMOUNT, event: e });
-      dialog.addEventListener(AUTOFOCUS_ON_UNMOUNT, handleUnmount);
-      dialog.dispatchEvent(unmountEvent);
-      dialog.removeEventListener(AUTOFOCUS_ON_UNMOUNT, handleUnmount);
-
-      if (!unmountEvent.defaultPrevented) {
-        (previouslyFocusedRef.current ?? targetDocument?.body)?.focus({ preventScroll: true });
+    if (!dialog.open) {
+      if (modalType !== 'non-modal') {
+        dialog.showModal();
+      } else {
+        dialog.show();
       }
     }
 
@@ -162,7 +118,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         unlockDocumentScroll(targetDocument);
       }
     };
-  }, [open, modalType, targetDocument]);
+  }, [open, modalType, targetDocument, unmountOnClose]);
 
   // Handle keyboard events:
   // - Tab / Shift+Tab: delegated to useFocusScope for wrap-around looping.
@@ -203,6 +159,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     open,
     unmountOnClose,
     modalType,
+    shouldRender,
     root: slot.always(
       getIntrinsicElementProps('dialog', {
         // role="alertdialog" for alert type; native <dialog> already has implicit role="dialog"
@@ -211,23 +168,19 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         'aria-modal': modalType !== 'non-modal' ? true : undefined,
         // Point to DialogTitle id for accessible name
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleId || undefined,
-        ...restProps,
+        ...props,
         // tabIndex=-1 makes the dialog programmatically focusable as a fallback when no
         // tabbable child accepts focus (e.g. an empty dialog or one with only disabled elements).
         tabIndex: focusScopeProps.tabIndex,
         ref: mergedRef,
         onKeyDown: handleKeyDown,
         onClick: handleClick,
+        'data-open': stringifyDataAttribute(open),
+        'data-modal-type': modalType,
       }),
       { elementType: 'dialog' },
     ),
   };
-
-  // Data attributes for headless styling hooks (Object.assign avoids TS issues with data-* types)
-  Object.assign(state.root, {
-    'data-open': stringifyDataAttribute(open),
-    'data-modal-type': modalType,
-  });
 
   return state;
 };

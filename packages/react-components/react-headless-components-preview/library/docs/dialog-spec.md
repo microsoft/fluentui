@@ -32,7 +32,6 @@ Dialog is a compound component. DialogTrigger is optional if opened programmatic
 | `defaultOpen`    | `boolean`                                              | `false`     | Uncontrolled: initial visibility state.                                                              |
 | `onOpenChange`   | `(open: boolean, data?: DialogOpenChangeData) => void` | —           | Fires when open state changes (user action or programmatic).                                         |
 | `modal`          | `boolean`                                              | `true`      | If `true`, backdrop prevents background interaction. If `false`, non-modal (can interact with page). |
-| `size`           | `'small' \| 'medium' \| 'large'`                       | `'medium'`  | Logical size (layout only, no visual effect).                                                        |
 | `inertTrapFocus` | `boolean`                                              | `true`      | When `true`, focus is trapped inside dialog (modal behaviour).                                       |
 | `onDismiss`      | `() => void`                                           | —           | Fires when dialog requests closure (Escape key, close button, backdrop click in modal mode).         |
 

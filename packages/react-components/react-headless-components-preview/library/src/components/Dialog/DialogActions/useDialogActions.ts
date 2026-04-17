@@ -6,11 +6,11 @@ import type { DialogActionsProps, DialogActionsState } from './DialogActions.typ
  * Create the state required to render DialogActions.
  *
  * @param props - props from this instance of DialogActions
- * @param ref - reference to root HTMLElement of DialogActions
+ * @param ref - reference to root HTMLDivElement of DialogActions
  */
-export const useDialogActions = (props: DialogActionsProps, ref: React.Ref<HTMLElement>): DialogActionsState => {
+export const useDialogActions = (props: DialogActionsProps, ref: React.Ref<HTMLDivElement>): DialogActionsState => {
   return {
-    components: { root: 'footer' },
-    root: slot.always(getIntrinsicElementProps('footer', { ref, ...props }), { elementType: 'footer' }),
+    components: { root: 'div' },
+    root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
   };
 };

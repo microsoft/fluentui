@@ -49,7 +49,6 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
-import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { FieldBaseProps } from '@fluentui/react-field';
 import { FieldBaseState } from '@fluentui/react-field';
@@ -357,7 +356,7 @@ export type DialogActionsProps = ComponentProps<DialogActionsSlots>;
 
 // @public (undocumented)
 export type DialogActionsSlots = {
-    root: Slot<'footer'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -463,10 +462,7 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export type DialogSurfaceContextValue = boolean;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
-    onMountAutoFocus?: EventHandler<DialogSurfaceMountAutoFocusData>;
-    onUnmountAutoFocus?: EventHandler<DialogSurfaceUnmountAutoFocusData>;
-};
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
@@ -478,6 +474,7 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
     open: boolean;
     unmountOnClose: boolean;
     modalType: DialogModalType;
+    shouldRender: boolean;
 };
 
 // @public
@@ -1234,7 +1231,7 @@ export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputEleme
 export const useDialog_unstable: (props: DialogProps) => DialogState;
 
 // @public
-export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLElement>) => DialogActionsState;
+export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLDivElement>) => DialogActionsState;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLDivElement>) => DialogBodyState;

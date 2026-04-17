@@ -19,7 +19,7 @@ import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.typ
  * React context (including DialogContext) is preserved across portals.
  */
 export const renderDialogSurface = (state: DialogSurfaceState): JSXElement | null => {
-  if (!state.open && state.unmountOnClose) {
+  if (!state.shouldRender) {
     return null;
   }
 
