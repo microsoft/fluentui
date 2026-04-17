@@ -20,10 +20,10 @@
       "description": "Show diagnostic messages used for troubleshooting problems with API Extractor",
       "default": false
     },
-    "enableWildcardExpansion": {
+    "resolveExportWildcards": {
       "type": "boolean",
-      "description": "Whether to expand wildcard export map entries (e.g. './*') and run api-extractor for each resolved sub-directory. When false, only the primary config and explicit sub-path configs are processed.",
-      "default": true
+      "description": "Whether to resolve wildcard export map entries (e.g. './*') and run api-extractor for each resolved sub-directory. When false, only the primary config and explicit sub-path configs are processed.",
+      "default": false
     }
   },
   "required": []

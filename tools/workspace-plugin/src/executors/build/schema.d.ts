@@ -33,7 +33,7 @@ export interface BuildExecutorSchema {
   /**
    * Generate rolluped 'd.ts' bundle including 'api.md' that provides project public API
    */
-  generateApi?: boolean;
+  generateApi?: boolean | { resolveExportWildcards?: boolean };
   /**
    * Enable Griffel raw styles output.
    * This will generate additional files with '.styles.raw.js' extension that contain Griffel raw styles

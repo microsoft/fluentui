@@ -458,7 +458,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    const output = await executor(options, context);
+    const output = await executor({ ...options, resolveExportWildcards: true }, context);
 
     // primary (1) + one per sub-directory
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);
@@ -475,7 +475,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor(options, context);
+    await executor({ ...options, resolveExportWildcards: true }, context);
 
     const wildcardEntries = capturedEntries.slice(1); // skip primary
     for (const name of subDirs) {
@@ -492,7 +492,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor(options, context);
+    await executor({ ...options, resolveExportWildcards: true }, context);
 
     const wildcardConfig = capturedConfigs[1]; // second call is the wildcard entry
     expect(wildcardConfig.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'items', 'alpha', 'index.d.ts'));
@@ -591,7 +591,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor(options, context);
+    await executor({ ...options, resolveExportWildcards: true }, context);
 
     const wildcardConfigs = capturedConfigs.slice(1); // skip primary
     for (const name of subDirs) {
@@ -602,7 +602,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     }
   });
 
-  it('skips wildcard expansion when enableWildcardExpansion is false', async () => {
+  it('skips wildcard expansion when resolveExportWildcards is false', async () => {
     const subDirs = ['alpha', 'beta'];
     const { context } = prepareWildcardFixture(subDirs);
 
@@ -613,14 +613,14 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    const output = await executor({ ...options, enableWildcardExpansion: false }, context);
+    const output = await executor({ ...options, resolveExportWildcards: false }, context);
 
     // Only the primary config should run — no wildcard expansion
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1);
     expect(output.success).toBe(true);
   });
 
-  it('expands wildcards by default (enableWildcardExpansion not set)', async () => {
+  it('skips wildcard expansion by default (resolveExportWildcards not set)', async () => {
     const subDirs = ['alpha', 'beta'];
     const { context } = prepareWildcardFixture(subDirs);
 
@@ -631,8 +631,26 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    // Pass default options — no enableWildcardExpansion key
+    // Pass default options — no resolveExportWildcards key
     const output = await executor(options, context);
+
+    // Only the primary config should run — wildcard expansion is opt-in
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1);
+    expect(output.success).toBe(true);
+  });
+
+  it('expands wildcards when resolveExportWildcards is true', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareWildcardFixture(subDirs);
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor({ ...options, resolveExportWildcards: true }, context);
 
     // primary (1) + one per sub-directory
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);

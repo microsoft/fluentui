@@ -869,20 +869,32 @@ describe(`workspace-plugin`, () => {
         expect(target?.outputs).toContain('{projectRoot}/etc/*.api.md');
       });
 
-      it('should add glob outputs when package has wildcard typed exports', async () => {
-        const target = await setupAndGetGenerateApiTarget({
-          'proj/package.json': serializeJson({
-            name: '@proj/proj',
-            private: true,
-            exports: {
-              '.': { types: './dist/index.d.ts' },
-              './*': { types: './dist/components/*/index.d.ts' },
+      it('should add glob outputs when user configures resolveExportWildcards on generate-api target', async () => {
+        const extraFiles = {
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+            targets: {
+              'generate-api': {
+                options: {
+                  resolveExportWildcards: true,
+                },
+              },
             },
-          } satisfies Partial<PackageJson>),
-        });
+          } satisfies ProjectConfiguration),
+        };
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        const targets = getTargets(results);
 
-        expect(target?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
-        expect(target?.outputs).toContain('{projectRoot}/etc/*.api.md');
+        const generateApiTarget = targets?.['generate-api'];
+        expect(generateApiTarget?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
+        expect(generateApiTarget?.outputs).toContain('{projectRoot}/etc/*.api.md');
+
+        const buildTarget = targets?.['build'];
+        expect(buildTarget?.options?.generateApi).toEqual({ resolveExportWildcards: true });
       });
     });
 

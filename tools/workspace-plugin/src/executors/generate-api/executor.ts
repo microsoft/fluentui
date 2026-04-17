@@ -49,7 +49,7 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
   }
 
   // Expand wildcard exports and run api-extractor for each resolved component dir
-  if (options.enableWildcardExpansion) {
+  if (options.resolveExportWildcards) {
     const wildcardConfigs = getWildcardExportConfigs(options);
     for (const configObject of wildcardConfigs) {
       verboseLog(`Running api-extractor for wildcard entry: ${configObject.mainEntryPointFilePath}`);
@@ -67,7 +67,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     config: '{projectRoot}/config/api-extractor.json',
     local: true,
     diagnostics: false,
-    enableWildcardExpansion: true,
+    resolveExportWildcards: false,
   };
   const resolvedSchema = { ...defaults, ...schema };
 

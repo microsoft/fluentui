@@ -23,7 +23,7 @@ import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
-import { listAdditionalApiExtractorConfigs, hasWildcardTypedExport } from '../executors/generate-api/utils';
+import { listAdditionalApiExtractorConfigs } from '../executors/generate-api/utils';
 
 export interface WorkspacePluginOptions {
   testSSR?: TargetPluginOption;
@@ -204,6 +204,9 @@ function buildWorkspaceProjectConfiguration(
 
     targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
 
+    const userEnabledResolveExportWildcards =
+      config.projectJSON.targets?.['generate-api']?.options?.resolveExportWildcards === true;
+
     targets.build = {
       cache: true,
       executor: '@fluentui/workspace-plugin:build',
@@ -216,6 +219,7 @@ function buildWorkspaceProjectConfiguration(
           config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
+        ...(userEnabledResolveExportWildcards ? { generateApi: { resolveExportWildcards: true } } : {}),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -269,6 +273,8 @@ function buildWorkspaceProjectConfiguration(
 }
 
 function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
+  const resolveExportWildcards = config.projectJSON.targets?.['generate-api']?.options?.resolveExportWildcards === true;
+
   const { extraInputs, extraOutputs } = buildExtraInputsAndOutputsForApiExtractorConfigs();
 
   return {
@@ -307,8 +313,7 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
       extraInputs.push(`{projectRoot}/config/${configFile}`);
     }
 
-    const hasExtraEntryPoints =
-      additionalConfigFiles.length > 0 || hasWildcardTypedExport(config.packageJSON.exports as Record<string, unknown>);
+    const hasExtraEntryPoints = additionalConfigFiles.length > 0 || resolveExportWildcards;
 
     // When any additional or wildcard entry points exist, use broad globs for outputs
     // — the executor resolves exact paths at runtime.
