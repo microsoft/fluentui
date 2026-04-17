@@ -1,28 +1,3 @@
-import { existsSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
-
-/**
- * Returns `api-extractor.*.json` file paths found in `configDir`, excluding `primaryConfigPath`.
- * The primary `api-extractor.json` is always excluded by the regex (it has no dot-separated name
- * segment between `api-extractor` and `.json`), but `primaryConfigPath` is excluded as an extra
- * safety net for custom config locations.
- */
-export function listAdditionalApiExtractorConfigs(configDir: string, primaryConfigPath: string): string[] {
-  if (!existsSync(configDir)) {
-    return [];
-  }
-  let entries: string[];
-  try {
-    entries = readdirSync(configDir);
-  } catch {
-    return [];
-  }
-  return entries
-    .filter(filename => /^api-extractor\..+\.json$/.test(filename))
-    .map(filename => join(configDir, filename))
-    .filter(filepath => filepath !== primaryConfigPath);
-}
-
 /**
  * Checks whether a single export map entry is a wildcard entry with a `types` field.
  */
@@ -31,6 +6,20 @@ export function isWildcardTypedEntry(
   exportValue: unknown,
 ): exportValue is { types: string } & Record<string, unknown> {
   return exportKey.includes('*') && typeof exportValue === 'object' && exportValue !== null && 'types' in exportValue;
+}
+
+/**
+ * Checks whether a single export map entry is a named (non-wildcard, non-root) entry with a `types` field.
+ * Skips `"."` and `"./package.json"`.
+ */
+export function isNamedTypedEntry(
+  exportKey: string,
+  exportValue: unknown,
+): exportValue is { types: string } & Record<string, unknown> {
+  if (exportKey === '.' || exportKey === './package.json' || exportKey.includes('*')) {
+    return false;
+  }
+  return typeof exportValue === 'object' && exportValue !== null && 'types' in exportValue;
 }
 
 /**

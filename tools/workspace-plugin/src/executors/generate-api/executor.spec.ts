@@ -234,164 +234,10 @@ describe('GenerateApi Executor', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Additional file-based sub-path configs (api-extractor.*.json)
+// Export subpath resolution
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('GenerateApi Executor – additional sub-path configs', () => {
-  afterEach(() => {
-    cleanup();
-  });
-
-  /**
-   * Extends the base "valid" fixture with a second api-extractor config
-   * (e.g. api-extractor.utils.json) to simulate a named sub-path entry.
-   */
-  function prepareFixtureWithSubpathConfig() {
-    const { paths, context } = prepareFixture('valid', {});
-    const { projRoot } = paths;
-
-    // Write the sub-path api-extractor config that references an already-emitted dts file
-    writeFileSync(
-      join(projRoot, 'config', 'api-extractor.utils.json'),
-      serializeJson({
-        mainEntryPointFilePath: '<projectFolder>/dts/utils/index.d.ts',
-        apiReport: { enabled: false },
-        docModel: { enabled: false },
-        dtsRollup: { enabled: true, untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
-        tsdocMetadata: { enabled: false },
-      }),
-      'utf-8',
-    );
-
-    execSyncMock.mockImplementation(() => {
-      // Simulate tsc emitting declaration files for both main and utils entry
-      mkdirSync(join(projRoot, 'dts', 'utils'), { recursive: true });
-      writeFileSync(join(projRoot, 'dts', 'index.d.ts'), 'export const foo: number;', 'utf-8');
-      writeFileSync(join(projRoot, 'dts', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
-    });
-
-    return { paths, context };
-  }
-
-  it('invokes api-extractor twice when a sub-path config is present', async () => {
-    const { context } = prepareFixtureWithSubpathConfig();
-
-    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
-      () =>
-        ({
-          succeeded: true,
-        } as ExtractorResult),
-    );
-
-    const output = await executor(options, context);
-
-    // Should have been called once for primary + once for utils
-    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(2);
-    expect(output.success).toBe(true);
-  });
-
-  it('passes the sub-path mainEntryPointFilePath to api-extractor', async () => {
-    const { paths, context } = prepareFixtureWithSubpathConfig();
-
-    const extractorConfigs: string[] = [];
-    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
-      extractorConfigs.push(cfg.mainEntryPointFilePath);
-      return { succeeded: true } as ExtractorResult;
-    });
-
-    await executor(options, context);
-
-    // Second call should use the utils entry point
-    expect(extractorConfigs[1]).toContain('utils/index.d.ts');
-  });
-
-  it('returns false and stops after the first failing sub-path config', async () => {
-    const { context } = prepareFixtureWithSubpathConfig();
-
-    let callCount = 0;
-    jest.spyOn(Extractor, 'invoke').mockImplementation(() => {
-      callCount++;
-      // first call (primary) succeeds; second call (sub-path) fails
-      return { succeeded: callCount === 1, errorCount: callCount === 1 ? 0 : 1, warningCount: 0 } as ExtractorResult;
-    });
-
-    const output = await executor(options, context);
-
-    expect(callCount).toBe(2);
-    expect(output.success).toBe(false);
-  });
-
-  it('ignores the primary api-extractor.json when scanning for additional configs', async () => {
-    const { paths, context } = prepareFixtureWithSubpathConfig();
-
-    const extractorConfigPaths: string[] = [];
-    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
-      // mainEntryPointFilePath is absolute at this stage
-      extractorConfigPaths.push(cfg.mainEntryPointFilePath);
-      return { succeeded: true } as ExtractorResult;
-    });
-
-    await executor(options, context);
-
-    // Should only be called once for primary + once for utils; NOT a third time for primary again
-    expect(extractorConfigPaths).toHaveLength(2);
-    // The additional config entry should not duplicate the primary one
-    const primaryEntry = join(paths.projRoot, 'dts', 'index.d.ts');
-    const additionalEntry = join(paths.projRoot, 'dts', 'utils', 'index.d.ts');
-    expect(extractorConfigPaths[0]).toBe(primaryEntry);
-    expect(extractorConfigPaths[1]).toBe(additionalEntry);
-  });
-
-  it('routes api report for sub-path config to etc/<unscopedPackageName>.<subpath>.api.md', async () => {
-    const { paths, context } = prepareFixtureWithSubpathConfigAndApiReport();
-
-    const capturedConfigs: ExtractorConfig[] = [];
-    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
-      capturedConfigs.push(cfg);
-      return { succeeded: true } as ExtractorResult;
-    });
-
-    await executor(options, context);
-
-    const subpathConfig = capturedConfigs[1];
-    expect(subpathConfig.apiReportEnabled).toBe(true);
-    expect(subpathConfig.reportFilePath).toBe(join(paths.projRoot, 'etc', 'proj.utils.api.md'));
-  });
-
-  /**
-   * Like prepareFixtureWithSubpathConfig but with api report enabled and a unique reportFileName.
-   */
-  function prepareFixtureWithSubpathConfigAndApiReport() {
-    const { paths, context } = prepareFixture('valid', {});
-    const { projRoot } = paths;
-
-    writeFileSync(
-      join(projRoot, 'config', 'api-extractor.utils.json'),
-      serializeJson({
-        mainEntryPointFilePath: '<projectFolder>/dts/utils/index.d.ts',
-        apiReport: { enabled: true, reportFileName: '<unscopedPackageName>.utils' },
-        docModel: { enabled: false },
-        dtsRollup: { enabled: true, untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
-        tsdocMetadata: { enabled: false },
-      }),
-      'utf-8',
-    );
-
-    execSyncMock.mockImplementation(() => {
-      mkdirSync(join(projRoot, 'dts', 'utils'), { recursive: true });
-      writeFileSync(join(projRoot, 'dts', 'index.d.ts'), 'export const foo: number;', 'utf-8');
-      writeFileSync(join(projRoot, 'dts', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
-    });
-
-    return { paths, context };
-  }
-});
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Wildcard export expansion
-// ─────────────────────────────────────────────────────────────────────────────
-
-describe('GenerateApi Executor – wildcard export expansion', () => {
+describe('GenerateApi Executor – export subpath resolution', () => {
   afterEach(() => {
     cleanup();
   });
@@ -447,6 +293,101 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     return { paths, context };
   }
 
+  /**
+   * Creates a fixture with a named export "./utils" that has a types field.
+   */
+  function prepareNamedExportFixture() {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({
+        name: '@proj/proj',
+        types: 'dist/index.d.ts',
+        exports: {
+          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+          './utils': { types: './dist/utils/index.d.ts', import: './lib/utils/index.js' },
+          './package.json': './package.json',
+        },
+      }),
+      'utf-8',
+    );
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'src', 'utils'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
+      writeFileSync(join(projRoot, 'dts', 'src', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
+    });
+
+    return { paths, context };
+  }
+
+  /**
+   * Creates a fixture with both wildcard and named exports.
+   */
+  function prepareMixedExportFixture(subDirNames: string[]) {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({
+        name: '@proj/proj',
+        types: 'dist/index.d.ts',
+        exports: {
+          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+          './utils': { types: './dist/utils/index.d.ts', import: './lib/utils/index.js' },
+          './*': { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' },
+          './package.json': './package.json',
+        },
+      }),
+      'utf-8',
+    );
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'src', 'utils'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
+      writeFileSync(join(projRoot, 'dts', 'src', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
+      for (const name of subDirNames) {
+        mkdirSync(join(projRoot, 'dts', 'src', 'items', name), { recursive: true });
+        writeFileSync(
+          join(projRoot, 'dts', 'src', 'items', name, 'index.d.ts'),
+          `export const value: string;`,
+          'utf-8',
+        );
+      }
+    });
+
+    return { paths, context };
+  }
+
+  // ── Wildcard exports ──────────────────────────────────────────────────────
+
   it('calls api-extractor once per wildcard sub-directory in addition to the primary', async () => {
     const subDirs = ['alpha', 'beta', 'gamma'];
     const { context } = prepareWildcardFixture(subDirs);
@@ -458,7 +399,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    const output = await executor({ ...options, resolveExportWildcards: true }, context);
+    const output = await executor({ ...options, exportSubpaths: true }, context);
 
     // primary (1) + one per sub-directory
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);
@@ -475,7 +416,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor({ ...options, resolveExportWildcards: true }, context);
+    await executor({ ...options, exportSubpaths: true }, context);
 
     const wildcardEntries = capturedEntries.slice(1); // skip primary
     for (const name of subDirs) {
@@ -492,7 +433,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor({ ...options, resolveExportWildcards: true }, context);
+    await executor({ ...options, exportSubpaths: true }, context);
 
     const wildcardConfig = capturedConfigs[1]; // second call is the wildcard entry
     expect(wildcardConfig.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'items', 'alpha', 'index.d.ts'));
@@ -591,7 +532,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
       return { succeeded: true } as ExtractorResult;
     });
 
-    await executor({ ...options, resolveExportWildcards: true }, context);
+    await executor({ ...options, exportSubpaths: true }, context);
 
     const wildcardConfigs = capturedConfigs.slice(1); // skip primary
     for (const name of subDirs) {
@@ -602,7 +543,7 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
     }
   });
 
-  it('skips wildcard expansion when resolveExportWildcards is false', async () => {
+  it('skips export subpath expansion when exportSubpaths is false', async () => {
     const subDirs = ['alpha', 'beta'];
     const { context } = prepareWildcardFixture(subDirs);
 
@@ -613,14 +554,14 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    const output = await executor({ ...options, resolveExportWildcards: false }, context);
+    const output = await executor({ ...options, exportSubpaths: false }, context);
 
-    // Only the primary config should run — no wildcard expansion
+    // Only the primary config should run — no subpath expansion
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1);
     expect(output.success).toBe(true);
   });
 
-  it('skips wildcard expansion by default (resolveExportWildcards not set)', async () => {
+  it('skips export subpath expansion by default (exportSubpaths not set)', async () => {
     const subDirs = ['alpha', 'beta'];
     const { context } = prepareWildcardFixture(subDirs);
 
@@ -631,15 +572,15 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    // Pass default options — no resolveExportWildcards key
+    // Pass default options — no exportSubpaths key
     const output = await executor(options, context);
 
-    // Only the primary config should run — wildcard expansion is opt-in
+    // Only the primary config should run — subpath expansion is opt-in
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1);
     expect(output.success).toBe(true);
   });
 
-  it('expands wildcards when resolveExportWildcards is true', async () => {
+  it('expands wildcards when exportSubpaths is true', async () => {
     const subDirs = ['alpha', 'beta'];
     const { context } = prepareWildcardFixture(subDirs);
 
@@ -650,10 +591,121 @@ describe('GenerateApi Executor – wildcard export expansion', () => {
         } as ExtractorResult),
     );
 
-    const output = await executor({ ...options, resolveExportWildcards: true }, context);
+    const output = await executor({ ...options, exportSubpaths: true }, context);
 
     // primary (1) + one per sub-directory
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + subDirs.length);
     expect(output.success).toBe(true);
+  });
+
+  // ── Named exports ────────────────────────────────────────────────────────
+
+  it('creates config for named export ./utils with correct mainEntryPointFilePath', async () => {
+    const { context } = prepareNamedExportFixture();
+
+    const capturedEntries: string[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedEntries.push(cfg.mainEntryPointFilePath);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    // primary + utils
+    expect(capturedEntries).toHaveLength(2);
+    expect(capturedEntries[1]).toContain('utils/index.d.ts');
+  });
+
+  it('derives reportFileName from named export key', async () => {
+    const { context } = prepareNamedExportFixture();
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    const utilsConfig = capturedConfigs[1];
+    expect(utilsConfig.reportFilePath).toContain('utils.api.md');
+  });
+
+  it('enables apiReport by default for named exports when exportSubpaths is true', async () => {
+    const { context } = prepareNamedExportFixture();
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    const utilsConfig = capturedConfigs[1];
+    expect(utilsConfig.apiReportEnabled).toBe(true);
+  });
+
+  it('disables apiReport for named exports when exportSubpaths: { apiReport: false }', async () => {
+    const { context } = prepareNamedExportFixture();
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: { apiReport: false } }, context);
+
+    const utilsConfig = capturedConfigs[1];
+    expect(utilsConfig.apiReportEnabled).toBe(false);
+  });
+
+  it('sets dts rollup path for named export to dist/{subpath}/index.d.ts', async () => {
+    const { paths, context } = prepareNamedExportFixture();
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    const utilsConfig = capturedConfigs[1];
+    expect(utilsConfig.untrimmedFilePath).toBe(join(paths.projRoot, 'dist', 'utils', 'index.d.ts'));
+  });
+
+  it('processes both named and wildcard exports in a single package', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareMixedExportFixture(subDirs);
+
+    const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
+      () =>
+        ({
+          succeeded: true,
+        } as ExtractorResult),
+    );
+
+    const output = await executor({ ...options, exportSubpaths: true }, context);
+
+    // primary (1) + utils (1) + wildcard sub-dirs (2)
+    expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + 1 + subDirs.length);
+    expect(output.success).toBe(true);
+  });
+
+  it('skips "." and "./package.json" entries', async () => {
+    const { context } = prepareNamedExportFixture();
+
+    const capturedEntries: string[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedEntries.push(cfg.mainEntryPointFilePath);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    // Only primary + utils — "." and "./package.json" skipped
+    expect(capturedEntries).toHaveLength(2);
   });
 });

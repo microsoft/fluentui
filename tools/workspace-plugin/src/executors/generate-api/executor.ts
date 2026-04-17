@@ -1,6 +1,6 @@
 import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { dirname, join, relative, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { execSync } from 'node:child_process';
 
 import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
@@ -9,7 +9,7 @@ import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
 import { isCI } from './lib/shared';
-import { listAdditionalApiExtractorConfigs, hasWildcardTypedExport, isWildcardTypedEntry } from './utils';
+import { isWildcardTypedEntry, isNamedTypedEntry } from './utils';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -39,20 +39,11 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
     return false;
   }
 
-  // Run additional file-based sub-path configs (e.g. api-extractor.utils.json)
-  const additionalConfigs = listAdditionalApiExtractorConfigs(dirname(options.config), options.config);
-  for (const configPath of additionalConfigs) {
-    verboseLog(`Running api-extractor for sub-path config: ${relative(options.projectAbsolutePath, configPath)}`);
-    if (!apiExtractor({ configPath }, options, context)) {
-      return false;
-    }
-  }
-
-  // Expand wildcard exports and run api-extractor for each resolved component dir
-  if (options.resolveExportWildcards) {
-    const wildcardConfigs = getWildcardExportConfigs(options);
-    for (const configObject of wildcardConfigs) {
-      verboseLog(`Running api-extractor for wildcard entry: ${configObject.mainEntryPointFilePath}`);
+  // Expand export subpaths and run api-extractor for each resolved entry
+  if (options.exportSubpaths.enabled) {
+    const subpathConfigs = getExportSubpathConfigs(options);
+    for (const configObject of subpathConfigs) {
+      verboseLog(`Running api-extractor for export subpath entry: ${configObject.mainEntryPointFilePath}`);
       if (!apiExtractor({ configObject }, options, context)) {
         return false;
       }
@@ -67,9 +58,15 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     config: '{projectRoot}/config/api-extractor.json',
     local: true,
     diagnostics: false,
-    resolveExportWildcards: false,
   };
   const resolvedSchema = { ...defaults, ...schema };
+
+  // Normalize exportSubpaths into { enabled, apiReport }
+  const rawExportSubpaths = resolvedSchema.exportSubpaths;
+  const exportSubpaths =
+    typeof rawExportSubpaths === 'object' && rawExportSubpaths !== null
+      ? { enabled: true, apiReport: rawExportSubpaths.apiReport !== false }
+      : { enabled: rawExportSubpaths === true, apiReport: true };
 
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
@@ -89,6 +86,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 
   return {
     ...resolvedSchema,
+    exportSubpaths,
     local: resolveLocalFlag,
     config: resolveConfig.result!,
     project,
@@ -186,52 +184,78 @@ function apiExtractor(
 }
 
 /**
- * Reads the package.json exports map and expands wildcard entries (e.g. "./*") into individual
- * api-extractor config objects — one per source directory found under the resolved source path.
+ * Reads the package.json exports map and resolves both wildcard entries (e.g. "./*") and named
+ * entries (e.g. "./utils") into individual api-extractor config objects.
  *
- * Example: "./*" with types "./dist/items/STAR/index.d.ts" expands to one config per
- * directory found in "src/items/".
+ * - Wildcard entries are expanded into one config per sub-directory found under the resolved source path.
+ * - Named entries produce a single config each, derived directly from their types field.
+ * - The root export (".") and "./package.json" are always skipped.
  */
-function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
+function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile[] {
   const packageJson: PackageJson = parseJson(readFileSync(options.packageJsonPath, 'utf-8'));
 
   const exports = packageJson.exports ?? {};
-
-  if (!hasWildcardTypedExport(exports as Record<string, unknown>)) {
-    return [];
-  }
 
   const declarationBase = resolveDeclarationBase(options, packageJson);
   if (!declarationBase) {
     return [];
   }
 
+  const apiReportEnabled = options.exportSubpaths.apiReport;
+
   const configs: IConfigFile[] = [];
 
   for (const [exportKey, exportValue] of Object.entries(exports)) {
-    if (!isWildcardTypedEntry(exportKey, exportValue)) {
+    // Skip root and package.json entries
+    if (exportKey === '.' || exportKey === './package.json') {
       continue;
     }
 
-    const pathPrefixes = parseWildcardTypesPattern(exportValue.types);
-    if (!pathPrefixes) {
+    // Wildcard entries: expand into sub-directories
+    if (isWildcardTypedEntry(exportKey, exportValue)) {
+      const pathPrefixes = parseWildcardTypesPattern(exportValue.types);
+      if (!pathPrefixes) {
+        continue;
+      }
+
+      const declarationScanDir = join(declarationBase, pathPrefixes.wildcardSubPath);
+      const subDirs = listSubDirectories(declarationScanDir);
+      if (!subDirs) {
+        continue;
+      }
+
+      for (const dirName of subDirs) {
+        configs.push(
+          createSubpathEntryConfig({
+            projectAbsolutePath: options.projectAbsolutePath,
+            declarationBase,
+            subPath: pathPrefixes.wildcardSubPath + dirName,
+            distRelativePath: pathPrefixes.distRelativePrefix + dirName,
+            reportFileName: dirName,
+            apiReportEnabled,
+          }),
+        );
+      }
       continue;
     }
 
-    const declarationScanDir = join(declarationBase, pathPrefixes.wildcardSubPath);
-    const subDirs = listSubDirectories(declarationScanDir);
-    if (!subDirs) {
-      continue;
-    }
+    // Named entries: create config directly from types field
+    if (isNamedTypedEntry(exportKey, exportValue)) {
+      const parsed = parseNamedTypesPattern(exportValue.types);
+      if (!parsed) {
+        continue;
+      }
 
-    for (const dirName of subDirs) {
+      const subpathName = exportKey.replace(/^\.\//, '');
+
       configs.push(
-        createWildcardEntryConfig({
+        createSubpathEntryConfig({
           projectAbsolutePath: options.projectAbsolutePath,
           declarationBase,
-          wildcardSubPath: pathPrefixes.wildcardSubPath,
-          distRelativePrefix: pathPrefixes.distRelativePrefix,
-          dirName,
+          subPath: parsed.declarationSubPath,
+          distRelativePath: parsed.distRelativePath,
+          reportFileName: subpathName,
+          apiReportEnabled,
         }),
       );
     }
@@ -267,7 +291,7 @@ function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
     if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
       verboseLog(
         `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${indexDtsSuffix}". ` +
-          `Skipping wildcard export expansion.`,
+          `Skipping export subpath expansion.`,
         'warn',
       );
       return null;
@@ -307,13 +331,46 @@ function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
   }
 
   /**
+   * Parses a named (non-wildcard) types pattern and derives the dist-relative path and
+   * the declaration sub-path (the portion after the first path segment, minus index.d.ts).
+   *
+   * Example: "./dist/utils/index.d.ts"
+   *  → distRelativePath: "dist/utils"
+   *  → declarationSubPath: "utils"
+   *
+   * @returns The path components, or `null` if the pattern cannot be parsed.
+   */
+  function parseNamedTypesPattern(typesPattern: string): {
+    distRelativePath: string;
+    declarationSubPath: string;
+  } | null {
+    const indexDtsSuffix = '/index.d.ts';
+    if (!typesPattern.endsWith(indexDtsSuffix)) {
+      return null;
+    }
+
+    // Strip "./" prefix and trailing "/index.d.ts"
+    const distRelativePath = typesPattern.replace(/^\.\//, '').slice(0, -indexDtsSuffix.length);
+
+    // Strip the first path segment (the dist directory name)
+    const firstSlashIdx = distRelativePath.indexOf('/');
+    const declarationSubPath = firstSlashIdx === -1 ? '' : distRelativePath.slice(firstSlashIdx + 1);
+
+    if (!declarationSubPath) {
+      return null;
+    }
+
+    return { distRelativePath, declarationSubPath };
+  }
+
+  /**
    * Lists immediate sub-directories of the given path.
    *
    * @returns Array of directory names, or `null` if the path does not exist or cannot be read.
    */
   function listSubDirectories(dirPath: string): string[] | null {
     if (!existsSync(dirPath)) {
-      verboseLog(`Wildcard export source dir not found, skipping: ${dirPath}`, 'warn');
+      verboseLog(`Export subpath source dir not found, skipping: ${dirPath}`, 'warn');
       return null;
     }
 
@@ -327,24 +384,25 @@ function getWildcardExportConfigs(options: NormalizedOptions): IConfigFile[] {
   }
 
   /**
-   * Creates an api-extractor IConfigFile for a single wildcard sub-directory entry.
+   * Creates an api-extractor IConfigFile for a single export sub-path entry.
    */
-  function createWildcardEntryConfig(params: {
+  function createSubpathEntryConfig(params: {
     projectAbsolutePath: string;
     declarationBase: string;
-    wildcardSubPath: string;
-    distRelativePrefix: string;
-    dirName: string;
+    subPath: string;
+    distRelativePath: string;
+    reportFileName: string;
+    apiReportEnabled: boolean;
   }): IConfigFile {
-    const mainEntryPointFilePath = join(params.declarationBase, params.wildcardSubPath, params.dirName, 'index.d.ts');
-    const dtsRollupPath = join(params.projectAbsolutePath, params.distRelativePrefix, params.dirName, 'index.d.ts');
+    const mainEntryPointFilePath = join(params.declarationBase, params.subPath, 'index.d.ts');
+    const dtsRollupPath = join(params.projectAbsolutePath, params.distRelativePath, 'index.d.ts');
 
     return {
       projectFolder: params.projectAbsolutePath,
       mainEntryPointFilePath,
       apiReport: {
-        enabled: true,
-        reportFileName: params.dirName,
+        enabled: params.apiReportEnabled,
+        reportFileName: params.reportFileName,
         reportFolder: '<projectFolder>/etc/',
         reportTempFolder: '<projectFolder>/temp/',
       },
@@ -436,7 +494,7 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
-function getApiExtractorConfigPath(schema: Required<GenerateApiExecutorSchema>, projectRoot: string) {
+function getApiExtractorConfigPath(schema: Required<Pick<GenerateApiExecutorSchema, 'config'>>, projectRoot: string) {
   const configPath = schema.config.replace('{projectRoot}', projectRoot);
 
   if (!existsSync(configPath)) {

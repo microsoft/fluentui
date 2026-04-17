@@ -2,5 +2,5 @@ export interface GenerateApiExecutorSchema {
   config?: string;
   local?: boolean;
   diagnostics?: boolean;
-  resolveExportWildcards?: boolean;
+  exportSubpaths?: boolean | { apiReport?: boolean };
 }

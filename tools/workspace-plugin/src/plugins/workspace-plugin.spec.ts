@@ -855,21 +855,7 @@ describe(`workspace-plugin`, () => {
         expect(target?.outputs).toEqual(['{projectRoot}/dist/index.d.ts', '{projectRoot}/etc/proj.api.md']);
       });
 
-      it('should add glob outputs when additional api-extractor configs exist', async () => {
-        const target = await setupAndGetGenerateApiTarget({
-          'proj/config/api-extractor.json': '{}',
-          'proj/config/api-extractor.utils.json': serializeJson({
-            apiReport: { enabled: true, reportFileName: 'utils' },
-            dtsRollup: { untrimmedFilePath: '<projectFolder>/dist/utils/index.d.ts' },
-          }),
-        });
-
-        expect(target?.inputs).toContain('{projectRoot}/config/api-extractor.utils.json');
-        expect(target?.outputs).toContain('{projectRoot}/dist/**/*.d.ts');
-        expect(target?.outputs).toContain('{projectRoot}/etc/*.api.md');
-      });
-
-      it('should add glob outputs when user configures resolveExportWildcards on generate-api target', async () => {
+      it('should add glob outputs when user configures exportSubpaths on generate-api target', async () => {
         const extraFiles = {
           'proj/project.json': serializeJson({
             root: 'proj',
@@ -879,7 +865,7 @@ describe(`workspace-plugin`, () => {
             targets: {
               'generate-api': {
                 options: {
-                  resolveExportWildcards: true,
+                  exportSubpaths: true,
                 },
               },
             },
@@ -894,7 +880,7 @@ describe(`workspace-plugin`, () => {
         expect(generateApiTarget?.outputs).toContain('{projectRoot}/etc/*.api.md');
 
         const buildTarget = targets?.['build'];
-        expect(buildTarget?.options?.generateApi).toEqual({ resolveExportWildcards: true });
+        expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
       });
     });
 

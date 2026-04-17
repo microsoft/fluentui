@@ -20,9 +20,22 @@
       "description": "Show diagnostic messages used for troubleshooting problems with API Extractor",
       "default": false
     },
-    "resolveExportWildcards": {
-      "type": "boolean",
-      "description": "Whether to resolve wildcard export map entries (e.g. './*') and run api-extractor for each resolved sub-directory. When false, only the primary config and explicit sub-path configs are processed.",
+    "exportSubpaths": {
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "properties": {
+            "apiReport": {
+              "type": "boolean",
+              "description": "Whether to generate api.md reports for each resolved sub-path entry.",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "Whether to read non-root export map entries from package.json and run api-extractor for each resolved sub-path. When false or omitted, only the primary config is processed.",
       "default": false
     }
   },

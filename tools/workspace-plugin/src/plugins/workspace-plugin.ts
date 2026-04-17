@@ -23,7 +23,6 @@ import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
-import { listAdditionalApiExtractorConfigs } from '../executors/generate-api/utils';
 
 export interface WorkspacePluginOptions {
   testSSR?: TargetPluginOption;
@@ -204,8 +203,7 @@ function buildWorkspaceProjectConfiguration(
 
     targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
 
-    const userEnabledResolveExportWildcards =
-      config.projectJSON.targets?.['generate-api']?.options?.resolveExportWildcards === true;
+    const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
 
     targets.build = {
       cache: true,
@@ -219,7 +217,7 @@ function buildWorkspaceProjectConfiguration(
           config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
-        ...(userEnabledResolveExportWildcards ? { generateApi: { resolveExportWildcards: true } } : {}),
+        ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -272,17 +270,32 @@ function buildWorkspaceProjectConfiguration(
   return { targets };
 }
 
-function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
-  const resolveExportWildcards = config.projectJSON.targets?.['generate-api']?.options?.resolveExportWildcards === true;
+function resolveExportSubpathsOption(config: TaskBuilderConfig): {
+  value: boolean | { apiReport?: boolean };
+  enabled: boolean;
+} {
+  const value = config.projectJSON.targets?.['generate-api']?.options?.exportSubpaths;
+  const enabled = value === true || (typeof value === 'object' && value !== null);
+  return { value, enabled };
+}
 
-  const { extraInputs, extraOutputs } = buildExtraInputsAndOutputsForApiExtractorConfigs();
+function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
+  const { enabled: hasExportSubpaths } = resolveExportSubpathsOption(config);
+
+  const extraOutputs: string[] = [];
+
+  // When exportSubpaths is enabled, use broad globs for outputs
+  // — the executor resolves exact paths at runtime.
+  if (hasExportSubpaths) {
+    extraOutputs.push('{projectRoot}/dist/**/*.d.ts');
+    extraOutputs.push('{projectRoot}/etc/*.api.md');
+  }
 
   return {
     cache: true,
     executor: '@fluentui/workspace-plugin:generate-api',
     inputs: [
       '{projectRoot}/config/api-extractor.json',
-      ...extraInputs,
       '{projectRoot}/tsconfig.json',
       '{projectRoot}/tsconfig.lib.json',
       '{projectRoot}/src/**/*.tsx?',
@@ -299,31 +312,6 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
       },
     },
   };
-
-  function buildExtraInputsAndOutputsForApiExtractorConfigs() {
-    const extraInputs: string[] = [];
-    const extraOutputs: string[] = [];
-
-    const configDir = join(projectRoot, 'config');
-    const primaryConfigPath = join(configDir, 'api-extractor.json');
-    const additionalConfigFiles = listAdditionalApiExtractorConfigs(configDir, primaryConfigPath);
-
-    for (const absPath of additionalConfigFiles) {
-      const configFile = absPath.slice(configDir.length + 1); // filename only
-      extraInputs.push(`{projectRoot}/config/${configFile}`);
-    }
-
-    const hasExtraEntryPoints = additionalConfigFiles.length > 0 || resolveExportWildcards;
-
-    // When any additional or wildcard entry points exist, use broad globs for outputs
-    // — the executor resolves exact paths at runtime.
-    if (hasExtraEntryPoints) {
-      extraOutputs.push('{projectRoot}/dist/**/*.d.ts');
-      extraOutputs.push('{projectRoot}/etc/*.api.md');
-    }
-
-    return { extraInputs, extraOutputs };
-  }
 }
 
 function buildTestTarget(
