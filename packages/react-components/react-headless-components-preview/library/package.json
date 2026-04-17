@@ -40,18 +40,6 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
-    "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "node": "./lib-commonjs/components/*/index.js",
-      "import": "./lib/components/*/index.js",
-      "require": "./lib-commonjs/components/*/index.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "node": "./lib-commonjs/utils/index.js",
-      "import": "./lib/utils/index.js",
-      "require": "./lib-commonjs/utils/index.js"
-    },
     "./package.json": "./package.json"
   },
   "beachball": {
