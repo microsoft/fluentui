@@ -52,6 +52,9 @@ import type { FieldBaseProps } from '@fluentui/react-field';
 import { FieldBaseState } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
 import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
+import type { FluentProviderContextValues } from '@fluentui/react-provider';
+import type { FluentProviderProps } from '@fluentui/react-provider';
+import type { FluentProviderState } from '@fluentui/react-provider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputBaseProps } from '@fluentui/react-input';
 import { InputBaseState } from '@fluentui/react-input';
@@ -470,6 +473,15 @@ export type ProgressBarSlots = ProgressBarSlots_2;
 export type ProgressBarState = ProgressBarBaseState;
 
 // @public
+export const Provider: React_2.ForwardRefExoticComponent<ProviderProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export type ProviderProps = Omit<FluentProviderProps, 'applyStylesToPortals' | 'theme' | 'customStyleHooks_unstable' | 'overrides_unstable'>;
+
+// @public
+export type ProviderState = Omit<FluentProviderState, 'applyStylesToPortals' | 'theme' | 'themeClassName' | 'customStyleHooks_unstable' | 'overrides_unstable' | 'serverStyleProps'>;
+
+// @public
 export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
     value?: string;
     labelPosition?: "after" | "below";
@@ -610,6 +622,9 @@ export const renderMessageBarTitle: (state: MessageBarTitleState_2) => JSXElemen
 
 // @public
 export const renderProgressBar: (state: ProgressBarState) => JSXElement;
+
+// @public
+export const renderProvider: (state: ProviderState, contextValues: FluentProviderContextValues) => JSXElement;
 
 // @public
 export const renderRadio: (state: RadioBaseState) => JSXElement;
@@ -941,6 +956,9 @@ export const useMessageBarTitle: (props: MessageBarTitleProps, ref: React_2.Ref<
 
 // @public
 export const useProgressBar: (props: ProgressBarProps, ref: React_2.Ref<HTMLDivElement>) => ProgressBarState;
+
+// @public (undocumented)
+export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement>) => ProviderState;
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
