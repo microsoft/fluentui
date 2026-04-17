@@ -17,6 +17,7 @@ import {
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '@fluentui/react-button';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import {
   dialogSurfaceSelector,
@@ -717,10 +718,12 @@ describe('Dialog', () => {
       const StackedDialogsTest = () => {
         const [dialog1Open, setDialog1Open] = React.useState(false);
         const [dialog2Open, setDialog2Open] = React.useState(false);
+        const restoreFocusTargetForDialog1 = useRestoreFocusTarget();
+        const restoreFocusTargetForDialog2 = useRestoreFocusTarget();
 
         return (
           <>
-            <Button id={dialogTriggerOpenId} onClick={() => setDialog1Open(true)}>
+            <Button id={dialogTriggerOpenId} {...restoreFocusTargetForDialog1} onClick={() => setDialog1Open(true)}>
               Open Dialog 1
             </Button>
 
@@ -731,7 +734,12 @@ describe('Dialog', () => {
                   <DialogTitle>Dialog 1</DialogTitle>
                   <DialogContent>Dialog 1 content</DialogContent>
                   <DialogActions>
-                    <Button id="open-dialog-2-btn" onClick={() => setDialog2Open(true)}>
+                    {/* restoreFocusTargetForDialog2 ensures Tabster can restore focus here when Dialog 2 closes */}
+                    <Button
+                      id="open-dialog-2-btn"
+                      {...restoreFocusTargetForDialog2}
+                      onClick={() => setDialog2Open(true)}
+                    >
                       Open Dialog 2
                     </Button>
                     <Button id={dialogTriggerCloseId} onClick={() => setDialog1Open(false)}>
@@ -840,10 +848,12 @@ describe('Dialog', () => {
       const StackedDialogsTest = () => {
         const [dialog1Open, setDialog1Open] = React.useState(false);
         const [dialog2Open, setDialog2Open] = React.useState(false);
+        const restoreFocusTargetForDialog1 = useRestoreFocusTarget();
+        const restoreFocusTargetForDialog2 = useRestoreFocusTarget();
 
         return (
           <>
-            <Button id={dialogTriggerOpenId} onClick={() => setDialog1Open(true)}>
+            <Button id={dialogTriggerOpenId} {...restoreFocusTargetForDialog1} onClick={() => setDialog1Open(true)}>
               Open Dialog 1
             </Button>
             <Dialog open={dialog1Open} onOpenChange={(_, data) => setDialog1Open(data.open)}>
@@ -851,7 +861,12 @@ describe('Dialog', () => {
                 <DialogBody>
                   <DialogTitle>Dialog 1</DialogTitle>
                   <DialogActions>
-                    <Button id="open-dialog-2-btn" onClick={() => setDialog2Open(true)}>
+                    {/* restoreFocusTargetForDialog2 ensures Tabster can restore focus here when Dialog 2 closes */}
+                    <Button
+                      id="open-dialog-2-btn"
+                      {...restoreFocusTargetForDialog2}
+                      onClick={() => setDialog2Open(true)}
+                    >
                       Open Dialog 2
                     </Button>
                     <Button id={dialogTriggerCloseId} onClick={() => setDialog1Open(false)}>
