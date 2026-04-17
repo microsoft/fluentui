@@ -243,25 +243,30 @@ describe('GenerateApi Executor – export subpath resolution', () => {
   });
 
   /**
-   * Creates a fixture with a wildcard export "./*" whose types pattern resolves
-   * to one emitted .d.ts per sub-directory under dts/src/items/.
+   * Creates a fixture with configurable export map entries.
    * The primary api-extractor.json uses a relative path from config/ to dts/src/.
    */
-  function prepareWildcardFixture(subDirNames: string[]) {
+  function prepareExportFixture(config: { wildcardSubDirs?: string[]; namedExports?: string[] }) {
+    const { wildcardSubDirs = [], namedExports = [] } = config;
     const { paths, context } = prepareFixture('valid', {});
     const { projRoot } = paths;
 
+    const exports: Record<string, unknown> = {
+      '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+    };
+    if (namedExports.length > 0) {
+      for (const name of namedExports) {
+        exports[`./${name}`] = { types: `./dist/${name}/index.d.ts`, import: `./lib/${name}/index.js` };
+      }
+    }
+    if (wildcardSubDirs.length > 0) {
+      exports['./*'] = { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' };
+    }
+    exports['./package.json'] = './package.json';
+
     writeFileSync(
       join(projRoot, 'package.json'),
-      serializeJson({
-        name: '@proj/proj',
-        types: 'dist/index.d.ts',
-        exports: {
-          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
-          './*': { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' },
-          './package.json': './package.json',
-        },
-      }),
+      serializeJson({ name: '@proj/proj', types: 'dist/index.d.ts', exports }),
       'utf-8',
     );
 
@@ -280,100 +285,11 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     execSyncMock.mockImplementation(() => {
       mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
       writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
-      for (const name of subDirNames) {
-        mkdirSync(join(projRoot, 'dts', 'src', 'items', name), { recursive: true });
-        writeFileSync(
-          join(projRoot, 'dts', 'src', 'items', name, 'index.d.ts'),
-          `export const value: string;`,
-          'utf-8',
-        );
+      for (const name of namedExports) {
+        mkdirSync(join(projRoot, 'dts', 'src', name), { recursive: true });
+        writeFileSync(join(projRoot, 'dts', 'src', name, 'index.d.ts'), `export const ${name}: string;`, 'utf-8');
       }
-    });
-
-    return { paths, context };
-  }
-
-  /**
-   * Creates a fixture with a named export "./utils" that has a types field.
-   */
-  function prepareNamedExportFixture() {
-    const { paths, context } = prepareFixture('valid', {});
-    const { projRoot } = paths;
-
-    writeFileSync(
-      join(projRoot, 'package.json'),
-      serializeJson({
-        name: '@proj/proj',
-        types: 'dist/index.d.ts',
-        exports: {
-          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
-          './utils': { types: './dist/utils/index.d.ts', import: './lib/utils/index.js' },
-          './package.json': './package.json',
-        },
-      }),
-      'utf-8',
-    );
-
-    writeFileSync(
-      join(projRoot, 'config', 'api-extractor.json'),
-      serializeJson({
-        mainEntryPointFilePath: '../dts/src/index.d.ts',
-        apiReport: { enabled: false },
-        docModel: { enabled: false },
-        dtsRollup: { enabled: true },
-        tsdocMetadata: { enabled: false },
-      }),
-      'utf-8',
-    );
-
-    execSyncMock.mockImplementation(() => {
-      mkdirSync(join(projRoot, 'dts', 'src', 'utils'), { recursive: true });
-      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
-      writeFileSync(join(projRoot, 'dts', 'src', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
-    });
-
-    return { paths, context };
-  }
-
-  /**
-   * Creates a fixture with both wildcard and named exports.
-   */
-  function prepareMixedExportFixture(subDirNames: string[]) {
-    const { paths, context } = prepareFixture('valid', {});
-    const { projRoot } = paths;
-
-    writeFileSync(
-      join(projRoot, 'package.json'),
-      serializeJson({
-        name: '@proj/proj',
-        types: 'dist/index.d.ts',
-        exports: {
-          '.': { types: './dist/index.d.ts', import: './lib/index.js' },
-          './utils': { types: './dist/utils/index.d.ts', import: './lib/utils/index.js' },
-          './*': { types: './dist/items/*/index.d.ts', import: './lib/items/*/index.js' },
-          './package.json': './package.json',
-        },
-      }),
-      'utf-8',
-    );
-
-    writeFileSync(
-      join(projRoot, 'config', 'api-extractor.json'),
-      serializeJson({
-        mainEntryPointFilePath: '../dts/src/index.d.ts',
-        apiReport: { enabled: false },
-        docModel: { enabled: false },
-        dtsRollup: { enabled: true },
-        tsdocMetadata: { enabled: false },
-      }),
-      'utf-8',
-    );
-
-    execSyncMock.mockImplementation(() => {
-      mkdirSync(join(projRoot, 'dts', 'src', 'utils'), { recursive: true });
-      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
-      writeFileSync(join(projRoot, 'dts', 'src', 'utils', 'index.d.ts'), 'export const bar: string;', 'utf-8');
-      for (const name of subDirNames) {
+      for (const name of wildcardSubDirs) {
         mkdirSync(join(projRoot, 'dts', 'src', 'items', name), { recursive: true });
         writeFileSync(
           join(projRoot, 'dts', 'src', 'items', name, 'index.d.ts'),
@@ -390,7 +306,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
 
   it('generates correct configs for each wildcard sub-directory', async () => {
     const subDirs = ['alpha', 'beta', 'gamma'];
-    const { paths, context } = prepareWildcardFixture(subDirs);
+    const { paths, context } = prepareExportFixture({ wildcardSubDirs: subDirs });
 
     const capturedConfigs: ExtractorConfig[] = [];
     jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
@@ -504,7 +420,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     'skips export subpath expansion when exportSubpaths=%j',
     async overrides => {
       const subDirs = ['alpha', 'beta'];
-      const { context } = prepareWildcardFixture(subDirs);
+      const { context } = prepareExportFixture({ wildcardSubDirs: subDirs });
 
       const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
         () =>
@@ -523,7 +439,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
   // ── Named exports ────────────────────────────────────────────────────────
 
   it('generates correct config for named export ./utils', async () => {
-    const { paths, context } = prepareNamedExportFixture();
+    const { paths, context } = prepareExportFixture({ namedExports: ['utils'] });
 
     const capturedConfigs: ExtractorConfig[] = [];
     jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
@@ -545,7 +461,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
   });
 
   it('disables apiReport for named exports when exportSubpaths: { apiReport: false }', async () => {
-    const { context } = prepareNamedExportFixture();
+    const { context } = prepareExportFixture({ namedExports: ['utils'] });
 
     const capturedConfigs: ExtractorConfig[] = [];
     jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
@@ -561,7 +477,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
 
   it('processes both named and wildcard exports in a single package', async () => {
     const subDirs = ['alpha', 'beta'];
-    const { context } = prepareMixedExportFixture(subDirs);
+    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs, namedExports: ['utils'] });
 
     const ExtractorInvokeSpy = jest.spyOn(Extractor, 'invoke').mockImplementation(
       () =>
