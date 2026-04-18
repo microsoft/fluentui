@@ -11,28 +11,23 @@ Generate a change file for the current branch's modifications using the repo's b
 
 ## Steps
 
-1. **Identify changed packages** by running:
-
-   ```bash
-   git diff --name-only HEAD~1
-   ```
-
-2. **Determine the change type:**
+1. **Determine the change type:**
 
    - `patch` — bug fixes, internal refactors, test-only changes
    - `minor` — new features, new exports, new component variants
    - `none` — changes that don't affect the published package (stories, docs, tests only)
    - Never use `major` without explicit user approval
 
-3. **Generate a descriptive message** following the format: `fix(package-name): description` or `feat(package-name): description`
+2. **Generate a descriptive message** following the format: `fix(package-name): description` or `feat(package-name): description`
 
-4. **Run the repo's change script** to create the change file:
+3. **Run the repo's change script** to create the change file:
 
    ```bash
    yarn change
    ```
 
    This runs `beachball change --no-commit` (configured in root `package.json`).
+   Beachball automatically detects which packages need change files.
 
    For non-interactive usage with a specific type and message:
 
@@ -40,17 +35,13 @@ Generate a change file for the current branch's modifications using the repo's b
    yarn beachball change --no-commit --type <type> --message "<message>"
    ```
 
-5. **Verify** the change file was created:
+4. **Verify** the change file was created:
 
    ```bash
    yarn check:change
    ```
 
-6. If multiple packages are affected, create separate change files for each.
-
 ## Rules
 
-- Every published package change MUST have a change file
-- Do not create change files for unpublished packages (stories packages, internal tools)
-- Do not create change files for changes that only affect tests, stories, or docs within a package
+- Always use `yarn change` or `yarn beachball change` — never manually create change files
 - The message should describe the user-facing impact, not the implementation detail
