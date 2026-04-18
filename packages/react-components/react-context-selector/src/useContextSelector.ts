@@ -17,6 +17,13 @@ export const useContextSelector = <Value, SelectedValue>(
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
   const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
+  // `version` intentionally unused here. It is still maintained by the
+  // provider and consulted by `useHasParentContext` as a "has-provider"
+  // sentinel, but this hook no longer rejects listener payloads by version:
+  // the provider increments the version and fires listeners synchronously in
+  // a single `useIsomorphicLayoutEffect` tick, so a listener payload can't be
+  // older than the committed state by the time we evaluate it. Freshness is
+  // instead guaranteed by the effect-fixup below.
   const { value: valueRef, listeners } = contextValue;
 
   // Read valueRef during render and return selector(value) directly. This is
@@ -47,18 +54,30 @@ export const useContextSelector = <Value, SelectedValue>(
 
   useIsomorphicLayoutEffect(() => {
     const listener = (payload: readonly [ContextVersion, Value]) => {
-      const next = selectorRef.current(payload[1]);
-      if (!Object.is(lastReturnedRef.current, next)) {
-        forceUpdate();
+      // Selectors can throw on transiently-inconsistent inputs (stale props
+      // vs. newer context value is the classic case). Swallow so a single
+      // consumer's throw doesn't abort the provider's `listeners.forEach`
+      // and starve later subscribers of this update.
+      try {
+        const next = selectorRef.current(payload[1]);
+        if (!Object.is(lastReturnedRef.current, next)) {
+          forceUpdate();
+        }
+      } catch {
+        // ignored (stale props or similar — heals on the next parent-driven render)
       }
     };
     listeners.push(listener);
 
     // Effect-fixup: catch updates that occurred between render and effect run
     // (Relay's useFragmentInternal pattern).
-    const nextAtEffect = selectorRef.current(valueRef.current);
-    if (!Object.is(lastReturnedRef.current, nextAtEffect)) {
-      forceUpdate();
+    try {
+      const nextAtEffect = selectorRef.current(valueRef.current);
+      if (!Object.is(lastReturnedRef.current, nextAtEffect)) {
+        forceUpdate();
+      }
+    } catch {
+      // ignored — same rationale as the listener above
     }
 
     return () => {
