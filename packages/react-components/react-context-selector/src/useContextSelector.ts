@@ -67,7 +67,6 @@ export const useContextSelector = <Value, SelectedValue>(
         listeners.splice(index, 1);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listeners, valueRef]);
 
   return selectedAtRender;
