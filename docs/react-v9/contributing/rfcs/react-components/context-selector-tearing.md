@@ -538,9 +538,46 @@ The `fiber` passed is the fiber bound at mount via `queue.dispatch = dispatchSet
 
 From that point on, every subsequent `dispatchSetState(fiberA, …)` fails the `NoLanes` precondition. The eager path is permanently unavailable for that component instance. Updates are enqueued normally, schedule a render, and the reducer runs in-render only to return `prevState`. React then calls `bailoutOnAlreadyFinishedWork` — the DOM doesn't update, but the component function ran, which is exactly the pattern the original "Glitchy Behavior" log showed.
 
-This is confirmed empirically by patching `react-dom.development.js` to log `fiber.lanes` / `alternate.lanes` at the check. First dispatch on a fresh-from-mount fiber: `fiber=0 alt=0 eagerPathTaken=TRUE`. Every dispatch thereafter: `fiber=1 alt=0 eagerPathTaken=FALSE`.
+This is confirmed empirically by patching `react-dom.development.js` to log `fiber.lanes` / `alternate.lanes` at the eager-bailout check in `dispatchSetState`. A standalone reproduction running the RFC's Scenario 2 against the published `@fluentui/react-context-selector@9.2.15` is at [layershifter/context-selector-bailout-repro](https://github.com/layershifter/context-selector-bailout-repro).
 
-A standalone reproduction that runs the RFC's Scenario 2 against the published `@fluentui/react-context-selector@9.2.15` with a `patch-package` instrumentation of `react-dom` is available at [layershifter/context-selector-bailout-repro](https://github.com/layershifter/context-selector-bailout-repro).
+Sample output from that probe. Four memoized `ListItem` components, `activeValue` cycled through the `set-N` buttons. For each click the probe shows which components re-rendered and the eager-bailout-gate observation on each `dispatchSetState` fired during that click. `SKIPPED ✗` means the precondition `fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)` failed and the update fell through to the non-eager path:
+
+```
+== click 1 (1→2) → activeValue=2 ==
+Component function invocations (expected 2: items 1 and 2):
+  ListItem[1]  isActive=false
+  ListItem[2]  isActive=true
+dispatchSetState → eager-bailout check:
+  App       fiber=0  alt=null  EAGER-PATH ✓
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓    ← first dispatch on a given fiber, clean
+  ListItem  fiber=1  alt=null  SKIPPED ✗       ← sibling hook on the SAME fiber, now polluted
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+  ListItem  fiber=1  alt=null  SKIPPED ✗
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+  ListItem  fiber=0  alt=null  EAGER-PATH ✓
+
+== click 2 (2→3) → activeValue=3  ← "three items rendered instead of two" ==
+Component function invocations (expected 2: items 2 and 3; actual 3):
+  ListItem[1]  isActive=false     ← should NOT have re-rendered
+  ListItem[2]  isActive=false
+  ListItem[3]  isActive=true
+dispatchSetState → eager-bailout check:
+  App       fiber=0  alt=0    EAGER-PATH ✓
+  ListItem  fiber=1  alt=0    SKIPPED ✗    ← items 1, 2 previously committed,
+  ListItem  fiber=1  alt=1    SKIPPED ✗       fiber.lanes retained SyncLane from
+  ListItem  fiber=1  alt=0    SKIPPED ✗       the prior enqueueUpdate — every
+  ListItem  fiber=1  alt=1    SKIPPED ✗       subsequent dispatch fails the
+  ListItem  fiber=0  alt=0    EAGER-PATH ✓    NoLanes precondition
+  ListItem  fiber=1  alt=1    SKIPPED ✗
+  ListItem  fiber=0  alt=0    EAGER-PATH ✓    ← items 3, 4 never committed a
+  ListItem  fiber=0  alt=0    EAGER-PATH ✓       listener-driven render yet, still clean
+```
+
+In `click 1`, items 3 and 4 had never received a listener-driven render; their bound fibers still satisfy `fiber.lanes === NoLanes`. Items 1 and 2 fire two dispatches each (two `useContextSelector` hooks per `ListItem`); within the listener `forEach`, the second hook's dispatch sees `fiber.lanes === SyncLane` (set by the first hook's `enqueueUpdate`) and is forced off the eager path. This is the "within-batch" pollution.
+
+In `click 2`, items 1 and 2 have committed once already, so their bound mount-fibers are now the stale alternates with `fiber.lanes === SyncLane` still set. Every dispatch on them is `SKIPPED ✗` from the first attempt. The reducer runs during the subsequent render, returns `prevState`, `didReceiveUpdate === false`, and React calls `bailoutOnAlreadyFinishedWork` — discarding the JSX but having already executed the component function. Item 1's render thus shows up in the `renderLog` even though its `isActive` never changed.
 
 ### Option D: Relay's `useFragmentInternal` pattern
 
