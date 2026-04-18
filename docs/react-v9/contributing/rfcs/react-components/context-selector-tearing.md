@@ -540,10 +540,7 @@ From that point on, every subsequent `dispatchSetState(fiberA, …)` fails the `
 
 This is confirmed empirically by patching `react-dom.development.js` to log `fiber.lanes` / `alternate.lanes` at the check. First dispatch on a fresh-from-mount fiber: `fiber=0 alt=0 eagerPathTaken=TRUE`. Every dispatch thereafter: `fiber=1 alt=0 eagerPathTaken=FALSE`.
 
-> Investigation artifacts:
->
-> - Root-cause doc: `docs/phase-3-root-cause.md` (in the investigation repo)
-> - Patched React + captured logs: `repro/tests/list-probe-cycling.json`
+A standalone reproduction that runs the RFC's Scenario 2 against the published `@fluentui/react-context-selector@9.2.15` with a `patch-package` instrumentation of `react-dom` is available at [layershifter/context-selector-bailout-repro](https://github.com/layershifter/context-selector-bailout-repro).
 
 ### Option D: Relay's `useFragmentInternal` pattern
 
@@ -555,7 +552,7 @@ Relay faced an analogous problem (consumers of a shared mutable store, wanting s
 - Listener compares `selector(newValue)` against the most-recently-returned slice (tracked in a ref updated in a layout effect). Calls `forceUpdate()` only when the selected slice actually changed.
 - Layout-effect fixup catches updates that occurred between render and effect firing.
 
-Relay's canonical implementation: [`packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js`](https://github.com/facebook/relay/blob/main/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L600-L624) (the subscription layout effect) and the `handleMissedUpdates` function at L136-207.
+Relay's canonical implementation (permalinked to Relay commit `e3c9d1b`): the subscription layout effect [`useFragmentInternal_CURRENT.js#L600-L624`](https://github.com/facebook/relay/blob/e3c9d1b5661fb6f58e4d58f81cd930e09a47a89a/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L600-L624) and the [`handleMissedUpdates` function at L136-207](https://github.com/facebook/relay/blob/e3c9d1b5661fb6f58e4d58f81cd930e09a47a89a/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L136-L207).
 
 ### What changes vs. Option A
 
@@ -588,7 +585,7 @@ Identical test harness as the original RFC's "Scenario 2 update":
 |  parent tick, Provider value unchanged |                  identical                   |  identical   |
 |       tear count over 10 rapid updates |                     9/10                     |     9/10     |
 
-Full tables and raw JSON: `docs/phase-5-comparison.md` in the investigation repo.
+Raw measurement JSON and a runnable probe: [layershifter/context-selector-bailout-repro](https://github.com/layershifter/context-selector-bailout-repro).
 
 ### Recommendation
 
