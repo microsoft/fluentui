@@ -513,3 +513,85 @@ function Provider() {
 ```
 
 It will function as expected in terms of behavior, but _might_ introduce additional issues with tearing.
+
+---
+
+## Addendum (2026-04): Option D — Allow tearing, heal in effect
+
+The original decision (Option A: do nothing) was made when the only known alternatives were `useSyncExternalStore` (Option B, doesn't fix the glitch) and render-phase value propagation (Option C, risky). A conversation with the React team after that decision surfaced a fourth option that the original RFC did not consider.
+
+### The underlying bug (new analysis, not in the original RFC)
+
+The "glitchy behavior" note in the original RFC ("three items re-rendered instead of two — some kind of issue with the `useState()` bailout mechanism") has a precise root cause. `dispatchSetStateInternal` in `ReactFiberHooks.js` gates the eager-bailout fast path on:
+
+```ts
+if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
+  // eager bailout — drop the update without scheduling a render
+}
+```
+
+The `fiber` passed is the fiber bound at mount via `queue.dispatch = dispatchSetState.bind(null, currentlyRenderingFiber, queue)`. After the first listener-driven render commits:
+
+1. React clones `fiberA` (mount fiber) into WIP `fiberB`; `beginWork` clears `fiberB.lanes = NoLanes`.
+2. Commit swaps: `fiberB` becomes current, `fiberA` becomes alternate.
+3. `fiberA.lanes` was never cleared — it still holds `SyncLane` from the `enqueueUpdate` that preceded the render.
+
+From that point on, every subsequent `dispatchSetState(fiberA, …)` fails the `NoLanes` precondition. The eager path is permanently unavailable for that component instance. Updates are enqueued normally, schedule a render, and the reducer runs in-render only to return `prevState`. React then calls `bailoutOnAlreadyFinishedWork` — the DOM doesn't update, but the component function ran, which is exactly the pattern the original "Glitchy Behavior" log showed.
+
+This is confirmed empirically by patching `react-dom.development.js` to log `fiber.lanes` / `alternate.lanes` at the check. First dispatch on a fresh-from-mount fiber: `fiber=0 alt=0 eagerPathTaken=TRUE`. Every dispatch thereafter: `fiber=1 alt=0 eagerPathTaken=FALSE`.
+
+> Investigation artifacts:
+>
+> - Root-cause doc: `docs/phase-3-root-cause.md` (in the investigation repo)
+> - Patched React + captured logs: `repro/tests/list-probe-cycling.json`
+
+### Option D: Relay's `useFragmentInternal` pattern
+
+Relay faced an analogous problem (consumers of a shared mutable store, wanting selective re-rendering) and landed on:
+
+- Provider updates value in `useLayoutEffect` (no render-phase writes).
+- Hook reads `valueRef.current` during render and returns `selector(value)` directly — analogous to `useSyncExternalStore`'s `getSnapshot`.
+- Hook holds only an opaque force-update counter (`useReducer(x => x + 1)`), not a `[value, selected]` tuple. **No `setState(prev => prev)` bailout trick is used**, so `fiber.lanes` is never polluted with would-have-bailed updates.
+- Listener compares `selector(newValue)` against the most-recently-returned slice (tracked in a ref updated in a layout effect). Calls `forceUpdate()` only when the selected slice actually changed.
+- Layout-effect fixup catches updates that occurred between render and effect firing.
+
+Relay's canonical implementation: [`packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js`](https://github.com/facebook/relay/blob/main/packages/react-relay/relay-hooks/useFragmentInternal_CURRENT.js#L600-L624) (the subscription layout effect) and the `handleMissedUpdates` function at L136-207.
+
+### What changes vs. Option A
+
+|                                     | Option A (current main)                         | Option D                                              |
+|-------------------------------------:|:------------------------------------------------|:------------------------------------------------------|
+| "Glitchy Behavior" (memo, +1 item)  | Present                                         | Fixed                                                 |
+| "Scenario 1 update" plain items     | N items re-render with stale + 2 more afterwards | N items re-render, healed by listener                 |
+| Parent-driven tear                  | Level 1 (acceptable)                            | Level 1 (unchanged — Option D does not change this)   |
+| Concurrent-mode correctness         | Safe                                            | Safe                                                  |
+| `react-hooks/refs` lint             | Clean                                           | Clean (one `getSnapshot`-style read, same as useSyncExternalStore) |
+| Public API surface                  | —                                               | Unchanged                                             |
+
+Option D is strictly better than Option A on the "Glitchy Behavior" axis and strictly equivalent everywhere else. It does NOT address Level 1 tearing — that remains out of scope per the original decision.
+
+### Why not Options B or C
+
+Unchanged from the original RFC:
+
+- **B** (`useSyncExternalStore`) still doesn't fix the Scenario 1 update glitch per the RFC's tests.
+- **C** (render-phase propagation) remains "risky." We empirically verified the concern: render-phase writes to `valueRef` can leak an uncommitted transition's value into urgent renders on sibling descendants of the provider, producing concurrent-mode correctness bugs. Option D explicitly avoids this.
+
+### Measurements
+
+Identical test harness as the original RFC's "Scenario 2 update":
+
+| scenario                           | main (Option A) | Option D |
+|-----------------------------------:|:---------------:|:--------:|
+| memo ListItems, "+2 on 2nd activation" | observed (item-1 renders 4 at `set 1 (4→1)`) | resolved (3) |
+| plain ListItems, transition ×4    | 8 7 8 8         | 7 7 7 7  |
+| parent tick, Provider value unchanged | identical      | identical |
+| tear count over 10 rapid updates  | 9/10            | 9/10     |
+
+Full tables and raw JSON: `docs/phase-5-comparison.md` in the investigation repo.
+
+### Recommendation
+
+Adopt Option D as the replacement implementation of `useContextSelector`. It is a drop-in replacement (same signature, same `ContextValue` shape). Implementation is accompanied by a separate PR to `@fluentui/react-context-selector`.
+
+Keep Option A as the "what we shipped before" record for context.
