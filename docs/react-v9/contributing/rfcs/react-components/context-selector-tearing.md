@@ -559,14 +559,14 @@ Relay's canonical implementation: [`packages/react-relay/relay-hooks/useFragment
 
 ### What changes vs. Option A
 
-|                                     | Option A (current main)                         | Option D                                              |
-|-------------------------------------:|:------------------------------------------------|:------------------------------------------------------|
-| "Glitchy Behavior" (memo, +1 item)  | Present                                         | Fixed                                                 |
-| "Scenario 1 update" plain items     | N items re-render with stale + 2 more afterwards | N items re-render, healed by listener                 |
-| Parent-driven tear                  | Level 1 (acceptable)                            | Level 1 (unchanged — Option D does not change this)   |
-| Concurrent-mode correctness         | Safe                                            | Safe                                                  |
-| `react-hooks/refs` lint             | Clean                                           | Clean (one `getSnapshot`-style read, same as useSyncExternalStore) |
-| Public API surface                  | —                                               | Unchanged                                             |
+|                                    | Option A (current main)                          | Option D                                                           |
+| ---------------------------------: | :----------------------------------------------- | :----------------------------------------------------------------- |
+| "Glitchy Behavior" (memo, +1 item) | Present                                          | Fixed                                                              |
+|    "Scenario 1 update" plain items | N items re-render with stale + 2 more afterwards | N items re-render, healed by listener                              |
+|                 Parent-driven tear | Level 1 (acceptable)                             | Level 1 (unchanged — Option D does not change this)                |
+|        Concurrent-mode correctness | Safe                                             | Safe                                                               |
+|            `react-hooks/refs` lint | Clean                                            | Clean (one `getSnapshot`-style read, same as useSyncExternalStore) |
+|                 Public API surface | —                                                | Unchanged                                                          |
 
 Option D is strictly better than Option A on the "Glitchy Behavior" axis and strictly equivalent everywhere else. It does NOT address Level 1 tearing — that remains out of scope per the original decision.
 
@@ -581,12 +581,12 @@ Unchanged from the original RFC:
 
 Identical test harness as the original RFC's "Scenario 2 update":
 
-| scenario                           | main (Option A) | Option D |
-|-----------------------------------:|:---------------:|:--------:|
+|                               scenario |               main (Option A)                |   Option D   |
+| -------------------------------------: | :------------------------------------------: | :----------: |
 | memo ListItems, "+2 on 2nd activation" | observed (item-1 renders 4 at `set 1 (4→1)`) | resolved (3) |
-| plain ListItems, transition ×4    | 8 7 8 8         | 7 7 7 7  |
-| parent tick, Provider value unchanged | identical      | identical |
-| tear count over 10 rapid updates  | 9/10            | 9/10     |
+|         plain ListItems, transition ×4 |                   8 7 8 8                    |   7 7 7 7    |
+|  parent tick, Provider value unchanged |                  identical                   |  identical   |
+|       tear count over 10 rapid updates |                     9/10                     |     9/10     |
 
 Full tables and raw JSON: `docs/phase-5-comparison.md` in the investigation repo.
 
