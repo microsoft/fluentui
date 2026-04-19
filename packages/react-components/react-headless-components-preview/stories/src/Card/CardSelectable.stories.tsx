@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Card, CardHeader, CardPreview, CardOnSelectionChangeEvent } from '@fluentui/react-headless-components-preview';
+import type { CardOnSelectionChangeEvent } from '@fluentui/react-headless-components-preview';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-headless-components-preview';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const classes = {
