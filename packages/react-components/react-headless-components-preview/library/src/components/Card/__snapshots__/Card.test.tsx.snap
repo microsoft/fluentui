@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Card renders a default state 1`] = `
+<div>
+  <div
+    role="group"
+  >
+    Default Card
+  </div>
+</div>
+`;
