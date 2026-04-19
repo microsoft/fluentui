@@ -18977,9 +18977,9 @@ table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-"tabster@https://pkg.pr.new/dmytrokirpa/tabster/tabster@1":
+"tabster@https://pkg.pr.new/dmytrokirpa/tabster/tabster@c72ac91":
   version "8.7.0"
-  resolved "https://pkg.pr.new/dmytrokirpa/tabster/tabster@1#2d6ee441fd5b41f638ad33c17971eebb64a6f560"
+  resolved "https://pkg.pr.new/dmytrokirpa/tabster/tabster@c72ac91#2a9b694c182df3f2584744a38f6275459f25d59b"
   dependencies:
     keyborg "2.6.0"
     tslib "^2.8.1"
