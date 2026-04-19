@@ -4,6 +4,7 @@
     "outDir": "",
     "allowJs": true,
     "checkJs": true,
+    "moduleResolution": "bundler",
     "types": ["static-assets", "environment"]
   },
   "include": ["*.js"]
