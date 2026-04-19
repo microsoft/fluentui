@@ -1,9 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import type { Types as TabsterTypes } from 'tabster';
-import { getObservedElement } from 'tabster';
-import { useTabster } from './useTabster';
+import { requestFocusObservedElement } from 'tabster/lite/observed';
 
 interface UseFocusObservedOptions {
   /**
@@ -12,29 +10,25 @@ interface UseFocusObservedOptions {
   timeout?: number;
 }
 
+interface FocusObservedRequest {
+  result: Promise<boolean>;
+  cancel: () => void;
+}
+
 /**
  * @param name - The observed element to focus
  * @param options - Options for the focus observed
  *
  * @returns Function that will focus an element
  */
-export function useFocusObserved(
-  name: string,
-  options: UseFocusObservedOptions = {},
-): () => TabsterTypes.ObservedElementAsyncRequest<boolean> {
+export function useFocusObserved(name: string, options: UseFocusObservedOptions = {}): () => FocusObservedRequest {
   const { timeout = 1000 } = options;
-  const observedAPIRef = useTabster(getObservedElement);
 
   return React.useCallback(() => {
-    const observerAPI = observedAPIRef.current;
-
-    if (observerAPI) {
-      return observerAPI.requestFocus(name, timeout);
-    }
-
+    const request = requestFocusObservedElement(name, { timeout });
     return {
-      result: Promise.resolve(false),
-      cancel: () => null,
+      result: request.result.then(el => el !== null),
+      cancel: () => request.cancel(),
     };
-  }, [observedAPIRef, name, timeout]);
+  }, [name, timeout]);
 }

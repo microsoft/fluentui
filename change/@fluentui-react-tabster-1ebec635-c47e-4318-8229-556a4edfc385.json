@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: switch to tabster/lite to reduce bundle size",
+  "packageName": "@fluentui/react-tabster",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

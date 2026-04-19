@@ -18,7 +18,7 @@
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
     "keyborg": "^2.6.0",
-    "tabster": "^8.5.5"
+    "tabster": "https://pkg.pr.new/dmytrokirpa/tabster/tabster@1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

@@ -37,7 +37,6 @@ export type {
 
 export { applyFocusVisiblePolyfill } from './focus/index';
 import {
-  type Types,
   type EventsTypes,
   dispatchGroupperMoveFocusEvent,
   dispatchMoverMoveFocusEvent,
@@ -53,7 +52,9 @@ import {
   TabsterMoveFocusEvent,
 } from 'tabster';
 
-export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+// Defined locally so hooks that have migrated to tabster/lite don't need to import from tabster full.
+// Backward-compatible: the old type { 'data-tabster': string | undefined } is assignable to this.
+export type { TabsterDOMAttribute } from './hooks/useTabsterAttributes';
 
 export type { KeyborgFocusInEvent } from 'keyborg';
 export { KEYBORG_FOCUSIN } from 'keyborg';

@@ -1,17 +1,15 @@
 'use client';
 
-import { getModalizer, getRestorer, RestorerTypes } from 'tabster';
-import type { Types as TabsterTypes } from 'tabster';
-
+import { RestorerTypes } from 'tabster/lite/restorer';
 import { useId } from '@fluentui/react-utilities';
+import type { TabsterDOMAttribute } from './useTabsterAttributes';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { useTabster } from './useTabster';
 import { DangerousNeverHiddenAttribute } from './useDangerousNeverHidden';
 
 export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
-   * it forbids users to tab out of the focus trap into the actual browser.
+   * It forbids users to tab out of the focus trap into the actual browser.
    */
   trapFocus?: boolean;
 
@@ -25,24 +23,19 @@ export interface UseModalAttributesOptions {
   legacyTrapFocus?: boolean;
 
   /**
-   * Always reachabled in Tab order
+   * Always reachable in Tab order even when another modal is active.
+   * Lite honours this because any element with data-tabster-lite-modalizer
+   * is automatically excluded from sibling inert treatment.
    */
   alwaysFocusable?: boolean;
 
   /**
-   * Id to use for the modalizer. An id will be generated if not provided.
+   * Id to use for the modalizer.
    */
   id?: string;
 }
 
-const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
-  return element.hasAttribute(DangerousNeverHiddenAttribute);
-};
-
-function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
-  getModalizer(tabster, undefined, tabsterAccessibleCheck);
-  getRestorer(tabster);
-}
+export const _dangerousNeverHiddenAttribute = DangerousNeverHiddenAttribute;
 
 /**
  * Applies modal dialog behaviour through DOM attributes
@@ -53,21 +46,20 @@ function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
  */
 export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
-): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
-  const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
+): { modalAttributes: TabsterDOMAttribute; triggerAttributes: TabsterDOMAttribute } => {
+  const { trapFocus, legacyTrapFocus, alwaysFocusable } = options;
 
-  // Initializes the modalizer and restorer APIs
-  useTabster(initTabsterModules);
-
+  // useId keeps the id stable; options.id is honoured as the seed.
   const id = useId('modal-', options.id);
+
   const modalAttributes = useTabsterAttributes({
     restorer: { type: RestorerTypes.Source },
     ...(trapFocus && {
       modalizer: {
         id,
         isOthersAccessible: !trapFocus,
-        isAlwaysAccessible: alwaysFocusable,
-        isTrapped: legacyTrapFocus && trapFocus,
+        isTrapped: !!legacyTrapFocus,
+        isAlwaysAccessible: !!alwaysFocusable,
       },
     }),
   });

@@ -1,32 +1,30 @@
 'use client';
 
-import { type Types as TabsterTypes, disposeTabster } from 'tabster';
-import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { FocusedElementCallback } from 'tabster/lite/focused';
+import { createFocusedElementTracker } from 'tabster/lite/focused';
 
-import { createTabsterWithConfig } from './useTabster';
+export type { FocusedElementCallback, FocusedElementDetail } from 'tabster/lite/focused';
 
 /**
- * Subscribes to the tabster focused element. Calls the callback when the focused element changes.
- * @param callback - Callback to subscribe to the focused element.
+ * Subscribes to focused element changes for the current Fluent document.
+ * Calls the callback whenever focus moves, with the new element and detail containing
+ * the previously focused element and whether focus was set programmatically.
  */
-export function useFocusedElementChange(
-  callback: TabsterTypes.SubscribableCallback<HTMLElement | undefined, TabsterTypes.FocusedElementDetail>,
-): void {
+export function useFocusedElementChange(callback: FocusedElementCallback): void {
   const { targetDocument } = useFluent();
+  // useEventCallback returns a stable wrapper that always calls the latest callback,
+  // so we intentionally omit it from the effect deps.
   const listener = useEventCallback(callback);
 
-  React.useEffect(() => {
-    const tabster = createTabsterWithConfig(targetDocument);
-
-    if (tabster) {
-      tabster.focusedElement.subscribe(listener);
-
-      return () => {
-        tabster.focusedElement.unsubscribe(listener);
-        disposeTabster(tabster);
-      };
-    }
-  }, [listener, targetDocument]);
+  useIsomorphicLayoutEffect(() => {
+    if (!targetDocument) return;
+    const tracker = createFocusedElementTracker(targetDocument);
+    tracker.subscribe(listener);
+    return () => {
+      tracker.unsubscribe(listener);
+      tracker.dispose();
+    };
+  }, [targetDocument]); // eslint-disable-line react-hooks/exhaustive-deps
 }

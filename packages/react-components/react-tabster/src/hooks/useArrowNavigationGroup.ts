@@ -1,9 +1,8 @@
 'use client';
 
-import type { Types } from 'tabster';
-import { getMover, MoverDirections } from 'tabster';
+import { MoverDirections } from 'tabster/lite/mover';
+import type { TabsterDOMAttribute } from './useTabsterAttributes';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {
   /**
@@ -26,9 +25,9 @@ export interface UseArrowNavigationGroupOptions {
    */
   tabbable?: boolean;
   /**
-   * Tabster should ignore default handling of keydown events
+   * Tabster should ignore default handling of keydown events.
    */
-  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  ignoreDefaultKeydown?: Record<string, boolean>;
   /**
    * The default focusable item in the group will be an element with Focusable.isDefault property.
    * Note that there is no way in \@fluentui/react-tabster to set default focusable element,
@@ -42,36 +41,22 @@ export interface UseArrowNavigationGroupOptions {
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
-  const {
-    circular,
-    axis,
-    memorizeCurrent = true,
-    tabbable,
-    ignoreDefaultKeydown,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault,
-  } = options;
-
-  useTabster(getMover);
+export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): TabsterDOMAttribute => {
+  const { circular, axis, memorizeCurrent = true, tabbable, ignoreDefaultKeydown, unstable_hasDefault } = options;
 
   return useTabsterAttributes({
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
       memorizeCurrent,
-      tabbable,
       hasDefault: unstable_hasDefault,
+      tabbable,
     },
-    ...(ignoreDefaultKeydown && {
-      focusable: {
-        ignoreKeydown: ignoreDefaultKeydown,
-      },
-    }),
+    ...(ignoreDefaultKeydown ? { focusable: { ignoreKeydown: ignoreDefaultKeydown } } : {}),
   });
 };
 
-function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
+function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): number {
   switch (axis) {
     case 'horizontal':
       return MoverDirections.Horizontal;
@@ -81,7 +66,6 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
       return MoverDirections.GridLinear;
     case 'both':
       return MoverDirections.Both;
-
     case 'vertical':
     default:
       return MoverDirections.Vertical;

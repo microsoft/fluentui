@@ -1,9 +1,8 @@
 'use client';
 
-import type { Types } from 'tabster';
-import { getGroupper, GroupperTabbabilities } from 'tabster';
+import { GroupperTabbabilities } from 'tabster/lite/groupper';
+import type { TabsterDOMAttribute } from './useTabsterAttributes';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { useTabster } from './useTabster';
 
 export interface UseFocusableGroupOptions {
   /**
@@ -12,31 +11,25 @@ export interface UseFocusableGroupOptions {
   tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 
   /**
-   * Tabster can ignore default handling of keydown events
+   * Tabster should ignore default handling of keydown events.
    */
-  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  ignoreDefaultKeydown?: Record<string, boolean>;
 }
 
 /**
  * A hook that returns the necessary tabster attributes to support groupping.
  * @param options - Options to configure keyboard navigation
  */
-export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
-  useTabster(getGroupper);
-
+export const useFocusableGroup = (options?: UseFocusableGroupOptions): TabsterDOMAttribute => {
   return useTabsterAttributes({
     groupper: {
       tabbability: getTabbability(options?.tabBehavior),
     },
-    focusable: {
-      ignoreKeydown: options?.ignoreDefaultKeydown,
-    },
+    ...(options?.ignoreDefaultKeydown ? { focusable: { ignoreKeydown: options.ignoreDefaultKeydown } } : {}),
   });
 };
 
-const getTabbability = (
-  tabBehavior?: UseFocusableGroupOptions['tabBehavior'],
-): Types.GroupperTabbability | undefined => {
+const getTabbability = (tabBehavior?: UseFocusableGroupOptions['tabBehavior']): number | undefined => {
   switch (tabBehavior) {
     case 'unlimited':
       return GroupperTabbabilities.Unlimited;

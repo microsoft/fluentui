@@ -1,57 +1,59 @@
 'use client';
 
 import * as React from 'react';
-import type { Types } from 'tabster';
-import { TABSTER_ATTRIBUTE_NAME } from 'tabster';
+import type { TabsterDOMAttribute } from './useTabsterAttributes';
 
 /**
  * Merges a collection of tabster attributes.
  *
- * ⚠️The attributes passed as arguments to this  hook cannot change at runtime.
+ * ⚠️The attributes passed as arguments to this hook cannot change at runtime.
  * @internal
  * @param attributes - collection of tabster attributes from other react-tabster hooks
  * @returns single merged tabster attribute
  */
 export const useMergedTabsterAttributes_unstable = (
-  ...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]
-): Types.TabsterDOMAttribute => {
+  ...attributes: (Partial<TabsterDOMAttribute> | null | undefined)[]
+): TabsterDOMAttribute => {
   'use no memo';
 
-  const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
-    if (curr?.[TABSTER_ATTRIBUTE_NAME]) {
-      acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
+  // Collect per-module JSON strings keyed by attribute name.
+  const perModule: Record<string, string[]> = {};
+
+  for (const attr of attributes) {
+    if (!attr) continue;
+    for (const [key, value] of Object.entries(attr)) {
+      if (value === undefined) continue;
+      if (!perModule[key]) perModule[key] = [];
+      perModule[key].push(value);
     }
-    return acc;
-  }, []);
+  }
+
+  // Produce a flat array of [key, mergedValue] pairs for the useMemo dep.
+  const pairs = Object.entries(perModule).map(([key, values]): [string, string] => [
+    key,
+    values.length === 1 ? values[0] : values.reduce(mergeJSONStrings),
+  ]);
+
+  const pairStrings = pairs.map(([k, v]) => `${k}=${v}`);
 
   if (process.env.NODE_ENV !== 'production') {
     // ignoring rules of hooks because this is a condition based on the environment
-    // it's safe to ignore the rule
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useWarnIfUnstableAttributes(stringAttributes);
+    useWarnIfUnstableAttributes(pairStrings);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(
-    () => ({
-      [TABSTER_ATTRIBUTE_NAME]: stringAttributes.length > 0 ? stringAttributes.reduce(mergeJSONStrings) : undefined,
-    }),
-    // disable exhaustive-deps because we want to memoize the result of the reduction
-    // this is safe because the collection of attributes is not expected to change at runtime
+    () => Object.fromEntries(pairs),
+    // disable exhaustive-deps: attributes are not expected to change at runtime
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    stringAttributes,
+    pairStrings,
   );
 };
 
-/**
- * Merges two JSON strings into one.
- */
 const mergeJSONStrings = (a: string, b: string): string =>
   JSON.stringify(Object.assign(safelyParseJSON(a), safelyParseJSON(b)));
 
-/**
- * Tries to parse a JSON string and returns an object.
- * If the JSON string is invalid, an empty object is returned.
- */
 const safelyParseJSON = (json: string): object => {
   try {
     return JSON.parse(json);
@@ -60,12 +62,6 @@ const safelyParseJSON = (json: string): object => {
   }
 };
 
-/**
- * Helper hook that ensures that the attributes passed to the hook are stable.
- * This is necessary because the attributes are expected to not change at runtime.
- *
- * This hook will console.warn if the attributes change at runtime.
- */
 const useWarnIfUnstableAttributes = (attributes: string[]) => {
   'use no memo';
 
