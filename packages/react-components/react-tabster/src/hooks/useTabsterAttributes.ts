@@ -54,6 +54,8 @@ export interface LiteAttributeProps {
     names: string[];
   };
   deloser?: Record<string, unknown>;
+  /** Marks this element as the tabster root. */
+  root?: Record<string, unknown>;
 }
 
 /**
@@ -116,6 +118,7 @@ export const useTabsterAttributes = (props: LiteAttributeProps): TabsterDOMAttri
   const focusableStr = props.focusable !== undefined ? JSON.stringify(props.focusable) : undefined;
   const deloserStr = props.deloser !== undefined ? JSON.stringify(props.deloser) : undefined;
   const observedStr = props.observed !== undefined ? JSON.stringify(props.observed) : undefined;
+  const rootStr = props.root !== undefined ? JSON.stringify(props.root) : undefined;
 
   return React.useMemo(() => {
     const attrs: TabsterDOMAttribute = {};
@@ -142,10 +145,13 @@ export const useTabsterAttributes = (props: LiteAttributeProps): TabsterDOMAttri
     if (observedStr !== undefined) {
       parts.push(`"observed":${observedStr}`);
     }
+    if (rootStr !== undefined) {
+      parts.push(`"root":${rootStr}`);
+    }
 
     if (parts.length > 0) {
       attrs[TABSTER_ATTR] = `{${parts.join(',')}}`;
     }
     return attrs;
-  }, [moverStr, groupperStr, modalizerStr, restorerStr, focusableStr, deloserStr, observedStr]);
+  }, [moverStr, groupperStr, modalizerStr, restorerStr, focusableStr, deloserStr, observedStr, rootStr]);
 };
