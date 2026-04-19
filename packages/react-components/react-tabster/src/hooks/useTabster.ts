@@ -42,7 +42,8 @@ export function getLiteObserver(doc: Document): LiteObserver | null {
 
 /**
  * Ensures a LiteObserver is running for the current Fluent document.
- * Call this in any hook that returns `data-tabster-lite-*` attributes.
+ * Call this in any hook that returns Tabster-related DOM attributes
+ * to ensure the observer is active before attributes are consumed.
  *
  * @internal
  */
@@ -50,7 +51,9 @@ export function useTabster(): void {
   const { targetDocument } = useFluent();
 
   useIsomorphicLayoutEffect(() => {
-    if (!targetDocument) return;
+    if (!targetDocument) {
+      return;
+    }
     _acquireObserver(targetDocument);
     return () => _releaseObserver(targetDocument);
   }, [targetDocument]);

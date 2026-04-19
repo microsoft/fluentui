@@ -1,6 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { findAll, findFirst, findLast, findNext, findPrev } from 'tabster/lite/focusable';
 
 /**
@@ -13,6 +15,35 @@ export const useFocusFinders = (): {
   findNextFocusable: (currentElement: HTMLElement | null, options?: { container?: HTMLElement }) => HTMLElement | null;
   findPrevFocusable: (currentElement: HTMLElement | null, options?: { container?: HTMLElement }) => HTMLElement | null;
 } => {
+  const { targetDocument } = useFluent();
+
+  useIsomorphicLayoutEffect(() => {
+    const doc = targetDocument ?? globalThis.document;
+    if (!doc?.body) {
+      return;
+    }
+
+    const isRtlDocument = (doc.documentElement?.dir ?? doc.body.getAttribute('dir')) === 'rtl';
+    const hasRtlSubtree = !!doc.body.querySelector('[dir="rtl"]');
+    if (isRtlDocument || hasRtlSubtree) {
+      return;
+    }
+
+    const rootAttr = 'data-tabster';
+    const rootValue = '{"root":{}}';
+    const hadRootAttr = doc.body.hasAttribute(rootAttr);
+
+    if (!hadRootAttr) {
+      doc.body.setAttribute(rootAttr, rootValue);
+    }
+
+    return () => {
+      if (!hadRootAttr && doc.body.getAttribute(rootAttr) === rootValue) {
+        doc.body.removeAttribute(rootAttr);
+      }
+    };
+  }, [targetDocument]);
+
   const findAllFocusable = React.useCallback(
     (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) =>
       container ? findAll({ container, filter: acceptCondition, includeProgrammaticallyFocusable: true }) : [],

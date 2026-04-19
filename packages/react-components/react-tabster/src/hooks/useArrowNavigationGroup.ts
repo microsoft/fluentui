@@ -42,14 +42,21 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): TabsterDOMAttribute => {
-  const { circular, axis, memorizeCurrent = true, tabbable, ignoreDefaultKeydown, unstable_hasDefault } = options;
+  const {
+    circular,
+    axis,
+    memorizeCurrent = true,
+    tabbable,
+    ignoreDefaultKeydown,
+    unstable_hasDefault: unstableHasDefault,
+  } = options;
 
   return useTabsterAttributes({
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
       memorizeCurrent,
-      hasDefault: unstable_hasDefault,
+      hasDefault: unstableHasDefault,
       tabbable,
     },
     ...(ignoreDefaultKeydown ? { focusable: { ignoreKeydown: ignoreDefaultKeydown } } : {}),

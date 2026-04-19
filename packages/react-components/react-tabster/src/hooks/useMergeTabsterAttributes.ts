@@ -20,10 +20,16 @@ export const useMergedTabsterAttributes_unstable = (
   const perModule: Record<string, string[]> = {};
 
   for (const attr of attributes) {
-    if (!attr) continue;
+    if (!attr) {
+      continue;
+    }
     for (const [key, value] of Object.entries(attr)) {
-      if (value === undefined) continue;
-      if (!perModule[key]) perModule[key] = [];
+      if (value === undefined) {
+        continue;
+      }
+      if (!perModule[key]) {
+        perModule[key] = [];
+      }
       perModule[key].push(value);
     }
   }
@@ -42,7 +48,6 @@ export const useMergedTabsterAttributes_unstable = (
     useWarnIfUnstableAttributes(pairStrings);
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(
     () => Object.fromEntries(pairs),
     // disable exhaustive-deps: attributes are not expected to change at runtime

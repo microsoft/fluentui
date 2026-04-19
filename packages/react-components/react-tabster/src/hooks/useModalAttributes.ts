@@ -24,8 +24,8 @@ export interface UseModalAttributesOptions {
 
   /**
    * Always reachable in Tab order even when another modal is active.
-   * Lite honours this because any element with data-tabster-lite-modalizer
-   * is automatically excluded from sibling inert treatment.
+   * Lite honours this because modalizers are discovered from the data-tabster
+   * JSON envelope and excluded from sibling inert treatment.
    */
   alwaysFocusable?: boolean;
 

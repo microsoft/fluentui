@@ -17,17 +17,21 @@ export function useActivateModal(): (elementFromModal: HTMLElement | undefined) 
   return React.useCallback(
     (elementFromModal: HTMLElement | undefined) => {
       // Defer by one tick — on the current tick the element may have just received its
-      // data-tabster-lite-modalizer attribute, and the LiteObserver has not yet created
+      // data-tabster attribute, and the LiteObserver has not yet created
       // the instance. The timeout lets the MutationObserver callback run first.
       setActivateModalTimeout(() => {
-        if (!elementFromModal || !targetDocument) return;
+        if (!elementFromModal || !targetDocument) {
+          return;
+        }
 
-        // Walk up the DOM to find the element that carries data-tabster-lite-modalizer.
+        // Walk up the DOM to find the element with a modalizer entry in data-tabster.
         let container: HTMLElement | null = elementFromModal;
-        while (container && !container.hasAttribute('data-tabster-lite-modalizer')) {
+        while (container && !container.getAttribute('data-tabster')?.includes('"modalizer":')) {
           container = container.parentElement;
         }
-        if (!container) return;
+        if (!container) {
+          return;
+        }
 
         (getLiteObserver(targetDocument)?.getInstance(container, 'modalizer') as ModalizerInstance | null)?.activate();
       }, 0);

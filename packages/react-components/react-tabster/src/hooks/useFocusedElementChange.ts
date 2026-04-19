@@ -19,7 +19,9 @@ export function useFocusedElementChange(callback: FocusedElementCallback): void 
   const listener = useEventCallback(callback);
 
   useIsomorphicLayoutEffect(() => {
-    if (!targetDocument) return;
+    if (!targetDocument) {
+      return;
+    }
     const tracker = createFocusedElementTracker(targetDocument);
     tracker.subscribe(listener);
     return () => {

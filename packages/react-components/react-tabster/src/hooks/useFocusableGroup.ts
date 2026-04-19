@@ -25,7 +25,7 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions): TabsterDO
     groupper: {
       tabbability: getTabbability(options?.tabBehavior),
     },
-    ...(options?.ignoreDefaultKeydown ? { focusable: { ignoreKeydown: options.ignoreDefaultKeydown } } : {}),
+    focusable: options?.ignoreDefaultKeydown ? { ignoreKeydown: options.ignoreDefaultKeydown } : {},
   });
 };
 

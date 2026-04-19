@@ -1,13 +1,14 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useTabster } from './useTabster';
 
 /** Attribute object that can be spread directly onto a DOM element. */
 export type TabsterDOMAttribute = Record<string, string | undefined>;
 
 const TABSTER_ATTR = 'data-tabster';
-const OBSERVED_ATTR = 'data-tabster-lite-observed';
 
 /**
  * Props accepted by useTabsterAttributes. Each key corresponds to a lite module.
@@ -42,9 +43,13 @@ export interface LiteAttributeProps {
    * `data-tabster` JSON envelope (matching the historical Tabster format).
    */
   focusable?: {
+    isDefault?: boolean;
+    isIgnored?: boolean;
+    ignoreAriaDisabled?: boolean;
+    excludeFromMover?: boolean;
     ignoreKeydown?: Record<string, boolean>;
   };
-  /** Sets data-tabster-lite-observed on the element. Multiple names are stored as space-separated tokens. */
+  /** Serializes to the legacy `observed` key in data-tabster. */
   observed?: {
     names: string[];
   };
@@ -59,13 +64,49 @@ export interface LiteAttributeProps {
  * containing one key per supported module — matching the historical
  * Tabster attribute format (e.g. `data-tabster='{"restorer":{"type":1}}'`).
  *
- * The `observed` prop is emitted as a separate `data-tabster-lite-observed`
- * attribute (string-valued, not part of the JSON envelope).
+ * The `observed` prop is serialized to the legacy `observed` key
+ * inside `data-tabster`.
  *
  * @internal
  */
 export const useTabsterAttributes = (props: LiteAttributeProps): TabsterDOMAttribute => {
+  const { targetDocument } = useFluent();
   useTabster();
+
+  const needsGridRootMarker = props.mover?.direction === 3;
+  const needsCyclicHorizontalRootMarker = props.mover?.direction === 2 && props.mover.cyclic === true;
+  const needsRootMarker = needsGridRootMarker || needsCyclicHorizontalRootMarker;
+
+  useIsomorphicLayoutEffect(() => {
+    if (!needsRootMarker) {
+      return;
+    }
+
+    const doc = targetDocument ?? globalThis.document;
+    if (!doc?.body) {
+      return;
+    }
+
+    const isRtlDocument = (doc.documentElement?.dir ?? doc.body.getAttribute('dir')) === 'rtl';
+    const hasRtlSubtree = !!doc.body.querySelector('[dir="rtl"]');
+    if (isRtlDocument || (hasRtlSubtree && !needsGridRootMarker)) {
+      return;
+    }
+
+    const rootAttr = 'data-tabster';
+    const rootValue = '{"root":{}}';
+    const hadRootAttr = doc.body.hasAttribute(rootAttr);
+
+    if (!hadRootAttr) {
+      doc.body.setAttribute(rootAttr, rootValue);
+    }
+
+    return () => {
+      if (!hadRootAttr && doc.body.getAttribute(rootAttr) === rootValue) {
+        doc.body.removeAttribute(rootAttr);
+      }
+    };
+  }, [needsGridRootMarker, needsRootMarker, targetDocument]);
 
   // Serialise each supported module to a string for stable useMemo deps.
   const moverStr = props.mover !== undefined ? JSON.stringify(props.mover) : undefined;
@@ -74,26 +115,37 @@ export const useTabsterAttributes = (props: LiteAttributeProps): TabsterDOMAttri
   const restorerStr = props.restorer !== undefined ? JSON.stringify(props.restorer) : undefined;
   const focusableStr = props.focusable !== undefined ? JSON.stringify(props.focusable) : undefined;
   const deloserStr = props.deloser !== undefined ? JSON.stringify(props.deloser) : undefined;
-  const observedName = props.observed?.names.join(' ');
+  const observedStr = props.observed !== undefined ? JSON.stringify(props.observed) : undefined;
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(() => {
     const attrs: TabsterDOMAttribute = {};
 
     const parts: string[] = [];
-    if (moverStr !== undefined) parts.push(`"mover":${moverStr}`);
-    if (groupperStr !== undefined) parts.push(`"groupper":${groupperStr}`);
-    if (modalizerStr !== undefined) parts.push(`"modalizer":${modalizerStr}`);
-    if (restorerStr !== undefined) parts.push(`"restorer":${restorerStr}`);
-    if (focusableStr !== undefined) parts.push(`"focusable":${focusableStr}`);
-    if (deloserStr !== undefined) parts.push(`"deloser":${deloserStr}`);
+    if (moverStr !== undefined) {
+      parts.push(`"mover":${moverStr}`);
+    }
+    if (groupperStr !== undefined) {
+      parts.push(`"groupper":${groupperStr}`);
+    }
+    if (modalizerStr !== undefined) {
+      parts.push(`"modalizer":${modalizerStr}`);
+    }
+    if (restorerStr !== undefined) {
+      parts.push(`"restorer":${restorerStr}`);
+    }
+    if (focusableStr !== undefined) {
+      parts.push(`"focusable":${focusableStr}`);
+    }
+    if (deloserStr !== undefined) {
+      parts.push(`"deloser":${deloserStr}`);
+    }
+    if (observedStr !== undefined) {
+      parts.push(`"observed":${observedStr}`);
+    }
 
     if (parts.length > 0) {
       attrs[TABSTER_ATTR] = `{${parts.join(',')}}`;
     }
-    if (observedName !== undefined) attrs[OBSERVED_ATTR] = observedName;
-
     return attrs;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moverStr, groupperStr, modalizerStr, restorerStr, focusableStr, deloserStr, observedName]);
+  }, [moverStr, groupperStr, modalizerStr, restorerStr, focusableStr, deloserStr, observedStr]);
 };
