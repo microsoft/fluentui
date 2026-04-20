@@ -13,6 +13,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
 
+const SUPPORTS_POPOVER_OPEN_SELECTOR =
+  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
+
 /**
  * Returns the state for a Popover component, given its props and ref.
  */
@@ -105,16 +108,16 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
       return;
     }
 
-    // Feature-detect the native Popover API — it's only available in
-    // Chrome 114+, Safari 17+, Firefox 125+. Older browsers fall back to
-    // in-flow rendering (the surface is still rendered in the DOM; top-layer
-    // elevation just isn't available).
     if (typeof surface.showPopover !== 'function') {
       return;
     }
 
     if (!surface.hasAttribute('popover')) {
       surface.setAttribute('popover', 'manual');
+    }
+
+    if (SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open')) {
+      return;
     }
 
     surface.showPopover();
