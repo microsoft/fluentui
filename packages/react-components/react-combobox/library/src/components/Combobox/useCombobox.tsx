@@ -135,7 +135,7 @@ export const useComboboxBase_unstable = (
   /* handle open/close + focus when clicking in the root's padding area (dead zone to the right of expand/clear icon) */
   const { onMouseDown: onRootMouseDown } = state.root;
 
-  const onRootPaddingMouseDown = useEventCallback(
+  const onRootDirectMouseDown = useEventCallback(
     mergeCallbacks(onRootMouseDown, (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target === event.currentTarget && !disabled) {
         event.preventDefault();
@@ -145,7 +145,7 @@ export const useComboboxBase_unstable = (
     }),
   );
 
-  state.root.onMouseDown = onRootPaddingMouseDown;
+  state.root.onMouseDown = onRootDirectMouseDown;
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
