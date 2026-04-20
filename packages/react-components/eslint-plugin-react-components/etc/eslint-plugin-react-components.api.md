@@ -5,6 +5,7 @@
 ```ts
 
 import type { ESLint } from 'eslint';
+import { name } from '../package.json';
 import { RuleListener } from '@typescript-eslint/utils/dist/ts-eslint';
 import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint';
 
@@ -16,7 +17,7 @@ export const configs: {
     };
     'flat/recommended': {
         plugins: {
-            [x: string]: ESLint.Plugin;
+            [name]: ESLint.Plugin;
         };
         rules: {};
     };
