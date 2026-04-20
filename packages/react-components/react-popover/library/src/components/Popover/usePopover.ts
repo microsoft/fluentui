@@ -173,13 +173,14 @@ export const usePopoverBase_unstable = (props: PopoverBaseProps): PopoverBaseSta
   const closeOnFocusOutCallback = useEventCallback((ev: FocusEvent) => {
     const target = ev.target as HTMLElement;
     const contentElement = positioningRefs.contentRef.current;
+    const triggerElement = positioningRefs.triggerRef.current ?? null;
 
     if (!contentElement) {
       return;
     }
 
     const isOutside =
-      !elementContains(contentElement, target) && !elementContains(positioningRefs.triggerRef.current || null, target);
+      !elementContains(contentElement, target) && !elementContains(triggerElement, target);
 
     if (isOutside) {
       setOpen(ev, false);
