@@ -11,6 +11,8 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
+import { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
@@ -742,7 +744,7 @@ export class BaseMenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    protected isMenuItemElement: (el: Element) => el is MenuItem;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
     // @internal (undocumented)
@@ -750,7 +752,9 @@ export class BaseMenuList extends FASTElement {
     // (undocumented)
     protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
     // (undocumented)
-    protected menuItems: HTMLElement[] | undefined;
+    protected menuChildren: HTMLElement[] | undefined;
+    // (undocumented)
+    protected menuItems: MenuItem[] | undefined;
     // (undocumented)
     protected setItems(): void;
 }
@@ -899,7 +903,6 @@ export class BaseTablist extends FASTElement {
     orientation: TablistOrientation;
     // (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
-    // @internal
     protected setTabs({ connectToPanel, forceDisabled }?: {
         connectToPanel?: boolean | undefined;
         forceDisabled?: boolean | undefined;
@@ -3364,6 +3367,16 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends BaseMenuList {
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    fg: FocusGroup;
+    // (undocumented)
+    fgItems: FocusGroupItemCollection;
+    // (undocumented)
+    setItems(): void;
 }
 
 // @public (undocumented)
@@ -3510,6 +3523,16 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    fg: FocusGroup;
+    // (undocumented)
+    fgItems: FocusGroupItemCollection;
+    // (undocumented)
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
 }
 
 // @public
@@ -3997,7 +4020,17 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 // @public
 export class Tablist extends BaseTablist {
     appearance?: TablistAppearance;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    fg: FocusGroup;
+    // (undocumented)
+    fgItems: FocusGroupItemCollection;
     size?: TablistSize;
+    // (undocumented)
+    tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public
@@ -4393,6 +4426,16 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    fg: FocusGroup;
+    // (undocumented)
+    fgItems: FocusGroupItemCollection;
+    // @internal (undocumented)
+    itemToggleHandler(): void;
     size: TreeItemSize;
     // (undocumented)
     protected sizeChanged(): void;

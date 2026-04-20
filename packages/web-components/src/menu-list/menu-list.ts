@@ -1,3 +1,7 @@
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import { ItemCollection } from '../utils/focusgroup.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseMenuList } from './menu-list.base.js';
 
 /**
@@ -10,4 +14,34 @@ import { BaseMenuList } from './menu-list.base.js';
  *
  * @public
  */
-export class MenuList extends BaseMenuList {}
+export class MenuList extends BaseMenuList {
+  /** @private */
+  fg!: FocusGroup;
+
+  /** @private */
+  fgItems!: FocusGroupItemCollection;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    waitForConnectedDescendants(this, () => {
+      this.fg = new FocusGroup(this, this.fgItems);
+    });
+  }
+
+  disconnectedCallback() {
+    this.fg?.disconnect();
+    super.disconnectedCallback();
+  }
+
+  override setItems(): void {
+    super.setItems();
+
+    if (!this.fgItems && this.menuChildren) {
+      this.fgItems = new ItemCollection({
+        owner: this,
+        list: this.menuItems as HTMLElement[],
+      });
+    }
+  }
+}

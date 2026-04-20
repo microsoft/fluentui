@@ -7,6 +7,7 @@ export const template = html<Tree>`
     @click="${(x, c) => x.clickHandler(c.event)}"
     @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     @change="${(x, c) => x.changeHandler(c.event)}"
+    @toggle="${(x, c) => x.itemToggleHandler()}"
   >
     <slot ${ref('defaultSlot')} @slotchange="${x => x.handleDefaultSlotChange()}"></slot>
   </template>

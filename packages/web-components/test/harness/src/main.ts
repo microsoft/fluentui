@@ -7,7 +7,6 @@ if (!CSS.supports('anchor-name: --foo')) {
 }
 
 import { webLightTheme } from '@fluentui/tokens';
-import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
 import { setTheme } from '../../../src/theme/set-theme.js';
 import '../../../src/index-rollup.js';
 
@@ -16,5 +15,3 @@ setTheme(webLightTheme);
 Object.defineProperty(window, 'setTheme', {
   value: setTheme,
 });
-
-polyfillBodyAndObserve();

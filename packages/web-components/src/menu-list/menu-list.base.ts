@@ -27,12 +27,14 @@ export class BaseMenuList extends FASTElement {
     // only update children after the component is connected and
     // the setItems has run on connectedCallback
     // (menuItems is undefined until then)
-    if (this.$fastController.isConnected && this.menuItems !== undefined) {
+    if (this.$fastController.isConnected && this.menuChildren !== undefined) {
       this.setItems();
     }
   }
 
-  protected menuItems: HTMLElement[] | undefined;
+  protected menuChildren: HTMLElement[] | undefined;
+
+  protected menuItems: MenuItem[] | undefined;
 
   private static focusableElementRoles = MenuItemRole;
 
@@ -61,7 +63,7 @@ export class BaseMenuList extends FASTElement {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.menuItems = undefined;
+    this.menuChildren = undefined;
     this.removeEventListener('change', this.changedMenuItemHandler);
   }
 
@@ -82,7 +84,7 @@ export class BaseMenuList extends FASTElement {
    * @public
    */
   public focus(): void {
-    this.menuItems?.find(item => isMenuItem(item) && !item.disabled)?.focus();
+    this.menuChildren?.find(item => isMenuItem(item) && !item.disabled)?.focus();
   }
 
   private static elementIndent(el: HTMLElement): MenuItemColumnCount {
@@ -99,21 +101,21 @@ export class BaseMenuList extends FASTElement {
   protected setItems(): void {
     const children: HTMLElement[] = Array.from(this.children) as HTMLElement[];
 
-    this.menuItems = children.filter(child => !child.hasAttribute('hidden'));
+    this.menuChildren = children.filter(child => !child.hasAttribute('hidden'));
 
     /**
      * Set the indent attribute on MenuItem elements based on their
      * position in the MenuList. Each MenuItem element has a data-indent attribute that is
      * used to set the indent of the element's start slot content.
      */
-    const filteredMenuItems = this.menuItems?.filter(this.isMenuItemElement);
-    const indent: MenuItemColumnCount = filteredMenuItems?.reduce<MenuItemColumnCount>((accum, current) => {
+    this.menuItems = this.menuChildren?.filter(this.isMenuItemElement);
+    const indent: MenuItemColumnCount = this.menuItems?.reduce<MenuItemColumnCount>((accum, current) => {
       const elementValue = BaseMenuList.elementIndent(current as HTMLElement);
 
       return Math.max(accum, elementValue as number) as MenuItemColumnCount;
     }, 0);
 
-    filteredMenuItems?.forEach((item: HTMLElement) => {
+    this.menuItems?.forEach((item: HTMLElement) => {
       item.dataset.indent = `${indent}`;
       item.tabIndex = item.hasAttribute('disabled') ? -1 : 0;
     });
@@ -132,11 +134,11 @@ export class BaseMenuList extends FASTElement {
    * Handle change from child MenuItem element and set radio group behavior
    */
   private changedMenuItemHandler = (e: Event): void => {
-    if (this.menuItems === undefined) {
+    if (this.menuChildren === undefined) {
       return;
     }
     const changedMenuItem: MenuItem = e.target as MenuItem;
-    const changeItemIndex: number = this.menuItems.indexOf(changedMenuItem);
+    const changeItemIndex: number = this.menuChildren.indexOf(changedMenuItem);
 
     if (changeItemIndex === -1) {
       return;
@@ -144,7 +146,7 @@ export class BaseMenuList extends FASTElement {
 
     if (changedMenuItem.role === 'menuitemradio' && changedMenuItem.checked === true) {
       for (let i = changeItemIndex - 1; i >= 0; --i) {
-        const item: Element = this.menuItems[i];
+        const item: Element = this.menuChildren[i];
         const role: string | null = (item as HTMLElement).role;
         if (role === MenuItemRole.menuitemradio) {
           (item as MenuItem).checked = false;
@@ -153,9 +155,9 @@ export class BaseMenuList extends FASTElement {
           break;
         }
       }
-      const maxIndex: number = this.menuItems.length - 1;
+      const maxIndex: number = this.menuChildren.length - 1;
       for (let i = changeItemIndex + 1; i <= maxIndex; ++i) {
-        const item: Element = this.menuItems[i];
+        const item: Element = this.menuChildren[i];
         const role: string | null = (item as HTMLElement).role;
         if (role === MenuItemRole.menuitemradio) {
           (item as MenuItem).checked = false;
@@ -170,7 +172,7 @@ export class BaseMenuList extends FASTElement {
   /**
    * check if the item is a menu item
    */
-  protected isMenuItemElement = (el: Element): el is HTMLElement => {
+  protected isMenuItemElement = (el: Element): el is MenuItem => {
     return isMenuItem(el) || (isHTMLElement(el) && !!el.role && el.role in BaseMenuList.focusableElementRoles);
   };
 }

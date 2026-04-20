@@ -102,8 +102,6 @@ export class BaseTablist extends FASTElement {
 
   /**
    * Function that is invoked whenever the selected tab or the tab collection changes.
-   *
-   * @internal
    */
   protected setTabs({ connectToPanel = false, forceDisabled = false } = {}): void {
     if (!this.tabs) {
