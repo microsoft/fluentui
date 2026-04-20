@@ -30,6 +30,49 @@ export type {
   AccordionPanelState,
 } from './Accordion';
 
+export {
+  MessageBar,
+  renderMessageBar,
+  useMessageBar,
+  useMessageBarContext,
+  useMessageBarContextValues,
+  MessageBarActions,
+  renderMessageBarActions,
+  useMessageBarActions,
+  useMessageBarActionsContextValues,
+  MessageBarBody,
+  renderMessageBarBody,
+  useMessageBarBody,
+  useMessageBarBodyContextValues,
+  MessageBarGroup,
+  renderMessageBarGroup,
+  useMessageBarGroup,
+  MessageBarTitle,
+  renderMessageBarTitle,
+  useMessageBarTitle,
+} from './MessageBar';
+export type {
+  MessageBarSlots,
+  MessageBarProps,
+  MessageBarState,
+  MessageBarContextValues,
+  MessageBarIntent,
+  MessageBarActionsSlots,
+  MessageBarActionsProps,
+  MessageBarActionsState,
+  MessageBarActionsContextValues,
+  MessageBarBodySlots,
+  MessageBarBodyProps,
+  MessageBarBodyState,
+  MessageBarBodyContextValues,
+  MessageBarGroupSlots,
+  MessageBarGroupProps,
+  MessageBarGroupState,
+  MessageBarTitleSlots,
+  MessageBarTitleProps,
+  MessageBarTitleState,
+} from './MessageBar';
+
 export { Avatar, renderAvatar, useAvatar } from './Avatar';
 export type { AvatarProps, AvatarState } from './Avatar';
 
