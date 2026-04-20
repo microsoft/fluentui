@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add CollapseParams to the motion slot type",
+  "packageName": "@fluentui/react-accordion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
