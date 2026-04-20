@@ -4,53 +4,18 @@
 import * as React from 'react';
 import { assertSlots, type JSXElement } from '@fluentui/react-utilities';
 import { MotionRefForwarder } from '@fluentui/react-motion';
-import { PopoverContext } from '../../popoverContext';
+import { PopoverContext, popoverContextDefaultValue } from '../../popoverContext';
 import type { InternalPopoverSlots, PopoverState } from './Popover.types';
+import type { PopoverContextValues } from './usePopoverContextValues';
 
 /**
  * Render the final JSX of Popover
  */
-export const renderPopover_unstable = (state: PopoverState): JSXElement => {
+export const renderPopover_unstable = (state: PopoverState, contextValues?: PopoverContextValues): JSXElement => {
   assertSlots<InternalPopoverSlots>(state);
 
-  const {
-    appearance,
-    arrowRef,
-    contentRef,
-    inline,
-    mountNode,
-    open,
-    openOnContext,
-    openOnHover,
-    setOpen,
-    size,
-    toggleOpen,
-    trapFocus,
-    triggerRef,
-    withArrow,
-    inertTrapFocus,
-  } = state;
-
   return (
-    <PopoverContext.Provider
-      value={{
-        appearance,
-        arrowRef,
-        contentRef,
-        inline,
-        mountNode,
-        open,
-        openOnContext,
-        openOnHover,
-        setOpen,
-        toggleOpen,
-        triggerRef,
-        size,
-        trapFocus,
-        inertTrapFocus,
-        withArrow,
-      }}
-    >
+    <PopoverContext.Provider value={contextValues?.popover ?? popoverContextDefaultValue}>
       {state.popoverTrigger}
       {state.popoverSurface && (
         <state.surfaceMotion>

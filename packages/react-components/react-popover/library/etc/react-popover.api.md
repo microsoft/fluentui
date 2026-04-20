@@ -41,6 +41,11 @@ export const Popover: React_2.FC<PopoverProps>;
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
 
+// @public (undocumented)
+export type PopoverContextValues = {
+    popover: PopoverContextValue;
+};
+
 // @public
 export type PopoverProps = ComponentProps<Partial<PopoverSlots>> & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'brand' | 'inverted';
@@ -125,7 +130,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover_unstable: (state: PopoverState) => JSXElement;
+export const renderPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
 
 // @public
 export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSXElement;
@@ -138,6 +143,9 @@ export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
 export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+
+// @public (undocumented)
+export function usePopoverContextValues_unstable(state: PopoverState): PopoverContextValues;
 
 // @public
 export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
