@@ -85,10 +85,10 @@ function main() {
       title: 'Theme Designer v9',
     },
     {
-      package: '@fluentui/react-headless-components-preview-stories',
-      link: './react-headless-components-preview-stories/storybook/index.html',
+      package: '@fluentui/public-docsite-v9-headless',
+      link: './public-docsite-v9-headless/storybook/index.html',
       icon: 'Code',
-      title: '@fluentui/react-headless-components-preview Storybook',
+      title: 'Headless Components',
     },
     {
       package: '@fluentui/perf-test',

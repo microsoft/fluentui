@@ -15,12 +15,13 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderAccordionItem`.
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
-  const state = useAccordionItem_unstable(props, ref);
+  'use no memo';
 
-  Object.assign(state.root, {
-    'data-disabled': stringifyDataAttribute(state.disabled),
-    'data-open': stringifyDataAttribute(state.open),
-  });
+  const state: AccordionItemState = useAccordionItem_unstable(props, ref);
+
+  // Set data attributes for open and disabled states to simplify styling of these states.
+  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-open'] = stringifyDataAttribute(state.open);
 
   return state;
 };

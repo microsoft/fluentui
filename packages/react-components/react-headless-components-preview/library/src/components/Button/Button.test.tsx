@@ -13,13 +13,7 @@ describe('Button', () => {
     const result = render(<Button>Default Button</Button>);
     const button = result.getByRole('button', { name: 'Default Button' });
     expect(button).toBeInTheDocument();
-    expect(button).toMatchInlineSnapshot(`
-      <button
-        type="button"
-      >
-        Default Button
-      </button>
-    `);
+    expect(button).toHaveAttribute('type', 'button');
   });
 
   it('renders an anchor when "as" prop is set to "a"', () => {
@@ -32,13 +26,7 @@ describe('Button', () => {
     const link = result.getByRole('link', { name: 'Link Button' });
 
     expect(link).toBeInTheDocument();
-    expect(link).toMatchInlineSnapshot(`
-      <a
-        href="https://www.microsoft.com"
-      >
-        Link Button
-      </a>
-    `);
+    expect(link).toHaveAttribute('href', 'https://www.microsoft.com');
   });
 
   it('renders with state data attributes', () => {

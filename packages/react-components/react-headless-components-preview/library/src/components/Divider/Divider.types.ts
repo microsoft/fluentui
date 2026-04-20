@@ -4,4 +4,11 @@ export type DividerSlots = DividerBaseSlots;
 
 export type DividerProps = DividerBaseProps;
 
-export type DividerState = DividerBaseState;
+export type DividerState = DividerBaseState & {
+  root: {
+    /**
+     * Data attribute set to indicate the orientation of the divider.
+     */
+    'data-orientation'?: 'vertical' | 'horizontal';
+  };
+};

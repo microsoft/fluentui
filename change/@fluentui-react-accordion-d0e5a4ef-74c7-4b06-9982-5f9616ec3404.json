@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent keyboard focus from entering a collapsing panel",
+  "packageName": "@fluentui/react-accordion",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

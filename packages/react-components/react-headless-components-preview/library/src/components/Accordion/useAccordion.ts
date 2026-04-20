@@ -15,12 +15,13 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderAccordion`.
  */
 export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
-  const state = useAccordionBase_unstable(props, ref);
+  'use no memo';
 
-  Object.assign(state.root, {
-    'data-collapsible': stringifyDataAttribute(state.collapsible),
-    'data-multiple': stringifyDataAttribute(state.multiple),
-  });
+  const state: AccordionState = useAccordionBase_unstable(props, ref);
+
+  // Set data attributes for collapsible and multiple states to simplify styling of these states.
+  state.root['data-collapsible'] = stringifyDataAttribute(state.collapsible);
+  state.root['data-multiple'] = stringifyDataAttribute(state.multiple);
 
   return state;
 };
