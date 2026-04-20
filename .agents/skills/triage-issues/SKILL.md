@@ -25,17 +25,18 @@ Sort oldest-first — the guidelines prioritize the longest-waiting issues.
 
 For every issue, you're producing a **recommendation** with these fields:
 
-| Field                  | Possible values                                                                    |
-| ---------------------- | ---------------------------------------------------------------------------------- |
-| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`   |
-| `product`              | `v9`, `v8`, `v7`, `web-components`, `charting`, `northstar`, `unknown`             |
-| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                |
-| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                  |
-| `add_labels`           | list of label names to add                                                         |
-| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged) |
-| `assignee`             | GitHub login of the area owner (see routing table below)                           |
-| `comment`              | optional message to leave for the author (required if asking for more info)        |
-| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                     |
+| Field                  | Possible values                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`     |
+| `product`              | `v9`, `v8`, `v7`, `web-components`, `charting`, `northstar`, `unknown`               |
+| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                  |
+| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                    |
+| `add_labels`           | list of label names to add                                                           |
+| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)   |
+| `assignee`             | GitHub login of the area owner (see routing table below)                             |
+| `comment`              | optional message to leave for the author (required if asking for more info)          |
+| `validation_candidate` | `true` / `false` — does this bug warrant a playwright-cli repro check before triage? |
+| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                       |
 
 Don't invent labels. Every label you recommend must exist in the repo — see `references/triage-labels.md` for the allow-list.
 
@@ -128,11 +129,43 @@ Produce a compact table the user can scan. One row per issue. Columns: `#`, `cla
 
 If you found duplicates or partner asks, call them out explicitly above the table.
 
-### Step 3.5 — (Optional) Validate repros with playwright-cli
+**Then propose a validation set.** Below the table, list the bugs you flagged as `validation_candidate: true` with a one-line reason each, and ask the user to confirm. Take the initiative here — don't wait for the user to think of validation. Example:
 
-The user may ask to validate specific issues before approving: `validate 35998 35976`, `validate all bugs`, `validate stackblitz issues`. **Never validate unless asked** — it turns triage from seconds-per-issue into minutes-per-issue and pulls down sandboxes that may not be safe or reliable in headless.
+```
+I'd like to verify these repros with playwright-cli before triaging:
+  • #35998 — StackBlitz provided; Link underline visual bug, testable headless
+  • #36001 — CodeSandbox provided; Button click handler not firing
 
-When asked to validate an issue:
+Confirm with `validate yes`, `validate all`, a subset like `validate 35998`,
+or `skip validation` to move straight to approval.
+```
+
+If there are no validation candidates (all feature requests, all reports with root-cause diffs, etc.), say so explicitly and go straight to Step 4.
+
+**How to decide `validation_candidate`:**
+
+`true` when all of:
+
+- The issue is a bug (not a feature or question).
+- A reproduction exists — either a sandbox URL (StackBlitz / CodeSandbox / JSFiddle / CodePen) in the body, or a clearly-described behavior against a specific component that a Storybook default story can exercise.
+- The expected failure is something headless Chromium can observe: visual layout, DOM structure, console errors, aria attributes, event handlers firing.
+
+`false` when any of:
+
+- It's a feature request (nothing to reproduce).
+- The author already included a root-cause analysis + a suggested diff (they did the work; headless adds noise, not signal).
+- The bug is about performance, memory, or timing (perf A/B metrics, rAF regressions, FCP deltas) — headless won't give reliable numbers.
+- The bug is browser-specific (Edge-only, Safari-only, mobile) — you can't run those from here.
+- The bug requires assistive tech (screen reader behavior, voice control) — headless can see ARIA but not AT interpretation.
+- The bug requires real user timing (typing debounce, drag gestures, animation pauses).
+
+### Step 3.5 — Validate repros with playwright-cli
+
+Run this step when the user confirms the validation set you proposed in Step 3 (or when they name a different set — `validate 35998 35976`, `validate all`, etc.). If the user says `skip validation`, go straight to Step 4.
+
+Validation is the human-in-the-loop gate on agent initiative: you proposed the set, the human confirmed it, now execute. Do not mutate any issue as a result of validation — evidence feeds back into the recommendation table, and the user still approves in Step 4.
+
+For each confirmed issue:
 
 1. **Prerequisites.** Make sure playwright-cli is available (same install as `visual-test`):
 
@@ -178,11 +211,11 @@ When asked to validate an issue:
    lsof -i :$SB_PORT -t 2>/dev/null | xargs kill 2>/dev/null
    ```
 
-**What validation is not for.** Don't validate feature requests (nothing to reproduce). Don't validate reports that already include a documented root cause + a diff (the author did the work; headless adds noise, not signal). Don't validate reports that describe a perf regression, an OS-specific behavior, or an assistive-tech interaction — headless can't tell you anything reliable there.
+The validation-candidate heuristics are in Step 3 — don't re-litigate them here. If the user overrides and asks you to validate something you flagged as not-a-candidate (e.g., the Edge perf issue), do it anyway but prefix the result with a warning about headless limitations so the evidence is interpreted correctly.
 
 ### Step 4 — Ask for approval
 
-Ask the user: "Apply all / approve specific numbers / skip / edit / validate <#s>?". Accept inputs like `apply 35976, 35977`, `skip 36007`, `validate 35998`, or free-form edits. If the user asks for validation, run Step 3.5 on those issues, update the recommendation table with the evidence, and re-ask for approval. Don't proceed to apply until the user has explicitly approved.
+Ask the user: "Apply all / approve specific numbers / skip / edit?". Accept inputs like `apply 35976, 35977`, `skip 36007`, or free-form edits. The user can still request additional validation at this point (`validate 36007` even if you hadn't proposed it); if they do, loop back through Step 3.5 and then re-present the updated table. Don't proceed to apply until the user has explicitly approved.
 
 ### Step 5 — Apply approved changes
 
