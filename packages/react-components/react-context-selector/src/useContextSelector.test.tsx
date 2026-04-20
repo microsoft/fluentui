@@ -99,16 +99,11 @@ describe('useContextSelector', () => {
     expect(onUpdate).toHaveBeenCalledTimes(2);
   });
 
-  // Regression test for the eager-bailout glitch fixed in this hook rewrite.
-  // With the previous `[value, selected]` + `setState(prev => prev)` bailout,
-  // React's eager path silently stopped working after the first listener-driven
-  // render committed (the bound-at-mount fiber becomes the stale alternate and
-  // its .lanes never clear). That resulted in extra component-function calls
-  // on subsequent context updates, even when the selected slice didn't change.
+  // Regression test for the eager-bailout issue with `useState().
   //
-  // This test runs the RFC's Scenario 2 (controlled List + memoized items) and
-  // asserts that each memoized item re-renders only when its `active` flag
-  // actually flipped — no "three items re-rendered instead of two" anomaly.
+  // With the previous `[value, selected]` + `setState(prev => prev)` bailout, React's eager path silently stopped
+  // working after the first listener-driven render committed. That resulted in extra component-function calls
+  // on subsequent context updates, even when the selected slice didn't change.
   it('memoized consumers re-render only when their selected slice changes', () => {
     const MemoizedTestComponent = React.memo(TestComponent);
 
@@ -129,38 +124,43 @@ describe('useContextSelector', () => {
       { container: container as HTMLElement },
     );
 
-    // Initial render. TestProvider starts at index=0, so none are active.
-    // Each memoized item has committed once — the `onUpdate` effect fires
-    // once per item on mount.
+    // Initial render. TestProvider starts at index=0, so none are active. Each memoized item has committed once — the
+    // `onUpdate` effect fires once per item on mount.
     Object.values(onUpdates).forEach(m => expect(m).toHaveBeenCalledTimes(1));
 
-    // Click 1: 0 → 1. Only index=1 flips (false → true).
+    // Click 1: 0 → 1. Only index=1 flips (active: false → true).
+    jest.clearAllMocks();
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
-    expect(onUpdates[1]).toHaveBeenCalledTimes(2);
-    expect(onUpdates[2]).toHaveBeenCalledTimes(1);
-    expect(onUpdates[3]).toHaveBeenCalledTimes(1);
-    expect(onUpdates[4]).toHaveBeenCalledTimes(1);
 
-    // Click 2: 1 → 2. index=1 flips true→false, index=2 flips false→true.
+    expect(onUpdates[1]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[2]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[3]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
+
+    // Click 2: 1 → 2. index=1 flips (active: true → false), index=2 flips (active: false → true).
     // Items 3 and 4 did not change and must not re-render.
+    jest.clearAllMocks();
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
-    expect(onUpdates[1]).toHaveBeenCalledTimes(3);
-    expect(onUpdates[2]).toHaveBeenCalledTimes(2);
-    expect(onUpdates[3]).toHaveBeenCalledTimes(1); // ← was 2 under the old eager-bailout glitch
-    expect(onUpdates[4]).toHaveBeenCalledTimes(1);
+
+    expect(onUpdates[1]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[2]).toHaveBeenCalledTimes(1); // false => true
+    expect(onUpdates[3]).toHaveBeenCalledTimes(0); // ← was 2 under the old eager-bailout with `useState()`
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
 
     // Click 3: 2 → 3.
+    jest.clearAllMocks();
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
-    expect(onUpdates[1]).toHaveBeenCalledTimes(3);
-    expect(onUpdates[2]).toHaveBeenCalledTimes(3);
-    expect(onUpdates[3]).toHaveBeenCalledTimes(2);
-    expect(onUpdates[4]).toHaveBeenCalledTimes(1);
+
+    expect(onUpdates[1]).toHaveBeenCalledTimes(0);
+    expect(onUpdates[2]).toHaveBeenCalledTimes(1); // true => false
+    expect(onUpdates[3]).toHaveBeenCalledTimes(1); // false => true
+    expect(onUpdates[4]).toHaveBeenCalledTimes(0);
   });
 
   it('a single consumer throw does not starve later subscribers of context updates', () => {
@@ -171,6 +171,7 @@ describe('useContextSelector', () => {
         }
         return v.index;
       });
+
       return null;
     };
 
@@ -193,6 +194,7 @@ describe('useContextSelector', () => {
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
+
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(onUpdate).toHaveBeenCalledTimes(2);
   });
