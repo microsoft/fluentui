@@ -1,5 +1,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!--
+  Tailwind's Preflight resets h1/h2/p/a to unstyled, which would override the
+  docs typography defined in `react-storybook-addon/src/styles.css`. Import
+  only theme tokens and utilities so stories can still use Tailwind classes,
+  but MDX docs keep their Segoe UI headings.
+-->
 <style type="text/tailwindcss">
+  @import 'tailwindcss/theme' layer(theme);
+  @import 'tailwindcss/utilities' layer(utilities);
   :root {
     interpolate-size: allow-keywords;
   }
