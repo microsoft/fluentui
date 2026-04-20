@@ -54,6 +54,13 @@ export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 // @public (undocumented)
 export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots>;
 
+// @public (undocumented)
+export type MessageBarBodyContextValues = {
+    link: {
+        inline?: boolean;
+    };
+};
+
 // @public
 export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 
@@ -194,6 +201,9 @@ export const useMessageBarBase_unstable: (props: MessageBarBaseProps, ref: React
 
 // @public
 export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
+
+// @public (undocumented)
+export function useMessageBarBodyContextValues_unstable(state: MessageBarBodyState): MessageBarBodyContextValues;
 
 // @public
 export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => MessageBarBodyState;

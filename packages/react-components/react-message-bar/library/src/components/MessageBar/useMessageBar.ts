@@ -88,9 +88,15 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
 
   const state = useMessageBarBase_unstable(baseProps, ref);
 
-  if (state.icon) {
-    state.icon.children ??= getIntentIcon(state.intent);
-  }
-
-  return { ...state, shape };
+  return {
+    ...state,
+    shape,
+    icon: slot.optional(props.icon, {
+      defaultProps: {
+        children: getIntentIcon(state.intent),
+      },
+      renderByDefault: true,
+      elementType: 'div',
+    }),
+  };
 };

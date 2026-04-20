@@ -48,11 +48,17 @@ export {
   MessageBarBody,
   useMessageBarBodyStyles_unstable,
   useMessageBarBody_unstable,
+  useMessageBarBodyContextValues_unstable,
   renderMessageBarBody_unstable,
   messageBarBodyClassNames,
 } from './MessageBarBody';
 
-export type { MessageBarBodyProps, MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody';
+export type {
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+  MessageBarBodyContextValues,
+} from './MessageBarBody';
 
 export {
   MessageBarContextProvider,
