@@ -67,7 +67,7 @@ export function waitForConnectedDescendants(
 
   const scheduleCheck = (deadline?: IdleDeadline) => {
     if (target.querySelector(selector) === null || (deadline && deadline.timeRemaining() <= 0)) {
-      requestAnimationFrame(callback);
+      callback();
       return;
     }
 
