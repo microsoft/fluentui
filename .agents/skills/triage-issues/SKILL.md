@@ -128,9 +128,61 @@ Produce a compact table the user can scan. One row per issue. Columns: `#`, `cla
 
 If you found duplicates or partner asks, call them out explicitly above the table.
 
+### Step 3.5 — (Optional) Validate repros with playwright-cli
+
+The user may ask to validate specific issues before approving: `validate 35998 35976`, `validate all bugs`, `validate stackblitz issues`. **Never validate unless asked** — it turns triage from seconds-per-issue into minutes-per-issue and pulls down sandboxes that may not be safe or reliable in headless.
+
+When asked to validate an issue:
+
+1. **Prerequisites.** Make sure playwright-cli is available (same install as `visual-test`):
+
+   ```bash
+   npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
+   ```
+
+2. **Pick the target URL.** In priority order:
+
+   - A StackBlitz / CodeSandbox / JSFiddle / CodePen link in the issue body — use it directly.
+   - A link to a specific Storybook story hosted at `storybooks.fluentui.dev` or similar — use it directly.
+   - Otherwise: spin up the relevant component's local Storybook and navigate to the closest default story. Follow the pattern in the `visual-test` skill for starting `yarn nx run react-<component>:start` and finding the dynamic port.
+
+3. **Capture evidence.** Don't try to "prove" the bug — just gather what a human needs to decide:
+
+   ```bash
+   playwright-cli goto "<repro URL>"
+   playwright-cli screenshot --filename=/tmp/triage-<num>-screenshot.png
+   playwright-cli snapshot > /tmp/triage-<num>-dom.txt
+   # Console errors and warnings — often the most useful signal
+   playwright-cli console > /tmp/triage-<num>-console.txt
+   ```
+
+   If the sandbox has a specific interaction to trigger the bug (click a button, type in a field), follow it using refs from the snapshot.
+
+4. **Classify the result** as one of:
+
+   - `repros` — you observed the described behavior. Include the screenshot path and any console errors.
+   - `does_not_repro` — you visited the sandbox, ran through the described steps, and the behavior didn't appear. Include what you tried so the human can sanity-check.
+   - `cannot_determine` — the sandbox didn't load, requires auth, times out, needs a specific browser version (common for perf / Edge-only issues), or needs real user timing that headless can't reproduce. **This is the most important category** — don't pretend headless gives you environment coverage it doesn't.
+
+5. **Feed evidence back into the recommendation.** Only update `add_labels` as follows:
+
+   - `does_not_repro` → surface `Resolution: Can't Repro` as a **candidate**, not a decision. The user still approves. Attach the evidence in the comment draft so they can judge.
+   - `repros` → leave labels unchanged; the existing classification stands. Maybe upgrade priority if the evidence makes it clearly worse than the body described.
+   - `cannot_determine` → leave labels unchanged; note the limitation in `needs_human_followup`.
+
+6. **Clean up.** Close the browser, kill any Storybook you started, and delete the evidence files unless the user wants to keep them:
+
+   ```bash
+   playwright-cli close
+   # If you started Storybook:
+   lsof -i :$SB_PORT -t 2>/dev/null | xargs kill 2>/dev/null
+   ```
+
+**What validation is not for.** Don't validate feature requests (nothing to reproduce). Don't validate reports that already include a documented root cause + a diff (the author did the work; headless adds noise, not signal). Don't validate reports that describe a perf regression, an OS-specific behavior, or an assistive-tech interaction — headless can't tell you anything reliable there.
+
 ### Step 4 — Ask for approval
 
-Ask the user: "Apply all / approve specific numbers / skip / edit?". Accept inputs like `apply 35976, 35977` or `skip 36007` or free-form edits. Don't proceed until the user has responded.
+Ask the user: "Apply all / approve specific numbers / skip / edit / validate <#s>?". Accept inputs like `apply 35976, 35977`, `skip 36007`, `validate 35998`, or free-form edits. If the user asks for validation, run Step 3.5 on those issues, update the recommendation table with the evidence, and re-ask for approval. Don't proceed to apply until the user has explicitly approved.
 
 ### Step 5 — Apply approved changes
 
