@@ -179,8 +179,7 @@ export const usePopoverBase_unstable = (props: PopoverBaseProps): PopoverBaseSta
       return;
     }
 
-    const isOutside =
-      !elementContains(contentElement, target) && !elementContains(triggerElement, target);
+    const isOutside = !elementContains(contentElement, target) && !elementContains(triggerElement, target);
 
     if (isOutside) {
       setOpen(ev, false);
