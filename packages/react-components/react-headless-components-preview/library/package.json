@@ -19,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-accordion": "^9.11.0",
+    "@fluentui/react-aria": "^9.17.10",
+    "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-avatar": "^9.11.1",
     "@fluentui/react-badge": "^9.5.2",
     "@fluentui/react-button": "^9.9.1",
@@ -42,6 +44,7 @@
     "@fluentui/react-search": "^9.4.2",
     "@fluentui/react-select": "^9.5.1",
     "@fluentui/react-shared-contexts": "^9.26.2",
+    "@fluentui/react-context-selector": "^9.2.15",
     "@fluentui/react-skeleton": "^9.7.2",
     "@fluentui/react-slider": "^9.6.2",
     "@fluentui/react-spinbutton": "^9.6.2",
