@@ -306,7 +306,7 @@ const usePrimaryHighContrastStyles = makeStyles({
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  'use no memo';
+  ('use no memo');
 
   const rootCheckedStyles = useRootCheckedStyles();
   const accessibleCheckedStyles = useCheckedAccessibleStyles();
@@ -316,6 +316,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
 
   const { appearance, checked, disabled, disabledFocusable, isAccessible } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toggleButtonClassNames.root,
 
@@ -341,6 +342,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
       checked &&
