@@ -1,6 +1,7 @@
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
 import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Radio } from '../radio/radio.js';
+import { isRadio } from '../radio/radio.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseRadioGroup } from './radio-group.base.js';
@@ -38,11 +39,7 @@ export class RadioGroup extends BaseRadioGroup {
   public radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void {
     super.radiosChanged(prev, next);
 
-    if (!this.fgItems && this.radios) {
-      this.fgItems = new ItemCollection({
-        owner: this,
-        list: this.radios,
-      });
-    }
+    this.fgItems ??= new ItemCollection(this, el => isRadio(el));
+    this.fg?.update();
   }
 }

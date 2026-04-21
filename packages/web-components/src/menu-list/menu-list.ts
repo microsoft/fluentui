@@ -1,5 +1,6 @@
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
 import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import { isMenuItem } from '../menu-item/menu-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseMenuList } from './menu-list.base.js';
@@ -37,11 +38,7 @@ export class MenuList extends BaseMenuList {
   override setItems(): void {
     super.setItems();
 
-    if (!this.fgItems && this.menuChildren) {
-      this.fgItems = new ItemCollection({
-        owner: this,
-        list: this.menuItems as HTMLElement[],
-      });
-    }
+    this.fgItems ??= new ItemCollection(this, el => isMenuItem(el));
+    this.fg?.update();
   }
 }

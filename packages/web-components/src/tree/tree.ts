@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import { type FocusGroupItemCollection, FocusGroupMutateEvent } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { isTreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
@@ -51,16 +51,10 @@ export class Tree extends BaseTree {
 
     this.updateSizeAndAppearance();
 
-    if (!this.fgItems) {
-      this.fgItems = new ItemCollection({
-        owner: this,
-        filter(node) {
-          return isTreeItem(node) && !(isTreeItem(node.parentElement) && node.parentElement.expanded === false)
-            ? NodeFilter.FILTER_ACCEPT
-            : NodeFilter.FILTER_SKIP;
-        },
-      });
-    }
+    this.fgItems ??= new ItemCollection(this, el => {
+      return isTreeItem(el) && !(isTreeItem(el.parentElement) && el.parentElement.expanded === false);
+    });
+    this.fg?.update();
   }
 
   /** @private */
@@ -99,6 +93,6 @@ export class Tree extends BaseTree {
 
   /** @internal */
   public itemToggleHandler() {
-    this.fgItems?.dispatchEvent(new FocusGroupMutateEvent());
+    this.fg?.update();
   }
 }

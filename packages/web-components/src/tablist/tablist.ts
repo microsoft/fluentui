@@ -1,7 +1,8 @@
 import { attr } from '@microsoft/fast-element';
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import { type FocusGroupItemCollection, FocusGroupMutateEvent } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Tab } from '../tab/tab.js';
+import { isTab } from '../tab/tab.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseTablist } from './tablist.base.js';
@@ -52,20 +53,7 @@ export class Tablist extends BaseTablist {
   override tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
     super.tabsChanged(prev, next);
 
-    if (!this.fgItems && this.tabs?.length) {
-      this.fgItems = new ItemCollection({ owner: this, list: this.tabs });
-    }
-
-    // if (prev && next) {
-    // 	const removedNodes = prev?.filter((tab) => !next?.includes(tab)) ?? [];
-    // 	console.log(removedNodes);
-    // 	if (removedNodes.length) {
-    // 		this.fgItems.dispatchEvent(
-    // 			new FocusGroupMutateEvent({
-    // 				removedNodes,
-    // 			}),
-    // 		);
-    // 	}
-    // }
+    this.fgItems ??= new ItemCollection(this, el => isTab(el) && !el.disabled);
+    this.fg?.update();
   }
 }
