@@ -802,6 +802,12 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Guard flag to prevent reentrant calls to `insertControl`.
+   * @internal
+   */
+  private _insertingControl = false;
+
+  /**
    * Inserts the control element based on the dropdown type.
    *
    * @public
@@ -809,6 +815,11 @@ export class BaseDropdown extends FASTElement {
    * This method can be overridden in derived classes to provide custom control elements, though this is not recommended.
    */
   protected insertControl(): void {
+    if (this._insertingControl) {
+      return;
+    }
+
+    this._insertingControl = true;
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
 
     if (this.type === DropdownType.combobox) {
@@ -817,6 +828,7 @@ export class BaseDropdown extends FASTElement {
     }
 
     dropdownButtonTemplate.render(this, this);
+    this._insertingControl = false;
   }
 
   /**
