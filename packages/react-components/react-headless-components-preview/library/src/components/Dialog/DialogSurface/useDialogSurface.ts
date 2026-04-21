@@ -65,7 +65,15 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   // Tab looping — useFocusScope provides the Tab / Shift+Tab wrap handler.
   // Focus trapping is not needed here since native showModal() handles it for modal/alert,
   // and non-modal dialogs are intentionally not trapped.
-  const { containerProps: focusScopeProps } = useFocusScope({ loop: true });
+  //
+  // For modal/alert dialogs, showModal() stores the previously-focused element and restores
+  // it when dialog.close() is called. Suppress useFocusScope's own unmount restore to avoid
+  // a double focus-restore race. Non-modal dialogs use show() which does not restore focus,
+  // so the hook's restore is needed there.
+  const { containerProps: focusScopeProps } = useFocusScope({
+    loop: true,
+    onUnmountAutoFocus: modalType !== 'non-modal' ? e => e.preventDefault() : undefined,
+  });
 
   // Main effect: open/close the native dialog and suppress native Escape.
   //

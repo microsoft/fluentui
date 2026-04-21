@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { isHTMLElement } from '@fluentui/react-utilities';
+import { isHTMLElement, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
 const AUTOFOCUS_ON_UNMOUNT = 'focusScope.autoFocusOnUnmount';
@@ -88,8 +88,11 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
   // Keep mutable refs so effects always call the latest callback without re-running.
   const onMountAutoFocusRef = React.useRef(onMountAutoFocus);
   const onUnmountAutoFocusRef = React.useRef(onUnmountAutoFocus);
-  onMountAutoFocusRef.current = onMountAutoFocus;
-  onUnmountAutoFocusRef.current = onUnmountAutoFocus;
+  // Sync after every render but before effects — avoids mutating refs during the render phase.
+  useIsomorphicLayoutEffect(() => {
+    onMountAutoFocusRef.current = onMountAutoFocus;
+    onUnmountAutoFocusRef.current = onUnmountAutoFocus;
+  });
 
   const lastFocusedElementRef = React.useRef<HTMLElement | null>(null);
 
@@ -209,9 +212,9 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
         container.dispatchEvent(unmountEvent);
         container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmount);
 
-        // Callers using a native <dialog> (which already restores focus via dialog.close())
-        // should pass `onUnmountAutoFocus: e => e.preventDefault()` to suppress this restore
-        // and avoid a double focus-restore race.
+        // Callers using a native <dialog> opened via showModal() should pass
+        // `onUnmountAutoFocus: e => e.preventDefault()` — the browser already restores focus
+        // via dialog.close(), so running both causes a double focus-restore race.
         if (!unmountEvent.defaultPrevented) {
           focusElement(previouslyFocused ?? targetDocument.body, targetDocument, { select: true });
         }
