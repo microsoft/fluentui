@@ -132,21 +132,6 @@ export const useComboboxBase_unstable = (
     disabled: !open,
   });
 
-  /* handle open/close + focus when clicking in the root's padding area (dead zone to the right of expand/clear icon) */
-  const { onMouseDown: onRootMouseDown } = state.root;
-
-  const onRootDirectMouseDown = useEventCallback(
-    mergeCallbacks(onRootMouseDown, (event: React.MouseEvent<HTMLDivElement>) => {
-      if (event.target === event.currentTarget && !disabled) {
-        event.preventDefault();
-        setOpen(event, !open);
-        triggerRef.current?.focus();
-      }
-    }),
-  );
-
-  state.root.onMouseDown = onRootDirectMouseDown;
-
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
 

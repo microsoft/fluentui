@@ -176,22 +176,6 @@ describe('Combobox', () => {
     expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
   });
 
-  it('opens the popup when clicking in the root padding area', () => {
-    const { container, getByRole } = render(
-      <Combobox>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    const root = container.querySelector(`.${comboboxClassNames.root}`) as HTMLElement;
-    fireEvent.mouseDown(root);
-
-    expect(getByRole('listbox')).not.toBeNull();
-    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
-  });
-
   it('closes the popup on click with defaultOpen', () => {
     const { getByRole, queryByRole } = render(
       <Combobox defaultOpen>
