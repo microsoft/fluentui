@@ -1,4 +1,10 @@
-import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  accordionClassNames,
+} from '@fluentui/react-components';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Controlled } from './AccordionControlled.stories';
@@ -26,6 +32,11 @@ export default {
     docs: {
       description: {
         component: [descriptionMd].join('\n'),
+      },
+    },
+    reactStorybookAddon: {
+      docs: {
+        classNames: accordionClassNames,
       },
     },
   },
