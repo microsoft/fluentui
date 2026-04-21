@@ -232,20 +232,24 @@ export class BaseDropdown extends FASTElement {
 
       notifier.notify('multiple');
 
-      Updates.enqueue(() => {
-        this.options.forEach(option => {
-          option.disabled = option.disabledAttribute || this.disabled;
-          option.name = this.name;
-        });
-
-        this.enabledOptions
-          .filter(x => x.defaultSelected)
-          .forEach((x, i) => {
-            x.selected = this.multiple || i === 0;
+      waitForConnectedDescendants(
+        next,
+        () => {
+          this.options.forEach(option => {
+            option.disabled = option.disabledAttribute || this.disabled;
+            option.name = this.name;
           });
 
-        this.setValidity();
-      });
+          this.enabledOptions
+            .filter(x => x.defaultSelected)
+            .forEach((x, i) => {
+              x.selected = this.multiple || i === 0;
+            });
+
+          this.setValidity();
+        },
+        { idleCallback: true },
+      );
 
       if (AnchorPositioningCSSSupported) {
         // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
