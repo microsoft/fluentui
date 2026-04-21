@@ -1,5 +1,5 @@
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
 import { isMenuItem } from '../menu-item/menu-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
@@ -16,11 +16,9 @@ import { BaseMenuList } from './menu-list.base.js';
  * @public
  */
 export class MenuList extends BaseMenuList {
-  /** @private */
-  fg!: FocusGroup;
+  private fg!: FocusGroup;
 
-  /** @private */
-  fgItems!: FocusGroupItemCollection;
+  private fgItems!: FocusGroupItemCollection;
 
   connectedCallback() {
     super.connectedCallback();

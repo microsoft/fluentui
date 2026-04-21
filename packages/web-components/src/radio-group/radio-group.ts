@@ -1,5 +1,5 @@
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
@@ -17,11 +17,9 @@ import { BaseRadioGroup } from './radio-group.base.js';
  * @public
  */
 export class RadioGroup extends BaseRadioGroup {
-  /** @private */
-  fg!: FocusGroup;
+  private fg!: FocusGroup;
 
-  /** @private */
-  fgItems!: FocusGroupItemCollection;
+  private fgItems!: FocusGroupItemCollection;
 
   connectedCallback() {
     super.connectedCallback();

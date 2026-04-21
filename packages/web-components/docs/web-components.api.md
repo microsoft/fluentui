@@ -11,8 +11,6 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
@@ -3372,10 +3370,6 @@ export class MenuList extends BaseMenuList {
     // (undocumented)
     disconnectedCallback(): void;
     // (undocumented)
-    fg: FocusGroup;
-    // (undocumented)
-    fgItems: FocusGroupItemCollection;
-    // (undocumented)
     setItems(): void;
 }
 
@@ -3527,10 +3521,6 @@ export class RadioGroup extends BaseRadioGroup {
     connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
-    // (undocumented)
-    fg: FocusGroup;
-    // (undocumented)
-    fgItems: FocusGroupItemCollection;
     // (undocumented)
     radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
 }
@@ -4024,10 +4014,6 @@ export class Tablist extends BaseTablist {
     connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
-    // (undocumented)
-    fg: FocusGroup;
-    // (undocumented)
-    fgItems: FocusGroupItemCollection;
     size?: TablistSize;
     // (undocumented)
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
@@ -4430,10 +4416,6 @@ export class Tree extends BaseTree {
     connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
-    // (undocumented)
-    fg: FocusGroup;
-    // (undocumented)
-    fgItems: FocusGroupItemCollection;
     // @internal (undocumented)
     itemToggleHandler(): void;
     size: TreeItemSize;

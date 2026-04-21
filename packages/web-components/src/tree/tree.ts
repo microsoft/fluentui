@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup.js';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { isTreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
@@ -57,11 +57,9 @@ export class Tree extends BaseTree {
     this.fg?.update();
   }
 
-  /** @private */
-  fg!: FocusGroup;
+  private fg!: FocusGroup;
 
-  /** @private */
-  fgItems!: FocusGroupItemCollection;
+  private fgItems!: FocusGroupItemCollection;
 
   connectedCallback() {
     super.connectedCallback();
