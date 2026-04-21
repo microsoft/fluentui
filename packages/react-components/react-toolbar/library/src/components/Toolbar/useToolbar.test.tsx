@@ -48,4 +48,24 @@ describe('useToolbar_unstable', () => {
       }),
     });
   });
+
+  it('should omit aria-orientation from root when horizontal', () => {
+    const { result } = renderHook(() => useToolbar_unstable({ size: 'large', vertical: false }, ref));
+
+    expect(result.current).toMatchObject({
+      size: 'large',
+      vertical: false,
+    });
+    expect(result.current.root).not.toHaveProperty('aria-orientation');
+  });
+
+  it('should render root with Tabster arrow-navigation attributes', () => {
+    const { result } = renderHook(() => useToolbar_unstable({ size: 'large', vertical: true }, ref));
+
+    const tabsterAttrOnRoot = result.current.root['data-tabster' as keyof typeof result.current.root];
+
+    expect(tabsterAttrOnRoot).toMatchInlineSnapshot(
+      `"{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"`,
+    );
+  });
 });
