@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Nightly Releases
 
-Fluent UI v9 publishes a **nightly** release of every public `vNext` package on each workday. These releases let partners validate integrations against the very latest `main` before the next stable release ships, so regressions can be reported and fixed while changes are still fresh.
+Fluent UI v9 publishes a **nightly** release of every public `vNext` package on each workday. These releases let partners validate integrations against the very latest `master` before the next stable release ships, so regressions can be reported and fixed while changes are still fresh.
 
 > ⚠️ Nightly releases are intended for CI validation and early adopters. They are **not** recommended for production dependencies.
 
@@ -116,7 +116,7 @@ jobs:
         run: yarn test
 ```
 
-If you consume more than one Fluent UI package, upgrade them all in the same step so their versions stay in sync:
+If you consume more than one Fluent UI package, upgrade them all in the same step so their versions stay in sync. Only `@fluentui/react-components` (and other `vNext` packages) has a `nightly` dist-tag — packages that are not part of the nightly pipeline (for example `@fluentui/react-icons`) should continue to use `latest`:
 
 ```sh
 yarn add \
