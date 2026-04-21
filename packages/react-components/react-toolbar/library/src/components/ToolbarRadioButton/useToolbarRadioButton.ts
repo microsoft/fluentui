@@ -21,14 +21,14 @@ export const useToolbarRadioButton_unstable = (
   props: ToolbarRadioButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonState => {
-  const { appearance = 'secondary', size, ...baseProps } = props;
   const contextSize = useToolbarContext_unstable(ctx => ctx.size);
+  const { appearance = 'secondary', size = contextSize, ...baseProps } = props;
   const state = useToolbarRadioButtonBase_unstable(baseProps, ref);
 
   return {
     ...state,
     appearance,
-    size: size || contextSize,
+    size,
     shape: 'rounded',
   };
 };
