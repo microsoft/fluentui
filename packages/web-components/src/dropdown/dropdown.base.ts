@@ -942,7 +942,9 @@ export class BaseDropdown extends FASTElement {
    */
   public selectOption(index: number = this.selectedIndex, shouldEmit: boolean = false): void {
     this.listbox.selectOption(index);
-    this.control.value = this.displayValue;
+    if (this.control) {
+      this.control.value = this.displayValue;
+    }
 
     this.setValidity();
 
