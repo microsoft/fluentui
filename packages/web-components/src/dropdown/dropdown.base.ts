@@ -965,20 +965,22 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected) {
-      if (this.disabled || !this.required) {
-        this.elementInternals.setValidity({});
-        return;
-      }
-
-      const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
-
-      this.elementInternals.setValidity(
-        { valueMissing, ...flags },
-        message ?? this.validationMessage,
-        anchor ?? this.control,
-      );
+    if (!this.elementInternals) {
+      return;
     }
+
+    if (this.disabled || !this.required) {
+      this.elementInternals.setValidity({});
+      return;
+    }
+
+    const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
+
+    this.elementInternals.setValidity(
+      { valueMissing, ...flags },
+      message ?? this.validationMessage,
+      anchor ?? this.control,
+    );
   }
 
   /**
