@@ -94,15 +94,20 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
   const lastFocusedElementRef = React.useRef<HTMLElement | null>(null);
 
   // Stable per-instance object used by the global focusScopesStack to pause/resume.
-  const focusScope = React.useRef({
-    paused: false,
-    pause() {
-      this.paused = true;
-    },
-    resume() {
-      this.paused = false;
-    },
-  }).current;
+  // Lazy initialization avoids allocating a new object literal on every render.
+  const focusScopeRef = React.useRef<FocusScopeAPI | null>(null);
+  if (focusScopeRef.current === null) {
+    focusScopeRef.current = {
+      paused: false,
+      pause() {
+        this.paused = true;
+      },
+      resume() {
+        this.paused = false;
+      },
+    };
+  }
+  const focusScope = focusScopeRef.current;
 
   // --- Focus trapping ---
   // Document-level listeners redirect any focus that escapes back into the container.
@@ -204,6 +209,9 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
         container.dispatchEvent(unmountEvent);
         container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmount);
 
+        // Callers using a native <dialog> (which already restores focus via dialog.close())
+        // should pass `onUnmountAutoFocus: e => e.preventDefault()` to suppress this restore
+        // and avoid a double focus-restore race.
         if (!unmountEvent.defaultPrevented) {
           focusElement(previouslyFocused ?? targetDocument.body, targetDocument, { select: true });
         }
@@ -260,12 +268,8 @@ export function useFocusScope(options: UseFocusScopeOptions = {}): UseFocusScope
     [focusScope, loop, trapped, targetDocument, targetWindow],
   );
 
-  const containerRef = React.useCallback((node: HTMLElement | null) => {
-    setContainer(node);
-  }, []);
-
   return {
-    containerRef,
+    containerRef: setContainer,
     containerProps: {
       tabIndex: -1,
       onKeyDown: handleKeyDown,

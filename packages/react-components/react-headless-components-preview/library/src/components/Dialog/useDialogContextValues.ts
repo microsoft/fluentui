@@ -1,16 +1,22 @@
+import * as React from 'react';
 import type { DialogContextValue, DialogSurfaceContextValue } from './dialogContext';
 import type { DialogContextValues, DialogState } from './Dialog.types';
 
 export const useDialogContextValues = (state: DialogState): DialogContextValues => {
-  const dialog: DialogContextValue = {
-    open: state.open,
-    modalType: state.modalType,
-    dialogTitleId: state.dialogTitleId,
-    isNestedDialog: state.isNestedDialog,
-    inertTrapFocus: state.inertTrapFocus,
-    unmountOnClose: state.unmountOnClose,
-    requestOpenChange: state.requestOpenChange,
-  };
+  const { open, modalType, dialogTitleId, isNestedDialog, inertTrapFocus, unmountOnClose, requestOpenChange } = state;
+
+  const dialog: DialogContextValue = React.useMemo(
+    () => ({
+      open,
+      modalType,
+      dialogTitleId,
+      isNestedDialog,
+      inertTrapFocus,
+      unmountOnClose,
+      requestOpenChange,
+    }),
+    [open, modalType, dialogTitleId, isNestedDialog, inertTrapFocus, unmountOnClose, requestOpenChange],
+  );
 
   const dialogSurface: DialogSurfaceContextValue = false;
 
