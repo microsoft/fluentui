@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { useToggleButton_unstable } from '@fluentui/react-button';
+import { useToggleButtonBase_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import type {
   ToolbarRadioButtonProps,
@@ -21,15 +21,15 @@ export const useToolbarRadioButton_unstable = (
   props: ToolbarRadioButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonState => {
-  const { appearance = 'secondary' } = props;
-  const size = useToolbarContext_unstable(ctx => ctx.size);
-  const state = useToolbarRadioButtonBase_unstable(props, ref);
+  const contextSize = useToolbarContext_unstable(ctx => ctx.size);
+  const { appearance = 'secondary', size = contextSize, ...baseProps } = props;
+  const state = useToolbarRadioButtonBase_unstable(baseProps, ref);
 
   return {
     ...state,
-
     appearance,
-    size: props.size || size,
+    size,
+    shape: 'rounded',
   };
 };
 
@@ -49,7 +49,7 @@ export const useToolbarRadioButtonBase_unstable = (
   const checked = useToolbarContext_unstable(ctx => !!ctx.checkedValues[props.name]?.includes(props.value));
 
   const { onClick: onClickOriginal } = props;
-  const toggleButtonState = useToggleButton_unstable(
+  const toggleButtonState = useToggleButtonBase_unstable(
     { checked, role: 'radio', 'aria-checked': checked, ...props },
     ref,
   );
