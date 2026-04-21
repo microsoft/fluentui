@@ -1,0 +1,146 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Nightly Releases" />
+
+# Nightly Releases
+
+Fluent UI v9 publishes a **nightly** release of every public `vNext` package on each workday. These releases let partners validate integrations against the very latest `main` before the next stable release ships, so regressions can be reported and fixed while changes are still fresh.
+
+> ⚠️ Nightly releases are intended for CI validation and early adopters. They are **not** recommended for production dependencies.
+
+## Release cadence
+
+- Nightlies are published from the `master` branch by the [`azure-pipelines.release-vnext-nightly.yml`](https://github.com/microsoft/fluentui/blob/master/azure-pipelines.release-vnext-nightly.yml) Azure DevOps pipeline.
+- The pipeline runs on a schedule of **Monday–Friday at 04:00 UTC**.
+- Each run bumps every published `vNext` package, then publishes with `beachball` to npm under the `nightly` dist-tag.
+
+## How to identify a nightly version
+
+Every nightly publish resets the version to `0.0.0` and adds a timestamped prerelease suffix, so nightlies sort below any real release.
+
+- **Version format:** `0.0.0-nightly-<YYYYMMDD>-<HHMM>.<N>`
+  - `<YYYYMMDD>-<HHMM>` is the UTC build date/time of the pipeline run.
+  - `<N>` is a zero-based counter that beachball increments within a single run.
+- **npm dist-tag:** `nightly`
+
+Example:
+
+```
+@fluentui/react-components@0.0.0-nightly-20251013-0400.0
+```
+
+You can list the current nightly version of any Fluent UI v9 package with:
+
+```sh
+npm view @fluentui/react-components dist-tags
+# { latest: '9.x.x', nightly: '0.0.0-nightly-YYYYMMDD-HHMM.0', ... }
+```
+
+## Using a nightly in your app
+
+Because nightlies use the `nightly` dist-tag you can install them by tag rather than pinning a specific version:
+
+```sh
+yarn add @fluentui/react-components@nightly
+```
+
+or with npm:
+
+```sh
+npm install @fluentui/react-components@nightly
+```
+
+To pin an exact nightly (recommended for reproducible CI), install the full version string:
+
+```sh
+yarn add @fluentui/react-components@0.0.0-nightly-20251013-0400.0
+```
+
+## CI recipe: run your test suite against Fluent UI nightlies
+
+The goal of this recipe is to catch regressions in your app that might be caused by upcoming Fluent UI changes, **before** those changes reach a stable release. The strategy is:
+
+1. Keep your app's normal `dependencies` pointing at a stable Fluent UI version.
+2. Add a **separate scheduled CI job** that upgrades Fluent UI to the latest nightly and runs your tests.
+
+### 1. Keep a stable baseline in `package.json`
+
+Your regular install should stay on `latest`:
+
+```json
+{
+  "dependencies": {
+    "@fluentui/react-components": "^9.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
+```
+
+### 2. Add a CI job that installs nightlies on top
+
+The snippet below is a GitHub Actions example, but the same three commands work in any CI provider (Azure Pipelines, CircleCI, etc.):
+
+```yaml
+# .github/workflows/fluentui-nightly.yml
+name: Fluent UI nightly check
+
+on:
+  schedule:
+    # Run every weekday at 08:00 UTC, a few hours after Fluent UI publishes.
+    - cron: '0 8 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  test-against-nightly:
+    runs-on: ubuntu-latest
+    # Don't fail the overall build status — treat this as an early-warning signal.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install baseline dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Upgrade Fluent UI to nightly
+        run: yarn add @fluentui/react-components@nightly
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test
+```
+
+If you consume more than one Fluent UI package, upgrade them all in the same step so their versions stay in sync:
+
+```sh
+yarn add \
+  @fluentui/react-components@nightly \
+  @fluentui/react-icons@latest
+```
+
+### 3. Report regressions
+
+If the nightly job starts failing while the stable job still passes, it almost certainly indicates a regression introduced since the last stable release. Please [open an issue](https://github.com/microsoft/fluentui/issues/new/choose) with:
+
+- The failing nightly version (`npm view @fluentui/react-components@nightly version`).
+- A minimal repro or a link to the failing CI run.
+- The last known-good nightly or stable version.
+
+Early reports let the Fluent UI team fix regressions before they reach a stable release.
+
+## FAQ
+
+**Are nightlies semver-stable?**
+No. Nightlies can contain any change that has merged to `master`, including in-flight refactors. Public APIs continue to follow semver only at **stable** releases.
+
+**Why `0.0.0-...` instead of `9.x.x-nightly.0`?**
+Using `0.0.0` guarantees that a nightly version is always lower than any real release, so a stray `^` range in a consumer's `package.json` will never accidentally resolve to a nightly.
+
+**How long are nightlies kept on npm?**
+They are standard npm publishes and are not automatically unpublished. The `nightly` dist-tag always points at the most recent run.
