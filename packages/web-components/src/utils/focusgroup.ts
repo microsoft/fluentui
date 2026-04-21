@@ -1,4 +1,4 @@
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
+import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 
 export class ItemCollection implements FocusGroupItemCollection {
   private owner!: HTMLElement;

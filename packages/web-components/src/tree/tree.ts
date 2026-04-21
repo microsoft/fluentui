@@ -1,6 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
+import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { isTreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';

@@ -1,6 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
+import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';

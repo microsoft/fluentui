@@ -1,5 +1,4 @@
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
+import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';

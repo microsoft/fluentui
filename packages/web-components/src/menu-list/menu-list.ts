@@ -1,5 +1,4 @@
-import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/focusgroup-items.js';
-import { FocusGroup } from '@microsoft/focusgroup-polyfill/focusgroup-shadowless.js';
+import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 import { isMenuItem } from '../menu-item/menu-item.options.js';
 import { ItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
