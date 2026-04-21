@@ -59,15 +59,38 @@ export function cancelIdleCallback(id: ReturnType<typeof globalThis.requestIdleC
 export function waitForConnectedDescendants(
   target: HTMLElement,
   callback: () => void,
-  options?: { shallow?: boolean; timeout?: number },
+  options?: {
+    /**
+     * Whether to only check direct children of the target element, rather than all descendants.
+     * @defaultValue `false`
+     */
+    shallow?: boolean;
+    /**
+     * The maximum time to wait for each idle callback before rechecking for connected descendants, in milliseconds.
+     * @defaultValue `50`
+     */
+    timeout?: number;
+    /**
+     * Whether to call the callback on the next idle period after descendants are connected, rather than immediately.
+     * This can be used to defer work until after the browser has had a chance to perform any necessary updates
+     * following the connection of the descendants.
+     * @defaultValue `false`
+     */
+    idleCallback?: boolean;
+  },
 ): void {
   const shallow = options?.shallow ?? false;
   const timeout = options?.timeout ?? 50;
+  const useIdleCallback = options?.idleCallback ?? false;
   const selector = `${shallow ? ':scope > ' : ''}:not(:defined)`;
 
   const scheduleCheck = (deadline?: IdleDeadline) => {
     if (target.querySelector(selector) === null || (deadline && deadline.timeRemaining() <= 0)) {
-      callback();
+      if (useIdleCallback) {
+        requestIdleCallback(callback, { timeout });
+      } else {
+        callback();
+      }
       return;
     }
 
