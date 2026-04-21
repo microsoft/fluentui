@@ -112,18 +112,21 @@ const usePopoverSurfaceStyles = makeStyles({
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
+  'use no memo';
+
   const { size } = state;
   const { open } = state.popover;
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
-  // eslint-disable-next-line react-compiler/react-compiler
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,

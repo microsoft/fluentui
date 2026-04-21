@@ -95,13 +95,15 @@ const useActionButtonColorInverted = makeStyles({
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
+  'use no memo';
+
   const inverted = state.appearance === 'inverted';
   const styles = useStyles();
   const intentIconStylesPrimary = useIntentIconStyles();
   const intentIconStylesInverted = useIntentIconStylesInverted();
   const actionStylesInverted = useActionButtonColorInverted();
 
-  // eslint-disable-next-line react-compiler/react-compiler
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.root.className = mergeClasses(
     alertClassNames.root,
     styles.root,
@@ -110,6 +112,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
     state.icon.className = mergeClasses(
       alertClassNames.icon,
       styles.icon,
@@ -119,11 +122,13 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   }
 
   if (state.avatar) {
+    // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
     state.avatar.className = mergeClasses(alertClassNames.avatar, styles.avatar, state.avatar.className);
   }
 
   if (state.action) {
     // Note: inverted && actionStylesInverted.action has the highest piority and must be merged last
+    // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
     state.action.className = mergeClasses(
       alertClassNames.action,
       styles.action,

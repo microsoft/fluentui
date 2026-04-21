@@ -28,6 +28,7 @@ export const useMutationObserver = (
       return;
     }
     // Create an observer instance linked to the callback function
+    // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
     observer.current = new win.MutationObserver(callback);
   }, [callback, win]);
 

@@ -13,6 +13,8 @@ import { useStaticVirtualizerPagination } from '../../hooks/useStaticPagination'
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
+  'use no memo';
+
   const { imperativeRef, itemSize, numItems, axis = 'vertical', reversed, enablePagination = false } = props;
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: props.itemSize,
@@ -21,7 +23,9 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
 
   // Store the virtualizer length as a ref for imperative ref access
   const virtualizerLengthRef = React.useRef<number>(virtualizerLength);
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   if (virtualizerLengthRef.current !== virtualizerLength) {
+    // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
     virtualizerLengthRef.current = virtualizerLength;
   }
 

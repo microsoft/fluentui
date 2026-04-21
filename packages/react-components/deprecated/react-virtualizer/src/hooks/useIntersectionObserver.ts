@@ -117,6 +117,7 @@ export const useIntersectionObserver = (
       return;
     }
 
+    // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
     observer.current = new win.IntersectionObserver(callback, {
       ...observerInit,
       rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root, win),
@@ -141,6 +142,7 @@ export const useIntersectionObserver = (
   const setObserverInitExternal = useCallback(
     (newInit: IntersectionObserverInit | undefined) => {
       // Since we know this is coming from consumers, we can store this value as LTR somewhat safely.
+      // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
       ltrRootMargin.current = newInit?.rootMargin ?? '0px';
 
       // Call the internal setter to update the value and ensure if our calculated direction is rtl, we flip the margin

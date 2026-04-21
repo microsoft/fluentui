@@ -33,6 +33,8 @@ export function useMeasureList<
   refArray: React.MutableRefObject<Array<TElement | undefined | null>>;
   sizeUpdateCount: number;
 } {
+  'use no memo';
+
   const widthArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
   const heightArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
 
@@ -137,6 +139,7 @@ export function useMeasureList<
     return () => _resizeObserver.current?.disconnect();
   }, [resizeObserver]);
 
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   return { widthArray, heightArray, createIndexedRef, refArray, sizeUpdateCount: sizeUpdateCount.current };
 }
 
