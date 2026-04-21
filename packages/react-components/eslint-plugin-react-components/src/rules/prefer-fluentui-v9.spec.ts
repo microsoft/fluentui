@@ -12,6 +12,9 @@ ruleTester.run(RULE_NAME, rule, {
       code: `import type { ITheme } from '@fluentui/react';`,
     },
     {
+      code: `import { ThemeProvider } from '@fluentui/react';`,
+    },
+    {
       code: `import { Button } from '@fluentui/react-components';`,
     },
   ],
