@@ -4,6 +4,17 @@ export {
   useMessageBar,
   useMessageBarContext,
   useMessageBarContextValues,
+  MessageBarActions,
+  renderMessageBarActions,
+  useMessageBarActions,
+  useMessageBarActionsContextValues,
+  MessageBarBody,
+  renderMessageBarBody,
+  useMessageBarBody,
+  useMessageBarBodyContextValues,
+  MessageBarTitle,
+  renderMessageBarTitle,
+  useMessageBarTitle,
 } from './components/MessageBar';
 export type {
   MessageBarSlots,
@@ -11,36 +22,15 @@ export type {
   MessageBarState,
   MessageBarContextValues,
   MessageBarIntent,
-} from './components/MessageBar';
-
-export {
-  MessageBarActions,
-  renderMessageBarActions,
-  useMessageBarActions,
-  useMessageBarActionsContextValues,
-} from './components/MessageBar';
-export type {
-  MessageBarActionsSlots,
-  MessageBarActionsProps,
-  MessageBarActionsState,
-  MessageBarActionsContextValues,
-} from './components/MessageBar';
-
-export {
-  MessageBarBody,
-  renderMessageBarBody,
-  useMessageBarBody,
-  useMessageBarBodyContextValues,
-} from './components/MessageBar';
-export type {
   MessageBarBodySlots,
   MessageBarBodyProps,
   MessageBarBodyState,
   MessageBarBodyContextValues,
+  MessageBarActionsSlots,
+  MessageBarActionsProps,
+  MessageBarActionsState,
+  MessageBarActionsContextValues,
+  MessageBarTitleSlots,
+  MessageBarTitleProps,
+  MessageBarTitleState,
 } from './components/MessageBar';
-
-export { MessageBarGroup, renderMessageBarGroup, useMessageBarGroup } from './components/MessageBar';
-export type { MessageBarGroupSlots, MessageBarGroupProps, MessageBarGroupState } from './components/MessageBar';
-
-export { MessageBarTitle, renderMessageBarTitle, useMessageBarTitle } from './components/MessageBar';
-export type { MessageBarTitleSlots, MessageBarTitleProps, MessageBarTitleState } from './components/MessageBar';

@@ -18,8 +18,6 @@ const classes = {
     'flex items-center gap-2 data-[layout=multiline]:col-start-2 data-[layout=multiline]:justify-self-end data-[layout=multiline]:pt-1',
   actionButton:
     'flex h-8 items-center justify-center rounded-md border border-slate-300 bg-white px-3 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2',
-  dismissButton:
-    'flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-slate-700 transition-colors hover:bg-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2',
   link: 'rounded underline underline-offset-4 transition-colors hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2',
 };
 
@@ -38,16 +36,8 @@ export const Default = (): React.ReactNode => (
         Learn more
       </Link>
     </MessageBarBody>
-    <MessageBarActions
-      className={classes.actions}
-      containerAction={
-        <Button aria-label="Dismiss" className={classes.dismissButton}>
-          ×
-        </Button>
-      }
-    >
-      <Button className={classes.actionButton}>Undo</Button>
-      <Button className={classes.actionButton}>View details</Button>
+    <MessageBarActions className={classes.actions}>
+      <Button className={classes.actionButton}>Dismiss</Button>
     </MessageBarActions>
   </MessageBar>
 );

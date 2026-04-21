@@ -35,8 +35,5 @@ export type {
   MessageBarBodyContextValues,
 } from './MessageBarBody';
 
-export { MessageBarGroup, renderMessageBarGroup, useMessageBarGroup } from './MessageBarGroup';
-export type { MessageBarGroupSlots, MessageBarGroupProps, MessageBarGroupState } from './MessageBarGroup';
-
 export { MessageBarTitle, renderMessageBarTitle, useMessageBarTitle } from './MessageBarTitle';
 export type { MessageBarTitleSlots, MessageBarTitleProps, MessageBarTitleState } from './MessageBarTitle';

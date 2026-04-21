@@ -6,23 +6,8 @@ import { MessageBar } from './MessageBar';
 import { MessageBarBody } from './MessageBarBody/MessageBarBody';
 import { MessageBarTitle } from './MessageBarTitle/MessageBarTitle';
 import { MessageBarActions } from './MessageBarActions/MessageBarActions';
-import { MessageBarGroup } from './MessageBarGroup/MessageBarGroup';
 
 describe('MessageBar', () => {
-  beforeAll(() => {
-    global.ResizeObserver = class ResizeObserver {
-      public observe() {
-        // no-op for jsdom
-      }
-      public unobserve() {
-        // no-op for jsdom
-      }
-      public disconnect() {
-        // no-op for jsdom
-      }
-    };
-  });
-
   beforeEach(() => {
     resetIdsForTests();
   });
@@ -57,24 +42,20 @@ describe('MessageBar', () => {
 
   it('sets headless data attributes on actions and group roots', () => {
     const { getByText } = render(
-      <MessageBarGroup animate="both">
-        <MessageBar>
-          <MessageBarBody>
-            <MessageBarTitle>Saved</MessageBarTitle>
-            Changes are synced.
-          </MessageBarBody>
-          <MessageBarActions>
-            <button>Undo</button>
-          </MessageBarActions>
-        </MessageBar>
-      </MessageBarGroup>,
+      <MessageBar>
+        <MessageBarBody>
+          <MessageBarTitle>Saved</MessageBarTitle>
+          Changes are synced.
+        </MessageBarBody>
+        <MessageBarActions>
+          <button>Undo</button>
+        </MessageBarActions>
+      </MessageBar>,
     );
 
     const actions = getByText('Undo').parentElement;
-    const group = getByText('Saved').closest('[data-animate]');
 
     expect(actions).toHaveAttribute('data-layout', 'singleline');
     expect(actions).toHaveAttribute('data-has-actions', '');
-    expect(group).toHaveAttribute('data-animate', 'both');
   });
 });

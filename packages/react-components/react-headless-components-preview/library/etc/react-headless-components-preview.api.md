@@ -72,9 +72,6 @@ import type { MessageBarBodySlots as MessageBarBodySlots_2 } from '@fluentui/rea
 import { MessageBarBodyState as MessageBarBodyState_2 } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
 import { MessageBarContextValues as MessageBarContextValues_2 } from '@fluentui/react-message-bar';
-import type { MessageBarGroupProps as MessageBarGroupProps_2 } from '@fluentui/react-message-bar';
-import type { MessageBarGroupSlots as MessageBarGroupSlots_2 } from '@fluentui/react-message-bar';
-import { MessageBarGroupState as MessageBarGroupState_2 } from '@fluentui/react-message-bar';
 import type { MessageBarIntent } from '@fluentui/react-message-bar';
 import type { MessageBarSlots as MessageBarSlots_2 } from '@fluentui/react-message-bar';
 import type { MessageBarTitleProps as MessageBarTitleProps_2 } from '@fluentui/react-message-bar';
@@ -432,22 +429,6 @@ export type MessageBarBodyState = MessageBarBodyState_2;
 // @public (undocumented)
 export type MessageBarContextValues = MessageBarContextValues_2;
 
-// @public
-export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps>;
-
-// @public (undocumented)
-export type MessageBarGroupProps = MessageBarGroupProps_2;
-
-// @public (undocumented)
-export type MessageBarGroupSlots = MessageBarGroupSlots_2;
-
-// @public (undocumented)
-export type MessageBarGroupState = MessageBarGroupState_2 & {
-    root: {
-        'data-animate'?: string;
-    };
-};
-
 export { MessageBarIntent }
 
 // @public (undocumented)
@@ -623,9 +604,6 @@ export const renderMessageBarActions: (state: MessageBarActionsState_2, contexts
 
 // @public
 export const renderMessageBarBody: (state: MessageBarBodyState_2, contextValues: MessageBarBodyContextValues_2) => JSXElement;
-
-// @public
-export const renderMessageBarGroup: (state: MessageBarGroupState_2) => JSXElement;
 
 // @public
 export const renderMessageBarTitle: (state: MessageBarTitleState_2) => JSXElement;
@@ -957,9 +935,6 @@ export const useMessageBarContext: () => MessageBarContextValue;
 
 // @public
 export const useMessageBarContextValues: (state: MessageBarState) => MessageBarContextValues;
-
-// @public
-export const useMessageBarGroup: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarGroupState;
 
 // @public
 export const useMessageBarTitle: (props: MessageBarTitleProps, ref: React_2.Ref<HTMLElement>) => MessageBarTitleState;
