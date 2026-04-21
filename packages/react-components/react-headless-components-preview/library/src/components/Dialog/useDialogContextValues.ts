@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { DialogContextValue, DialogSurfaceContextValue } from './dialogContext';
 import type { DialogContextValues, DialogState } from './Dialog.types';
