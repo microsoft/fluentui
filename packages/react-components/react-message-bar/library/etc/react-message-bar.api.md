@@ -7,6 +7,7 @@
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -41,11 +42,24 @@ export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pi
     hasActions: boolean;
 };
 
+// @public (undocumented)
+export type MessageBarBaseProps = DistributiveOmit<MessageBarProps, 'shape'>;
+
+// @public (undocumented)
+export type MessageBarBaseState = DistributiveOmit<MessageBarState, 'shape'>;
+
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 
 // @public (undocumented)
 export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots>;
+
+// @public (undocumented)
+export type MessageBarBodyContextValues = {
+    link: {
+        inline?: boolean;
+    };
+};
 
 // @public
 export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
@@ -156,7 +170,7 @@ export type MessageBarTransitionContextValue = {
 };
 
 // @public
-export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSXElement;
+export const renderMessageBar_unstable: (state: MessageBarBaseState, contexts: MessageBarContextValues) => JSXElement;
 
 // @public
 export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSXElement;
@@ -183,7 +197,13 @@ export function useMessageBarActionsContextValue_unstable(): MessageBarActionsCo
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
 
 // @public
+export const useMessageBarBase_unstable: (props: MessageBarBaseProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBaseState;
+
+// @public
 export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
+
+// @public (undocumented)
+export function useMessageBarBodyContextValues_unstable(state: MessageBarBodyState): MessageBarBodyContextValues;
 
 // @public
 export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => MessageBarBodyState;
