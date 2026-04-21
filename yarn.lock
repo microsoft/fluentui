@@ -544,14 +544,6 @@
     "@babel/helper-skip-transparent-expression-wrappers" "^7.20.0"
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
 
-"@babel/plugin-proposal-private-methods@^7.18.6":
-  version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.18.6.tgz#5209de7d213457548a98436fa2882f52f4be6bea"
-  integrity sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==
-  dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.18.6"
-    "@babel/helper-plugin-utils" "^7.18.6"
-
 "@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2":
   version "7.21.0-placeholder-for-preset-env.2"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.21.0-placeholder-for-preset-env.2.tgz#7844f9289546efa9febac2de4cfe358a050bd703"
@@ -9578,19 +9570,18 @@ eslint-plugin-playwright@2.2.0:
   dependencies:
     globals "^13.23.0"
 
-eslint-plugin-react-compiler@0.0.0-experimental-a97cca1-20240529:
-  version "0.0.0-experimental-a97cca1-20240529"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-compiler/-/eslint-plugin-react-compiler-0.0.0-experimental-a97cca1-20240529.tgz#3bd69917e04f9fe9e5db2ac5885b5fb7623a846a"
-  integrity sha512-njzsfZUekKIFtohmf8UFynUEczq/+riFeXQgtuQjoHGEihArcwdSUmxZZ5yPSqbHjAju3mE807LybaZfiyP7xA==
+eslint-plugin-react-hooks@7.1.1, eslint-plugin-react-hooks@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-7.1.1.tgz#e6742cad75d970c0a3f30d7d3fa80a4784f55927"
+  integrity sha512-f2I7Gw6JbvCexzIInuSbZpfdQ44D7iqdWX01FKLvrPgqxoE7oMj8clOfto8U6vYiz4yd5oKu39rRSVOe1zRu0g==
   dependencies:
     "@babel/core" "^7.24.4"
     "@babel/parser" "^7.24.4"
-    "@babel/plugin-proposal-private-methods" "^7.18.6"
-    hermes-parser "^0.20.1"
-    zod "^3.22.4"
-    zod-validation-error "^3.0.3"
+    hermes-parser "^0.25.1"
+    zod "^3.25.0 || ^4.0.0"
+    zod-validation-error "^3.5.0 || ^4.0.0"
 
-eslint-plugin-react-hooks@5.2.0, eslint-plugin-react-hooks@^5.0.0, eslint-plugin-react-hooks@^5.1.0:
+eslint-plugin-react-hooks@^5.0.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.2.0.tgz#1be0080901e6ac31ce7971beed3d3ec0a423d9e3"
   integrity sha512-+f15FfK64YQwZdJNELETdn5ibXEUQmW1DZL6KXhNnc2heoy/sg9VJJeT7n8TlMWouzWqSWavFkIhHyIbIAEapg==
@@ -11442,17 +11433,17 @@ header-case@^1.0.0:
     no-case "^2.2.0"
     upper-case "^1.1.3"
 
-hermes-estree@0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.20.1.tgz#0b9a544cf883a779a8e1444b915fa365bef7f72d"
-  integrity sha512-SQpZK4BzR48kuOg0v4pb3EAGNclzIlqMj3Opu/mu7bbAoFw6oig6cEt/RAi0zTFW/iW6Iz9X9ggGuZTAZ/yZHg==
+hermes-estree@0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.25.1.tgz#6aeec17d1983b4eabf69721f3aa3eb705b17f480"
+  integrity sha512-0wUoCcLp+5Ev5pDW2OriHC2MJCbwLwuRx+gAqMTOkGKJJiBCLjtrvy4PWUGn6MIVefecRpzoOZ/UV6iGdOr+Cw==
 
-hermes-parser@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.20.1.tgz#ad10597b99f718b91e283f81cbe636c50c3cff92"
-  integrity sha512-BL5P83cwCogI8D7rrDCgsFY0tdYUtmFP9XaXtl2IQjC+2Xo+4okjfXintlTxcIwl4qeGddEl28Z11kbVIw0aNA==
+hermes-parser@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.25.1.tgz#5be0e487b2090886c62bd8a11724cd766d5f54d1"
+  integrity sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==
   dependencies:
-    hermes-estree "0.20.1"
+    hermes-estree "0.25.1"
 
 highlight.js@~9.13.0:
   version "9.13.1"
@@ -21119,15 +21110,20 @@ z-schema@~5.0.2:
   optionalDependencies:
     commander "^10.0.0"
 
-zod-validation-error@^3.0.3:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-3.3.0.tgz#2cfe81b62d044e0453d1aa3ae7c32a2f36dde9af"
-  integrity sha512-Syib9oumw1NTqEv4LT0e6U83Td9aVRk9iTXPUQr1otyV1PuXQKOvOwhMNqZIq5hluzHP2pMgnOmHEo7kPdI2mw==
+"zod-validation-error@^3.5.0 || ^4.0.0":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-4.0.2.tgz#bc605eba49ce0fcd598c127fee1c236be3f22918"
+  integrity sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ==
 
-zod@^3.22.4, zod@^3.24.1:
+zod@^3.24.1:
   version "3.25.76"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.76.tgz#26841c3f6fd22a6a2760e7ccb719179768471e34"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
+
+"zod@^3.25.0 || ^4.0.0":
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-4.3.6.tgz#89c56e0aa7d2b05107d894412227087885ab112a"
+  integrity sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==
 
 zwitch@^2.0.0:
   version "2.0.4"
