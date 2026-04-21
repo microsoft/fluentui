@@ -177,7 +177,9 @@ For each confirmed issue:
 
    - A StackBlitz / CodeSandbox / JSFiddle / CodePen link in the issue body — use it directly.
    - A link to a specific Storybook story hosted at `storybooks.fluentui.dev` or similar — use it directly.
-   - Otherwise: spin up the relevant component's local Storybook and navigate to the closest default story. Follow the pattern in the `visual-test` skill for starting `yarn nx run react-<component>:start` and finding the dynamic port.
+   - Otherwise: spin up the relevant component's **per-component** Storybook (e.g. `yarn nx run react-<component>-stories:storybook --skip-nx-cache`). Follow the full pattern in the `visual-test` skill for port detection and troubleshooting.
+
+   **Never use the workspace-wide Storybook for validation** — `yarn storybook` at the repo root or `public-docsite-v9` pulls in deprecated unstable re-exports and hits HMR restart loops that make validation useless. If the per-component Storybook fails to boot, fall back to the `visual-test` skill's troubleshooting section rather than reaching for the workspace-wide one.
 
 3. **Capture evidence.** Don't try to "prove" the bug — just gather what a human needs to decide:
 
