@@ -217,7 +217,7 @@ export class BaseTablist extends FASTElement {
   private getTabIds(): Array<string> {
     return (
       this.tabs?.map((tab: HTMLElement) => {
-        return tab.id ?? `tab-${uniqueId()}`;
+        return tab.getAttribute('id') ?? `tab-${uniqueId()}`;
       }) ?? []
     );
   }
