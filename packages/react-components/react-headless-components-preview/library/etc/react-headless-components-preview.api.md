@@ -400,7 +400,11 @@ export type RadioGroupProps = RadioGroupBaseProps;
 export type RadioGroupSlots = RadioGroupSlots_2;
 
 // @public
-export type RadioGroupState = RadioGroupBaseState;
+export type RadioGroupState = RadioGroupBaseState & {
+    root: {
+        focusgroup?: string;
+    };
+};
 
 // @public
 export type RadioProps = RadioBaseProps;
@@ -412,6 +416,9 @@ export type RadioSlots = RadioSlots_2;
 export type RadioState = RadioBaseState & {
     root: {
         'data-disabled'?: string;
+    };
+    input: {
+        focusgroupstart?: string;
     };
 };
 

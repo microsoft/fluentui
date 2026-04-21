@@ -18,5 +18,8 @@ export const useRadio = (props: RadioProps, ref: React.Ref<HTMLInputElement>): R
   // Set data attribute for disabled state to simplify styling.
   state.root['data-disabled'] = stringifyDataAttribute(state.input.disabled);
 
+  // set focusroupstart attribute to the selected radio to support focus behavior in RadioGroup
+  state.input.focusgroupstart = stringifyDataAttribute(state.input.defaultChecked || state.input.checked);
+
   return state;
 };

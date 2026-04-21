@@ -20,4 +20,10 @@ export type RadioState = RadioBaseState & {
      */
     'data-disabled'?: string;
   };
+  input: {
+    /**
+     * Data attribute set when the radio is checked.
+     */
+    focusgroupstart?: string;
+  };
 };

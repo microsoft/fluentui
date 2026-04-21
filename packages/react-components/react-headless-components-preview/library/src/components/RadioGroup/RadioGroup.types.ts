@@ -18,7 +18,12 @@ export type RadioGroupProps = RadioGroupBaseProps;
 /**
  * RadioGroup component state
  */
-export type RadioGroupState = RadioGroupBaseState;
+export type RadioGroupState = RadioGroupBaseState & {
+  root: {
+    /** Defines the element focus behavior for the radio group. */
+    focusgroup?: string;
+  };
+};
 
 /**
  * RadioGroup component context values
