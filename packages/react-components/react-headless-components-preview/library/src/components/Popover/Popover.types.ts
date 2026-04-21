@@ -1,5 +1,12 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  EventData,
+  EventHandler,
+  Slot,
+  JSXElement,
+} from '@fluentui/react-utilities';
 import type { PositioningShorthand, PositioningReturn } from '../../hooks/usePositioning';
 
 /**
@@ -24,10 +31,10 @@ export type OnOpenChangeData = EventData<string, React.SyntheticEvent | Event> &
  */
 export type PopoverProps = {
   /**
-   * Can contain two children including PopoverTrigger and PopoverSurface.
-   * Alternatively can only contain PopoverSurface if using a custom target.
+   * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
+   * Alternatively can only contain `PopoverSurface` if using a custom `target`.
    */
-  children: [React.ReactElement, React.ReactElement] | React.ReactElement;
+  children: [JSXElement, JSXElement] | JSXElement;
 
   /** Controlled open state. */
   open?: boolean;
@@ -190,6 +197,5 @@ export type PopoverContextValue = Pick<
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;
     containerRef: React.RefCallback<HTMLElement>;
-    arrowRef: React.RefCallback<HTMLElement>;
   };
 };

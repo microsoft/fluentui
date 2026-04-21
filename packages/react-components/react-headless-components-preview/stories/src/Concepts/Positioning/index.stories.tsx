@@ -11,9 +11,12 @@ export { AutoSize } from './PositioningAutoSize.stories';
 export { OverflowBoundary } from './PositioningOverflowBoundary.stories';
 export { MatchTargetSize } from './PositioningMatchTargetSize.stories';
 export { FallbackPositions } from './PositioningFallbackPositions.stories';
+export { FlippingBlock } from './PositioningFlippingBlock.stories';
+export { FlippingInline } from './PositioningFlippingInline.stories';
+export { FlippingCorner } from './PositioningFlippingCorner.stories';
 
 export default {
-  title: 'Headless Concepts/Developer/Positioning',
+  title: 'Headless Concepts/Positioning',
   component: Positioning,
   parameters: {
     docs: {

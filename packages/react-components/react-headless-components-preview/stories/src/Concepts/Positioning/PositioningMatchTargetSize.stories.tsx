@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
 
+import descriptionMd from './PositioningMatchTargetSizeDescription.md';
+
 const classes = {
   wrapper: 'flex flex-col items-start gap-4 m-16',
   trigger:
     'w-[350px] px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 data-[open]:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
   surface: 'bg-white rounded-lg shadow-lg border border-gray-200 p-4 box-border',
-  note: 'text-xs text-gray-500 max-w-lg',
 };
 
 export const MatchTargetSize = (): React.ReactNode => (
@@ -17,11 +18,13 @@ export const MatchTargetSize = (): React.ReactNode => (
       </PopoverTrigger>
       <PopoverSurface className={classes.surface}>This popover has the same width as its target anchor</PopoverSurface>
     </Popover>
-
-    <p className={classes.note}>
-      <code>matchTargetSize: 'width'</code> applies <code>width: anchor-size(width)</code> to the surface so its inline
-      size tracks the trigger's. Handy for combobox / autocomplete dropdowns that should line up with the input. Ensure
-      the surface uses <code>box-sizing: border-box</code> so padding doesn't exceed the matched width.
-    </p>
   </div>
 );
+
+MatchTargetSize.parameters = {
+  docs: {
+    description: {
+      story: descriptionMd,
+    },
+  },
+};

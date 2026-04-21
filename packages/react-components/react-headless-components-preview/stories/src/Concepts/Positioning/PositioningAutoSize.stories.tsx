@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
 
+import descriptionMd from './PositioningAutoSizeDescription.md';
+
 const classes = {
   outer: 'w-full overflow-auto',
   wrapper: 'flex flex-col items-start gap-4 mx-16 my-16 w-max',
@@ -41,7 +43,7 @@ export const AutoSize = (): React.ReactNode => {
           <Popover
             open={open}
             onOpenChange={(_, data) => setOpen(data.open)}
-            positioning={{ position: 'below', autoSize: true, overflowBoundary: boundary, strategy: 'absolute' }}
+            positioning={{ position: 'below', overflowBoundary: boundary, strategy: 'absolute' }}
           >
             <PopoverTrigger>
               <button className={classes.trigger}>AutoSized popover</button>
@@ -55,13 +57,15 @@ export const AutoSize = (): React.ReactNode => {
             </PopoverSurface>
           </Popover>
         </div>
-
-        <p className="text-xs text-gray-500 max-w-lg">
-          <code>autoSize</code> sets inline <code>max-width</code> and <code>max-height</code> styles on the surface
-          derived from <code>overflowBoundary</code> (here, the dashed 300×300 box). As the item count grows the popover
-          clips to the boundary and scrolls instead of bursting outside.
-        </p>
       </div>
     </div>
   );
+};
+
+AutoSize.parameters = {
+  docs: {
+    description: {
+      story: descriptionMd,
+    },
+  },
 };

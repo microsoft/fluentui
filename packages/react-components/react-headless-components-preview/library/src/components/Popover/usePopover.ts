@@ -206,7 +206,6 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
-        arrowRef: positioning.arrowRef,
       },
     },
   };

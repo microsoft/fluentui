@@ -1,8 +1,18 @@
 import type * as React from 'react';
-import type { POSITIONS, ALIGNMENTS } from './constants';
 
-export type Position = (typeof POSITIONS)[keyof typeof POSITIONS];
-export type Alignment = (typeof ALIGNMENTS)[keyof typeof ALIGNMENTS];
+export type Position = 'above' | 'below' | 'before' | 'after';
+export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
+export type LogicalAlignment = 'start' | 'center' | 'end';
+
+/**
+ * Imperative API exposed via `PositioningProps.positioningRef`.
+ */
+export type PositioningImperativeRef = {
+  /** Retarget the surface to the given element (or clear the target with `null`). */
+  setTarget: (target: HTMLElement | null) => void;
+  /** Request a position recomputation. With CSS anchor positioning layout is automatic, so this is a no-op on supporting browsers. */
+  updatePosition: () => void;
+};
 
 export type PositioningShorthandValue =
   | 'above'
@@ -12,13 +22,11 @@ export type PositioningShorthandValue =
   | 'below-start'
   | 'below-end'
   | 'before'
-  | 'before-top'
-  | 'before-bottom'
+  | 'before-start'
+  | 'before-end'
   | 'after'
-  | 'after-top'
-  | 'after-bottom';
-
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+  | 'after-start'
+  | 'after-end';
 
 export type PositioningProps = {
   /**
@@ -40,8 +48,6 @@ export type PositioningProps = {
   fallbackPositions?: PositioningShorthandValue[];
   /** Position on top of the target */
   coverTarget?: boolean;
-  /** Auto-size to available space */
-  autoSize?: boolean | 'width' | 'height';
   /**
    * Custom anchor element for the positioned surface. When provided, the
    * anchor-name is written to this element instead of the target assigned via
@@ -49,8 +55,8 @@ export type PositioningProps = {
    */
   target?: HTMLElement | React.RefObject<HTMLElement | null> | null;
   /**
-   * CSS `position` value used on the positioned surface.
-   * @default 'fixed'
+   * CSS `position` value used on the positioned surface. Matches v9's default.
+   * @default 'absolute'
    */
   strategy?: 'absolute' | 'fixed';
   /**
@@ -71,29 +77,11 @@ export type PositioningProps = {
    * triggering a position update. See {@link PositioningImperativeRef}.
    */
   positioningRef?: React.Ref<PositioningImperativeRef>;
-  /**
-   * Element that clips the surface when `autoSize` is set. Instead of
-   * constraining the surface to the viewport, `max-width` / `max-height`
-   * are computed from this element's rect. Accepts a DOM element or ref.
-   */
-  overflowBoundary?: HTMLElement | React.RefObject<HTMLElement | null> | null;
 };
 
-/**
- * Imperative API exposed via `PositioningProps.positioningRef`.
- */
-export type PositioningImperativeRef = {
-  /** Retarget the surface to the given element (or clear the target with `null`). */
-  setTarget: (target: HTMLElement | null) => void;
-  /** Request a position recomputation. With CSS anchor positioning layout is automatic, so this is a no-op on supporting browsers. */
-  updatePosition: () => void;
-};
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 export type PositioningReturn = {
-  /** Ref callback for the trigger / anchor element. */
   targetRef: React.RefCallback<HTMLElement>;
-  /** Ref callback for the positioned surface element. Sets anchor-binding styles and `data-placement`. */
   containerRef: React.RefCallback<HTMLElement>;
-  /** Ref callback for the arrow element. */
-  arrowRef: React.RefCallback<HTMLElement>;
 };

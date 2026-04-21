@@ -42,12 +42,10 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     onMountAutoFocus,
   });
 
-  const mergedArrowRef = useMergedRefs(arrowRef, positioningCtx.arrowRef);
-
   const state: PopoverSurfaceState = {
     inline,
     withArrow,
-    arrowRef: mergedArrowRef as React.RefObject<HTMLDivElement | null>,
+    arrowRef,
     mountNode,
     components: { root: 'div' },
     root: slot.always(
