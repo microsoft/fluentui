@@ -21,7 +21,7 @@ export function requestIdleCallback(
       didTimeout: options?.timeout ? Date.now() - start >= options.timeout : false,
       timeRemaining: () => 0,
     });
-  }, 1);
+  }, options?.timeout ?? 1);
 }
 
 /**
