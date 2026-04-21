@@ -5,6 +5,7 @@ import {
   ToolbarDivider,
   ToolbarGroup,
   ToolbarRadioGroup,
+  ToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview';
 import {
   CutRegular,
@@ -29,22 +30,25 @@ const classes = {
   activeButton:
     'flex items-center justify-center size-8 rounded border-none p-0 text-blue-700 bg-blue-50 cursor-pointer ' +
     'hover:bg-blue-100 active:bg-blue-200 ' +
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1',
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-1',
+  toggleButton:
+    'flex items-center justify-center size-8 rounded border-none bg-transparent p-0 text-gray-700 cursor-pointer ' +
+    'hover:bg-gray-100 active:bg-gray-200 ' +
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-1 ' +
+    'data-[checked]:text-blue-700 data-[checked]:bg-blue-50 ' +
+    'data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none',
   divider: 'mx-0.5 w-px self-stretch bg-gray-200 data-[vertical]:h-px data-[vertical]:w-auto data-[vertical]:my-0.5',
   group: 'flex items-center gap-0.5 data-[vertical]:flex-col',
 };
 
-const alignOptions = ['left', 'center', 'right'] as const;
-type AlignOption = (typeof alignOptions)[number];
-
-const alignIcons: Record<AlignOption, React.FC<React.SVGProps<SVGSVGElement>>> = {
+const alignIcons = {
   left: TextAlignLeftRegular,
   center: TextAlignCenterRegular,
   right: TextAlignRightRegular,
 };
 
 export const Default = (): React.ReactNode => {
-  const [align, setAlign] = React.useState<AlignOption>('left');
+  const [align, setAlign] = React.useState('left');
 
   return (
     <Toolbar className={classes.toolbar} aria-label="Text formatting">
@@ -54,18 +58,45 @@ export const Default = (): React.ReactNode => {
 
       <ToolbarDivider className={classes.divider} />
 
-      <ToolbarGroup className={classes.group}>
-        <ToolbarButton className={classes.button} aria-label="Bold" icon={<TextBoldRegular />} />
-        <ToolbarButton className={classes.button} aria-label="Italic" icon={<TextItalicRegular />} />
-        <ToolbarButton className={classes.button} aria-label="Underline" icon={<TextUnderlineRegular />} />
-        <ToolbarButton className={classes.button} aria-label="Underline" disabled icon={<TextUnderlineRegular />} />
+      <ToolbarGroup className={classes.group} aria-label="Text formatting">
+        <ToolbarToggleButton
+          name="format"
+          value="bold"
+          className={classes.toggleButton}
+          aria-label="Bold"
+          icon={<TextBoldRegular />}
+          onClick={() => undefined}
+        />
+        <ToolbarToggleButton
+          name="format"
+          value="italic"
+          className={classes.toggleButton}
+          aria-label="Italic"
+          icon={<TextItalicRegular />}
+          onClick={() => undefined}
+        />
+        <ToolbarToggleButton
+          name="format"
+          value="underline"
+          className={classes.toggleButton}
+          aria-label="Underline"
+          icon={<TextUnderlineRegular />}
+          onClick={() => undefined}
+        />
+        <ToolbarToggleButton
+          name="format"
+          value="strikethrough"
+          disabled
+          className={classes.toggleButton}
+          aria-label="Strikethrough"
+          icon={<TextUnderlineRegular />}
+        />
       </ToolbarGroup>
 
       <ToolbarDivider className={classes.divider} />
 
       <ToolbarRadioGroup className={classes.group} aria-label="Text alignment">
-        {alignOptions.map(option => {
-          const Icon = alignIcons[option];
+        {Object.entries(alignIcons).map(([option, Icon]) => {
           return (
             <ToolbarButton
               key={option}

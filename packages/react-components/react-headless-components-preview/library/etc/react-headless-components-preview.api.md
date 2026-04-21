@@ -156,6 +156,8 @@ import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluent
 import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
 import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
 import type { ToolbarState as ToolbarState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarToggleButtonBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
 import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
@@ -709,6 +711,9 @@ export const renderToolbarGroup: (state: ToolbarGroupState_2) => JSXElement;
 export const renderToolbarRadioGroup: (state: ToolbarGroupState_2) => JSXElement;
 
 // @public
+export const renderToolbarToggleButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
 // @public
@@ -978,6 +983,24 @@ export type ToolbarState = ToolbarState_2 & {
 };
 
 // @public
+export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
+
+// @public (undocumented)
+export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps & {
+    vertical?: boolean;
+};
+
+// @public (undocumented)
+export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-checked'?: string;
+    };
+};
+
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public
@@ -1140,6 +1163,9 @@ export const useToolbarGroup: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDi
 
 // @public
 export const useToolbarRadioGroup: (props: ToolbarRadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarRadioGroupState;
+
+// @public
+export const useToolbarToggleButton: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

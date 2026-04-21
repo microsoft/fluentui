@@ -207,6 +207,9 @@ export {
   ToolbarRadioGroup,
   renderToolbarRadioGroup,
   useToolbarRadioGroup,
+  ToolbarToggleButton,
+  renderToolbarToggleButton,
+  useToolbarToggleButton,
 } from './Toolbar';
 export type {
   ToolbarSlots,
@@ -221,4 +224,6 @@ export type {
   ToolbarGroupState,
   ToolbarRadioGroupProps,
   ToolbarRadioGroupState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
 } from './Toolbar';

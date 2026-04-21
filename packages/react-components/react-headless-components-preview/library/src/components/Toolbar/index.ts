@@ -22,3 +22,8 @@ export { ToolbarRadioGroup } from './ToolbarRadioGroup';
 export { renderToolbarRadioGroup } from './ToolbarRadioGroup';
 export { useToolbarRadioGroup } from './ToolbarRadioGroup';
 export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarRadioGroup';
+
+export { ToolbarToggleButton } from './ToolbarToggleButton';
+export { renderToolbarToggleButton } from './ToolbarToggleButton';
+export { useToolbarToggleButton } from './ToolbarToggleButton';
+export type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './ToolbarToggleButton';
