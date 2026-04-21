@@ -356,7 +356,7 @@ const RenderArgsTable = ({
           <AdditionalApiDocs>
             <p>
               <b>
-                Customizing components slot styles with className hooks <span role="presentation">🙌</span>
+                Customizing component's slot styles with className hooks <span role="presentation">🙌</span>
               </b>
               <br />
               <span>
