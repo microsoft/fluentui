@@ -23,7 +23,13 @@ export class MenuList extends BaseMenuList {
     super.connectedCallback();
 
     waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems);
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'menu',
+          axis: 'block',
+          wrap: true,
+        },
+      });
     });
   }
 
@@ -35,7 +41,7 @@ export class MenuList extends BaseMenuList {
   override setItems(): void {
     super.setItems();
 
-    this.fgItems ??= new ItemCollection(this, el => isMenuItem(el));
+    this.fgItems ??= new ItemCollection(this, el => isMenuItem(el) && !!this.menuItems?.includes(el));
     this.fg?.update();
   }
 }

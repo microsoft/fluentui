@@ -38,7 +38,14 @@ export class Tablist extends BaseTablist {
     super.connectedCallback();
 
     waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems);
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'tablist',
+          axis: undefined,
+          memory: false,
+          wrap: true,
+        },
+      });
     });
   }
 

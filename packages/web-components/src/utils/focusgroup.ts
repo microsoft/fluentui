@@ -5,11 +5,20 @@ export class ItemCollection implements FocusGroupItemCollection {
   private walker!: TreeWalker;
   private filter!: (node: Element) => boolean;
 
+  get start(): HTMLElement | null {
+    for (const { element } of this.items()) {
+      if (element.hasAttribute('focusgroupstart')) {
+        return element;
+      }
+    }
+    return null;
+  }
+
   constructor(owner: HTMLElement, filter: (node: Element) => boolean) {
     this.owner = owner;
     this.filter = filter;
     this.walker = document.createTreeWalker(this.owner, NodeFilter.SHOW_ELEMENT, node =>
-      filter(node as Element) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+      filter(node as Element) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
     );
   }
 

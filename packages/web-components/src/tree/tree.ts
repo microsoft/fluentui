@@ -51,7 +51,7 @@ export class Tree extends BaseTree {
     this.updateSizeAndAppearance();
 
     this.fgItems ??= new ItemCollection(this, el => {
-      return isTreeItem(el) && !(isTreeItem(el.parentElement) && el.parentElement.expanded === false);
+      return isTreeItem(el) && !el.getAttribute('focusgroup')?.includes('none');
     });
     this.fg?.update();
   }
@@ -64,7 +64,13 @@ export class Tree extends BaseTree {
     super.connectedCallback();
 
     waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems);
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'menu',
+          axis: 'block',
+          memory: false,
+        },
+      });
     });
   }
 

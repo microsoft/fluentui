@@ -55,7 +55,7 @@ export class BaseTreeItem extends FASTElement {
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
-      // Update focusgroup attributes after subtree show/hide renderig is done.
+      // Update focusgroup attributes after subtree show/hide rendering is done.
       requestAnimationFrame(() => {
         for (const item of this.childTreeItems ?? []) {
           if (next) {

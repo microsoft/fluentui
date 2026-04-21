@@ -24,7 +24,13 @@ export class RadioGroup extends BaseRadioGroup {
     super.connectedCallback();
 
     waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems);
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'radiogroup',
+          axis: undefined,
+          wrap: true,
+        },
+      });
     });
   }
 
