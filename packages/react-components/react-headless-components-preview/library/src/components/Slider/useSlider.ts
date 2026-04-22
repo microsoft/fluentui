@@ -16,7 +16,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   const state: SliderState = useSliderBase_unstable(props, ref);
 
   // Set data attributes for disabled and vertical states to simplify styling of these states.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
 
   return state;

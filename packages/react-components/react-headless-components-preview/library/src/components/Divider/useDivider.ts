@@ -15,6 +15,7 @@ export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): Di
   const state: DividerState = useDividerBase_unstable(props, ref);
 
   // Set data attribute for orientation to simplify styling of vertical vs horizontal dividers.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-orientation'] = props.vertical ? 'vertical' : 'horizontal';
 
   return state;
