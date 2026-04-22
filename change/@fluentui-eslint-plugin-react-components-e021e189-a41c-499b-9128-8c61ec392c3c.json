@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use require for package.json to prevent API Extractor from failing on unresolved types",
-  "packageName": "@fluentui/eslint-plugin-react-components",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

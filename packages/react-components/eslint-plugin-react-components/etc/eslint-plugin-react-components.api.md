@@ -15,7 +15,9 @@ export const configs: {
         rules: {};
     };
     'flat/recommended': {
-        plugins: Record<string, ESLint.Plugin>;
+        plugins: {
+            [x: string]: ESLint.Plugin;
+        };
         rules: {};
     };
 };
