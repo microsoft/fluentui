@@ -48,6 +48,8 @@ export const SSRProvider: React.FC<{ children: React.ReactNode }> = props => {
  * browser-specific rendering until after hydration. May cause re-renders on a client when is used within SSRProvider.
  */
 export function useIsSSR(): boolean {
+  'use no memo';
+
   const isInSSRContext = useSSRContext() !== defaultSSRContextValue;
   const [isSSR, setIsSSR] = React.useState(isInSSRContext);
 
@@ -73,6 +75,7 @@ export function useIsSSR(): boolean {
     // mounting.
     // eslint-disable-next-line
     React.useLayoutEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSSR(false);
     }, []);
   }

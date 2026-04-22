@@ -12,6 +12,8 @@ import * as React from 'react';
  * const isFirstMount = useFirstMount();
  */
 export function useFirstMount(): boolean {
+  'use no memo';
+
   const isFirst = React.useRef(true);
 
   React.useEffect(() => {
@@ -20,5 +22,6 @@ export function useFirstMount(): boolean {
     }
   }, []);
 
+  // eslint-disable-next-line react-hooks/refs
   return isFirst.current;
 }

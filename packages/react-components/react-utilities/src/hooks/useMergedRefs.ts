@@ -16,11 +16,13 @@ export type RefObjectFunction<T> = React.RefObject<T | null> & ((value: T | null
  */
 // LegacyRef is actually not supported, but in React v18 types this is leaking directly from forwardRef component declaration
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
-  'use no memo';
+  ('use no memo');
 
   const mergedCallback = React.useCallback(
+    // eslint-disable-next-line react-hooks/immutability
     (value: T | null) => {
       // Update the "current" prop hanging on the function.
+      // eslint-disable-next-line react-hooks/immutability
       mergedCallback.current = value;
 
       for (const ref of refs) {
@@ -37,11 +39,12 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
         if (typeof ref === 'function') {
           ref(value);
         } else if (ref) {
+          // eslint-disable-next-line react-hooks/immutability
           ref.current = value;
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/use-memo -- already exhaustive
     [...refs],
   ) as RefObjectFunction<T>;
 
