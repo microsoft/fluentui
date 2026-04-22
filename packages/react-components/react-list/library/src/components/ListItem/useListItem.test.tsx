@@ -64,6 +64,7 @@ describe('useListItem_unstable', () => {
   it('respects an explicit as prop in returned root component', () => {
     const { result } = renderHook(() => useListItem_unstable({ as: 'li' }, ref));
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components.root).toBe('li');
   });
 

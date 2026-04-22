@@ -76,6 +76,7 @@ describe('useList_unstable', () => {
   it('respects an explicit as prop in returned root component', () => {
     const { result } = renderHook(() => useList_unstable({ as: 'ol' }, ref));
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components.root).toBe('ol');
     expect(result.current.root.role).toBe('list');
   });
