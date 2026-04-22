@@ -19,7 +19,7 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
 
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
-  state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'}`;
+  state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
 
   return state;
